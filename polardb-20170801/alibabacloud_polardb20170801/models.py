@@ -17,7 +17,9 @@ class CancelScheduleTasksRequest(TeaModel):
     ):
         # The cluster ID.
         # 
-        # >  You can call the [DescribeDBClusters](~~98094~~) operation to query the information of all clusters that are deployed in a specified region, such as the cluster IDs.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the information of all clusters that are deployed in a specified region, such as the cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -27,8 +29,10 @@ class CancelScheduleTasksRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # The ID of the scheduled task that you want to cancel.
         # 
-        # > *   You can call the [DescribeScheduleTasks](~~199648~~) operation to query the details of all scheduled tasks that belong to the current account, such as the task IDs.
+        # > *   You can call the [DescribeScheduleTasks](https://help.aliyun.com/document_detail/199648.html) operation to query the details of all scheduled tasks that belong to the current account, such as the task IDs.
         # >*   You can cancel only the tasks whose status is `pending`.``
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -162,10 +166,14 @@ class CheckAccountNameRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The name of the account.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The ID of the cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~98094~~) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -293,9 +301,13 @@ class CheckDBNameRequest(TeaModel):
     ):
         # The ID of the cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~98094~~) operation to query information about all clusters that are deployed in a region, such as the cluster IDs.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters that are deployed in a region, such as the cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The name of the database.
+        # 
+        # This parameter is required.
         self.dbname = dbname
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -431,13 +443,15 @@ class CheckKMSAuthorizedRequest(TeaModel):
     ):
         # The cluster ID.
         # 
-        # >  You can call the [DescribeDBClusters](~~98094~~) operation to query the information of all clusters that are deployed in a specific region, such as the cluster IDs.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the information of all clusters that are deployed in a specific region, such as the cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region.
         # 
-        # >  You can call the [DescribeRegions](~~98041~~) operation to query all regions that are available for your account, such as the region IDs.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query all regions that are available for your account, such as the region IDs.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -505,7 +519,7 @@ class CheckKMSAuthorizedResponseBody(TeaModel):
         self.dbcluster_id = dbcluster_id
         # The request ID.
         self.request_id = request_id
-        # The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](~~93689~~).
+        # The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://help.aliyun.com/document_detail/93689.html).
         self.role_arn = role_arn
 
     def validate(self):
@@ -713,10 +727,14 @@ class CloseAITaskRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the cluster.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -857,6 +875,8 @@ class CloseDBClusterMigrationRequest(TeaModel):
         # > If binary logging is disabled, your PolarDB cluster is restarted.
         self.continue_enable_binlog = continue_enable_binlog
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -997,15 +1017,19 @@ class CreateAccountRequest(TeaModel):
         # The name of the account. The name must meet the following requirements:
         # 
         # *   It must start with a lowercase letter and end with a letter or a digit.
-        # *   It can contain lowercase letters, digits, and underscores (\_).
+        # *   It can contain lowercase letters, digits, and underscores (_).
         # *   It must be 2 to 16 characters in length.
         # *   It cannot be root, admin, or another username that is reserved by the system.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The password of the account. The password must meet the following requirements:
         # 
         # *   It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
         # *   It must be 8 to 32 characters in length.
         # *   Special characters include `! @ # $ % ^ & * ( ) _ + - =`
+        # 
+        # This parameter is required.
         self.account_password = account_password
         # The permissions that are granted to the account. Valid values:
         # 
@@ -1031,12 +1055,14 @@ class CreateAccountRequest(TeaModel):
         # 
         # *   If you leave this parameter empty, the default value **Super** is used.
         # 
-        # *   You can create multiple privileged accounts for a PolarDB for Oracle or PolarDB for PostgreSQL cluster. A privileged account is granted more permissions than a standard account. For more information about how to create a database account, see [Create a database account](~~68508~~).
-        # *   You can create only one privileged account for a PolarDB for MySQL cluster. A privileged account is granted more permissions than a standard account. For more information about how to create a database account, see [Create a database account](~~68508~~).
+        # *   You can create multiple privileged accounts for a PolarDB for Oracle or PolarDB for PostgreSQL cluster. A privileged account is granted more permissions than a standard account. For more information about how to create a database account, see [Create a database account](https://help.aliyun.com/document_detail/68508.html).
+        # *   You can create only one privileged account for a PolarDB for MySQL cluster. A privileged account is granted more permissions than a standard account. For more information about how to create a database account, see [Create a database account](https://help.aliyun.com/document_detail/68508.html).
         self.account_type = account_type
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
         self.client_token = client_token
         # The ID of cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The name of the database that can be accessed by the account. To enter multiple database names, separate the names with commas (,).
         # 
@@ -1198,6 +1224,8 @@ class CreateBackupRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
         self.client_token = client_token
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -1334,6 +1362,7 @@ class CreateColdStorageInstanceRequest(TeaModel):
     ):
         self.client_token = client_token
         self.cold_storage_instance_description = cold_storage_instance_description
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -1618,27 +1647,27 @@ class CreateDBClusterRequest(TeaModel):
         # 
         # *   Only when the **DBType** parameter is set to **MySQL** and the **DBVersion** parameter is set to **8.0**, you can set this parameter to **ArchiveNormal** or **NormalMultimaster**.
         # 
-        # For more information, see [Product editions](~~183258~~).
+        # For more information, see [Product editions](https://help.aliyun.com/document_detail/183258.html).
         self.creation_category = creation_category
         # The method that is used to create a cluster. Valid values:
         # 
         # *   **Normal**: creates a PolarDB cluster. For more information about how to perform this operation in the console, see the following topics:
         # 
-        #     *   [Create a PolarDB for MySQL cluster](~~58769~~)
-        #     *   [Create a PolarDB for PostgreSQL cluster](~~118063~~)
-        #     *   [Create a PolarDB for Oracle cluster](~~118182~~)
+        #     *   [Create a PolarDB for MySQL cluster](https://help.aliyun.com/document_detail/58769.html)
+        #     *   [Create a PolarDB for PostgreSQL cluster](https://help.aliyun.com/document_detail/118063.html)
+        #     *   [Create a PolarDB for Oracle cluster](https://help.aliyun.com/document_detail/118182.html)
         # 
         # *   **CloneFromPolarDB**: clones data from an existing PolarDB cluster to a new PolarDB cluster. For more information about how to perform this operation in the console, see the following topics:
         # 
-        #     *   [Clone a PolarDB for MySQL cluster](~~87966~~)
-        #     *   [Clone a PolarDB for PostgreSQL cluster](~~118108~~)
-        #     *   [Clone a PolarDB for Oracle cluster](~~118221~~)
+        #     *   [Clone a PolarDB for MySQL cluster](https://help.aliyun.com/document_detail/87966.html)
+        #     *   [Clone a PolarDB for PostgreSQL cluster](https://help.aliyun.com/document_detail/118108.html)
+        #     *   [Clone a PolarDB for Oracle cluster](https://help.aliyun.com/document_detail/118221.html)
         # 
-        # *   **CloneFromRDS**: clones data from an existing ApsaraDB RDS for MySQL instance to a new PolarDB for MySQL cluster. For more information about how to perform this operation in the console, see [Create a PolarDB for MySQL cluster by cloning an ApsaraDB RDS for MySQL instance](~~121812~~).
+        # *   **CloneFromRDS**: clones data from an existing ApsaraDB RDS for MySQL instance to a new PolarDB for MySQL cluster. For more information about how to perform this operation in the console, see [Create a PolarDB for MySQL cluster by cloning an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/121812.html).
         # 
-        # *   **MigrationFromRDS**: migrates data from an existing ApsaraDB RDS for MySQL instance to a new PolarDB for MySQL cluster. By default, the created PolarDB cluster is in read-only mode, and the binary logging feature is enabled. For more information about how to perform this operation in the console, see [Create a PolarDB for MySQL cluster from an ApsaraDB RDS for MySQL instance](~~121582~~).
+        # *   **MigrationFromRDS**: migrates data from an existing ApsaraDB RDS for MySQL instance to a new PolarDB for MySQL cluster. By default, the created PolarDB cluster is in read-only mode, and the binary logging feature is enabled. For more information about how to perform this operation in the console, see [Create a PolarDB for MySQL cluster from an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/121582.html).
         # 
-        # *   **CreateGdnStandby**: creates a secondary cluster. For more information about how to perform this operation in the console, see [Add a secondary cluster](~~160381~~).
+        # *   **CreateGdnStandby**: creates a secondary cluster. For more information about how to perform this operation in the console, see [Add a secondary cluster](https://help.aliyun.com/document_detail/160381.html).
         # 
         # Default value: **Normal**.
         # 
@@ -1662,9 +1691,11 @@ class CreateDBClusterRequest(TeaModel):
         self.dbminor_version = dbminor_version
         # The specifications of the node.
         # 
-        # *   For more information about specifications supported by PolarDB for MySQL, see [Specifications of compute nodes](~~102542~~).
-        # *   For information about node specifications supported by the Oracle database engine, see [Specifications of compute nodes](~~207921~~).
-        # *   For information about node specifications supported by the PostgreSQL database engine, see [Specifications of compute nodes](~~209380~~).
+        # *   For more information about specifications supported by PolarDB for MySQL, see [Specifications of compute nodes](https://help.aliyun.com/document_detail/102542.html).
+        # *   For information about node specifications supported by the Oracle database engine, see [Specifications of compute nodes](https://help.aliyun.com/document_detail/207921.html).
+        # *   For information about node specifications supported by the PostgreSQL database engine, see [Specifications of compute nodes](https://help.aliyun.com/document_detail/209380.html).
+        # 
+        # This parameter is required.
         self.dbnode_class = dbnode_class
         # 标准版节点个数。
         self.dbnode_num = dbnode_num
@@ -1673,6 +1704,8 @@ class CreateDBClusterRequest(TeaModel):
         # *   **MySQL**\
         # *   **PostgreSQL**\
         # *   **Oracle**\
+        # 
+        # This parameter is required.
         self.dbtype = dbtype
         # The version of the database engine.
         # 
@@ -1688,6 +1721,8 @@ class CreateDBClusterRequest(TeaModel):
         #     *   **14**\
         # 
         # *   Valid value for the Oracle database engine: **11**\
+        # 
+        # This parameter is required.
         self.dbversion = dbversion
         # The time zone of the cluster. The time must be in UTC. You can set the parameter to a value that is on the hour from **-12:00 to +13:00**. Example: 00:00. Default value: **SYSTEM**, which means that the value is the same as the time zone of the region.
         # 
@@ -1726,12 +1761,14 @@ class CreateDBClusterRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the parameter template.
         # 
-        # > You can call the [DescribeParameterGroups](~~207178~~) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
+        # > You can call the [DescribeParameterGroups](https://help.aliyun.com/document_detail/207178.html) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
         self.parameter_group_id = parameter_group_id
         # The billing method. Valid values:
         # 
         # *   **Postpaid**: pay-as-you-go
         # *   **Prepaid**: subscription
+        # 
+        # This parameter is required.
         self.pay_type = pay_type
         # The subscription type of the subscription cluster. This parameter is required only when the PayType parameter is set to **Prepaid**. Valid values:
         # 
@@ -1748,7 +1785,9 @@ class CreateDBClusterRequest(TeaModel):
         self.proxy_type = proxy_type
         # The region ID of the cluster.
         # 
-        # > You can call the [DescribeRegions](~~98041~~) operation to query available regions.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available regions.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -1820,7 +1859,7 @@ class CreateDBClusterRequest(TeaModel):
         # 
         # *   This parameter is valid only when the **DBType** parameter is set to **PostgreSQL** or **Oracle**.
         # 
-        # *   You can call the [ModifyDBClusterTDE](~~167982~~) operation to enable TDE for a PolarDB for MySQL cluster.
+        # *   You can call the [ModifyDBClusterTDE](https://help.aliyun.com/document_detail/167982.html) operation to enable TDE for a PolarDB for MySQL cluster.
         # *   TDE cannot be disabled after it is enabled.
         self.tdestatus = tdestatus
         # 1
@@ -1836,7 +1875,7 @@ class CreateDBClusterRequest(TeaModel):
         self.v_switch_id = v_switch_id
         # The zone ID of the cluster.
         # 
-        # > You can call the [DescribeRegions](~~98041~~) operation to query available zones.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available zones.
         self.zone_id = zone_id
 
     def validate(self):
@@ -2195,6 +2234,8 @@ class CreateDBClusterEndpointRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
         self.client_token = client_token
         # The ID of cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The name of the custom cluster endpoint.
         self.dbendpoint_description = dbendpoint_description
@@ -2229,6 +2270,8 @@ class CreateDBClusterEndpointRequest(TeaModel):
         # >- The transaction splitting settings are restricted by the consistency level settings. For example, if you set the consistency level to **0**, transaction splitting cannot be enabled. If you set the consistency level to **1** or **2**, transaction splitting can be enabled.
         self.endpoint_config = endpoint_config
         # The type of the cluster endpoint. Set the value to **Custom**.
+        # 
+        # This parameter is required.
         self.endpoint_type = endpoint_type
         # The reader nodes that you want to associate with the endpoint. If you want to specify multiple reader nodes, separate the reader nodes with commas (,). If you do not specify this parameter, all nodes are used.
         # 
@@ -2441,12 +2484,18 @@ class CreateDBEndpointAddressRequest(TeaModel):
         # *   The prefix must be 6 to 40 characters in length.
         self.connection_string_prefix = connection_string_prefix
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The ID of the endpoint.
         # 
-        # >  You can call the [DescribeDBClusterEndpoints](~~98205~~) operation to query endpoint details.
+        # >  You can call the [DescribeDBClusterEndpoints](https://help.aliyun.com/document_detail/98205.html) operation to query endpoint details.
+        # 
+        # This parameter is required.
         self.dbendpoint_id = dbendpoint_id
         # The network type of the endpoint. Set the value to **Public**.
+        # 
+        # This parameter is required.
         self.net_type = net_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -2621,19 +2670,23 @@ class CreateDBLinkRequest(TeaModel):
         self.client_token = client_token
         # The ID of the source cluster that the database link connects.
         # 
-        # >  You can call the [DescribeDBClusters](~~173433~~) operation to query PolarDB clusters.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/173433.html) operation to query PolarDB clusters.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The name of the database link.
         # 
-        # *   The name must contain lowercase letters and can also contain digits and underscores (\_).
+        # *   The name must contain lowercase letters and can also contain digits and underscores (_).
         # *   The name must start with a letter and end with a letter or digit.
         # *   The name must be 1 to 64 characters in length.
+        # 
+        # This parameter is required.
         self.dblink_name = dblink_name
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region.
         # 
-        # >  You can call the [DescribeRegions](~~98041~~) operation to query information about regions.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query information about regions.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -2641,22 +2694,30 @@ class CreateDBLinkRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # The name of the source database.
         # 
-        # >  You can call the [DescribeDatabases](~~173558~~) operation to query information about databases in a PolarDB cluster.
+        # >  You can call the [DescribeDatabases](https://help.aliyun.com/document_detail/173558.html) operation to query information about databases in a PolarDB cluster.
+        # 
+        # This parameter is required.
         self.source_dbname = source_dbname
         # The account of the destination database.
         # 
-        # >  You can call the [DescribeAccounts](~~173549~~) operation to query the account of a PolarDB cluster.
+        # >  You can call the [DescribeAccounts](https://help.aliyun.com/document_detail/173549.html) operation to query the account of a PolarDB cluster.
+        # 
+        # This parameter is required.
         self.target_dbaccount = target_dbaccount
         # The ID of the destination cluster that the database link connects.
         # 
         # > *   If the destination cluster is a user-created Oracle database on an ECS instance, set the value to `null`.
-        # > *   You can call the [DescribeDBClusters](~~173433~~) operation to query PolarDB clusters.
+        # > *   You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/173433.html) operation to query PolarDB clusters.
         self.target_dbinstance_name = target_dbinstance_name
         # The name of the destination database.
         # 
-        # >  You can call the [DescribeDatabases](~~173558~~) operation to query information about databases in a PolarDB cluster.
+        # >  You can call the [DescribeDatabases](https://help.aliyun.com/document_detail/173558.html) operation to query information about databases in a PolarDB cluster.
+        # 
+        # This parameter is required.
         self.target_dbname = target_dbname
         # The account password of the destination database.
+        # 
+        # This parameter is required.
         self.target_dbpasswd = target_dbpasswd
         # The IP address of the user-created Oracle database on an ECS instance.
         self.target_ip = target_ip
@@ -2664,7 +2725,7 @@ class CreateDBLinkRequest(TeaModel):
         self.target_port = target_port
         # The ID of the virtual private cloud (VPC).
         # 
-        # >  You can call the [DescribeVpcs](~~35739~~) operation to query information about VPCs.
+        # >  You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html) operation to query information about VPCs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -2828,15 +2889,15 @@ class CreateDBNodesRequestDBNode(TeaModel):
     ):
         # The specifications of the read-only node that you want to add, which must be the same as the specifications of the existing nodes. For more information, see the following topics:
         # 
-        # *   PolarDB for MySQL: [Specifications of compute nodes](~~102542~~)
-        # *   PolarDB for PostgreSQL (Compatible with Oracle): [Specifications of compute nodes](~~207921~~)
-        # *   PolarDB for PostgreSQL: [Specifications of compute nodes](~~209380~~)
+        # *   PolarDB for MySQL: [Specifications of compute nodes](https://help.aliyun.com/document_detail/102542.html)
+        # *   PolarDB for PostgreSQL (Compatible with Oracle): [Specifications of compute nodes](https://help.aliyun.com/document_detail/207921.html)
+        # *   PolarDB for PostgreSQL: [Specifications of compute nodes](https://help.aliyun.com/document_detail/209380.html)
         # 
         # >- You need to specify either DBNode.N.ZoneId or DBNode.N.TargetClass. N is an integer that starts from 1. The maximum value of N is equal to 16 minus the number of existing nodes.
         # >- You can add multiple read-only nodes at the same time only to PolarDB for MySQL clusters, which can contain up to of 15 read-only nodes.
         # >- This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.
         self.target_class = target_class
-        # The zone ID of the node that you want to add, which must be the same as the zone ID of existing nodes. You can call the [DescribeRegions](~~98041~~) operation to query the IDs of zones.
+        # The zone ID of the node that you want to add, which must be the same as the zone ID of existing nodes. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the IDs of zones.
         # 
         # >- You need to specify either DBNode.N.ZoneId or DBNode.N.TargetClass. N is an integer that starts from 1. The maximum value of N is equal to 16 minus the number of existing nodes.
         # >- You can add multiple read-only nodes at the same time only to PolarDB for MySQL clusters, which can contain up to of 15 read-only nodes.
@@ -2887,8 +2948,12 @@ class CreateDBNodesRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
         self.client_token = client_token
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The details of the read-only node.
+        # 
+        # This parameter is required.
         self.dbnode = dbnode
         # The type of the node. Valid values:
         # 
@@ -2897,7 +2962,7 @@ class CreateDBNodesRequest(TeaModel):
         # *   DLNode
         self.dbnode_type = dbnode_type
         # The ID of the cluster endpoint to which the read-only node is added. If you want to add the read-only node to multiple endpoints at the same time, separate the endpoint IDs with commas (,).
-        # > - You can call the [DescribeDBClusterEndpoints](~~98205~~) operation to query the details of cluster endpoints, including endpoint IDs.
+        # > - You can call the [DescribeDBClusterEndpoints](https://help.aliyun.com/document_detail/98205.html) operation to query the details of cluster endpoints, including endpoint IDs.
         # >- You can enter the ID of the default cluster endpoint or a custom cluster endpoint.
         # >- If you leave this parameter empty, the read-only node is added to all cluster endpoints for which the **Automatically Associate New Nodes** feature is enabled. If you set `AutoAddNewNodes` to `Enable`, the Automatically Associate New Nodes feature is enabled.
         self.endpoint_bind_list = endpoint_bind_list
@@ -3136,7 +3201,7 @@ class CreateDatabaseRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The name of the account that is authorized to access the database. You can call the [DescribeAccounts](~~98107~~) operation to query account information.
+        # The name of the account that is authorized to access the database. You can call the [DescribeAccounts](https://help.aliyun.com/document_detail/98107.html) operation to query account information.
         # >- You can specify only a standard account. By default, privileged accounts have all permissions on all databases. You do not need to grant privileged accounts the permissions to access the database.
         # >- This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.
         self.account_name = account_name
@@ -3154,7 +3219,9 @@ class CreateDatabaseRequest(TeaModel):
         # >- This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters.
         # >- This parameter is optional for PolarDB for MySQL clusters.
         self.account_privilege = account_privilege
-        # The character set that is used by the cluster. For more information, see [Character set tables](~~99716~~).
+        # The character set that is used by the cluster. For more information, see [Character set tables](https://help.aliyun.com/document_detail/99716.html).
+        # 
+        # This parameter is required.
         self.character_set_name = character_set_name
         # The language that indicates the collation of the databases that are created.
         # 
@@ -3172,6 +3239,8 @@ class CreateDatabaseRequest(TeaModel):
         # To view the valid values for this parameter, perform the following steps: Log on to the PolarDB console and click the ID of a cluster. In the left-side navigation pane, choose **Settings and Management** > **Databases**. Then, click **Create Database**.
         self.ctype = ctype
         # The ID of cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The description of the database. The description must meet the following requirements:
         # 
@@ -3182,10 +3251,12 @@ class CreateDatabaseRequest(TeaModel):
         self.dbdescription = dbdescription
         # The name of the database. The name must meet the following requirements:
         # 
-        # *   The name can contain lowercase letters, digits, hyphens (-), and underscores (\_).
+        # *   The name can contain lowercase letters, digits, hyphens (-), and underscores (_).
         # *   The name must start with a lowercase letter and end with a lowercase letter or a digit. The name must be 1 to 64 characters in length.
         # 
         # > Do not use reserved words as database names, such as `test` or `mysql`.
+        # 
+        # This parameter is required.
         self.dbname = dbname
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -3338,12 +3409,14 @@ class CreateGlobalDatabaseNetworkRequest(TeaModel):
         security_token: str = None,
     ):
         # The ID of the primary cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The description of the GDN. The description must meet the following requirements:
         # 
         # *   It cannot start with [http:// or https://.](http://https://。)
         # *   It must start with a letter.
-        # *   It can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   It can contain letters, digits, underscores (_), and hyphens (-).
         # *   It must be 2 to 126 characters in length.
         self.gdndescription = gdndescription
         self.owner_account = owner_account
@@ -3494,16 +3567,22 @@ class CreateGlobalSecurityIPGroupRequest(TeaModel):
         # The IP address in the whitelist template.
         # 
         # >  Multiple IP addresses are separated by commas (,). You can create up to 1,000 IP addresses or CIDR blocks for all IP whitelists.
+        # 
+        # This parameter is required.
         self.gip_list = gip_list
         # The name of the IP whitelist template. The name must meet the following requirements:
         # 
-        # *   The name can contain lowercase letters, digits, and underscores (\_).
+        # *   The name can contain lowercase letters, digits, and underscores (_).
         # *   The name must start with a letter and end with a letter or digit.
         # *   The name must be 2 to 120 characters in length.
+        # 
+        # This parameter is required.
         self.global_ig_name = global_ig_name
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -3577,7 +3656,7 @@ class CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup(TeaModel):
         self.gip_list = gip_list
         # The name of the IP whitelist template. The name must meet the following requirements:
         # 
-        # *   The name can contain lowercase letters, digits, and underscores (\_).
+        # *   The name can contain lowercase letters, digits, and underscores (_).
         # *   The name must start with a letter and end with a letter or a digit.
         # *   The name must be 2 to 120 characters in length.
         self.global_ig_name = global_ig_name
@@ -3718,12 +3797,16 @@ class CreateParameterGroupRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The type of the database engine. Only **MySQL** is supported.
+        # 
+        # This parameter is required.
         self.dbtype = dbtype
         # The version of the database engine. Valid values:
         # 
         # *   **5.6**\
         # *   **5.7**\
         # *   **8.0**\
+        # 
+        # This parameter is required.
         self.dbversion = dbversion
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -3731,16 +3814,22 @@ class CreateParameterGroupRequest(TeaModel):
         self.parameter_group_desc = parameter_group_desc
         # The name of the parameter template. The name must meet the following requirements:
         # 
-        # *   It can contain letters, digits, and underscores (\_). It must start with a letter and cannot end with an underscore.**\
+        # *   It can contain letters, digits, and underscores (_). It must start with a letter and cannot end with an underscore.**\
         # *   It must be 8 to 64 characters in length.
+        # 
+        # This parameter is required.
         self.parameter_group_name = parameter_group_name
         # The JSON string that consists of parameters and values. The parameter values are strings. Example: `{"wait_timeout":"86400","innodb_old_blocks_time":"1000"}`.
         # 
-        # > You can call the [DescribeParameterTemplates](~~207428~~) operation to query the details of all parameters in the cluster of a specified engine version, such as the parameter name and valid values.
+        # > You can call the [DescribeParameterTemplates](https://help.aliyun.com/document_detail/207428.html) operation to query the details of all parameters in the cluster of a specified engine version, such as the parameter name and valid values.
+        # 
+        # This parameter is required.
         self.parameters = parameters
         # The region ID.
         # 
-        # > You can call the [DescribeRegions](~~98041~~) operation to query available regions.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available regions.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -3815,7 +3904,7 @@ class CreateParameterGroupResponseBody(TeaModel):
     ):
         # The ID of the parameter template.
         # 
-        # > You can call the [DescribeParameterGroups](~~207178~~) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
+        # > You can call the [DescribeParameterGroups](https://help.aliyun.com/document_detail/207178.html) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
         self.parameter_group_id = parameter_group_id
         # The ID of the request.
         self.request_id = request_id
@@ -4020,20 +4109,28 @@ class CreateStoragePlanRequest(TeaModel):
         # 
         # *   **Month**\
         # *   **Year**\
+        # 
+        # This parameter is required.
         self.period = period
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The capacity of the storage plan. Unit: GB. Valid values: 50, 100, 200, 300, 500, 1000, 2000, 3000, 5000, 10000, 15000, 20000, 25000, 30000, 50000, 100000, and 200000
+        # 
+        # This parameter is required.
         self.storage_class = storage_class
         # The type of the storage plan. Valid values:
         # 
         # *   **Mainland**: The storage plan is used inside the Chinese mainland.
         # *   **Overseas**: The storage plan is used outside the Chinese mainland.
+        # 
+        # This parameter is required.
         self.storage_type = storage_type
         # The subscription duration of the storage plan.
         # 
         # *   If **Period** is set to **Month**, the value ranges from 1 to 9.
         # *   If **Period** is set to **Year**, the value can be 1, 2, 3, or 5.
+        # 
+        # This parameter is required.
         self.used_time = used_time
 
     def validate(self):
@@ -4182,8 +4279,12 @@ class DeleteAccountRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The username of the account.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -4311,9 +4412,13 @@ class DeleteBackupRequest(TeaModel):
     ):
         # The backup ID. If you need to specify multiple backup IDs, separate the backup IDs with commas (,).
         # 
-        # >  You can call the [DescribeBackups](~~98102~~) operation to query the backup IDs.
+        # >  You can call the [DescribeBackups](https://help.aliyun.com/document_detail/98102.html) operation to query the backup IDs.
+        # 
+        # This parameter is required.
         self.backup_id = backup_id
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -4446,6 +4551,8 @@ class DeleteDBClusterRequest(TeaModel):
         # *   **NONE**: No backup sets are retained after you delete the cluster.
         self.backup_retention_policy_on_cluster_deletion = backup_retention_policy_on_cluster_deletion
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -4572,8 +4679,12 @@ class DeleteDBClusterEndpointRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The ID of the custom cluster endpoint.
+        # 
+        # This parameter is required.
         self.dbendpoint_id = dbendpoint_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -4702,13 +4813,19 @@ class DeleteDBEndpointAddressRequest(TeaModel):
     ):
         # The ID of the cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~98094~~) operation to query the details of all clusters that belong to your account, such as the cluster ID.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters that belong to your account, such as the cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The ID of the endpoint.
         # 
-        # >  You can call the [DescribeDBClusterEndpoints](~~98205~~) operation to query the endpoints of a specified PolarDB cluster.
+        # >  You can call the [DescribeDBClusterEndpoints](https://help.aliyun.com/document_detail/98205.html) operation to query the endpoints of a specified PolarDB cluster.
+        # 
+        # This parameter is required.
         self.dbendpoint_id = dbendpoint_id
         # The network type of the endpoint. Set the value to **Public** (public network).
+        # 
+        # This parameter is required.
         self.net_type = net_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -4840,9 +4957,13 @@ class DeleteDBLinkRequest(TeaModel):
     ):
         # The ID of the source cluster where a database link is to be deleted.
         # 
-        # >  You can call the [DescribeDBClusters](~~173433~~) operation to query PolarDB clusters.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/173433.html) operation to query PolarDB clusters.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The name of the database link to be deleted.
+        # 
+        # This parameter is required.
         self.dblink_name = dblink_name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -4973,10 +5094,14 @@ class DeleteDBNodesRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
         self.client_token = client_token
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The IDs of the nodes.
         # 
-        # > You can call the [DescribeDBClusters](~~185342~~) operation to query the details of all clusters that belong to your Alibaba Cloud account, such as the cluster ID.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/185342.html) operation to query the details of all clusters that belong to your Alibaba Cloud account, such as the cluster ID.
+        # 
+        # This parameter is required.
         self.dbnode_id = dbnode_id
         # The type of the node. Valid values:
         # 
@@ -5130,8 +5255,12 @@ class DeleteDatabaseRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The name of the database.
+        # 
+        # This parameter is required.
         self.dbname = dbname
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -5259,6 +5388,8 @@ class DeleteGlobalDatabaseNetworkRequest(TeaModel):
         security_token: str = None,
     ):
         # The ID of the GDN.
+        # 
+        # This parameter is required.
         self.gdnid = gdnid
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -5396,15 +5527,19 @@ class DeleteGlobalSecurityIPGroupRequest(TeaModel):
     ):
         # The name of the IP whitelist template. The name of the IP whitelist template must meet the following requirements:
         # 
-        # *   The name can contain lowercase letters, digits, and underscores (\_).
+        # *   The name can contain lowercase letters, digits, and underscores (_).
         # *   The name must start with a letter and end with a letter or digit.
         # *   The name must be 2 to 120 characters in length.
         self.global_ig_name = global_ig_name
         # The ID of the IP whitelist template.
+        # 
+        # This parameter is required.
         self.global_security_group_id = global_security_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -5481,7 +5616,7 @@ class DeleteGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup(TeaModel):
         self.gip_list = gip_list
         # The name of the global IP whitelist template. The name must meet the following requirements:
         # 
-        # *   The name can contain lowercase letters, digits, and underscores (\_).
+        # *   The name can contain lowercase letters, digits, and underscores (_).
         # *   The name must start with a letter and end with a letter or a digit.
         # *   The name must be 2 to 120 characters in length.
         self.global_ig_name = global_ig_name
@@ -5618,11 +5753,15 @@ class DeleteMaskingRulesRequest(TeaModel):
     ):
         # The ID of the cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~98094~~) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The name of the masking rule. You can specify multiple masking rules at a time. Separate the masking rules with commas (,).
         # 
-        # > You can call the [DescribeMaskingRules](~~212573~~) operation to query details of all the masking rules for a specified cluster, such as the names of the masking rules.
+        # > You can call the [DescribeMaskingRules](https://help.aliyun.com/document_detail/212573.html) operation to query details of all the masking rules for a specified cluster, such as the names of the masking rules.
+        # 
+        # This parameter is required.
         self.rule_name_list = rule_name_list
 
     def validate(self):
@@ -5753,11 +5892,15 @@ class DeleteParameterGroupRequest(TeaModel):
         # The parameter template ID.
         # 
         #  
-        # >  You can call the [DescribeParameterGroups](~~207178~~) operation to query the parameter template ID.
+        # >  You can call the [DescribeParameterGroups](https://help.aliyun.com/document_detail/207178.html) operation to query the parameter template ID.
+        # 
+        # This parameter is required.
         self.parameter_group_id = parameter_group_id
         # The region ID.
         #  
-        # >  You can call the [DescribeRegions](~~98041~~) operation to query available regions.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available regions.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -5888,6 +6031,8 @@ class DescribeAITaskStatusRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -6044,6 +6189,8 @@ class DescribeAccountsRequest(TeaModel):
         # The name of the account.
         self.account_name = account_name
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -6352,7 +6499,9 @@ class DescribeAutoRenewAttributeRequest(TeaModel):
         self.page_size = page_size
         # The ID of the region.
         # 
-        # >  You can call the [DescribeRegions](~~98041~~) operation to query the region ID details.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the region ID details.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -6635,8 +6784,12 @@ class DescribeBackupLogsRequest(TeaModel):
         # The region for the backup data.
         self.backup_region = backup_region
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -6653,6 +6806,8 @@ class DescribeBackupLogsRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -6723,7 +6878,7 @@ class DescribeBackupLogsResponseBodyItemsBackupLog(TeaModel):
         intranet_download_link: str = None,
         link_expired_time: str = None,
     ):
-        # The time when the backup task ended. The time follows the ISO 8601 standard in the `YYYY-MM-DD\"T\"HH:mm:ssZ` format. The time is displayed in UTC.
+        # The time when the backup task ended. The time follows the ISO 8601 standard in the `YYYY-MM-DD\\"T\\"HH:mm:ssZ` format. The time is displayed in UTC.
         self.backup_log_end_time = backup_log_end_time
         # The ID of the backup log.
         self.backup_log_id = backup_log_id
@@ -6731,7 +6886,7 @@ class DescribeBackupLogsResponseBodyItemsBackupLog(TeaModel):
         self.backup_log_name = backup_log_name
         # The size of the backup log. Unit: bytes.
         self.backup_log_size = backup_log_size
-        # The time when the backup task started. The time follows the ISO 8601 standard in the `YYYY-MM-DD\"T\"HH:mm:ssZ` format. The time is displayed in UTC.
+        # The time when the backup task started. The time follows the ISO 8601 standard in the `YYYY-MM-DD\\"T\\"HH:mm:ssZ` format. The time is displayed in UTC.
         self.backup_log_start_time = backup_log_start_time
         # The public URL used to download the backup log.
         self.download_link = download_link
@@ -6933,7 +7088,9 @@ class DescribeBackupPolicyRequest(TeaModel):
     ):
         # The ID of cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~98094~~) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -7018,7 +7175,7 @@ class DescribeBackupPolicyResponseBody(TeaModel):
         # *   **4/24H**: frequent backup. The system backs up data every 4 hours.
         # 
         # >- This parameter is not supported for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters.
-        # >- This parameter is unavailable if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about regions that support the cross-region backup feature, see [Overview](~~72672~~).
+        # >- This parameter is unavailable if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
         self.data_level_1backup_frequency = data_level_1backup_frequency
         # The backup cycle of level-1 backups. Valid values:
         # 
@@ -7032,16 +7189,16 @@ class DescribeBackupPolicyResponseBody(TeaModel):
         # 
         # >- You need to specify at least two values. Separate multiple values with commas (,).
         # >- This parameter is not supported for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters.
-        # >- This parameter is unavailable if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about regions that support the cross-region backup feature, see [Overview](~~72672~~).
+        # >- This parameter is unavailable if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
         self.data_level_1backup_period = data_level_1backup_period
         # The retention period of level-1 backups. Valid values: 3 to 14. Unit: day.
         self.data_level_1backup_retention_period = data_level_1backup_retention_period
         # The period of time during which automatic backup is performed. The value must be in the `hh:mmZ-hh:mmZ` format. The time must be in UTC. The start time and the end time must be on the hour and must have an interval of 1 hour. Example: `14:00Z-15:00Z`.
         # 
         # >- This parameter is not supported for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters.
-        # >- This parameter is unavailable if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about regions that support the cross-region backup feature, see [Overview](~~72672~~).
+        # >- This parameter is unavailable if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
         self.data_level_1backup_time = data_level_1backup_time
-        # The region where the cross-region level-2 backup is stored. For information about regions that support the cross-region backup feature, see [Overview](~~72672~~).
+        # The region where the cross-region level-2 backup is stored. For information about regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
         self.data_level_2backup_another_region_region = data_level_2backup_another_region_region
         # The retention period of cross-region level-2 backups. Valid values:
         # 
@@ -7063,13 +7220,13 @@ class DescribeBackupPolicyResponseBody(TeaModel):
         # 
         # >- You need to specify at least two values. Separate multiple values with commas (,).
         # >- This parameter is not supported for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters.
-        # >- This parameter is unavailable if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about regions that support the cross-region backup feature, see [Overview](~~72672~~).
+        # >- This parameter is unavailable if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
         self.data_level_2backup_period = data_level_2backup_period
         # The retention period of level-2 backups. Valid values:
         # 
         # *   0: The level-2 backup feature is disabled.
         # *   30 to 7300: Level-2 backups are retained for 30 to 7,300 days.
-        # *   \-1: Level-2 backups are permanently retained.
+        # *   \\-1: Level-2 backups are permanently retained.
         # 
         # > The default value is **0**. By default, the level-2 backup feature is disabled when you create a cluster.
         self.data_level_2backup_retention_period = data_level_2backup_retention_period
@@ -7222,6 +7379,8 @@ class DescribeBackupTasksRequest(TeaModel):
         # *   **Manual**\
         self.backup_mode = backup_mode
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -7495,8 +7654,12 @@ class DescribeBackupsRequest(TeaModel):
         # *   **Failed**\
         self.backup_status = backup_status
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The end of the time range to query. Specify the time in the `YYYY-MM-DDThh:mmZ` format. The time must be in UTC. The end time must be later than the start time.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -7513,6 +7676,8 @@ class DescribeBackupsRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The beginning of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -7614,7 +7779,7 @@ class DescribeBackupsResponseBodyItemsBackup(TeaModel):
         self.backup_mode = backup_mode
         # The size of the backup set. Unit: bytes.
         # 
-        # > After you delete the target snapshot backups, the storage space that is consumed by the backups is released. The released storage space is smaller than the size of the backup file, because the snapshots share specific data blocks. For more information, see [FAQ about backup](~~164881~~).
+        # > After you delete the target snapshot backups, the storage space that is consumed by the backups is released. The released storage space is smaller than the size of the backup file, because the snapshots share specific data blocks. For more information, see [FAQ about backup](https://help.aliyun.com/document_detail/164881.html).
         self.backup_set_size = backup_set_size
         # The start time of the backup task. The time is displayed in UTC. Unit: seconds.
         self.backup_start_time = backup_start_time
@@ -7895,7 +8060,9 @@ class DescribeCharacterSetNameRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the cluster.
         # 
-        # > You can call the [DescribeRegions](~~98041~~) operation to query available regions.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available regions.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -8068,7 +8235,7 @@ class DescribeClassListRequest(TeaModel):
         # The code of the commodity. Valid values:
         # 
         # *   polardb_sub: the subscription cluster in regions in the Chinese mainland
-        # *   polardb_sub \_intl: the subscription cluster in regions outside the Chinese mainland
+        # *   polardb_sub _intl: the subscription cluster in regions outside the Chinese mainland
         # *   polardb_payg: the pay-as-you-go cluster in regions in the Chinese mainland
         # *   polardb_payg_intl: the pay-as-you-go cluster in regions outside the Chinese mainland
         # *   polardb_sub_jushita: the subscription cluster for CloudTmall
@@ -8080,6 +8247,8 @@ class DescribeClassListRequest(TeaModel):
         # >*   If you are using an Alibaba Cloud international account, you can view only the codes of the commodities that are available outside the Chinese mainland.
         # >*   If you use a CloudTmall account, you can view only the codes of the commodities that are available in CloudTmall.
         # >*   If you use a Cainiao account, you can view only the codes of the commodities that are available in Cainiao.
+        # 
+        # This parameter is required.
         self.commodity_code = commodity_code
         # The number of nodes. Valid values:
         # 
@@ -8397,6 +8566,8 @@ class DescribeDBClusterAccessWhitelistRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the PolarDB cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -8701,7 +8872,9 @@ class DescribeDBClusterAttributeRequest(TeaModel):
     ):
         # The ID of cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~98094~~) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # Specifies whether to query information about AI-related nodes.
         self.describe_type = describe_type
@@ -8828,6 +9001,8 @@ class DescribeDBClusterAttributeResponseBodyDBNodes(TeaModel):
         # 
         # *   **ON**\
         # *   **OFF**\
+        # 
+        # This parameter is required.
         self.scc_mode = scc_mode
         # The routing weight of the node. Valid values: 1 to 100 Default value: 1.
         self.server_weight = server_weight
@@ -9041,7 +9216,7 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         self.blktag_total = blktag_total
         # The current blktag usage.
         self.blktag_used = blktag_used
-        # [The edition of PolarDB](~~183258~~). Valid values:
+        # [The edition of PolarDB](https://help.aliyun.com/document_detail/183258.html). Valid values:
         # 
         # *   **Normal**: Cluster Edition.
         # *   **Basic**: Single Node Edition.
@@ -9063,7 +9238,7 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         self.dbcluster_id = dbcluster_id
         # The network type of the cluster.
         self.dbcluster_network_type = dbcluster_network_type
-        # The status of the cluster. For information about the valid values, see [Cluster states](~~99286~~).
+        # The status of the cluster. For information about the valid values, see [Cluster states](https://help.aliyun.com/document_detail/99286.html).
         self.dbcluster_status = dbcluster_status
         # The details of the nodes.
         self.dbnodes = dbnodes
@@ -9077,7 +9252,7 @@ class DescribeDBClusterAttributeResponseBody(TeaModel):
         # *   **Old**: The minor version is outdated. We recommend that you upgrade the cluster to the latest version.
         # *   **HighRisk**: The minor version has critical defects. We recommend that you immediately upgrade the cluster to the latest version.
         # 
-        # > For more information about how to upgrade the minor version, see [Upgrade versions](~~158572~~).
+        # > For more information about how to upgrade the minor version, see [Upgrade versions](https://help.aliyun.com/document_detail/158572.html).
         self.dbversion_status = dbversion_status
         # The total physical storage of level-1 backups (snapshots). Unit: bytes.
         self.data_level_1backup_chain_size = data_level_1backup_chain_size
@@ -9509,6 +9684,8 @@ class DescribeDBClusterAuditLogCollectorRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -9644,7 +9821,7 @@ class DescribeDBClusterAvailableResourcesRequest(TeaModel):
         resource_owner_id: int = None,
         zone_id: str = None,
     ):
-        # The specifications of the node. For more information, see [Specifications of compute nodes](~~102542~~).
+        # The specifications of the node. For more information, see [Specifications of compute nodes](https://help.aliyun.com/document_detail/102542.html).
         self.dbnode_class = dbnode_class
         # The type of the database engine. Valid values:
         # 
@@ -9673,16 +9850,18 @@ class DescribeDBClusterAvailableResourcesRequest(TeaModel):
         # 
         # *   **Postpaid**: pay-as-you-go
         # *   **Prepaid**: subscription
+        # 
+        # This parameter is required.
         self.pay_type = pay_type
         # The region ID of the cluster. Default value: **cn-hangzhou**.
         # 
-        # > You can call the [DescribeRegions](~~98041~~) operation to query the available regions.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the available regions.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The zone ID of the cluster.
         # 
-        # > You can call the [DescribeRegions](~~98041~~) operation to query the available zones.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the available zones.
         self.zone_id = zone_id
 
     def validate(self):
@@ -9975,6 +10154,8 @@ class DescribeDBClusterConnectivityRequest(TeaModel):
         source_ip_address: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -9984,6 +10165,8 @@ class DescribeDBClusterConnectivityRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
         # The source IP address.
+        # 
+        # This parameter is required.
         self.source_ip_address = source_ip_address
 
     def validate(self):
@@ -10150,7 +10333,9 @@ class DescribeDBClusterEndpointsRequest(TeaModel):
     ):
         # The ID of the cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~98094~~) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The ID of the endpoint.
         self.dbendpoint_id = dbendpoint_id
@@ -10509,6 +10694,8 @@ class DescribeDBClusterMigrationRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -11031,6 +11218,8 @@ class DescribeDBClusterMonitorRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -11160,6 +11349,8 @@ class DescribeDBClusterParametersRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The kernel parameter. Valid values:
         # 
@@ -11654,15 +11845,23 @@ class DescribeDBClusterPerformanceRequest(TeaModel):
         start_time: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         self.interval = interval
-        # The performance metrics that you want to query. Separate multiple metrics with commas (,). For more information, see [Performance parameters](~~141787~~).
+        # The performance metrics that you want to query. Separate multiple metrics with commas (,). For more information, see [Performance parameters](https://help.aliyun.com/document_detail/141787.html).
         # 
         # >  You can specify a maximum of five performance metrics.
+        # 
+        # This parameter is required.
         self.key = key
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -11983,7 +12182,9 @@ class DescribeDBClusterSSLRequest(TeaModel):
     ):
         # The ID of the cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~98094~~) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -12184,6 +12385,8 @@ class DescribeDBClusterServerlessConfRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the serverless cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -12239,6 +12442,9 @@ class DescribeDBClusterServerlessConfResponseBody(TeaModel):
         scale_ro_num_max: str = None,
         scale_ro_num_min: str = None,
         seconds_until_auto_pause: str = None,
+        serverless_rule_cpu_enlarge_threshold: str = None,
+        serverless_rule_cpu_shrink_threshold: str = None,
+        serverless_rule_mode: str = None,
         switchs: str = None,
     ):
         # Indicates whether the no-activity suspension feature is enabled. Default value: false. Valid values:
@@ -12262,6 +12468,9 @@ class DescribeDBClusterServerlessConfResponseBody(TeaModel):
         self.scale_ro_num_min = scale_ro_num_min
         # The detection period for no-activity suspension. Valid values: 300 to 86400. Unit: seconds. The value must be a multiple of 300.
         self.seconds_until_auto_pause = seconds_until_auto_pause
+        self.serverless_rule_cpu_enlarge_threshold = serverless_rule_cpu_enlarge_threshold
+        self.serverless_rule_cpu_shrink_threshold = serverless_rule_cpu_shrink_threshold
+        self.serverless_rule_mode = serverless_rule_mode
         self.switchs = switchs
 
     def validate(self):
@@ -12293,6 +12502,12 @@ class DescribeDBClusterServerlessConfResponseBody(TeaModel):
             result['ScaleRoNumMin'] = self.scale_ro_num_min
         if self.seconds_until_auto_pause is not None:
             result['SecondsUntilAutoPause'] = self.seconds_until_auto_pause
+        if self.serverless_rule_cpu_enlarge_threshold is not None:
+            result['ServerlessRuleCpuEnlargeThreshold'] = self.serverless_rule_cpu_enlarge_threshold
+        if self.serverless_rule_cpu_shrink_threshold is not None:
+            result['ServerlessRuleCpuShrinkThreshold'] = self.serverless_rule_cpu_shrink_threshold
+        if self.serverless_rule_mode is not None:
+            result['ServerlessRuleMode'] = self.serverless_rule_mode
         if self.switchs is not None:
             result['Switchs'] = self.switchs
         return result
@@ -12319,6 +12534,12 @@ class DescribeDBClusterServerlessConfResponseBody(TeaModel):
             self.scale_ro_num_min = m.get('ScaleRoNumMin')
         if m.get('SecondsUntilAutoPause') is not None:
             self.seconds_until_auto_pause = m.get('SecondsUntilAutoPause')
+        if m.get('ServerlessRuleCpuEnlargeThreshold') is not None:
+            self.serverless_rule_cpu_enlarge_threshold = m.get('ServerlessRuleCpuEnlargeThreshold')
+        if m.get('ServerlessRuleCpuShrinkThreshold') is not None:
+            self.serverless_rule_cpu_shrink_threshold = m.get('ServerlessRuleCpuShrinkThreshold')
+        if m.get('ServerlessRuleMode') is not None:
+            self.serverless_rule_mode = m.get('ServerlessRuleMode')
         if m.get('Switchs') is not None:
             self.switchs = m.get('Switchs')
         return self
@@ -12375,6 +12596,8 @@ class DescribeDBClusterTDERequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -12538,6 +12761,8 @@ class DescribeDBClusterVersionRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # Specify to return the latest version information or a list of upgradeable versions.Valid values:
         # 
@@ -12687,7 +12912,7 @@ class DescribeDBClusterVersionResponseBody(TeaModel):
         # *   **Old**: The minor version is outdated. We recommend that you upgrade the cluster to the latest version.
         # *   **HighRisk**: The minor version has critical defects. We recommend that you immediately update the cluster to the latest minor version.
         # 
-        # >  For more information about how to update the minor version, see [Minor version update](~~158572~~).
+        # >  For more information about how to update the minor version, see [Minor version update](https://help.aliyun.com/document_detail/158572.html).
         self.dbversion_status = dbversion_status
         # Indicates whether the kernel is of the latest version. Valid values:
         # 
@@ -12900,7 +13125,7 @@ class DescribeDBClustersRequest(TeaModel):
         self.dbcluster_description = dbcluster_description
         # The ID of the cluster. Separate multiple cluster IDs with commas (,).
         self.dbcluster_ids = dbcluster_ids
-        # The state of the cluster that you want to query. For information about valid values, see [Cluster states](~~99286~~).
+        # The state of the cluster that you want to query. For information about valid values, see [Cluster states](https://help.aliyun.com/document_detail/99286.html).
         self.dbcluster_status = dbcluster_status
         # The ID of the node. You can specify multiple node IDs. Separate multiple node IDs with commas (,).
         self.dbnode_ids = dbnode_ids
@@ -12940,7 +13165,9 @@ class DescribeDBClustersRequest(TeaModel):
         self.recent_expiration_interval = recent_expiration_interval
         # The region ID of the cluster.
         # 
-        # > You can call the [DescribeRegions](~~98041~~) operation to query the available regions.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the available regions.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -13735,7 +13962,9 @@ class DescribeDBClustersWithBackupsRequest(TeaModel):
         self.page_size = page_size
         # The region ID of the cluster.
         # 
-        # > You can call the [DescribeRegions](~~98041~~) operation to query information about regions.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query information about regions.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -14138,7 +14367,9 @@ class DescribeDBInitializeVariableRequest(TeaModel):
     ):
         # The ID of cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~98094~~) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -14378,7 +14609,9 @@ class DescribeDBLinksRequest(TeaModel):
     ):
         # The ID of the cluster for which you want to query the database links.
         # 
-        # > You can call the [DescribeDBClusters](~~173433~~) operation to query PolarDB clusters.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/173433.html) operation to query PolarDB clusters.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The name of the database link. If you leave this parameter empty, the system returns all the database links.
         self.dblink_name = dblink_name
@@ -14597,15 +14830,23 @@ class DescribeDBNodePerformanceRequest(TeaModel):
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
         # The ID of the cluster node.
+        # 
+        # This parameter is required.
         self.dbnode_id = dbnode_id
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         self.interval = interval
-        # The performance metrics that you want to query. Separate multiple metrics with commas (,). For more information, see [Performance parameters](~~141787~~).
+        # The performance metrics that you want to query. Separate multiple metrics with commas (,). For more information, see [Performance parameters](https://help.aliyun.com/document_detail/141787.html).
         # 
         # >  You can specify a maximum of five performance metrics.
+        # 
+        # This parameter is required.
         self.key = key
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         self.type = type
 
@@ -14926,8 +15167,12 @@ class DescribeDBNodesParametersRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The node ID. You can specify multiple node IDs. Separate multiple node IDs with commas (,).
+        # 
+        # This parameter is required.
         self.dbnode_ids = dbnode_ids
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -15259,15 +15504,23 @@ class DescribeDBProxyPerformanceRequest(TeaModel):
         type: str = None,
     ):
         # The ID of cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The ID of the endpoint.
         self.dbendpoint_id = dbendpoint_id
         # The end of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         self.interval = interval
-        # The performance metrics that you want to query. Separate multiple indicators with commas (,). For more information, see [Performance parameters](~~141787~~).
+        # The performance metrics that you want to query. Separate multiple indicators with commas (,). For more information, see [Performance parameters](https://help.aliyun.com/document_detail/141787.html).
+        # 
+        # This parameter is required.
         self.key = key
         # The beginning of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         self.type = type
 
@@ -15593,6 +15846,7 @@ class DescribeDasConfigRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -15729,6 +15983,8 @@ class DescribeDatabasesRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The name of the database.
         # 
@@ -15912,7 +16168,7 @@ class DescribeDatabasesResponseBodyDatabasesDatabase(TeaModel):
         # 
         # > A PolarDB for MySQL cluster does not support privileged accounts.
         self.accounts = accounts
-        # The character set that the database uses. For more information, see [Character set tables](~~99716~~).
+        # The character set that the database uses. For more information, see [Character set tables](https://help.aliyun.com/document_detail/99716.html).
         self.character_set_name = character_set_name
         # The description of the database.
         self.dbdescription = dbdescription
@@ -16140,8 +16396,12 @@ class DescribeDetachedBackupsRequest(TeaModel):
         # *   **Failed**\
         self.backup_status = backup_status
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The end of the time range to query. Specify the time in the `YYYY-MM-DDThh:mmZ` format. The time must be in UTC. The end time must be later than the start time.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -16158,6 +16418,8 @@ class DescribeDetachedBackupsRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The beginning of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -16503,6 +16765,8 @@ class DescribeGlobalDatabaseNetworkRequest(TeaModel):
         security_token: str = None,
     ):
         # The ID of the GDN.
+        # 
+        # This parameter is required.
         self.gdnid = gdnid
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -16722,7 +16986,7 @@ class DescribeGlobalDatabaseNetworkResponseBodyDBClusters(TeaModel):
         self.dbcluster_description = dbcluster_description
         # The ID of the cluster in the GDN.
         self.dbcluster_id = dbcluster_id
-        # The status of the cluster in the GDN. For more information, see [Cluster status table](~~99286~~).
+        # The status of the cluster in the GDN. For more information, see [Cluster status table](https://help.aliyun.com/document_detail/99286.html).
         self.dbcluster_status = dbcluster_status
         # The specifications of the node in the cluster.
         self.dbnode_class = dbnode_class
@@ -16878,7 +17142,7 @@ class DescribeGlobalDatabaseNetworkResponseBody(TeaModel):
         # 
         # *   It cannot start with `http://` or `https://`.
         # *   It must start with a letter.
-        # *   It can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   It can contain letters, digits, underscores (_), and hyphens (-).
         # *   It must be 2 to 126 characters in length.
         self.gdndescription = gdndescription
         # The ID of the GDN.
@@ -17032,7 +17296,7 @@ class DescribeGlobalDatabaseNetworksRequest(TeaModel):
     ):
         # The ID of the cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~98094~~) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
         self.dbcluster_id = dbcluster_id
         # Specify the region in which you want to query GDNs. You can create secondary clusters for the GDNs.
         self.filter_region = filter_region
@@ -17040,7 +17304,7 @@ class DescribeGlobalDatabaseNetworksRequest(TeaModel):
         # 
         # *   It cannot start with `http://` or `https://`.
         # *   It must start with a letter.
-        # *   It can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   It can contain letters, digits, underscores (_), and hyphens (-).
         # *   It must be 2 to 126 characters in length.
         self.gdndescription = gdndescription
         # The ID of the GDN.
@@ -17141,7 +17405,7 @@ class DescribeGlobalDatabaseNetworksResponseBodyItemsDBClusters(TeaModel):
         # *   **Primary**: the primary cluster
         # *   **standby**: the secondary cluster
         # 
-        # > A GDN consists of one primary cluster and up to four secondary clusters. For more information, see [GDN](~~160381~~).
+        # > A GDN consists of one primary cluster and up to four secondary clusters. For more information, see [GDN](https://help.aliyun.com/document_detail/160381.html).
         self.role = role
 
     def validate(self):
@@ -17195,7 +17459,7 @@ class DescribeGlobalDatabaseNetworksResponseBodyItems(TeaModel):
         # 
         # *   It cannot start with `http://` or `https://`.
         # *   It must start with a letter.
-        # *   It can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   It can contain letters, digits, underscores (_), and hyphens (-).
         # *   It must be 2 to 126 characters in length.
         self.gdndescription = gdndescription
         # The ID of the GDN.
@@ -17383,6 +17647,8 @@ class DescribeGlobalSecurityIPGroupRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the IP whitelist template.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -17455,7 +17721,7 @@ class DescribeGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup(TeaModel):
         self.gip_list = gip_list
         # The name of the global IP whitelist template. The name must meet the following requirements:
         # 
-        # *   The name can contain lowercase letters, digits, and underscores (\_).
+        # *   The name can contain lowercase letters, digits, and underscores (_).
         # *   The name must start with a letter and end with a letter or a digit.
         # *   The name must be 2 to 120 characters in length.
         self.global_ig_name = global_ig_name
@@ -17597,10 +17863,14 @@ class DescribeGlobalSecurityIPGroupRelationRequest(TeaModel):
         security_token: str = None,
     ):
         # The ID of cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the IP whitelist template.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -17670,7 +17940,7 @@ class DescribeGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel(
         self.gip_list = gip_list
         # The name of the global IP whitelist template. The name must meet the following requirements:
         # 
-        # *   The name can contain lowercase letters, digits, and underscores (\_).
+        # *   The name can contain lowercase letters, digits, and underscores (_).
         # *   The name must start with a letter and end with a letter or a digit.
         # *   The name must be 2 to 120 characters in length.
         self.global_ig_name = global_ig_name
@@ -17813,7 +18083,9 @@ class DescribeLogBackupPolicyRequest(TeaModel):
     ):
         # The ID of the cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~98094~~) operation to query all the information about the available clusters in the target region, including the cluster ID.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query all the information about the available clusters in the target region, including the cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -17870,7 +18142,7 @@ class DescribeLogBackupPolicyResponseBody(TeaModel):
         # *   0: The log backup feature is disabled.
         # *   1: The log backup feature is enabled. By default, the log backup feature is enabled and cannot be disabled.
         self.enable_backup_log = enable_backup_log
-        # The region in which you want to store cross-region log backups. For more information about regions that support the cross-region backup feature, see [Overview](~~72672~~).
+        # The region in which you want to store cross-region log backups. For more information about regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
         self.log_backup_another_region_region = log_backup_another_region_region
         # The retention period of cross-region log backups. Valid values:
         # 
@@ -17883,7 +18155,7 @@ class DescribeLogBackupPolicyResponseBody(TeaModel):
         # The retention period of the log backups. Valid values:
         # 
         # *   3 to 7300: The log backups are retained for 3 to 7,300 days.
-        # *   \-1: The log backups are permanently retained.
+        # *   \\-1: The log backups are permanently retained.
         self.log_backup_retention_period = log_backup_retention_period
         # The request ID.
         self.request_id = request_id
@@ -17973,7 +18245,9 @@ class DescribeMaskingRulesRequest(TeaModel):
     ):
         # The ID of the cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~98094~~) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The name of the masking rule.
         self.rule_name_list = rule_name_list
@@ -18159,11 +18433,13 @@ class DescribeMetaListRequest(TeaModel):
         # The ID of the data backup file.
         # 
         # >*   When you run a query, you must specify the `BackId` or `RestoreTime` parameter.
-        # >*   You can call the [DescribeBackups](~~98102~~) operation to query the ID of the backup set.
+        # >*   You can call the [DescribeBackups](https://help.aliyun.com/document_detail/98102.html) operation to query the ID of the backup set.
         self.backup_id = backup_id
         # The ID of the cluster.
         # 
-        # >  You can call the [DescribeDBClusters](~~98094~~) operation to query the details of all clusters under your account.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters under your account.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # Specify the specific database name (such as `test_db`) to query the names of all data tables that can be restored in the desired database.
         # 
@@ -18184,13 +18460,13 @@ class DescribeMetaListRequest(TeaModel):
         # 
         #     Default value: **30**.
         self.page_size = page_size
-        # The ID of the region in which the instance resides. You can call the [DescribeDBClusterAttribute](~~2319132~~) operation to query the region ID of the instance.
+        # The ID of the region in which the instance resides. You can call the [DescribeDBClusterAttribute](https://help.aliyun.com/document_detail/2319132.html) operation to query the region ID of the instance.
         self.region_code = region_code
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The point in time for the restoration. Specify the time in the YYYY-MM-DDThh:mmZ format. The time must be in UTC.
         # 
-        # >  When you run a query, you must specify the `BackId` or `RestoreTime` parameter. You can call the [DescribeBackups](~~98102~~) operation to query the point in time for the restoration.
+        # >  When you run a query, you must specify the `BackId` or `RestoreTime` parameter. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/98102.html) operation to query the point in time for the restoration.
         self.restore_time = restore_time
         self.security_token = security_token
 
@@ -18427,11 +18703,15 @@ class DescribeParameterGroupRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the parameter template.
         # 
-        # > You can call the [DescribeParameterGroups](~~207178~~) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
+        # > You can call the [DescribeParameterGroups](https://help.aliyun.com/document_detail/207178.html) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
+        # 
+        # This parameter is required.
         self.parameter_group_id = parameter_group_id
         # The region ID.
         # 
-        # >You can call the [DescribeRegions](~~98041~~) operation to query all regions that are available within your account, such as the region ID.
+        # >You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query all regions that are available within your account, such as the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -18731,7 +19011,9 @@ class DescribeParameterGroupsRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the cluster.
         # 
-        # > You can call the [DescribeRegions](~~98041~~) operation to query all regions that are available for your account, such as the region ID.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query all regions that are available for your account, such as the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the virtual node belongs.
         self.resource_group_id = resource_group_id
@@ -18974,18 +19256,24 @@ class DescribeParameterTemplatesRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The type of the database engine. Only **MySQL** is supported.
+        # 
+        # This parameter is required.
         self.dbtype = dbtype
         # The version of the database. Valid values:
         # 
         # *   **5.6**\
         # *   **5.7**\
         # *   **8.0**\
+        # 
+        # This parameter is required.
         self.dbversion = dbversion
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID.
         # 
-        # >  You can call the [DescribeRegions](~~98041~~) operation to query all regions that are available within your account, such as the region IDs.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query all regions that are available within your account, such as the region IDs.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -19297,9 +19585,11 @@ class DescribePendingMaintenanceActionRequest(TeaModel):
         # 
         # Default value: **30**.
         self.page_size = page_size
-        # The region ID of the pending event. You can call the [DescribeRegions](~~98041~~) operation to query the regions and zones that are supported by PolarDB.
+        # The region ID of the pending event. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the regions and zones that are supported by PolarDB.
         # >- You can set this parameter to **all** to view all pending events within your account.
         # >- If you set `Region` to **all**, you must set `TaskType` to **all**.
+        # 
+        # This parameter is required.
         self.region = region
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -19315,6 +19605,8 @@ class DescribePendingMaintenanceActionRequest(TeaModel):
         # *   **all**: queries the details of the pending events of all preceding types.
         # 
         # > If the `Region` parameter is set to **all**, the `TaskType` parameter must be set to **all**.
+        # 
+        # This parameter is required.
         self.task_type = task_type
 
     def validate(self):
@@ -19657,6 +19949,8 @@ class DescribePendingMaintenanceActionsRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -19847,7 +20141,9 @@ class DescribePolarSQLCollectorPolicyRequest(TeaModel):
     ):
         # The ID of the cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~98094~~) operation to query the details of all the clusters for your account, such as the cluster ID.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all the clusters for your account, such as the cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -20266,7 +20562,7 @@ class DescribeScheduleTasksRequest(TeaModel):
         # 
         # > 
         # 
-        # *   You can call the [DescribeDBClusters](~~98094~~) operation to query the information of all PolarDB clusters that are deployed in a specific region, such as the cluster IDs.
+        # *   You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the information of all PolarDB clusters that are deployed in a specific region, such as the cluster IDs.
         # 
         # *   If you do not specify this parameter, all scheduled tasks on your clusters are queried.
         self.dbcluster_id = dbcluster_id
@@ -20288,7 +20584,7 @@ class DescribeScheduleTasksRequest(TeaModel):
         # 
         # > 
         # 
-        # *   You can call the [DescribeRegions](~~98041~~) operation to query the region information of all clusters in a specific account.
+        # *   You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the region information of all clusters in a specific account.
         # 
         # *   If you do not specify this parameter, scheduled tasks on your clusters that are deployed in all regions are queried.
         self.region_id = region_id
@@ -20677,13 +20973,17 @@ class DescribeSlowLogRecordsRequest(TeaModel):
     ):
         # The ID of cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~98094~~) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The name of the database.
         self.dbname = dbname
         # The end of the time range to query. The end time must be later than the start time. The interval between the start time and end time must be within 24 hours. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
         # 
         # > This parameter must be set to a time value in UTC (UTC+0 time zone). If your service resides in another time zone, convert the time value. For example, if the local time in the time zone where your service resides is 12:00 (UTC +8) and you want to query slow query logs at 08:00 (UTC +8) to 12:00, set this parameter to a time value that ranges from 00:00, set this parameter to 04:00.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -20701,7 +21001,9 @@ class DescribeSlowLogRecordsRequest(TeaModel):
         self.page_size = page_size
         # The region ID of the cluster.
         # 
-        # > You can call the [DescribeRegions](~~98041~~) operation to query all regions that are available for your account, such as the region ID.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query all regions that are available for your account, such as the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -20714,6 +21016,8 @@ class DescribeSlowLogRecordsRequest(TeaModel):
         # *   You can specify a time range of up to 30 days.
         # 
         # *   This parameter must be set to a time value in UTC (UTC+0 time zone). If your service resides in another time zone, convert the time value. For example, if the local time in the time zone where your service resides is 12:00 (UTC +8) and you want to query slow query logs at 08:00 (UTC +8) to 12:00, set this parameter to a time value that ranges from 00:00, set this parameter to 04:00.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -21035,10 +21339,14 @@ class DescribeSlowLogsRequest(TeaModel):
         start_time: str = None,
     ):
         # The ID of cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The name of the database.
         self.dbname = dbname
         # The end of the time range to query. The end time must be later than the start time. The time span between the start time and the end time cannot exceed 31 days. Specify the time in the yyyy-MM-ddZ format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -21049,10 +21357,14 @@ class DescribeSlowLogsRequest(TeaModel):
         # The number of entries to return on each page. Valid values: 30 to 100. Default value: 30.
         self.page_size = page_size
         # The region ID of the cluster.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The beginning of the time range to query. Specify the time in the yyyy-MM-ddZ format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -21413,13 +21725,15 @@ class DescribeTasksRequest(TeaModel):
     ):
         # The cluster ID.
         # 
-        # >  You must specify `DBNodeId` or `DBClusterId`. You can call the [DescribeDBClusters](~~98094~~) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+        # >  You must specify `DBNodeId` or `DBClusterId`. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
         self.dbcluster_id = dbcluster_id
         # The node ID.
         # 
-        # >  You must specify `DBNodeId` or `DBClusterId`. You can call the [DescribeDBClusters](~~98094~~) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as node IDs.
+        # >  You must specify `DBNodeId` or `DBClusterId`. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as node IDs.
         self.dbnode_id = dbnode_id
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mmZ` format. The time must be in UTC. The end time must be later than the start time.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -21434,6 +21748,8 @@ class DescribeTasksRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The state of the tasks that you want to query. Valid values:
         # 
@@ -21804,13 +22120,15 @@ class DescribeUserEncryptionKeyListRequest(TeaModel):
     ):
         # The ID of the cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~98094~~) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region.
         # 
-        # > You can call the [DescribeRegions](~~98041~~) operation to query all regions that are available for your account, such as the region ID.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query all regions that are available for your account, such as the region ID.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -22246,6 +22564,8 @@ class DisableDBClusterServerlessRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -22380,6 +22700,8 @@ class EnableDBClusterServerlessRequest(TeaModel):
         scale_ro_num_min: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -22545,12 +22867,14 @@ class EnableFirewallRulesRequest(TeaModel):
         resource_owner_id: int = None,
         rule_name_list: str = None,
     ):
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.enable = enable
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.rule_name_list = rule_name_list
 
     def validate(self):
@@ -22704,15 +23028,19 @@ class EvaluateRegionResourceRequest(TeaModel):
         self.dbinstance_conn_type = dbinstance_conn_type
         # The specifications of the node. For information about node specifications, see the following topics:
         # 
-        # *   PolarDB for MySQL: [Specifications of compute nodes](~~102542~~)
-        # *   PolarDB for Oracle: [Specifications of compute nodes](~~207921~~)
-        # *   PolarDB for PostgreSQL: [Specifications of compute nodes](~~209380~~)
+        # *   PolarDB for MySQL: [Specifications of compute nodes](https://help.aliyun.com/document_detail/102542.html)
+        # *   PolarDB for Oracle: [Specifications of compute nodes](https://help.aliyun.com/document_detail/207921.html)
+        # *   PolarDB for PostgreSQL: [Specifications of compute nodes](https://help.aliyun.com/document_detail/209380.html)
+        # 
+        # This parameter is required.
         self.dbnode_class = dbnode_class
         # The type of the database engine. Valid values:
         # 
         # *   **MySQL**\
         # *   **PostgreSQL**\
         # *   **Oracle**\
+        # 
+        # This parameter is required.
         self.dbtype = dbtype
         # The version of the database engine
         # 
@@ -22728,6 +23056,8 @@ class EvaluateRegionResourceRequest(TeaModel):
         #     *   **14**\
         # 
         # *   Valid value for the Oracle database engine: **11**\
+        # 
+        # This parameter is required.
         self.dbversion = dbversion
         # Specifies whether to return the zones in which the single-zone deployment method is supported. Default value: 0. Valid values:
         # 
@@ -22738,12 +23068,16 @@ class EvaluateRegionResourceRequest(TeaModel):
         # 
         # *   **true**\
         # *   **false**\
+        # 
+        # This parameter is required.
         self.need_max_scale_link = need_max_scale_link
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID.
         # 
-        # > You can call the [DescribeRegions](~~98041~~) operation to query available regions.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available regions.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -22753,7 +23087,9 @@ class EvaluateRegionResourceRequest(TeaModel):
         self.sub_domain = sub_domain
         # The zone ID.
         # 
-        # > You can call the [DescribeRegions](~~98041~~) operation to query available zones.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available zones.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -22953,13 +23289,15 @@ class FailoverDBClusterRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
         self.client_token = client_token
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.roll_back_for_disaster = roll_back_for_disaster
-        # The ID of the read-only node that you want to promote to the primary node. You can call the [DescribeDBClusters](~~98094~~) operation to query node information, such as node IDs.
+        # The ID of the read-only node that you want to promote to the primary node. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query node information, such as node IDs.
         # 
         # > *   If you leave this parameter empty, the system selects one or more available read-only nodes that have the highest failover priority as candidate primary nodes. If the failover to the first read-only node fails due to network issues, abnormal replication status, or other reasons, the system attempts to fail over your applications to the next read-only node until the failover is successful.
         # >*  This parameter is required for PolarDB for Oracle and PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.
@@ -23095,6 +23433,8 @@ class GrantAccountPrivilegeRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The username of the account.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The permissions that are granted to the account. Valid values:
         # 
@@ -23104,11 +23444,17 @@ class GrantAccountPrivilegeRequest(TeaModel):
         # *   **DDLOnly**: The account is granted the permissions to execute only DDL statements on the database.
         # *   **ReadIndex**: The account has the read and index permissions on the database.
         # 
-        # > The number of **AccountPrivilege** values must be the consistent with the number of **DBName** values. Each account permission must correspond to a database name in sequence. For example, you can set **DBName** to `testdb_1,testdb_2` and set **AccountPrivilege** to `ReadWrite,ReadOnly`. In this case, the specified standard account is granted the **read and write** permissions on the **testdb\_1** database and the **read** permission on the **testdb\_2** database.
+        # > The number of **AccountPrivilege** values must be the consistent with the number of **DBName** values. Each account permission must correspond to a database name in sequence. For example, you can set **DBName** to `testdb_1,testdb_2` and set **AccountPrivilege** to `ReadWrite,ReadOnly`. In this case, the specified standard account is granted the **read and write** permissions on the **testdb_1** database and the **read** permission on the **testdb_2** database.
+        # 
+        # This parameter is required.
         self.account_privilege = account_privilege
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The names of the databases that the account can access. You can grant the access permissions on one or more databases to the specified standard account. If you need to specify multiple database names, separate the database names with commas (,).
+        # 
+        # This parameter is required.
         self.dbname = dbname
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -23290,7 +23636,9 @@ class ListTagResourcesRequest(TeaModel):
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region. You can call the [DescribeRegions](~~98041~~) operation to query available region IDs.
+        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available region IDs.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The cluster ID. To query the tags of multiple clusters, click **Add** to add cluster IDs.
         # 
@@ -23303,6 +23651,8 @@ class ListTagResourcesRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The type of the resource. Set the value to **cluster**.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags.
         self.tag = tag
@@ -23547,12 +23897,14 @@ class ManuallyStartDBClusterRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the cluster.
         # 
-        # > You can call the [DescribeRegions](~~98041~~) operation to query available regions.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available regions.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -23681,10 +24033,16 @@ class ModifyAccountDescriptionRequest(TeaModel):
         # 
         # *   The description cannot start with `http://` or `https://`.
         # *   The description must be 2 to 256 characters in length.
+        # 
+        # This parameter is required.
         self.account_description = account_description
         # The name of the account.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -23817,14 +24175,20 @@ class ModifyAccountPasswordRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The username of the account.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The new password of the account. The new password must meet the following requirements:
         # 
         # *   It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
         # *   It must be 8 to 32 characters in length.
         # *   Special characters include `! @ # $ % ^ & * ( ) _ + - =`
+        # 
+        # This parameter is required.
         self.new_account_password = new_account_password
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -23964,6 +24328,8 @@ class ModifyAutoRenewAttributeRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The cluster ID. If you need to specify multiple cluster IDs, separate the cluster IDs with commas (,).
+        # 
+        # This parameter is required.
         self.dbcluster_ids = dbcluster_ids
         # The automatic renewal period.
         # 
@@ -23985,7 +24351,9 @@ class ModifyAutoRenewAttributeRequest(TeaModel):
         # The ID of the region. The region ID can be up to 50 characters in length.
         # cn-hangzhou
         #  
-        # >  You can call the [DescribeRegions](~~98041~~) operation to query the available regions.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the available regions.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The auto-renewal state of the cluster. Valid values:
         #  
@@ -24157,7 +24525,7 @@ class ModifyBackupPolicyRequest(TeaModel):
         # 
         # >- If you enable enhanced backup, all backups are retained for 24 hours. For backup files that are created earlier than the previous 24 hours, the system permanently retains only the first backup that is created after 00:00 every day and deletes the rest.
         # >- If you enable enhanced backup, **PreferredBackupPeriod** is automatically set to all days in a week (from Monday to Sunday).
-        # >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed supports the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](~~72672~~).
+        # >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed supports the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
         self.backup_frequency = backup_frequency
         # Specifies whether to retain backups when you delete a cluster. Valid values:
         # 
@@ -24169,7 +24537,9 @@ class ModifyBackupPolicyRequest(TeaModel):
         self.backup_retention_policy_on_cluster_deletion = backup_retention_policy_on_cluster_deletion
         # The ID of the cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~98094~~) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The frequency of level-1 backups. Default value: Normal. Valid values:
         # 
@@ -24179,7 +24549,7 @@ class ModifyBackupPolicyRequest(TeaModel):
         # *   **4/24H**: enhanced backup. The system backs up data every 4 hours.
         # 
         # >- This parameter is invalid for PolarDB for Oracle clusters or PolarDB for PostgreSQL clusters.
-        # >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](~~72672~~).
+        # >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
         self.data_level_1backup_frequency = data_level_1backup_frequency
         # The backup cycle of level-1 backups. Valid values:
         # 
@@ -24193,15 +24563,15 @@ class ModifyBackupPolicyRequest(TeaModel):
         # 
         # >- You need to specify at least two values. Separate multiple values with commas (,).
         # >- This parameter is invalid for PolarDB for Oracle clusters or PolarDB for PostgreSQL clusters.
-        # >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](~~72672~~).
+        # >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
         self.data_level_1backup_period = data_level_1backup_period
         # The retention period of level-1 backups. Valid values: 3 to 14. Unit: days.
         self.data_level_1backup_retention_period = data_level_1backup_retention_period
         # The time period during which automatic backup for level-1 backup is performed. The time period is in the `hh:mmZ-hh:mmZ` format and is displayed in UTC. The start time and end time are on the hour and have an interval of 1 hour. Example: `14:00Z-15:00Z`.
         # >- This parameter is invalid for PolarDB for Oracle clusters or PolarDB for PostgreSQL clusters.
-        # >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](~~72672~~).
+        # >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
         self.data_level_1backup_time = data_level_1backup_time
-        # The region where the cross-region level-2 backup is stored. For information about regions that support the cross-region backup feature, see [Overview](~~72672~~).
+        # The region where the cross-region level-2 backup is stored. For information about regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
         self.data_level_2backup_another_region_region = data_level_2backup_another_region_region
         # The retention period of cross-region level-2 backups. Valid values:
         # 
@@ -24223,7 +24593,7 @@ class ModifyBackupPolicyRequest(TeaModel):
         # 
         # >- You need to specify at least two values. Separate multiple values with commas (,).
         # >- This parameter is invalid for PolarDB for Oracle clusters or PolarDB for PostgreSQL clusters.
-        # >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](~~72672~~).
+        # >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
         self.data_level_2backup_period = data_level_2backup_period
         # The retention period of level-2 backups. Valid values:
         # 
@@ -24246,7 +24616,7 @@ class ModifyBackupPolicyRequest(TeaModel):
         # *   **Sunday**\
         # 
         # >- You need to specify at least two values. Separate multiple values with commas (,).
-        # >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed supports the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](~~72672~~).
+        # >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed supports the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
         self.preferred_backup_period = preferred_backup_period
         # The time period during which automatic backup for level-1 backup is performed. The format is `hh:mmZ-hh:mmZ` format. The time is displayed in UTC. The start time and end time are on the hour and with an interval of one hour. Example: `14:00Z-15:00Z`.
         self.preferred_backup_time = preferred_backup_time
@@ -24426,6 +24796,8 @@ class ModifyDBClusterRequest(TeaModel):
         # The cluster ID.
         # 
         # >  You can call the DescribeDBClusters operation to query information about all PolarDB clusters that are deployed in a specified region, such as cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The method used to replicate data across zones. Valid values:
         # 
@@ -24636,6 +25008,8 @@ class ModifyDBClusterAccessWhitelistRequest(TeaModel):
         # *   This parameter can be specified only when the **WhiteListType** parameter is set to **IP**.
         self.dbcluster_iparray_name = dbcluster_iparray_name
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The method used to modify the IP whitelist. Valid values:
         # 
@@ -24814,6 +25188,8 @@ class ModifyDBClusterAndNodesParametersRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The node ID. You can set this parameter to modify the parameters of a specified node or of the cluster. Separate multiple node IDs with commas (,).
         # 
@@ -24992,8 +25368,12 @@ class ModifyDBClusterAuditLogCollectorRequest(TeaModel):
         # 
         # *   Enable
         # *   Disable
+        # 
+        # This parameter is required.
         self.collector_status = collector_status
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -25121,7 +25501,9 @@ class ModifyDBClusterDeletionRequest(TeaModel):
     ):
         # The cluster ID.
         # 
-        # >  You can call the [DescribeDBClusters](~~98094~~) operation to.obtain the cluster ID.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to.obtain the cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -25256,8 +25638,12 @@ class ModifyDBClusterDescriptionRequest(TeaModel):
         # 
         # *   The name cannot start with `http://` or `https://`.
         # *   The name must be 2 to 256 characters in length.
+        # 
+        # This parameter is required.
         self.dbcluster_description = dbcluster_description
         # The ID of the PolarDB cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -25394,51 +25780,55 @@ class ModifyDBClusterEndpointRequest(TeaModel):
         # *   **Disable**\
         self.auto_add_new_nodes = auto_add_new_nodes
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The name of the custom cluster endpoint.
         self.dbendpoint_description = dbendpoint_description
         # The ID of the endpoint.
+        # 
+        # This parameter is required.
         self.dbendpoint_id = dbendpoint_id
         # The advanced configurations of the cluster endpoint, which are in the JSON format. You can specify the configurations of the following attributes: consistency level, transaction splitting, connection pool, and primary node accepts read requests.
         # 
-        # *   Specifies the load balancing policy in the format of `{\"LoadBalancePolicy\":\"Selected value\"}`. Default value: 0. Valid values:
+        # *   Specifies the load balancing policy in the format of `{\\"LoadBalancePolicy\\":\\"Selected value\\"}`. Default value: 0. Valid values:
         # 
         #     *   **0**: connections-based load balancing
         #     *   **1**: active requests-based load balancing
         # 
-        # *   Specifies whether to enable the primary node accepts read requests feature in the format of `{\"MasterAcceptReads\":\"Selected value\"}`. Default value: on. Valid values:
+        # *   Specifies whether to enable the primary node accepts read requests feature in the format of `{\\"MasterAcceptReads\\":\\"Selected value\\"}`. Default value: on. Valid values:
         # 
         #     *   **on**\
         #     *   **off**\
         # 
-        # *   Specifies whether to enable the transaction splitting feature in the format of `{\"DistributedTransaction\":\"Selected value\"}`. Default value: on. Valid values:
+        # *   Specifies whether to enable the transaction splitting feature in the format of `{\\"DistributedTransaction\\":\\"Selected value\\"}`. Default value: on. Valid values:
         # 
         #     *   **on**\
         #     *   **off**\
         # 
-        # *   Specifies the consistency level in the format of `{\"ConsistLevel\":\"Selected value\"}`. Default value: 1. Valid values:
+        # *   Specifies the consistency level in the format of `{\\"ConsistLevel\\":\\"Selected value\\"}`. Default value: 1. Valid values:
         # 
         #     *   **0**: eventual consistency (weak)
         #     *   **1**: session consistency (medium)
         #     *   **2**: global consistency (strong)
         # 
-        # *   Specifies the connection pool in the format of `{\"ConnectionPersist\":\"Selected value\"}`. Default value: off. Valid values:
+        # *   Specifies the connection pool in the format of `{\\"ConnectionPersist\\":\\"Selected value\\"}`. Default value: off. Valid values:
         # 
         #     *   **off**: disables the connection pool.
         #     *   **Session**: enables the session-level connection pool.
         #     *   **Transaction**: enables the transaction-level connection pool.
         # 
-        # *   Specifies whether to enable the parallel query feature in the format of `{\"MaxParallelDegree\":\"Selected value\"}`. Default value: off. Valid values:
+        # *   Specifies whether to enable the parallel query feature in the format of `{\\"MaxParallelDegree\\":\\"Selected value\\"}`. Default value: off. Valid values:
         # 
         #     *   **on**\
         #     *   **off**\
         # 
-        # *   Specifies whether to enable the automatic request distribution between row store and column store nodes feature in the format of `{\"EnableHtapImci\":\"Selected value\"}`. Default value: off. Valid values:
+        # *   Specifies whether to enable the automatic request distribution between row store and column store nodes feature in the format of `{\\"EnableHtapImci\\":\\"Selected value\\"}`. Default value: off. Valid values:
         # 
         #     *   **on**\
         #     *   **off**\
         # 
-        # *   Specifies whether to enable the overload protection feature in the format of `{\"EnableOverloadThrottle\":\"Selected value\"}`. Default value: off. Valid values:
+        # *   Specifies whether to enable the overload protection feature in the format of `{\\"EnableOverloadThrottle\\":\\"Selected value\\"}`. Default value: off. Valid values:
         # 
         #     *   **on**\
         #     *   **off**\
@@ -25451,7 +25841,7 @@ class ModifyDBClusterEndpointRequest(TeaModel):
         # *   If ReadWriteMode is set to **ReadWrite** for the cluster endpoint of a PolarDB for MySQL cluster or if ReadWriteMode is set to **ReadOnly** and the load balancing policy is set to **active requests-based load balancing**, the automatic request distribution between row store and column store nodes feature is supported.
         # *   Only PolarDB for MySQL supports global consistency.
         # *   If the **ReadWriteMode** parameter is set to **ReadOnly**, the consistency level must be **0**.
-        # *   You can specify the consistency level, transaction splitting, connection pool, and primary node accepts read requests features at a time, such as `{\"ConsistLevel\":\"1\",\"DistributedTransaction\":\"on\",\"ConnectionPersist\":\"Session\",\"MasterAcceptReads\":\"on\"}`.
+        # *   You can specify the consistency level, transaction splitting, connection pool, and primary node accepts read requests features at a time, such as `{\\"ConsistLevel\\":\\"1\\",\\"DistributedTransaction\\":\\"on\\",\\"ConnectionPersist\\":\\"Session\\",\\"MasterAcceptReads\\":\\"on\\"}`.
         # *   The transaction splitting settings are restricted by the consistency level settings. For example, if you set the consistency level to **0**, transaction splitting cannot be enabled. If you set the consistency level to **1** or **2**, transaction splitting can be enabled.
         self.endpoint_config = endpoint_config
         # The reader nodes to be associated with the endpoint. If you need to specify multiple reader nodes, separate the reader nodes with commas (,). If you do not specify this parameter, the predefined nodes are used by default.
@@ -25619,10 +26009,14 @@ class ModifyDBClusterMaintainTimeRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The maintenance window of the cluster. Specify the maintenance window in the `HH:mmZ-HH:mmZ` format. For example, the value `16:00Z-17:00Z` indicates that the cluster can be maintained from 00:00 to 01:00 (UTC+8).
         #  
         # >  The maintenance window must start on the hour and last for an hour.
+        # 
+        # This parameter is required.
         self.maintain_time = maintain_time
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -25757,11 +26151,15 @@ class ModifyDBClusterMigrationRequest(TeaModel):
         # > This parameter is valid when the SwapConnectionString parameter is set to true.
         self.connection_strings = connection_strings
         # The ID of cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The ID of the new instance or new cluster. Valid values:
         # 
         # *   To perform a data migration, enter the ID of the PolarDB cluster.
         # *   To perform a migration rollback, enter the ID of the ApsaraDB for RDS instance.
+        # 
+        # This parameter is required.
         self.new_master_instance_id = new_master_instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -25769,6 +26167,8 @@ class ModifyDBClusterMigrationRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
         # The ID of the source ApsaraDB RDS instance.
+        # 
+        # This parameter is required.
         self.source_rdsdbinstance_id = source_rdsdbinstance_id
         # Specifies whether to switch the endpoints. Valid values:
         # 
@@ -25914,10 +26314,14 @@ class ModifyDBClusterMonitorRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The interval at which monitoring data is collected. Valid values: **5** and **60**. Unit: seconds.
+        # 
+        # This parameter is required.
         self.period = period
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -26047,7 +26451,9 @@ class ModifyDBClusterParametersRequest(TeaModel):
     ):
         # The ID of the cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~98094~~) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # Specifies an immediate or scheduled task to modify parameters and restart the cluster. Valid values:
         # 
@@ -26060,7 +26466,7 @@ class ModifyDBClusterParametersRequest(TeaModel):
         # 
         # > 
         # 
-        # *   You can call the [DescribeParameterGroups](~~207178~~) operation to query the parameter template ID.
+        # *   You can call the [DescribeParameterGroups](https://help.aliyun.com/document_detail/207178.html) operation to query the parameter template ID.
         # 
         # *   You must specify this parameter or the `Parameters` parameter.
         # *   This parameter is valid only for a PolarDB for MySQL cluster.
@@ -26069,7 +26475,7 @@ class ModifyDBClusterParametersRequest(TeaModel):
         # 
         # > 
         # 
-        # *   You can call the [DescribeDBClusterParameters](~~98122~~) operation to query the parameters of the PolarDB cluster.
+        # *   You can call the [DescribeDBClusterParameters](https://help.aliyun.com/document_detail/98122.html) operation to query the parameters of the PolarDB cluster.
         # 
         # *   This parameter is required for a PolarDB for Oracle or PolarDB for PostgreSQL cluster.
         # *   For PolarDB for MySQL clusters, you must specify this parameter or the `ParameterGroupId` parameter.
@@ -26237,7 +26643,9 @@ class ModifyDBClusterPrimaryZoneRequest(TeaModel):
     ):
         # The ID of the cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~173433~~) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/173433.html) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # Specifies an immediate or scheduled task to switch the primary zone. Valid values:
         # 
@@ -26278,7 +26686,9 @@ class ModifyDBClusterPrimaryZoneRequest(TeaModel):
         self.v_switch_id = v_switch_id
         # The ID of the destination primary zone.
         # 
-        # > You can call the [DescribeRegions](~~98041~~) operation to query available zones.
+        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available zones.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
         self.zone_type = zone_type
 
@@ -26430,7 +26840,9 @@ class ModifyDBClusterResourceGroupRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -26564,6 +26976,8 @@ class ModifyDBClusterSSLRequest(TeaModel):
         sslenabled: str = None,
     ):
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The ID of the endpoint.
         # 
@@ -26572,7 +26986,7 @@ class ModifyDBClusterSSLRequest(TeaModel):
         # *   This parameter is required for a PolarDB for MySQL cluster.
         # 
         # *   This parameter is not required for a PolarDB for Oracle or PolarDB for PostgreSQL cluster. By default, SSL encryption is enabled for all endpoints.
-        # *   You can call the [DescribeDBClusterSSL](~~153414~~) operation to view the details of the endpoint.
+        # *   You can call the [DescribeDBClusterSSL](https://help.aliyun.com/document_detail/153414.html) operation to view the details of the endpoint.
         self.dbendpoint_id = dbendpoint_id
         # The network type supported by the endpoint that is specified by **DBEndpointId**. Valid values:
         # 
@@ -26601,7 +27015,7 @@ class ModifyDBClusterSSLRequest(TeaModel):
         # *   **Enable**: SSL encryption is enabled.
         # *   **Update**: The SSL certificate is updated.
         # 
-        # > After you enable SSL encryption or update the SSL certificate, you must download and configure the certificate. For more information, see [Configure SSL encryption](~~153182~~).
+        # > After you enable SSL encryption or update the SSL certificate, you must download and configure the certificate. For more information, see [Configure SSL encryption](https://help.aliyun.com/document_detail/153182.html).
         self.sslenabled = sslenabled
 
     def validate(self):
@@ -26744,6 +27158,9 @@ class ModifyDBClusterServerlessConfRequest(TeaModel):
         scale_ro_num_max: str = None,
         scale_ro_num_min: str = None,
         seconds_until_auto_pause: str = None,
+        serverless_rule_cpu_enlarge_threshold: str = None,
+        serverless_rule_cpu_shrink_threshold: str = None,
+        serverless_rule_mode: str = None,
     ):
         # Specifies whether to enable No-activity Suspension. Default value: false. Valid values:
         # 
@@ -26751,6 +27168,8 @@ class ModifyDBClusterServerlessConfRequest(TeaModel):
         # *   **false**\
         self.allow_shut_down = allow_shut_down
         # The ID of the serverless cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # Specifies an immediate or scheduled task to modify parameters and restart the cluster. Valid values:
         # 
@@ -26784,6 +27203,9 @@ class ModifyDBClusterServerlessConfRequest(TeaModel):
         self.scale_ro_num_min = scale_ro_num_min
         # The detection period for No-activity Suspension. Valid values: 5 to 1440. Unit: minutes. The detection duration must be a multiple of 5 minutes.
         self.seconds_until_auto_pause = seconds_until_auto_pause
+        self.serverless_rule_cpu_enlarge_threshold = serverless_rule_cpu_enlarge_threshold
+        self.serverless_rule_cpu_shrink_threshold = serverless_rule_cpu_shrink_threshold
+        self.serverless_rule_mode = serverless_rule_mode
 
     def validate(self):
         pass
@@ -26826,6 +27248,12 @@ class ModifyDBClusterServerlessConfRequest(TeaModel):
             result['ScaleRoNumMin'] = self.scale_ro_num_min
         if self.seconds_until_auto_pause is not None:
             result['SecondsUntilAutoPause'] = self.seconds_until_auto_pause
+        if self.serverless_rule_cpu_enlarge_threshold is not None:
+            result['ServerlessRuleCpuEnlargeThreshold'] = self.serverless_rule_cpu_enlarge_threshold
+        if self.serverless_rule_cpu_shrink_threshold is not None:
+            result['ServerlessRuleCpuShrinkThreshold'] = self.serverless_rule_cpu_shrink_threshold
+        if self.serverless_rule_mode is not None:
+            result['ServerlessRuleMode'] = self.serverless_rule_mode
         return result
 
     def from_map(self, m: dict = None):
@@ -26862,6 +27290,12 @@ class ModifyDBClusterServerlessConfRequest(TeaModel):
             self.scale_ro_num_min = m.get('ScaleRoNumMin')
         if m.get('SecondsUntilAutoPause') is not None:
             self.seconds_until_auto_pause = m.get('SecondsUntilAutoPause')
+        if m.get('ServerlessRuleCpuEnlargeThreshold') is not None:
+            self.serverless_rule_cpu_enlarge_threshold = m.get('ServerlessRuleCpuEnlargeThreshold')
+        if m.get('ServerlessRuleCpuShrinkThreshold') is not None:
+            self.serverless_rule_cpu_shrink_threshold = m.get('ServerlessRuleCpuShrinkThreshold')
+        if m.get('ServerlessRuleMode') is not None:
+            self.serverless_rule_mode = m.get('ServerlessRuleMode')
         return self
 
 
@@ -26958,6 +27392,8 @@ class ModifyDBClusterStorageSpaceRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
         self.client_token = client_token
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -26975,6 +27411,8 @@ class ModifyDBClusterStorageSpaceRequest(TeaModel):
         # The storage capacity that you can select when you change the cluster. Unit: GB.
         # 
         # >  You can set this parameter for PolarDB for MySQL clusters of Standard Edition to a value that ranges from 20 to 32000.
+        # 
+        # This parameter is required.
         self.storage_space = storage_space
         # The category of the cluster. Default value: ON. Valid values:
         # 
@@ -27135,6 +27573,8 @@ class ModifyDBClusterTDERequest(TeaModel):
         tdestatus: str = None,
     ):
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # Specifies whether to enable automatic encryption for new tables. Valid values:
         # 
@@ -27147,9 +27587,11 @@ class ModifyDBClusterTDERequest(TeaModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](~~93689~~).
+        # The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://help.aliyun.com/document_detail/93689.html).
         self.role_arn = role_arn
         # Modifies the TDE status. Set the value to **Enable**.
+        # 
+        # This parameter is required.
         self.tdestatus = tdestatus
 
     def validate(self):
@@ -27285,13 +27727,19 @@ class ModifyDBDescriptionRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The description of the database. The description must meet the following requirements:
         # 
         # *   It cannot start with `http://` or `https://`.
         # *   It must be 2 to 256 characters in length.
+        # 
+        # This parameter is required.
         self.dbdescription = dbdescription
         # The name of the database.
+        # 
+        # This parameter is required.
         self.dbname = dbname
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -27434,16 +27882,22 @@ class ModifyDBEndpointAddressRequest(TeaModel):
         self.connection_string_prefix = connection_string_prefix
         # The ID of cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~98094~~) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The ID of the endpoint.
         # 
-        # > You can call the [DescribeDBClusterEndpoints](~~98205~~) operation to query endpoint IDs.
+        # > You can call the [DescribeDBClusterEndpoints](https://help.aliyun.com/document_detail/98205.html) operation to query endpoint IDs.
+        # 
+        # This parameter is required.
         self.dbendpoint_id = dbendpoint_id
         # The network type of the endpoint. Valid values:
         # 
         # *   **Public**\
         # *   **Private**\
+        # 
+        # This parameter is required.
         self.net_type = net_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -27457,7 +27911,7 @@ class ModifyDBEndpointAddressRequest(TeaModel):
         # *   The prefix must start with a letter and end with a digit or a letter.
         # *   The prefix must be 6 to 30 characters in length.
         # 
-        # >- You can bind each internal endpoint of PolarDB to a private domain name. The private domain name takes effect only in the specified virtual private clouds (VPCs) in the current region. Private domain names are managed by using PrivateZone. You can use the CNAME record of PrivateZone to map domain names to PolarDB. You are charged a small fee for this feature. For more information, see [Pricing](~~71338~~).
+        # >- You can bind each internal endpoint of PolarDB to a private domain name. The private domain name takes effect only in the specified virtual private clouds (VPCs) in the current region. Private domain names are managed by using PrivateZone. You can use the CNAME record of PrivateZone to map domain names to PolarDB. You are charged a small fee for this feature. For more information, see [Pricing](https://help.aliyun.com/document_detail/71338.html).
         # >- This parameter takes effect only if you set **NetType** to Private.
         self.private_zone_address_prefix = private_zone_address_prefix
         # The name of the private zone.
@@ -27615,8 +28069,12 @@ class ModifyDBNodeClassRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
         self.client_token = client_token
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The specifications of all nodes. For more information, see [Specifications of computing nodes](~~102542~~).
+        # The specifications of all nodes. For more information, see [Specifications of computing nodes](https://help.aliyun.com/document_detail/102542.html).
+        # 
+        # This parameter is required.
         self.dbnode_target_class = dbnode_target_class
         # The type of the node. Valid values:
         # 
@@ -27628,6 +28086,8 @@ class ModifyDBNodeClassRequest(TeaModel):
         # 
         # *   **Upgrade**\
         # *   **Downgrade**\
+        # 
+        # This parameter is required.
         self.modify_type = modify_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -27810,14 +28270,20 @@ class ModifyDBNodeHotReplicaModeRequest(TeaModel):
     ):
         # The ID of the cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~98094~~) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The ID of the node in the cluster.
+        # 
+        # This parameter is required.
         self.dbnode_id = dbnode_id
         # Specifies whether to enable the hot standby feature. Valid values:
         # 
         # *   **ON**\
         # *   **OFF**\
+        # 
+        # This parameter is required.
         self.hot_replica_mode = hot_replica_mode
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -27877,7 +28343,7 @@ class ModifyDBNodeHotReplicaModeResponseBody(TeaModel):
     ):
         # The ID of the cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~98094~~) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
         self.dbcluster_id = dbcluster_id
         # The ID of the order.
         self.order_id = order_id
@@ -27963,7 +28429,7 @@ class ModifyDBNodesClassRequestDBNode(TeaModel):
         # 
         # >  If you specify this parameter, DBNode.N.TargetClass is required. N is an integer that starts from 1. The maximum value of N is calculated by using the following formula:16 - The number of current nodes.
         self.dbnode_id = dbnode_id
-        # The specifications of the node that you want to change. For more information, see [Specifications of compute nodes](~~102542~~).
+        # The specifications of the node that you want to change. For more information, see [Specifications of compute nodes](https://help.aliyun.com/document_detail/102542.html).
         # 
         # >  If you specify this parameter, DBNode.N.DBNodeId is required. N is an integer that starts from 1. The maximum value of N is calculated by using the following formula:16 - The number of current nodes.
         self.target_class = target_class
@@ -28010,13 +28476,19 @@ class ModifyDBNodesClassRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
         self.client_token = client_token
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The details of the nodes.
+        # 
+        # This parameter is required.
         self.dbnode = dbnode
         # The type of the configuration change. Valid values:
         # 
         # *   **Upgrade**\
         # *   **Downgrade**\
+        # 
+        # This parameter is required.
         self.modify_type = modify_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -28206,8 +28678,12 @@ class ModifyDBNodesParametersRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The ID of the node. You can specify multiple node IDs. Separate multiple node IDs with commas (,).
+        # 
+        # This parameter is required.
         self.dbnode_ids = dbnode_ids
         # Specifies whether to immediately run the task to modify parameters and restart the cluster. Valid values: false: runs the task on schedule. true: runs the task immediately. Default value: false.
         self.from_time_service = from_time_service
@@ -28369,10 +28845,14 @@ class ModifyGlobalDatabaseNetworkRequest(TeaModel):
         # 
         # *   It cannot start with `http://` or `https://`.
         # *   It must start with a letter.
-        # *   It can contain letters, digits, underscores (\_), and hyphens (-).
+        # *   It can contain letters, digits, underscores (_), and hyphens (-).
         # *   It must be 2 to 126 characters in length.
+        # 
+        # This parameter is required.
         self.gdndescription = gdndescription
         # The ID of the GDN.
+        # 
+        # This parameter is required.
         self.gdnid = gdnid
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -28516,18 +28996,26 @@ class ModifyGlobalSecurityIPGroupRequest(TeaModel):
         # The IP address in the whitelist template.
         # 
         # >  Multiple IP addresses are separated by commas (,). You can create up to 1,000 IP addresses or CIDR blocks for all IP whitelists.
+        # 
+        # This parameter is required.
         self.gip_list = gip_list
         # The name of the IP whitelist template. The name must meet the following requirements:
         # 
-        # *   The name can contain lowercase letters, digits, and underscores (\_).
+        # *   The name can contain lowercase letters, digits, and underscores (_).
         # *   The name must start with a letter and end with a letter or digit.
         # *   The name must be 2 to 120 characters in length.
+        # 
+        # This parameter is required.
         self.global_ig_name = global_ig_name
         # The ID of the IP whitelist template.
+        # 
+        # This parameter is required.
         self.global_security_group_id = global_security_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -28608,7 +29096,7 @@ class ModifyGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup(TeaModel):
         self.gip_list = gip_list
         # The name of the IP whitelist template. The name must meet the following requirements:
         # 
-        # *   The name can contain lowercase letters, digits, and underscores (\_).
+        # *   The name can contain lowercase letters, digits, and underscores (_).
         # *   The name must start with a letter and end with a letter or a digit.
         # *   The name must be 2 to 120 characters in length.
         self.global_ig_name = global_ig_name
@@ -28752,15 +29240,21 @@ class ModifyGlobalSecurityIPGroupNameRequest(TeaModel):
     ):
         # The name of the IP whitelist template. The name must meet the following requirements:
         # 
-        # *   The name can contain lowercase letters, digits, and underscores (\_).
+        # *   The name can contain lowercase letters, digits, and underscores (_).
         # *   The name must start with a letter and end with a letter or digit.
         # *   The name must be 2 to 120 characters in length.
+        # 
+        # This parameter is required.
         self.global_ig_name = global_ig_name
         # The ID of the IP whitelist template.
+        # 
+        # This parameter is required.
         self.global_security_group_id = global_security_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -28834,7 +29328,7 @@ class ModifyGlobalSecurityIPGroupNameResponseBodyGlobalSecurityIPGroup(TeaModel)
         self.gip_list = gip_list
         # The name of the IP whitelist template. The name must meet the following requirements:
         # 
-        # *   The name can contain lowercase letters, digits, and underscores (\_).
+        # *   The name can contain lowercase letters, digits, and underscores (_).
         # *   The name must start with a letter and end with a letter or a digit.
         # *   The name must be 2 to 120 characters in length.
         self.global_ig_name = global_ig_name
@@ -28973,12 +29467,18 @@ class ModifyGlobalSecurityIPGroupRelationRequest(TeaModel):
         security_token: str = None,
     ):
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The ID of the IP whitelist template.
+        # 
+        # This parameter is required.
         self.global_security_group_id = global_security_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -29052,7 +29552,7 @@ class ModifyGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel(Te
         self.gip_list = gip_list
         # The name of the IP whitelist template. The name must meet the following requirements:
         # 
-        # *   The name can contain lowercase letters, digits, and underscores (\_).
+        # *   The name can contain lowercase letters, digits, and underscores (_).
         # *   The name must start with a letter and end with a letter or a digit.
         # *   The name must be 2 to 120 characters in length.
         self.global_ig_name = global_ig_name
@@ -29198,9 +29698,11 @@ class ModifyLogBackupPolicyRequest(TeaModel):
     ):
         # The cluster ID.
         # 
-        # >  You can call the [DescribeDBClusters](~~98094~~) operation to query the information of all clusters that are deployed in a specific region, such as the cluster IDs.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the information of all clusters that are deployed in a specific region, such as the cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview](~~72672~~).
+        # The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
         self.log_backup_another_region_region = log_backup_another_region_region
         # The retention period of cross-region log backups. Valid values:
         # 
@@ -29213,7 +29715,7 @@ class ModifyLogBackupPolicyRequest(TeaModel):
         # The retention period of the log backups. Valid values:
         # 
         # *   3 to 7300: The log backups are retained for 3 to 7,300 days.
-        # *   \-1: The log backups are permanently retained.
+        # *   \\-1: The log backups are permanently retained.
         self.log_backup_retention_period = log_backup_retention_period
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -29349,7 +29851,9 @@ class ModifyMaskingRulesRequest(TeaModel):
     ):
         # The ID of the cluster.
         # 
-        # > You can call the [DescribeDBClusters](~~98094~~) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+        # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # Specifies whether to enable the specified masking rule. Valid values:
         # 
@@ -29374,7 +29878,7 @@ class ModifyMaskingRulesRequest(TeaModel):
         self.rule_config = rule_config
         # The name of the data masking rule. You can specify only one rule name at a time.
         # 
-        # >- You can call the [DescribeMaskingRules](~~212573~~) operation to query the details of all masking rules for a specified cluster, such as the names of the masking rules.
+        # >- You can call the [DescribeMaskingRules](https://help.aliyun.com/document_detail/212573.html) operation to query the details of all masking rules for a specified cluster, such as the names of the masking rules.
         # >- If the rule name does not exist in the cluster, the system automatically creates a masking rule based on the name and the value of `RuleConfig`.
         self.rule_name = rule_name
         # The list of masking rule names. You can specify one or more masking rules at a time. Separate the masking rule names with commas (,).
@@ -29525,12 +30029,16 @@ class ModifyPendingMaintenanceActionRequest(TeaModel):
         switch_time: str = None,
     ):
         # The ID of the task. You can specify multiple task IDs at a time to modify the switching time of the tasks in a unified manner. The task IDs must be separated with commas (,).
+        # 
+        # This parameter is required.
         self.ids = ids
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the cluster.
         # 
-        # >  You can call the [DescribeRegions](~~98041~~) operation to query the region ID details.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the region ID details.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -29538,6 +30046,8 @@ class ModifyPendingMaintenanceActionRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
         # The time that you specify for the background to perform the action that corresponds to the pending event. Specify the time in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.switch_time = switch_time
 
     def validate(self):
@@ -29683,6 +30193,8 @@ class OpenAITaskRequest(TeaModel):
         username: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.node_type = node_type
         self.owner_account = owner_account
@@ -29690,6 +30202,8 @@ class OpenAITaskRequest(TeaModel):
         # The password used to access the database for which you want to enable the PolarDB for AI feature.
         self.password = password
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -29967,9 +30481,13 @@ class RemoveDBClusterFromGDNRequest(TeaModel):
     ):
         # The ID of the cluster in the GDN.
         # 
-        # >  You can call the [DescribeGlobalDatabaseNetwork](~~264580~~) operation to view the ID of the cluster in the GDN.
+        # >  You can call the [DescribeGlobalDatabaseNetwork](https://help.aliyun.com/document_detail/264580.html) operation to view the ID of the cluster in the GDN.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The ID of the GDN.
+        # 
+        # This parameter is required.
         self.gdnid = gdnid
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -30104,6 +30622,8 @@ class ResetAccountRequest(TeaModel):
         # The username of the account.
         # 
         # > You can reset only the permissions of a privileged account.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The password of the account. The password must meet the following requirements:
         # 
@@ -30112,6 +30632,8 @@ class ResetAccountRequest(TeaModel):
         # *   Special characters include `! @ # $ % ^ & * ( ) _ + - =`
         self.account_password = account_password
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -30245,9 +30767,13 @@ class ResetGlobalDatabaseNetworkRequest(TeaModel):
     ):
         # The ID of the cluster in the GDN.
         # 
-        # >  You can call the [DescribeGlobalDatabaseNetwork](~~264580~~) operation to view the ID of the cluster in the GDN.
+        # >  You can call the [DescribeGlobalDatabaseNetwork](https://help.aliyun.com/document_detail/264580.html) operation to view the ID of the cluster in the GDN.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The ID of the GDN.
+        # 
+        # This parameter is required.
         self.gdnid = gdnid
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -30384,6 +30910,7 @@ class RestartDBLinkRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -30522,7 +31049,9 @@ class RestartDBNodeRequest(TeaModel):
     ):
         # The ID of the node.
         # 
-        # >  You can call the [DescribeDBClusters](~~185342~~) operation to query the details of all clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/185342.html) operation to query the details of all clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+        # 
+        # This parameter is required.
         self.dbnode_id = dbnode_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -30649,11 +31178,13 @@ class RestoreTableRequest(TeaModel):
     ):
         # The ID of the backup set.
         # 
-        # >  You must specify this parameter if you need to restore a database or a table by using a backup set. You can call the [DescribeBackups](~~98102~~) operation to query the ID of the backup set.
+        # >  You must specify this parameter if you need to restore a database or a table by using a backup set. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/98102.html) operation to query the ID of the backup set.
         self.backup_id = backup_id
         # The cluster ID.
         # 
-        # >  You can call the [DescribeDBClusters](~~98094~~) operation to query the details of all clusters within your account.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters within your account.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -30670,7 +31201,9 @@ class RestoreTableRequest(TeaModel):
         self.security_token = security_token
         # The JSON string that contains the information of the database and the table that you want to restore. All values of the database and table information are of the string type. Example: `[ { "tables":[ { "name":"testtb", "type":"table", "newname":"testtb_restore" } ], "name":"testdb", "type":"db", "newname":"testdb_restore" } ]`.
         # 
-        # >  You can call the [DescribeMetaList](~~194770~~) operation to query the names and details of databases and tables that can be restored and enter their information into the corresponding locations in the preceding example.
+        # >  You can call the [DescribeMetaList](https://help.aliyun.com/document_detail/194770.html) operation to query the names and details of databases and tables that can be restored and enter their information into the corresponding locations in the preceding example.
+        # 
+        # This parameter is required.
         self.table_meta = table_meta
 
     def validate(self):
@@ -30808,10 +31341,16 @@ class RevokeAccountPrivilegeRequest(TeaModel):
         # The name of the account.
         # 
         # >  You can specify only a standard account.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The ID of the PolarDB cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The names of the databases. If you need to specify multiple database names, separate the names with commas (,).
+        # 
+        # This parameter is required.
         self.dbname = dbname
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -30947,7 +31486,7 @@ class SwitchOverGlobalDatabaseNetworkRequest(TeaModel):
     ):
         # The ID of the cluster that will become the primary cluster in the GDN.
         # 
-        # You can call the [DescribeGlobalDatabaseNetwork](~~264580~~) operation to query the ID of the cluster in the GDN.
+        # You can call the [DescribeGlobalDatabaseNetwork](https://help.aliyun.com/document_detail/264580.html) operation to query the ID of the cluster in the GDN.
         self.dbcluster_id = dbcluster_id
         # Specifies whether to forcibly switch over the primary and secondary clusters in the GDN. Valid values:
         # 
@@ -30955,6 +31494,8 @@ class SwitchOverGlobalDatabaseNetworkRequest(TeaModel):
         # *   **false**\
         self.forced = forced
         # The ID of the GDN.
+        # 
+        # This parameter is required.
         self.gdnid = gdnid
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -31145,12 +31686,18 @@ class TagResourcesRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the cluster.
+        # 
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The type of the resource. Set the value to **cluster**.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -31286,7 +31833,7 @@ class TempModifyDBNodeRequestDBNode(TeaModel):
     ):
         # The instance type of the added node. The instance type of the added node must be the same as the instance type of the original node.
         # 
-        # >  You can call the [DescribeDBClusters](~~98094~~) operation to view the instance types of original nodes.
+        # >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to view the instance types of original nodes.
         self.target_class = target_class
         # The ID of the zone in which the added node is deployed. The instance type of the added node must be the same as the instance type of the original node.
         self.zone_id = zone_id
@@ -31332,14 +31879,22 @@ class TempModifyDBNodeRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value. Make sure that the value is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The information of the added node.
+        # 
+        # This parameter is required.
         self.dbnode = dbnode
         # The type of configuration change. Set the value to **TempUpgrade**.
+        # 
+        # This parameter is required.
         self.modify_type = modify_type
         # The type of operation performed on the cluster. Valid values:
         # 
         # *   **Modify**: temporarily upgrade the configuration of the cluster.
+        # 
+        # This parameter is required.
         self.operation_type = operation_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -31348,6 +31903,8 @@ class TempModifyDBNodeRequest(TeaModel):
         # The rollback time of the configuration for the temporary upgrade. Specify the time in the ISO 8601 standard in the YYYY-MM-DD hh:mm:ss format.
         # 
         # >  The rollback time cannot be 1 hour earlier than the current time and cannot be later than one day before the time when the cluster expires.
+        # 
+        # This parameter is required.
         self.restore_time = restore_time
 
     def validate(self):
@@ -31522,6 +32079,8 @@ class TransformDBClusterPayTypeRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value. Make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -31529,6 +32088,8 @@ class TransformDBClusterPayTypeRequest(TeaModel):
         # 
         # *   **Postpaid**: pay-as-you-go.
         # *   **Prepaid**: subscription.
+        # 
+        # This parameter is required.
         self.pay_type = pay_type
         # The renewal cycle of the cluster. Valid values:
         # 
@@ -31538,6 +32099,8 @@ class TransformDBClusterPayTypeRequest(TeaModel):
         # >  This parameter is required if you set the **PayType** parameter to **Prepaid**.
         self.period = period
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -31734,13 +32297,19 @@ class UntagResourcesRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region.
         # 
-        # >  You can call the [DescribeRegions](~~98041~~) operation to query the available regions.
+        # >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the available regions.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The IDs of the clusters.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The type of the resource. Set the value to **cluster**.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The keys of the tags.
         self.tag_key = tag_key
@@ -31883,6 +32452,8 @@ class UpgradeDBClusterVersionRequest(TeaModel):
         upgrade_type: str = None,
     ):
         # The ID of cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # Specifies whether to immediately run the kernel upgrade task. Valid values:
         # 
@@ -31905,7 +32476,7 @@ class UpgradeDBClusterVersionRequest(TeaModel):
         self.planned_start_time = planned_start_time
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The code of the version to which you want to upgrade the cluster. You can call the [DescribeDBClusterVersion](~~2319145~~) operation to query the version code.
+        # The code of the version to which you want to upgrade the cluster. You can call the [DescribeDBClusterVersion](https://help.aliyun.com/document_detail/2319145.html) operation to query the version code.
         self.target_dbrevision_version_code = target_dbrevision_version_code
         # The upgrade tag. The value is fixed as **INNOVATE**.
         # 

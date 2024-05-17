@@ -1,3 +1,11 @@
+2024-05-17 Version: 5.1.1
+- Update API DescribeDBClusterServerlessConf: update response param.
+- Update API DescribeDBClusters: update response param.
+- Update API ModifyDBClusterServerlessConf: add param ServerlessRuleCpuEnlargeThreshold.
+- Update API ModifyDBClusterServerlessConf: add param ServerlessRuleCpuShrinkThreshold.
+- Update API ModifyDBClusterServerlessConf: add param ServerlessRuleMode.
+
+
 2024-04-24 Version: 5.1.0
 - Support API RestartDBLink.
 
