@@ -1,3 +1,18 @@
+2024-05-17 Version: 1.4.0
+- Support API CreateLink.
+- Support API QueryInfoFromMdp.
+- Support API QueryLink.
+- Update API PushMultiple: add param ActivityContentState.
+- Update API PushMultiple: add param ActivityEvent.
+- Update API PushMultiple: add param DismissalDate.
+- Update API PushSimple: add param ActivityContentState.
+- Update API PushSimple: add param ActivityEvent.
+- Update API PushSimple: add param DismissalDate.
+- Update API PushTemplate: add param ActivityContentState.
+- Update API PushTemplate: add param ActivityEvent.
+- Update API PushTemplate: add param DismissalDate.
+
+
 2024-02-06 Version: 1.3.0
 - Generated python 2020-10-28 for mPaaS.
 

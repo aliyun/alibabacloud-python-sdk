@@ -102,6 +102,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.AddMdsMiniConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.AddMdsMiniConfigResponse:
+        """
+        @param request: AddMdsMiniConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddMdsMiniConfigResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -136,6 +141,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.AddMdsMiniConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.AddMdsMiniConfigResponse:
+        """
+        @param request: AddMdsMiniConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddMdsMiniConfigResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -169,6 +179,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.AddMdsMiniConfigRequest,
     ) -> m_paa_s20201028_models.AddMdsMiniConfigResponse:
+        """
+        @param request: AddMdsMiniConfigRequest
+        @return: AddMdsMiniConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_mds_mini_config_with_options(request, runtime)
 
@@ -176,6 +190,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.AddMdsMiniConfigRequest,
     ) -> m_paa_s20201028_models.AddMdsMiniConfigResponse:
+        """
+        @param request: AddMdsMiniConfigRequest
+        @return: AddMdsMiniConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_mds_mini_config_with_options_async(request, runtime)
 
@@ -184,6 +202,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CancelPushSchedulerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CancelPushSchedulerResponse:
+        """
+        @param request: CancelPushSchedulerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelPushSchedulerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -218,6 +241,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CancelPushSchedulerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CancelPushSchedulerResponse:
+        """
+        @param request: CancelPushSchedulerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelPushSchedulerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -251,6 +279,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CancelPushSchedulerRequest,
     ) -> m_paa_s20201028_models.CancelPushSchedulerResponse:
+        """
+        @param request: CancelPushSchedulerRequest
+        @return: CancelPushSchedulerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cancel_push_scheduler_with_options(request, runtime)
 
@@ -258,6 +290,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CancelPushSchedulerRequest,
     ) -> m_paa_s20201028_models.CancelPushSchedulerResponse:
+        """
+        @param request: CancelPushSchedulerRequest
+        @return: CancelPushSchedulerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_push_scheduler_with_options_async(request, runtime)
 
@@ -266,6 +302,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.ChangeMcubeMiniTaskStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.ChangeMcubeMiniTaskStatusResponse:
+        """
+        @param request: ChangeMcubeMiniTaskStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeMcubeMiniTaskStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -306,6 +347,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.ChangeMcubeMiniTaskStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.ChangeMcubeMiniTaskStatusResponse:
+        """
+        @param request: ChangeMcubeMiniTaskStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeMcubeMiniTaskStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -345,6 +391,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.ChangeMcubeMiniTaskStatusRequest,
     ) -> m_paa_s20201028_models.ChangeMcubeMiniTaskStatusResponse:
+        """
+        @param request: ChangeMcubeMiniTaskStatusRequest
+        @return: ChangeMcubeMiniTaskStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.change_mcube_mini_task_status_with_options(request, runtime)
 
@@ -352,6 +402,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.ChangeMcubeMiniTaskStatusRequest,
     ) -> m_paa_s20201028_models.ChangeMcubeMiniTaskStatusResponse:
+        """
+        @param request: ChangeMcubeMiniTaskStatusRequest
+        @return: ChangeMcubeMiniTaskStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.change_mcube_mini_task_status_with_options_async(request, runtime)
 
@@ -360,6 +414,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.ChangeMcubeNebulaTaskStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.ChangeMcubeNebulaTaskStatusResponse:
+        """
+        @param request: ChangeMcubeNebulaTaskStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeMcubeNebulaTaskStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -400,6 +459,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.ChangeMcubeNebulaTaskStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.ChangeMcubeNebulaTaskStatusResponse:
+        """
+        @param request: ChangeMcubeNebulaTaskStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeMcubeNebulaTaskStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -439,6 +503,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.ChangeMcubeNebulaTaskStatusRequest,
     ) -> m_paa_s20201028_models.ChangeMcubeNebulaTaskStatusResponse:
+        """
+        @param request: ChangeMcubeNebulaTaskStatusRequest
+        @return: ChangeMcubeNebulaTaskStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.change_mcube_nebula_task_status_with_options(request, runtime)
 
@@ -446,6 +514,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.ChangeMcubeNebulaTaskStatusRequest,
     ) -> m_paa_s20201028_models.ChangeMcubeNebulaTaskStatusResponse:
+        """
+        @param request: ChangeMcubeNebulaTaskStatusRequest
+        @return: ChangeMcubeNebulaTaskStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.change_mcube_nebula_task_status_with_options_async(request, runtime)
 
@@ -454,6 +526,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.ChangeMcubePublicTaskStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.ChangeMcubePublicTaskStatusResponse:
+        """
+        @param request: ChangeMcubePublicTaskStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeMcubePublicTaskStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -490,6 +567,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.ChangeMcubePublicTaskStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.ChangeMcubePublicTaskStatusResponse:
+        """
+        @param request: ChangeMcubePublicTaskStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeMcubePublicTaskStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -525,6 +607,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.ChangeMcubePublicTaskStatusRequest,
     ) -> m_paa_s20201028_models.ChangeMcubePublicTaskStatusResponse:
+        """
+        @param request: ChangeMcubePublicTaskStatusRequest
+        @return: ChangeMcubePublicTaskStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.change_mcube_public_task_status_with_options(request, runtime)
 
@@ -532,6 +618,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.ChangeMcubePublicTaskStatusRequest,
     ) -> m_paa_s20201028_models.ChangeMcubePublicTaskStatusResponse:
+        """
+        @param request: ChangeMcubePublicTaskStatusRequest
+        @return: ChangeMcubePublicTaskStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.change_mcube_public_task_status_with_options_async(request, runtime)
 
@@ -540,6 +630,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CopyMcdpGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CopyMcdpGroupResponse:
+        """
+        @param request: CopyMcdpGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CopyMcdpGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -574,6 +669,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CopyMcdpGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CopyMcdpGroupResponse:
+        """
+        @param request: CopyMcdpGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CopyMcdpGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -607,6 +707,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CopyMcdpGroupRequest,
     ) -> m_paa_s20201028_models.CopyMcdpGroupResponse:
+        """
+        @param request: CopyMcdpGroupRequest
+        @return: CopyMcdpGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.copy_mcdp_group_with_options(request, runtime)
 
@@ -614,14 +718,139 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CopyMcdpGroupRequest,
     ) -> m_paa_s20201028_models.CopyMcdpGroupResponse:
+        """
+        @param request: CopyMcdpGroupRequest
+        @return: CopyMcdpGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.copy_mcdp_group_with_options_async(request, runtime)
+
+    def create_link_with_options(
+        self,
+        request: m_paa_s20201028_models.CreateLinkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.CreateLinkResponse:
+        """
+        @summary 创建短链
+        
+        @param request: CreateLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLinkResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.cors):
+            body['Cors'] = request.cors
+        if not UtilClient.is_unset(request.domain):
+            body['Domain'] = request.domain
+        if not UtilClient.is_unset(request.dynamicfield):
+            body['Dynamicfield'] = request.dynamicfield
+        if not UtilClient.is_unset(request.target_url):
+            body['TargetUrl'] = request.target_url
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateLink',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.CreateLinkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_link_with_options_async(
+        self,
+        request: m_paa_s20201028_models.CreateLinkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.CreateLinkResponse:
+        """
+        @summary 创建短链
+        
+        @param request: CreateLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLinkResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.cors):
+            body['Cors'] = request.cors
+        if not UtilClient.is_unset(request.domain):
+            body['Domain'] = request.domain
+        if not UtilClient.is_unset(request.dynamicfield):
+            body['Dynamicfield'] = request.dynamicfield
+        if not UtilClient.is_unset(request.target_url):
+            body['TargetUrl'] = request.target_url
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateLink',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.CreateLinkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_link(
+        self,
+        request: m_paa_s20201028_models.CreateLinkRequest,
+    ) -> m_paa_s20201028_models.CreateLinkResponse:
+        """
+        @summary 创建短链
+        
+        @param request: CreateLinkRequest
+        @return: CreateLinkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_link_with_options(request, runtime)
+
+    async def create_link_async(
+        self,
+        request: m_paa_s20201028_models.CreateLinkRequest,
+    ) -> m_paa_s20201028_models.CreateLinkResponse:
+        """
+        @summary 创建短链
+        
+        @param request: CreateLinkRequest
+        @return: CreateLinkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_link_with_options_async(request, runtime)
 
     def create_mas_crowd_with_options(
         self,
         request: m_paa_s20201028_models.CreateMasCrowdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMasCrowdResponse:
+        """
+        @param request: CreateMasCrowdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMasCrowdResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -656,6 +885,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateMasCrowdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMasCrowdResponse:
+        """
+        @param request: CreateMasCrowdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMasCrowdResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -689,6 +923,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMasCrowdRequest,
     ) -> m_paa_s20201028_models.CreateMasCrowdResponse:
+        """
+        @param request: CreateMasCrowdRequest
+        @return: CreateMasCrowdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_mas_crowd_with_options(request, runtime)
 
@@ -696,6 +934,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMasCrowdRequest,
     ) -> m_paa_s20201028_models.CreateMasCrowdResponse:
+        """
+        @param request: CreateMasCrowdRequest
+        @return: CreateMasCrowdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_mas_crowd_with_options_async(request, runtime)
 
@@ -704,6 +946,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateMasFunnelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMasFunnelResponse:
+        """
+        @param request: CreateMasFunnelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMasFunnelResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -738,6 +985,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateMasFunnelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMasFunnelResponse:
+        """
+        @param request: CreateMasFunnelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMasFunnelResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -771,6 +1023,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMasFunnelRequest,
     ) -> m_paa_s20201028_models.CreateMasFunnelResponse:
+        """
+        @param request: CreateMasFunnelRequest
+        @return: CreateMasFunnelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_mas_funnel_with_options(request, runtime)
 
@@ -778,6 +1034,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMasFunnelRequest,
     ) -> m_paa_s20201028_models.CreateMasFunnelResponse:
+        """
+        @param request: CreateMasFunnelRequest
+        @return: CreateMasFunnelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_mas_funnel_with_options_async(request, runtime)
 
@@ -786,6 +1046,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateMcdpEventRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMcdpEventResponse:
+        """
+        @param request: CreateMcdpEventRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMcdpEventResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -820,6 +1085,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateMcdpEventRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMcdpEventResponse:
+        """
+        @param request: CreateMcdpEventRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMcdpEventResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -853,6 +1123,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMcdpEventRequest,
     ) -> m_paa_s20201028_models.CreateMcdpEventResponse:
+        """
+        @param request: CreateMcdpEventRequest
+        @return: CreateMcdpEventResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_mcdp_event_with_options(request, runtime)
 
@@ -860,6 +1134,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMcdpEventRequest,
     ) -> m_paa_s20201028_models.CreateMcdpEventResponse:
+        """
+        @param request: CreateMcdpEventRequest
+        @return: CreateMcdpEventResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_mcdp_event_with_options_async(request, runtime)
 
@@ -868,6 +1146,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateMcdpEventAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMcdpEventAttributeResponse:
+        """
+        @param request: CreateMcdpEventAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMcdpEventAttributeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -902,6 +1185,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateMcdpEventAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMcdpEventAttributeResponse:
+        """
+        @param request: CreateMcdpEventAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMcdpEventAttributeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -935,6 +1223,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMcdpEventAttributeRequest,
     ) -> m_paa_s20201028_models.CreateMcdpEventAttributeResponse:
+        """
+        @param request: CreateMcdpEventAttributeRequest
+        @return: CreateMcdpEventAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_mcdp_event_attribute_with_options(request, runtime)
 
@@ -942,6 +1234,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMcdpEventAttributeRequest,
     ) -> m_paa_s20201028_models.CreateMcdpEventAttributeResponse:
+        """
+        @param request: CreateMcdpEventAttributeRequest
+        @return: CreateMcdpEventAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_mcdp_event_attribute_with_options_async(request, runtime)
 
@@ -950,6 +1246,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateMcdpGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMcdpGroupResponse:
+        """
+        @param request: CreateMcdpGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMcdpGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -984,6 +1285,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateMcdpGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMcdpGroupResponse:
+        """
+        @param request: CreateMcdpGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMcdpGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1017,6 +1323,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMcdpGroupRequest,
     ) -> m_paa_s20201028_models.CreateMcdpGroupResponse:
+        """
+        @param request: CreateMcdpGroupRequest
+        @return: CreateMcdpGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_mcdp_group_with_options(request, runtime)
 
@@ -1024,6 +1334,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMcdpGroupRequest,
     ) -> m_paa_s20201028_models.CreateMcdpGroupResponse:
+        """
+        @param request: CreateMcdpGroupRequest
+        @return: CreateMcdpGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_mcdp_group_with_options_async(request, runtime)
 
@@ -1032,6 +1346,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateMcdpMaterialRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMcdpMaterialResponse:
+        """
+        @param request: CreateMcdpMaterialRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMcdpMaterialResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1066,6 +1385,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateMcdpMaterialRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMcdpMaterialResponse:
+        """
+        @param request: CreateMcdpMaterialRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMcdpMaterialResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1099,6 +1423,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMcdpMaterialRequest,
     ) -> m_paa_s20201028_models.CreateMcdpMaterialResponse:
+        """
+        @param request: CreateMcdpMaterialRequest
+        @return: CreateMcdpMaterialResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_mcdp_material_with_options(request, runtime)
 
@@ -1106,6 +1434,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMcdpMaterialRequest,
     ) -> m_paa_s20201028_models.CreateMcdpMaterialResponse:
+        """
+        @param request: CreateMcdpMaterialRequest
+        @return: CreateMcdpMaterialResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_mcdp_material_with_options_async(request, runtime)
 
@@ -1114,6 +1446,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateMcdpZoneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMcdpZoneResponse:
+        """
+        @param request: CreateMcdpZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMcdpZoneResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1148,6 +1485,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateMcdpZoneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMcdpZoneResponse:
+        """
+        @param request: CreateMcdpZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMcdpZoneResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1181,6 +1523,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMcdpZoneRequest,
     ) -> m_paa_s20201028_models.CreateMcdpZoneResponse:
+        """
+        @param request: CreateMcdpZoneRequest
+        @return: CreateMcdpZoneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_mcdp_zone_with_options(request, runtime)
 
@@ -1188,6 +1534,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMcdpZoneRequest,
     ) -> m_paa_s20201028_models.CreateMcdpZoneResponse:
+        """
+        @param request: CreateMcdpZoneRequest
+        @return: CreateMcdpZoneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_mcdp_zone_with_options_async(request, runtime)
 
@@ -1196,6 +1546,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateMcubeMiniAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMcubeMiniAppResponse:
+        """
+        @param request: CreateMcubeMiniAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMcubeMiniAppResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1232,6 +1587,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateMcubeMiniAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMcubeMiniAppResponse:
+        """
+        @param request: CreateMcubeMiniAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMcubeMiniAppResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1267,6 +1627,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMcubeMiniAppRequest,
     ) -> m_paa_s20201028_models.CreateMcubeMiniAppResponse:
+        """
+        @param request: CreateMcubeMiniAppRequest
+        @return: CreateMcubeMiniAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_mcube_mini_app_with_options(request, runtime)
 
@@ -1274,6 +1638,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMcubeMiniAppRequest,
     ) -> m_paa_s20201028_models.CreateMcubeMiniAppResponse:
+        """
+        @param request: CreateMcubeMiniAppRequest
+        @return: CreateMcubeMiniAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_mcube_mini_app_with_options_async(request, runtime)
 
@@ -1282,6 +1650,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateMcubeMiniTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMcubeMiniTaskResponse:
+        """
+        @param request: CreateMcubeMiniTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMcubeMiniTaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1330,6 +1703,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateMcubeMiniTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMcubeMiniTaskResponse:
+        """
+        @param request: CreateMcubeMiniTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMcubeMiniTaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1377,6 +1755,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMcubeMiniTaskRequest,
     ) -> m_paa_s20201028_models.CreateMcubeMiniTaskResponse:
+        """
+        @param request: CreateMcubeMiniTaskRequest
+        @return: CreateMcubeMiniTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_mcube_mini_task_with_options(request, runtime)
 
@@ -1384,6 +1766,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMcubeMiniTaskRequest,
     ) -> m_paa_s20201028_models.CreateMcubeMiniTaskResponse:
+        """
+        @param request: CreateMcubeMiniTaskRequest
+        @return: CreateMcubeMiniTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_mcube_mini_task_with_options_async(request, runtime)
 
@@ -1392,6 +1778,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateMcubeNebulaAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMcubeNebulaAppResponse:
+        """
+        @param request: CreateMcubeNebulaAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMcubeNebulaAppResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1428,6 +1819,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateMcubeNebulaAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMcubeNebulaAppResponse:
+        """
+        @param request: CreateMcubeNebulaAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMcubeNebulaAppResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1463,6 +1859,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMcubeNebulaAppRequest,
     ) -> m_paa_s20201028_models.CreateMcubeNebulaAppResponse:
+        """
+        @param request: CreateMcubeNebulaAppRequest
+        @return: CreateMcubeNebulaAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_mcube_nebula_app_with_options(request, runtime)
 
@@ -1470,6 +1870,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMcubeNebulaAppRequest,
     ) -> m_paa_s20201028_models.CreateMcubeNebulaAppResponse:
+        """
+        @param request: CreateMcubeNebulaAppRequest
+        @return: CreateMcubeNebulaAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_mcube_nebula_app_with_options_async(request, runtime)
 
@@ -1478,6 +1882,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateMcubeNebulaResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMcubeNebulaResourceResponse:
+        """
+        @param request: CreateMcubeNebulaResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMcubeNebulaResourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1544,6 +1953,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateMcubeNebulaResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMcubeNebulaResourceResponse:
+        """
+        @param request: CreateMcubeNebulaResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMcubeNebulaResourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1609,6 +2023,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMcubeNebulaResourceRequest,
     ) -> m_paa_s20201028_models.CreateMcubeNebulaResourceResponse:
+        """
+        @param request: CreateMcubeNebulaResourceRequest
+        @return: CreateMcubeNebulaResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_mcube_nebula_resource_with_options(request, runtime)
 
@@ -1616,6 +2034,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMcubeNebulaResourceRequest,
     ) -> m_paa_s20201028_models.CreateMcubeNebulaResourceResponse:
+        """
+        @param request: CreateMcubeNebulaResourceRequest
+        @return: CreateMcubeNebulaResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_mcube_nebula_resource_with_options_async(request, runtime)
 
@@ -1624,6 +2046,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateMcubeNebulaTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMcubeNebulaTaskResponse:
+        """
+        @param request: CreateMcubeNebulaTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMcubeNebulaTaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_code):
@@ -1726,6 +2153,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateMcubeNebulaTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMcubeNebulaTaskResponse:
+        """
+        @param request: CreateMcubeNebulaTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMcubeNebulaTaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_code):
@@ -1827,6 +2259,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMcubeNebulaTaskRequest,
     ) -> m_paa_s20201028_models.CreateMcubeNebulaTaskResponse:
+        """
+        @param request: CreateMcubeNebulaTaskRequest
+        @return: CreateMcubeNebulaTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_mcube_nebula_task_with_options(request, runtime)
 
@@ -1834,6 +2270,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMcubeNebulaTaskRequest,
     ) -> m_paa_s20201028_models.CreateMcubeNebulaTaskResponse:
+        """
+        @param request: CreateMcubeNebulaTaskRequest
+        @return: CreateMcubeNebulaTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_mcube_nebula_task_with_options_async(request, runtime)
 
@@ -1842,6 +2282,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateMcubeUpgradePackageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMcubeUpgradePackageResponse:
+        """
+        @param request: CreateMcubeUpgradePackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMcubeUpgradePackageResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1904,6 +2349,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateMcubeUpgradePackageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMcubeUpgradePackageResponse:
+        """
+        @param request: CreateMcubeUpgradePackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMcubeUpgradePackageResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1965,6 +2415,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMcubeUpgradePackageRequest,
     ) -> m_paa_s20201028_models.CreateMcubeUpgradePackageResponse:
+        """
+        @param request: CreateMcubeUpgradePackageRequest
+        @return: CreateMcubeUpgradePackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_mcube_upgrade_package_with_options(request, runtime)
 
@@ -1972,6 +2426,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMcubeUpgradePackageRequest,
     ) -> m_paa_s20201028_models.CreateMcubeUpgradePackageResponse:
+        """
+        @param request: CreateMcubeUpgradePackageRequest
+        @return: CreateMcubeUpgradePackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_mcube_upgrade_package_with_options_async(request, runtime)
 
@@ -1980,6 +2438,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateMcubeUpgradeTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMcubeUpgradeTaskResponse:
+        """
+        @param request: CreateMcubeUpgradeTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMcubeUpgradeTaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2034,6 +2497,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateMcubeUpgradeTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMcubeUpgradeTaskResponse:
+        """
+        @param request: CreateMcubeUpgradeTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMcubeUpgradeTaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2087,6 +2555,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMcubeUpgradeTaskRequest,
     ) -> m_paa_s20201028_models.CreateMcubeUpgradeTaskResponse:
+        """
+        @param request: CreateMcubeUpgradeTaskRequest
+        @return: CreateMcubeUpgradeTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_mcube_upgrade_task_with_options(request, runtime)
 
@@ -2094,6 +2566,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMcubeUpgradeTaskRequest,
     ) -> m_paa_s20201028_models.CreateMcubeUpgradeTaskResponse:
+        """
+        @param request: CreateMcubeUpgradeTaskRequest
+        @return: CreateMcubeUpgradeTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_mcube_upgrade_task_with_options_async(request, runtime)
 
@@ -2102,6 +2578,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateMcubeVhostRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMcubeVhostResponse:
+        """
+        @param request: CreateMcubeVhostRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMcubeVhostResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2136,6 +2617,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateMcubeVhostRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMcubeVhostResponse:
+        """
+        @param request: CreateMcubeVhostRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMcubeVhostResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2169,6 +2655,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMcubeVhostRequest,
     ) -> m_paa_s20201028_models.CreateMcubeVhostResponse:
+        """
+        @param request: CreateMcubeVhostRequest
+        @return: CreateMcubeVhostResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_mcube_vhost_with_options(request, runtime)
 
@@ -2176,6 +2666,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMcubeVhostRequest,
     ) -> m_paa_s20201028_models.CreateMcubeVhostResponse:
+        """
+        @param request: CreateMcubeVhostRequest
+        @return: CreateMcubeVhostResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_mcube_vhost_with_options_async(request, runtime)
 
@@ -2184,6 +2678,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateMcubeWhitelistRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMcubeWhitelistResponse:
+        """
+        @param request: CreateMcubeWhitelistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMcubeWhitelistResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2220,6 +2719,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateMcubeWhitelistRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMcubeWhitelistResponse:
+        """
+        @param request: CreateMcubeWhitelistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMcubeWhitelistResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2255,6 +2759,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMcubeWhitelistRequest,
     ) -> m_paa_s20201028_models.CreateMcubeWhitelistResponse:
+        """
+        @param request: CreateMcubeWhitelistRequest
+        @return: CreateMcubeWhitelistResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_mcube_whitelist_with_options(request, runtime)
 
@@ -2262,6 +2770,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMcubeWhitelistRequest,
     ) -> m_paa_s20201028_models.CreateMcubeWhitelistResponse:
+        """
+        @param request: CreateMcubeWhitelistRequest
+        @return: CreateMcubeWhitelistResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_mcube_whitelist_with_options_async(request, runtime)
 
@@ -2270,6 +2782,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateMcubeWhitelistForIdeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMcubeWhitelistForIdeResponse:
+        """
+        @param request: CreateMcubeWhitelistForIdeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMcubeWhitelistForIdeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2306,6 +2823,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateMcubeWhitelistForIdeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMcubeWhitelistForIdeResponse:
+        """
+        @param request: CreateMcubeWhitelistForIdeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMcubeWhitelistForIdeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2341,6 +2863,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMcubeWhitelistForIdeRequest,
     ) -> m_paa_s20201028_models.CreateMcubeWhitelistForIdeResponse:
+        """
+        @param request: CreateMcubeWhitelistForIdeRequest
+        @return: CreateMcubeWhitelistForIdeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_mcube_whitelist_for_ide_with_options(request, runtime)
 
@@ -2348,6 +2874,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMcubeWhitelistForIdeRequest,
     ) -> m_paa_s20201028_models.CreateMcubeWhitelistForIdeResponse:
+        """
+        @param request: CreateMcubeWhitelistForIdeRequest
+        @return: CreateMcubeWhitelistForIdeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_mcube_whitelist_for_ide_with_options_async(request, runtime)
 
@@ -2356,6 +2886,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateMdsMiniprogramTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMdsMiniprogramTaskResponse:
+        """
+        @param request: CreateMdsMiniprogramTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMdsMiniprogramTaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2408,6 +2943,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateMdsMiniprogramTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMdsMiniprogramTaskResponse:
+        """
+        @param request: CreateMdsMiniprogramTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMdsMiniprogramTaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2459,6 +2999,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMdsMiniprogramTaskRequest,
     ) -> m_paa_s20201028_models.CreateMdsMiniprogramTaskResponse:
+        """
+        @param request: CreateMdsMiniprogramTaskRequest
+        @return: CreateMdsMiniprogramTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_mds_miniprogram_task_with_options(request, runtime)
 
@@ -2466,6 +3010,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMdsMiniprogramTaskRequest,
     ) -> m_paa_s20201028_models.CreateMdsMiniprogramTaskResponse:
+        """
+        @param request: CreateMdsMiniprogramTaskRequest
+        @return: CreateMdsMiniprogramTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_mds_miniprogram_task_with_options_async(request, runtime)
 
@@ -2474,6 +3022,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateMsaEnhanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMsaEnhanceResponse:
+        """
+        @param request: CreateMsaEnhanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMsaEnhanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2508,6 +3061,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateMsaEnhanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateMsaEnhanceResponse:
+        """
+        @param request: CreateMsaEnhanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMsaEnhanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2541,6 +3099,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMsaEnhanceRequest,
     ) -> m_paa_s20201028_models.CreateMsaEnhanceResponse:
+        """
+        @param request: CreateMsaEnhanceRequest
+        @return: CreateMsaEnhanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_msa_enhance_with_options(request, runtime)
 
@@ -2548,6 +3110,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateMsaEnhanceRequest,
     ) -> m_paa_s20201028_models.CreateMsaEnhanceResponse:
+        """
+        @param request: CreateMsaEnhanceRequest
+        @return: CreateMsaEnhanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_msa_enhance_with_options_async(request, runtime)
 
@@ -2556,6 +3122,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateOpenGlobalDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateOpenGlobalDataResponse:
+        """
+        @param request: CreateOpenGlobalDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOpenGlobalDataResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2610,6 +3181,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateOpenGlobalDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateOpenGlobalDataResponse:
+        """
+        @param request: CreateOpenGlobalDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOpenGlobalDataResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2663,6 +3239,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateOpenGlobalDataRequest,
     ) -> m_paa_s20201028_models.CreateOpenGlobalDataResponse:
+        """
+        @param request: CreateOpenGlobalDataRequest
+        @return: CreateOpenGlobalDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_open_global_data_with_options(request, runtime)
 
@@ -2670,6 +3250,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateOpenGlobalDataRequest,
     ) -> m_paa_s20201028_models.CreateOpenGlobalDataResponse:
+        """
+        @param request: CreateOpenGlobalDataRequest
+        @return: CreateOpenGlobalDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_open_global_data_with_options_async(request, runtime)
 
@@ -2678,6 +3262,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateOpenSingleDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateOpenSingleDataResponse:
+        """
+        @param request: CreateOpenSingleDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOpenSingleDataResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2730,6 +3319,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.CreateOpenSingleDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.CreateOpenSingleDataResponse:
+        """
+        @param request: CreateOpenSingleDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOpenSingleDataResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2781,6 +3375,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateOpenSingleDataRequest,
     ) -> m_paa_s20201028_models.CreateOpenSingleDataResponse:
+        """
+        @param request: CreateOpenSingleDataRequest
+        @return: CreateOpenSingleDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_open_single_data_with_options(request, runtime)
 
@@ -2788,6 +3386,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.CreateOpenSingleDataRequest,
     ) -> m_paa_s20201028_models.CreateOpenSingleDataResponse:
+        """
+        @param request: CreateOpenSingleDataRequest
+        @return: CreateOpenSingleDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_open_single_data_with_options_async(request, runtime)
 
@@ -2796,6 +3398,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.DeleteCubecardWhitelistContentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.DeleteCubecardWhitelistContentResponse:
+        """
+        @param request: DeleteCubecardWhitelistContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCubecardWhitelistContentResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2832,6 +3439,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.DeleteCubecardWhitelistContentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.DeleteCubecardWhitelistContentResponse:
+        """
+        @param request: DeleteCubecardWhitelistContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCubecardWhitelistContentResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2867,6 +3479,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.DeleteCubecardWhitelistContentRequest,
     ) -> m_paa_s20201028_models.DeleteCubecardWhitelistContentResponse:
+        """
+        @param request: DeleteCubecardWhitelistContentRequest
+        @return: DeleteCubecardWhitelistContentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_cubecard_whitelist_content_with_options(request, runtime)
 
@@ -2874,6 +3490,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.DeleteCubecardWhitelistContentRequest,
     ) -> m_paa_s20201028_models.DeleteCubecardWhitelistContentResponse:
+        """
+        @param request: DeleteCubecardWhitelistContentRequest
+        @return: DeleteCubecardWhitelistContentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_cubecard_whitelist_content_with_options_async(request, runtime)
 
@@ -2882,6 +3502,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.DeleteMcdpAimRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.DeleteMcdpAimResponse:
+        """
+        @param request: DeleteMcdpAimRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMcdpAimResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2916,6 +3541,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.DeleteMcdpAimRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.DeleteMcdpAimResponse:
+        """
+        @param request: DeleteMcdpAimRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMcdpAimResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2949,6 +3579,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.DeleteMcdpAimRequest,
     ) -> m_paa_s20201028_models.DeleteMcdpAimResponse:
+        """
+        @param request: DeleteMcdpAimRequest
+        @return: DeleteMcdpAimResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_mcdp_aim_with_options(request, runtime)
 
@@ -2956,6 +3590,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.DeleteMcdpAimRequest,
     ) -> m_paa_s20201028_models.DeleteMcdpAimResponse:
+        """
+        @param request: DeleteMcdpAimRequest
+        @return: DeleteMcdpAimResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_mcdp_aim_with_options_async(request, runtime)
 
@@ -2964,6 +3602,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.DeleteMcdpCrowdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.DeleteMcdpCrowdResponse:
+        """
+        @param request: DeleteMcdpCrowdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMcdpCrowdResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2998,6 +3641,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.DeleteMcdpCrowdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.DeleteMcdpCrowdResponse:
+        """
+        @param request: DeleteMcdpCrowdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMcdpCrowdResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3031,6 +3679,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.DeleteMcdpCrowdRequest,
     ) -> m_paa_s20201028_models.DeleteMcdpCrowdResponse:
+        """
+        @param request: DeleteMcdpCrowdRequest
+        @return: DeleteMcdpCrowdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_mcdp_crowd_with_options(request, runtime)
 
@@ -3038,6 +3690,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.DeleteMcdpCrowdRequest,
     ) -> m_paa_s20201028_models.DeleteMcdpCrowdResponse:
+        """
+        @param request: DeleteMcdpCrowdRequest
+        @return: DeleteMcdpCrowdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_mcdp_crowd_with_options_async(request, runtime)
 
@@ -3046,6 +3702,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.DeleteMcdpEventAttributeByIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.DeleteMcdpEventAttributeByIdResponse:
+        """
+        @param request: DeleteMcdpEventAttributeByIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMcdpEventAttributeByIdResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3080,6 +3741,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.DeleteMcdpEventAttributeByIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.DeleteMcdpEventAttributeByIdResponse:
+        """
+        @param request: DeleteMcdpEventAttributeByIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMcdpEventAttributeByIdResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3113,6 +3779,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.DeleteMcdpEventAttributeByIdRequest,
     ) -> m_paa_s20201028_models.DeleteMcdpEventAttributeByIdResponse:
+        """
+        @param request: DeleteMcdpEventAttributeByIdRequest
+        @return: DeleteMcdpEventAttributeByIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_mcdp_event_attribute_by_id_with_options(request, runtime)
 
@@ -3120,6 +3790,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.DeleteMcdpEventAttributeByIdRequest,
     ) -> m_paa_s20201028_models.DeleteMcdpEventAttributeByIdResponse:
+        """
+        @param request: DeleteMcdpEventAttributeByIdRequest
+        @return: DeleteMcdpEventAttributeByIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_mcdp_event_attribute_by_id_with_options_async(request, runtime)
 
@@ -3128,6 +3802,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.DeleteMcdpEventByIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.DeleteMcdpEventByIdResponse:
+        """
+        @param request: DeleteMcdpEventByIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMcdpEventByIdResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3162,6 +3841,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.DeleteMcdpEventByIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.DeleteMcdpEventByIdResponse:
+        """
+        @param request: DeleteMcdpEventByIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMcdpEventByIdResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3195,6 +3879,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.DeleteMcdpEventByIdRequest,
     ) -> m_paa_s20201028_models.DeleteMcdpEventByIdResponse:
+        """
+        @param request: DeleteMcdpEventByIdRequest
+        @return: DeleteMcdpEventByIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_mcdp_event_by_id_with_options(request, runtime)
 
@@ -3202,6 +3890,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.DeleteMcdpEventByIdRequest,
     ) -> m_paa_s20201028_models.DeleteMcdpEventByIdResponse:
+        """
+        @param request: DeleteMcdpEventByIdRequest
+        @return: DeleteMcdpEventByIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_mcdp_event_by_id_with_options_async(request, runtime)
 
@@ -3210,6 +3902,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.DeleteMcdpMaterialRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.DeleteMcdpMaterialResponse:
+        """
+        @param request: DeleteMcdpMaterialRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMcdpMaterialResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3244,6 +3941,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.DeleteMcdpMaterialRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.DeleteMcdpMaterialResponse:
+        """
+        @param request: DeleteMcdpMaterialRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMcdpMaterialResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3277,6 +3979,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.DeleteMcdpMaterialRequest,
     ) -> m_paa_s20201028_models.DeleteMcdpMaterialResponse:
+        """
+        @param request: DeleteMcdpMaterialRequest
+        @return: DeleteMcdpMaterialResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_mcdp_material_with_options(request, runtime)
 
@@ -3284,6 +3990,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.DeleteMcdpMaterialRequest,
     ) -> m_paa_s20201028_models.DeleteMcdpMaterialResponse:
+        """
+        @param request: DeleteMcdpMaterialRequest
+        @return: DeleteMcdpMaterialResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_mcdp_material_with_options_async(request, runtime)
 
@@ -3292,6 +4002,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.DeleteMcdpZoneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.DeleteMcdpZoneResponse:
+        """
+        @param request: DeleteMcdpZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMcdpZoneResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3326,6 +4041,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.DeleteMcdpZoneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.DeleteMcdpZoneResponse:
+        """
+        @param request: DeleteMcdpZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMcdpZoneResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3359,6 +4079,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.DeleteMcdpZoneRequest,
     ) -> m_paa_s20201028_models.DeleteMcdpZoneResponse:
+        """
+        @param request: DeleteMcdpZoneRequest
+        @return: DeleteMcdpZoneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_mcdp_zone_with_options(request, runtime)
 
@@ -3366,6 +4090,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.DeleteMcdpZoneRequest,
     ) -> m_paa_s20201028_models.DeleteMcdpZoneResponse:
+        """
+        @param request: DeleteMcdpZoneRequest
+        @return: DeleteMcdpZoneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_mcdp_zone_with_options_async(request, runtime)
 
@@ -3374,6 +4102,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.DeleteMcubeMiniAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.DeleteMcubeMiniAppResponse:
+        """
+        @param request: DeleteMcubeMiniAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMcubeMiniAppResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3408,6 +4141,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.DeleteMcubeMiniAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.DeleteMcubeMiniAppResponse:
+        """
+        @param request: DeleteMcubeMiniAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMcubeMiniAppResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3441,6 +4179,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.DeleteMcubeMiniAppRequest,
     ) -> m_paa_s20201028_models.DeleteMcubeMiniAppResponse:
+        """
+        @param request: DeleteMcubeMiniAppRequest
+        @return: DeleteMcubeMiniAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_mcube_mini_app_with_options(request, runtime)
 
@@ -3448,6 +4190,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.DeleteMcubeMiniAppRequest,
     ) -> m_paa_s20201028_models.DeleteMcubeMiniAppResponse:
+        """
+        @param request: DeleteMcubeMiniAppRequest
+        @return: DeleteMcubeMiniAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_mcube_mini_app_with_options_async(request, runtime)
 
@@ -3456,6 +4202,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.DeleteMcubeNebulaAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.DeleteMcubeNebulaAppResponse:
+        """
+        @param request: DeleteMcubeNebulaAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMcubeNebulaAppResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3490,6 +4241,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.DeleteMcubeNebulaAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.DeleteMcubeNebulaAppResponse:
+        """
+        @param request: DeleteMcubeNebulaAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMcubeNebulaAppResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3523,6 +4279,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.DeleteMcubeNebulaAppRequest,
     ) -> m_paa_s20201028_models.DeleteMcubeNebulaAppResponse:
+        """
+        @param request: DeleteMcubeNebulaAppRequest
+        @return: DeleteMcubeNebulaAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_mcube_nebula_app_with_options(request, runtime)
 
@@ -3530,6 +4290,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.DeleteMcubeNebulaAppRequest,
     ) -> m_paa_s20201028_models.DeleteMcubeNebulaAppResponse:
+        """
+        @param request: DeleteMcubeNebulaAppRequest
+        @return: DeleteMcubeNebulaAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_mcube_nebula_app_with_options_async(request, runtime)
 
@@ -3538,6 +4302,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.DeleteMcubeUpgradeResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.DeleteMcubeUpgradeResourceResponse:
+        """
+        @param request: DeleteMcubeUpgradeResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMcubeUpgradeResourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3574,6 +4343,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.DeleteMcubeUpgradeResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.DeleteMcubeUpgradeResourceResponse:
+        """
+        @param request: DeleteMcubeUpgradeResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMcubeUpgradeResourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3609,6 +4383,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.DeleteMcubeUpgradeResourceRequest,
     ) -> m_paa_s20201028_models.DeleteMcubeUpgradeResourceResponse:
+        """
+        @param request: DeleteMcubeUpgradeResourceRequest
+        @return: DeleteMcubeUpgradeResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_mcube_upgrade_resource_with_options(request, runtime)
 
@@ -3616,6 +4394,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.DeleteMcubeUpgradeResourceRequest,
     ) -> m_paa_s20201028_models.DeleteMcubeUpgradeResourceResponse:
+        """
+        @param request: DeleteMcubeUpgradeResourceRequest
+        @return: DeleteMcubeUpgradeResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_mcube_upgrade_resource_with_options_async(request, runtime)
 
@@ -3624,6 +4406,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.DeleteMcubeWhitelistRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.DeleteMcubeWhitelistResponse:
+        """
+        @param request: DeleteMcubeWhitelistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMcubeWhitelistResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3658,6 +4445,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.DeleteMcubeWhitelistRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.DeleteMcubeWhitelistResponse:
+        """
+        @param request: DeleteMcubeWhitelistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMcubeWhitelistResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3691,6 +4483,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.DeleteMcubeWhitelistRequest,
     ) -> m_paa_s20201028_models.DeleteMcubeWhitelistResponse:
+        """
+        @param request: DeleteMcubeWhitelistRequest
+        @return: DeleteMcubeWhitelistResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_mcube_whitelist_with_options(request, runtime)
 
@@ -3698,6 +4494,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.DeleteMcubeWhitelistRequest,
     ) -> m_paa_s20201028_models.DeleteMcubeWhitelistResponse:
+        """
+        @param request: DeleteMcubeWhitelistRequest
+        @return: DeleteMcubeWhitelistResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_mcube_whitelist_with_options_async(request, runtime)
 
@@ -3706,6 +4506,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.DeleteMdsWhitelistContentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.DeleteMdsWhitelistContentResponse:
+        """
+        @param request: DeleteMdsWhitelistContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMdsWhitelistContentResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3742,6 +4547,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.DeleteMdsWhitelistContentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.DeleteMdsWhitelistContentResponse:
+        """
+        @param request: DeleteMdsWhitelistContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMdsWhitelistContentResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3777,6 +4587,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.DeleteMdsWhitelistContentRequest,
     ) -> m_paa_s20201028_models.DeleteMdsWhitelistContentResponse:
+        """
+        @param request: DeleteMdsWhitelistContentRequest
+        @return: DeleteMdsWhitelistContentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_mds_whitelist_content_with_options(request, runtime)
 
@@ -3784,6 +4598,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.DeleteMdsWhitelistContentRequest,
     ) -> m_paa_s20201028_models.DeleteMdsWhitelistContentResponse:
+        """
+        @param request: DeleteMdsWhitelistContentRequest
+        @return: DeleteMdsWhitelistContentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_mds_whitelist_content_with_options_async(request, runtime)
 
@@ -3792,6 +4610,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.ExistMcubeRsaKeyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.ExistMcubeRsaKeyResponse:
+        """
+        @param request: ExistMcubeRsaKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExistMcubeRsaKeyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3824,6 +4647,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.ExistMcubeRsaKeyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.ExistMcubeRsaKeyResponse:
+        """
+        @param request: ExistMcubeRsaKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExistMcubeRsaKeyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3855,6 +4683,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.ExistMcubeRsaKeyRequest,
     ) -> m_paa_s20201028_models.ExistMcubeRsaKeyResponse:
+        """
+        @param request: ExistMcubeRsaKeyRequest
+        @return: ExistMcubeRsaKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.exist_mcube_rsa_key_with_options(request, runtime)
 
@@ -3862,6 +4694,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.ExistMcubeRsaKeyRequest,
     ) -> m_paa_s20201028_models.ExistMcubeRsaKeyResponse:
+        """
+        @param request: ExistMcubeRsaKeyRequest
+        @return: ExistMcubeRsaKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.exist_mcube_rsa_key_with_options_async(request, runtime)
 
@@ -3870,6 +4706,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.ExportMappCenterAppConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.ExportMappCenterAppConfigResponse:
+        """
+        @param request: ExportMappCenterAppConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportMappCenterAppConfigResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.apk_file_url):
@@ -3910,6 +4751,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.ExportMappCenterAppConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.ExportMappCenterAppConfigResponse:
+        """
+        @param request: ExportMappCenterAppConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportMappCenterAppConfigResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.apk_file_url):
@@ -3949,6 +4795,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.ExportMappCenterAppConfigRequest,
     ) -> m_paa_s20201028_models.ExportMappCenterAppConfigResponse:
+        """
+        @param request: ExportMappCenterAppConfigRequest
+        @return: ExportMappCenterAppConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.export_mapp_center_app_config_with_options(request, runtime)
 
@@ -3956,6 +4806,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.ExportMappCenterAppConfigRequest,
     ) -> m_paa_s20201028_models.ExportMappCenterAppConfigResponse:
+        """
+        @param request: ExportMappCenterAppConfigRequest
+        @return: ExportMappCenterAppConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.export_mapp_center_app_config_with_options_async(request, runtime)
 
@@ -3964,6 +4818,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.GetFileTokenForUploadToMsaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.GetFileTokenForUploadToMsaResponse:
+        """
+        @param request: GetFileTokenForUploadToMsaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFileTokenForUploadToMsaResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3998,6 +4857,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.GetFileTokenForUploadToMsaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.GetFileTokenForUploadToMsaResponse:
+        """
+        @param request: GetFileTokenForUploadToMsaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFileTokenForUploadToMsaResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4031,6 +4895,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.GetFileTokenForUploadToMsaRequest,
     ) -> m_paa_s20201028_models.GetFileTokenForUploadToMsaResponse:
+        """
+        @param request: GetFileTokenForUploadToMsaRequest
+        @return: GetFileTokenForUploadToMsaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_file_token_for_upload_to_msa_with_options(request, runtime)
 
@@ -4038,6 +4906,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.GetFileTokenForUploadToMsaRequest,
     ) -> m_paa_s20201028_models.GetFileTokenForUploadToMsaResponse:
+        """
+        @param request: GetFileTokenForUploadToMsaRequest
+        @return: GetFileTokenForUploadToMsaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_file_token_for_upload_to_msa_with_options_async(request, runtime)
 
@@ -4046,6 +4918,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.GetLogUrlInMsaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.GetLogUrlInMsaResponse:
+        """
+        @param request: GetLogUrlInMsaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLogUrlInMsaResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4080,6 +4957,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.GetLogUrlInMsaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.GetLogUrlInMsaResponse:
+        """
+        @param request: GetLogUrlInMsaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLogUrlInMsaResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4113,6 +4995,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.GetLogUrlInMsaRequest,
     ) -> m_paa_s20201028_models.GetLogUrlInMsaResponse:
+        """
+        @param request: GetLogUrlInMsaRequest
+        @return: GetLogUrlInMsaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_log_url_in_msa_with_options(request, runtime)
 
@@ -4120,6 +5006,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.GetLogUrlInMsaRequest,
     ) -> m_paa_s20201028_models.GetLogUrlInMsaResponse:
+        """
+        @param request: GetLogUrlInMsaRequest
+        @return: GetLogUrlInMsaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_log_url_in_msa_with_options_async(request, runtime)
 
@@ -4128,6 +5018,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.GetMcubeFileTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.GetMcubeFileTokenResponse:
+        """
+        @param request: GetMcubeFileTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMcubeFileTokenResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4162,6 +5057,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.GetMcubeFileTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.GetMcubeFileTokenResponse:
+        """
+        @param request: GetMcubeFileTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMcubeFileTokenResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4195,6 +5095,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.GetMcubeFileTokenRequest,
     ) -> m_paa_s20201028_models.GetMcubeFileTokenResponse:
+        """
+        @param request: GetMcubeFileTokenRequest
+        @return: GetMcubeFileTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_mcube_file_token_with_options(request, runtime)
 
@@ -4202,6 +5106,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.GetMcubeFileTokenRequest,
     ) -> m_paa_s20201028_models.GetMcubeFileTokenResponse:
+        """
+        @param request: GetMcubeFileTokenRequest
+        @return: GetMcubeFileTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_mcube_file_token_with_options_async(request, runtime)
 
@@ -4210,6 +5118,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.GetMcubeNebulaResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.GetMcubeNebulaResourceResponse:
+        """
+        @param request: GetMcubeNebulaResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMcubeNebulaResourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4244,6 +5157,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.GetMcubeNebulaResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.GetMcubeNebulaResourceResponse:
+        """
+        @param request: GetMcubeNebulaResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMcubeNebulaResourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4277,6 +5195,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.GetMcubeNebulaResourceRequest,
     ) -> m_paa_s20201028_models.GetMcubeNebulaResourceResponse:
+        """
+        @param request: GetMcubeNebulaResourceRequest
+        @return: GetMcubeNebulaResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_mcube_nebula_resource_with_options(request, runtime)
 
@@ -4284,6 +5206,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.GetMcubeNebulaResourceRequest,
     ) -> m_paa_s20201028_models.GetMcubeNebulaResourceResponse:
+        """
+        @param request: GetMcubeNebulaResourceRequest
+        @return: GetMcubeNebulaResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_mcube_nebula_resource_with_options_async(request, runtime)
 
@@ -4292,6 +5218,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.GetMcubeNebulaTaskDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.GetMcubeNebulaTaskDetailResponse:
+        """
+        @param request: GetMcubeNebulaTaskDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMcubeNebulaTaskDetailResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4326,6 +5257,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.GetMcubeNebulaTaskDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.GetMcubeNebulaTaskDetailResponse:
+        """
+        @param request: GetMcubeNebulaTaskDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMcubeNebulaTaskDetailResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4359,6 +5295,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.GetMcubeNebulaTaskDetailRequest,
     ) -> m_paa_s20201028_models.GetMcubeNebulaTaskDetailResponse:
+        """
+        @param request: GetMcubeNebulaTaskDetailRequest
+        @return: GetMcubeNebulaTaskDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_mcube_nebula_task_detail_with_options(request, runtime)
 
@@ -4366,6 +5306,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.GetMcubeNebulaTaskDetailRequest,
     ) -> m_paa_s20201028_models.GetMcubeNebulaTaskDetailResponse:
+        """
+        @param request: GetMcubeNebulaTaskDetailRequest
+        @return: GetMcubeNebulaTaskDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_mcube_nebula_task_detail_with_options_async(request, runtime)
 
@@ -4374,6 +5318,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.GetMcubeUpgradePackageInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.GetMcubeUpgradePackageInfoResponse:
+        """
+        @param request: GetMcubeUpgradePackageInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMcubeUpgradePackageInfoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4408,6 +5357,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.GetMcubeUpgradePackageInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.GetMcubeUpgradePackageInfoResponse:
+        """
+        @param request: GetMcubeUpgradePackageInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMcubeUpgradePackageInfoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4441,6 +5395,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.GetMcubeUpgradePackageInfoRequest,
     ) -> m_paa_s20201028_models.GetMcubeUpgradePackageInfoResponse:
+        """
+        @param request: GetMcubeUpgradePackageInfoRequest
+        @return: GetMcubeUpgradePackageInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_mcube_upgrade_package_info_with_options(request, runtime)
 
@@ -4448,6 +5406,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.GetMcubeUpgradePackageInfoRequest,
     ) -> m_paa_s20201028_models.GetMcubeUpgradePackageInfoResponse:
+        """
+        @param request: GetMcubeUpgradePackageInfoRequest
+        @return: GetMcubeUpgradePackageInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_mcube_upgrade_package_info_with_options_async(request, runtime)
 
@@ -4456,6 +5418,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.GetMcubeUpgradeTaskInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.GetMcubeUpgradeTaskInfoResponse:
+        """
+        @param request: GetMcubeUpgradeTaskInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMcubeUpgradeTaskInfoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4490,6 +5457,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.GetMcubeUpgradeTaskInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.GetMcubeUpgradeTaskInfoResponse:
+        """
+        @param request: GetMcubeUpgradeTaskInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMcubeUpgradeTaskInfoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4523,6 +5495,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.GetMcubeUpgradeTaskInfoRequest,
     ) -> m_paa_s20201028_models.GetMcubeUpgradeTaskInfoResponse:
+        """
+        @param request: GetMcubeUpgradeTaskInfoRequest
+        @return: GetMcubeUpgradeTaskInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_mcube_upgrade_task_info_with_options(request, runtime)
 
@@ -4530,6 +5506,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.GetMcubeUpgradeTaskInfoRequest,
     ) -> m_paa_s20201028_models.GetMcubeUpgradeTaskInfoResponse:
+        """
+        @param request: GetMcubeUpgradeTaskInfoRequest
+        @return: GetMcubeUpgradeTaskInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_mcube_upgrade_task_info_with_options_async(request, runtime)
 
@@ -4538,6 +5518,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.GetMdsMiniConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.GetMdsMiniConfigResponse:
+        """
+        @param request: GetMdsMiniConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMdsMiniConfigResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4572,6 +5557,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.GetMdsMiniConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.GetMdsMiniConfigResponse:
+        """
+        @param request: GetMdsMiniConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMdsMiniConfigResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4605,6 +5595,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.GetMdsMiniConfigRequest,
     ) -> m_paa_s20201028_models.GetMdsMiniConfigResponse:
+        """
+        @param request: GetMdsMiniConfigRequest
+        @return: GetMdsMiniConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_mds_mini_config_with_options(request, runtime)
 
@@ -4612,6 +5606,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.GetMdsMiniConfigRequest,
     ) -> m_paa_s20201028_models.GetMdsMiniConfigResponse:
+        """
+        @param request: GetMdsMiniConfigRequest
+        @return: GetMdsMiniConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_mds_mini_config_with_options_async(request, runtime)
 
@@ -4620,6 +5618,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.GetUserAppDonwloadUrlInMsaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.GetUserAppDonwloadUrlInMsaResponse:
+        """
+        @param request: GetUserAppDonwloadUrlInMsaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserAppDonwloadUrlInMsaResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4654,6 +5657,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.GetUserAppDonwloadUrlInMsaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.GetUserAppDonwloadUrlInMsaResponse:
+        """
+        @param request: GetUserAppDonwloadUrlInMsaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserAppDonwloadUrlInMsaResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4687,6 +5695,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.GetUserAppDonwloadUrlInMsaRequest,
     ) -> m_paa_s20201028_models.GetUserAppDonwloadUrlInMsaResponse:
+        """
+        @param request: GetUserAppDonwloadUrlInMsaRequest
+        @return: GetUserAppDonwloadUrlInMsaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_user_app_donwload_url_in_msa_with_options(request, runtime)
 
@@ -4694,6 +5706,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.GetUserAppDonwloadUrlInMsaRequest,
     ) -> m_paa_s20201028_models.GetUserAppDonwloadUrlInMsaResponse:
+        """
+        @param request: GetUserAppDonwloadUrlInMsaRequest
+        @return: GetUserAppDonwloadUrlInMsaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_user_app_donwload_url_in_msa_with_options_async(request, runtime)
 
@@ -4702,6 +5718,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.GetUserAppEnhanceProcessInMsaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.GetUserAppEnhanceProcessInMsaResponse:
+        """
+        @param request: GetUserAppEnhanceProcessInMsaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserAppEnhanceProcessInMsaResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4736,6 +5757,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.GetUserAppEnhanceProcessInMsaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.GetUserAppEnhanceProcessInMsaResponse:
+        """
+        @param request: GetUserAppEnhanceProcessInMsaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserAppEnhanceProcessInMsaResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4769,6 +5795,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.GetUserAppEnhanceProcessInMsaRequest,
     ) -> m_paa_s20201028_models.GetUserAppEnhanceProcessInMsaResponse:
+        """
+        @param request: GetUserAppEnhanceProcessInMsaRequest
+        @return: GetUserAppEnhanceProcessInMsaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_user_app_enhance_process_in_msa_with_options(request, runtime)
 
@@ -4776,6 +5806,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.GetUserAppEnhanceProcessInMsaRequest,
     ) -> m_paa_s20201028_models.GetUserAppEnhanceProcessInMsaResponse:
+        """
+        @param request: GetUserAppEnhanceProcessInMsaRequest
+        @return: GetUserAppEnhanceProcessInMsaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_user_app_enhance_process_in_msa_with_options_async(request, runtime)
 
@@ -4784,6 +5818,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.GetUserAppUploadProcessInMsaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.GetUserAppUploadProcessInMsaResponse:
+        """
+        @param request: GetUserAppUploadProcessInMsaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserAppUploadProcessInMsaResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4818,6 +5857,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.GetUserAppUploadProcessInMsaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.GetUserAppUploadProcessInMsaResponse:
+        """
+        @param request: GetUserAppUploadProcessInMsaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserAppUploadProcessInMsaResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4851,6 +5895,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.GetUserAppUploadProcessInMsaRequest,
     ) -> m_paa_s20201028_models.GetUserAppUploadProcessInMsaResponse:
+        """
+        @param request: GetUserAppUploadProcessInMsaRequest
+        @return: GetUserAppUploadProcessInMsaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_user_app_upload_process_in_msa_with_options(request, runtime)
 
@@ -4858,6 +5906,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.GetUserAppUploadProcessInMsaRequest,
     ) -> m_paa_s20201028_models.GetUserAppUploadProcessInMsaResponse:
+        """
+        @param request: GetUserAppUploadProcessInMsaRequest
+        @return: GetUserAppUploadProcessInMsaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_user_app_upload_process_in_msa_with_options_async(request, runtime)
 
@@ -4865,6 +5917,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.ListMappCenterAppsResponse:
+        """
+        @param request: ListMappCenterAppsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMappCenterAppsResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListMappCenterApps',
@@ -4886,6 +5943,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.ListMappCenterAppsResponse:
+        """
+        @param request: ListMappCenterAppsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMappCenterAppsResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListMappCenterApps',
@@ -4904,10 +5966,16 @@ class Client(OpenApiClient):
         )
 
     def list_mapp_center_apps(self) -> m_paa_s20201028_models.ListMappCenterAppsResponse:
+        """
+        @return: ListMappCenterAppsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_mapp_center_apps_with_options(runtime)
 
     async def list_mapp_center_apps_async(self) -> m_paa_s20201028_models.ListMappCenterAppsResponse:
+        """
+        @return: ListMappCenterAppsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_mapp_center_apps_with_options_async(runtime)
 
@@ -4915,6 +5983,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.ListMappCenterWorkspacesResponse:
+        """
+        @param request: ListMappCenterWorkspacesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMappCenterWorkspacesResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListMappCenterWorkspaces',
@@ -4936,6 +6009,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.ListMappCenterWorkspacesResponse:
+        """
+        @param request: ListMappCenterWorkspacesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMappCenterWorkspacesResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListMappCenterWorkspaces',
@@ -4954,10 +6032,16 @@ class Client(OpenApiClient):
         )
 
     def list_mapp_center_workspaces(self) -> m_paa_s20201028_models.ListMappCenterWorkspacesResponse:
+        """
+        @return: ListMappCenterWorkspacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_mapp_center_workspaces_with_options(runtime)
 
     async def list_mapp_center_workspaces_async(self) -> m_paa_s20201028_models.ListMappCenterWorkspacesResponse:
+        """
+        @return: ListMappCenterWorkspacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_mapp_center_workspaces_with_options_async(runtime)
 
@@ -4966,6 +6050,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.ListMcdpAimRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.ListMcdpAimResponse:
+        """
+        @param request: ListMcdpAimRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMcdpAimResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5014,6 +6103,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.ListMcdpAimRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.ListMcdpAimResponse:
+        """
+        @param request: ListMcdpAimRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMcdpAimResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5061,6 +6155,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.ListMcdpAimRequest,
     ) -> m_paa_s20201028_models.ListMcdpAimResponse:
+        """
+        @param request: ListMcdpAimRequest
+        @return: ListMcdpAimResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_mcdp_aim_with_options(request, runtime)
 
@@ -5068,6 +6166,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.ListMcdpAimRequest,
     ) -> m_paa_s20201028_models.ListMcdpAimResponse:
+        """
+        @param request: ListMcdpAimRequest
+        @return: ListMcdpAimResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_mcdp_aim_with_options_async(request, runtime)
 
@@ -5076,6 +6178,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.ListMcubeMiniAppsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.ListMcubeMiniAppsResponse:
+        """
+        @param request: ListMcubeMiniAppsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMcubeMiniAppsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5114,6 +6221,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.ListMcubeMiniAppsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.ListMcubeMiniAppsResponse:
+        """
+        @param request: ListMcubeMiniAppsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMcubeMiniAppsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5151,6 +6263,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.ListMcubeMiniAppsRequest,
     ) -> m_paa_s20201028_models.ListMcubeMiniAppsResponse:
+        """
+        @param request: ListMcubeMiniAppsRequest
+        @return: ListMcubeMiniAppsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_mcube_mini_apps_with_options(request, runtime)
 
@@ -5158,6 +6274,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.ListMcubeMiniAppsRequest,
     ) -> m_paa_s20201028_models.ListMcubeMiniAppsResponse:
+        """
+        @param request: ListMcubeMiniAppsRequest
+        @return: ListMcubeMiniAppsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_mcube_mini_apps_with_options_async(request, runtime)
 
@@ -5166,6 +6286,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.ListMcubeMiniPackagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.ListMcubeMiniPackagesResponse:
+        """
+        @param request: ListMcubeMiniPackagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMcubeMiniPackagesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5206,6 +6331,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.ListMcubeMiniPackagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.ListMcubeMiniPackagesResponse:
+        """
+        @param request: ListMcubeMiniPackagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMcubeMiniPackagesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5245,6 +6375,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.ListMcubeMiniPackagesRequest,
     ) -> m_paa_s20201028_models.ListMcubeMiniPackagesResponse:
+        """
+        @param request: ListMcubeMiniPackagesRequest
+        @return: ListMcubeMiniPackagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_mcube_mini_packages_with_options(request, runtime)
 
@@ -5252,6 +6386,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.ListMcubeMiniPackagesRequest,
     ) -> m_paa_s20201028_models.ListMcubeMiniPackagesResponse:
+        """
+        @param request: ListMcubeMiniPackagesRequest
+        @return: ListMcubeMiniPackagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_mcube_mini_packages_with_options_async(request, runtime)
 
@@ -5260,6 +6398,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.ListMcubeMiniTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.ListMcubeMiniTasksResponse:
+        """
+        @param request: ListMcubeMiniTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMcubeMiniTasksResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5294,6 +6437,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.ListMcubeMiniTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.ListMcubeMiniTasksResponse:
+        """
+        @param request: ListMcubeMiniTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMcubeMiniTasksResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5327,6 +6475,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.ListMcubeMiniTasksRequest,
     ) -> m_paa_s20201028_models.ListMcubeMiniTasksResponse:
+        """
+        @param request: ListMcubeMiniTasksRequest
+        @return: ListMcubeMiniTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_mcube_mini_tasks_with_options(request, runtime)
 
@@ -5334,6 +6486,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.ListMcubeMiniTasksRequest,
     ) -> m_paa_s20201028_models.ListMcubeMiniTasksResponse:
+        """
+        @param request: ListMcubeMiniTasksRequest
+        @return: ListMcubeMiniTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_mcube_mini_tasks_with_options_async(request, runtime)
 
@@ -5342,6 +6498,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.ListMcubeNebulaAppsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.ListMcubeNebulaAppsResponse:
+        """
+        @param request: ListMcubeNebulaAppsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMcubeNebulaAppsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5380,6 +6541,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.ListMcubeNebulaAppsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.ListMcubeNebulaAppsResponse:
+        """
+        @param request: ListMcubeNebulaAppsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMcubeNebulaAppsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5417,6 +6583,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.ListMcubeNebulaAppsRequest,
     ) -> m_paa_s20201028_models.ListMcubeNebulaAppsResponse:
+        """
+        @param request: ListMcubeNebulaAppsRequest
+        @return: ListMcubeNebulaAppsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_mcube_nebula_apps_with_options(request, runtime)
 
@@ -5424,6 +6594,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.ListMcubeNebulaAppsRequest,
     ) -> m_paa_s20201028_models.ListMcubeNebulaAppsResponse:
+        """
+        @param request: ListMcubeNebulaAppsRequest
+        @return: ListMcubeNebulaAppsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_mcube_nebula_apps_with_options_async(request, runtime)
 
@@ -5432,6 +6606,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.ListMcubeNebulaResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.ListMcubeNebulaResourcesResponse:
+        """
+        @param request: ListMcubeNebulaResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMcubeNebulaResourcesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5470,6 +6649,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.ListMcubeNebulaResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.ListMcubeNebulaResourcesResponse:
+        """
+        @param request: ListMcubeNebulaResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMcubeNebulaResourcesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5507,6 +6691,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.ListMcubeNebulaResourcesRequest,
     ) -> m_paa_s20201028_models.ListMcubeNebulaResourcesResponse:
+        """
+        @param request: ListMcubeNebulaResourcesRequest
+        @return: ListMcubeNebulaResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_mcube_nebula_resources_with_options(request, runtime)
 
@@ -5514,6 +6702,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.ListMcubeNebulaResourcesRequest,
     ) -> m_paa_s20201028_models.ListMcubeNebulaResourcesResponse:
+        """
+        @param request: ListMcubeNebulaResourcesRequest
+        @return: ListMcubeNebulaResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_mcube_nebula_resources_with_options_async(request, runtime)
 
@@ -5522,6 +6714,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.ListMcubeNebulaTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.ListMcubeNebulaTasksResponse:
+        """
+        @param request: ListMcubeNebulaTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMcubeNebulaTasksResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5556,6 +6753,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.ListMcubeNebulaTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.ListMcubeNebulaTasksResponse:
+        """
+        @param request: ListMcubeNebulaTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMcubeNebulaTasksResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5589,6 +6791,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.ListMcubeNebulaTasksRequest,
     ) -> m_paa_s20201028_models.ListMcubeNebulaTasksResponse:
+        """
+        @param request: ListMcubeNebulaTasksRequest
+        @return: ListMcubeNebulaTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_mcube_nebula_tasks_with_options(request, runtime)
 
@@ -5596,6 +6802,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.ListMcubeNebulaTasksRequest,
     ) -> m_paa_s20201028_models.ListMcubeNebulaTasksResponse:
+        """
+        @param request: ListMcubeNebulaTasksRequest
+        @return: ListMcubeNebulaTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_mcube_nebula_tasks_with_options_async(request, runtime)
 
@@ -5604,6 +6814,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.ListMcubeUpgradePackagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.ListMcubeUpgradePackagesResponse:
+        """
+        @param request: ListMcubeUpgradePackagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMcubeUpgradePackagesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5640,6 +6855,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.ListMcubeUpgradePackagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.ListMcubeUpgradePackagesResponse:
+        """
+        @param request: ListMcubeUpgradePackagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMcubeUpgradePackagesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5675,6 +6895,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.ListMcubeUpgradePackagesRequest,
     ) -> m_paa_s20201028_models.ListMcubeUpgradePackagesResponse:
+        """
+        @param request: ListMcubeUpgradePackagesRequest
+        @return: ListMcubeUpgradePackagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_mcube_upgrade_packages_with_options(request, runtime)
 
@@ -5682,6 +6906,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.ListMcubeUpgradePackagesRequest,
     ) -> m_paa_s20201028_models.ListMcubeUpgradePackagesResponse:
+        """
+        @param request: ListMcubeUpgradePackagesRequest
+        @return: ListMcubeUpgradePackagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_mcube_upgrade_packages_with_options_async(request, runtime)
 
@@ -5690,6 +6918,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.ListMcubeUpgradeTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.ListMcubeUpgradeTasksResponse:
+        """
+        @param request: ListMcubeUpgradeTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMcubeUpgradeTasksResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5724,6 +6957,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.ListMcubeUpgradeTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.ListMcubeUpgradeTasksResponse:
+        """
+        @param request: ListMcubeUpgradeTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMcubeUpgradeTasksResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5757,6 +6995,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.ListMcubeUpgradeTasksRequest,
     ) -> m_paa_s20201028_models.ListMcubeUpgradeTasksResponse:
+        """
+        @param request: ListMcubeUpgradeTasksRequest
+        @return: ListMcubeUpgradeTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_mcube_upgrade_tasks_with_options(request, runtime)
 
@@ -5764,6 +7006,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.ListMcubeUpgradeTasksRequest,
     ) -> m_paa_s20201028_models.ListMcubeUpgradeTasksResponse:
+        """
+        @param request: ListMcubeUpgradeTasksRequest
+        @return: ListMcubeUpgradeTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_mcube_upgrade_tasks_with_options_async(request, runtime)
 
@@ -5772,6 +7018,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.ListMcubeWhitelistsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.ListMcubeWhitelistsResponse:
+        """
+        @param request: ListMcubeWhitelistsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMcubeWhitelistsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5810,6 +7061,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.ListMcubeWhitelistsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.ListMcubeWhitelistsResponse:
+        """
+        @param request: ListMcubeWhitelistsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMcubeWhitelistsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5847,6 +7103,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.ListMcubeWhitelistsRequest,
     ) -> m_paa_s20201028_models.ListMcubeWhitelistsResponse:
+        """
+        @param request: ListMcubeWhitelistsRequest
+        @return: ListMcubeWhitelistsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_mcube_whitelists_with_options(request, runtime)
 
@@ -5854,6 +7114,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.ListMcubeWhitelistsRequest,
     ) -> m_paa_s20201028_models.ListMcubeWhitelistsResponse:
+        """
+        @param request: ListMcubeWhitelistsRequest
+        @return: ListMcubeWhitelistsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_mcube_whitelists_with_options_async(request, runtime)
 
@@ -5862,6 +7126,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.ListMgsApiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.ListMgsApiResponse:
+        """
+        @param request: ListMgsApiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMgsApiResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_status):
@@ -5920,6 +7189,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.ListMgsApiRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.ListMgsApiResponse:
+        """
+        @param request: ListMgsApiRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMgsApiResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_status):
@@ -5977,6 +7251,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.ListMgsApiRequest,
     ) -> m_paa_s20201028_models.ListMgsApiResponse:
+        """
+        @param request: ListMgsApiRequest
+        @return: ListMgsApiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_mgs_api_with_options(request, runtime)
 
@@ -5984,6 +7262,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.ListMgsApiRequest,
     ) -> m_paa_s20201028_models.ListMgsApiResponse:
+        """
+        @param request: ListMgsApiRequest
+        @return: ListMgsApiResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_mgs_api_with_options_async(request, runtime)
 
@@ -5992,6 +7274,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.LogMsaQueryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.LogMsaQueryResponse:
+        """
+        @param request: LogMsaQueryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LogMsaQueryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6028,6 +7315,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.LogMsaQueryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.LogMsaQueryResponse:
+        """
+        @param request: LogMsaQueryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LogMsaQueryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6063,6 +7355,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.LogMsaQueryRequest,
     ) -> m_paa_s20201028_models.LogMsaQueryResponse:
+        """
+        @param request: LogMsaQueryRequest
+        @return: LogMsaQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.log_msa_query_with_options(request, runtime)
 
@@ -6070,6 +7366,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.LogMsaQueryRequest,
     ) -> m_paa_s20201028_models.LogMsaQueryResponse:
+        """
+        @param request: LogMsaQueryRequest
+        @return: LogMsaQueryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.log_msa_query_with_options_async(request, runtime)
 
@@ -6078,6 +7378,13 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.MTRSOCRServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.MTRSOCRServiceResponse:
+        """
+        @summary OCR通用接口
+        
+        @param request: MTRSOCRServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MTRSOCRServiceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6116,6 +7423,13 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.MTRSOCRServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.MTRSOCRServiceResponse:
+        """
+        @summary OCR通用接口
+        
+        @param request: MTRSOCRServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MTRSOCRServiceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6153,6 +7467,12 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.MTRSOCRServiceRequest,
     ) -> m_paa_s20201028_models.MTRSOCRServiceResponse:
+        """
+        @summary OCR通用接口
+        
+        @param request: MTRSOCRServiceRequest
+        @return: MTRSOCRServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.m_trsocrservice_with_options(request, runtime)
 
@@ -6160,6 +7480,12 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.MTRSOCRServiceRequest,
     ) -> m_paa_s20201028_models.MTRSOCRServiceResponse:
+        """
+        @summary OCR通用接口
+        
+        @param request: MTRSOCRServiceRequest
+        @return: MTRSOCRServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.m_trsocrservice_with_options_async(request, runtime)
 
@@ -6168,6 +7494,13 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.OpenApiAddActiveCodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.OpenApiAddActiveCodeResponse:
+        """
+        @summary 新增主扫码
+        
+        @param request: OpenApiAddActiveCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenApiAddActiveCodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6202,6 +7535,13 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.OpenApiAddActiveCodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.OpenApiAddActiveCodeResponse:
+        """
+        @summary 新增主扫码
+        
+        @param request: OpenApiAddActiveCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenApiAddActiveCodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6235,6 +7575,12 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.OpenApiAddActiveCodeRequest,
     ) -> m_paa_s20201028_models.OpenApiAddActiveCodeResponse:
+        """
+        @summary 新增主扫码
+        
+        @param request: OpenApiAddActiveCodeRequest
+        @return: OpenApiAddActiveCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.open_api_add_active_code_with_options(request, runtime)
 
@@ -6242,6 +7588,12 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.OpenApiAddActiveCodeRequest,
     ) -> m_paa_s20201028_models.OpenApiAddActiveCodeResponse:
+        """
+        @summary 新增主扫码
+        
+        @param request: OpenApiAddActiveCodeRequest
+        @return: OpenApiAddActiveCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.open_api_add_active_code_with_options_async(request, runtime)
 
@@ -6250,6 +7602,13 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.OpenApiAddActiveSceneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.OpenApiAddActiveSceneResponse:
+        """
+        @summary 新增场景
+        
+        @param request: OpenApiAddActiveSceneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenApiAddActiveSceneResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6284,6 +7643,13 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.OpenApiAddActiveSceneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.OpenApiAddActiveSceneResponse:
+        """
+        @summary 新增场景
+        
+        @param request: OpenApiAddActiveSceneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenApiAddActiveSceneResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6317,6 +7683,12 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.OpenApiAddActiveSceneRequest,
     ) -> m_paa_s20201028_models.OpenApiAddActiveSceneResponse:
+        """
+        @summary 新增场景
+        
+        @param request: OpenApiAddActiveSceneRequest
+        @return: OpenApiAddActiveSceneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.open_api_add_active_scene_with_options(request, runtime)
 
@@ -6324,6 +7696,12 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.OpenApiAddActiveSceneRequest,
     ) -> m_paa_s20201028_models.OpenApiAddActiveSceneResponse:
+        """
+        @summary 新增场景
+        
+        @param request: OpenApiAddActiveSceneRequest
+        @return: OpenApiAddActiveSceneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.open_api_add_active_scene_with_options_async(request, runtime)
 
@@ -6332,6 +7710,13 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.OpenApiCallbackRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.OpenApiCallbackResponse:
+        """
+        @summary 用户注册
+        
+        @param request: OpenApiCallbackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenApiCallbackResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6366,6 +7751,13 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.OpenApiCallbackRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.OpenApiCallbackResponse:
+        """
+        @summary 用户注册
+        
+        @param request: OpenApiCallbackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenApiCallbackResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6399,6 +7791,12 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.OpenApiCallbackRequest,
     ) -> m_paa_s20201028_models.OpenApiCallbackResponse:
+        """
+        @summary 用户注册
+        
+        @param request: OpenApiCallbackRequest
+        @return: OpenApiCallbackResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.open_api_callback_with_options(request, runtime)
 
@@ -6406,6 +7804,12 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.OpenApiCallbackRequest,
     ) -> m_paa_s20201028_models.OpenApiCallbackResponse:
+        """
+        @summary 用户注册
+        
+        @param request: OpenApiCallbackRequest
+        @return: OpenApiCallbackResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.open_api_callback_with_options_async(request, runtime)
 
@@ -6414,6 +7818,13 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.OpenApiDecodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.OpenApiDecodeResponse:
+        """
+        @summary 解码
+        
+        @param request: OpenApiDecodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenApiDecodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6448,6 +7859,13 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.OpenApiDecodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.OpenApiDecodeResponse:
+        """
+        @summary 解码
+        
+        @param request: OpenApiDecodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenApiDecodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6481,6 +7899,12 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.OpenApiDecodeRequest,
     ) -> m_paa_s20201028_models.OpenApiDecodeResponse:
+        """
+        @summary 解码
+        
+        @param request: OpenApiDecodeRequest
+        @return: OpenApiDecodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.open_api_decode_with_options(request, runtime)
 
@@ -6488,6 +7912,12 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.OpenApiDecodeRequest,
     ) -> m_paa_s20201028_models.OpenApiDecodeResponse:
+        """
+        @summary 解码
+        
+        @param request: OpenApiDecodeRequest
+        @return: OpenApiDecodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.open_api_decode_with_options_async(request, runtime)
 
@@ -6496,6 +7926,13 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.OpenApiDeleteActiveCodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.OpenApiDeleteActiveCodeResponse:
+        """
+        @summary 删除主扫码
+        
+        @param request: OpenApiDeleteActiveCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenApiDeleteActiveCodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6530,6 +7967,13 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.OpenApiDeleteActiveCodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.OpenApiDeleteActiveCodeResponse:
+        """
+        @summary 删除主扫码
+        
+        @param request: OpenApiDeleteActiveCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenApiDeleteActiveCodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6563,6 +8007,12 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.OpenApiDeleteActiveCodeRequest,
     ) -> m_paa_s20201028_models.OpenApiDeleteActiveCodeResponse:
+        """
+        @summary 删除主扫码
+        
+        @param request: OpenApiDeleteActiveCodeRequest
+        @return: OpenApiDeleteActiveCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.open_api_delete_active_code_with_options(request, runtime)
 
@@ -6570,6 +8020,12 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.OpenApiDeleteActiveCodeRequest,
     ) -> m_paa_s20201028_models.OpenApiDeleteActiveCodeResponse:
+        """
+        @summary 删除主扫码
+        
+        @param request: OpenApiDeleteActiveCodeRequest
+        @return: OpenApiDeleteActiveCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.open_api_delete_active_code_with_options_async(request, runtime)
 
@@ -6578,6 +8034,13 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.OpenApiEncodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.OpenApiEncodeResponse:
+        """
+        @summary 编码
+        
+        @param request: OpenApiEncodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenApiEncodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6612,6 +8075,13 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.OpenApiEncodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.OpenApiEncodeResponse:
+        """
+        @summary 编码
+        
+        @param request: OpenApiEncodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenApiEncodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6645,6 +8115,12 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.OpenApiEncodeRequest,
     ) -> m_paa_s20201028_models.OpenApiEncodeResponse:
+        """
+        @summary 编码
+        
+        @param request: OpenApiEncodeRequest
+        @return: OpenApiEncodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.open_api_encode_with_options(request, runtime)
 
@@ -6652,6 +8128,12 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.OpenApiEncodeRequest,
     ) -> m_paa_s20201028_models.OpenApiEncodeResponse:
+        """
+        @summary 编码
+        
+        @param request: OpenApiEncodeRequest
+        @return: OpenApiEncodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.open_api_encode_with_options_async(request, runtime)
 
@@ -6660,6 +8142,13 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.OpenApiQueryActiveCodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.OpenApiQueryActiveCodeResponse:
+        """
+        @summary 主扫码查询
+        
+        @param request: OpenApiQueryActiveCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenApiQueryActiveCodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6694,6 +8183,13 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.OpenApiQueryActiveCodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.OpenApiQueryActiveCodeResponse:
+        """
+        @summary 主扫码查询
+        
+        @param request: OpenApiQueryActiveCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenApiQueryActiveCodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6727,6 +8223,12 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.OpenApiQueryActiveCodeRequest,
     ) -> m_paa_s20201028_models.OpenApiQueryActiveCodeResponse:
+        """
+        @summary 主扫码查询
+        
+        @param request: OpenApiQueryActiveCodeRequest
+        @return: OpenApiQueryActiveCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.open_api_query_active_code_with_options(request, runtime)
 
@@ -6734,6 +8236,12 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.OpenApiQueryActiveCodeRequest,
     ) -> m_paa_s20201028_models.OpenApiQueryActiveCodeResponse:
+        """
+        @summary 主扫码查询
+        
+        @param request: OpenApiQueryActiveCodeRequest
+        @return: OpenApiQueryActiveCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.open_api_query_active_code_with_options_async(request, runtime)
 
@@ -6742,6 +8250,13 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.OpenApiQueryActiveSceneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.OpenApiQueryActiveSceneResponse:
+        """
+        @summary 查询场景
+        
+        @param request: OpenApiQueryActiveSceneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenApiQueryActiveSceneResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6776,6 +8291,13 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.OpenApiQueryActiveSceneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.OpenApiQueryActiveSceneResponse:
+        """
+        @summary 查询场景
+        
+        @param request: OpenApiQueryActiveSceneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenApiQueryActiveSceneResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6809,6 +8331,12 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.OpenApiQueryActiveSceneRequest,
     ) -> m_paa_s20201028_models.OpenApiQueryActiveSceneResponse:
+        """
+        @summary 查询场景
+        
+        @param request: OpenApiQueryActiveSceneRequest
+        @return: OpenApiQueryActiveSceneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.open_api_query_active_scene_with_options(request, runtime)
 
@@ -6816,6 +8344,12 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.OpenApiQueryActiveSceneRequest,
     ) -> m_paa_s20201028_models.OpenApiQueryActiveSceneResponse:
+        """
+        @summary 查询场景
+        
+        @param request: OpenApiQueryActiveSceneRequest
+        @return: OpenApiQueryActiveSceneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.open_api_query_active_scene_with_options_async(request, runtime)
 
@@ -6824,6 +8358,13 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.OpenApiUniqueEncodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.OpenApiUniqueEncodeResponse:
+        """
+        @summary 生成唯一被扫码
+        
+        @param request: OpenApiUniqueEncodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenApiUniqueEncodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6858,6 +8399,13 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.OpenApiUniqueEncodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.OpenApiUniqueEncodeResponse:
+        """
+        @summary 生成唯一被扫码
+        
+        @param request: OpenApiUniqueEncodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenApiUniqueEncodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6891,6 +8439,12 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.OpenApiUniqueEncodeRequest,
     ) -> m_paa_s20201028_models.OpenApiUniqueEncodeResponse:
+        """
+        @summary 生成唯一被扫码
+        
+        @param request: OpenApiUniqueEncodeRequest
+        @return: OpenApiUniqueEncodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.open_api_unique_encode_with_options(request, runtime)
 
@@ -6898,6 +8452,12 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.OpenApiUniqueEncodeRequest,
     ) -> m_paa_s20201028_models.OpenApiUniqueEncodeResponse:
+        """
+        @summary 生成唯一被扫码
+        
+        @param request: OpenApiUniqueEncodeRequest
+        @return: OpenApiUniqueEncodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.open_api_unique_encode_with_options_async(request, runtime)
 
@@ -6906,6 +8466,13 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.OpenApiUpdateActiveCodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.OpenApiUpdateActiveCodeResponse:
+        """
+        @summary 更新主扫码
+        
+        @param request: OpenApiUpdateActiveCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenApiUpdateActiveCodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6940,6 +8507,13 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.OpenApiUpdateActiveCodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.OpenApiUpdateActiveCodeResponse:
+        """
+        @summary 更新主扫码
+        
+        @param request: OpenApiUpdateActiveCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenApiUpdateActiveCodeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6973,6 +8547,12 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.OpenApiUpdateActiveCodeRequest,
     ) -> m_paa_s20201028_models.OpenApiUpdateActiveCodeResponse:
+        """
+        @summary 更新主扫码
+        
+        @param request: OpenApiUpdateActiveCodeRequest
+        @return: OpenApiUpdateActiveCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.open_api_update_active_code_with_options(request, runtime)
 
@@ -6980,6 +8560,12 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.OpenApiUpdateActiveCodeRequest,
     ) -> m_paa_s20201028_models.OpenApiUpdateActiveCodeResponse:
+        """
+        @summary 更新主扫码
+        
+        @param request: OpenApiUpdateActiveCodeRequest
+        @return: OpenApiUpdateActiveCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.open_api_update_active_code_with_options_async(request, runtime)
 
@@ -6988,6 +8574,13 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.OpenApiUpdateActiveSceneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.OpenApiUpdateActiveSceneResponse:
+        """
+        @summary 更新场景
+        
+        @param request: OpenApiUpdateActiveSceneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenApiUpdateActiveSceneResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -7022,6 +8615,13 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.OpenApiUpdateActiveSceneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.OpenApiUpdateActiveSceneResponse:
+        """
+        @summary 更新场景
+        
+        @param request: OpenApiUpdateActiveSceneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenApiUpdateActiveSceneResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -7055,6 +8655,12 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.OpenApiUpdateActiveSceneRequest,
     ) -> m_paa_s20201028_models.OpenApiUpdateActiveSceneResponse:
+        """
+        @summary 更新场景
+        
+        @param request: OpenApiUpdateActiveSceneRequest
+        @return: OpenApiUpdateActiveSceneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.open_api_update_active_scene_with_options(request, runtime)
 
@@ -7062,6 +8668,12 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.OpenApiUpdateActiveSceneRequest,
     ) -> m_paa_s20201028_models.OpenApiUpdateActiveSceneResponse:
+        """
+        @summary 更新场景
+        
+        @param request: OpenApiUpdateActiveSceneRequest
+        @return: OpenApiUpdateActiveSceneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.open_api_update_active_scene_with_options_async(request, runtime)
 
@@ -7070,6 +8682,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.PushBindRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.PushBindResponse:
+        """
+        @param request: PushBindRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushBindResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -7108,6 +8725,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.PushBindRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.PushBindResponse:
+        """
+        @param request: PushBindRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushBindResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -7145,6 +8767,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.PushBindRequest,
     ) -> m_paa_s20201028_models.PushBindResponse:
+        """
+        @param request: PushBindRequest
+        @return: PushBindResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.push_bind_with_options(request, runtime)
 
@@ -7152,6 +8778,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.PushBindRequest,
     ) -> m_paa_s20201028_models.PushBindResponse:
+        """
+        @param request: PushBindRequest
+        @return: PushBindResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.push_bind_with_options_async(request, runtime)
 
@@ -7160,6 +8790,11 @@ class Client(OpenApiClient):
         tmp_req: m_paa_s20201028_models.PushBroadcastRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.PushBroadcastResponse:
+        """
+        @param tmp_req: PushBroadcastRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushBroadcastResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = m_paa_s20201028_models.PushBroadcastShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7234,6 +8869,11 @@ class Client(OpenApiClient):
         tmp_req: m_paa_s20201028_models.PushBroadcastRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.PushBroadcastResponse:
+        """
+        @param tmp_req: PushBroadcastRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushBroadcastResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = m_paa_s20201028_models.PushBroadcastShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7307,6 +8947,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.PushBroadcastRequest,
     ) -> m_paa_s20201028_models.PushBroadcastResponse:
+        """
+        @param request: PushBroadcastRequest
+        @return: PushBroadcastResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.push_broadcast_with_options(request, runtime)
 
@@ -7314,6 +8958,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.PushBroadcastRequest,
     ) -> m_paa_s20201028_models.PushBroadcastResponse:
+        """
+        @param request: PushBroadcastRequest
+        @return: PushBroadcastResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.push_broadcast_with_options_async(request, runtime)
 
@@ -7322,6 +8970,11 @@ class Client(OpenApiClient):
         tmp_req: m_paa_s20201028_models.PushMultipleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.PushMultipleResponse:
+        """
+        @param tmp_req: PushMultipleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushMultipleResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = m_paa_s20201028_models.PushMultipleShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7392,6 +9045,11 @@ class Client(OpenApiClient):
         tmp_req: m_paa_s20201028_models.PushMultipleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.PushMultipleResponse:
+        """
+        @param tmp_req: PushMultipleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushMultipleResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = m_paa_s20201028_models.PushMultipleShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7461,6 +9119,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.PushMultipleRequest,
     ) -> m_paa_s20201028_models.PushMultipleResponse:
+        """
+        @param request: PushMultipleRequest
+        @return: PushMultipleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.push_multiple_with_options(request, runtime)
 
@@ -7468,6 +9130,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.PushMultipleRequest,
     ) -> m_paa_s20201028_models.PushMultipleResponse:
+        """
+        @param request: PushMultipleRequest
+        @return: PushMultipleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.push_multiple_with_options_async(request, runtime)
 
@@ -7476,6 +9142,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.PushReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.PushReportResponse:
+        """
+        @param request: PushReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushReportResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -7528,6 +9199,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.PushReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.PushReportResponse:
+        """
+        @param request: PushReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushReportResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -7579,6 +9255,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.PushReportRequest,
     ) -> m_paa_s20201028_models.PushReportResponse:
+        """
+        @param request: PushReportRequest
+        @return: PushReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.push_report_with_options(request, runtime)
 
@@ -7586,6 +9266,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.PushReportRequest,
     ) -> m_paa_s20201028_models.PushReportResponse:
+        """
+        @param request: PushReportRequest
+        @return: PushReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.push_report_with_options_async(request, runtime)
 
@@ -7594,6 +9278,11 @@ class Client(OpenApiClient):
         tmp_req: m_paa_s20201028_models.PushSimpleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.PushSimpleResponse:
+        """
+        @param tmp_req: PushSimpleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushSimpleResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = m_paa_s20201028_models.PushSimpleShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7682,6 +9371,11 @@ class Client(OpenApiClient):
         tmp_req: m_paa_s20201028_models.PushSimpleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.PushSimpleResponse:
+        """
+        @param tmp_req: PushSimpleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushSimpleResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = m_paa_s20201028_models.PushSimpleShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7769,6 +9463,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.PushSimpleRequest,
     ) -> m_paa_s20201028_models.PushSimpleResponse:
+        """
+        @param request: PushSimpleRequest
+        @return: PushSimpleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.push_simple_with_options(request, runtime)
 
@@ -7776,6 +9474,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.PushSimpleRequest,
     ) -> m_paa_s20201028_models.PushSimpleResponse:
+        """
+        @param request: PushSimpleRequest
+        @return: PushSimpleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.push_simple_with_options_async(request, runtime)
 
@@ -7784,6 +9486,11 @@ class Client(OpenApiClient):
         tmp_req: m_paa_s20201028_models.PushTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.PushTemplateResponse:
+        """
+        @param tmp_req: PushTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushTemplateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = m_paa_s20201028_models.PushTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7864,6 +9571,11 @@ class Client(OpenApiClient):
         tmp_req: m_paa_s20201028_models.PushTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.PushTemplateResponse:
+        """
+        @param tmp_req: PushTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushTemplateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = m_paa_s20201028_models.PushTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7943,6 +9655,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.PushTemplateRequest,
     ) -> m_paa_s20201028_models.PushTemplateResponse:
+        """
+        @param request: PushTemplateRequest
+        @return: PushTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.push_template_with_options(request, runtime)
 
@@ -7950,6 +9666,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.PushTemplateRequest,
     ) -> m_paa_s20201028_models.PushTemplateResponse:
+        """
+        @param request: PushTemplateRequest
+        @return: PushTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.push_template_with_options_async(request, runtime)
 
@@ -7958,6 +9678,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.PushUnBindRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.PushUnBindResponse:
+        """
+        @param request: PushUnBindRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushUnBindResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -7992,6 +9717,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.PushUnBindRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.PushUnBindResponse:
+        """
+        @param request: PushUnBindRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushUnBindResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -8025,6 +9755,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.PushUnBindRequest,
     ) -> m_paa_s20201028_models.PushUnBindResponse:
+        """
+        @param request: PushUnBindRequest
+        @return: PushUnBindResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.push_un_bind_with_options(request, runtime)
 
@@ -8032,6 +9766,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.PushUnBindRequest,
     ) -> m_paa_s20201028_models.PushUnBindResponse:
+        """
+        @param request: PushUnBindRequest
+        @return: PushUnBindResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.push_un_bind_with_options_async(request, runtime)
 
@@ -8040,6 +9778,13 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.QueryInfoFromMdpRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.QueryInfoFromMdpResponse:
+        """
+        @summary 查询Device+服务的
+        
+        @param request: QueryInfoFromMdpRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryInfoFromMdpResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -8080,6 +9825,13 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.QueryInfoFromMdpRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.QueryInfoFromMdpResponse:
+        """
+        @summary 查询Device+服务的
+        
+        @param request: QueryInfoFromMdpRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryInfoFromMdpResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -8119,6 +9871,12 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.QueryInfoFromMdpRequest,
     ) -> m_paa_s20201028_models.QueryInfoFromMdpResponse:
+        """
+        @summary 查询Device+服务的
+        
+        @param request: QueryInfoFromMdpRequest
+        @return: QueryInfoFromMdpResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_info_from_mdp_with_options(request, runtime)
 
@@ -8126,14 +9884,129 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.QueryInfoFromMdpRequest,
     ) -> m_paa_s20201028_models.QueryInfoFromMdpResponse:
+        """
+        @summary 查询Device+服务的
+        
+        @param request: QueryInfoFromMdpRequest
+        @return: QueryInfoFromMdpResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_info_from_mdp_with_options_async(request, runtime)
+
+    def query_link_with_options(
+        self,
+        request: m_paa_s20201028_models.QueryLinkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.QueryLinkResponse:
+        """
+        @summary 查询短链
+        
+        @param request: QueryLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryLinkResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryLink',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.QueryLinkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_link_with_options_async(
+        self,
+        request: m_paa_s20201028_models.QueryLinkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> m_paa_s20201028_models.QueryLinkResponse:
+        """
+        @summary 查询短链
+        
+        @param request: QueryLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryLinkResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.app_id):
+            body['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.url):
+            body['Url'] = request.url
+        if not UtilClient.is_unset(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryLink',
+            version='2020-10-28',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            m_paa_s20201028_models.QueryLinkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_link(
+        self,
+        request: m_paa_s20201028_models.QueryLinkRequest,
+    ) -> m_paa_s20201028_models.QueryLinkResponse:
+        """
+        @summary 查询短链
+        
+        @param request: QueryLinkRequest
+        @return: QueryLinkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.query_link_with_options(request, runtime)
+
+    async def query_link_async(
+        self,
+        request: m_paa_s20201028_models.QueryLinkRequest,
+    ) -> m_paa_s20201028_models.QueryLinkResponse:
+        """
+        @summary 查询短链
+        
+        @param request: QueryLinkRequest
+        @return: QueryLinkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.query_link_with_options_async(request, runtime)
 
     def query_mapp_center_app_with_options(
         self,
         request: m_paa_s20201028_models.QueryMappCenterAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.QueryMappCenterAppResponse:
+        """
+        @param request: QueryMappCenterAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMappCenterAppResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -8164,6 +10037,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.QueryMappCenterAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.QueryMappCenterAppResponse:
+        """
+        @param request: QueryMappCenterAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMappCenterAppResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -8193,6 +10071,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.QueryMappCenterAppRequest,
     ) -> m_paa_s20201028_models.QueryMappCenterAppResponse:
+        """
+        @param request: QueryMappCenterAppRequest
+        @return: QueryMappCenterAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_mapp_center_app_with_options(request, runtime)
 
@@ -8200,6 +10082,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.QueryMappCenterAppRequest,
     ) -> m_paa_s20201028_models.QueryMappCenterAppResponse:
+        """
+        @param request: QueryMappCenterAppRequest
+        @return: QueryMappCenterAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_mapp_center_app_with_options_async(request, runtime)
 
@@ -8208,6 +10094,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.QueryMcdpAimRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.QueryMcdpAimResponse:
+        """
+        @param request: QueryMcdpAimRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMcdpAimResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -8242,6 +10133,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.QueryMcdpAimRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.QueryMcdpAimResponse:
+        """
+        @param request: QueryMcdpAimRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMcdpAimResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -8275,6 +10171,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.QueryMcdpAimRequest,
     ) -> m_paa_s20201028_models.QueryMcdpAimResponse:
+        """
+        @param request: QueryMcdpAimRequest
+        @return: QueryMcdpAimResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_mcdp_aim_with_options(request, runtime)
 
@@ -8282,6 +10182,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.QueryMcdpAimRequest,
     ) -> m_paa_s20201028_models.QueryMcdpAimResponse:
+        """
+        @param request: QueryMcdpAimRequest
+        @return: QueryMcdpAimResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_mcdp_aim_with_options_async(request, runtime)
 
@@ -8290,6 +10194,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.QueryMcdpZoneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.QueryMcdpZoneResponse:
+        """
+        @param request: QueryMcdpZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMcdpZoneResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -8324,6 +10233,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.QueryMcdpZoneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.QueryMcdpZoneResponse:
+        """
+        @param request: QueryMcdpZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMcdpZoneResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -8357,6 +10271,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.QueryMcdpZoneRequest,
     ) -> m_paa_s20201028_models.QueryMcdpZoneResponse:
+        """
+        @param request: QueryMcdpZoneRequest
+        @return: QueryMcdpZoneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_mcdp_zone_with_options(request, runtime)
 
@@ -8364,6 +10282,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.QueryMcdpZoneRequest,
     ) -> m_paa_s20201028_models.QueryMcdpZoneResponse:
+        """
+        @param request: QueryMcdpZoneRequest
+        @return: QueryMcdpZoneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_mcdp_zone_with_options_async(request, runtime)
 
@@ -8372,6 +10294,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.QueryMcubeMiniPackageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.QueryMcubeMiniPackageResponse:
+        """
+        @param request: QueryMcubeMiniPackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMcubeMiniPackageResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -8408,6 +10335,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.QueryMcubeMiniPackageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.QueryMcubeMiniPackageResponse:
+        """
+        @param request: QueryMcubeMiniPackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMcubeMiniPackageResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -8443,6 +10375,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.QueryMcubeMiniPackageRequest,
     ) -> m_paa_s20201028_models.QueryMcubeMiniPackageResponse:
+        """
+        @param request: QueryMcubeMiniPackageRequest
+        @return: QueryMcubeMiniPackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_mcube_mini_package_with_options(request, runtime)
 
@@ -8450,6 +10386,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.QueryMcubeMiniPackageRequest,
     ) -> m_paa_s20201028_models.QueryMcubeMiniPackageResponse:
+        """
+        @param request: QueryMcubeMiniPackageRequest
+        @return: QueryMcubeMiniPackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_mcube_mini_package_with_options_async(request, runtime)
 
@@ -8458,6 +10398,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.QueryMcubeMiniTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.QueryMcubeMiniTaskResponse:
+        """
+        @param request: QueryMcubeMiniTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMcubeMiniTaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -8492,6 +10437,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.QueryMcubeMiniTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.QueryMcubeMiniTaskResponse:
+        """
+        @param request: QueryMcubeMiniTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMcubeMiniTaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -8525,6 +10475,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.QueryMcubeMiniTaskRequest,
     ) -> m_paa_s20201028_models.QueryMcubeMiniTaskResponse:
+        """
+        @param request: QueryMcubeMiniTaskRequest
+        @return: QueryMcubeMiniTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_mcube_mini_task_with_options(request, runtime)
 
@@ -8532,6 +10486,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.QueryMcubeMiniTaskRequest,
     ) -> m_paa_s20201028_models.QueryMcubeMiniTaskResponse:
+        """
+        @param request: QueryMcubeMiniTaskRequest
+        @return: QueryMcubeMiniTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_mcube_mini_task_with_options_async(request, runtime)
 
@@ -8540,6 +10498,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.QueryMcubeVhostRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.QueryMcubeVhostResponse:
+        """
+        @param request: QueryMcubeVhostRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMcubeVhostResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -8572,6 +10535,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.QueryMcubeVhostRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.QueryMcubeVhostResponse:
+        """
+        @param request: QueryMcubeVhostRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMcubeVhostResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -8603,6 +10571,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.QueryMcubeVhostRequest,
     ) -> m_paa_s20201028_models.QueryMcubeVhostResponse:
+        """
+        @param request: QueryMcubeVhostRequest
+        @return: QueryMcubeVhostResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_mcube_vhost_with_options(request, runtime)
 
@@ -8610,6 +10582,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.QueryMcubeVhostRequest,
     ) -> m_paa_s20201028_models.QueryMcubeVhostResponse:
+        """
+        @param request: QueryMcubeVhostRequest
+        @return: QueryMcubeVhostResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_mcube_vhost_with_options_async(request, runtime)
 
@@ -8618,6 +10594,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.QueryMdsUpgradeTaskDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.QueryMdsUpgradeTaskDetailResponse:
+        """
+        @param request: QueryMdsUpgradeTaskDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMdsUpgradeTaskDetailResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -8652,6 +10633,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.QueryMdsUpgradeTaskDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.QueryMdsUpgradeTaskDetailResponse:
+        """
+        @param request: QueryMdsUpgradeTaskDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMdsUpgradeTaskDetailResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -8685,6 +10671,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.QueryMdsUpgradeTaskDetailRequest,
     ) -> m_paa_s20201028_models.QueryMdsUpgradeTaskDetailResponse:
+        """
+        @param request: QueryMdsUpgradeTaskDetailRequest
+        @return: QueryMdsUpgradeTaskDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_mds_upgrade_task_detail_with_options(request, runtime)
 
@@ -8692,6 +10682,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.QueryMdsUpgradeTaskDetailRequest,
     ) -> m_paa_s20201028_models.QueryMdsUpgradeTaskDetailResponse:
+        """
+        @param request: QueryMdsUpgradeTaskDetailRequest
+        @return: QueryMdsUpgradeTaskDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_mds_upgrade_task_detail_with_options_async(request, runtime)
 
@@ -8700,6 +10694,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.QueryMgsApipageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.QueryMgsApipageResponse:
+        """
+        @param request: QueryMgsApipageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMgsApipageResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_status):
@@ -8758,6 +10757,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.QueryMgsApipageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.QueryMgsApipageResponse:
+        """
+        @param request: QueryMgsApipageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMgsApipageResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.api_status):
@@ -8815,6 +10819,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.QueryMgsApipageRequest,
     ) -> m_paa_s20201028_models.QueryMgsApipageResponse:
+        """
+        @param request: QueryMgsApipageRequest
+        @return: QueryMgsApipageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_mgs_apipage_with_options(request, runtime)
 
@@ -8822,6 +10830,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.QueryMgsApipageRequest,
     ) -> m_paa_s20201028_models.QueryMgsApipageResponse:
+        """
+        @param request: QueryMgsApipageRequest
+        @return: QueryMgsApipageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_mgs_apipage_with_options_async(request, runtime)
 
@@ -8830,6 +10842,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.QueryMgsApirestRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.QueryMgsApirestResponse:
+        """
+        @param request: QueryMgsApirestRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMgsApirestResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -8868,6 +10885,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.QueryMgsApirestRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.QueryMgsApirestResponse:
+        """
+        @param request: QueryMgsApirestRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMgsApirestResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -8905,6 +10927,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.QueryMgsApirestRequest,
     ) -> m_paa_s20201028_models.QueryMgsApirestResponse:
+        """
+        @param request: QueryMgsApirestRequest
+        @return: QueryMgsApirestResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_mgs_apirest_with_options(request, runtime)
 
@@ -8912,6 +10938,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.QueryMgsApirestRequest,
     ) -> m_paa_s20201028_models.QueryMgsApirestResponse:
+        """
+        @param request: QueryMgsApirestRequest
+        @return: QueryMgsApirestResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_mgs_apirest_with_options_async(request, runtime)
 
@@ -8920,6 +10950,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.QueryMgsTestreqbodyautogenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.QueryMgsTestreqbodyautogenResponse:
+        """
+        @param request: QueryMgsTestreqbodyautogenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMgsTestreqbodyautogenResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -8956,6 +10991,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.QueryMgsTestreqbodyautogenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.QueryMgsTestreqbodyautogenResponse:
+        """
+        @param request: QueryMgsTestreqbodyautogenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMgsTestreqbodyautogenResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -8991,6 +11031,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.QueryMgsTestreqbodyautogenRequest,
     ) -> m_paa_s20201028_models.QueryMgsTestreqbodyautogenResponse:
+        """
+        @param request: QueryMgsTestreqbodyautogenRequest
+        @return: QueryMgsTestreqbodyautogenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_mgs_testreqbodyautogen_with_options(request, runtime)
 
@@ -8998,6 +11042,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.QueryMgsTestreqbodyautogenRequest,
     ) -> m_paa_s20201028_models.QueryMgsTestreqbodyautogenResponse:
+        """
+        @param request: QueryMgsTestreqbodyautogenRequest
+        @return: QueryMgsTestreqbodyautogenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_mgs_testreqbodyautogen_with_options_async(request, runtime)
 
@@ -9006,6 +11054,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.QueryMpsSchedulerListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.QueryMpsSchedulerListResponse:
+        """
+        @param request: QueryMpsSchedulerListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMpsSchedulerListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -9048,6 +11101,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.QueryMpsSchedulerListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.QueryMpsSchedulerListResponse:
+        """
+        @param request: QueryMpsSchedulerListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMpsSchedulerListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -9089,6 +11147,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.QueryMpsSchedulerListRequest,
     ) -> m_paa_s20201028_models.QueryMpsSchedulerListResponse:
+        """
+        @param request: QueryMpsSchedulerListRequest
+        @return: QueryMpsSchedulerListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_mps_scheduler_list_with_options(request, runtime)
 
@@ -9096,6 +11158,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.QueryMpsSchedulerListRequest,
     ) -> m_paa_s20201028_models.QueryMpsSchedulerListResponse:
+        """
+        @param request: QueryMpsSchedulerListRequest
+        @return: QueryMpsSchedulerListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_mps_scheduler_list_with_options_async(request, runtime)
 
@@ -9104,6 +11170,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.QueryPushAnalysisCoreIndexRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.QueryPushAnalysisCoreIndexResponse:
+        """
+        @param request: QueryPushAnalysisCoreIndexRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPushAnalysisCoreIndexResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -9146,6 +11217,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.QueryPushAnalysisCoreIndexRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.QueryPushAnalysisCoreIndexResponse:
+        """
+        @param request: QueryPushAnalysisCoreIndexRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPushAnalysisCoreIndexResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -9187,6 +11263,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.QueryPushAnalysisCoreIndexRequest,
     ) -> m_paa_s20201028_models.QueryPushAnalysisCoreIndexResponse:
+        """
+        @param request: QueryPushAnalysisCoreIndexRequest
+        @return: QueryPushAnalysisCoreIndexResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_push_analysis_core_index_with_options(request, runtime)
 
@@ -9194,6 +11274,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.QueryPushAnalysisCoreIndexRequest,
     ) -> m_paa_s20201028_models.QueryPushAnalysisCoreIndexResponse:
+        """
+        @param request: QueryPushAnalysisCoreIndexRequest
+        @return: QueryPushAnalysisCoreIndexResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_push_analysis_core_index_with_options_async(request, runtime)
 
@@ -9202,6 +11286,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.QueryPushAnalysisTaskDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.QueryPushAnalysisTaskDetailResponse:
+        """
+        @param request: QueryPushAnalysisTaskDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPushAnalysisTaskDetailResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -9234,6 +11323,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.QueryPushAnalysisTaskDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.QueryPushAnalysisTaskDetailResponse:
+        """
+        @param request: QueryPushAnalysisTaskDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPushAnalysisTaskDetailResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -9265,6 +11359,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.QueryPushAnalysisTaskDetailRequest,
     ) -> m_paa_s20201028_models.QueryPushAnalysisTaskDetailResponse:
+        """
+        @param request: QueryPushAnalysisTaskDetailRequest
+        @return: QueryPushAnalysisTaskDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_push_analysis_task_detail_with_options(request, runtime)
 
@@ -9272,6 +11370,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.QueryPushAnalysisTaskDetailRequest,
     ) -> m_paa_s20201028_models.QueryPushAnalysisTaskDetailResponse:
+        """
+        @param request: QueryPushAnalysisTaskDetailRequest
+        @return: QueryPushAnalysisTaskDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_push_analysis_task_detail_with_options_async(request, runtime)
 
@@ -9280,6 +11382,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.QueryPushAnalysisTaskListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.QueryPushAnalysisTaskListResponse:
+        """
+        @param request: QueryPushAnalysisTaskListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPushAnalysisTaskListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -9320,6 +11427,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.QueryPushAnalysisTaskListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.QueryPushAnalysisTaskListResponse:
+        """
+        @param request: QueryPushAnalysisTaskListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPushAnalysisTaskListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -9359,6 +11471,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.QueryPushAnalysisTaskListRequest,
     ) -> m_paa_s20201028_models.QueryPushAnalysisTaskListResponse:
+        """
+        @param request: QueryPushAnalysisTaskListRequest
+        @return: QueryPushAnalysisTaskListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_push_analysis_task_list_with_options(request, runtime)
 
@@ -9366,6 +11482,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.QueryPushAnalysisTaskListRequest,
     ) -> m_paa_s20201028_models.QueryPushAnalysisTaskListResponse:
+        """
+        @param request: QueryPushAnalysisTaskListRequest
+        @return: QueryPushAnalysisTaskListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_push_analysis_task_list_with_options_async(request, runtime)
 
@@ -9374,6 +11494,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.QueryPushSchedulerListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.QueryPushSchedulerListResponse:
+        """
+        @param request: QueryPushSchedulerListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPushSchedulerListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -9416,6 +11541,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.QueryPushSchedulerListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.QueryPushSchedulerListResponse:
+        """
+        @param request: QueryPushSchedulerListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPushSchedulerListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -9457,6 +11587,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.QueryPushSchedulerListRequest,
     ) -> m_paa_s20201028_models.QueryPushSchedulerListResponse:
+        """
+        @param request: QueryPushSchedulerListRequest
+        @return: QueryPushSchedulerListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_push_scheduler_list_with_options(request, runtime)
 
@@ -9464,6 +11598,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.QueryPushSchedulerListRequest,
     ) -> m_paa_s20201028_models.QueryPushSchedulerListResponse:
+        """
+        @param request: QueryPushSchedulerListRequest
+        @return: QueryPushSchedulerListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_push_scheduler_list_with_options_async(request, runtime)
 
@@ -9472,6 +11610,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.RevokePushMessageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.RevokePushMessageResponse:
+        """
+        @param request: RevokePushMessageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokePushMessageResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -9506,6 +11649,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.RevokePushMessageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.RevokePushMessageResponse:
+        """
+        @param request: RevokePushMessageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokePushMessageResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -9539,6 +11687,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.RevokePushMessageRequest,
     ) -> m_paa_s20201028_models.RevokePushMessageResponse:
+        """
+        @param request: RevokePushMessageRequest
+        @return: RevokePushMessageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.revoke_push_message_with_options(request, runtime)
 
@@ -9546,6 +11698,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.RevokePushMessageRequest,
     ) -> m_paa_s20201028_models.RevokePushMessageResponse:
+        """
+        @param request: RevokePushMessageRequest
+        @return: RevokePushMessageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.revoke_push_message_with_options_async(request, runtime)
 
@@ -9554,6 +11710,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.RevokePushTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.RevokePushTaskResponse:
+        """
+        @param request: RevokePushTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokePushTaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -9586,6 +11747,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.RevokePushTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.RevokePushTaskResponse:
+        """
+        @param request: RevokePushTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokePushTaskResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -9617,6 +11783,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.RevokePushTaskRequest,
     ) -> m_paa_s20201028_models.RevokePushTaskResponse:
+        """
+        @param request: RevokePushTaskRequest
+        @return: RevokePushTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.revoke_push_task_with_options(request, runtime)
 
@@ -9624,6 +11794,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.RevokePushTaskRequest,
     ) -> m_paa_s20201028_models.RevokePushTaskResponse:
+        """
+        @param request: RevokePushTaskRequest
+        @return: RevokePushTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.revoke_push_task_with_options_async(request, runtime)
 
@@ -9632,6 +11806,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.RunMsaDiffRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.RunMsaDiffResponse:
+        """
+        @param request: RunMsaDiffRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunMsaDiffResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -9666,6 +11845,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.RunMsaDiffRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.RunMsaDiffResponse:
+        """
+        @param request: RunMsaDiffRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunMsaDiffResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -9699,6 +11883,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.RunMsaDiffRequest,
     ) -> m_paa_s20201028_models.RunMsaDiffResponse:
+        """
+        @param request: RunMsaDiffRequest
+        @return: RunMsaDiffResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.run_msa_diff_with_options(request, runtime)
 
@@ -9706,6 +11894,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.RunMsaDiffRequest,
     ) -> m_paa_s20201028_models.RunMsaDiffResponse:
+        """
+        @param request: RunMsaDiffRequest
+        @return: RunMsaDiffResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.run_msa_diff_with_options_async(request, runtime)
 
@@ -9714,6 +11906,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.SaveMgsApirestRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.SaveMgsApirestResponse:
+        """
+        @param request: SaveMgsApirestRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveMgsApirestResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -9748,6 +11945,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.SaveMgsApirestRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.SaveMgsApirestResponse:
+        """
+        @param request: SaveMgsApirestRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveMgsApirestResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -9781,6 +11983,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.SaveMgsApirestRequest,
     ) -> m_paa_s20201028_models.SaveMgsApirestResponse:
+        """
+        @param request: SaveMgsApirestRequest
+        @return: SaveMgsApirestResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.save_mgs_apirest_with_options(request, runtime)
 
@@ -9788,6 +11994,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.SaveMgsApirestRequest,
     ) -> m_paa_s20201028_models.SaveMgsApirestResponse:
+        """
+        @param request: SaveMgsApirestRequest
+        @return: SaveMgsApirestResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.save_mgs_apirest_with_options_async(request, runtime)
 
@@ -9796,6 +12006,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.StartUserAppAsyncEnhanceInMsaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.StartUserAppAsyncEnhanceInMsaResponse:
+        """
+        @param request: StartUserAppAsyncEnhanceInMsaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartUserAppAsyncEnhanceInMsaResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.apk_protector):
@@ -9862,6 +12077,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.StartUserAppAsyncEnhanceInMsaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.StartUserAppAsyncEnhanceInMsaResponse:
+        """
+        @param request: StartUserAppAsyncEnhanceInMsaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartUserAppAsyncEnhanceInMsaResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.apk_protector):
@@ -9927,6 +12147,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.StartUserAppAsyncEnhanceInMsaRequest,
     ) -> m_paa_s20201028_models.StartUserAppAsyncEnhanceInMsaResponse:
+        """
+        @param request: StartUserAppAsyncEnhanceInMsaRequest
+        @return: StartUserAppAsyncEnhanceInMsaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_user_app_async_enhance_in_msa_with_options(request, runtime)
 
@@ -9934,6 +12158,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.StartUserAppAsyncEnhanceInMsaRequest,
     ) -> m_paa_s20201028_models.StartUserAppAsyncEnhanceInMsaResponse:
+        """
+        @param request: StartUserAppAsyncEnhanceInMsaRequest
+        @return: StartUserAppAsyncEnhanceInMsaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_user_app_async_enhance_in_msa_with_options_async(request, runtime)
 
@@ -9942,6 +12170,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.UpdateMcubeWhitelistRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.UpdateMcubeWhitelistResponse:
+        """
+        @param request: UpdateMcubeWhitelistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMcubeWhitelistResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -9982,6 +12215,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.UpdateMcubeWhitelistRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.UpdateMcubeWhitelistResponse:
+        """
+        @param request: UpdateMcubeWhitelistRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMcubeWhitelistResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -10021,6 +12259,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.UpdateMcubeWhitelistRequest,
     ) -> m_paa_s20201028_models.UpdateMcubeWhitelistResponse:
+        """
+        @param request: UpdateMcubeWhitelistRequest
+        @return: UpdateMcubeWhitelistResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_mcube_whitelist_with_options(request, runtime)
 
@@ -10028,6 +12270,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.UpdateMcubeWhitelistRequest,
     ) -> m_paa_s20201028_models.UpdateMcubeWhitelistResponse:
+        """
+        @param request: UpdateMcubeWhitelistRequest
+        @return: UpdateMcubeWhitelistResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_mcube_whitelist_with_options_async(request, runtime)
 
@@ -10036,6 +12282,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.UpdateMpaasAppInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.UpdateMpaasAppInfoResponse:
+        """
+        @param request: UpdateMpaasAppInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMpaasAppInfoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -10076,6 +12327,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.UpdateMpaasAppInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.UpdateMpaasAppInfoResponse:
+        """
+        @param request: UpdateMpaasAppInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMpaasAppInfoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -10115,6 +12371,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.UpdateMpaasAppInfoRequest,
     ) -> m_paa_s20201028_models.UpdateMpaasAppInfoResponse:
+        """
+        @param request: UpdateMpaasAppInfoRequest
+        @return: UpdateMpaasAppInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_mpaas_app_info_with_options(request, runtime)
 
@@ -10122,6 +12382,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.UpdateMpaasAppInfoRequest,
     ) -> m_paa_s20201028_models.UpdateMpaasAppInfoResponse:
+        """
+        @param request: UpdateMpaasAppInfoRequest
+        @return: UpdateMpaasAppInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_mpaas_app_info_with_options_async(request, runtime)
 
@@ -10130,6 +12394,13 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.UploadBitcodeToMsaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.UploadBitcodeToMsaResponse:
+        """
+        @summary 上传字节码到msa进行加固
+        
+        @param request: UploadBitcodeToMsaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadBitcodeToMsaResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -10170,6 +12441,13 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.UploadBitcodeToMsaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.UploadBitcodeToMsaResponse:
+        """
+        @summary 上传字节码到msa进行加固
+        
+        @param request: UploadBitcodeToMsaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadBitcodeToMsaResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -10209,6 +12487,12 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.UploadBitcodeToMsaRequest,
     ) -> m_paa_s20201028_models.UploadBitcodeToMsaResponse:
+        """
+        @summary 上传字节码到msa进行加固
+        
+        @param request: UploadBitcodeToMsaRequest
+        @return: UploadBitcodeToMsaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.upload_bitcode_to_msa_with_options(request, runtime)
 
@@ -10216,6 +12500,12 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.UploadBitcodeToMsaRequest,
     ) -> m_paa_s20201028_models.UploadBitcodeToMsaResponse:
+        """
+        @summary 上传字节码到msa进行加固
+        
+        @param request: UploadBitcodeToMsaRequest
+        @return: UploadBitcodeToMsaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.upload_bitcode_to_msa_with_options_async(request, runtime)
 
@@ -10224,6 +12514,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.UploadMcubeMiniPackageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.UploadMcubeMiniPackageResponse:
+        """
+        @param request: UploadMcubeMiniPackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadMcubeMiniPackageResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -10300,6 +12595,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.UploadMcubeMiniPackageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.UploadMcubeMiniPackageResponse:
+        """
+        @param request: UploadMcubeMiniPackageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadMcubeMiniPackageResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -10375,6 +12675,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.UploadMcubeMiniPackageRequest,
     ) -> m_paa_s20201028_models.UploadMcubeMiniPackageResponse:
+        """
+        @param request: UploadMcubeMiniPackageRequest
+        @return: UploadMcubeMiniPackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.upload_mcube_mini_package_with_options(request, runtime)
 
@@ -10382,6 +12686,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.UploadMcubeMiniPackageRequest,
     ) -> m_paa_s20201028_models.UploadMcubeMiniPackageResponse:
+        """
+        @param request: UploadMcubeMiniPackageRequest
+        @return: UploadMcubeMiniPackageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.upload_mcube_mini_package_with_options_async(request, runtime)
 
@@ -10390,6 +12698,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.UploadMcubeRsaKeyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.UploadMcubeRsaKeyResponse:
+        """
+        @param request: UploadMcubeRsaKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadMcubeRsaKeyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -10426,6 +12739,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.UploadMcubeRsaKeyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.UploadMcubeRsaKeyResponse:
+        """
+        @param request: UploadMcubeRsaKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadMcubeRsaKeyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -10461,6 +12779,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.UploadMcubeRsaKeyRequest,
     ) -> m_paa_s20201028_models.UploadMcubeRsaKeyResponse:
+        """
+        @param request: UploadMcubeRsaKeyRequest
+        @return: UploadMcubeRsaKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.upload_mcube_rsa_key_with_options(request, runtime)
 
@@ -10468,6 +12790,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.UploadMcubeRsaKeyRequest,
     ) -> m_paa_s20201028_models.UploadMcubeRsaKeyResponse:
+        """
+        @param request: UploadMcubeRsaKeyRequest
+        @return: UploadMcubeRsaKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.upload_mcube_rsa_key_with_options_async(request, runtime)
 
@@ -10476,6 +12802,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.UploadUserAppToMsaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.UploadUserAppToMsaResponse:
+        """
+        @param request: UploadUserAppToMsaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadUserAppToMsaResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -10510,6 +12841,11 @@ class Client(OpenApiClient):
         request: m_paa_s20201028_models.UploadUserAppToMsaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> m_paa_s20201028_models.UploadUserAppToMsaResponse:
+        """
+        @param request: UploadUserAppToMsaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadUserAppToMsaResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.app_id):
@@ -10543,6 +12879,10 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.UploadUserAppToMsaRequest,
     ) -> m_paa_s20201028_models.UploadUserAppToMsaResponse:
+        """
+        @param request: UploadUserAppToMsaRequest
+        @return: UploadUserAppToMsaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.upload_user_app_to_msa_with_options(request, runtime)
 
@@ -10550,5 +12890,9 @@ class Client(OpenApiClient):
         self,
         request: m_paa_s20201028_models.UploadUserAppToMsaRequest,
     ) -> m_paa_s20201028_models.UploadUserAppToMsaResponse:
+        """
+        @param request: UploadUserAppToMsaRequest
+        @return: UploadUserAppToMsaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.upload_user_app_to_msa_with_options_async(request, runtime)

@@ -12,9 +12,13 @@ class AddMdsMiniConfigRequest(TeaModel):
         tenant_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.mpaas_mappcenter_mini_config_add_json_str = mpaas_mappcenter_mini_config_add_json_str
+        # This parameter is required.
         self.tenant_id = tenant_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -231,9 +235,12 @@ class CancelPushSchedulerRequest(TeaModel):
         unique_ids: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         self.type = type
+        # This parameter is required.
         self.unique_ids = unique_ids
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -365,12 +372,19 @@ class ChangeMcubeMiniTaskStatusRequest(TeaModel):
         tenant_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.biz_type = biz_type
+        # This parameter is required.
         self.package_id = package_id
+        # This parameter is required.
         self.task_id = task_id
+        # This parameter is required.
         self.task_status = task_status
+        # This parameter is required.
         self.tenant_id = tenant_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -939,6 +953,7 @@ class CopyMcdpGroupRequest(TeaModel):
         workspace_id: str = None,
     ):
         self.app_id = app_id
+        # This parameter is required.
         self.mpaas_mappcenter_mcdp_group_copy_json_str = mpaas_mappcenter_mcdp_group_copy_json_str
         self.tenant_id = tenant_id
         self.workspace_id = workspace_id
@@ -1108,6 +1123,194 @@ class CopyMcdpGroupResponse(TeaModel):
         return self
 
 
+class CreateLinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        cors: str = None,
+        domain: str = None,
+        dynamicfield: str = None,
+        target_url: str = None,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.cors = cors
+        self.domain = domain
+        self.dynamicfield = dynamicfield
+        # This parameter is required.
+        self.target_url = target_url
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.cors is not None:
+            result['Cors'] = self.cors
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.dynamicfield is not None:
+            result['Dynamicfield'] = self.dynamicfield
+        if self.target_url is not None:
+            result['TargetUrl'] = self.target_url
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Cors') is not None:
+            self.cors = m.get('Cors')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Dynamicfield') is not None:
+            self.dynamicfield = m.get('Dynamicfield')
+        if m.get('TargetUrl') is not None:
+            self.target_url = m.get('TargetUrl')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class CreateLinkResponseBodyResultContent(TeaModel):
+    def __init__(
+        self,
+        data: str = None,
+        target: str = None,
+        version: str = None,
+    ):
+        self.data = data
+        self.target = target
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.target is not None:
+            result['Target'] = self.target
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Target') is not None:
+            self.target = m.get('Target')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class CreateLinkResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result_code: str = None,
+        result_content: CreateLinkResponseBodyResultContent = None,
+        result_message: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.result_code = result_code
+        self.result_content = result_content
+        self.result_message = result_message
+
+    def validate(self):
+        if self.result_content:
+            self.result_content.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_code is not None:
+            result['ResultCode'] = self.result_code
+        if self.result_content is not None:
+            result['ResultContent'] = self.result_content.to_map()
+        if self.result_message is not None:
+            result['ResultMessage'] = self.result_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultCode') is not None:
+            self.result_code = m.get('ResultCode')
+        if m.get('ResultContent') is not None:
+            temp_model = CreateLinkResponseBodyResultContent()
+            self.result_content = temp_model.from_map(m['ResultContent'])
+        if m.get('ResultMessage') is not None:
+            self.result_message = m.get('ResultMessage')
+        return self
+
+
+class CreateLinkResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateLinkResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateLinkResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateMasCrowdRequest(TeaModel):
     def __init__(
         self,
@@ -1117,6 +1320,7 @@ class CreateMasCrowdRequest(TeaModel):
         workspace_id: str = None,
     ):
         self.app_id = app_id
+        # This parameter is required.
         self.mpaas_mappcenter_mcdp_mas_crowd_create_json_str = mpaas_mappcenter_mcdp_mas_crowd_create_json_str
         self.tenant_id = tenant_id
         self.workspace_id = workspace_id
@@ -1295,6 +1499,7 @@ class CreateMasFunnelRequest(TeaModel):
         workspace_id: str = None,
     ):
         self.app_id = app_id
+        # This parameter is required.
         self.mpaas_mappcenter_mcdp_mas_funnel_create_json_str = mpaas_mappcenter_mcdp_mas_funnel_create_json_str
         self.tenant_id = tenant_id
         self.workspace_id = workspace_id
@@ -1473,6 +1678,7 @@ class CreateMcdpEventRequest(TeaModel):
         workspace_id: str = None,
     ):
         self.app_id = app_id
+        # This parameter is required.
         self.mpaas_mappcenter_mcdp_event_create_json_str = mpaas_mappcenter_mcdp_event_create_json_str
         self.tenant_id = tenant_id
         self.workspace_id = workspace_id
@@ -1651,6 +1857,7 @@ class CreateMcdpEventAttributeRequest(TeaModel):
         workspace_id: str = None,
     ):
         self.app_id = app_id
+        # This parameter is required.
         self.mpaas_mappcenter_mcdp_event_attribute_create_json_str = mpaas_mappcenter_mcdp_event_attribute_create_json_str
         self.tenant_id = tenant_id
         self.workspace_id = workspace_id
@@ -1829,6 +2036,7 @@ class CreateMcdpGroupRequest(TeaModel):
         workspace_id: str = None,
     ):
         self.app_id = app_id
+        # This parameter is required.
         self.mpaas_mappcenter_mcdp_group_create_json_str = mpaas_mappcenter_mcdp_group_create_json_str
         self.tenant_id = tenant_id
         self.workspace_id = workspace_id
@@ -2007,6 +2215,7 @@ class CreateMcdpMaterialRequest(TeaModel):
         workspace_id: str = None,
     ):
         self.app_id = app_id
+        # This parameter is required.
         self.mpaas_mappcenter_mcdp_material_create_json_str = mpaas_mappcenter_mcdp_material_create_json_str
         self.tenant_id = tenant_id
         self.workspace_id = workspace_id
@@ -2185,6 +2394,7 @@ class CreateMcdpZoneRequest(TeaModel):
         workspace_id: str = None,
     ):
         self.app_id = app_id
+        # This parameter is required.
         self.mpaas_mappcenter_mcdp_zone_create_json_str = mpaas_mappcenter_mcdp_zone_create_json_str
         self.tenant_id = tenant_id
         self.workspace_id = workspace_id
@@ -2363,10 +2573,15 @@ class CreateMcubeMiniAppRequest(TeaModel):
         tenant_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.h_5id = h_5id
+        # This parameter is required.
         self.h_5name = h_5name
+        # This parameter is required.
         self.tenant_id = tenant_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -2547,16 +2762,23 @@ class CreateMcubeMiniTaskRequest(TeaModel):
         whitelist_ids: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         self.grey_config_info = grey_config_info
         self.grey_endtime_data = grey_endtime_data
         self.grey_num = grey_num
+        # This parameter is required.
         self.memo = memo
+        # This parameter is required.
         self.package_id = package_id
+        # This parameter is required.
         self.publish_mode = publish_mode
+        # This parameter is required.
         self.publish_type = publish_type
+        # This parameter is required.
         self.tenant_id = tenant_id
         self.whitelist_ids = whitelist_ids
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -4118,9 +4340,13 @@ class CreateMcubeVhostRequest(TeaModel):
         vhost: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.tenant_id = tenant_id
+        # This parameter is required.
         self.vhost = vhost
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -4291,10 +4517,15 @@ class CreateMcubeWhitelistRequest(TeaModel):
         whitelist_type: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.tenant_id = tenant_id
+        # This parameter is required.
         self.white_list_name = white_list_name
+        # This parameter is required.
         self.whitelist_type = whitelist_type
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -4469,10 +4700,15 @@ class CreateMcubeWhitelistForIdeRequest(TeaModel):
         whitelist_value: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.tenant_id = tenant_id
+        # This parameter is required.
         self.user_id = user_id
+        # This parameter is required.
         self.whitelist_value = whitelist_value
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -4659,10 +4895,13 @@ class CreateMdsMiniprogramTaskRequest(TeaModel):
         self.grey_config_info = grey_config_info
         self.grey_endtime_data = grey_endtime_data
         self.grey_num = grey_num
+        # This parameter is required.
         self.id = id
         self.memo = memo
+        # This parameter is required.
         self.package_id = package_id
         self.publish_mode = publish_mode
+        # This parameter is required.
         self.publish_type = publish_type
         self.sync_mode = sync_mode
         self.tenant_id = tenant_id
@@ -4919,9 +5158,13 @@ class CreateMsaEnhanceRequest(TeaModel):
         tenant_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.mpaas_mappcenter_msa_enhance_create_json_str = mpaas_mappcenter_msa_enhance_create_json_str
+        # This parameter is required.
         self.tenant_id = tenant_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -5107,19 +5350,24 @@ class CreateOpenGlobalDataRequest(TeaModel):
         valid_time_start: int = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         self.app_max_version = app_max_version
         self.app_min_version = app_min_version
+        # This parameter is required.
         self.biz_type = biz_type
         self.ext_attr_str = ext_attr_str
         self.max_uid = max_uid
         self.min_uid = min_uid
         self.os_type = os_type
+        # This parameter is required.
         self.payload = payload
+        # This parameter is required.
         self.third_msg_id = third_msg_id
         self.uids = uids
         self.valid_time_end = valid_time_end
         self.valid_time_start = valid_time_start
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -5297,18 +5545,24 @@ class CreateOpenSingleDataRequest(TeaModel):
         valid_time_start: int = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         self.app_max_version = app_max_version
         self.app_min_version = app_min_version
+        # This parameter is required.
         self.biz_type = biz_type
         self.check_online = check_online
         self.ext_attr_str = ext_attr_str
+        # This parameter is required.
         self.link_token = link_token
         self.os_type = os_type
+        # This parameter is required.
         self.payload = payload
+        # This parameter is required.
         self.third_msg_id = third_msg_id
         self.valid_time_end = valid_time_end
         self.valid_time_start = valid_time_start
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -5693,6 +5947,7 @@ class DeleteMcdpAimRequest(TeaModel):
         workspace_id: str = None,
     ):
         self.app_id = app_id
+        # This parameter is required.
         self.mpaas_mappcenter_mcdp_aim_delete_json_str = mpaas_mappcenter_mcdp_aim_delete_json_str
         self.tenant_id = tenant_id
         self.workspace_id = workspace_id
@@ -5871,6 +6126,7 @@ class DeleteMcdpCrowdRequest(TeaModel):
         workspace_id: str = None,
     ):
         self.app_id = app_id
+        # This parameter is required.
         self.mpaas_mappcenter_mcdp_crowd_delete_json_str = mpaas_mappcenter_mcdp_crowd_delete_json_str
         self.tenant_id = tenant_id
         self.workspace_id = workspace_id
@@ -6049,6 +6305,7 @@ class DeleteMcdpEventAttributeByIdRequest(TeaModel):
         workspace_id: str = None,
     ):
         self.app_id = app_id
+        # This parameter is required.
         self.mpaas_mappcenter_mcdp_event_attribute_delete_json_str = mpaas_mappcenter_mcdp_event_attribute_delete_json_str
         self.tenant_id = tenant_id
         self.workspace_id = workspace_id
@@ -6227,6 +6484,7 @@ class DeleteMcdpEventByIdRequest(TeaModel):
         workspace_id: str = None,
     ):
         self.app_id = app_id
+        # This parameter is required.
         self.mpaas_mappcenter_mcdp_event_delete_json_str = mpaas_mappcenter_mcdp_event_delete_json_str
         self.tenant_id = tenant_id
         self.workspace_id = workspace_id
@@ -6405,6 +6663,7 @@ class DeleteMcdpMaterialRequest(TeaModel):
         workspace_id: str = None,
     ):
         self.app_id = app_id
+        # This parameter is required.
         self.mpaas_mappcenter_mcdp_material_delete_json_str = mpaas_mappcenter_mcdp_material_delete_json_str
         self.tenant_id = tenant_id
         self.workspace_id = workspace_id
@@ -6583,6 +6842,7 @@ class DeleteMcdpZoneRequest(TeaModel):
         workspace_id: str = None,
     ):
         self.app_id = app_id
+        # This parameter is required.
         self.mpaas_mappcenter_mcdp_zone_delete_json_str = mpaas_mappcenter_mcdp_zone_delete_json_str
         self.tenant_id = tenant_id
         self.workspace_id = workspace_id
@@ -6760,9 +7020,13 @@ class DeleteMcubeMiniAppRequest(TeaModel):
         tenant_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.h_5id = h_5id
+        # This parameter is required.
         self.tenant_id = tenant_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -7294,9 +7558,13 @@ class DeleteMcubeWhitelistRequest(TeaModel):
         tenant_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.tenant_id = tenant_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -7684,8 +7952,11 @@ class ExistMcubeRsaKeyRequest(TeaModel):
         tenant_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.tenant_id = tenant_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -7857,8 +8128,11 @@ class ExportMappCenterAppConfigRequest(TeaModel):
         self.apk_file_url = apk_file_url
         self.app_id = app_id
         self.cert_rsa_base_64 = cert_rsa_base_64
+        # This parameter is required.
         self.identifier = identifier
+        # This parameter is required.
         self.onex_flag = onex_flag
+        # This parameter is required.
         self.system_type = system_type
         self.workspace_id = workspace_id
 
@@ -8041,9 +8315,12 @@ class GetFileTokenForUploadToMsaRequest(TeaModel):
         tenant_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         self.onex_flag = onex_flag
+        # This parameter is required.
         self.tenant_id = tenant_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -8284,9 +8561,12 @@ class GetLogUrlInMsaRequest(TeaModel):
         tenant_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         self.id = id
+        # This parameter is required.
         self.tenant_id = tenant_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -8462,9 +8742,13 @@ class GetMcubeFileTokenRequest(TeaModel):
         tenant_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.onex_flag = onex_flag
+        # This parameter is required.
         self.tenant_id = tenant_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -10724,9 +11008,13 @@ class GetMdsMiniConfigRequest(TeaModel):
         tenant_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.h_5id = h_5id
+        # This parameter is required.
         self.tenant_id = tenant_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -11361,9 +11649,13 @@ class GetUserAppDonwloadUrlInMsaRequest(TeaModel):
         tenant_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.tenant_id = tenant_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -11574,9 +11866,13 @@ class GetUserAppEnhanceProcessInMsaRequest(TeaModel):
         tenant_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.tenant_id = tenant_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -11948,9 +12244,13 @@ class GetUserAppUploadProcessInMsaRequest(TeaModel):
         tenant_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.tenant_id = tenant_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -13148,11 +13448,14 @@ class ListMcubeMiniAppsRequest(TeaModel):
         tenant_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         self.keyword = keyword
         self.page_num = page_num
         self.page_size = page_size
+        # This parameter is required.
         self.tenant_id = tenant_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -13416,12 +13719,17 @@ class ListMcubeMiniPackagesRequest(TeaModel):
         tenant_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.h_5id = h_5id
+        # This parameter is required.
         self.package_types = package_types
         self.page_num = page_num
         self.page_size = page_size
+        # This parameter is required.
         self.tenant_id = tenant_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -13788,9 +14096,13 @@ class ListMcubeMiniTasksRequest(TeaModel):
         tenant_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.tenant_id = tenant_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -16166,11 +16478,14 @@ class ListMcubeWhitelistsRequest(TeaModel):
         whitelist_name: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         self.page_num = page_num
         self.page_size = page_size
+        # This parameter is required.
         self.tenant_id = tenant_id
         self.whitelist_name = whitelist_name
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -17513,10 +17828,13 @@ class LogMsaQueryRequest(TeaModel):
         tenant_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         self.id = id
         self.onex_flag = onex_flag
+        # This parameter is required.
         self.tenant_id = tenant_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -17699,9 +18017,11 @@ class MTRSOCRServiceRequest(TeaModel):
         workspace_id: str = None,
     ):
         self.app_id = app_id
+        # This parameter is required.
         self.image_raw = image_raw
         self.mask = mask
         self.tenant_id = tenant_id
+        # This parameter is required.
         self.type = type
         self.workspace_id = workspace_id
 
@@ -19234,11 +19554,16 @@ class PushBindRequest(TeaModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.delivery_token = delivery_token
+        # This parameter is required.
         self.os_type = os_type
         self.phone_number = phone_number
+        # This parameter is required.
         self.user_id = user_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -19435,14 +19760,18 @@ class PushBroadcastRequest(TeaModel):
         workspace_id: str = None,
     ):
         self.android_channel = android_channel
+        # This parameter is required.
         self.app_id = app_id
         self.bind_period = bind_period
         self.channel_id = channel_id
         self.classification = classification
+        # This parameter is required.
         self.delivery_type = delivery_type
+        # This parameter is required.
         self.expired_seconds = expired_seconds
         self.extended_params = extended_params
         self.mi_channel_id = mi_channel_id
+        # This parameter is required.
         self.msgkey = msgkey
         self.notify_type = notify_type
         self.push_action = push_action
@@ -19452,9 +19781,11 @@ class PushBroadcastRequest(TeaModel):
         self.strategy_type = strategy_type
         self.task_name = task_name
         self.template_key_value = template_key_value
+        # This parameter is required.
         self.template_name = template_name
         self.third_channel_category = third_channel_category
         self.un_bind_period = un_bind_period
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -19588,14 +19919,18 @@ class PushBroadcastShrinkRequest(TeaModel):
         workspace_id: str = None,
     ):
         self.android_channel = android_channel
+        # This parameter is required.
         self.app_id = app_id
         self.bind_period = bind_period
         self.channel_id = channel_id
         self.classification = classification
+        # This parameter is required.
         self.delivery_type = delivery_type
+        # This parameter is required.
         self.expired_seconds = expired_seconds
         self.extended_params = extended_params
         self.mi_channel_id = mi_channel_id
+        # This parameter is required.
         self.msgkey = msgkey
         self.notify_type = notify_type
         self.push_action = push_action
@@ -19605,9 +19940,11 @@ class PushBroadcastShrinkRequest(TeaModel):
         self.strategy_type = strategy_type
         self.task_name = task_name
         self.template_key_value = template_key_value
+        # This parameter is required.
         self.template_name = template_name
         self.third_channel_category_shrink = third_channel_category_shrink
         self.un_bind_period = un_bind_period
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -19850,7 +20187,9 @@ class PushMultipleRequestTargetMsg(TeaModel):
         template_key_value: str = None,
     ):
         self.extended_params = extended_params
+        # This parameter is required.
         self.msg_key = msg_key
+        # This parameter is required.
         self.target = target
         self.template_key_value = template_key_value
 
@@ -19912,11 +20251,14 @@ class PushMultipleRequest(TeaModel):
     ):
         self.activity_content_state = activity_content_state
         self.activity_event = activity_event
+        # This parameter is required.
         self.app_id = app_id
         self.channel_id = channel_id
         self.classification = classification
+        # This parameter is required.
         self.delivery_type = delivery_type
         self.dismissal_date = dismissal_date
+        # This parameter is required.
         self.expired_seconds = expired_seconds
         self.extended_params = extended_params
         self.mi_channel_id = mi_channel_id
@@ -19925,10 +20267,13 @@ class PushMultipleRequest(TeaModel):
         self.silent = silent
         self.strategy_content = strategy_content
         self.strategy_type = strategy_type
+        # This parameter is required.
         self.target_msg = target_msg
         self.task_name = task_name
+        # This parameter is required.
         self.template_name = template_name
         self.third_channel_category = third_channel_category
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -20044,7 +20389,9 @@ class PushMultipleShrinkRequestTargetMsg(TeaModel):
         template_key_value: str = None,
     ):
         self.extended_params = extended_params
+        # This parameter is required.
         self.msg_key = msg_key
+        # This parameter is required.
         self.target = target
         self.template_key_value = template_key_value
 
@@ -20106,11 +20453,14 @@ class PushMultipleShrinkRequest(TeaModel):
     ):
         self.activity_content_state = activity_content_state
         self.activity_event = activity_event
+        # This parameter is required.
         self.app_id = app_id
         self.channel_id = channel_id
         self.classification = classification
+        # This parameter is required.
         self.delivery_type = delivery_type
         self.dismissal_date = dismissal_date
+        # This parameter is required.
         self.expired_seconds = expired_seconds
         self.extended_params = extended_params
         self.mi_channel_id = mi_channel_id
@@ -20119,10 +20469,13 @@ class PushMultipleShrinkRequest(TeaModel):
         self.silent = silent
         self.strategy_content = strategy_content
         self.strategy_type = strategy_type
+        # This parameter is required.
         self.target_msg = target_msg
         self.task_name = task_name
+        # This parameter is required.
         self.template_name = template_name
         self.third_channel_category_shrink = third_channel_category_shrink
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -20373,18 +20726,22 @@ class PushReportRequest(TeaModel):
         third_channel_device_token: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         self.app_version = app_version
         self.channel = channel
         self.connect_type = connect_type
+        # This parameter is required.
         self.delivery_token = delivery_token
         self.imei = imei
         self.imsi = imsi
         self.model = model
+        # This parameter is required.
         self.os_type = os_type
         self.push_version = push_version
         self.third_channel = third_channel
         self.third_channel_device_token = third_channel_device_token
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -20617,12 +20974,16 @@ class PushSimpleRequest(TeaModel):
     ):
         self.activity_content_state = activity_content_state
         self.activity_event = activity_event
+        # This parameter is required.
         self.app_id = app_id
         self.channel_id = channel_id
         self.classification = classification
+        # This parameter is required.
         self.content = content
+        # This parameter is required.
         self.delivery_type = delivery_type
         self.dismissal_date = dismissal_date
+        # This parameter is required.
         self.expired_seconds = expired_seconds
         self.extended_params = extended_params
         self.icon_urls = icon_urls
@@ -20638,11 +20999,14 @@ class PushSimpleRequest(TeaModel):
         self.sms_template_param = sms_template_param
         self.strategy_content = strategy_content
         self.strategy_type = strategy_type
+        # This parameter is required.
         self.target_msgkey = target_msgkey
         self.task_name = task_name
         self.third_channel_category = third_channel_category
+        # This parameter is required.
         self.title = title
         self.uri = uri
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -20812,12 +21176,16 @@ class PushSimpleShrinkRequest(TeaModel):
     ):
         self.activity_content_state = activity_content_state
         self.activity_event = activity_event
+        # This parameter is required.
         self.app_id = app_id
         self.channel_id = channel_id
         self.classification = classification
+        # This parameter is required.
         self.content = content
+        # This parameter is required.
         self.delivery_type = delivery_type
         self.dismissal_date = dismissal_date
+        # This parameter is required.
         self.expired_seconds = expired_seconds
         self.extended_params = extended_params
         self.icon_urls = icon_urls
@@ -20833,11 +21201,14 @@ class PushSimpleShrinkRequest(TeaModel):
         self.sms_template_param = sms_template_param
         self.strategy_content = strategy_content
         self.strategy_type = strategy_type
+        # This parameter is required.
         self.target_msgkey = target_msgkey
         self.task_name = task_name
         self.third_channel_category_shrink = third_channel_category_shrink
+        # This parameter is required.
         self.title = title
         self.uri = uri
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -21130,11 +21501,14 @@ class PushTemplateRequest(TeaModel):
     ):
         self.activity_content_state = activity_content_state
         self.activity_event = activity_event
+        # This parameter is required.
         self.app_id = app_id
         self.channel_id = channel_id
         self.classification = classification
+        # This parameter is required.
         self.delivery_type = delivery_type
         self.dismissal_date = dismissal_date
+        # This parameter is required.
         self.expired_seconds = expired_seconds
         self.extended_params = extended_params
         self.mi_channel_id = mi_channel_id
@@ -21147,11 +21521,14 @@ class PushTemplateRequest(TeaModel):
         self.sms_template_param = sms_template_param
         self.strategy_content = strategy_content
         self.strategy_type = strategy_type
+        # This parameter is required.
         self.target_msgkey = target_msgkey
         self.task_name = task_name
         self.template_key_value = template_key_value
+        # This parameter is required.
         self.template_name = template_name
         self.third_channel_category = third_channel_category
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -21301,11 +21678,14 @@ class PushTemplateShrinkRequest(TeaModel):
     ):
         self.activity_content_state = activity_content_state
         self.activity_event = activity_event
+        # This parameter is required.
         self.app_id = app_id
         self.channel_id = channel_id
         self.classification = classification
+        # This parameter is required.
         self.delivery_type = delivery_type
         self.dismissal_date = dismissal_date
+        # This parameter is required.
         self.expired_seconds = expired_seconds
         self.extended_params = extended_params
         self.mi_channel_id = mi_channel_id
@@ -21318,11 +21698,14 @@ class PushTemplateShrinkRequest(TeaModel):
         self.sms_template_param = sms_template_param
         self.strategy_content = strategy_content
         self.strategy_type = strategy_type
+        # This parameter is required.
         self.target_msgkey = target_msgkey
         self.task_name = task_name
         self.template_key_value = template_key_value
+        # This parameter is required.
         self.template_name = template_name
         self.third_channel_category_shrink = third_channel_category_shrink
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -21576,9 +21959,13 @@ class PushUnBindRequest(TeaModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.delivery_token = delivery_token
+        # This parameter is required.
         self.user_id = user_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -21751,12 +22138,15 @@ class QueryInfoFromMdpRequest(TeaModel):
         tenant_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         self.mobile = mobile
         self.mobile_md_5 = mobile_md_5
         self.mobile_sha_256 = mobile_sha_256
+        # This parameter is required.
         self.risk_scene = risk_scene
         self.tenant_id = tenant_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -21895,13 +22285,185 @@ class QueryInfoFromMdpResponse(TeaModel):
         return self
 
 
+class QueryLinkRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: str = None,
+        url: str = None,
+        workspace_id: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        # This parameter is required.
+        self.url = url
+        # This parameter is required.
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.url is not None:
+            result['Url'] = self.url
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('Url') is not None:
+            self.url = m.get('Url')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class QueryLinkResponseBodyResultContent(TeaModel):
+    def __init__(
+        self,
+        data: Any = None,
+        target: str = None,
+        version: str = None,
+    ):
+        self.data = data
+        self.target = target
+        self.version = version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.target is not None:
+            result['Target'] = self.target
+        if self.version is not None:
+            result['Version'] = self.version
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('Target') is not None:
+            self.target = m.get('Target')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
+        return self
+
+
+class QueryLinkResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result_code: str = None,
+        result_content: QueryLinkResponseBodyResultContent = None,
+        result_message: str = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.result_code = result_code
+        self.result_content = result_content
+        self.result_message = result_message
+
+    def validate(self):
+        if self.result_content:
+            self.result_content.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result_code is not None:
+            result['ResultCode'] = self.result_code
+        if self.result_content is not None:
+            result['ResultContent'] = self.result_content.to_map()
+        if self.result_message is not None:
+            result['ResultMessage'] = self.result_message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResultCode') is not None:
+            self.result_code = m.get('ResultCode')
+        if m.get('ResultContent') is not None:
+            temp_model = QueryLinkResponseBodyResultContent()
+            self.result_content = temp_model.from_map(m['ResultContent'])
+        if m.get('ResultMessage') is not None:
+            self.result_message = m.get('ResultMessage')
+        return self
+
+
+class QueryLinkResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryLinkResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryLinkResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class QueryMappCenterAppRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -22248,6 +22810,7 @@ class QueryMcdpAimRequest(TeaModel):
         workspace_id: str = None,
     ):
         self.app_id = app_id
+        # This parameter is required.
         self.id = id
         self.tenant_id = tenant_id
         self.workspace_id = workspace_id
@@ -22604,10 +23167,15 @@ class QueryMcubeMiniPackageRequest(TeaModel):
         tenant_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.h_5id = h_5id
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.tenant_id = tenant_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -22936,9 +23504,13 @@ class QueryMcubeMiniTaskRequest(TeaModel):
         tenant_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.task_id = task_id
+        # This parameter is required.
         self.tenant_id = tenant_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -23232,8 +23804,11 @@ class QueryMcubeVhostRequest(TeaModel):
         tenant_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.tenant_id = tenant_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -23400,6 +23975,7 @@ class QueryMdsUpgradeTaskDetailRequest(TeaModel):
         workspace_id: str = None,
     ):
         self.app_id = app_id
+        # This parameter is required.
         self.task_id = task_id
         self.tenant_id = tenant_id
         self.workspace_id = workspace_id
@@ -26345,6 +26921,7 @@ class QueryMpsSchedulerListRequest(TeaModel):
         unique_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         self.end_time = end_time
         self.page_number = page_number
@@ -26352,6 +26929,7 @@ class QueryMpsSchedulerListRequest(TeaModel):
         self.start_time = start_time
         self.type = type
         self.unique_id = unique_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -26659,13 +27237,17 @@ class QueryPushAnalysisCoreIndexRequest(TeaModel):
         type: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         self.channel = channel
+        # This parameter is required.
         self.end_time = end_time
         self.platform = platform
+        # This parameter is required.
         self.start_time = start_time
         self.task_id = task_id
         self.type = type
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -26909,8 +27491,11 @@ class QueryPushAnalysisTaskDetailRequest(TeaModel):
         task_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.task_id = task_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -27132,12 +27717,15 @@ class QueryPushAnalysisTaskListRequest(TeaModel):
         task_name: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.start_time = start_time
         self.task_id = task_id
         self.task_name = task_name
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -27447,13 +28035,17 @@ class QueryPushSchedulerListRequest(TeaModel):
         unique_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.end_time = end_time
         self.page_number = page_number
         self.page_size = page_size
+        # This parameter is required.
         self.start_time = start_time
         self.type = type
         self.unique_id = unique_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -27757,9 +28349,13 @@ class RevokePushMessageRequest(TeaModel):
         target_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.message_id = message_id
+        # This parameter is required.
         self.target_id = target_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -27928,8 +28524,11 @@ class RevokePushTaskRequest(TeaModel):
         task_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.task_id = task_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -28095,9 +28694,13 @@ class RunMsaDiffRequest(TeaModel):
         tenant_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.mpaas_mappcenter_msa_diff_run_json_str = mpaas_mappcenter_msa_diff_run_json_str
+        # This parameter is required.
         self.tenant_id = tenant_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -28462,11 +29065,13 @@ class StartUserAppAsyncEnhanceInMsaRequest(TeaModel):
         workspace_id: str = None,
     ):
         self.apk_protector = apk_protector
+        # This parameter is required.
         self.app_id = app_id
         self.assets_file_list = assets_file_list
         self.classes = classes
         self.dalvik_debugger = dalvik_debugger
         self.emulator_environment = emulator_environment
+        # This parameter is required.
         self.id = id
         self.java_hook = java_hook
         self.memory_dump = memory_dump
@@ -28477,9 +29082,11 @@ class StartUserAppAsyncEnhanceInMsaRequest(TeaModel):
         self.run_mode = run_mode
         self.so_file_list = so_file_list
         self.task_type = task_type
+        # This parameter is required.
         self.tenant_id = tenant_id
         self.total_switch = total_switch
         self.use_ashield = use_ashield
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -28918,12 +29525,17 @@ class UpdateMcubeWhitelistRequest(TeaModel):
         tenant_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.id = id
         self.key_ids = key_ids
+        # This parameter is required.
         self.onex_flag = onex_flag
         self.oss_url = oss_url
+        # This parameter is required.
         self.tenant_id = tenant_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -29386,12 +29998,15 @@ class UploadBitcodeToMsaRequest(TeaModel):
         type: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         self.bitcode = bitcode
         self.code_version = code_version
         self.license = license
+        # This parameter is required.
         self.tenant_id = tenant_id
         self.type = type
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -29600,30 +30215,50 @@ class UploadMcubeMiniPackageRequest(TeaModel):
         vhost: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.auto_install = auto_install
         self.client_version_max = client_version_max
+        # This parameter is required.
         self.client_version_min = client_version_min
+        # This parameter is required.
         self.enable_keep_alive = enable_keep_alive
+        # This parameter is required.
         self.enable_option_menu = enable_option_menu
+        # This parameter is required.
         self.enable_tab_bar = enable_tab_bar
         self.extend_info = extend_info
+        # This parameter is required.
         self.h_5id = h_5id
+        # This parameter is required.
         self.h_5name = h_5name
+        # This parameter is required.
         self.h_5version = h_5version
         self.icon_file_url = icon_file_url
         self.icon_url = icon_url
+        # This parameter is required.
         self.install_type = install_type
+        # This parameter is required.
         self.main_url = main_url
+        # This parameter is required.
         self.onex_flag = onex_flag
+        # This parameter is required.
         self.package_type = package_type
+        # This parameter is required.
         self.platform = platform
+        # This parameter is required.
         self.resource_file_url = resource_file_url
+        # This parameter is required.
         self.resource_type = resource_type
+        # This parameter is required.
         self.tenant_id = tenant_id
+        # This parameter is required.
         self.user_id = user_id
         self.uuid = uuid
+        # This parameter is required.
         self.vhost = vhost
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -29919,10 +30554,15 @@ class UploadMcubeRsaKeyRequest(TeaModel):
         tenant_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.file_url = file_url
+        # This parameter is required.
         self.onex_flag = onex_flag
+        # This parameter is required.
         self.tenant_id = tenant_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -30096,9 +30736,12 @@ class UploadUserAppToMsaRequest(TeaModel):
         tenant_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         self.file_url = file_url
+        # This parameter is required.
         self.tenant_id = tenant_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
