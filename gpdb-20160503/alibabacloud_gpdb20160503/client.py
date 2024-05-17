@@ -446,6 +446,322 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.cancel_upsert_collection_data_job_with_options_async(request, runtime)
 
+    def check_hadoop_data_source_with_options(
+        self,
+        request: gpdb_20160503_models.CheckHadoopDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CheckHadoopDataSourceResponse:
+        """
+        @summary 检查hadoop数据源配置
+        
+        @param request: CheckHadoopDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckHadoopDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.check_dir):
+            query['CheckDir'] = request.check_dir
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckHadoopDataSource',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.CheckHadoopDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_hadoop_data_source_with_options_async(
+        self,
+        request: gpdb_20160503_models.CheckHadoopDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CheckHadoopDataSourceResponse:
+        """
+        @summary 检查hadoop数据源配置
+        
+        @param request: CheckHadoopDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckHadoopDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.check_dir):
+            query['CheckDir'] = request.check_dir
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckHadoopDataSource',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.CheckHadoopDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_hadoop_data_source(
+        self,
+        request: gpdb_20160503_models.CheckHadoopDataSourceRequest,
+    ) -> gpdb_20160503_models.CheckHadoopDataSourceResponse:
+        """
+        @summary 检查hadoop数据源配置
+        
+        @param request: CheckHadoopDataSourceRequest
+        @return: CheckHadoopDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.check_hadoop_data_source_with_options(request, runtime)
+
+    async def check_hadoop_data_source_async(
+        self,
+        request: gpdb_20160503_models.CheckHadoopDataSourceRequest,
+    ) -> gpdb_20160503_models.CheckHadoopDataSourceResponse:
+        """
+        @summary 检查hadoop数据源配置
+        
+        @param request: CheckHadoopDataSourceRequest
+        @return: CheckHadoopDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.check_hadoop_data_source_with_options_async(request, runtime)
+
+    def check_hadoop_net_connection_with_options(
+        self,
+        request: gpdb_20160503_models.CheckHadoopNetConnectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CheckHadoopNetConnectionResponse:
+        """
+        @summary 检查hadoop集群网络连通性
+        
+        @param request: CheckHadoopNetConnectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckHadoopNetConnectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.emr_instance_id):
+            query['EmrInstanceId'] = request.emr_instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckHadoopNetConnection',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.CheckHadoopNetConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_hadoop_net_connection_with_options_async(
+        self,
+        request: gpdb_20160503_models.CheckHadoopNetConnectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CheckHadoopNetConnectionResponse:
+        """
+        @summary 检查hadoop集群网络连通性
+        
+        @param request: CheckHadoopNetConnectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckHadoopNetConnectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.emr_instance_id):
+            query['EmrInstanceId'] = request.emr_instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckHadoopNetConnection',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.CheckHadoopNetConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_hadoop_net_connection(
+        self,
+        request: gpdb_20160503_models.CheckHadoopNetConnectionRequest,
+    ) -> gpdb_20160503_models.CheckHadoopNetConnectionResponse:
+        """
+        @summary 检查hadoop集群网络连通性
+        
+        @param request: CheckHadoopNetConnectionRequest
+        @return: CheckHadoopNetConnectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.check_hadoop_net_connection_with_options(request, runtime)
+
+    async def check_hadoop_net_connection_async(
+        self,
+        request: gpdb_20160503_models.CheckHadoopNetConnectionRequest,
+    ) -> gpdb_20160503_models.CheckHadoopNetConnectionResponse:
+        """
+        @summary 检查hadoop集群网络连通性
+        
+        @param request: CheckHadoopNetConnectionRequest
+        @return: CheckHadoopNetConnectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.check_hadoop_net_connection_with_options_async(request, runtime)
+
+    def check_jdbcsource_net_connection_with_options(
+        self,
+        request: gpdb_20160503_models.CheckJDBCSourceNetConnectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CheckJDBCSourceNetConnectionResponse:
+        """
+        @summary 检查jdbc连接串网络连通性
+        
+        @param request: CheckJDBCSourceNetConnectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckJDBCSourceNetConnectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.jdbc_connection_string):
+            query['JdbcConnectionString'] = request.jdbc_connection_string
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckJDBCSourceNetConnection',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.CheckJDBCSourceNetConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_jdbcsource_net_connection_with_options_async(
+        self,
+        request: gpdb_20160503_models.CheckJDBCSourceNetConnectionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CheckJDBCSourceNetConnectionResponse:
+        """
+        @summary 检查jdbc连接串网络连通性
+        
+        @param request: CheckJDBCSourceNetConnectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckJDBCSourceNetConnectionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.jdbc_connection_string):
+            query['JdbcConnectionString'] = request.jdbc_connection_string
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CheckJDBCSourceNetConnection',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.CheckJDBCSourceNetConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_jdbcsource_net_connection(
+        self,
+        request: gpdb_20160503_models.CheckJDBCSourceNetConnectionRequest,
+    ) -> gpdb_20160503_models.CheckJDBCSourceNetConnectionResponse:
+        """
+        @summary 检查jdbc连接串网络连通性
+        
+        @param request: CheckJDBCSourceNetConnectionRequest
+        @return: CheckJDBCSourceNetConnectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.check_jdbcsource_net_connection_with_options(request, runtime)
+
+    async def check_jdbcsource_net_connection_async(
+        self,
+        request: gpdb_20160503_models.CheckJDBCSourceNetConnectionRequest,
+    ) -> gpdb_20160503_models.CheckJDBCSourceNetConnectionResponse:
+        """
+        @summary 检查jdbc连接串网络连通性
+        
+        @param request: CheckJDBCSourceNetConnectionRequest
+        @return: CheckJDBCSourceNetConnectionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.check_jdbcsource_net_connection_with_options_async(request, runtime)
+
     def check_service_linked_role_with_options(
         self,
         request: gpdb_20160503_models.CheckServiceLinkedRoleRequest,
@@ -1402,6 +1718,494 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_document_collection_with_options_async(request, runtime)
 
+    def create_extensions_with_options(
+        self,
+        request: gpdb_20160503_models.CreateExtensionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CreateExtensionsResponse:
+        """
+        @summary 安装插件
+        
+        @param request: CreateExtensionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateExtensionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dbnames):
+            query['DBNames'] = request.dbnames
+        if not UtilClient.is_unset(request.extensions):
+            query['Extensions'] = request.extensions
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateExtensions',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.CreateExtensionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_extensions_with_options_async(
+        self,
+        request: gpdb_20160503_models.CreateExtensionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CreateExtensionsResponse:
+        """
+        @summary 安装插件
+        
+        @param request: CreateExtensionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateExtensionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dbnames):
+            query['DBNames'] = request.dbnames
+        if not UtilClient.is_unset(request.extensions):
+            query['Extensions'] = request.extensions
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateExtensions',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.CreateExtensionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_extensions(
+        self,
+        request: gpdb_20160503_models.CreateExtensionsRequest,
+    ) -> gpdb_20160503_models.CreateExtensionsResponse:
+        """
+        @summary 安装插件
+        
+        @param request: CreateExtensionsRequest
+        @return: CreateExtensionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_extensions_with_options(request, runtime)
+
+    async def create_extensions_async(
+        self,
+        request: gpdb_20160503_models.CreateExtensionsRequest,
+    ) -> gpdb_20160503_models.CreateExtensionsResponse:
+        """
+        @summary 安装插件
+        
+        @param request: CreateExtensionsRequest
+        @return: CreateExtensionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_extensions_with_options_async(request, runtime)
+
+    def create_external_data_service_with_options(
+        self,
+        request: gpdb_20160503_models.CreateExternalDataServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CreateExternalDataServiceResponse:
+        """
+        @summary 创建外部数据服务
+        
+        @param request: CreateExternalDataServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateExternalDataServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_description):
+            query['ServiceDescription'] = request.service_description
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.service_spec):
+            query['ServiceSpec'] = request.service_spec
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateExternalDataService',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.CreateExternalDataServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_external_data_service_with_options_async(
+        self,
+        request: gpdb_20160503_models.CreateExternalDataServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CreateExternalDataServiceResponse:
+        """
+        @summary 创建外部数据服务
+        
+        @param request: CreateExternalDataServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateExternalDataServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_description):
+            query['ServiceDescription'] = request.service_description
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.service_spec):
+            query['ServiceSpec'] = request.service_spec
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateExternalDataService',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.CreateExternalDataServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_external_data_service(
+        self,
+        request: gpdb_20160503_models.CreateExternalDataServiceRequest,
+    ) -> gpdb_20160503_models.CreateExternalDataServiceResponse:
+        """
+        @summary 创建外部数据服务
+        
+        @param request: CreateExternalDataServiceRequest
+        @return: CreateExternalDataServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_external_data_service_with_options(request, runtime)
+
+    async def create_external_data_service_async(
+        self,
+        request: gpdb_20160503_models.CreateExternalDataServiceRequest,
+    ) -> gpdb_20160503_models.CreateExternalDataServiceResponse:
+        """
+        @summary 创建外部数据服务
+        
+        @param request: CreateExternalDataServiceRequest
+        @return: CreateExternalDataServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_external_data_service_with_options_async(request, runtime)
+
+    def create_hadoop_data_source_with_options(
+        self,
+        request: gpdb_20160503_models.CreateHadoopDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CreateHadoopDataSourceResponse:
+        """
+        @summary 创建hadoop数据源配置
+        
+        @param request: CreateHadoopDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHadoopDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.data_source_description):
+            query['DataSourceDescription'] = request.data_source_description
+        if not UtilClient.is_unset(request.data_source_name):
+            query['DataSourceName'] = request.data_source_name
+        if not UtilClient.is_unset(request.data_source_type):
+            query['DataSourceType'] = request.data_source_type
+        if not UtilClient.is_unset(request.emr_instance_id):
+            query['EmrInstanceId'] = request.emr_instance_id
+        if not UtilClient.is_unset(request.hdfsconf):
+            query['HDFSConf'] = request.hdfsconf
+        if not UtilClient.is_unset(request.hadoop_core_conf):
+            query['HadoopCoreConf'] = request.hadoop_core_conf
+        if not UtilClient.is_unset(request.hadoop_create_type):
+            query['HadoopCreateType'] = request.hadoop_create_type
+        if not UtilClient.is_unset(request.hadoop_hosts_address):
+            query['HadoopHostsAddress'] = request.hadoop_hosts_address
+        if not UtilClient.is_unset(request.hive_conf):
+            query['HiveConf'] = request.hive_conf
+        if not UtilClient.is_unset(request.map_reduce_conf):
+            query['MapReduceConf'] = request.map_reduce_conf
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.yarn_conf):
+            query['YarnConf'] = request.yarn_conf
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateHadoopDataSource',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.CreateHadoopDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_hadoop_data_source_with_options_async(
+        self,
+        request: gpdb_20160503_models.CreateHadoopDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CreateHadoopDataSourceResponse:
+        """
+        @summary 创建hadoop数据源配置
+        
+        @param request: CreateHadoopDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHadoopDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.data_source_description):
+            query['DataSourceDescription'] = request.data_source_description
+        if not UtilClient.is_unset(request.data_source_name):
+            query['DataSourceName'] = request.data_source_name
+        if not UtilClient.is_unset(request.data_source_type):
+            query['DataSourceType'] = request.data_source_type
+        if not UtilClient.is_unset(request.emr_instance_id):
+            query['EmrInstanceId'] = request.emr_instance_id
+        if not UtilClient.is_unset(request.hdfsconf):
+            query['HDFSConf'] = request.hdfsconf
+        if not UtilClient.is_unset(request.hadoop_core_conf):
+            query['HadoopCoreConf'] = request.hadoop_core_conf
+        if not UtilClient.is_unset(request.hadoop_create_type):
+            query['HadoopCreateType'] = request.hadoop_create_type
+        if not UtilClient.is_unset(request.hadoop_hosts_address):
+            query['HadoopHostsAddress'] = request.hadoop_hosts_address
+        if not UtilClient.is_unset(request.hive_conf):
+            query['HiveConf'] = request.hive_conf
+        if not UtilClient.is_unset(request.map_reduce_conf):
+            query['MapReduceConf'] = request.map_reduce_conf
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.yarn_conf):
+            query['YarnConf'] = request.yarn_conf
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateHadoopDataSource',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.CreateHadoopDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_hadoop_data_source(
+        self,
+        request: gpdb_20160503_models.CreateHadoopDataSourceRequest,
+    ) -> gpdb_20160503_models.CreateHadoopDataSourceResponse:
+        """
+        @summary 创建hadoop数据源配置
+        
+        @param request: CreateHadoopDataSourceRequest
+        @return: CreateHadoopDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_hadoop_data_source_with_options(request, runtime)
+
+    async def create_hadoop_data_source_async(
+        self,
+        request: gpdb_20160503_models.CreateHadoopDataSourceRequest,
+    ) -> gpdb_20160503_models.CreateHadoopDataSourceResponse:
+        """
+        @summary 创建hadoop数据源配置
+        
+        @param request: CreateHadoopDataSourceRequest
+        @return: CreateHadoopDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_hadoop_data_source_with_options_async(request, runtime)
+
+    def create_jdbcdata_source_with_options(
+        self,
+        request: gpdb_20160503_models.CreateJDBCDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CreateJDBCDataSourceResponse:
+        """
+        @summary 创建JDBC数据源配置
+        
+        @param request: CreateJDBCDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateJDBCDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.data_source_description):
+            query['DataSourceDescription'] = request.data_source_description
+        if not UtilClient.is_unset(request.data_source_name):
+            query['DataSourceName'] = request.data_source_name
+        if not UtilClient.is_unset(request.data_source_type):
+            query['DataSourceType'] = request.data_source_type
+        if not UtilClient.is_unset(request.jdbcconnection_string):
+            query['JDBCConnectionString'] = request.jdbcconnection_string
+        if not UtilClient.is_unset(request.jdbcpassword):
+            query['JDBCPassword'] = request.jdbcpassword
+        if not UtilClient.is_unset(request.jdbcuser_name):
+            query['JDBCUserName'] = request.jdbcuser_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateJDBCDataSource',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.CreateJDBCDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_jdbcdata_source_with_options_async(
+        self,
+        request: gpdb_20160503_models.CreateJDBCDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CreateJDBCDataSourceResponse:
+        """
+        @summary 创建JDBC数据源配置
+        
+        @param request: CreateJDBCDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateJDBCDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.data_source_description):
+            query['DataSourceDescription'] = request.data_source_description
+        if not UtilClient.is_unset(request.data_source_name):
+            query['DataSourceName'] = request.data_source_name
+        if not UtilClient.is_unset(request.data_source_type):
+            query['DataSourceType'] = request.data_source_type
+        if not UtilClient.is_unset(request.jdbcconnection_string):
+            query['JDBCConnectionString'] = request.jdbcconnection_string
+        if not UtilClient.is_unset(request.jdbcpassword):
+            query['JDBCPassword'] = request.jdbcpassword
+        if not UtilClient.is_unset(request.jdbcuser_name):
+            query['JDBCUserName'] = request.jdbcuser_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateJDBCDataSource',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.CreateJDBCDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_jdbcdata_source(
+        self,
+        request: gpdb_20160503_models.CreateJDBCDataSourceRequest,
+    ) -> gpdb_20160503_models.CreateJDBCDataSourceResponse:
+        """
+        @summary 创建JDBC数据源配置
+        
+        @param request: CreateJDBCDataSourceRequest
+        @return: CreateJDBCDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_jdbcdata_source_with_options(request, runtime)
+
+    async def create_jdbcdata_source_async(
+        self,
+        request: gpdb_20160503_models.CreateJDBCDataSourceRequest,
+    ) -> gpdb_20160503_models.CreateJDBCDataSourceResponse:
+        """
+        @summary 创建JDBC数据源配置
+        
+        @param request: CreateJDBCDataSourceRequest
+        @return: CreateJDBCDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_jdbcdata_source_with_options_async(request, runtime)
+
     def create_namespace_with_options(
         self,
         request: gpdb_20160503_models.CreateNamespaceRequest,
@@ -1757,6 +2561,438 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_service_linked_role_with_options_async(request, runtime)
+
+    def create_streaming_data_service_with_options(
+        self,
+        request: gpdb_20160503_models.CreateStreamingDataServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CreateStreamingDataServiceResponse:
+        """
+        @summary 创建外部数据源配置
+        
+        @param request: CreateStreamingDataServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateStreamingDataServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_description):
+            query['ServiceDescription'] = request.service_description
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.service_spec):
+            query['ServiceSpec'] = request.service_spec
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateStreamingDataService',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.CreateStreamingDataServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_streaming_data_service_with_options_async(
+        self,
+        request: gpdb_20160503_models.CreateStreamingDataServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CreateStreamingDataServiceResponse:
+        """
+        @summary 创建外部数据源配置
+        
+        @param request: CreateStreamingDataServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateStreamingDataServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_description):
+            query['ServiceDescription'] = request.service_description
+        if not UtilClient.is_unset(request.service_name):
+            query['ServiceName'] = request.service_name
+        if not UtilClient.is_unset(request.service_spec):
+            query['ServiceSpec'] = request.service_spec
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateStreamingDataService',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.CreateStreamingDataServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_streaming_data_service(
+        self,
+        request: gpdb_20160503_models.CreateStreamingDataServiceRequest,
+    ) -> gpdb_20160503_models.CreateStreamingDataServiceResponse:
+        """
+        @summary 创建外部数据源配置
+        
+        @param request: CreateStreamingDataServiceRequest
+        @return: CreateStreamingDataServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_streaming_data_service_with_options(request, runtime)
+
+    async def create_streaming_data_service_async(
+        self,
+        request: gpdb_20160503_models.CreateStreamingDataServiceRequest,
+    ) -> gpdb_20160503_models.CreateStreamingDataServiceResponse:
+        """
+        @summary 创建外部数据源配置
+        
+        @param request: CreateStreamingDataServiceRequest
+        @return: CreateStreamingDataServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_streaming_data_service_with_options_async(request, runtime)
+
+    def create_streaming_data_source_with_options(
+        self,
+        request: gpdb_20160503_models.CreateStreamingDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CreateStreamingDataSourceResponse:
+        """
+        @summary 创建外部数据源配置
+        
+        @param request: CreateStreamingDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateStreamingDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.data_source_config):
+            query['DataSourceConfig'] = request.data_source_config
+        if not UtilClient.is_unset(request.data_source_description):
+            query['DataSourceDescription'] = request.data_source_description
+        if not UtilClient.is_unset(request.data_source_name):
+            query['DataSourceName'] = request.data_source_name
+        if not UtilClient.is_unset(request.data_source_type):
+            query['DataSourceType'] = request.data_source_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateStreamingDataSource',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.CreateStreamingDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_streaming_data_source_with_options_async(
+        self,
+        request: gpdb_20160503_models.CreateStreamingDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CreateStreamingDataSourceResponse:
+        """
+        @summary 创建外部数据源配置
+        
+        @param request: CreateStreamingDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateStreamingDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.data_source_config):
+            query['DataSourceConfig'] = request.data_source_config
+        if not UtilClient.is_unset(request.data_source_description):
+            query['DataSourceDescription'] = request.data_source_description
+        if not UtilClient.is_unset(request.data_source_name):
+            query['DataSourceName'] = request.data_source_name
+        if not UtilClient.is_unset(request.data_source_type):
+            query['DataSourceType'] = request.data_source_type
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateStreamingDataSource',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.CreateStreamingDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_streaming_data_source(
+        self,
+        request: gpdb_20160503_models.CreateStreamingDataSourceRequest,
+    ) -> gpdb_20160503_models.CreateStreamingDataSourceResponse:
+        """
+        @summary 创建外部数据源配置
+        
+        @param request: CreateStreamingDataSourceRequest
+        @return: CreateStreamingDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_streaming_data_source_with_options(request, runtime)
+
+    async def create_streaming_data_source_async(
+        self,
+        request: gpdb_20160503_models.CreateStreamingDataSourceRequest,
+    ) -> gpdb_20160503_models.CreateStreamingDataSourceResponse:
+        """
+        @summary 创建外部数据源配置
+        
+        @param request: CreateStreamingDataSourceRequest
+        @return: CreateStreamingDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_streaming_data_source_with_options_async(request, runtime)
+
+    def create_streaming_job_with_options(
+        self,
+        tmp_req: gpdb_20160503_models.CreateStreamingJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CreateStreamingJobResponse:
+        """
+        @summary 创建外部数据源配置
+        
+        @param tmp_req: CreateStreamingJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateStreamingJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = gpdb_20160503_models.CreateStreamingJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dest_columns):
+            request.dest_columns_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dest_columns, 'DestColumns', 'json')
+        if not UtilClient.is_unset(tmp_req.match_columns):
+            request.match_columns_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.match_columns, 'MatchColumns', 'json')
+        if not UtilClient.is_unset(tmp_req.src_columns):
+            request.src_columns_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.src_columns, 'SrcColumns', 'json')
+        if not UtilClient.is_unset(tmp_req.update_columns):
+            request.update_columns_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.update_columns, 'UpdateColumns', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.account):
+            query['Account'] = request.account
+        if not UtilClient.is_unset(request.consistency):
+            query['Consistency'] = request.consistency
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.dest_columns_shrink):
+            query['DestColumns'] = request.dest_columns_shrink
+        if not UtilClient.is_unset(request.dest_database):
+            query['DestDatabase'] = request.dest_database
+        if not UtilClient.is_unset(request.dest_schema):
+            query['DestSchema'] = request.dest_schema
+        if not UtilClient.is_unset(request.dest_table):
+            query['DestTable'] = request.dest_table
+        if not UtilClient.is_unset(request.error_limit_count):
+            query['ErrorLimitCount'] = request.error_limit_count
+        if not UtilClient.is_unset(request.fallback_offset):
+            query['FallbackOffset'] = request.fallback_offset
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.job_config):
+            query['JobConfig'] = request.job_config
+        if not UtilClient.is_unset(request.job_description):
+            query['JobDescription'] = request.job_description
+        if not UtilClient.is_unset(request.job_name):
+            query['JobName'] = request.job_name
+        if not UtilClient.is_unset(request.match_columns_shrink):
+            query['MatchColumns'] = request.match_columns_shrink
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.src_columns_shrink):
+            query['SrcColumns'] = request.src_columns_shrink
+        if not UtilClient.is_unset(request.try_run):
+            query['TryRun'] = request.try_run
+        if not UtilClient.is_unset(request.update_columns_shrink):
+            query['UpdateColumns'] = request.update_columns_shrink
+        if not UtilClient.is_unset(request.write_mode):
+            query['WriteMode'] = request.write_mode
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateStreamingJob',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.CreateStreamingJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_streaming_job_with_options_async(
+        self,
+        tmp_req: gpdb_20160503_models.CreateStreamingJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CreateStreamingJobResponse:
+        """
+        @summary 创建外部数据源配置
+        
+        @param tmp_req: CreateStreamingJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateStreamingJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = gpdb_20160503_models.CreateStreamingJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dest_columns):
+            request.dest_columns_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dest_columns, 'DestColumns', 'json')
+        if not UtilClient.is_unset(tmp_req.match_columns):
+            request.match_columns_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.match_columns, 'MatchColumns', 'json')
+        if not UtilClient.is_unset(tmp_req.src_columns):
+            request.src_columns_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.src_columns, 'SrcColumns', 'json')
+        if not UtilClient.is_unset(tmp_req.update_columns):
+            request.update_columns_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.update_columns, 'UpdateColumns', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.account):
+            query['Account'] = request.account
+        if not UtilClient.is_unset(request.consistency):
+            query['Consistency'] = request.consistency
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.dest_columns_shrink):
+            query['DestColumns'] = request.dest_columns_shrink
+        if not UtilClient.is_unset(request.dest_database):
+            query['DestDatabase'] = request.dest_database
+        if not UtilClient.is_unset(request.dest_schema):
+            query['DestSchema'] = request.dest_schema
+        if not UtilClient.is_unset(request.dest_table):
+            query['DestTable'] = request.dest_table
+        if not UtilClient.is_unset(request.error_limit_count):
+            query['ErrorLimitCount'] = request.error_limit_count
+        if not UtilClient.is_unset(request.fallback_offset):
+            query['FallbackOffset'] = request.fallback_offset
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.job_config):
+            query['JobConfig'] = request.job_config
+        if not UtilClient.is_unset(request.job_description):
+            query['JobDescription'] = request.job_description
+        if not UtilClient.is_unset(request.job_name):
+            query['JobName'] = request.job_name
+        if not UtilClient.is_unset(request.match_columns_shrink):
+            query['MatchColumns'] = request.match_columns_shrink
+        if not UtilClient.is_unset(request.mode):
+            query['Mode'] = request.mode
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.src_columns_shrink):
+            query['SrcColumns'] = request.src_columns_shrink
+        if not UtilClient.is_unset(request.try_run):
+            query['TryRun'] = request.try_run
+        if not UtilClient.is_unset(request.update_columns_shrink):
+            query['UpdateColumns'] = request.update_columns_shrink
+        if not UtilClient.is_unset(request.write_mode):
+            query['WriteMode'] = request.write_mode
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateStreamingJob',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.CreateStreamingJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_streaming_job(
+        self,
+        request: gpdb_20160503_models.CreateStreamingJobRequest,
+    ) -> gpdb_20160503_models.CreateStreamingJobResponse:
+        """
+        @summary 创建外部数据源配置
+        
+        @param request: CreateStreamingJobRequest
+        @return: CreateStreamingJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_streaming_job_with_options(request, runtime)
+
+    async def create_streaming_job_async(
+        self,
+        request: gpdb_20160503_models.CreateStreamingJobRequest,
+    ) -> gpdb_20160503_models.CreateStreamingJobResponse:
+        """
+        @summary 创建外部数据源配置
+        
+        @param request: CreateStreamingJobRequest
+        @return: CreateStreamingJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_streaming_job_with_options_async(request, runtime)
 
     def create_vector_index_with_options(
         self,
@@ -2622,6 +3858,426 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_document_collection_with_options_async(request, runtime)
 
+    def delete_extension_with_options(
+        self,
+        request: gpdb_20160503_models.DeleteExtensionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DeleteExtensionResponse:
+        """
+        @summary 删除插件
+        
+        @param request: DeleteExtensionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteExtensionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dbnames):
+            query['DBNames'] = request.dbnames
+        if not UtilClient.is_unset(request.extension):
+            query['Extension'] = request.extension
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteExtension',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DeleteExtensionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_extension_with_options_async(
+        self,
+        request: gpdb_20160503_models.DeleteExtensionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DeleteExtensionResponse:
+        """
+        @summary 删除插件
+        
+        @param request: DeleteExtensionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteExtensionResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dbnames):
+            query['DBNames'] = request.dbnames
+        if not UtilClient.is_unset(request.extension):
+            query['Extension'] = request.extension
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteExtension',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DeleteExtensionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_extension(
+        self,
+        request: gpdb_20160503_models.DeleteExtensionRequest,
+    ) -> gpdb_20160503_models.DeleteExtensionResponse:
+        """
+        @summary 删除插件
+        
+        @param request: DeleteExtensionRequest
+        @return: DeleteExtensionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_extension_with_options(request, runtime)
+
+    async def delete_extension_async(
+        self,
+        request: gpdb_20160503_models.DeleteExtensionRequest,
+    ) -> gpdb_20160503_models.DeleteExtensionResponse:
+        """
+        @summary 删除插件
+        
+        @param request: DeleteExtensionRequest
+        @return: DeleteExtensionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_extension_with_options_async(request, runtime)
+
+    def delete_external_data_service_with_options(
+        self,
+        request: gpdb_20160503_models.DeleteExternalDataServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DeleteExternalDataServiceResponse:
+        """
+        @summary 删除外部数据服务
+        
+        @param request: DeleteExternalDataServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteExternalDataServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteExternalDataService',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DeleteExternalDataServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_external_data_service_with_options_async(
+        self,
+        request: gpdb_20160503_models.DeleteExternalDataServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DeleteExternalDataServiceResponse:
+        """
+        @summary 删除外部数据服务
+        
+        @param request: DeleteExternalDataServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteExternalDataServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteExternalDataService',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DeleteExternalDataServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_external_data_service(
+        self,
+        request: gpdb_20160503_models.DeleteExternalDataServiceRequest,
+    ) -> gpdb_20160503_models.DeleteExternalDataServiceResponse:
+        """
+        @summary 删除外部数据服务
+        
+        @param request: DeleteExternalDataServiceRequest
+        @return: DeleteExternalDataServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_external_data_service_with_options(request, runtime)
+
+    async def delete_external_data_service_async(
+        self,
+        request: gpdb_20160503_models.DeleteExternalDataServiceRequest,
+    ) -> gpdb_20160503_models.DeleteExternalDataServiceResponse:
+        """
+        @summary 删除外部数据服务
+        
+        @param request: DeleteExternalDataServiceRequest
+        @return: DeleteExternalDataServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_external_data_service_with_options_async(request, runtime)
+
+    def delete_hadoop_data_source_with_options(
+        self,
+        request: gpdb_20160503_models.DeleteHadoopDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DeleteHadoopDataSourceResponse:
+        """
+        @summary 删除hadoop数据源
+        
+        @param request: DeleteHadoopDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHadoopDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteHadoopDataSource',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DeleteHadoopDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_hadoop_data_source_with_options_async(
+        self,
+        request: gpdb_20160503_models.DeleteHadoopDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DeleteHadoopDataSourceResponse:
+        """
+        @summary 删除hadoop数据源
+        
+        @param request: DeleteHadoopDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHadoopDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteHadoopDataSource',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DeleteHadoopDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_hadoop_data_source(
+        self,
+        request: gpdb_20160503_models.DeleteHadoopDataSourceRequest,
+    ) -> gpdb_20160503_models.DeleteHadoopDataSourceResponse:
+        """
+        @summary 删除hadoop数据源
+        
+        @param request: DeleteHadoopDataSourceRequest
+        @return: DeleteHadoopDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_hadoop_data_source_with_options(request, runtime)
+
+    async def delete_hadoop_data_source_async(
+        self,
+        request: gpdb_20160503_models.DeleteHadoopDataSourceRequest,
+    ) -> gpdb_20160503_models.DeleteHadoopDataSourceResponse:
+        """
+        @summary 删除hadoop数据源
+        
+        @param request: DeleteHadoopDataSourceRequest
+        @return: DeleteHadoopDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_hadoop_data_source_with_options_async(request, runtime)
+
+    def delete_jdbcdata_source_with_options(
+        self,
+        request: gpdb_20160503_models.DeleteJDBCDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DeleteJDBCDataSourceResponse:
+        """
+        @summary 删除jdbc数据源
+        
+        @param request: DeleteJDBCDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteJDBCDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteJDBCDataSource',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DeleteJDBCDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_jdbcdata_source_with_options_async(
+        self,
+        request: gpdb_20160503_models.DeleteJDBCDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DeleteJDBCDataSourceResponse:
+        """
+        @summary 删除jdbc数据源
+        
+        @param request: DeleteJDBCDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteJDBCDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteJDBCDataSource',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DeleteJDBCDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_jdbcdata_source(
+        self,
+        request: gpdb_20160503_models.DeleteJDBCDataSourceRequest,
+    ) -> gpdb_20160503_models.DeleteJDBCDataSourceResponse:
+        """
+        @summary 删除jdbc数据源
+        
+        @param request: DeleteJDBCDataSourceRequest
+        @return: DeleteJDBCDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_jdbcdata_source_with_options(request, runtime)
+
+    async def delete_jdbcdata_source_async(
+        self,
+        request: gpdb_20160503_models.DeleteJDBCDataSourceRequest,
+    ) -> gpdb_20160503_models.DeleteJDBCDataSourceResponse:
+        """
+        @summary 删除jdbc数据源
+        
+        @param request: DeleteJDBCDataSourceRequest
+        @return: DeleteJDBCDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_jdbcdata_source_with_options_async(request, runtime)
+
     def delete_namespace_with_options(
         self,
         request: gpdb_20160503_models.DeleteNamespaceRequest,
@@ -2737,6 +4393,318 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_namespace_with_options_async(request, runtime)
+
+    def delete_streaming_data_service_with_options(
+        self,
+        request: gpdb_20160503_models.DeleteStreamingDataServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DeleteStreamingDataServiceResponse:
+        """
+        @summary 创建外部数据源配置
+        
+        @param request: DeleteStreamingDataServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteStreamingDataServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteStreamingDataService',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DeleteStreamingDataServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_streaming_data_service_with_options_async(
+        self,
+        request: gpdb_20160503_models.DeleteStreamingDataServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DeleteStreamingDataServiceResponse:
+        """
+        @summary 创建外部数据源配置
+        
+        @param request: DeleteStreamingDataServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteStreamingDataServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteStreamingDataService',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DeleteStreamingDataServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_streaming_data_service(
+        self,
+        request: gpdb_20160503_models.DeleteStreamingDataServiceRequest,
+    ) -> gpdb_20160503_models.DeleteStreamingDataServiceResponse:
+        """
+        @summary 创建外部数据源配置
+        
+        @param request: DeleteStreamingDataServiceRequest
+        @return: DeleteStreamingDataServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_streaming_data_service_with_options(request, runtime)
+
+    async def delete_streaming_data_service_async(
+        self,
+        request: gpdb_20160503_models.DeleteStreamingDataServiceRequest,
+    ) -> gpdb_20160503_models.DeleteStreamingDataServiceResponse:
+        """
+        @summary 创建外部数据源配置
+        
+        @param request: DeleteStreamingDataServiceRequest
+        @return: DeleteStreamingDataServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_streaming_data_service_with_options_async(request, runtime)
+
+    def delete_streaming_data_source_with_options(
+        self,
+        request: gpdb_20160503_models.DeleteStreamingDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DeleteStreamingDataSourceResponse:
+        """
+        @summary 删除外部数据源配置
+        
+        @param request: DeleteStreamingDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteStreamingDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteStreamingDataSource',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DeleteStreamingDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_streaming_data_source_with_options_async(
+        self,
+        request: gpdb_20160503_models.DeleteStreamingDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DeleteStreamingDataSourceResponse:
+        """
+        @summary 删除外部数据源配置
+        
+        @param request: DeleteStreamingDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteStreamingDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteStreamingDataSource',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DeleteStreamingDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_streaming_data_source(
+        self,
+        request: gpdb_20160503_models.DeleteStreamingDataSourceRequest,
+    ) -> gpdb_20160503_models.DeleteStreamingDataSourceResponse:
+        """
+        @summary 删除外部数据源配置
+        
+        @param request: DeleteStreamingDataSourceRequest
+        @return: DeleteStreamingDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_streaming_data_source_with_options(request, runtime)
+
+    async def delete_streaming_data_source_async(
+        self,
+        request: gpdb_20160503_models.DeleteStreamingDataSourceRequest,
+    ) -> gpdb_20160503_models.DeleteStreamingDataSourceResponse:
+        """
+        @summary 删除外部数据源配置
+        
+        @param request: DeleteStreamingDataSourceRequest
+        @return: DeleteStreamingDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_streaming_data_source_with_options_async(request, runtime)
+
+    def delete_streaming_job_with_options(
+        self,
+        request: gpdb_20160503_models.DeleteStreamingJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DeleteStreamingJobResponse:
+        """
+        @summary 删除外部数据源配置
+        
+        @param request: DeleteStreamingJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteStreamingJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteStreamingJob',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DeleteStreamingJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_streaming_job_with_options_async(
+        self,
+        request: gpdb_20160503_models.DeleteStreamingJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DeleteStreamingJobResponse:
+        """
+        @summary 删除外部数据源配置
+        
+        @param request: DeleteStreamingJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteStreamingJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteStreamingJob',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DeleteStreamingJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_streaming_job(
+        self,
+        request: gpdb_20160503_models.DeleteStreamingJobRequest,
+    ) -> gpdb_20160503_models.DeleteStreamingJobResponse:
+        """
+        @summary 删除外部数据源配置
+        
+        @param request: DeleteStreamingJobRequest
+        @return: DeleteStreamingJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_streaming_job_with_options(request, runtime)
+
+    async def delete_streaming_job_async(
+        self,
+        request: gpdb_20160503_models.DeleteStreamingJobRequest,
+    ) -> gpdb_20160503_models.DeleteStreamingJobResponse:
+        """
+        @summary 删除外部数据源配置
+        
+        @param request: DeleteStreamingJobRequest
+        @return: DeleteStreamingJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_streaming_job_with_options_async(request, runtime)
 
     def delete_vector_index_with_options(
         self,
@@ -6826,6 +8794,422 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_download_sqllogs_with_options_async(request, runtime)
 
+    def describe_external_data_service_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeExternalDataServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeExternalDataServiceResponse:
+        """
+        @summary 获取外部数据服务详情
+        
+        @param request: DescribeExternalDataServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeExternalDataServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeExternalDataService',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeExternalDataServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_external_data_service_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeExternalDataServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeExternalDataServiceResponse:
+        """
+        @summary 获取外部数据服务详情
+        
+        @param request: DescribeExternalDataServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeExternalDataServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeExternalDataService',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeExternalDataServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_external_data_service(
+        self,
+        request: gpdb_20160503_models.DescribeExternalDataServiceRequest,
+    ) -> gpdb_20160503_models.DescribeExternalDataServiceResponse:
+        """
+        @summary 获取外部数据服务详情
+        
+        @param request: DescribeExternalDataServiceRequest
+        @return: DescribeExternalDataServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_external_data_service_with_options(request, runtime)
+
+    async def describe_external_data_service_async(
+        self,
+        request: gpdb_20160503_models.DescribeExternalDataServiceRequest,
+    ) -> gpdb_20160503_models.DescribeExternalDataServiceResponse:
+        """
+        @summary 获取外部数据服务详情
+        
+        @param request: DescribeExternalDataServiceRequest
+        @return: DescribeExternalDataServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_external_data_service_with_options_async(request, runtime)
+
+    def describe_hadoop_clusters_in_same_net_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeHadoopClustersInSameNetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeHadoopClustersInSameNetResponse:
+        """
+        @summary 获取同网络下的Hadoop集群列表
+        
+        @param request: DescribeHadoopClustersInSameNetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHadoopClustersInSameNetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHadoopClustersInSameNet',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeHadoopClustersInSameNetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_hadoop_clusters_in_same_net_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeHadoopClustersInSameNetRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeHadoopClustersInSameNetResponse:
+        """
+        @summary 获取同网络下的Hadoop集群列表
+        
+        @param request: DescribeHadoopClustersInSameNetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHadoopClustersInSameNetResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHadoopClustersInSameNet',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeHadoopClustersInSameNetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_hadoop_clusters_in_same_net(
+        self,
+        request: gpdb_20160503_models.DescribeHadoopClustersInSameNetRequest,
+    ) -> gpdb_20160503_models.DescribeHadoopClustersInSameNetResponse:
+        """
+        @summary 获取同网络下的Hadoop集群列表
+        
+        @param request: DescribeHadoopClustersInSameNetRequest
+        @return: DescribeHadoopClustersInSameNetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_hadoop_clusters_in_same_net_with_options(request, runtime)
+
+    async def describe_hadoop_clusters_in_same_net_async(
+        self,
+        request: gpdb_20160503_models.DescribeHadoopClustersInSameNetRequest,
+    ) -> gpdb_20160503_models.DescribeHadoopClustersInSameNetResponse:
+        """
+        @summary 获取同网络下的Hadoop集群列表
+        
+        @param request: DescribeHadoopClustersInSameNetRequest
+        @return: DescribeHadoopClustersInSameNetResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_hadoop_clusters_in_same_net_with_options_async(request, runtime)
+
+    def describe_hadoop_configs_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeHadoopConfigsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeHadoopConfigsResponse:
+        """
+        @summary 获取hadoop配置信息
+        
+        @param request: DescribeHadoopConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHadoopConfigsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_name):
+            query['ConfigName'] = request.config_name
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.emr_instance_id):
+            query['EmrInstanceId'] = request.emr_instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHadoopConfigs',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeHadoopConfigsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_hadoop_configs_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeHadoopConfigsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeHadoopConfigsResponse:
+        """
+        @summary 获取hadoop配置信息
+        
+        @param request: DescribeHadoopConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHadoopConfigsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.config_name):
+            query['ConfigName'] = request.config_name
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.emr_instance_id):
+            query['EmrInstanceId'] = request.emr_instance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHadoopConfigs',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeHadoopConfigsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_hadoop_configs(
+        self,
+        request: gpdb_20160503_models.DescribeHadoopConfigsRequest,
+    ) -> gpdb_20160503_models.DescribeHadoopConfigsResponse:
+        """
+        @summary 获取hadoop配置信息
+        
+        @param request: DescribeHadoopConfigsRequest
+        @return: DescribeHadoopConfigsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_hadoop_configs_with_options(request, runtime)
+
+    async def describe_hadoop_configs_async(
+        self,
+        request: gpdb_20160503_models.DescribeHadoopConfigsRequest,
+    ) -> gpdb_20160503_models.DescribeHadoopConfigsResponse:
+        """
+        @summary 获取hadoop配置信息
+        
+        @param request: DescribeHadoopConfigsRequest
+        @return: DescribeHadoopConfigsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_hadoop_configs_with_options_async(request, runtime)
+
+    def describe_hadoop_data_source_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeHadoopDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeHadoopDataSourceResponse:
+        """
+        @summary 获取hadoop数据源配置信息
+        
+        @param request: DescribeHadoopDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHadoopDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHadoopDataSource',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeHadoopDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_hadoop_data_source_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeHadoopDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeHadoopDataSourceResponse:
+        """
+        @summary 获取hadoop数据源配置信息
+        
+        @param request: DescribeHadoopDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHadoopDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeHadoopDataSource',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeHadoopDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_hadoop_data_source(
+        self,
+        request: gpdb_20160503_models.DescribeHadoopDataSourceRequest,
+    ) -> gpdb_20160503_models.DescribeHadoopDataSourceResponse:
+        """
+        @summary 获取hadoop数据源配置信息
+        
+        @param request: DescribeHadoopDataSourceRequest
+        @return: DescribeHadoopDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_hadoop_data_source_with_options(request, runtime)
+
+    async def describe_hadoop_data_source_async(
+        self,
+        request: gpdb_20160503_models.DescribeHadoopDataSourceRequest,
+    ) -> gpdb_20160503_models.DescribeHadoopDataSourceResponse:
+        """
+        @summary 获取hadoop数据源配置信息
+        
+        @param request: DescribeHadoopDataSourceRequest
+        @return: DescribeHadoopDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_hadoop_data_source_with_options_async(request, runtime)
+
     def describe_health_status_with_options(
         self,
         request: gpdb_20160503_models.DescribeHealthStatusRequest,
@@ -7045,6 +9429,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_imvinfos_with_options_async(request, runtime)
+
+    def describe_jdbcdata_source_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeJDBCDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeJDBCDataSourceResponse:
+        """
+        @summary 获取jdbc数据源配置信息
+        
+        @param request: DescribeJDBCDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeJDBCDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeJDBCDataSource',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeJDBCDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_jdbcdata_source_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeJDBCDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeJDBCDataSourceResponse:
+        """
+        @summary 获取jdbc数据源配置信息
+        
+        @param request: DescribeJDBCDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeJDBCDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeJDBCDataSource',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeJDBCDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_jdbcdata_source(
+        self,
+        request: gpdb_20160503_models.DescribeJDBCDataSourceRequest,
+    ) -> gpdb_20160503_models.DescribeJDBCDataSourceResponse:
+        """
+        @summary 获取jdbc数据源配置信息
+        
+        @param request: DescribeJDBCDataSourceRequest
+        @return: DescribeJDBCDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_jdbcdata_source_with_options(request, runtime)
+
+    async def describe_jdbcdata_source_async(
+        self,
+        request: gpdb_20160503_models.DescribeJDBCDataSourceRequest,
+    ) -> gpdb_20160503_models.DescribeJDBCDataSourceResponse:
+        """
+        @summary 获取jdbc数据源配置信息
+        
+        @param request: DescribeJDBCDataSourceRequest
+        @return: DescribeJDBCDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_jdbcdata_source_with_options_async(request, runtime)
 
     def describe_log_backups_with_options(
         self,
@@ -8481,6 +10965,318 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_sample_data_with_options_async(request, runtime)
+
+    def describe_streaming_data_service_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeStreamingDataServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeStreamingDataServiceResponse:
+        """
+        @summary 创建外部数据源配置
+        
+        @param request: DescribeStreamingDataServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeStreamingDataServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeStreamingDataService',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeStreamingDataServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_streaming_data_service_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeStreamingDataServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeStreamingDataServiceResponse:
+        """
+        @summary 创建外部数据源配置
+        
+        @param request: DescribeStreamingDataServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeStreamingDataServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeStreamingDataService',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeStreamingDataServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_streaming_data_service(
+        self,
+        request: gpdb_20160503_models.DescribeStreamingDataServiceRequest,
+    ) -> gpdb_20160503_models.DescribeStreamingDataServiceResponse:
+        """
+        @summary 创建外部数据源配置
+        
+        @param request: DescribeStreamingDataServiceRequest
+        @return: DescribeStreamingDataServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_streaming_data_service_with_options(request, runtime)
+
+    async def describe_streaming_data_service_async(
+        self,
+        request: gpdb_20160503_models.DescribeStreamingDataServiceRequest,
+    ) -> gpdb_20160503_models.DescribeStreamingDataServiceResponse:
+        """
+        @summary 创建外部数据源配置
+        
+        @param request: DescribeStreamingDataServiceRequest
+        @return: DescribeStreamingDataServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_streaming_data_service_with_options_async(request, runtime)
+
+    def describe_streaming_data_source_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeStreamingDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeStreamingDataSourceResponse:
+        """
+        @summary 获取外部数据源配置信息
+        
+        @param request: DescribeStreamingDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeStreamingDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeStreamingDataSource',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeStreamingDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_streaming_data_source_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeStreamingDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeStreamingDataSourceResponse:
+        """
+        @summary 获取外部数据源配置信息
+        
+        @param request: DescribeStreamingDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeStreamingDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeStreamingDataSource',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeStreamingDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_streaming_data_source(
+        self,
+        request: gpdb_20160503_models.DescribeStreamingDataSourceRequest,
+    ) -> gpdb_20160503_models.DescribeStreamingDataSourceResponse:
+        """
+        @summary 获取外部数据源配置信息
+        
+        @param request: DescribeStreamingDataSourceRequest
+        @return: DescribeStreamingDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_streaming_data_source_with_options(request, runtime)
+
+    async def describe_streaming_data_source_async(
+        self,
+        request: gpdb_20160503_models.DescribeStreamingDataSourceRequest,
+    ) -> gpdb_20160503_models.DescribeStreamingDataSourceResponse:
+        """
+        @summary 获取外部数据源配置信息
+        
+        @param request: DescribeStreamingDataSourceRequest
+        @return: DescribeStreamingDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_streaming_data_source_with_options_async(request, runtime)
+
+    def describe_streaming_job_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeStreamingJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeStreamingJobResponse:
+        """
+        @summary 删除外部数据源配置
+        
+        @param request: DescribeStreamingJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeStreamingJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeStreamingJob',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeStreamingJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_streaming_job_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeStreamingJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeStreamingJobResponse:
+        """
+        @summary 删除外部数据源配置
+        
+        @param request: DescribeStreamingJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeStreamingJobResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeStreamingJob',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeStreamingJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_streaming_job(
+        self,
+        request: gpdb_20160503_models.DescribeStreamingJobRequest,
+    ) -> gpdb_20160503_models.DescribeStreamingJobResponse:
+        """
+        @summary 删除外部数据源配置
+        
+        @param request: DescribeStreamingJobRequest
+        @return: DescribeStreamingJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_streaming_job_with_options(request, runtime)
+
+    async def describe_streaming_job_async(
+        self,
+        request: gpdb_20160503_models.DescribeStreamingJobRequest,
+    ) -> gpdb_20160503_models.DescribeStreamingJobResponse:
+        """
+        @summary 删除外部数据源配置
+        
+        @param request: DescribeStreamingJobRequest
+        @return: DescribeStreamingJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_streaming_job_with_options_async(request, runtime)
 
     def describe_support_features_with_options(
         self,
@@ -10306,6 +13102,338 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.list_documents_with_options_async(request, runtime)
 
+    def list_external_data_services_with_options(
+        self,
+        request: gpdb_20160503_models.ListExternalDataServicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ListExternalDataServicesResponse:
+        """
+        @summary 获取外部数据服务列表
+        
+        @param request: ListExternalDataServicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExternalDataServicesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListExternalDataServices',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ListExternalDataServicesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_external_data_services_with_options_async(
+        self,
+        request: gpdb_20160503_models.ListExternalDataServicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ListExternalDataServicesResponse:
+        """
+        @summary 获取外部数据服务列表
+        
+        @param request: ListExternalDataServicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExternalDataServicesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListExternalDataServices',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ListExternalDataServicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_external_data_services(
+        self,
+        request: gpdb_20160503_models.ListExternalDataServicesRequest,
+    ) -> gpdb_20160503_models.ListExternalDataServicesResponse:
+        """
+        @summary 获取外部数据服务列表
+        
+        @param request: ListExternalDataServicesRequest
+        @return: ListExternalDataServicesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_external_data_services_with_options(request, runtime)
+
+    async def list_external_data_services_async(
+        self,
+        request: gpdb_20160503_models.ListExternalDataServicesRequest,
+    ) -> gpdb_20160503_models.ListExternalDataServicesResponse:
+        """
+        @summary 获取外部数据服务列表
+        
+        @param request: ListExternalDataServicesRequest
+        @return: ListExternalDataServicesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_external_data_services_with_options_async(request, runtime)
+
+    def list_external_data_sources_with_options(
+        self,
+        request: gpdb_20160503_models.ListExternalDataSourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ListExternalDataSourcesResponse:
+        """
+        @summary 获取实例外表配置列表
+        
+        @param request: ListExternalDataSourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExternalDataSourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListExternalDataSources',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ListExternalDataSourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_external_data_sources_with_options_async(
+        self,
+        request: gpdb_20160503_models.ListExternalDataSourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ListExternalDataSourcesResponse:
+        """
+        @summary 获取实例外表配置列表
+        
+        @param request: ListExternalDataSourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExternalDataSourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListExternalDataSources',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ListExternalDataSourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_external_data_sources(
+        self,
+        request: gpdb_20160503_models.ListExternalDataSourcesRequest,
+    ) -> gpdb_20160503_models.ListExternalDataSourcesResponse:
+        """
+        @summary 获取实例外表配置列表
+        
+        @param request: ListExternalDataSourcesRequest
+        @return: ListExternalDataSourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_external_data_sources_with_options(request, runtime)
+
+    async def list_external_data_sources_async(
+        self,
+        request: gpdb_20160503_models.ListExternalDataSourcesRequest,
+    ) -> gpdb_20160503_models.ListExternalDataSourcesResponse:
+        """
+        @summary 获取实例外表配置列表
+        
+        @param request: ListExternalDataSourcesRequest
+        @return: ListExternalDataSourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_external_data_sources_with_options_async(request, runtime)
+
+    def list_instance_extensions_with_options(
+        self,
+        request: gpdb_20160503_models.ListInstanceExtensionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ListInstanceExtensionsResponse:
+        """
+        @summary 获取实例插件列表
+        
+        @param request: ListInstanceExtensionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceExtensionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.extension):
+            query['Extension'] = request.extension
+        if not UtilClient.is_unset(request.install_status):
+            query['InstallStatus'] = request.install_status
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceExtensions',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ListInstanceExtensionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_instance_extensions_with_options_async(
+        self,
+        request: gpdb_20160503_models.ListInstanceExtensionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ListInstanceExtensionsResponse:
+        """
+        @summary 获取实例插件列表
+        
+        @param request: ListInstanceExtensionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceExtensionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.extension):
+            query['Extension'] = request.extension
+        if not UtilClient.is_unset(request.install_status):
+            query['InstallStatus'] = request.install_status
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListInstanceExtensions',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ListInstanceExtensionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_instance_extensions(
+        self,
+        request: gpdb_20160503_models.ListInstanceExtensionsRequest,
+    ) -> gpdb_20160503_models.ListInstanceExtensionsResponse:
+        """
+        @summary 获取实例插件列表
+        
+        @param request: ListInstanceExtensionsRequest
+        @return: ListInstanceExtensionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_instance_extensions_with_options(request, runtime)
+
+    async def list_instance_extensions_async(
+        self,
+        request: gpdb_20160503_models.ListInstanceExtensionsRequest,
+    ) -> gpdb_20160503_models.ListInstanceExtensionsResponse:
+        """
+        @summary 获取实例插件列表
+        
+        @param request: ListInstanceExtensionsRequest
+        @return: ListInstanceExtensionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_instance_extensions_with_options_async(request, runtime)
+
     def list_namespaces_with_options(
         self,
         request: gpdb_20160503_models.ListNamespacesRequest,
@@ -10417,6 +13545,330 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.list_namespaces_with_options_async(request, runtime)
+
+    def list_streaming_data_services_with_options(
+        self,
+        request: gpdb_20160503_models.ListStreamingDataServicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ListStreamingDataServicesResponse:
+        """
+        @summary 创建外部数据源配置
+        
+        @param request: ListStreamingDataServicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListStreamingDataServicesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListStreamingDataServices',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ListStreamingDataServicesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_streaming_data_services_with_options_async(
+        self,
+        request: gpdb_20160503_models.ListStreamingDataServicesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ListStreamingDataServicesResponse:
+        """
+        @summary 创建外部数据源配置
+        
+        @param request: ListStreamingDataServicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListStreamingDataServicesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListStreamingDataServices',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ListStreamingDataServicesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_streaming_data_services(
+        self,
+        request: gpdb_20160503_models.ListStreamingDataServicesRequest,
+    ) -> gpdb_20160503_models.ListStreamingDataServicesResponse:
+        """
+        @summary 创建外部数据源配置
+        
+        @param request: ListStreamingDataServicesRequest
+        @return: ListStreamingDataServicesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_streaming_data_services_with_options(request, runtime)
+
+    async def list_streaming_data_services_async(
+        self,
+        request: gpdb_20160503_models.ListStreamingDataServicesRequest,
+    ) -> gpdb_20160503_models.ListStreamingDataServicesResponse:
+        """
+        @summary 创建外部数据源配置
+        
+        @param request: ListStreamingDataServicesRequest
+        @return: ListStreamingDataServicesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_streaming_data_services_with_options_async(request, runtime)
+
+    def list_streaming_data_sources_with_options(
+        self,
+        request: gpdb_20160503_models.ListStreamingDataSourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ListStreamingDataSourcesResponse:
+        """
+        @summary 获取实例外表配置列表
+        
+        @param request: ListStreamingDataSourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListStreamingDataSourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListStreamingDataSources',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ListStreamingDataSourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_streaming_data_sources_with_options_async(
+        self,
+        request: gpdb_20160503_models.ListStreamingDataSourcesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ListStreamingDataSourcesResponse:
+        """
+        @summary 获取实例外表配置列表
+        
+        @param request: ListStreamingDataSourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListStreamingDataSourcesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListStreamingDataSources',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ListStreamingDataSourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_streaming_data_sources(
+        self,
+        request: gpdb_20160503_models.ListStreamingDataSourcesRequest,
+    ) -> gpdb_20160503_models.ListStreamingDataSourcesResponse:
+        """
+        @summary 获取实例外表配置列表
+        
+        @param request: ListStreamingDataSourcesRequest
+        @return: ListStreamingDataSourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_streaming_data_sources_with_options(request, runtime)
+
+    async def list_streaming_data_sources_async(
+        self,
+        request: gpdb_20160503_models.ListStreamingDataSourcesRequest,
+    ) -> gpdb_20160503_models.ListStreamingDataSourcesResponse:
+        """
+        @summary 获取实例外表配置列表
+        
+        @param request: ListStreamingDataSourcesRequest
+        @return: ListStreamingDataSourcesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_streaming_data_sources_with_options_async(request, runtime)
+
+    def list_streaming_jobs_with_options(
+        self,
+        request: gpdb_20160503_models.ListStreamingJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ListStreamingJobsResponse:
+        """
+        @summary 删除外部数据源配置
+        
+        @param request: ListStreamingJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListStreamingJobsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListStreamingJobs',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ListStreamingJobsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_streaming_jobs_with_options_async(
+        self,
+        request: gpdb_20160503_models.ListStreamingJobsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ListStreamingJobsResponse:
+        """
+        @summary 删除外部数据源配置
+        
+        @param request: ListStreamingJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListStreamingJobsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListStreamingJobs',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ListStreamingJobsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_streaming_jobs(
+        self,
+        request: gpdb_20160503_models.ListStreamingJobsRequest,
+    ) -> gpdb_20160503_models.ListStreamingJobsResponse:
+        """
+        @summary 删除外部数据源配置
+        
+        @param request: ListStreamingJobsRequest
+        @return: ListStreamingJobsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_streaming_jobs_with_options(request, runtime)
+
+    async def list_streaming_jobs_async(
+        self,
+        request: gpdb_20160503_models.ListStreamingJobsRequest,
+    ) -> gpdb_20160503_models.ListStreamingJobsResponse:
+        """
+        @summary 删除外部数据源配置
+        
+        @param request: ListStreamingJobsRequest
+        @return: ListStreamingJobsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_streaming_jobs_with_options_async(request, runtime)
 
     def list_tag_resources_with_options(
         self,
@@ -11462,6 +14914,386 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbinstance_sslwith_options_async(request, runtime)
 
+    def modify_external_data_service_with_options(
+        self,
+        request: gpdb_20160503_models.ModifyExternalDataServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ModifyExternalDataServiceResponse:
+        """
+        @summary 修改外部数据服务
+        
+        @param request: ModifyExternalDataServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyExternalDataServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_description):
+            query['ServiceDescription'] = request.service_description
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_spec):
+            query['ServiceSpec'] = request.service_spec
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyExternalDataService',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ModifyExternalDataServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_external_data_service_with_options_async(
+        self,
+        request: gpdb_20160503_models.ModifyExternalDataServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ModifyExternalDataServiceResponse:
+        """
+        @summary 修改外部数据服务
+        
+        @param request: ModifyExternalDataServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyExternalDataServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_description):
+            query['ServiceDescription'] = request.service_description
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_spec):
+            query['ServiceSpec'] = request.service_spec
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyExternalDataService',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ModifyExternalDataServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_external_data_service(
+        self,
+        request: gpdb_20160503_models.ModifyExternalDataServiceRequest,
+    ) -> gpdb_20160503_models.ModifyExternalDataServiceResponse:
+        """
+        @summary 修改外部数据服务
+        
+        @param request: ModifyExternalDataServiceRequest
+        @return: ModifyExternalDataServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_external_data_service_with_options(request, runtime)
+
+    async def modify_external_data_service_async(
+        self,
+        request: gpdb_20160503_models.ModifyExternalDataServiceRequest,
+    ) -> gpdb_20160503_models.ModifyExternalDataServiceResponse:
+        """
+        @summary 修改外部数据服务
+        
+        @param request: ModifyExternalDataServiceRequest
+        @return: ModifyExternalDataServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_external_data_service_with_options_async(request, runtime)
+
+    def modify_hadoop_data_source_with_options(
+        self,
+        request: gpdb_20160503_models.ModifyHadoopDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ModifyHadoopDataSourceResponse:
+        """
+        @summary 修改hadoop数据源配置
+        
+        @param request: ModifyHadoopDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyHadoopDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.data_source_description):
+            query['DataSourceDescription'] = request.data_source_description
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.data_source_type):
+            query['DataSourceType'] = request.data_source_type
+        if not UtilClient.is_unset(request.emr_instance_id):
+            query['EmrInstanceId'] = request.emr_instance_id
+        if not UtilClient.is_unset(request.hdfsconf):
+            query['HDFSConf'] = request.hdfsconf
+        if not UtilClient.is_unset(request.hadoop_core_conf):
+            query['HadoopCoreConf'] = request.hadoop_core_conf
+        if not UtilClient.is_unset(request.hadoop_create_type):
+            query['HadoopCreateType'] = request.hadoop_create_type
+        if not UtilClient.is_unset(request.hadoop_hosts_address):
+            query['HadoopHostsAddress'] = request.hadoop_hosts_address
+        if not UtilClient.is_unset(request.hive_conf):
+            query['HiveConf'] = request.hive_conf
+        if not UtilClient.is_unset(request.map_reduce_conf):
+            query['MapReduceConf'] = request.map_reduce_conf
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.yarn_conf):
+            query['YarnConf'] = request.yarn_conf
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyHadoopDataSource',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ModifyHadoopDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_hadoop_data_source_with_options_async(
+        self,
+        request: gpdb_20160503_models.ModifyHadoopDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ModifyHadoopDataSourceResponse:
+        """
+        @summary 修改hadoop数据源配置
+        
+        @param request: ModifyHadoopDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyHadoopDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.data_source_description):
+            query['DataSourceDescription'] = request.data_source_description
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.data_source_type):
+            query['DataSourceType'] = request.data_source_type
+        if not UtilClient.is_unset(request.emr_instance_id):
+            query['EmrInstanceId'] = request.emr_instance_id
+        if not UtilClient.is_unset(request.hdfsconf):
+            query['HDFSConf'] = request.hdfsconf
+        if not UtilClient.is_unset(request.hadoop_core_conf):
+            query['HadoopCoreConf'] = request.hadoop_core_conf
+        if not UtilClient.is_unset(request.hadoop_create_type):
+            query['HadoopCreateType'] = request.hadoop_create_type
+        if not UtilClient.is_unset(request.hadoop_hosts_address):
+            query['HadoopHostsAddress'] = request.hadoop_hosts_address
+        if not UtilClient.is_unset(request.hive_conf):
+            query['HiveConf'] = request.hive_conf
+        if not UtilClient.is_unset(request.map_reduce_conf):
+            query['MapReduceConf'] = request.map_reduce_conf
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.yarn_conf):
+            query['YarnConf'] = request.yarn_conf
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyHadoopDataSource',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ModifyHadoopDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_hadoop_data_source(
+        self,
+        request: gpdb_20160503_models.ModifyHadoopDataSourceRequest,
+    ) -> gpdb_20160503_models.ModifyHadoopDataSourceResponse:
+        """
+        @summary 修改hadoop数据源配置
+        
+        @param request: ModifyHadoopDataSourceRequest
+        @return: ModifyHadoopDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_hadoop_data_source_with_options(request, runtime)
+
+    async def modify_hadoop_data_source_async(
+        self,
+        request: gpdb_20160503_models.ModifyHadoopDataSourceRequest,
+    ) -> gpdb_20160503_models.ModifyHadoopDataSourceResponse:
+        """
+        @summary 修改hadoop数据源配置
+        
+        @param request: ModifyHadoopDataSourceRequest
+        @return: ModifyHadoopDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_hadoop_data_source_with_options_async(request, runtime)
+
+    def modify_jdbcdata_source_with_options(
+        self,
+        request: gpdb_20160503_models.ModifyJDBCDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ModifyJDBCDataSourceResponse:
+        """
+        @summary 修改jdbc数据源配置
+        
+        @param request: ModifyJDBCDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyJDBCDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.data_source_description):
+            query['DataSourceDescription'] = request.data_source_description
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.data_source_type):
+            query['DataSourceType'] = request.data_source_type
+        if not UtilClient.is_unset(request.jdbcconnection_string):
+            query['JDBCConnectionString'] = request.jdbcconnection_string
+        if not UtilClient.is_unset(request.jdbcpassword):
+            query['JDBCPassword'] = request.jdbcpassword
+        if not UtilClient.is_unset(request.jdbcuser_name):
+            query['JDBCUserName'] = request.jdbcuser_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyJDBCDataSource',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ModifyJDBCDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_jdbcdata_source_with_options_async(
+        self,
+        request: gpdb_20160503_models.ModifyJDBCDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ModifyJDBCDataSourceResponse:
+        """
+        @summary 修改jdbc数据源配置
+        
+        @param request: ModifyJDBCDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyJDBCDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.data_source_description):
+            query['DataSourceDescription'] = request.data_source_description
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.data_source_type):
+            query['DataSourceType'] = request.data_source_type
+        if not UtilClient.is_unset(request.jdbcconnection_string):
+            query['JDBCConnectionString'] = request.jdbcconnection_string
+        if not UtilClient.is_unset(request.jdbcpassword):
+            query['JDBCPassword'] = request.jdbcpassword
+        if not UtilClient.is_unset(request.jdbcuser_name):
+            query['JDBCUserName'] = request.jdbcuser_name
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyJDBCDataSource',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ModifyJDBCDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_jdbcdata_source(
+        self,
+        request: gpdb_20160503_models.ModifyJDBCDataSourceRequest,
+    ) -> gpdb_20160503_models.ModifyJDBCDataSourceResponse:
+        """
+        @summary 修改jdbc数据源配置
+        
+        @param request: ModifyJDBCDataSourceRequest
+        @return: ModifyJDBCDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_jdbcdata_source_with_options(request, runtime)
+
+    async def modify_jdbcdata_source_async(
+        self,
+        request: gpdb_20160503_models.ModifyJDBCDataSourceRequest,
+    ) -> gpdb_20160503_models.ModifyJDBCDataSourceResponse:
+        """
+        @summary 修改jdbc数据源配置
+        
+        @param request: ModifyJDBCDataSourceRequest
+        @return: ModifyJDBCDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_jdbcdata_source_with_options_async(request, runtime)
+
     def modify_master_spec_with_options(
         self,
         request: gpdb_20160503_models.ModifyMasterSpecRequest,
@@ -11921,6 +15753,422 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_security_ips_with_options_async(request, runtime)
+
+    def modify_streaming_data_service_with_options(
+        self,
+        request: gpdb_20160503_models.ModifyStreamingDataServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ModifyStreamingDataServiceResponse:
+        """
+        @summary 创建外部数据源配置
+        
+        @param request: ModifyStreamingDataServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyStreamingDataServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_description):
+            query['ServiceDescription'] = request.service_description
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_spec):
+            query['ServiceSpec'] = request.service_spec
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyStreamingDataService',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ModifyStreamingDataServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_streaming_data_service_with_options_async(
+        self,
+        request: gpdb_20160503_models.ModifyStreamingDataServiceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ModifyStreamingDataServiceResponse:
+        """
+        @summary 创建外部数据源配置
+        
+        @param request: ModifyStreamingDataServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyStreamingDataServiceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.service_description):
+            query['ServiceDescription'] = request.service_description
+        if not UtilClient.is_unset(request.service_id):
+            query['ServiceId'] = request.service_id
+        if not UtilClient.is_unset(request.service_spec):
+            query['ServiceSpec'] = request.service_spec
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyStreamingDataService',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ModifyStreamingDataServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_streaming_data_service(
+        self,
+        request: gpdb_20160503_models.ModifyStreamingDataServiceRequest,
+    ) -> gpdb_20160503_models.ModifyStreamingDataServiceResponse:
+        """
+        @summary 创建外部数据源配置
+        
+        @param request: ModifyStreamingDataServiceRequest
+        @return: ModifyStreamingDataServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_streaming_data_service_with_options(request, runtime)
+
+    async def modify_streaming_data_service_async(
+        self,
+        request: gpdb_20160503_models.ModifyStreamingDataServiceRequest,
+    ) -> gpdb_20160503_models.ModifyStreamingDataServiceResponse:
+        """
+        @summary 创建外部数据源配置
+        
+        @param request: ModifyStreamingDataServiceRequest
+        @return: ModifyStreamingDataServiceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_streaming_data_service_with_options_async(request, runtime)
+
+    def modify_streaming_data_source_with_options(
+        self,
+        request: gpdb_20160503_models.ModifyStreamingDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ModifyStreamingDataSourceResponse:
+        """
+        @summary 修改外部数据源配置
+        
+        @param request: ModifyStreamingDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyStreamingDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.data_source_config):
+            query['DataSourceConfig'] = request.data_source_config
+        if not UtilClient.is_unset(request.data_source_description):
+            query['DataSourceDescription'] = request.data_source_description
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyStreamingDataSource',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ModifyStreamingDataSourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_streaming_data_source_with_options_async(
+        self,
+        request: gpdb_20160503_models.ModifyStreamingDataSourceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ModifyStreamingDataSourceResponse:
+        """
+        @summary 修改外部数据源配置
+        
+        @param request: ModifyStreamingDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyStreamingDataSourceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.data_source_config):
+            query['DataSourceConfig'] = request.data_source_config
+        if not UtilClient.is_unset(request.data_source_description):
+            query['DataSourceDescription'] = request.data_source_description
+        if not UtilClient.is_unset(request.data_source_id):
+            query['DataSourceId'] = request.data_source_id
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyStreamingDataSource',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ModifyStreamingDataSourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_streaming_data_source(
+        self,
+        request: gpdb_20160503_models.ModifyStreamingDataSourceRequest,
+    ) -> gpdb_20160503_models.ModifyStreamingDataSourceResponse:
+        """
+        @summary 修改外部数据源配置
+        
+        @param request: ModifyStreamingDataSourceRequest
+        @return: ModifyStreamingDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_streaming_data_source_with_options(request, runtime)
+
+    async def modify_streaming_data_source_async(
+        self,
+        request: gpdb_20160503_models.ModifyStreamingDataSourceRequest,
+    ) -> gpdb_20160503_models.ModifyStreamingDataSourceResponse:
+        """
+        @summary 修改外部数据源配置
+        
+        @param request: ModifyStreamingDataSourceRequest
+        @return: ModifyStreamingDataSourceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_streaming_data_source_with_options_async(request, runtime)
+
+    def modify_streaming_job_with_options(
+        self,
+        tmp_req: gpdb_20160503_models.ModifyStreamingJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ModifyStreamingJobResponse:
+        """
+        @summary 创建外部数据源配置
+        
+        @param tmp_req: ModifyStreamingJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyStreamingJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = gpdb_20160503_models.ModifyStreamingJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dest_columns):
+            request.dest_columns_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dest_columns, 'DestColumns', 'json')
+        if not UtilClient.is_unset(tmp_req.match_columns):
+            request.match_columns_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.match_columns, 'MatchColumns', 'json')
+        if not UtilClient.is_unset(tmp_req.src_columns):
+            request.src_columns_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.src_columns, 'SrcColumns', 'json')
+        if not UtilClient.is_unset(tmp_req.update_columns):
+            request.update_columns_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.update_columns, 'UpdateColumns', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.account):
+            query['Account'] = request.account
+        if not UtilClient.is_unset(request.consistency):
+            query['Consistency'] = request.consistency
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dest_columns_shrink):
+            query['DestColumns'] = request.dest_columns_shrink
+        if not UtilClient.is_unset(request.dest_database):
+            query['DestDatabase'] = request.dest_database
+        if not UtilClient.is_unset(request.dest_schema):
+            query['DestSchema'] = request.dest_schema
+        if not UtilClient.is_unset(request.dest_table):
+            query['DestTable'] = request.dest_table
+        if not UtilClient.is_unset(request.error_limit_count):
+            query['ErrorLimitCount'] = request.error_limit_count
+        if not UtilClient.is_unset(request.fallback_offset):
+            query['FallbackOffset'] = request.fallback_offset
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.job_config):
+            query['JobConfig'] = request.job_config
+        if not UtilClient.is_unset(request.job_description):
+            query['JobDescription'] = request.job_description
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.match_columns_shrink):
+            query['MatchColumns'] = request.match_columns_shrink
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.src_columns_shrink):
+            query['SrcColumns'] = request.src_columns_shrink
+        if not UtilClient.is_unset(request.try_run):
+            query['TryRun'] = request.try_run
+        if not UtilClient.is_unset(request.update_columns_shrink):
+            query['UpdateColumns'] = request.update_columns_shrink
+        if not UtilClient.is_unset(request.write_mode):
+            query['WriteMode'] = request.write_mode
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyStreamingJob',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ModifyStreamingJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_streaming_job_with_options_async(
+        self,
+        tmp_req: gpdb_20160503_models.ModifyStreamingJobRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ModifyStreamingJobResponse:
+        """
+        @summary 创建外部数据源配置
+        
+        @param tmp_req: ModifyStreamingJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyStreamingJobResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = gpdb_20160503_models.ModifyStreamingJobShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.dest_columns):
+            request.dest_columns_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.dest_columns, 'DestColumns', 'json')
+        if not UtilClient.is_unset(tmp_req.match_columns):
+            request.match_columns_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.match_columns, 'MatchColumns', 'json')
+        if not UtilClient.is_unset(tmp_req.src_columns):
+            request.src_columns_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.src_columns, 'SrcColumns', 'json')
+        if not UtilClient.is_unset(tmp_req.update_columns):
+            request.update_columns_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.update_columns, 'UpdateColumns', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.account):
+            query['Account'] = request.account
+        if not UtilClient.is_unset(request.consistency):
+            query['Consistency'] = request.consistency
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.dest_columns_shrink):
+            query['DestColumns'] = request.dest_columns_shrink
+        if not UtilClient.is_unset(request.dest_database):
+            query['DestDatabase'] = request.dest_database
+        if not UtilClient.is_unset(request.dest_schema):
+            query['DestSchema'] = request.dest_schema
+        if not UtilClient.is_unset(request.dest_table):
+            query['DestTable'] = request.dest_table
+        if not UtilClient.is_unset(request.error_limit_count):
+            query['ErrorLimitCount'] = request.error_limit_count
+        if not UtilClient.is_unset(request.fallback_offset):
+            query['FallbackOffset'] = request.fallback_offset
+        if not UtilClient.is_unset(request.group_name):
+            query['GroupName'] = request.group_name
+        if not UtilClient.is_unset(request.job_config):
+            query['JobConfig'] = request.job_config
+        if not UtilClient.is_unset(request.job_description):
+            query['JobDescription'] = request.job_description
+        if not UtilClient.is_unset(request.job_id):
+            query['JobId'] = request.job_id
+        if not UtilClient.is_unset(request.match_columns_shrink):
+            query['MatchColumns'] = request.match_columns_shrink
+        if not UtilClient.is_unset(request.password):
+            query['Password'] = request.password
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.src_columns_shrink):
+            query['SrcColumns'] = request.src_columns_shrink
+        if not UtilClient.is_unset(request.try_run):
+            query['TryRun'] = request.try_run
+        if not UtilClient.is_unset(request.update_columns_shrink):
+            query['UpdateColumns'] = request.update_columns_shrink
+        if not UtilClient.is_unset(request.write_mode):
+            query['WriteMode'] = request.write_mode
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyStreamingJob',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ModifyStreamingJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_streaming_job(
+        self,
+        request: gpdb_20160503_models.ModifyStreamingJobRequest,
+    ) -> gpdb_20160503_models.ModifyStreamingJobResponse:
+        """
+        @summary 创建外部数据源配置
+        
+        @param request: ModifyStreamingJobRequest
+        @return: ModifyStreamingJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_streaming_job_with_options(request, runtime)
+
+    async def modify_streaming_job_async(
+        self,
+        request: gpdb_20160503_models.ModifyStreamingJobRequest,
+    ) -> gpdb_20160503_models.ModifyStreamingJobResponse:
+        """
+        @summary 创建外部数据源配置
+        
+        @param request: ModifyStreamingJobRequest
+        @return: ModifyStreamingJobResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_streaming_job_with_options_async(request, runtime)
 
     def modify_vector_configuration_with_options(
         self,
@@ -14579,6 +18827,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.upgrade_dbversion_with_options_async(request, runtime)
+
+    def upgrade_extensions_with_options(
+        self,
+        request: gpdb_20160503_models.UpgradeExtensionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.UpgradeExtensionsResponse:
+        """
+        @summary 升级插件
+        
+        @param request: UpgradeExtensionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeExtensionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.extensions):
+            query['Extensions'] = request.extensions
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpgradeExtensions',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.UpgradeExtensionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upgrade_extensions_with_options_async(
+        self,
+        request: gpdb_20160503_models.UpgradeExtensionsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.UpgradeExtensionsResponse:
+        """
+        @summary 升级插件
+        
+        @param request: UpgradeExtensionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeExtensionsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.extensions):
+            query['Extensions'] = request.extensions
+        if not UtilClient.is_unset(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpgradeExtensions',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.UpgradeExtensionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upgrade_extensions(
+        self,
+        request: gpdb_20160503_models.UpgradeExtensionsRequest,
+    ) -> gpdb_20160503_models.UpgradeExtensionsResponse:
+        """
+        @summary 升级插件
+        
+        @param request: UpgradeExtensionsRequest
+        @return: UpgradeExtensionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.upgrade_extensions_with_options(request, runtime)
+
+    async def upgrade_extensions_async(
+        self,
+        request: gpdb_20160503_models.UpgradeExtensionsRequest,
+    ) -> gpdb_20160503_models.UpgradeExtensionsResponse:
+        """
+        @summary 升级插件
+        
+        @param request: UpgradeExtensionsRequest
+        @return: UpgradeExtensionsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.upgrade_extensions_with_options_async(request, runtime)
 
     def upload_document_async_with_options(
         self,

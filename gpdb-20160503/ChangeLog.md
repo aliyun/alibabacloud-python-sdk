@@ -1,3 +1,44 @@
+2024-05-17 Version: 3.7.0
+- Support API CheckHadoopDataSource.
+- Support API CheckHadoopNetConnection.
+- Support API CheckJDBCSourceNetConnection.
+- Support API CreateExtensions.
+- Support API CreateExternalDataService.
+- Support API CreateHadoopDataSource.
+- Support API CreateJDBCDataSource.
+- Support API CreateStreamingDataService.
+- Support API CreateStreamingDataSource.
+- Support API CreateStreamingJob.
+- Support API DeleteExtension.
+- Support API DeleteExternalDataService.
+- Support API DeleteHadoopDataSource.
+- Support API DeleteJDBCDataSource.
+- Support API DeleteStreamingDataService.
+- Support API DeleteStreamingDataSource.
+- Support API DeleteStreamingJob.
+- Support API DescribeExternalDataService.
+- Support API DescribeHadoopClustersInSameNet.
+- Support API DescribeHadoopConfigs.
+- Support API DescribeHadoopDataSource.
+- Support API DescribeJDBCDataSource.
+- Support API DescribeStreamingDataService.
+- Support API DescribeStreamingDataSource.
+- Support API DescribeStreamingJob.
+- Support API ListExternalDataServices.
+- Support API ListExternalDataSources.
+- Support API ListInstanceExtensions.
+- Support API ListStreamingDataServices.
+- Support API ListStreamingDataSources.
+- Support API ListStreamingJobs.
+- Support API ModifyExternalDataService.
+- Support API ModifyHadoopDataSource.
+- Support API ModifyJDBCDataSource.
+- Support API ModifyStreamingDataService.
+- Support API ModifyStreamingDataSource.
+- Support API ModifyStreamingJob.
+- Support API UpgradeExtensions.
+
+
 2024-05-13 Version: 3.6.2
 - Update API CreateDBInstance: update param SecurityIPList.
 
