@@ -1,3 +1,9 @@
+2024-05-17 Version: 1.1.1
+- Update API DescribeCenInterRegionBandwidthLimits: update response param.
+- Update API ListTransitRouterVpcAttachments: update response param.
+- Update API SetCenInterRegionBandwidthLimit: add param BandwidthType.
+
+
 2024-03-25 Version: 1.1.0
 - Support API CreateTransitRouterEcrAttachment.
 - Support API DeleteTransitRouterEcrAttachment.
