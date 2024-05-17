@@ -1,3 +1,7 @@
+2024-05-17 Version: 5.2.1
+- Update API ListProject: add param fetchQuota.
+
+
 2024-05-10 Version: 5.2.0
 - Support API ConsumerGroupUpdateCheckPoint.
 - Support API CreateStoreView.

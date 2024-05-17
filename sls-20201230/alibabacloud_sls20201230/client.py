@@ -13580,6 +13580,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.fetch_quota):
+            query['fetchQuota'] = request.fetch_quota
         if not UtilClient.is_unset(request.offset):
             query['offset'] = request.offset
         if not UtilClient.is_unset(request.project_name):
@@ -13627,6 +13629,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.fetch_quota):
+            query['fetchQuota'] = request.fetch_quota
         if not UtilClient.is_unset(request.offset):
             query['offset'] = request.offset
         if not UtilClient.is_unset(request.project_name):

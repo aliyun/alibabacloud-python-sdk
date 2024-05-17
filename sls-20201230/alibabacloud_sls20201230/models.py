@@ -4282,21 +4282,25 @@ class Project(TeaModel):
     def __init__(
         self,
         create_time: str = None,
+        data_redundancy_type: str = None,
         description: str = None,
         last_modify_time: str = None,
         owner: str = None,
         project_name: str = None,
+        quota: Dict[str, Any] = None,
         region: str = None,
         resource_group_id: str = None,
         status: str = None,
     ):
         self.create_time = create_time
+        self.data_redundancy_type = data_redundancy_type
         # This parameter is required.
         self.description = description
         self.last_modify_time = last_modify_time
         self.owner = owner
         # This parameter is required.
         self.project_name = project_name
+        self.quota = quota
         self.region = region
         self.resource_group_id = resource_group_id
         self.status = status
@@ -4312,6 +4316,8 @@ class Project(TeaModel):
         result = dict()
         if self.create_time is not None:
             result['createTime'] = self.create_time
+        if self.data_redundancy_type is not None:
+            result['dataRedundancyType'] = self.data_redundancy_type
         if self.description is not None:
             result['description'] = self.description
         if self.last_modify_time is not None:
@@ -4320,6 +4326,8 @@ class Project(TeaModel):
             result['owner'] = self.owner
         if self.project_name is not None:
             result['projectName'] = self.project_name
+        if self.quota is not None:
+            result['quota'] = self.quota
         if self.region is not None:
             result['region'] = self.region
         if self.resource_group_id is not None:
@@ -4332,6 +4340,8 @@ class Project(TeaModel):
         m = m or dict()
         if m.get('createTime') is not None:
             self.create_time = m.get('createTime')
+        if m.get('dataRedundancyType') is not None:
+            self.data_redundancy_type = m.get('dataRedundancyType')
         if m.get('description') is not None:
             self.description = m.get('description')
         if m.get('lastModifyTime') is not None:
@@ -4340,6 +4350,8 @@ class Project(TeaModel):
             self.owner = m.get('owner')
         if m.get('projectName') is not None:
             self.project_name = m.get('projectName')
+        if m.get('quota') is not None:
+            self.quota = m.get('quota')
         if m.get('region') is not None:
             self.region = m.get('region')
         if m.get('resourceGroupId') is not None:
@@ -14520,11 +14532,13 @@ class ListOSSIngestionsResponse(TeaModel):
 class ListProjectRequest(TeaModel):
     def __init__(
         self,
+        fetch_quota: bool = None,
         offset: int = None,
         project_name: str = None,
         resource_group_id: str = None,
         size: int = None,
     ):
+        self.fetch_quota = fetch_quota
         # The line from which the query starts. Default value: 0.
         self.offset = offset
         # The name of the project.
@@ -14542,6 +14556,8 @@ class ListProjectRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.fetch_quota is not None:
+            result['fetchQuota'] = self.fetch_quota
         if self.offset is not None:
             result['offset'] = self.offset
         if self.project_name is not None:
@@ -14554,6 +14570,8 @@ class ListProjectRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('fetchQuota') is not None:
+            self.fetch_quota = m.get('fetchQuota')
         if m.get('offset') is not None:
             self.offset = m.get('offset')
         if m.get('projectName') is not None:
