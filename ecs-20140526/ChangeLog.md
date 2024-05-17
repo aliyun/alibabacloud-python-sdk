@@ -1,3 +1,15 @@
+2024-05-17 Version: 4.1.6
+- Update API CreateImage: update response param.
+- Update API CreateNetworkInterface: add param NetworkInterfaceTrafficConfig.
+- Update API DescribeInvocationResults: update response param.
+- Update API DescribeInvocations: update response param.
+- Update API DescribeNetworkInterfaceAttribute: update response param.
+- Update API DetachDisk: update response param.
+- Update API InvokeCommand: add param TerminationMode.
+- Update API ModifyNetworkInterfaceAttribute: add param NetworkInterfaceTrafficConfig.
+- Update API RunCommand: add param TerminationMode.
+
+
 2024-05-15 Version: 4.1.5
 - Update API CreateImage: update response param.
 - Update API DescribeInvocationResults: update response param.
