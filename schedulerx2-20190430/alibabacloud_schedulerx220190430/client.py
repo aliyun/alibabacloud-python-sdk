@@ -53,7 +53,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.BatchDeleteJobsResponse:
         """
-        Before you call this operation, you must add the following dependency to the pom.xml file:
+        @summary Deletes multiple jobs at a time.
+        
+        @description Before you call this operation, you must add the following dependency to the pom.xml file:
         ```xml
         <dependency>
         <groupId>com.aliyun</groupId>
@@ -105,7 +107,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.BatchDeleteJobsResponse:
         """
-        Before you call this operation, you must add the following dependency to the pom.xml file:
+        @summary Deletes multiple jobs at a time.
+        
+        @description Before you call this operation, you must add the following dependency to the pom.xml file:
         ```xml
         <dependency>
         <groupId>com.aliyun</groupId>
@@ -156,7 +160,9 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.BatchDeleteJobsRequest,
     ) -> schedulerx_220190430_models.BatchDeleteJobsResponse:
         """
-        Before you call this operation, you must add the following dependency to the pom.xml file:
+        @summary Deletes multiple jobs at a time.
+        
+        @description Before you call this operation, you must add the following dependency to the pom.xml file:
         ```xml
         <dependency>
         <groupId>com.aliyun</groupId>
@@ -176,7 +182,9 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.BatchDeleteJobsRequest,
     ) -> schedulerx_220190430_models.BatchDeleteJobsResponse:
         """
-        Before you call this operation, you must add the following dependency to the pom.xml file:
+        @summary Deletes multiple jobs at a time.
+        
+        @description Before you call this operation, you must add the following dependency to the pom.xml file:
         ```xml
         <dependency>
         <groupId>com.aliyun</groupId>
@@ -196,6 +204,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.BatchDeleteRouteStrategyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.BatchDeleteRouteStrategyResponse:
+        """
+        @summary The additional information that is returned.
+        
+        @param request: BatchDeleteRouteStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchDeleteRouteStrategyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -232,6 +247,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.BatchDeleteRouteStrategyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.BatchDeleteRouteStrategyResponse:
+        """
+        @summary The additional information that is returned.
+        
+        @param request: BatchDeleteRouteStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchDeleteRouteStrategyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -267,6 +289,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.BatchDeleteRouteStrategyRequest,
     ) -> schedulerx_220190430_models.BatchDeleteRouteStrategyResponse:
+        """
+        @summary The additional information that is returned.
+        
+        @param request: BatchDeleteRouteStrategyRequest
+        @return: BatchDeleteRouteStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_delete_route_strategy_with_options(request, runtime)
 
@@ -274,6 +302,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.BatchDeleteRouteStrategyRequest,
     ) -> schedulerx_220190430_models.BatchDeleteRouteStrategyResponse:
+        """
+        @summary The additional information that is returned.
+        
+        @param request: BatchDeleteRouteStrategyRequest
+        @return: BatchDeleteRouteStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_delete_route_strategy_with_options_async(request, runtime)
 
@@ -283,7 +317,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.BatchDisableJobsResponse:
         """
-        Before you call this operation, you must add the following dependency to the pom.xml file:
+        @summary Disables multiple jobs at a time.
+        
+        @description Before you call this operation, you must add the following dependency to the pom.xml file:
         ```xml
         <dependency>
         <groupId>com.aliyun</groupId>
@@ -335,7 +371,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.BatchDisableJobsResponse:
         """
-        Before you call this operation, you must add the following dependency to the pom.xml file:
+        @summary Disables multiple jobs at a time.
+        
+        @description Before you call this operation, you must add the following dependency to the pom.xml file:
         ```xml
         <dependency>
         <groupId>com.aliyun</groupId>
@@ -386,7 +424,9 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.BatchDisableJobsRequest,
     ) -> schedulerx_220190430_models.BatchDisableJobsResponse:
         """
-        Before you call this operation, you must add the following dependency to the pom.xml file:
+        @summary Disables multiple jobs at a time.
+        
+        @description Before you call this operation, you must add the following dependency to the pom.xml file:
         ```xml
         <dependency>
         <groupId>com.aliyun</groupId>
@@ -406,7 +446,9 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.BatchDisableJobsRequest,
     ) -> schedulerx_220190430_models.BatchDisableJobsResponse:
         """
-        Before you call this operation, you must add the following dependency to the pom.xml file:
+        @summary Disables multiple jobs at a time.
+        
+        @description Before you call this operation, you must add the following dependency to the pom.xml file:
         ```xml
         <dependency>
         <groupId>com.aliyun</groupId>
@@ -427,7 +469,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.BatchEnableJobsResponse:
         """
-        Before you call this operation, you must add the following dependency to the pom.xml file:
+        @summary Enables multiple jobs at a time.
+        
+        @description Before you call this operation, you must add the following dependency to the pom.xml file:
         ```xml
         <dependency>
         <groupId>com.aliyun</groupId>
@@ -479,7 +523,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.BatchEnableJobsResponse:
         """
-        Before you call this operation, you must add the following dependency to the pom.xml file:
+        @summary Enables multiple jobs at a time.
+        
+        @description Before you call this operation, you must add the following dependency to the pom.xml file:
         ```xml
         <dependency>
         <groupId>com.aliyun</groupId>
@@ -530,7 +576,9 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.BatchEnableJobsRequest,
     ) -> schedulerx_220190430_models.BatchEnableJobsResponse:
         """
-        Before you call this operation, you must add the following dependency to the pom.xml file:
+        @summary Enables multiple jobs at a time.
+        
+        @description Before you call this operation, you must add the following dependency to the pom.xml file:
         ```xml
         <dependency>
         <groupId>com.aliyun</groupId>
@@ -550,7 +598,9 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.BatchEnableJobsRequest,
     ) -> schedulerx_220190430_models.BatchEnableJobsResponse:
         """
-        Before you call this operation, you must add the following dependency to the pom.xml file:
+        @summary Enables multiple jobs at a time.
+        
+        @description Before you call this operation, you must add the following dependency to the pom.xml file:
         ```xml
         <dependency>
         <groupId>com.aliyun</groupId>
@@ -570,6 +620,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.CreateAppGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.CreateAppGroupResponse:
+        """
+        @summary Creates an application group. The AppKey is returned.
+        
+        @param request: CreateAppGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppGroupResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -596,6 +653,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.CreateAppGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.CreateAppGroupResponse:
+        """
+        @summary Creates an application group. The AppKey is returned.
+        
+        @param request: CreateAppGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppGroupResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -621,6 +685,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.CreateAppGroupRequest,
     ) -> schedulerx_220190430_models.CreateAppGroupResponse:
+        """
+        @summary Creates an application group. The AppKey is returned.
+        
+        @param request: CreateAppGroupRequest
+        @return: CreateAppGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_app_group_with_options(request, runtime)
 
@@ -628,6 +698,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.CreateAppGroupRequest,
     ) -> schedulerx_220190430_models.CreateAppGroupResponse:
+        """
+        @summary Creates an application group. The AppKey is returned.
+        
+        @param request: CreateAppGroupRequest
+        @return: CreateAppGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_app_group_with_options_async(request, runtime)
 
@@ -636,6 +712,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.CreateJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.CreateJobResponse:
+        """
+        @summary Creates a job and obtains the job ID.
+        
+        @param request: CreateJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -736,6 +819,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.CreateJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.CreateJobResponse:
+        """
+        @summary Creates a job and obtains the job ID.
+        
+        @param request: CreateJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -835,6 +925,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.CreateJobRequest,
     ) -> schedulerx_220190430_models.CreateJobResponse:
+        """
+        @summary Creates a job and obtains the job ID.
+        
+        @param request: CreateJobRequest
+        @return: CreateJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_job_with_options(request, runtime)
 
@@ -842,6 +938,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.CreateJobRequest,
     ) -> schedulerx_220190430_models.CreateJobResponse:
+        """
+        @summary Creates a job and obtains the job ID.
+        
+        @param request: CreateJobRequest
+        @return: CreateJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_job_with_options_async(request, runtime)
 
@@ -850,6 +952,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.CreateNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.CreateNamespaceResponse:
+        """
+        @summary Creates a namespace.
+        
+        @param request: CreateNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -884,6 +993,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.CreateNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.CreateNamespaceResponse:
+        """
+        @summary Creates a namespace.
+        
+        @param request: CreateNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -917,6 +1033,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.CreateNamespaceRequest,
     ) -> schedulerx_220190430_models.CreateNamespaceResponse:
+        """
+        @summary Creates a namespace.
+        
+        @param request: CreateNamespaceRequest
+        @return: CreateNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_namespace_with_options(request, runtime)
 
@@ -924,6 +1046,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.CreateNamespaceRequest,
     ) -> schedulerx_220190430_models.CreateNamespaceResponse:
+        """
+        @summary Creates a namespace.
+        
+        @param request: CreateNamespaceRequest
+        @return: CreateNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_namespace_with_options_async(request, runtime)
 
@@ -932,6 +1060,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.CreateRouteStrategyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.CreateRouteStrategyResponse:
+        """
+        @summary Creates a routing policy.
+        
+        @param request: CreateRouteStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRouteStrategyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -974,6 +1109,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.CreateRouteStrategyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.CreateRouteStrategyResponse:
+        """
+        @summary Creates a routing policy.
+        
+        @param request: CreateRouteStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRouteStrategyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -1015,6 +1157,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.CreateRouteStrategyRequest,
     ) -> schedulerx_220190430_models.CreateRouteStrategyResponse:
+        """
+        @summary Creates a routing policy.
+        
+        @param request: CreateRouteStrategyRequest
+        @return: CreateRouteStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_route_strategy_with_options(request, runtime)
 
@@ -1022,6 +1170,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.CreateRouteStrategyRequest,
     ) -> schedulerx_220190430_models.CreateRouteStrategyResponse:
+        """
+        @summary Creates a routing policy.
+        
+        @param request: CreateRouteStrategyRequest
+        @return: CreateRouteStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_route_strategy_with_options_async(request, runtime)
 
@@ -1030,6 +1184,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.CreateWorkflowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.CreateWorkflowResponse:
+        """
+        @summary Creates a workflow. By default, the created workflow is disabled. After you update the directed acyclic graph (DAG) of the workflow, you must manually or call the corresponding operation to enable the workflow. You can call this operation only in the professional edition.
+        
+        @param request: CreateWorkflowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWorkflowResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -1076,6 +1237,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.CreateWorkflowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.CreateWorkflowResponse:
+        """
+        @summary Creates a workflow. By default, the created workflow is disabled. After you update the directed acyclic graph (DAG) of the workflow, you must manually or call the corresponding operation to enable the workflow. You can call this operation only in the professional edition.
+        
+        @param request: CreateWorkflowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWorkflowResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -1121,6 +1289,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.CreateWorkflowRequest,
     ) -> schedulerx_220190430_models.CreateWorkflowResponse:
+        """
+        @summary Creates a workflow. By default, the created workflow is disabled. After you update the directed acyclic graph (DAG) of the workflow, you must manually or call the corresponding operation to enable the workflow. You can call this operation only in the professional edition.
+        
+        @param request: CreateWorkflowRequest
+        @return: CreateWorkflowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_workflow_with_options(request, runtime)
 
@@ -1128,6 +1302,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.CreateWorkflowRequest,
     ) -> schedulerx_220190430_models.CreateWorkflowResponse:
+        """
+        @summary Creates a workflow. By default, the created workflow is disabled. After you update the directed acyclic graph (DAG) of the workflow, you must manually or call the corresponding operation to enable the workflow. You can call this operation only in the professional edition.
+        
+        @param request: CreateWorkflowRequest
+        @return: CreateWorkflowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_workflow_with_options_async(request, runtime)
 
@@ -1136,6 +1316,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.DeleteAppGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.DeleteAppGroupResponse:
+        """
+        @summary The additional information that is returned.
+        
+        @param request: DeleteAppGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAppGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.delete_jobs):
@@ -1170,6 +1357,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.DeleteAppGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.DeleteAppGroupResponse:
+        """
+        @summary The additional information that is returned.
+        
+        @param request: DeleteAppGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAppGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.delete_jobs):
@@ -1203,6 +1397,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.DeleteAppGroupRequest,
     ) -> schedulerx_220190430_models.DeleteAppGroupResponse:
+        """
+        @summary The additional information that is returned.
+        
+        @param request: DeleteAppGroupRequest
+        @return: DeleteAppGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_app_group_with_options(request, runtime)
 
@@ -1210,6 +1410,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.DeleteAppGroupRequest,
     ) -> schedulerx_220190430_models.DeleteAppGroupResponse:
+        """
+        @summary The additional information that is returned.
+        
+        @param request: DeleteAppGroupRequest
+        @return: DeleteAppGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_app_group_with_options_async(request, runtime)
 
@@ -1218,6 +1424,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.DeleteJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.DeleteJobResponse:
+        """
+        @summary Deletes a specified job.
+        
+        @param request: DeleteJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteJobResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1244,6 +1457,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.DeleteJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.DeleteJobResponse:
+        """
+        @summary Deletes a specified job.
+        
+        @param request: DeleteJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteJobResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1269,6 +1489,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.DeleteJobRequest,
     ) -> schedulerx_220190430_models.DeleteJobResponse:
+        """
+        @summary Deletes a specified job.
+        
+        @param request: DeleteJobRequest
+        @return: DeleteJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_job_with_options(request, runtime)
 
@@ -1276,6 +1502,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.DeleteJobRequest,
     ) -> schedulerx_220190430_models.DeleteJobResponse:
+        """
+        @summary Deletes a specified job.
+        
+        @param request: DeleteJobRequest
+        @return: DeleteJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_job_with_options_async(request, runtime)
 
@@ -1284,6 +1516,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.DeleteRouteStrategyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.DeleteRouteStrategyResponse:
+        """
+        @summary Deletes a routing policy.
+        
+        @param request: DeleteRouteStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRouteStrategyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -1318,6 +1557,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.DeleteRouteStrategyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.DeleteRouteStrategyResponse:
+        """
+        @summary Deletes a routing policy.
+        
+        @param request: DeleteRouteStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRouteStrategyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -1351,6 +1597,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.DeleteRouteStrategyRequest,
     ) -> schedulerx_220190430_models.DeleteRouteStrategyResponse:
+        """
+        @summary Deletes a routing policy.
+        
+        @param request: DeleteRouteStrategyRequest
+        @return: DeleteRouteStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_route_strategy_with_options(request, runtime)
 
@@ -1358,6 +1610,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.DeleteRouteStrategyRequest,
     ) -> schedulerx_220190430_models.DeleteRouteStrategyResponse:
+        """
+        @summary Deletes a routing policy.
+        
+        @param request: DeleteRouteStrategyRequest
+        @return: DeleteRouteStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_route_strategy_with_options_async(request, runtime)
 
@@ -1366,6 +1624,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.DeleteWorkflowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.DeleteWorkflowResponse:
+        """
+        @summary Deletes a workflow.
+        
+        @param request: DeleteWorkflowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWorkflowResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1392,6 +1657,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.DeleteWorkflowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.DeleteWorkflowResponse:
+        """
+        @summary Deletes a workflow.
+        
+        @param request: DeleteWorkflowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWorkflowResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1417,6 +1689,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.DeleteWorkflowRequest,
     ) -> schedulerx_220190430_models.DeleteWorkflowResponse:
+        """
+        @summary Deletes a workflow.
+        
+        @param request: DeleteWorkflowRequest
+        @return: DeleteWorkflowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_workflow_with_options(request, runtime)
 
@@ -1424,6 +1702,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.DeleteWorkflowRequest,
     ) -> schedulerx_220190430_models.DeleteWorkflowResponse:
+        """
+        @summary Deletes a workflow.
+        
+        @param request: DeleteWorkflowRequest
+        @return: DeleteWorkflowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_workflow_with_options_async(request, runtime)
 
@@ -1431,6 +1715,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.DescribeRegionsResponse:
+        """
+        @summary Returns available regions.
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeRegions',
@@ -1452,6 +1743,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.DescribeRegionsResponse:
+        """
+        @summary Returns available regions.
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeRegions',
@@ -1470,10 +1768,20 @@ class Client(OpenApiClient):
         )
 
     def describe_regions(self) -> schedulerx_220190430_models.DescribeRegionsResponse:
+        """
+        @summary Returns available regions.
+        
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_regions_with_options(runtime)
 
     async def describe_regions_async(self) -> schedulerx_220190430_models.DescribeRegionsResponse:
+        """
+        @summary Returns available regions.
+        
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(runtime)
 
@@ -1482,6 +1790,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.DesignateWorkersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.DesignateWorkersResponse:
+        """
+        @summary Designates machines.
+        
+        @param request: DesignateWorkersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DesignateWorkersResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1508,6 +1823,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.DesignateWorkersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.DesignateWorkersResponse:
+        """
+        @summary Designates machines.
+        
+        @param request: DesignateWorkersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DesignateWorkersResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1533,6 +1855,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.DesignateWorkersRequest,
     ) -> schedulerx_220190430_models.DesignateWorkersResponse:
+        """
+        @summary Designates machines.
+        
+        @param request: DesignateWorkersRequest
+        @return: DesignateWorkersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.designate_workers_with_options(request, runtime)
 
@@ -1540,6 +1868,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.DesignateWorkersRequest,
     ) -> schedulerx_220190430_models.DesignateWorkersResponse:
+        """
+        @summary Designates machines.
+        
+        @param request: DesignateWorkersRequest
+        @return: DesignateWorkersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.designate_workers_with_options_async(request, runtime)
 
@@ -1548,6 +1882,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.DisableJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.DisableJobResponse:
+        """
+        @summary Disables a job.
+        
+        @param request: DisableJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableJobResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1574,6 +1915,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.DisableJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.DisableJobResponse:
+        """
+        @summary Disables a job.
+        
+        @param request: DisableJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableJobResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1599,6 +1947,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.DisableJobRequest,
     ) -> schedulerx_220190430_models.DisableJobResponse:
+        """
+        @summary Disables a job.
+        
+        @param request: DisableJobRequest
+        @return: DisableJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.disable_job_with_options(request, runtime)
 
@@ -1606,6 +1960,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.DisableJobRequest,
     ) -> schedulerx_220190430_models.DisableJobResponse:
+        """
+        @summary Disables a job.
+        
+        @param request: DisableJobRequest
+        @return: DisableJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.disable_job_with_options_async(request, runtime)
 
@@ -1614,6 +1974,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.DisableWorkflowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.DisableWorkflowResponse:
+        """
+        @summary Disables a specified workflow.
+        
+        @param request: DisableWorkflowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableWorkflowResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1640,6 +2007,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.DisableWorkflowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.DisableWorkflowResponse:
+        """
+        @summary Disables a specified workflow.
+        
+        @param request: DisableWorkflowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableWorkflowResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1665,6 +2039,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.DisableWorkflowRequest,
     ) -> schedulerx_220190430_models.DisableWorkflowResponse:
+        """
+        @summary Disables a specified workflow.
+        
+        @param request: DisableWorkflowRequest
+        @return: DisableWorkflowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.disable_workflow_with_options(request, runtime)
 
@@ -1672,6 +2052,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.DisableWorkflowRequest,
     ) -> schedulerx_220190430_models.DisableWorkflowResponse:
+        """
+        @summary Disables a specified workflow.
+        
+        @param request: DisableWorkflowRequest
+        @return: DisableWorkflowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.disable_workflow_with_options_async(request, runtime)
 
@@ -1680,6 +2066,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.EnableJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.EnableJobResponse:
+        """
+        @summary Enables a job.
+        
+        @param request: EnableJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableJobResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1706,6 +2099,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.EnableJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.EnableJobResponse:
+        """
+        @summary Enables a job.
+        
+        @param request: EnableJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableJobResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1731,6 +2131,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.EnableJobRequest,
     ) -> schedulerx_220190430_models.EnableJobResponse:
+        """
+        @summary Enables a job.
+        
+        @param request: EnableJobRequest
+        @return: EnableJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.enable_job_with_options(request, runtime)
 
@@ -1738,6 +2144,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.EnableJobRequest,
     ) -> schedulerx_220190430_models.EnableJobResponse:
+        """
+        @summary Enables a job.
+        
+        @param request: EnableJobRequest
+        @return: EnableJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.enable_job_with_options_async(request, runtime)
 
@@ -1746,6 +2158,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.EnableWorkflowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.EnableWorkflowResponse:
+        """
+        @summary Enables a specified workflow.
+        
+        @param request: EnableWorkflowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableWorkflowResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1772,6 +2191,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.EnableWorkflowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.EnableWorkflowResponse:
+        """
+        @summary Enables a specified workflow.
+        
+        @param request: EnableWorkflowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableWorkflowResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1797,6 +2223,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.EnableWorkflowRequest,
     ) -> schedulerx_220190430_models.EnableWorkflowResponse:
+        """
+        @summary Enables a specified workflow.
+        
+        @param request: EnableWorkflowRequest
+        @return: EnableWorkflowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.enable_workflow_with_options(request, runtime)
 
@@ -1804,6 +2236,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.EnableWorkflowRequest,
     ) -> schedulerx_220190430_models.EnableWorkflowResponse:
+        """
+        @summary Enables a specified workflow.
+        
+        @param request: EnableWorkflowRequest
+        @return: EnableWorkflowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.enable_workflow_with_options_async(request, runtime)
 
@@ -1813,7 +2251,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.ExecuteJobResponse:
         """
-        > The combination of the `JobID` and `ScheduleTime` parameters serves as a unique index. Therefore, after the ExecuteJob operation is called to run a job once, a sleep for one second is required before the ExecuteJob operation is called to run the job again. Otherwise, the job may fail.
+        @summary Triggers a job to immediately run once.
+        
+        @description > The combination of the `JobID` and `ScheduleTime` parameters serves as a unique index. Therefore, after the ExecuteJob operation is called to run a job once, a sleep for one second is required before the ExecuteJob operation is called to run the job again. Otherwise, the job may fail.
         
         @param request: ExecuteJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1846,7 +2286,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.ExecuteJobResponse:
         """
-        > The combination of the `JobID` and `ScheduleTime` parameters serves as a unique index. Therefore, after the ExecuteJob operation is called to run a job once, a sleep for one second is required before the ExecuteJob operation is called to run the job again. Otherwise, the job may fail.
+        @summary Triggers a job to immediately run once.
+        
+        @description > The combination of the `JobID` and `ScheduleTime` parameters serves as a unique index. Therefore, after the ExecuteJob operation is called to run a job once, a sleep for one second is required before the ExecuteJob operation is called to run the job again. Otherwise, the job may fail.
         
         @param request: ExecuteJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1878,7 +2320,9 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.ExecuteJobRequest,
     ) -> schedulerx_220190430_models.ExecuteJobResponse:
         """
-        > The combination of the `JobID` and `ScheduleTime` parameters serves as a unique index. Therefore, after the ExecuteJob operation is called to run a job once, a sleep for one second is required before the ExecuteJob operation is called to run the job again. Otherwise, the job may fail.
+        @summary Triggers a job to immediately run once.
+        
+        @description > The combination of the `JobID` and `ScheduleTime` parameters serves as a unique index. Therefore, after the ExecuteJob operation is called to run a job once, a sleep for one second is required before the ExecuteJob operation is called to run the job again. Otherwise, the job may fail.
         
         @param request: ExecuteJobRequest
         @return: ExecuteJobResponse
@@ -1891,7 +2335,9 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.ExecuteJobRequest,
     ) -> schedulerx_220190430_models.ExecuteJobResponse:
         """
-        > The combination of the `JobID` and `ScheduleTime` parameters serves as a unique index. Therefore, after the ExecuteJob operation is called to run a job once, a sleep for one second is required before the ExecuteJob operation is called to run the job again. Otherwise, the job may fail.
+        @summary Triggers a job to immediately run once.
+        
+        @description > The combination of the `JobID` and `ScheduleTime` parameters serves as a unique index. Therefore, after the ExecuteJob operation is called to run a job once, a sleep for one second is required before the ExecuteJob operation is called to run the job again. Otherwise, the job may fail.
         
         @param request: ExecuteJobRequest
         @return: ExecuteJobResponse
@@ -1904,6 +2350,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.ExecuteWorkflowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.ExecuteWorkflowResponse:
+        """
+        @summary Immediately triggers a workflow.
+        
+        @param request: ExecuteWorkflowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteWorkflowResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1930,6 +2383,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.ExecuteWorkflowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.ExecuteWorkflowResponse:
+        """
+        @summary Immediately triggers a workflow.
+        
+        @param request: ExecuteWorkflowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteWorkflowResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1955,6 +2415,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.ExecuteWorkflowRequest,
     ) -> schedulerx_220190430_models.ExecuteWorkflowResponse:
+        """
+        @summary Immediately triggers a workflow.
+        
+        @param request: ExecuteWorkflowRequest
+        @return: ExecuteWorkflowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.execute_workflow_with_options(request, runtime)
 
@@ -1962,6 +2428,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.ExecuteWorkflowRequest,
     ) -> schedulerx_220190430_models.ExecuteWorkflowResponse:
+        """
+        @summary Immediately triggers a workflow.
+        
+        @param request: ExecuteWorkflowRequest
+        @return: ExecuteWorkflowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.execute_workflow_with_options_async(request, runtime)
 
@@ -1970,6 +2442,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.GetAppGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.GetAppGroupResponse:
+        """
+        @summary The configuration of the alert. The value is a JSON string. For more information, see *the additional information about response parameters below this table**.
+        
+        @param request: GetAppGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAppGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -2002,6 +2481,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.GetAppGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.GetAppGroupResponse:
+        """
+        @summary The configuration of the alert. The value is a JSON string. For more information, see *the additional information about response parameters below this table**.
+        
+        @param request: GetAppGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAppGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -2033,6 +2519,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.GetAppGroupRequest,
     ) -> schedulerx_220190430_models.GetAppGroupResponse:
+        """
+        @summary The configuration of the alert. The value is a JSON string. For more information, see *the additional information about response parameters below this table**.
+        
+        @param request: GetAppGroupRequest
+        @return: GetAppGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_app_group_with_options(request, runtime)
 
@@ -2040,6 +2532,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.GetAppGroupRequest,
     ) -> schedulerx_220190430_models.GetAppGroupResponse:
+        """
+        @summary The configuration of the alert. The value is a JSON string. For more information, see *the additional information about response parameters below this table**.
+        
+        @param request: GetAppGroupRequest
+        @return: GetAppGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_app_group_with_options_async(request, runtime)
 
@@ -2048,6 +2546,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.GetJobInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.GetJobInfoResponse:
+        """
+        @summary Queries the details of a job based on the job ID. In most cases, the obtained information is used to update jobs.
+        
+        @param request: GetJobInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobInfoResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2074,6 +2579,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.GetJobInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.GetJobInfoResponse:
+        """
+        @summary Queries the details of a job based on the job ID. In most cases, the obtained information is used to update jobs.
+        
+        @param request: GetJobInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobInfoResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2099,6 +2611,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.GetJobInfoRequest,
     ) -> schedulerx_220190430_models.GetJobInfoResponse:
+        """
+        @summary Queries the details of a job based on the job ID. In most cases, the obtained information is used to update jobs.
+        
+        @param request: GetJobInfoRequest
+        @return: GetJobInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_job_info_with_options(request, runtime)
 
@@ -2106,6 +2624,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.GetJobInfoRequest,
     ) -> schedulerx_220190430_models.GetJobInfoResponse:
+        """
+        @summary Queries the details of a job based on the job ID. In most cases, the obtained information is used to update jobs.
+        
+        @param request: GetJobInfoRequest
+        @return: GetJobInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_job_info_with_options_async(request, runtime)
 
@@ -2114,6 +2638,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.GetJobInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.GetJobInstanceResponse:
+        """
+        @summary Queries the information about a job instance. You can view the status and progress of the job instance.
+        
+        @param request: GetJobInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2140,6 +2671,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.GetJobInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.GetJobInstanceResponse:
+        """
+        @summary Queries the information about a job instance. You can view the status and progress of the job instance.
+        
+        @param request: GetJobInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2165,6 +2703,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.GetJobInstanceRequest,
     ) -> schedulerx_220190430_models.GetJobInstanceResponse:
+        """
+        @summary Queries the information about a job instance. You can view the status and progress of the job instance.
+        
+        @param request: GetJobInstanceRequest
+        @return: GetJobInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_job_instance_with_options(request, runtime)
 
@@ -2172,6 +2716,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.GetJobInstanceRequest,
     ) -> schedulerx_220190430_models.GetJobInstanceResponse:
+        """
+        @summary Queries the information about a job instance. You can view the status and progress of the job instance.
+        
+        @param request: GetJobInstanceRequest
+        @return: GetJobInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_job_instance_with_options_async(request, runtime)
 
@@ -2180,6 +2730,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.GetJobInstanceListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.GetJobInstanceListResponse:
+        """
+        @summary Queries the most recent 10 execution instances of a job.
+        
+        @param request: GetJobInstanceListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobInstanceListResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2206,6 +2763,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.GetJobInstanceListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.GetJobInstanceListResponse:
+        """
+        @summary Queries the most recent 10 execution instances of a job.
+        
+        @param request: GetJobInstanceListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetJobInstanceListResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2231,6 +2795,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.GetJobInstanceListRequest,
     ) -> schedulerx_220190430_models.GetJobInstanceListResponse:
+        """
+        @summary Queries the most recent 10 execution instances of a job.
+        
+        @param request: GetJobInstanceListRequest
+        @return: GetJobInstanceListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_job_instance_list_with_options(request, runtime)
 
@@ -2238,6 +2808,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.GetJobInstanceListRequest,
     ) -> schedulerx_220190430_models.GetJobInstanceListResponse:
+        """
+        @summary Queries the most recent 10 execution instances of a job.
+        
+        @param request: GetJobInstanceListRequest
+        @return: GetJobInstanceListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_job_instance_list_with_options_async(request, runtime)
 
@@ -2246,6 +2822,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.GetLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.GetLogResponse:
+        """
+        @summary Queries the operational logs of a job. You can call this operation only in the professional edition.
+        
+        @param request: GetLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLogResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2272,6 +2855,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.GetLogRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.GetLogResponse:
+        """
+        @summary Queries the operational logs of a job. You can call this operation only in the professional edition.
+        
+        @param request: GetLogRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLogResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2297,6 +2887,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.GetLogRequest,
     ) -> schedulerx_220190430_models.GetLogResponse:
+        """
+        @summary Queries the operational logs of a job. You can call this operation only in the professional edition.
+        
+        @param request: GetLogRequest
+        @return: GetLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_log_with_options(request, runtime)
 
@@ -2304,6 +2900,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.GetLogRequest,
     ) -> schedulerx_220190430_models.GetLogResponse:
+        """
+        @summary Queries the operational logs of a job. You can call this operation only in the professional edition.
+        
+        @param request: GetLogRequest
+        @return: GetLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_log_with_options_async(request, runtime)
 
@@ -2312,6 +2914,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.GetOverviewRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.GetOverviewResponse:
+        """
+        @summary 查询概览数据信息
+        
+        @param request: GetOverviewRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOverviewResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -2354,6 +2963,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.GetOverviewRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.GetOverviewResponse:
+        """
+        @summary 查询概览数据信息
+        
+        @param request: GetOverviewRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOverviewResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -2395,6 +3011,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.GetOverviewRequest,
     ) -> schedulerx_220190430_models.GetOverviewResponse:
+        """
+        @summary 查询概览数据信息
+        
+        @param request: GetOverviewRequest
+        @return: GetOverviewResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_overview_with_options(request, runtime)
 
@@ -2402,6 +3024,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.GetOverviewRequest,
     ) -> schedulerx_220190430_models.GetOverviewResponse:
+        """
+        @summary 查询概览数据信息
+        
+        @param request: GetOverviewRequest
+        @return: GetOverviewResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_overview_with_options_async(request, runtime)
 
@@ -2410,6 +3038,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.GetWorkFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.GetWorkFlowResponse:
+        """
+        @summary Obtains the information about a workflow.
+        
+        @param request: GetWorkFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWorkFlowResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2436,6 +3071,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.GetWorkFlowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.GetWorkFlowResponse:
+        """
+        @summary Obtains the information about a workflow.
+        
+        @param request: GetWorkFlowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWorkFlowResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2461,6 +3103,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.GetWorkFlowRequest,
     ) -> schedulerx_220190430_models.GetWorkFlowResponse:
+        """
+        @summary Obtains the information about a workflow.
+        
+        @param request: GetWorkFlowRequest
+        @return: GetWorkFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_work_flow_with_options(request, runtime)
 
@@ -2468,6 +3116,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.GetWorkFlowRequest,
     ) -> schedulerx_220190430_models.GetWorkFlowResponse:
+        """
+        @summary Obtains the information about a workflow.
+        
+        @param request: GetWorkFlowRequest
+        @return: GetWorkFlowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_work_flow_with_options_async(request, runtime)
 
@@ -2476,6 +3130,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.GetWorkerListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.GetWorkerListResponse:
+        """
+        @summary Obtains the list of workers that are connected to an application.
+        
+        @param request: GetWorkerListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWorkerListResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2502,6 +3163,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.GetWorkerListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.GetWorkerListResponse:
+        """
+        @summary Obtains the list of workers that are connected to an application.
+        
+        @param request: GetWorkerListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWorkerListResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2527,6 +3195,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.GetWorkerListRequest,
     ) -> schedulerx_220190430_models.GetWorkerListResponse:
+        """
+        @summary Obtains the list of workers that are connected to an application.
+        
+        @param request: GetWorkerListRequest
+        @return: GetWorkerListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_worker_list_with_options(request, runtime)
 
@@ -2534,6 +3208,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.GetWorkerListRequest,
     ) -> schedulerx_220190430_models.GetWorkerListResponse:
+        """
+        @summary Obtains the list of workers that are connected to an application.
+        
+        @param request: GetWorkerListRequest
+        @return: GetWorkerListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_worker_list_with_options_async(request, runtime)
 
@@ -2542,6 +3222,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.GetWorkflowInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.GetWorkflowInstanceResponse:
+        """
+        @summary Queries the details of a specified workflow instance, including the state of the workflow instance, the state of each job instance, and the dependencies between job instances. You can call this operation only in the professional edition.
+        
+        @param request: GetWorkflowInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWorkflowInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2568,6 +3255,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.GetWorkflowInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.GetWorkflowInstanceResponse:
+        """
+        @summary Queries the details of a specified workflow instance, including the state of the workflow instance, the state of each job instance, and the dependencies between job instances. You can call this operation only in the professional edition.
+        
+        @param request: GetWorkflowInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWorkflowInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2593,6 +3287,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.GetWorkflowInstanceRequest,
     ) -> schedulerx_220190430_models.GetWorkflowInstanceResponse:
+        """
+        @summary Queries the details of a specified workflow instance, including the state of the workflow instance, the state of each job instance, and the dependencies between job instances. You can call this operation only in the professional edition.
+        
+        @param request: GetWorkflowInstanceRequest
+        @return: GetWorkflowInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_workflow_instance_with_options(request, runtime)
 
@@ -2600,6 +3300,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.GetWorkflowInstanceRequest,
     ) -> schedulerx_220190430_models.GetWorkflowInstanceResponse:
+        """
+        @summary Queries the details of a specified workflow instance, including the state of the workflow instance, the state of each job instance, and the dependencies between job instances. You can call this operation only in the professional edition.
+        
+        @param request: GetWorkflowInstanceRequest
+        @return: GetWorkflowInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_workflow_instance_with_options_async(request, runtime)
 
@@ -2608,6 +3314,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.GrantPermissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.GrantPermissionResponse:
+        """
+        @summary Grants permissions to an application group.
+        
+        @param request: GrantPermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantPermissionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.grant_option):
@@ -2648,6 +3361,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.GrantPermissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.GrantPermissionResponse:
+        """
+        @summary Grants permissions to an application group.
+        
+        @param request: GrantPermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantPermissionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.grant_option):
@@ -2687,6 +3407,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.GrantPermissionRequest,
     ) -> schedulerx_220190430_models.GrantPermissionResponse:
+        """
+        @summary Grants permissions to an application group.
+        
+        @param request: GrantPermissionRequest
+        @return: GrantPermissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.grant_permission_with_options(request, runtime)
 
@@ -2694,6 +3420,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.GrantPermissionRequest,
     ) -> schedulerx_220190430_models.GrantPermissionResponse:
+        """
+        @summary Grants permissions to an application group.
+        
+        @param request: GrantPermissionRequest
+        @return: GrantPermissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.grant_permission_with_options_async(request, runtime)
 
@@ -2703,7 +3435,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.ListGroupsResponse:
         """
-        Before you call this operation, you must add the following dependency to the pom.xml file:
+        @summary Queries a list of applications.
+        
+        @description Before you call this operation, you must add the following dependency to the pom.xml file:
         ```xml
         <dependency>
         <groupId>com.aliyun</groupId>
@@ -2751,7 +3485,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.ListGroupsResponse:
         """
-        Before you call this operation, you must add the following dependency to the pom.xml file:
+        @summary Queries a list of applications.
+        
+        @description Before you call this operation, you must add the following dependency to the pom.xml file:
         ```xml
         <dependency>
         <groupId>com.aliyun</groupId>
@@ -2798,7 +3534,9 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.ListGroupsRequest,
     ) -> schedulerx_220190430_models.ListGroupsResponse:
         """
-        Before you call this operation, you must add the following dependency to the pom.xml file:
+        @summary Queries a list of applications.
+        
+        @description Before you call this operation, you must add the following dependency to the pom.xml file:
         ```xml
         <dependency>
         <groupId>com.aliyun</groupId>
@@ -2818,7 +3556,9 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.ListGroupsRequest,
     ) -> schedulerx_220190430_models.ListGroupsResponse:
         """
-        Before you call this operation, you must add the following dependency to the pom.xml file:
+        @summary Queries a list of applications.
+        
+        @description Before you call this operation, you must add the following dependency to the pom.xml file:
         ```xml
         <dependency>
         <groupId>com.aliyun</groupId>
@@ -2839,7 +3579,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.ListJobsResponse:
         """
-        Before you call this operation, you must add the following dependency to the pom.xml file:
+        @summary Queries jobs.
+        
+        @description Before you call this operation, you must add the following dependency to the pom.xml file:
         <dependency>
         <groupId>com.aliyun</groupId>
         <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
@@ -2877,7 +3619,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.ListJobsResponse:
         """
-        Before you call this operation, you must add the following dependency to the pom.xml file:
+        @summary Queries jobs.
+        
+        @description Before you call this operation, you must add the following dependency to the pom.xml file:
         <dependency>
         <groupId>com.aliyun</groupId>
         <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
@@ -2914,7 +3658,9 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.ListJobsRequest,
     ) -> schedulerx_220190430_models.ListJobsResponse:
         """
-        Before you call this operation, you must add the following dependency to the pom.xml file:
+        @summary Queries jobs.
+        
+        @description Before you call this operation, you must add the following dependency to the pom.xml file:
         <dependency>
         <groupId>com.aliyun</groupId>
         <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
@@ -2932,7 +3678,9 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.ListJobsRequest,
     ) -> schedulerx_220190430_models.ListJobsResponse:
         """
-        Before you call this operation, you must add the following dependency to the pom.xml file:
+        @summary Queries jobs.
+        
+        @description Before you call this operation, you must add the following dependency to the pom.xml file:
         <dependency>
         <groupId>com.aliyun</groupId>
         <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
@@ -2951,7 +3699,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.ListNamespacesResponse:
         """
-        Before you call this operation, you must add the following dependency to the pom.xml file:
+        @summary Queries namespaces.
+        
+        @description Before you call this operation, you must add the following dependency to the pom.xml file:
         <dependency>
         <groupId>com.aliyun</groupId>
         <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
@@ -2995,7 +3745,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.ListNamespacesResponse:
         """
-        Before you call this operation, you must add the following dependency to the pom.xml file:
+        @summary Queries namespaces.
+        
+        @description Before you call this operation, you must add the following dependency to the pom.xml file:
         <dependency>
         <groupId>com.aliyun</groupId>
         <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
@@ -3038,7 +3790,9 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.ListNamespacesRequest,
     ) -> schedulerx_220190430_models.ListNamespacesResponse:
         """
-        Before you call this operation, you must add the following dependency to the pom.xml file:
+        @summary Queries namespaces.
+        
+        @description Before you call this operation, you must add the following dependency to the pom.xml file:
         <dependency>
         <groupId>com.aliyun</groupId>
         <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
@@ -3056,7 +3810,9 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.ListNamespacesRequest,
     ) -> schedulerx_220190430_models.ListNamespacesResponse:
         """
-        Before you call this operation, you must add the following dependency to the pom.xml file:
+        @summary Queries namespaces.
+        
+        @description Before you call this operation, you must add the following dependency to the pom.xml file:
         <dependency>
         <groupId>com.aliyun</groupId>
         <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
@@ -3074,6 +3830,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.ListWorkflowInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.ListWorkflowInstanceResponse:
+        """
+        @summary Queries the execution history of a workflow. You can call this operation only in the professional edition.
+        
+        @param request: ListWorkflowInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkflowInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3100,6 +3863,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.ListWorkflowInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.ListWorkflowInstanceResponse:
+        """
+        @summary Queries the execution history of a workflow. You can call this operation only in the professional edition.
+        
+        @param request: ListWorkflowInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkflowInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3125,6 +3895,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.ListWorkflowInstanceRequest,
     ) -> schedulerx_220190430_models.ListWorkflowInstanceResponse:
+        """
+        @summary Queries the execution history of a workflow. You can call this operation only in the professional edition.
+        
+        @param request: ListWorkflowInstanceRequest
+        @return: ListWorkflowInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_workflow_instance_with_options(request, runtime)
 
@@ -3132,6 +3908,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.ListWorkflowInstanceRequest,
     ) -> schedulerx_220190430_models.ListWorkflowInstanceResponse:
+        """
+        @summary Queries the execution history of a workflow. You can call this operation only in the professional edition.
+        
+        @param request: ListWorkflowInstanceRequest
+        @return: ListWorkflowInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_workflow_instance_with_options_async(request, runtime)
 
@@ -3140,6 +3922,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.RerunJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.RerunJobResponse:
+        """
+        @summary Reruns a job to obtain the historical data of the job. You can call this operation only in the professional edition.
+        
+        @param request: RerunJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RerunJobResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_time):
@@ -3182,6 +3971,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.RerunJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.RerunJobResponse:
+        """
+        @summary Reruns a job to obtain the historical data of the job. You can call this operation only in the professional edition.
+        
+        @param request: RerunJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RerunJobResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.data_time):
@@ -3223,6 +4019,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.RerunJobRequest,
     ) -> schedulerx_220190430_models.RerunJobResponse:
+        """
+        @summary Reruns a job to obtain the historical data of the job. You can call this operation only in the professional edition.
+        
+        @param request: RerunJobRequest
+        @return: RerunJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.rerun_job_with_options(request, runtime)
 
@@ -3230,6 +4032,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.RerunJobRequest,
     ) -> schedulerx_220190430_models.RerunJobResponse:
+        """
+        @summary Reruns a job to obtain the historical data of the job. You can call this operation only in the professional edition.
+        
+        @param request: RerunJobRequest
+        @return: RerunJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.rerun_job_with_options_async(request, runtime)
 
@@ -3238,6 +4046,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.RetryJobInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.RetryJobInstanceResponse:
+        """
+        @summary Reruns a successful or failed job instance. You can call this operation only in the professional edition.
+        
+        @param request: RetryJobInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RetryJobInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -3276,6 +4091,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.RetryJobInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.RetryJobInstanceResponse:
+        """
+        @summary Reruns a successful or failed job instance. You can call this operation only in the professional edition.
+        
+        @param request: RetryJobInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RetryJobInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -3313,6 +4135,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.RetryJobInstanceRequest,
     ) -> schedulerx_220190430_models.RetryJobInstanceResponse:
+        """
+        @summary Reruns a successful or failed job instance. You can call this operation only in the professional edition.
+        
+        @param request: RetryJobInstanceRequest
+        @return: RetryJobInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.retry_job_instance_with_options(request, runtime)
 
@@ -3320,6 +4148,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.RetryJobInstanceRequest,
     ) -> schedulerx_220190430_models.RetryJobInstanceResponse:
+        """
+        @summary Reruns a successful or failed job instance. You can call this operation only in the professional edition.
+        
+        @param request: RetryJobInstanceRequest
+        @return: RetryJobInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.retry_job_instance_with_options_async(request, runtime)
 
@@ -3328,6 +4162,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.RevokePermissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.RevokePermissionResponse:
+        """
+        @summary Revokes the permissions that are granted to an Alibaba Cloud Resource Access Management (RAM) user.
+        
+        @param request: RevokePermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokePermissionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -3364,6 +4205,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.RevokePermissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.RevokePermissionResponse:
+        """
+        @summary Revokes the permissions that are granted to an Alibaba Cloud Resource Access Management (RAM) user.
+        
+        @param request: RevokePermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RevokePermissionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -3399,6 +4247,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.RevokePermissionRequest,
     ) -> schedulerx_220190430_models.RevokePermissionResponse:
+        """
+        @summary Revokes the permissions that are granted to an Alibaba Cloud Resource Access Management (RAM) user.
+        
+        @param request: RevokePermissionRequest
+        @return: RevokePermissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.revoke_permission_with_options(request, runtime)
 
@@ -3406,6 +4260,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.RevokePermissionRequest,
     ) -> schedulerx_220190430_models.RevokePermissionResponse:
+        """
+        @summary Revokes the permissions that are granted to an Alibaba Cloud Resource Access Management (RAM) user.
+        
+        @param request: RevokePermissionRequest
+        @return: RevokePermissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.revoke_permission_with_options_async(request, runtime)
 
@@ -3414,6 +4274,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.SetJobInstanceSuccessRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.SetJobInstanceSuccessResponse:
+        """
+        @summary Forcibly sets the state of a job instance to successful. You can call this operation only in the professional edition.
+        
+        @param request: SetJobInstanceSuccessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetJobInstanceSuccessResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -3452,6 +4319,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.SetJobInstanceSuccessRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.SetJobInstanceSuccessResponse:
+        """
+        @summary Forcibly sets the state of a job instance to successful. You can call this operation only in the professional edition.
+        
+        @param request: SetJobInstanceSuccessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetJobInstanceSuccessResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -3489,6 +4363,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.SetJobInstanceSuccessRequest,
     ) -> schedulerx_220190430_models.SetJobInstanceSuccessResponse:
+        """
+        @summary Forcibly sets the state of a job instance to successful. You can call this operation only in the professional edition.
+        
+        @param request: SetJobInstanceSuccessRequest
+        @return: SetJobInstanceSuccessResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_job_instance_success_with_options(request, runtime)
 
@@ -3496,6 +4376,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.SetJobInstanceSuccessRequest,
     ) -> schedulerx_220190430_models.SetJobInstanceSuccessResponse:
+        """
+        @summary Forcibly sets the state of a job instance to successful. You can call this operation only in the professional edition.
+        
+        @param request: SetJobInstanceSuccessRequest
+        @return: SetJobInstanceSuccessResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_job_instance_success_with_options_async(request, runtime)
 
@@ -3504,6 +4390,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.SetWfInstanceSuccessRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.SetWfInstanceSuccessResponse:
+        """
+        @summary Forcibly sets the state of a workflow instance to successful. You can call this operation only in the professional edition.
+        
+        @param request: SetWfInstanceSuccessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetWfInstanceSuccessResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -3542,6 +4435,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.SetWfInstanceSuccessRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.SetWfInstanceSuccessResponse:
+        """
+        @summary Forcibly sets the state of a workflow instance to successful. You can call this operation only in the professional edition.
+        
+        @param request: SetWfInstanceSuccessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetWfInstanceSuccessResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -3579,6 +4479,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.SetWfInstanceSuccessRequest,
     ) -> schedulerx_220190430_models.SetWfInstanceSuccessResponse:
+        """
+        @summary Forcibly sets the state of a workflow instance to successful. You can call this operation only in the professional edition.
+        
+        @param request: SetWfInstanceSuccessRequest
+        @return: SetWfInstanceSuccessResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_wf_instance_success_with_options(request, runtime)
 
@@ -3586,6 +4492,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.SetWfInstanceSuccessRequest,
     ) -> schedulerx_220190430_models.SetWfInstanceSuccessResponse:
+        """
+        @summary Forcibly sets the state of a workflow instance to successful. You can call this operation only in the professional edition.
+        
+        @param request: SetWfInstanceSuccessRequest
+        @return: SetWfInstanceSuccessResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_wf_instance_success_with_options_async(request, runtime)
 
@@ -3594,6 +4506,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.StopInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.StopInstanceResponse:
+        """
+        @summary Stops a job instance in the running state.
+        
+        @param request: StopInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3620,6 +4539,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.StopInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.StopInstanceResponse:
+        """
+        @summary Stops a job instance in the running state.
+        
+        @param request: StopInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3645,6 +4571,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.StopInstanceRequest,
     ) -> schedulerx_220190430_models.StopInstanceResponse:
+        """
+        @summary Stops a job instance in the running state.
+        
+        @param request: StopInstanceRequest
+        @return: StopInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_instance_with_options(request, runtime)
 
@@ -3652,6 +4584,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.StopInstanceRequest,
     ) -> schedulerx_220190430_models.StopInstanceResponse:
+        """
+        @summary Stops a job instance in the running state.
+        
+        @param request: StopInstanceRequest
+        @return: StopInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_instance_with_options_async(request, runtime)
 
@@ -3660,6 +4598,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.UpdateAppGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.UpdateAppGroupResponse:
+        """
+        @summary The additional information that is returned.
+        
+        @param request: UpdateAppGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAppGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -3696,6 +4641,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.UpdateAppGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.UpdateAppGroupResponse:
+        """
+        @summary The additional information that is returned.
+        
+        @param request: UpdateAppGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAppGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -3731,6 +4683,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.UpdateAppGroupRequest,
     ) -> schedulerx_220190430_models.UpdateAppGroupResponse:
+        """
+        @summary The additional information that is returned.
+        
+        @param request: UpdateAppGroupRequest
+        @return: UpdateAppGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_app_group_with_options(request, runtime)
 
@@ -3738,6 +4696,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.UpdateAppGroupRequest,
     ) -> schedulerx_220190430_models.UpdateAppGroupResponse:
+        """
+        @summary The additional information that is returned.
+        
+        @param request: UpdateAppGroupRequest
+        @return: UpdateAppGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_app_group_with_options_async(request, runtime)
 
@@ -3746,6 +4710,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.UpdateJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.UpdateJobResponse:
+        """
+        @summary Updates the configuration information about a job. By default, you need to call the GetJobInfo operation to obtain the original configuration of the job before you call this operation to modify the configuration as required.
+        
+        @param request: UpdateJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -3848,6 +4819,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.UpdateJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.UpdateJobResponse:
+        """
+        @summary Updates the configuration information about a job. By default, you need to call the GetJobInfo operation to obtain the original configuration of the job before you call this operation to modify the configuration as required.
+        
+        @param request: UpdateJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -3949,6 +4927,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.UpdateJobRequest,
     ) -> schedulerx_220190430_models.UpdateJobResponse:
+        """
+        @summary Updates the configuration information about a job. By default, you need to call the GetJobInfo operation to obtain the original configuration of the job before you call this operation to modify the configuration as required.
+        
+        @param request: UpdateJobRequest
+        @return: UpdateJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_job_with_options(request, runtime)
 
@@ -3956,6 +4940,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.UpdateJobRequest,
     ) -> schedulerx_220190430_models.UpdateJobResponse:
+        """
+        @summary Updates the configuration information about a job. By default, you need to call the GetJobInfo operation to obtain the original configuration of the job before you call this operation to modify the configuration as required.
+        
+        @param request: UpdateJobRequest
+        @return: UpdateJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_job_with_options_async(request, runtime)
 
@@ -3964,6 +4954,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.UpdateWorkflowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.UpdateWorkflowResponse:
+        """
+        @summary Updates the basic information about a workflow. You can call this operation only in the professional edition.
+        
+        @param request: UpdateWorkflowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWorkflowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -4010,6 +5007,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.UpdateWorkflowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.UpdateWorkflowResponse:
+        """
+        @summary Updates the basic information about a workflow. You can call this operation only in the professional edition.
+        
+        @param request: UpdateWorkflowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWorkflowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -4055,6 +5059,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.UpdateWorkflowRequest,
     ) -> schedulerx_220190430_models.UpdateWorkflowResponse:
+        """
+        @summary Updates the basic information about a workflow. You can call this operation only in the professional edition.
+        
+        @param request: UpdateWorkflowRequest
+        @return: UpdateWorkflowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_workflow_with_options(request, runtime)
 
@@ -4062,6 +5072,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.UpdateWorkflowRequest,
     ) -> schedulerx_220190430_models.UpdateWorkflowResponse:
+        """
+        @summary Updates the basic information about a workflow. You can call this operation only in the professional edition.
+        
+        @param request: UpdateWorkflowRequest
+        @return: UpdateWorkflowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_workflow_with_options_async(request, runtime)
 
@@ -4070,6 +5086,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.UpdateWorkflowDagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.UpdateWorkflowDagResponse:
+        """
+        @summary Modifies the nodes and dependencies of a workflow. You can call this operation only in the professional edition.
+        
+        @param request: UpdateWorkflowDagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWorkflowDagResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -4110,6 +5133,13 @@ class Client(OpenApiClient):
         request: schedulerx_220190430_models.UpdateWorkflowDagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> schedulerx_220190430_models.UpdateWorkflowDagResponse:
+        """
+        @summary Modifies the nodes and dependencies of a workflow. You can call this operation only in the professional edition.
+        
+        @param request: UpdateWorkflowDagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWorkflowDagResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -4149,6 +5179,12 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.UpdateWorkflowDagRequest,
     ) -> schedulerx_220190430_models.UpdateWorkflowDagResponse:
+        """
+        @summary Modifies the nodes and dependencies of a workflow. You can call this operation only in the professional edition.
+        
+        @param request: UpdateWorkflowDagRequest
+        @return: UpdateWorkflowDagResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_workflow_dag_with_options(request, runtime)
 
@@ -4156,5 +5192,11 @@ class Client(OpenApiClient):
         self,
         request: schedulerx_220190430_models.UpdateWorkflowDagRequest,
     ) -> schedulerx_220190430_models.UpdateWorkflowDagResponse:
+        """
+        @summary Modifies the nodes and dependencies of a workflow. You can call this operation only in the professional edition.
+        
+        @param request: UpdateWorkflowDagRequest
+        @return: UpdateWorkflowDagResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_workflow_dag_with_options_async(request, runtime)

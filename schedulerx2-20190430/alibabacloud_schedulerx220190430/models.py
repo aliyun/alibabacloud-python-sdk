@@ -14,14 +14,22 @@ class BatchDeleteJobsRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the application. You can obtain the application ID on the **Application Management** page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The job IDs. Separate multiple job IDs with commas (,).
+        # 
+        # This parameter is required.
         self.job_id_list = job_id_list
         # The ID of the namespace to which the job belongs. You can obtain the ID of the namespace on the **Namespace** page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The source of the namespace. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
         # The ID of the region to which the job belongs.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -124,9 +132,6 @@ class BatchDeleteJobsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -164,9 +169,12 @@ class BatchDeleteRouteStrategyRequest(TeaModel):
         namespace: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.group_id = group_id
         self.job_id_list = job_id_list
+        # This parameter is required.
         self.namespace = namespace
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -258,9 +266,6 @@ class BatchDeleteRouteStrategyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -302,12 +307,18 @@ class BatchDisableJobsRequest(TeaModel):
         # The ID of the application. You can obtain the application ID on the **Application Management** page in the SchedulerX console.
         self.group_id = group_id
         # The job IDs. Separate multiple job IDs with commas (,).
+        # 
+        # This parameter is required.
         self.job_id_list = job_id_list
         # The ID of the namespace to which the job belongs. You can obtain the ID of the namespace on the **Namespace** page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The source of the namespace. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
         # The ID of the region to which the job belongs.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -410,9 +421,6 @@ class BatchDisableJobsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -454,12 +462,18 @@ class BatchEnableJobsRequest(TeaModel):
         # The application ID. You can obtain the application ID on the **Application Management** page in the SchedulerX console.
         self.group_id = group_id
         # The job IDs. Multiple job IDs are separated with commas (,).
+        # 
+        # This parameter is required.
         self.job_id_list = job_id_list
         # The ID of the namespace to which the job belongs. You can obtain the namespace ID on the **Namespace** page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The source of the namespace. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
         # The ID of the region to which the job belongs.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -562,9 +576,6 @@ class BatchEnableJobsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -615,6 +626,8 @@ class CreateAppGroupRequest(TeaModel):
         # The AppKey for the application.
         self.app_key = app_key
         # The name of the application.
+        # 
+        # This parameter is required.
         self.app_name = app_name
         # 应用类型。
         # 
@@ -630,6 +643,8 @@ class CreateAppGroupRequest(TeaModel):
         # - false：关闭
         self.enable_log = enable_log
         # The application ID. You can obtain the application ID on the Application Management page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The maximum number of jobs.
         self.max_jobs = max_jobs
@@ -638,6 +653,8 @@ class CreateAppGroupRequest(TeaModel):
         # The configuration of alert contacts. The value is a JSON string.
         self.monitor_contacts_json = monitor_contacts_json
         # The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The name of the namespace.
         self.namespace_name = namespace_name
@@ -828,9 +845,6 @@ class CreateAppGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -976,6 +990,8 @@ class CreateJobRequest(TeaModel):
         # *   **Visual MapReduce**\
         # *   **MapReduce**\
         # *   **Shard run**\
+        # 
+        # This parameter is required.
         self.execute_mode = execute_mode
         # Specifies whether to turn on Failure alarm. If the switch is turned on, an alert will be generated upon a failure. Valid values:
         # 
@@ -985,6 +1001,8 @@ class CreateJobRequest(TeaModel):
         # The number of consecutive failures. An alert will be received if the number of consecutive failures reaches the value of this parameter.
         self.fail_times = fail_times
         # The application ID. You can obtain the application ID on the Application Management page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The job type. Valid values:
         # 
@@ -997,6 +1015,8 @@ class CreateJobRequest(TeaModel):
         # *   dataworks
         # *   k8s
         # *   springschedule
+        # 
+        # This parameter is required.
         self.job_type = job_type
         # The maximum number of retries after a job failure. Specify this parameter based on your business requirements. Default value: 0.
         self.max_attempt = max_attempt
@@ -1008,8 +1028,12 @@ class CreateJobRequest(TeaModel):
         # *   **false**\
         self.miss_worker_enable = miss_worker_enable
         # The job name.
+        # 
+        # This parameter is required.
         self.name = name
         # The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The namespace source. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
@@ -1020,6 +1044,8 @@ class CreateJobRequest(TeaModel):
         # The maximum number of tasks that can be queued. Default value: 10000. This parameter is an advanced configuration item of the MapReduce job.
         self.queue_size = queue_size
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The method that is used to send alerts. Only Short Message Service (SMS) is supported. Default value: sms.
         self.send_channel = send_channel
@@ -1046,6 +1072,8 @@ class CreateJobRequest(TeaModel):
         # *   **4**: second_delay
         # *   **5**: one_time
         # *   **100**: api
+        # 
+        # This parameter is required.
         self.time_type = time_type
         # The timeout threshold. Default value: 7200. Unit: seconds.
         self.timeout = timeout
@@ -1333,9 +1361,6 @@ class CreateJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1376,8 +1401,12 @@ class CreateNamespaceRequest(TeaModel):
         # The description of the namespace.
         self.description = description
         # The name of the namespace.
+        # 
+        # This parameter is required.
         self.name = name
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The unique identifier (UID) of the namespace. We recommend that you use the universally unique identifier (UUID) to generate the UID.
         self.uid = uid
@@ -1515,9 +1544,6 @@ class CreateNamespaceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1560,14 +1586,22 @@ class CreateRouteStrategyRequest(TeaModel):
         type: int = None,
     ):
         # The ID of the application group. You can obtain the ID on the **Application Management** page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The job ID. You can obtain the ID on the **Task Management** page in the SchedulerX console.
         self.job_id = job_id
         # The name of the routing policy.
+        # 
+        # This parameter is required.
         self.name = name
         # The namespace ID. You can obtain the namespace ID on the **Namespace** page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # Specifies whether to enable the routing policy. Valid values:
         # 
@@ -1722,9 +1756,6 @@ class CreateRouteStrategyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1771,16 +1802,24 @@ class CreateWorkflowRequest(TeaModel):
         # The description of the workflow.
         self.description = description
         # The application group ID. You can obtain the ID on the Application Management page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The maximum number of workflow instances that can be run at the same time. Default value: 1. The value 1 indicates that only one workflow instance is allowed. In this case, if the triggered workflow instance is still ongoing, no more workflow instances can be triggered even the time to schedule the next workflow arrives.
         self.max_concurrency = max_concurrency
         # The name of the workflow.
+        # 
+        # This parameter is required.
         self.name = name
         # The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The source of the namespace. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The time expression. You can set the time expression based on the selected method that is used to specify time.
         # 
@@ -1952,9 +1991,6 @@ class CreateWorkflowResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1993,8 +2029,11 @@ class DeleteAppGroupRequest(TeaModel):
         region_id: str = None,
     ):
         self.delete_jobs = delete_jobs
+        # This parameter is required.
         self.group_id = group_id
+        # This parameter is required.
         self.namespace = namespace
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2086,9 +2125,6 @@ class DeleteAppGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2128,14 +2164,22 @@ class DeleteJobRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the application. You can obtain the application ID on the **Application Management** page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The ID of the job. You can obtain the ID on the **Task Management** page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.job_id = job_id
         # The ID of the namespace. You can obtain the ID of the namespace on the **Namespace** page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The source of the namespace. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2238,9 +2282,6 @@ class DeleteJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2279,12 +2320,18 @@ class DeleteRouteStrategyRequest(TeaModel):
         region_id: str = None,
     ):
         # The application ID. You can obtain the application ID on the **Application Management** page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The job ID. You can obtain the job ID on the **Task Management** page in the SchedulerX console.
         self.job_id = job_id
         # The namespace ID. You can obtain the ID of the namespace on the **Namespace** page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2383,9 +2430,6 @@ class DeleteRouteStrategyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2427,12 +2471,18 @@ class DeleteWorkflowRequest(TeaModel):
         # The application ID. You can obtain the application ID on the Application Management page in the SchedulerX console.
         self.group_id = group_id
         # The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The source of the namespace. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The workflow ID.
+        # 
+        # This parameter is required.
         self.workflow_id = workflow_id
 
     def validate(self):
@@ -2535,9 +2585,6 @@ class DeleteWorkflowResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2688,9 +2735,6 @@ class DescribeRegionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2734,20 +2778,32 @@ class DesignateWorkersRequest(TeaModel):
         workers: str = None,
     ):
         # The type of the machines to be designated. Valid values: 1 and 2. The value 1 specifies the worker type. The value 2 specifies the label type.
+        # 
+        # This parameter is required.
         self.designate_type = designate_type
         # The application group ID.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The job ID.
+        # 
+        # This parameter is required.
         self.job_id = job_id
         # The designated `labels`. Specify the value of the parameter in a `JSON` string.
         self.labels = labels
         # The unique identifier (UID) of the namespace.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The source of the namespace.
         self.namespace_source = namespace_source
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # Specifies whether to allow a failover.
+        # 
+        # This parameter is required.
         self.transferable = transferable
         # The designated machines. Specify the value of the parameter in a JSON string.
         self.workers = workers
@@ -2865,9 +2921,6 @@ class DesignateWorkersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2909,12 +2962,18 @@ class DisableJobRequest(TeaModel):
         # The application ID. You can obtain the application ID on the Application Management page in the SchedulerX console.
         self.group_id = group_id
         # The job ID. You can obtain the job ID on the Task Management page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.job_id = job_id
         # The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The source of the namespace. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -3017,9 +3076,6 @@ class DisableJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3061,12 +3117,18 @@ class DisableWorkflowRequest(TeaModel):
         # The application ID. You can obtain the application ID on the Application Management page in the SchedulerX console.
         self.group_id = group_id
         # The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The source of the namespace. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The workflow ID.
+        # 
+        # This parameter is required.
         self.workflow_id = workflow_id
 
     def validate(self):
@@ -3169,9 +3231,6 @@ class DisableWorkflowResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3213,12 +3272,18 @@ class EnableJobRequest(TeaModel):
         # The application ID. You can obtain the application ID on the Application Management page in the SchedulerX console.
         self.group_id = group_id
         # The job ID. You can obtain the job ID on the Task Management page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.job_id = job_id
         # The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The source of the namespace. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -3321,9 +3386,6 @@ class EnableJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3365,12 +3427,18 @@ class EnableWorkflowRequest(TeaModel):
         # The application ID. You can obtain the application ID on the Application Management page in the SchedulerX console.
         self.group_id = group_id
         # The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The source of the namespace. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The workflow ID.
+        # 
+        # This parameter is required.
         self.workflow_id = workflow_id
 
     def validate(self):
@@ -3473,9 +3541,6 @@ class EnableWorkflowResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3524,18 +3589,26 @@ class ExecuteJobRequest(TeaModel):
         # The type of the designated machine. Valid values: -**1**: worker. -**2**: label.
         self.designate_type = designate_type
         # The application ID. You can obtain the application ID on the Application Management page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The parameters that are passed to trigger the job to run. The input value can be a random string. The parameters that are passed are obtained by calling the `context.getInstanceParameters()` class in the `processor` code. The parameters are different from custom parameters for creating jobs.
         self.instance_parameters = instance_parameters
         # The job ID. You can obtain the job ID on the Task Management page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.job_id = job_id
         # The label of the worker.
         self.label = label
         # The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The source of the namespace. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The worker address of the application. To query the worker address, call the GetWokerList operation.
         self.worker = worker
@@ -3697,9 +3770,6 @@ class ExecuteJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3740,15 +3810,22 @@ class ExecuteWorkflowRequest(TeaModel):
         workflow_id: int = None,
     ):
         # The application ID. You can obtain the application ID on the Application Management page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The dynamic parameter of the workflow instance. The value of the parameter can be up to 1,000 bytes in length.
         self.instance_parameters = instance_parameters
         # The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The source of the namespace. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
+        # This parameter is required.
         self.region_id = region_id
         # The workflow ID.
+        # 
+        # This parameter is required.
         self.workflow_id = workflow_id
 
     def validate(self):
@@ -3889,9 +3966,6 @@ class ExecuteWorkflowResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3928,7 +4002,9 @@ class GetAppGroupRequest(TeaModel):
         namespace: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.group_id = group_id
+        # This parameter is required.
         self.namespace = namespace
         self.region_id = region_id
 
@@ -4088,9 +4164,6 @@ class GetAppGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4131,16 +4204,24 @@ class GetJobInfoRequest(TeaModel):
         region_id: str = None,
     ):
         # The application ID. You can obtain the application ID on the Application Management page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The job ID. You can obtain the job ID on the Task Management page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.job_id = job_id
         # The job name.
         self.job_name = job_name
         # The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The namespace source. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -4733,9 +4814,6 @@ class GetJobInfoResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4776,15 +4854,24 @@ class GetJobInstanceRequest(TeaModel):
         region_id: str = None,
     ):
         # The application ID. You can obtain the application ID on the Application Management page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The job ID.
+        # 
+        # This parameter is required.
         self.job_id = job_id
         # The job instance ID.
+        # 
+        # This parameter is required.
         self.job_instance_id = job_instance_id
         # The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The source of the namespace. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -5083,9 +5170,6 @@ class GetJobInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5123,32 +5207,37 @@ class GetJobInstanceListRequest(TeaModel):
         job_id: int = None,
         namespace: str = None,
         namespace_source: str = None,
+        page_num: int = None,
+        page_size: int = None,
         region_id: str = None,
         start_timestamp: int = None,
         status: int = None,
     ):
-        # 结束时间（时间戳）。
+        # The end of the time range to query. Specify the time as a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.end_timestamp = end_timestamp
-        # The ID of the application. You can obtain the application ID on the Application Management page in the SchedulerX console.
+        # The application group ID.
+        # 
+        # This parameter is required.
         self.group_id = group_id
-        # The ID of the job. You can obtain the ID of the job on the Task Management page in the SchedulerX console.
+        # The job ID.
         self.job_id = job_id
-        # The ID of the namespace. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+        # The namespace ID. You can obtain the namespace ID on the **Namespace** page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The source of the namespace. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
-        # The ID of the region.
-        self.region_id = region_id
-        # 开始时间（时间戳）。
-        self.start_timestamp = start_timestamp
-        # 实例状态。包含以下几种状态：
+        self.page_num = page_num
+        self.page_size = page_size
+        # The region ID.
         # 
-        # 1：等待
-        # 3：运行中
-        # 4：成功
-        # 5：失败
-        # 9：拒绝
-        # 对应枚举类： com.alibaba.schedulerx.common.domain.InstanceStatus
+        # This parameter is required.
+        self.region_id = region_id
+        # The beginning of the time range to query. Specify the time as a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        self.start_timestamp = start_timestamp
+        # The state of the job instance. Valid values:
+        # 
+        # 1: The job instance is waiting for execution. 3: The job instance is running. 4: The job instance is successful. 5: The job instance fails. 9: The job instance is rejected. Enumeration class: com.alibaba.schedulerx.common.domain.InstanceStatus
         self.status = status
 
     def validate(self):
@@ -5170,6 +5259,10 @@ class GetJobInstanceListRequest(TeaModel):
             result['Namespace'] = self.namespace
         if self.namespace_source is not None:
             result['NamespaceSource'] = self.namespace_source
+        if self.page_num is not None:
+            result['PageNum'] = self.page_num
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.start_timestamp is not None:
@@ -5190,6 +5283,10 @@ class GetJobInstanceListRequest(TeaModel):
             self.namespace = m.get('Namespace')
         if m.get('NamespaceSource') is not None:
             self.namespace_source = m.get('NamespaceSource')
+        if m.get('PageNum') is not None:
+            self.page_num = m.get('PageNum')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('StartTimestamp') is not None:
@@ -5216,30 +5313,30 @@ class GetJobInstanceListResponseBodyDataJobInstanceDetails(TeaModel):
         trigger_type: int = None,
         work_addr: str = None,
     ):
-        # The data time.
+        # The data timestamp of the job instance.
         self.data_time = data_time
         # The end time of the job execution.
         self.end_time = end_time
         # The user who executes the job.
         self.executor = executor
-        # The ID of the job instance.
+        # The job instance ID.
         self.instance_id = instance_id
-        # The ID of the job.
+        # The job ID.
         self.job_id = job_id
         # The progress of the job instance.
         self.progress = progress
         # The execution results of the job instance.
         self.result = result
-        # The scheduled time of the job.
+        # The time when the job was scheduled to run.
         self.schedule_time = schedule_time
         # The start time of the job execution.
         self.start_time = start_time
-        # The status of the job instance. Valid values:
+        # The state of the job instance. Valid values:
         # 
         # *   **1**: The job instance is waiting for execution.
         # *   **3**: The job instance is running.
         # *   **4**: The job instance is successful.
-        # *   **5**: The job instance fails.
+        # *   **5**: The job instance failed.
         # *   **9**: The job instance is rejected.
         # 
         # Enumeration class: com.alibaba.schedulerx.common.domain.InstanceStatus
@@ -5255,11 +5352,11 @@ class GetJobInstanceListResponseBodyDataJobInstanceDetails(TeaModel):
         self.time_type = time_type
         # The trigger type of the job instance. Valid values:
         # 
-        # *   **1**: The job instance is triggered at the scheduled time.
-        # *   **2**: The job instance is triggered due to data update.
-        # *   **3**: The job instance is triggered by an API call.
-        # *   **4**: The job instance is triggered because it is manually rerun.
-        # *   **5**: The job instance is triggered because the system automatically reruns the job instance upon a system exception, such as a database exception.
+        # *   **1**: The job instance was triggered at the scheduled time.
+        # *   **2**: The job instance was triggered due to data updates.
+        # *   **3**: The job instance was triggered by an API call.
+        # *   **4**: The job instance was triggered because it is manually rerun.
+        # *   **5**: The job instance was triggered because the system automatically reruns the job instance upon a system exception, such as a database exception.
         # 
         # Enumeration class: com.alibaba.schedulerx.common.domain.TriggerType
         self.trigger_type = trigger_type
@@ -5379,18 +5476,18 @@ class GetJobInstanceListResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The HTTP status code that is returned.
+        # The HTTP status code.
         self.code = code
         # The information about the job instances.
         self.data = data
-        # The error message that is returned if an error occurs.
+        # The error message that is returned only if the corresponding error occurs.
         self.message = message
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
-        # Indicates whether the call is successful. Valid values:
+        # Indicates whether the request was successful. Valid values:
         # 
-        # *   **true**: The call is successful.
-        # *   **false**: The call fails.
+        # *   **true**\
+        # *   **false**\
         self.success = success
 
     def validate(self):
@@ -5443,9 +5540,6 @@ class GetJobInstanceListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5494,6 +5588,8 @@ class GetLogRequest(TeaModel):
         # The time when the job stops running. Specify a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.end_timestamp = end_timestamp
         # The application group ID. You can obtain the application group ID on the Application Management page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The job ID.
         self.job_id = job_id
@@ -5504,12 +5600,16 @@ class GetLogRequest(TeaModel):
         # The number of rows to return. The maximum number is 200.
         self.line = line
         # The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The source of the namespace. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
         # The number of offset rows. This parameter can be used for a paged query.
         self.offset = offset
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # Specifies whether to reverse the order. By default, the order is reversed.
         self.reverse = reverse
@@ -5681,9 +5781,6 @@ class GetLogResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5727,11 +5824,15 @@ class GetOverviewRequest(TeaModel):
     ):
         self.end_time = end_time
         self.group_id = group_id
+        # This parameter is required.
         self.metric_type = metric_type
         self.namespace = namespace
         self.namespace_source = namespace_source
+        # This parameter is required.
         self.operate = operate
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -5846,9 +5947,6 @@ class GetOverviewResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5888,14 +5986,22 @@ class GetWorkFlowRequest(TeaModel):
         workflow_id: int = None,
     ):
         # The ID of the application group.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The ID of the namespace.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The source of the namespace.
         self.namespace_source = namespace_source
         # The region information.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the workflow.
+        # 
+        # This parameter is required.
         self.workflow_id = workflow_id
 
     def validate(self):
@@ -6236,9 +6342,6 @@ class GetWorkFlowResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6277,12 +6380,18 @@ class GetWorkerListRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the permission group.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The ID of the namespace. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The source of the namespace. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -6489,9 +6598,6 @@ class GetWorkerListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6532,16 +6638,26 @@ class GetWorkflowInstanceRequest(TeaModel):
         workflow_id: int = None,
     ):
         # The application group ID. You can obtain the ID on the Application Management page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The source of the namespace. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The workflow instance ID.
+        # 
+        # This parameter is required.
         self.wf_instance_id = wf_instance_id
         # The workflow ID.
+        # 
+        # This parameter is required.
         self.workflow_id = workflow_id
 
     def validate(self):
@@ -6942,9 +7058,6 @@ class GetWorkflowInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6988,16 +7101,24 @@ class GrantPermissionRequest(TeaModel):
         # Specifies whether to grant the permissions with the GRANT option. Valid values: -**true** -**false**\
         self.grant_option = grant_option
         # The application group ID.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The namespace ID.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The source of the namespace. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
         # The region ID.
         self.region_id = region_id
         # The user ID.
+        # 
+        # This parameter is required.
         self.user_id = user_id
         # The username.
+        # 
+        # This parameter is required.
         self.user_name = user_name
 
     def validate(self):
@@ -7108,9 +7229,6 @@ class GrantPermissionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7148,9 +7266,11 @@ class ListGroupsRequest(TeaModel):
         namespace_source: str = None,
         region_id: str = None,
     ):
-        # 应用分组名称。
+        # The name of the application group.
         self.app_group_name = app_group_name
         # The namespace ID. You can obtain the namespace ID on the **Namespace** page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The source of the namespace. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
@@ -7354,9 +7474,6 @@ class ListGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7397,14 +7514,20 @@ class ListJobsRequest(TeaModel):
         status: str = None,
     ):
         # The ID of the application. You can obtain the application ID on the **Application Management** page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The name of the job.
         self.job_name = job_name
         # The ID of the namespace. You can obtain the namespace ID on the **Namespace** page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The source of the namespace. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # Specifies whether to enable the job. Valid values:
         # 
@@ -8008,9 +8131,6 @@ class ListJobsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8050,6 +8170,8 @@ class ListNamespacesRequest(TeaModel):
         self.namespace = namespace
         self.namespace_name = namespace_name
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -8231,9 +8353,6 @@ class ListNamespacesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8273,14 +8392,22 @@ class ListWorkflowInstanceRequest(TeaModel):
         workflow_id: str = None,
     ):
         # The application group ID. You can obtain the ID on the Application Management page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The source of the namespace. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The workflow ID.
+        # 
+        # This parameter is required.
         self.workflow_id = workflow_id
 
     def validate(self):
@@ -8504,9 +8631,6 @@ class ListWorkflowInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8549,20 +8673,34 @@ class RerunJobRequest(TeaModel):
         start_date: int = None,
     ):
         # The data timestamp of the job. Specify a string in the HH:mm:ss format.
+        # 
+        # This parameter is required.
         self.data_time = data_time
         # The time when the job stops running. Specify a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.end_date = end_date
         # The application group ID. You can obtain the application group ID on the Application Management page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The job ID.
+        # 
+        # This parameter is required.
         self.job_id = job_id
         # The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The source of the namespace. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The time when the job starts to rerun. Specify a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # 
+        # This parameter is required.
         self.start_date = start_date
 
     def validate(self):
@@ -8677,9 +8815,6 @@ class RerunJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8720,16 +8855,26 @@ class RetryJobInstanceRequest(TeaModel):
         region_id: str = None,
     ):
         # The application group ID. You can obtain the application group ID on the Application Management page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The job ID.
+        # 
+        # This parameter is required.
         self.job_id = job_id
         # The job instance ID.
+        # 
+        # This parameter is required.
         self.job_instance_id = job_instance_id
         # The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The source of the namespace. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -8836,9 +8981,6 @@ class RetryJobInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8878,14 +9020,22 @@ class RevokePermissionRequest(TeaModel):
         user_id: str = None,
     ):
         # The application ID. You can obtain the application ID on the Application Management page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The unique identifier (UID) of the namespace. You can obtain the namespace UID on the Namespace page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The source of the namespace. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The UID of the RAM user.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -8988,9 +9138,6 @@ class RevokePermissionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9031,16 +9178,26 @@ class SetJobInstanceSuccessRequest(TeaModel):
         region_id: str = None,
     ):
         # The application group ID. You can obtain the application group ID on the Application Management page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The job ID.
+        # 
+        # This parameter is required.
         self.job_id = job_id
         # The job instance ID.
+        # 
+        # This parameter is required.
         self.job_instance_id = job_instance_id
         # The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The source of the namespace. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -9147,9 +9304,6 @@ class SetJobInstanceSuccessResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9190,16 +9344,26 @@ class SetWfInstanceSuccessRequest(TeaModel):
         workflow_id: int = None,
     ):
         # The application group ID. You can obtain the application group ID on the Application Management page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The source of the namespace. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The workflow instance ID.
+        # 
+        # This parameter is required.
         self.wf_instance_id = wf_instance_id
         # The workflow ID.
+        # 
+        # This parameter is required.
         self.workflow_id = workflow_id
 
     def validate(self):
@@ -9306,9 +9470,6 @@ class SetWfInstanceSuccessResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9349,16 +9510,26 @@ class StopInstanceRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the application. You can obtain the application ID on the Application Management page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The ID of the job instance in the running state.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the job. You can obtain the ID of the job on the Task Management page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.job_id = job_id
         # The ID of the namespace. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The source of the namespace. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -9465,9 +9636,6 @@ class StopInstanceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9507,9 +9675,12 @@ class UpdateAppGroupRequest(TeaModel):
         region_id: str = None,
     ):
         self.description = description
+        # This parameter is required.
         self.group_id = group_id
         self.max_concurrency = max_concurrency
+        # This parameter is required.
         self.namespace = namespace
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -9605,9 +9776,6 @@ class UpdateAppGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9763,8 +9931,12 @@ class UpdateJobRequest(TeaModel):
         # The number of consecutive failures. An alert will be received if the number of consecutive failures reaches the value of this parameter.
         self.fail_times = fail_times
         # The application ID. You can obtain the application ID on the Application Management page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The job ID. You can obtain the job ID on the Task Management page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.job_id = job_id
         # The maximum number of retries after a job failure. This parameter is specified based on your business requirements.
         self.max_attempt = max_attempt
@@ -9778,6 +9950,8 @@ class UpdateJobRequest(TeaModel):
         # The job name.
         self.name = name
         # The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The namespace source. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
@@ -9788,6 +9962,8 @@ class UpdateJobRequest(TeaModel):
         # The maximum number of tasks that can be queued. Default value: 10000. This parameter is an advanced configuration item of the MapReduce job.
         self.queue_size = queue_size
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The method that is used to send alerts. Only Short Message Service (SMS) is supported.
         self.send_channel = send_channel
@@ -10063,9 +10239,6 @@ class UpdateJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10111,14 +10284,20 @@ class UpdateWorkflowRequest(TeaModel):
         # The description of the workflow.
         self.description = description
         # The application group ID. You can obtain the application group ID on the Application Management page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The name of the workflow.
         self.name = name
         # The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The source of the namespace. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The time expression. You can set the time expression based on the selected method that is used to specify time.
         # 
@@ -10131,6 +10310,8 @@ class UpdateWorkflowRequest(TeaModel):
         # *   100: api
         self.time_type = time_type
         # The workflow ID.
+        # 
+        # This parameter is required.
         self.workflow_id = workflow_id
 
     def validate(self):
@@ -10249,9 +10430,6 @@ class UpdateWorkflowResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10292,16 +10470,26 @@ class UpdateWorkflowDagRequest(TeaModel):
         workflow_id: str = None,
     ):
         # The directed acyclic graph (DAG) of the workflow, including the information about the nodes and the edges. Specify the value of this parameter in the JSON format.
+        # 
+        # This parameter is required.
         self.dag_json = dag_json
         # The application group ID. You can obtain the application group ID on the Application Management page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The source of the namespace. This parameter is required only for a special third party.
         self.namespace_source = namespace_source
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The workflow ID.
+        # 
+        # This parameter is required.
         self.workflow_id = workflow_id
 
     def validate(self):
@@ -10408,9 +10596,6 @@ class UpdateWorkflowDagResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 

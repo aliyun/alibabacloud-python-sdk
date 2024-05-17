@@ -1,3 +1,13 @@
+2024-05-17 Version: 1.1.13
+- Update API CreateWorkflow: update response param.
+- Update API GetJobInstanceList: add param PageNum.
+- Update API GetJobInstanceList: add param PageSize.
+- Update API GetJobInstanceList: update param EndTimestamp.
+- Update API GetJobInstanceList: update param JobId.
+- Update API GetJobInstanceList: update param StartTimestamp.
+- Update API GetJobInstanceList: update param Status.
+
+
 2023-07-17 Version: 1.1.12
 - Get Workflow Instance Add Node Field.
 

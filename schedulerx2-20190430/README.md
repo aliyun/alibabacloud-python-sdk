@@ -28,7 +28,7 @@ pip install alibabacloud_schedulerx220190430
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/schedulerx2-20190430/ChangeLog.md).
 
 ## References
 
