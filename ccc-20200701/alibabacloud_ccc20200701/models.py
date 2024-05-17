@@ -40494,9 +40494,11 @@ class ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummar
         calls_blind_transfer_out: int = None,
         calls_handled: int = None,
         calls_offered: int = None,
+        calls_queuing_timeout: int = None,
         calls_service_level_10: int = None,
         calls_service_level_20: int = None,
         calls_service_level_30: int = None,
+        calls_timeout: int = None,
         give_up_by_agent_of_queue_count: int = None,
         handle_rate: float = None,
         in_coming_queue_of_queue_count: int = None,
@@ -40525,9 +40527,11 @@ class ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummar
         self.calls_blind_transfer_out = calls_blind_transfer_out
         self.calls_handled = calls_handled
         self.calls_offered = calls_offered
+        self.calls_queuing_timeout = calls_queuing_timeout
         self.calls_service_level_10 = calls_service_level_10
         self.calls_service_level_20 = calls_service_level_20
         self.calls_service_level_30 = calls_service_level_30
+        self.calls_timeout = calls_timeout
         self.give_up_by_agent_of_queue_count = give_up_by_agent_of_queue_count
         self.handle_rate = handle_rate
         self.in_coming_queue_of_queue_count = in_coming_queue_of_queue_count
@@ -40576,12 +40580,16 @@ class ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummar
             result['CallsHandled'] = self.calls_handled
         if self.calls_offered is not None:
             result['CallsOffered'] = self.calls_offered
+        if self.calls_queuing_timeout is not None:
+            result['CallsQueuingTimeout'] = self.calls_queuing_timeout
         if self.calls_service_level_10 is not None:
             result['CallsServiceLevel10'] = self.calls_service_level_10
         if self.calls_service_level_20 is not None:
             result['CallsServiceLevel20'] = self.calls_service_level_20
         if self.calls_service_level_30 is not None:
             result['CallsServiceLevel30'] = self.calls_service_level_30
+        if self.calls_timeout is not None:
+            result['CallsTimeout'] = self.calls_timeout
         if self.give_up_by_agent_of_queue_count is not None:
             result['GiveUpByAgentOfQueueCount'] = self.give_up_by_agent_of_queue_count
         if self.handle_rate is not None:
@@ -40640,12 +40648,16 @@ class ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummar
             self.calls_handled = m.get('CallsHandled')
         if m.get('CallsOffered') is not None:
             self.calls_offered = m.get('CallsOffered')
+        if m.get('CallsQueuingTimeout') is not None:
+            self.calls_queuing_timeout = m.get('CallsQueuingTimeout')
         if m.get('CallsServiceLevel10') is not None:
             self.calls_service_level_10 = m.get('CallsServiceLevel10')
         if m.get('CallsServiceLevel20') is not None:
             self.calls_service_level_20 = m.get('CallsServiceLevel20')
         if m.get('CallsServiceLevel30') is not None:
             self.calls_service_level_30 = m.get('CallsServiceLevel30')
+        if m.get('CallsTimeout') is not None:
+            self.calls_timeout = m.get('CallsTimeout')
         if m.get('GiveUpByAgentOfQueueCount') is not None:
             self.give_up_by_agent_of_queue_count = m.get('GiveUpByAgentOfQueueCount')
         if m.get('HandleRate') is not None:

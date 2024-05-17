@@ -1,3 +1,17 @@
+2024-05-17 Version: 2.18.0
+- Support API AddSchemaProperty.
+- Support API CreateSchema.
+- Support API DeleteDocument.
+- Support API DeleteDocuments.
+- Support API DeleteSchema.
+- Support API GetDocumentUploadParameters.
+- Support API ImportDocuments.
+- Support API ListDocuments.
+- Support API SaveDocument.
+- Support API UpdateSchemaProperty.
+- Update API ListSkillGroupSummaryReportsSinceMidnight: update response param.
+
+
 2024-05-15 Version: 2.17.0
 - Support API AddSchemaProperty.
 - Support API CreateSchema.
