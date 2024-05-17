@@ -10,8 +10,11 @@ class AttachApplication2ConnectorRequest(TeaModel):
         application_ids: List[str] = None,
         connector_id: str = None,
     ):
+        # This parameter is required.
         self.application_ids = application_ids
         # ConnectorID。
+        # 
+        # This parameter is required.
         self.connector_id = connector_id
 
     def validate(self):
@@ -44,8 +47,11 @@ class AttachApplication2ConnectorShrinkRequest(TeaModel):
         application_ids_shrink: str = None,
         connector_id: str = None,
     ):
+        # This parameter is required.
         self.application_ids_shrink = application_ids_shrink
         # ConnectorID。
+        # 
+        # This parameter is required.
         self.connector_id = connector_id
 
     def validate(self):
@@ -153,10 +159,13 @@ class CreateClientUserRequest(TeaModel):
     ):
         self.department_id = department_id
         self.description = description
+        # This parameter is required.
         self.email = email
+        # This parameter is required.
         self.idp_config_id = idp_config_id
         self.mobile_number = mobile_number
         self.password = password
+        # This parameter is required.
         self.username = username
 
     def validate(self):
@@ -292,13 +301,20 @@ class CreateDynamicRouteRequest(TeaModel):
         tag_ids: List[str] = None,
     ):
         self.application_ids = application_ids
+        # This parameter is required.
         self.application_type = application_type
         self.description = description
+        # This parameter is required.
         self.dynamic_route_type = dynamic_route_type
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.next_hop = next_hop
+        # This parameter is required.
         self.priority = priority
+        # This parameter is required.
         self.region_ids = region_ids
+        # This parameter is required.
         self.status = status
         self.tag_ids = tag_ids
 
@@ -438,7 +454,9 @@ class CreateIdpDepartmentRequest(TeaModel):
         department_name: str = None,
         idp_config_id: str = None,
     ):
+        # This parameter is required.
         self.department_name = department_name
+        # This parameter is required.
         self.idp_config_id = idp_config_id
 
     def validate(self):
@@ -545,7 +563,9 @@ class CreatePrivateAccessApplicationRequestPortRanges(TeaModel):
         begin: int = None,
         end: int = None,
     ):
+        # This parameter is required.
         self.begin = begin
+        # This parameter is required.
         self.end = end
 
     def validate(self):
@@ -583,11 +603,16 @@ class CreatePrivateAccessApplicationRequest(TeaModel):
         status: str = None,
         tag_ids: List[str] = None,
     ):
+        # This parameter is required.
         self.addresses = addresses
         self.description = description
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.port_ranges = port_ranges
+        # This parameter is required.
         self.protocol = protocol
+        # This parameter is required.
         self.status = status
         self.tag_ids = tag_ids
 
@@ -779,13 +804,18 @@ class CreatePrivateAccessPolicyRequest(TeaModel):
         user_group_mode: str = None,
     ):
         self.application_ids = application_ids
+        # This parameter is required.
         self.application_type = application_type
         self.custom_user_attributes = custom_user_attributes
         self.description = description
         self.device_attribute_id = device_attribute_id
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.policy_action = policy_action
+        # This parameter is required.
         self.priority = priority
+        # This parameter is required.
         self.status = status
         # 内网访问标签ID集合。最多可输入100个内网访问标签ID。当**ApplicationType**为**Tag时**，必填。和**ApplicationIds**互斥。
         self.tag_ids = tag_ids
@@ -793,6 +823,8 @@ class CreatePrivateAccessPolicyRequest(TeaModel):
         # 内网访问策略的用户组类型。取值：
         # - **Normal**：普通用户组。
         # - **Custom**：自定义用户组。
+        # 
+        # This parameter is required.
         self.user_group_mode = user_group_mode
 
     def validate(self):
@@ -948,6 +980,7 @@ class CreatePrivateAccessTagRequest(TeaModel):
         name: str = None,
     ):
         self.description = description
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -1142,13 +1175,18 @@ class CreateRegistrationPolicyRequest(TeaModel):
         whitelist: List[str] = None,
     ):
         self.company_limit_count = company_limit_count
+        # This parameter is required.
         self.company_limit_type = company_limit_type
         self.description = description
+        # This parameter is required.
         self.match_mode = match_mode
+        # This parameter is required.
         self.name = name
         self.personal_limit_count = personal_limit_count
+        # This parameter is required.
         self.personal_limit_type = personal_limit_type
         self.priority = priority
+        # This parameter is required.
         self.status = status
         self.user_group_ids = user_group_ids
         self.whitelist = whitelist
@@ -1234,13 +1272,18 @@ class CreateRegistrationPolicyShrinkRequest(TeaModel):
         whitelist: List[str] = None,
     ):
         self.company_limit_count_shrink = company_limit_count_shrink
+        # This parameter is required.
         self.company_limit_type = company_limit_type
         self.description = description
+        # This parameter is required.
         self.match_mode = match_mode
+        # This parameter is required.
         self.name = name
         self.personal_limit_count_shrink = personal_limit_count_shrink
+        # This parameter is required.
         self.personal_limit_type = personal_limit_type
         self.priority = priority
+        # This parameter is required.
         self.status = status
         self.user_group_ids = user_group_ids
         self.whitelist = whitelist
@@ -1559,8 +1602,11 @@ class CreateUserGroupRequestAttributes(TeaModel):
         value: str = None,
     ):
         self.idp_id = idp_id
+        # This parameter is required.
         self.relation = relation
+        # This parameter is required.
         self.user_group_type = user_group_type
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -1602,8 +1648,10 @@ class CreateUserGroupRequest(TeaModel):
         description: str = None,
         name: str = None,
     ):
+        # This parameter is required.
         self.attributes = attributes
         self.description = description
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -1721,6 +1769,7 @@ class DeleteClientUserRequest(TeaModel):
         self,
         id: str = None,
     ):
+        # This parameter is required.
         self.id = id
 
     def validate(self):
@@ -1816,6 +1865,7 @@ class DeleteDynamicRouteRequest(TeaModel):
         self,
         dynamic_route_id: str = None,
     ):
+        # This parameter is required.
         self.dynamic_route_id = dynamic_route_id
 
     def validate(self):
@@ -1912,7 +1962,9 @@ class DeleteIdpDepartmentRequest(TeaModel):
         department_id: str = None,
         idp_config_id: str = None,
     ):
+        # This parameter is required.
         self.department_id = department_id
+        # This parameter is required.
         self.idp_config_id = idp_config_id
 
     def validate(self):
@@ -2012,6 +2064,7 @@ class DeletePrivateAccessApplicationRequest(TeaModel):
         self,
         application_id: str = None,
     ):
+        # This parameter is required.
         self.application_id = application_id
 
     def validate(self):
@@ -2107,6 +2160,7 @@ class DeletePrivateAccessPolicyRequest(TeaModel):
         self,
         policy_id: str = None,
     ):
+        # This parameter is required.
         self.policy_id = policy_id
 
     def validate(self):
@@ -2202,6 +2256,7 @@ class DeletePrivateAccessTagRequest(TeaModel):
         self,
         tag_id: str = None,
     ):
+        # This parameter is required.
         self.tag_id = tag_id
 
     def validate(self):
@@ -2297,6 +2352,7 @@ class DeleteRegistrationPoliciesRequest(TeaModel):
         self,
         policy_ids: List[str] = None,
     ):
+        # This parameter is required.
         self.policy_ids = policy_ids
 
     def validate(self):
@@ -2392,6 +2448,7 @@ class DeleteUserGroupRequest(TeaModel):
         self,
         user_group_id: str = None,
     ):
+        # This parameter is required.
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -2488,8 +2545,11 @@ class DetachApplication2ConnectorRequest(TeaModel):
         application_ids: List[str] = None,
         connector_id: str = None,
     ):
+        # This parameter is required.
         self.application_ids = application_ids
         # ConnectorID。
+        # 
+        # This parameter is required.
         self.connector_id = connector_id
 
     def validate(self):
@@ -2522,8 +2582,11 @@ class DetachApplication2ConnectorShrinkRequest(TeaModel):
         application_ids_shrink: str = None,
         connector_id: str = None,
     ):
+        # This parameter is required.
         self.application_ids_shrink = application_ids_shrink
         # ConnectorID。
+        # 
+        # This parameter is required.
         self.connector_id = connector_id
 
     def validate(self):
@@ -2745,7 +2808,9 @@ class GetClientUserRequest(TeaModel):
         idp_config_id: str = None,
         username: str = None,
     ):
+        # This parameter is required.
         self.idp_config_id = idp_config_id
+        # This parameter is required.
         self.username = username
 
     def validate(self):
@@ -2969,6 +3034,7 @@ class GetDynamicRouteRequest(TeaModel):
         self,
         dynamic_route_id: str = None,
     ):
+        # This parameter is required.
         self.dynamic_route_id = dynamic_route_id
 
     def validate(self):
@@ -3165,6 +3231,7 @@ class GetIdpConfigRequest(TeaModel):
         self,
         id: str = None,
     ):
+        # This parameter is required.
         self.id = id
 
     def validate(self):
@@ -3399,6 +3466,7 @@ class GetPrivateAccessApplicationRequest(TeaModel):
         self,
         application_id: str = None,
     ):
+        # This parameter is required.
         self.application_id = application_id
 
     def validate(self):
@@ -3630,6 +3698,7 @@ class GetPrivateAccessPolicyRequest(TeaModel):
         self,
         policy_id: str = None,
     ):
+        # This parameter is required.
         self.policy_id = policy_id
 
     def validate(self):
@@ -3891,6 +3960,7 @@ class GetRegistrationPolicyRequest(TeaModel):
         self,
         policy_id: str = None,
     ):
+        # This parameter is required.
         self.policy_id = policy_id
 
     def validate(self):
@@ -4134,6 +4204,7 @@ class GetUserDeviceRequest(TeaModel):
         self,
         device_tag: str = None,
     ):
+        # This parameter is required.
         self.device_tag = device_tag
 
     def validate(self):
@@ -4455,6 +4526,7 @@ class GetUserGroupRequest(TeaModel):
         self,
         user_group_id: str = None,
     ):
+        # This parameter is required.
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -4662,6 +4734,7 @@ class ListApplicationsForPrivateAccessPolicyRequest(TeaModel):
         self,
         policy_ids: List[str] = None,
     ):
+        # This parameter is required.
         self.policy_ids = policy_ids
 
     def validate(self):
@@ -4922,6 +4995,7 @@ class ListApplicationsForPrivateAccessTagRequest(TeaModel):
         self,
         tag_ids: List[str] = None,
     ):
+        # This parameter is required.
         self.tag_ids = tag_ids
 
     def validate(self):
@@ -5193,6 +5267,7 @@ class ListClientUsersRequest(TeaModel):
         self.current_page = current_page
         self.department_id = department_id
         self.email = email
+        # This parameter is required.
         self.idp_config_id = idp_config_id
         self.mobile_number = mobile_number
         self.page_size = page_size
@@ -5491,8 +5566,10 @@ class ListConnectorsRequest(TeaModel):
         switch_status: str = None,
     ):
         self.connector_ids = connector_ids
+        # This parameter is required.
         self.current_page = current_page
         self.name = name
+        # This parameter is required.
         self.page_size = page_size
         self.status = status
         self.switch_status = switch_status
@@ -5926,10 +6003,12 @@ class ListDynamicRoutesRequest(TeaModel):
         tag_id: str = None,
     ):
         self.application_id = application_id
+        # This parameter is required.
         self.current_page = current_page
         self.dynamic_route_ids = dynamic_route_ids
         self.name = name
         self.next_hop = next_hop
+        # This parameter is required.
         self.page_size = page_size
         self.region_ids = region_ids
         self.status = status
@@ -6183,11 +6262,13 @@ class ListExcessiveDeviceRegistrationApplicationsRequest(TeaModel):
         username: str = None,
     ):
         self.application_ids = application_ids
+        # This parameter is required.
         self.current_page = current_page
         self.department = department
         self.device_tag = device_tag
         self.hostname = hostname
         self.mac = mac
+        # This parameter is required.
         self.page_size = page_size
         self.sase_user_id = sase_user_id
         self.statuses = statuses
@@ -6681,6 +6762,7 @@ class ListIdpDepartmentsRequest(TeaModel):
         page_size: int = None,
     ):
         self.current_page = current_page
+        # This parameter is required.
         self.idp_config_id = idp_config_id
         self.page_size = page_size
 
@@ -6873,6 +6955,7 @@ class ListPolicesForPrivateAccessApplicationRequest(TeaModel):
         self,
         application_ids: List[str] = None,
     ):
+        # This parameter is required.
         self.application_ids = application_ids
 
     def validate(self):
@@ -7157,6 +7240,7 @@ class ListPolicesForPrivateAccessTagRequest(TeaModel):
         self,
         tag_ids: List[str] = None,
     ):
+        # This parameter is required.
         self.tag_ids = tag_ids
 
     def validate(self):
@@ -7457,6 +7541,7 @@ class ListPolicesForUserGroupRequest(TeaModel):
         self,
         user_group_ids: List[str] = None,
     ):
+        # This parameter is required.
         self.user_group_ids = user_group_ids
 
     def validate(self):
@@ -7853,8 +7938,10 @@ class ListPrivateAccessApplicationsRequest(TeaModel):
         self.address = address
         self.application_ids = application_ids
         self.connector_id = connector_id
+        # This parameter is required.
         self.current_page = current_page
         self.name = name
+        # This parameter is required.
         self.page_size = page_size
         self.policy_id = policy_id
         self.status = status
@@ -8133,6 +8220,7 @@ class ListPrivateAccessApplicationsForDynamicRouteRequest(TeaModel):
         self,
         dynamic_route_ids: List[str] = None,
     ):
+        # This parameter is required.
         self.dynamic_route_ids = dynamic_route_ids
 
     def validate(self):
@@ -8405,8 +8493,10 @@ class ListPrivateAccessPolicesRequest(TeaModel):
     ):
         self.application_id = application_id
         self.application_name = application_name
+        # This parameter is required.
         self.current_page = current_page
         self.name = name
+        # This parameter is required.
         self.page_size = page_size
         self.policy_action = policy_action
         self.policy_ids = policy_ids
@@ -8741,10 +8831,14 @@ class ListPrivateAccessTagsRequest(TeaModel):
         # *   [CreatePrivateAccessApplication](~~CreatePrivateAccessApplication~~): creates an internal access application.
         self.application_id = application_id
         # The page number. Valid values: 1 to 10000.
+        # 
+        # This parameter is required.
         self.current_page = current_page
-        # The name of the internal access tag. The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+        # The name of the internal access tag. The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         self.name = name
         # The number of entries per page. Valid values: 1 to 1000.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The ID of the internal access policy. You can obtain the policy ID by calling the following operations:
         # 
@@ -8969,6 +9063,7 @@ class ListPrivateAccessTagsForDynamicRouteRequest(TeaModel):
         self,
         dynamic_route_ids: List[str] = None,
     ):
+        # This parameter is required.
         self.dynamic_route_ids = dynamic_route_ids
 
     def validate(self):
@@ -9179,9 +9274,11 @@ class ListRegistrationPoliciesRequest(TeaModel):
         user_group_id: str = None,
     ):
         self.company_limit_type = company_limit_type
+        # This parameter is required.
         self.current_page = current_page
         self.match_mode = match_mode
         self.name = name
+        # This parameter is required.
         self.page_size = page_size
         self.personal_limit_type = personal_limit_type
         self.policy_ids = policy_ids
@@ -9502,6 +9599,7 @@ class ListRegistrationPoliciesForUserGroupRequest(TeaModel):
         self,
         user_group_ids: List[str] = None,
     ):
+        # This parameter is required.
         self.user_group_ids = user_group_ids
 
     def validate(self):
@@ -9817,8 +9915,11 @@ class ListSoftwareForUserDeviceRequest(TeaModel):
         device_tag: str = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.current_page = current_page
+        # This parameter is required.
         self.device_tag = device_tag
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -9987,6 +10088,7 @@ class ListTagsForPrivateAccessApplicationRequest(TeaModel):
         self,
         application_ids: List[str] = None,
     ):
+        # This parameter is required.
         self.application_ids = application_ids
 
     def validate(self):
@@ -10188,6 +10290,7 @@ class ListTagsForPrivateAccessPolicyRequest(TeaModel):
         self,
         policy_ids: List[str] = None,
     ):
+        # This parameter is required.
         self.policy_ids = policy_ids
 
     def validate(self):
@@ -10398,6 +10501,7 @@ class ListUserDevicesRequest(TeaModel):
         dlp_statuses: List[str] = None,
         hostname: str = None,
         ia_statuses: List[str] = None,
+        inner_ip: str = None,
         mac: str = None,
         nac_statuses: List[str] = None,
         pa_statuses: List[str] = None,
@@ -10408,6 +10512,7 @@ class ListUserDevicesRequest(TeaModel):
         username: str = None,
     ):
         self.app_statuses = app_statuses
+        # This parameter is required.
         self.current_page = current_page
         self.department = department
         self.device_belong = device_belong
@@ -10417,9 +10522,11 @@ class ListUserDevicesRequest(TeaModel):
         self.dlp_statuses = dlp_statuses
         self.hostname = hostname
         self.ia_statuses = ia_statuses
+        self.inner_ip = inner_ip
         self.mac = mac
         self.nac_statuses = nac_statuses
         self.pa_statuses = pa_statuses
+        # This parameter is required.
         self.page_size = page_size
         self.sase_user_id = sase_user_id
         self.sharing_status = sharing_status
@@ -10455,6 +10562,8 @@ class ListUserDevicesRequest(TeaModel):
             result['Hostname'] = self.hostname
         if self.ia_statuses is not None:
             result['IaStatuses'] = self.ia_statuses
+        if self.inner_ip is not None:
+            result['InnerIp'] = self.inner_ip
         if self.mac is not None:
             result['Mac'] = self.mac
         if self.nac_statuses is not None:
@@ -10495,6 +10604,8 @@ class ListUserDevicesRequest(TeaModel):
             self.hostname = m.get('Hostname')
         if m.get('IaStatuses') is not None:
             self.ia_statuses = m.get('IaStatuses')
+        if m.get('InnerIp') is not None:
+            self.inner_ip = m.get('InnerIp')
         if m.get('Mac') is not None:
             self.mac = m.get('Mac')
         if m.get('NacStatuses') is not None:
@@ -10784,10 +10895,12 @@ class ListUserGroupsRequest(TeaModel):
         user_group_ids: List[str] = None,
     ):
         self.attribute_value = attribute_value
+        # This parameter is required.
         self.current_page = current_page
         # 用户组名称。长度为1~128个字符，支持中文和大小写英文字母，可包含数字、半角句号（.）、下划线（_）和短划线（-）。
         self.name = name
         self.papolicy_id = papolicy_id
+        # This parameter is required.
         self.page_size = page_size
         self.user_group_ids = user_group_ids
 
@@ -11028,6 +11141,7 @@ class ListUserGroupsForPrivateAccessPolicyRequest(TeaModel):
         self,
         policy_ids: List[str] = None,
     ):
+        # This parameter is required.
         self.policy_ids = policy_ids
 
     def validate(self):
@@ -11283,6 +11397,7 @@ class ListUserGroupsForRegistrationPolicyRequest(TeaModel):
         self,
         policy_ids: List[str] = None,
     ):
+        # This parameter is required.
         self.policy_ids = policy_ids
 
     def validate(self):
@@ -11543,9 +11658,11 @@ class ListUsersRequest(TeaModel):
         sase_user_ids: List[str] = None,
         status: str = None,
     ):
+        # This parameter is required.
         self.current_page = current_page
         self.department = department
         self.fuzzy_username = fuzzy_username
+        # This parameter is required.
         self.page_size = page_size
         self.precise_username = precise_username
         self.sase_user_ids = sase_user_ids
@@ -11758,6 +11875,7 @@ class UpdateClientUserRequest(TeaModel):
         self.department_id = department_id
         self.description = description
         self.email = email
+        # This parameter is required.
         self.id = id
         self.mobile_number = mobile_number
 
@@ -11978,7 +12096,9 @@ class UpdateClientUserStatusRequest(TeaModel):
         id: str = None,
         status: str = None,
     ):
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.status = status
 
     def validate(self):
@@ -12092,6 +12212,7 @@ class UpdateDynamicRouteRequest(TeaModel):
         self.application_ids = application_ids
         self.application_type = application_type
         self.description = description
+        # This parameter is required.
         self.dynamic_route_id = dynamic_route_id
         self.dynamic_route_type = dynamic_route_type
         self.modify_type = modify_type
@@ -12240,7 +12361,9 @@ class UpdateExcessiveDeviceRegistrationApplicationsStatusRequest(TeaModel):
         application_ids: List[str] = None,
         status: str = None,
     ):
+        # This parameter is required.
         self.application_ids = application_ids
+        # This parameter is required.
         self.status = status
 
     def validate(self):
@@ -12449,8 +12572,11 @@ class UpdateIdpDepartmentRequest(TeaModel):
         department_name: str = None,
         idp_config_id: str = None,
     ):
+        # This parameter is required.
         self.department_id = department_id
+        # This parameter is required.
         self.department_name = department_name
+        # This parameter is required.
         self.idp_config_id = idp_config_id
 
     def validate(self):
@@ -12595,6 +12721,7 @@ class UpdatePrivateAccessApplicationRequest(TeaModel):
         tag_ids: List[str] = None,
     ):
         self.addresses = addresses
+        # This parameter is required.
         self.application_id = application_id
         self.description = description
         self.modify_type = modify_type
@@ -12736,8 +12863,11 @@ class UpdatePrivateAccessPolicyRequestCustomUserAttributes(TeaModel):
         value: str = None,
     ):
         self.idp_id = idp_id
+        # This parameter is required.
         self.relation = relation
+        # This parameter is required.
         self.user_group_type = user_group_type
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -12796,6 +12926,7 @@ class UpdatePrivateAccessPolicyRequest(TeaModel):
         self.device_attribute_id = device_attribute_id
         self.modify_type = modify_type
         self.policy_action = policy_action
+        # This parameter is required.
         self.policy_id = policy_id
         self.priority = priority
         self.status = status
@@ -13052,6 +13183,7 @@ class UpdateRegistrationPolicyRequest(TeaModel):
         self.name = name
         self.personal_limit_count = personal_limit_count
         self.personal_limit_type = personal_limit_type
+        # This parameter is required.
         self.policy_id = policy_id
         self.priority = priority
         self.status = status
@@ -13150,6 +13282,7 @@ class UpdateRegistrationPolicyShrinkRequest(TeaModel):
         self.name = name
         self.personal_limit_count_shrink = personal_limit_count_shrink
         self.personal_limit_type = personal_limit_type
+        # This parameter is required.
         self.policy_id = policy_id
         self.priority = priority
         self.status = status
@@ -13471,7 +13604,9 @@ class UpdateUserDevicesSharingStatusRequest(TeaModel):
         device_tags: List[str] = None,
         sharing_status: bool = None,
     ):
+        # This parameter is required.
         self.device_tags = device_tags
+        # This parameter is required.
         self.sharing_status = sharing_status
 
     def validate(self):
@@ -13757,7 +13892,9 @@ class UpdateUserDevicesStatusRequest(TeaModel):
         device_action: str = None,
         device_tags: List[str] = None,
     ):
+        # This parameter is required.
         self.device_action = device_action
+        # This parameter is required.
         self.device_tags = device_tags
 
     def validate(self):
@@ -14046,8 +14183,11 @@ class UpdateUserGroupRequestAttributes(TeaModel):
         value: str = None,
     ):
         self.idp_id = idp_id
+        # This parameter is required.
         self.relation = relation
+        # This parameter is required.
         self.user_group_type = user_group_type
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -14093,6 +14233,7 @@ class UpdateUserGroupRequest(TeaModel):
         self.attributes = attributes
         self.description = description
         self.modify_type = modify_type
+        # This parameter is required.
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -14209,7 +14350,9 @@ class UpdateUsersStatusRequest(TeaModel):
         sase_user_ids: List[str] = None,
         status: str = None,
     ):
+        # This parameter is required.
         self.sase_user_ids = sase_user_ids
+        # This parameter is required.
         self.status = status
 
     def validate(self):

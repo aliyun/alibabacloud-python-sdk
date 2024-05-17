@@ -46,6 +46,13 @@ class Client(OpenApiClient):
         tmp_req: csas_20230120_models.AttachApplication2ConnectorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.AttachApplication2ConnectorResponse:
+        """
+        @summary 挂载connector的应用
+        
+        @param tmp_req: AttachApplication2ConnectorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachApplication2ConnectorResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = csas_20230120_models.AttachApplication2ConnectorShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -80,6 +87,13 @@ class Client(OpenApiClient):
         tmp_req: csas_20230120_models.AttachApplication2ConnectorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.AttachApplication2ConnectorResponse:
+        """
+        @summary 挂载connector的应用
+        
+        @param tmp_req: AttachApplication2ConnectorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachApplication2ConnectorResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = csas_20230120_models.AttachApplication2ConnectorShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -113,6 +127,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.AttachApplication2ConnectorRequest,
     ) -> csas_20230120_models.AttachApplication2ConnectorResponse:
+        """
+        @summary 挂载connector的应用
+        
+        @param request: AttachApplication2ConnectorRequest
+        @return: AttachApplication2ConnectorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.attach_application_2connector_with_options(request, runtime)
 
@@ -120,6 +140,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.AttachApplication2ConnectorRequest,
     ) -> csas_20230120_models.AttachApplication2ConnectorResponse:
+        """
+        @summary 挂载connector的应用
+        
+        @param request: AttachApplication2ConnectorRequest
+        @return: AttachApplication2ConnectorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.attach_application_2connector_with_options_async(request, runtime)
 
@@ -128,6 +154,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.CreateClientUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.CreateClientUserResponse:
+        """
+        @summary 创建自定义身份源用户
+        
+        @param request: CreateClientUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateClientUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.department_id):
@@ -168,6 +201,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.CreateClientUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.CreateClientUserResponse:
+        """
+        @summary 创建自定义身份源用户
+        
+        @param request: CreateClientUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateClientUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.department_id):
@@ -207,6 +247,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.CreateClientUserRequest,
     ) -> csas_20230120_models.CreateClientUserResponse:
+        """
+        @summary 创建自定义身份源用户
+        
+        @param request: CreateClientUserRequest
+        @return: CreateClientUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_client_user_with_options(request, runtime)
 
@@ -214,6 +260,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.CreateClientUserRequest,
     ) -> csas_20230120_models.CreateClientUserResponse:
+        """
+        @summary 创建自定义身份源用户
+        
+        @param request: CreateClientUserRequest
+        @return: CreateClientUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_client_user_with_options_async(request, runtime)
 
@@ -222,6 +274,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.CreateDynamicRouteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.CreateDynamicRouteResponse:
+        """
+        @summary 创建动态路由
+        
+        @param request: CreateDynamicRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDynamicRouteResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         body_flat = {}
@@ -271,6 +330,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.CreateDynamicRouteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.CreateDynamicRouteResponse:
+        """
+        @summary 创建动态路由
+        
+        @param request: CreateDynamicRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDynamicRouteResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         body_flat = {}
@@ -319,6 +385,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.CreateDynamicRouteRequest,
     ) -> csas_20230120_models.CreateDynamicRouteResponse:
+        """
+        @summary 创建动态路由
+        
+        @param request: CreateDynamicRouteRequest
+        @return: CreateDynamicRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_dynamic_route_with_options(request, runtime)
 
@@ -326,6 +398,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.CreateDynamicRouteRequest,
     ) -> csas_20230120_models.CreateDynamicRouteResponse:
+        """
+        @summary 创建动态路由
+        
+        @param request: CreateDynamicRouteRequest
+        @return: CreateDynamicRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_dynamic_route_with_options_async(request, runtime)
 
@@ -334,6 +412,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.CreateIdpDepartmentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.CreateIdpDepartmentResponse:
+        """
+        @summary 创建自定义身份源部门
+        
+        @param request: CreateIdpDepartmentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIdpDepartmentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.department_name):
@@ -364,6 +449,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.CreateIdpDepartmentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.CreateIdpDepartmentResponse:
+        """
+        @summary 创建自定义身份源部门
+        
+        @param request: CreateIdpDepartmentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIdpDepartmentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.department_name):
@@ -393,6 +485,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.CreateIdpDepartmentRequest,
     ) -> csas_20230120_models.CreateIdpDepartmentResponse:
+        """
+        @summary 创建自定义身份源部门
+        
+        @param request: CreateIdpDepartmentRequest
+        @return: CreateIdpDepartmentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_idp_department_with_options(request, runtime)
 
@@ -400,6 +498,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.CreateIdpDepartmentRequest,
     ) -> csas_20230120_models.CreateIdpDepartmentResponse:
+        """
+        @summary 创建自定义身份源部门
+        
+        @param request: CreateIdpDepartmentRequest
+        @return: CreateIdpDepartmentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_idp_department_with_options_async(request, runtime)
 
@@ -408,6 +512,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.CreatePrivateAccessApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.CreatePrivateAccessApplicationResponse:
+        """
+        @summary 创建内网访问应用
+        
+        @param request: CreatePrivateAccessApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePrivateAccessApplicationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         body_flat = {}
@@ -451,6 +562,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.CreatePrivateAccessApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.CreatePrivateAccessApplicationResponse:
+        """
+        @summary 创建内网访问应用
+        
+        @param request: CreatePrivateAccessApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePrivateAccessApplicationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         body_flat = {}
@@ -493,6 +611,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.CreatePrivateAccessApplicationRequest,
     ) -> csas_20230120_models.CreatePrivateAccessApplicationResponse:
+        """
+        @summary 创建内网访问应用
+        
+        @param request: CreatePrivateAccessApplicationRequest
+        @return: CreatePrivateAccessApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_private_access_application_with_options(request, runtime)
 
@@ -500,6 +624,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.CreatePrivateAccessApplicationRequest,
     ) -> csas_20230120_models.CreatePrivateAccessApplicationResponse:
+        """
+        @summary 创建内网访问应用
+        
+        @param request: CreatePrivateAccessApplicationRequest
+        @return: CreatePrivateAccessApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_private_access_application_with_options_async(request, runtime)
 
@@ -508,6 +638,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.CreatePrivateAccessPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.CreatePrivateAccessPolicyResponse:
+        """
+        @summary 创建内网访问策略
+        
+        @param request: CreatePrivateAccessPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePrivateAccessPolicyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         body_flat = {}
@@ -561,6 +698,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.CreatePrivateAccessPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.CreatePrivateAccessPolicyResponse:
+        """
+        @summary 创建内网访问策略
+        
+        @param request: CreatePrivateAccessPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePrivateAccessPolicyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         body_flat = {}
@@ -613,6 +757,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.CreatePrivateAccessPolicyRequest,
     ) -> csas_20230120_models.CreatePrivateAccessPolicyResponse:
+        """
+        @summary 创建内网访问策略
+        
+        @param request: CreatePrivateAccessPolicyRequest
+        @return: CreatePrivateAccessPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_private_access_policy_with_options(request, runtime)
 
@@ -620,6 +770,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.CreatePrivateAccessPolicyRequest,
     ) -> csas_20230120_models.CreatePrivateAccessPolicyResponse:
+        """
+        @summary 创建内网访问策略
+        
+        @param request: CreatePrivateAccessPolicyRequest
+        @return: CreatePrivateAccessPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_private_access_policy_with_options_async(request, runtime)
 
@@ -628,6 +784,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.CreatePrivateAccessTagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.CreatePrivateAccessTagResponse:
+        """
+        @summary 创建内网访问标签
+        
+        @param request: CreatePrivateAccessTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePrivateAccessTagResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -658,6 +821,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.CreatePrivateAccessTagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.CreatePrivateAccessTagResponse:
+        """
+        @summary 创建内网访问标签
+        
+        @param request: CreatePrivateAccessTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePrivateAccessTagResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -687,6 +857,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.CreatePrivateAccessTagRequest,
     ) -> csas_20230120_models.CreatePrivateAccessTagResponse:
+        """
+        @summary 创建内网访问标签
+        
+        @param request: CreatePrivateAccessTagRequest
+        @return: CreatePrivateAccessTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_private_access_tag_with_options(request, runtime)
 
@@ -694,6 +870,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.CreatePrivateAccessTagRequest,
     ) -> csas_20230120_models.CreatePrivateAccessTagResponse:
+        """
+        @summary 创建内网访问标签
+        
+        @param request: CreatePrivateAccessTagRequest
+        @return: CreatePrivateAccessTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_private_access_tag_with_options_async(request, runtime)
 
@@ -702,6 +884,13 @@ class Client(OpenApiClient):
         tmp_req: csas_20230120_models.CreateRegistrationPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.CreateRegistrationPolicyResponse:
+        """
+        @summary 创建设备注册策略
+        
+        @param tmp_req: CreateRegistrationPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRegistrationPolicyResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = csas_20230120_models.CreateRegistrationPolicyShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -759,6 +948,13 @@ class Client(OpenApiClient):
         tmp_req: csas_20230120_models.CreateRegistrationPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.CreateRegistrationPolicyResponse:
+        """
+        @summary 创建设备注册策略
+        
+        @param tmp_req: CreateRegistrationPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRegistrationPolicyResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = csas_20230120_models.CreateRegistrationPolicyShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -815,6 +1011,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.CreateRegistrationPolicyRequest,
     ) -> csas_20230120_models.CreateRegistrationPolicyResponse:
+        """
+        @summary 创建设备注册策略
+        
+        @param request: CreateRegistrationPolicyRequest
+        @return: CreateRegistrationPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_registration_policy_with_options(request, runtime)
 
@@ -822,6 +1024,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.CreateRegistrationPolicyRequest,
     ) -> csas_20230120_models.CreateRegistrationPolicyResponse:
+        """
+        @summary 创建设备注册策略
+        
+        @param request: CreateRegistrationPolicyRequest
+        @return: CreateRegistrationPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_registration_policy_with_options_async(request, runtime)
 
@@ -830,6 +1038,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.CreateUserGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.CreateUserGroupResponse:
+        """
+        @summary 创建用户组
+        
+        @param request: CreateUserGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUserGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         body_flat = {}
@@ -865,6 +1080,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.CreateUserGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.CreateUserGroupResponse:
+        """
+        @summary 创建用户组
+        
+        @param request: CreateUserGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUserGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         body_flat = {}
@@ -899,6 +1121,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.CreateUserGroupRequest,
     ) -> csas_20230120_models.CreateUserGroupResponse:
+        """
+        @summary 创建用户组
+        
+        @param request: CreateUserGroupRequest
+        @return: CreateUserGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_user_group_with_options(request, runtime)
 
@@ -906,6 +1134,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.CreateUserGroupRequest,
     ) -> csas_20230120_models.CreateUserGroupResponse:
+        """
+        @summary 创建用户组
+        
+        @param request: CreateUserGroupRequest
+        @return: CreateUserGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_user_group_with_options_async(request, runtime)
 
@@ -914,6 +1148,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.DeleteClientUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.DeleteClientUserResponse:
+        """
+        @summary 删除自定义身份源指定用户
+        
+        @param request: DeleteClientUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteClientUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -942,6 +1183,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.DeleteClientUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.DeleteClientUserResponse:
+        """
+        @summary 删除自定义身份源指定用户
+        
+        @param request: DeleteClientUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteClientUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -969,6 +1217,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.DeleteClientUserRequest,
     ) -> csas_20230120_models.DeleteClientUserResponse:
+        """
+        @summary 删除自定义身份源指定用户
+        
+        @param request: DeleteClientUserRequest
+        @return: DeleteClientUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_client_user_with_options(request, runtime)
 
@@ -976,6 +1230,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.DeleteClientUserRequest,
     ) -> csas_20230120_models.DeleteClientUserResponse:
+        """
+        @summary 删除自定义身份源指定用户
+        
+        @param request: DeleteClientUserRequest
+        @return: DeleteClientUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_client_user_with_options_async(request, runtime)
 
@@ -984,6 +1244,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.DeleteDynamicRouteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.DeleteDynamicRouteResponse:
+        """
+        @summary 删除动态路由
+        
+        @param request: DeleteDynamicRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDynamicRouteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dynamic_route_id):
@@ -1012,6 +1279,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.DeleteDynamicRouteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.DeleteDynamicRouteResponse:
+        """
+        @summary 删除动态路由
+        
+        @param request: DeleteDynamicRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDynamicRouteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dynamic_route_id):
@@ -1039,6 +1313,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.DeleteDynamicRouteRequest,
     ) -> csas_20230120_models.DeleteDynamicRouteResponse:
+        """
+        @summary 删除动态路由
+        
+        @param request: DeleteDynamicRouteRequest
+        @return: DeleteDynamicRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_dynamic_route_with_options(request, runtime)
 
@@ -1046,6 +1326,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.DeleteDynamicRouteRequest,
     ) -> csas_20230120_models.DeleteDynamicRouteResponse:
+        """
+        @summary 删除动态路由
+        
+        @param request: DeleteDynamicRouteRequest
+        @return: DeleteDynamicRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_dynamic_route_with_options_async(request, runtime)
 
@@ -1054,6 +1340,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.DeleteIdpDepartmentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.DeleteIdpDepartmentResponse:
+        """
+        @summary 删除指定自定义身份源部门
+        
+        @param request: DeleteIdpDepartmentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIdpDepartmentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.department_id):
@@ -1084,6 +1377,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.DeleteIdpDepartmentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.DeleteIdpDepartmentResponse:
+        """
+        @summary 删除指定自定义身份源部门
+        
+        @param request: DeleteIdpDepartmentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIdpDepartmentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.department_id):
@@ -1113,6 +1413,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.DeleteIdpDepartmentRequest,
     ) -> csas_20230120_models.DeleteIdpDepartmentResponse:
+        """
+        @summary 删除指定自定义身份源部门
+        
+        @param request: DeleteIdpDepartmentRequest
+        @return: DeleteIdpDepartmentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_idp_department_with_options(request, runtime)
 
@@ -1120,6 +1426,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.DeleteIdpDepartmentRequest,
     ) -> csas_20230120_models.DeleteIdpDepartmentResponse:
+        """
+        @summary 删除指定自定义身份源部门
+        
+        @param request: DeleteIdpDepartmentRequest
+        @return: DeleteIdpDepartmentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_idp_department_with_options_async(request, runtime)
 
@@ -1128,6 +1440,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.DeletePrivateAccessApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.DeletePrivateAccessApplicationResponse:
+        """
+        @summary 删除内网访问应用
+        
+        @param request: DeletePrivateAccessApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePrivateAccessApplicationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.application_id):
@@ -1156,6 +1475,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.DeletePrivateAccessApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.DeletePrivateAccessApplicationResponse:
+        """
+        @summary 删除内网访问应用
+        
+        @param request: DeletePrivateAccessApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePrivateAccessApplicationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.application_id):
@@ -1183,6 +1509,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.DeletePrivateAccessApplicationRequest,
     ) -> csas_20230120_models.DeletePrivateAccessApplicationResponse:
+        """
+        @summary 删除内网访问应用
+        
+        @param request: DeletePrivateAccessApplicationRequest
+        @return: DeletePrivateAccessApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_private_access_application_with_options(request, runtime)
 
@@ -1190,6 +1522,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.DeletePrivateAccessApplicationRequest,
     ) -> csas_20230120_models.DeletePrivateAccessApplicationResponse:
+        """
+        @summary 删除内网访问应用
+        
+        @param request: DeletePrivateAccessApplicationRequest
+        @return: DeletePrivateAccessApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_private_access_application_with_options_async(request, runtime)
 
@@ -1198,6 +1536,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.DeletePrivateAccessPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.DeletePrivateAccessPolicyResponse:
+        """
+        @summary 删除内网访问策略
+        
+        @param request: DeletePrivateAccessPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePrivateAccessPolicyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.policy_id):
@@ -1226,6 +1571,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.DeletePrivateAccessPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.DeletePrivateAccessPolicyResponse:
+        """
+        @summary 删除内网访问策略
+        
+        @param request: DeletePrivateAccessPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePrivateAccessPolicyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.policy_id):
@@ -1253,6 +1605,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.DeletePrivateAccessPolicyRequest,
     ) -> csas_20230120_models.DeletePrivateAccessPolicyResponse:
+        """
+        @summary 删除内网访问策略
+        
+        @param request: DeletePrivateAccessPolicyRequest
+        @return: DeletePrivateAccessPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_private_access_policy_with_options(request, runtime)
 
@@ -1260,6 +1618,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.DeletePrivateAccessPolicyRequest,
     ) -> csas_20230120_models.DeletePrivateAccessPolicyResponse:
+        """
+        @summary 删除内网访问策略
+        
+        @param request: DeletePrivateAccessPolicyRequest
+        @return: DeletePrivateAccessPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_private_access_policy_with_options_async(request, runtime)
 
@@ -1268,6 +1632,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.DeletePrivateAccessTagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.DeletePrivateAccessTagResponse:
+        """
+        @summary 删除内网访问标签
+        
+        @param request: DeletePrivateAccessTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePrivateAccessTagResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.tag_id):
@@ -1296,6 +1667,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.DeletePrivateAccessTagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.DeletePrivateAccessTagResponse:
+        """
+        @summary 删除内网访问标签
+        
+        @param request: DeletePrivateAccessTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePrivateAccessTagResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.tag_id):
@@ -1323,6 +1701,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.DeletePrivateAccessTagRequest,
     ) -> csas_20230120_models.DeletePrivateAccessTagResponse:
+        """
+        @summary 删除内网访问标签
+        
+        @param request: DeletePrivateAccessTagRequest
+        @return: DeletePrivateAccessTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_private_access_tag_with_options(request, runtime)
 
@@ -1330,6 +1714,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.DeletePrivateAccessTagRequest,
     ) -> csas_20230120_models.DeletePrivateAccessTagResponse:
+        """
+        @summary 删除内网访问标签
+        
+        @param request: DeletePrivateAccessTagRequest
+        @return: DeletePrivateAccessTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_private_access_tag_with_options_async(request, runtime)
 
@@ -1338,6 +1728,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.DeleteRegistrationPoliciesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.DeleteRegistrationPoliciesResponse:
+        """
+        @summary 删除设备注册策略
+        
+        @param request: DeleteRegistrationPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRegistrationPoliciesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         body_flat = {}
@@ -1369,6 +1766,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.DeleteRegistrationPoliciesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.DeleteRegistrationPoliciesResponse:
+        """
+        @summary 删除设备注册策略
+        
+        @param request: DeleteRegistrationPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRegistrationPoliciesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         body_flat = {}
@@ -1399,6 +1803,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.DeleteRegistrationPoliciesRequest,
     ) -> csas_20230120_models.DeleteRegistrationPoliciesResponse:
+        """
+        @summary 删除设备注册策略
+        
+        @param request: DeleteRegistrationPoliciesRequest
+        @return: DeleteRegistrationPoliciesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_registration_policies_with_options(request, runtime)
 
@@ -1406,6 +1816,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.DeleteRegistrationPoliciesRequest,
     ) -> csas_20230120_models.DeleteRegistrationPoliciesResponse:
+        """
+        @summary 删除设备注册策略
+        
+        @param request: DeleteRegistrationPoliciesRequest
+        @return: DeleteRegistrationPoliciesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_registration_policies_with_options_async(request, runtime)
 
@@ -1414,6 +1830,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.DeleteUserGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.DeleteUserGroupResponse:
+        """
+        @summary 删除用户组
+        
+        @param request: DeleteUserGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.user_group_id):
@@ -1442,6 +1865,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.DeleteUserGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.DeleteUserGroupResponse:
+        """
+        @summary 删除用户组
+        
+        @param request: DeleteUserGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.user_group_id):
@@ -1469,6 +1899,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.DeleteUserGroupRequest,
     ) -> csas_20230120_models.DeleteUserGroupResponse:
+        """
+        @summary 删除用户组
+        
+        @param request: DeleteUserGroupRequest
+        @return: DeleteUserGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_user_group_with_options(request, runtime)
 
@@ -1476,6 +1912,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.DeleteUserGroupRequest,
     ) -> csas_20230120_models.DeleteUserGroupResponse:
+        """
+        @summary 删除用户组
+        
+        @param request: DeleteUserGroupRequest
+        @return: DeleteUserGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_user_group_with_options_async(request, runtime)
 
@@ -1484,6 +1926,13 @@ class Client(OpenApiClient):
         tmp_req: csas_20230120_models.DetachApplication2ConnectorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.DetachApplication2ConnectorResponse:
+        """
+        @summary 卸载connector的应用
+        
+        @param tmp_req: DetachApplication2ConnectorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachApplication2ConnectorResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = csas_20230120_models.DetachApplication2ConnectorShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1518,6 +1967,13 @@ class Client(OpenApiClient):
         tmp_req: csas_20230120_models.DetachApplication2ConnectorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.DetachApplication2ConnectorResponse:
+        """
+        @summary 卸载connector的应用
+        
+        @param tmp_req: DetachApplication2ConnectorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachApplication2ConnectorResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = csas_20230120_models.DetachApplication2ConnectorShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1551,6 +2007,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.DetachApplication2ConnectorRequest,
     ) -> csas_20230120_models.DetachApplication2ConnectorResponse:
+        """
+        @summary 卸载connector的应用
+        
+        @param request: DetachApplication2ConnectorRequest
+        @return: DetachApplication2ConnectorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detach_application_2connector_with_options(request, runtime)
 
@@ -1558,6 +2020,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.DetachApplication2ConnectorRequest,
     ) -> csas_20230120_models.DetachApplication2ConnectorResponse:
+        """
+        @summary 卸载connector的应用
+        
+        @param request: DetachApplication2ConnectorRequest
+        @return: DetachApplication2ConnectorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detach_application_2connector_with_options_async(request, runtime)
 
@@ -1565,6 +2033,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.GetActiveIdpConfigResponse:
+        """
+        @summary 查询已启用的身份源配置
+        
+        @param request: GetActiveIdpConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetActiveIdpConfigResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetActiveIdpConfig',
@@ -1586,6 +2061,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.GetActiveIdpConfigResponse:
+        """
+        @summary 查询已启用的身份源配置
+        
+        @param request: GetActiveIdpConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetActiveIdpConfigResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetActiveIdpConfig',
@@ -1604,10 +2086,20 @@ class Client(OpenApiClient):
         )
 
     def get_active_idp_config(self) -> csas_20230120_models.GetActiveIdpConfigResponse:
+        """
+        @summary 查询已启用的身份源配置
+        
+        @return: GetActiveIdpConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_active_idp_config_with_options(runtime)
 
     async def get_active_idp_config_async(self) -> csas_20230120_models.GetActiveIdpConfigResponse:
+        """
+        @summary 查询已启用的身份源配置
+        
+        @return: GetActiveIdpConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_active_idp_config_with_options_async(runtime)
 
@@ -1616,6 +2108,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.GetClientUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.GetClientUserResponse:
+        """
+        @summary 查询自定义身份源指定用户
+        
+        @param request: GetClientUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetClientUserResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1642,6 +2141,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.GetClientUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.GetClientUserResponse:
+        """
+        @summary 查询自定义身份源指定用户
+        
+        @param request: GetClientUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetClientUserResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1667,6 +2173,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.GetClientUserRequest,
     ) -> csas_20230120_models.GetClientUserResponse:
+        """
+        @summary 查询自定义身份源指定用户
+        
+        @param request: GetClientUserRequest
+        @return: GetClientUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_client_user_with_options(request, runtime)
 
@@ -1674,6 +2186,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.GetClientUserRequest,
     ) -> csas_20230120_models.GetClientUserResponse:
+        """
+        @summary 查询自定义身份源指定用户
+        
+        @param request: GetClientUserRequest
+        @return: GetClientUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_client_user_with_options_async(request, runtime)
 
@@ -1682,6 +2200,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.GetDynamicRouteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.GetDynamicRouteResponse:
+        """
+        @summary 查询动态路由详情
+        
+        @param request: GetDynamicRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDynamicRouteResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1708,6 +2233,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.GetDynamicRouteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.GetDynamicRouteResponse:
+        """
+        @summary 查询动态路由详情
+        
+        @param request: GetDynamicRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDynamicRouteResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1733,6 +2265,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.GetDynamicRouteRequest,
     ) -> csas_20230120_models.GetDynamicRouteResponse:
+        """
+        @summary 查询动态路由详情
+        
+        @param request: GetDynamicRouteRequest
+        @return: GetDynamicRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_dynamic_route_with_options(request, runtime)
 
@@ -1740,6 +2278,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.GetDynamicRouteRequest,
     ) -> csas_20230120_models.GetDynamicRouteResponse:
+        """
+        @summary 查询动态路由详情
+        
+        @param request: GetDynamicRouteRequest
+        @return: GetDynamicRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_dynamic_route_with_options_async(request, runtime)
 
@@ -1748,6 +2292,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.GetIdpConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.GetIdpConfigResponse:
+        """
+        @summary 查询身份源配置详情
+        
+        @param request: GetIdpConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIdpConfigResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1774,6 +2325,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.GetIdpConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.GetIdpConfigResponse:
+        """
+        @summary 查询身份源配置详情
+        
+        @param request: GetIdpConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIdpConfigResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1799,6 +2357,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.GetIdpConfigRequest,
     ) -> csas_20230120_models.GetIdpConfigResponse:
+        """
+        @summary 查询身份源配置详情
+        
+        @param request: GetIdpConfigRequest
+        @return: GetIdpConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_idp_config_with_options(request, runtime)
 
@@ -1806,6 +2370,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.GetIdpConfigRequest,
     ) -> csas_20230120_models.GetIdpConfigResponse:
+        """
+        @summary 查询身份源配置详情
+        
+        @param request: GetIdpConfigRequest
+        @return: GetIdpConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_idp_config_with_options_async(request, runtime)
 
@@ -1814,6 +2384,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.GetPrivateAccessApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.GetPrivateAccessApplicationResponse:
+        """
+        @summary 查询内网访问应用详情
+        
+        @param request: GetPrivateAccessApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPrivateAccessApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1840,6 +2417,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.GetPrivateAccessApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.GetPrivateAccessApplicationResponse:
+        """
+        @summary 查询内网访问应用详情
+        
+        @param request: GetPrivateAccessApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPrivateAccessApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1865,6 +2449,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.GetPrivateAccessApplicationRequest,
     ) -> csas_20230120_models.GetPrivateAccessApplicationResponse:
+        """
+        @summary 查询内网访问应用详情
+        
+        @param request: GetPrivateAccessApplicationRequest
+        @return: GetPrivateAccessApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_private_access_application_with_options(request, runtime)
 
@@ -1872,6 +2462,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.GetPrivateAccessApplicationRequest,
     ) -> csas_20230120_models.GetPrivateAccessApplicationResponse:
+        """
+        @summary 查询内网访问应用详情
+        
+        @param request: GetPrivateAccessApplicationRequest
+        @return: GetPrivateAccessApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_private_access_application_with_options_async(request, runtime)
 
@@ -1880,6 +2476,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.GetPrivateAccessPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.GetPrivateAccessPolicyResponse:
+        """
+        @summary 查询内网访问策略详情
+        
+        @param request: GetPrivateAccessPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPrivateAccessPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1906,6 +2509,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.GetPrivateAccessPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.GetPrivateAccessPolicyResponse:
+        """
+        @summary 查询内网访问策略详情
+        
+        @param request: GetPrivateAccessPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPrivateAccessPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1931,6 +2541,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.GetPrivateAccessPolicyRequest,
     ) -> csas_20230120_models.GetPrivateAccessPolicyResponse:
+        """
+        @summary 查询内网访问策略详情
+        
+        @param request: GetPrivateAccessPolicyRequest
+        @return: GetPrivateAccessPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_private_access_policy_with_options(request, runtime)
 
@@ -1938,6 +2554,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.GetPrivateAccessPolicyRequest,
     ) -> csas_20230120_models.GetPrivateAccessPolicyResponse:
+        """
+        @summary 查询内网访问策略详情
+        
+        @param request: GetPrivateAccessPolicyRequest
+        @return: GetPrivateAccessPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_private_access_policy_with_options_async(request, runtime)
 
@@ -1946,6 +2568,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.GetRegistrationPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.GetRegistrationPolicyResponse:
+        """
+        @summary 查询设备注册策略详情
+        
+        @param request: GetRegistrationPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRegistrationPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1972,6 +2601,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.GetRegistrationPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.GetRegistrationPolicyResponse:
+        """
+        @summary 查询设备注册策略详情
+        
+        @param request: GetRegistrationPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRegistrationPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -1997,6 +2633,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.GetRegistrationPolicyRequest,
     ) -> csas_20230120_models.GetRegistrationPolicyResponse:
+        """
+        @summary 查询设备注册策略详情
+        
+        @param request: GetRegistrationPolicyRequest
+        @return: GetRegistrationPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_registration_policy_with_options(request, runtime)
 
@@ -2004,6 +2646,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.GetRegistrationPolicyRequest,
     ) -> csas_20230120_models.GetRegistrationPolicyResponse:
+        """
+        @summary 查询设备注册策略详情
+        
+        @param request: GetRegistrationPolicyRequest
+        @return: GetRegistrationPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_registration_policy_with_options_async(request, runtime)
 
@@ -2012,6 +2660,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.GetUserDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.GetUserDeviceResponse:
+        """
+        @summary 查询用户设备详情
+        
+        @param request: GetUserDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2038,6 +2693,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.GetUserDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.GetUserDeviceResponse:
+        """
+        @summary 查询用户设备详情
+        
+        @param request: GetUserDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2063,6 +2725,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.GetUserDeviceRequest,
     ) -> csas_20230120_models.GetUserDeviceResponse:
+        """
+        @summary 查询用户设备详情
+        
+        @param request: GetUserDeviceRequest
+        @return: GetUserDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_user_device_with_options(request, runtime)
 
@@ -2070,6 +2738,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.GetUserDeviceRequest,
     ) -> csas_20230120_models.GetUserDeviceResponse:
+        """
+        @summary 查询用户设备详情
+        
+        @param request: GetUserDeviceRequest
+        @return: GetUserDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_user_device_with_options_async(request, runtime)
 
@@ -2078,6 +2752,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.GetUserGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.GetUserGroupResponse:
+        """
+        @summary 查询用户组详情
+        
+        @param request: GetUserGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserGroupResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2104,6 +2785,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.GetUserGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.GetUserGroupResponse:
+        """
+        @summary 查询用户组详情
+        
+        @param request: GetUserGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserGroupResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2129,6 +2817,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.GetUserGroupRequest,
     ) -> csas_20230120_models.GetUserGroupResponse:
+        """
+        @summary 查询用户组详情
+        
+        @param request: GetUserGroupRequest
+        @return: GetUserGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_user_group_with_options(request, runtime)
 
@@ -2136,6 +2830,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.GetUserGroupRequest,
     ) -> csas_20230120_models.GetUserGroupResponse:
+        """
+        @summary 查询用户组详情
+        
+        @param request: GetUserGroupRequest
+        @return: GetUserGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_user_group_with_options_async(request, runtime)
 
@@ -2144,6 +2844,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListApplicationsForPrivateAccessPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListApplicationsForPrivateAccessPolicyResponse:
+        """
+        @summary 批量查询内网访问策略的应用
+        
+        @param request: ListApplicationsForPrivateAccessPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationsForPrivateAccessPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2170,6 +2877,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListApplicationsForPrivateAccessPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListApplicationsForPrivateAccessPolicyResponse:
+        """
+        @summary 批量查询内网访问策略的应用
+        
+        @param request: ListApplicationsForPrivateAccessPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationsForPrivateAccessPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2195,6 +2909,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListApplicationsForPrivateAccessPolicyRequest,
     ) -> csas_20230120_models.ListApplicationsForPrivateAccessPolicyResponse:
+        """
+        @summary 批量查询内网访问策略的应用
+        
+        @param request: ListApplicationsForPrivateAccessPolicyRequest
+        @return: ListApplicationsForPrivateAccessPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_applications_for_private_access_policy_with_options(request, runtime)
 
@@ -2202,6 +2922,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListApplicationsForPrivateAccessPolicyRequest,
     ) -> csas_20230120_models.ListApplicationsForPrivateAccessPolicyResponse:
+        """
+        @summary 批量查询内网访问策略的应用
+        
+        @param request: ListApplicationsForPrivateAccessPolicyRequest
+        @return: ListApplicationsForPrivateAccessPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_applications_for_private_access_policy_with_options_async(request, runtime)
 
@@ -2210,6 +2936,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListApplicationsForPrivateAccessTagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListApplicationsForPrivateAccessTagResponse:
+        """
+        @summary 批量查询内网访问标签的应用
+        
+        @param request: ListApplicationsForPrivateAccessTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationsForPrivateAccessTagResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2236,6 +2969,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListApplicationsForPrivateAccessTagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListApplicationsForPrivateAccessTagResponse:
+        """
+        @summary 批量查询内网访问标签的应用
+        
+        @param request: ListApplicationsForPrivateAccessTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationsForPrivateAccessTagResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2261,6 +3001,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListApplicationsForPrivateAccessTagRequest,
     ) -> csas_20230120_models.ListApplicationsForPrivateAccessTagResponse:
+        """
+        @summary 批量查询内网访问标签的应用
+        
+        @param request: ListApplicationsForPrivateAccessTagRequest
+        @return: ListApplicationsForPrivateAccessTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_applications_for_private_access_tag_with_options(request, runtime)
 
@@ -2268,6 +3014,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListApplicationsForPrivateAccessTagRequest,
     ) -> csas_20230120_models.ListApplicationsForPrivateAccessTagResponse:
+        """
+        @summary 批量查询内网访问标签的应用
+        
+        @param request: ListApplicationsForPrivateAccessTagRequest
+        @return: ListApplicationsForPrivateAccessTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_applications_for_private_access_tag_with_options_async(request, runtime)
 
@@ -2276,6 +3028,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListClientUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListClientUsersResponse:
+        """
+        @summary 查询自定义身份源用户
+        
+        @param request: ListClientUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClientUsersResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2302,6 +3061,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListClientUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListClientUsersResponse:
+        """
+        @summary 查询自定义身份源用户
+        
+        @param request: ListClientUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClientUsersResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2327,6 +3093,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListClientUsersRequest,
     ) -> csas_20230120_models.ListClientUsersResponse:
+        """
+        @summary 查询自定义身份源用户
+        
+        @param request: ListClientUsersRequest
+        @return: ListClientUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_client_users_with_options(request, runtime)
 
@@ -2334,6 +3106,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListClientUsersRequest,
     ) -> csas_20230120_models.ListClientUsersResponse:
+        """
+        @summary 查询自定义身份源用户
+        
+        @param request: ListClientUsersRequest
+        @return: ListClientUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_client_users_with_options_async(request, runtime)
 
@@ -2342,6 +3120,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListConnectorsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListConnectorsResponse:
+        """
+        @summary 批量查询connector
+        
+        @param request: ListConnectorsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConnectorsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2368,6 +3153,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListConnectorsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListConnectorsResponse:
+        """
+        @summary 批量查询connector
+        
+        @param request: ListConnectorsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConnectorsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2393,6 +3185,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListConnectorsRequest,
     ) -> csas_20230120_models.ListConnectorsResponse:
+        """
+        @summary 批量查询connector
+        
+        @param request: ListConnectorsRequest
+        @return: ListConnectorsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_connectors_with_options(request, runtime)
 
@@ -2400,6 +3198,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListConnectorsRequest,
     ) -> csas_20230120_models.ListConnectorsResponse:
+        """
+        @summary 批量查询connector
+        
+        @param request: ListConnectorsRequest
+        @return: ListConnectorsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_connectors_with_options_async(request, runtime)
 
@@ -2407,6 +3211,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListDynamicRouteRegionsResponse:
+        """
+        @summary 批量查询动态路由的地域
+        
+        @param request: ListDynamicRouteRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDynamicRouteRegionsResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListDynamicRouteRegions',
@@ -2428,6 +3239,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListDynamicRouteRegionsResponse:
+        """
+        @summary 批量查询动态路由的地域
+        
+        @param request: ListDynamicRouteRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDynamicRouteRegionsResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListDynamicRouteRegions',
@@ -2446,10 +3264,20 @@ class Client(OpenApiClient):
         )
 
     def list_dynamic_route_regions(self) -> csas_20230120_models.ListDynamicRouteRegionsResponse:
+        """
+        @summary 批量查询动态路由的地域
+        
+        @return: ListDynamicRouteRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_dynamic_route_regions_with_options(runtime)
 
     async def list_dynamic_route_regions_async(self) -> csas_20230120_models.ListDynamicRouteRegionsResponse:
+        """
+        @summary 批量查询动态路由的地域
+        
+        @return: ListDynamicRouteRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_dynamic_route_regions_with_options_async(runtime)
 
@@ -2458,6 +3286,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListDynamicRoutesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListDynamicRoutesResponse:
+        """
+        @summary 批量查询动态路由
+        
+        @param request: ListDynamicRoutesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDynamicRoutesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2484,6 +3319,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListDynamicRoutesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListDynamicRoutesResponse:
+        """
+        @summary 批量查询动态路由
+        
+        @param request: ListDynamicRoutesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDynamicRoutesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2509,6 +3351,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListDynamicRoutesRequest,
     ) -> csas_20230120_models.ListDynamicRoutesResponse:
+        """
+        @summary 批量查询动态路由
+        
+        @param request: ListDynamicRoutesRequest
+        @return: ListDynamicRoutesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_dynamic_routes_with_options(request, runtime)
 
@@ -2516,6 +3364,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListDynamicRoutesRequest,
     ) -> csas_20230120_models.ListDynamicRoutesResponse:
+        """
+        @summary 批量查询动态路由
+        
+        @param request: ListDynamicRoutesRequest
+        @return: ListDynamicRoutesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_dynamic_routes_with_options_async(request, runtime)
 
@@ -2524,6 +3378,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListExcessiveDeviceRegistrationApplicationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListExcessiveDeviceRegistrationApplicationsResponse:
+        """
+        @summary 批量查询超额注册申请列表
+        
+        @param request: ListExcessiveDeviceRegistrationApplicationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExcessiveDeviceRegistrationApplicationsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2550,6 +3411,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListExcessiveDeviceRegistrationApplicationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListExcessiveDeviceRegistrationApplicationsResponse:
+        """
+        @summary 批量查询超额注册申请列表
+        
+        @param request: ListExcessiveDeviceRegistrationApplicationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExcessiveDeviceRegistrationApplicationsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2575,6 +3443,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListExcessiveDeviceRegistrationApplicationsRequest,
     ) -> csas_20230120_models.ListExcessiveDeviceRegistrationApplicationsResponse:
+        """
+        @summary 批量查询超额注册申请列表
+        
+        @param request: ListExcessiveDeviceRegistrationApplicationsRequest
+        @return: ListExcessiveDeviceRegistrationApplicationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_excessive_device_registration_applications_with_options(request, runtime)
 
@@ -2582,6 +3456,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListExcessiveDeviceRegistrationApplicationsRequest,
     ) -> csas_20230120_models.ListExcessiveDeviceRegistrationApplicationsResponse:
+        """
+        @summary 批量查询超额注册申请列表
+        
+        @param request: ListExcessiveDeviceRegistrationApplicationsRequest
+        @return: ListExcessiveDeviceRegistrationApplicationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_excessive_device_registration_applications_with_options_async(request, runtime)
 
@@ -2590,6 +3470,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListIdpConfigsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListIdpConfigsResponse:
+        """
+        @summary 查询IDP配置
+        
+        @param request: ListIdpConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIdpConfigsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2616,6 +3503,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListIdpConfigsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListIdpConfigsResponse:
+        """
+        @summary 查询IDP配置
+        
+        @param request: ListIdpConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIdpConfigsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2641,6 +3535,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListIdpConfigsRequest,
     ) -> csas_20230120_models.ListIdpConfigsResponse:
+        """
+        @summary 查询IDP配置
+        
+        @param request: ListIdpConfigsRequest
+        @return: ListIdpConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_idp_configs_with_options(request, runtime)
 
@@ -2648,6 +3548,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListIdpConfigsRequest,
     ) -> csas_20230120_models.ListIdpConfigsResponse:
+        """
+        @summary 查询IDP配置
+        
+        @param request: ListIdpConfigsRequest
+        @return: ListIdpConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_idp_configs_with_options_async(request, runtime)
 
@@ -2656,6 +3562,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListIdpDepartmentsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListIdpDepartmentsResponse:
+        """
+        @summary 查询自定义身份源部门
+        
+        @param request: ListIdpDepartmentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIdpDepartmentsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2682,6 +3595,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListIdpDepartmentsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListIdpDepartmentsResponse:
+        """
+        @summary 查询自定义身份源部门
+        
+        @param request: ListIdpDepartmentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIdpDepartmentsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2707,6 +3627,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListIdpDepartmentsRequest,
     ) -> csas_20230120_models.ListIdpDepartmentsResponse:
+        """
+        @summary 查询自定义身份源部门
+        
+        @param request: ListIdpDepartmentsRequest
+        @return: ListIdpDepartmentsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_idp_departments_with_options(request, runtime)
 
@@ -2714,6 +3640,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListIdpDepartmentsRequest,
     ) -> csas_20230120_models.ListIdpDepartmentsResponse:
+        """
+        @summary 查询自定义身份源部门
+        
+        @param request: ListIdpDepartmentsRequest
+        @return: ListIdpDepartmentsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_idp_departments_with_options_async(request, runtime)
 
@@ -2722,6 +3654,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListPolicesForPrivateAccessApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListPolicesForPrivateAccessApplicationResponse:
+        """
+        @summary 批量查询内网访问应用的策略
+        
+        @param request: ListPolicesForPrivateAccessApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPolicesForPrivateAccessApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2748,6 +3687,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListPolicesForPrivateAccessApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListPolicesForPrivateAccessApplicationResponse:
+        """
+        @summary 批量查询内网访问应用的策略
+        
+        @param request: ListPolicesForPrivateAccessApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPolicesForPrivateAccessApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2773,6 +3719,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListPolicesForPrivateAccessApplicationRequest,
     ) -> csas_20230120_models.ListPolicesForPrivateAccessApplicationResponse:
+        """
+        @summary 批量查询内网访问应用的策略
+        
+        @param request: ListPolicesForPrivateAccessApplicationRequest
+        @return: ListPolicesForPrivateAccessApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_polices_for_private_access_application_with_options(request, runtime)
 
@@ -2780,6 +3732,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListPolicesForPrivateAccessApplicationRequest,
     ) -> csas_20230120_models.ListPolicesForPrivateAccessApplicationResponse:
+        """
+        @summary 批量查询内网访问应用的策略
+        
+        @param request: ListPolicesForPrivateAccessApplicationRequest
+        @return: ListPolicesForPrivateAccessApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_polices_for_private_access_application_with_options_async(request, runtime)
 
@@ -2788,6 +3746,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListPolicesForPrivateAccessTagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListPolicesForPrivateAccessTagResponse:
+        """
+        @summary 批量查询内网访问标签的策略
+        
+        @param request: ListPolicesForPrivateAccessTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPolicesForPrivateAccessTagResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2814,6 +3779,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListPolicesForPrivateAccessTagRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListPolicesForPrivateAccessTagResponse:
+        """
+        @summary 批量查询内网访问标签的策略
+        
+        @param request: ListPolicesForPrivateAccessTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPolicesForPrivateAccessTagResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2839,6 +3811,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListPolicesForPrivateAccessTagRequest,
     ) -> csas_20230120_models.ListPolicesForPrivateAccessTagResponse:
+        """
+        @summary 批量查询内网访问标签的策略
+        
+        @param request: ListPolicesForPrivateAccessTagRequest
+        @return: ListPolicesForPrivateAccessTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_polices_for_private_access_tag_with_options(request, runtime)
 
@@ -2846,6 +3824,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListPolicesForPrivateAccessTagRequest,
     ) -> csas_20230120_models.ListPolicesForPrivateAccessTagResponse:
+        """
+        @summary 批量查询内网访问标签的策略
+        
+        @param request: ListPolicesForPrivateAccessTagRequest
+        @return: ListPolicesForPrivateAccessTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_polices_for_private_access_tag_with_options_async(request, runtime)
 
@@ -2854,6 +3838,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListPolicesForUserGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListPolicesForUserGroupResponse:
+        """
+        @summary 批量查询用户组的策略
+        
+        @param request: ListPolicesForUserGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPolicesForUserGroupResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2880,6 +3871,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListPolicesForUserGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListPolicesForUserGroupResponse:
+        """
+        @summary 批量查询用户组的策略
+        
+        @param request: ListPolicesForUserGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPolicesForUserGroupResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2905,6 +3903,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListPolicesForUserGroupRequest,
     ) -> csas_20230120_models.ListPolicesForUserGroupResponse:
+        """
+        @summary 批量查询用户组的策略
+        
+        @param request: ListPolicesForUserGroupRequest
+        @return: ListPolicesForUserGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_polices_for_user_group_with_options(request, runtime)
 
@@ -2912,6 +3916,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListPolicesForUserGroupRequest,
     ) -> csas_20230120_models.ListPolicesForUserGroupResponse:
+        """
+        @summary 批量查询用户组的策略
+        
+        @param request: ListPolicesForUserGroupRequest
+        @return: ListPolicesForUserGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_polices_for_user_group_with_options_async(request, runtime)
 
@@ -2920,6 +3930,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListPopTrafficStatisticsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListPopTrafficStatisticsResponse:
+        """
+        @summary pop节点流量统计
+        
+        @param request: ListPopTrafficStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPopTrafficStatisticsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2946,6 +3963,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListPopTrafficStatisticsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListPopTrafficStatisticsResponse:
+        """
+        @summary pop节点流量统计
+        
+        @param request: ListPopTrafficStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPopTrafficStatisticsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -2971,6 +3995,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListPopTrafficStatisticsRequest,
     ) -> csas_20230120_models.ListPopTrafficStatisticsResponse:
+        """
+        @summary pop节点流量统计
+        
+        @param request: ListPopTrafficStatisticsRequest
+        @return: ListPopTrafficStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_pop_traffic_statistics_with_options(request, runtime)
 
@@ -2978,6 +4008,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListPopTrafficStatisticsRequest,
     ) -> csas_20230120_models.ListPopTrafficStatisticsResponse:
+        """
+        @summary pop节点流量统计
+        
+        @param request: ListPopTrafficStatisticsRequest
+        @return: ListPopTrafficStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_pop_traffic_statistics_with_options_async(request, runtime)
 
@@ -2986,6 +4022,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListPrivateAccessApplicationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListPrivateAccessApplicationsResponse:
+        """
+        @summary 批量查询内网访问应用
+        
+        @param request: ListPrivateAccessApplicationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPrivateAccessApplicationsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3012,6 +4055,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListPrivateAccessApplicationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListPrivateAccessApplicationsResponse:
+        """
+        @summary 批量查询内网访问应用
+        
+        @param request: ListPrivateAccessApplicationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPrivateAccessApplicationsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3037,6 +4087,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListPrivateAccessApplicationsRequest,
     ) -> csas_20230120_models.ListPrivateAccessApplicationsResponse:
+        """
+        @summary 批量查询内网访问应用
+        
+        @param request: ListPrivateAccessApplicationsRequest
+        @return: ListPrivateAccessApplicationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_private_access_applications_with_options(request, runtime)
 
@@ -3044,6 +4100,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListPrivateAccessApplicationsRequest,
     ) -> csas_20230120_models.ListPrivateAccessApplicationsResponse:
+        """
+        @summary 批量查询内网访问应用
+        
+        @param request: ListPrivateAccessApplicationsRequest
+        @return: ListPrivateAccessApplicationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_private_access_applications_with_options_async(request, runtime)
 
@@ -3052,6 +4114,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListPrivateAccessApplicationsForDynamicRouteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListPrivateAccessApplicationsForDynamicRouteResponse:
+        """
+        @summary 批量查询动态路由的内网访问应用
+        
+        @param request: ListPrivateAccessApplicationsForDynamicRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPrivateAccessApplicationsForDynamicRouteResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3078,6 +4147,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListPrivateAccessApplicationsForDynamicRouteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListPrivateAccessApplicationsForDynamicRouteResponse:
+        """
+        @summary 批量查询动态路由的内网访问应用
+        
+        @param request: ListPrivateAccessApplicationsForDynamicRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPrivateAccessApplicationsForDynamicRouteResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3103,6 +4179,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListPrivateAccessApplicationsForDynamicRouteRequest,
     ) -> csas_20230120_models.ListPrivateAccessApplicationsForDynamicRouteResponse:
+        """
+        @summary 批量查询动态路由的内网访问应用
+        
+        @param request: ListPrivateAccessApplicationsForDynamicRouteRequest
+        @return: ListPrivateAccessApplicationsForDynamicRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_private_access_applications_for_dynamic_route_with_options(request, runtime)
 
@@ -3110,6 +4192,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListPrivateAccessApplicationsForDynamicRouteRequest,
     ) -> csas_20230120_models.ListPrivateAccessApplicationsForDynamicRouteResponse:
+        """
+        @summary 批量查询动态路由的内网访问应用
+        
+        @param request: ListPrivateAccessApplicationsForDynamicRouteRequest
+        @return: ListPrivateAccessApplicationsForDynamicRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_private_access_applications_for_dynamic_route_with_options_async(request, runtime)
 
@@ -3118,6 +4206,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListPrivateAccessPolicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListPrivateAccessPolicesResponse:
+        """
+        @summary 批量查询内网访问策略
+        
+        @param request: ListPrivateAccessPolicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPrivateAccessPolicesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3144,6 +4239,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListPrivateAccessPolicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListPrivateAccessPolicesResponse:
+        """
+        @summary 批量查询内网访问策略
+        
+        @param request: ListPrivateAccessPolicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPrivateAccessPolicesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3169,6 +4271,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListPrivateAccessPolicesRequest,
     ) -> csas_20230120_models.ListPrivateAccessPolicesResponse:
+        """
+        @summary 批量查询内网访问策略
+        
+        @param request: ListPrivateAccessPolicesRequest
+        @return: ListPrivateAccessPolicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_private_access_polices_with_options(request, runtime)
 
@@ -3176,6 +4284,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListPrivateAccessPolicesRequest,
     ) -> csas_20230120_models.ListPrivateAccessPolicesResponse:
+        """
+        @summary 批量查询内网访问策略
+        
+        @param request: ListPrivateAccessPolicesRequest
+        @return: ListPrivateAccessPolicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_private_access_polices_with_options_async(request, runtime)
 
@@ -3184,6 +4298,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListPrivateAccessTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListPrivateAccessTagsResponse:
+        """
+        @summary Queries the information about all internal access tags within the current Alibaba Cloud account.
+        
+        @param request: ListPrivateAccessTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPrivateAccessTagsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3210,6 +4331,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListPrivateAccessTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListPrivateAccessTagsResponse:
+        """
+        @summary Queries the information about all internal access tags within the current Alibaba Cloud account.
+        
+        @param request: ListPrivateAccessTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPrivateAccessTagsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3235,6 +4363,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListPrivateAccessTagsRequest,
     ) -> csas_20230120_models.ListPrivateAccessTagsResponse:
+        """
+        @summary Queries the information about all internal access tags within the current Alibaba Cloud account.
+        
+        @param request: ListPrivateAccessTagsRequest
+        @return: ListPrivateAccessTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_private_access_tags_with_options(request, runtime)
 
@@ -3242,6 +4376,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListPrivateAccessTagsRequest,
     ) -> csas_20230120_models.ListPrivateAccessTagsResponse:
+        """
+        @summary Queries the information about all internal access tags within the current Alibaba Cloud account.
+        
+        @param request: ListPrivateAccessTagsRequest
+        @return: ListPrivateAccessTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_private_access_tags_with_options_async(request, runtime)
 
@@ -3250,6 +4390,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListPrivateAccessTagsForDynamicRouteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListPrivateAccessTagsForDynamicRouteResponse:
+        """
+        @summary 批量查询动态路由的内网访问标签
+        
+        @param request: ListPrivateAccessTagsForDynamicRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPrivateAccessTagsForDynamicRouteResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3276,6 +4423,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListPrivateAccessTagsForDynamicRouteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListPrivateAccessTagsForDynamicRouteResponse:
+        """
+        @summary 批量查询动态路由的内网访问标签
+        
+        @param request: ListPrivateAccessTagsForDynamicRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPrivateAccessTagsForDynamicRouteResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3301,6 +4455,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListPrivateAccessTagsForDynamicRouteRequest,
     ) -> csas_20230120_models.ListPrivateAccessTagsForDynamicRouteResponse:
+        """
+        @summary 批量查询动态路由的内网访问标签
+        
+        @param request: ListPrivateAccessTagsForDynamicRouteRequest
+        @return: ListPrivateAccessTagsForDynamicRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_private_access_tags_for_dynamic_route_with_options(request, runtime)
 
@@ -3308,6 +4468,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListPrivateAccessTagsForDynamicRouteRequest,
     ) -> csas_20230120_models.ListPrivateAccessTagsForDynamicRouteResponse:
+        """
+        @summary 批量查询动态路由的内网访问标签
+        
+        @param request: ListPrivateAccessTagsForDynamicRouteRequest
+        @return: ListPrivateAccessTagsForDynamicRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_private_access_tags_for_dynamic_route_with_options_async(request, runtime)
 
@@ -3316,6 +4482,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListRegistrationPoliciesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListRegistrationPoliciesResponse:
+        """
+        @summary 查询用户设备注册策略列表
+        
+        @param request: ListRegistrationPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRegistrationPoliciesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3342,6 +4515,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListRegistrationPoliciesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListRegistrationPoliciesResponse:
+        """
+        @summary 查询用户设备注册策略列表
+        
+        @param request: ListRegistrationPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRegistrationPoliciesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3367,6 +4547,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListRegistrationPoliciesRequest,
     ) -> csas_20230120_models.ListRegistrationPoliciesResponse:
+        """
+        @summary 查询用户设备注册策略列表
+        
+        @param request: ListRegistrationPoliciesRequest
+        @return: ListRegistrationPoliciesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_registration_policies_with_options(request, runtime)
 
@@ -3374,6 +4560,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListRegistrationPoliciesRequest,
     ) -> csas_20230120_models.ListRegistrationPoliciesResponse:
+        """
+        @summary 查询用户设备注册策略列表
+        
+        @param request: ListRegistrationPoliciesRequest
+        @return: ListRegistrationPoliciesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_registration_policies_with_options_async(request, runtime)
 
@@ -3382,6 +4574,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListRegistrationPoliciesForUserGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListRegistrationPoliciesForUserGroupResponse:
+        """
+        @summary 查询用户组相关的设备注册策略
+        
+        @param request: ListRegistrationPoliciesForUserGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRegistrationPoliciesForUserGroupResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3408,6 +4607,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListRegistrationPoliciesForUserGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListRegistrationPoliciesForUserGroupResponse:
+        """
+        @summary 查询用户组相关的设备注册策略
+        
+        @param request: ListRegistrationPoliciesForUserGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRegistrationPoliciesForUserGroupResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3433,6 +4639,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListRegistrationPoliciesForUserGroupRequest,
     ) -> csas_20230120_models.ListRegistrationPoliciesForUserGroupResponse:
+        """
+        @summary 查询用户组相关的设备注册策略
+        
+        @param request: ListRegistrationPoliciesForUserGroupRequest
+        @return: ListRegistrationPoliciesForUserGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_registration_policies_for_user_group_with_options(request, runtime)
 
@@ -3440,6 +4652,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListRegistrationPoliciesForUserGroupRequest,
     ) -> csas_20230120_models.ListRegistrationPoliciesForUserGroupResponse:
+        """
+        @summary 查询用户组相关的设备注册策略
+        
+        @param request: ListRegistrationPoliciesForUserGroupRequest
+        @return: ListRegistrationPoliciesForUserGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_registration_policies_for_user_group_with_options_async(request, runtime)
 
@@ -3448,6 +4666,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListSoftwareForUserDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListSoftwareForUserDeviceResponse:
+        """
+        @summary 批量查询终端安装软件列表
+        
+        @param request: ListSoftwareForUserDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSoftwareForUserDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3474,6 +4699,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListSoftwareForUserDeviceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListSoftwareForUserDeviceResponse:
+        """
+        @summary 批量查询终端安装软件列表
+        
+        @param request: ListSoftwareForUserDeviceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSoftwareForUserDeviceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3499,6 +4731,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListSoftwareForUserDeviceRequest,
     ) -> csas_20230120_models.ListSoftwareForUserDeviceResponse:
+        """
+        @summary 批量查询终端安装软件列表
+        
+        @param request: ListSoftwareForUserDeviceRequest
+        @return: ListSoftwareForUserDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_software_for_user_device_with_options(request, runtime)
 
@@ -3506,6 +4744,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListSoftwareForUserDeviceRequest,
     ) -> csas_20230120_models.ListSoftwareForUserDeviceResponse:
+        """
+        @summary 批量查询终端安装软件列表
+        
+        @param request: ListSoftwareForUserDeviceRequest
+        @return: ListSoftwareForUserDeviceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_software_for_user_device_with_options_async(request, runtime)
 
@@ -3514,6 +4758,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListTagsForPrivateAccessApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListTagsForPrivateAccessApplicationResponse:
+        """
+        @summary 批量查询内网访问应用的标签
+        
+        @param request: ListTagsForPrivateAccessApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagsForPrivateAccessApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3540,6 +4791,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListTagsForPrivateAccessApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListTagsForPrivateAccessApplicationResponse:
+        """
+        @summary 批量查询内网访问应用的标签
+        
+        @param request: ListTagsForPrivateAccessApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagsForPrivateAccessApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3565,6 +4823,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListTagsForPrivateAccessApplicationRequest,
     ) -> csas_20230120_models.ListTagsForPrivateAccessApplicationResponse:
+        """
+        @summary 批量查询内网访问应用的标签
+        
+        @param request: ListTagsForPrivateAccessApplicationRequest
+        @return: ListTagsForPrivateAccessApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tags_for_private_access_application_with_options(request, runtime)
 
@@ -3572,6 +4836,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListTagsForPrivateAccessApplicationRequest,
     ) -> csas_20230120_models.ListTagsForPrivateAccessApplicationResponse:
+        """
+        @summary 批量查询内网访问应用的标签
+        
+        @param request: ListTagsForPrivateAccessApplicationRequest
+        @return: ListTagsForPrivateAccessApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tags_for_private_access_application_with_options_async(request, runtime)
 
@@ -3580,6 +4850,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListTagsForPrivateAccessPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListTagsForPrivateAccessPolicyResponse:
+        """
+        @summary 批量查询内网访问策略的标签
+        
+        @param request: ListTagsForPrivateAccessPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagsForPrivateAccessPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3606,6 +4883,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListTagsForPrivateAccessPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListTagsForPrivateAccessPolicyResponse:
+        """
+        @summary 批量查询内网访问策略的标签
+        
+        @param request: ListTagsForPrivateAccessPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagsForPrivateAccessPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3631,6 +4915,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListTagsForPrivateAccessPolicyRequest,
     ) -> csas_20230120_models.ListTagsForPrivateAccessPolicyResponse:
+        """
+        @summary 批量查询内网访问策略的标签
+        
+        @param request: ListTagsForPrivateAccessPolicyRequest
+        @return: ListTagsForPrivateAccessPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tags_for_private_access_policy_with_options(request, runtime)
 
@@ -3638,6 +4928,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListTagsForPrivateAccessPolicyRequest,
     ) -> csas_20230120_models.ListTagsForPrivateAccessPolicyResponse:
+        """
+        @summary 批量查询内网访问策略的标签
+        
+        @param request: ListTagsForPrivateAccessPolicyRequest
+        @return: ListTagsForPrivateAccessPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tags_for_private_access_policy_with_options_async(request, runtime)
 
@@ -3646,6 +4942,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListUserDevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListUserDevicesResponse:
+        """
+        @summary 批量查询用户设备列表
+        
+        @param request: ListUserDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3672,6 +4975,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListUserDevicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListUserDevicesResponse:
+        """
+        @summary 批量查询用户设备列表
+        
+        @param request: ListUserDevicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserDevicesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3697,6 +5007,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListUserDevicesRequest,
     ) -> csas_20230120_models.ListUserDevicesResponse:
+        """
+        @summary 批量查询用户设备列表
+        
+        @param request: ListUserDevicesRequest
+        @return: ListUserDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_user_devices_with_options(request, runtime)
 
@@ -3704,6 +5020,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListUserDevicesRequest,
     ) -> csas_20230120_models.ListUserDevicesResponse:
+        """
+        @summary 批量查询用户设备列表
+        
+        @param request: ListUserDevicesRequest
+        @return: ListUserDevicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_user_devices_with_options_async(request, runtime)
 
@@ -3712,6 +5034,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListUserGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListUserGroupsResponse:
+        """
+        @summary 批量查询用户组
+        
+        @param request: ListUserGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3738,6 +5067,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListUserGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListUserGroupsResponse:
+        """
+        @summary 批量查询用户组
+        
+        @param request: ListUserGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3763,6 +5099,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListUserGroupsRequest,
     ) -> csas_20230120_models.ListUserGroupsResponse:
+        """
+        @summary 批量查询用户组
+        
+        @param request: ListUserGroupsRequest
+        @return: ListUserGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_user_groups_with_options(request, runtime)
 
@@ -3770,6 +5112,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListUserGroupsRequest,
     ) -> csas_20230120_models.ListUserGroupsResponse:
+        """
+        @summary 批量查询用户组
+        
+        @param request: ListUserGroupsRequest
+        @return: ListUserGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_user_groups_with_options_async(request, runtime)
 
@@ -3778,6 +5126,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListUserGroupsForPrivateAccessPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListUserGroupsForPrivateAccessPolicyResponse:
+        """
+        @summary 批量查询内网访问策略的用户组
+        
+        @param request: ListUserGroupsForPrivateAccessPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserGroupsForPrivateAccessPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3804,6 +5159,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListUserGroupsForPrivateAccessPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListUserGroupsForPrivateAccessPolicyResponse:
+        """
+        @summary 批量查询内网访问策略的用户组
+        
+        @param request: ListUserGroupsForPrivateAccessPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserGroupsForPrivateAccessPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3829,6 +5191,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListUserGroupsForPrivateAccessPolicyRequest,
     ) -> csas_20230120_models.ListUserGroupsForPrivateAccessPolicyResponse:
+        """
+        @summary 批量查询内网访问策略的用户组
+        
+        @param request: ListUserGroupsForPrivateAccessPolicyRequest
+        @return: ListUserGroupsForPrivateAccessPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_user_groups_for_private_access_policy_with_options(request, runtime)
 
@@ -3836,6 +5204,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListUserGroupsForPrivateAccessPolicyRequest,
     ) -> csas_20230120_models.ListUserGroupsForPrivateAccessPolicyResponse:
+        """
+        @summary 批量查询内网访问策略的用户组
+        
+        @param request: ListUserGroupsForPrivateAccessPolicyRequest
+        @return: ListUserGroupsForPrivateAccessPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_user_groups_for_private_access_policy_with_options_async(request, runtime)
 
@@ -3844,6 +5218,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListUserGroupsForRegistrationPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListUserGroupsForRegistrationPolicyResponse:
+        """
+        @summary 查询设备注册策略相关用户组
+        
+        @param request: ListUserGroupsForRegistrationPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserGroupsForRegistrationPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3870,6 +5251,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListUserGroupsForRegistrationPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListUserGroupsForRegistrationPolicyResponse:
+        """
+        @summary 查询设备注册策略相关用户组
+        
+        @param request: ListUserGroupsForRegistrationPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserGroupsForRegistrationPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3895,6 +5283,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListUserGroupsForRegistrationPolicyRequest,
     ) -> csas_20230120_models.ListUserGroupsForRegistrationPolicyResponse:
+        """
+        @summary 查询设备注册策略相关用户组
+        
+        @param request: ListUserGroupsForRegistrationPolicyRequest
+        @return: ListUserGroupsForRegistrationPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_user_groups_for_registration_policy_with_options(request, runtime)
 
@@ -3902,6 +5296,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListUserGroupsForRegistrationPolicyRequest,
     ) -> csas_20230120_models.ListUserGroupsForRegistrationPolicyResponse:
+        """
+        @summary 查询设备注册策略相关用户组
+        
+        @param request: ListUserGroupsForRegistrationPolicyRequest
+        @return: ListUserGroupsForRegistrationPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_user_groups_for_registration_policy_with_options_async(request, runtime)
 
@@ -3910,6 +5310,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListUsersResponse:
+        """
+        @summary 列表查询登陆用户
+        
+        @param request: ListUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUsersResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3936,6 +5343,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.ListUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.ListUsersResponse:
+        """
+        @summary 列表查询登陆用户
+        
+        @param request: ListUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUsersResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3961,6 +5375,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListUsersRequest,
     ) -> csas_20230120_models.ListUsersResponse:
+        """
+        @summary 列表查询登陆用户
+        
+        @param request: ListUsersRequest
+        @return: ListUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_users_with_options(request, runtime)
 
@@ -3968,6 +5388,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.ListUsersRequest,
     ) -> csas_20230120_models.ListUsersResponse:
+        """
+        @summary 列表查询登陆用户
+        
+        @param request: ListUsersRequest
+        @return: ListUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_users_with_options_async(request, runtime)
 
@@ -3976,6 +5402,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.UpdateClientUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.UpdateClientUserResponse:
+        """
+        @summary 修改自定义身份源指定用户
+        
+        @param request: UpdateClientUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateClientUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.department_id):
@@ -4012,6 +5445,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.UpdateClientUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.UpdateClientUserResponse:
+        """
+        @summary 修改自定义身份源指定用户
+        
+        @param request: UpdateClientUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateClientUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.department_id):
@@ -4047,6 +5487,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.UpdateClientUserRequest,
     ) -> csas_20230120_models.UpdateClientUserResponse:
+        """
+        @summary 修改自定义身份源指定用户
+        
+        @param request: UpdateClientUserRequest
+        @return: UpdateClientUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_client_user_with_options(request, runtime)
 
@@ -4054,6 +5500,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.UpdateClientUserRequest,
     ) -> csas_20230120_models.UpdateClientUserResponse:
+        """
+        @summary 修改自定义身份源指定用户
+        
+        @param request: UpdateClientUserRequest
+        @return: UpdateClientUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_client_user_with_options_async(request, runtime)
 
@@ -4062,6 +5514,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.UpdateClientUserPasswordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.UpdateClientUserPasswordResponse:
+        """
+        @summary 修改自定义身份源指定用户密码
+        
+        @param request: UpdateClientUserPasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateClientUserPasswordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -4094,6 +5553,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.UpdateClientUserPasswordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.UpdateClientUserPasswordResponse:
+        """
+        @summary 修改自定义身份源指定用户密码
+        
+        @param request: UpdateClientUserPasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateClientUserPasswordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -4125,6 +5591,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.UpdateClientUserPasswordRequest,
     ) -> csas_20230120_models.UpdateClientUserPasswordResponse:
+        """
+        @summary 修改自定义身份源指定用户密码
+        
+        @param request: UpdateClientUserPasswordRequest
+        @return: UpdateClientUserPasswordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_client_user_password_with_options(request, runtime)
 
@@ -4132,6 +5604,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.UpdateClientUserPasswordRequest,
     ) -> csas_20230120_models.UpdateClientUserPasswordResponse:
+        """
+        @summary 修改自定义身份源指定用户密码
+        
+        @param request: UpdateClientUserPasswordRequest
+        @return: UpdateClientUserPasswordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_client_user_password_with_options_async(request, runtime)
 
@@ -4140,6 +5618,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.UpdateClientUserStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.UpdateClientUserStatusResponse:
+        """
+        @summary 修改自定义身份源指定用户启用状态
+        
+        @param request: UpdateClientUserStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateClientUserStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -4170,6 +5655,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.UpdateClientUserStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.UpdateClientUserStatusResponse:
+        """
+        @summary 修改自定义身份源指定用户启用状态
+        
+        @param request: UpdateClientUserStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateClientUserStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -4199,6 +5691,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.UpdateClientUserStatusRequest,
     ) -> csas_20230120_models.UpdateClientUserStatusResponse:
+        """
+        @summary 修改自定义身份源指定用户启用状态
+        
+        @param request: UpdateClientUserStatusRequest
+        @return: UpdateClientUserStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_client_user_status_with_options(request, runtime)
 
@@ -4206,6 +5704,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.UpdateClientUserStatusRequest,
     ) -> csas_20230120_models.UpdateClientUserStatusResponse:
+        """
+        @summary 修改自定义身份源指定用户启用状态
+        
+        @param request: UpdateClientUserStatusRequest
+        @return: UpdateClientUserStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_client_user_status_with_options_async(request, runtime)
 
@@ -4214,6 +5718,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.UpdateDynamicRouteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.UpdateDynamicRouteResponse:
+        """
+        @summary 修改动态路由
+        
+        @param request: UpdateDynamicRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDynamicRouteResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         body_flat = {}
@@ -4267,6 +5778,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.UpdateDynamicRouteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.UpdateDynamicRouteResponse:
+        """
+        @summary 修改动态路由
+        
+        @param request: UpdateDynamicRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDynamicRouteResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         body_flat = {}
@@ -4319,6 +5837,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.UpdateDynamicRouteRequest,
     ) -> csas_20230120_models.UpdateDynamicRouteResponse:
+        """
+        @summary 修改动态路由
+        
+        @param request: UpdateDynamicRouteRequest
+        @return: UpdateDynamicRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_dynamic_route_with_options(request, runtime)
 
@@ -4326,6 +5850,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.UpdateDynamicRouteRequest,
     ) -> csas_20230120_models.UpdateDynamicRouteResponse:
+        """
+        @summary 修改动态路由
+        
+        @param request: UpdateDynamicRouteRequest
+        @return: UpdateDynamicRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_dynamic_route_with_options_async(request, runtime)
 
@@ -4334,6 +5864,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.UpdateExcessiveDeviceRegistrationApplicationsStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.UpdateExcessiveDeviceRegistrationApplicationsStatusResponse:
+        """
+        @summary 批量更新超额注册申请状态
+        
+        @param request: UpdateExcessiveDeviceRegistrationApplicationsStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateExcessiveDeviceRegistrationApplicationsStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         body_flat = {}
@@ -4367,6 +5904,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.UpdateExcessiveDeviceRegistrationApplicationsStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.UpdateExcessiveDeviceRegistrationApplicationsStatusResponse:
+        """
+        @summary 批量更新超额注册申请状态
+        
+        @param request: UpdateExcessiveDeviceRegistrationApplicationsStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateExcessiveDeviceRegistrationApplicationsStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         body_flat = {}
@@ -4399,6 +5943,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.UpdateExcessiveDeviceRegistrationApplicationsStatusRequest,
     ) -> csas_20230120_models.UpdateExcessiveDeviceRegistrationApplicationsStatusResponse:
+        """
+        @summary 批量更新超额注册申请状态
+        
+        @param request: UpdateExcessiveDeviceRegistrationApplicationsStatusRequest
+        @return: UpdateExcessiveDeviceRegistrationApplicationsStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_excessive_device_registration_applications_status_with_options(request, runtime)
 
@@ -4406,6 +5956,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.UpdateExcessiveDeviceRegistrationApplicationsStatusRequest,
     ) -> csas_20230120_models.UpdateExcessiveDeviceRegistrationApplicationsStatusResponse:
+        """
+        @summary 批量更新超额注册申请状态
+        
+        @param request: UpdateExcessiveDeviceRegistrationApplicationsStatusRequest
+        @return: UpdateExcessiveDeviceRegistrationApplicationsStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_excessive_device_registration_applications_status_with_options_async(request, runtime)
 
@@ -4414,6 +5970,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.UpdateIdpDepartmentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.UpdateIdpDepartmentResponse:
+        """
+        @summary 修改指定自定义身份源部门
+        
+        @param request: UpdateIdpDepartmentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateIdpDepartmentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.department_id):
@@ -4446,6 +6009,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.UpdateIdpDepartmentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.UpdateIdpDepartmentResponse:
+        """
+        @summary 修改指定自定义身份源部门
+        
+        @param request: UpdateIdpDepartmentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateIdpDepartmentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.department_id):
@@ -4477,6 +6047,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.UpdateIdpDepartmentRequest,
     ) -> csas_20230120_models.UpdateIdpDepartmentResponse:
+        """
+        @summary 修改指定自定义身份源部门
+        
+        @param request: UpdateIdpDepartmentRequest
+        @return: UpdateIdpDepartmentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_idp_department_with_options(request, runtime)
 
@@ -4484,6 +6060,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.UpdateIdpDepartmentRequest,
     ) -> csas_20230120_models.UpdateIdpDepartmentResponse:
+        """
+        @summary 修改指定自定义身份源部门
+        
+        @param request: UpdateIdpDepartmentRequest
+        @return: UpdateIdpDepartmentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_idp_department_with_options_async(request, runtime)
 
@@ -4492,6 +6074,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.UpdatePrivateAccessApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.UpdatePrivateAccessApplicationResponse:
+        """
+        @summary 修改内网访问应用
+        
+        @param request: UpdatePrivateAccessApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePrivateAccessApplicationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         body_flat = {}
@@ -4537,6 +6126,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.UpdatePrivateAccessApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.UpdatePrivateAccessApplicationResponse:
+        """
+        @summary 修改内网访问应用
+        
+        @param request: UpdatePrivateAccessApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePrivateAccessApplicationResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         body_flat = {}
@@ -4581,6 +6177,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.UpdatePrivateAccessApplicationRequest,
     ) -> csas_20230120_models.UpdatePrivateAccessApplicationResponse:
+        """
+        @summary 修改内网访问应用
+        
+        @param request: UpdatePrivateAccessApplicationRequest
+        @return: UpdatePrivateAccessApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_private_access_application_with_options(request, runtime)
 
@@ -4588,6 +6190,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.UpdatePrivateAccessApplicationRequest,
     ) -> csas_20230120_models.UpdatePrivateAccessApplicationResponse:
+        """
+        @summary 修改内网访问应用
+        
+        @param request: UpdatePrivateAccessApplicationRequest
+        @return: UpdatePrivateAccessApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_private_access_application_with_options_async(request, runtime)
 
@@ -4596,6 +6204,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.UpdatePrivateAccessPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.UpdatePrivateAccessPolicyResponse:
+        """
+        @summary 修改内网访问策略
+        
+        @param request: UpdatePrivateAccessPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePrivateAccessPolicyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         body_flat = {}
@@ -4651,6 +6266,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.UpdatePrivateAccessPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.UpdatePrivateAccessPolicyResponse:
+        """
+        @summary 修改内网访问策略
+        
+        @param request: UpdatePrivateAccessPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePrivateAccessPolicyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         body_flat = {}
@@ -4705,6 +6327,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.UpdatePrivateAccessPolicyRequest,
     ) -> csas_20230120_models.UpdatePrivateAccessPolicyResponse:
+        """
+        @summary 修改内网访问策略
+        
+        @param request: UpdatePrivateAccessPolicyRequest
+        @return: UpdatePrivateAccessPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_private_access_policy_with_options(request, runtime)
 
@@ -4712,6 +6340,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.UpdatePrivateAccessPolicyRequest,
     ) -> csas_20230120_models.UpdatePrivateAccessPolicyResponse:
+        """
+        @summary 修改内网访问策略
+        
+        @param request: UpdatePrivateAccessPolicyRequest
+        @return: UpdatePrivateAccessPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_private_access_policy_with_options_async(request, runtime)
 
@@ -4720,6 +6354,13 @@ class Client(OpenApiClient):
         tmp_req: csas_20230120_models.UpdateRegistrationPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.UpdateRegistrationPolicyResponse:
+        """
+        @summary 修改设备注册策略
+        
+        @param tmp_req: UpdateRegistrationPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRegistrationPolicyResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = csas_20230120_models.UpdateRegistrationPolicyShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4779,6 +6420,13 @@ class Client(OpenApiClient):
         tmp_req: csas_20230120_models.UpdateRegistrationPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.UpdateRegistrationPolicyResponse:
+        """
+        @summary 修改设备注册策略
+        
+        @param tmp_req: UpdateRegistrationPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRegistrationPolicyResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = csas_20230120_models.UpdateRegistrationPolicyShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4837,6 +6485,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.UpdateRegistrationPolicyRequest,
     ) -> csas_20230120_models.UpdateRegistrationPolicyResponse:
+        """
+        @summary 修改设备注册策略
+        
+        @param request: UpdateRegistrationPolicyRequest
+        @return: UpdateRegistrationPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_registration_policy_with_options(request, runtime)
 
@@ -4844,6 +6498,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.UpdateRegistrationPolicyRequest,
     ) -> csas_20230120_models.UpdateRegistrationPolicyResponse:
+        """
+        @summary 修改设备注册策略
+        
+        @param request: UpdateRegistrationPolicyRequest
+        @return: UpdateRegistrationPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_registration_policy_with_options_async(request, runtime)
 
@@ -4852,6 +6512,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.UpdateUserDevicesSharingStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.UpdateUserDevicesSharingStatusResponse:
+        """
+        @summary 批量更新用户设备共享状态
+        
+        @param request: UpdateUserDevicesSharingStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUserDevicesSharingStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         body_flat = {}
@@ -4885,6 +6552,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.UpdateUserDevicesSharingStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.UpdateUserDevicesSharingStatusResponse:
+        """
+        @summary 批量更新用户设备共享状态
+        
+        @param request: UpdateUserDevicesSharingStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUserDevicesSharingStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         body_flat = {}
@@ -4917,6 +6591,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.UpdateUserDevicesSharingStatusRequest,
     ) -> csas_20230120_models.UpdateUserDevicesSharingStatusResponse:
+        """
+        @summary 批量更新用户设备共享状态
+        
+        @param request: UpdateUserDevicesSharingStatusRequest
+        @return: UpdateUserDevicesSharingStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_user_devices_sharing_status_with_options(request, runtime)
 
@@ -4924,6 +6604,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.UpdateUserDevicesSharingStatusRequest,
     ) -> csas_20230120_models.UpdateUserDevicesSharingStatusResponse:
+        """
+        @summary 批量更新用户设备共享状态
+        
+        @param request: UpdateUserDevicesSharingStatusRequest
+        @return: UpdateUserDevicesSharingStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_user_devices_sharing_status_with_options_async(request, runtime)
 
@@ -4932,6 +6618,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.UpdateUserDevicesStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.UpdateUserDevicesStatusResponse:
+        """
+        @summary 批量更新用户设备状态
+        
+        @param request: UpdateUserDevicesStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUserDevicesStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.device_action):
@@ -4965,6 +6658,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.UpdateUserDevicesStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.UpdateUserDevicesStatusResponse:
+        """
+        @summary 批量更新用户设备状态
+        
+        @param request: UpdateUserDevicesStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUserDevicesStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.device_action):
@@ -4997,6 +6697,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.UpdateUserDevicesStatusRequest,
     ) -> csas_20230120_models.UpdateUserDevicesStatusResponse:
+        """
+        @summary 批量更新用户设备状态
+        
+        @param request: UpdateUserDevicesStatusRequest
+        @return: UpdateUserDevicesStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_user_devices_status_with_options(request, runtime)
 
@@ -5004,6 +6710,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.UpdateUserDevicesStatusRequest,
     ) -> csas_20230120_models.UpdateUserDevicesStatusResponse:
+        """
+        @summary 批量更新用户设备状态
+        
+        @param request: UpdateUserDevicesStatusRequest
+        @return: UpdateUserDevicesStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_user_devices_status_with_options_async(request, runtime)
 
@@ -5012,6 +6724,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.UpdateUserGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.UpdateUserGroupResponse:
+        """
+        @summary 修改用户组
+        
+        @param request: UpdateUserGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUserGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         body_flat = {}
@@ -5049,6 +6768,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.UpdateUserGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.UpdateUserGroupResponse:
+        """
+        @summary 修改用户组
+        
+        @param request: UpdateUserGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUserGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         body_flat = {}
@@ -5085,6 +6811,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.UpdateUserGroupRequest,
     ) -> csas_20230120_models.UpdateUserGroupResponse:
+        """
+        @summary 修改用户组
+        
+        @param request: UpdateUserGroupRequest
+        @return: UpdateUserGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_user_group_with_options(request, runtime)
 
@@ -5092,6 +6824,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.UpdateUserGroupRequest,
     ) -> csas_20230120_models.UpdateUserGroupResponse:
+        """
+        @summary 修改用户组
+        
+        @param request: UpdateUserGroupRequest
+        @return: UpdateUserGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_user_group_with_options_async(request, runtime)
 
@@ -5100,6 +6838,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.UpdateUsersStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.UpdateUsersStatusResponse:
+        """
+        @summary 批量修改登陆用户状态
+        
+        @param request: UpdateUsersStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUsersStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.sase_user_ids):
@@ -5130,6 +6875,13 @@ class Client(OpenApiClient):
         request: csas_20230120_models.UpdateUsersStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> csas_20230120_models.UpdateUsersStatusResponse:
+        """
+        @summary 批量修改登陆用户状态
+        
+        @param request: UpdateUsersStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUsersStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.sase_user_ids):
@@ -5159,6 +6911,12 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.UpdateUsersStatusRequest,
     ) -> csas_20230120_models.UpdateUsersStatusResponse:
+        """
+        @summary 批量修改登陆用户状态
+        
+        @param request: UpdateUsersStatusRequest
+        @return: UpdateUsersStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_users_status_with_options(request, runtime)
 
@@ -5166,5 +6924,11 @@ class Client(OpenApiClient):
         self,
         request: csas_20230120_models.UpdateUsersStatusRequest,
     ) -> csas_20230120_models.UpdateUsersStatusResponse:
+        """
+        @summary 批量修改登陆用户状态
+        
+        @param request: UpdateUsersStatusRequest
+        @return: UpdateUsersStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_users_status_with_options_async(request, runtime)
