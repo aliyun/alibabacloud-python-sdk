@@ -1,3 +1,7 @@
+2024-05-17 Version: 2.0.1
+- Update API DescribeBackupPolicy: update response param.
+
+
 2024-04-29 Version: 2.0.0
 - Support API DescribeBackupDataList.
 - Support API DescribeBackupPolicy.

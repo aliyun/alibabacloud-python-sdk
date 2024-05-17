@@ -16,12 +16,18 @@ class ChangeResourceGroupRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
         # The ID of the resource group to which you want to move the resource.
+        # 
+        # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
         # The region ID of the instance.
         self.region_code = region_code
         # The ID of the resource.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource. Set the value to backupplan.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -192,11 +198,11 @@ class CreateDownloadRequest(TeaModel):
         target_path: str = None,
         target_type: str = None,
     ):
-        # The ID of the backup set. You can call the [DescribeBackups](~~26273~~) operation to query the ID of the backup set.
+        # The ID of the backup set. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/26273.html) operation to query the ID of the backup set.
         # 
         # > This parameter is required if the BakSetType parameter is set to full.
         self.bak_set_id = bak_set_id
-        # The size of the full backup set. Unit: bytes. You can call the [DescribeBackups](~~26273~~) operation to query the size of the full backup set.
+        # The size of the full backup set. Unit: bytes. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/26273.html) operation to query the size of the full backup set.
         self.bak_set_size = bak_set_size
         # The type of the download task. Valid values:
         # 
@@ -216,13 +222,17 @@ class CreateDownloadRequest(TeaModel):
         # > This parameter is required.
         self.format_type = format_type
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_name = instance_name
-        # The ID of the region in which the instance resides. You can call the [DescribeDBInstanceAttribute](~~26231~~) operation to query the region ID of the instance.
+        # The ID of the region in which the instance resides. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/26231.html) operation to query the region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_code = region_code
         # The name of the OSS bucket that is used to store the backup set.
         # 
         # *   This parameter is required if the TargetType parameter is set to OSS.
-        # *   Make sure that your account is granted the **AliyunDBSDefaultRole** permission. For more information, see [Use RAM for resource authorization](~~26307~~). You can also grant permissions based on the operation instructions in the Resource Access Management (RAM) console.
+        # *   Make sure that your account is granted the **AliyunDBSDefaultRole** permission. For more information, see [Use RAM for resource authorization](https://help.aliyun.com/document_detail/26307.html). You can also grant permissions based on the operation instructions in the Resource Access Management (RAM) console.
         self.target_bucket = target_bucket
         # The region in which the OSS bucket resides.
         # 
@@ -546,11 +556,15 @@ class DeleteSandboxInstanceRequest(TeaModel):
         instance_id: str = None,
         zone_id: str = None,
     ):
-        # The ID of the backup schedule. You can call the [DescribeBackupPlanList](~~437215~~) operation to query the ID of the backup schedule.
+        # The ID of the backup schedule. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/437215.html) operation to query the ID of the backup schedule.
         # 
-        # > If your instance is an ApsaraDB RDS for MySQL instance, you can [configure automatic access to a data source](~~193091~~) to automatically add the instance to DBS and obtain the ID of the backup schedule.
+        # > If your instance is an ApsaraDB RDS for MySQL instance, you can [configure automatic access to a data source](https://help.aliyun.com/document_detail/193091.html) to automatically add the instance to DBS and obtain the ID of the backup schedule.
+        # 
+        # This parameter is required.
         self.backup_plan_id = backup_plan_id
-        # The ID of the sandbox instance. You can call the [DescribeSandboxInstances](~~437257~~) operation to query the ID of the sandbox instance.
+        # The ID of the sandbox instance. You can call the [DescribeSandboxInstances](https://help.aliyun.com/document_detail/437257.html) operation to query the ID of the sandbox instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.zone_id = zone_id
 
@@ -1237,6 +1251,7 @@ class DescribeBackupPolicyResponseBodyDataAdvanceDataPolicies(TeaModel):
         filter_key: str = None,
         filter_type: str = None,
         filter_value: str = None,
+        policy_id: str = None,
         retention_type: str = None,
         retention_value: str = None,
         src_region: str = None,
@@ -1251,6 +1266,7 @@ class DescribeBackupPolicyResponseBodyDataAdvanceDataPolicies(TeaModel):
         self.filter_key = filter_key
         self.filter_type = filter_type
         self.filter_value = filter_value
+        self.policy_id = policy_id
         self.retention_type = retention_type
         self.retention_value = retention_value
         self.src_region = src_region
@@ -1282,6 +1298,8 @@ class DescribeBackupPolicyResponseBodyDataAdvanceDataPolicies(TeaModel):
             result['FilterType'] = self.filter_type
         if self.filter_value is not None:
             result['FilterValue'] = self.filter_value
+        if self.policy_id is not None:
+            result['PolicyId'] = self.policy_id
         if self.retention_type is not None:
             result['RetentionType'] = self.retention_type
         if self.retention_value is not None:
@@ -1312,6 +1330,8 @@ class DescribeBackupPolicyResponseBodyDataAdvanceDataPolicies(TeaModel):
             self.filter_type = m.get('FilterType')
         if m.get('FilterValue') is not None:
             self.filter_value = m.get('FilterValue')
+        if m.get('PolicyId') is not None:
+            self.policy_id = m.get('PolicyId')
         if m.get('RetentionType') is not None:
             self.retention_type = m.get('RetentionType')
         if m.get('RetentionValue') is not None:
@@ -2079,17 +2099,21 @@ class DescribeDownloadBackupSetStorageInfoRequest(TeaModel):
         # *   Default value: 7200. This means that the URL is valid for 2 hours by default.
         # *   Valid values: 300 to 86400. Unit: seconds. This means that you can specify a validity period in the range of 5 minutes to 1 day.
         # *   Before you specify this parameter, convert the validity period to seconds. For example, if you want to set the validity period of the URL to 5 minutes, enter 300.
+        # 
+        # This parameter is required.
         self.duration = duration
         # The ID of the instance.
         # 
         # > The **BackupSetId** parameter is required if you specify the **InstanceName** parameter.
         self.instance_name = instance_name
-        # The ID of the region in which the instance resides. You can call the [DescribeDBInstanceAttribute](~~26231~~) operation to query the region ID of the instance.
+        # The ID of the region in which the instance resides. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/26231.html) operation to query the region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_code = region_code
-        # The ID of the download task.
+        # The download task ID.
         # 
         # *   The **BackupSetId** and **InstanceName** parameters are required if you do not specify the **TaskId** parameter.
-        # *   You can go to the instance details page in the Alibaba Cloud Management Console and click **Backup and Restoration** in the left-side navigation pane. On the **Backup Download** tab, view the task ID.
+        # *   To view the download task ID, go to the instance details page in the console and click **Backup and Restoration** in the left-side navigation pane. On the **Backup Download** tab, view the task ID.
         self.task_id = task_id
 
     def validate(self):
@@ -2295,8 +2319,12 @@ class DescribeDownloadSupportRequest(TeaModel):
         region_code: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_name = instance_name
-        # The ID of the region in which the instance resides. You can call the [DescribeDBInstanceAttribute](~~26231~~) operation to query the region ID of the instance.
+        # The ID of the region in which the instance resides. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/26231.html) operation to query the region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_code = region_code
 
     def validate(self):
@@ -2456,11 +2484,11 @@ class DescribeDownloadTaskRequest(TeaModel):
         state: str = None,
         task_type: str = None,
     ):
-        # The ID of the backup set generated when you create a download task. You can call the [DescribeBackups](~~26273~~) operation to query the ID.
+        # The ID of the backup set generated when you create a download task. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/26273.html) operation to query the ID.
         self.backup_set_id = backup_set_id
         # The page number of the page to return.
         self.current_page = current_page
-        # The ID of the Database Backup (DBS) data source. Specify the parameter in the format of *ds-${Instance ID}\_${regionId}*.
+        # The ID of the Database Backup (DBS) data source. Specify the parameter in the format of *ds-${Instance ID}_${regionId}*.
         self.datasource_id = datasource_id
         # The end of the time range to query. Specify this parameter as a timestamp of the LONG type. Unit: milliseconds.
         self.end_time = end_time
@@ -2477,7 +2505,9 @@ class DescribeDownloadTaskRequest(TeaModel):
         self.order_direct = order_direct
         # The number of entries to return on each page.
         self.page_size = page_size
-        # The ID of the region in which the instance resides. You can call the [DescribeDBInstanceAttribute](~~26231~~) operation to query the region ID of the instance.
+        # The ID of the region in which the instance resides. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/26231.html) operation to query the region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_code = region_code
         # The beginning of the time range to query. Specify this parameter as a timestamp of the LONG type. Unit: milliseconds.
         self.start_time = start_time
@@ -2910,9 +2940,11 @@ class DescribeSandboxBackupSetsRequest(TeaModel):
         page_number: str = None,
         page_size: str = None,
     ):
-        # The ID of the backup schedule. You can call the [DescribeBackupPlanList](~~437215~~) operation to query the ID of the backup schedule.
+        # The ID of the backup schedule. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/437215.html) operation to query the ID of the backup schedule.
         # 
-        # > If your instance is an ApsaraDB RDS for MySQL instance, you can [configure automatic access to a data source](~~193091~~) to automatically add the instance to DBS and obtain the ID of the backup schedule.
+        # > If your instance is an ApsaraDB RDS for MySQL instance, you can [configure automatic access to a data source](https://help.aliyun.com/document_detail/193091.html) to automatically add the instance to DBS and obtain the ID of the backup schedule.
+        # 
+        # This parameter is required.
         self.backup_plan_id = backup_plan_id
         # The ID of the backup set. If this parameter is specified, only the snapshot of the specified backup set is returned. If this parameter is not specified, all the snapshots of the backup schedule are returned.
         self.backup_set_id = backup_set_id
@@ -2921,8 +2953,8 @@ class DescribeSandboxBackupSetsRequest(TeaModel):
         # The number of entries to return on each page. Valid values:
         # 
         # *   30: This is the default value.
-        # *   50\.
-        # *   100\.
+        # *   50\\.
+        # *   100\\.
         self.page_size = page_size
 
     def validate(self):
@@ -3081,17 +3113,19 @@ class DescribeSandboxInstancesRequest(TeaModel):
         page_number: str = None,
         page_size: str = None,
     ):
-        # The ID of the backup schedule. You can call the [DescribeBackupPlanList](~~437215~~) operation to obtain the ID of the backup schedule.
+        # The ID of the backup schedule. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/437215.html) operation to obtain the ID of the backup schedule.
         # 
-        # > If your instance is an ApsaraDB RDS for MySQL instance, you can [configure automatic access to a data source](~~193091~~) to automatically add the instance to DBS and obtain the ID of the backup schedule.
+        # > If your instance is an ApsaraDB RDS for MySQL instance, you can [configure automatic access to a data source](https://help.aliyun.com/document_detail/193091.html) to automatically add the instance to DBS and obtain the ID of the backup schedule.
+        # 
+        # This parameter is required.
         self.backup_plan_id = backup_plan_id
-        # The ID of the sandbox instance. You can call the [CreateSandboxInstance](~~437252~~) operation to obtain the ID of the sandbox instance.
+        # The ID of the sandbox instance. You can call the [CreateSandboxInstance](https://help.aliyun.com/document_detail/437252.html) operation to obtain the ID of the sandbox instance.
         self.instance_id = instance_id
         # The number of the page to return. The value must be an integer that is greater than 0. Default value: 1.
         self.page_number = page_number
         # The number of entries to return on each page. Valid values:
         # 
-        # *   30\. This is the default value.
+        # *   30\\. This is the default value.
         # *   50
         # *   100
         self.page_size = page_size
@@ -3256,9 +3290,11 @@ class DescribeSandboxRecoveryTimeRequest(TeaModel):
         self,
         backup_plan_id: str = None,
     ):
-        # The ID of the backup schedule. You can call the [DescribeBackupPlanList](~~437215~~) operation to obtain the ID of the backup schedule. If you set this parameter to the backup schedule ID obtained by calling the DescribeBackupPlanList operation, the dbs prefix must be removed. Otherwise, the call fails.
+        # The ID of the backup schedule. You can call the [DescribeBackupPlanList](https://help.aliyun.com/document_detail/437215.html) operation to obtain the ID of the backup schedule. If you set this parameter to the backup schedule ID obtained by calling the DescribeBackupPlanList operation, the dbs prefix must be removed. Otherwise, the call fails.
         # 
-        # > If your instance is an ApsaraDB RDS for MySQL instance, you can [configure automatic access to a data source](~~193091~~) to automatically add the instance to DBS and obtain the ID of the backup schedule.
+        # > If your instance is an ApsaraDB RDS for MySQL instance, you can [configure automatic access to a data source](https://help.aliyun.com/document_detail/193091.html) to automatically add the instance to DBS and obtain the ID of the backup schedule.
+        # 
+        # This parameter is required.
         self.backup_plan_id = backup_plan_id
 
     def validate(self):
