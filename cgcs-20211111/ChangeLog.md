@@ -1,3 +1,12 @@
+2024-05-20 Version: 2.8.0
+- Support API ListInstances.
+- Support API ReleaseInstances.
+- Support API ReserveInstances.
+- Support API SendBizCocChangeCallback.
+- Update API CreateAppSession: update response param.
+- Update API CreateAppSessionBatch: update response param.
+
+
 2023-05-23 Version: 2.7.5
 - Update ListAppSessionBatch Api Add ProjectId.
 
