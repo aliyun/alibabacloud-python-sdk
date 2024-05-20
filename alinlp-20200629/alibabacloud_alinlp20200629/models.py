@@ -482,9 +482,13 @@ class DeleteServiceDataByConditionsRequest(TeaModel):
         self,
         conditions: Dict[str, Any] = None,
         service_id: int = None,
+        x_dash_scope_open_apisource: str = None,
     ):
+        # This parameter is required.
         self.conditions = conditions
+        # This parameter is required.
         self.service_id = service_id
+        self.x_dash_scope_open_apisource = x_dash_scope_open_apisource
 
     def validate(self):
         pass
@@ -499,6 +503,8 @@ class DeleteServiceDataByConditionsRequest(TeaModel):
             result['Conditions'] = self.conditions
         if self.service_id is not None:
             result['ServiceId'] = self.service_id
+        if self.x_dash_scope_open_apisource is not None:
+            result['X-DashScope-OpenAPISource'] = self.x_dash_scope_open_apisource
         return result
 
     def from_map(self, m: dict = None):
@@ -507,6 +513,8 @@ class DeleteServiceDataByConditionsRequest(TeaModel):
             self.conditions = m.get('Conditions')
         if m.get('ServiceId') is not None:
             self.service_id = m.get('ServiceId')
+        if m.get('X-DashScope-OpenAPISource') is not None:
+            self.x_dash_scope_open_apisource = m.get('X-DashScope-OpenAPISource')
         return self
 
 
@@ -515,9 +523,13 @@ class DeleteServiceDataByConditionsShrinkRequest(TeaModel):
         self,
         conditions_shrink: str = None,
         service_id: int = None,
+        x_dash_scope_open_apisource: str = None,
     ):
+        # This parameter is required.
         self.conditions_shrink = conditions_shrink
+        # This parameter is required.
         self.service_id = service_id
+        self.x_dash_scope_open_apisource = x_dash_scope_open_apisource
 
     def validate(self):
         pass
@@ -532,6 +544,8 @@ class DeleteServiceDataByConditionsShrinkRequest(TeaModel):
             result['Conditions'] = self.conditions_shrink
         if self.service_id is not None:
             result['ServiceId'] = self.service_id
+        if self.x_dash_scope_open_apisource is not None:
+            result['X-DashScope-OpenAPISource'] = self.x_dash_scope_open_apisource
         return result
 
     def from_map(self, m: dict = None):
@@ -540,6 +554,8 @@ class DeleteServiceDataByConditionsShrinkRequest(TeaModel):
             self.conditions_shrink = m.get('Conditions')
         if m.get('ServiceId') is not None:
             self.service_id = m.get('ServiceId')
+        if m.get('X-DashScope-OpenAPISource') is not None:
+            self.x_dash_scope_open_apisource = m.get('X-DashScope-OpenAPISource')
         return self
 
 
@@ -641,7 +657,9 @@ class DeleteServiceDataByIdsRequest(TeaModel):
         ids: List[str] = None,
         service_id: int = None,
     ):
+        # This parameter is required.
         self.ids = ids
+        # This parameter is required.
         self.service_id = service_id
 
     def validate(self):
@@ -674,7 +692,9 @@ class DeleteServiceDataByIdsShrinkRequest(TeaModel):
         ids_shrink: str = None,
         service_id: int = None,
     ):
+        # This parameter is required.
         self.ids_shrink = ids_shrink
+        # This parameter is required.
         self.service_id = service_id
 
     def validate(self):
@@ -801,6 +821,7 @@ class GetBrandChEcomRequest(TeaModel):
         text: str = None,
     ):
         self.image_url = image_url
+        # This parameter is required.
         self.service_code = service_code
         self.text = text
 
@@ -914,7 +935,9 @@ class GetCateChEcomRequest(TeaModel):
         text: str = None,
     ):
         self.image_url = image_url
+        # This parameter is required.
         self.service_code = service_code
+        # This parameter is required.
         self.text = text
 
     def validate(self):
@@ -1026,8 +1049,11 @@ class GetCheckDuplicationChMedicalRequest(TeaModel):
         origin_t: str = None,
         service_code: str = None,
     ):
+        # This parameter is required.
         self.origin_q = origin_q
+        # This parameter is required.
         self.origin_t = origin_t
+        # This parameter is required.
         self.service_code = service_code
 
     def validate(self):
@@ -1138,7 +1164,9 @@ class GetDiagnosisChMedicalRequest(TeaModel):
         name: str = None,
         service_code: str = None,
     ):
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.service_code = service_code
 
     def validate(self):
@@ -1245,7 +1273,9 @@ class GetDpChEcomRequest(TeaModel):
         service_code: str = None,
         text: str = None,
     ):
+        # This parameter is required.
         self.service_code = service_code
+        # This parameter is required.
         self.text = text
 
     def validate(self):
@@ -1352,7 +1382,9 @@ class GetDpChGeneralCTBRequest(TeaModel):
         service_code: str = None,
         text: str = None,
     ):
+        # This parameter is required.
         self.service_code = service_code
+        # This parameter is required.
         self.text = text
 
     def validate(self):
@@ -1459,7 +1491,9 @@ class GetDpChGeneralStanfordRequest(TeaModel):
         service_code: str = None,
         text: str = None,
     ):
+        # This parameter is required.
         self.service_code = service_code
+        # This parameter is required.
         self.text = text
 
     def validate(self):
@@ -1566,7 +1600,9 @@ class GetEcChGeneralRequest(TeaModel):
         service_code: str = None,
         text: str = None,
     ):
+        # This parameter is required.
         self.service_code = service_code
+        # This parameter is required.
         self.text = text
 
     def validate(self):
@@ -1673,7 +1709,9 @@ class GetEcEnGeneralRequest(TeaModel):
         service_code: str = None,
         text: str = None,
     ):
+        # This parameter is required.
         self.service_code = service_code
+        # This parameter is required.
         self.text = text
 
     def validate(self):
@@ -1781,6 +1819,7 @@ class GetEmbeddingRequest(TeaModel):
         text: str = None,
         text_type: str = None,
     ):
+        # This parameter is required.
         self.service_code = service_code
         self.text = text
         self.text_type = text_type
@@ -1895,7 +1934,9 @@ class GetItemPubChEcomRequest(TeaModel):
         text: str = None,
     ):
         self.image_url = image_url
+        # This parameter is required.
         self.service_code = service_code
+        # This parameter is required.
         self.text = text
 
     def validate(self):
@@ -2008,7 +2049,9 @@ class GetKeywordChEcomRequest(TeaModel):
         text: str = None,
     ):
         self.api_version = api_version
+        # This parameter is required.
         self.service_code = service_code
+        # This parameter is required.
         self.text = text
 
     def validate(self):
@@ -2119,7 +2162,9 @@ class GetKeywordEnEcomRequest(TeaModel):
         service_code: str = None,
         text: str = None,
     ):
+        # This parameter is required.
         self.service_code = service_code
+        # This parameter is required.
         self.text = text
 
     def validate(self):
@@ -2230,7 +2275,9 @@ class GetMedicineChMedicalRequest(TeaModel):
         unit: str = None,
     ):
         self.factory = factory
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.service_code = service_code
         self.specification = specification
         self.unit = unit
@@ -2353,7 +2400,9 @@ class GetNerChEcomRequest(TeaModel):
         text: str = None,
     ):
         self.lexer_id = lexer_id
+        # This parameter is required.
         self.service_code = service_code
+        # This parameter is required.
         self.text = text
 
     def validate(self):
@@ -2464,7 +2513,9 @@ class GetNerChMedicalRequest(TeaModel):
         service_code: str = None,
         text: str = None,
     ):
+        # This parameter is required.
         self.service_code = service_code
+        # This parameter is required.
         self.text = text
 
     def validate(self):
@@ -2573,7 +2624,9 @@ class GetNerCustomizedChEcomRequest(TeaModel):
         text: str = None,
     ):
         self.lexer_id = lexer_id
+        # This parameter is required.
         self.service_code = service_code
+        # This parameter is required.
         self.text = text
 
     def validate(self):
@@ -2685,8 +2738,11 @@ class GetNerCustomizedSeaEcomRequest(TeaModel):
         service_code: str = None,
         text: str = None,
     ):
+        # This parameter is required.
         self.language = language
+        # This parameter is required.
         self.service_code = service_code
+        # This parameter is required.
         self.text = text
 
     def validate(self):
@@ -2803,6 +2859,7 @@ class GetOpenNLURequest(TeaModel):
         self.examples = examples
         self.labels = labels
         self.sentence = sentence
+        # This parameter is required.
         self.service_code = service_code
         self.task = task
 
@@ -2928,6 +2985,7 @@ class GetOpenNLUHighRecallRequest(TeaModel):
         self.examples = examples
         self.labels = labels
         self.sentence = sentence
+        # This parameter is required.
         self.service_code = service_code
         self.task = task
 
@@ -3047,7 +3105,9 @@ class GetOperationChMedicalRequest(TeaModel):
         name: str = None,
         service_code: str = None,
     ):
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.service_code = service_code
 
     def validate(self):
@@ -3157,7 +3217,9 @@ class GetPosChEcomRequest(TeaModel):
         tokenizer_id: str = None,
     ):
         self.out_type = out_type
+        # This parameter is required.
         self.service_code = service_code
+        # This parameter is required.
         self.text = text
         self.tokenizer_id = tokenizer_id
 
@@ -3276,7 +3338,9 @@ class GetPosChGeneralRequest(TeaModel):
         tokenizer_id: str = None,
     ):
         self.out_type = out_type
+        # This parameter is required.
         self.service_code = service_code
+        # This parameter is required.
         self.text = text
         self.tokenizer_id = tokenizer_id
 
@@ -3392,7 +3456,9 @@ class GetPriceChEcomRequest(TeaModel):
         service_code: str = None,
         text: str = None,
     ):
+        # This parameter is required.
         self.service_code = service_code
+        # This parameter is required.
         self.text = text
 
     def validate(self):
@@ -3606,7 +3672,9 @@ class GetSaChGeneralRequest(TeaModel):
         service_code: str = None,
         text: str = None,
     ):
+        # This parameter is required.
         self.service_code = service_code
+        # This parameter is required.
         self.text = text
 
     def validate(self):
@@ -3714,8 +3782,11 @@ class GetSaSeaEcomRequest(TeaModel):
         service_code: str = None,
         text: str = None,
     ):
+        # This parameter is required.
         self.language = language
+        # This parameter is required.
         self.service_code = service_code
+        # This parameter is required.
         self.text = text
 
     def validate(self):
@@ -3825,6 +3896,7 @@ class GetServiceDataImportStatusRequest(TeaModel):
         self,
         data_import_ids: List[int] = None,
     ):
+        # This parameter is required.
         self.data_import_ids = data_import_ids
 
     def validate(self):
@@ -3852,6 +3924,7 @@ class GetServiceDataImportStatusShrinkRequest(TeaModel):
         self,
         data_import_ids_shrink: str = None,
     ):
+        # This parameter is required.
         self.data_import_ids_shrink = data_import_ids_shrink
 
     def validate(self):
@@ -3981,8 +4054,11 @@ class GetSimilarityChMedicalRequest(TeaModel):
         origin_t: str = None,
         service_code: str = None,
     ):
+        # This parameter is required.
         self.origin_q = origin_q
+        # This parameter is required.
         self.origin_t = origin_t
+        # This parameter is required.
         self.service_code = service_code
 
     def validate(self):
@@ -4093,7 +4169,9 @@ class GetSummaryChEcomRequest(TeaModel):
         service_code: str = None,
         text: str = None,
     ):
+        # This parameter is required.
         self.service_code = service_code
+        # This parameter is required.
         self.text = text
 
     def validate(self):
@@ -4307,7 +4385,9 @@ class GetTcChEcomRequest(TeaModel):
         service_code: str = None,
         text: str = None,
     ):
+        # This parameter is required.
         self.service_code = service_code
+        # This parameter is required.
         self.text = text
 
     def validate(self):
@@ -4414,7 +4494,9 @@ class GetTcChGeneralRequest(TeaModel):
         service_code: str = None,
         text: str = None,
     ):
+        # This parameter is required.
         self.service_code = service_code
+        # This parameter is required.
         self.text = text
 
     def validate(self):
@@ -4523,9 +4605,13 @@ class GetTsChEcomRequest(TeaModel):
         service_code: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.origin_q = origin_q
+        # This parameter is required.
         self.origin_t = origin_t
+        # This parameter is required.
         self.service_code = service_code
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -4639,6 +4725,7 @@ class GetUserUploadSignRequest(TeaModel):
         self,
         service_code: str = None,
     ):
+        # This parameter is required.
         self.service_code = service_code
 
     def validate(self):
@@ -4746,9 +4833,12 @@ class GetWeChCommentRequest(TeaModel):
         type: str = None,
     ):
         self.operation = operation
+        # This parameter is required.
         self.service_code = service_code
         self.size = size
+        # This parameter is required.
         self.text = text
+        # This parameter is required.
         self.tokenizer_id = tokenizer_id
         self.type = type
 
@@ -4877,9 +4967,12 @@ class GetWeChEcomRequest(TeaModel):
         type: str = None,
     ):
         self.operation = operation
+        # This parameter is required.
         self.service_code = service_code
         self.size = size
+        # This parameter is required.
         self.text = text
+        # This parameter is required.
         self.tokenizer_id = tokenizer_id
         self.type = type
 
@@ -5008,9 +5101,12 @@ class GetWeChEntertainmentRequest(TeaModel):
         type: str = None,
     ):
         self.operation = operation
+        # This parameter is required.
         self.service_code = service_code
         self.size = size
+        # This parameter is required.
         self.text = text
+        # This parameter is required.
         self.tokenizer_id = tokenizer_id
         self.type = type
 
@@ -5138,8 +5234,10 @@ class GetWeChGeneralRequest(TeaModel):
         type: str = None,
     ):
         self.operation = operation
+        # This parameter is required.
         self.service_code = service_code
         self.size = size
+        # This parameter is required.
         self.text = text
         self.type = type
 
@@ -5264,9 +5362,12 @@ class GetWeChSearchRequest(TeaModel):
         type: str = None,
     ):
         self.operation = operation
+        # This parameter is required.
         self.service_code = service_code
         self.size = size
+        # This parameter is required.
         self.text = text
+        # This parameter is required.
         self.tokenizer_id = tokenizer_id
         self.type = type
 
@@ -5393,7 +5494,9 @@ class GetWsChGeneralRequest(TeaModel):
         tokenizer_id: str = None,
     ):
         self.out_type = out_type
+        # This parameter is required.
         self.service_code = service_code
+        # This parameter is required.
         self.text = text
         self.tokenizer_id = tokenizer_id
 
@@ -5512,7 +5615,9 @@ class GetWsCustomizedChEcomCommentRequest(TeaModel):
         tokenizer_id: str = None,
     ):
         self.out_type = out_type
+        # This parameter is required.
         self.service_code = service_code
+        # This parameter is required.
         self.text = text
         self.tokenizer_id = tokenizer_id
 
@@ -5631,7 +5736,9 @@ class GetWsCustomizedChEcomContentRequest(TeaModel):
         tokenizer_id: str = None,
     ):
         self.out_type = out_type
+        # This parameter is required.
         self.service_code = service_code
+        # This parameter is required.
         self.text = text
         self.tokenizer_id = tokenizer_id
 
@@ -5750,7 +5857,9 @@ class GetWsCustomizedChEcomTitleRequest(TeaModel):
         tokenizer_id: str = None,
     ):
         self.out_type = out_type
+        # This parameter is required.
         self.service_code = service_code
+        # This parameter is required.
         self.text = text
         self.tokenizer_id = tokenizer_id
 
@@ -5869,7 +5978,9 @@ class GetWsCustomizedChEntertainmentRequest(TeaModel):
         tokenizer_id: str = None,
     ):
         self.out_type = out_type
+        # This parameter is required.
         self.service_code = service_code
+        # This parameter is required.
         self.text = text
         self.tokenizer_id = tokenizer_id
 
@@ -5988,7 +6099,9 @@ class GetWsCustomizedChGeneralRequest(TeaModel):
         tokenizer_id: str = None,
     ):
         self.out_type = out_type
+        # This parameter is required.
         self.service_code = service_code
+        # This parameter is required.
         self.text = text
         self.tokenizer_id = tokenizer_id
 
@@ -6107,7 +6220,9 @@ class GetWsCustomizedChO2ORequest(TeaModel):
         tokenizer_id: str = None,
     ):
         self.out_type = out_type
+        # This parameter is required.
         self.service_code = service_code
+        # This parameter is required.
         self.text = text
         self.tokenizer_id = tokenizer_id
 
@@ -6224,8 +6339,11 @@ class GetWsCustomizedSeaEcomRequest(TeaModel):
         service_code: str = None,
         text: str = None,
     ):
+        # This parameter is required.
         self.language = language
+        # This parameter is required.
         self.service_code = service_code
+        # This parameter is required.
         self.text = text
 
     def validate(self):
@@ -6337,8 +6455,11 @@ class GetWsCustomizedSeaGeneralRequest(TeaModel):
         service_code: str = None,
         text: str = None,
     ):
+        # This parameter is required.
         self.language = language
+        # This parameter is required.
         self.service_code = service_code
+        # This parameter is required.
         self.text = text
 
     def validate(self):
@@ -6452,6 +6573,7 @@ class ImportServiceDataRequest(TeaModel):
         url: str = None,
     ):
         self.partition = partition
+        # This parameter is required.
         self.service_id = service_id
         self.sub_path = sub_path
         self.url = url
@@ -6497,6 +6619,7 @@ class ImportServiceDataShrinkRequest(TeaModel):
         url: str = None,
     ):
         self.partition_shrink = partition_shrink
+        # This parameter is required.
         self.service_id = service_id
         self.sub_path = sub_path
         self.url = url
@@ -6691,6 +6814,7 @@ class ImportServiceDataV2Request(TeaModel):
     ):
         self.data_type = data_type
         self.documents = documents
+        # This parameter is required.
         self.service_id = service_id
 
     def validate(self):
@@ -6738,6 +6862,7 @@ class ImportServiceDataV2ShrinkRequest(TeaModel):
     ):
         self.data_type = data_type
         self.documents_shrink = documents_shrink
+        # This parameter is required.
         self.service_id = service_id
 
     def validate(self):
@@ -6870,11 +6995,13 @@ class InsertCustomRequest(TeaModel):
         reg_url: str = None,
         service_code: str = None,
     ):
+        # This parameter is required.
         self.api_id = api_id
         self.custom_file_name = custom_file_name
         self.custom_url = custom_url
         self.reg_file_name = reg_file_name
         self.reg_url = reg_url
+        # This parameter is required.
         self.service_code = service_code
 
     def validate(self):
@@ -7071,14 +7198,14 @@ class PostISConvRewriterRequest(TeaModel):
         algorithm: str = None,
         debug: bool = None,
         input: Dict[str, Any] = None,
+        model: str = None,
         parameters: Dict[str, Any] = None,
-        version: str = None,
     ):
         self.algorithm = algorithm
         self.debug = debug
         self.input = input
+        self.model = model
         self.parameters = parameters
-        self.version = version
 
     def validate(self):
         pass
@@ -7095,10 +7222,10 @@ class PostISConvRewriterRequest(TeaModel):
             result['Debug'] = self.debug
         if self.input is not None:
             result['Input'] = self.input
+        if self.model is not None:
+            result['Model'] = self.model
         if self.parameters is not None:
             result['Parameters'] = self.parameters
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -7109,10 +7236,10 @@ class PostISConvRewriterRequest(TeaModel):
             self.debug = m.get('Debug')
         if m.get('Input') is not None:
             self.input = m.get('Input')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
         if m.get('Parameters') is not None:
             self.parameters = m.get('Parameters')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -7122,14 +7249,14 @@ class PostISConvRewriterShrinkRequest(TeaModel):
         algorithm: str = None,
         debug: bool = None,
         input_shrink: str = None,
+        model: str = None,
         parameters_shrink: str = None,
-        version: str = None,
     ):
         self.algorithm = algorithm
         self.debug = debug
         self.input_shrink = input_shrink
+        self.model = model
         self.parameters_shrink = parameters_shrink
-        self.version = version
 
     def validate(self):
         pass
@@ -7146,10 +7273,10 @@ class PostISConvRewriterShrinkRequest(TeaModel):
             result['Debug'] = self.debug
         if self.input_shrink is not None:
             result['Input'] = self.input_shrink
+        if self.model is not None:
+            result['Model'] = self.model
         if self.parameters_shrink is not None:
             result['Parameters'] = self.parameters_shrink
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -7160,10 +7287,10 @@ class PostISConvRewriterShrinkRequest(TeaModel):
             self.debug = m.get('Debug')
         if m.get('Input') is not None:
             self.input_shrink = m.get('Input')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
         if m.get('Parameters') is not None:
             self.parameters_shrink = m.get('Parameters')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -7265,14 +7392,14 @@ class PostISRetrieveRouterRequest(TeaModel):
         algorithm: str = None,
         debug: bool = None,
         input: Dict[str, Any] = None,
+        model: str = None,
         parameters: Dict[str, Any] = None,
-        version: str = None,
     ):
         self.algorithm = algorithm
         self.debug = debug
         self.input = input
+        self.model = model
         self.parameters = parameters
-        self.version = version
 
     def validate(self):
         pass
@@ -7289,10 +7416,10 @@ class PostISRetrieveRouterRequest(TeaModel):
             result['Debug'] = self.debug
         if self.input is not None:
             result['Input'] = self.input
+        if self.model is not None:
+            result['Model'] = self.model
         if self.parameters is not None:
             result['Parameters'] = self.parameters
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -7303,10 +7430,10 @@ class PostISRetrieveRouterRequest(TeaModel):
             self.debug = m.get('Debug')
         if m.get('Input') is not None:
             self.input = m.get('Input')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
         if m.get('Parameters') is not None:
             self.parameters = m.get('Parameters')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -7316,14 +7443,14 @@ class PostISRetrieveRouterShrinkRequest(TeaModel):
         algorithm: str = None,
         debug: bool = None,
         input_shrink: str = None,
+        model: str = None,
         parameters_shrink: str = None,
-        version: str = None,
     ):
         self.algorithm = algorithm
         self.debug = debug
         self.input_shrink = input_shrink
+        self.model = model
         self.parameters_shrink = parameters_shrink
-        self.version = version
 
     def validate(self):
         pass
@@ -7340,10 +7467,10 @@ class PostISRetrieveRouterShrinkRequest(TeaModel):
             result['Debug'] = self.debug
         if self.input_shrink is not None:
             result['Input'] = self.input_shrink
+        if self.model is not None:
+            result['Model'] = self.model
         if self.parameters_shrink is not None:
             result['Parameters'] = self.parameters_shrink
-        if self.version is not None:
-            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -7354,10 +7481,10 @@ class PostISRetrieveRouterShrinkRequest(TeaModel):
             self.debug = m.get('Debug')
         if m.get('Input') is not None:
             self.input_shrink = m.get('Input')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
         if m.get('Parameters') is not None:
             self.parameters_shrink = m.get('Parameters')
-        if m.get('Version') is not None:
-            self.version = m.get('Version')
         return self
 
 
@@ -7557,10 +7684,12 @@ class PostMSDataProcessingCountRequest(TeaModel):
         data_ids: List[str] = None,
         data_import_id: int = None,
         service_id: int = None,
+        x_dash_scope_open_apisource: str = None,
     ):
         self.data_ids = data_ids
         self.data_import_id = data_import_id
         self.service_id = service_id
+        self.x_dash_scope_open_apisource = x_dash_scope_open_apisource
 
     def validate(self):
         pass
@@ -7577,6 +7706,8 @@ class PostMSDataProcessingCountRequest(TeaModel):
             result['DataImportId'] = self.data_import_id
         if self.service_id is not None:
             result['ServiceId'] = self.service_id
+        if self.x_dash_scope_open_apisource is not None:
+            result['X-DashScope-OpenAPISource'] = self.x_dash_scope_open_apisource
         return result
 
     def from_map(self, m: dict = None):
@@ -7587,6 +7718,8 @@ class PostMSDataProcessingCountRequest(TeaModel):
             self.data_import_id = m.get('DataImportId')
         if m.get('ServiceId') is not None:
             self.service_id = m.get('ServiceId')
+        if m.get('X-DashScope-OpenAPISource') is not None:
+            self.x_dash_scope_open_apisource = m.get('X-DashScope-OpenAPISource')
         return self
 
 
@@ -7596,10 +7729,12 @@ class PostMSDataProcessingCountShrinkRequest(TeaModel):
         data_ids_shrink: str = None,
         data_import_id: int = None,
         service_id: int = None,
+        x_dash_scope_open_apisource: str = None,
     ):
         self.data_ids_shrink = data_ids_shrink
         self.data_import_id = data_import_id
         self.service_id = service_id
+        self.x_dash_scope_open_apisource = x_dash_scope_open_apisource
 
     def validate(self):
         pass
@@ -7616,6 +7751,8 @@ class PostMSDataProcessingCountShrinkRequest(TeaModel):
             result['DataImportId'] = self.data_import_id
         if self.service_id is not None:
             result['ServiceId'] = self.service_id
+        if self.x_dash_scope_open_apisource is not None:
+            result['X-DashScope-OpenAPISource'] = self.x_dash_scope_open_apisource
         return result
 
     def from_map(self, m: dict = None):
@@ -7626,6 +7763,8 @@ class PostMSDataProcessingCountShrinkRequest(TeaModel):
             self.data_import_id = m.get('DataImportId')
         if m.get('ServiceId') is not None:
             self.service_id = m.get('ServiceId')
+        if m.get('X-DashScope-OpenAPISource') is not None:
+            self.x_dash_scope_open_apisource = m.get('X-DashScope-OpenAPISource')
         return self
 
 
@@ -7891,6 +8030,7 @@ class PostMSSearchEnhanceRequest(TeaModel):
         sort: List[str] = None,
         type: str = None,
         uq: str = None,
+        x_dash_scope_open_apisource: str = None,
     ):
         self.body = body
         self.custom_config_info = custom_config_info
@@ -7906,6 +8046,7 @@ class PostMSSearchEnhanceRequest(TeaModel):
         self.sort = sort
         self.type = type
         self.uq = uq
+        self.x_dash_scope_open_apisource = x_dash_scope_open_apisource
 
     def validate(self):
         pass
@@ -7944,6 +8085,8 @@ class PostMSSearchEnhanceRequest(TeaModel):
             result['Type'] = self.type
         if self.uq is not None:
             result['Uq'] = self.uq
+        if self.x_dash_scope_open_apisource is not None:
+            result['X-DashScope-OpenAPISource'] = self.x_dash_scope_open_apisource
         return result
 
     def from_map(self, m: dict = None):
@@ -7976,6 +8119,8 @@ class PostMSSearchEnhanceRequest(TeaModel):
             self.type = m.get('Type')
         if m.get('Uq') is not None:
             self.uq = m.get('Uq')
+        if m.get('X-DashScope-OpenAPISource') is not None:
+            self.x_dash_scope_open_apisource = m.get('X-DashScope-OpenAPISource')
         return self
 
 
@@ -7996,6 +8141,7 @@ class PostMSSearchEnhanceShrinkRequest(TeaModel):
         sort_shrink: str = None,
         type: str = None,
         uq: str = None,
+        x_dash_scope_open_apisource: str = None,
     ):
         self.body = body
         self.custom_config_info_shrink = custom_config_info_shrink
@@ -8011,6 +8157,7 @@ class PostMSSearchEnhanceShrinkRequest(TeaModel):
         self.sort_shrink = sort_shrink
         self.type = type
         self.uq = uq
+        self.x_dash_scope_open_apisource = x_dash_scope_open_apisource
 
     def validate(self):
         pass
@@ -8049,6 +8196,8 @@ class PostMSSearchEnhanceShrinkRequest(TeaModel):
             result['Type'] = self.type
         if self.uq is not None:
             result['Uq'] = self.uq
+        if self.x_dash_scope_open_apisource is not None:
+            result['X-DashScope-OpenAPISource'] = self.x_dash_scope_open_apisource
         return result
 
     def from_map(self, m: dict = None):
@@ -8081,6 +8230,8 @@ class PostMSSearchEnhanceShrinkRequest(TeaModel):
             self.type = m.get('Type')
         if m.get('Uq') is not None:
             self.uq = m.get('Uq')
+        if m.get('X-DashScope-OpenAPISource') is not None:
+            self.x_dash_scope_open_apisource = m.get('X-DashScope-OpenAPISource')
         return self
 
 
@@ -8249,6 +8400,7 @@ class PostMSServiceDataImportRequest(TeaModel):
     ):
         self.data_type = data_type
         self.documents = documents
+        # This parameter is required.
         self.service_id = service_id
 
     def validate(self):
@@ -8296,6 +8448,7 @@ class PostMSServiceDataImportShrinkRequest(TeaModel):
     ):
         self.data_type = data_type
         self.documents_shrink = documents_shrink
+        # This parameter is required.
         self.service_id = service_id
 
     def validate(self):
@@ -8424,7 +8577,9 @@ class RequestTableQARequest(TeaModel):
         params: str = None,
         service_code: str = None,
     ):
+        # This parameter is required.
         self.params = params
+        # This parameter is required.
         self.service_code = service_code
 
     def validate(self):
@@ -8650,7 +8805,9 @@ class UpdateServiceDataRequest(TeaModel):
         conditions: Dict[str, Any] = None,
         service_id: int = None,
     ):
+        # This parameter is required.
         self.conditions = conditions
+        # This parameter is required.
         self.service_id = service_id
 
     def validate(self):
@@ -8683,7 +8840,9 @@ class UpdateServiceDataShrinkRequest(TeaModel):
         conditions_shrink: str = None,
         service_id: int = None,
     ):
+        # This parameter is required.
         self.conditions_shrink = conditions_shrink
+        # This parameter is required.
         self.service_id = service_id
 
     def validate(self):

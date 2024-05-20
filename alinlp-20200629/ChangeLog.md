@@ -1,3 +1,13 @@
+2024-05-20 Version: 3.0.0
+- Update API DeleteServiceDataByConditions: add param X-DashScope-OpenAPISource.
+- Update API PostISConvRewriter: add param Model.
+- Update API PostISConvRewriter: delete param Version.
+- Update API PostISRetrieveRouter: add param Model.
+- Update API PostISRetrieveRouter: delete param Version.
+- Update API PostMSDataProcessingCount: add param X-DashScope-OpenAPISource.
+- Update API PostMSSearchEnhance: add param X-DashScope-OpenAPISource.
+
+
 2024-04-10 Version: 2.8.2
 - Generated python 2020-06-29 for alinlp.
 
