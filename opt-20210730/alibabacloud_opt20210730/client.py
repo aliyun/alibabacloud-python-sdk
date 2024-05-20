@@ -45,6 +45,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> opt_20210730_models.GetOpenStatusResponse:
+        """
+        @param request: GetOpenStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOpenStatusResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetOpenStatus',
@@ -66,6 +71,11 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> opt_20210730_models.GetOpenStatusResponse:
+        """
+        @param request: GetOpenStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOpenStatusResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetOpenStatus',
@@ -84,10 +94,16 @@ class Client(OpenApiClient):
         )
 
     def get_open_status(self) -> opt_20210730_models.GetOpenStatusResponse:
+        """
+        @return: GetOpenStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_open_status_with_options(runtime)
 
     async def get_open_status_async(self) -> opt_20210730_models.GetOpenStatusResponse:
+        """
+        @return: GetOpenStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_open_status_with_options_async(runtime)
 
@@ -96,8 +112,15 @@ class Client(OpenApiClient):
         request: opt_20210730_models.GetOrderInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> opt_20210730_models.GetOrderInfoResponse:
+        """
+        @param request: GetOrderInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOrderInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.list_released):
+            query['ListReleased'] = request.list_released
         if not UtilClient.is_unset(request.rel_service):
             query['RelService'] = request.rel_service
         if not UtilClient.is_unset(request.resource_type):
@@ -126,8 +149,15 @@ class Client(OpenApiClient):
         request: opt_20210730_models.GetOrderInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> opt_20210730_models.GetOrderInfoResponse:
+        """
+        @param request: GetOrderInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOrderInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.list_released):
+            query['ListReleased'] = request.list_released
         if not UtilClient.is_unset(request.rel_service):
             query['RelService'] = request.rel_service
         if not UtilClient.is_unset(request.resource_type):
@@ -155,6 +185,10 @@ class Client(OpenApiClient):
         self,
         request: opt_20210730_models.GetOrderInfoRequest,
     ) -> opt_20210730_models.GetOrderInfoResponse:
+        """
+        @param request: GetOrderInfoRequest
+        @return: GetOrderInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_order_info_with_options(request, runtime)
 
@@ -162,6 +196,10 @@ class Client(OpenApiClient):
         self,
         request: opt_20210730_models.GetOrderInfoRequest,
     ) -> opt_20210730_models.GetOrderInfoResponse:
+        """
+        @param request: GetOrderInfoRequest
+        @return: GetOrderInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_order_info_with_options_async(request, runtime)
 
@@ -170,6 +208,11 @@ class Client(OpenApiClient):
         request: opt_20210730_models.GetOrderUsageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> opt_20210730_models.GetOrderUsageResponse:
+        """
+        @param request: GetOrderUsageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOrderUsageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.license_key):
@@ -204,6 +247,11 @@ class Client(OpenApiClient):
         request: opt_20210730_models.GetOrderUsageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> opt_20210730_models.GetOrderUsageResponse:
+        """
+        @param request: GetOrderUsageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOrderUsageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.license_key):
@@ -237,6 +285,10 @@ class Client(OpenApiClient):
         self,
         request: opt_20210730_models.GetOrderUsageRequest,
     ) -> opt_20210730_models.GetOrderUsageResponse:
+        """
+        @param request: GetOrderUsageRequest
+        @return: GetOrderUsageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_order_usage_with_options(request, runtime)
 
@@ -244,5 +296,9 @@ class Client(OpenApiClient):
         self,
         request: opt_20210730_models.GetOrderUsageRequest,
     ) -> opt_20210730_models.GetOrderUsageResponse:
+        """
+        @param request: GetOrderUsageRequest
+        @return: GetOrderUsageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_order_usage_with_options_async(request, runtime)

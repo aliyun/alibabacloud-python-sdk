@@ -99,10 +99,14 @@ class GetOpenStatusResponse(TeaModel):
 class GetOrderInfoRequest(TeaModel):
     def __init__(
         self,
+        list_released: bool = None,
         rel_service: str = None,
         resource_type: int = None,
     ):
+        self.list_released = list_released
+        # This parameter is required.
         self.rel_service = rel_service
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -114,6 +118,8 @@ class GetOrderInfoRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.list_released is not None:
+            result['ListReleased'] = self.list_released
         if self.rel_service is not None:
             result['RelService'] = self.rel_service
         if self.resource_type is not None:
@@ -122,6 +128,8 @@ class GetOrderInfoRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ListReleased') is not None:
+            self.list_released = m.get('ListReleased')
         if m.get('RelService') is not None:
             self.rel_service = m.get('RelService')
         if m.get('ResourceType') is not None:
@@ -300,8 +308,11 @@ class GetOrderUsageRequest(TeaModel):
         resource_type: int = None,
         time_range: int = None,
     ):
+        # This parameter is required.
         self.license_key = license_key
+        # This parameter is required.
         self.rel_service = rel_service
+        # This parameter is required.
         self.resource_type = resource_type
         self.time_range = time_range
 
