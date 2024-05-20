@@ -8725,6 +8725,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.desensitize_data_with_options_async(request, runtime)
 
+    def dsg_desens_plan_add_or_update_with_options(
+        self,
+        tmp_req: dataworks_public_20200518_models.DsgDesensPlanAddOrUpdateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgDesensPlanAddOrUpdateResponse:
+        """
+        @summary 新增或编辑脱敏规则
+        
+        @param tmp_req: DsgDesensPlanAddOrUpdateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgDesensPlanAddOrUpdateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.DsgDesensPlanAddOrUpdateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.desens_rules):
+            request.desens_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.desens_rules, 'DesensRules', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.desens_rules_shrink):
+            query['DesensRules'] = request.desens_rules_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DsgDesensPlanAddOrUpdate',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgDesensPlanAddOrUpdateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dsg_desens_plan_add_or_update_with_options_async(
+        self,
+        tmp_req: dataworks_public_20200518_models.DsgDesensPlanAddOrUpdateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgDesensPlanAddOrUpdateResponse:
+        """
+        @summary 新增或编辑脱敏规则
+        
+        @param tmp_req: DsgDesensPlanAddOrUpdateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgDesensPlanAddOrUpdateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.DsgDesensPlanAddOrUpdateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.desens_rules):
+            request.desens_rules_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.desens_rules, 'DesensRules', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.desens_rules_shrink):
+            query['DesensRules'] = request.desens_rules_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DsgDesensPlanAddOrUpdate',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgDesensPlanAddOrUpdateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dsg_desens_plan_add_or_update(
+        self,
+        request: dataworks_public_20200518_models.DsgDesensPlanAddOrUpdateRequest,
+    ) -> dataworks_public_20200518_models.DsgDesensPlanAddOrUpdateResponse:
+        """
+        @summary 新增或编辑脱敏规则
+        
+        @param request: DsgDesensPlanAddOrUpdateRequest
+        @return: DsgDesensPlanAddOrUpdateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.dsg_desens_plan_add_or_update_with_options(request, runtime)
+
+    async def dsg_desens_plan_add_or_update_async(
+        self,
+        request: dataworks_public_20200518_models.DsgDesensPlanAddOrUpdateRequest,
+    ) -> dataworks_public_20200518_models.DsgDesensPlanAddOrUpdateResponse:
+        """
+        @summary 新增或编辑脱敏规则
+        
+        @param request: DsgDesensPlanAddOrUpdateRequest
+        @return: DsgDesensPlanAddOrUpdateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.dsg_desens_plan_add_or_update_with_options_async(request, runtime)
+
     def dsg_desens_plan_delete_with_options(
         self,
         tmp_req: dataworks_public_20200518_models.DsgDesensPlanDeleteRequest,
@@ -9577,6 +9681,202 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.dsg_scene_add_or_update_scene_with_options_async(request, runtime)
 
+    def dsg_scene_query_scene_list_by_name_with_options(
+        self,
+        request: dataworks_public_20200518_models.DsgSceneQuerySceneListByNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgSceneQuerySceneListByNameResponse:
+        """
+        @summary 查询场景列表
+        
+        @param request: DsgSceneQuerySceneListByNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgSceneQuerySceneListByNameResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DsgSceneQuerySceneListByName',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgSceneQuerySceneListByNameResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dsg_scene_query_scene_list_by_name_with_options_async(
+        self,
+        request: dataworks_public_20200518_models.DsgSceneQuerySceneListByNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgSceneQuerySceneListByNameResponse:
+        """
+        @summary 查询场景列表
+        
+        @param request: DsgSceneQuerySceneListByNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgSceneQuerySceneListByNameResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DsgSceneQuerySceneListByName',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgSceneQuerySceneListByNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dsg_scene_query_scene_list_by_name(
+        self,
+        request: dataworks_public_20200518_models.DsgSceneQuerySceneListByNameRequest,
+    ) -> dataworks_public_20200518_models.DsgSceneQuerySceneListByNameResponse:
+        """
+        @summary 查询场景列表
+        
+        @param request: DsgSceneQuerySceneListByNameRequest
+        @return: DsgSceneQuerySceneListByNameResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.dsg_scene_query_scene_list_by_name_with_options(request, runtime)
+
+    async def dsg_scene_query_scene_list_by_name_async(
+        self,
+        request: dataworks_public_20200518_models.DsgSceneQuerySceneListByNameRequest,
+    ) -> dataworks_public_20200518_models.DsgSceneQuerySceneListByNameResponse:
+        """
+        @summary 查询场景列表
+        
+        @param request: DsgSceneQuerySceneListByNameRequest
+        @return: DsgSceneQuerySceneListByNameResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.dsg_scene_query_scene_list_by_name_with_options_async(request, runtime)
+
+    def dsg_scened_delete_scene_with_options(
+        self,
+        tmp_req: dataworks_public_20200518_models.DsgScenedDeleteSceneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgScenedDeleteSceneResponse:
+        """
+        @summary 删除二级场景
+        
+        @param tmp_req: DsgScenedDeleteSceneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgScenedDeleteSceneResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.DsgScenedDeleteSceneShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ids):
+            request.ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ids, 'Ids', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ids_shrink):
+            query['Ids'] = request.ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DsgScenedDeleteScene',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgScenedDeleteSceneResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dsg_scened_delete_scene_with_options_async(
+        self,
+        tmp_req: dataworks_public_20200518_models.DsgScenedDeleteSceneRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgScenedDeleteSceneResponse:
+        """
+        @summary 删除二级场景
+        
+        @param tmp_req: DsgScenedDeleteSceneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgScenedDeleteSceneResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.DsgScenedDeleteSceneShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ids):
+            request.ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ids, 'Ids', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ids_shrink):
+            query['Ids'] = request.ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DsgScenedDeleteScene',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgScenedDeleteSceneResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dsg_scened_delete_scene(
+        self,
+        request: dataworks_public_20200518_models.DsgScenedDeleteSceneRequest,
+    ) -> dataworks_public_20200518_models.DsgScenedDeleteSceneResponse:
+        """
+        @summary 删除二级场景
+        
+        @param request: DsgScenedDeleteSceneRequest
+        @return: DsgScenedDeleteSceneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.dsg_scened_delete_scene_with_options(request, runtime)
+
+    async def dsg_scened_delete_scene_async(
+        self,
+        request: dataworks_public_20200518_models.DsgScenedDeleteSceneRequest,
+    ) -> dataworks_public_20200518_models.DsgScenedDeleteSceneResponse:
+        """
+        @summary 删除二级场景
+        
+        @param request: DsgScenedDeleteSceneRequest
+        @return: DsgScenedDeleteSceneResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.dsg_scened_delete_scene_with_options_async(request, runtime)
+
     def dsg_stop_sens_identify_with_options(
         self,
         request: dataworks_public_20200518_models.DsgStopSensIdentifyRequest,
@@ -10134,6 +10434,214 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.dsg_user_group_query_user_list_with_options_async(runtime)
+
+    def dsg_white_list_add_or_update_with_options(
+        self,
+        tmp_req: dataworks_public_20200518_models.DsgWhiteListAddOrUpdateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgWhiteListAddOrUpdateResponse:
+        """
+        @summary 新增或编辑脱敏白名单
+        
+        @param tmp_req: DsgWhiteListAddOrUpdateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgWhiteListAddOrUpdateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.DsgWhiteListAddOrUpdateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.white_lists):
+            request.white_lists_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.white_lists, 'WhiteLists', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.white_lists_shrink):
+            query['WhiteLists'] = request.white_lists_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DsgWhiteListAddOrUpdate',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgWhiteListAddOrUpdateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dsg_white_list_add_or_update_with_options_async(
+        self,
+        tmp_req: dataworks_public_20200518_models.DsgWhiteListAddOrUpdateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgWhiteListAddOrUpdateResponse:
+        """
+        @summary 新增或编辑脱敏白名单
+        
+        @param tmp_req: DsgWhiteListAddOrUpdateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgWhiteListAddOrUpdateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.DsgWhiteListAddOrUpdateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.white_lists):
+            request.white_lists_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.white_lists, 'WhiteLists', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.white_lists_shrink):
+            query['WhiteLists'] = request.white_lists_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DsgWhiteListAddOrUpdate',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgWhiteListAddOrUpdateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dsg_white_list_add_or_update(
+        self,
+        request: dataworks_public_20200518_models.DsgWhiteListAddOrUpdateRequest,
+    ) -> dataworks_public_20200518_models.DsgWhiteListAddOrUpdateResponse:
+        """
+        @summary 新增或编辑脱敏白名单
+        
+        @param request: DsgWhiteListAddOrUpdateRequest
+        @return: DsgWhiteListAddOrUpdateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.dsg_white_list_add_or_update_with_options(request, runtime)
+
+    async def dsg_white_list_add_or_update_async(
+        self,
+        request: dataworks_public_20200518_models.DsgWhiteListAddOrUpdateRequest,
+    ) -> dataworks_public_20200518_models.DsgWhiteListAddOrUpdateResponse:
+        """
+        @summary 新增或编辑脱敏白名单
+        
+        @param request: DsgWhiteListAddOrUpdateRequest
+        @return: DsgWhiteListAddOrUpdateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.dsg_white_list_add_or_update_with_options_async(request, runtime)
+
+    def dsg_white_list_delete_list_with_options(
+        self,
+        tmp_req: dataworks_public_20200518_models.DsgWhiteListDeleteListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgWhiteListDeleteListResponse:
+        """
+        @summary 删除脱敏白名单
+        
+        @param tmp_req: DsgWhiteListDeleteListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgWhiteListDeleteListResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.DsgWhiteListDeleteListShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ids):
+            request.ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ids, 'Ids', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ids_shrink):
+            query['Ids'] = request.ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DsgWhiteListDeleteList',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgWhiteListDeleteListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dsg_white_list_delete_list_with_options_async(
+        self,
+        tmp_req: dataworks_public_20200518_models.DsgWhiteListDeleteListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dataworks_public_20200518_models.DsgWhiteListDeleteListResponse:
+        """
+        @summary 删除脱敏白名单
+        
+        @param tmp_req: DsgWhiteListDeleteListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DsgWhiteListDeleteListResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dataworks_public_20200518_models.DsgWhiteListDeleteListShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.ids):
+            request.ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ids, 'Ids', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.ids_shrink):
+            query['Ids'] = request.ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DsgWhiteListDeleteList',
+            version='2020-05-18',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dataworks_public_20200518_models.DsgWhiteListDeleteListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dsg_white_list_delete_list(
+        self,
+        request: dataworks_public_20200518_models.DsgWhiteListDeleteListRequest,
+    ) -> dataworks_public_20200518_models.DsgWhiteListDeleteListResponse:
+        """
+        @summary 删除脱敏白名单
+        
+        @param request: DsgWhiteListDeleteListRequest
+        @return: DsgWhiteListDeleteListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.dsg_white_list_delete_list_with_options(request, runtime)
+
+    async def dsg_white_list_delete_list_async(
+        self,
+        request: dataworks_public_20200518_models.DsgWhiteListDeleteListRequest,
+    ) -> dataworks_public_20200518_models.DsgWhiteListDeleteListResponse:
+        """
+        @summary 删除脱敏白名单
+        
+        @param request: DsgWhiteListDeleteListRequest
+        @return: DsgWhiteListDeleteListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.dsg_white_list_delete_list_with_options_async(request, runtime)
 
     def dsg_white_list_query_list_with_options(
         self,

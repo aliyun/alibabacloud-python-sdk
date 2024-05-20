@@ -1,3 +1,11 @@
+2024-05-20 Version: 5.6.0
+- Support API DsgDesensPlanAddOrUpdate.
+- Support API DsgSceneQuerySceneListByName.
+- Support API DsgScenedDeleteScene.
+- Support API DsgWhiteListAddOrUpdate.
+- Support API DsgWhiteListDeleteList.
+
+
 2024-05-16 Version: 5.5.0
 - Support API DsgDesensPlanDelete.
 - Support API DsgDesensPlanQueryList.

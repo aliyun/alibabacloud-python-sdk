@@ -14015,6 +14015,278 @@ class DesensitizeDataResponse(TeaModel):
         return self
 
 
+class DsgDesensPlanAddOrUpdateRequestDesensRulesDesensPlan(TeaModel):
+    def __init__(
+        self,
+        desens_plan_type: str = None,
+        ext_param: Dict[str, Any] = None,
+    ):
+        # This parameter is required.
+        self.desens_plan_type = desens_plan_type
+        self.ext_param = ext_param
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.desens_plan_type is not None:
+            result['DesensPlanType'] = self.desens_plan_type
+        if self.ext_param is not None:
+            result['ExtParam'] = self.ext_param
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DesensPlanType') is not None:
+            self.desens_plan_type = m.get('DesensPlanType')
+        if m.get('ExtParam') is not None:
+            self.ext_param = m.get('ExtParam')
+        return self
+
+
+class DsgDesensPlanAddOrUpdateRequestDesensRules(TeaModel):
+    def __init__(
+        self,
+        check_watermark: bool = None,
+        data_type: str = None,
+        desens_plan: DsgDesensPlanAddOrUpdateRequestDesensRulesDesensPlan = None,
+        id: int = None,
+        owner: str = None,
+        rule_name: str = None,
+        scene_ids: List[int] = None,
+        status: int = None,
+    ):
+        self.check_watermark = check_watermark
+        # This parameter is required.
+        self.data_type = data_type
+        # This parameter is required.
+        self.desens_plan = desens_plan
+        self.id = id
+        # This parameter is required.
+        self.owner = owner
+        # This parameter is required.
+        self.rule_name = rule_name
+        # This parameter is required.
+        self.scene_ids = scene_ids
+        self.status = status
+
+    def validate(self):
+        if self.desens_plan:
+            self.desens_plan.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.check_watermark is not None:
+            result['CheckWatermark'] = self.check_watermark
+        if self.data_type is not None:
+            result['DataType'] = self.data_type
+        if self.desens_plan is not None:
+            result['DesensPlan'] = self.desens_plan.to_map()
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.rule_name is not None:
+            result['RuleName'] = self.rule_name
+        if self.scene_ids is not None:
+            result['SceneIds'] = self.scene_ids
+        if self.status is not None:
+            result['Status'] = self.status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CheckWatermark') is not None:
+            self.check_watermark = m.get('CheckWatermark')
+        if m.get('DataType') is not None:
+            self.data_type = m.get('DataType')
+        if m.get('DesensPlan') is not None:
+            temp_model = DsgDesensPlanAddOrUpdateRequestDesensRulesDesensPlan()
+            self.desens_plan = temp_model.from_map(m['DesensPlan'])
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('RuleName') is not None:
+            self.rule_name = m.get('RuleName')
+        if m.get('SceneIds') is not None:
+            self.scene_ids = m.get('SceneIds')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        return self
+
+
+class DsgDesensPlanAddOrUpdateRequest(TeaModel):
+    def __init__(
+        self,
+        desens_rules: List[DsgDesensPlanAddOrUpdateRequestDesensRules] = None,
+    ):
+        # This parameter is required.
+        self.desens_rules = desens_rules
+
+    def validate(self):
+        if self.desens_rules:
+            for k in self.desens_rules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['DesensRules'] = []
+        if self.desens_rules is not None:
+            for k in self.desens_rules:
+                result['DesensRules'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.desens_rules = []
+        if m.get('DesensRules') is not None:
+            for k in m.get('DesensRules'):
+                temp_model = DsgDesensPlanAddOrUpdateRequestDesensRules()
+                self.desens_rules.append(temp_model.from_map(k))
+        return self
+
+
+class DsgDesensPlanAddOrUpdateShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        desens_rules_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.desens_rules_shrink = desens_rules_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.desens_rules_shrink is not None:
+            result['DesensRules'] = self.desens_rules_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DesensRules') is not None:
+            self.desens_rules_shrink = m.get('DesensRules')
+        return self
+
+
+class DsgDesensPlanAddOrUpdateResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DsgDesensPlanAddOrUpdateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DsgDesensPlanAddOrUpdateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DsgDesensPlanAddOrUpdateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DsgDesensPlanDeleteRequest(TeaModel):
     def __init__(
         self,
@@ -15800,6 +16072,409 @@ class DsgSceneAddOrUpdateSceneResponse(TeaModel):
         return self
 
 
+class DsgSceneQuerySceneListByNameRequest(TeaModel):
+    def __init__(
+        self,
+        scene_name: str = None,
+    ):
+        self.scene_name = scene_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.scene_name is not None:
+            result['SceneName'] = self.scene_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SceneName') is not None:
+            self.scene_name = m.get('SceneName')
+        return self
+
+
+class DsgSceneQuerySceneListByNameResponseBodyDataProjects(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        db_type: str = None,
+        project_name: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.db_type = db_type
+        self.project_name = project_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.db_type is not None:
+            result['DbType'] = self.db_type
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('DbType') is not None:
+            self.db_type = m.get('DbType')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        return self
+
+
+class DsgSceneQuerySceneListByNameResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        children: List[Any] = None,
+        desc: str = None,
+        id: int = None,
+        projects: List[DsgSceneQuerySceneListByNameResponseBodyDataProjects] = None,
+        scene_code: str = None,
+        scene_level: int = None,
+        scene_name: str = None,
+        user_groups: str = None,
+    ):
+        self.children = children
+        self.desc = desc
+        self.id = id
+        self.projects = projects
+        self.scene_code = scene_code
+        self.scene_level = scene_level
+        self.scene_name = scene_name
+        self.user_groups = user_groups
+
+    def validate(self):
+        if self.projects:
+            for k in self.projects:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.children is not None:
+            result['Children'] = self.children
+        if self.desc is not None:
+            result['Desc'] = self.desc
+        if self.id is not None:
+            result['Id'] = self.id
+        result['Projects'] = []
+        if self.projects is not None:
+            for k in self.projects:
+                result['Projects'].append(k.to_map() if k else None)
+        if self.scene_code is not None:
+            result['SceneCode'] = self.scene_code
+        if self.scene_level is not None:
+            result['SceneLevel'] = self.scene_level
+        if self.scene_name is not None:
+            result['SceneName'] = self.scene_name
+        if self.user_groups is not None:
+            result['UserGroups'] = self.user_groups
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Children') is not None:
+            self.children = m.get('Children')
+        if m.get('Desc') is not None:
+            self.desc = m.get('Desc')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        self.projects = []
+        if m.get('Projects') is not None:
+            for k in m.get('Projects'):
+                temp_model = DsgSceneQuerySceneListByNameResponseBodyDataProjects()
+                self.projects.append(temp_model.from_map(k))
+        if m.get('SceneCode') is not None:
+            self.scene_code = m.get('SceneCode')
+        if m.get('SceneLevel') is not None:
+            self.scene_level = m.get('SceneLevel')
+        if m.get('SceneName') is not None:
+            self.scene_name = m.get('SceneName')
+        if m.get('UserGroups') is not None:
+            self.user_groups = m.get('UserGroups')
+        return self
+
+
+class DsgSceneQuerySceneListByNameResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[DsgSceneQuerySceneListByNameResponseBodyData] = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = DsgSceneQuerySceneListByNameResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DsgSceneQuerySceneListByNameResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DsgSceneQuerySceneListByNameResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DsgSceneQuerySceneListByNameResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DsgScenedDeleteSceneRequest(TeaModel):
+    def __init__(
+        self,
+        ids: List[int] = None,
+    ):
+        # This parameter is required.
+        self.ids = ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ids is not None:
+            result['Ids'] = self.ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ids') is not None:
+            self.ids = m.get('Ids')
+        return self
+
+
+class DsgScenedDeleteSceneShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        ids_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.ids_shrink = ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ids_shrink is not None:
+            result['Ids'] = self.ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ids') is not None:
+            self.ids_shrink = m.get('Ids')
+        return self
+
+
+class DsgScenedDeleteSceneResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DsgScenedDeleteSceneResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DsgScenedDeleteSceneResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DsgScenedDeleteSceneResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DsgStopSensIdentifyRequest(TeaModel):
     def __init__(
         self,
@@ -16850,6 +17525,376 @@ class DsgUserGroupQueryUserListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DsgUserGroupQueryUserListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DsgWhiteListAddOrUpdateRequestWhiteLists(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        id: int = None,
+        rule_id: int = None,
+        start_time: str = None,
+        user_group_ids: List[int] = None,
+    ):
+        self.end_time = end_time
+        self.id = id
+        # This parameter is required.
+        self.rule_id = rule_id
+        # This parameter is required.
+        self.start_time = start_time
+        # This parameter is required.
+        self.user_group_ids = user_group_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.id is not None:
+            result['Id'] = self.id
+        if self.rule_id is not None:
+            result['RuleId'] = self.rule_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.user_group_ids is not None:
+            result['UserGroupIds'] = self.user_group_ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+        if m.get('RuleId') is not None:
+            self.rule_id = m.get('RuleId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('UserGroupIds') is not None:
+            self.user_group_ids = m.get('UserGroupIds')
+        return self
+
+
+class DsgWhiteListAddOrUpdateRequest(TeaModel):
+    def __init__(
+        self,
+        white_lists: List[DsgWhiteListAddOrUpdateRequestWhiteLists] = None,
+    ):
+        # This parameter is required.
+        self.white_lists = white_lists
+
+    def validate(self):
+        if self.white_lists:
+            for k in self.white_lists:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['WhiteLists'] = []
+        if self.white_lists is not None:
+            for k in self.white_lists:
+                result['WhiteLists'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.white_lists = []
+        if m.get('WhiteLists') is not None:
+            for k in m.get('WhiteLists'):
+                temp_model = DsgWhiteListAddOrUpdateRequestWhiteLists()
+                self.white_lists.append(temp_model.from_map(k))
+        return self
+
+
+class DsgWhiteListAddOrUpdateShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        white_lists_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.white_lists_shrink = white_lists_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.white_lists_shrink is not None:
+            result['WhiteLists'] = self.white_lists_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('WhiteLists') is not None:
+            self.white_lists_shrink = m.get('WhiteLists')
+        return self
+
+
+class DsgWhiteListAddOrUpdateResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DsgWhiteListAddOrUpdateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DsgWhiteListAddOrUpdateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DsgWhiteListAddOrUpdateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DsgWhiteListDeleteListRequest(TeaModel):
+    def __init__(
+        self,
+        ids: List[int] = None,
+    ):
+        # This parameter is required.
+        self.ids = ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ids is not None:
+            result['Ids'] = self.ids
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ids') is not None:
+            self.ids = m.get('Ids')
+        return self
+
+
+class DsgWhiteListDeleteListShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        ids_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.ids_shrink = ids_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ids_shrink is not None:
+            result['Ids'] = self.ids_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ids') is not None:
+            self.ids_shrink = m.get('Ids')
+        return self
+
+
+class DsgWhiteListDeleteListResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: bool = None,
+        error_code: str = None,
+        error_message: str = None,
+        http_status_code: int = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.error_code = error_code
+        self.error_message = error_message
+        self.http_status_code = http_status_code
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.error_code is not None:
+            result['ErrorCode'] = self.error_code
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrorCode') is not None:
+            self.error_code = m.get('ErrorCode')
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DsgWhiteListDeleteListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DsgWhiteListDeleteListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DsgWhiteListDeleteListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
