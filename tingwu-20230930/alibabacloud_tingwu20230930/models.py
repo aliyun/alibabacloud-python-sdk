@@ -10,6 +10,7 @@ class CreateTaskRequestInput(TeaModel):
         file_url: str = None,
         format: str = None,
         multiple_streams_enabled: bool = None,
+        output_path: str = None,
         progressive_callbacks_enabled: bool = None,
         sample_rate: int = None,
         source_language: str = None,
@@ -19,6 +20,7 @@ class CreateTaskRequestInput(TeaModel):
         self.file_url = file_url
         self.format = format
         self.multiple_streams_enabled = multiple_streams_enabled
+        self.output_path = output_path
         self.progressive_callbacks_enabled = progressive_callbacks_enabled
         self.sample_rate = sample_rate
         # This parameter is required.
@@ -41,6 +43,8 @@ class CreateTaskRequestInput(TeaModel):
             result['Format'] = self.format
         if self.multiple_streams_enabled is not None:
             result['MultipleStreamsEnabled'] = self.multiple_streams_enabled
+        if self.output_path is not None:
+            result['OutputPath'] = self.output_path
         if self.progressive_callbacks_enabled is not None:
             result['ProgressiveCallbacksEnabled'] = self.progressive_callbacks_enabled
         if self.sample_rate is not None:
@@ -61,6 +65,8 @@ class CreateTaskRequestInput(TeaModel):
             self.format = m.get('Format')
         if m.get('MultipleStreamsEnabled') is not None:
             self.multiple_streams_enabled = m.get('MultipleStreamsEnabled')
+        if m.get('OutputPath') is not None:
+            self.output_path = m.get('OutputPath')
         if m.get('ProgressiveCallbacksEnabled') is not None:
             self.progressive_callbacks_enabled = m.get('ProgressiveCallbacksEnabled')
         if m.get('SampleRate') is not None:
@@ -159,8 +165,10 @@ class CreateTaskRequestParametersCustomPrompt(TeaModel):
 class CreateTaskRequestParametersExtraParams(TeaModel):
     def __init__(
         self,
+        max_keywords: int = None,
         nfix_enabled: bool = None,
     ):
+        self.max_keywords = max_keywords
         self.nfix_enabled = nfix_enabled
 
     def validate(self):
@@ -172,12 +180,16 @@ class CreateTaskRequestParametersExtraParams(TeaModel):
             return _map
 
         result = dict()
+        if self.max_keywords is not None:
+            result['MaxKeywords'] = self.max_keywords
         if self.nfix_enabled is not None:
             result['NfixEnabled'] = self.nfix_enabled
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('MaxKeywords') is not None:
+            self.max_keywords = m.get('MaxKeywords')
         if m.get('NfixEnabled') is not None:
             self.nfix_enabled = m.get('NfixEnabled')
         return self
