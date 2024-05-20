@@ -1,3 +1,25 @@
+2024-05-20 Version: 2.0.0
+- Support API ApplyForStreamAccessToken.
+- Support API CreateDoc.
+- Support API DeleteDoc.
+- Support API DescribeDoc.
+- Support API ListTongyiChatHistorys.
+- Support API RetryDoc.
+- Support API SearchDoc.
+- Support API UpdateDoc.
+- Update API BeginSession: update response param.
+- Update API CreateCategory: add param BizCode.
+- Update API CreateCategory: add param KnowledgeType.
+- Update API CreateCategory: update response param.
+- Update API DeleteCategory: update response param.
+- Update API DescribeCategory: update response param.
+- Update API ListAgent: update response param.
+- Update API ListCategory: add param KnowledgeType.
+- Update API ListCategory: update response param.
+- Update API UpdateCategory: add param BizCode.
+- Update API UpdateCategory: update response param.
+
+
 2023-08-01 Version: 1.0.11
 - GetAgentInfo,ListSaasInfo init.
 

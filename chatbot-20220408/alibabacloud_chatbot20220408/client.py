@@ -41,11 +41,114 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def apply_for_stream_access_token_with_options(
+        self,
+        request: chatbot_20220408_models.ApplyForStreamAccessTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.ApplyForStreamAccessTokenResponse:
+        """
+        @summary 申请流式网关AccessToken
+        
+        @param request: ApplyForStreamAccessTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyForStreamAccessTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ApplyForStreamAccessToken',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.ApplyForStreamAccessTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def apply_for_stream_access_token_with_options_async(
+        self,
+        request: chatbot_20220408_models.ApplyForStreamAccessTokenRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.ApplyForStreamAccessTokenResponse:
+        """
+        @summary 申请流式网关AccessToken
+        
+        @param request: ApplyForStreamAccessTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyForStreamAccessTokenResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ApplyForStreamAccessToken',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.ApplyForStreamAccessTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def apply_for_stream_access_token(
+        self,
+        request: chatbot_20220408_models.ApplyForStreamAccessTokenRequest,
+    ) -> chatbot_20220408_models.ApplyForStreamAccessTokenResponse:
+        """
+        @summary 申请流式网关AccessToken
+        
+        @param request: ApplyForStreamAccessTokenRequest
+        @return: ApplyForStreamAccessTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.apply_for_stream_access_token_with_options(request, runtime)
+
+    async def apply_for_stream_access_token_async(
+        self,
+        request: chatbot_20220408_models.ApplyForStreamAccessTokenRequest,
+    ) -> chatbot_20220408_models.ApplyForStreamAccessTokenResponse:
+        """
+        @summary 申请流式网关AccessToken
+        
+        @param request: ApplyForStreamAccessTokenRequest
+        @return: ApplyForStreamAccessTokenResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.apply_for_stream_access_token_with_options_async(request, runtime)
+
     def associate_with_options(
         self,
         tmp_req: chatbot_20220408_models.AssociateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.AssociateResponse:
+        """
+        @summary 会话-联想API
+        
+        @param tmp_req: AssociateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssociateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = chatbot_20220408_models.AssociateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -88,6 +191,13 @@ class Client(OpenApiClient):
         tmp_req: chatbot_20220408_models.AssociateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.AssociateResponse:
+        """
+        @summary 会话-联想API
+        
+        @param tmp_req: AssociateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssociateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = chatbot_20220408_models.AssociateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -129,6 +239,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.AssociateRequest,
     ) -> chatbot_20220408_models.AssociateResponse:
+        """
+        @summary 会话-联想API
+        
+        @param request: AssociateRequest
+        @return: AssociateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.associate_with_options(request, runtime)
 
@@ -136,6 +252,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.AssociateRequest,
     ) -> chatbot_20220408_models.AssociateResponse:
+        """
+        @summary 会话-联想API
+        
+        @param request: AssociateRequest
+        @return: AssociateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.associate_with_options_async(request, runtime)
 
@@ -144,6 +266,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.BeginSessionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.BeginSessionResponse:
+        """
+        @summary 获取欢迎语
+        
+        @param request: BeginSessionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BeginSessionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -174,6 +303,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.BeginSessionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.BeginSessionResponse:
+        """
+        @summary 获取欢迎语
+        
+        @param request: BeginSessionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BeginSessionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -203,6 +339,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.BeginSessionRequest,
     ) -> chatbot_20220408_models.BeginSessionResponse:
+        """
+        @summary 获取欢迎语
+        
+        @param request: BeginSessionRequest
+        @return: BeginSessionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.begin_session_with_options(request, runtime)
 
@@ -210,6 +352,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.BeginSessionRequest,
     ) -> chatbot_20220408_models.BeginSessionResponse:
+        """
+        @summary 获取欢迎语
+        
+        @param request: BeginSessionRequest
+        @return: BeginSessionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.begin_session_with_options_async(request, runtime)
 
@@ -218,6 +366,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.CancelInstancePublishTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.CancelInstancePublishTaskResponse:
+        """
+        @summary 取消机器人发布
+        
+        @param request: CancelInstancePublishTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelInstancePublishTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -250,6 +405,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.CancelInstancePublishTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.CancelInstancePublishTaskResponse:
+        """
+        @summary 取消机器人发布
+        
+        @param request: CancelInstancePublishTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelInstancePublishTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -281,6 +443,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.CancelInstancePublishTaskRequest,
     ) -> chatbot_20220408_models.CancelInstancePublishTaskResponse:
+        """
+        @summary 取消机器人发布
+        
+        @param request: CancelInstancePublishTaskRequest
+        @return: CancelInstancePublishTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cancel_instance_publish_task_with_options(request, runtime)
 
@@ -288,6 +456,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.CancelInstancePublishTaskRequest,
     ) -> chatbot_20220408_models.CancelInstancePublishTaskResponse:
+        """
+        @summary 取消机器人发布
+        
+        @param request: CancelInstancePublishTaskRequest
+        @return: CancelInstancePublishTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_instance_publish_task_with_options_async(request, runtime)
 
@@ -296,6 +470,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.CancelPublishTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.CancelPublishTaskResponse:
+        """
+        @summary 取消发布任务
+        
+        @param request: CancelPublishTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelPublishTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -326,6 +507,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.CancelPublishTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.CancelPublishTaskResponse:
+        """
+        @summary 取消发布任务
+        
+        @param request: CancelPublishTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelPublishTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -355,6 +543,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.CancelPublishTaskRequest,
     ) -> chatbot_20220408_models.CancelPublishTaskResponse:
+        """
+        @summary 取消发布任务
+        
+        @param request: CancelPublishTaskRequest
+        @return: CancelPublishTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cancel_publish_task_with_options(request, runtime)
 
@@ -362,6 +556,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.CancelPublishTaskRequest,
     ) -> chatbot_20220408_models.CancelPublishTaskResponse:
+        """
+        @summary 取消发布任务
+        
+        @param request: CancelPublishTaskRequest
+        @return: CancelPublishTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_publish_task_with_options_async(request, runtime)
 
@@ -370,6 +570,13 @@ class Client(OpenApiClient):
         tmp_req: chatbot_20220408_models.ChatRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.ChatResponse:
+        """
+        @summary 会话API
+        
+        @param tmp_req: ChatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChatResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = chatbot_20220408_models.ChatShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -422,6 +629,13 @@ class Client(OpenApiClient):
         tmp_req: chatbot_20220408_models.ChatRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.ChatResponse:
+        """
+        @summary 会话API
+        
+        @param tmp_req: ChatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChatResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = chatbot_20220408_models.ChatShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -473,6 +687,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.ChatRequest,
     ) -> chatbot_20220408_models.ChatResponse:
+        """
+        @summary 会话API
+        
+        @param request: ChatRequest
+        @return: ChatResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.chat_with_options(request, runtime)
 
@@ -480,6 +700,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.ChatRequest,
     ) -> chatbot_20220408_models.ChatResponse:
+        """
+        @summary 会话API
+        
+        @param request: ChatRequest
+        @return: ChatResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.chat_with_options_async(request, runtime)
 
@@ -488,6 +714,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.ContinueInstancePublishTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.ContinueInstancePublishTaskResponse:
+        """
+        @summary 继续机器人发布
+        
+        @param request: ContinueInstancePublishTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ContinueInstancePublishTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -520,6 +753,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.ContinueInstancePublishTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.ContinueInstancePublishTaskResponse:
+        """
+        @summary 继续机器人发布
+        
+        @param request: ContinueInstancePublishTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ContinueInstancePublishTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -551,6 +791,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.ContinueInstancePublishTaskRequest,
     ) -> chatbot_20220408_models.ContinueInstancePublishTaskResponse:
+        """
+        @summary 继续机器人发布
+        
+        @param request: ContinueInstancePublishTaskRequest
+        @return: ContinueInstancePublishTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.continue_instance_publish_task_with_options(request, runtime)
 
@@ -558,6 +804,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.ContinueInstancePublishTaskRequest,
     ) -> chatbot_20220408_models.ContinueInstancePublishTaskResponse:
+        """
+        @summary 继续机器人发布
+        
+        @param request: ContinueInstancePublishTaskRequest
+        @return: ContinueInstancePublishTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.continue_instance_publish_task_with_options_async(request, runtime)
 
@@ -566,11 +818,22 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.CreateCategoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.CreateCategoryResponse:
+        """
+        @summary 新增类目
+        
+        @param request: CreateCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCategoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
             query['AgentKey'] = request.agent_key
         body = {}
+        if not UtilClient.is_unset(request.biz_code):
+            body['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.knowledge_type):
+            body['KnowledgeType'] = request.knowledge_type
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.parent_category_id):
@@ -600,11 +863,22 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.CreateCategoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.CreateCategoryResponse:
+        """
+        @summary 新增类目
+        
+        @param request: CreateCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCategoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
             query['AgentKey'] = request.agent_key
         body = {}
+        if not UtilClient.is_unset(request.biz_code):
+            body['BizCode'] = request.biz_code
+        if not UtilClient.is_unset(request.knowledge_type):
+            body['KnowledgeType'] = request.knowledge_type
         if not UtilClient.is_unset(request.name):
             body['Name'] = request.name
         if not UtilClient.is_unset(request.parent_category_id):
@@ -633,6 +907,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.CreateCategoryRequest,
     ) -> chatbot_20220408_models.CreateCategoryResponse:
+        """
+        @summary 新增类目
+        
+        @param request: CreateCategoryRequest
+        @return: CreateCategoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_category_with_options(request, runtime)
 
@@ -640,6 +920,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.CreateCategoryRequest,
     ) -> chatbot_20220408_models.CreateCategoryResponse:
+        """
+        @summary 新增类目
+        
+        @param request: CreateCategoryRequest
+        @return: CreateCategoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_category_with_options_async(request, runtime)
 
@@ -648,6 +934,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.CreateConnQuestionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.CreateConnQuestionResponse:
+        """
+        @summary 新建FAQ关联问
+        
+        @param request: CreateConnQuestionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateConnQuestionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -682,6 +975,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.CreateConnQuestionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.CreateConnQuestionResponse:
+        """
+        @summary 新建FAQ关联问
+        
+        @param request: CreateConnQuestionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateConnQuestionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -715,6 +1015,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.CreateConnQuestionRequest,
     ) -> chatbot_20220408_models.CreateConnQuestionResponse:
+        """
+        @summary 新建FAQ关联问
+        
+        @param request: CreateConnQuestionRequest
+        @return: CreateConnQuestionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_conn_question_with_options(request, runtime)
 
@@ -722,6 +1028,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.CreateConnQuestionRequest,
     ) -> chatbot_20220408_models.CreateConnQuestionResponse:
+        """
+        @summary 新建FAQ关联问
+        
+        @param request: CreateConnQuestionRequest
+        @return: CreateConnQuestionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_conn_question_with_options_async(request, runtime)
 
@@ -730,6 +1042,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.CreateDSEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.CreateDSEntityResponse:
+        """
+        @summary 实体-创建
+        
+        @param request: CreateDSEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDSEntityResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -764,6 +1083,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.CreateDSEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.CreateDSEntityResponse:
+        """
+        @summary 实体-创建
+        
+        @param request: CreateDSEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDSEntityResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -797,6 +1123,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.CreateDSEntityRequest,
     ) -> chatbot_20220408_models.CreateDSEntityResponse:
+        """
+        @summary 实体-创建
+        
+        @param request: CreateDSEntityRequest
+        @return: CreateDSEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_dsentity_with_options(request, runtime)
 
@@ -804,6 +1136,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.CreateDSEntityRequest,
     ) -> chatbot_20220408_models.CreateDSEntityResponse:
+        """
+        @summary 实体-创建
+        
+        @param request: CreateDSEntityRequest
+        @return: CreateDSEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_dsentity_with_options_async(request, runtime)
 
@@ -812,6 +1150,13 @@ class Client(OpenApiClient):
         tmp_req: chatbot_20220408_models.CreateDSEntityValueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.CreateDSEntityValueResponse:
+        """
+        @summary 实体成员-创建
+        
+        @param tmp_req: CreateDSEntityValueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDSEntityValueResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = chatbot_20220408_models.CreateDSEntityValueShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -854,6 +1199,13 @@ class Client(OpenApiClient):
         tmp_req: chatbot_20220408_models.CreateDSEntityValueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.CreateDSEntityValueResponse:
+        """
+        @summary 实体成员-创建
+        
+        @param tmp_req: CreateDSEntityValueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDSEntityValueResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = chatbot_20220408_models.CreateDSEntityValueShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -895,6 +1247,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.CreateDSEntityValueRequest,
     ) -> chatbot_20220408_models.CreateDSEntityValueResponse:
+        """
+        @summary 实体成员-创建
+        
+        @param request: CreateDSEntityValueRequest
+        @return: CreateDSEntityValueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_dsentity_value_with_options(request, runtime)
 
@@ -902,14 +1260,167 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.CreateDSEntityValueRequest,
     ) -> chatbot_20220408_models.CreateDSEntityValueResponse:
+        """
+        @summary 实体成员-创建
+        
+        @param request: CreateDSEntityValueRequest
+        @return: CreateDSEntityValueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_dsentity_value_with_options_async(request, runtime)
+
+    def create_doc_with_options(
+        self,
+        tmp_req: chatbot_20220408_models.CreateDocRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.CreateDocResponse:
+        """
+        @summary 创建文档
+        
+        @param tmp_req: CreateDocRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDocResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = chatbot_20220408_models.CreateDocShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag_ids):
+            request.tag_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_ids, 'TagIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.content):
+            query['Content'] = request.content
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.meta):
+            query['Meta'] = request.meta
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.tag_ids_shrink):
+            query['TagIds'] = request.tag_ids_shrink
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDoc',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.CreateDocResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_doc_with_options_async(
+        self,
+        tmp_req: chatbot_20220408_models.CreateDocRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.CreateDocResponse:
+        """
+        @summary 创建文档
+        
+        @param tmp_req: CreateDocRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDocResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = chatbot_20220408_models.CreateDocShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag_ids):
+            request.tag_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_ids, 'TagIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.content):
+            query['Content'] = request.content
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.meta):
+            query['Meta'] = request.meta
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.tag_ids_shrink):
+            query['TagIds'] = request.tag_ids_shrink
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        if not UtilClient.is_unset(request.url):
+            query['Url'] = request.url
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDoc',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.CreateDocResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_doc(
+        self,
+        request: chatbot_20220408_models.CreateDocRequest,
+    ) -> chatbot_20220408_models.CreateDocResponse:
+        """
+        @summary 创建文档
+        
+        @param request: CreateDocRequest
+        @return: CreateDocResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_doc_with_options(request, runtime)
+
+    async def create_doc_async(
+        self,
+        request: chatbot_20220408_models.CreateDocRequest,
+    ) -> chatbot_20220408_models.CreateDocResponse:
+        """
+        @summary 创建文档
+        
+        @param request: CreateDocRequest
+        @return: CreateDocResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_doc_with_options_async(request, runtime)
 
     def create_faq_with_options(
         self,
         request: chatbot_20220408_models.CreateFaqRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.CreateFaqResponse:
+        """
+        @summary 新建FAQ
+        
+        @param request: CreateFaqRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFaqResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -952,6 +1463,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.CreateFaqRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.CreateFaqResponse:
+        """
+        @summary 新建FAQ
+        
+        @param request: CreateFaqRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFaqResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -993,6 +1511,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.CreateFaqRequest,
     ) -> chatbot_20220408_models.CreateFaqResponse:
+        """
+        @summary 新建FAQ
+        
+        @param request: CreateFaqRequest
+        @return: CreateFaqResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_faq_with_options(request, runtime)
 
@@ -1000,6 +1524,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.CreateFaqRequest,
     ) -> chatbot_20220408_models.CreateFaqResponse:
+        """
+        @summary 新建FAQ
+        
+        @param request: CreateFaqRequest
+        @return: CreateFaqResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_faq_with_options_async(request, runtime)
 
@@ -1008,6 +1538,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.CreateInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.CreateInstanceResponse:
+        """
+        @summary 机器人-创建
+        
+        @param request: CreateInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -1044,6 +1581,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.CreateInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.CreateInstanceResponse:
+        """
+        @summary 机器人-创建
+        
+        @param request: CreateInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -1079,6 +1623,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.CreateInstanceRequest,
     ) -> chatbot_20220408_models.CreateInstanceResponse:
+        """
+        @summary 机器人-创建
+        
+        @param request: CreateInstanceRequest
+        @return: CreateInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_instance_with_options(request, runtime)
 
@@ -1086,6 +1636,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.CreateInstanceRequest,
     ) -> chatbot_20220408_models.CreateInstanceResponse:
+        """
+        @summary 机器人-创建
+        
+        @param request: CreateInstanceRequest
+        @return: CreateInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_instance_with_options_async(request, runtime)
 
@@ -1094,6 +1650,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.CreateInstancePublishTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.CreateInstancePublishTaskResponse:
+        """
+        @summary 创建机器人发布任务
+        
+        @param request: CreateInstancePublishTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstancePublishTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -1124,6 +1687,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.CreateInstancePublishTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.CreateInstancePublishTaskResponse:
+        """
+        @summary 创建机器人发布任务
+        
+        @param request: CreateInstancePublishTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstancePublishTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -1153,6 +1723,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.CreateInstancePublishTaskRequest,
     ) -> chatbot_20220408_models.CreateInstancePublishTaskResponse:
+        """
+        @summary 创建机器人发布任务
+        
+        @param request: CreateInstancePublishTaskRequest
+        @return: CreateInstancePublishTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_instance_publish_task_with_options(request, runtime)
 
@@ -1160,6 +1736,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.CreateInstancePublishTaskRequest,
     ) -> chatbot_20220408_models.CreateInstancePublishTaskResponse:
+        """
+        @summary 创建机器人发布任务
+        
+        @param request: CreateInstancePublishTaskRequest
+        @return: CreateInstancePublishTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_instance_publish_task_with_options_async(request, runtime)
 
@@ -1168,6 +1750,13 @@ class Client(OpenApiClient):
         tmp_req: chatbot_20220408_models.CreateIntentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.CreateIntentResponse:
+        """
+        @summary 意图-创建
+        
+        @param tmp_req: CreateIntentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIntentResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = chatbot_20220408_models.CreateIntentShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1204,6 +1793,13 @@ class Client(OpenApiClient):
         tmp_req: chatbot_20220408_models.CreateIntentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.CreateIntentResponse:
+        """
+        @summary 意图-创建
+        
+        @param tmp_req: CreateIntentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIntentResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = chatbot_20220408_models.CreateIntentShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1239,6 +1835,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.CreateIntentRequest,
     ) -> chatbot_20220408_models.CreateIntentResponse:
+        """
+        @summary 意图-创建
+        
+        @param request: CreateIntentRequest
+        @return: CreateIntentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_intent_with_options(request, runtime)
 
@@ -1246,6 +1848,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.CreateIntentRequest,
     ) -> chatbot_20220408_models.CreateIntentResponse:
+        """
+        @summary 意图-创建
+        
+        @param request: CreateIntentRequest
+        @return: CreateIntentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_intent_with_options_async(request, runtime)
 
@@ -1254,6 +1862,13 @@ class Client(OpenApiClient):
         tmp_req: chatbot_20220408_models.CreateLgfRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.CreateLgfResponse:
+        """
+        @summary 意图-LGF-创建
+        
+        @param tmp_req: CreateLgfRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLgfResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = chatbot_20220408_models.CreateLgfShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1290,6 +1905,13 @@ class Client(OpenApiClient):
         tmp_req: chatbot_20220408_models.CreateLgfRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.CreateLgfResponse:
+        """
+        @summary 意图-LGF-创建
+        
+        @param tmp_req: CreateLgfRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLgfResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = chatbot_20220408_models.CreateLgfShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1325,6 +1947,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.CreateLgfRequest,
     ) -> chatbot_20220408_models.CreateLgfResponse:
+        """
+        @summary 意图-LGF-创建
+        
+        @param request: CreateLgfRequest
+        @return: CreateLgfResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_lgf_with_options(request, runtime)
 
@@ -1332,6 +1960,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.CreateLgfRequest,
     ) -> chatbot_20220408_models.CreateLgfResponse:
+        """
+        @summary 意图-LGF-创建
+        
+        @param request: CreateLgfRequest
+        @return: CreateLgfResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_lgf_with_options_async(request, runtime)
 
@@ -1340,6 +1974,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.CreatePerspectiveRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.CreatePerspectiveResponse:
+        """
+        @summary 视角-创建
+        
+        @param request: CreatePerspectiveRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePerspectiveResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -1372,6 +2013,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.CreatePerspectiveRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.CreatePerspectiveResponse:
+        """
+        @summary 视角-创建
+        
+        @param request: CreatePerspectiveRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePerspectiveResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -1403,6 +2051,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.CreatePerspectiveRequest,
     ) -> chatbot_20220408_models.CreatePerspectiveResponse:
+        """
+        @summary 视角-创建
+        
+        @param request: CreatePerspectiveRequest
+        @return: CreatePerspectiveResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_perspective_with_options(request, runtime)
 
@@ -1410,6 +2064,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.CreatePerspectiveRequest,
     ) -> chatbot_20220408_models.CreatePerspectiveResponse:
+        """
+        @summary 视角-创建
+        
+        @param request: CreatePerspectiveRequest
+        @return: CreatePerspectiveResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_perspective_with_options_async(request, runtime)
 
@@ -1418,6 +2078,13 @@ class Client(OpenApiClient):
         tmp_req: chatbot_20220408_models.CreatePublishTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.CreatePublishTaskResponse:
+        """
+        @summary 创建发布任务
+        
+        @param tmp_req: CreatePublishTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePublishTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = chatbot_20220408_models.CreatePublishTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1454,6 +2121,13 @@ class Client(OpenApiClient):
         tmp_req: chatbot_20220408_models.CreatePublishTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.CreatePublishTaskResponse:
+        """
+        @summary 创建发布任务
+        
+        @param tmp_req: CreatePublishTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePublishTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = chatbot_20220408_models.CreatePublishTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1489,6 +2163,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.CreatePublishTaskRequest,
     ) -> chatbot_20220408_models.CreatePublishTaskResponse:
+        """
+        @summary 创建发布任务
+        
+        @param request: CreatePublishTaskRequest
+        @return: CreatePublishTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_publish_task_with_options(request, runtime)
 
@@ -1496,6 +2176,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.CreatePublishTaskRequest,
     ) -> chatbot_20220408_models.CreatePublishTaskResponse:
+        """
+        @summary 创建发布任务
+        
+        @param request: CreatePublishTaskRequest
+        @return: CreatePublishTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_publish_task_with_options_async(request, runtime)
 
@@ -1504,6 +2190,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.CreateSimQuestionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.CreateSimQuestionResponse:
+        """
+        @summary 新建FAQ相似问
+        
+        @param request: CreateSimQuestionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSimQuestionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -1538,6 +2231,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.CreateSimQuestionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.CreateSimQuestionResponse:
+        """
+        @summary 新建FAQ相似问
+        
+        @param request: CreateSimQuestionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSimQuestionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -1571,6 +2271,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.CreateSimQuestionRequest,
     ) -> chatbot_20220408_models.CreateSimQuestionResponse:
+        """
+        @summary 新建FAQ相似问
+        
+        @param request: CreateSimQuestionRequest
+        @return: CreateSimQuestionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_sim_question_with_options(request, runtime)
 
@@ -1578,6 +2284,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.CreateSimQuestionRequest,
     ) -> chatbot_20220408_models.CreateSimQuestionResponse:
+        """
+        @summary 新建FAQ相似问
+        
+        @param request: CreateSimQuestionRequest
+        @return: CreateSimQuestionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_sim_question_with_options_async(request, runtime)
 
@@ -1586,6 +2298,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.CreateSolutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.CreateSolutionResponse:
+        """
+        @summary 新建FAQ答案
+        
+        @param request: CreateSolutionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSolutionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -1622,6 +2341,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.CreateSolutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.CreateSolutionResponse:
+        """
+        @summary 新建FAQ答案
+        
+        @param request: CreateSolutionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSolutionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -1657,6 +2383,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.CreateSolutionRequest,
     ) -> chatbot_20220408_models.CreateSolutionResponse:
+        """
+        @summary 新建FAQ答案
+        
+        @param request: CreateSolutionRequest
+        @return: CreateSolutionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_solution_with_options(request, runtime)
 
@@ -1664,6 +2396,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.CreateSolutionRequest,
     ) -> chatbot_20220408_models.CreateSolutionResponse:
+        """
+        @summary 新建FAQ答案
+        
+        @param request: CreateSolutionRequest
+        @return: CreateSolutionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_solution_with_options_async(request, runtime)
 
@@ -1672,6 +2410,13 @@ class Client(OpenApiClient):
         tmp_req: chatbot_20220408_models.CreateUserSayRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.CreateUserSayResponse:
+        """
+        @summary 意图-话术-创建
+        
+        @param tmp_req: CreateUserSayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUserSayResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = chatbot_20220408_models.CreateUserSayShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1708,6 +2453,13 @@ class Client(OpenApiClient):
         tmp_req: chatbot_20220408_models.CreateUserSayRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.CreateUserSayResponse:
+        """
+        @summary 意图-话术-创建
+        
+        @param tmp_req: CreateUserSayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUserSayResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = chatbot_20220408_models.CreateUserSayShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1743,6 +2495,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.CreateUserSayRequest,
     ) -> chatbot_20220408_models.CreateUserSayResponse:
+        """
+        @summary 意图-话术-创建
+        
+        @param request: CreateUserSayRequest
+        @return: CreateUserSayResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_user_say_with_options(request, runtime)
 
@@ -1750,6 +2508,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.CreateUserSayRequest,
     ) -> chatbot_20220408_models.CreateUserSayResponse:
+        """
+        @summary 意图-话术-创建
+        
+        @param request: CreateUserSayRequest
+        @return: CreateUserSayResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_user_say_with_options_async(request, runtime)
 
@@ -1758,6 +2522,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.DeleteCategoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.DeleteCategoryResponse:
+        """
+        @summary 删除类目
+        
+        @param request: DeleteCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCategoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -1790,6 +2561,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.DeleteCategoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.DeleteCategoryResponse:
+        """
+        @summary 删除类目
+        
+        @param request: DeleteCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCategoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -1821,6 +2599,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.DeleteCategoryRequest,
     ) -> chatbot_20220408_models.DeleteCategoryResponse:
+        """
+        @summary 删除类目
+        
+        @param request: DeleteCategoryRequest
+        @return: DeleteCategoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_category_with_options(request, runtime)
 
@@ -1828,6 +2612,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.DeleteCategoryRequest,
     ) -> chatbot_20220408_models.DeleteCategoryResponse:
+        """
+        @summary 删除类目
+        
+        @param request: DeleteCategoryRequest
+        @return: DeleteCategoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_category_with_options_async(request, runtime)
 
@@ -1836,6 +2626,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.DeleteConnQuestionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.DeleteConnQuestionResponse:
+        """
+        @summary 删除FAQ关联问
+        
+        @param request: DeleteConnQuestionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConnQuestionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -1868,6 +2665,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.DeleteConnQuestionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.DeleteConnQuestionResponse:
+        """
+        @summary 删除FAQ关联问
+        
+        @param request: DeleteConnQuestionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConnQuestionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -1899,6 +2703,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.DeleteConnQuestionRequest,
     ) -> chatbot_20220408_models.DeleteConnQuestionResponse:
+        """
+        @summary 删除FAQ关联问
+        
+        @param request: DeleteConnQuestionRequest
+        @return: DeleteConnQuestionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_conn_question_with_options(request, runtime)
 
@@ -1906,6 +2716,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.DeleteConnQuestionRequest,
     ) -> chatbot_20220408_models.DeleteConnQuestionResponse:
+        """
+        @summary 删除FAQ关联问
+        
+        @param request: DeleteConnQuestionRequest
+        @return: DeleteConnQuestionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_conn_question_with_options_async(request, runtime)
 
@@ -1914,6 +2730,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.DeleteDSEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.DeleteDSEntityResponse:
+        """
+        @summary 实体-删除
+        
+        @param request: DeleteDSEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDSEntityResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -1946,6 +2769,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.DeleteDSEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.DeleteDSEntityResponse:
+        """
+        @summary 实体-删除
+        
+        @param request: DeleteDSEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDSEntityResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -1977,6 +2807,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.DeleteDSEntityRequest,
     ) -> chatbot_20220408_models.DeleteDSEntityResponse:
+        """
+        @summary 实体-删除
+        
+        @param request: DeleteDSEntityRequest
+        @return: DeleteDSEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_dsentity_with_options(request, runtime)
 
@@ -1984,6 +2820,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.DeleteDSEntityRequest,
     ) -> chatbot_20220408_models.DeleteDSEntityResponse:
+        """
+        @summary 实体-删除
+        
+        @param request: DeleteDSEntityRequest
+        @return: DeleteDSEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_dsentity_with_options_async(request, runtime)
 
@@ -1992,6 +2834,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.DeleteDSEntityValueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.DeleteDSEntityValueResponse:
+        """
+        @summary 实体成员-删除
+        
+        @param request: DeleteDSEntityValueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDSEntityValueResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2026,6 +2875,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.DeleteDSEntityValueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.DeleteDSEntityValueResponse:
+        """
+        @summary 实体成员-删除
+        
+        @param request: DeleteDSEntityValueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDSEntityValueResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2059,6 +2915,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.DeleteDSEntityValueRequest,
     ) -> chatbot_20220408_models.DeleteDSEntityValueResponse:
+        """
+        @summary 实体成员-删除
+        
+        @param request: DeleteDSEntityValueRequest
+        @return: DeleteDSEntityValueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_dsentity_value_with_options(request, runtime)
 
@@ -2066,14 +2928,127 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.DeleteDSEntityValueRequest,
     ) -> chatbot_20220408_models.DeleteDSEntityValueResponse:
+        """
+        @summary 实体成员-删除
+        
+        @param request: DeleteDSEntityValueRequest
+        @return: DeleteDSEntityValueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_dsentity_value_with_options_async(request, runtime)
+
+    def delete_doc_with_options(
+        self,
+        request: chatbot_20220408_models.DeleteDocRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.DeleteDocResponse:
+        """
+        @summary 文档删除
+        
+        @param request: DeleteDocRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDocResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.knowledge_id):
+            query['KnowledgeId'] = request.knowledge_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDoc',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.DeleteDocResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_doc_with_options_async(
+        self,
+        request: chatbot_20220408_models.DeleteDocRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.DeleteDocResponse:
+        """
+        @summary 文档删除
+        
+        @param request: DeleteDocRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDocResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.knowledge_id):
+            query['KnowledgeId'] = request.knowledge_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDoc',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.DeleteDocResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_doc(
+        self,
+        request: chatbot_20220408_models.DeleteDocRequest,
+    ) -> chatbot_20220408_models.DeleteDocResponse:
+        """
+        @summary 文档删除
+        
+        @param request: DeleteDocRequest
+        @return: DeleteDocResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_doc_with_options(request, runtime)
+
+    async def delete_doc_async(
+        self,
+        request: chatbot_20220408_models.DeleteDocRequest,
+    ) -> chatbot_20220408_models.DeleteDocResponse:
+        """
+        @summary 文档删除
+        
+        @param request: DeleteDocRequest
+        @return: DeleteDocResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_doc_with_options_async(request, runtime)
 
     def delete_faq_with_options(
         self,
         request: chatbot_20220408_models.DeleteFaqRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.DeleteFaqResponse:
+        """
+        @summary 删除FAQ，如果是已发布的知识，删除之后，变成已删除未发布，需要发布才能真正删除
+        
+        @param request: DeleteFaqRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFaqResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2106,6 +3081,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.DeleteFaqRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.DeleteFaqResponse:
+        """
+        @summary 删除FAQ，如果是已发布的知识，删除之后，变成已删除未发布，需要发布才能真正删除
+        
+        @param request: DeleteFaqRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFaqResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2137,6 +3119,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.DeleteFaqRequest,
     ) -> chatbot_20220408_models.DeleteFaqResponse:
+        """
+        @summary 删除FAQ，如果是已发布的知识，删除之后，变成已删除未发布，需要发布才能真正删除
+        
+        @param request: DeleteFaqRequest
+        @return: DeleteFaqResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_faq_with_options(request, runtime)
 
@@ -2144,6 +3132,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.DeleteFaqRequest,
     ) -> chatbot_20220408_models.DeleteFaqResponse:
+        """
+        @summary 删除FAQ，如果是已发布的知识，删除之后，变成已删除未发布，需要发布才能真正删除
+        
+        @param request: DeleteFaqRequest
+        @return: DeleteFaqResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_faq_with_options_async(request, runtime)
 
@@ -2152,6 +3146,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.DeleteInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.DeleteInstanceResponse:
+        """
+        @summary 机器人-删除
+        
+        @param request: DeleteInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2182,6 +3183,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.DeleteInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.DeleteInstanceResponse:
+        """
+        @summary 机器人-删除
+        
+        @param request: DeleteInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2211,6 +3219,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.DeleteInstanceRequest,
     ) -> chatbot_20220408_models.DeleteInstanceResponse:
+        """
+        @summary 机器人-删除
+        
+        @param request: DeleteInstanceRequest
+        @return: DeleteInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_instance_with_options(request, runtime)
 
@@ -2218,6 +3232,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.DeleteInstanceRequest,
     ) -> chatbot_20220408_models.DeleteInstanceResponse:
+        """
+        @summary 机器人-删除
+        
+        @param request: DeleteInstanceRequest
+        @return: DeleteInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_instance_with_options_async(request, runtime)
 
@@ -2226,6 +3246,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.DeleteIntentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.DeleteIntentResponse:
+        """
+        @summary 意图-删除
+        
+        @param request: DeleteIntentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIntentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2258,6 +3285,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.DeleteIntentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.DeleteIntentResponse:
+        """
+        @summary 意图-删除
+        
+        @param request: DeleteIntentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIntentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2289,6 +3323,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.DeleteIntentRequest,
     ) -> chatbot_20220408_models.DeleteIntentResponse:
+        """
+        @summary 意图-删除
+        
+        @param request: DeleteIntentRequest
+        @return: DeleteIntentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_intent_with_options(request, runtime)
 
@@ -2296,6 +3336,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.DeleteIntentRequest,
     ) -> chatbot_20220408_models.DeleteIntentResponse:
+        """
+        @summary 意图-删除
+        
+        @param request: DeleteIntentRequest
+        @return: DeleteIntentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_intent_with_options_async(request, runtime)
 
@@ -2304,6 +3350,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.DeleteLgfRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.DeleteLgfResponse:
+        """
+        @summary 意图-LGF-删除
+        
+        @param request: DeleteLgfRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLgfResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2338,6 +3391,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.DeleteLgfRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.DeleteLgfResponse:
+        """
+        @summary 意图-LGF-删除
+        
+        @param request: DeleteLgfRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLgfResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2371,6 +3431,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.DeleteLgfRequest,
     ) -> chatbot_20220408_models.DeleteLgfResponse:
+        """
+        @summary 意图-LGF-删除
+        
+        @param request: DeleteLgfRequest
+        @return: DeleteLgfResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_lgf_with_options(request, runtime)
 
@@ -2378,6 +3444,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.DeleteLgfRequest,
     ) -> chatbot_20220408_models.DeleteLgfResponse:
+        """
+        @summary 意图-LGF-删除
+        
+        @param request: DeleteLgfRequest
+        @return: DeleteLgfResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_lgf_with_options_async(request, runtime)
 
@@ -2386,6 +3458,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.DeletePerspectiveRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.DeletePerspectiveResponse:
+        """
+        @summary 视角-删除
+        
+        @param request: DeletePerspectiveRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePerspectiveResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2416,6 +3495,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.DeletePerspectiveRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.DeletePerspectiveResponse:
+        """
+        @summary 视角-删除
+        
+        @param request: DeletePerspectiveRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePerspectiveResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2445,6 +3531,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.DeletePerspectiveRequest,
     ) -> chatbot_20220408_models.DeletePerspectiveResponse:
+        """
+        @summary 视角-删除
+        
+        @param request: DeletePerspectiveRequest
+        @return: DeletePerspectiveResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_perspective_with_options(request, runtime)
 
@@ -2452,6 +3544,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.DeletePerspectiveRequest,
     ) -> chatbot_20220408_models.DeletePerspectiveResponse:
+        """
+        @summary 视角-删除
+        
+        @param request: DeletePerspectiveRequest
+        @return: DeletePerspectiveResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_perspective_with_options_async(request, runtime)
 
@@ -2460,6 +3558,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.DeleteSimQuestionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.DeleteSimQuestionResponse:
+        """
+        @summary 删除FAQ相似问
+        
+        @param request: DeleteSimQuestionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSimQuestionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2492,6 +3597,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.DeleteSimQuestionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.DeleteSimQuestionResponse:
+        """
+        @summary 删除FAQ相似问
+        
+        @param request: DeleteSimQuestionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSimQuestionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2523,6 +3635,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.DeleteSimQuestionRequest,
     ) -> chatbot_20220408_models.DeleteSimQuestionResponse:
+        """
+        @summary 删除FAQ相似问
+        
+        @param request: DeleteSimQuestionRequest
+        @return: DeleteSimQuestionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_sim_question_with_options(request, runtime)
 
@@ -2530,6 +3648,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.DeleteSimQuestionRequest,
     ) -> chatbot_20220408_models.DeleteSimQuestionResponse:
+        """
+        @summary 删除FAQ相似问
+        
+        @param request: DeleteSimQuestionRequest
+        @return: DeleteSimQuestionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_sim_question_with_options_async(request, runtime)
 
@@ -2538,6 +3662,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.DeleteSolutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.DeleteSolutionResponse:
+        """
+        @summary 删除FAQ答案
+        
+        @param request: DeleteSolutionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSolutionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2570,6 +3701,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.DeleteSolutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.DeleteSolutionResponse:
+        """
+        @summary 删除FAQ答案
+        
+        @param request: DeleteSolutionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSolutionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2601,6 +3739,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.DeleteSolutionRequest,
     ) -> chatbot_20220408_models.DeleteSolutionResponse:
+        """
+        @summary 删除FAQ答案
+        
+        @param request: DeleteSolutionRequest
+        @return: DeleteSolutionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_solution_with_options(request, runtime)
 
@@ -2608,6 +3752,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.DeleteSolutionRequest,
     ) -> chatbot_20220408_models.DeleteSolutionResponse:
+        """
+        @summary 删除FAQ答案
+        
+        @param request: DeleteSolutionRequest
+        @return: DeleteSolutionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_solution_with_options_async(request, runtime)
 
@@ -2616,6 +3766,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.DeleteUserSayRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.DeleteUserSayResponse:
+        """
+        @summary 意图-用户话术-删除
+        
+        @param request: DeleteUserSayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserSayResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2650,6 +3807,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.DeleteUserSayRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.DeleteUserSayResponse:
+        """
+        @summary 意图-用户话术-删除
+        
+        @param request: DeleteUserSayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserSayResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2683,6 +3847,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.DeleteUserSayRequest,
     ) -> chatbot_20220408_models.DeleteUserSayResponse:
+        """
+        @summary 意图-用户话术-删除
+        
+        @param request: DeleteUserSayRequest
+        @return: DeleteUserSayResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_user_say_with_options(request, runtime)
 
@@ -2690,6 +3860,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.DeleteUserSayRequest,
     ) -> chatbot_20220408_models.DeleteUserSayResponse:
+        """
+        @summary 意图-用户话术-删除
+        
+        @param request: DeleteUserSayRequest
+        @return: DeleteUserSayResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_user_say_with_options_async(request, runtime)
 
@@ -2698,6 +3874,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.DescribeCategoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.DescribeCategoryResponse:
+        """
+        @summary 查看单个类目信息
+        
+        @param request: DescribeCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCategoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2730,6 +3913,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.DescribeCategoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.DescribeCategoryResponse:
+        """
+        @summary 查看单个类目信息
+        
+        @param request: DescribeCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCategoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2761,6 +3951,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.DescribeCategoryRequest,
     ) -> chatbot_20220408_models.DescribeCategoryResponse:
+        """
+        @summary 查看单个类目信息
+        
+        @param request: DescribeCategoryRequest
+        @return: DescribeCategoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_category_with_options(request, runtime)
 
@@ -2768,6 +3964,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.DescribeCategoryRequest,
     ) -> chatbot_20220408_models.DescribeCategoryResponse:
+        """
+        @summary 查看单个类目信息
+        
+        @param request: DescribeCategoryRequest
+        @return: DescribeCategoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_category_with_options_async(request, runtime)
 
@@ -2776,6 +3978,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.DescribeDSEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.DescribeDSEntityResponse:
+        """
+        @summary 实体-详情
+        
+        @param request: DescribeDSEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDSEntityResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2808,6 +4017,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.DescribeDSEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.DescribeDSEntityResponse:
+        """
+        @summary 实体-详情
+        
+        @param request: DescribeDSEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDSEntityResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2839,6 +4055,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.DescribeDSEntityRequest,
     ) -> chatbot_20220408_models.DescribeDSEntityResponse:
+        """
+        @summary 实体-详情
+        
+        @param request: DescribeDSEntityRequest
+        @return: DescribeDSEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dsentity_with_options(request, runtime)
 
@@ -2846,14 +4068,131 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.DescribeDSEntityRequest,
     ) -> chatbot_20220408_models.DescribeDSEntityResponse:
+        """
+        @summary 实体-详情
+        
+        @param request: DescribeDSEntityRequest
+        @return: DescribeDSEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dsentity_with_options_async(request, runtime)
+
+    def describe_doc_with_options(
+        self,
+        request: chatbot_20220408_models.DescribeDocRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.DescribeDocResponse:
+        """
+        @summary 文档详情
+        
+        @param request: DescribeDocRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDocResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.knowledge_id):
+            query['KnowledgeId'] = request.knowledge_id
+        if not UtilClient.is_unset(request.show_detail):
+            query['ShowDetail'] = request.show_detail
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDoc',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.DescribeDocResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_doc_with_options_async(
+        self,
+        request: chatbot_20220408_models.DescribeDocRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.DescribeDocResponse:
+        """
+        @summary 文档详情
+        
+        @param request: DescribeDocRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDocResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.knowledge_id):
+            query['KnowledgeId'] = request.knowledge_id
+        if not UtilClient.is_unset(request.show_detail):
+            query['ShowDetail'] = request.show_detail
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDoc',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.DescribeDocResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_doc(
+        self,
+        request: chatbot_20220408_models.DescribeDocRequest,
+    ) -> chatbot_20220408_models.DescribeDocResponse:
+        """
+        @summary 文档详情
+        
+        @param request: DescribeDocRequest
+        @return: DescribeDocResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_doc_with_options(request, runtime)
+
+    async def describe_doc_async(
+        self,
+        request: chatbot_20220408_models.DescribeDocRequest,
+    ) -> chatbot_20220408_models.DescribeDocResponse:
+        """
+        @summary 文档详情
+        
+        @param request: DescribeDocRequest
+        @return: DescribeDocResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_doc_with_options_async(request, runtime)
 
     def describe_faq_with_options(
         self,
         request: chatbot_20220408_models.DescribeFaqRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.DescribeFaqResponse:
+        """
+        @summary 知识详情
+        
+        @param request: DescribeFaqRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFaqResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2886,6 +4225,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.DescribeFaqRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.DescribeFaqResponse:
+        """
+        @summary 知识详情
+        
+        @param request: DescribeFaqRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFaqResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2917,6 +4263,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.DescribeFaqRequest,
     ) -> chatbot_20220408_models.DescribeFaqResponse:
+        """
+        @summary 知识详情
+        
+        @param request: DescribeFaqRequest
+        @return: DescribeFaqResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_faq_with_options(request, runtime)
 
@@ -2924,6 +4276,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.DescribeFaqRequest,
     ) -> chatbot_20220408_models.DescribeFaqResponse:
+        """
+        @summary 知识详情
+        
+        @param request: DescribeFaqRequest
+        @return: DescribeFaqResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_faq_with_options_async(request, runtime)
 
@@ -2932,6 +4290,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.DescribeInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.DescribeInstanceResponse:
+        """
+        @summary 机器人-详情
+        
+        @param request: DescribeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2962,6 +4327,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.DescribeInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.DescribeInstanceResponse:
+        """
+        @summary 机器人-详情
+        
+        @param request: DescribeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -2991,6 +4363,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.DescribeInstanceRequest,
     ) -> chatbot_20220408_models.DescribeInstanceResponse:
+        """
+        @summary 机器人-详情
+        
+        @param request: DescribeInstanceRequest
+        @return: DescribeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_with_options(request, runtime)
 
@@ -2998,6 +4376,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.DescribeInstanceRequest,
     ) -> chatbot_20220408_models.DescribeInstanceResponse:
+        """
+        @summary 机器人-详情
+        
+        @param request: DescribeInstanceRequest
+        @return: DescribeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_with_options_async(request, runtime)
 
@@ -3006,6 +4390,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.DescribeIntentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.DescribeIntentResponse:
+        """
+        @summary 意图-详情
+        
+        @param request: DescribeIntentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIntentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -3040,6 +4431,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.DescribeIntentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.DescribeIntentResponse:
+        """
+        @summary 意图-详情
+        
+        @param request: DescribeIntentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIntentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -3073,6 +4471,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.DescribeIntentRequest,
     ) -> chatbot_20220408_models.DescribeIntentResponse:
+        """
+        @summary 意图-详情
+        
+        @param request: DescribeIntentRequest
+        @return: DescribeIntentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_intent_with_options(request, runtime)
 
@@ -3080,6 +4484,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.DescribeIntentRequest,
     ) -> chatbot_20220408_models.DescribeIntentResponse:
+        """
+        @summary 意图-详情
+        
+        @param request: DescribeIntentRequest
+        @return: DescribeIntentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_intent_with_options_async(request, runtime)
 
@@ -3088,6 +4498,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.DescribePerspectiveRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.DescribePerspectiveResponse:
+        """
+        @summary 视角-详情
+        
+        @param request: DescribePerspectiveRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePerspectiveResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -3118,6 +4535,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.DescribePerspectiveRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.DescribePerspectiveResponse:
+        """
+        @summary 视角-详情
+        
+        @param request: DescribePerspectiveRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePerspectiveResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -3147,6 +4571,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.DescribePerspectiveRequest,
     ) -> chatbot_20220408_models.DescribePerspectiveResponse:
+        """
+        @summary 视角-详情
+        
+        @param request: DescribePerspectiveRequest
+        @return: DescribePerspectiveResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_perspective_with_options(request, runtime)
 
@@ -3154,6 +4584,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.DescribePerspectiveRequest,
     ) -> chatbot_20220408_models.DescribePerspectiveResponse:
+        """
+        @summary 视角-详情
+        
+        @param request: DescribePerspectiveRequest
+        @return: DescribePerspectiveResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_perspective_with_options_async(request, runtime)
 
@@ -3162,6 +4598,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.FeedbackRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.FeedbackResponse:
+        """
+        @summary 问答点赞、点踩API
+        
+        @param request: FeedbackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FeedbackResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -3200,6 +4643,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.FeedbackRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.FeedbackResponse:
+        """
+        @summary 问答点赞、点踩API
+        
+        @param request: FeedbackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FeedbackResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -3237,6 +4687,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.FeedbackRequest,
     ) -> chatbot_20220408_models.FeedbackResponse:
+        """
+        @summary 问答点赞、点踩API
+        
+        @param request: FeedbackRequest
+        @return: FeedbackResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.feedback_with_options(request, runtime)
 
@@ -3244,6 +4700,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.FeedbackRequest,
     ) -> chatbot_20220408_models.FeedbackResponse:
+        """
+        @summary 问答点赞、点踩API
+        
+        @param request: FeedbackRequest
+        @return: FeedbackResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.feedback_with_options_async(request, runtime)
 
@@ -3252,6 +4714,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.GenerateUserAccessTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.GenerateUserAccessTokenResponse:
+        """
+        @summary 生成用户免登Token
+        
+        @param request: GenerateUserAccessTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateUserAccessTokenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -3292,6 +4761,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.GenerateUserAccessTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.GenerateUserAccessTokenResponse:
+        """
+        @summary 生成用户免登Token
+        
+        @param request: GenerateUserAccessTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateUserAccessTokenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -3331,6 +4807,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.GenerateUserAccessTokenRequest,
     ) -> chatbot_20220408_models.GenerateUserAccessTokenResponse:
+        """
+        @summary 生成用户免登Token
+        
+        @param request: GenerateUserAccessTokenRequest
+        @return: GenerateUserAccessTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.generate_user_access_token_with_options(request, runtime)
 
@@ -3338,6 +4820,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.GenerateUserAccessTokenRequest,
     ) -> chatbot_20220408_models.GenerateUserAccessTokenResponse:
+        """
+        @summary 生成用户免登Token
+        
+        @param request: GenerateUserAccessTokenRequest
+        @return: GenerateUserAccessTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.generate_user_access_token_with_options_async(request, runtime)
 
@@ -3346,6 +4834,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.GetAgentInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.GetAgentInfoResponse:
+        """
+        @summary 获取业务空间信息
+        
+        @param request: GetAgentInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAgentInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -3374,6 +4869,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.GetAgentInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.GetAgentInfoResponse:
+        """
+        @summary 获取业务空间信息
+        
+        @param request: GetAgentInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAgentInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -3401,6 +4903,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.GetAgentInfoRequest,
     ) -> chatbot_20220408_models.GetAgentInfoResponse:
+        """
+        @summary 获取业务空间信息
+        
+        @param request: GetAgentInfoRequest
+        @return: GetAgentInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_agent_info_with_options(request, runtime)
 
@@ -3408,6 +4916,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.GetAgentInfoRequest,
     ) -> chatbot_20220408_models.GetAgentInfoResponse:
+        """
+        @summary 获取业务空间信息
+        
+        @param request: GetAgentInfoRequest
+        @return: GetAgentInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_agent_info_with_options_async(request, runtime)
 
@@ -3416,6 +4930,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.GetAsyncResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.GetAsyncResultResponse:
+        """
+        @summary 获取异步函数执行结果接口
+        
+        @param request: GetAsyncResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAsyncResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -3446,6 +4967,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.GetAsyncResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.GetAsyncResultResponse:
+        """
+        @summary 获取异步函数执行结果接口
+        
+        @param request: GetAsyncResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAsyncResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -3475,6 +5003,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.GetAsyncResultRequest,
     ) -> chatbot_20220408_models.GetAsyncResultResponse:
+        """
+        @summary 获取异步函数执行结果接口
+        
+        @param request: GetAsyncResultRequest
+        @return: GetAsyncResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_async_result_with_options(request, runtime)
 
@@ -3482,6 +5016,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.GetAsyncResultRequest,
     ) -> chatbot_20220408_models.GetAsyncResultResponse:
+        """
+        @summary 获取异步函数执行结果接口
+        
+        @param request: GetAsyncResultRequest
+        @return: GetAsyncResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_async_result_with_options_async(request, runtime)
 
@@ -3490,6 +5030,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.GetInstancePublishTaskStateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.GetInstancePublishTaskStateResponse:
+        """
+        @summary 查询机器人发布进度
+        
+        @param request: GetInstancePublishTaskStateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstancePublishTaskStateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -3522,6 +5069,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.GetInstancePublishTaskStateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.GetInstancePublishTaskStateResponse:
+        """
+        @summary 查询机器人发布进度
+        
+        @param request: GetInstancePublishTaskStateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstancePublishTaskStateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -3553,6 +5107,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.GetInstancePublishTaskStateRequest,
     ) -> chatbot_20220408_models.GetInstancePublishTaskStateResponse:
+        """
+        @summary 查询机器人发布进度
+        
+        @param request: GetInstancePublishTaskStateRequest
+        @return: GetInstancePublishTaskStateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_instance_publish_task_state_with_options(request, runtime)
 
@@ -3560,6 +5120,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.GetInstancePublishTaskStateRequest,
     ) -> chatbot_20220408_models.GetInstancePublishTaskStateResponse:
+        """
+        @summary 查询机器人发布进度
+        
+        @param request: GetInstancePublishTaskStateRequest
+        @return: GetInstancePublishTaskStateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_instance_publish_task_state_with_options_async(request, runtime)
 
@@ -3568,6 +5134,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.GetPublishTaskStateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.GetPublishTaskStateResponse:
+        """
+        @summary 查询发布进度
+        
+        @param request: GetPublishTaskStateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPublishTaskStateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -3598,6 +5171,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.GetPublishTaskStateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.GetPublishTaskStateResponse:
+        """
+        @summary 查询发布进度
+        
+        @param request: GetPublishTaskStateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPublishTaskStateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -3627,6 +5207,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.GetPublishTaskStateRequest,
     ) -> chatbot_20220408_models.GetPublishTaskStateResponse:
+        """
+        @summary 查询发布进度
+        
+        @param request: GetPublishTaskStateRequest
+        @return: GetPublishTaskStateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_publish_task_state_with_options(request, runtime)
 
@@ -3634,6 +5220,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.GetPublishTaskStateRequest,
     ) -> chatbot_20220408_models.GetPublishTaskStateResponse:
+        """
+        @summary 查询发布进度
+        
+        @param request: GetPublishTaskStateRequest
+        @return: GetPublishTaskStateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_publish_task_state_with_options_async(request, runtime)
 
@@ -3642,6 +5234,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.InitIMConnectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.InitIMConnectResponse:
+        """
+        @summary 初始化im连接信息
+        
+        @param request: InitIMConnectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InitIMConnectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -3674,6 +5273,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.InitIMConnectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.InitIMConnectResponse:
+        """
+        @summary 初始化im连接信息
+        
+        @param request: InitIMConnectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InitIMConnectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -3705,6 +5311,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.InitIMConnectRequest,
     ) -> chatbot_20220408_models.InitIMConnectResponse:
+        """
+        @summary 初始化im连接信息
+        
+        @param request: InitIMConnectRequest
+        @return: InitIMConnectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.init_imconnect_with_options(request, runtime)
 
@@ -3712,6 +5324,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.InitIMConnectRequest,
     ) -> chatbot_20220408_models.InitIMConnectResponse:
+        """
+        @summary 初始化im连接信息
+        
+        @param request: InitIMConnectRequest
+        @return: InitIMConnectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.init_imconnect_with_options_async(request, runtime)
 
@@ -3720,6 +5338,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.LinkInstanceCategoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.LinkInstanceCategoryResponse:
+        """
+        @summary 机器人-绑定类目
+        
+        @param request: LinkInstanceCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LinkInstanceCategoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -3754,6 +5379,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.LinkInstanceCategoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.LinkInstanceCategoryResponse:
+        """
+        @summary 机器人-绑定类目
+        
+        @param request: LinkInstanceCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LinkInstanceCategoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -3787,6 +5419,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.LinkInstanceCategoryRequest,
     ) -> chatbot_20220408_models.LinkInstanceCategoryResponse:
+        """
+        @summary 机器人-绑定类目
+        
+        @param request: LinkInstanceCategoryRequest
+        @return: LinkInstanceCategoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.link_instance_category_with_options(request, runtime)
 
@@ -3794,6 +5432,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.LinkInstanceCategoryRequest,
     ) -> chatbot_20220408_models.LinkInstanceCategoryResponse:
+        """
+        @summary 机器人-绑定类目
+        
+        @param request: LinkInstanceCategoryRequest
+        @return: LinkInstanceCategoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.link_instance_category_with_options_async(request, runtime)
 
@@ -3802,6 +5446,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.ListAgentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.ListAgentResponse:
+        """
+        @summary 获取业务空间列表
+        
+        @param request: ListAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAgentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_name):
@@ -3836,6 +5487,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.ListAgentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.ListAgentResponse:
+        """
+        @summary 获取业务空间列表
+        
+        @param request: ListAgentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAgentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_name):
@@ -3869,6 +5527,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.ListAgentRequest,
     ) -> chatbot_20220408_models.ListAgentResponse:
+        """
+        @summary 获取业务空间列表
+        
+        @param request: ListAgentRequest
+        @return: ListAgentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_agent_with_options(request, runtime)
 
@@ -3876,6 +5540,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.ListAgentRequest,
     ) -> chatbot_20220408_models.ListAgentResponse:
+        """
+        @summary 获取业务空间列表
+        
+        @param request: ListAgentRequest
+        @return: ListAgentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_agent_with_options_async(request, runtime)
 
@@ -3884,11 +5554,20 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.ListCategoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.ListCategoryResponse:
+        """
+        @summary 类目列表
+        
+        @param request: ListCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCategoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
             query['AgentKey'] = request.agent_key
         body = {}
+        if not UtilClient.is_unset(request.knowledge_type):
+            body['KnowledgeType'] = request.knowledge_type
         if not UtilClient.is_unset(request.parent_category_id):
             body['ParentCategoryId'] = request.parent_category_id
         req = open_api_models.OpenApiRequest(
@@ -3916,11 +5595,20 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.ListCategoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.ListCategoryResponse:
+        """
+        @summary 类目列表
+        
+        @param request: ListCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCategoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
             query['AgentKey'] = request.agent_key
         body = {}
+        if not UtilClient.is_unset(request.knowledge_type):
+            body['KnowledgeType'] = request.knowledge_type
         if not UtilClient.is_unset(request.parent_category_id):
             body['ParentCategoryId'] = request.parent_category_id
         req = open_api_models.OpenApiRequest(
@@ -3947,6 +5635,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.ListCategoryRequest,
     ) -> chatbot_20220408_models.ListCategoryResponse:
+        """
+        @summary 类目列表
+        
+        @param request: ListCategoryRequest
+        @return: ListCategoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_category_with_options(request, runtime)
 
@@ -3954,6 +5648,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.ListCategoryRequest,
     ) -> chatbot_20220408_models.ListCategoryResponse:
+        """
+        @summary 类目列表
+        
+        @param request: ListCategoryRequest
+        @return: ListCategoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_category_with_options_async(request, runtime)
 
@@ -3962,6 +5662,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.ListConnQuestionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.ListConnQuestionResponse:
+        """
+        @summary 查询FAQ关联问列表
+        
+        @param request: ListConnQuestionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConnQuestionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -3994,6 +5701,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.ListConnQuestionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.ListConnQuestionResponse:
+        """
+        @summary 查询FAQ关联问列表
+        
+        @param request: ListConnQuestionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConnQuestionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -4025,6 +5739,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.ListConnQuestionRequest,
     ) -> chatbot_20220408_models.ListConnQuestionResponse:
+        """
+        @summary 查询FAQ关联问列表
+        
+        @param request: ListConnQuestionRequest
+        @return: ListConnQuestionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_conn_question_with_options(request, runtime)
 
@@ -4032,6 +5752,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.ListConnQuestionRequest,
     ) -> chatbot_20220408_models.ListConnQuestionResponse:
+        """
+        @summary 查询FAQ关联问列表
+        
+        @param request: ListConnQuestionRequest
+        @return: ListConnQuestionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_conn_question_with_options_async(request, runtime)
 
@@ -4040,6 +5766,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.ListDSEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.ListDSEntityResponse:
+        """
+        @summary 实体-列表
+        
+        @param request: ListDSEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDSEntityResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -4078,6 +5811,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.ListDSEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.ListDSEntityResponse:
+        """
+        @summary 实体-列表
+        
+        @param request: ListDSEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDSEntityResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -4115,6 +5855,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.ListDSEntityRequest,
     ) -> chatbot_20220408_models.ListDSEntityResponse:
+        """
+        @summary 实体-列表
+        
+        @param request: ListDSEntityRequest
+        @return: ListDSEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_dsentity_with_options(request, runtime)
 
@@ -4122,6 +5868,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.ListDSEntityRequest,
     ) -> chatbot_20220408_models.ListDSEntityResponse:
+        """
+        @summary 实体-列表
+        
+        @param request: ListDSEntityRequest
+        @return: ListDSEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_dsentity_with_options_async(request, runtime)
 
@@ -4130,6 +5882,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.ListDSEntityValueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.ListDSEntityValueResponse:
+        """
+        @summary 实体成员-列表
+        
+        @param request: ListDSEntityValueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDSEntityValueResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -4172,6 +5931,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.ListDSEntityValueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.ListDSEntityValueResponse:
+        """
+        @summary 实体成员-列表
+        
+        @param request: ListDSEntityValueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDSEntityValueResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -4213,6 +5979,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.ListDSEntityValueRequest,
     ) -> chatbot_20220408_models.ListDSEntityValueResponse:
+        """
+        @summary 实体成员-列表
+        
+        @param request: ListDSEntityValueRequest
+        @return: ListDSEntityValueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_dsentity_value_with_options(request, runtime)
 
@@ -4220,6 +5992,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.ListDSEntityValueRequest,
     ) -> chatbot_20220408_models.ListDSEntityValueResponse:
+        """
+        @summary 实体成员-列表
+        
+        @param request: ListDSEntityValueRequest
+        @return: ListDSEntityValueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_dsentity_value_with_options_async(request, runtime)
 
@@ -4228,6 +6006,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.ListInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.ListInstanceResponse:
+        """
+        @summary 机器人-修改
+        
+        @param request: ListInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -4264,6 +6049,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.ListInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.ListInstanceResponse:
+        """
+        @summary 机器人-修改
+        
+        @param request: ListInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -4299,6 +6091,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.ListInstanceRequest,
     ) -> chatbot_20220408_models.ListInstanceResponse:
+        """
+        @summary 机器人-修改
+        
+        @param request: ListInstanceRequest
+        @return: ListInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_instance_with_options(request, runtime)
 
@@ -4306,6 +6104,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.ListInstanceRequest,
     ) -> chatbot_20220408_models.ListInstanceResponse:
+        """
+        @summary 机器人-修改
+        
+        @param request: ListInstanceRequest
+        @return: ListInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_instance_with_options_async(request, runtime)
 
@@ -4314,6 +6118,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.ListIntentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.ListIntentResponse:
+        """
+        @summary 意图-列表
+        
+        @param request: ListIntentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIntentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -4350,6 +6161,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.ListIntentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.ListIntentResponse:
+        """
+        @summary 意图-列表
+        
+        @param request: ListIntentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIntentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -4385,6 +6203,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.ListIntentRequest,
     ) -> chatbot_20220408_models.ListIntentResponse:
+        """
+        @summary 意图-列表
+        
+        @param request: ListIntentRequest
+        @return: ListIntentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_intent_with_options(request, runtime)
 
@@ -4392,6 +6216,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.ListIntentRequest,
     ) -> chatbot_20220408_models.ListIntentResponse:
+        """
+        @summary 意图-列表
+        
+        @param request: ListIntentRequest
+        @return: ListIntentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_intent_with_options_async(request, runtime)
 
@@ -4400,6 +6230,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.ListLgfRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.ListLgfResponse:
+        """
+        @summary 意图-LGF-列表
+        
+        @param request: ListLgfRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLgfResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -4438,6 +6275,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.ListLgfRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.ListLgfResponse:
+        """
+        @summary 意图-LGF-列表
+        
+        @param request: ListLgfRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLgfResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -4475,6 +6319,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.ListLgfRequest,
     ) -> chatbot_20220408_models.ListLgfResponse:
+        """
+        @summary 意图-LGF-列表
+        
+        @param request: ListLgfRequest
+        @return: ListLgfResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_lgf_with_options(request, runtime)
 
@@ -4482,6 +6332,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.ListLgfRequest,
     ) -> chatbot_20220408_models.ListLgfResponse:
+        """
+        @summary 意图-LGF-列表
+        
+        @param request: ListLgfRequest
+        @return: ListLgfResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_lgf_with_options_async(request, runtime)
 
@@ -4490,6 +6346,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.ListSaasInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.ListSaasInfoResponse:
+        """
+        @summary 获取业务空间下可集成的SaaS信息列表
+        
+        @param request: ListSaasInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSaasInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -4522,6 +6385,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.ListSaasInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.ListSaasInfoResponse:
+        """
+        @summary 获取业务空间下可集成的SaaS信息列表
+        
+        @param request: ListSaasInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSaasInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -4553,6 +6423,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.ListSaasInfoRequest,
     ) -> chatbot_20220408_models.ListSaasInfoResponse:
+        """
+        @summary 获取业务空间下可集成的SaaS信息列表
+        
+        @param request: ListSaasInfoRequest
+        @return: ListSaasInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_saas_info_with_options(request, runtime)
 
@@ -4560,6 +6436,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.ListSaasInfoRequest,
     ) -> chatbot_20220408_models.ListSaasInfoResponse:
+        """
+        @summary 获取业务空间下可集成的SaaS信息列表
+        
+        @param request: ListSaasInfoRequest
+        @return: ListSaasInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_saas_info_with_options_async(request, runtime)
 
@@ -4568,6 +6450,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.ListSaasPermissionGroupInfosRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.ListSaasPermissionGroupInfosResponse:
+        """
+        @summary 获取业务空间下可集成的权限组信息
+        
+        @param request: ListSaasPermissionGroupInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSaasPermissionGroupInfosResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -4596,6 +6485,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.ListSaasPermissionGroupInfosRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.ListSaasPermissionGroupInfosResponse:
+        """
+        @summary 获取业务空间下可集成的权限组信息
+        
+        @param request: ListSaasPermissionGroupInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSaasPermissionGroupInfosResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -4623,6 +6519,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.ListSaasPermissionGroupInfosRequest,
     ) -> chatbot_20220408_models.ListSaasPermissionGroupInfosResponse:
+        """
+        @summary 获取业务空间下可集成的权限组信息
+        
+        @param request: ListSaasPermissionGroupInfosRequest
+        @return: ListSaasPermissionGroupInfosResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_saas_permission_group_infos_with_options(request, runtime)
 
@@ -4630,6 +6532,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.ListSaasPermissionGroupInfosRequest,
     ) -> chatbot_20220408_models.ListSaasPermissionGroupInfosResponse:
+        """
+        @summary 获取业务空间下可集成的权限组信息
+        
+        @param request: ListSaasPermissionGroupInfosRequest
+        @return: ListSaasPermissionGroupInfosResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_saas_permission_group_infos_with_options_async(request, runtime)
 
@@ -4638,6 +6546,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.ListSimQuestionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.ListSimQuestionResponse:
+        """
+        @summary FAQ相似问列表
+        
+        @param request: ListSimQuestionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSimQuestionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -4670,6 +6585,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.ListSimQuestionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.ListSimQuestionResponse:
+        """
+        @summary FAQ相似问列表
+        
+        @param request: ListSimQuestionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSimQuestionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -4701,6 +6623,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.ListSimQuestionRequest,
     ) -> chatbot_20220408_models.ListSimQuestionResponse:
+        """
+        @summary FAQ相似问列表
+        
+        @param request: ListSimQuestionRequest
+        @return: ListSimQuestionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_sim_question_with_options(request, runtime)
 
@@ -4708,6 +6636,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.ListSimQuestionRequest,
     ) -> chatbot_20220408_models.ListSimQuestionResponse:
+        """
+        @summary FAQ相似问列表
+        
+        @param request: ListSimQuestionRequest
+        @return: ListSimQuestionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_sim_question_with_options_async(request, runtime)
 
@@ -4716,6 +6650,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.ListSolutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.ListSolutionResponse:
+        """
+        @summary FAQ答案列表
+        
+        @param request: ListSolutionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSolutionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -4748,6 +6689,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.ListSolutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.ListSolutionResponse:
+        """
+        @summary FAQ答案列表
+        
+        @param request: ListSolutionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSolutionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -4779,6 +6727,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.ListSolutionRequest,
     ) -> chatbot_20220408_models.ListSolutionResponse:
+        """
+        @summary FAQ答案列表
+        
+        @param request: ListSolutionRequest
+        @return: ListSolutionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_solution_with_options(request, runtime)
 
@@ -4786,14 +6740,139 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.ListSolutionRequest,
     ) -> chatbot_20220408_models.ListSolutionResponse:
+        """
+        @summary FAQ答案列表
+        
+        @param request: ListSolutionRequest
+        @return: ListSolutionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_solution_with_options_async(request, runtime)
+
+    def list_tongyi_chat_historys_with_options(
+        self,
+        request: chatbot_20220408_models.ListTongyiChatHistorysRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.ListTongyiChatHistorysResponse:
+        """
+        @summary Tongyi对话明细查询接口
+        
+        @param request: ListTongyiChatHistorysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTongyiChatHistorysResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.robot_instance_id):
+            query['RobotInstanceId'] = request.robot_instance_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTongyiChatHistorys',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.ListTongyiChatHistorysResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tongyi_chat_historys_with_options_async(
+        self,
+        request: chatbot_20220408_models.ListTongyiChatHistorysRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.ListTongyiChatHistorysResponse:
+        """
+        @summary Tongyi对话明细查询接口
+        
+        @param request: ListTongyiChatHistorysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTongyiChatHistorysResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.end_time):
+            query['EndTime'] = request.end_time
+        if not UtilClient.is_unset(request.limit):
+            query['Limit'] = request.limit
+        if not UtilClient.is_unset(request.robot_instance_id):
+            query['RobotInstanceId'] = request.robot_instance_id
+        if not UtilClient.is_unset(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTongyiChatHistorys',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.ListTongyiChatHistorysResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tongyi_chat_historys(
+        self,
+        request: chatbot_20220408_models.ListTongyiChatHistorysRequest,
+    ) -> chatbot_20220408_models.ListTongyiChatHistorysResponse:
+        """
+        @summary Tongyi对话明细查询接口
+        
+        @param request: ListTongyiChatHistorysRequest
+        @return: ListTongyiChatHistorysResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_tongyi_chat_historys_with_options(request, runtime)
+
+    async def list_tongyi_chat_historys_async(
+        self,
+        request: chatbot_20220408_models.ListTongyiChatHistorysRequest,
+    ) -> chatbot_20220408_models.ListTongyiChatHistorysResponse:
+        """
+        @summary Tongyi对话明细查询接口
+        
+        @param request: ListTongyiChatHistorysRequest
+        @return: ListTongyiChatHistorysResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_tongyi_chat_historys_with_options_async(request, runtime)
 
     def list_user_say_with_options(
         self,
         request: chatbot_20220408_models.ListUserSayRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.ListUserSayResponse:
+        """
+        @summary 话术-列表
+        
+        @param request: ListUserSayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserSayResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -4832,6 +6911,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.ListUserSayRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.ListUserSayResponse:
+        """
+        @summary 话术-列表
+        
+        @param request: ListUserSayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserSayResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -4869,6 +6955,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.ListUserSayRequest,
     ) -> chatbot_20220408_models.ListUserSayResponse:
+        """
+        @summary 话术-列表
+        
+        @param request: ListUserSayRequest
+        @return: ListUserSayResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_user_say_with_options(request, runtime)
 
@@ -4876,6 +6968,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.ListUserSayRequest,
     ) -> chatbot_20220408_models.ListUserSayResponse:
+        """
+        @summary 话术-列表
+        
+        @param request: ListUserSayRequest
+        @return: ListUserSayResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_user_say_with_options_async(request, runtime)
 
@@ -4884,6 +6982,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.NluRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.NluResponse:
+        """
+        @summary 统一NLU接口
+        
+        @param request: NluRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: NluResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -4916,6 +7021,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.NluRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.NluResponse:
+        """
+        @summary 统一NLU接口
+        
+        @param request: NluRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: NluResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -4947,6 +7059,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.NluRequest,
     ) -> chatbot_20220408_models.NluResponse:
+        """
+        @summary 统一NLU接口
+        
+        @param request: NluRequest
+        @return: NluResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.nlu_with_options(request, runtime)
 
@@ -4954,6 +7072,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.NluRequest,
     ) -> chatbot_20220408_models.NluResponse:
+        """
+        @summary 统一NLU接口
+        
+        @param request: NluRequest
+        @return: NluResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.nlu_with_options_async(request, runtime)
 
@@ -4962,6 +7086,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.QueryPerspectivesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.QueryPerspectivesResponse:
+        """
+        @summary 视角-列表
+        
+        @param request: QueryPerspectivesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPerspectivesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -4990,6 +7121,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.QueryPerspectivesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.QueryPerspectivesResponse:
+        """
+        @summary 视角-列表
+        
+        @param request: QueryPerspectivesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryPerspectivesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -5017,6 +7155,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.QueryPerspectivesRequest,
     ) -> chatbot_20220408_models.QueryPerspectivesResponse:
+        """
+        @summary 视角-列表
+        
+        @param request: QueryPerspectivesRequest
+        @return: QueryPerspectivesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_perspectives_with_options(request, runtime)
 
@@ -5024,14 +7168,307 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.QueryPerspectivesRequest,
     ) -> chatbot_20220408_models.QueryPerspectivesResponse:
+        """
+        @summary 视角-列表
+        
+        @param request: QueryPerspectivesRequest
+        @return: QueryPerspectivesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_perspectives_with_options_async(request, runtime)
+
+    def retry_doc_with_options(
+        self,
+        request: chatbot_20220408_models.RetryDocRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.RetryDocResponse:
+        """
+        @summary 文档重试
+        
+        @param request: RetryDocRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RetryDocResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.knowledge_id):
+            query['KnowledgeId'] = request.knowledge_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RetryDoc',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.RetryDocResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def retry_doc_with_options_async(
+        self,
+        request: chatbot_20220408_models.RetryDocRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.RetryDocResponse:
+        """
+        @summary 文档重试
+        
+        @param request: RetryDocRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RetryDocResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.knowledge_id):
+            query['KnowledgeId'] = request.knowledge_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RetryDoc',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.RetryDocResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def retry_doc(
+        self,
+        request: chatbot_20220408_models.RetryDocRequest,
+    ) -> chatbot_20220408_models.RetryDocResponse:
+        """
+        @summary 文档重试
+        
+        @param request: RetryDocRequest
+        @return: RetryDocResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.retry_doc_with_options(request, runtime)
+
+    async def retry_doc_async(
+        self,
+        request: chatbot_20220408_models.RetryDocRequest,
+    ) -> chatbot_20220408_models.RetryDocResponse:
+        """
+        @summary 文档重试
+        
+        @param request: RetryDocRequest
+        @return: RetryDocResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.retry_doc_with_options_async(request, runtime)
+
+    def search_doc_with_options(
+        self,
+        tmp_req: chatbot_20220408_models.SearchDocRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.SearchDocResponse:
+        """
+        @summary 文档搜索
+        
+        @param tmp_req: SearchDocRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchDocResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = chatbot_20220408_models.SearchDocShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.category_ids):
+            request.category_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.category_ids, 'CategoryIds', 'json')
+        if not UtilClient.is_unset(tmp_req.tag_ids):
+            request.tag_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_ids, 'TagIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.category_ids_shrink):
+            query['CategoryIds'] = request.category_ids_shrink
+        if not UtilClient.is_unset(request.create_time_begin):
+            query['CreateTimeBegin'] = request.create_time_begin
+        if not UtilClient.is_unset(request.create_time_end):
+            query['CreateTimeEnd'] = request.create_time_end
+        if not UtilClient.is_unset(request.create_user_name):
+            query['CreateUserName'] = request.create_user_name
+        if not UtilClient.is_unset(request.end_time_begin):
+            query['EndTimeBegin'] = request.end_time_begin
+        if not UtilClient.is_unset(request.end_time_end):
+            query['EndTimeEnd'] = request.end_time_end
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.modify_time_begin):
+            query['ModifyTimeBegin'] = request.modify_time_begin
+        if not UtilClient.is_unset(request.modify_time_end):
+            query['ModifyTimeEnd'] = request.modify_time_end
+        if not UtilClient.is_unset(request.modify_user_name):
+            query['ModifyUserName'] = request.modify_user_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.process_status):
+            query['ProcessStatus'] = request.process_status
+        if not UtilClient.is_unset(request.search_scope):
+            query['SearchScope'] = request.search_scope
+        if not UtilClient.is_unset(request.start_time_begin):
+            query['StartTimeBegin'] = request.start_time_begin
+        if not UtilClient.is_unset(request.start_time_end):
+            query['StartTimeEnd'] = request.start_time_end
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.tag_ids_shrink):
+            query['TagIds'] = request.tag_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SearchDoc',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.SearchDocResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_doc_with_options_async(
+        self,
+        tmp_req: chatbot_20220408_models.SearchDocRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.SearchDocResponse:
+        """
+        @summary 文档搜索
+        
+        @param tmp_req: SearchDocRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchDocResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = chatbot_20220408_models.SearchDocShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.category_ids):
+            request.category_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.category_ids, 'CategoryIds', 'json')
+        if not UtilClient.is_unset(tmp_req.tag_ids):
+            request.tag_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_ids, 'TagIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.category_ids_shrink):
+            query['CategoryIds'] = request.category_ids_shrink
+        if not UtilClient.is_unset(request.create_time_begin):
+            query['CreateTimeBegin'] = request.create_time_begin
+        if not UtilClient.is_unset(request.create_time_end):
+            query['CreateTimeEnd'] = request.create_time_end
+        if not UtilClient.is_unset(request.create_user_name):
+            query['CreateUserName'] = request.create_user_name
+        if not UtilClient.is_unset(request.end_time_begin):
+            query['EndTimeBegin'] = request.end_time_begin
+        if not UtilClient.is_unset(request.end_time_end):
+            query['EndTimeEnd'] = request.end_time_end
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.modify_time_begin):
+            query['ModifyTimeBegin'] = request.modify_time_begin
+        if not UtilClient.is_unset(request.modify_time_end):
+            query['ModifyTimeEnd'] = request.modify_time_end
+        if not UtilClient.is_unset(request.modify_user_name):
+            query['ModifyUserName'] = request.modify_user_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.process_status):
+            query['ProcessStatus'] = request.process_status
+        if not UtilClient.is_unset(request.search_scope):
+            query['SearchScope'] = request.search_scope
+        if not UtilClient.is_unset(request.start_time_begin):
+            query['StartTimeBegin'] = request.start_time_begin
+        if not UtilClient.is_unset(request.start_time_end):
+            query['StartTimeEnd'] = request.start_time_end
+        if not UtilClient.is_unset(request.status):
+            query['Status'] = request.status
+        if not UtilClient.is_unset(request.tag_ids_shrink):
+            query['TagIds'] = request.tag_ids_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SearchDoc',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.SearchDocResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_doc(
+        self,
+        request: chatbot_20220408_models.SearchDocRequest,
+    ) -> chatbot_20220408_models.SearchDocResponse:
+        """
+        @summary 文档搜索
+        
+        @param request: SearchDocRequest
+        @return: SearchDocResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.search_doc_with_options(request, runtime)
+
+    async def search_doc_async(
+        self,
+        request: chatbot_20220408_models.SearchDocRequest,
+    ) -> chatbot_20220408_models.SearchDocResponse:
+        """
+        @summary 文档搜索
+        
+        @param request: SearchDocRequest
+        @return: SearchDocResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.search_doc_with_options_async(request, runtime)
 
     def search_faq_with_options(
         self,
         tmp_req: chatbot_20220408_models.SearchFaqRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.SearchFaqResponse:
+        """
+        @summary 知识搜索
+        
+        @param tmp_req: SearchFaqRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchFaqResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = chatbot_20220408_models.SearchFaqShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5098,6 +7535,13 @@ class Client(OpenApiClient):
         tmp_req: chatbot_20220408_models.SearchFaqRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.SearchFaqResponse:
+        """
+        @summary 知识搜索
+        
+        @param tmp_req: SearchFaqRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchFaqResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = chatbot_20220408_models.SearchFaqShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5163,6 +7607,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.SearchFaqRequest,
     ) -> chatbot_20220408_models.SearchFaqResponse:
+        """
+        @summary 知识搜索
+        
+        @param request: SearchFaqRequest
+        @return: SearchFaqResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.search_faq_with_options(request, runtime)
 
@@ -5170,6 +7620,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.SearchFaqRequest,
     ) -> chatbot_20220408_models.SearchFaqResponse:
+        """
+        @summary 知识搜索
+        
+        @param request: SearchFaqRequest
+        @return: SearchFaqResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.search_faq_with_options_async(request, runtime)
 
@@ -5178,11 +7634,20 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.UpdateCategoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.UpdateCategoryResponse:
+        """
+        @summary 编辑类目
+        
+        @param request: UpdateCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCategoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
             query['AgentKey'] = request.agent_key
         body = {}
+        if not UtilClient.is_unset(request.biz_code):
+            body['BizCode'] = request.biz_code
         if not UtilClient.is_unset(request.category_id):
             body['CategoryId'] = request.category_id
         if not UtilClient.is_unset(request.name):
@@ -5212,11 +7677,20 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.UpdateCategoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.UpdateCategoryResponse:
+        """
+        @summary 编辑类目
+        
+        @param request: UpdateCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCategoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
             query['AgentKey'] = request.agent_key
         body = {}
+        if not UtilClient.is_unset(request.biz_code):
+            body['BizCode'] = request.biz_code
         if not UtilClient.is_unset(request.category_id):
             body['CategoryId'] = request.category_id
         if not UtilClient.is_unset(request.name):
@@ -5245,6 +7719,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.UpdateCategoryRequest,
     ) -> chatbot_20220408_models.UpdateCategoryResponse:
+        """
+        @summary 编辑类目
+        
+        @param request: UpdateCategoryRequest
+        @return: UpdateCategoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_category_with_options(request, runtime)
 
@@ -5252,6 +7732,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.UpdateCategoryRequest,
     ) -> chatbot_20220408_models.UpdateCategoryResponse:
+        """
+        @summary 编辑类目
+        
+        @param request: UpdateCategoryRequest
+        @return: UpdateCategoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_category_with_options_async(request, runtime)
 
@@ -5260,6 +7746,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.UpdateConnQuestionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.UpdateConnQuestionResponse:
+        """
+        @summary 更新FAQ关联问
+        
+        @param request: UpdateConnQuestionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateConnQuestionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -5294,6 +7787,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.UpdateConnQuestionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.UpdateConnQuestionResponse:
+        """
+        @summary 更新FAQ关联问
+        
+        @param request: UpdateConnQuestionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateConnQuestionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -5327,6 +7827,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.UpdateConnQuestionRequest,
     ) -> chatbot_20220408_models.UpdateConnQuestionResponse:
+        """
+        @summary 更新FAQ关联问
+        
+        @param request: UpdateConnQuestionRequest
+        @return: UpdateConnQuestionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_conn_question_with_options(request, runtime)
 
@@ -5334,6 +7840,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.UpdateConnQuestionRequest,
     ) -> chatbot_20220408_models.UpdateConnQuestionResponse:
+        """
+        @summary 更新FAQ关联问
+        
+        @param request: UpdateConnQuestionRequest
+        @return: UpdateConnQuestionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_conn_question_with_options_async(request, runtime)
 
@@ -5342,6 +7854,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.UpdateDSEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.UpdateDSEntityResponse:
+        """
+        @summary 实体-更新
+        
+        @param request: UpdateDSEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDSEntityResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -5378,6 +7897,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.UpdateDSEntityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.UpdateDSEntityResponse:
+        """
+        @summary 实体-更新
+        
+        @param request: UpdateDSEntityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDSEntityResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -5413,6 +7939,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.UpdateDSEntityRequest,
     ) -> chatbot_20220408_models.UpdateDSEntityResponse:
+        """
+        @summary 实体-更新
+        
+        @param request: UpdateDSEntityRequest
+        @return: UpdateDSEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_dsentity_with_options(request, runtime)
 
@@ -5420,6 +7952,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.UpdateDSEntityRequest,
     ) -> chatbot_20220408_models.UpdateDSEntityResponse:
+        """
+        @summary 实体-更新
+        
+        @param request: UpdateDSEntityRequest
+        @return: UpdateDSEntityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_dsentity_with_options_async(request, runtime)
 
@@ -5428,6 +7966,13 @@ class Client(OpenApiClient):
         tmp_req: chatbot_20220408_models.UpdateDSEntityValueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.UpdateDSEntityValueResponse:
+        """
+        @summary 实体成员-更新
+        
+        @param tmp_req: UpdateDSEntityValueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDSEntityValueResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = chatbot_20220408_models.UpdateDSEntityValueShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5472,6 +8017,13 @@ class Client(OpenApiClient):
         tmp_req: chatbot_20220408_models.UpdateDSEntityValueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.UpdateDSEntityValueResponse:
+        """
+        @summary 实体成员-更新
+        
+        @param tmp_req: UpdateDSEntityValueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDSEntityValueResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = chatbot_20220408_models.UpdateDSEntityValueShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5515,6 +8067,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.UpdateDSEntityValueRequest,
     ) -> chatbot_20220408_models.UpdateDSEntityValueResponse:
+        """
+        @summary 实体成员-更新
+        
+        @param request: UpdateDSEntityValueRequest
+        @return: UpdateDSEntityValueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_dsentity_value_with_options(request, runtime)
 
@@ -5522,14 +8080,171 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.UpdateDSEntityValueRequest,
     ) -> chatbot_20220408_models.UpdateDSEntityValueResponse:
+        """
+        @summary 实体成员-更新
+        
+        @param request: UpdateDSEntityValueRequest
+        @return: UpdateDSEntityValueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_dsentity_value_with_options_async(request, runtime)
+
+    def update_doc_with_options(
+        self,
+        tmp_req: chatbot_20220408_models.UpdateDocRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.UpdateDocResponse:
+        """
+        @summary 文档变更
+        
+        @param tmp_req: UpdateDocRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDocResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = chatbot_20220408_models.UpdateDocShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag_ids):
+            request.tag_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_ids, 'TagIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.content):
+            query['Content'] = request.content
+        if not UtilClient.is_unset(request.doc_name):
+            query['DocName'] = request.doc_name
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.knowledge_id):
+            query['KnowledgeId'] = request.knowledge_id
+        if not UtilClient.is_unset(request.meta):
+            query['Meta'] = request.meta
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.tag_ids_shrink):
+            query['TagIds'] = request.tag_ids_shrink
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateDoc',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.UpdateDocResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_doc_with_options_async(
+        self,
+        tmp_req: chatbot_20220408_models.UpdateDocRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> chatbot_20220408_models.UpdateDocResponse:
+        """
+        @summary 文档变更
+        
+        @param tmp_req: UpdateDocRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDocResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = chatbot_20220408_models.UpdateDocShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag_ids):
+            request.tag_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag_ids, 'TagIds', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.agent_key):
+            query['AgentKey'] = request.agent_key
+        if not UtilClient.is_unset(request.category_id):
+            query['CategoryId'] = request.category_id
+        if not UtilClient.is_unset(request.config):
+            query['Config'] = request.config
+        if not UtilClient.is_unset(request.content):
+            query['Content'] = request.content
+        if not UtilClient.is_unset(request.doc_name):
+            query['DocName'] = request.doc_name
+        if not UtilClient.is_unset(request.end_date):
+            query['EndDate'] = request.end_date
+        if not UtilClient.is_unset(request.knowledge_id):
+            query['KnowledgeId'] = request.knowledge_id
+        if not UtilClient.is_unset(request.meta):
+            query['Meta'] = request.meta
+        if not UtilClient.is_unset(request.start_date):
+            query['StartDate'] = request.start_date
+        if not UtilClient.is_unset(request.tag_ids_shrink):
+            query['TagIds'] = request.tag_ids_shrink
+        if not UtilClient.is_unset(request.title):
+            query['Title'] = request.title
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateDoc',
+            version='2022-04-08',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            chatbot_20220408_models.UpdateDocResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_doc(
+        self,
+        request: chatbot_20220408_models.UpdateDocRequest,
+    ) -> chatbot_20220408_models.UpdateDocResponse:
+        """
+        @summary 文档变更
+        
+        @param request: UpdateDocRequest
+        @return: UpdateDocResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_doc_with_options(request, runtime)
+
+    async def update_doc_async(
+        self,
+        request: chatbot_20220408_models.UpdateDocRequest,
+    ) -> chatbot_20220408_models.UpdateDocResponse:
+        """
+        @summary 文档变更
+        
+        @param request: UpdateDocRequest
+        @return: UpdateDocResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_doc_with_options_async(request, runtime)
 
     def update_faq_with_options(
         self,
         request: chatbot_20220408_models.UpdateFaqRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.UpdateFaqResponse:
+        """
+        @summary 更新FAQ
+        
+        @param request: UpdateFaqRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFaqResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -5570,6 +8285,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.UpdateFaqRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.UpdateFaqResponse:
+        """
+        @summary 更新FAQ
+        
+        @param request: UpdateFaqRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFaqResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -5609,6 +8331,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.UpdateFaqRequest,
     ) -> chatbot_20220408_models.UpdateFaqResponse:
+        """
+        @summary 更新FAQ
+        
+        @param request: UpdateFaqRequest
+        @return: UpdateFaqResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_faq_with_options(request, runtime)
 
@@ -5616,6 +8344,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.UpdateFaqRequest,
     ) -> chatbot_20220408_models.UpdateFaqResponse:
+        """
+        @summary 更新FAQ
+        
+        @param request: UpdateFaqRequest
+        @return: UpdateFaqResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_faq_with_options_async(request, runtime)
 
@@ -5624,6 +8358,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.UpdateInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.UpdateInstanceResponse:
+        """
+        @summary 机器人-修改
+        
+        @param request: UpdateInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -5658,6 +8399,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.UpdateInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.UpdateInstanceResponse:
+        """
+        @summary 机器人-修改
+        
+        @param request: UpdateInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -5691,6 +8439,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.UpdateInstanceRequest,
     ) -> chatbot_20220408_models.UpdateInstanceResponse:
+        """
+        @summary 机器人-修改
+        
+        @param request: UpdateInstanceRequest
+        @return: UpdateInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_instance_with_options(request, runtime)
 
@@ -5698,6 +8452,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.UpdateInstanceRequest,
     ) -> chatbot_20220408_models.UpdateInstanceResponse:
+        """
+        @summary 机器人-修改
+        
+        @param request: UpdateInstanceRequest
+        @return: UpdateInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_instance_with_options_async(request, runtime)
 
@@ -5706,6 +8466,13 @@ class Client(OpenApiClient):
         tmp_req: chatbot_20220408_models.UpdateIntentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.UpdateIntentResponse:
+        """
+        @summary 意图-更新
+        
+        @param tmp_req: UpdateIntentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateIntentResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = chatbot_20220408_models.UpdateIntentShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5744,6 +8511,13 @@ class Client(OpenApiClient):
         tmp_req: chatbot_20220408_models.UpdateIntentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.UpdateIntentResponse:
+        """
+        @summary 意图-更新
+        
+        @param tmp_req: UpdateIntentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateIntentResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = chatbot_20220408_models.UpdateIntentShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5781,6 +8555,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.UpdateIntentRequest,
     ) -> chatbot_20220408_models.UpdateIntentResponse:
+        """
+        @summary 意图-更新
+        
+        @param request: UpdateIntentRequest
+        @return: UpdateIntentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_intent_with_options(request, runtime)
 
@@ -5788,6 +8568,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.UpdateIntentRequest,
     ) -> chatbot_20220408_models.UpdateIntentResponse:
+        """
+        @summary 意图-更新
+        
+        @param request: UpdateIntentRequest
+        @return: UpdateIntentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_intent_with_options_async(request, runtime)
 
@@ -5796,6 +8582,13 @@ class Client(OpenApiClient):
         tmp_req: chatbot_20220408_models.UpdateLgfRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.UpdateLgfResponse:
+        """
+        @summary 意图-LGF-更新
+        
+        @param tmp_req: UpdateLgfRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLgfResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = chatbot_20220408_models.UpdateLgfShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5834,6 +8627,13 @@ class Client(OpenApiClient):
         tmp_req: chatbot_20220408_models.UpdateLgfRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.UpdateLgfResponse:
+        """
+        @summary 意图-LGF-更新
+        
+        @param tmp_req: UpdateLgfRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLgfResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = chatbot_20220408_models.UpdateLgfShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5871,6 +8671,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.UpdateLgfRequest,
     ) -> chatbot_20220408_models.UpdateLgfResponse:
+        """
+        @summary 意图-LGF-更新
+        
+        @param request: UpdateLgfRequest
+        @return: UpdateLgfResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_lgf_with_options(request, runtime)
 
@@ -5878,6 +8684,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.UpdateLgfRequest,
     ) -> chatbot_20220408_models.UpdateLgfResponse:
+        """
+        @summary 意图-LGF-更新
+        
+        @param request: UpdateLgfRequest
+        @return: UpdateLgfResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_lgf_with_options_async(request, runtime)
 
@@ -5886,6 +8698,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.UpdatePerspectiveRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.UpdatePerspectiveResponse:
+        """
+        @summary 视角-修改
+        
+        @param request: UpdatePerspectiveRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePerspectiveResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -5918,6 +8737,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.UpdatePerspectiveRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.UpdatePerspectiveResponse:
+        """
+        @summary 视角-修改
+        
+        @param request: UpdatePerspectiveRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePerspectiveResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -5949,6 +8775,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.UpdatePerspectiveRequest,
     ) -> chatbot_20220408_models.UpdatePerspectiveResponse:
+        """
+        @summary 视角-修改
+        
+        @param request: UpdatePerspectiveRequest
+        @return: UpdatePerspectiveResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_perspective_with_options(request, runtime)
 
@@ -5956,6 +8788,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.UpdatePerspectiveRequest,
     ) -> chatbot_20220408_models.UpdatePerspectiveResponse:
+        """
+        @summary 视角-修改
+        
+        @param request: UpdatePerspectiveRequest
+        @return: UpdatePerspectiveResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_perspective_with_options_async(request, runtime)
 
@@ -5964,6 +8802,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.UpdateSimQuestionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.UpdateSimQuestionResponse:
+        """
+        @summary 更新FAQ相似问
+        
+        @param request: UpdateSimQuestionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSimQuestionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -5998,6 +8843,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.UpdateSimQuestionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.UpdateSimQuestionResponse:
+        """
+        @summary 更新FAQ相似问
+        
+        @param request: UpdateSimQuestionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSimQuestionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -6031,6 +8883,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.UpdateSimQuestionRequest,
     ) -> chatbot_20220408_models.UpdateSimQuestionResponse:
+        """
+        @summary 更新FAQ相似问
+        
+        @param request: UpdateSimQuestionRequest
+        @return: UpdateSimQuestionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_sim_question_with_options(request, runtime)
 
@@ -6038,6 +8896,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.UpdateSimQuestionRequest,
     ) -> chatbot_20220408_models.UpdateSimQuestionResponse:
+        """
+        @summary 更新FAQ相似问
+        
+        @param request: UpdateSimQuestionRequest
+        @return: UpdateSimQuestionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_sim_question_with_options_async(request, runtime)
 
@@ -6046,6 +8910,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.UpdateSolutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.UpdateSolutionResponse:
+        """
+        @summary 更新FAQ答案
+        
+        @param request: UpdateSolutionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSolutionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -6084,6 +8955,13 @@ class Client(OpenApiClient):
         request: chatbot_20220408_models.UpdateSolutionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.UpdateSolutionResponse:
+        """
+        @summary 更新FAQ答案
+        
+        @param request: UpdateSolutionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSolutionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.agent_key):
@@ -6121,6 +8999,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.UpdateSolutionRequest,
     ) -> chatbot_20220408_models.UpdateSolutionResponse:
+        """
+        @summary 更新FAQ答案
+        
+        @param request: UpdateSolutionRequest
+        @return: UpdateSolutionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_solution_with_options(request, runtime)
 
@@ -6128,6 +9012,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.UpdateSolutionRequest,
     ) -> chatbot_20220408_models.UpdateSolutionResponse:
+        """
+        @summary 更新FAQ答案
+        
+        @param request: UpdateSolutionRequest
+        @return: UpdateSolutionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_solution_with_options_async(request, runtime)
 
@@ -6136,6 +9026,13 @@ class Client(OpenApiClient):
         tmp_req: chatbot_20220408_models.UpdateUserSayRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.UpdateUserSayResponse:
+        """
+        @summary 意图-话术-更新
+        
+        @param tmp_req: UpdateUserSayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUserSayResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = chatbot_20220408_models.UpdateUserSayShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6174,6 +9071,13 @@ class Client(OpenApiClient):
         tmp_req: chatbot_20220408_models.UpdateUserSayRequest,
         runtime: util_models.RuntimeOptions,
     ) -> chatbot_20220408_models.UpdateUserSayResponse:
+        """
+        @summary 意图-话术-更新
+        
+        @param tmp_req: UpdateUserSayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUserSayResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = chatbot_20220408_models.UpdateUserSayShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6211,6 +9115,12 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.UpdateUserSayRequest,
     ) -> chatbot_20220408_models.UpdateUserSayResponse:
+        """
+        @summary 意图-话术-更新
+        
+        @param request: UpdateUserSayRequest
+        @return: UpdateUserSayResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_user_say_with_options(request, runtime)
 
@@ -6218,5 +9128,11 @@ class Client(OpenApiClient):
         self,
         request: chatbot_20220408_models.UpdateUserSayRequest,
     ) -> chatbot_20220408_models.UpdateUserSayResponse:
+        """
+        @summary 意图-话术-更新
+        
+        @param request: UpdateUserSayRequest
+        @return: UpdateUserSayResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_user_say_with_options_async(request, runtime)
