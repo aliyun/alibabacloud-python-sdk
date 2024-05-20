@@ -1,3 +1,9 @@
+2024-05-20 Version: 1.1.0
+- Support API ListReleaseVersions.
+- Support API ListWorkspaceQueues.
+- Support API ListWorkspaces.
+
+
 2024-05-17 Version: 1.0.1
 - Update API CancelJobRun: update param workspaceId.
 - Update API CancelJobRun: update param jobRunId.
