@@ -1,3 +1,9 @@
+2024-05-20 Version: 3.1.10
+- Update API CreateDBInstance: add param AutoRenew.
+- Update API DescribeDBClusterAttribute: update response param.
+- Update API ModifyDBCluster: update param DBClusterId.
+
+
 2024-02-21 Version: 3.1.9
 - Update API CreateDBInstance: add param AutoRenew.
 

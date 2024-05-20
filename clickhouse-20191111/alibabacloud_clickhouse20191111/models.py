@@ -17,6 +17,8 @@ class AllocateClusterPublicConnectionRequest(TeaModel):
         # The prefix of the endpoint that is used to connect to the database. Set the value to the cluster ID.
         self.connection_string_prefix = connection_string_prefix
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -151,26 +153,42 @@ class CheckClickhouseToRDSRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The password of the account that is used to log on to the database in the ApsaraDB for ClickHouse cluster.
+        # 
+        # This parameter is required.
         self.ck_password = ck_password
         # The account that is used to log on to the database in the ApsaraDB for ClickHouse cluster.
+        # 
+        # This parameter is required.
         self.ck_user_name = ck_user_name
         # The port number of the ApsaraDB for ClickHouse cluster.
         self.clickhouse_port = clickhouse_port
         # The ID of the ApsaraDB for ClickHouse cluster.
+        # 
+        # This parameter is required.
         self.db_cluster_id = db_cluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the ApsaraDB RDS for MySQL instance.
+        # 
+        # This parameter is required.
         self.rds_id = rds_id
         # The password of the account that is used to log on to the database in the ApsaraDB RDS for MySQL instance.
+        # 
+        # This parameter is required.
         self.rds_password = rds_password
         # The port number of the ApsaraDB RDS for MySQL instance.
         self.rds_port = rds_port
         # The account that is used to log on to the database in the ApsaraDB RDS for MySQL instance.
+        # 
+        # This parameter is required.
         self.rds_user_name = rds_user_name
         # The ID of the VPC in which the ApsaraDB RDS for MySQL instance is deployed.
+        # 
+        # This parameter is required.
         self.rds_vpc_id = rds_vpc_id
         # The internal endpoint of the ApsaraDB RDS for MySQL instance.
+        # 
+        # This parameter is required.
         self.rds_vpc_url = rds_vpc_url
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -341,8 +359,12 @@ class CheckModifyConfigNeedRestartRequest(TeaModel):
         dbcluster_id: str = None,
     ):
         # The configuration parameters whose settings are modified.
+        # 
+        # This parameter is required.
         self.config = config
-        # The cluster ID. You can call the [DescribeDBClusters](~~170879~~) operation to query information about all the clusters that are deployed in a specific region. The information includes the cluster IDs.
+        # The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query information about all the clusters that are deployed in a specific region. The information includes the cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
 
     def validate(self):
@@ -459,10 +481,12 @@ class CheckMonitorAlertRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call the [DescribeRegions](~~170875~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -606,6 +630,8 @@ class CheckScaleOutBalancedRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -617,7 +643,9 @@ class CheckScaleOutBalancedRequest(TeaModel):
         # *   **50**\
         # *   **100**\
         self.page_size = page_size
-        # The region ID. You can call the [DescribeRegions](~~170875~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -1024,9 +1052,11 @@ class CreateAccountRequest(TeaModel):
         # 
         # *   The name must be unique in the cluster.
         # 
-        # *   The name can contain lowercase letters, digits, and underscores (\_).
+        # *   The name can contain lowercase letters, digits, and underscores (_).
         # *   The name must start with a lowercase letter and end with a lowercase letter or a digit.
         # *   The name must be 2 to 64 characters in length.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The password of the database account.
         # 
@@ -1034,10 +1064,14 @@ class CreateAccountRequest(TeaModel):
         # 
         # *   The password must contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters.
         # 
-        # *   The password can contain the following special characters: ! @ # $ % ^ & \* ( ) \_ + - =\
+        # *   The password can contain the following special characters: ! @ # $ % ^ & \\* ( ) _ + - =\
         # *   The password must be 8 to 32 characters in length.
+        # 
+        # This parameter is required.
         self.account_password = account_password
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -1181,12 +1215,19 @@ class CreateAccountAndAuthorityRequest(TeaModel):
         total_dictionaries: str = None,
     ):
         self.account_description = account_description
+        # This parameter is required.
         self.account_name = account_name
+        # This parameter is required.
         self.account_password = account_password
+        # This parameter is required.
         self.allow_databases = allow_databases
+        # This parameter is required.
         self.allow_dictionaries = allow_dictionaries
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # This parameter is required.
         self.ddl_authority = ddl_authority
+        # This parameter is required.
         self.dml_authority = dml_authority
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -1356,6 +1397,8 @@ class CreateBackupPolicyRequest(TeaModel):
         # The retention period for the backup data. By default, the backup data is retained for seven days. Valid values: 7 to 730. Unit: day.
         self.backup_retention_period = backup_retention_period
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -1368,12 +1411,16 @@ class CreateBackupPolicyRequest(TeaModel):
         # *   **Friday**\
         # *   **Saturday**\
         # *   **Sunday**\
+        # 
+        # This parameter is required.
         self.preferred_backup_period = preferred_backup_period
         # The backup window. Specify the time in the ISO 8601 standard in the HH:mmZ-HH:mmZ format. The time must be in Coordinated Universal Time (UTC).
         # 
         # For example, if you set the backup window to 00:00Z-01:00Z, the data of the cluster can be backed up from 08:00 (UTC+8) to 09:00 (UTC+8).
+        # 
+        # This parameter is required.
         self.preferred_backup_time = preferred_backup_time
-        # The region ID. You can call the [DescribeRegions](~~170875~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -1533,8 +1580,11 @@ class CreateDBInstanceRequest(TeaModel):
         zone_id: str = None,
         zone_id_bak: str = None,
     ):
+        # Specifies whether to enable auto-renewal.
+        # 
+        # >  This parameter is valid only if the value of PayType is set to Prepaid.
         self.auto_renew = auto_renew
-        # The ID of the backup set. You can call the [DescribeBackups](~~360339~~) operation to query the backup sets.
+        # The ID of the backup set. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/360339.html) operation to query the backup sets.
         # 
         # >  If you want to restore the data of an ApsaraDB for ClickHouse cluster, this parameter is required.
         self.backup_set_id = backup_set_id
@@ -1544,41 +1594,65 @@ class CreateDBInstanceRequest(TeaModel):
         # 
         # *   **Basic**: Single-replica Edition
         # *   **HighAvailability**: Double-replica Edition
+        # 
+        # This parameter is required.
         self.dbcluster_category = dbcluster_category
         # The specifications of the cluster.
         # 
-        # *   Valid values when the cluster is of Single-replica Edition: -**S4**: 4 CPU cores and 16 GB of memory -**S8**: 8 CPU cores and 32 GB of memory -**S16**: 16 CPU cores and 64 GB of memory
+        # *   Valid values when the cluster is of Single-replica Edition: 
         # 
+        #     - **S4**: 4 CPU cores and 16 GB of memory 
+        #     - **S8**: 8 CPU cores and 32 GB of memory
+        #     -  **S16**: 16 CPU cores and 64 GB of memory
         #     *   **S32**: 32 CPU cores and 128 GB of memory
         #     *   **S64**: 64 CPU cores and 256 GB of memory
         #     *   **S104**: 104 CPU cores and 384 GB of memory
         # 
-        # *   Valid values when the cluster is of Double-replica Edition: -**C4**: 4 CPU cores and 16 GB of memory -**C8**: 8 CPU cores and 32 GB of memory -**C16**: 16 CPU cores and 64 GB of memory -**C32**: 32 CPU cores and 128 GB of memory -**C64**: 64 CPU cores and 256 GB of memory -**C104**: 104 CPU cores and 384 GB of memory
+        # *   Valid values when the cluster is of Double-replica Edition: 
+        # 
+        #     - **C4**: 4 CPU cores and 16 GB of memory 
+        #     - **C8**: 8 CPU cores and 32 GB of memory 
+        #     - **C16**: 16 CPU cores and 64 GB of memory 
+        #     - **C32**: 32 CPU cores and 128 GB of memory 
+        #     - **C64**: 64 CPU cores and 256 GB of memory 
+        #     - **C104**: 104 CPU cores and 384 GB of memory
+        # 
+        # This parameter is required.
         self.dbcluster_class = dbcluster_class
         # The description of the cluster.
         self.dbcluster_description = dbcluster_description
         # The network type of the cluster. Only Virtual Private Cloud (VPC) is supported.
+        # 
+        # This parameter is required.
         self.dbcluster_network_type = dbcluster_network_type
         # The kernel version. Valid values:
         # 
         # *   **21.8.10.19**\
         # *   **22.8.5.29**\
+        # 
+        # This parameter is required.
         self.dbcluster_version = dbcluster_version
         # The number of nodes.
         # 
         # *   Valid values when the cluster is of Single-replica Edition: 1 to 48.
         # *   Valid values when the cluster is of Double-replica Edition: 1 to 24.
+        # 
+        # This parameter is required.
         self.dbnode_group_count = dbnode_group_count
         # The storage capacity of a single node. Valid values: 100 to 32000. Unit: GB.
         # 
         # >  This value is a multiple of 100.
+        # 
+        # This parameter is required.
         self.dbnode_storage = dbnode_storage
         # The storage type of the cluster. Valid values:
         # 
-        # *   **CloudESSD_PL1**: The cluster uses an enhanced SSD (ESSD) of performance level (PL) 1.
+        # *   **CloudESSD**: The cluster uses an enhanced SSD (ESSD) of performance level 1 (PL1).
         # *   **CloudESSD_PL2**: The cluster uses an ESSD of PL2.
         # *   **CloudESSD_PL3**: The cluster uses an ESSD of PL3.
         # *   **CloudEfficiency**: The cluster uses an ultra disk.
+        # 
+        # This parameter is required.
         self.db_node_storage_type = db_node_storage_type
         # You must specify this parameter when EncryptionType is set to CloudDisk.
         # 
@@ -1596,6 +1670,8 @@ class CreateDBInstanceRequest(TeaModel):
         # 
         # *   **Postpaid**: The cluster uses the pay-as-you-go billing method.
         # *   **Prepaid**: The cluster uses the subscription billing method.
+        # 
+        # This parameter is required.
         self.pay_type = pay_type
         # The unit of the subscription duration. This parameter is required when PayType is set to Prepaid.
         # 
@@ -1604,13 +1680,15 @@ class CreateDBInstanceRequest(TeaModel):
         # *   **Year**\
         # *   **Month**\
         self.period = period
-        # The region ID. You can call the [DescribeRegions](~~170875~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the cluster belongs.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the source cluster. You can call the [DescribeDBClusters](~~170879~~) operation to query backup set IDs.
+        # The ID of the source cluster. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query backup set IDs.
         # 
         # >  If you want to restore the data of an ApsaraDB for ClickHouse cluster, this parameter is required.
         self.source_dbcluster_id = source_dbcluster_id
@@ -1622,16 +1700,22 @@ class CreateDBInstanceRequest(TeaModel):
         # *   If Period is set to Month, the value of UsedTime must be an integer that ranges from 1 to 9.
         self.used_time = used_time
         # The VPC ID.
+        # 
+        # This parameter is required.
         self.vpcid = vpcid
-        # 备专有网络交换机
+        # The vSwitch in the secondary zone for the VPC.
         self.v_switch_bak = v_switch_bak
-        # 备专有网络交换机2
+        # The vSwitch in secondary zone 2 for the VPC.
         self.v_switch_bak_2 = v_switch_bak_2
         # The vSwitch ID.
+        # 
+        # This parameter is required.
         self.v_switch_id = v_switch_id
+        # Secondary zone 2.
         self.zond_id_bak_2 = zond_id_bak_2
-        # The zone ID. You can call the [DescribeRegions](~~170875~~) operation to query the most recent zone list.
+        # The zone ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent zone list.
         self.zone_id = zone_id
+        # The secondary zone.
         self.zone_id_bak = zone_id_bak
 
     def validate(self):
@@ -1864,10 +1948,12 @@ class CreateMonitorDataReportRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call the [DescribeRegions](~~170875~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -1992,10 +2078,12 @@ class CreateOSSStorageRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call the [DescribeRegions](~~170875~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -2121,12 +2209,16 @@ class CreatePortsForClickHouseRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The port type. Set the value to mysql_port.
+        # 
+        # This parameter is required.
         self.port_type = port_type
-        # The region ID. You can call the [DescribeRegions](~~170875~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -2266,24 +2358,36 @@ class CreateRDSToClickhouseDbRequest(TeaModel):
         syn_db_tables: str = None,
     ):
         # The password of the account that is used to log on to the database in the ApsaraDB for ClickHouse cluster.
+        # 
+        # This parameter is required.
         self.ck_password = ck_password
         # The account that is used to log on to the database in the ApsaraDB for ClickHouse cluster.
+        # 
+        # This parameter is required.
         self.ck_user_name = ck_user_name
         # The port number of the ApsaraDB for ClickHouse cluster.
         self.clickhouse_port = clickhouse_port
         # The ID of the ApsaraDB for ClickHouse cluster.
+        # 
+        # This parameter is required.
         self.db_cluster_id = db_cluster_id
         # The maximum number of rows that can be synchronized per second.
         self.limit_upper = limit_upper
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the ApsaraDB RDS for MySQL instance.
+        # 
+        # This parameter is required.
         self.rds_id = rds_id
         # The password of the account that is used to log on to the ApsaraDB RDS for MySQL instance.
+        # 
+        # This parameter is required.
         self.rds_password = rds_password
         # The port number of the ApsaraDB RDS for MySQL instance.
         self.rds_port = rds_port
         # The account that is used to log on to the database in the ApsaraDB RDS for MySQL instance.
+        # 
+        # This parameter is required.
         self.rds_user_name = rds_user_name
         # The ID of the virtual private cloud (VPC) to which the ApsaraDB RDS for MySQL instance belongs.
         self.rds_vpc_id = rds_vpc_id
@@ -2295,8 +2399,12 @@ class CreateRDSToClickhouseDbRequest(TeaModel):
         # 
         # *   **true**\
         # *   **false**\
+        # 
+        # This parameter is required.
         self.skip_unsupported = skip_unsupported
         # The tables whose data you want to synchronize.
+        # 
+        # This parameter is required.
         self.syn_db_tables = syn_db_tables
 
     def validate(self):
@@ -2401,7 +2509,7 @@ class CreateRDSToClickhouseDbResponseBody(TeaModel):
         # 
         # *   **1**: Created.
         # *   **0**: Creation failed. The tables in the synchronization task are duplicate. The duplicate tables are returned for the **RepeatedDbs** parameter.
-        # *   **1**: Creation failed. The cause why the creation failed is returned for the **ErrorMsg** parameter.
+        # *   **-1**: Creation failed. The cause why the creation failed is returned for the **ErrorMsg** parameter.
         self.status = status
 
     def validate(self):
@@ -2498,22 +2606,30 @@ class CreateSQLAccountRequest(TeaModel):
         # The name of the database account.
         # 
         # *   The name must be unique in the cluster.
-        # *   The name can contain lowercase letters, digits, or underscores (\_).
+        # *   The name can contain lowercase letters, digits, or underscores (_).
         # *   The name must start with a lowercase letter and end with a lowercase letter or a digit.
         # *   The name must be 2 to 64 characters in length.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The password of the database account.
         # 
         # *   The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
-        # *   Special characters include ! @ # $ % ^ & \* ( ) \_ + - =\
+        # *   Special characters include ! @ # $ % ^ & \\* ( ) _ + - =\
         # *   The password must be 8 to 32 characters in length.
+        # 
+        # This parameter is required.
         self.account_password = account_password
         # The type of the database account. Valid values:
         # 
         # *   **Super**: privileged account.
         # *   **Normal**: standard account.
+        # 
+        # This parameter is required.
         self.account_type = account_type
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -2766,8 +2882,12 @@ class DeleteAccountRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The name of the database account.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -2893,6 +3013,8 @@ class DeleteDBClusterRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the pay-as-you-go ApsaraDB for ClickHouse cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -3015,12 +3137,16 @@ class DeleteSyndbRequest(TeaModel):
         syn_db: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.db_cluster_id = db_cluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The name of the database in the ApsaraDB RDS for MySQL instance. The database is used for data synchronization.
+        # 
+        # This parameter is required.
         self.syn_db = syn_db
 
     def validate(self):
@@ -3171,10 +3297,12 @@ class DescribeAccountAuthorityRequest(TeaModel):
         # The name of the database account.
         self.account_name = account_name
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call the [DescribeRegions](~~170875~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -3360,6 +3488,7 @@ class DescribeAccountsRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         self.account_name = account_name
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -3608,6 +3737,8 @@ class DescribeAllDataSourceRequest(TeaModel):
         table_name: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -4030,6 +4161,8 @@ class DescribeAllDataSourcesRequest(TeaModel):
         table_name: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -4450,6 +4583,8 @@ class DescribeBackupPolicyRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -4622,7 +4757,9 @@ class DescribeBackupsRequest(TeaModel):
         start_time: str = None,
     ):
         self.backup_id = backup_id
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # This parameter is required.
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -4630,6 +4767,7 @@ class DescribeBackupsRequest(TeaModel):
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -4881,14 +5019,20 @@ class DescribeColumnsRequest(TeaModel):
         table_name: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The database name. You can call the [DescribeSchemas](~~350931~~) operation to query database names.
+        # The database name. You can call the [DescribeSchemas](https://help.aliyun.com/document_detail/350931.html) operation to query database names.
+        # 
+        # This parameter is required.
         self.schema_name = schema_name
-        # The table name. You can call the [DescribeTables](~~350932~~) operation to query table names.
+        # The table name. You can call the [DescribeTables](https://help.aliyun.com/document_detail/350932.html) operation to query table names.
+        # 
+        # This parameter is required.
         self.table_name = table_name
 
     def validate(self):
@@ -5131,11 +5275,17 @@ class DescribeConfigHistoryRequest(TeaModel):
         end_time: str = None,
         start_time: str = None,
     ):
-        # The cluster ID. You can call the [DescribeDBClusters](~~170879~~) operation to query information about all the clusters that are deployed in a specific region. The information includes the cluster IDs.
+        # The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query information about all the clusters that are deployed in a specific region. The information includes the cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in Coordinated Universal Time (UTC).
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -5315,9 +5465,13 @@ class DescribeConfigVersionDifferenceRequest(TeaModel):
         change_id: str = None,
         dbcluster_id: str = None,
     ):
-        # The ID of the change record. You can call the [DescribeConfigHistory](~~452209~~) operation to query the ID of the change record.
+        # The ID of the change record. You can call the [DescribeConfigHistory](https://help.aliyun.com/document_detail/452209.html) operation to query the ID of the change record.
+        # 
+        # This parameter is required.
         self.change_id = change_id
-        # The cluster ID. You can call the [DescribeDBClusters](~~170879~~) operation to query information about all the clusters that are deployed in a specific region. The information includes the cluster IDs.
+        # The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query information about all the clusters that are deployed in a specific region. The information includes the cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
 
     def validate(self):
@@ -5437,6 +5591,8 @@ class DescribeDBClusterAccessWhiteListRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -5643,7 +5799,9 @@ class DescribeDBClusterAttributeRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The cluster ID. You can call the [DescribeDBClusters](~~170879~~) operation to query information about all the clusters that are deployed in a specific region. The information includes the cluster IDs.
+        # The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query information about all the clusters that are deployed in a specific region. The information includes the cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -5800,6 +5958,7 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(TeaModel):
         self,
         ali_uid: str = None,
         appointment_restart_time: str = None,
+        available_upgrade_major_version: Dict[str, Any] = None,
         bid: str = None,
         category: str = None,
         commodity_code: str = None,
@@ -5854,6 +6013,7 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(TeaModel):
         self.ali_uid = ali_uid
         # The scheduled restart time. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in Coordinated Universal Time (UTC).
         self.appointment_restart_time = appointment_restart_time
+        self.available_upgrade_major_version = available_upgrade_major_version
         # The site ID. Valid values:
         # 
         # *   **26842**: the China site (aliyun.com)
@@ -6058,6 +6218,8 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(TeaModel):
             result['AliUid'] = self.ali_uid
         if self.appointment_restart_time is not None:
             result['AppointmentRestartTime'] = self.appointment_restart_time
+        if self.available_upgrade_major_version is not None:
+            result['AvailableUpgradeMajorVersion'] = self.available_upgrade_major_version
         if self.bid is not None:
             result['Bid'] = self.bid
         if self.category is not None:
@@ -6164,6 +6326,8 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(TeaModel):
             self.ali_uid = m.get('AliUid')
         if m.get('AppointmentRestartTime') is not None:
             self.appointment_restart_time = m.get('AppointmentRestartTime')
+        if m.get('AvailableUpgradeMajorVersion') is not None:
+            self.available_upgrade_major_version = m.get('AvailableUpgradeMajorVersion')
         if m.get('Bid') is not None:
             self.bid = m.get('Bid')
         if m.get('Category') is not None:
@@ -6356,10 +6520,12 @@ class DescribeDBClusterConfigRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call the [DescribeRegions](~~170875~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -6486,9 +6652,11 @@ class DescribeDBClusterConfigInXMLRequest(TeaModel):
         dbcluster_id: str = None,
         region_id: str = None,
     ):
-        # The cluster ID. You can call the [DescribeDBClusters](~~170879~~) operation to query information about all the clusters that are deployed in a specific region. The information includes the cluster IDs.
+        # The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query information about all the clusters that are deployed in a specific region. The information includes the cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        # The region ID. You can call the [DescribeRegions](~~170875~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -6601,6 +6769,8 @@ class DescribeDBClusterNetInfoItemsRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -6783,6 +6953,8 @@ class DescribeDBClusterNetInfoItemsResponseBody(TeaModel):
         # 
         # *   true
         # *   false
+        # 
+        # This parameter is required.
         self.enable_slb = enable_slb
         # The network information about the cluster.
         self.net_info_items = net_info_items
@@ -6877,10 +7049,14 @@ class DescribeDBClusterPerformanceRequest(TeaModel):
         start_time: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
         # 
         # >  The end time must be later than the start time. The interval cannot be more than 32 days.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The performance metrics that you want to query. Separate multiple performance metrics with commas (,). You can query up to five performance metrics at a time. You can query the following performance metrics:
         # 
@@ -6927,6 +7103,8 @@ class DescribeDBClusterPerformanceRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in Coordinated Universal Time (UTC).
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -7285,7 +7463,9 @@ class DescribeDBClustersRequest(TeaModel):
         # *   **50**\
         # *   **100**\
         self.page_size = page_size
-        # The region ID. You can call the [DescribeRegions](~~170875~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the cluster belongs.
         self.resource_group_id = resource_group_id
@@ -7923,10 +8103,12 @@ class DescribeDBConfigRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call the [DescribeRegions](~~170875~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -8058,10 +8240,12 @@ class DescribeOSSStorageRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call the [DescribeRegions](~~170875~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -8227,7 +8411,9 @@ class DescribeProcessListRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The cluster ID. You can call the [DescribeDBClusters](~~170879~~) operation to query information about all the clusters that are deployed in a specific region. The information includes the cluster IDs.
+        # The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query information about all the clusters that are deployed in a specific region. The information includes the cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The ID of the query statement.
         self.initial_query_id = initial_query_id
@@ -8254,7 +8440,7 @@ class DescribeProcessListRequest(TeaModel):
         self.page_size = page_size
         # The minimum query duration. The minimum value is **1000**, and the default value is **1000**. Unit: milliseconds. Queries that last longer than this duration are returned in response parameters.
         self.query_duration_ms = query_duration_ms
-        # The region ID. You can call the [DescribeRegions](~~170875~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -8957,6 +9143,8 @@ class DescribeSchemasRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -9162,11 +9350,15 @@ class DescribeSlowLogRecordsRequest(TeaModel):
         resource_owner_id: int = None,
         start_time: str = None,
     ):
-        # The cluster ID. You can call the [DescribeDBClusters](~~170879~~) operation to query information about all the clusters that are deployed in a specific region. The information includes the cluster IDs.
+        # The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query information about all the clusters that are deployed in a specific region. The information includes the cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-dd hh:mm:ss format. The time must be in UTC.
         # 
         # >  The end time must be later than the start time. The specified time range that can be specified must be less than seven days.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -9180,11 +9372,13 @@ class DescribeSlowLogRecordsRequest(TeaModel):
         self.page_size = page_size
         # The minimum query duration. The minimum value is **1000**, and the default value is **1000**. Unit: milliseconds. Queries that last longer than this duration are returned in response parameters.
         self.query_duration_ms = query_duration_ms
-        # The region ID. You can call the [DescribeRegions](~~170875~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-dd hh:mm:ss format. The time must be in Coordinated Universal Time (UTC).
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -9648,12 +9842,16 @@ class DescribeSynDbTablesRequest(TeaModel):
         syn_db: str = None,
     ):
         # The ID of the ApsaraDB for ClickHouse cluster.
+        # 
+        # This parameter is required.
         self.db_cluster_id = db_cluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The name of the ApsaraDB RDS for MySQL instance.
+        # 
+        # This parameter is required.
         self.syn_db = syn_db
 
     def validate(self):
@@ -9784,6 +9982,8 @@ class DescribeSynDbsRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the ApsaraDB for ClickHouse cluster.
+        # 
+        # This parameter is required.
         self.db_cluster_id = db_cluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -10021,12 +10221,16 @@ class DescribeTablesRequest(TeaModel):
         schema_name: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The database name.
+        # 
+        # This parameter is required.
         self.schema_name = schema_name
 
     def validate(self):
@@ -10234,6 +10438,8 @@ class DescribeTransferHistoryRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -10453,6 +10659,8 @@ class KillProcessRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The query statement or query statements that you want to stop executing. If you want to stop executing multiple query statements, separate the statements with commas (,).
         # 
@@ -10460,7 +10668,7 @@ class KillProcessRequest(TeaModel):
         self.initial_query_id = initial_query_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call the [DescribeRegions](~~170875~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -10596,26 +10804,38 @@ class ModifyAccountAuthorityRequest(TeaModel):
         total_dictionaries: str = None,
     ):
         # The name of the database account.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The databases to which you want to grant permissions. Separate databases with commas (,).
+        # 
+        # This parameter is required.
         self.allow_databases = allow_databases
         # The dictionaries to which you want to grant permissions. Separate dictionaries with commas (,).
+        # 
+        # This parameter is required.
         self.allow_dictionaries = allow_dictionaries
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # Specifies whether to grant DDL permissions to the database account. Valid values:
         # 
         # *   **true**: grants DDL permissions to the database account.
         # *   **false**: does not grant DDL permissions to the database account.
+        # 
+        # This parameter is required.
         self.ddl_authority = ddl_authority
         # Specifies whether to grant DML permissions to the database account. Valid values:
         # 
         # *   **all**\
         # *   **readonly,modify**\
+        # 
+        # This parameter is required.
         self.dml_authority = dml_authority
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call the [DescribeRegions](~~170875~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -10772,8 +10992,11 @@ class ModifyAccountDescriptionRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # This parameter is required.
         self.account_description = account_description
+        # This parameter is required.
         self.account_name = account_name
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -10907,6 +11130,8 @@ class ModifyBackupPolicyRequest(TeaModel):
         # The retention period for the backup data. Valid values: 7 to 730. Unit: day.
         self.backup_retention_period = backup_retention_period
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -10919,10 +11144,14 @@ class ModifyBackupPolicyRequest(TeaModel):
         # *   **Friday**\
         # *   **Saturday**\
         # *   **Sunday**\
+        # 
+        # This parameter is required.
         self.preferred_backup_period = preferred_backup_period
         # The backup window. Specify the time in the ISO 8601 standard in the HH:mmZ-HH:mmZ format. The time must be in Coordinated Universal Time (UTC).
         # 
         # For example, if you set the backup window to 00:00Z-01:00Z, the data of the cluster can be backed up from 08:00 (UTC+8) to 09:00 (UTC+8).
+        # 
+        # This parameter is required.
         self.preferred_backup_time = preferred_backup_time
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -11077,6 +11306,8 @@ class ModifyDBClusterRequest(TeaModel):
         #     *   **C32**\
         #     *   **C64**\
         #     *   **C104**\
+        # 
+        # This parameter is required.
         self.dbcluster_class = dbcluster_class
         # The cluster ID.
         self.dbcluster_id = dbcluster_id
@@ -11084,17 +11315,23 @@ class ModifyDBClusterRequest(TeaModel):
         # 
         # *   If the cluster is of Single-replica Edition, the value must be an integer that ranges from 1 to 48.
         # *   If the cluster is of Double-replica Edition, the value must be an integer that ranges from 1 to 24.
+        # 
+        # This parameter is required.
         self.dbnode_group_count = dbnode_group_count
         # The storage capacity of a single node of the cluster. Unit: GB.
         # 
         # Valid values: 100 to 32000.
         # 
         # >  This value is a multiple of 100.
+        # 
+        # This parameter is required.
         self.dbnode_storage = dbnode_storage
         self.db_node_storage_type = db_node_storage_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call the [DescribeRegions](~~170875~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -11283,12 +11520,14 @@ class ModifyDBClusterAccessWhiteListRequest(TeaModel):
     ):
         self.dbcluster_iparray_attribute = dbcluster_iparray_attribute
         self.dbcluster_iparray_name = dbcluster_iparray_name
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.modify_mode = modify_mode
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.security_ips = security_ips
 
     def validate(self):
@@ -11423,19 +11662,23 @@ class ModifyDBClusterConfigRequest(TeaModel):
         resource_owner_id: int = None,
         user_config: str = None,
     ):
-        # The cluster ID. You can call the [DescribeDBClusters](~~170879~~) operation to query information about all the clusters that are deployed in a specific region. The information includes the cluster IDs.
+        # The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query information about all the clusters that are deployed in a specific region. The information includes the cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The reason for the change.
         self.reason = reason
-        # The region ID. You can call the [DescribeRegions](~~170875~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The names of the parameters and the new values that you want to specify for the parameters.
         # 
         # >  You can change the value of a single parameter. The values of parameters that are not specified will not be changed.
+        # 
+        # This parameter is required.
         self.user_config = user_config
 
     def validate(self):
@@ -11563,15 +11806,19 @@ class ModifyDBClusterConfigInXMLRequest(TeaModel):
         reason: str = None,
         region_id: str = None,
     ):
-        # The configuration parameters whose settings you want to modify. You can call the [DescribeDBClusterConfigInXML](~~452210~~) operation to query configuration parameters, and modify the settings of the returned configuration parameters.
+        # The configuration parameters whose settings you want to modify. You can call the [DescribeDBClusterConfigInXML](https://help.aliyun.com/document_detail/452210.html) operation to query configuration parameters, and modify the settings of the returned configuration parameters.
         # 
         # > You must specify all configuration parameters even when you want to modify the setting of a single parameter. If a configuration parameter is not specified, the original value of this parameter is retained or the modification fails.
+        # 
+        # This parameter is required.
         self.config = config
-        # The cluster ID. You can call the [DescribeDBClusters](~~170879~~) operation to query information about all the clusters that are deployed in a specific region. The information includes the cluster IDs.
+        # The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query information about all the clusters that are deployed in a specific region. The information includes the cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The reason for the modification.
         self.reason = reason
-        # The region ID of the cluster. You can call the [DescribeRegions](~~170875~~) operation to query the most recent region list.
+        # The region ID of the cluster. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -11689,8 +11936,12 @@ class ModifyDBClusterDescriptionRequest(TeaModel):
         # 
         # *   The cluster name cannot start with http:// or https://.
         # *   The cluster name must be 2 to 256 characters in length.
+        # 
+        # This parameter is required.
         self.dbcluster_description = dbcluster_description
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -11817,12 +12068,16 @@ class ModifyDBClusterMaintainTimeRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # The maintenance window of the cluster. Specify the time in the HH:mmZ-HH:mmZ format. The time must be in Coordinated Universal Time (UTC).
         # 
         # For example, a value of 00:00Z-01:00Z indicates that routine maintenance can be performed on the cluster from 08:00 (UTC+8) to 09:00 (UTC+8).
         # 
         # >  You can set the start time and end time of the maintenance window to the time on the hour, and the maintenance window is 1 hour.
+        # 
+        # This parameter is required.
         self.maintain_time = maintain_time
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -11952,10 +12207,12 @@ class ModifyDBConfigRequest(TeaModel):
         # The dictionary configuration.
         self.config = config
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID. You can call the [DescribeRegions](~~170875~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -12083,7 +12340,9 @@ class ModifyMinorVersionGreadeTypeRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
+        # This parameter is required.
         self.maintain_auto_type = maintain_auto_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -12220,28 +12479,44 @@ class ModifyRDSToClickhouseDbRequest(TeaModel):
         skip_unsupported: bool = None,
     ):
         # The password of the account that is used to log on to the database in the ApsaraDB for ClickHouse cluster.
+        # 
+        # This parameter is required.
         self.ck_password = ck_password
         # The account that is used to log on to the database in the ApsaraDB for ClickHouse cluster.
+        # 
+        # This parameter is required.
         self.ck_user_name = ck_user_name
         # The port number of the ApsaraDB for ClickHouse cluster.
         self.clickhouse_port = clickhouse_port
         # The ID of the ApsaraDB for ClickHouse cluster.
+        # 
+        # This parameter is required.
         self.db_cluster_id = db_cluster_id
         # The maximum number of rows that can be synchronized per second.
         self.limit_upper = limit_upper
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the ApsaraDB RDS for MySQL instance.
+        # 
+        # This parameter is required.
         self.rds_id = rds_id
         # The password of the account that is used to log on to the database in the ApsaraDB RDS for MySQL instance.
+        # 
+        # This parameter is required.
         self.rds_password = rds_password
         # The port number of the ApsaraDB RDS for MySQL instance.
         self.rds_port = rds_port
         # The database in the ApsaraDB RDS for MySQL instance.
+        # 
+        # This parameter is required.
         self.rds_syn_db = rds_syn_db
         # The table in the ApsaraDB RDS for MySQL instance.
+        # 
+        # This parameter is required.
         self.rds_syn_tables = rds_syn_tables
         # The account that is used to log on to the database in the ApsaraDB RDS for MySQL instance.
+        # 
+        # This parameter is required.
         self.rds_user_name = rds_user_name
         # The ID of the virtual private cloud (VPC) to which the ApsaraDB RDS for MySQL instance belongs.
         self.rds_vpc_id = rds_vpc_id
@@ -12251,6 +12526,8 @@ class ModifyRDSToClickhouseDbRequest(TeaModel):
         # 
         # *   **true**\
         # *   **false**\
+        # 
+        # This parameter is required.
         self.skip_unsupported = skip_unsupported
 
     def validate(self):
@@ -12441,6 +12718,8 @@ class ReleaseClusterPublicConnectionRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -12564,6 +12843,8 @@ class ResetAccountPasswordRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The name of the database account.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The new password for the database account.
         # 
@@ -12571,10 +12852,14 @@ class ResetAccountPasswordRequest(TeaModel):
         # 
         # *   The password must contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters.
         # 
-        # *   The password can contain the following special characters: ! @ # $ % ^ & \* ( ) \_ + - =\
+        # *   The password can contain the following special characters: ! @ # $ % ^ & \\* ( ) _ + - =\
         # *   The password must be 8 to 32 characters in length.
+        # 
+        # This parameter is required.
         self.account_password = account_password
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -12707,7 +12992,9 @@ class RestartInstanceRequest(TeaModel):
         resource_owner_id: int = None,
         restart_time: str = None,
     ):
-        # The cluster ID. You can call the [DescribeDBClusters](~~170879~~) operation to query information about all the clusters that are deployed in a specific region. The information includes the cluster IDs.
+        # The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query information about all the clusters that are deployed in a specific region. The information includes the cluster IDs.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -12719,7 +13006,9 @@ class RestartInstanceRequest(TeaModel):
         # *   50
         # *   100
         self.page_size = page_size
-        # The region ID. You can call the [DescribeRegions](~~170875~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -12867,6 +13156,8 @@ class TransferVersionRequest(TeaModel):
         target_password: str = None,
     ):
         # The ID of the source ApsaraDB for ClickHouse cluster.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -12878,19 +13169,31 @@ class TransferVersionRequest(TeaModel):
         # *   **50**\
         # *   **100**\
         self.page_size = page_size
-        # The region ID. You can call the [DescribeRegions](~~170875~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The database account that is used to log on to the database in the source ApsaraDB for ClickHouse cluster.
+        # 
+        # This parameter is required.
         self.source_account = source_account
         # The password that corresponds to the database account for logging on to the database in the source ApsaraDB for ClickHouse cluster.
+        # 
+        # This parameter is required.
         self.source_password = source_password
         # The database account that is used to log on to the database in the destination ApsaraDB for ClickHouse cluster.
+        # 
+        # This parameter is required.
         self.target_account = target_account
         # The ID of the destination ApsaraDB for ClickHouse cluster.
+        # 
+        # This parameter is required.
         self.target_db_cluster_id = target_db_cluster_id
         # The password that corresponds to the database account for logging on to the database in the destination ApsaraDB for ClickHouse cluster.
+        # 
+        # This parameter is required.
         self.target_password = target_password
 
     def validate(self):
@@ -13043,6 +13346,8 @@ class UpgradeMinorVersionRequest(TeaModel):
         upgrade_version: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -13054,6 +13359,8 @@ class UpgradeMinorVersionRequest(TeaModel):
         # *   **false**: updates the minor engine version of the ApsaraDB for ClickHouse cluster at the specified time or within the specified maintenance window.
         # 
         # >  If you want to update the minor engine version of the ApsaraDB for ClickHouse cluster at the specified time, **UpgradeTime** is required.
+        # 
+        # This parameter is required.
         self.upgrade_immediately = upgrade_immediately
         # The update time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in Coordinated Universal Time (UTC).
         # 
