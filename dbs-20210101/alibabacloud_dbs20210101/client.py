@@ -178,6 +178,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.change_resource_group_with_options_async(request, runtime)
 
+    def create_advanced_policy_with_options(
+        self,
+        request: dbs_20210101_models.CreateAdvancedPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dbs_20210101_models.CreateAdvancedPolicyResponse:
+        """
+        @summary 开启高级备份策略
+        
+        @param request: CreateAdvancedPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAdvancedPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.region_code):
+            query['RegionCode'] = request.region_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAdvancedPolicy',
+            version='2021-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dbs_20210101_models.CreateAdvancedPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_advanced_policy_with_options_async(
+        self,
+        request: dbs_20210101_models.CreateAdvancedPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dbs_20210101_models.CreateAdvancedPolicyResponse:
+        """
+        @summary 开启高级备份策略
+        
+        @param request: CreateAdvancedPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAdvancedPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.region_code):
+            query['RegionCode'] = request.region_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateAdvancedPolicy',
+            version='2021-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dbs_20210101_models.CreateAdvancedPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_advanced_policy(
+        self,
+        request: dbs_20210101_models.CreateAdvancedPolicyRequest,
+    ) -> dbs_20210101_models.CreateAdvancedPolicyResponse:
+        """
+        @summary 开启高级备份策略
+        
+        @param request: CreateAdvancedPolicyRequest
+        @return: CreateAdvancedPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_advanced_policy_with_options(request, runtime)
+
+    async def create_advanced_policy_async(
+        self,
+        request: dbs_20210101_models.CreateAdvancedPolicyRequest,
+    ) -> dbs_20210101_models.CreateAdvancedPolicyResponse:
+        """
+        @summary 开启高级备份策略
+        
+        @param request: CreateAdvancedPolicyRequest
+        @return: CreateAdvancedPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_advanced_policy_with_options_async(request, runtime)
+
     def create_download_with_options(
         self,
         request: dbs_20210101_models.CreateDownloadRequest,
@@ -1797,6 +1897,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_sandbox_recovery_time_with_options_async(request, runtime)
+
+    def modify_backup_policy_with_options(
+        self,
+        request: dbs_20210101_models.ModifyBackupPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dbs_20210101_models.ModifyBackupPolicyResponse:
+        """
+        @summary 修改备份策略
+        
+        @param request: ModifyBackupPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBackupPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.advance_data_policies):
+            query['AdvanceDataPolicies'] = request.advance_data_policies
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.preferred_backup_window_begin):
+            query['PreferredBackupWindowBegin'] = request.preferred_backup_window_begin
+        if not UtilClient.is_unset(request.region_code):
+            query['RegionCode'] = request.region_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyBackupPolicy',
+            version='2021-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dbs_20210101_models.ModifyBackupPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_backup_policy_with_options_async(
+        self,
+        request: dbs_20210101_models.ModifyBackupPolicyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dbs_20210101_models.ModifyBackupPolicyResponse:
+        """
+        @summary 修改备份策略
+        
+        @param request: ModifyBackupPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyBackupPolicyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.advance_data_policies):
+            query['AdvanceDataPolicies'] = request.advance_data_policies
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.preferred_backup_window_begin):
+            query['PreferredBackupWindowBegin'] = request.preferred_backup_window_begin
+        if not UtilClient.is_unset(request.region_code):
+            query['RegionCode'] = request.region_code
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyBackupPolicy',
+            version='2021-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dbs_20210101_models.ModifyBackupPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_backup_policy(
+        self,
+        request: dbs_20210101_models.ModifyBackupPolicyRequest,
+    ) -> dbs_20210101_models.ModifyBackupPolicyResponse:
+        """
+        @summary 修改备份策略
+        
+        @param request: ModifyBackupPolicyRequest
+        @return: ModifyBackupPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_backup_policy_with_options(request, runtime)
+
+    async def modify_backup_policy_async(
+        self,
+        request: dbs_20210101_models.ModifyBackupPolicyRequest,
+    ) -> dbs_20210101_models.ModifyBackupPolicyResponse:
+        """
+        @summary 修改备份策略
+        
+        @param request: ModifyBackupPolicyRequest
+        @return: ModifyBackupPolicyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_backup_policy_with_options_async(request, runtime)
 
     def modify_dbtables_recovery_state_with_options(
         self,

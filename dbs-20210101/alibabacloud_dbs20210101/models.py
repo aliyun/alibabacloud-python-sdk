@@ -183,6 +183,143 @@ class ChangeResourceGroupResponse(TeaModel):
         return self
 
 
+class CreateAdvancedPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        instance_name: str = None,
+        region_code: str = None,
+    ):
+        self.instance_name = instance_name
+        self.region_code = region_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.region_code is not None:
+            result['RegionCode'] = self.region_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('RegionCode') is not None:
+            self.region_code = m.get('RegionCode')
+        return self
+
+
+class CreateAdvancedPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: bool = None,
+        err_code: str = None,
+        err_message: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateAdvancedPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateAdvancedPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateAdvancedPolicyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateDownloadRequest(TeaModel):
     def __init__(
         self,
@@ -3468,6 +3605,404 @@ class DescribeSandboxRecoveryTimeResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSandboxRecoveryTimeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyBackupPolicyRequestAdvanceDataPolicies(TeaModel):
+    def __init__(
+        self,
+        action_type: str = None,
+        dest_region: str = None,
+        dest_type: str = None,
+        filter_key: str = None,
+        filter_type: str = None,
+        filter_type_copy: str = None,
+        filter_value: str = None,
+        policy_id: str = None,
+        retention_type: str = None,
+        retention_value: str = None,
+        src_region: str = None,
+        src_type: str = None,
+    ):
+        self.action_type = action_type
+        self.dest_region = dest_region
+        self.dest_type = dest_type
+        self.filter_key = filter_key
+        self.filter_type = filter_type
+        self.filter_type_copy = filter_type_copy
+        self.filter_value = filter_value
+        self.policy_id = policy_id
+        self.retention_type = retention_type
+        self.retention_value = retention_value
+        self.src_region = src_region
+        self.src_type = src_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_type is not None:
+            result['ActionType'] = self.action_type
+        if self.dest_region is not None:
+            result['DestRegion'] = self.dest_region
+        if self.dest_type is not None:
+            result['DestType'] = self.dest_type
+        if self.filter_key is not None:
+            result['FilterKey'] = self.filter_key
+        if self.filter_type is not None:
+            result['FilterType'] = self.filter_type
+        if self.filter_type_copy is not None:
+            result['FilterType-copy'] = self.filter_type_copy
+        if self.filter_value is not None:
+            result['FilterValue'] = self.filter_value
+        if self.policy_id is not None:
+            result['PolicyId'] = self.policy_id
+        if self.retention_type is not None:
+            result['RetentionType'] = self.retention_type
+        if self.retention_value is not None:
+            result['RetentionValue'] = self.retention_value
+        if self.src_region is not None:
+            result['SrcRegion'] = self.src_region
+        if self.src_type is not None:
+            result['SrcType'] = self.src_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionType') is not None:
+            self.action_type = m.get('ActionType')
+        if m.get('DestRegion') is not None:
+            self.dest_region = m.get('DestRegion')
+        if m.get('DestType') is not None:
+            self.dest_type = m.get('DestType')
+        if m.get('FilterKey') is not None:
+            self.filter_key = m.get('FilterKey')
+        if m.get('FilterType') is not None:
+            self.filter_type = m.get('FilterType')
+        if m.get('FilterType-copy') is not None:
+            self.filter_type_copy = m.get('FilterType-copy')
+        if m.get('FilterValue') is not None:
+            self.filter_value = m.get('FilterValue')
+        if m.get('PolicyId') is not None:
+            self.policy_id = m.get('PolicyId')
+        if m.get('RetentionType') is not None:
+            self.retention_type = m.get('RetentionType')
+        if m.get('RetentionValue') is not None:
+            self.retention_value = m.get('RetentionValue')
+        if m.get('SrcRegion') is not None:
+            self.src_region = m.get('SrcRegion')
+        if m.get('SrcType') is not None:
+            self.src_type = m.get('SrcType')
+        return self
+
+
+class ModifyBackupPolicyRequest(TeaModel):
+    def __init__(
+        self,
+        advance_data_policies: List[ModifyBackupPolicyRequestAdvanceDataPolicies] = None,
+        instance_name: str = None,
+        preferred_backup_window_begin: str = None,
+        region_code: str = None,
+    ):
+        self.advance_data_policies = advance_data_policies
+        self.instance_name = instance_name
+        self.preferred_backup_window_begin = preferred_backup_window_begin
+        self.region_code = region_code
+
+    def validate(self):
+        if self.advance_data_policies:
+            for k in self.advance_data_policies:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AdvanceDataPolicies'] = []
+        if self.advance_data_policies is not None:
+            for k in self.advance_data_policies:
+                result['AdvanceDataPolicies'].append(k.to_map() if k else None)
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.preferred_backup_window_begin is not None:
+            result['PreferredBackupWindowBegin'] = self.preferred_backup_window_begin
+        if self.region_code is not None:
+            result['RegionCode'] = self.region_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.advance_data_policies = []
+        if m.get('AdvanceDataPolicies') is not None:
+            for k in m.get('AdvanceDataPolicies'):
+                temp_model = ModifyBackupPolicyRequestAdvanceDataPolicies()
+                self.advance_data_policies.append(temp_model.from_map(k))
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('PreferredBackupWindowBegin') is not None:
+            self.preferred_backup_window_begin = m.get('PreferredBackupWindowBegin')
+        if m.get('RegionCode') is not None:
+            self.region_code = m.get('RegionCode')
+        return self
+
+
+class ModifyBackupPolicyResponseBodyDataAdvanceDataPolicies(TeaModel):
+    def __init__(
+        self,
+        auto_created: bool = None,
+        bak_type: str = None,
+        dest_region: str = None,
+        dest_type: str = None,
+        dump_action: str = None,
+        filter_key: str = None,
+        filter_type: str = None,
+        filter_value: str = None,
+        policy_id: str = None,
+        retention_type: str = None,
+        retention_value: str = None,
+        src_region: str = None,
+        src_type: str = None,
+    ):
+        self.auto_created = auto_created
+        self.bak_type = bak_type
+        self.dest_region = dest_region
+        self.dest_type = dest_type
+        self.dump_action = dump_action
+        self.filter_key = filter_key
+        self.filter_type = filter_type
+        self.filter_value = filter_value
+        self.policy_id = policy_id
+        self.retention_type = retention_type
+        self.retention_value = retention_value
+        self.src_region = src_region
+        self.src_type = src_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.auto_created is not None:
+            result['AutoCreated'] = self.auto_created
+        if self.bak_type is not None:
+            result['BakType'] = self.bak_type
+        if self.dest_region is not None:
+            result['DestRegion'] = self.dest_region
+        if self.dest_type is not None:
+            result['DestType'] = self.dest_type
+        if self.dump_action is not None:
+            result['DumpAction'] = self.dump_action
+        if self.filter_key is not None:
+            result['FilterKey'] = self.filter_key
+        if self.filter_type is not None:
+            result['FilterType'] = self.filter_type
+        if self.filter_value is not None:
+            result['FilterValue'] = self.filter_value
+        if self.policy_id is not None:
+            result['PolicyId'] = self.policy_id
+        if self.retention_type is not None:
+            result['RetentionType'] = self.retention_type
+        if self.retention_value is not None:
+            result['RetentionValue'] = self.retention_value
+        if self.src_region is not None:
+            result['SrcRegion'] = self.src_region
+        if self.src_type is not None:
+            result['SrcType'] = self.src_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AutoCreated') is not None:
+            self.auto_created = m.get('AutoCreated')
+        if m.get('BakType') is not None:
+            self.bak_type = m.get('BakType')
+        if m.get('DestRegion') is not None:
+            self.dest_region = m.get('DestRegion')
+        if m.get('DestType') is not None:
+            self.dest_type = m.get('DestType')
+        if m.get('DumpAction') is not None:
+            self.dump_action = m.get('DumpAction')
+        if m.get('FilterKey') is not None:
+            self.filter_key = m.get('FilterKey')
+        if m.get('FilterType') is not None:
+            self.filter_type = m.get('FilterType')
+        if m.get('FilterValue') is not None:
+            self.filter_value = m.get('FilterValue')
+        if m.get('PolicyId') is not None:
+            self.policy_id = m.get('PolicyId')
+        if m.get('RetentionType') is not None:
+            self.retention_type = m.get('RetentionType')
+        if m.get('RetentionValue') is not None:
+            self.retention_value = m.get('RetentionValue')
+        if m.get('SrcRegion') is not None:
+            self.src_region = m.get('SrcRegion')
+        if m.get('SrcType') is not None:
+            self.src_type = m.get('SrcType')
+        return self
+
+
+class ModifyBackupPolicyResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        advance_data_policies: List[ModifyBackupPolicyResponseBodyDataAdvanceDataPolicies] = None,
+        preferred_backup_window: str = None,
+        preferred_backup_window_begin: str = None,
+    ):
+        self.advance_data_policies = advance_data_policies
+        self.preferred_backup_window = preferred_backup_window
+        self.preferred_backup_window_begin = preferred_backup_window_begin
+
+    def validate(self):
+        if self.advance_data_policies:
+            for k in self.advance_data_policies:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AdvanceDataPolicies'] = []
+        if self.advance_data_policies is not None:
+            for k in self.advance_data_policies:
+                result['AdvanceDataPolicies'].append(k.to_map() if k else None)
+        if self.preferred_backup_window is not None:
+            result['PreferredBackupWindow'] = self.preferred_backup_window
+        if self.preferred_backup_window_begin is not None:
+            result['PreferredBackupWindowBegin'] = self.preferred_backup_window_begin
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.advance_data_policies = []
+        if m.get('AdvanceDataPolicies') is not None:
+            for k in m.get('AdvanceDataPolicies'):
+                temp_model = ModifyBackupPolicyResponseBodyDataAdvanceDataPolicies()
+                self.advance_data_policies.append(temp_model.from_map(k))
+        if m.get('PreferredBackupWindow') is not None:
+            self.preferred_backup_window = m.get('PreferredBackupWindow')
+        if m.get('PreferredBackupWindowBegin') is not None:
+            self.preferred_backup_window_begin = m.get('PreferredBackupWindowBegin')
+        return self
+
+
+class ModifyBackupPolicyResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: ModifyBackupPolicyResponseBodyData = None,
+        err_code: str = None,
+        err_message: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        self.code = code
+        self.data = data
+        self.err_code = err_code
+        self.err_message = err_message
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('Data') is not None:
+            temp_model = ModifyBackupPolicyResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ModifyBackupPolicyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyBackupPolicyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyBackupPolicyResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

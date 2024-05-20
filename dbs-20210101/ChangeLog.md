@@ -1,3 +1,8 @@
+2024-05-20 Version: 2.1.0
+- Support API CreateAdvancedPolicy.
+- Support API ModifyBackupPolicy.
+
+
 2024-05-17 Version: 2.0.1
 - Update API DescribeBackupPolicy: update response param.
 
