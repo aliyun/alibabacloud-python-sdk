@@ -11910,8 +11910,12 @@ class CreateSubscribedCalendarShrinkHeaders(TeaModel):
 class CreateSubscribedCalendarRequestSubscribeScope(TeaModel):
     def __init__(
         self,
+        corp_ids: List[str] = None,
+        open_conversation_ids: List[str] = None,
         user_ids: List[str] = None,
     ):
+        self.corp_ids = corp_ids
+        self.open_conversation_ids = open_conversation_ids
         self.user_ids = user_ids
 
     def validate(self):
@@ -11923,12 +11927,20 @@ class CreateSubscribedCalendarRequestSubscribeScope(TeaModel):
             return _map
 
         result = dict()
+        if self.corp_ids is not None:
+            result['CorpIds'] = self.corp_ids
+        if self.open_conversation_ids is not None:
+            result['OpenConversationIds'] = self.open_conversation_ids
         if self.user_ids is not None:
             result['UserIds'] = self.user_ids
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CorpIds') is not None:
+            self.corp_ids = m.get('CorpIds')
+        if m.get('OpenConversationIds') is not None:
+            self.open_conversation_ids = m.get('OpenConversationIds')
         if m.get('UserIds') is not None:
             self.user_ids = m.get('UserIds')
         return self

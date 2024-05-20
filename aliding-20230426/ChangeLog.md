@@ -1,3 +1,7 @@
+2024-05-20 Version: 2.17.1
+- Update API CreateSubscribedCalendar: update param SubscribeScope.
+
+
 2024-05-15 Version: 2.17.0
 - Support API QueryScheduleConferenceInfo.
 
