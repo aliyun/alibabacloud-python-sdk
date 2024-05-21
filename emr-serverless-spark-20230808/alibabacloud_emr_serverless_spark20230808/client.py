@@ -549,6 +549,130 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_release_versions_with_options_async(request, headers, runtime)
 
+    def list_session_clusters_with_options(
+        self,
+        workspace_id: str,
+        request: emr_serverless_spark_20230808_models.ListSessionClustersRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.ListSessionClustersResponse:
+        """
+        @summary 查询run列表
+        
+        @param request: ListSessionClustersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSessionClustersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.queue_name):
+            query['queueName'] = request.queue_name
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        if not UtilClient.is_unset(request.session_cluster_id):
+            query['sessionClusterId'] = request.session_cluster_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSessionClusters',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/sessionClusters',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.ListSessionClustersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_session_clusters_with_options_async(
+        self,
+        workspace_id: str,
+        request: emr_serverless_spark_20230808_models.ListSessionClustersRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.ListSessionClustersResponse:
+        """
+        @summary 查询run列表
+        
+        @param request: ListSessionClustersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSessionClustersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.max_results):
+            query['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            query['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.queue_name):
+            query['queueName'] = request.queue_name
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        if not UtilClient.is_unset(request.session_cluster_id):
+            query['sessionClusterId'] = request.session_cluster_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListSessionClusters',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/workspaces/{OpenApiUtilClient.get_encode_param(workspace_id)}/sessionClusters',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.ListSessionClustersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_session_clusters(
+        self,
+        workspace_id: str,
+        request: emr_serverless_spark_20230808_models.ListSessionClustersRequest,
+    ) -> emr_serverless_spark_20230808_models.ListSessionClustersResponse:
+        """
+        @summary 查询run列表
+        
+        @param request: ListSessionClustersRequest
+        @return: ListSessionClustersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_session_clusters_with_options(workspace_id, request, headers, runtime)
+
+    async def list_session_clusters_async(
+        self,
+        workspace_id: str,
+        request: emr_serverless_spark_20230808_models.ListSessionClustersRequest,
+    ) -> emr_serverless_spark_20230808_models.ListSessionClustersResponse:
+        """
+        @summary 查询run列表
+        
+        @param request: ListSessionClustersRequest
+        @return: ListSessionClustersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_session_clusters_with_options_async(workspace_id, request, headers, runtime)
+
     def list_workspace_queues_with_options(
         self,
         workspace_id: str,

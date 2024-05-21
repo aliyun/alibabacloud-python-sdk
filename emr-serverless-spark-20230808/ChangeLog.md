@@ -1,3 +1,7 @@
+2024-05-21 Version: 1.2.0
+- Support API ListSessionClusters.
+
+
 2024-05-20 Version: 1.1.0
 - Support API ListReleaseVersions.
 - Support API ListWorkspaceQueues.
