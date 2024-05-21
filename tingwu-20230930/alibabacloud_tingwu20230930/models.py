@@ -328,6 +328,7 @@ class CreateTaskRequestParametersTranscription(TeaModel):
         audio_event_detection_enabled: bool = None,
         diarization: CreateTaskRequestParametersTranscriptionDiarization = None,
         diarization_enabled: bool = None,
+        model: str = None,
         output_level: int = None,
         phrase_id: str = None,
     ):
@@ -335,6 +336,7 @@ class CreateTaskRequestParametersTranscription(TeaModel):
         self.audio_event_detection_enabled = audio_event_detection_enabled
         self.diarization = diarization
         self.diarization_enabled = diarization_enabled
+        self.model = model
         self.output_level = output_level
         self.phrase_id = phrase_id
 
@@ -356,6 +358,8 @@ class CreateTaskRequestParametersTranscription(TeaModel):
             result['Diarization'] = self.diarization.to_map()
         if self.diarization_enabled is not None:
             result['DiarizationEnabled'] = self.diarization_enabled
+        if self.model is not None:
+            result['Model'] = self.model
         if self.output_level is not None:
             result['OutputLevel'] = self.output_level
         if self.phrase_id is not None:
@@ -373,6 +377,8 @@ class CreateTaskRequestParametersTranscription(TeaModel):
             self.diarization = temp_model.from_map(m['Diarization'])
         if m.get('DiarizationEnabled') is not None:
             self.diarization_enabled = m.get('DiarizationEnabled')
+        if m.get('Model') is not None:
+            self.model = m.get('Model')
         if m.get('OutputLevel') is not None:
             self.output_level = m.get('OutputLevel')
         if m.get('PhraseId') is not None:
