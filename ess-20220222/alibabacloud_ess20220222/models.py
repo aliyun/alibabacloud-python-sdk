@@ -9557,7 +9557,9 @@ class DeleteEciScalingConfigurationResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request. This request ID is returned regardless of whether the request is successful.
+        # The request ID.
+        # 
+        # The request ID is consistently returned in the response, irrespective of whether the request is executed successfully or encounters an error.
         self.request_id = request_id
 
     def validate(self):
@@ -10022,14 +10024,14 @@ class DeleteScalingGroupRequest(TeaModel):
         resource_owner_account: str = None,
         scaling_group_id: str = None,
     ):
-        # Specifies whether to forcibly delete the scaling group and release Elastic Compute Service (ECS) instances in the scaling group when ECS instances or ongoing scaling activities exist in the scaling group. Valid values:
+        # Specifies whether to enforce the deletion of the scaling group, including the removal of the current ECS instances or elastic container instances from the scaling group and their subsequent release, even if the scaling group is actively undergoing scaling activities. Valid values:
         # 
-        # *   true: forcibly deletes the scaling group. The scaling group is disabled and new scaling requests are rejected. After all existing scaling requests are processed, the ECS instances are removed from the scaling group. Then, the scaling group is deleted. If the ECS instances are manually added to the scaling group, the ECS instances are only removed from the scaling group. If the ECS instances are automatically created and added to the scaling group, the ECS instances are removed from the scaling group and then released.
+        # *   true: enforces the deletion of the scaling group. In this case, the scaling group first enters the Disabled state, ceasing acceptance of new scaling requests. Auto Scaling awaits the conclusion of all ongoing scaling activities in the scaling group before it automatically removes the current ECS instances or elastic container instances from the scaling group and enforces the deletion operation. Note that manually added instances are merely removed from the scaling group, whereas auto-provisioned instances are removed and deleted.
         # 
-        # *   false: does not forcibly delete the scaling group. The scaling group is disabled and then deleted if the following conditions are met:
+        # *   false: does not enforce the deletion of the scaling group. The scaling group will be disabled and then deleted once all the following requirements are satisfied:
         # 
-        #     *   No scaling activities are in process in the scaling group.
-        #     *   The Total Capacity parameter is set to 0. A value of 0 specifies that no ECS instances exist in the scaling group.
+        #     *   The scaling group has no ongoing scaling activities.
+        #     *   The scaling group contains no ECS instances or elastic container instances (Total Capacity=0).
         # 
         # Default value: false.
         self.force_delete = force_delete
@@ -10088,7 +10090,7 @@ class DeleteScalingGroupResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -10336,7 +10338,7 @@ class DeleteScheduledTaskResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -16230,13 +16232,13 @@ class DescribeRegionsRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The language that is used as a filter condition to filter returned results. For more information, see [RFC 7231](https://tools.ietf.org/html/rfc7231). Valid values:
+        # The language for the response. For more information, see [RFC7231](https://tools.ietf.org/html/rfc7231). Valid values:
         # 
         # *   zh-CN: Chinese
         # *   en-US: English
         # *   ja: Japanese
         # 
-        # Default value: en-US
+        # Default value: zh-CN.
         self.accept_language = accept_language
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -16283,21 +16285,21 @@ class DescribeRegionsResponseBodyRegions(TeaModel):
         region_id: str = None,
         vpc_unavailable: bool = None,
     ):
-        # Indicates whether the region supports scaling groups of the classic network type. Valid values:
+        # Indicates whether the current region supports scaling groups that reside in the classic network. Valid values:
         # 
         # *   true
         # *   false
         self.classic_unavailable = classic_unavailable
-        # The name of the region.
+        # The region name.
         self.local_name = local_name
-        # The endpoint of the region.
+        # The region endpoint.
         self.region_endpoint = region_endpoint
-        # The ID of the region.
+        # The region ID.
         self.region_id = region_id
-        # Indicates whether the region supports scaling groups of the virtual private cloud (VPC) type. Valid values:
+        # Indicates whether the current region supports scaling groups that reside in virtual private clouds (VPCs). Valid values:
         # 
-        # *   true: The region does not support scaling groups of the VPC type.
-        # *   false: The region supports scaling groups of the VPC type.
+        # *   true
+        # *   false
         self.vpc_unavailable = vpc_unavailable
 
     def validate(self):
@@ -16342,7 +16344,7 @@ class DescribeRegionsResponseBody(TeaModel):
         regions: List[DescribeRegionsResponseBodyRegions] = None,
         request_id: str = None,
     ):
-        # Details of the regions.
+        # The collection of region information.
         self.regions = regions
         # The ID of the request.
         self.request_id = request_id
@@ -22243,6 +22245,7 @@ class DetachInstancesRequest(TeaModel):
         client_token: str = None,
         decrease_desired_capacity: bool = None,
         detach_option: str = None,
+        ignore_invalid_instance: bool = None,
         instance_ids: List[str] = None,
         lifecycle_hook: bool = None,
         owner_account: str = None,
@@ -22264,6 +22267,7 @@ class DetachInstancesRequest(TeaModel):
         # 
         # If you set this parameter to both, the instances are removed from the default sever group and vServer groups of the associated CLB instance, and the IP addresses of the instances are removed from the whitelist that manages access to the associated ApsaraDB RDS instance.
         self.detach_option = detach_option
+        self.ignore_invalid_instance = ignore_invalid_instance
         # The IDs of the ECS instances or elastic container instances that you want to remove from the scaling group.
         # 
         # This parameter is required.
@@ -22299,6 +22303,8 @@ class DetachInstancesRequest(TeaModel):
             result['DecreaseDesiredCapacity'] = self.decrease_desired_capacity
         if self.detach_option is not None:
             result['DetachOption'] = self.detach_option
+        if self.ignore_invalid_instance is not None:
+            result['IgnoreInvalidInstance'] = self.ignore_invalid_instance
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids
         if self.lifecycle_hook is not None:
@@ -22323,6 +22329,8 @@ class DetachInstancesRequest(TeaModel):
             self.decrease_desired_capacity = m.get('DecreaseDesiredCapacity')
         if m.get('DetachOption') is not None:
             self.detach_option = m.get('DetachOption')
+        if m.get('IgnoreInvalidInstance') is not None:
+            self.ignore_invalid_instance = m.get('IgnoreInvalidInstance')
         if m.get('InstanceIds') is not None:
             self.instance_ids = m.get('InstanceIds')
         if m.get('LifecycleHook') is not None:
@@ -31803,6 +31811,7 @@ class RemoveInstancesRequest(TeaModel):
         self,
         client_token: str = None,
         decrease_desired_capacity: bool = None,
+        ignore_invalid_instance: bool = None,
         instance_ids: List[str] = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -31821,6 +31830,7 @@ class RemoveInstancesRequest(TeaModel):
         # 
         # Default value: true.
         self.decrease_desired_capacity = decrease_desired_capacity
+        self.ignore_invalid_instance = ignore_invalid_instance
         # The IDs of the ECS instances that you want to remove from the scaling group.
         # 
         # This parameter is required.
@@ -31868,6 +31878,8 @@ class RemoveInstancesRequest(TeaModel):
             result['ClientToken'] = self.client_token
         if self.decrease_desired_capacity is not None:
             result['DecreaseDesiredCapacity'] = self.decrease_desired_capacity
+        if self.ignore_invalid_instance is not None:
+            result['IgnoreInvalidInstance'] = self.ignore_invalid_instance
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids
         if self.owner_account is not None:
@@ -31892,6 +31904,8 @@ class RemoveInstancesRequest(TeaModel):
             self.client_token = m.get('ClientToken')
         if m.get('DecreaseDesiredCapacity') is not None:
             self.decrease_desired_capacity = m.get('DecreaseDesiredCapacity')
+        if m.get('IgnoreInvalidInstance') is not None:
+            self.ignore_invalid_instance = m.get('IgnoreInvalidInstance')
         if m.get('InstanceIds') is not None:
             self.instance_ids = m.get('InstanceIds')
         if m.get('OwnerAccount') is not None:
@@ -32904,7 +32918,7 @@ class SetInstancesProtectionRequest(TeaModel):
         # This parameter is required.
         self.instance_ids = instance_ids
         self.owner_id = owner_id
-        # Specifies whether to put ECS instances into the Protected state. Auto Scaling does not remove ECS instances in the Protected state from scaling groups during scale-in activities.
+        # Specifies whether to protect ECS instances from being stopped or removed from the scaling group during scale-ins. Valid values:
         # 
         # *   true
         # *   false
@@ -33032,20 +33046,18 @@ class SuspendProcessesRequest(TeaModel):
         resource_owner_account: str = None,
         scaling_group_id: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests.
-        # 
-        # The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
         self.client_token = client_token
         self.owner_id = owner_id
         # The types of the processes that you want to suspend. Valid values:
         # 
-        # *   scalein
-        # *   scaleout
-        # *   healthcheck
-        # *   alarmnotification
-        # *   scheduledaction
+        # *   scalein: the scale-in process.
+        # *   scaleout: the scale-out process.
+        # *   healthcheck: the health check process.
+        # *   alarmnotification: the process of executing an event-triggered task.
+        # *   scheduledaction: the process of executing a scheduled task.
         # 
-        # You can suspend five processes of the preceding types at the same time. If you try to suspend more than five processes at the same time, Auto Scaling automatically removes duplicate processes.
+        # Presently, Auto Scaling supports suspending the five mentioned process types. In cases where more than five types are specified, Auto Scaling will automatically disregard duplicates and proceed with suspending the unique process types.
         # 
         # This parameter is required.
         self.processes = processes
@@ -33374,28 +33386,28 @@ class UntagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag_keys: List[str] = None,
     ):
-        # Specifies whether to remove all tags from the Auto Scaling resource. This parameter takes effect only if you do not specify the `TagKeys` parameter. Valid values:
+        # Specifies whether to remove all tags from the resource. This parameter takes effect only when you do not specify `TagKeys` in the request parameters. Valid values:
         # 
-        # *   true: removes all tags from the Auto Scaling resource.
-        # *   false: does not remove tags from the Auto Scaling resource.
+        # *   true
+        # *   false
         # 
         # Default value: false.
         self.all = all
         self.owner_id = owner_id
-        # The region ID of the Auto Scaling resource. You can call the DescribeRegions operation to query the most recent region list.
+        # The region ID of the resource. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The IDs of the Auto Scaling resources. You can specify 1 to 50 resource IDs.
+        # The resource IDs.
         # 
         # This parameter is required.
         self.resource_ids = resource_ids
         self.resource_owner_account = resource_owner_account
-        # The type of the resource. Only scaling groups are supported. Set the value to scalinggroup.
+        # The resource type. Set the value to scalinggroup.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The keys of the tags that you want to remove from the Auto Scaling resource. You can specify 1 to 20 tag keys.
+        # The tag keys.
         self.tag_keys = tag_keys
 
     def validate(self):
@@ -33645,7 +33657,9 @@ class VerifyUserRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         self.owner_id = owner_id
-        # The ID of the region where you want to activate Auto Scaling.
+        # The ID of the region where Auto Scaling is required.
+        # 
+        # Examples: `cn-hangzhou` and `cn-shanghai`. For more information, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id

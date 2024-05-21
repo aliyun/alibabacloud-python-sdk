@@ -3693,7 +3693,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DeleteAlarmResponse:
         """
-        @summary Deletes an event-triggered task.
+        @summary Deletes an event-triggered task. If your business pattern is unpredictable or prone to unforeseen traffic spikes, you can create event-triggered tasks by associating CloudMonitor metrics to effectively monitor fluctuations in your business workload. Upon detecting that the criteria for alerts, as specified in event-triggered tasks, are fulfilled, Auto Scaling promptly issues alerts and executes the scaling rules predefined within those tasks. This process occurs within the predefined effective time windows of the tasks, thereby facilitating the automatic increase or decrease of Elastic Compute Service (ECS) instances or elastic container instances within your scaling groups. Ultimately, this mechanism ensures the dynamic optimization of resources based on real-time workload demands. If you no longer need an event-triggered task, you can call the DeleteAlarm operation to delete it.
         
         @param request: DeleteAlarmRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3734,7 +3734,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DeleteAlarmResponse:
         """
-        @summary Deletes an event-triggered task.
+        @summary Deletes an event-triggered task. If your business pattern is unpredictable or prone to unforeseen traffic spikes, you can create event-triggered tasks by associating CloudMonitor metrics to effectively monitor fluctuations in your business workload. Upon detecting that the criteria for alerts, as specified in event-triggered tasks, are fulfilled, Auto Scaling promptly issues alerts and executes the scaling rules predefined within those tasks. This process occurs within the predefined effective time windows of the tasks, thereby facilitating the automatic increase or decrease of Elastic Compute Service (ECS) instances or elastic container instances within your scaling groups. Ultimately, this mechanism ensures the dynamic optimization of resources based on real-time workload demands. If you no longer need an event-triggered task, you can call the DeleteAlarm operation to delete it.
         
         @param request: DeleteAlarmRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3774,7 +3774,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DeleteAlarmRequest,
     ) -> ess_20220222_models.DeleteAlarmResponse:
         """
-        @summary Deletes an event-triggered task.
+        @summary Deletes an event-triggered task. If your business pattern is unpredictable or prone to unforeseen traffic spikes, you can create event-triggered tasks by associating CloudMonitor metrics to effectively monitor fluctuations in your business workload. Upon detecting that the criteria for alerts, as specified in event-triggered tasks, are fulfilled, Auto Scaling promptly issues alerts and executes the scaling rules predefined within those tasks. This process occurs within the predefined effective time windows of the tasks, thereby facilitating the automatic increase or decrease of Elastic Compute Service (ECS) instances or elastic container instances within your scaling groups. Ultimately, this mechanism ensures the dynamic optimization of resources based on real-time workload demands. If you no longer need an event-triggered task, you can call the DeleteAlarm operation to delete it.
         
         @param request: DeleteAlarmRequest
         @return: DeleteAlarmResponse
@@ -3787,7 +3787,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DeleteAlarmRequest,
     ) -> ess_20220222_models.DeleteAlarmResponse:
         """
-        @summary Deletes an event-triggered task.
+        @summary Deletes an event-triggered task. If your business pattern is unpredictable or prone to unforeseen traffic spikes, you can create event-triggered tasks by associating CloudMonitor metrics to effectively monitor fluctuations in your business workload. Upon detecting that the criteria for alerts, as specified in event-triggered tasks, are fulfilled, Auto Scaling promptly issues alerts and executes the scaling rules predefined within those tasks. This process occurs within the predefined effective time windows of the tasks, thereby facilitating the automatic increase or decrease of Elastic Compute Service (ECS) instances or elastic container instances within your scaling groups. Ultimately, this mechanism ensures the dynamic optimization of resources based on real-time workload demands. If you no longer need an event-triggered task, you can call the DeleteAlarm operation to delete it.
         
         @param request: DeleteAlarmRequest
         @return: DeleteAlarmResponse
@@ -3801,11 +3801,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DeleteEciScalingConfigurationResponse:
         """
-        @summary Deletes a scaling configuration that is used to create elastic container instances.
+        @summary Deletes a scaling configuration of the Elastic Container Instance type. If the scaling configuration of a scaling group is in the Inactive state and the scaling group contains no elastic container instances created from the scaling configuration, you can call the DeleteEciScalingConfiguration operation to delete the scaling configuration to free up the scaling configuration quota.
         
-        @description You cannot delete a scaling configuration that is used to create elastic container instances in the following scenarios:
+        @description You cannot call this operation to delete a scaling configuration in the following scenarios:
         The scaling configuration is in the Active state.
-        The scaling group contains elastic container instances that are created based on the scaling configuration.
+        The scaling group contains elastic container instances created from the scaling configuration.
         
         @param request: DeleteEciScalingConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3848,11 +3848,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DeleteEciScalingConfigurationResponse:
         """
-        @summary Deletes a scaling configuration that is used to create elastic container instances.
+        @summary Deletes a scaling configuration of the Elastic Container Instance type. If the scaling configuration of a scaling group is in the Inactive state and the scaling group contains no elastic container instances created from the scaling configuration, you can call the DeleteEciScalingConfiguration operation to delete the scaling configuration to free up the scaling configuration quota.
         
-        @description You cannot delete a scaling configuration that is used to create elastic container instances in the following scenarios:
+        @description You cannot call this operation to delete a scaling configuration in the following scenarios:
         The scaling configuration is in the Active state.
-        The scaling group contains elastic container instances that are created based on the scaling configuration.
+        The scaling group contains elastic container instances created from the scaling configuration.
         
         @param request: DeleteEciScalingConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3894,11 +3894,11 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DeleteEciScalingConfigurationRequest,
     ) -> ess_20220222_models.DeleteEciScalingConfigurationResponse:
         """
-        @summary Deletes a scaling configuration that is used to create elastic container instances.
+        @summary Deletes a scaling configuration of the Elastic Container Instance type. If the scaling configuration of a scaling group is in the Inactive state and the scaling group contains no elastic container instances created from the scaling configuration, you can call the DeleteEciScalingConfiguration operation to delete the scaling configuration to free up the scaling configuration quota.
         
-        @description You cannot delete a scaling configuration that is used to create elastic container instances in the following scenarios:
+        @description You cannot call this operation to delete a scaling configuration in the following scenarios:
         The scaling configuration is in the Active state.
-        The scaling group contains elastic container instances that are created based on the scaling configuration.
+        The scaling group contains elastic container instances created from the scaling configuration.
         
         @param request: DeleteEciScalingConfigurationRequest
         @return: DeleteEciScalingConfigurationResponse
@@ -3911,11 +3911,11 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DeleteEciScalingConfigurationRequest,
     ) -> ess_20220222_models.DeleteEciScalingConfigurationResponse:
         """
-        @summary Deletes a scaling configuration that is used to create elastic container instances.
+        @summary Deletes a scaling configuration of the Elastic Container Instance type. If the scaling configuration of a scaling group is in the Inactive state and the scaling group contains no elastic container instances created from the scaling configuration, you can call the DeleteEciScalingConfiguration operation to delete the scaling configuration to free up the scaling configuration quota.
         
-        @description You cannot delete a scaling configuration that is used to create elastic container instances in the following scenarios:
+        @description You cannot call this operation to delete a scaling configuration in the following scenarios:
         The scaling configuration is in the Active state.
-        The scaling group contains elastic container instances that are created based on the scaling configuration.
+        The scaling group contains elastic container instances created from the scaling configuration.
         
         @param request: DeleteEciScalingConfigurationRequest
         @return: DeleteEciScalingConfigurationResponse
@@ -4065,7 +4065,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DeleteNotificationConfigurationResponse:
         """
-        @summary Deletes a notification.
+        @summary Deletes event notification rules. The event notification feature facilitates efficient issue identification and event management by automatically forwarding notifications from Auto Scaling to designated endpoints such as CloudMonitor or Message Service (MNS) topics and queues. If you no longer require an event notification rule, you can call the DeleteNotificationConfiguration operation to delete it.
         
         @param request: DeleteNotificationConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4108,7 +4108,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DeleteNotificationConfigurationResponse:
         """
-        @summary Deletes a notification.
+        @summary Deletes event notification rules. The event notification feature facilitates efficient issue identification and event management by automatically forwarding notifications from Auto Scaling to designated endpoints such as CloudMonitor or Message Service (MNS) topics and queues. If you no longer require an event notification rule, you can call the DeleteNotificationConfiguration operation to delete it.
         
         @param request: DeleteNotificationConfigurationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4150,7 +4150,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DeleteNotificationConfigurationRequest,
     ) -> ess_20220222_models.DeleteNotificationConfigurationResponse:
         """
-        @summary Deletes a notification.
+        @summary Deletes event notification rules. The event notification feature facilitates efficient issue identification and event management by automatically forwarding notifications from Auto Scaling to designated endpoints such as CloudMonitor or Message Service (MNS) topics and queues. If you no longer require an event notification rule, you can call the DeleteNotificationConfiguration operation to delete it.
         
         @param request: DeleteNotificationConfigurationRequest
         @return: DeleteNotificationConfigurationResponse
@@ -4163,7 +4163,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DeleteNotificationConfigurationRequest,
     ) -> ess_20220222_models.DeleteNotificationConfigurationResponse:
         """
-        @summary Deletes a notification.
+        @summary Deletes event notification rules. The event notification feature facilitates efficient issue identification and event management by automatically forwarding notifications from Auto Scaling to designated endpoints such as CloudMonitor or Message Service (MNS) topics and queues. If you no longer require an event notification rule, you can call the DeleteNotificationConfiguration operation to delete it.
         
         @param request: DeleteNotificationConfigurationRequest
         @return: DeleteNotificationConfigurationResponse
@@ -4301,11 +4301,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DeleteScalingGroupResponse:
         """
-        @summary Deletes a scaling group.
+        @summary Deletes a scaling group. If you want to enable policy-based automatic addition or removal of instances of a specific type to meet evolving business requirements, you can create scaling groups to manage your computing power with ease. The computing power refers to the instances that provide the computing capability. If you no longer require a scaling group, you can call the DeleteScalingGroup operation to delete it to free up the scaling group quota.
         
-        @description Before you delete a scaling group, take note of the following items:
-        After you delete a scaling group, the scaling configuration, scaling rules, scaling activities, and scaling requests related to the scaling group are also deleted.
-        After you delete a scaling group, the scheduled tasks and event-triggered tasks of the scaling group are not deleted. The Classic Load Balancer (CLB) instances and ApsaraDB RDS instances with which the scaling group is associated are also not deleted.
+        @description Before you call the DeleteScalingGroup operation, take note of the following items:
+        If you delete a scaling group, the scaling configurations, scaling rules, scaling activities, and scaling requests related to the scaling group are also deleted.
+        If you delete a scaling group, the scheduled tasks and event-triggered tasks of the scaling group are not deleted. The Server Load Balancer (SLB) instances and ApsaraDB RDS instances that are attached to the scaling group are also not deleted.
+        If the scaling group that you want to delete contains ECS instances or elastic container instances that are in the In Service state, Auto Scaling stops the instances and then removes all manually added instances from the scaling group or releases all automatically created instances in the scaling group before the scaling group is deleted.
+        *\
+        *Note** Before you delete a scaling group, make sure that the Deletion Protection feature is disabled. If you have enabled the Deletion Protection feature for a scaling group, disable the feature on the Modify Scaling Group page before you delete the scaling group.
+        If you do not disable the Deletion Protection feature for a scaling group, you cannot delete the scaling group by using the Auto Scaling console or calling this operation. The Deletion Protection feature is an effective measure to safeguard scaling groups against unintended deletion.
+        Prior to deleting a scaling group, make sure that your ECS instances within the scaling group are safeguarded against unintended release. Even if you have already enabled the Release Protection feature for the ECS instances, you must manually put these ECS instances into the Protected state. Doing so guarantees that the ECS instances will not be forcibly released during the deletion process of the scaling group, providing an extra layer of security.
+        *\
+        *Note** Before you delete a scaling group, we recommend that you enable the Deletion Protection feature for ECS instances that you want to retain. This action guarantees that the ECS instances are not forcibly released after you delete the scaling group. For more information, see [SetInstancesProtection](https://help.aliyun.com/document_detail/459342.html).
         
         @param request: DeleteScalingGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4350,11 +4357,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DeleteScalingGroupResponse:
         """
-        @summary Deletes a scaling group.
+        @summary Deletes a scaling group. If you want to enable policy-based automatic addition or removal of instances of a specific type to meet evolving business requirements, you can create scaling groups to manage your computing power with ease. The computing power refers to the instances that provide the computing capability. If you no longer require a scaling group, you can call the DeleteScalingGroup operation to delete it to free up the scaling group quota.
         
-        @description Before you delete a scaling group, take note of the following items:
-        After you delete a scaling group, the scaling configuration, scaling rules, scaling activities, and scaling requests related to the scaling group are also deleted.
-        After you delete a scaling group, the scheduled tasks and event-triggered tasks of the scaling group are not deleted. The Classic Load Balancer (CLB) instances and ApsaraDB RDS instances with which the scaling group is associated are also not deleted.
+        @description Before you call the DeleteScalingGroup operation, take note of the following items:
+        If you delete a scaling group, the scaling configurations, scaling rules, scaling activities, and scaling requests related to the scaling group are also deleted.
+        If you delete a scaling group, the scheduled tasks and event-triggered tasks of the scaling group are not deleted. The Server Load Balancer (SLB) instances and ApsaraDB RDS instances that are attached to the scaling group are also not deleted.
+        If the scaling group that you want to delete contains ECS instances or elastic container instances that are in the In Service state, Auto Scaling stops the instances and then removes all manually added instances from the scaling group or releases all automatically created instances in the scaling group before the scaling group is deleted.
+        *\
+        *Note** Before you delete a scaling group, make sure that the Deletion Protection feature is disabled. If you have enabled the Deletion Protection feature for a scaling group, disable the feature on the Modify Scaling Group page before you delete the scaling group.
+        If you do not disable the Deletion Protection feature for a scaling group, you cannot delete the scaling group by using the Auto Scaling console or calling this operation. The Deletion Protection feature is an effective measure to safeguard scaling groups against unintended deletion.
+        Prior to deleting a scaling group, make sure that your ECS instances within the scaling group are safeguarded against unintended release. Even if you have already enabled the Release Protection feature for the ECS instances, you must manually put these ECS instances into the Protected state. Doing so guarantees that the ECS instances will not be forcibly released during the deletion process of the scaling group, providing an extra layer of security.
+        *\
+        *Note** Before you delete a scaling group, we recommend that you enable the Deletion Protection feature for ECS instances that you want to retain. This action guarantees that the ECS instances are not forcibly released after you delete the scaling group. For more information, see [SetInstancesProtection](https://help.aliyun.com/document_detail/459342.html).
         
         @param request: DeleteScalingGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4398,11 +4412,18 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DeleteScalingGroupRequest,
     ) -> ess_20220222_models.DeleteScalingGroupResponse:
         """
-        @summary Deletes a scaling group.
+        @summary Deletes a scaling group. If you want to enable policy-based automatic addition or removal of instances of a specific type to meet evolving business requirements, you can create scaling groups to manage your computing power with ease. The computing power refers to the instances that provide the computing capability. If you no longer require a scaling group, you can call the DeleteScalingGroup operation to delete it to free up the scaling group quota.
         
-        @description Before you delete a scaling group, take note of the following items:
-        After you delete a scaling group, the scaling configuration, scaling rules, scaling activities, and scaling requests related to the scaling group are also deleted.
-        After you delete a scaling group, the scheduled tasks and event-triggered tasks of the scaling group are not deleted. The Classic Load Balancer (CLB) instances and ApsaraDB RDS instances with which the scaling group is associated are also not deleted.
+        @description Before you call the DeleteScalingGroup operation, take note of the following items:
+        If you delete a scaling group, the scaling configurations, scaling rules, scaling activities, and scaling requests related to the scaling group are also deleted.
+        If you delete a scaling group, the scheduled tasks and event-triggered tasks of the scaling group are not deleted. The Server Load Balancer (SLB) instances and ApsaraDB RDS instances that are attached to the scaling group are also not deleted.
+        If the scaling group that you want to delete contains ECS instances or elastic container instances that are in the In Service state, Auto Scaling stops the instances and then removes all manually added instances from the scaling group or releases all automatically created instances in the scaling group before the scaling group is deleted.
+        *\
+        *Note** Before you delete a scaling group, make sure that the Deletion Protection feature is disabled. If you have enabled the Deletion Protection feature for a scaling group, disable the feature on the Modify Scaling Group page before you delete the scaling group.
+        If you do not disable the Deletion Protection feature for a scaling group, you cannot delete the scaling group by using the Auto Scaling console or calling this operation. The Deletion Protection feature is an effective measure to safeguard scaling groups against unintended deletion.
+        Prior to deleting a scaling group, make sure that your ECS instances within the scaling group are safeguarded against unintended release. Even if you have already enabled the Release Protection feature for the ECS instances, you must manually put these ECS instances into the Protected state. Doing so guarantees that the ECS instances will not be forcibly released during the deletion process of the scaling group, providing an extra layer of security.
+        *\
+        *Note** Before you delete a scaling group, we recommend that you enable the Deletion Protection feature for ECS instances that you want to retain. This action guarantees that the ECS instances are not forcibly released after you delete the scaling group. For more information, see [SetInstancesProtection](https://help.aliyun.com/document_detail/459342.html).
         
         @param request: DeleteScalingGroupRequest
         @return: DeleteScalingGroupResponse
@@ -4415,11 +4436,18 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DeleteScalingGroupRequest,
     ) -> ess_20220222_models.DeleteScalingGroupResponse:
         """
-        @summary Deletes a scaling group.
+        @summary Deletes a scaling group. If you want to enable policy-based automatic addition or removal of instances of a specific type to meet evolving business requirements, you can create scaling groups to manage your computing power with ease. The computing power refers to the instances that provide the computing capability. If you no longer require a scaling group, you can call the DeleteScalingGroup operation to delete it to free up the scaling group quota.
         
-        @description Before you delete a scaling group, take note of the following items:
-        After you delete a scaling group, the scaling configuration, scaling rules, scaling activities, and scaling requests related to the scaling group are also deleted.
-        After you delete a scaling group, the scheduled tasks and event-triggered tasks of the scaling group are not deleted. The Classic Load Balancer (CLB) instances and ApsaraDB RDS instances with which the scaling group is associated are also not deleted.
+        @description Before you call the DeleteScalingGroup operation, take note of the following items:
+        If you delete a scaling group, the scaling configurations, scaling rules, scaling activities, and scaling requests related to the scaling group are also deleted.
+        If you delete a scaling group, the scheduled tasks and event-triggered tasks of the scaling group are not deleted. The Server Load Balancer (SLB) instances and ApsaraDB RDS instances that are attached to the scaling group are also not deleted.
+        If the scaling group that you want to delete contains ECS instances or elastic container instances that are in the In Service state, Auto Scaling stops the instances and then removes all manually added instances from the scaling group or releases all automatically created instances in the scaling group before the scaling group is deleted.
+        *\
+        *Note** Before you delete a scaling group, make sure that the Deletion Protection feature is disabled. If you have enabled the Deletion Protection feature for a scaling group, disable the feature on the Modify Scaling Group page before you delete the scaling group.
+        If you do not disable the Deletion Protection feature for a scaling group, you cannot delete the scaling group by using the Auto Scaling console or calling this operation. The Deletion Protection feature is an effective measure to safeguard scaling groups against unintended deletion.
+        Prior to deleting a scaling group, make sure that your ECS instances within the scaling group are safeguarded against unintended release. Even if you have already enabled the Release Protection feature for the ECS instances, you must manually put these ECS instances into the Protected state. Doing so guarantees that the ECS instances will not be forcibly released during the deletion process of the scaling group, providing an extra layer of security.
+        *\
+        *Note** Before you delete a scaling group, we recommend that you enable the Deletion Protection feature for ECS instances that you want to retain. This action guarantees that the ECS instances are not forcibly released after you delete the scaling group. For more information, see [SetInstancesProtection](https://help.aliyun.com/document_detail/459342.html).
         
         @param request: DeleteScalingGroupRequest
         @return: DeleteScalingGroupResponse
@@ -4545,7 +4573,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DeleteScheduledTaskResponse:
         """
-        @summary Deletes a scheduled task.
+        @summary Deletes scheduled tasks. For workloads with predictable patterns, you can create scheduled tasks to align with your business requirements and optimize resource utilization for cost savings. These tasks automatically ensure that sufficient computing resources are provisioned in anticipation of peak hours and efficiently release unused resources during off-peak hours, thereby streamlining operational efficiency and reducing expenses. If you no longer require a scheduled task, you can call the DeleteScheduledTask operation to delete it.
         
         @param request: DeleteScheduledTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4588,7 +4616,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DeleteScheduledTaskResponse:
         """
-        @summary Deletes a scheduled task.
+        @summary Deletes scheduled tasks. For workloads with predictable patterns, you can create scheduled tasks to align with your business requirements and optimize resource utilization for cost savings. These tasks automatically ensure that sufficient computing resources are provisioned in anticipation of peak hours and efficiently release unused resources during off-peak hours, thereby streamlining operational efficiency and reducing expenses. If you no longer require a scheduled task, you can call the DeleteScheduledTask operation to delete it.
         
         @param request: DeleteScheduledTaskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4630,7 +4658,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DeleteScheduledTaskRequest,
     ) -> ess_20220222_models.DeleteScheduledTaskResponse:
         """
-        @summary Deletes a scheduled task.
+        @summary Deletes scheduled tasks. For workloads with predictable patterns, you can create scheduled tasks to align with your business requirements and optimize resource utilization for cost savings. These tasks automatically ensure that sufficient computing resources are provisioned in anticipation of peak hours and efficiently release unused resources during off-peak hours, thereby streamlining operational efficiency and reducing expenses. If you no longer require a scheduled task, you can call the DeleteScheduledTask operation to delete it.
         
         @param request: DeleteScheduledTaskRequest
         @return: DeleteScheduledTaskResponse
@@ -4643,7 +4671,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DeleteScheduledTaskRequest,
     ) -> ess_20220222_models.DeleteScheduledTaskResponse:
         """
-        @summary Deletes a scheduled task.
+        @summary Deletes scheduled tasks. For workloads with predictable patterns, you can create scheduled tasks to align with your business requirements and optimize resource utilization for cost savings. These tasks automatically ensure that sufficient computing resources are provisioned in anticipation of peak hours and efficiently release unused resources during off-peak hours, thereby streamlining operational efficiency and reducing expenses. If you no longer require a scheduled task, you can call the DeleteScheduledTask operation to delete it.
         
         @param request: DeleteScheduledTaskRequest
         @return: DeleteScheduledTaskResponse
@@ -5725,7 +5753,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeRegionsResponse:
         """
-        @summary Queries the regions in which Auto Scaling is available.
+        @summary Queries regions. Before you activate Auto Scaling, you can call the DescribeRegions operation to query the regions where Auto Scaling is officially launched. This preliminary step facilitates the strategic selection of both the optimal region and availability zones for activating Auto Scaling, thereby guaranteeing the finest access speeds and operational efficiency within your chosen geographical area.
         
         @param request: DescribeRegionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5766,7 +5794,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DescribeRegionsResponse:
         """
-        @summary Queries the regions in which Auto Scaling is available.
+        @summary Queries regions. Before you activate Auto Scaling, you can call the DescribeRegions operation to query the regions where Auto Scaling is officially launched. This preliminary step facilitates the strategic selection of both the optimal region and availability zones for activating Auto Scaling, thereby guaranteeing the finest access speeds and operational efficiency within your chosen geographical area.
         
         @param request: DescribeRegionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5806,7 +5834,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeRegionsRequest,
     ) -> ess_20220222_models.DescribeRegionsResponse:
         """
-        @summary Queries the regions in which Auto Scaling is available.
+        @summary Queries regions. Before you activate Auto Scaling, you can call the DescribeRegions operation to query the regions where Auto Scaling is officially launched. This preliminary step facilitates the strategic selection of both the optimal region and availability zones for activating Auto Scaling, thereby guaranteeing the finest access speeds and operational efficiency within your chosen geographical area.
         
         @param request: DescribeRegionsRequest
         @return: DescribeRegionsResponse
@@ -5819,7 +5847,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DescribeRegionsRequest,
     ) -> ess_20220222_models.DescribeRegionsResponse:
         """
-        @summary Queries the regions in which Auto Scaling is available.
+        @summary Queries regions. Before you activate Auto Scaling, you can call the DescribeRegions operation to query the regions where Auto Scaling is officially launched. This preliminary step facilitates the strategic selection of both the optimal region and availability zones for activating Auto Scaling, thereby guaranteeing the finest access speeds and operational efficiency within your chosen geographical area.
         
         @param request: DescribeRegionsRequest
         @return: DescribeRegionsResponse
@@ -7192,6 +7220,8 @@ class Client(OpenApiClient):
             query['DecreaseDesiredCapacity'] = request.decrease_desired_capacity
         if not UtilClient.is_unset(request.detach_option):
             query['DetachOption'] = request.detach_option
+        if not UtilClient.is_unset(request.ignore_invalid_instance):
+            query['IgnoreInvalidInstance'] = request.ignore_invalid_instance
         if not UtilClient.is_unset(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not UtilClient.is_unset(request.lifecycle_hook):
@@ -7254,6 +7284,8 @@ class Client(OpenApiClient):
             query['DecreaseDesiredCapacity'] = request.decrease_desired_capacity
         if not UtilClient.is_unset(request.detach_option):
             query['DetachOption'] = request.detach_option
+        if not UtilClient.is_unset(request.ignore_invalid_instance):
+            query['IgnoreInvalidInstance'] = request.ignore_invalid_instance
         if not UtilClient.is_unset(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not UtilClient.is_unset(request.lifecycle_hook):
@@ -7729,7 +7761,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DisableAlarmResponse:
         """
-        @summary Disables an event-triggered task.
+        @summary Disables an event-triggered task. If your business pattern is unpredictable or prone to unforeseen traffic spikes, you can create event-triggered tasks by associating CloudMonitor metrics to effectively monitor fluctuations in your business workload. Upon detecting that the criteria for alerts, as specified in event-triggered tasks, are fulfilled, Auto Scaling promptly issues alerts and executes the scaling rules predefined within those tasks. This process occurs within the predefined effective time windows of the tasks, thereby facilitating the automatic increase or decrease of Elastic Compute Service (ECS) instances or elastic container instances within your scaling groups. Ultimately, this mechanism ensures the dynamic optimization of resources based on real-time workload demands. If you currently do not need an event-triggered task, you can call the DisableAlarm operation to disable it.
+        
+        @description Before you disable an event-triggered task, make sure that the task is in the `Normal`, `Alert`, or `Insufficient Data` state.
         
         @param request: DisableAlarmRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7770,7 +7804,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.DisableAlarmResponse:
         """
-        @summary Disables an event-triggered task.
+        @summary Disables an event-triggered task. If your business pattern is unpredictable or prone to unforeseen traffic spikes, you can create event-triggered tasks by associating CloudMonitor metrics to effectively monitor fluctuations in your business workload. Upon detecting that the criteria for alerts, as specified in event-triggered tasks, are fulfilled, Auto Scaling promptly issues alerts and executes the scaling rules predefined within those tasks. This process occurs within the predefined effective time windows of the tasks, thereby facilitating the automatic increase or decrease of Elastic Compute Service (ECS) instances or elastic container instances within your scaling groups. Ultimately, this mechanism ensures the dynamic optimization of resources based on real-time workload demands. If you currently do not need an event-triggered task, you can call the DisableAlarm operation to disable it.
+        
+        @description Before you disable an event-triggered task, make sure that the task is in the `Normal`, `Alert`, or `Insufficient Data` state.
         
         @param request: DisableAlarmRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7810,7 +7846,9 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DisableAlarmRequest,
     ) -> ess_20220222_models.DisableAlarmResponse:
         """
-        @summary Disables an event-triggered task.
+        @summary Disables an event-triggered task. If your business pattern is unpredictable or prone to unforeseen traffic spikes, you can create event-triggered tasks by associating CloudMonitor metrics to effectively monitor fluctuations in your business workload. Upon detecting that the criteria for alerts, as specified in event-triggered tasks, are fulfilled, Auto Scaling promptly issues alerts and executes the scaling rules predefined within those tasks. This process occurs within the predefined effective time windows of the tasks, thereby facilitating the automatic increase or decrease of Elastic Compute Service (ECS) instances or elastic container instances within your scaling groups. Ultimately, this mechanism ensures the dynamic optimization of resources based on real-time workload demands. If you currently do not need an event-triggered task, you can call the DisableAlarm operation to disable it.
+        
+        @description Before you disable an event-triggered task, make sure that the task is in the `Normal`, `Alert`, or `Insufficient Data` state.
         
         @param request: DisableAlarmRequest
         @return: DisableAlarmResponse
@@ -7823,7 +7861,9 @@ class Client(OpenApiClient):
         request: ess_20220222_models.DisableAlarmRequest,
     ) -> ess_20220222_models.DisableAlarmResponse:
         """
-        @summary Disables an event-triggered task.
+        @summary Disables an event-triggered task. If your business pattern is unpredictable or prone to unforeseen traffic spikes, you can create event-triggered tasks by associating CloudMonitor metrics to effectively monitor fluctuations in your business workload. Upon detecting that the criteria for alerts, as specified in event-triggered tasks, are fulfilled, Auto Scaling promptly issues alerts and executes the scaling rules predefined within those tasks. This process occurs within the predefined effective time windows of the tasks, thereby facilitating the automatic increase or decrease of Elastic Compute Service (ECS) instances or elastic container instances within your scaling groups. Ultimately, this mechanism ensures the dynamic optimization of resources based on real-time workload demands. If you currently do not need an event-triggered task, you can call the DisableAlarm operation to disable it.
+        
+        @description Before you disable an event-triggered task, make sure that the task is in the `Normal`, `Alert`, or `Insufficient Data` state.
         
         @param request: DisableAlarmRequest
         @return: DisableAlarmResponse
@@ -7965,7 +8005,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.EnableAlarmResponse:
         """
-        @summary Enables an event-triggered task.
+        @summary Enables an event-triggered task. If your business pattern is unpredictable or prone to unforeseen traffic spikes, you can create event-triggered tasks by associating CloudMonitor metrics to effectively monitor fluctuations in your business workload. Upon detecting that the criteria for alerts, as specified in event-triggered tasks, are fulfilled, Auto Scaling promptly issues alerts and executes the scaling rules predefined within those tasks. This process occurs within the predefined effective time windows of the tasks, thereby facilitating the automatic increase or decrease of Elastic Compute Service (ECS) instances or elastic container instances within your scaling groups. Ultimately, this mechanism ensures the dynamic optimization of resources based on real-time workload demands. If you want to reuse an event-triggered task that is in the Disabled state, you can call the EnableAlarm operation to enable it.
         
         @param request: EnableAlarmRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8006,7 +8046,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.EnableAlarmResponse:
         """
-        @summary Enables an event-triggered task.
+        @summary Enables an event-triggered task. If your business pattern is unpredictable or prone to unforeseen traffic spikes, you can create event-triggered tasks by associating CloudMonitor metrics to effectively monitor fluctuations in your business workload. Upon detecting that the criteria for alerts, as specified in event-triggered tasks, are fulfilled, Auto Scaling promptly issues alerts and executes the scaling rules predefined within those tasks. This process occurs within the predefined effective time windows of the tasks, thereby facilitating the automatic increase or decrease of Elastic Compute Service (ECS) instances or elastic container instances within your scaling groups. Ultimately, this mechanism ensures the dynamic optimization of resources based on real-time workload demands. If you want to reuse an event-triggered task that is in the Disabled state, you can call the EnableAlarm operation to enable it.
         
         @param request: EnableAlarmRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8046,7 +8086,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.EnableAlarmRequest,
     ) -> ess_20220222_models.EnableAlarmResponse:
         """
-        @summary Enables an event-triggered task.
+        @summary Enables an event-triggered task. If your business pattern is unpredictable or prone to unforeseen traffic spikes, you can create event-triggered tasks by associating CloudMonitor metrics to effectively monitor fluctuations in your business workload. Upon detecting that the criteria for alerts, as specified in event-triggered tasks, are fulfilled, Auto Scaling promptly issues alerts and executes the scaling rules predefined within those tasks. This process occurs within the predefined effective time windows of the tasks, thereby facilitating the automatic increase or decrease of Elastic Compute Service (ECS) instances or elastic container instances within your scaling groups. Ultimately, this mechanism ensures the dynamic optimization of resources based on real-time workload demands. If you want to reuse an event-triggered task that is in the Disabled state, you can call the EnableAlarm operation to enable it.
         
         @param request: EnableAlarmRequest
         @return: EnableAlarmResponse
@@ -8059,7 +8099,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.EnableAlarmRequest,
     ) -> ess_20220222_models.EnableAlarmResponse:
         """
-        @summary Enables an event-triggered task.
+        @summary Enables an event-triggered task. If your business pattern is unpredictable or prone to unforeseen traffic spikes, you can create event-triggered tasks by associating CloudMonitor metrics to effectively monitor fluctuations in your business workload. Upon detecting that the criteria for alerts, as specified in event-triggered tasks, are fulfilled, Auto Scaling promptly issues alerts and executes the scaling rules predefined within those tasks. This process occurs within the predefined effective time windows of the tasks, thereby facilitating the automatic increase or decrease of Elastic Compute Service (ECS) instances or elastic container instances within your scaling groups. Ultimately, this mechanism ensures the dynamic optimization of resources based on real-time workload demands. If you want to reuse an event-triggered task that is in the Disabled state, you can call the EnableAlarm operation to enable it.
         
         @param request: EnableAlarmRequest
         @return: EnableAlarmResponse
@@ -8909,7 +8949,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ListTagValuesResponse:
         """
-        @summary Queries tag values.
+        @summary Queries the tag keys associated with Auto Scaling resources to facilitate a deeper comprehension of those resources. By doing so, you can categorize and manage your Auto Scaling resources more efficiently.
         
         @param request: ListTagValuesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8956,7 +8996,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.ListTagValuesResponse:
         """
-        @summary Queries tag values.
+        @summary Queries the tag keys associated with Auto Scaling resources to facilitate a deeper comprehension of those resources. By doing so, you can categorize and manage your Auto Scaling resources more efficiently.
         
         @param request: ListTagValuesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9002,7 +9042,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ListTagValuesRequest,
     ) -> ess_20220222_models.ListTagValuesResponse:
         """
-        @summary Queries tag values.
+        @summary Queries the tag keys associated with Auto Scaling resources to facilitate a deeper comprehension of those resources. By doing so, you can categorize and manage your Auto Scaling resources more efficiently.
         
         @param request: ListTagValuesRequest
         @return: ListTagValuesResponse
@@ -9015,7 +9055,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.ListTagValuesRequest,
     ) -> ess_20220222_models.ListTagValuesResponse:
         """
-        @summary Queries tag values.
+        @summary Queries the tag keys associated with Auto Scaling resources to facilitate a deeper comprehension of those resources. By doing so, you can categorize and manage your Auto Scaling resources more efficiently.
         
         @param request: ListTagValuesRequest
         @return: ListTagValuesResponse
@@ -11166,6 +11206,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.decrease_desired_capacity):
             query['DecreaseDesiredCapacity'] = request.decrease_desired_capacity
+        if not UtilClient.is_unset(request.ignore_invalid_instance):
+            query['IgnoreInvalidInstance'] = request.ignore_invalid_instance
         if not UtilClient.is_unset(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not UtilClient.is_unset(request.owner_account):
@@ -11228,6 +11270,8 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not UtilClient.is_unset(request.decrease_desired_capacity):
             query['DecreaseDesiredCapacity'] = request.decrease_desired_capacity
+        if not UtilClient.is_unset(request.ignore_invalid_instance):
+            query['IgnoreInvalidInstance'] = request.ignore_invalid_instance
         if not UtilClient.is_unset(request.instance_ids):
             query['InstanceIds'] = request.instance_ids
         if not UtilClient.is_unset(request.owner_account):
@@ -11841,13 +11885,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.SetInstancesProtectionResponse:
         """
-        @summary Puts one or more Elastic Compute Service (ECS) instances into the Protected state.
+        @summary Puts Elastic Compute Service (ECS) instances into the Protected state. When ECS instances are put into the Protected state, they become immune to manual deletion attempts by using the Auto Scaling console or API operations. This operation serves as a robust safeguard, efficiently preventing any inadvertent instance release that could lead to irreversible consequences.
         
-        @description ## Description
-        Before you call this operation, take note of the following items:
-        After you put an ECS instance into the Protected state, the ECS instance remains in the Protected state until you manually move the ECS instance out of the Protected state.
-        After you put an ECS instance into the Protected state, Auto Scaling does not remove the ECS instance even if a scale-in activity caused by changes in instance quantity or event-triggered tasks occurs. In this case, you must manually move the ECS instance out of the Protected state and then release the ECS instance. For more information, see the "RemoveInstances" topic.
-        After you put an ECS instance into the Protected state, Auto Scaling does not update the health status of the instance when the instance is stopped or restarted.
+        @description Once ECS instances enter the Protected state, they become subject to the following restrictions:
+        ECS instances will persist in the Protected state, unless you deliberately remove them from this state.
+        Even in scenarios where automatic scale-in actions are initiated due to fluctuations in the number of ECS instances or the execution of event-triggered tasks, Auto Scaling does not remove ECS instances that are in the Protected state from their respective scaling groups. Only after being manually removed from their respective scaling groups can ECS instances that are in the Protected state be released. For more information, see [Remove an ECS instance](https://help.aliyun.com/document_detail/25955.html).
+        ECS instances in the Protected state maintain their existing health status even when they undergo stopping or restarting processes.
         
         @param request: SetInstancesProtectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11890,13 +11933,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.SetInstancesProtectionResponse:
         """
-        @summary Puts one or more Elastic Compute Service (ECS) instances into the Protected state.
+        @summary Puts Elastic Compute Service (ECS) instances into the Protected state. When ECS instances are put into the Protected state, they become immune to manual deletion attempts by using the Auto Scaling console or API operations. This operation serves as a robust safeguard, efficiently preventing any inadvertent instance release that could lead to irreversible consequences.
         
-        @description ## Description
-        Before you call this operation, take note of the following items:
-        After you put an ECS instance into the Protected state, the ECS instance remains in the Protected state until you manually move the ECS instance out of the Protected state.
-        After you put an ECS instance into the Protected state, Auto Scaling does not remove the ECS instance even if a scale-in activity caused by changes in instance quantity or event-triggered tasks occurs. In this case, you must manually move the ECS instance out of the Protected state and then release the ECS instance. For more information, see the "RemoveInstances" topic.
-        After you put an ECS instance into the Protected state, Auto Scaling does not update the health status of the instance when the instance is stopped or restarted.
+        @description Once ECS instances enter the Protected state, they become subject to the following restrictions:
+        ECS instances will persist in the Protected state, unless you deliberately remove them from this state.
+        Even in scenarios where automatic scale-in actions are initiated due to fluctuations in the number of ECS instances or the execution of event-triggered tasks, Auto Scaling does not remove ECS instances that are in the Protected state from their respective scaling groups. Only after being manually removed from their respective scaling groups can ECS instances that are in the Protected state be released. For more information, see [Remove an ECS instance](https://help.aliyun.com/document_detail/25955.html).
+        ECS instances in the Protected state maintain their existing health status even when they undergo stopping or restarting processes.
         
         @param request: SetInstancesProtectionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11938,13 +11980,12 @@ class Client(OpenApiClient):
         request: ess_20220222_models.SetInstancesProtectionRequest,
     ) -> ess_20220222_models.SetInstancesProtectionResponse:
         """
-        @summary Puts one or more Elastic Compute Service (ECS) instances into the Protected state.
+        @summary Puts Elastic Compute Service (ECS) instances into the Protected state. When ECS instances are put into the Protected state, they become immune to manual deletion attempts by using the Auto Scaling console or API operations. This operation serves as a robust safeguard, efficiently preventing any inadvertent instance release that could lead to irreversible consequences.
         
-        @description ## Description
-        Before you call this operation, take note of the following items:
-        After you put an ECS instance into the Protected state, the ECS instance remains in the Protected state until you manually move the ECS instance out of the Protected state.
-        After you put an ECS instance into the Protected state, Auto Scaling does not remove the ECS instance even if a scale-in activity caused by changes in instance quantity or event-triggered tasks occurs. In this case, you must manually move the ECS instance out of the Protected state and then release the ECS instance. For more information, see the "RemoveInstances" topic.
-        After you put an ECS instance into the Protected state, Auto Scaling does not update the health status of the instance when the instance is stopped or restarted.
+        @description Once ECS instances enter the Protected state, they become subject to the following restrictions:
+        ECS instances will persist in the Protected state, unless you deliberately remove them from this state.
+        Even in scenarios where automatic scale-in actions are initiated due to fluctuations in the number of ECS instances or the execution of event-triggered tasks, Auto Scaling does not remove ECS instances that are in the Protected state from their respective scaling groups. Only after being manually removed from their respective scaling groups can ECS instances that are in the Protected state be released. For more information, see [Remove an ECS instance](https://help.aliyun.com/document_detail/25955.html).
+        ECS instances in the Protected state maintain their existing health status even when they undergo stopping or restarting processes.
         
         @param request: SetInstancesProtectionRequest
         @return: SetInstancesProtectionResponse
@@ -11957,13 +11998,12 @@ class Client(OpenApiClient):
         request: ess_20220222_models.SetInstancesProtectionRequest,
     ) -> ess_20220222_models.SetInstancesProtectionResponse:
         """
-        @summary Puts one or more Elastic Compute Service (ECS) instances into the Protected state.
+        @summary Puts Elastic Compute Service (ECS) instances into the Protected state. When ECS instances are put into the Protected state, they become immune to manual deletion attempts by using the Auto Scaling console or API operations. This operation serves as a robust safeguard, efficiently preventing any inadvertent instance release that could lead to irreversible consequences.
         
-        @description ## Description
-        Before you call this operation, take note of the following items:
-        After you put an ECS instance into the Protected state, the ECS instance remains in the Protected state until you manually move the ECS instance out of the Protected state.
-        After you put an ECS instance into the Protected state, Auto Scaling does not remove the ECS instance even if a scale-in activity caused by changes in instance quantity or event-triggered tasks occurs. In this case, you must manually move the ECS instance out of the Protected state and then release the ECS instance. For more information, see the "RemoveInstances" topic.
-        After you put an ECS instance into the Protected state, Auto Scaling does not update the health status of the instance when the instance is stopped or restarted.
+        @description Once ECS instances enter the Protected state, they become subject to the following restrictions:
+        ECS instances will persist in the Protected state, unless you deliberately remove them from this state.
+        Even in scenarios where automatic scale-in actions are initiated due to fluctuations in the number of ECS instances or the execution of event-triggered tasks, Auto Scaling does not remove ECS instances that are in the Protected state from their respective scaling groups. Only after being manually removed from their respective scaling groups can ECS instances that are in the Protected state be released. For more information, see [Remove an ECS instance](https://help.aliyun.com/document_detail/25955.html).
+        ECS instances in the Protected state maintain their existing health status even when they undergo stopping or restarting processes.
         
         @param request: SetInstancesProtectionRequest
         @return: SetInstancesProtectionResponse
@@ -11977,7 +12017,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.SuspendProcessesResponse:
         """
-        @summary Suspends processes in a scaling group.
+        @summary Suspends scaling processes. This operation empowers you to selectively pause distinct scaling processes within a particular scaling group, enabling you to carry out alternative tasks and achieve more granular management over your scaling operations.
         
         @param request: SuspendProcessesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12022,7 +12062,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.SuspendProcessesResponse:
         """
-        @summary Suspends processes in a scaling group.
+        @summary Suspends scaling processes. This operation empowers you to selectively pause distinct scaling processes within a particular scaling group, enabling you to carry out alternative tasks and achieve more granular management over your scaling operations.
         
         @param request: SuspendProcessesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12066,7 +12106,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.SuspendProcessesRequest,
     ) -> ess_20220222_models.SuspendProcessesResponse:
         """
-        @summary Suspends processes in a scaling group.
+        @summary Suspends scaling processes. This operation empowers you to selectively pause distinct scaling processes within a particular scaling group, enabling you to carry out alternative tasks and achieve more granular management over your scaling operations.
         
         @param request: SuspendProcessesRequest
         @return: SuspendProcessesResponse
@@ -12079,7 +12119,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.SuspendProcessesRequest,
     ) -> ess_20220222_models.SuspendProcessesResponse:
         """
-        @summary Suspends processes in a scaling group.
+        @summary Suspends scaling processes. This operation empowers you to selectively pause distinct scaling processes within a particular scaling group, enabling you to carry out alternative tasks and achieve more granular management over your scaling operations.
         
         @param request: SuspendProcessesRequest
         @return: SuspendProcessesResponse
@@ -12209,7 +12249,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.UntagResourcesResponse:
         """
-        @summary Removes tags from the specified Auto Scaling resources. If you remove a tag and the tag is not added to other resources, the tag is automatically deleted.
+        @summary Removes tags from Auto Scaling resources simultaneously. This operation streamlines resource management activities, enhances system efficiency, and mitigates potential security vulnerabilities. Once a tag is removed from a particular resource, and if it is not re-added to any other resource, the system will automatically delete the unused tag.
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12256,7 +12296,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.UntagResourcesResponse:
         """
-        @summary Removes tags from the specified Auto Scaling resources. If you remove a tag and the tag is not added to other resources, the tag is automatically deleted.
+        @summary Removes tags from Auto Scaling resources simultaneously. This operation streamlines resource management activities, enhances system efficiency, and mitigates potential security vulnerabilities. Once a tag is removed from a particular resource, and if it is not re-added to any other resource, the system will automatically delete the unused tag.
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12302,7 +12342,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.UntagResourcesRequest,
     ) -> ess_20220222_models.UntagResourcesResponse:
         """
-        @summary Removes tags from the specified Auto Scaling resources. If you remove a tag and the tag is not added to other resources, the tag is automatically deleted.
+        @summary Removes tags from Auto Scaling resources simultaneously. This operation streamlines resource management activities, enhances system efficiency, and mitigates potential security vulnerabilities. Once a tag is removed from a particular resource, and if it is not re-added to any other resource, the system will automatically delete the unused tag.
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
@@ -12315,7 +12355,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.UntagResourcesRequest,
     ) -> ess_20220222_models.UntagResourcesResponse:
         """
-        @summary Removes tags from the specified Auto Scaling resources. If you remove a tag and the tag is not added to other resources, the tag is automatically deleted.
+        @summary Removes tags from Auto Scaling resources simultaneously. This operation streamlines resource management activities, enhances system efficiency, and mitigates potential security vulnerabilities. Once a tag is removed from a particular resource, and if it is not re-added to any other resource, the system will automatically delete the unused tag.
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
@@ -12441,7 +12481,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.VerifyUserResponse:
         """
-        @summary Checks whether Auto Scaling is activated.
+        @summary Verifies whether Auto Scaling is activated. This operation guarantees that in response to shifts in business workloads or variations in incoming traffic, the system will automatically adjust resource provisioning. This auto-scaling capability enhances the overall system performance, ensuring high availability and improved flexibility to accommodate dynamic demands.
         
         @param request: VerifyUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12482,7 +12522,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ess_20220222_models.VerifyUserResponse:
         """
-        @summary Checks whether Auto Scaling is activated.
+        @summary Verifies whether Auto Scaling is activated. This operation guarantees that in response to shifts in business workloads or variations in incoming traffic, the system will automatically adjust resource provisioning. This auto-scaling capability enhances the overall system performance, ensuring high availability and improved flexibility to accommodate dynamic demands.
         
         @param request: VerifyUserRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12522,7 +12562,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.VerifyUserRequest,
     ) -> ess_20220222_models.VerifyUserResponse:
         """
-        @summary Checks whether Auto Scaling is activated.
+        @summary Verifies whether Auto Scaling is activated. This operation guarantees that in response to shifts in business workloads or variations in incoming traffic, the system will automatically adjust resource provisioning. This auto-scaling capability enhances the overall system performance, ensuring high availability and improved flexibility to accommodate dynamic demands.
         
         @param request: VerifyUserRequest
         @return: VerifyUserResponse
@@ -12535,7 +12575,7 @@ class Client(OpenApiClient):
         request: ess_20220222_models.VerifyUserRequest,
     ) -> ess_20220222_models.VerifyUserResponse:
         """
-        @summary Checks whether Auto Scaling is activated.
+        @summary Verifies whether Auto Scaling is activated. This operation guarantees that in response to shifts in business workloads or variations in incoming traffic, the system will automatically adjust resource provisioning. This auto-scaling capability enhances the overall system performance, ensuring high availability and improved flexibility to accommodate dynamic demands.
         
         @param request: VerifyUserRequest
         @return: VerifyUserResponse
