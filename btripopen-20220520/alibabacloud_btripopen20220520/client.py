@@ -145,6 +145,132 @@ class Client(OpenApiClient):
         headers = {}
         return await self.access_token_with_options_async(request, headers, runtime)
 
+    def add_employees_to_custom_role_with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.AddEmployeesToCustomRoleRequest,
+        headers: btrip_open_20220520_models.AddEmployeesToCustomRoleHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.AddEmployeesToCustomRoleResponse:
+        """
+        @summary 批量新增企业自定义角色下人员
+        
+        @param tmp_req: AddEmployeesToCustomRoleRequest
+        @param headers: AddEmployeesToCustomRoleHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddEmployeesToCustomRoleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.AddEmployeesToCustomRoleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.user_id_list):
+            request.user_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_id_list, 'user_id_list', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.role_id):
+            body['role_id'] = request.role_id
+        if not UtilClient.is_unset(request.user_id_list_shrink):
+            body['user_id_list'] = request.user_id_list_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddEmployeesToCustomRole',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/role/v1/customRoleEmployees/add',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.AddEmployeesToCustomRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_employees_to_custom_role_with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.AddEmployeesToCustomRoleRequest,
+        headers: btrip_open_20220520_models.AddEmployeesToCustomRoleHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.AddEmployeesToCustomRoleResponse:
+        """
+        @summary 批量新增企业自定义角色下人员
+        
+        @param tmp_req: AddEmployeesToCustomRoleRequest
+        @param headers: AddEmployeesToCustomRoleHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddEmployeesToCustomRoleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.AddEmployeesToCustomRoleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.user_id_list):
+            request.user_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_id_list, 'user_id_list', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.role_id):
+            body['role_id'] = request.role_id
+        if not UtilClient.is_unset(request.user_id_list_shrink):
+            body['user_id_list'] = request.user_id_list_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddEmployeesToCustomRole',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/role/v1/customRoleEmployees/add',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.AddEmployeesToCustomRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_employees_to_custom_role(
+        self,
+        request: btrip_open_20220520_models.AddEmployeesToCustomRoleRequest,
+    ) -> btrip_open_20220520_models.AddEmployeesToCustomRoleResponse:
+        """
+        @summary 批量新增企业自定义角色下人员
+        
+        @param request: AddEmployeesToCustomRoleRequest
+        @return: AddEmployeesToCustomRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.AddEmployeesToCustomRoleHeaders()
+        return self.add_employees_to_custom_role_with_options(request, headers, runtime)
+
+    async def add_employees_to_custom_role_async(
+        self,
+        request: btrip_open_20220520_models.AddEmployeesToCustomRoleRequest,
+    ) -> btrip_open_20220520_models.AddEmployeesToCustomRoleResponse:
+        """
+        @summary 批量新增企业自定义角色下人员
+        
+        @param request: AddEmployeesToCustomRoleRequest
+        @return: AddEmployeesToCustomRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.AddEmployeesToCustomRoleHeaders()
+        return await self.add_employees_to_custom_role_with_options_async(request, headers, runtime)
+
     def add_invoice_entity_with_options(
         self,
         tmp_req: btrip_open_20220520_models.AddInvoiceEntityRequest,
@@ -4447,6 +4573,124 @@ class Client(OpenApiClient):
         headers = btrip_open_20220520_models.CostCenterSaveHeaders()
         return await self.cost_center_save_with_options_async(request, headers, runtime)
 
+    def create_custom_role_with_options(
+        self,
+        request: btrip_open_20220520_models.CreateCustomRoleRequest,
+        headers: btrip_open_20220520_models.CreateCustomRoleHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.CreateCustomRoleResponse:
+        """
+        @summary 创建企业自定义角色
+        
+        @param request: CreateCustomRoleRequest
+        @param headers: CreateCustomRoleHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCustomRoleResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.role_id):
+            body['role_id'] = request.role_id
+        if not UtilClient.is_unset(request.role_name):
+            body['role_name'] = request.role_name
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateCustomRole',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/role/v1/customRoles/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.CreateCustomRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_custom_role_with_options_async(
+        self,
+        request: btrip_open_20220520_models.CreateCustomRoleRequest,
+        headers: btrip_open_20220520_models.CreateCustomRoleHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.CreateCustomRoleResponse:
+        """
+        @summary 创建企业自定义角色
+        
+        @param request: CreateCustomRoleRequest
+        @param headers: CreateCustomRoleHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCustomRoleResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.role_id):
+            body['role_id'] = request.role_id
+        if not UtilClient.is_unset(request.role_name):
+            body['role_name'] = request.role_name
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateCustomRole',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/role/v1/customRoles/create',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.CreateCustomRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_custom_role(
+        self,
+        request: btrip_open_20220520_models.CreateCustomRoleRequest,
+    ) -> btrip_open_20220520_models.CreateCustomRoleResponse:
+        """
+        @summary 创建企业自定义角色
+        
+        @param request: CreateCustomRoleRequest
+        @return: CreateCustomRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.CreateCustomRoleHeaders()
+        return self.create_custom_role_with_options(request, headers, runtime)
+
+    async def create_custom_role_async(
+        self,
+        request: btrip_open_20220520_models.CreateCustomRoleRequest,
+    ) -> btrip_open_20220520_models.CreateCustomRoleResponse:
+        """
+        @summary 创建企业自定义角色
+        
+        @param request: CreateCustomRoleRequest
+        @return: CreateCustomRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.CreateCustomRoleHeaders()
+        return await self.create_custom_role_with_options_async(request, headers, runtime)
+
     def create_sub_corp_with_options(
         self,
         request: btrip_open_20220520_models.CreateSubCorpRequest,
@@ -4568,6 +4812,246 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.CreateSubCorpHeaders()
         return await self.create_sub_corp_with_options_async(request, headers, runtime)
+
+    def delete_custom_role_with_options(
+        self,
+        request: btrip_open_20220520_models.DeleteCustomRoleRequest,
+        headers: btrip_open_20220520_models.DeleteCustomRoleHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.DeleteCustomRoleResponse:
+        """
+        @summary 删除企业自定义角色
+        
+        @param request: DeleteCustomRoleRequest
+        @param headers: DeleteCustomRoleHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCustomRoleResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.role_id):
+            body['role_id'] = request.role_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteCustomRole',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/role/v1/customRoles/delete',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.DeleteCustomRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_custom_role_with_options_async(
+        self,
+        request: btrip_open_20220520_models.DeleteCustomRoleRequest,
+        headers: btrip_open_20220520_models.DeleteCustomRoleHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.DeleteCustomRoleResponse:
+        """
+        @summary 删除企业自定义角色
+        
+        @param request: DeleteCustomRoleRequest
+        @param headers: DeleteCustomRoleHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCustomRoleResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.role_id):
+            body['role_id'] = request.role_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteCustomRole',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/role/v1/customRoles/delete',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.DeleteCustomRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_custom_role(
+        self,
+        request: btrip_open_20220520_models.DeleteCustomRoleRequest,
+    ) -> btrip_open_20220520_models.DeleteCustomRoleResponse:
+        """
+        @summary 删除企业自定义角色
+        
+        @param request: DeleteCustomRoleRequest
+        @return: DeleteCustomRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.DeleteCustomRoleHeaders()
+        return self.delete_custom_role_with_options(request, headers, runtime)
+
+    async def delete_custom_role_async(
+        self,
+        request: btrip_open_20220520_models.DeleteCustomRoleRequest,
+    ) -> btrip_open_20220520_models.DeleteCustomRoleResponse:
+        """
+        @summary 删除企业自定义角色
+        
+        @param request: DeleteCustomRoleRequest
+        @return: DeleteCustomRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.DeleteCustomRoleHeaders()
+        return await self.delete_custom_role_with_options_async(request, headers, runtime)
+
+    def delete_employees_from_custom_role_with_options(
+        self,
+        tmp_req: btrip_open_20220520_models.DeleteEmployeesFromCustomRoleRequest,
+        headers: btrip_open_20220520_models.DeleteEmployeesFromCustomRoleHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.DeleteEmployeesFromCustomRoleResponse:
+        """
+        @summary 批量删除企业自定义角色下人员
+        
+        @param tmp_req: DeleteEmployeesFromCustomRoleRequest
+        @param headers: DeleteEmployeesFromCustomRoleHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEmployeesFromCustomRoleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.DeleteEmployeesFromCustomRoleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.user_id_list):
+            request.user_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_id_list, 'user_id_list', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.role_id):
+            body['role_id'] = request.role_id
+        if not UtilClient.is_unset(request.user_id_list_shrink):
+            body['user_id_list'] = request.user_id_list_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteEmployeesFromCustomRole',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/role/v1/customRoleEmployees/delete',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.DeleteEmployeesFromCustomRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_employees_from_custom_role_with_options_async(
+        self,
+        tmp_req: btrip_open_20220520_models.DeleteEmployeesFromCustomRoleRequest,
+        headers: btrip_open_20220520_models.DeleteEmployeesFromCustomRoleHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.DeleteEmployeesFromCustomRoleResponse:
+        """
+        @summary 批量删除企业自定义角色下人员
+        
+        @param tmp_req: DeleteEmployeesFromCustomRoleRequest
+        @param headers: DeleteEmployeesFromCustomRoleHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEmployeesFromCustomRoleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = btrip_open_20220520_models.DeleteEmployeesFromCustomRoleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.user_id_list):
+            request.user_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user_id_list, 'user_id_list', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.role_id):
+            body['role_id'] = request.role_id
+        if not UtilClient.is_unset(request.user_id_list_shrink):
+            body['user_id_list'] = request.user_id_list_shrink
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteEmployeesFromCustomRole',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/role/v1/customRoleEmployees/delete',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.DeleteEmployeesFromCustomRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_employees_from_custom_role(
+        self,
+        request: btrip_open_20220520_models.DeleteEmployeesFromCustomRoleRequest,
+    ) -> btrip_open_20220520_models.DeleteEmployeesFromCustomRoleResponse:
+        """
+        @summary 批量删除企业自定义角色下人员
+        
+        @param request: DeleteEmployeesFromCustomRoleRequest
+        @return: DeleteEmployeesFromCustomRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.DeleteEmployeesFromCustomRoleHeaders()
+        return self.delete_employees_from_custom_role_with_options(request, headers, runtime)
+
+    async def delete_employees_from_custom_role_async(
+        self,
+        request: btrip_open_20220520_models.DeleteEmployeesFromCustomRoleRequest,
+    ) -> btrip_open_20220520_models.DeleteEmployeesFromCustomRoleResponse:
+        """
+        @summary 批量删除企业自定义角色下人员
+        
+        @param request: DeleteEmployeesFromCustomRoleRequest
+        @return: DeleteEmployeesFromCustomRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.DeleteEmployeesFromCustomRoleHeaders()
+        return await self.delete_employees_from_custom_role_with_options_async(request, headers, runtime)
 
     def delete_invoice_entity_with_options(
         self,
@@ -17819,6 +18303,120 @@ class Client(OpenApiClient):
         headers = btrip_open_20220520_models.ProjectModifyHeaders()
         return await self.project_modify_with_options_async(request, headers, runtime)
 
+    def query_group_corp_list_with_options(
+        self,
+        request: btrip_open_20220520_models.QueryGroupCorpListRequest,
+        headers: btrip_open_20220520_models.QueryGroupCorpListHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.QueryGroupCorpListResponse:
+        """
+        @summary 查询子企业列表
+        
+        @param request: QueryGroupCorpListRequest
+        @param headers: QueryGroupCorpListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryGroupCorpListResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.user_id):
+            body['user_id'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryGroupCorpList',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/sub_corps/v1/corps/action/corpList',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.QueryGroupCorpListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_group_corp_list_with_options_async(
+        self,
+        request: btrip_open_20220520_models.QueryGroupCorpListRequest,
+        headers: btrip_open_20220520_models.QueryGroupCorpListHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.QueryGroupCorpListResponse:
+        """
+        @summary 查询子企业列表
+        
+        @param request: QueryGroupCorpListRequest
+        @param headers: QueryGroupCorpListHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryGroupCorpListResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.user_id):
+            body['user_id'] = request.user_id
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='QueryGroupCorpList',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/sub_corps/v1/corps/action/corpList',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.QueryGroupCorpListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_group_corp_list(
+        self,
+        request: btrip_open_20220520_models.QueryGroupCorpListRequest,
+    ) -> btrip_open_20220520_models.QueryGroupCorpListResponse:
+        """
+        @summary 查询子企业列表
+        
+        @param request: QueryGroupCorpListRequest
+        @return: QueryGroupCorpListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.QueryGroupCorpListHeaders()
+        return self.query_group_corp_list_with_options(request, headers, runtime)
+
+    async def query_group_corp_list_async(
+        self,
+        request: btrip_open_20220520_models.QueryGroupCorpListRequest,
+    ) -> btrip_open_20220520_models.QueryGroupCorpListResponse:
+        """
+        @summary 查询子企业列表
+        
+        @param request: QueryGroupCorpListRequest
+        @return: QueryGroupCorpListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.QueryGroupCorpListHeaders()
+        return await self.query_group_corp_list_with_options_async(request, headers, runtime)
+
     def query_reimbursement_order_with_options(
         self,
         request: btrip_open_20220520_models.QueryReimbursementOrderRequest,
@@ -21986,6 +22584,124 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = btrip_open_20220520_models.TravelStandardQueryHeaders()
         return await self.travel_standard_query_with_options_async(request, headers, runtime)
+
+    def update_custom_role_with_options(
+        self,
+        request: btrip_open_20220520_models.UpdateCustomRoleRequest,
+        headers: btrip_open_20220520_models.UpdateCustomRoleHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.UpdateCustomRoleResponse:
+        """
+        @summary 更新企业自定义角色
+        
+        @param request: UpdateCustomRoleRequest
+        @param headers: UpdateCustomRoleHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCustomRoleResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.role_id):
+            body['role_id'] = request.role_id
+        if not UtilClient.is_unset(request.role_name):
+            body['role_name'] = request.role_name
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateCustomRole',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/role/v1/customRoles/update',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.UpdateCustomRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_custom_role_with_options_async(
+        self,
+        request: btrip_open_20220520_models.UpdateCustomRoleRequest,
+        headers: btrip_open_20220520_models.UpdateCustomRoleHeaders,
+        runtime: util_models.RuntimeOptions,
+    ) -> btrip_open_20220520_models.UpdateCustomRoleResponse:
+        """
+        @summary 更新企业自定义角色
+        
+        @param request: UpdateCustomRoleRequest
+        @param headers: UpdateCustomRoleHeaders
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCustomRoleResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.role_id):
+            body['role_id'] = request.role_id
+        if not UtilClient.is_unset(request.role_name):
+            body['role_name'] = request.role_name
+        real_headers = {}
+        if not UtilClient.is_unset(headers.common_headers):
+            real_headers = headers.common_headers
+        if not UtilClient.is_unset(headers.x_acs_btrip_corp_token):
+            real_headers['x-acs-btrip-corp-token'] = UtilClient.to_jsonstring(headers.x_acs_btrip_corp_token)
+        req = open_api_models.OpenApiRequest(
+            headers=real_headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateCustomRole',
+            version='2022-05-20',
+            protocol='HTTPS',
+            pathname=f'/role/v1/customRoles/update',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            btrip_open_20220520_models.UpdateCustomRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_custom_role(
+        self,
+        request: btrip_open_20220520_models.UpdateCustomRoleRequest,
+    ) -> btrip_open_20220520_models.UpdateCustomRoleResponse:
+        """
+        @summary 更新企业自定义角色
+        
+        @param request: UpdateCustomRoleRequest
+        @return: UpdateCustomRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.UpdateCustomRoleHeaders()
+        return self.update_custom_role_with_options(request, headers, runtime)
+
+    async def update_custom_role_async(
+        self,
+        request: btrip_open_20220520_models.UpdateCustomRoleRequest,
+    ) -> btrip_open_20220520_models.UpdateCustomRoleResponse:
+        """
+        @summary 更新企业自定义角色
+        
+        @param request: UpdateCustomRoleRequest
+        @return: UpdateCustomRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = btrip_open_20220520_models.UpdateCustomRoleHeaders()
+        return await self.update_custom_role_with_options_async(request, headers, runtime)
 
     def user_query_with_options(
         self,

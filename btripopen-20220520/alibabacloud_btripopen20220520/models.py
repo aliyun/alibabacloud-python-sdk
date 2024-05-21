@@ -5439,6 +5439,208 @@ class AccessTokenResponse(TeaModel):
         return self
 
 
+class AddEmployeesToCustomRoleHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_corp_token = x_acs_btrip_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_corp_token is not None:
+            result['x-acs-btrip-corp-token'] = self.x_acs_btrip_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-corp-token') is not None:
+            self.x_acs_btrip_corp_token = m.get('x-acs-btrip-corp-token')
+        return self
+
+
+class AddEmployeesToCustomRoleRequest(TeaModel):
+    def __init__(
+        self,
+        role_id: str = None,
+        user_id_list: List[str] = None,
+    ):
+        # This parameter is required.
+        self.role_id = role_id
+        # This parameter is required.
+        self.user_id_list = user_id_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.role_id is not None:
+            result['role_id'] = self.role_id
+        if self.user_id_list is not None:
+            result['user_id_list'] = self.user_id_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('role_id') is not None:
+            self.role_id = m.get('role_id')
+        if m.get('user_id_list') is not None:
+            self.user_id_list = m.get('user_id_list')
+        return self
+
+
+class AddEmployeesToCustomRoleShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        role_id: str = None,
+        user_id_list_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.role_id = role_id
+        # This parameter is required.
+        self.user_id_list_shrink = user_id_list_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.role_id is not None:
+            result['role_id'] = self.role_id
+        if self.user_id_list_shrink is not None:
+            result['user_id_list'] = self.user_id_list_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('role_id') is not None:
+            self.role_id = m.get('role_id')
+        if m.get('user_id_list') is not None:
+            self.user_id_list_shrink = m.get('user_id_list')
+        return self
+
+
+class AddEmployeesToCustomRoleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        # traceId
+        self.trace_id = trace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.trace_id is not None:
+            result['traceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('traceId') is not None:
+            self.trace_id = m.get('traceId')
+        return self
+
+
+class AddEmployeesToCustomRoleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: AddEmployeesToCustomRoleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = AddEmployeesToCustomRoleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class AddInvoiceEntityHeaders(TeaModel):
     def __init__(
         self,
@@ -9366,6 +9568,8 @@ class ApplyListQueryResponseBodyModuleListItineraryList(TeaModel):
         itinerary_id: str = None,
         project_code: str = None,
         project_title: str = None,
+        thirdpart_cost_center_id: str = None,
+        thirdpart_invoice_id: str = None,
         thirdpart_itinerary_id: str = None,
         traffic_type: int = None,
         trip_way: int = None,
@@ -9379,6 +9583,8 @@ class ApplyListQueryResponseBodyModuleListItineraryList(TeaModel):
         self.itinerary_id = itinerary_id
         self.project_code = project_code
         self.project_title = project_title
+        self.thirdpart_cost_center_id = thirdpart_cost_center_id
+        self.thirdpart_invoice_id = thirdpart_invoice_id
         self.thirdpart_itinerary_id = thirdpart_itinerary_id
         self.traffic_type = traffic_type
         self.trip_way = trip_way
@@ -9410,6 +9616,10 @@ class ApplyListQueryResponseBodyModuleListItineraryList(TeaModel):
             result['project_code'] = self.project_code
         if self.project_title is not None:
             result['project_title'] = self.project_title
+        if self.thirdpart_cost_center_id is not None:
+            result['thirdpart_cost_center_id'] = self.thirdpart_cost_center_id
+        if self.thirdpart_invoice_id is not None:
+            result['thirdpart_invoice_id'] = self.thirdpart_invoice_id
         if self.thirdpart_itinerary_id is not None:
             result['thirdpart_itinerary_id'] = self.thirdpart_itinerary_id
         if self.traffic_type is not None:
@@ -9438,6 +9648,10 @@ class ApplyListQueryResponseBodyModuleListItineraryList(TeaModel):
             self.project_code = m.get('project_code')
         if m.get('project_title') is not None:
             self.project_title = m.get('project_title')
+        if m.get('thirdpart_cost_center_id') is not None:
+            self.thirdpart_cost_center_id = m.get('thirdpart_cost_center_id')
+        if m.get('thirdpart_invoice_id') is not None:
+            self.thirdpart_invoice_id = m.get('thirdpart_invoice_id')
         if m.get('thirdpart_itinerary_id') is not None:
             self.thirdpart_itinerary_id = m.get('thirdpart_itinerary_id')
         if m.get('traffic_type') is not None:
@@ -9459,6 +9673,8 @@ class ApplyListQueryResponseBodyModuleListItinerarySetList(TeaModel):
         itinerary_id: str = None,
         project_code: str = None,
         project_title: str = None,
+        thirdpart_cost_center_id: str = None,
+        thirdpart_invoice_id: str = None,
         thirdpart_itinerary_id: str = None,
         traffic_type: int = None,
     ):
@@ -9471,6 +9687,8 @@ class ApplyListQueryResponseBodyModuleListItinerarySetList(TeaModel):
         self.itinerary_id = itinerary_id
         self.project_code = project_code
         self.project_title = project_title
+        self.thirdpart_cost_center_id = thirdpart_cost_center_id
+        self.thirdpart_invoice_id = thirdpart_invoice_id
         self.thirdpart_itinerary_id = thirdpart_itinerary_id
         self.traffic_type = traffic_type
 
@@ -9501,6 +9719,10 @@ class ApplyListQueryResponseBodyModuleListItinerarySetList(TeaModel):
             result['project_code'] = self.project_code
         if self.project_title is not None:
             result['project_title'] = self.project_title
+        if self.thirdpart_cost_center_id is not None:
+            result['thirdpart_cost_center_id'] = self.thirdpart_cost_center_id
+        if self.thirdpart_invoice_id is not None:
+            result['thirdpart_invoice_id'] = self.thirdpart_invoice_id
         if self.thirdpart_itinerary_id is not None:
             result['thirdpart_itinerary_id'] = self.thirdpart_itinerary_id
         if self.traffic_type is not None:
@@ -9527,6 +9749,10 @@ class ApplyListQueryResponseBodyModuleListItinerarySetList(TeaModel):
             self.project_code = m.get('project_code')
         if m.get('project_title') is not None:
             self.project_title = m.get('project_title')
+        if m.get('thirdpart_cost_center_id') is not None:
+            self.thirdpart_cost_center_id = m.get('thirdpart_cost_center_id')
+        if m.get('thirdpart_invoice_id') is not None:
+            self.thirdpart_invoice_id = m.get('thirdpart_invoice_id')
         if m.get('thirdpart_itinerary_id') is not None:
             self.thirdpart_itinerary_id = m.get('thirdpart_itinerary_id')
         if m.get('traffic_type') is not None:
@@ -12253,6 +12479,8 @@ class ApplyQueryResponseBodyModuleItineraryList(TeaModel):
         itinerary_travel_standard: ApplyQueryResponseBodyModuleItineraryListItineraryTravelStandard = None,
         project_code: str = None,
         project_title: str = None,
+        thirdpart_cost_center_id: str = None,
+        thirdpart_invoice_id: str = None,
         thirdpart_itinerary_id: str = None,
         traffic_type: int = None,
         trip_way: int = None,
@@ -12270,6 +12498,8 @@ class ApplyQueryResponseBodyModuleItineraryList(TeaModel):
         self.itinerary_travel_standard = itinerary_travel_standard
         self.project_code = project_code
         self.project_title = project_title
+        self.thirdpart_cost_center_id = thirdpart_cost_center_id
+        self.thirdpart_invoice_id = thirdpart_invoice_id
         self.thirdpart_itinerary_id = thirdpart_itinerary_id
         self.traffic_type = traffic_type
         self.trip_way = trip_way
@@ -12310,6 +12540,10 @@ class ApplyQueryResponseBodyModuleItineraryList(TeaModel):
             result['project_code'] = self.project_code
         if self.project_title is not None:
             result['project_title'] = self.project_title
+        if self.thirdpart_cost_center_id is not None:
+            result['thirdpart_cost_center_id'] = self.thirdpart_cost_center_id
+        if self.thirdpart_invoice_id is not None:
+            result['thirdpart_invoice_id'] = self.thirdpart_invoice_id
         if self.thirdpart_itinerary_id is not None:
             result['thirdpart_itinerary_id'] = self.thirdpart_itinerary_id
         if self.traffic_type is not None:
@@ -12347,6 +12581,10 @@ class ApplyQueryResponseBodyModuleItineraryList(TeaModel):
             self.project_code = m.get('project_code')
         if m.get('project_title') is not None:
             self.project_title = m.get('project_title')
+        if m.get('thirdpart_cost_center_id') is not None:
+            self.thirdpart_cost_center_id = m.get('thirdpart_cost_center_id')
+        if m.get('thirdpart_invoice_id') is not None:
+            self.thirdpart_invoice_id = m.get('thirdpart_invoice_id')
         if m.get('thirdpart_itinerary_id') is not None:
             self.thirdpart_itinerary_id = m.get('thirdpart_itinerary_id')
         if m.get('traffic_type') is not None:
@@ -12397,6 +12635,8 @@ class ApplyQueryResponseBodyModuleItinerarySetList(TeaModel):
         itinerary_travel_standard: ApplyQueryResponseBodyModuleItinerarySetListItineraryTravelStandard = None,
         project_code: str = None,
         project_title: str = None,
+        thirdpart_cost_center_id: str = None,
+        thirdpart_invoice_id: str = None,
         thirdpart_itinerary_id: str = None,
         traffic_type: int = None,
     ):
@@ -12411,6 +12651,8 @@ class ApplyQueryResponseBodyModuleItinerarySetList(TeaModel):
         self.itinerary_travel_standard = itinerary_travel_standard
         self.project_code = project_code
         self.project_title = project_title
+        self.thirdpart_cost_center_id = thirdpart_cost_center_id
+        self.thirdpart_invoice_id = thirdpart_invoice_id
         self.thirdpart_itinerary_id = thirdpart_itinerary_id
         self.traffic_type = traffic_type
 
@@ -12446,6 +12688,10 @@ class ApplyQueryResponseBodyModuleItinerarySetList(TeaModel):
             result['project_code'] = self.project_code
         if self.project_title is not None:
             result['project_title'] = self.project_title
+        if self.thirdpart_cost_center_id is not None:
+            result['thirdpart_cost_center_id'] = self.thirdpart_cost_center_id
+        if self.thirdpart_invoice_id is not None:
+            result['thirdpart_invoice_id'] = self.thirdpart_invoice_id
         if self.thirdpart_itinerary_id is not None:
             result['thirdpart_itinerary_id'] = self.thirdpart_itinerary_id
         if self.traffic_type is not None:
@@ -12477,6 +12723,10 @@ class ApplyQueryResponseBodyModuleItinerarySetList(TeaModel):
             self.project_code = m.get('project_code')
         if m.get('project_title') is not None:
             self.project_title = m.get('project_title')
+        if m.get('thirdpart_cost_center_id') is not None:
+            self.thirdpart_cost_center_id = m.get('thirdpart_cost_center_id')
+        if m.get('thirdpart_invoice_id') is not None:
+            self.thirdpart_invoice_id = m.get('thirdpart_invoice_id')
         if m.get('thirdpart_itinerary_id') is not None:
             self.thirdpart_itinerary_id = m.get('thirdpart_itinerary_id')
         if m.get('traffic_type') is not None:
@@ -20990,6 +21240,173 @@ class CostCenterSaveResponse(TeaModel):
         return self
 
 
+class CreateCustomRoleHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_corp_token = x_acs_btrip_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_corp_token is not None:
+            result['x-acs-btrip-corp-token'] = self.x_acs_btrip_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-corp-token') is not None:
+            self.x_acs_btrip_corp_token = m.get('x-acs-btrip-corp-token')
+        return self
+
+
+class CreateCustomRoleRequest(TeaModel):
+    def __init__(
+        self,
+        role_id: str = None,
+        role_name: str = None,
+    ):
+        # This parameter is required.
+        self.role_id = role_id
+        # This parameter is required.
+        self.role_name = role_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.role_id is not None:
+            result['role_id'] = self.role_id
+        if self.role_name is not None:
+            result['role_name'] = self.role_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('role_id') is not None:
+            self.role_id = m.get('role_id')
+        if m.get('role_name') is not None:
+            self.role_name = m.get('role_name')
+        return self
+
+
+class CreateCustomRoleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        # traceId
+        self.trace_id = trace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.trace_id is not None:
+            result['traceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('traceId') is not None:
+            self.trace_id = m.get('traceId')
+        return self
+
+
+class CreateCustomRoleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateCustomRoleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateCustomRoleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateSubCorpHeaders(TeaModel):
     def __init__(
         self,
@@ -21188,6 +21605,368 @@ class CreateSubCorpResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateSubCorpResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteCustomRoleHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_corp_token = x_acs_btrip_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_corp_token is not None:
+            result['x-acs-btrip-corp-token'] = self.x_acs_btrip_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-corp-token') is not None:
+            self.x_acs_btrip_corp_token = m.get('x-acs-btrip-corp-token')
+        return self
+
+
+class DeleteCustomRoleRequest(TeaModel):
+    def __init__(
+        self,
+        role_id: str = None,
+    ):
+        # This parameter is required.
+        self.role_id = role_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.role_id is not None:
+            result['role_id'] = self.role_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('role_id') is not None:
+            self.role_id = m.get('role_id')
+        return self
+
+
+class DeleteCustomRoleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        # traceId
+        self.trace_id = trace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.trace_id is not None:
+            result['traceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('traceId') is not None:
+            self.trace_id = m.get('traceId')
+        return self
+
+
+class DeleteCustomRoleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteCustomRoleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteCustomRoleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteEmployeesFromCustomRoleHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_corp_token = x_acs_btrip_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_corp_token is not None:
+            result['x-acs-btrip-corp-token'] = self.x_acs_btrip_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-corp-token') is not None:
+            self.x_acs_btrip_corp_token = m.get('x-acs-btrip-corp-token')
+        return self
+
+
+class DeleteEmployeesFromCustomRoleRequest(TeaModel):
+    def __init__(
+        self,
+        role_id: str = None,
+        user_id_list: List[str] = None,
+    ):
+        # This parameter is required.
+        self.role_id = role_id
+        # This parameter is required.
+        self.user_id_list = user_id_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.role_id is not None:
+            result['role_id'] = self.role_id
+        if self.user_id_list is not None:
+            result['user_id_list'] = self.user_id_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('role_id') is not None:
+            self.role_id = m.get('role_id')
+        if m.get('user_id_list') is not None:
+            self.user_id_list = m.get('user_id_list')
+        return self
+
+
+class DeleteEmployeesFromCustomRoleShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        role_id: str = None,
+        user_id_list_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.role_id = role_id
+        # This parameter is required.
+        self.user_id_list_shrink = user_id_list_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.role_id is not None:
+            result['role_id'] = self.role_id
+        if self.user_id_list_shrink is not None:
+            result['user_id_list'] = self.user_id_list_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('role_id') is not None:
+            self.role_id = m.get('role_id')
+        if m.get('user_id_list') is not None:
+            self.user_id_list_shrink = m.get('user_id_list')
+        return self
+
+
+class DeleteEmployeesFromCustomRoleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        # traceId
+        self.trace_id = trace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.trace_id is not None:
+            result['traceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('traceId') is not None:
+            self.trace_id = m.get('traceId')
+        return self
+
+
+class DeleteEmployeesFromCustomRoleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteEmployeesFromCustomRoleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteEmployeesFromCustomRoleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -38235,7 +39014,9 @@ class FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList(TeaModel):
         self,
         apply_id: str = None,
         arr_airport: str = None,
+        arr_airport_code: str = None,
         arr_city: str = None,
+        arr_city_code: str = None,
         arr_time: str = None,
         change_cabin: str = None,
         change_cabin_level: str = None,
@@ -38245,7 +39026,9 @@ class FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList(TeaModel):
         change_reason: str = None,
         change_type: int = None,
         dep_airport: str = None,
+        dep_airport_code: str = None,
         dep_city: str = None,
+        dep_city_code: str = None,
         dep_time: str = None,
         discount: str = None,
         gmt_create: str = None,
@@ -38260,7 +39043,9 @@ class FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList(TeaModel):
     ):
         self.apply_id = apply_id
         self.arr_airport = arr_airport
+        self.arr_airport_code = arr_airport_code
         self.arr_city = arr_city
+        self.arr_city_code = arr_city_code
         self.arr_time = arr_time
         self.change_cabin = change_cabin
         self.change_cabin_level = change_cabin_level
@@ -38270,7 +39055,9 @@ class FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList(TeaModel):
         self.change_reason = change_reason
         self.change_type = change_type
         self.dep_airport = dep_airport
+        self.dep_airport_code = dep_airport_code
         self.dep_city = dep_city
+        self.dep_city_code = dep_city_code
         self.dep_time = dep_time
         self.discount = discount
         self.gmt_create = gmt_create
@@ -38296,8 +39083,12 @@ class FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList(TeaModel):
             result['apply_id'] = self.apply_id
         if self.arr_airport is not None:
             result['arr_airport'] = self.arr_airport
+        if self.arr_airport_code is not None:
+            result['arr_airport_code'] = self.arr_airport_code
         if self.arr_city is not None:
             result['arr_city'] = self.arr_city
+        if self.arr_city_code is not None:
+            result['arr_city_code'] = self.arr_city_code
         if self.arr_time is not None:
             result['arr_time'] = self.arr_time
         if self.change_cabin is not None:
@@ -38316,8 +39107,12 @@ class FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList(TeaModel):
             result['change_type'] = self.change_type
         if self.dep_airport is not None:
             result['dep_airport'] = self.dep_airport
+        if self.dep_airport_code is not None:
+            result['dep_airport_code'] = self.dep_airport_code
         if self.dep_city is not None:
             result['dep_city'] = self.dep_city
+        if self.dep_city_code is not None:
+            result['dep_city_code'] = self.dep_city_code
         if self.dep_time is not None:
             result['dep_time'] = self.dep_time
         if self.discount is not None:
@@ -38348,8 +39143,12 @@ class FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList(TeaModel):
             self.apply_id = m.get('apply_id')
         if m.get('arr_airport') is not None:
             self.arr_airport = m.get('arr_airport')
+        if m.get('arr_airport_code') is not None:
+            self.arr_airport_code = m.get('arr_airport_code')
         if m.get('arr_city') is not None:
             self.arr_city = m.get('arr_city')
+        if m.get('arr_city_code') is not None:
+            self.arr_city_code = m.get('arr_city_code')
         if m.get('arr_time') is not None:
             self.arr_time = m.get('arr_time')
         if m.get('change_cabin') is not None:
@@ -38368,8 +39167,12 @@ class FlightOrderQueryResponseBodyModuleFlightChangeTicketInfoList(TeaModel):
             self.change_type = m.get('change_type')
         if m.get('dep_airport') is not None:
             self.dep_airport = m.get('dep_airport')
+        if m.get('dep_airport_code') is not None:
+            self.dep_airport_code = m.get('dep_airport_code')
         if m.get('dep_city') is not None:
             self.dep_city = m.get('dep_city')
+        if m.get('dep_city_code') is not None:
+            self.dep_city_code = m.get('dep_city_code')
         if m.get('dep_time') is not None:
             self.dep_time = m.get('dep_time')
         if m.get('discount') is not None:
@@ -38529,9 +39332,13 @@ class FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList(TeaModel):
         self,
         apply_id: str = None,
         arr_airport: str = None,
+        arr_airport_code: str = None,
         arr_city: str = None,
+        arr_city_code: str = None,
         dep_airport: str = None,
+        dep_airport_code: str = None,
         dep_city: str = None,
+        dep_city_code: str = None,
         flight_no: str = None,
         gmt_create: str = None,
         gmt_modify: str = None,
@@ -38544,9 +39351,13 @@ class FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList(TeaModel):
     ):
         self.apply_id = apply_id
         self.arr_airport = arr_airport
+        self.arr_airport_code = arr_airport_code
         self.arr_city = arr_city
+        self.arr_city_code = arr_city_code
         self.dep_airport = dep_airport
+        self.dep_airport_code = dep_airport_code
         self.dep_city = dep_city
+        self.dep_city_code = dep_city_code
         self.flight_no = flight_no
         self.gmt_create = gmt_create
         self.gmt_modify = gmt_modify
@@ -38570,12 +39381,20 @@ class FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList(TeaModel):
             result['apply_id'] = self.apply_id
         if self.arr_airport is not None:
             result['arr_airport'] = self.arr_airport
+        if self.arr_airport_code is not None:
+            result['arr_airport_code'] = self.arr_airport_code
         if self.arr_city is not None:
             result['arr_city'] = self.arr_city
+        if self.arr_city_code is not None:
+            result['arr_city_code'] = self.arr_city_code
         if self.dep_airport is not None:
             result['dep_airport'] = self.dep_airport
+        if self.dep_airport_code is not None:
+            result['dep_airport_code'] = self.dep_airport_code
         if self.dep_city is not None:
             result['dep_city'] = self.dep_city
+        if self.dep_city_code is not None:
+            result['dep_city_code'] = self.dep_city_code
         if self.flight_no is not None:
             result['flight_no'] = self.flight_no
         if self.gmt_create is not None:
@@ -38602,12 +39421,20 @@ class FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList(TeaModel):
             self.apply_id = m.get('apply_id')
         if m.get('arr_airport') is not None:
             self.arr_airport = m.get('arr_airport')
+        if m.get('arr_airport_code') is not None:
+            self.arr_airport_code = m.get('arr_airport_code')
         if m.get('arr_city') is not None:
             self.arr_city = m.get('arr_city')
+        if m.get('arr_city_code') is not None:
+            self.arr_city_code = m.get('arr_city_code')
         if m.get('dep_airport') is not None:
             self.dep_airport = m.get('dep_airport')
+        if m.get('dep_airport_code') is not None:
+            self.dep_airport_code = m.get('dep_airport_code')
         if m.get('dep_city') is not None:
             self.dep_city = m.get('dep_city')
+        if m.get('dep_city_code') is not None:
+            self.dep_city_code = m.get('dep_city_code')
         if m.get('flight_no') is not None:
             self.flight_no = m.get('flight_no')
         if m.get('gmt_create') is not None:
@@ -38632,8 +39459,12 @@ class FlightOrderQueryResponseBodyModuleFlightRefundTicketInfoList(TeaModel):
 class FlightOrderQueryResponseBodyModuleFlightTicketInfoList(TeaModel):
     def __init__(
         self,
+        arr_airport: str = None,
+        arr_airport_code: str = None,
         build_price: float = None,
         changed: bool = None,
+        dep_airport: str = None,
+        dep_airport_code: str = None,
         discount: int = None,
         flight_no: str = None,
         gmt_create: str = None,
@@ -38647,8 +39478,12 @@ class FlightOrderQueryResponseBodyModuleFlightTicketInfoList(TeaModel):
         ticket_status_code: int = None,
         user_id: str = None,
     ):
+        self.arr_airport = arr_airport
+        self.arr_airport_code = arr_airport_code
         self.build_price = build_price
         self.changed = changed
+        self.dep_airport = dep_airport
+        self.dep_airport_code = dep_airport_code
         self.discount = discount
         self.flight_no = flight_no
         self.gmt_create = gmt_create
@@ -38671,10 +39506,18 @@ class FlightOrderQueryResponseBodyModuleFlightTicketInfoList(TeaModel):
             return _map
 
         result = dict()
+        if self.arr_airport is not None:
+            result['arr_airport'] = self.arr_airport
+        if self.arr_airport_code is not None:
+            result['arr_airport_code'] = self.arr_airport_code
         if self.build_price is not None:
             result['build_price'] = self.build_price
         if self.changed is not None:
             result['changed'] = self.changed
+        if self.dep_airport is not None:
+            result['dep_airport'] = self.dep_airport
+        if self.dep_airport_code is not None:
+            result['dep_airport_code'] = self.dep_airport_code
         if self.discount is not None:
             result['discount'] = self.discount
         if self.flight_no is not None:
@@ -38703,10 +39546,18 @@ class FlightOrderQueryResponseBodyModuleFlightTicketInfoList(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('arr_airport') is not None:
+            self.arr_airport = m.get('arr_airport')
+        if m.get('arr_airport_code') is not None:
+            self.arr_airport_code = m.get('arr_airport_code')
         if m.get('build_price') is not None:
             self.build_price = m.get('build_price')
         if m.get('changed') is not None:
             self.changed = m.get('changed')
+        if m.get('dep_airport') is not None:
+            self.dep_airport = m.get('dep_airport')
+        if m.get('dep_airport_code') is not None:
+            self.dep_airport_code = m.get('dep_airport_code')
         if m.get('discount') is not None:
             self.discount = m.get('discount')
         if m.get('flight_no') is not None:
@@ -64689,6 +65540,7 @@ class IeFlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         primary_id: int = None,
         project_code: str = None,
         project_name: str = None,
+        refund_change_cost: float = None,
         refund_fee: float = None,
         refund_result: str = None,
         remark: str = None,
@@ -64778,6 +65630,7 @@ class IeFlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
         self.primary_id = primary_id
         self.project_code = project_code
         self.project_name = project_name
+        self.refund_change_cost = refund_change_cost
         self.refund_fee = refund_fee
         self.refund_result = refund_result
         self.remark = remark
@@ -64941,6 +65794,8 @@ class IeFlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             result['project_code'] = self.project_code
         if self.project_name is not None:
             result['project_name'] = self.project_name
+        if self.refund_change_cost is not None:
+            result['refund_change_cost'] = self.refund_change_cost
         if self.refund_fee is not None:
             result['refund_fee'] = self.refund_fee
         if self.refund_result is not None:
@@ -65119,6 +65974,8 @@ class IeFlightBillSettlementQueryResponseBodyModuleDataList(TeaModel):
             self.project_code = m.get('project_code')
         if m.get('project_name') is not None:
             self.project_name = m.get('project_name')
+        if m.get('refund_change_cost') is not None:
+            self.refund_change_cost = m.get('refund_change_cost')
         if m.get('refund_fee') is not None:
             self.refund_fee = m.get('refund_fee')
         if m.get('refund_result') is not None:
@@ -80363,6 +81220,7 @@ class IsvUserSaveRequestUserList(TeaModel):
         position: str = None,
         position_level: str = None,
         real_name_en: str = None,
+        role_id_list: List[str] = None,
         third_depart_id: str = None,
         third_depart_id_list: List[str] = None,
         user_id: str = None,
@@ -80383,6 +81241,7 @@ class IsvUserSaveRequestUserList(TeaModel):
         self.position = position
         self.position_level = position_level
         self.real_name_en = real_name_en
+        self.role_id_list = role_id_list
         self.third_depart_id = third_depart_id
         self.third_depart_id_list = third_depart_id_list
         # This parameter is required.
@@ -80433,6 +81292,8 @@ class IsvUserSaveRequestUserList(TeaModel):
             result['position_level'] = self.position_level
         if self.real_name_en is not None:
             result['real_name_en'] = self.real_name_en
+        if self.role_id_list is not None:
+            result['role_id_list'] = self.role_id_list
         if self.third_depart_id is not None:
             result['third_depart_id'] = self.third_depart_id
         if self.third_depart_id_list is not None:
@@ -80478,6 +81339,8 @@ class IsvUserSaveRequestUserList(TeaModel):
             self.position_level = m.get('position_level')
         if m.get('real_name_en') is not None:
             self.real_name_en = m.get('real_name_en')
+        if m.get('role_id_list') is not None:
+            self.role_id_list = m.get('role_id_list')
         if m.get('third_depart_id') is not None:
             self.third_depart_id = m.get('third_depart_id')
         if m.get('third_depart_id_list') is not None:
@@ -82804,6 +83667,205 @@ class ProjectModifyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ProjectModifyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class QueryGroupCorpListHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_corp_token = x_acs_btrip_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_corp_token is not None:
+            result['x-acs-btrip-corp-token'] = self.x_acs_btrip_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-corp-token') is not None:
+            self.x_acs_btrip_corp_token = m.get('x-acs-btrip-corp-token')
+        return self
+
+
+class QueryGroupCorpListRequest(TeaModel):
+    def __init__(
+        self,
+        user_id: str = None,
+    ):
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.user_id is not None:
+            result['user_id'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('user_id') is not None:
+            self.user_id = m.get('user_id')
+        return self
+
+
+class QueryGroupCorpListResponseBodyModule(TeaModel):
+    def __init__(
+        self,
+        corp_id: str = None,
+        corp_name: str = None,
+    ):
+        self.corp_id = corp_id
+        self.corp_name = corp_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.corp_id is not None:
+            result['corp_id'] = self.corp_id
+        if self.corp_name is not None:
+            result['corp_name'] = self.corp_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('corp_id') is not None:
+            self.corp_id = m.get('corp_id')
+        if m.get('corp_name') is not None:
+            self.corp_name = m.get('corp_name')
+        return self
+
+
+class QueryGroupCorpListResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        code: int = None,
+        message: str = None,
+        module: List[QueryGroupCorpListResponseBodyModule] = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.request_id = request_id
+        self.code = code
+        self.message = message
+        self.module = module
+        self.success = success
+        self.trace_id = trace_id
+
+    def validate(self):
+        if self.module:
+            for k in self.module:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.code is not None:
+            result['code'] = self.code
+        if self.message is not None:
+            result['message'] = self.message
+        result['module'] = []
+        if self.module is not None:
+            for k in self.module:
+                result['module'].append(k.to_map() if k else None)
+        if self.success is not None:
+            result['success'] = self.success
+        if self.trace_id is not None:
+            result['trace_id'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        self.module = []
+        if m.get('module') is not None:
+            for k in m.get('module'):
+                temp_model = QueryGroupCorpListResponseBodyModule()
+                self.module.append(temp_model.from_map(k))
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('trace_id') is not None:
+            self.trace_id = m.get('trace_id')
+        return self
+
+
+class QueryGroupCorpListResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: QueryGroupCorpListResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = QueryGroupCorpListResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -100016,6 +101078,173 @@ class TravelStandardQueryResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = TravelStandardQueryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateCustomRoleHeaders(TeaModel):
+    def __init__(
+        self,
+        common_headers: Dict[str, str] = None,
+        x_acs_btrip_corp_token: str = None,
+    ):
+        self.common_headers = common_headers
+        self.x_acs_btrip_corp_token = x_acs_btrip_corp_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.common_headers is not None:
+            result['commonHeaders'] = self.common_headers
+        if self.x_acs_btrip_corp_token is not None:
+            result['x-acs-btrip-corp-token'] = self.x_acs_btrip_corp_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('commonHeaders') is not None:
+            self.common_headers = m.get('commonHeaders')
+        if m.get('x-acs-btrip-corp-token') is not None:
+            self.x_acs_btrip_corp_token = m.get('x-acs-btrip-corp-token')
+        return self
+
+
+class UpdateCustomRoleRequest(TeaModel):
+    def __init__(
+        self,
+        role_id: str = None,
+        role_name: str = None,
+    ):
+        # This parameter is required.
+        self.role_id = role_id
+        # This parameter is required.
+        self.role_name = role_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.role_id is not None:
+            result['role_id'] = self.role_id
+        if self.role_name is not None:
+            result['role_name'] = self.role_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('role_id') is not None:
+            self.role_id = m.get('role_id')
+        if m.get('role_name') is not None:
+            self.role_name = m.get('role_name')
+        return self
+
+
+class UpdateCustomRoleResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        trace_id: str = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        # traceId
+        self.trace_id = trace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['code'] = self.code
+        if self.http_status_code is not None:
+            result['httpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        if self.trace_id is not None:
+            result['traceId'] = self.trace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('code') is not None:
+            self.code = m.get('code')
+        if m.get('httpStatusCode') is not None:
+            self.http_status_code = m.get('httpStatusCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('traceId') is not None:
+            self.trace_id = m.get('traceId')
+        return self
+
+
+class UpdateCustomRoleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateCustomRoleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateCustomRoleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

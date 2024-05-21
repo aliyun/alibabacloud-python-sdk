@@ -1,3 +1,17 @@
+2024-05-21 Version: 3.1.0
+- Support API AddEmployeesToCustomRole.
+- Support API CreateCustomRole.
+- Support API DeleteCustomRole.
+- Support API DeleteEmployeesFromCustomRole.
+- Support API QueryGroupCorpList.
+- Support API UpdateCustomRole.
+- Update API ApplyListQuery: update response param.
+- Update API ApplyQuery: update response param.
+- Update API FlightOrderQuery: update response param.
+- Update API IeFlightBillSettlementQuery: update response param.
+- Update API IsvUserSave: update param user_list.
+
+
 2024-05-13 Version: 3.0.0
 - Update API TrainOrderCreate: update param passenger_open_info_s.
 
