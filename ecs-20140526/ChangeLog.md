@@ -4,6 +4,12 @@
 - Update API DescribeSecurityGroupAttribute: update response param.
 
 
+2024-05-21 Version: 4.1.7
+- Update API DescribeSecurityGroupAttribute: add param MaxResults.
+- Update API DescribeSecurityGroupAttribute: add param NextToken.
+- Update API DescribeSecurityGroupAttribute: update response param.
+
+
 2024-05-17 Version: 4.1.6
 - Update API CreateImage: update response param.
 - Update API CreateNetworkInterface: add param NetworkInterfaceTrafficConfig.
