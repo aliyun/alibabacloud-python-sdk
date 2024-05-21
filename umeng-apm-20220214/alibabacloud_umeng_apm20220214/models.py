@@ -14,9 +14,13 @@ class GetH5PageTrendRequest(TeaModel):
         time_unit: str = None,
     ):
         self.app_version = app_version
+        # This parameter is required.
         self.data_source_id = data_source_id
+        # This parameter is required.
         self.end_date = end_date
+        # This parameter is required.
         self.start_date = start_date
+        # This parameter is required.
         self.time_unit = time_unit
 
     def validate(self):
@@ -312,9 +316,13 @@ class GetLaunchTrendRequest(TeaModel):
         time_unit: str = None,
     ):
         self.app_version = app_version
+        # This parameter is required.
         self.data_source_id = data_source_id
+        # This parameter is required.
         self.end_date = end_date
+        # This parameter is required.
         self.start_date = start_date
+        # This parameter is required.
         self.time_unit = time_unit
 
     def validate(self):
@@ -520,9 +528,13 @@ class GetNativePageTrendRequest(TeaModel):
         time_unit: str = None,
     ):
         self.app_version = app_version
+        # This parameter is required.
         self.data_source_id = data_source_id
+        # This parameter is required.
         self.end_date = end_date
+        # This parameter is required.
         self.start_date = start_date
+        # This parameter is required.
         self.time_unit = time_unit
 
     def validate(self):
@@ -716,9 +728,13 @@ class GetNetworkTrendRequest(TeaModel):
         time_unit: str = None,
     ):
         self.app_version = app_version
+        # This parameter is required.
         self.data_source_id = data_source_id
+        # This parameter is required.
         self.end_date = end_date
+        # This parameter is required.
         self.start_date = start_date
+        # This parameter is required.
         self.time_unit = time_unit
 
     def validate(self):
@@ -912,9 +928,11 @@ class GetStatTrendRequest(TeaModel):
         type: int = None,
     ):
         self.app_version = app_version
+        # This parameter is required.
         self.data_source_id = data_source_id
         self.end_date = end_date
         self.start_date = start_date
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -1107,9 +1125,13 @@ class GetSymUploadParamRequest(TeaModel):
         file_type: int = None,
         flutter_name: str = None,
     ):
+        # This parameter is required.
         self.app_version = app_version
+        # This parameter is required.
         self.data_source_id = data_source_id
+        # This parameter is required.
         self.file_name = file_name
+        # This parameter is required.
         self.file_type = file_type
         self.flutter_name = flutter_name
 
@@ -1310,7 +1332,9 @@ class GetTodayStatTrendRequest(TeaModel):
         type: int = None,
     ):
         self.app_version = app_version
+        # This parameter is required.
         self.data_source_id = data_source_id
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -1493,8 +1517,11 @@ class UpdateAlertPlanRequest(TeaModel):
         plan_id: int = None,
         versions: str = None,
     ):
+        # This parameter is required.
         self.data_source_id = data_source_id
+        # This parameter is required.
         self.plan_id = plan_id
+        # This parameter is required.
         self.versions = versions
 
     def validate(self):
@@ -1615,9 +1642,13 @@ class UploadSymbolFileRequest(TeaModel):
         flutter_name: str = None,
         oss_url: str = None,
     ):
+        # This parameter is required.
         self.app_version = app_version
+        # This parameter is required.
         self.data_source_id = data_source_id
+        # This parameter is required.
         self.file_name = file_name
+        # This parameter is required.
         self.file_type = file_type
         self.flutter_name = flutter_name
         self.oss_url = oss_url
@@ -1672,9 +1703,13 @@ class UploadSymbolFileAdvanceRequest(TeaModel):
         flutter_name: str = None,
         oss_url_object: BinaryIO = None,
     ):
+        # This parameter is required.
         self.app_version = app_version
+        # This parameter is required.
         self.data_source_id = data_source_id
+        # This parameter is required.
         self.file_name = file_name
+        # This parameter is required.
         self.file_type = file_type
         self.flutter_name = flutter_name
         self.oss_url_object = oss_url_object

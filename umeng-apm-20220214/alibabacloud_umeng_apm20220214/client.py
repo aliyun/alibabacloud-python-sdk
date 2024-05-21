@@ -13,9 +13,9 @@ from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 from alibabacloud_openplatform20191219.client import Client as OpenPlatformClient
 from alibabacloud_openplatform20191219 import models as open_platform_models
 from alibabacloud_oss_sdk import models as oss_models
+from alibabacloud_oss_sdk.client import Client as OSSClient
 from alibabacloud_tea_fileform import models as file_form_models
 from alibabacloud_oss_util import models as ossutil_models
-from alibabacloud_oss_sdk.client import Client as OSSClient
 
 
 class Client(OpenApiClient):
@@ -53,6 +53,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> umeng_apm_20220214_models.GetH5PageTrendResponse:
+        """
+        @summary 获取H5页面性能统计数据
+        
+        @param request: GetH5PageTrendRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetH5PageTrendResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_version):
@@ -91,6 +99,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> umeng_apm_20220214_models.GetH5PageTrendResponse:
+        """
+        @summary 获取H5页面性能统计数据
+        
+        @param request: GetH5PageTrendRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetH5PageTrendResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_version):
@@ -127,6 +143,12 @@ class Client(OpenApiClient):
         self,
         request: umeng_apm_20220214_models.GetH5PageTrendRequest,
     ) -> umeng_apm_20220214_models.GetH5PageTrendResponse:
+        """
+        @summary 获取H5页面性能统计数据
+        
+        @param request: GetH5PageTrendRequest
+        @return: GetH5PageTrendResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_h5page_trend_with_options(request, headers, runtime)
@@ -135,6 +157,12 @@ class Client(OpenApiClient):
         self,
         request: umeng_apm_20220214_models.GetH5PageTrendRequest,
     ) -> umeng_apm_20220214_models.GetH5PageTrendResponse:
+        """
+        @summary 获取H5页面性能统计数据
+        
+        @param request: GetH5PageTrendRequest
+        @return: GetH5PageTrendResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_h5page_trend_with_options_async(request, headers, runtime)
@@ -145,6 +173,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> umeng_apm_20220214_models.GetLaunchTrendResponse:
+        """
+        @summary 获取启动性能统计数据
+        
+        @param request: GetLaunchTrendRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLaunchTrendResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_version):
@@ -183,6 +219,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> umeng_apm_20220214_models.GetLaunchTrendResponse:
+        """
+        @summary 获取启动性能统计数据
+        
+        @param request: GetLaunchTrendRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLaunchTrendResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_version):
@@ -219,6 +263,12 @@ class Client(OpenApiClient):
         self,
         request: umeng_apm_20220214_models.GetLaunchTrendRequest,
     ) -> umeng_apm_20220214_models.GetLaunchTrendResponse:
+        """
+        @summary 获取启动性能统计数据
+        
+        @param request: GetLaunchTrendRequest
+        @return: GetLaunchTrendResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_launch_trend_with_options(request, headers, runtime)
@@ -227,6 +277,12 @@ class Client(OpenApiClient):
         self,
         request: umeng_apm_20220214_models.GetLaunchTrendRequest,
     ) -> umeng_apm_20220214_models.GetLaunchTrendResponse:
+        """
+        @summary 获取启动性能统计数据
+        
+        @param request: GetLaunchTrendRequest
+        @return: GetLaunchTrendResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_launch_trend_with_options_async(request, headers, runtime)
@@ -237,6 +293,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> umeng_apm_20220214_models.GetNativePageTrendResponse:
+        """
+        @summary 获取原生页面性能统计数据
+        
+        @param request: GetNativePageTrendRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNativePageTrendResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_version):
@@ -275,6 +339,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> umeng_apm_20220214_models.GetNativePageTrendResponse:
+        """
+        @summary 获取原生页面性能统计数据
+        
+        @param request: GetNativePageTrendRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNativePageTrendResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_version):
@@ -311,6 +383,12 @@ class Client(OpenApiClient):
         self,
         request: umeng_apm_20220214_models.GetNativePageTrendRequest,
     ) -> umeng_apm_20220214_models.GetNativePageTrendResponse:
+        """
+        @summary 获取原生页面性能统计数据
+        
+        @param request: GetNativePageTrendRequest
+        @return: GetNativePageTrendResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_native_page_trend_with_options(request, headers, runtime)
@@ -319,6 +397,12 @@ class Client(OpenApiClient):
         self,
         request: umeng_apm_20220214_models.GetNativePageTrendRequest,
     ) -> umeng_apm_20220214_models.GetNativePageTrendResponse:
+        """
+        @summary 获取原生页面性能统计数据
+        
+        @param request: GetNativePageTrendRequest
+        @return: GetNativePageTrendResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_native_page_trend_with_options_async(request, headers, runtime)
@@ -329,6 +413,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> umeng_apm_20220214_models.GetNetworkTrendResponse:
+        """
+        @summary 获取网络性能统计数据
+        
+        @param request: GetNetworkTrendRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNetworkTrendResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_version):
@@ -367,6 +459,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> umeng_apm_20220214_models.GetNetworkTrendResponse:
+        """
+        @summary 获取网络性能统计数据
+        
+        @param request: GetNetworkTrendRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetNetworkTrendResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_version):
@@ -403,6 +503,12 @@ class Client(OpenApiClient):
         self,
         request: umeng_apm_20220214_models.GetNetworkTrendRequest,
     ) -> umeng_apm_20220214_models.GetNetworkTrendResponse:
+        """
+        @summary 获取网络性能统计数据
+        
+        @param request: GetNetworkTrendRequest
+        @return: GetNetworkTrendResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_network_trend_with_options(request, headers, runtime)
@@ -411,6 +517,12 @@ class Client(OpenApiClient):
         self,
         request: umeng_apm_20220214_models.GetNetworkTrendRequest,
     ) -> umeng_apm_20220214_models.GetNetworkTrendResponse:
+        """
+        @summary 获取网络性能统计数据
+        
+        @param request: GetNetworkTrendRequest
+        @return: GetNetworkTrendResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_network_trend_with_options_async(request, headers, runtime)
@@ -421,6 +533,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> umeng_apm_20220214_models.GetStatTrendResponse:
+        """
+        @summary 获取离线统计数据
+        
+        @param request: GetStatTrendRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStatTrendResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_version):
@@ -459,6 +579,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> umeng_apm_20220214_models.GetStatTrendResponse:
+        """
+        @summary 获取离线统计数据
+        
+        @param request: GetStatTrendRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetStatTrendResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_version):
@@ -495,6 +623,12 @@ class Client(OpenApiClient):
         self,
         request: umeng_apm_20220214_models.GetStatTrendRequest,
     ) -> umeng_apm_20220214_models.GetStatTrendResponse:
+        """
+        @summary 获取离线统计数据
+        
+        @param request: GetStatTrendRequest
+        @return: GetStatTrendResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_stat_trend_with_options(request, headers, runtime)
@@ -503,6 +637,12 @@ class Client(OpenApiClient):
         self,
         request: umeng_apm_20220214_models.GetStatTrendRequest,
     ) -> umeng_apm_20220214_models.GetStatTrendResponse:
+        """
+        @summary 获取离线统计数据
+        
+        @param request: GetStatTrendRequest
+        @return: GetStatTrendResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_stat_trend_with_options_async(request, headers, runtime)
@@ -513,6 +653,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> umeng_apm_20220214_models.GetSymUploadParamResponse:
+        """
+        @summary 获取符号表文件上传参数
+        
+        @param request: GetSymUploadParamRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSymUploadParamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_version):
@@ -551,6 +699,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> umeng_apm_20220214_models.GetSymUploadParamResponse:
+        """
+        @summary 获取符号表文件上传参数
+        
+        @param request: GetSymUploadParamRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSymUploadParamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_version):
@@ -587,6 +743,12 @@ class Client(OpenApiClient):
         self,
         request: umeng_apm_20220214_models.GetSymUploadParamRequest,
     ) -> umeng_apm_20220214_models.GetSymUploadParamResponse:
+        """
+        @summary 获取符号表文件上传参数
+        
+        @param request: GetSymUploadParamRequest
+        @return: GetSymUploadParamResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_sym_upload_param_with_options(request, headers, runtime)
@@ -595,6 +757,12 @@ class Client(OpenApiClient):
         self,
         request: umeng_apm_20220214_models.GetSymUploadParamRequest,
     ) -> umeng_apm_20220214_models.GetSymUploadParamResponse:
+        """
+        @summary 获取符号表文件上传参数
+        
+        @param request: GetSymUploadParamRequest
+        @return: GetSymUploadParamResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_sym_upload_param_with_options_async(request, headers, runtime)
@@ -605,6 +773,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> umeng_apm_20220214_models.GetTodayStatTrendResponse:
+        """
+        @summary 获取今日实时统计数据
+        
+        @param request: GetTodayStatTrendRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTodayStatTrendResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_version):
@@ -639,6 +815,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> umeng_apm_20220214_models.GetTodayStatTrendResponse:
+        """
+        @summary 获取今日实时统计数据
+        
+        @param request: GetTodayStatTrendRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTodayStatTrendResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_version):
@@ -671,6 +855,12 @@ class Client(OpenApiClient):
         self,
         request: umeng_apm_20220214_models.GetTodayStatTrendRequest,
     ) -> umeng_apm_20220214_models.GetTodayStatTrendResponse:
+        """
+        @summary 获取今日实时统计数据
+        
+        @param request: GetTodayStatTrendRequest
+        @return: GetTodayStatTrendResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_today_stat_trend_with_options(request, headers, runtime)
@@ -679,6 +869,12 @@ class Client(OpenApiClient):
         self,
         request: umeng_apm_20220214_models.GetTodayStatTrendRequest,
     ) -> umeng_apm_20220214_models.GetTodayStatTrendResponse:
+        """
+        @summary 获取今日实时统计数据
+        
+        @param request: GetTodayStatTrendRequest
+        @return: GetTodayStatTrendResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_today_stat_trend_with_options_async(request, headers, runtime)
@@ -689,6 +885,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> umeng_apm_20220214_models.UpdateAlertPlanResponse:
+        """
+        @summary 更新监控告警计划
+        
+        @param request: UpdateAlertPlanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAlertPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.data_source_id):
@@ -723,6 +927,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> umeng_apm_20220214_models.UpdateAlertPlanResponse:
+        """
+        @summary 更新监控告警计划
+        
+        @param request: UpdateAlertPlanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAlertPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.data_source_id):
@@ -755,6 +967,12 @@ class Client(OpenApiClient):
         self,
         request: umeng_apm_20220214_models.UpdateAlertPlanRequest,
     ) -> umeng_apm_20220214_models.UpdateAlertPlanResponse:
+        """
+        @summary 更新监控告警计划
+        
+        @param request: UpdateAlertPlanRequest
+        @return: UpdateAlertPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_alert_plan_with_options(request, headers, runtime)
@@ -763,6 +981,12 @@ class Client(OpenApiClient):
         self,
         request: umeng_apm_20220214_models.UpdateAlertPlanRequest,
     ) -> umeng_apm_20220214_models.UpdateAlertPlanResponse:
+        """
+        @summary 更新监控告警计划
+        
+        @param request: UpdateAlertPlanRequest
+        @return: UpdateAlertPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_alert_plan_with_options_async(request, headers, runtime)
@@ -773,6 +997,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> umeng_apm_20220214_models.UploadSymbolFileResponse:
+        """
+        @summary 上传符号表文件
+        
+        @param request: UploadSymbolFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadSymbolFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_version):
@@ -813,6 +1045,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> umeng_apm_20220214_models.UploadSymbolFileResponse:
+        """
+        @summary 上传符号表文件
+        
+        @param request: UploadSymbolFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadSymbolFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_version):
@@ -851,6 +1091,12 @@ class Client(OpenApiClient):
         self,
         request: umeng_apm_20220214_models.UploadSymbolFileRequest,
     ) -> umeng_apm_20220214_models.UploadSymbolFileResponse:
+        """
+        @summary 上传符号表文件
+        
+        @param request: UploadSymbolFileRequest
+        @return: UploadSymbolFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.upload_symbol_file_with_options(request, headers, runtime)
@@ -859,6 +1105,12 @@ class Client(OpenApiClient):
         self,
         request: umeng_apm_20220214_models.UploadSymbolFileRequest,
     ) -> umeng_apm_20220214_models.UploadSymbolFileResponse:
+        """
+        @summary 上传符号表文件
+        
+        @param request: UploadSymbolFileRequest
+        @return: UploadSymbolFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.upload_symbol_file_with_options_async(request, headers, runtime)
@@ -875,7 +1127,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -895,12 +1147,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -947,7 +1200,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -967,12 +1220,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
