@@ -47,7 +47,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.AddDataLevelPermissionRuleUsersResponse:
         """
-        > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click *Upgrade**.\\n
+        @summary Add selected groups of people incrementally for a single row and column permission rule.
+        
+        @description > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click *Upgrade**.\\n
         
         @param request: AddDataLevelPermissionRuleUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -82,7 +84,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.AddDataLevelPermissionRuleUsersResponse:
         """
-        > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click *Upgrade**.\\n
+        @summary Add selected groups of people incrementally for a single row and column permission rule.
+        
+        @description > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click *Upgrade**.\\n
         
         @param request: AddDataLevelPermissionRuleUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -116,7 +120,9 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.AddDataLevelPermissionRuleUsersRequest,
     ) -> quickbi_public_20220101_models.AddDataLevelPermissionRuleUsersResponse:
         """
-        > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click *Upgrade**.\\n
+        @summary Add selected groups of people incrementally for a single row and column permission rule.
+        
+        @description > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click *Upgrade**.\\n
         
         @param request: AddDataLevelPermissionRuleUsersRequest
         @return: AddDataLevelPermissionRuleUsersResponse
@@ -129,7 +135,9 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.AddDataLevelPermissionRuleUsersRequest,
     ) -> quickbi_public_20220101_models.AddDataLevelPermissionRuleUsersResponse:
         """
-        > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click *Upgrade**.\\n
+        @summary Add selected groups of people incrementally for a single row and column permission rule.
+        
+        @description > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click *Upgrade**.\\n
         
         @param request: AddDataLevelPermissionRuleUsersRequest
         @return: AddDataLevelPermissionRuleUsersResponse
@@ -143,7 +151,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.AddDataLevelPermissionWhiteListResponse:
         """
-        ROW_LEVEL
+        @summary 43342**435,1553a****41231
+        
+        @description ROW_LEVEL
         
         @param request: AddDataLevelPermissionWhiteListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -186,7 +196,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.AddDataLevelPermissionWhiteListResponse:
         """
-        ROW_LEVEL
+        @summary 43342**435,1553a****41231
+        
+        @description ROW_LEVEL
         
         @param request: AddDataLevelPermissionWhiteListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -228,7 +240,9 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.AddDataLevelPermissionWhiteListRequest,
     ) -> quickbi_public_20220101_models.AddDataLevelPermissionWhiteListResponse:
         """
-        ROW_LEVEL
+        @summary 43342**435,1553a****41231
+        
+        @description ROW_LEVEL
         
         @param request: AddDataLevelPermissionWhiteListRequest
         @return: AddDataLevelPermissionWhiteListResponse
@@ -241,7 +255,9 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.AddDataLevelPermissionWhiteListRequest,
     ) -> quickbi_public_20220101_models.AddDataLevelPermissionWhiteListResponse:
         """
-        ROW_LEVEL
+        @summary 43342**435,1553a****41231
+        
+        @description ROW_LEVEL
         
         @param request: AddDataLevelPermissionWhiteListRequest
         @return: AddDataLevelPermissionWhiteListResponse
@@ -254,6 +270,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.AddShareReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.AddShareReportResponse:
+        """
+        @summary Add a sharing configuration for data works.
+        
+        @param request: AddShareReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddShareReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auth_point):
@@ -290,6 +313,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.AddShareReportRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.AddShareReportResponse:
+        """
+        @summary Add a sharing configuration for data works.
+        
+        @param request: AddShareReportRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddShareReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auth_point):
@@ -325,6 +355,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.AddShareReportRequest,
     ) -> quickbi_public_20220101_models.AddShareReportResponse:
+        """
+        @summary Add a sharing configuration for data works.
+        
+        @param request: AddShareReportRequest
+        @return: AddShareReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_share_report_with_options(request, runtime)
 
@@ -332,6 +368,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.AddShareReportRequest,
     ) -> quickbi_public_20220101_models.AddShareReportResponse:
+        """
+        @summary Add a sharing configuration for data works.
+        
+        @param request: AddShareReportRequest
+        @return: AddShareReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_share_report_with_options_async(request, runtime)
 
@@ -340,6 +382,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.AddUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.AddUserResponse:
+        """
+        @summary auditing
+        
+        @param request: AddUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -380,6 +429,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.AddUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.AddUserResponse:
+        """
+        @summary auditing
+        
+        @param request: AddUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -419,6 +475,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.AddUserRequest,
     ) -> quickbi_public_20220101_models.AddUserResponse:
+        """
+        @summary auditing
+        
+        @param request: AddUserRequest
+        @return: AddUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_user_with_options(request, runtime)
 
@@ -426,6 +488,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.AddUserRequest,
     ) -> quickbi_public_20220101_models.AddUserResponse:
+        """
+        @summary auditing
+        
+        @param request: AddUserRequest
+        @return: AddUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_user_with_options_async(request, runtime)
 
@@ -434,6 +502,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.AddUserGroupMemberRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.AddUserGroupMemberResponse:
+        """
+        @summary The ID of the request.
+        
+        @param request: AddUserGroupMemberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddUserGroupMemberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_group_id):
@@ -464,6 +539,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.AddUserGroupMemberRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.AddUserGroupMemberResponse:
+        """
+        @summary The ID of the request.
+        
+        @param request: AddUserGroupMemberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddUserGroupMemberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_group_id):
@@ -493,6 +575,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.AddUserGroupMemberRequest,
     ) -> quickbi_public_20220101_models.AddUserGroupMemberResponse:
+        """
+        @summary The ID of the request.
+        
+        @param request: AddUserGroupMemberRequest
+        @return: AddUserGroupMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_user_group_member_with_options(request, runtime)
 
@@ -500,6 +588,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.AddUserGroupMemberRequest,
     ) -> quickbi_public_20220101_models.AddUserGroupMemberResponse:
+        """
+        @summary The ID of the request.
+        
+        @param request: AddUserGroupMemberRequest
+        @return: AddUserGroupMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_user_group_member_with_options_async(request, runtime)
 
@@ -508,6 +602,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.AddUserGroupMembersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.AddUserGroupMembersResponse:
+        """
+        @summary Add users to a specified user group at a time.
+        
+        @param request: AddUserGroupMembersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddUserGroupMembersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_group_ids):
@@ -538,6 +639,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.AddUserGroupMembersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.AddUserGroupMembersResponse:
+        """
+        @summary Add users to a specified user group at a time.
+        
+        @param request: AddUserGroupMembersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddUserGroupMembersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_group_ids):
@@ -567,6 +675,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.AddUserGroupMembersRequest,
     ) -> quickbi_public_20220101_models.AddUserGroupMembersResponse:
+        """
+        @summary Add users to a specified user group at a time.
+        
+        @param request: AddUserGroupMembersRequest
+        @return: AddUserGroupMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_user_group_members_with_options(request, runtime)
 
@@ -574,6 +688,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.AddUserGroupMembersRequest,
     ) -> quickbi_public_20220101_models.AddUserGroupMembersResponse:
+        """
+        @summary Add users to a specified user group at a time.
+        
+        @param request: AddUserGroupMembersRequest
+        @return: AddUserGroupMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_user_group_members_with_options_async(request, runtime)
 
@@ -582,6 +702,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.AddUserTagMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.AddUserTagMetaResponse:
+        """
+        @summary Add the metadata of an organization member tag.
+        
+        @param request: AddUserTagMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddUserTagMetaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tag_description):
@@ -612,6 +739,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.AddUserTagMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.AddUserTagMetaResponse:
+        """
+        @summary Add the metadata of an organization member tag.
+        
+        @param request: AddUserTagMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddUserTagMetaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tag_description):
@@ -641,6 +775,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.AddUserTagMetaRequest,
     ) -> quickbi_public_20220101_models.AddUserTagMetaResponse:
+        """
+        @summary Add the metadata of an organization member tag.
+        
+        @param request: AddUserTagMetaRequest
+        @return: AddUserTagMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_user_tag_meta_with_options(request, runtime)
 
@@ -648,6 +788,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.AddUserTagMetaRequest,
     ) -> quickbi_public_20220101_models.AddUserTagMetaResponse:
+        """
+        @summary Add the metadata of an organization member tag.
+        
+        @param request: AddUserTagMetaRequest
+        @return: AddUserTagMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_user_tag_meta_with_options_async(request, runtime)
 
@@ -656,6 +802,11 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.AddUserToWorkspaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.AddUserToWorkspaceResponse:
+        """
+        @param request: AddUserToWorkspaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddUserToWorkspaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.role_id):
@@ -688,6 +839,11 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.AddUserToWorkspaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.AddUserToWorkspaceResponse:
+        """
+        @param request: AddUserToWorkspaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddUserToWorkspaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.role_id):
@@ -719,6 +875,10 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.AddUserToWorkspaceRequest,
     ) -> quickbi_public_20220101_models.AddUserToWorkspaceResponse:
+        """
+        @param request: AddUserToWorkspaceRequest
+        @return: AddUserToWorkspaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_user_to_workspace_with_options(request, runtime)
 
@@ -726,6 +886,10 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.AddUserToWorkspaceRequest,
     ) -> quickbi_public_20220101_models.AddUserToWorkspaceResponse:
+        """
+        @param request: AddUserToWorkspaceRequest
+        @return: AddUserToWorkspaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_user_to_workspace_with_options_async(request, runtime)
 
@@ -734,6 +898,11 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.AddWorkspaceUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.AddWorkspaceUsersResponse:
+        """
+        @param request: AddWorkspaceUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddWorkspaceUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.role_id):
@@ -766,6 +935,11 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.AddWorkspaceUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.AddWorkspaceUsersResponse:
+        """
+        @param request: AddWorkspaceUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddWorkspaceUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.role_id):
@@ -797,6 +971,10 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.AddWorkspaceUsersRequest,
     ) -> quickbi_public_20220101_models.AddWorkspaceUsersResponse:
+        """
+        @param request: AddWorkspaceUsersRequest
+        @return: AddWorkspaceUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_workspace_users_with_options(request, runtime)
 
@@ -804,6 +982,10 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.AddWorkspaceUsersRequest,
     ) -> quickbi_public_20220101_models.AddWorkspaceUsersResponse:
+        """
+        @param request: AddWorkspaceUsersRequest
+        @return: AddWorkspaceUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_workspace_users_with_options_async(request, runtime)
 
@@ -812,6 +994,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.AllotDatasetAccelerationTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.AllotDatasetAccelerationTaskResponse:
+        """
+        @summary 触发数据集抽取加速
+        
+        @param request: AllotDatasetAccelerationTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AllotDatasetAccelerationTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cube_id):
@@ -840,6 +1029,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.AllotDatasetAccelerationTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.AllotDatasetAccelerationTaskResponse:
+        """
+        @summary 触发数据集抽取加速
+        
+        @param request: AllotDatasetAccelerationTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AllotDatasetAccelerationTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cube_id):
@@ -867,6 +1063,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.AllotDatasetAccelerationTaskRequest,
     ) -> quickbi_public_20220101_models.AllotDatasetAccelerationTaskResponse:
+        """
+        @summary 触发数据集抽取加速
+        
+        @param request: AllotDatasetAccelerationTaskRequest
+        @return: AllotDatasetAccelerationTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.allot_dataset_acceleration_task_with_options(request, runtime)
 
@@ -874,6 +1076,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.AllotDatasetAccelerationTaskRequest,
     ) -> quickbi_public_20220101_models.AllotDatasetAccelerationTaskResponse:
+        """
+        @summary 触发数据集抽取加速
+        
+        @param request: AllotDatasetAccelerationTaskRequest
+        @return: AllotDatasetAccelerationTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.allot_dataset_acceleration_task_with_options_async(request, runtime)
 
@@ -882,6 +1090,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.AuthorizeMenuRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.AuthorizeMenuResponse:
+        """
+        @summary Batch authorization of BI portal menu will be skipped automatically.
+        
+        @param request: AuthorizeMenuRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AuthorizeMenuResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auth_points_value):
@@ -918,6 +1133,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.AuthorizeMenuRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.AuthorizeMenuResponse:
+        """
+        @summary Batch authorization of BI portal menu will be skipped automatically.
+        
+        @param request: AuthorizeMenuRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AuthorizeMenuResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auth_points_value):
@@ -953,6 +1175,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.AuthorizeMenuRequest,
     ) -> quickbi_public_20220101_models.AuthorizeMenuResponse:
+        """
+        @summary Batch authorization of BI portal menu will be skipped automatically.
+        
+        @param request: AuthorizeMenuRequest
+        @return: AuthorizeMenuResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.authorize_menu_with_options(request, runtime)
 
@@ -960,6 +1188,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.AuthorizeMenuRequest,
     ) -> quickbi_public_20220101_models.AuthorizeMenuResponse:
+        """
+        @summary Batch authorization of BI portal menu will be skipped automatically.
+        
+        @param request: AuthorizeMenuRequest
+        @return: AuthorizeMenuResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.authorize_menu_with_options_async(request, runtime)
 
@@ -968,6 +1202,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.BatchAddFeishuUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.BatchAddFeishuUsersResponse:
+        """
+        @summary 批量添加飞书用户
+        
+        @param request: BatchAddFeishuUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchAddFeishuUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.feishu_users):
@@ -1004,6 +1245,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.BatchAddFeishuUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.BatchAddFeishuUsersResponse:
+        """
+        @summary 批量添加飞书用户
+        
+        @param request: BatchAddFeishuUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchAddFeishuUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.feishu_users):
@@ -1039,6 +1287,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.BatchAddFeishuUsersRequest,
     ) -> quickbi_public_20220101_models.BatchAddFeishuUsersResponse:
+        """
+        @summary 批量添加飞书用户
+        
+        @param request: BatchAddFeishuUsersRequest
+        @return: BatchAddFeishuUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_add_feishu_users_with_options(request, runtime)
 
@@ -1046,6 +1300,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.BatchAddFeishuUsersRequest,
     ) -> quickbi_public_20220101_models.BatchAddFeishuUsersResponse:
+        """
+        @summary 批量添加飞书用户
+        
+        @param request: BatchAddFeishuUsersRequest
+        @return: BatchAddFeishuUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_add_feishu_users_with_options_async(request, runtime)
 
@@ -1054,6 +1314,11 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.CancelAuthorizationMenuRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.CancelAuthorizationMenuResponse:
+        """
+        @param request: CancelAuthorizationMenuRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelAuthorizationMenuResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.data_portal_id):
@@ -1088,6 +1353,11 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.CancelAuthorizationMenuRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.CancelAuthorizationMenuResponse:
+        """
+        @param request: CancelAuthorizationMenuRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelAuthorizationMenuResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.data_portal_id):
@@ -1121,6 +1391,10 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.CancelAuthorizationMenuRequest,
     ) -> quickbi_public_20220101_models.CancelAuthorizationMenuResponse:
+        """
+        @param request: CancelAuthorizationMenuRequest
+        @return: CancelAuthorizationMenuResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cancel_authorization_menu_with_options(request, runtime)
 
@@ -1128,6 +1402,10 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.CancelAuthorizationMenuRequest,
     ) -> quickbi_public_20220101_models.CancelAuthorizationMenuResponse:
+        """
+        @param request: CancelAuthorizationMenuRequest
+        @return: CancelAuthorizationMenuResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_authorization_menu_with_options_async(request, runtime)
 
@@ -1136,6 +1414,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.CancelCollectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.CancelCollectionResponse:
+        """
+        @summary Cancel the data works from the user\\"s collection.
+        
+        @param request: CancelCollectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelCollectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_id):
@@ -1166,6 +1451,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.CancelCollectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.CancelCollectionResponse:
+        """
+        @summary Cancel the data works from the user\\"s collection.
+        
+        @param request: CancelCollectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelCollectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_id):
@@ -1195,6 +1487,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.CancelCollectionRequest,
     ) -> quickbi_public_20220101_models.CancelCollectionResponse:
+        """
+        @summary Cancel the data works from the user\\"s collection.
+        
+        @param request: CancelCollectionRequest
+        @return: CancelCollectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cancel_collection_with_options(request, runtime)
 
@@ -1202,6 +1500,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.CancelCollectionRequest,
     ) -> quickbi_public_20220101_models.CancelCollectionResponse:
+        """
+        @summary Cancel the data works from the user\\"s collection.
+        
+        @param request: CancelCollectionRequest
+        @return: CancelCollectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_collection_with_options_async(request, runtime)
 
@@ -1210,6 +1514,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.CancelReportShareRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.CancelReportShareResponse:
+        """
+        @summary Delete a share authorization for a data work.
+        
+        @param request: CancelReportShareRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelReportShareResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.report_id):
@@ -1242,6 +1553,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.CancelReportShareRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.CancelReportShareResponse:
+        """
+        @summary Delete a share authorization for a data work.
+        
+        @param request: CancelReportShareRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelReportShareResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.report_id):
@@ -1273,6 +1591,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.CancelReportShareRequest,
     ) -> quickbi_public_20220101_models.CancelReportShareResponse:
+        """
+        @summary Delete a share authorization for a data work.
+        
+        @param request: CancelReportShareRequest
+        @return: CancelReportShareResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cancel_report_share_with_options(request, runtime)
 
@@ -1280,6 +1604,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.CancelReportShareRequest,
     ) -> quickbi_public_20220101_models.CancelReportShareResponse:
+        """
+        @summary Delete a share authorization for a data work.
+        
+        @param request: CancelReportShareRequest
+        @return: CancelReportShareResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_report_share_with_options_async(request, runtime)
 
@@ -1288,6 +1618,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ChangeVisibilityModelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ChangeVisibilityModelResponse:
+        """
+        @summary The ID of the request.
+        
+        @param request: ChangeVisibilityModelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeVisibilityModelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.data_portal_id):
@@ -1320,6 +1657,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ChangeVisibilityModelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ChangeVisibilityModelResponse:
+        """
+        @summary The ID of the request.
+        
+        @param request: ChangeVisibilityModelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeVisibilityModelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.data_portal_id):
@@ -1351,6 +1695,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.ChangeVisibilityModelRequest,
     ) -> quickbi_public_20220101_models.ChangeVisibilityModelResponse:
+        """
+        @summary The ID of the request.
+        
+        @param request: ChangeVisibilityModelRequest
+        @return: ChangeVisibilityModelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.change_visibility_model_with_options(request, runtime)
 
@@ -1358,6 +1708,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.ChangeVisibilityModelRequest,
     ) -> quickbi_public_20220101_models.ChangeVisibilityModelResponse:
+        """
+        @summary The ID of the request.
+        
+        @param request: ChangeVisibilityModelRequest
+        @return: ChangeVisibilityModelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.change_visibility_model_with_options_async(request, runtime)
 
@@ -1366,6 +1722,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.CheckReadableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.CheckReadableResponse:
+        """
+        @summary Queries whether a user has permissions to view data works, such as dashboards and workbooks.
+        
+        @param request: CheckReadableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckReadableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_id):
@@ -1396,6 +1759,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.CheckReadableRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.CheckReadableResponse:
+        """
+        @summary Queries whether a user has permissions to view data works, such as dashboards and workbooks.
+        
+        @param request: CheckReadableRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckReadableResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_id):
@@ -1425,6 +1795,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.CheckReadableRequest,
     ) -> quickbi_public_20220101_models.CheckReadableResponse:
+        """
+        @summary Queries whether a user has permissions to view data works, such as dashboards and workbooks.
+        
+        @param request: CheckReadableRequest
+        @return: CheckReadableResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.check_readable_with_options(request, runtime)
 
@@ -1432,6 +1808,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.CheckReadableRequest,
     ) -> quickbi_public_20220101_models.CheckReadableResponse:
+        """
+        @summary Queries whether a user has permissions to view data works, such as dashboards and workbooks.
+        
+        @param request: CheckReadableRequest
+        @return: CheckReadableResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.check_readable_with_options_async(request, runtime)
 
@@ -1440,6 +1822,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.CreateTicketRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.CreateTicketResponse:
+        """
+        @summary 生成三方嵌入的ticket
+        
+        @param request: CreateTicketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTicketResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -1484,6 +1873,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.CreateTicketRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.CreateTicketResponse:
+        """
+        @summary 生成三方嵌入的ticket
+        
+        @param request: CreateTicketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTicketResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account_name):
@@ -1527,6 +1923,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.CreateTicketRequest,
     ) -> quickbi_public_20220101_models.CreateTicketResponse:
+        """
+        @summary 生成三方嵌入的ticket
+        
+        @param request: CreateTicketRequest
+        @return: CreateTicketResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_ticket_with_options(request, runtime)
 
@@ -1534,6 +1936,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.CreateTicketRequest,
     ) -> quickbi_public_20220101_models.CreateTicketResponse:
+        """
+        @summary 生成三方嵌入的ticket
+        
+        @param request: CreateTicketRequest
+        @return: CreateTicketResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_ticket_with_options_async(request, runtime)
 
@@ -1542,6 +1950,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.CreateUserGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.CreateUserGroupResponse:
+        """
+        @summary Create a user group. You can specify a parent user group.
+        
+        @param request: CreateUserGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUserGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.parent_user_group_id):
@@ -1576,6 +1991,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.CreateUserGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.CreateUserGroupResponse:
+        """
+        @summary Create a user group. You can specify a parent user group.
+        
+        @param request: CreateUserGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUserGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.parent_user_group_id):
@@ -1609,6 +2031,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.CreateUserGroupRequest,
     ) -> quickbi_public_20220101_models.CreateUserGroupResponse:
+        """
+        @summary Create a user group. You can specify a parent user group.
+        
+        @param request: CreateUserGroupRequest
+        @return: CreateUserGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_user_group_with_options(request, runtime)
 
@@ -1616,6 +2044,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.CreateUserGroupRequest,
     ) -> quickbi_public_20220101_models.CreateUserGroupResponse:
+        """
+        @summary Create a user group. You can specify a parent user group.
+        
+        @param request: CreateUserGroupRequest
+        @return: CreateUserGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_user_group_with_options_async(request, runtime)
 
@@ -1624,6 +2058,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.DelayTicketExpireTimeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.DelayTicketExpireTimeResponse:
+        """
+        @summary Update the expiration time of the ticket embedded in the report.
+        
+        @param request: DelayTicketExpireTimeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DelayTicketExpireTimeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.expire_time):
@@ -1654,6 +2095,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.DelayTicketExpireTimeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.DelayTicketExpireTimeResponse:
+        """
+        @summary Update the expiration time of the ticket embedded in the report.
+        
+        @param request: DelayTicketExpireTimeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DelayTicketExpireTimeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.expire_time):
@@ -1683,6 +2131,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.DelayTicketExpireTimeRequest,
     ) -> quickbi_public_20220101_models.DelayTicketExpireTimeResponse:
+        """
+        @summary Update the expiration time of the ticket embedded in the report.
+        
+        @param request: DelayTicketExpireTimeRequest
+        @return: DelayTicketExpireTimeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delay_ticket_expire_time_with_options(request, runtime)
 
@@ -1690,6 +2144,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.DelayTicketExpireTimeRequest,
     ) -> quickbi_public_20220101_models.DelayTicketExpireTimeResponse:
+        """
+        @summary Update the expiration time of the ticket embedded in the report.
+        
+        @param request: DelayTicketExpireTimeRequest
+        @return: DelayTicketExpireTimeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delay_ticket_expire_time_with_options_async(request, runtime)
 
@@ -1699,7 +2159,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.DeleteDataLevelPermissionRuleUsersResponse:
         """
-        {"ruleId":"a5bb24da-**-a891683e14da","cubeId":"7c7223ae-***-3c744528014b","delModel":{"userGroups":["0d5fb19b-***-1248fc27ca51","3d2c23d4-***-f6390f325c2d"],"users":["4334***358","Huang***3fa822"]}}
+        @summary { "ruleId": "a5bb24da- **-a891683e14da", // The ID of the row-column permission rule. "cubeId": "7c7223ae- ***-3c744528014b", // The ID of the dataset. "delModel": { "userGroups": [ "0d5fb19b- ***-1248 fc27ca51", // Delete the user group ID of the user group. "3d2c23d4-***-f6390f325c2d" ], "users": [ "4334 ***358", // Delete the UserID of the user group. "Huang***3fa822" ] } }
+        
+        @description {"ruleId":"a5bb24da-**-a891683e14da","cubeId":"7c7223ae-***-3c744528014b","delModel":{"userGroups":["0d5fb19b-***-1248fc27ca51","3d2c23d4-***-f6390f325c2d"],"users":["4334***358","Huang***3fa822"]}}
         
         @param request: DeleteDataLevelPermissionRuleUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1734,7 +2196,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.DeleteDataLevelPermissionRuleUsersResponse:
         """
-        {"ruleId":"a5bb24da-**-a891683e14da","cubeId":"7c7223ae-***-3c744528014b","delModel":{"userGroups":["0d5fb19b-***-1248fc27ca51","3d2c23d4-***-f6390f325c2d"],"users":["4334***358","Huang***3fa822"]}}
+        @summary { "ruleId": "a5bb24da- **-a891683e14da", // The ID of the row-column permission rule. "cubeId": "7c7223ae- ***-3c744528014b", // The ID of the dataset. "delModel": { "userGroups": [ "0d5fb19b- ***-1248 fc27ca51", // Delete the user group ID of the user group. "3d2c23d4-***-f6390f325c2d" ], "users": [ "4334 ***358", // Delete the UserID of the user group. "Huang***3fa822" ] } }
+        
+        @description {"ruleId":"a5bb24da-**-a891683e14da","cubeId":"7c7223ae-***-3c744528014b","delModel":{"userGroups":["0d5fb19b-***-1248fc27ca51","3d2c23d4-***-f6390f325c2d"],"users":["4334***358","Huang***3fa822"]}}
         
         @param request: DeleteDataLevelPermissionRuleUsersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1768,7 +2232,9 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.DeleteDataLevelPermissionRuleUsersRequest,
     ) -> quickbi_public_20220101_models.DeleteDataLevelPermissionRuleUsersResponse:
         """
-        {"ruleId":"a5bb24da-**-a891683e14da","cubeId":"7c7223ae-***-3c744528014b","delModel":{"userGroups":["0d5fb19b-***-1248fc27ca51","3d2c23d4-***-f6390f325c2d"],"users":["4334***358","Huang***3fa822"]}}
+        @summary { "ruleId": "a5bb24da- **-a891683e14da", // The ID of the row-column permission rule. "cubeId": "7c7223ae- ***-3c744528014b", // The ID of the dataset. "delModel": { "userGroups": [ "0d5fb19b- ***-1248 fc27ca51", // Delete the user group ID of the user group. "3d2c23d4-***-f6390f325c2d" ], "users": [ "4334 ***358", // Delete the UserID of the user group. "Huang***3fa822" ] } }
+        
+        @description {"ruleId":"a5bb24da-**-a891683e14da","cubeId":"7c7223ae-***-3c744528014b","delModel":{"userGroups":["0d5fb19b-***-1248fc27ca51","3d2c23d4-***-f6390f325c2d"],"users":["4334***358","Huang***3fa822"]}}
         
         @param request: DeleteDataLevelPermissionRuleUsersRequest
         @return: DeleteDataLevelPermissionRuleUsersResponse
@@ -1781,7 +2247,9 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.DeleteDataLevelPermissionRuleUsersRequest,
     ) -> quickbi_public_20220101_models.DeleteDataLevelPermissionRuleUsersResponse:
         """
-        {"ruleId":"a5bb24da-**-a891683e14da","cubeId":"7c7223ae-***-3c744528014b","delModel":{"userGroups":["0d5fb19b-***-1248fc27ca51","3d2c23d4-***-f6390f325c2d"],"users":["4334***358","Huang***3fa822"]}}
+        @summary { "ruleId": "a5bb24da- **-a891683e14da", // The ID of the row-column permission rule. "cubeId": "7c7223ae- ***-3c744528014b", // The ID of the dataset. "delModel": { "userGroups": [ "0d5fb19b- ***-1248 fc27ca51", // Delete the user group ID of the user group. "3d2c23d4-***-f6390f325c2d" ], "users": [ "4334 ***358", // Delete the UserID of the user group. "Huang***3fa822" ] } }
+        
+        @description {"ruleId":"a5bb24da-**-a891683e14da","cubeId":"7c7223ae-***-3c744528014b","delModel":{"userGroups":["0d5fb19b-***-1248fc27ca51","3d2c23d4-***-f6390f325c2d"],"users":["4334***358","Huang***3fa822"]}}
         
         @param request: DeleteDataLevelPermissionRuleUsersRequest
         @return: DeleteDataLevelPermissionRuleUsersResponse
@@ -1795,7 +2263,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.DeleteDataLevelRuleConfigResponse:
         """
-        The ID of the training dataset that you want to remove from the specified custom linguistic model.
+        @summary The ID of the request.
+        
+        @description The ID of the training dataset that you want to remove from the specified custom linguistic model.
         
         @param request: DeleteDataLevelRuleConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1832,7 +2302,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.DeleteDataLevelRuleConfigResponse:
         """
-        The ID of the training dataset that you want to remove from the specified custom linguistic model.
+        @summary The ID of the request.
+        
+        @description The ID of the training dataset that you want to remove from the specified custom linguistic model.
         
         @param request: DeleteDataLevelRuleConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1868,7 +2340,9 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.DeleteDataLevelRuleConfigRequest,
     ) -> quickbi_public_20220101_models.DeleteDataLevelRuleConfigResponse:
         """
-        The ID of the training dataset that you want to remove from the specified custom linguistic model.
+        @summary The ID of the request.
+        
+        @description The ID of the training dataset that you want to remove from the specified custom linguistic model.
         
         @param request: DeleteDataLevelRuleConfigRequest
         @return: DeleteDataLevelRuleConfigResponse
@@ -1881,7 +2355,9 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.DeleteDataLevelRuleConfigRequest,
     ) -> quickbi_public_20220101_models.DeleteDataLevelRuleConfigResponse:
         """
-        The ID of the training dataset that you want to remove from the specified custom linguistic model.
+        @summary The ID of the request.
+        
+        @description The ID of the training dataset that you want to remove from the specified custom linguistic model.
         
         @param request: DeleteDataLevelRuleConfigRequest
         @return: DeleteDataLevelRuleConfigResponse
@@ -1894,6 +2370,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.DeleteTicketRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.DeleteTicketResponse:
+        """
+        @summary auditing
+        
+        @param request: DeleteTicketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTicketResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ticket):
@@ -1922,6 +2405,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.DeleteTicketRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.DeleteTicketResponse:
+        """
+        @summary auditing
+        
+        @param request: DeleteTicketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTicketResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ticket):
@@ -1949,6 +2439,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.DeleteTicketRequest,
     ) -> quickbi_public_20220101_models.DeleteTicketResponse:
+        """
+        @summary auditing
+        
+        @param request: DeleteTicketRequest
+        @return: DeleteTicketResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_ticket_with_options(request, runtime)
 
@@ -1956,6 +2452,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.DeleteTicketRequest,
     ) -> quickbi_public_20220101_models.DeleteTicketResponse:
+        """
+        @summary auditing
+        
+        @param request: DeleteTicketRequest
+        @return: DeleteTicketResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_ticket_with_options_async(request, runtime)
 
@@ -1964,6 +2466,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.DeleteUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.DeleteUserResponse:
+        """
+        @summary auditing
+        
+        @param request: DeleteUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.transfer_user_id):
@@ -1994,6 +2503,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.DeleteUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.DeleteUserResponse:
+        """
+        @summary auditing
+        
+        @param request: DeleteUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.transfer_user_id):
@@ -2023,6 +2539,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.DeleteUserRequest,
     ) -> quickbi_public_20220101_models.DeleteUserResponse:
+        """
+        @summary auditing
+        
+        @param request: DeleteUserRequest
+        @return: DeleteUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_user_with_options(request, runtime)
 
@@ -2030,6 +2552,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.DeleteUserRequest,
     ) -> quickbi_public_20220101_models.DeleteUserResponse:
+        """
+        @summary auditing
+        
+        @param request: DeleteUserRequest
+        @return: DeleteUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_user_with_options_async(request, runtime)
 
@@ -2038,6 +2566,11 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.DeleteUserFromWorkspaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.DeleteUserFromWorkspaceResponse:
+        """
+        @param request: DeleteUserFromWorkspaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserFromWorkspaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_id):
@@ -2068,6 +2601,11 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.DeleteUserFromWorkspaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.DeleteUserFromWorkspaceResponse:
+        """
+        @param request: DeleteUserFromWorkspaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserFromWorkspaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_id):
@@ -2097,6 +2635,10 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.DeleteUserFromWorkspaceRequest,
     ) -> quickbi_public_20220101_models.DeleteUserFromWorkspaceResponse:
+        """
+        @param request: DeleteUserFromWorkspaceRequest
+        @return: DeleteUserFromWorkspaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_user_from_workspace_with_options(request, runtime)
 
@@ -2104,6 +2646,10 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.DeleteUserFromWorkspaceRequest,
     ) -> quickbi_public_20220101_models.DeleteUserFromWorkspaceResponse:
+        """
+        @param request: DeleteUserFromWorkspaceRequest
+        @return: DeleteUserFromWorkspaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_user_from_workspace_with_options_async(request, runtime)
 
@@ -2112,6 +2658,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.DeleteUserGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.DeleteUserGroupResponse:
+        """
+        @summary Deletes a user group in an organization.
+        
+        @param request: DeleteUserGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_group_id):
@@ -2140,6 +2693,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.DeleteUserGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.DeleteUserGroupResponse:
+        """
+        @summary Deletes a user group in an organization.
+        
+        @param request: DeleteUserGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_group_id):
@@ -2167,6 +2727,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.DeleteUserGroupRequest,
     ) -> quickbi_public_20220101_models.DeleteUserGroupResponse:
+        """
+        @summary Deletes a user group in an organization.
+        
+        @param request: DeleteUserGroupRequest
+        @return: DeleteUserGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_user_group_with_options(request, runtime)
 
@@ -2174,6 +2740,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.DeleteUserGroupRequest,
     ) -> quickbi_public_20220101_models.DeleteUserGroupResponse:
+        """
+        @summary Deletes a user group in an organization.
+        
+        @param request: DeleteUserGroupRequest
+        @return: DeleteUserGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_user_group_with_options_async(request, runtime)
 
@@ -2182,6 +2754,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.DeleteUserGroupMemberRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.DeleteUserGroupMemberResponse:
+        """
+        @summary Deletes a specified member from a specified user group.
+        
+        @param request: DeleteUserGroupMemberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserGroupMemberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_group_id):
@@ -2212,6 +2791,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.DeleteUserGroupMemberRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.DeleteUserGroupMemberResponse:
+        """
+        @summary Deletes a specified member from a specified user group.
+        
+        @param request: DeleteUserGroupMemberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserGroupMemberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_group_id):
@@ -2241,6 +2827,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.DeleteUserGroupMemberRequest,
     ) -> quickbi_public_20220101_models.DeleteUserGroupMemberResponse:
+        """
+        @summary Deletes a specified member from a specified user group.
+        
+        @param request: DeleteUserGroupMemberRequest
+        @return: DeleteUserGroupMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_user_group_member_with_options(request, runtime)
 
@@ -2248,6 +2840,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.DeleteUserGroupMemberRequest,
     ) -> quickbi_public_20220101_models.DeleteUserGroupMemberResponse:
+        """
+        @summary Deletes a specified member from a specified user group.
+        
+        @param request: DeleteUserGroupMemberRequest
+        @return: DeleteUserGroupMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_user_group_member_with_options_async(request, runtime)
 
@@ -2256,6 +2854,15 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.DeleteUserGroupMembersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.DeleteUserGroupMembersResponse:
+        """
+        @summary Indicates whether the request is successful. Valid values:
+        true: The request was successful.
+        false: The request failed.
+        
+        @param request: DeleteUserGroupMembersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserGroupMembersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_group_ids):
@@ -2286,6 +2893,15 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.DeleteUserGroupMembersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.DeleteUserGroupMembersResponse:
+        """
+        @summary Indicates whether the request is successful. Valid values:
+        true: The request was successful.
+        false: The request failed.
+        
+        @param request: DeleteUserGroupMembersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserGroupMembersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_group_ids):
@@ -2315,6 +2931,14 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.DeleteUserGroupMembersRequest,
     ) -> quickbi_public_20220101_models.DeleteUserGroupMembersResponse:
+        """
+        @summary Indicates whether the request is successful. Valid values:
+        true: The request was successful.
+        false: The request failed.
+        
+        @param request: DeleteUserGroupMembersRequest
+        @return: DeleteUserGroupMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_user_group_members_with_options(request, runtime)
 
@@ -2322,6 +2946,14 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.DeleteUserGroupMembersRequest,
     ) -> quickbi_public_20220101_models.DeleteUserGroupMembersResponse:
+        """
+        @summary Indicates whether the request is successful. Valid values:
+        true: The request was successful.
+        false: The request failed.
+        
+        @param request: DeleteUserGroupMembersRequest
+        @return: DeleteUserGroupMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_user_group_members_with_options_async(request, runtime)
 
@@ -2330,6 +2962,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.DeleteUserTagMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.DeleteUserTagMetaResponse:
+        """
+        @summary Deletes the tag metadata of an organization member.
+        
+        @param request: DeleteUserTagMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserTagMetaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tag_id):
@@ -2358,6 +2997,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.DeleteUserTagMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.DeleteUserTagMetaResponse:
+        """
+        @summary Deletes the tag metadata of an organization member.
+        
+        @param request: DeleteUserTagMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserTagMetaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tag_id):
@@ -2385,6 +3031,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.DeleteUserTagMetaRequest,
     ) -> quickbi_public_20220101_models.DeleteUserTagMetaResponse:
+        """
+        @summary Deletes the tag metadata of an organization member.
+        
+        @param request: DeleteUserTagMetaRequest
+        @return: DeleteUserTagMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_user_tag_meta_with_options(request, runtime)
 
@@ -2392,6 +3044,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.DeleteUserTagMetaRequest,
     ) -> quickbi_public_20220101_models.DeleteUserTagMetaResponse:
+        """
+        @summary Deletes the tag metadata of an organization member.
+        
+        @param request: DeleteUserTagMetaRequest
+        @return: DeleteUserTagMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_user_tag_meta_with_options_async(request, runtime)
 
@@ -2400,6 +3058,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.GetUserGroupInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.GetUserGroupInfoResponse:
+        """
+        @summary Test description
+        
+        @param request: GetUserGroupInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserGroupInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -2428,6 +3093,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.GetUserGroupInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.GetUserGroupInfoResponse:
+        """
+        @summary Test description
+        
+        @param request: GetUserGroupInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserGroupInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -2455,6 +3127,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.GetUserGroupInfoRequest,
     ) -> quickbi_public_20220101_models.GetUserGroupInfoResponse:
+        """
+        @summary Test description
+        
+        @param request: GetUserGroupInfoRequest
+        @return: GetUserGroupInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_user_group_info_with_options(request, runtime)
 
@@ -2462,6 +3140,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.GetUserGroupInfoRequest,
     ) -> quickbi_public_20220101_models.GetUserGroupInfoResponse:
+        """
+        @summary Test description
+        
+        @param request: GetUserGroupInfoRequest
+        @return: GetUserGroupInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_user_group_info_with_options_async(request, runtime)
 
@@ -2470,6 +3154,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListApiDatasourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListApiDatasourceResponse:
+        """
+        @summary 概述
+        
+        @param request: ListApiDatasourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApiDatasourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_word):
@@ -2504,6 +3195,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListApiDatasourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListApiDatasourceResponse:
+        """
+        @summary 概述
+        
+        @param request: ListApiDatasourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApiDatasourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_word):
@@ -2537,6 +3235,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.ListApiDatasourceRequest,
     ) -> quickbi_public_20220101_models.ListApiDatasourceResponse:
+        """
+        @summary 概述
+        
+        @param request: ListApiDatasourceRequest
+        @return: ListApiDatasourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_api_datasource_with_options(request, runtime)
 
@@ -2544,6 +3248,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.ListApiDatasourceRequest,
     ) -> quickbi_public_20220101_models.ListApiDatasourceResponse:
+        """
+        @summary 概述
+        
+        @param request: ListApiDatasourceRequest
+        @return: ListApiDatasourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_api_datasource_with_options_async(request, runtime)
 
@@ -2552,6 +3262,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListByUserGroupIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListByUserGroupIdResponse:
+        """
+        @summary Queries user group information at a time by user group ID.
+        
+        @param request: ListByUserGroupIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListByUserGroupIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_group_ids):
@@ -2580,6 +3297,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListByUserGroupIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListByUserGroupIdResponse:
+        """
+        @summary Queries user group information at a time by user group ID.
+        
+        @param request: ListByUserGroupIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListByUserGroupIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_group_ids):
@@ -2607,6 +3331,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.ListByUserGroupIdRequest,
     ) -> quickbi_public_20220101_models.ListByUserGroupIdResponse:
+        """
+        @summary Queries user group information at a time by user group ID.
+        
+        @param request: ListByUserGroupIdRequest
+        @return: ListByUserGroupIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_by_user_group_id_with_options(request, runtime)
 
@@ -2614,6 +3344,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.ListByUserGroupIdRequest,
     ) -> quickbi_public_20220101_models.ListByUserGroupIdResponse:
+        """
+        @summary Queries user group information at a time by user group ID.
+        
+        @param request: ListByUserGroupIdRequest
+        @return: ListByUserGroupIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_by_user_group_id_with_options_async(request, runtime)
 
@@ -2622,6 +3358,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListCollectionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListCollectionsResponse:
+        """
+        @summary The ID of the work.
+        
+        @param request: ListCollectionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCollectionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_id):
@@ -2650,6 +3393,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListCollectionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListCollectionsResponse:
+        """
+        @summary The ID of the work.
+        
+        @param request: ListCollectionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCollectionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_id):
@@ -2677,6 +3427,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.ListCollectionsRequest,
     ) -> quickbi_public_20220101_models.ListCollectionsResponse:
+        """
+        @summary The ID of the work.
+        
+        @param request: ListCollectionsRequest
+        @return: ListCollectionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_collections_with_options(request, runtime)
 
@@ -2684,6 +3440,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.ListCollectionsRequest,
     ) -> quickbi_public_20220101_models.ListCollectionsResponse:
+        """
+        @summary The ID of the work.
+        
+        @param request: ListCollectionsRequest
+        @return: ListCollectionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_collections_with_options_async(request, runtime)
 
@@ -2693,7 +3455,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListCubeDataLevelPermissionConfigResponse:
         """
-        > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click *Upgrade**.
+        @summary You can this operation to obtain a list of row and column permission configurations for a specified dataset.
+        
+        @description > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click *Upgrade**.
         
         @param request: ListCubeDataLevelPermissionConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2730,7 +3494,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListCubeDataLevelPermissionConfigResponse:
         """
-        > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click *Upgrade**.
+        @summary You can this operation to obtain a list of row and column permission configurations for a specified dataset.
+        
+        @description > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click *Upgrade**.
         
         @param request: ListCubeDataLevelPermissionConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2766,7 +3532,9 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListCubeDataLevelPermissionConfigRequest,
     ) -> quickbi_public_20220101_models.ListCubeDataLevelPermissionConfigResponse:
         """
-        > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click *Upgrade**.
+        @summary You can this operation to obtain a list of row and column permission configurations for a specified dataset.
+        
+        @description > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click *Upgrade**.
         
         @param request: ListCubeDataLevelPermissionConfigRequest
         @return: ListCubeDataLevelPermissionConfigResponse
@@ -2779,7 +3547,9 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListCubeDataLevelPermissionConfigRequest,
     ) -> quickbi_public_20220101_models.ListCubeDataLevelPermissionConfigResponse:
         """
-        > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click *Upgrade**.
+        @summary You can this operation to obtain a list of row and column permission configurations for a specified dataset.
+        
+        @description > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click *Upgrade**.
         
         @param request: ListCubeDataLevelPermissionConfigRequest
         @return: ListCubeDataLevelPermissionConfigResponse
@@ -2792,6 +3562,11 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListDataLevelPermissionWhiteListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListDataLevelPermissionWhiteListResponse:
+        """
+        @param request: ListDataLevelPermissionWhiteListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataLevelPermissionWhiteListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cube_id):
@@ -2822,6 +3597,11 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListDataLevelPermissionWhiteListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListDataLevelPermissionWhiteListResponse:
+        """
+        @param request: ListDataLevelPermissionWhiteListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataLevelPermissionWhiteListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cube_id):
@@ -2851,6 +3631,10 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.ListDataLevelPermissionWhiteListRequest,
     ) -> quickbi_public_20220101_models.ListDataLevelPermissionWhiteListResponse:
+        """
+        @param request: ListDataLevelPermissionWhiteListRequest
+        @return: ListDataLevelPermissionWhiteListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_data_level_permission_white_list_with_options(request, runtime)
 
@@ -2858,6 +3642,10 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.ListDataLevelPermissionWhiteListRequest,
     ) -> quickbi_public_20220101_models.ListDataLevelPermissionWhiteListResponse:
+        """
+        @param request: ListDataLevelPermissionWhiteListRequest
+        @return: ListDataLevelPermissionWhiteListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_data_level_permission_white_list_with_options_async(request, runtime)
 
@@ -2866,6 +3654,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListFavoriteReportsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListFavoriteReportsResponse:
+        """
+        @summary 概述
+        
+        @param request: ListFavoriteReportsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFavoriteReportsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -2900,6 +3695,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListFavoriteReportsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListFavoriteReportsResponse:
+        """
+        @summary 概述
+        
+        @param request: ListFavoriteReportsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFavoriteReportsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -2933,6 +3735,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.ListFavoriteReportsRequest,
     ) -> quickbi_public_20220101_models.ListFavoriteReportsResponse:
+        """
+        @summary 概述
+        
+        @param request: ListFavoriteReportsRequest
+        @return: ListFavoriteReportsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_favorite_reports_with_options(request, runtime)
 
@@ -2940,6 +3748,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.ListFavoriteReportsRequest,
     ) -> quickbi_public_20220101_models.ListFavoriteReportsResponse:
+        """
+        @summary 概述
+        
+        @param request: ListFavoriteReportsRequest
+        @return: ListFavoriteReportsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_favorite_reports_with_options_async(request, runtime)
 
@@ -2948,6 +3762,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListOrganizationRoleUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListOrganizationRoleUsersResponse:
+        """
+        @summary 获取指定组织角色下的用户列表
+        
+        @param request: ListOrganizationRoleUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOrganizationRoleUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -2982,6 +3803,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListOrganizationRoleUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListOrganizationRoleUsersResponse:
+        """
+        @summary 获取指定组织角色下的用户列表
+        
+        @param request: ListOrganizationRoleUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOrganizationRoleUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -3015,6 +3843,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.ListOrganizationRoleUsersRequest,
     ) -> quickbi_public_20220101_models.ListOrganizationRoleUsersResponse:
+        """
+        @summary 获取指定组织角色下的用户列表
+        
+        @param request: ListOrganizationRoleUsersRequest
+        @return: ListOrganizationRoleUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_organization_role_users_with_options(request, runtime)
 
@@ -3022,6 +3856,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.ListOrganizationRoleUsersRequest,
     ) -> quickbi_public_20220101_models.ListOrganizationRoleUsersResponse:
+        """
+        @summary 获取指定组织角色下的用户列表
+        
+        @param request: ListOrganizationRoleUsersRequest
+        @return: ListOrganizationRoleUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_organization_role_users_with_options_async(request, runtime)
 
@@ -3029,6 +3869,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListOrganizationRolesResponse:
+        """
+        @summary 获取组织级别自定义角色列表
+        
+        @param request: ListOrganizationRolesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOrganizationRolesResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListOrganizationRoles',
@@ -3050,6 +3897,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListOrganizationRolesResponse:
+        """
+        @summary 获取组织级别自定义角色列表
+        
+        @param request: ListOrganizationRolesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOrganizationRolesResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListOrganizationRoles',
@@ -3068,10 +3922,20 @@ class Client(OpenApiClient):
         )
 
     def list_organization_roles(self) -> quickbi_public_20220101_models.ListOrganizationRolesResponse:
+        """
+        @summary 获取组织级别自定义角色列表
+        
+        @return: ListOrganizationRolesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_organization_roles_with_options(runtime)
 
     async def list_organization_roles_async(self) -> quickbi_public_20220101_models.ListOrganizationRolesResponse:
+        """
+        @summary 获取组织级别自定义角色列表
+        
+        @return: ListOrganizationRolesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_organization_roles_with_options_async(runtime)
 
@@ -3080,6 +3944,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListPortalMenuAuthorizationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListPortalMenuAuthorizationResponse:
+        """
+        @summary Obtains the list of authorization details for a BI portal menu.
+        
+        @param request: ListPortalMenuAuthorizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPortalMenuAuthorizationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.data_portal_id):
@@ -3108,6 +3979,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListPortalMenuAuthorizationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListPortalMenuAuthorizationResponse:
+        """
+        @summary Obtains the list of authorization details for a BI portal menu.
+        
+        @param request: ListPortalMenuAuthorizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPortalMenuAuthorizationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.data_portal_id):
@@ -3135,6 +4013,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.ListPortalMenuAuthorizationRequest,
     ) -> quickbi_public_20220101_models.ListPortalMenuAuthorizationResponse:
+        """
+        @summary Obtains the list of authorization details for a BI portal menu.
+        
+        @param request: ListPortalMenuAuthorizationRequest
+        @return: ListPortalMenuAuthorizationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_portal_menu_authorization_with_options(request, runtime)
 
@@ -3142,6 +4026,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.ListPortalMenuAuthorizationRequest,
     ) -> quickbi_public_20220101_models.ListPortalMenuAuthorizationResponse:
+        """
+        @summary Obtains the list of authorization details for a BI portal menu.
+        
+        @param request: ListPortalMenuAuthorizationRequest
+        @return: ListPortalMenuAuthorizationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_portal_menu_authorization_with_options_async(request, runtime)
 
@@ -3150,6 +4040,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListPortalMenusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListPortalMenusResponse:
+        """
+        @summary Gets a hierarchical list of menus under a specific BI portal.
+        
+        @param request: ListPortalMenusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPortalMenusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.data_portal_id):
@@ -3180,6 +4077,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListPortalMenusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListPortalMenusResponse:
+        """
+        @summary Gets a hierarchical list of menus under a specific BI portal.
+        
+        @param request: ListPortalMenusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPortalMenusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.data_portal_id):
@@ -3209,6 +4113,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.ListPortalMenusRequest,
     ) -> quickbi_public_20220101_models.ListPortalMenusResponse:
+        """
+        @summary Gets a hierarchical list of menus under a specific BI portal.
+        
+        @param request: ListPortalMenusRequest
+        @return: ListPortalMenusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_portal_menus_with_options(request, runtime)
 
@@ -3216,6 +4126,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.ListPortalMenusRequest,
     ) -> quickbi_public_20220101_models.ListPortalMenusResponse:
+        """
+        @summary Gets a hierarchical list of menus under a specific BI portal.
+        
+        @param request: ListPortalMenusRequest
+        @return: ListPortalMenusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_portal_menus_with_options_async(request, runtime)
 
@@ -3224,6 +4140,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListRecentViewReportsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListRecentViewReportsResponse:
+        """
+        @summary 获取首页看板常看和足迹列表
+        
+        @param request: ListRecentViewReportsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRecentViewReportsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -3262,6 +4185,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListRecentViewReportsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListRecentViewReportsResponse:
+        """
+        @summary 获取首页看板常看和足迹列表
+        
+        @param request: ListRecentViewReportsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRecentViewReportsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -3299,6 +4229,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.ListRecentViewReportsRequest,
     ) -> quickbi_public_20220101_models.ListRecentViewReportsResponse:
+        """
+        @summary 获取首页看板常看和足迹列表
+        
+        @param request: ListRecentViewReportsRequest
+        @return: ListRecentViewReportsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_recent_view_reports_with_options(request, runtime)
 
@@ -3306,6 +4242,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.ListRecentViewReportsRequest,
     ) -> quickbi_public_20220101_models.ListRecentViewReportsResponse:
+        """
+        @summary 获取首页看板常看和足迹列表
+        
+        @param request: ListRecentViewReportsRequest
+        @return: ListRecentViewReportsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_recent_view_reports_with_options_async(request, runtime)
 
@@ -3314,6 +4256,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListSharedReportsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListSharedReportsResponse:
+        """
+        @summary 概述
+        
+        @param request: ListSharedReportsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSharedReportsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -3348,6 +4297,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListSharedReportsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListSharedReportsResponse:
+        """
+        @summary 概述
+        
+        @param request: ListSharedReportsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSharedReportsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -3381,6 +4337,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.ListSharedReportsRequest,
     ) -> quickbi_public_20220101_models.ListSharedReportsResponse:
+        """
+        @summary 概述
+        
+        @param request: ListSharedReportsRequest
+        @return: ListSharedReportsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_shared_reports_with_options(request, runtime)
 
@@ -3388,6 +4350,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.ListSharedReportsRequest,
     ) -> quickbi_public_20220101_models.ListSharedReportsResponse:
+        """
+        @summary 概述
+        
+        @param request: ListSharedReportsRequest
+        @return: ListSharedReportsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_shared_reports_with_options_async(request, runtime)
 
@@ -3396,6 +4364,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListUserGroupsByUserIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListUserGroupsByUserIdResponse:
+        """
+        @summary Description
+        
+        @param request: ListUserGroupsByUserIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserGroupsByUserIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_id):
@@ -3424,6 +4399,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListUserGroupsByUserIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListUserGroupsByUserIdResponse:
+        """
+        @summary Description
+        
+        @param request: ListUserGroupsByUserIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserGroupsByUserIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_id):
@@ -3451,6 +4433,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.ListUserGroupsByUserIdRequest,
     ) -> quickbi_public_20220101_models.ListUserGroupsByUserIdResponse:
+        """
+        @summary Description
+        
+        @param request: ListUserGroupsByUserIdRequest
+        @return: ListUserGroupsByUserIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_user_groups_by_user_id_with_options(request, runtime)
 
@@ -3458,6 +4446,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.ListUserGroupsByUserIdRequest,
     ) -> quickbi_public_20220101_models.ListUserGroupsByUserIdResponse:
+        """
+        @summary Description
+        
+        @param request: ListUserGroupsByUserIdRequest
+        @return: ListUserGroupsByUserIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_user_groups_by_user_id_with_options_async(request, runtime)
 
@@ -3466,6 +4460,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListWorkspaceRoleUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListWorkspaceRoleUsersResponse:
+        """
+        @summary 获取指定空间角色下的用户列表
+        
+        @param request: ListWorkspaceRoleUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkspaceRoleUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -3502,6 +4503,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListWorkspaceRoleUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListWorkspaceRoleUsersResponse:
+        """
+        @summary 获取指定空间角色下的用户列表
+        
+        @param request: ListWorkspaceRoleUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkspaceRoleUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -3537,6 +4545,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.ListWorkspaceRoleUsersRequest,
     ) -> quickbi_public_20220101_models.ListWorkspaceRoleUsersResponse:
+        """
+        @summary 获取指定空间角色下的用户列表
+        
+        @param request: ListWorkspaceRoleUsersRequest
+        @return: ListWorkspaceRoleUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_workspace_role_users_with_options(request, runtime)
 
@@ -3544,6 +4558,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.ListWorkspaceRoleUsersRequest,
     ) -> quickbi_public_20220101_models.ListWorkspaceRoleUsersResponse:
+        """
+        @summary 获取指定空间角色下的用户列表
+        
+        @param request: ListWorkspaceRoleUsersRequest
+        @return: ListWorkspaceRoleUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_workspace_role_users_with_options_async(request, runtime)
 
@@ -3552,6 +4572,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListWorkspaceRolesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListWorkspaceRolesResponse:
+        """
+        @summary 获取空间角色列表
+        
+        @param request: ListWorkspaceRolesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkspaceRolesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.workspace_id):
@@ -3580,6 +4607,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ListWorkspaceRolesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ListWorkspaceRolesResponse:
+        """
+        @summary 获取空间角色列表
+        
+        @param request: ListWorkspaceRolesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkspaceRolesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.workspace_id):
@@ -3607,6 +4641,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.ListWorkspaceRolesRequest,
     ) -> quickbi_public_20220101_models.ListWorkspaceRolesResponse:
+        """
+        @summary 获取空间角色列表
+        
+        @param request: ListWorkspaceRolesRequest
+        @return: ListWorkspaceRolesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_workspace_roles_with_options(request, runtime)
 
@@ -3614,6 +4654,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.ListWorkspaceRolesRequest,
     ) -> quickbi_public_20220101_models.ListWorkspaceRolesResponse:
+        """
+        @summary 获取空间角色列表
+        
+        @param request: ListWorkspaceRolesRequest
+        @return: ListWorkspaceRolesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_workspace_roles_with_options_async(request, runtime)
 
@@ -3622,6 +4668,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ModifyApiDatasourceParametersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ModifyApiDatasourceParametersResponse:
+        """
+        @summary 修改指定API数据源参数值
+        
+        @param request: ModifyApiDatasourceParametersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApiDatasourceParametersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_id):
@@ -3654,6 +4707,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ModifyApiDatasourceParametersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ModifyApiDatasourceParametersResponse:
+        """
+        @summary 修改指定API数据源参数值
+        
+        @param request: ModifyApiDatasourceParametersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyApiDatasourceParametersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_id):
@@ -3685,6 +4745,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.ModifyApiDatasourceParametersRequest,
     ) -> quickbi_public_20220101_models.ModifyApiDatasourceParametersResponse:
+        """
+        @summary 修改指定API数据源参数值
+        
+        @param request: ModifyApiDatasourceParametersRequest
+        @return: ModifyApiDatasourceParametersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_api_datasource_parameters_with_options(request, runtime)
 
@@ -3692,6 +4758,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.ModifyApiDatasourceParametersRequest,
     ) -> quickbi_public_20220101_models.ModifyApiDatasourceParametersResponse:
+        """
+        @summary 修改指定API数据源参数值
+        
+        @param request: ModifyApiDatasourceParametersRequest
+        @return: ModifyApiDatasourceParametersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_api_datasource_parameters_with_options_async(request, runtime)
 
@@ -3700,6 +4772,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryComponentPerformanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryComponentPerformanceResponse:
+        """
+        @summary 查询组件性能列表
+        
+        @param request: QueryComponentPerformanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryComponentPerformanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cost_time_avg_min):
@@ -3740,6 +4819,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryComponentPerformanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryComponentPerformanceResponse:
+        """
+        @summary 查询组件性能列表
+        
+        @param request: QueryComponentPerformanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryComponentPerformanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cost_time_avg_min):
@@ -3779,6 +4865,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryComponentPerformanceRequest,
     ) -> quickbi_public_20220101_models.QueryComponentPerformanceResponse:
+        """
+        @summary 查询组件性能列表
+        
+        @param request: QueryComponentPerformanceRequest
+        @return: QueryComponentPerformanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_component_performance_with_options(request, runtime)
 
@@ -3786,6 +4878,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryComponentPerformanceRequest,
     ) -> quickbi_public_20220101_models.QueryComponentPerformanceResponse:
+        """
+        @summary 查询组件性能列表
+        
+        @param request: QueryComponentPerformanceRequest
+        @return: QueryComponentPerformanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_component_performance_with_options_async(request, runtime)
 
@@ -3794,6 +4892,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryCubeOptimizationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryCubeOptimizationResponse:
+        """
+        @summary 查询数据集优化建议
+        
+        @param request: QueryCubeOptimizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCubeOptimizationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.workspace_id):
@@ -3822,6 +4927,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryCubeOptimizationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryCubeOptimizationResponse:
+        """
+        @summary 查询数据集优化建议
+        
+        @param request: QueryCubeOptimizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCubeOptimizationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.workspace_id):
@@ -3849,6 +4961,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryCubeOptimizationRequest,
     ) -> quickbi_public_20220101_models.QueryCubeOptimizationResponse:
+        """
+        @summary 查询数据集优化建议
+        
+        @param request: QueryCubeOptimizationRequest
+        @return: QueryCubeOptimizationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_cube_optimization_with_options(request, runtime)
 
@@ -3856,6 +4974,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryCubeOptimizationRequest,
     ) -> quickbi_public_20220101_models.QueryCubeOptimizationResponse:
+        """
+        @summary 查询数据集优化建议
+        
+        @param request: QueryCubeOptimizationRequest
+        @return: QueryCubeOptimizationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_cube_optimization_with_options_async(request, runtime)
 
@@ -3864,6 +4988,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryCubePerformanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryCubePerformanceResponse:
+        """
+        @summary 查询数据集性能
+        
+        @param request: QueryCubePerformanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCubePerformanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cost_time_avg_min):
@@ -3902,6 +5033,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryCubePerformanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryCubePerformanceResponse:
+        """
+        @summary 查询数据集性能
+        
+        @param request: QueryCubePerformanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryCubePerformanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cost_time_avg_min):
@@ -3939,6 +5077,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryCubePerformanceRequest,
     ) -> quickbi_public_20220101_models.QueryCubePerformanceResponse:
+        """
+        @summary 查询数据集性能
+        
+        @param request: QueryCubePerformanceRequest
+        @return: QueryCubePerformanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_cube_performance_with_options(request, runtime)
 
@@ -3946,6 +5090,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryCubePerformanceRequest,
     ) -> quickbi_public_20220101_models.QueryCubePerformanceResponse:
+        """
+        @summary 查询数据集性能
+        
+        @param request: QueryCubePerformanceRequest
+        @return: QueryCubePerformanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_cube_performance_with_options_async(request, runtime)
 
@@ -3955,7 +5105,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryDataServiceResponse:
         """
-        f4cc43bc3**\
+        @summary The operator for the aggregate operation. Metric fields are available, such as SUM, AVG, and MAX.
+        
+        @description f4cc43bc3**\
         
         @param request: QueryDataServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3994,7 +5146,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryDataServiceResponse:
         """
-        f4cc43bc3**\
+        @summary The operator for the aggregate operation. Metric fields are available, such as SUM, AVG, and MAX.
+        
+        @description f4cc43bc3**\
         
         @param request: QueryDataServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4032,7 +5186,9 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryDataServiceRequest,
     ) -> quickbi_public_20220101_models.QueryDataServiceResponse:
         """
-        f4cc43bc3**\
+        @summary The operator for the aggregate operation. Metric fields are available, such as SUM, AVG, and MAX.
+        
+        @description f4cc43bc3**\
         
         @param request: QueryDataServiceRequest
         @return: QueryDataServiceResponse
@@ -4045,7 +5201,9 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryDataServiceRequest,
     ) -> quickbi_public_20220101_models.QueryDataServiceResponse:
         """
-        f4cc43bc3**\
+        @summary The operator for the aggregate operation. Metric fields are available, such as SUM, AVG, and MAX.
+        
+        @description f4cc43bc3**\
         
         @param request: QueryDataServiceRequest
         @return: QueryDataServiceResponse
@@ -4059,7 +5217,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryDatasetDetailInfoResponse:
         """
-        The data source, directory, and dataset model (including dimensions, measures, physical fields, custom SQL text, and association relationships).
+        @summary Queries the details of a specified dataset, including the data source, directory, and dataset model.
+        
+        @description The data source, directory, and dataset model (including dimensions, measures, physical fields, custom SQL text, and association relationships).
         
         @param request: QueryDatasetDetailInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4094,7 +5254,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryDatasetDetailInfoResponse:
         """
-        The data source, directory, and dataset model (including dimensions, measures, physical fields, custom SQL text, and association relationships).
+        @summary Queries the details of a specified dataset, including the data source, directory, and dataset model.
+        
+        @description The data source, directory, and dataset model (including dimensions, measures, physical fields, custom SQL text, and association relationships).
         
         @param request: QueryDatasetDetailInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4128,7 +5290,9 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryDatasetDetailInfoRequest,
     ) -> quickbi_public_20220101_models.QueryDatasetDetailInfoResponse:
         """
-        The data source, directory, and dataset model (including dimensions, measures, physical fields, custom SQL text, and association relationships).
+        @summary Queries the details of a specified dataset, including the data source, directory, and dataset model.
+        
+        @description The data source, directory, and dataset model (including dimensions, measures, physical fields, custom SQL text, and association relationships).
         
         @param request: QueryDatasetDetailInfoRequest
         @return: QueryDatasetDetailInfoResponse
@@ -4141,7 +5305,9 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryDatasetDetailInfoRequest,
     ) -> quickbi_public_20220101_models.QueryDatasetDetailInfoResponse:
         """
-        The data source, directory, and dataset model (including dimensions, measures, physical fields, custom SQL text, and association relationships).
+        @summary Queries the details of a specified dataset, including the data source, directory, and dataset model.
+        
+        @description The data source, directory, and dataset model (including dimensions, measures, physical fields, custom SQL text, and association relationships).
         
         @param request: QueryDatasetDetailInfoRequest
         @return: QueryDatasetDetailInfoResponse
@@ -4154,6 +5320,15 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryDatasetInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryDatasetInfoResponse:
+        """
+        @summary Indicates whether the table is a custom SQL table. Valid values:
+        true: custom SQL table
+        false: non-custom SQL table
+        
+        @param request: QueryDatasetInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDatasetInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_id):
@@ -4182,6 +5357,15 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryDatasetInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryDatasetInfoResponse:
+        """
+        @summary Indicates whether the table is a custom SQL table. Valid values:
+        true: custom SQL table
+        false: non-custom SQL table
+        
+        @param request: QueryDatasetInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDatasetInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dataset_id):
@@ -4209,6 +5393,14 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryDatasetInfoRequest,
     ) -> quickbi_public_20220101_models.QueryDatasetInfoResponse:
+        """
+        @summary Indicates whether the table is a custom SQL table. Valid values:
+        true: custom SQL table
+        false: non-custom SQL table
+        
+        @param request: QueryDatasetInfoRequest
+        @return: QueryDatasetInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_dataset_info_with_options(request, runtime)
 
@@ -4216,6 +5408,14 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryDatasetInfoRequest,
     ) -> quickbi_public_20220101_models.QueryDatasetInfoResponse:
+        """
+        @summary Indicates whether the table is a custom SQL table. Valid values:
+        true: custom SQL table
+        false: non-custom SQL table
+        
+        @param request: QueryDatasetInfoRequest
+        @return: QueryDatasetInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_dataset_info_with_options_async(request, runtime)
 
@@ -4224,6 +5424,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryDatasetListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryDatasetListResponse:
+        """
+        @summary The name of the training dataset.
+        
+        @param request: QueryDatasetListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDatasetListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.directory_id):
@@ -4262,6 +5469,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryDatasetListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryDatasetListResponse:
+        """
+        @summary The name of the training dataset.
+        
+        @param request: QueryDatasetListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDatasetListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.directory_id):
@@ -4299,6 +5513,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryDatasetListRequest,
     ) -> quickbi_public_20220101_models.QueryDatasetListResponse:
+        """
+        @summary The name of the training dataset.
+        
+        @param request: QueryDatasetListRequest
+        @return: QueryDatasetListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_dataset_list_with_options(request, runtime)
 
@@ -4306,6 +5526,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryDatasetListRequest,
     ) -> quickbi_public_20220101_models.QueryDatasetListResponse:
+        """
+        @summary The name of the training dataset.
+        
+        @param request: QueryDatasetListRequest
+        @return: QueryDatasetListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_dataset_list_with_options_async(request, runtime)
 
@@ -4314,6 +5540,11 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryDatasetSwitchInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryDatasetSwitchInfoResponse:
+        """
+        @param request: QueryDatasetSwitchInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDatasetSwitchInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cube_id):
@@ -4342,6 +5573,11 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryDatasetSwitchInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryDatasetSwitchInfoResponse:
+        """
+        @param request: QueryDatasetSwitchInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDatasetSwitchInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cube_id):
@@ -4369,6 +5605,10 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryDatasetSwitchInfoRequest,
     ) -> quickbi_public_20220101_models.QueryDatasetSwitchInfoResponse:
+        """
+        @param request: QueryDatasetSwitchInfoRequest
+        @return: QueryDatasetSwitchInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_dataset_switch_info_with_options(request, runtime)
 
@@ -4376,6 +5616,10 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryDatasetSwitchInfoRequest,
     ) -> quickbi_public_20220101_models.QueryDatasetSwitchInfoResponse:
+        """
+        @param request: QueryDatasetSwitchInfoRequest
+        @return: QueryDatasetSwitchInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_dataset_switch_info_with_options_async(request, runtime)
 
@@ -4383,6 +5627,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryEmbeddedInfoResponse:
+        """
+        @summary The number of reports that are currently embedded.
+        
+        @param request: QueryEmbeddedInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryEmbeddedInfoResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='QueryEmbeddedInfo',
@@ -4404,6 +5655,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryEmbeddedInfoResponse:
+        """
+        @summary The number of reports that are currently embedded.
+        
+        @param request: QueryEmbeddedInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryEmbeddedInfoResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='QueryEmbeddedInfo',
@@ -4422,10 +5680,20 @@ class Client(OpenApiClient):
         )
 
     def query_embedded_info(self) -> quickbi_public_20220101_models.QueryEmbeddedInfoResponse:
+        """
+        @summary The number of reports that are currently embedded.
+        
+        @return: QueryEmbeddedInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_embedded_info_with_options(runtime)
 
     async def query_embedded_info_async(self) -> quickbi_public_20220101_models.QueryEmbeddedInfoResponse:
+        """
+        @summary The number of reports that are currently embedded.
+        
+        @return: QueryEmbeddedInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_embedded_info_with_options_async(runtime)
 
@@ -4434,6 +5702,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryEmbeddedStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryEmbeddedStatusResponse:
+        """
+        @summary Queries whether embedding is enabled for a report.
+        
+        @param request: QueryEmbeddedStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryEmbeddedStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.works_id):
@@ -4462,6 +5737,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryEmbeddedStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryEmbeddedStatusResponse:
+        """
+        @summary Queries whether embedding is enabled for a report.
+        
+        @param request: QueryEmbeddedStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryEmbeddedStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.works_id):
@@ -4489,6 +5771,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryEmbeddedStatusRequest,
     ) -> quickbi_public_20220101_models.QueryEmbeddedStatusResponse:
+        """
+        @summary Queries whether embedding is enabled for a report.
+        
+        @param request: QueryEmbeddedStatusRequest
+        @return: QueryEmbeddedStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_embedded_status_with_options(request, runtime)
 
@@ -4496,6 +5784,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryEmbeddedStatusRequest,
     ) -> quickbi_public_20220101_models.QueryEmbeddedStatusResponse:
+        """
+        @summary Queries whether embedding is enabled for a report.
+        
+        @param request: QueryEmbeddedStatusRequest
+        @return: QueryEmbeddedStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_embedded_status_with_options_async(request, runtime)
 
@@ -4504,6 +5798,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryOrganizationRoleConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryOrganizationRoleConfigResponse:
+        """
+        @summary 获取指定组织角色的配置信息
+        
+        @param request: QueryOrganizationRoleConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryOrganizationRoleConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.role_id):
@@ -4532,6 +5833,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryOrganizationRoleConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryOrganizationRoleConfigResponse:
+        """
+        @summary 获取指定组织角色的配置信息
+        
+        @param request: QueryOrganizationRoleConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryOrganizationRoleConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.role_id):
@@ -4559,6 +5867,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryOrganizationRoleConfigRequest,
     ) -> quickbi_public_20220101_models.QueryOrganizationRoleConfigResponse:
+        """
+        @summary 获取指定组织角色的配置信息
+        
+        @param request: QueryOrganizationRoleConfigRequest
+        @return: QueryOrganizationRoleConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_organization_role_config_with_options(request, runtime)
 
@@ -4566,6 +5880,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryOrganizationRoleConfigRequest,
     ) -> quickbi_public_20220101_models.QueryOrganizationRoleConfigResponse:
+        """
+        @summary 获取指定组织角色的配置信息
+        
+        @param request: QueryOrganizationRoleConfigRequest
+        @return: QueryOrganizationRoleConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_organization_role_config_with_options_async(request, runtime)
 
@@ -4574,6 +5894,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryOrganizationWorkspaceListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryOrganizationWorkspaceListResponse:
+        """
+        @summary 获取当前组织下的工作空间列表信息。
+        
+        @param request: QueryOrganizationWorkspaceListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryOrganizationWorkspaceListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -4608,6 +5935,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryOrganizationWorkspaceListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryOrganizationWorkspaceListResponse:
+        """
+        @summary 获取当前组织下的工作空间列表信息。
+        
+        @param request: QueryOrganizationWorkspaceListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryOrganizationWorkspaceListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -4641,6 +5975,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryOrganizationWorkspaceListRequest,
     ) -> quickbi_public_20220101_models.QueryOrganizationWorkspaceListResponse:
+        """
+        @summary 获取当前组织下的工作空间列表信息。
+        
+        @param request: QueryOrganizationWorkspaceListRequest
+        @return: QueryOrganizationWorkspaceListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_organization_workspace_list_with_options(request, runtime)
 
@@ -4648,6 +5988,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryOrganizationWorkspaceListRequest,
     ) -> quickbi_public_20220101_models.QueryOrganizationWorkspaceListResponse:
+        """
+        @summary 获取当前组织下的工作空间列表信息。
+        
+        @param request: QueryOrganizationWorkspaceListRequest
+        @return: QueryOrganizationWorkspaceListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_organization_workspace_list_with_options_async(request, runtime)
 
@@ -4656,6 +6002,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryReadableResourcesListByUserIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryReadableResourcesListByUserIdResponse:
+        """
+        @summary The Alibaba Cloud account name of the owner.
+        
+        @param request: QueryReadableResourcesListByUserIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryReadableResourcesListByUserIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_id):
@@ -4684,6 +6037,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryReadableResourcesListByUserIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryReadableResourcesListByUserIdResponse:
+        """
+        @summary The Alibaba Cloud account name of the owner.
+        
+        @param request: QueryReadableResourcesListByUserIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryReadableResourcesListByUserIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_id):
@@ -4711,6 +6071,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryReadableResourcesListByUserIdRequest,
     ) -> quickbi_public_20220101_models.QueryReadableResourcesListByUserIdResponse:
+        """
+        @summary The Alibaba Cloud account name of the owner.
+        
+        @param request: QueryReadableResourcesListByUserIdRequest
+        @return: QueryReadableResourcesListByUserIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_readable_resources_list_by_user_id_with_options(request, runtime)
 
@@ -4718,6 +6084,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryReadableResourcesListByUserIdRequest,
     ) -> quickbi_public_20220101_models.QueryReadableResourcesListByUserIdResponse:
+        """
+        @summary The Alibaba Cloud account name of the owner.
+        
+        @param request: QueryReadableResourcesListByUserIdRequest
+        @return: QueryReadableResourcesListByUserIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_readable_resources_list_by_user_id_with_options_async(request, runtime)
 
@@ -4726,6 +6098,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryReportPerformanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryReportPerformanceResponse:
+        """
+        @summary 查询报表性能列表
+        
+        @param request: QueryReportPerformanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryReportPerformanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cost_time_avg_min):
@@ -4766,6 +6145,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryReportPerformanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryReportPerformanceResponse:
+        """
+        @summary 查询报表性能列表
+        
+        @param request: QueryReportPerformanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryReportPerformanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cost_time_avg_min):
@@ -4805,6 +6191,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryReportPerformanceRequest,
     ) -> quickbi_public_20220101_models.QueryReportPerformanceResponse:
+        """
+        @summary 查询报表性能列表
+        
+        @param request: QueryReportPerformanceRequest
+        @return: QueryReportPerformanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_report_performance_with_options(request, runtime)
 
@@ -4812,6 +6204,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryReportPerformanceRequest,
     ) -> quickbi_public_20220101_models.QueryReportPerformanceResponse:
+        """
+        @summary 查询报表性能列表
+        
+        @param request: QueryReportPerformanceRequest
+        @return: QueryReportPerformanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_report_performance_with_options_async(request, runtime)
 
@@ -4820,6 +6218,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryShareListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryShareListResponse:
+        """
+        @summary Xiao Zhang
+        
+        @param request: QueryShareListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryShareListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.report_id):
@@ -4848,6 +6253,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryShareListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryShareListResponse:
+        """
+        @summary Xiao Zhang
+        
+        @param request: QueryShareListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryShareListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.report_id):
@@ -4875,6 +6287,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryShareListRequest,
     ) -> quickbi_public_20220101_models.QueryShareListResponse:
+        """
+        @summary Xiao Zhang
+        
+        @param request: QueryShareListRequest
+        @return: QueryShareListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_share_list_with_options(request, runtime)
 
@@ -4882,6 +6300,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryShareListRequest,
     ) -> quickbi_public_20220101_models.QueryShareListResponse:
+        """
+        @summary Xiao Zhang
+        
+        @param request: QueryShareListRequest
+        @return: QueryShareListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_share_list_with_options_async(request, runtime)
 
@@ -4890,6 +6314,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QuerySharesToUserListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QuerySharesToUserListResponse:
+        """
+        @summary You can call this operation to query the list of works authorized to a user.
+        
+        @param request: QuerySharesToUserListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySharesToUserListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_id):
@@ -4918,6 +6349,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QuerySharesToUserListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QuerySharesToUserListResponse:
+        """
+        @summary You can call this operation to query the list of works authorized to a user.
+        
+        @param request: QuerySharesToUserListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySharesToUserListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_id):
@@ -4945,6 +6383,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QuerySharesToUserListRequest,
     ) -> quickbi_public_20220101_models.QuerySharesToUserListResponse:
+        """
+        @summary You can call this operation to query the list of works authorized to a user.
+        
+        @param request: QuerySharesToUserListRequest
+        @return: QuerySharesToUserListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_shares_to_user_list_with_options(request, runtime)
 
@@ -4952,6 +6396,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QuerySharesToUserListRequest,
     ) -> quickbi_public_20220101_models.QuerySharesToUserListResponse:
+        """
+        @summary You can call this operation to query the list of works authorized to a user.
+        
+        @param request: QuerySharesToUserListRequest
+        @return: QuerySharesToUserListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_shares_to_user_list_with_options_async(request, runtime)
 
@@ -4960,6 +6410,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryTicketInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryTicketInfoResponse:
+        """
+        @summary auditing
+        
+        @param request: QueryTicketInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryTicketInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ticket):
@@ -4988,6 +6445,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryTicketInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryTicketInfoResponse:
+        """
+        @summary auditing
+        
+        @param request: QueryTicketInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryTicketInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ticket):
@@ -5015,6 +6479,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryTicketInfoRequest,
     ) -> quickbi_public_20220101_models.QueryTicketInfoResponse:
+        """
+        @summary auditing
+        
+        @param request: QueryTicketInfoRequest
+        @return: QueryTicketInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_ticket_info_with_options(request, runtime)
 
@@ -5022,6 +6492,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryTicketInfoRequest,
     ) -> quickbi_public_20220101_models.QueryTicketInfoResponse:
+        """
+        @summary auditing
+        
+        @param request: QueryTicketInfoRequest
+        @return: QueryTicketInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_ticket_info_with_options_async(request, runtime)
 
@@ -5030,6 +6506,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryUserGroupListByParentIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryUserGroupListByParentIdResponse:
+        """
+        @summary You can this operation to obtain information about child user groups under a specified parent user group.
+        
+        @param request: QueryUserGroupListByParentIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryUserGroupListByParentIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.parent_user_group_id):
@@ -5058,6 +6541,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryUserGroupListByParentIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryUserGroupListByParentIdResponse:
+        """
+        @summary You can this operation to obtain information about child user groups under a specified parent user group.
+        
+        @param request: QueryUserGroupListByParentIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryUserGroupListByParentIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.parent_user_group_id):
@@ -5085,6 +6575,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryUserGroupListByParentIdRequest,
     ) -> quickbi_public_20220101_models.QueryUserGroupListByParentIdResponse:
+        """
+        @summary You can this operation to obtain information about child user groups under a specified parent user group.
+        
+        @param request: QueryUserGroupListByParentIdRequest
+        @return: QueryUserGroupListByParentIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_user_group_list_by_parent_id_with_options(request, runtime)
 
@@ -5092,6 +6588,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryUserGroupListByParentIdRequest,
     ) -> quickbi_public_20220101_models.QueryUserGroupListByParentIdResponse:
+        """
+        @summary You can this operation to obtain information about child user groups under a specified parent user group.
+        
+        @param request: QueryUserGroupListByParentIdRequest
+        @return: QueryUserGroupListByParentIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_user_group_list_by_parent_id_with_options_async(request, runtime)
 
@@ -5100,6 +6602,11 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryUserGroupMemberRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryUserGroupMemberResponse:
+        """
+        @param request: QueryUserGroupMemberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryUserGroupMemberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -5130,6 +6637,11 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryUserGroupMemberRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryUserGroupMemberResponse:
+        """
+        @param request: QueryUserGroupMemberRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryUserGroupMemberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -5159,6 +6671,10 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryUserGroupMemberRequest,
     ) -> quickbi_public_20220101_models.QueryUserGroupMemberResponse:
+        """
+        @param request: QueryUserGroupMemberRequest
+        @return: QueryUserGroupMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_user_group_member_with_options(request, runtime)
 
@@ -5166,6 +6682,10 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryUserGroupMemberRequest,
     ) -> quickbi_public_20220101_models.QueryUserGroupMemberResponse:
+        """
+        @param request: QueryUserGroupMemberRequest
+        @return: QueryUserGroupMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_user_group_member_with_options_async(request, runtime)
 
@@ -5174,6 +6694,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryUserInfoByAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryUserInfoByAccountResponse:
+        """
+        @summary Queries user information based on the Alibaba Cloud ID or Alibaba Cloud account name.
+        
+        @param request: QueryUserInfoByAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryUserInfoByAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account):
@@ -5204,6 +6731,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryUserInfoByAccountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryUserInfoByAccountResponse:
+        """
+        @summary Queries user information based on the Alibaba Cloud ID or Alibaba Cloud account name.
+        
+        @param request: QueryUserInfoByAccountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryUserInfoByAccountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.account):
@@ -5233,6 +6767,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryUserInfoByAccountRequest,
     ) -> quickbi_public_20220101_models.QueryUserInfoByAccountResponse:
+        """
+        @summary Queries user information based on the Alibaba Cloud ID or Alibaba Cloud account name.
+        
+        @param request: QueryUserInfoByAccountRequest
+        @return: QueryUserInfoByAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_user_info_by_account_with_options(request, runtime)
 
@@ -5240,6 +6780,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryUserInfoByAccountRequest,
     ) -> quickbi_public_20220101_models.QueryUserInfoByAccountResponse:
+        """
+        @summary Queries user information based on the Alibaba Cloud ID or Alibaba Cloud account name.
+        
+        @param request: QueryUserInfoByAccountRequest
+        @return: QueryUserInfoByAccountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_user_info_by_account_with_options_async(request, runtime)
 
@@ -5248,6 +6794,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryUserInfoByUserIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryUserInfoByUserIdResponse:
+        """
+        @summary Queries user information based on the user ID.
+        
+        @param request: QueryUserInfoByUserIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryUserInfoByUserIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_id):
@@ -5276,6 +6829,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryUserInfoByUserIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryUserInfoByUserIdResponse:
+        """
+        @summary Queries user information based on the user ID.
+        
+        @param request: QueryUserInfoByUserIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryUserInfoByUserIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_id):
@@ -5303,6 +6863,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryUserInfoByUserIdRequest,
     ) -> quickbi_public_20220101_models.QueryUserInfoByUserIdResponse:
+        """
+        @summary Queries user information based on the user ID.
+        
+        @param request: QueryUserInfoByUserIdRequest
+        @return: QueryUserInfoByUserIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_user_info_by_user_id_with_options(request, runtime)
 
@@ -5310,6 +6876,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryUserInfoByUserIdRequest,
     ) -> quickbi_public_20220101_models.QueryUserInfoByUserIdResponse:
+        """
+        @summary Queries user information based on the user ID.
+        
+        @param request: QueryUserInfoByUserIdRequest
+        @return: QueryUserInfoByUserIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_user_info_by_user_id_with_options_async(request, runtime)
 
@@ -5318,6 +6890,11 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryUserListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryUserListResponse:
+        """
+        @param request: QueryUserListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryUserListResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5344,6 +6921,11 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryUserListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryUserListResponse:
+        """
+        @param request: QueryUserListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryUserListResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5369,6 +6951,10 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryUserListRequest,
     ) -> quickbi_public_20220101_models.QueryUserListResponse:
+        """
+        @param request: QueryUserListRequest
+        @return: QueryUserListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_user_list_with_options(request, runtime)
 
@@ -5376,6 +6962,10 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryUserListRequest,
     ) -> quickbi_public_20220101_models.QueryUserListResponse:
+        """
+        @param request: QueryUserListRequest
+        @return: QueryUserListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_user_list_with_options_async(request, runtime)
 
@@ -5384,6 +6974,11 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryUserRoleInfoInWorkspaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryUserRoleInfoInWorkspaceResponse:
+        """
+        @param request: QueryUserRoleInfoInWorkspaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryUserRoleInfoInWorkspaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_id):
@@ -5414,6 +7009,11 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryUserRoleInfoInWorkspaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryUserRoleInfoInWorkspaceResponse:
+        """
+        @param request: QueryUserRoleInfoInWorkspaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryUserRoleInfoInWorkspaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_id):
@@ -5443,6 +7043,10 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryUserRoleInfoInWorkspaceRequest,
     ) -> quickbi_public_20220101_models.QueryUserRoleInfoInWorkspaceResponse:
+        """
+        @param request: QueryUserRoleInfoInWorkspaceRequest
+        @return: QueryUserRoleInfoInWorkspaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_user_role_info_in_workspace_with_options(request, runtime)
 
@@ -5450,6 +7054,10 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryUserRoleInfoInWorkspaceRequest,
     ) -> quickbi_public_20220101_models.QueryUserRoleInfoInWorkspaceResponse:
+        """
+        @param request: QueryUserRoleInfoInWorkspaceRequest
+        @return: QueryUserRoleInfoInWorkspaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_user_role_info_in_workspace_with_options_async(request, runtime)
 
@@ -5457,6 +7065,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryUserTagMetaListResponse:
+        """
+        @summary auditing
+        
+        @param request: QueryUserTagMetaListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryUserTagMetaListResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='QueryUserTagMetaList',
@@ -5478,6 +7093,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryUserTagMetaListResponse:
+        """
+        @summary auditing
+        
+        @param request: QueryUserTagMetaListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryUserTagMetaListResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='QueryUserTagMetaList',
@@ -5496,10 +7118,20 @@ class Client(OpenApiClient):
         )
 
     def query_user_tag_meta_list(self) -> quickbi_public_20220101_models.QueryUserTagMetaListResponse:
+        """
+        @summary auditing
+        
+        @return: QueryUserTagMetaListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_user_tag_meta_list_with_options(runtime)
 
     async def query_user_tag_meta_list_async(self) -> quickbi_public_20220101_models.QueryUserTagMetaListResponse:
+        """
+        @summary auditing
+        
+        @return: QueryUserTagMetaListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_user_tag_meta_list_with_options_async(runtime)
 
@@ -5508,6 +7140,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryUserTagValueListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryUserTagValueListResponse:
+        """
+        @summary Queries the list of tag values for a specific user.
+        
+        @param request: QueryUserTagValueListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryUserTagValueListResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5534,6 +7173,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryUserTagValueListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryUserTagValueListResponse:
+        """
+        @summary Queries the list of tag values for a specific user.
+        
+        @param request: QueryUserTagValueListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryUserTagValueListResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5559,6 +7205,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryUserTagValueListRequest,
     ) -> quickbi_public_20220101_models.QueryUserTagValueListResponse:
+        """
+        @summary Queries the list of tag values for a specific user.
+        
+        @param request: QueryUserTagValueListRequest
+        @return: QueryUserTagValueListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_user_tag_value_list_with_options(request, runtime)
 
@@ -5566,6 +7218,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryUserTagValueListRequest,
     ) -> quickbi_public_20220101_models.QueryUserTagValueListResponse:
+        """
+        @summary Queries the list of tag values for a specific user.
+        
+        @param request: QueryUserTagValueListRequest
+        @return: QueryUserTagValueListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_user_tag_value_list_with_options_async(request, runtime)
 
@@ -5574,6 +7232,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryWorksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryWorksResponse:
+        """
+        @summary 获取报表详情
+        
+        @param request: QueryWorksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryWorksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.works_id):
@@ -5602,6 +7267,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryWorksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryWorksResponse:
+        """
+        @summary 获取报表详情
+        
+        @param request: QueryWorksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryWorksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.works_id):
@@ -5629,6 +7301,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryWorksRequest,
     ) -> quickbi_public_20220101_models.QueryWorksResponse:
+        """
+        @summary 获取报表详情
+        
+        @param request: QueryWorksRequest
+        @return: QueryWorksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_works_with_options(request, runtime)
 
@@ -5636,6 +7314,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryWorksRequest,
     ) -> quickbi_public_20220101_models.QueryWorksResponse:
+        """
+        @summary 获取报表详情
+        
+        @param request: QueryWorksRequest
+        @return: QueryWorksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_works_with_options_async(request, runtime)
 
@@ -5644,6 +7328,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryWorksBloodRelationshipRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryWorksBloodRelationshipResponse:
+        """
+        @summary abcd***\
+        
+        @param request: QueryWorksBloodRelationshipRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryWorksBloodRelationshipResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.works_id):
@@ -5672,6 +7363,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryWorksBloodRelationshipRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryWorksBloodRelationshipResponse:
+        """
+        @summary abcd***\
+        
+        @param request: QueryWorksBloodRelationshipRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryWorksBloodRelationshipResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.works_id):
@@ -5699,6 +7397,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryWorksBloodRelationshipRequest,
     ) -> quickbi_public_20220101_models.QueryWorksBloodRelationshipResponse:
+        """
+        @summary abcd***\
+        
+        @param request: QueryWorksBloodRelationshipRequest
+        @return: QueryWorksBloodRelationshipResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_works_blood_relationship_with_options(request, runtime)
 
@@ -5706,6 +7410,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryWorksBloodRelationshipRequest,
     ) -> quickbi_public_20220101_models.QueryWorksBloodRelationshipResponse:
+        """
+        @summary abcd***\
+        
+        @param request: QueryWorksBloodRelationshipRequest
+        @return: QueryWorksBloodRelationshipResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_works_blood_relationship_with_options_async(request, runtime)
 
@@ -5714,6 +7424,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryWorksByOrganizationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryWorksByOrganizationResponse:
+        """
+        @summary The total number of rows in the table.
+        
+        @param request: QueryWorksByOrganizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryWorksByOrganizationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_num):
@@ -5750,6 +7467,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryWorksByOrganizationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryWorksByOrganizationResponse:
+        """
+        @summary The total number of rows in the table.
+        
+        @param request: QueryWorksByOrganizationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryWorksByOrganizationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_num):
@@ -5785,6 +7509,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryWorksByOrganizationRequest,
     ) -> quickbi_public_20220101_models.QueryWorksByOrganizationResponse:
+        """
+        @summary The total number of rows in the table.
+        
+        @param request: QueryWorksByOrganizationRequest
+        @return: QueryWorksByOrganizationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_works_by_organization_with_options(request, runtime)
 
@@ -5792,6 +7522,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryWorksByOrganizationRequest,
     ) -> quickbi_public_20220101_models.QueryWorksByOrganizationResponse:
+        """
+        @summary The total number of rows in the table.
+        
+        @param request: QueryWorksByOrganizationRequest
+        @return: QueryWorksByOrganizationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_works_by_organization_with_options_async(request, runtime)
 
@@ -5800,6 +7536,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryWorksByWorkspaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryWorksByWorkspaceResponse:
+        """
+        @summary The name of the directory.
+        
+        @param request: QueryWorksByWorkspaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryWorksByWorkspaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_num):
@@ -5838,6 +7581,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryWorksByWorkspaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryWorksByWorkspaceResponse:
+        """
+        @summary The name of the directory.
+        
+        @param request: QueryWorksByWorkspaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryWorksByWorkspaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_num):
@@ -5875,6 +7625,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryWorksByWorkspaceRequest,
     ) -> quickbi_public_20220101_models.QueryWorksByWorkspaceResponse:
+        """
+        @summary The name of the directory.
+        
+        @param request: QueryWorksByWorkspaceRequest
+        @return: QueryWorksByWorkspaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_works_by_workspace_with_options(request, runtime)
 
@@ -5882,6 +7638,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryWorksByWorkspaceRequest,
     ) -> quickbi_public_20220101_models.QueryWorksByWorkspaceResponse:
+        """
+        @summary The name of the directory.
+        
+        @param request: QueryWorksByWorkspaceRequest
+        @return: QueryWorksByWorkspaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_works_by_workspace_with_options_async(request, runtime)
 
@@ -5890,6 +7652,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryWorkspaceRoleConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryWorkspaceRoleConfigResponse:
+        """
+        @summary 获取指定空间角色的配置信息
+        
+        @param request: QueryWorkspaceRoleConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryWorkspaceRoleConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.role_id):
@@ -5918,6 +7687,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryWorkspaceRoleConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryWorkspaceRoleConfigResponse:
+        """
+        @summary 获取指定空间角色的配置信息
+        
+        @param request: QueryWorkspaceRoleConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryWorkspaceRoleConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.role_id):
@@ -5945,6 +7721,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryWorkspaceRoleConfigRequest,
     ) -> quickbi_public_20220101_models.QueryWorkspaceRoleConfigResponse:
+        """
+        @summary 获取指定空间角色的配置信息
+        
+        @param request: QueryWorkspaceRoleConfigRequest
+        @return: QueryWorkspaceRoleConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_workspace_role_config_with_options(request, runtime)
 
@@ -5952,6 +7734,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryWorkspaceRoleConfigRequest,
     ) -> quickbi_public_20220101_models.QueryWorkspaceRoleConfigResponse:
+        """
+        @summary 获取指定空间角色的配置信息
+        
+        @param request: QueryWorkspaceRoleConfigRequest
+        @return: QueryWorkspaceRoleConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_workspace_role_config_with_options_async(request, runtime)
 
@@ -5960,6 +7748,11 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryWorkspaceUserListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryWorkspaceUserListResponse:
+        """
+        @param request: QueryWorkspaceUserListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryWorkspaceUserListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -5994,6 +7787,11 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.QueryWorkspaceUserListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.QueryWorkspaceUserListResponse:
+        """
+        @param request: QueryWorkspaceUserListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryWorkspaceUserListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -6027,6 +7825,10 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryWorkspaceUserListRequest,
     ) -> quickbi_public_20220101_models.QueryWorkspaceUserListResponse:
+        """
+        @param request: QueryWorkspaceUserListRequest
+        @return: QueryWorkspaceUserListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_workspace_user_list_with_options(request, runtime)
 
@@ -6034,6 +7836,10 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.QueryWorkspaceUserListRequest,
     ) -> quickbi_public_20220101_models.QueryWorkspaceUserListResponse:
+        """
+        @param request: QueryWorkspaceUserListRequest
+        @return: QueryWorkspaceUserListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_workspace_user_list_with_options_async(request, runtime)
 
@@ -6042,6 +7848,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ResultCallbackRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ResultCallbackResponse:
+        """
+        @summary 第三方资源审批回调接口
+        
+        @param request: ResultCallbackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResultCallbackResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_id):
@@ -6074,6 +7887,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.ResultCallbackRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.ResultCallbackResponse:
+        """
+        @summary 第三方资源审批回调接口
+        
+        @param request: ResultCallbackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResultCallbackResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_id):
@@ -6105,6 +7925,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.ResultCallbackRequest,
     ) -> quickbi_public_20220101_models.ResultCallbackResponse:
+        """
+        @summary 第三方资源审批回调接口
+        
+        @param request: ResultCallbackRequest
+        @return: ResultCallbackResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.result_callback_with_options(request, runtime)
 
@@ -6112,6 +7938,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.ResultCallbackRequest,
     ) -> quickbi_public_20220101_models.ResultCallbackResponse:
+        """
+        @summary 第三方资源审批回调接口
+        
+        @param request: ResultCallbackRequest
+        @return: ResultCallbackResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.result_callback_with_options_async(request, runtime)
 
@@ -6120,6 +7952,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.SaveFavoritesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.SaveFavoritesResponse:
+        """
+        @summary Add the user\\"s collection data works.
+        
+        @param request: SaveFavoritesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveFavoritesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_id):
@@ -6150,6 +7989,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.SaveFavoritesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.SaveFavoritesResponse:
+        """
+        @summary Add the user\\"s collection data works.
+        
+        @param request: SaveFavoritesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveFavoritesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_id):
@@ -6179,6 +8025,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.SaveFavoritesRequest,
     ) -> quickbi_public_20220101_models.SaveFavoritesResponse:
+        """
+        @summary Add the user\\"s collection data works.
+        
+        @param request: SaveFavoritesRequest
+        @return: SaveFavoritesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.save_favorites_with_options(request, runtime)
 
@@ -6186,6 +8038,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.SaveFavoritesRequest,
     ) -> quickbi_public_20220101_models.SaveFavoritesResponse:
+        """
+        @summary Add the user\\"s collection data works.
+        
+        @param request: SaveFavoritesRequest
+        @return: SaveFavoritesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.save_favorites_with_options_async(request, runtime)
 
@@ -6194,6 +8052,11 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.SetDataLevelPermissionExtraConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionExtraConfigResponse:
+        """
+        @param request: SetDataLevelPermissionExtraConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDataLevelPermissionExtraConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cube_id):
@@ -6226,6 +8089,11 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.SetDataLevelPermissionExtraConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionExtraConfigResponse:
+        """
+        @param request: SetDataLevelPermissionExtraConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDataLevelPermissionExtraConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cube_id):
@@ -6257,6 +8125,10 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.SetDataLevelPermissionExtraConfigRequest,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionExtraConfigResponse:
+        """
+        @param request: SetDataLevelPermissionExtraConfigRequest
+        @return: SetDataLevelPermissionExtraConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_data_level_permission_extra_config_with_options(request, runtime)
 
@@ -6264,6 +8136,10 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.SetDataLevelPermissionExtraConfigRequest,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionExtraConfigResponse:
+        """
+        @param request: SetDataLevelPermissionExtraConfigRequest
+        @return: SetDataLevelPermissionExtraConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_data_level_permission_extra_config_with_options_async(request, runtime)
 
@@ -6272,6 +8148,11 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigResponse:
+        """
+        @param request: SetDataLevelPermissionRuleConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDataLevelPermissionRuleConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.rule_model):
@@ -6300,6 +8181,11 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigResponse:
+        """
+        @param request: SetDataLevelPermissionRuleConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDataLevelPermissionRuleConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.rule_model):
@@ -6327,6 +8213,10 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigRequest,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigResponse:
+        """
+        @param request: SetDataLevelPermissionRuleConfigRequest
+        @return: SetDataLevelPermissionRuleConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_data_level_permission_rule_config_with_options(request, runtime)
 
@@ -6334,6 +8224,10 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigRequest,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionRuleConfigResponse:
+        """
+        @param request: SetDataLevelPermissionRuleConfigRequest
+        @return: SetDataLevelPermissionRuleConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_data_level_permission_rule_config_with_options_async(request, runtime)
 
@@ -6343,7 +8237,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionWhiteListResponse:
         """
-        > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click *Upgrade**.
+        @summary Sets the whitelist for the specified row-level permissions.
+        
+        @description > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click *Upgrade**.
         
         @param request: SetDataLevelPermissionWhiteListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6378,7 +8274,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionWhiteListResponse:
         """
-        > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click *Upgrade**.
+        @summary Sets the whitelist for the specified row-level permissions.
+        
+        @description > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click *Upgrade**.
         
         @param request: SetDataLevelPermissionWhiteListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6412,7 +8310,9 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.SetDataLevelPermissionWhiteListRequest,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionWhiteListResponse:
         """
-        > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click *Upgrade**.
+        @summary Sets the whitelist for the specified row-level permissions.
+        
+        @description > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click *Upgrade**.
         
         @param request: SetDataLevelPermissionWhiteListRequest
         @return: SetDataLevelPermissionWhiteListResponse
@@ -6425,7 +8325,9 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.SetDataLevelPermissionWhiteListRequest,
     ) -> quickbi_public_20220101_models.SetDataLevelPermissionWhiteListResponse:
         """
-        > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click *Upgrade**.
+        @summary Sets the whitelist for the specified row-level permissions.
+        
+        @description > : You can only Quick BI the new row-column permission model. If you are still using the old row-column permission model, migrate to the new row-column permission model before you call this operation. To migrate row-level permissions to the new row-level permission model, perform the following steps: Choose Organizations> Security Configurations> Upgrade Row-Level Permissions. On the Upgrade Row-Level Permissions page, click *Upgrade**.
         
         @param request: SetDataLevelPermissionWhiteListRequest
         @return: SetDataLevelPermissionWhiteListResponse
@@ -6439,9 +8341,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.UpdateDataLevelPermissionStatusResponse:
         """
-        The execution result of the interface. Valid values:
-        *   true: The request was successful.
-        *   false: The request failed.
+        @summary Indicates whether the request is successful. Valid values:
+        true: The request was successful.
+        false: The request failed.
+        
+        @description The execution result of the interface. Valid values:
+        true: The request was successful.
+        false: The request failed.
         
         @param request: UpdateDataLevelPermissionStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6480,9 +8386,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.UpdateDataLevelPermissionStatusResponse:
         """
-        The execution result of the interface. Valid values:
-        *   true: The request was successful.
-        *   false: The request failed.
+        @summary Indicates whether the request is successful. Valid values:
+        true: The request was successful.
+        false: The request failed.
+        
+        @description The execution result of the interface. Valid values:
+        true: The request was successful.
+        false: The request failed.
         
         @param request: UpdateDataLevelPermissionStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6520,9 +8430,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.UpdateDataLevelPermissionStatusRequest,
     ) -> quickbi_public_20220101_models.UpdateDataLevelPermissionStatusResponse:
         """
-        The execution result of the interface. Valid values:
-        *   true: The request was successful.
-        *   false: The request failed.
+        @summary Indicates whether the request is successful. Valid values:
+        true: The request was successful.
+        false: The request failed.
+        
+        @description The execution result of the interface. Valid values:
+        true: The request was successful.
+        false: The request failed.
         
         @param request: UpdateDataLevelPermissionStatusRequest
         @return: UpdateDataLevelPermissionStatusResponse
@@ -6535,9 +8449,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.UpdateDataLevelPermissionStatusRequest,
     ) -> quickbi_public_20220101_models.UpdateDataLevelPermissionStatusResponse:
         """
-        The execution result of the interface. Valid values:
-        *   true: The request was successful.
-        *   false: The request failed.
+        @summary Indicates whether the request is successful. Valid values:
+        true: The request was successful.
+        false: The request failed.
+        
+        @description The execution result of the interface. Valid values:
+        true: The request was successful.
+        false: The request failed.
         
         @param request: UpdateDataLevelPermissionStatusRequest
         @return: UpdateDataLevelPermissionStatusResponse
@@ -6550,6 +8468,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.UpdateEmbeddedStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.UpdateEmbeddedStatusResponse:
+        """
+        @summary The ID of the request.
+        
+        @param request: UpdateEmbeddedStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateEmbeddedStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.third_part_auth_flag):
@@ -6580,6 +8505,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.UpdateEmbeddedStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.UpdateEmbeddedStatusResponse:
+        """
+        @summary The ID of the request.
+        
+        @param request: UpdateEmbeddedStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateEmbeddedStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.third_part_auth_flag):
@@ -6609,6 +8541,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.UpdateEmbeddedStatusRequest,
     ) -> quickbi_public_20220101_models.UpdateEmbeddedStatusResponse:
+        """
+        @summary The ID of the request.
+        
+        @param request: UpdateEmbeddedStatusRequest
+        @return: UpdateEmbeddedStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_embedded_status_with_options(request, runtime)
 
@@ -6616,6 +8554,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.UpdateEmbeddedStatusRequest,
     ) -> quickbi_public_20220101_models.UpdateEmbeddedStatusResponse:
+        """
+        @summary The ID of the request.
+        
+        @param request: UpdateEmbeddedStatusRequest
+        @return: UpdateEmbeddedStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_embedded_status_with_options_async(request, runtime)
 
@@ -6624,6 +8568,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.UpdateTicketNumRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.UpdateTicketNumResponse:
+        """
+        @summary 更新三方嵌入ticket的票据数量
+        
+        @param request: UpdateTicketNumRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTicketNumResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ticket):
@@ -6654,6 +8605,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.UpdateTicketNumRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.UpdateTicketNumResponse:
+        """
+        @summary 更新三方嵌入ticket的票据数量
+        
+        @param request: UpdateTicketNumRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTicketNumResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ticket):
@@ -6683,6 +8641,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.UpdateTicketNumRequest,
     ) -> quickbi_public_20220101_models.UpdateTicketNumResponse:
+        """
+        @summary 更新三方嵌入ticket的票据数量
+        
+        @param request: UpdateTicketNumRequest
+        @return: UpdateTicketNumResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_ticket_num_with_options(request, runtime)
 
@@ -6690,6 +8654,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.UpdateTicketNumRequest,
     ) -> quickbi_public_20220101_models.UpdateTicketNumResponse:
+        """
+        @summary 更新三方嵌入ticket的票据数量
+        
+        @param request: UpdateTicketNumRequest
+        @return: UpdateTicketNumResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_ticket_num_with_options_async(request, runtime)
 
@@ -6698,6 +8668,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.UpdateUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.UpdateUserResponse:
+        """
+        @summary Updates the information of a specified member in an organization.
+        
+        @param request: UpdateUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.admin_user):
@@ -6736,6 +8713,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.UpdateUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.UpdateUserResponse:
+        """
+        @summary Updates the information of a specified member in an organization.
+        
+        @param request: UpdateUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.admin_user):
@@ -6773,6 +8757,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.UpdateUserRequest,
     ) -> quickbi_public_20220101_models.UpdateUserResponse:
+        """
+        @summary Updates the information of a specified member in an organization.
+        
+        @param request: UpdateUserRequest
+        @return: UpdateUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_user_with_options(request, runtime)
 
@@ -6780,6 +8770,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.UpdateUserRequest,
     ) -> quickbi_public_20220101_models.UpdateUserResponse:
+        """
+        @summary Updates the information of a specified member in an organization.
+        
+        @param request: UpdateUserRequest
+        @return: UpdateUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_user_with_options_async(request, runtime)
 
@@ -6788,6 +8784,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.UpdateUserGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.UpdateUserGroupResponse:
+        """
+        @summary Updates information about a specified user group in an organization.
+        
+        @param request: UpdateUserGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUserGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_group_description):
@@ -6820,6 +8823,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.UpdateUserGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.UpdateUserGroupResponse:
+        """
+        @summary Updates information about a specified user group in an organization.
+        
+        @param request: UpdateUserGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUserGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_group_description):
@@ -6851,6 +8861,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.UpdateUserGroupRequest,
     ) -> quickbi_public_20220101_models.UpdateUserGroupResponse:
+        """
+        @summary Updates information about a specified user group in an organization.
+        
+        @param request: UpdateUserGroupRequest
+        @return: UpdateUserGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_user_group_with_options(request, runtime)
 
@@ -6858,6 +8874,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.UpdateUserGroupRequest,
     ) -> quickbi_public_20220101_models.UpdateUserGroupResponse:
+        """
+        @summary Updates information about a specified user group in an organization.
+        
+        @param request: UpdateUserGroupRequest
+        @return: UpdateUserGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_user_group_with_options_async(request, runtime)
 
@@ -6866,6 +8888,11 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.UpdateUserTagMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.UpdateUserTagMetaResponse:
+        """
+        @param request: UpdateUserTagMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUserTagMetaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tag_description):
@@ -6898,6 +8925,11 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.UpdateUserTagMetaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.UpdateUserTagMetaResponse:
+        """
+        @param request: UpdateUserTagMetaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUserTagMetaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tag_description):
@@ -6929,6 +8961,10 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.UpdateUserTagMetaRequest,
     ) -> quickbi_public_20220101_models.UpdateUserTagMetaResponse:
+        """
+        @param request: UpdateUserTagMetaRequest
+        @return: UpdateUserTagMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_user_tag_meta_with_options(request, runtime)
 
@@ -6936,6 +8972,10 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.UpdateUserTagMetaRequest,
     ) -> quickbi_public_20220101_models.UpdateUserTagMetaResponse:
+        """
+        @param request: UpdateUserTagMetaRequest
+        @return: UpdateUserTagMetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_user_tag_meta_with_options_async(request, runtime)
 
@@ -6944,6 +8984,11 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.UpdateUserTagValueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.UpdateUserTagValueResponse:
+        """
+        @param request: UpdateUserTagValueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUserTagValueResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tag_id):
@@ -6976,6 +9021,11 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.UpdateUserTagValueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.UpdateUserTagValueResponse:
+        """
+        @param request: UpdateUserTagValueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUserTagValueResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.tag_id):
@@ -7007,6 +9057,10 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.UpdateUserTagValueRequest,
     ) -> quickbi_public_20220101_models.UpdateUserTagValueResponse:
+        """
+        @param request: UpdateUserTagValueRequest
+        @return: UpdateUserTagValueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_user_tag_value_with_options(request, runtime)
 
@@ -7014,6 +9068,10 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.UpdateUserTagValueRequest,
     ) -> quickbi_public_20220101_models.UpdateUserTagValueResponse:
+        """
+        @param request: UpdateUserTagValueRequest
+        @return: UpdateUserTagValueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_user_tag_value_with_options_async(request, runtime)
 
@@ -7022,6 +9080,11 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.UpdateWorkspaceUserRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.UpdateWorkspaceUserRoleResponse:
+        """
+        @param request: UpdateWorkspaceUserRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWorkspaceUserRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.role_id):
@@ -7054,6 +9117,11 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.UpdateWorkspaceUserRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.UpdateWorkspaceUserRoleResponse:
+        """
+        @param request: UpdateWorkspaceUserRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWorkspaceUserRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.role_id):
@@ -7085,6 +9153,10 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.UpdateWorkspaceUserRoleRequest,
     ) -> quickbi_public_20220101_models.UpdateWorkspaceUserRoleResponse:
+        """
+        @param request: UpdateWorkspaceUserRoleRequest
+        @return: UpdateWorkspaceUserRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_workspace_user_role_with_options(request, runtime)
 
@@ -7092,6 +9164,10 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.UpdateWorkspaceUserRoleRequest,
     ) -> quickbi_public_20220101_models.UpdateWorkspaceUserRoleResponse:
+        """
+        @param request: UpdateWorkspaceUserRoleRequest
+        @return: UpdateWorkspaceUserRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_workspace_user_role_with_options_async(request, runtime)
 
@@ -7100,6 +9176,11 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.UpdateWorkspaceUsersRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.UpdateWorkspaceUsersRoleResponse:
+        """
+        @param request: UpdateWorkspaceUsersRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWorkspaceUsersRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.role_id):
@@ -7132,6 +9213,11 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.UpdateWorkspaceUsersRoleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.UpdateWorkspaceUsersRoleResponse:
+        """
+        @param request: UpdateWorkspaceUsersRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWorkspaceUsersRoleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.role_id):
@@ -7163,6 +9249,10 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.UpdateWorkspaceUsersRoleRequest,
     ) -> quickbi_public_20220101_models.UpdateWorkspaceUsersRoleResponse:
+        """
+        @param request: UpdateWorkspaceUsersRoleRequest
+        @return: UpdateWorkspaceUsersRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_workspace_users_role_with_options(request, runtime)
 
@@ -7170,6 +9260,10 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.UpdateWorkspaceUsersRoleRequest,
     ) -> quickbi_public_20220101_models.UpdateWorkspaceUsersRoleResponse:
+        """
+        @param request: UpdateWorkspaceUsersRoleRequest
+        @return: UpdateWorkspaceUsersRoleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_workspace_users_role_with_options_async(request, runtime)
 
@@ -7178,6 +9272,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.WithdrawAllUserGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.WithdrawAllUserGroupsResponse:
+        """
+        @summary Make the user exit all user groups. This process is irreversible. Exercise caution when performing this operation.
+        
+        @param request: WithdrawAllUserGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: WithdrawAllUserGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_id):
@@ -7206,6 +9307,13 @@ class Client(OpenApiClient):
         request: quickbi_public_20220101_models.WithdrawAllUserGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> quickbi_public_20220101_models.WithdrawAllUserGroupsResponse:
+        """
+        @summary Make the user exit all user groups. This process is irreversible. Exercise caution when performing this operation.
+        
+        @param request: WithdrawAllUserGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: WithdrawAllUserGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.user_id):
@@ -7233,6 +9341,12 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.WithdrawAllUserGroupsRequest,
     ) -> quickbi_public_20220101_models.WithdrawAllUserGroupsResponse:
+        """
+        @summary Make the user exit all user groups. This process is irreversible. Exercise caution when performing this operation.
+        
+        @param request: WithdrawAllUserGroupsRequest
+        @return: WithdrawAllUserGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.withdraw_all_user_groups_with_options(request, runtime)
 
@@ -7240,5 +9354,11 @@ class Client(OpenApiClient):
         self,
         request: quickbi_public_20220101_models.WithdrawAllUserGroupsRequest,
     ) -> quickbi_public_20220101_models.WithdrawAllUserGroupsResponse:
+        """
+        @summary Make the user exit all user groups. This process is irreversible. Exercise caution when performing this operation.
+        
+        @param request: WithdrawAllUserGroupsRequest
+        @return: WithdrawAllUserGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.withdraw_all_user_groups_with_options_async(request, runtime)

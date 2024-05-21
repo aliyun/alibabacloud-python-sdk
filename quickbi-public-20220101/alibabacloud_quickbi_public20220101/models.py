@@ -9,6 +9,7 @@ class AddDataLevelPermissionRuleUsersRequest(TeaModel):
         self,
         add_user_model: str = None,
     ):
+        # This parameter is required.
         self.add_user_model = add_user_model
 
     def validate(self):
@@ -40,9 +41,9 @@ class AddDataLevelPermissionRuleUsersResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The execution result of the interface. Valid values:\n\n*   true: The request was successful.\n*   false: The request failed.\n
+        # The execution result of the interface. Valid values:\\n\\n*   true: The request was successful.\\n*   false: The request failed.\\n
         self.result = result
-        # Indicates whether the request is successful. Valid values:\n\n*   true: The request was successful.\n*   false: The request failed.\n
+        # Indicates whether the request is successful. Valid values:\\n\\n*   true: The request was successful.\\n*   false: The request failed.\\n
         self.success = success
 
     def validate(self):
@@ -124,6 +125,8 @@ class AddDataLevelPermissionWhiteListRequest(TeaModel):
         target_type: str = None,
     ):
         # The ID of the training dataset that you want to remove from the specified custom linguistic model.
+        # 
+        # This parameter is required.
         self.cube_id = cube_id
         # Operation Type: You can set this parameter to one of the following values.
         # 
@@ -271,8 +274,12 @@ class AddShareReportRequest(TeaModel):
         # 
         # *   1: view only
         # *   3: View and export
+        # 
+        # This parameter is required.
         self.auth_point = auth_point
         # The validity period of the share. The value is a timestamp in milliseconds.
+        # 
+        # This parameter is required.
         self.expire_date = expire_date
         # The ID of the person to be shared, which may be the user ID of the Quick BI or the user group ID.
         # 
@@ -285,8 +292,12 @@ class AddShareReportRequest(TeaModel):
         # *   0: user
         # *   1: user group
         # *   2: organization
+        # 
+        # This parameter is required.
         self.share_to_type = share_to_type
         # The ID of the shared work. The works here include BI portal, dashboards, spreadsheets, and self-service access.
+        # 
+        # This parameter is required.
         self.works_id = works_id
 
     def validate(self):
@@ -424,12 +435,15 @@ class AddUserRequest(TeaModel):
         role_ids: str = None,
         user_type: int = None,
     ):
+        # This parameter is required.
         self.account_name = account_name
         # Add organization members.
         self.admin_user = admin_user
         self.auth_admin_user = auth_admin_user
+        # This parameter is required.
         self.nick_name = nick_name
         self.role_ids = role_ids
+        # This parameter is required.
         self.user_type = user_type
 
     def validate(self):
@@ -627,11 +641,15 @@ class AddUserGroupMemberRequest(TeaModel):
         # 
         # *   true: The task is added.
         # *   false: The tag failed to be added.
+        # 
+        # This parameter is required.
         self.user_group_id = user_group_id
         # Indicates whether the request is successful. Valid values:
         # 
         # *   true: The request was successful.
         # *   false: The request failed.
+        # 
+        # This parameter is required.
         self.user_id_list = user_id_list
 
     def validate(self):
@@ -745,8 +763,12 @@ class AddUserGroupMembersRequest(TeaModel):
         user_id: str = None,
     ):
         # The IDs of the user groups. Separate the IDs with commas (,). Example: aGroupId,bGroupId,cGroupIds
+        # 
+        # This parameter is required.
         self.user_group_ids = user_group_ids
         # The user ID of the Quick BI.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -869,6 +891,7 @@ class AddUserTagMetaRequest(TeaModel):
         tag_name: str = None,
     ):
         self.tag_description = tag_description
+        # This parameter is required.
         self.tag_name = tag_name
 
     def validate(self):
@@ -982,8 +1005,11 @@ class AddUserToWorkspaceRequest(TeaModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.role_id = role_id
+        # This parameter is required.
         self.user_id = user_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -1101,8 +1127,11 @@ class AddWorkspaceUsersRequest(TeaModel):
         user_ids: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.role_id = role_id
+        # This parameter is required.
         self.user_ids = user_ids
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -1265,6 +1294,7 @@ class AllotDatasetAccelerationTaskRequest(TeaModel):
         self,
         cube_id: str = None,
     ):
+        # This parameter is required.
         self.cube_id = cube_id
 
     def validate(self):
@@ -1382,11 +1412,15 @@ class AuthorizeMenuRequest(TeaModel):
         # *   3: View + Export (default)
         self.auth_points_value = auth_points_value
         # The ID of the BI portal.
+        # 
+        # This parameter is required.
         self.data_portal_id = data_portal_id
         # The menu ID of the BI portal leaf node.
         # 
         # *   The directory menu cannot be authorized.
         # *   You can upload multiple parameters at a time. Separate multiple IDs with commas (,). The maximum number of parameters that can be modified at a time is 100.
+        # 
+        # This parameter is required.
         self.menu_ids = menu_ids
         # The IDs of the user groups.
         # 
@@ -1782,7 +1816,9 @@ class CancelAuthorizationMenuRequest(TeaModel):
         user_group_ids: str = None,
         user_ids: str = None,
     ):
+        # This parameter is required.
         self.data_portal_id = data_portal_id
+        # This parameter is required.
         self.menu_ids = menu_ids
         self.user_group_ids = user_group_ids
         self.user_ids = user_ids
@@ -1906,8 +1942,12 @@ class CancelCollectionRequest(TeaModel):
         works_id: str = None,
     ):
         # The ID of the favorite user. The user ID is the UserID of the Quick BI, not the UID of Alibaba Cloud.
+        # 
+        # This parameter is required.
         self.user_id = user_id
         # The ID of the work to cancel the collection.
+        # 
+        # This parameter is required.
         self.works_id = works_id
 
     def validate(self):
@@ -2031,18 +2071,24 @@ class CancelReportShareRequest(TeaModel):
         share_to_type: int = None,
     ):
         # The ID of the work. The works here include BI portal, dashboards, spreadsheets, and self-service access.
+        # 
+        # This parameter is required.
         self.report_id = report_id
         # The ID of the person to be shared, which may be the user ID of the Quick BI or the user group ID.
         # 
         # *   If ShareToType is 0 (user), ShareTo is the user ID.
         # *   When ShareToType is set to 1 (user group), ShareTo is the user group ID.
         # *   When ShareToType=2 (organization), ShareTo is the ID of the organization.
+        # 
+        # This parameter is required.
         self.share_to_ids = share_to_ids
         # The deletion method. Valid values:
         # 
         # *   0: Delete by user
         # *   1: Delete by user group
         # *   2: Delete by organization
+        # 
+        # This parameter is required.
         self.share_to_type = share_to_type
 
     def validate(self):
@@ -2170,12 +2216,17 @@ class ChangeVisibilityModelRequest(TeaModel):
         show_only_with_access: bool = None,
     ):
         # The number of menus that are successfully modified.
+        # 
+        # This parameter is required.
         self.data_portal_id = data_portal_id
         # Indicates whether the request is successful. Valid values:
         # 
         # *   true: The request was successful.
         # *   false: The request failed.
+        # 
+        # This parameter is required.
         self.menu_ids = menu_ids
+        # This parameter is required.
         self.show_only_with_access = show_only_with_access
 
     def validate(self):
@@ -2293,8 +2344,12 @@ class CheckReadableRequest(TeaModel):
         works_id: str = None,
     ):
         # The user ID of the Quick BI to be checked.
+        # 
+        # This parameter is required.
         self.user_id = user_id
         # The ID of the work. Resources here include BI portal, dashboards, spreadsheets, and self-service access.
+        # 
+        # This parameter is required.
         self.works_id = works_id
 
     def validate(self):
@@ -2431,6 +2486,7 @@ class CreateTicketRequest(TeaModel):
         self.ticket_num = ticket_num
         self.user_id = user_id
         self.watermark_param = watermark_param
+        # This parameter is required.
         self.works_id = works_id
 
     def validate(self):
@@ -2577,11 +2633,13 @@ class CreateUserGroupRequest(TeaModel):
         # 
         # *   If you enter the ID of a parent user group, the new user group is added to the user group with the ID.
         # *   If you enter -1, the new user group is added to the root directory.
+        # 
+        # This parameter is required.
         self.parent_user_group_id = parent_user_group_id
         # The description of the user group.
         # 
         # *   Format verification: Maximum length 255
-        # *   Special format verification: Chinese and English digits\_ \ / | () ] \[
+        # *   Special format verification: Chinese and English digits_ \\ / | () ] [
         self.user_group_description = user_group_description
         # The unique ID of the user group.
         # 
@@ -2591,7 +2649,9 @@ class CreateUserGroupRequest(TeaModel):
         # The name of the RAM user group.
         # 
         # *   Format verification: Maximum length 255
-        # *   Special format verification: Chinese and English digits\_ \ / | () ] \[
+        # *   Special format verification: Chinese and English digits_ \\ / | () ] [
+        # 
+        # This parameter is required.
         self.user_group_name = user_group_name
 
     def validate(self):
@@ -2635,7 +2695,7 @@ class CreateUserGroupResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The ID of the added user group is returned. An empty string \"\" is returned if the add fails.
+        # The ID of the added user group is returned. An empty string \\"\\" is returned if the add fails.
         self.result = result
         # Indicates whether the request is successful. Valid values:
         # 
@@ -2722,8 +2782,12 @@ class DelayTicketExpireTimeRequest(TeaModel):
         # 
         # *   Unit: minutes. Valid values: 0 to 240. Unit: minutes. Valid values: 4 hours.
         # *   Expired bills cannot be extended.
+        # 
+        # This parameter is required.
         self.expire_time = expire_time
         # The value of the third-party embedded ticket, that is, the accessTicket value in the URL.
+        # 
+        # This parameter is required.
         self.ticket = ticket
 
     def validate(self):
@@ -2844,6 +2908,7 @@ class DeleteDataLevelPermissionRuleUsersRequest(TeaModel):
         self,
         delete_user_model: str = None,
     ):
+        # This parameter is required.
         self.delete_user_model = delete_user_model
 
     def validate(self):
@@ -2952,7 +3017,9 @@ class DeleteDataLevelRuleConfigRequest(TeaModel):
         cube_id: str = None,
         rule_id: str = None,
     ):
+        # This parameter is required.
         self.cube_id = cube_id
+        # This parameter is required.
         self.rule_id = rule_id
 
     def validate(self):
@@ -3065,6 +3132,8 @@ class DeleteTicketRequest(TeaModel):
         ticket: str = None,
     ):
         # Deletes a specified ticket from an embedded report.
+        # 
+        # This parameter is required.
         self.ticket = ticket
 
     def validate(self):
@@ -3175,6 +3244,8 @@ class DeleteUserRequest(TeaModel):
     ):
         self.transfer_user_id = transfer_user_id
         # Deletes a user from a specified organization.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -3287,7 +3358,9 @@ class DeleteUserFromWorkspaceRequest(TeaModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.user_id = user_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -3400,6 +3473,8 @@ class DeleteUserGroupRequest(TeaModel):
         user_group_id: str = None,
     ):
         # The ID of the user group.
+        # 
+        # This parameter is required.
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -3518,8 +3593,12 @@ class DeleteUserGroupMemberRequest(TeaModel):
         user_id: str = None,
     ):
         # The ID of the user group.
+        # 
+        # This parameter is required.
         self.user_group_id = user_group_id
         # The user ID of the Quick BI.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -3641,7 +3720,9 @@ class DeleteUserGroupMembersRequest(TeaModel):
         user_group_ids: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.user_group_ids = user_group_ids
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -3753,6 +3834,7 @@ class DeleteUserTagMetaRequest(TeaModel):
         self,
         tag_id: str = None,
     ):
+        # This parameter is required.
         self.tag_id = tag_id
 
     def validate(self):
@@ -3861,6 +3943,8 @@ class GetUserGroupInfoRequest(TeaModel):
         keyword: str = None,
     ):
         # The ID of the user group.
+        # 
+        # This parameter is required.
         self.keyword = keyword
 
     def validate(self):
@@ -4057,6 +4141,7 @@ class ListApiDatasourceRequest(TeaModel):
         self.key_word = key_word
         self.page_num = page_num
         self.page_size = page_size
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -4313,6 +4398,8 @@ class ListByUserGroupIdRequest(TeaModel):
         user_group_ids: str = None,
     ):
         # The ID of the user group that you want to query. Separate multiple user groups with commas (,).
+        # 
+        # This parameter is required.
         self.user_group_ids = user_group_ids
 
     def validate(self):
@@ -4555,6 +4642,8 @@ class ListCollectionsRequest(TeaModel):
         user_id: str = None,
     ):
         # The ID of the user. The user ID is the UserID of the Quick BI, not the UID of Alibaba Cloud.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -4737,11 +4826,15 @@ class ListCubeDataLevelPermissionConfigRequest(TeaModel):
         rule_type: str = None,
     ):
         # The ID of the training dataset that you want to remove from the specified custom linguistic model.
+        # 
+        # This parameter is required.
         self.cube_id = cube_id
         # The type of the dataset row and column permission. Valid values:
         # 
         # *   ROW_LEVEL: row-level permissions
         # *   COLUMN_LEVEL: column-level permissions
+        # 
+        # This parameter is required.
         self.rule_type = rule_type
 
     def validate(self):
@@ -4777,8 +4870,8 @@ class ListCubeDataLevelPermissionConfigResponseBody(TeaModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # { "isOpen": 1, "extraConfigModel": { // Additional configuration information "ruleType": "ROW_LEVEL", // The row-level permission type. "missHitPolicy": "NONE", // The hit rule policy: NONE has no permissions, and ALL has permissions. "cubeId": "7c7223 ae-31d1-4d2f-b11f-3c744528014b" // The ID of the dataset. }, "ruleType": "ROW_LEVEL", // Row-column permission type\
-        # "ruleModels": \[ { "ruleUsersModel": { // The target population. "userGroups": \[ "0d5fb19b- ****-1248 fc27ca51", // The ID of the user group. "4aa3f089-****-85f0-0e8ac7c2dee9" ], "users": \[ "HuangJia ***2e3fa822", // The ID of the user. "4334***84358" ] }, "ruleContentModel": { "ruleContentType": "ROW_FIELD", // The row-column permission type. "ruleContentJson": "{"conditionNode":{"caption": " Period ","isMeasure":false,"pathId":"7d3b073bc6","relationOperator":"not-null","name":"7d3b073bc6","value":{"value":\[""}UM]," ENueType "} // The JSON string of the row-column permission rule. "ruleOriginConfigJson": "{"operator":"and","operands":\[{"labelName": " Period ","isValid":true,"uniqueId":"5","fieldId":"7d3b073bc6","error":false,"fieldType":"string",": default "" value":{"conditionOp":"not-null","conditionValue":""},"valueType":"ENUM"}}],"isRelation":true}" }, // The fixed-format JSON string required by the frontend "isOpen": 1, // The status of the row-column permission configuration. 1. On. 0. Off. "hitTakeEffect": 1, // Specifies whether the rule takes effect after a column-level permission is hit. 1 takes effect and 0 takes effect. "ruleName": "Test row-level permission_Do not delete", // The name of the row-column permission rule. "ruleLevelType": "ROW_LEVEL", // The row-column permission type. "ruleId": "a5bb24 da-772f-45e8-a43c-a891683e14da", // The ID of the row-column permission rule. "cubeId": "7c7223 ae-31d1-4d2f-b11f-3c744528014b", // The ID of the dataset. "ruleTargetScope": "OTHERS" rule takes effect: ALL owner and OTHERS designated owner. } ], "cubeId": "7c7223 ae-31d1-4d2f-b11f-3c744528014b" // The ID of the dataset. }
+        # { "isOpen": 1, "extraConfigModel": { // Additional configuration information "ruleType": "ROW_LEVEL", // The row-level permission type. "missHitPolicy": "NONE", // The hit rule policy: NONE has no permissions, and ALL has permissions. "cubeId": "7c7223 ae-31d1-4d2f-b11f-3c744528014b" // The ID of the dataset. }, "ruleType": "ROW_LEVEL", // Row-column permission type\\
+        # "ruleModels": [ { "ruleUsersModel": { // The target population. "userGroups": [ "0d5fb19b- ****-1248 fc27ca51", // The ID of the user group. "4aa3f089-****-85f0-0e8ac7c2dee9" ], "users": [ "HuangJia ***2e3fa822", // The ID of the user. "4334***84358" ] }, "ruleContentModel": { "ruleContentType": "ROW_FIELD", // The row-column permission type. "ruleContentJson": "{"conditionNode":{"caption": " Period ","isMeasure":false,"pathId":"7d3b073bc6","relationOperator":"not-null","name":"7d3b073bc6","value":{"value":[""}UM]," ENueType "} // The JSON string of the row-column permission rule. "ruleOriginConfigJson": "{"operator":"and","operands":[{"labelName": " Period ","isValid":true,"uniqueId":"5","fieldId":"7d3b073bc6","error":false,"fieldType":"string",": default "" value":{"conditionOp":"not-null","conditionValue":""},"valueType":"ENUM"}}],"isRelation":true}" }, // The fixed-format JSON string required by the frontend "isOpen": 1, // The status of the row-column permission configuration. 1. On. 0. Off. "hitTakeEffect": 1, // Specifies whether the rule takes effect after a column-level permission is hit. 1 takes effect and 0 takes effect. "ruleName": "Test row-level permission_Do not delete", // The name of the row-column permission rule. "ruleLevelType": "ROW_LEVEL", // The row-column permission type. "ruleId": "a5bb24 da-772f-45e8-a43c-a891683e14da", // The ID of the row-column permission rule. "cubeId": "7c7223 ae-31d1-4d2f-b11f-3c744528014b", // The ID of the dataset. "ruleTargetScope": "OTHERS" rule takes effect: ALL owner and OTHERS designated owner. } ], "cubeId": "7c7223 ae-31d1-4d2f-b11f-3c744528014b" // The ID of the dataset. }
         self.result = result
         # Indicates whether the request is successful. Valid values:
         # 
@@ -4861,7 +4954,9 @@ class ListDataLevelPermissionWhiteListRequest(TeaModel):
         cube_id: str = None,
         rule_type: str = None,
     ):
+        # This parameter is required.
         self.cube_id = cube_id
+        # This parameter is required.
         self.rule_type = rule_type
 
     def validate(self):
@@ -5055,6 +5150,7 @@ class ListFavoriteReportsRequest(TeaModel):
         self.keyword = keyword
         self.page_size = page_size
         self.tree_type = tree_type
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -5093,6 +5189,7 @@ class ListFavoriteReportsResponseBodyResultData(TeaModel):
     def __init__(
         self,
         favorite: bool = None,
+        favorite_date: str = None,
         gmt_create: str = None,
         gmt_modified: str = None,
         has_edit_auth: bool = None,
@@ -5107,6 +5204,7 @@ class ListFavoriteReportsResponseBodyResultData(TeaModel):
         workspace_name: str = None,
     ):
         self.favorite = favorite
+        self.favorite_date = favorite_date
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
         self.has_edit_auth = has_edit_auth
@@ -5131,6 +5229,8 @@ class ListFavoriteReportsResponseBodyResultData(TeaModel):
         result = dict()
         if self.favorite is not None:
             result['Favorite'] = self.favorite
+        if self.favorite_date is not None:
+            result['FavoriteDate'] = self.favorite_date
         if self.gmt_create is not None:
             result['GmtCreate'] = self.gmt_create
         if self.gmt_modified is not None:
@@ -5161,6 +5261,8 @@ class ListFavoriteReportsResponseBodyResultData(TeaModel):
         m = m or dict()
         if m.get('Favorite') is not None:
             self.favorite = m.get('Favorite')
+        if m.get('FavoriteDate') is not None:
+            self.favorite_date = m.get('FavoriteDate')
         if m.get('GmtCreate') is not None:
             self.gmt_create = m.get('GmtCreate')
         if m.get('GmtModified') is not None:
@@ -5340,6 +5442,7 @@ class ListOrganizationRoleUsersRequest(TeaModel):
         self.keyword = keyword
         self.page_num = page_num
         self.page_size = page_size
+        # This parameter is required.
         self.role_id = role_id
 
     def validate(self):
@@ -5722,6 +5825,8 @@ class ListPortalMenuAuthorizationRequest(TeaModel):
         data_portal_id: str = None,
     ):
         # The ID of the BI portal.
+        # 
+        # This parameter is required.
         self.data_portal_id = data_portal_id
 
     def validate(self):
@@ -5936,6 +6041,8 @@ class ListPortalMenusRequest(TeaModel):
         user_id: str = None,
     ):
         # The ID of the BI portal.
+        # 
+        # This parameter is required.
         self.data_portal_id = data_portal_id
         # The user ID in the Quick BI. When passed in, the list displays only the menus that the user has permissions on.
         self.user_id = user_id
@@ -6086,6 +6193,7 @@ class ListRecentViewReportsRequest(TeaModel):
         self.page_size = page_size
         self.query_mode = query_mode
         self.tree_type = tree_type
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -6397,6 +6505,7 @@ class ListSharedReportsRequest(TeaModel):
         self.keyword = keyword
         self.page_size = page_size
         self.tree_type = tree_type
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -6677,6 +6786,8 @@ class ListUserGroupsByUserIdRequest(TeaModel):
         user_id: str = None,
     ):
         # The ID of the user group.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -6875,7 +6986,9 @@ class ListWorkspaceRoleUsersRequest(TeaModel):
         self.keyword = keyword
         self.page_num = page_num
         self.page_size = page_size
+        # This parameter is required.
         self.role_id = role_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -7105,6 +7218,7 @@ class ListWorkspaceRolesRequest(TeaModel):
         self,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -7308,8 +7422,11 @@ class ModifyApiDatasourceParametersRequest(TeaModel):
         parameters: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.api_id = api_id
+        # This parameter is required.
         self.parameters = parameters
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -7434,9 +7551,11 @@ class QueryComponentPerformanceRequest(TeaModel):
         self.cost_time_avg_min = cost_time_avg_min
         self.page_num = page_num
         self.page_size = page_size
+        # This parameter is required.
         self.query_type = query_type
         self.report_id = report_id
         self.resource_type = resource_type
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -7741,6 +7860,7 @@ class QueryCubeOptimizationRequest(TeaModel):
         self,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -8047,7 +8167,9 @@ class QueryCubePerformanceRequest(TeaModel):
         self.cube_id = cube_id
         self.page_num = page_num
         self.page_size = page_size
+        # This parameter is required.
         self.query_type = query_type
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -8333,10 +8455,12 @@ class QueryDataServiceRequest(TeaModel):
         return_fields: str = None,
     ):
         # Call an API that is created in DataService Studio.
+        # 
+        # This parameter is required.
         self.api_id = api_id
         # # Prerequisites
         # 
-        # You can use the Quick BI data service to create an API for the data service. For more information, see [Data service](~~144980~~).
+        # You can use the Quick BI data service to create an API for the data service. For more information, see [Data service](https://help.aliyun.com/document_detail/144980.html).
         # 
         # # Limits
         # 
@@ -8413,7 +8537,7 @@ class QueryDataServiceResponseBodyResultHeaders(TeaModel):
         self.granularity = granularity
         # The data type of the field. generally have number, string, date, datetime, time, and geographic.
         self.label = label
-        # SELECT COMPANY_T\_1\_.\"area\" AS D_AREA\_2\_, COMPANY_T\_1\_.\"city\" AS D_CITY\_3\_, SUM(COMPANY_T\_1\_.\"profit_amt\") AS D_PROFIT\_4\_ FROM \"quickbi_test\".\"company_sales_record_copy\" AS COMPANY_T\_1\_ WHERE COMPANY_T\_1\_.\"area\" LIKE \"% China East %\" GROUP BY COMPANY_T\_1\_.\"area\", COMPANY_T\_1\_.\"city\" HAVING SUM(COMPANY_T\_1\_.\"order_amt\") > 1 LIMIT 0,10
+        # SELECT COMPANY_T_1_.\\"area\\" AS D_AREA_2_, COMPANY_T_1_.\\"city\\" AS D_CITY_3_, SUM(COMPANY_T_1_.\\"profit_amt\\") AS D_PROFIT_4_ FROM \\"quickbi_test\\".\\"company_sales_record_copy\\" AS COMPANY_T_1_ WHERE COMPANY_T_1_.\\"area\\" LIKE \\"% China East %\\" GROUP BY COMPANY_T_1_.\\"area\\", COMPANY_T_1_.\\"city\\" HAVING SUM(COMPANY_T_1_.\\"order_amt\\") > 1 LIMIT 0,10
         self.type = type
 
     def validate(self):
@@ -8520,7 +8644,7 @@ class QueryDataServiceResponseBody(TeaModel):
         # *   true: The request was successful.
         # *   false: The request failed.
         self.result = result
-        # { "area": \["East China", "North China"], "shopping_date": "2019Q1", }
+        # { "area": ["East China", "North China"], "shopping_date": "2019Q1", }
         self.success = success
 
     def validate(self):
@@ -8600,6 +8724,8 @@ class QueryDatasetDetailInfoRequest(TeaModel):
         dataset_id: str = None,
     ):
         # The ID of the training dataset that you want to remove from the specified custom linguistic model.
+        # 
+        # This parameter is required.
         self.dataset_id = dataset_id
 
     def validate(self):
@@ -8714,6 +8840,8 @@ class QueryDatasetInfoRequest(TeaModel):
         dataset_id: str = None,
     ):
         # Queries information about a specified dataset.
+        # 
+        # This parameter is required.
         self.dataset_id = dataset_id
 
     def validate(self):
@@ -9333,6 +9461,8 @@ class QueryDatasetListRequest(TeaModel):
         # The total number of pages returned.
         self.with_children = with_children
         # The name of the data source.
+        # 
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -9745,6 +9875,7 @@ class QueryDatasetSwitchInfoRequest(TeaModel):
         self,
         cube_id: str = None,
     ):
+        # This parameter is required.
         self.cube_id = cube_id
 
     def validate(self):
@@ -10060,6 +10191,8 @@ class QueryEmbeddedStatusRequest(TeaModel):
         works_id: str = None,
     ):
         # The work ID of the query.
+        # 
+        # This parameter is required.
         self.works_id = works_id
 
     def validate(self):
@@ -10176,6 +10309,7 @@ class QueryOrganizationRoleConfigRequest(TeaModel):
         self,
         role_id: int = None,
     ):
+        # This parameter is required.
         self.role_id = role_id
 
     def validate(self):
@@ -10657,6 +10791,8 @@ class QueryReadableResourcesListByUserIdRequest(TeaModel):
         user_id: str = None,
     ):
         # Quick BI the user ID.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -10981,9 +11117,11 @@ class QueryReportPerformanceRequest(TeaModel):
         self.cost_time_avg_min = cost_time_avg_min
         self.page_num = page_num
         self.page_size = page_size
+        # This parameter is required.
         self.query_type = query_type
         self.report_id = report_id
         self.resource_type = resource_type
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -11297,6 +11435,8 @@ class QueryShareListRequest(TeaModel):
         # *   Analysis: Ad hoc analysis
         # *   DATAFORM
         # *   SCREEN: Data dashboard
+        # 
+        # This parameter is required.
         self.report_id = report_id
 
     def validate(self):
@@ -11482,6 +11622,8 @@ class QuerySharesToUserListRequest(TeaModel):
         user_id: str = None,
     ):
         # The ID of the user. The user ID is the UserID of the Quick BI, not the UID of Alibaba Cloud.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -11805,6 +11947,8 @@ class QueryTicketInfoRequest(TeaModel):
         ticket: str = None,
     ):
         # Obtains the details of a specified ticket for a report that is not embedded in the report.
+        # 
+        # This parameter is required.
         self.ticket = ticket
 
     def validate(self):
@@ -12005,6 +12149,8 @@ class QueryUserGroupListByParentIdRequest(TeaModel):
         # 
         # *   If you enter the ID of the parent user group, you can obtain the information of the child user group under this ID.
         # *   If you enter -1, you can obtain the sub-user group information under the root directory.
+        # 
+        # This parameter is required.
         self.parent_user_group_id = parent_user_group_id
 
     def validate(self):
@@ -12212,6 +12358,7 @@ class QueryUserGroupMemberRequest(TeaModel):
         user_group_id: str = None,
     ):
         self.keyword = keyword
+        # This parameter is required.
         self.user_group_id = user_group_id
 
     def validate(self):
@@ -12393,6 +12540,8 @@ class QueryUserInfoByAccountRequest(TeaModel):
         # *   ID：
         # 
         #     *   Enter the UID of the account to query the account information.
+        # 
+        # This parameter is required.
         self.account = account
         self.parent_account_name = parent_account_name
 
@@ -12614,6 +12763,8 @@ class QueryUserInfoByUserIdRequest(TeaModel):
         user_id: str = None,
     ):
         # The ID of the user. The UserID is the UserID of the Quick BI, not the UID of Alibaba Cloud.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -13079,7 +13230,9 @@ class QueryUserRoleInfoInWorkspaceRequest(TeaModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.user_id = user_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -13360,6 +13513,7 @@ class QueryUserTagValueListRequest(TeaModel):
         self,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -13514,6 +13668,7 @@ class QueryWorksRequest(TeaModel):
         self,
         works_id: str = None,
     ):
+        # This parameter is required.
         self.works_id = works_id
 
     def validate(self):
@@ -13782,6 +13937,8 @@ class QueryWorksBloodRelationshipRequest(TeaModel):
         works_id: str = None,
     ):
         # Obtains the kinship of a data work, including the datasets referenced by each component and query field information. Currently, only supported data works include dashboards, workbooks, and self-service data retrieval.
+        # 
+        # This parameter is required.
         self.works_id = works_id
 
     def validate(self):
@@ -14491,6 +14648,8 @@ class QueryWorksByWorkspaceRequest(TeaModel):
         # *   REPORT: workbook
         self.works_type = works_type
         # The ID of the workspace.
+        # 
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -14891,6 +15050,7 @@ class QueryWorkspaceRoleConfigRequest(TeaModel):
         self,
         role_id: int = None,
     ):
+        # This parameter is required.
         self.role_id = role_id
 
     def validate(self):
@@ -15092,6 +15252,7 @@ class QueryWorkspaceUserListRequest(TeaModel):
         self.keyword = keyword
         self.page_num = page_num
         self.page_size = page_size
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -15366,8 +15527,11 @@ class ResultCallbackRequest(TeaModel):
         handle_reason: str = None,
         status: int = None,
     ):
+        # This parameter is required.
         self.application_id = application_id
+        # This parameter is required.
         self.handle_reason = handle_reason
+        # This parameter is required.
         self.status = status
 
     def validate(self):
@@ -15485,8 +15649,12 @@ class SaveFavoritesRequest(TeaModel):
         works_id: str = None,
     ):
         # The user ID of the collection. The user ID is the UserID of the Quick BI, not the UID of Alibaba Cloud.
+        # 
+        # This parameter is required.
         self.user_id = user_id
         # The ID of the collection.
+        # 
+        # This parameter is required.
         self.works_id = works_id
 
     def validate(self):
@@ -15609,8 +15777,11 @@ class SetDataLevelPermissionExtraConfigRequest(TeaModel):
         miss_hit_policy: str = None,
         rule_type: str = None,
     ):
+        # This parameter is required.
         self.cube_id = cube_id
+        # This parameter is required.
         self.miss_hit_policy = miss_hit_policy
+        # This parameter is required.
         self.rule_type = rule_type
 
     def validate(self):
@@ -15726,6 +15897,7 @@ class SetDataLevelPermissionRuleConfigRequest(TeaModel):
         self,
         rule_model: str = None,
     ):
+        # This parameter is required.
         self.rule_model = rule_model
 
     def validate(self):
@@ -15833,7 +16005,9 @@ class SetDataLevelPermissionWhiteListRequest(TeaModel):
         self,
         white_list_model: str = None,
     ):
-        # { "ruleType": "ROW_LEVEL", // The row-level permission type. "usersModel": { "userGroups": \[ "0d5fb19b- ***-1248 fc27ca51", // The ID of the user group. "3d2c23d4-***-f6390f325c2d" ], "users": \[ "4334 ***358", // Quick BI the UserID of the user. "Huang***3fa822" ] }, "cubeId": "7c7223ae-31d1-4d2f-b11f-3c744528014b" }
+        # { "ruleType": "ROW_LEVEL", // The row-level permission type. "usersModel": { "userGroups": [ "0d5fb19b- ***-1248 fc27ca51", // The ID of the user group. "3d2c23d4-***-f6390f325c2d" ], "users": [ "4334 ***358", // Quick BI the UserID of the user. "Huang***3fa822" ] }, "cubeId": "7c7223ae-31d1-4d2f-b11f-3c744528014b" }
+        # 
+        # This parameter is required.
         self.white_list_model = white_list_model
 
     def validate(self):
@@ -15953,8 +16127,12 @@ class UpdateDataLevelPermissionStatusRequest(TeaModel):
         rule_type: str = None,
     ):
         # The ID of the training dataset that you want to remove from the specified custom linguistic model.
+        # 
+        # This parameter is required.
         self.cube_id = cube_id
+        # This parameter is required.
         self.is_open = is_open
+        # This parameter is required.
         self.rule_type = rule_type
 
     def validate(self):
@@ -16071,7 +16249,9 @@ class UpdateEmbeddedStatusRequest(TeaModel):
         third_part_auth_flag: bool = None,
         works_id: str = None,
     ):
+        # This parameter is required.
         self.third_part_auth_flag = third_part_auth_flag
+        # This parameter is required.
         self.works_id = works_id
 
     def validate(self):
@@ -16184,7 +16364,9 @@ class UpdateTicketNumRequest(TeaModel):
         ticket: str = None,
         ticket_num: int = None,
     ):
+        # This parameter is required.
         self.ticket = ticket
+        # This parameter is required.
         self.ticket_num = ticket_num
 
     def validate(self):
@@ -16314,10 +16496,12 @@ class UpdateUserRequest(TeaModel):
         # The nickname of the account.
         # 
         # *   Format check: The value can be up to 50 characters in length.
-        # *   Special format verification: Chinese and English digits\_ \ / | () ] \[
+        # *   Special format verification: Chinese and English digits_ \\ / | () ] [
         self.nick_name = nick_name
         self.role_ids = role_ids
         # The ID of the user to be updated. The user ID is the UserID of the Quick BI, not the UID of Alibaba Cloud.
+        # 
+        # This parameter is required.
         self.user_id = user_id
         # The role type of the organization member. Valid values:
         # 
@@ -16465,14 +16649,16 @@ class UpdateUserGroupRequest(TeaModel):
         # The description of the user group.
         # 
         # *   Format verification: Maximum length 255
-        # *   Special format verification: Chinese and English digits\_ \ / | () ] \[
+        # *   Special format verification: Chinese and English digits_ \\ / | () ] [
         self.user_group_description = user_group_description
         # The ID of the user group.
+        # 
+        # This parameter is required.
         self.user_group_id = user_group_id
         # The name of the user group.
         # 
         # *   Format verification: Maximum length 255
-        # *   Special format verification: Chinese and English digits\_ \ / | () ] \[
+        # *   Special format verification: Chinese and English digits_ \\ / | () ] [
         self.user_group_name = user_group_name
 
     def validate(self):
@@ -16600,7 +16786,9 @@ class UpdateUserTagMetaRequest(TeaModel):
         tag_name: str = None,
     ):
         self.tag_description = tag_description
+        # This parameter is required.
         self.tag_id = tag_id
+        # This parameter is required.
         self.tag_name = tag_name
 
     def validate(self):
@@ -16718,8 +16906,11 @@ class UpdateUserTagValueRequest(TeaModel):
         tag_value: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.tag_id = tag_id
+        # This parameter is required.
         self.tag_value = tag_value
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -16837,8 +17028,11 @@ class UpdateWorkspaceUserRoleRequest(TeaModel):
         user_id: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.role_id = role_id
+        # This parameter is required.
         self.user_id = user_id
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -16956,8 +17150,11 @@ class UpdateWorkspaceUsersRoleRequest(TeaModel):
         user_ids: str = None,
         workspace_id: str = None,
     ):
+        # This parameter is required.
         self.role_id = role_id
+        # This parameter is required.
         self.user_ids = user_ids
+        # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -17121,6 +17318,8 @@ class WithdrawAllUserGroupsRequest(TeaModel):
         user_id: str = None,
     ):
         # The ID of the user. The UserID of the Quick BI is used instead of the UID of Alibaba Cloud.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):

@@ -1,3 +1,13 @@
+2024-05-21 Version: 1.3.0
+- Support API ListOrganizationRoleUsers.
+- Support API ListOrganizationRoles.
+- Support API ListWorkspaceRoleUsers.
+- Support API ListWorkspaceRoles.
+- Support API QueryOrganizationRoleConfig.
+- Support API QueryWorkspaceRoleConfig.
+- Update API ListFavoriteReports: update response param.
+
+
 2024-03-19 Version: 1.2.0
 - Support API ListOrganizationRoleUsers.
 - Support API ListOrganizationRoles.
