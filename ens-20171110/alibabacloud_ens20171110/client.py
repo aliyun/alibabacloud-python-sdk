@@ -46,6 +46,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.AccosicateNetworkAclRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.AccosicateNetworkAclResponse:
+        """
+        @summary Associates a network access control list (ACL) with a network.
+        
+        @param request: AccosicateNetworkAclRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AccosicateNetworkAclResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.network_acl_id):
@@ -76,6 +83,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.AccosicateNetworkAclRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.AccosicateNetworkAclResponse:
+        """
+        @summary Associates a network access control list (ACL) with a network.
+        
+        @param request: AccosicateNetworkAclRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AccosicateNetworkAclResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.network_acl_id):
@@ -105,6 +119,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.AccosicateNetworkAclRequest,
     ) -> ens_20171110_models.AccosicateNetworkAclResponse:
+        """
+        @summary Associates a network access control list (ACL) with a network.
+        
+        @param request: AccosicateNetworkAclRequest
+        @return: AccosicateNetworkAclResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.accosicate_network_acl_with_options(request, runtime)
 
@@ -112,6 +132,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.AccosicateNetworkAclRequest,
     ) -> ens_20171110_models.AccosicateNetworkAclResponse:
+        """
+        @summary Associates a network access control list (ACL) with a network.
+        
+        @param request: AccosicateNetworkAclRequest
+        @return: AccosicateNetworkAclResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.accosicate_network_acl_with_options_async(request, runtime)
 
@@ -121,8 +147,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.AddBackendServersResponse:
         """
-        You can call this operation up to 100 times per second.
-        *   You can call this operation up to 10 times per second per account.
+        @summary Adds backend servers.
+        
+        @description    You can call this operation up to 100 times per second.
+        You can call this operation up to 10 times per second per account.
         
         @param tmp_req: AddBackendServersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -163,8 +191,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.AddBackendServersResponse:
         """
-        You can call this operation up to 100 times per second.
-        *   You can call this operation up to 10 times per second per account.
+        @summary Adds backend servers.
+        
+        @description    You can call this operation up to 100 times per second.
+        You can call this operation up to 10 times per second per account.
         
         @param tmp_req: AddBackendServersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -204,8 +234,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.AddBackendServersRequest,
     ) -> ens_20171110_models.AddBackendServersResponse:
         """
-        You can call this operation up to 100 times per second.
-        *   You can call this operation up to 10 times per second per account.
+        @summary Adds backend servers.
+        
+        @description    You can call this operation up to 100 times per second.
+        You can call this operation up to 10 times per second per account.
         
         @param request: AddBackendServersRequest
         @return: AddBackendServersResponse
@@ -218,8 +250,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.AddBackendServersRequest,
     ) -> ens_20171110_models.AddBackendServersResponse:
         """
-        You can call this operation up to 100 times per second.
-        *   You can call this operation up to 10 times per second per account.
+        @summary Adds backend servers.
+        
+        @description    You can call this operation up to 100 times per second.
+        You can call this operation up to 10 times per second per account.
         
         @param request: AddBackendServersRequest
         @return: AddBackendServersResponse
@@ -232,6 +266,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.AddDeviceInternetPortRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.AddDeviceInternetPortResponse:
+        """
+        @summary Configures Network Address Translation (NAT) rules for an instance. This operation is an asynchronous API operation. For more information about the configurations, see the API documentation of GetDeviceInternetPort.
+        
+        @param request: AddDeviceInternetPortRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDeviceInternetPortResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -258,6 +299,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.AddDeviceInternetPortRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.AddDeviceInternetPortResponse:
+        """
+        @summary Configures Network Address Translation (NAT) rules for an instance. This operation is an asynchronous API operation. For more information about the configurations, see the API documentation of GetDeviceInternetPort.
+        
+        @param request: AddDeviceInternetPortRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDeviceInternetPortResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -283,6 +331,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.AddDeviceInternetPortRequest,
     ) -> ens_20171110_models.AddDeviceInternetPortResponse:
+        """
+        @summary Configures Network Address Translation (NAT) rules for an instance. This operation is an asynchronous API operation. For more information about the configurations, see the API documentation of GetDeviceInternetPort.
+        
+        @param request: AddDeviceInternetPortRequest
+        @return: AddDeviceInternetPortResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_device_internet_port_with_options(request, runtime)
 
@@ -290,6 +344,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.AddDeviceInternetPortRequest,
     ) -> ens_20171110_models.AddDeviceInternetPortResponse:
+        """
+        @summary Configures Network Address Translation (NAT) rules for an instance. This operation is an asynchronous API operation. For more information about the configurations, see the API documentation of GetDeviceInternetPort.
+        
+        @param request: AddDeviceInternetPortRequest
+        @return: AddDeviceInternetPortResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_device_internet_port_with_options_async(request, runtime)
 
@@ -299,10 +359,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.AddNetworkInterfaceToInstanceResponse:
         """
-        # [](#)Usage notes
-        *   You can call this operation up to 100 times per second.
-        *   You can call this operation up to 5 times per second per user.
-        *   Internal networks and IPv4 addresses are not supported.
+        @summary Adds an IPv6 network interface controller (NIC). A public IP address is automatically assigned at the same time.
+        
+        @description # [](#)Usage notes
+        You can call this operation up to 100 times per second.
+        You can call this operation up to 5 times per second per user.
+        Internal networks and IPv4 addresses are not supported.
         
         @param request: AddNetworkInterfaceToInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -341,10 +403,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.AddNetworkInterfaceToInstanceResponse:
         """
-        # [](#)Usage notes
-        *   You can call this operation up to 100 times per second.
-        *   You can call this operation up to 5 times per second per user.
-        *   Internal networks and IPv4 addresses are not supported.
+        @summary Adds an IPv6 network interface controller (NIC). A public IP address is automatically assigned at the same time.
+        
+        @description # [](#)Usage notes
+        You can call this operation up to 100 times per second.
+        You can call this operation up to 5 times per second per user.
+        Internal networks and IPv4 addresses are not supported.
         
         @param request: AddNetworkInterfaceToInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -382,10 +446,12 @@ class Client(OpenApiClient):
         request: ens_20171110_models.AddNetworkInterfaceToInstanceRequest,
     ) -> ens_20171110_models.AddNetworkInterfaceToInstanceResponse:
         """
-        # [](#)Usage notes
-        *   You can call this operation up to 100 times per second.
-        *   You can call this operation up to 5 times per second per user.
-        *   Internal networks and IPv4 addresses are not supported.
+        @summary Adds an IPv6 network interface controller (NIC). A public IP address is automatically assigned at the same time.
+        
+        @description # [](#)Usage notes
+        You can call this operation up to 100 times per second.
+        You can call this operation up to 5 times per second per user.
+        Internal networks and IPv4 addresses are not supported.
         
         @param request: AddNetworkInterfaceToInstanceRequest
         @return: AddNetworkInterfaceToInstanceResponse
@@ -398,10 +464,12 @@ class Client(OpenApiClient):
         request: ens_20171110_models.AddNetworkInterfaceToInstanceRequest,
     ) -> ens_20171110_models.AddNetworkInterfaceToInstanceResponse:
         """
-        # [](#)Usage notes
-        *   You can call this operation up to 100 times per second.
-        *   You can call this operation up to 5 times per second per user.
-        *   Internal networks and IPv4 addresses are not supported.
+        @summary Adds an IPv6 network interface controller (NIC). A public IP address is automatically assigned at the same time.
+        
+        @description # [](#)Usage notes
+        You can call this operation up to 100 times per second.
+        You can call this operation up to 5 times per second per user.
+        Internal networks and IPv4 addresses are not supported.
         
         @param request: AddNetworkInterfaceToInstanceRequest
         @return: AddNetworkInterfaceToInstanceResponse
@@ -414,6 +482,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.AddSnatIpForSnatEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.AddSnatIpForSnatEntryResponse:
+        """
+        @summary Adds an elastic IP address (EIP) to a Source Network Address Translation (SNAT) entry.
+        
+        @param request: AddSnatIpForSnatEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddSnatIpForSnatEntryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.snat_entry_id):
@@ -444,6 +519,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.AddSnatIpForSnatEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.AddSnatIpForSnatEntryResponse:
+        """
+        @summary Adds an elastic IP address (EIP) to a Source Network Address Translation (SNAT) entry.
+        
+        @param request: AddSnatIpForSnatEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddSnatIpForSnatEntryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.snat_entry_id):
@@ -473,6 +555,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.AddSnatIpForSnatEntryRequest,
     ) -> ens_20171110_models.AddSnatIpForSnatEntryResponse:
+        """
+        @summary Adds an elastic IP address (EIP) to a Source Network Address Translation (SNAT) entry.
+        
+        @param request: AddSnatIpForSnatEntryRequest
+        @return: AddSnatIpForSnatEntryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_snat_ip_for_snat_entry_with_options(request, runtime)
 
@@ -480,6 +568,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.AddSnatIpForSnatEntryRequest,
     ) -> ens_20171110_models.AddSnatIpForSnatEntryResponse:
+        """
+        @summary Adds an elastic IP address (EIP) to a Source Network Address Translation (SNAT) entry.
+        
+        @param request: AddSnatIpForSnatEntryRequest
+        @return: AddSnatIpForSnatEntryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_snat_ip_for_snat_entry_with_options_async(request, runtime)
 
@@ -488,6 +582,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.AssignPrivateIpAddressesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.AssignPrivateIpAddressesResponse:
+        """
+        @summary Assigns secondary private IP addresses to an elastic network interface (ENI).
+        
+        @param request: AssignPrivateIpAddressesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssignPrivateIpAddressesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.network_interface_id):
@@ -518,6 +619,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.AssignPrivateIpAddressesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.AssignPrivateIpAddressesResponse:
+        """
+        @summary Assigns secondary private IP addresses to an elastic network interface (ENI).
+        
+        @param request: AssignPrivateIpAddressesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssignPrivateIpAddressesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.network_interface_id):
@@ -547,6 +655,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.AssignPrivateIpAddressesRequest,
     ) -> ens_20171110_models.AssignPrivateIpAddressesResponse:
+        """
+        @summary Assigns secondary private IP addresses to an elastic network interface (ENI).
+        
+        @param request: AssignPrivateIpAddressesRequest
+        @return: AssignPrivateIpAddressesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.assign_private_ip_addresses_with_options(request, runtime)
 
@@ -554,6 +668,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.AssignPrivateIpAddressesRequest,
     ) -> ens_20171110_models.AssignPrivateIpAddressesResponse:
+        """
+        @summary Assigns secondary private IP addresses to an elastic network interface (ENI).
+        
+        @param request: AssignPrivateIpAddressesRequest
+        @return: AssignPrivateIpAddressesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.assign_private_ip_addresses_with_options_async(request, runtime)
 
@@ -562,6 +682,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.AssociateEnsEipAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.AssociateEnsEipAddressResponse:
+        """
+        @summary Associates an elastic IP address (EIP) with a cloud resource that is deployed in the same region.
+        
+        @param request: AssociateEnsEipAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssociateEnsEipAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.allocation_id):
@@ -596,6 +723,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.AssociateEnsEipAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.AssociateEnsEipAddressResponse:
+        """
+        @summary Associates an elastic IP address (EIP) with a cloud resource that is deployed in the same region.
+        
+        @param request: AssociateEnsEipAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AssociateEnsEipAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.allocation_id):
@@ -629,6 +763,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.AssociateEnsEipAddressRequest,
     ) -> ens_20171110_models.AssociateEnsEipAddressResponse:
+        """
+        @summary Associates an elastic IP address (EIP) with a cloud resource that is deployed in the same region.
+        
+        @param request: AssociateEnsEipAddressRequest
+        @return: AssociateEnsEipAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.associate_ens_eip_address_with_options(request, runtime)
 
@@ -636,6 +776,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.AssociateEnsEipAddressRequest,
     ) -> ens_20171110_models.AssociateEnsEipAddressResponse:
+        """
+        @summary Associates an elastic IP address (EIP) with a cloud resource that is deployed in the same region.
+        
+        @param request: AssociateEnsEipAddressRequest
+        @return: AssociateEnsEipAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.associate_ens_eip_address_with_options_async(request, runtime)
 
@@ -644,6 +790,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.AttachDiskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.AttachDiskResponse:
+        """
+        @summary Attaches a disk to an Edge Node Service (ENS) instance.
+        
+        @param request: AttachDiskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachDiskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.delete_with_instance):
@@ -676,6 +829,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.AttachDiskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.AttachDiskResponse:
+        """
+        @summary Attaches a disk to an Edge Node Service (ENS) instance.
+        
+        @param request: AttachDiskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AttachDiskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.delete_with_instance):
@@ -707,6 +867,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.AttachDiskRequest,
     ) -> ens_20171110_models.AttachDiskResponse:
+        """
+        @summary Attaches a disk to an Edge Node Service (ENS) instance.
+        
+        @param request: AttachDiskRequest
+        @return: AttachDiskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.attach_disk_with_options(request, runtime)
 
@@ -714,6 +880,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.AttachDiskRequest,
     ) -> ens_20171110_models.AttachDiskResponse:
+        """
+        @summary Attaches a disk to an Edge Node Service (ENS) instance.
+        
+        @param request: AttachDiskRequest
+        @return: AttachDiskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.attach_disk_with_options_async(request, runtime)
 
@@ -723,10 +895,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.AttachEnsInstancesResponse:
         """
-        # [](#)Usage notes
-        *   You can call this operation up to 10 times per second per account.
-        *   After you execute the command, the instance restarts loading.
-        *   Limits: The instance has at least two vCPUs and 4 GB memory. An image of CentOS 7.4 or later is required.
+        @summary Adds an Edge Node Service (ENS) instance to Container Service for Kubernetes (ACK).
+        
+        @description # [](#)Usage notes
+        You can call this operation up to 10 times per second per account.
+        After you execute the command, the instance restarts loading.
+        Limits: The instance has at least two vCPUs and 4 GB memory. An image of CentOS 7.4 or later is required.
         
         @param request: AttachEnsInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -763,10 +937,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.AttachEnsInstancesResponse:
         """
-        # [](#)Usage notes
-        *   You can call this operation up to 10 times per second per account.
-        *   After you execute the command, the instance restarts loading.
-        *   Limits: The instance has at least two vCPUs and 4 GB memory. An image of CentOS 7.4 or later is required.
+        @summary Adds an Edge Node Service (ENS) instance to Container Service for Kubernetes (ACK).
+        
+        @description # [](#)Usage notes
+        You can call this operation up to 10 times per second per account.
+        After you execute the command, the instance restarts loading.
+        Limits: The instance has at least two vCPUs and 4 GB memory. An image of CentOS 7.4 or later is required.
         
         @param request: AttachEnsInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -802,10 +978,12 @@ class Client(OpenApiClient):
         request: ens_20171110_models.AttachEnsInstancesRequest,
     ) -> ens_20171110_models.AttachEnsInstancesResponse:
         """
-        # [](#)Usage notes
-        *   You can call this operation up to 10 times per second per account.
-        *   After you execute the command, the instance restarts loading.
-        *   Limits: The instance has at least two vCPUs and 4 GB memory. An image of CentOS 7.4 or later is required.
+        @summary Adds an Edge Node Service (ENS) instance to Container Service for Kubernetes (ACK).
+        
+        @description # [](#)Usage notes
+        You can call this operation up to 10 times per second per account.
+        After you execute the command, the instance restarts loading.
+        Limits: The instance has at least two vCPUs and 4 GB memory. An image of CentOS 7.4 or later is required.
         
         @param request: AttachEnsInstancesRequest
         @return: AttachEnsInstancesResponse
@@ -818,10 +996,12 @@ class Client(OpenApiClient):
         request: ens_20171110_models.AttachEnsInstancesRequest,
     ) -> ens_20171110_models.AttachEnsInstancesResponse:
         """
-        # [](#)Usage notes
-        *   You can call this operation up to 10 times per second per account.
-        *   After you execute the command, the instance restarts loading.
-        *   Limits: The instance has at least two vCPUs and 4 GB memory. An image of CentOS 7.4 or later is required.
+        @summary Adds an Edge Node Service (ENS) instance to Container Service for Kubernetes (ACK).
+        
+        @description # [](#)Usage notes
+        You can call this operation up to 10 times per second per account.
+        After you execute the command, the instance restarts loading.
+        Limits: The instance has at least two vCPUs and 4 GB memory. An image of CentOS 7.4 or later is required.
         
         @param request: AttachEnsInstancesRequest
         @return: AttachEnsInstancesResponse
@@ -834,6 +1014,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.AuthorizeSecurityGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.AuthorizeSecurityGroupResponse:
+        """
+        @summary Creates an inbound security group rule. This operation allows or denies the inbound traffic from other devices to instances in the security group.
+        
+        @param request: AuthorizeSecurityGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AuthorizeSecurityGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ip_protocol):
@@ -874,6 +1061,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.AuthorizeSecurityGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.AuthorizeSecurityGroupResponse:
+        """
+        @summary Creates an inbound security group rule. This operation allows or denies the inbound traffic from other devices to instances in the security group.
+        
+        @param request: AuthorizeSecurityGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AuthorizeSecurityGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ip_protocol):
@@ -913,6 +1107,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.AuthorizeSecurityGroupRequest,
     ) -> ens_20171110_models.AuthorizeSecurityGroupResponse:
+        """
+        @summary Creates an inbound security group rule. This operation allows or denies the inbound traffic from other devices to instances in the security group.
+        
+        @param request: AuthorizeSecurityGroupRequest
+        @return: AuthorizeSecurityGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.authorize_security_group_with_options(request, runtime)
 
@@ -920,6 +1120,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.AuthorizeSecurityGroupRequest,
     ) -> ens_20171110_models.AuthorizeSecurityGroupResponse:
+        """
+        @summary Creates an inbound security group rule. This operation allows or denies the inbound traffic from other devices to instances in the security group.
+        
+        @param request: AuthorizeSecurityGroupRequest
+        @return: AuthorizeSecurityGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.authorize_security_group_with_options_async(request, runtime)
 
@@ -929,7 +1135,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.AuthorizeSecurityGroupEgressResponse:
         """
-        In the security group-related API documents, outbound traffic refers to the traffic that is sent by the source device and received at the destination device.
+        @summary Creates an outbound security group rule. This operation allows or denies the outbound traffic from the instances in the security group to other devices.
+        
+        @description In the security group-related API documents, outbound traffic refers to the traffic that is sent by the source device and received at the destination device.
         
         @param request: AuthorizeSecurityGroupEgressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -976,7 +1184,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.AuthorizeSecurityGroupEgressResponse:
         """
-        In the security group-related API documents, outbound traffic refers to the traffic that is sent by the source device and received at the destination device.
+        @summary Creates an outbound security group rule. This operation allows or denies the outbound traffic from the instances in the security group to other devices.
+        
+        @description In the security group-related API documents, outbound traffic refers to the traffic that is sent by the source device and received at the destination device.
         
         @param request: AuthorizeSecurityGroupEgressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1022,7 +1232,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.AuthorizeSecurityGroupEgressRequest,
     ) -> ens_20171110_models.AuthorizeSecurityGroupEgressResponse:
         """
-        In the security group-related API documents, outbound traffic refers to the traffic that is sent by the source device and received at the destination device.
+        @summary Creates an outbound security group rule. This operation allows or denies the outbound traffic from the instances in the security group to other devices.
+        
+        @description In the security group-related API documents, outbound traffic refers to the traffic that is sent by the source device and received at the destination device.
         
         @param request: AuthorizeSecurityGroupEgressRequest
         @return: AuthorizeSecurityGroupEgressResponse
@@ -1035,7 +1247,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.AuthorizeSecurityGroupEgressRequest,
     ) -> ens_20171110_models.AuthorizeSecurityGroupEgressResponse:
         """
-        In the security group-related API documents, outbound traffic refers to the traffic that is sent by the source device and received at the destination device.
+        @summary Creates an outbound security group rule. This operation allows or denies the outbound traffic from the instances in the security group to other devices.
+        
+        @description In the security group-related API documents, outbound traffic refers to the traffic that is sent by the source device and received at the destination device.
         
         @param request: AuthorizeSecurityGroupEgressRequest
         @return: AuthorizeSecurityGroupEgressResponse
@@ -1048,6 +1262,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CleanDistDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CleanDistDataResponse:
+        """
+        @summary 清理分发数据
+        
+        @param request: CleanDistDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CleanDistDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1082,6 +1303,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CleanDistDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CleanDistDataResponse:
+        """
+        @summary 清理分发数据
+        
+        @param request: CleanDistDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CleanDistDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1115,6 +1343,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CleanDistDataRequest,
     ) -> ens_20171110_models.CleanDistDataResponse:
+        """
+        @summary 清理分发数据
+        
+        @param request: CleanDistDataRequest
+        @return: CleanDistDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.clean_dist_data_with_options(request, runtime)
 
@@ -1122,6 +1356,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CleanDistDataRequest,
     ) -> ens_20171110_models.CleanDistDataResponse:
+        """
+        @summary 清理分发数据
+        
+        @param request: CleanDistDataRequest
+        @return: CleanDistDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.clean_dist_data_with_options_async(request, runtime)
 
@@ -1130,6 +1370,13 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.CopySDGRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CopySDGResponse:
+        """
+        @summary Copies a shared data group (SDG) across nodes.
+        
+        @param tmp_req: CopySDGRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CopySDGResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.CopySDGShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1160,6 +1407,13 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.CopySDGRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CopySDGResponse:
+        """
+        @summary Copies a shared data group (SDG) across nodes.
+        
+        @param tmp_req: CopySDGRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CopySDGResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.CopySDGShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1189,6 +1443,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CopySDGRequest,
     ) -> ens_20171110_models.CopySDGResponse:
+        """
+        @summary Copies a shared data group (SDG) across nodes.
+        
+        @param request: CopySDGRequest
+        @return: CopySDGResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.copy_sdgwith_options(request, runtime)
 
@@ -1196,6 +1456,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CopySDGRequest,
     ) -> ens_20171110_models.CopySDGResponse:
+        """
+        @summary Copies a shared data group (SDG) across nodes.
+        
+        @param request: CopySDGRequest
+        @return: CopySDGResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.copy_sdgwith_options_async(request, runtime)
 
@@ -1204,6 +1470,13 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.CopySnapshotRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CopySnapshotResponse:
+        """
+        @summary Copies a snapshot.
+        
+        @param tmp_req: CopySnapshotRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CopySnapshotResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.CopySnapshotShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1242,6 +1515,13 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.CopySnapshotRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CopySnapshotResponse:
+        """
+        @summary Copies a snapshot.
+        
+        @param tmp_req: CopySnapshotRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CopySnapshotResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.CopySnapshotShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1279,6 +1559,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CopySnapshotRequest,
     ) -> ens_20171110_models.CopySnapshotResponse:
+        """
+        @summary Copies a snapshot.
+        
+        @param request: CopySnapshotRequest
+        @return: CopySnapshotResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.copy_snapshot_with_options(request, runtime)
 
@@ -1286,6 +1572,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CopySnapshotRequest,
     ) -> ens_20171110_models.CopySnapshotResponse:
+        """
+        @summary Copies a snapshot.
+        
+        @param request: CopySnapshotRequest
+        @return: CopySnapshotResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.copy_snapshot_with_options_async(request, runtime)
 
@@ -1294,6 +1586,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateARMServerInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateARMServerInstancesResponse:
+        """
+        @summary Creates an ARM server.
+        
+        @param request: CreateARMServerInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateARMServerInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.amount):
@@ -1350,6 +1649,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateARMServerInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateARMServerInstancesResponse:
+        """
+        @summary Creates an ARM server.
+        
+        @param request: CreateARMServerInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateARMServerInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.amount):
@@ -1405,6 +1711,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateARMServerInstancesRequest,
     ) -> ens_20171110_models.CreateARMServerInstancesResponse:
+        """
+        @summary Creates an ARM server.
+        
+        @param request: CreateARMServerInstancesRequest
+        @return: CreateARMServerInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_armserver_instances_with_options(request, runtime)
 
@@ -1412,6 +1724,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateARMServerInstancesRequest,
     ) -> ens_20171110_models.CreateARMServerInstancesResponse:
+        """
+        @summary Creates an ARM server.
+        
+        @param request: CreateARMServerInstancesRequest
+        @return: CreateARMServerInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_armserver_instances_with_options_async(request, runtime)
 
@@ -1420,6 +1738,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateApplicationResponse:
+        """
+        @summary Creates an edge application that allows you to manage Edge Node Service (ENS) nodes in containers, bare metal instances, and virtual machines.
+        
+        @param request: CreateApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.template):
@@ -1450,6 +1775,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateApplicationResponse:
+        """
+        @summary Creates an edge application that allows you to manage Edge Node Service (ENS) nodes in containers, bare metal instances, and virtual machines.
+        
+        @param request: CreateApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.template):
@@ -1479,6 +1811,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateApplicationRequest,
     ) -> ens_20171110_models.CreateApplicationResponse:
+        """
+        @summary Creates an edge application that allows you to manage Edge Node Service (ENS) nodes in containers, bare metal instances, and virtual machines.
+        
+        @param request: CreateApplicationRequest
+        @return: CreateApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_application_with_options(request, runtime)
 
@@ -1486,6 +1824,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateApplicationRequest,
     ) -> ens_20171110_models.CreateApplicationResponse:
+        """
+        @summary Creates an edge application that allows you to manage Edge Node Service (ENS) nodes in containers, bare metal instances, and virtual machines.
+        
+        @param request: CreateApplicationRequest
+        @return: CreateApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_application_with_options_async(request, runtime)
 
@@ -1494,6 +1838,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateClassicNetworkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateClassicNetworkResponse:
+        """
+        @summary Creates a classic network
+        
+        @param request: CreateClassicNetworkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateClassicNetworkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cidr_block):
@@ -1528,6 +1879,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateClassicNetworkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateClassicNetworkResponse:
+        """
+        @summary Creates a classic network
+        
+        @param request: CreateClassicNetworkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateClassicNetworkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cidr_block):
@@ -1561,6 +1919,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateClassicNetworkRequest,
     ) -> ens_20171110_models.CreateClassicNetworkResponse:
+        """
+        @summary Creates a classic network
+        
+        @param request: CreateClassicNetworkRequest
+        @return: CreateClassicNetworkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_classic_network_with_options(request, runtime)
 
@@ -1568,6 +1932,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateClassicNetworkRequest,
     ) -> ens_20171110_models.CreateClassicNetworkResponse:
+        """
+        @summary Creates a classic network
+        
+        @param request: CreateClassicNetworkRequest
+        @return: CreateClassicNetworkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_classic_network_with_options_async(request, runtime)
 
@@ -1576,6 +1946,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateDiskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateDiskResponse:
+        """
+        @summary Creates a pay-as-you-go or subscription data disk.
+        
+        @param request: CreateDiskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDiskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -1618,6 +1995,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateDiskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateDiskResponse:
+        """
+        @summary Creates a pay-as-you-go or subscription data disk.
+        
+        @param request: CreateDiskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDiskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -1659,6 +2043,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateDiskRequest,
     ) -> ens_20171110_models.CreateDiskResponse:
+        """
+        @summary Creates a pay-as-you-go or subscription data disk.
+        
+        @param request: CreateDiskRequest
+        @return: CreateDiskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_disk_with_options(request, runtime)
 
@@ -1666,6 +2056,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateDiskRequest,
     ) -> ens_20171110_models.CreateDiskResponse:
+        """
+        @summary Creates a pay-as-you-go or subscription data disk.
+        
+        @param request: CreateDiskRequest
+        @return: CreateDiskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_disk_with_options_async(request, runtime)
 
@@ -1675,8 +2071,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateEipInstanceResponse:
         """
-        You can call this operation up to 5,000 times per second per account.
-        *   You can call this operation up to 50 times per second per user.
+        @summary Applies for an elastic IP address (EIP).
+        
+        @description    You can call this operation up to 5,000 times per second per account.
+        You can call this operation up to 50 times per second per user.
         
         @param request: CreateEipInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1723,8 +2121,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateEipInstanceResponse:
         """
-        You can call this operation up to 5,000 times per second per account.
-        *   You can call this operation up to 50 times per second per user.
+        @summary Applies for an elastic IP address (EIP).
+        
+        @description    You can call this operation up to 5,000 times per second per account.
+        You can call this operation up to 50 times per second per user.
         
         @param request: CreateEipInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1770,8 +2170,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateEipInstanceRequest,
     ) -> ens_20171110_models.CreateEipInstanceResponse:
         """
-        You can call this operation up to 5,000 times per second per account.
-        *   You can call this operation up to 50 times per second per user.
+        @summary Applies for an elastic IP address (EIP).
+        
+        @description    You can call this operation up to 5,000 times per second per account.
+        You can call this operation up to 50 times per second per user.
         
         @param request: CreateEipInstanceRequest
         @return: CreateEipInstanceResponse
@@ -1784,8 +2186,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateEipInstanceRequest,
     ) -> ens_20171110_models.CreateEipInstanceResponse:
         """
-        You can call this operation up to 5,000 times per second per account.
-        *   You can call this operation up to 50 times per second per user.
+        @summary Applies for an elastic IP address (EIP).
+        
+        @description    You can call this operation up to 5,000 times per second per account.
+        You can call this operation up to 50 times per second per user.
         
         @param request: CreateEipInstanceRequest
         @return: CreateEipInstanceResponse
@@ -1798,6 +2202,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateEnsRouteEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateEnsRouteEntryResponse:
+        """
+        @summary Creates a custom route entry.
+        
+        @param request: CreateEnsRouteEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEnsRouteEntryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -1836,6 +2247,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateEnsRouteEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateEnsRouteEntryResponse:
+        """
+        @summary Creates a custom route entry.
+        
+        @param request: CreateEnsRouteEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEnsRouteEntryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -1873,6 +2291,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateEnsRouteEntryRequest,
     ) -> ens_20171110_models.CreateEnsRouteEntryResponse:
+        """
+        @summary Creates a custom route entry.
+        
+        @param request: CreateEnsRouteEntryRequest
+        @return: CreateEnsRouteEntryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_ens_route_entry_with_options(request, runtime)
 
@@ -1880,6 +2304,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateEnsRouteEntryRequest,
     ) -> ens_20171110_models.CreateEnsRouteEntryResponse:
+        """
+        @summary Creates a custom route entry.
+        
+        @param request: CreateEnsRouteEntryRequest
+        @return: CreateEnsRouteEntryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_ens_route_entry_with_options_async(request, runtime)
 
@@ -1888,6 +2318,13 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.CreateEnsSaleControlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateEnsSaleControlResponse:
+        """
+        @summary 创建售卖约束
+        
+        @param tmp_req: CreateEnsSaleControlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEnsSaleControlResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.CreateEnsSaleControlShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1924,6 +2361,13 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.CreateEnsSaleControlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateEnsSaleControlResponse:
+        """
+        @summary 创建售卖约束
+        
+        @param tmp_req: CreateEnsSaleControlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEnsSaleControlResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.CreateEnsSaleControlShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1959,6 +2403,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateEnsSaleControlRequest,
     ) -> ens_20171110_models.CreateEnsSaleControlResponse:
+        """
+        @summary 创建售卖约束
+        
+        @param request: CreateEnsSaleControlRequest
+        @return: CreateEnsSaleControlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_ens_sale_control_with_options(request, runtime)
 
@@ -1966,6 +2416,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateEnsSaleControlRequest,
     ) -> ens_20171110_models.CreateEnsSaleControlResponse:
+        """
+        @summary 创建售卖约束
+        
+        @param request: CreateEnsSaleControlRequest
+        @return: CreateEnsSaleControlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_ens_sale_control_with_options_async(request, runtime)
 
@@ -1974,6 +2430,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateEnsServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateEnsServiceResponse:
+        """
+        @summary Creates an edge service.
+        
+        @param request: CreateEnsServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEnsServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ens_service_id):
@@ -2004,6 +2467,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateEnsServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateEnsServiceResponse:
+        """
+        @summary Creates an edge service.
+        
+        @param request: CreateEnsServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEnsServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ens_service_id):
@@ -2033,6 +2503,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateEnsServiceRequest,
     ) -> ens_20171110_models.CreateEnsServiceResponse:
+        """
+        @summary Creates an edge service.
+        
+        @param request: CreateEnsServiceRequest
+        @return: CreateEnsServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_ens_service_with_options(request, runtime)
 
@@ -2040,6 +2516,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateEnsServiceRequest,
     ) -> ens_20171110_models.CreateEnsServiceResponse:
+        """
+        @summary Creates an edge service.
+        
+        @param request: CreateEnsServiceRequest
+        @return: CreateEnsServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_ens_service_with_options_async(request, runtime)
 
@@ -2048,6 +2530,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateEpnInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateEpnInstanceResponse:
+        """
+        @summary Creates an edge private network (EPN) instance.
+        
+        @param request: CreateEpnInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEpnInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.epninstance_name):
@@ -2084,6 +2573,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateEpnInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateEpnInstanceResponse:
+        """
+        @summary Creates an edge private network (EPN) instance.
+        
+        @param request: CreateEpnInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEpnInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.epninstance_name):
@@ -2119,6 +2615,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateEpnInstanceRequest,
     ) -> ens_20171110_models.CreateEpnInstanceResponse:
+        """
+        @summary Creates an edge private network (EPN) instance.
+        
+        @param request: CreateEpnInstanceRequest
+        @return: CreateEpnInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_epn_instance_with_options(request, runtime)
 
@@ -2126,6 +2628,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateEpnInstanceRequest,
     ) -> ens_20171110_models.CreateEpnInstanceResponse:
+        """
+        @summary Creates an edge private network (EPN) instance.
+        
+        @param request: CreateEpnInstanceRequest
+        @return: CreateEpnInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_epn_instance_with_options_async(request, runtime)
 
@@ -2134,6 +2642,13 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.CreateFileSystemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateFileSystemResponse:
+        """
+        @summary Creates a Network Attached Storage (NAS) file system.
+        
+        @param tmp_req: CreateFileSystemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFileSystemResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.CreateFileSystemShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2164,6 +2679,13 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.CreateFileSystemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateFileSystemResponse:
+        """
+        @summary Creates a Network Attached Storage (NAS) file system.
+        
+        @param tmp_req: CreateFileSystemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFileSystemResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.CreateFileSystemShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2193,6 +2715,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateFileSystemRequest,
     ) -> ens_20171110_models.CreateFileSystemResponse:
+        """
+        @summary Creates a Network Attached Storage (NAS) file system.
+        
+        @param request: CreateFileSystemRequest
+        @return: CreateFileSystemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_file_system_with_options(request, runtime)
 
@@ -2200,6 +2728,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateFileSystemRequest,
     ) -> ens_20171110_models.CreateFileSystemResponse:
+        """
+        @summary Creates a Network Attached Storage (NAS) file system.
+        
+        @param request: CreateFileSystemRequest
+        @return: CreateFileSystemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_file_system_with_options_async(request, runtime)
 
@@ -2208,6 +2742,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateForwardEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateForwardEntryResponse:
+        """
+        @summary Adds a Destination Network Address Translation (DNAT) entry to a DNAT table.
+        
+        @param request: CreateForwardEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateForwardEntryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.external_ip):
@@ -2252,6 +2793,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateForwardEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateForwardEntryResponse:
+        """
+        @summary Adds a Destination Network Address Translation (DNAT) entry to a DNAT table.
+        
+        @param request: CreateForwardEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateForwardEntryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.external_ip):
@@ -2295,6 +2843,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateForwardEntryRequest,
     ) -> ens_20171110_models.CreateForwardEntryResponse:
+        """
+        @summary Adds a Destination Network Address Translation (DNAT) entry to a DNAT table.
+        
+        @param request: CreateForwardEntryRequest
+        @return: CreateForwardEntryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_forward_entry_with_options(request, runtime)
 
@@ -2302,6 +2856,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateForwardEntryRequest,
     ) -> ens_20171110_models.CreateForwardEntryResponse:
+        """
+        @summary Adds a Destination Network Address Translation (DNAT) entry to a DNAT table.
+        
+        @param request: CreateForwardEntryRequest
+        @return: CreateForwardEntryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_forward_entry_with_options_async(request, runtime)
 
@@ -2310,6 +2870,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateImageResponse:
+        """
+        @summary Creates an image from an instance.
+        
+        @param request: CreateImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.delete_after_image_upload):
@@ -2344,6 +2911,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateImageResponse:
+        """
+        @summary Creates an image from an instance.
+        
+        @param request: CreateImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.delete_after_image_upload):
@@ -2377,6 +2951,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateImageRequest,
     ) -> ens_20171110_models.CreateImageResponse:
+        """
+        @summary Creates an image from an instance.
+        
+        @param request: CreateImageRequest
+        @return: CreateImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_image_with_options(request, runtime)
 
@@ -2384,6 +2964,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateImageRequest,
     ) -> ens_20171110_models.CreateImageResponse:
+        """
+        @summary Creates an image from an instance.
+        
+        @param request: CreateImageRequest
+        @return: CreateImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_image_with_options_async(request, runtime)
 
@@ -2393,9 +2979,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateInstanceResponse:
         """
-        You can call this operation up to 10 times per second per account.
-        *   We recommend that you increase the request time because instance creation is an asynchronous operation. If the return code of the API operation is 0, it indicates that the request is successful, but does not indicate that the instance is created. If the request is successful, an instance ID is returned. You can check whether the instance is created based on the instance ID.
-        *   InvalidUserData.NotInWhiteList operation restriction: You can create an instance only if you are in the whitelist in which members have the purchase permissions. Otherwise, an error is returned.
+        @summary Creates an instance.
+        
+        @description    You can call this operation up to 10 times per second per account.
+        We recommend that you increase the request time because instance creation is an asynchronous operation. If the return code of the API operation is 0, it indicates that the request is successful, but does not indicate that the instance is created. If the request is successful, an instance ID is returned. You can check whether the instance is created based on the instance ID.
+        InvalidUserData.NotInWhiteList operation restriction: You can create an instance only if you are in the whitelist in which members have the purchase permissions. Otherwise, an error is returned.
         
         @param request: CreateInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2474,9 +3062,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateInstanceResponse:
         """
-        You can call this operation up to 10 times per second per account.
-        *   We recommend that you increase the request time because instance creation is an asynchronous operation. If the return code of the API operation is 0, it indicates that the request is successful, but does not indicate that the instance is created. If the request is successful, an instance ID is returned. You can check whether the instance is created based on the instance ID.
-        *   InvalidUserData.NotInWhiteList operation restriction: You can create an instance only if you are in the whitelist in which members have the purchase permissions. Otherwise, an error is returned.
+        @summary Creates an instance.
+        
+        @description    You can call this operation up to 10 times per second per account.
+        We recommend that you increase the request time because instance creation is an asynchronous operation. If the return code of the API operation is 0, it indicates that the request is successful, but does not indicate that the instance is created. If the request is successful, an instance ID is returned. You can check whether the instance is created based on the instance ID.
+        InvalidUserData.NotInWhiteList operation restriction: You can create an instance only if you are in the whitelist in which members have the purchase permissions. Otherwise, an error is returned.
         
         @param request: CreateInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2554,9 +3144,11 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateInstanceRequest,
     ) -> ens_20171110_models.CreateInstanceResponse:
         """
-        You can call this operation up to 10 times per second per account.
-        *   We recommend that you increase the request time because instance creation is an asynchronous operation. If the return code of the API operation is 0, it indicates that the request is successful, but does not indicate that the instance is created. If the request is successful, an instance ID is returned. You can check whether the instance is created based on the instance ID.
-        *   InvalidUserData.NotInWhiteList operation restriction: You can create an instance only if you are in the whitelist in which members have the purchase permissions. Otherwise, an error is returned.
+        @summary Creates an instance.
+        
+        @description    You can call this operation up to 10 times per second per account.
+        We recommend that you increase the request time because instance creation is an asynchronous operation. If the return code of the API operation is 0, it indicates that the request is successful, but does not indicate that the instance is created. If the request is successful, an instance ID is returned. You can check whether the instance is created based on the instance ID.
+        InvalidUserData.NotInWhiteList operation restriction: You can create an instance only if you are in the whitelist in which members have the purchase permissions. Otherwise, an error is returned.
         
         @param request: CreateInstanceRequest
         @return: CreateInstanceResponse
@@ -2569,9 +3161,11 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateInstanceRequest,
     ) -> ens_20171110_models.CreateInstanceResponse:
         """
-        You can call this operation up to 10 times per second per account.
-        *   We recommend that you increase the request time because instance creation is an asynchronous operation. If the return code of the API operation is 0, it indicates that the request is successful, but does not indicate that the instance is created. If the request is successful, an instance ID is returned. You can check whether the instance is created based on the instance ID.
-        *   InvalidUserData.NotInWhiteList operation restriction: You can create an instance only if you are in the whitelist in which members have the purchase permissions. Otherwise, an error is returned.
+        @summary Creates an instance.
+        
+        @description    You can call this operation up to 10 times per second per account.
+        We recommend that you increase the request time because instance creation is an asynchronous operation. If the return code of the API operation is 0, it indicates that the request is successful, but does not indicate that the instance is created. If the request is successful, an instance ID is returned. You can check whether the instance is created based on the instance ID.
+        InvalidUserData.NotInWhiteList operation restriction: You can create an instance only if you are in the whitelist in which members have the purchase permissions. Otherwise, an error is returned.
         
         @param request: CreateInstanceRequest
         @return: CreateInstanceResponse
@@ -2584,6 +3178,13 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.CreateInstanceActiveOpsTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateInstanceActiveOpsTaskResponse:
+        """
+        @summary 调用CreateInstanceOpsTask来针对一个实例或实例运维组发起运维任务
+        
+        @param tmp_req: CreateInstanceActiveOpsTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceActiveOpsTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.CreateInstanceActiveOpsTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2616,6 +3217,13 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.CreateInstanceActiveOpsTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateInstanceActiveOpsTaskResponse:
+        """
+        @summary 调用CreateInstanceOpsTask来针对一个实例或实例运维组发起运维任务
+        
+        @param tmp_req: CreateInstanceActiveOpsTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceActiveOpsTaskResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.CreateInstanceActiveOpsTaskShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2647,6 +3255,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateInstanceActiveOpsTaskRequest,
     ) -> ens_20171110_models.CreateInstanceActiveOpsTaskResponse:
+        """
+        @summary 调用CreateInstanceOpsTask来针对一个实例或实例运维组发起运维任务
+        
+        @param request: CreateInstanceActiveOpsTaskRequest
+        @return: CreateInstanceActiveOpsTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_instance_active_ops_task_with_options(request, runtime)
 
@@ -2654,6 +3268,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateInstanceActiveOpsTaskRequest,
     ) -> ens_20171110_models.CreateInstanceActiveOpsTaskResponse:
+        """
+        @summary 调用CreateInstanceOpsTask来针对一个实例或实例运维组发起运维任务
+        
+        @param request: CreateInstanceActiveOpsTaskRequest
+        @return: CreateInstanceActiveOpsTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_instance_active_ops_task_with_options_async(request, runtime)
 
@@ -2663,7 +3283,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateKeyPairResponse:
         """
-        An SSH key pair consists of a public key and a private key. ENS stores the public key and returns the unencrypted private key that is PEM-encoded in the PKCS#8 format. You must securely lock away the private key.
+        @summary Creates an SSH key pair.
+        
+        @description An SSH key pair consists of a public key and a private key. ENS stores the public key and returns the unencrypted private key that is PEM-encoded in the PKCS#8 format. You must securely lock away the private key.
         
         @param request: CreateKeyPairRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2698,7 +3320,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateKeyPairResponse:
         """
-        An SSH key pair consists of a public key and a private key. ENS stores the public key and returns the unencrypted private key that is PEM-encoded in the PKCS#8 format. You must securely lock away the private key.
+        @summary Creates an SSH key pair.
+        
+        @description An SSH key pair consists of a public key and a private key. ENS stores the public key and returns the unencrypted private key that is PEM-encoded in the PKCS#8 format. You must securely lock away the private key.
         
         @param request: CreateKeyPairRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2732,7 +3356,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateKeyPairRequest,
     ) -> ens_20171110_models.CreateKeyPairResponse:
         """
-        An SSH key pair consists of a public key and a private key. ENS stores the public key and returns the unencrypted private key that is PEM-encoded in the PKCS#8 format. You must securely lock away the private key.
+        @summary Creates an SSH key pair.
+        
+        @description An SSH key pair consists of a public key and a private key. ENS stores the public key and returns the unencrypted private key that is PEM-encoded in the PKCS#8 format. You must securely lock away the private key.
         
         @param request: CreateKeyPairRequest
         @return: CreateKeyPairResponse
@@ -2745,7 +3371,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateKeyPairRequest,
     ) -> ens_20171110_models.CreateKeyPairResponse:
         """
-        An SSH key pair consists of a public key and a private key. ENS stores the public key and returns the unencrypted private key that is PEM-encoded in the PKCS#8 format. You must securely lock away the private key.
+        @summary Creates an SSH key pair.
+        
+        @description An SSH key pair consists of a public key and a private key. ENS stores the public key and returns the unencrypted private key that is PEM-encoded in the PKCS#8 format. You must securely lock away the private key.
         
         @param request: CreateKeyPairRequest
         @return: CreateKeyPairResponse
@@ -2759,8 +3387,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateLoadBalancerResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 5 times per second per user.
+        @summary Creates an Edge Load Balancer (ELB) instance.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 5 times per second per user.
         
         @param request: CreateLoadBalancerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2805,8 +3435,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateLoadBalancerResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 5 times per second per user.
+        @summary Creates an Edge Load Balancer (ELB) instance.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 5 times per second per user.
         
         @param request: CreateLoadBalancerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2850,8 +3482,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateLoadBalancerRequest,
     ) -> ens_20171110_models.CreateLoadBalancerResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 5 times per second per user.
+        @summary Creates an Edge Load Balancer (ELB) instance.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 5 times per second per user.
         
         @param request: CreateLoadBalancerRequest
         @return: CreateLoadBalancerResponse
@@ -2864,8 +3498,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateLoadBalancerRequest,
     ) -> ens_20171110_models.CreateLoadBalancerResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 5 times per second per user.
+        @summary Creates an Edge Load Balancer (ELB) instance.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 5 times per second per user.
         
         @param request: CreateLoadBalancerRequest
         @return: CreateLoadBalancerResponse
@@ -2879,8 +3515,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateLoadBalancerHTTPListenerResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Creates an HTTP listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: CreateLoadBalancerHTTPListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2951,8 +3589,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateLoadBalancerHTTPListenerResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Creates an HTTP listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: CreateLoadBalancerHTTPListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3022,8 +3662,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateLoadBalancerHTTPListenerRequest,
     ) -> ens_20171110_models.CreateLoadBalancerHTTPListenerResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Creates an HTTP listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: CreateLoadBalancerHTTPListenerRequest
         @return: CreateLoadBalancerHTTPListenerResponse
@@ -3036,8 +3678,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateLoadBalancerHTTPListenerRequest,
     ) -> ens_20171110_models.CreateLoadBalancerHTTPListenerResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Creates an HTTP listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: CreateLoadBalancerHTTPListenerRequest
         @return: CreateLoadBalancerHTTPListenerResponse
@@ -3051,8 +3695,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateLoadBalancerHTTPSListenerResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Creates an HTTPS listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: CreateLoadBalancerHTTPSListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3129,8 +3775,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateLoadBalancerHTTPSListenerResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Creates an HTTPS listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: CreateLoadBalancerHTTPSListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3206,8 +3854,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateLoadBalancerHTTPSListenerRequest,
     ) -> ens_20171110_models.CreateLoadBalancerHTTPSListenerResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Creates an HTTPS listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: CreateLoadBalancerHTTPSListenerRequest
         @return: CreateLoadBalancerHTTPSListenerResponse
@@ -3220,8 +3870,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateLoadBalancerHTTPSListenerRequest,
     ) -> ens_20171110_models.CreateLoadBalancerHTTPSListenerResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Creates an HTTPS listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: CreateLoadBalancerHTTPSListenerRequest
         @return: CreateLoadBalancerHTTPSListenerResponse
@@ -3235,8 +3887,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateLoadBalancerTCPListenerResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Creates a Transmission Control Protocol (TCP) listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: CreateLoadBalancerTCPListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3303,8 +3957,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateLoadBalancerTCPListenerResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Creates a Transmission Control Protocol (TCP) listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: CreateLoadBalancerTCPListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3370,8 +4026,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateLoadBalancerTCPListenerRequest,
     ) -> ens_20171110_models.CreateLoadBalancerTCPListenerResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Creates a Transmission Control Protocol (TCP) listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: CreateLoadBalancerTCPListenerRequest
         @return: CreateLoadBalancerTCPListenerResponse
@@ -3384,8 +4042,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateLoadBalancerTCPListenerRequest,
     ) -> ens_20171110_models.CreateLoadBalancerTCPListenerResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Creates a Transmission Control Protocol (TCP) listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: CreateLoadBalancerTCPListenerRequest
         @return: CreateLoadBalancerTCPListenerResponse
@@ -3399,8 +4059,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateLoadBalancerUDPListenerResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Creates a User Datagram Protocol (UDP) listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: CreateLoadBalancerUDPListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3459,8 +4121,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateLoadBalancerUDPListenerResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Creates a User Datagram Protocol (UDP) listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: CreateLoadBalancerUDPListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3518,8 +4182,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateLoadBalancerUDPListenerRequest,
     ) -> ens_20171110_models.CreateLoadBalancerUDPListenerResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Creates a User Datagram Protocol (UDP) listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: CreateLoadBalancerUDPListenerRequest
         @return: CreateLoadBalancerUDPListenerResponse
@@ -3532,8 +4198,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateLoadBalancerUDPListenerRequest,
     ) -> ens_20171110_models.CreateLoadBalancerUDPListenerResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Creates a User Datagram Protocol (UDP) listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: CreateLoadBalancerUDPListenerRequest
         @return: CreateLoadBalancerUDPListenerResponse
@@ -3547,7 +4215,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateMountTargetResponse:
         """
-        ## [](#)Precautions
+        @summary Creates a mount target.
+        
+        @description ## [](#)Precautions
         After you call this operation, a mount target is not immediately created. Therefore, we recommend that you call the DescribeMountTargets operation to query the status of the mount target. If the mount target is in the Active state, you can then mount the file system. Otherwise, the file system may fail to be mounted.
         
         @param request: CreateMountTargetRequest
@@ -3589,7 +4259,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateMountTargetResponse:
         """
-        ## [](#)Precautions
+        @summary Creates a mount target.
+        
+        @description ## [](#)Precautions
         After you call this operation, a mount target is not immediately created. Therefore, we recommend that you call the DescribeMountTargets operation to query the status of the mount target. If the mount target is in the Active state, you can then mount the file system. Otherwise, the file system may fail to be mounted.
         
         @param request: CreateMountTargetRequest
@@ -3630,7 +4302,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateMountTargetRequest,
     ) -> ens_20171110_models.CreateMountTargetResponse:
         """
-        ## [](#)Precautions
+        @summary Creates a mount target.
+        
+        @description ## [](#)Precautions
         After you call this operation, a mount target is not immediately created. Therefore, we recommend that you call the DescribeMountTargets operation to query the status of the mount target. If the mount target is in the Active state, you can then mount the file system. Otherwise, the file system may fail to be mounted.
         
         @param request: CreateMountTargetRequest
@@ -3644,7 +4318,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateMountTargetRequest,
     ) -> ens_20171110_models.CreateMountTargetResponse:
         """
-        ## [](#)Precautions
+        @summary Creates a mount target.
+        
+        @description ## [](#)Precautions
         After you call this operation, a mount target is not immediately created. Therefore, we recommend that you call the DescribeMountTargets operation to query the status of the mount target. If the mount target is in the Active state, you can then mount the file system. Otherwise, the file system may fail to be mounted.
         
         @param request: CreateMountTargetRequest
@@ -3658,6 +4334,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateNatGatewayRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateNatGatewayResponse:
+        """
+        @summary Creates a network address translation (NAT) gateway.
+        
+        @param request: CreateNatGatewayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNatGatewayResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ens_region_id):
@@ -3694,6 +4377,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateNatGatewayRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateNatGatewayResponse:
+        """
+        @summary Creates a network address translation (NAT) gateway.
+        
+        @param request: CreateNatGatewayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNatGatewayResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ens_region_id):
@@ -3729,6 +4419,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateNatGatewayRequest,
     ) -> ens_20171110_models.CreateNatGatewayResponse:
+        """
+        @summary Creates a network address translation (NAT) gateway.
+        
+        @param request: CreateNatGatewayRequest
+        @return: CreateNatGatewayResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_nat_gateway_with_options(request, runtime)
 
@@ -3736,6 +4432,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateNatGatewayRequest,
     ) -> ens_20171110_models.CreateNatGatewayResponse:
+        """
+        @summary Creates a network address translation (NAT) gateway.
+        
+        @param request: CreateNatGatewayRequest
+        @return: CreateNatGatewayResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_nat_gateway_with_options_async(request, runtime)
 
@@ -3745,8 +4447,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateNetworkResponse:
         """
-        You can call this operation up to 100 times per second.
-        *   You can call this operation up to 5 times per second per user.
+        @summary Creates a virtual private cloud (VPC).
+        
+        @description    You can call this operation up to 100 times per second.
+        You can call this operation up to 5 times per second per user.
         
         @param request: CreateNetworkRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3787,8 +4491,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateNetworkResponse:
         """
-        You can call this operation up to 100 times per second.
-        *   You can call this operation up to 5 times per second per user.
+        @summary Creates a virtual private cloud (VPC).
+        
+        @description    You can call this operation up to 100 times per second.
+        You can call this operation up to 5 times per second per user.
         
         @param request: CreateNetworkRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3828,8 +4534,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateNetworkRequest,
     ) -> ens_20171110_models.CreateNetworkResponse:
         """
-        You can call this operation up to 100 times per second.
-        *   You can call this operation up to 5 times per second per user.
+        @summary Creates a virtual private cloud (VPC).
+        
+        @description    You can call this operation up to 100 times per second.
+        You can call this operation up to 5 times per second per user.
         
         @param request: CreateNetworkRequest
         @return: CreateNetworkResponse
@@ -3842,8 +4550,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateNetworkRequest,
     ) -> ens_20171110_models.CreateNetworkResponse:
         """
-        You can call this operation up to 100 times per second.
-        *   You can call this operation up to 5 times per second per user.
+        @summary Creates a virtual private cloud (VPC).
+        
+        @description    You can call this operation up to 100 times per second.
+        You can call this operation up to 5 times per second per user.
         
         @param request: CreateNetworkRequest
         @return: CreateNetworkResponse
@@ -3856,6 +4566,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateNetworkAclRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateNetworkAclResponse:
+        """
+        @summary Creates a network access control list (ACL).
+        
+        @param request: CreateNetworkAclRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNetworkAclResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -3886,6 +4603,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateNetworkAclRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateNetworkAclResponse:
+        """
+        @summary Creates a network access control list (ACL).
+        
+        @param request: CreateNetworkAclRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNetworkAclResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -3915,6 +4639,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateNetworkAclRequest,
     ) -> ens_20171110_models.CreateNetworkAclResponse:
+        """
+        @summary Creates a network access control list (ACL).
+        
+        @param request: CreateNetworkAclRequest
+        @return: CreateNetworkAclResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_network_acl_with_options(request, runtime)
 
@@ -3922,6 +4652,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateNetworkAclRequest,
     ) -> ens_20171110_models.CreateNetworkAclResponse:
+        """
+        @summary Creates a network access control list (ACL).
+        
+        @param request: CreateNetworkAclRequest
+        @return: CreateNetworkAclResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_network_acl_with_options_async(request, runtime)
 
@@ -3930,6 +4666,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateNetworkAclEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateNetworkAclEntryResponse:
+        """
+        @summary Creates a network access control list (ACL) rule.
+        
+        @param request: CreateNetworkAclEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNetworkAclEntryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cidr_block):
@@ -3974,6 +4717,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateNetworkAclEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateNetworkAclEntryResponse:
+        """
+        @summary Creates a network access control list (ACL) rule.
+        
+        @param request: CreateNetworkAclEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateNetworkAclEntryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cidr_block):
@@ -4017,6 +4767,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateNetworkAclEntryRequest,
     ) -> ens_20171110_models.CreateNetworkAclEntryResponse:
+        """
+        @summary Creates a network access control list (ACL) rule.
+        
+        @param request: CreateNetworkAclEntryRequest
+        @return: CreateNetworkAclEntryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_network_acl_entry_with_options(request, runtime)
 
@@ -4024,14 +4780,131 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateNetworkAclEntryRequest,
     ) -> ens_20171110_models.CreateNetworkAclEntryResponse:
+        """
+        @summary Creates a network access control list (ACL) rule.
+        
+        @param request: CreateNetworkAclEntryRequest
+        @return: CreateNetworkAclEntryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_network_acl_entry_with_options_async(request, runtime)
+
+    def create_sdgwith_options(
+        self,
+        request: ens_20171110_models.CreateSDGRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateSDGResponse:
+        """
+        @summary Creates a shared data group (SDG) by using a specific device.
+        
+        @description ## [](#)
+        After you create an SDG, you must call the [SaveSDG](https://help.aliyun.com/document_detail/608126.html) operation to save the SDG. Otherwise, the SDG is unavailable.
+        
+        @param request: CreateSDGRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSDGResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSDG',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateSDGResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_sdgwith_options_async(
+        self,
+        request: ens_20171110_models.CreateSDGRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.CreateSDGResponse:
+        """
+        @summary Creates a shared data group (SDG) by using a specific device.
+        
+        @description ## [](#)
+        After you create an SDG, you must call the [SaveSDG](https://help.aliyun.com/document_detail/608126.html) operation to save the SDG. Otherwise, the SDG is unavailable.
+        
+        @param request: CreateSDGRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSDGResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateSDG',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.CreateSDGResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_sdg(
+        self,
+        request: ens_20171110_models.CreateSDGRequest,
+    ) -> ens_20171110_models.CreateSDGResponse:
+        """
+        @summary Creates a shared data group (SDG) by using a specific device.
+        
+        @description ## [](#)
+        After you create an SDG, you must call the [SaveSDG](https://help.aliyun.com/document_detail/608126.html) operation to save the SDG. Otherwise, the SDG is unavailable.
+        
+        @param request: CreateSDGRequest
+        @return: CreateSDGResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_sdgwith_options(request, runtime)
+
+    async def create_sdg_async(
+        self,
+        request: ens_20171110_models.CreateSDGRequest,
+    ) -> ens_20171110_models.CreateSDGResponse:
+        """
+        @summary Creates a shared data group (SDG) by using a specific device.
+        
+        @description ## [](#)
+        After you create an SDG, you must call the [SaveSDG](https://help.aliyun.com/document_detail/608126.html) operation to save the SDG. Otherwise, the SDG is unavailable.
+        
+        @param request: CreateSDGRequest
+        @return: CreateSDGResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_sdgwith_options_async(request, runtime)
 
     def create_security_group_with_options(
         self,
         request: ens_20171110_models.CreateSecurityGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateSecurityGroupResponse:
+        """
+        @summary Creates a security group.
+        
+        @param request: CreateSecurityGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSecurityGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -4062,6 +4935,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateSecurityGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateSecurityGroupResponse:
+        """
+        @summary Creates a security group.
+        
+        @param request: CreateSecurityGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSecurityGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -4091,6 +4971,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateSecurityGroupRequest,
     ) -> ens_20171110_models.CreateSecurityGroupResponse:
+        """
+        @summary Creates a security group.
+        
+        @param request: CreateSecurityGroupRequest
+        @return: CreateSecurityGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_security_group_with_options(request, runtime)
 
@@ -4098,6 +4984,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateSecurityGroupRequest,
     ) -> ens_20171110_models.CreateSecurityGroupResponse:
+        """
+        @summary Creates a security group.
+        
+        @param request: CreateSecurityGroupRequest
+        @return: CreateSecurityGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_security_group_with_options_async(request, runtime)
 
@@ -4106,6 +4998,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateSnapshotRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateSnapshotResponse:
+        """
+        @summary Creates a snapshot.
+        
+        @param request: CreateSnapshotRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSnapshotResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -4140,6 +5039,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateSnapshotRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateSnapshotResponse:
+        """
+        @summary Creates a snapshot.
+        
+        @param request: CreateSnapshotRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSnapshotResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -4173,6 +5079,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateSnapshotRequest,
     ) -> ens_20171110_models.CreateSnapshotResponse:
+        """
+        @summary Creates a snapshot.
+        
+        @param request: CreateSnapshotRequest
+        @return: CreateSnapshotResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_snapshot_with_options(request, runtime)
 
@@ -4180,6 +5092,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateSnapshotRequest,
     ) -> ens_20171110_models.CreateSnapshotResponse:
+        """
+        @summary Creates a snapshot.
+        
+        @param request: CreateSnapshotRequest
+        @return: CreateSnapshotResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_snapshot_with_options_async(request, runtime)
 
@@ -4188,6 +5106,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateSnatEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateSnatEntryResponse:
+        """
+        @summary Adds a source network address translation (SNAT) entry to a specified SNAT table.
+        
+        @param request: CreateSnatEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSnatEntryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.nat_gateway_id):
@@ -4228,6 +5153,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateSnatEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateSnatEntryResponse:
+        """
+        @summary Adds a source network address translation (SNAT) entry to a specified SNAT table.
+        
+        @param request: CreateSnatEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSnatEntryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.nat_gateway_id):
@@ -4267,6 +5199,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateSnatEntryRequest,
     ) -> ens_20171110_models.CreateSnatEntryResponse:
+        """
+        @summary Adds a source network address translation (SNAT) entry to a specified SNAT table.
+        
+        @param request: CreateSnatEntryRequest
+        @return: CreateSnatEntryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_snat_entry_with_options(request, runtime)
 
@@ -4274,6 +5212,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateSnatEntryRequest,
     ) -> ens_20171110_models.CreateSnatEntryResponse:
+        """
+        @summary Adds a source network address translation (SNAT) entry to a specified SNAT table.
+        
+        @param request: CreateSnatEntryRequest
+        @return: CreateSnatEntryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_snat_entry_with_options_async(request, runtime)
 
@@ -4282,6 +5226,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateVSwitchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateVSwitchResponse:
+        """
+        @summary Creates a vSwitch.
+        
+        @param request: CreateVSwitchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVSwitchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cidr_block):
@@ -4318,6 +5269,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.CreateVSwitchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.CreateVSwitchResponse:
+        """
+        @summary Creates a vSwitch.
+        
+        @param request: CreateVSwitchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVSwitchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cidr_block):
@@ -4353,6 +5311,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateVSwitchRequest,
     ) -> ens_20171110_models.CreateVSwitchResponse:
+        """
+        @summary Creates a vSwitch.
+        
+        @param request: CreateVSwitchRequest
+        @return: CreateVSwitchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_vswitch_with_options(request, runtime)
 
@@ -4360,6 +5324,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.CreateVSwitchRequest,
     ) -> ens_20171110_models.CreateVSwitchResponse:
+        """
+        @summary Creates a vSwitch.
+        
+        @param request: CreateVSwitchRequest
+        @return: CreateVSwitchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_vswitch_with_options_async(request, runtime)
 
@@ -4368,6 +5338,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteApplicationResponse:
+        """
+        @summary Releases all containers and resource instances related to a specific application in an asynchronous manner.
+        
+        @param request: DeleteApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4398,6 +5375,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteApplicationResponse:
+        """
+        @summary Releases all containers and resource instances related to a specific application in an asynchronous manner.
+        
+        @param request: DeleteApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4427,6 +5411,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteApplicationRequest,
     ) -> ens_20171110_models.DeleteApplicationResponse:
+        """
+        @summary Releases all containers and resource instances related to a specific application in an asynchronous manner.
+        
+        @param request: DeleteApplicationRequest
+        @return: DeleteApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_application_with_options(request, runtime)
 
@@ -4434,6 +5424,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteApplicationRequest,
     ) -> ens_20171110_models.DeleteApplicationResponse:
+        """
+        @summary Releases all containers and resource instances related to a specific application in an asynchronous manner.
+        
+        @param request: DeleteApplicationRequest
+        @return: DeleteApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_application_with_options_async(request, runtime)
 
@@ -4442,6 +5438,16 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteBucketRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteBucketResponse:
+        """
+        @summary Deletes a bucket.
+        
+        @description    Only the Alibaba Cloud Account ID owner of a bucket can delete the bucket from the account.
+        You cannot delete buckets that store objects. You can only delete empty buckets.
+        
+        @param request: DeleteBucketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBucketResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bucket_name):
@@ -4470,6 +5476,16 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteBucketRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteBucketResponse:
+        """
+        @summary Deletes a bucket.
+        
+        @description    Only the Alibaba Cloud Account ID owner of a bucket can delete the bucket from the account.
+        You cannot delete buckets that store objects. You can only delete empty buckets.
+        
+        @param request: DeleteBucketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBucketResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bucket_name):
@@ -4497,6 +5513,15 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteBucketRequest,
     ) -> ens_20171110_models.DeleteBucketResponse:
+        """
+        @summary Deletes a bucket.
+        
+        @description    Only the Alibaba Cloud Account ID owner of a bucket can delete the bucket from the account.
+        You cannot delete buckets that store objects. You can only delete empty buckets.
+        
+        @param request: DeleteBucketRequest
+        @return: DeleteBucketResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_bucket_with_options(request, runtime)
 
@@ -4504,6 +5529,15 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteBucketRequest,
     ) -> ens_20171110_models.DeleteBucketResponse:
+        """
+        @summary Deletes a bucket.
+        
+        @description    Only the Alibaba Cloud Account ID owner of a bucket can delete the bucket from the account.
+        You cannot delete buckets that store objects. You can only delete empty buckets.
+        
+        @param request: DeleteBucketRequest
+        @return: DeleteBucketResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_bucket_with_options_async(request, runtime)
 
@@ -4512,6 +5546,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteBucketLifecycleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteBucketLifecycleResponse:
+        """
+        @summary Deletes the lifecycle rules for objects in a bucket.
+        
+        @param request: DeleteBucketLifecycleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBucketLifecycleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bucket_name):
@@ -4542,6 +5583,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteBucketLifecycleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteBucketLifecycleResponse:
+        """
+        @summary Deletes the lifecycle rules for objects in a bucket.
+        
+        @param request: DeleteBucketLifecycleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBucketLifecycleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bucket_name):
@@ -4571,6 +5619,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteBucketLifecycleRequest,
     ) -> ens_20171110_models.DeleteBucketLifecycleResponse:
+        """
+        @summary Deletes the lifecycle rules for objects in a bucket.
+        
+        @param request: DeleteBucketLifecycleRequest
+        @return: DeleteBucketLifecycleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_bucket_lifecycle_with_options(request, runtime)
 
@@ -4578,6 +5632,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteBucketLifecycleRequest,
     ) -> ens_20171110_models.DeleteBucketLifecycleResponse:
+        """
+        @summary Deletes the lifecycle rules for objects in a bucket.
+        
+        @param request: DeleteBucketLifecycleRequest
+        @return: DeleteBucketLifecycleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_bucket_lifecycle_with_options_async(request, runtime)
 
@@ -4586,6 +5646,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteDeviceInternetPortRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteDeviceInternetPortResponse:
+        """
+        @summary Deletes Network Address Translation (NAT) rules for a server or container based on the ID.
+        
+        @param request: DeleteDeviceInternetPortRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDeviceInternetPortResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4612,6 +5679,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteDeviceInternetPortRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteDeviceInternetPortResponse:
+        """
+        @summary Deletes Network Address Translation (NAT) rules for a server or container based on the ID.
+        
+        @param request: DeleteDeviceInternetPortRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDeviceInternetPortResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -4637,6 +5711,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteDeviceInternetPortRequest,
     ) -> ens_20171110_models.DeleteDeviceInternetPortResponse:
+        """
+        @summary Deletes Network Address Translation (NAT) rules for a server or container based on the ID.
+        
+        @param request: DeleteDeviceInternetPortRequest
+        @return: DeleteDeviceInternetPortResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_device_internet_port_with_options(request, runtime)
 
@@ -4644,6 +5724,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteDeviceInternetPortRequest,
     ) -> ens_20171110_models.DeleteDeviceInternetPortResponse:
+        """
+        @summary Deletes Network Address Translation (NAT) rules for a server or container based on the ID.
+        
+        @param request: DeleteDeviceInternetPortRequest
+        @return: DeleteDeviceInternetPortResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_device_internet_port_with_options_async(request, runtime)
 
@@ -4653,7 +5739,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteDiskResponse:
         """
-        When you release a disk, the disk must be in the Available state.
+        @summary Deletes a disk.
+        
+        @description When you release a disk, the disk must be in the Available state.
         
         @param request: DeleteDiskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4688,7 +5776,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteDiskResponse:
         """
-        When you release a disk, the disk must be in the Available state.
+        @summary Deletes a disk.
+        
+        @description When you release a disk, the disk must be in the Available state.
         
         @param request: DeleteDiskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4722,7 +5812,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteDiskRequest,
     ) -> ens_20171110_models.DeleteDiskResponse:
         """
-        When you release a disk, the disk must be in the Available state.
+        @summary Deletes a disk.
+        
+        @description When you release a disk, the disk must be in the Available state.
         
         @param request: DeleteDiskRequest
         @return: DeleteDiskResponse
@@ -4735,7 +5827,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteDiskRequest,
     ) -> ens_20171110_models.DeleteDiskResponse:
         """
-        When you release a disk, the disk must be in the Available state.
+        @summary Deletes a disk.
+        
+        @description When you release a disk, the disk must be in the Available state.
         
         @param request: DeleteDiskRequest
         @return: DeleteDiskResponse
@@ -4748,6 +5842,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteEnsRouteEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteEnsRouteEntryResponse:
+        """
+        @summary Deletes a custom route entry.
+        
+        @param request: DeleteEnsRouteEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEnsRouteEntryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.route_entry_id):
@@ -4776,6 +5877,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteEnsRouteEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteEnsRouteEntryResponse:
+        """
+        @summary Deletes a custom route entry.
+        
+        @param request: DeleteEnsRouteEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEnsRouteEntryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.route_entry_id):
@@ -4803,6 +5911,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteEnsRouteEntryRequest,
     ) -> ens_20171110_models.DeleteEnsRouteEntryResponse:
+        """
+        @summary Deletes a custom route entry.
+        
+        @param request: DeleteEnsRouteEntryRequest
+        @return: DeleteEnsRouteEntryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_ens_route_entry_with_options(request, runtime)
 
@@ -4810,6 +5924,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteEnsRouteEntryRequest,
     ) -> ens_20171110_models.DeleteEnsRouteEntryResponse:
+        """
+        @summary Deletes a custom route entry.
+        
+        @param request: DeleteEnsRouteEntryRequest
+        @return: DeleteEnsRouteEntryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_ens_route_entry_with_options_async(request, runtime)
 
@@ -4818,6 +5938,13 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.DeleteEnsSaleConditionControlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteEnsSaleConditionControlResponse:
+        """
+        @summary 删除售卖约束的条件约束
+        
+        @param tmp_req: DeleteEnsSaleConditionControlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEnsSaleConditionControlResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.DeleteEnsSaleConditionControlShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4854,6 +5981,13 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.DeleteEnsSaleConditionControlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteEnsSaleConditionControlResponse:
+        """
+        @summary 删除售卖约束的条件约束
+        
+        @param tmp_req: DeleteEnsSaleConditionControlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEnsSaleConditionControlResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.DeleteEnsSaleConditionControlShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4889,6 +6023,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteEnsSaleConditionControlRequest,
     ) -> ens_20171110_models.DeleteEnsSaleConditionControlResponse:
+        """
+        @summary 删除售卖约束的条件约束
+        
+        @param request: DeleteEnsSaleConditionControlRequest
+        @return: DeleteEnsSaleConditionControlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_ens_sale_condition_control_with_options(request, runtime)
 
@@ -4896,6 +6036,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteEnsSaleConditionControlRequest,
     ) -> ens_20171110_models.DeleteEnsSaleConditionControlResponse:
+        """
+        @summary 删除售卖约束的条件约束
+        
+        @param request: DeleteEnsSaleConditionControlRequest
+        @return: DeleteEnsSaleConditionControlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_ens_sale_condition_control_with_options_async(request, runtime)
 
@@ -4904,6 +6050,13 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.DeleteEnsSaleControlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteEnsSaleControlResponse:
+        """
+        @summary 删除售卖约束基础约束
+        
+        @param tmp_req: DeleteEnsSaleControlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEnsSaleControlResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.DeleteEnsSaleControlShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4940,6 +6093,13 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.DeleteEnsSaleControlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteEnsSaleControlResponse:
+        """
+        @summary 删除售卖约束基础约束
+        
+        @param tmp_req: DeleteEnsSaleControlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEnsSaleControlResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.DeleteEnsSaleControlShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4975,6 +6135,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteEnsSaleControlRequest,
     ) -> ens_20171110_models.DeleteEnsSaleControlResponse:
+        """
+        @summary 删除售卖约束基础约束
+        
+        @param request: DeleteEnsSaleControlRequest
+        @return: DeleteEnsSaleControlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_ens_sale_control_with_options(request, runtime)
 
@@ -4982,6 +6148,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteEnsSaleControlRequest,
     ) -> ens_20171110_models.DeleteEnsSaleControlResponse:
+        """
+        @summary 删除售卖约束基础约束
+        
+        @param request: DeleteEnsSaleControlRequest
+        @return: DeleteEnsSaleControlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_ens_sale_control_with_options_async(request, runtime)
 
@@ -4991,7 +6163,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteEpnInstanceResponse:
         """
-        You can delete an EPN instance only when the instance group information is empty.
+        @summary Deletes an edge private network (EPN) instance.
+        
+        @description You can delete an EPN instance only when the instance group information is empty.
         
         @param request: DeleteEpnInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5026,7 +6200,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteEpnInstanceResponse:
         """
-        You can delete an EPN instance only when the instance group information is empty.
+        @summary Deletes an edge private network (EPN) instance.
+        
+        @description You can delete an EPN instance only when the instance group information is empty.
         
         @param request: DeleteEpnInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5060,7 +6236,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteEpnInstanceRequest,
     ) -> ens_20171110_models.DeleteEpnInstanceResponse:
         """
-        You can delete an EPN instance only when the instance group information is empty.
+        @summary Deletes an edge private network (EPN) instance.
+        
+        @description You can delete an EPN instance only when the instance group information is empty.
         
         @param request: DeleteEpnInstanceRequest
         @return: DeleteEpnInstanceResponse
@@ -5073,7 +6251,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteEpnInstanceRequest,
     ) -> ens_20171110_models.DeleteEpnInstanceResponse:
         """
-        You can delete an EPN instance only when the instance group information is empty.
+        @summary Deletes an edge private network (EPN) instance.
+        
+        @description You can delete an EPN instance only when the instance group information is empty.
         
         @param request: DeleteEpnInstanceRequest
         @return: DeleteEpnInstanceResponse
@@ -5086,6 +6266,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteFileSystemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteFileSystemResponse:
+        """
+        @summary Deletes a Network Attached Storage (NAS) file system.
+        
+        @param request: DeleteFileSystemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFileSystemResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5112,6 +6299,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteFileSystemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteFileSystemResponse:
+        """
+        @summary Deletes a Network Attached Storage (NAS) file system.
+        
+        @param request: DeleteFileSystemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFileSystemResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5137,6 +6331,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteFileSystemRequest,
     ) -> ens_20171110_models.DeleteFileSystemResponse:
+        """
+        @summary Deletes a Network Attached Storage (NAS) file system.
+        
+        @param request: DeleteFileSystemRequest
+        @return: DeleteFileSystemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_file_system_with_options(request, runtime)
 
@@ -5144,6 +6344,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteFileSystemRequest,
     ) -> ens_20171110_models.DeleteFileSystemResponse:
+        """
+        @summary Deletes a Network Attached Storage (NAS) file system.
+        
+        @param request: DeleteFileSystemRequest
+        @return: DeleteFileSystemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_file_system_with_options_async(request, runtime)
 
@@ -5152,6 +6358,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteForwardEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteForwardEntryResponse:
+        """
+        @summary Deletes a Destination Network Address Translation (DNAT) entry from a specified DNAT table.
+        
+        @param request: DeleteForwardEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteForwardEntryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.forward_entry_id):
@@ -5180,6 +6393,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteForwardEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteForwardEntryResponse:
+        """
+        @summary Deletes a Destination Network Address Translation (DNAT) entry from a specified DNAT table.
+        
+        @param request: DeleteForwardEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteForwardEntryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.forward_entry_id):
@@ -5207,6 +6427,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteForwardEntryRequest,
     ) -> ens_20171110_models.DeleteForwardEntryResponse:
+        """
+        @summary Deletes a Destination Network Address Translation (DNAT) entry from a specified DNAT table.
+        
+        @param request: DeleteForwardEntryRequest
+        @return: DeleteForwardEntryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_forward_entry_with_options(request, runtime)
 
@@ -5214,6 +6440,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteForwardEntryRequest,
     ) -> ens_20171110_models.DeleteForwardEntryResponse:
+        """
+        @summary Deletes a Destination Network Address Translation (DNAT) entry from a specified DNAT table.
+        
+        @param request: DeleteForwardEntryRequest
+        @return: DeleteForwardEntryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_forward_entry_with_options_async(request, runtime)
 
@@ -5222,6 +6454,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteImageResponse:
+        """
+        @summary Deletes a custom image.
+        
+        @param request: DeleteImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_id):
@@ -5250,6 +6489,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteImageResponse:
+        """
+        @summary Deletes a custom image.
+        
+        @param request: DeleteImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_id):
@@ -5277,6 +6523,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteImageRequest,
     ) -> ens_20171110_models.DeleteImageResponse:
+        """
+        @summary Deletes a custom image.
+        
+        @param request: DeleteImageRequest
+        @return: DeleteImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_image_with_options(request, runtime)
 
@@ -5284,6 +6536,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteImageRequest,
     ) -> ens_20171110_models.DeleteImageResponse:
+        """
+        @summary Deletes a custom image.
+        
+        @param request: DeleteImageRequest
+        @return: DeleteImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_image_with_options_async(request, runtime)
 
@@ -5293,8 +6551,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteKeyPairsResponse:
         """
-        After you delete an SSH key pair, you can no longer query the key pair by calling the DescribeKeyPairs operation.
-        *   If you delete an SSH key pair that is bound to an Edge Node Service (ENS) instance, ENS no longer stores the SSH key pair. However, you can still use the key pair to access the instance. When you call the DescribeInstance operation to query instance information, no other information but the name of the key pair (**KeyPairName**) is returned.
+        @summary Deletes SSH key pairs.
+        
+        @description    After you delete an SSH key pair, you can no longer query the key pair by calling the DescribeKeyPairs operation.
+        If you delete an SSH key pair that is bound to an Edge Node Service (ENS) instance, ENS no longer stores the SSH key pair. However, you can still use the key pair to access the instance. When you call the DescribeInstance operation to query instance information, no other information but the name of the key pair (**KeyPairName**) is returned.
         
         @param request: DeleteKeyPairsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5331,8 +6591,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteKeyPairsResponse:
         """
-        After you delete an SSH key pair, you can no longer query the key pair by calling the DescribeKeyPairs operation.
-        *   If you delete an SSH key pair that is bound to an Edge Node Service (ENS) instance, ENS no longer stores the SSH key pair. However, you can still use the key pair to access the instance. When you call the DescribeInstance operation to query instance information, no other information but the name of the key pair (**KeyPairName**) is returned.
+        @summary Deletes SSH key pairs.
+        
+        @description    After you delete an SSH key pair, you can no longer query the key pair by calling the DescribeKeyPairs operation.
+        If you delete an SSH key pair that is bound to an Edge Node Service (ENS) instance, ENS no longer stores the SSH key pair. However, you can still use the key pair to access the instance. When you call the DescribeInstance operation to query instance information, no other information but the name of the key pair (**KeyPairName**) is returned.
         
         @param request: DeleteKeyPairsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5368,8 +6630,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteKeyPairsRequest,
     ) -> ens_20171110_models.DeleteKeyPairsResponse:
         """
-        After you delete an SSH key pair, you can no longer query the key pair by calling the DescribeKeyPairs operation.
-        *   If you delete an SSH key pair that is bound to an Edge Node Service (ENS) instance, ENS no longer stores the SSH key pair. However, you can still use the key pair to access the instance. When you call the DescribeInstance operation to query instance information, no other information but the name of the key pair (**KeyPairName**) is returned.
+        @summary Deletes SSH key pairs.
+        
+        @description    After you delete an SSH key pair, you can no longer query the key pair by calling the DescribeKeyPairs operation.
+        If you delete an SSH key pair that is bound to an Edge Node Service (ENS) instance, ENS no longer stores the SSH key pair. However, you can still use the key pair to access the instance. When you call the DescribeInstance operation to query instance information, no other information but the name of the key pair (**KeyPairName**) is returned.
         
         @param request: DeleteKeyPairsRequest
         @return: DeleteKeyPairsResponse
@@ -5382,8 +6646,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteKeyPairsRequest,
     ) -> ens_20171110_models.DeleteKeyPairsResponse:
         """
-        After you delete an SSH key pair, you can no longer query the key pair by calling the DescribeKeyPairs operation.
-        *   If you delete an SSH key pair that is bound to an Edge Node Service (ENS) instance, ENS no longer stores the SSH key pair. However, you can still use the key pair to access the instance. When you call the DescribeInstance operation to query instance information, no other information but the name of the key pair (**KeyPairName**) is returned.
+        @summary Deletes SSH key pairs.
+        
+        @description    After you delete an SSH key pair, you can no longer query the key pair by calling the DescribeKeyPairs operation.
+        If you delete an SSH key pair that is bound to an Edge Node Service (ENS) instance, ENS no longer stores the SSH key pair. However, you can still use the key pair to access the instance. When you call the DescribeInstance operation to query instance information, no other information but the name of the key pair (**KeyPairName**) is returned.
         
         @param request: DeleteKeyPairsRequest
         @return: DeleteKeyPairsResponse
@@ -5397,8 +6663,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteLoadBalancerListenerResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Deletes a listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: DeleteLoadBalancerListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5437,8 +6705,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteLoadBalancerListenerResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Deletes a listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: DeleteLoadBalancerListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5476,8 +6746,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteLoadBalancerListenerRequest,
     ) -> ens_20171110_models.DeleteLoadBalancerListenerResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Deletes a listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: DeleteLoadBalancerListenerRequest
         @return: DeleteLoadBalancerListenerResponse
@@ -5490,8 +6762,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteLoadBalancerListenerRequest,
     ) -> ens_20171110_models.DeleteLoadBalancerListenerResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Deletes a listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: DeleteLoadBalancerListenerRequest
         @return: DeleteLoadBalancerListenerResponse
@@ -5505,7 +6779,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteMountTargetResponse:
         """
-        After you delete a mount target, the mount target cannot be restored. Proceed with caution.
+        @summary Deletes a mount target.
+        
+        @description After you delete a mount target, the mount target cannot be restored. Proceed with caution.
         
         @param request: DeleteMountTargetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5544,7 +6820,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteMountTargetResponse:
         """
-        After you delete a mount target, the mount target cannot be restored. Proceed with caution.
+        @summary Deletes a mount target.
+        
+        @description After you delete a mount target, the mount target cannot be restored. Proceed with caution.
         
         @param request: DeleteMountTargetRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5582,7 +6860,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteMountTargetRequest,
     ) -> ens_20171110_models.DeleteMountTargetResponse:
         """
-        After you delete a mount target, the mount target cannot be restored. Proceed with caution.
+        @summary Deletes a mount target.
+        
+        @description After you delete a mount target, the mount target cannot be restored. Proceed with caution.
         
         @param request: DeleteMountTargetRequest
         @return: DeleteMountTargetResponse
@@ -5595,7 +6875,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteMountTargetRequest,
     ) -> ens_20171110_models.DeleteMountTargetResponse:
         """
-        After you delete a mount target, the mount target cannot be restored. Proceed with caution.
+        @summary Deletes a mount target.
+        
+        @description After you delete a mount target, the mount target cannot be restored. Proceed with caution.
         
         @param request: DeleteMountTargetRequest
         @return: DeleteMountTargetResponse
@@ -5608,6 +6890,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteNatGatewayRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteNatGatewayResponse:
+        """
+        @summary Deletes an Internet network address translation (NAT) gateway.
+        
+        @param request: DeleteNatGatewayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNatGatewayResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.nat_gateway_id):
@@ -5636,6 +6925,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteNatGatewayRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteNatGatewayResponse:
+        """
+        @summary Deletes an Internet network address translation (NAT) gateway.
+        
+        @param request: DeleteNatGatewayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNatGatewayResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.nat_gateway_id):
@@ -5663,6 +6959,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteNatGatewayRequest,
     ) -> ens_20171110_models.DeleteNatGatewayResponse:
+        """
+        @summary Deletes an Internet network address translation (NAT) gateway.
+        
+        @param request: DeleteNatGatewayRequest
+        @return: DeleteNatGatewayResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_nat_gateway_with_options(request, runtime)
 
@@ -5670,6 +6972,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteNatGatewayRequest,
     ) -> ens_20171110_models.DeleteNatGatewayResponse:
+        """
+        @summary Deletes an Internet network address translation (NAT) gateway.
+        
+        @param request: DeleteNatGatewayRequest
+        @return: DeleteNatGatewayResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_nat_gateway_with_options_async(request, runtime)
 
@@ -5678,6 +6986,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteNetworkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteNetworkResponse:
+        """
+        @summary Deletes a virtual private cloud (VPC).
+        
+        @param request: DeleteNetworkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNetworkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.network_id):
@@ -5706,6 +7021,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteNetworkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteNetworkResponse:
+        """
+        @summary Deletes a virtual private cloud (VPC).
+        
+        @param request: DeleteNetworkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNetworkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.network_id):
@@ -5733,6 +7055,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteNetworkRequest,
     ) -> ens_20171110_models.DeleteNetworkResponse:
+        """
+        @summary Deletes a virtual private cloud (VPC).
+        
+        @param request: DeleteNetworkRequest
+        @return: DeleteNetworkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_network_with_options(request, runtime)
 
@@ -5740,6 +7068,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteNetworkRequest,
     ) -> ens_20171110_models.DeleteNetworkResponse:
+        """
+        @summary Deletes a virtual private cloud (VPC).
+        
+        @param request: DeleteNetworkRequest
+        @return: DeleteNetworkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_network_with_options_async(request, runtime)
 
@@ -5748,6 +7082,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteNetworkAclRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteNetworkAclResponse:
+        """
+        @summary Deletes a network access control list (ACL).
+        
+        @param request: DeleteNetworkAclRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNetworkAclResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.network_acl_id):
@@ -5776,6 +7117,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteNetworkAclRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteNetworkAclResponse:
+        """
+        @summary Deletes a network access control list (ACL).
+        
+        @param request: DeleteNetworkAclRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNetworkAclResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.network_acl_id):
@@ -5803,6 +7151,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteNetworkAclRequest,
     ) -> ens_20171110_models.DeleteNetworkAclResponse:
+        """
+        @summary Deletes a network access control list (ACL).
+        
+        @param request: DeleteNetworkAclRequest
+        @return: DeleteNetworkAclResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_network_acl_with_options(request, runtime)
 
@@ -5810,6 +7164,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteNetworkAclRequest,
     ) -> ens_20171110_models.DeleteNetworkAclResponse:
+        """
+        @summary Deletes a network access control list (ACL).
+        
+        @param request: DeleteNetworkAclRequest
+        @return: DeleteNetworkAclResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_network_acl_with_options_async(request, runtime)
 
@@ -5818,6 +7178,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteNetworkAclEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteNetworkAclEntryResponse:
+        """
+        @summary Deletes a network access control list (ACL) rule.
+        
+        @param request: DeleteNetworkAclEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNetworkAclEntryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.network_acl_entry_id):
@@ -5846,6 +7213,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteNetworkAclEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteNetworkAclEntryResponse:
+        """
+        @summary Deletes a network access control list (ACL) rule.
+        
+        @param request: DeleteNetworkAclEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNetworkAclEntryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.network_acl_entry_id):
@@ -5873,6 +7247,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteNetworkAclEntryRequest,
     ) -> ens_20171110_models.DeleteNetworkAclEntryResponse:
+        """
+        @summary Deletes a network access control list (ACL) rule.
+        
+        @param request: DeleteNetworkAclEntryRequest
+        @return: DeleteNetworkAclEntryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_network_acl_entry_with_options(request, runtime)
 
@@ -5880,6 +7260,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteNetworkAclEntryRequest,
     ) -> ens_20171110_models.DeleteNetworkAclEntryResponse:
+        """
+        @summary Deletes a network access control list (ACL) rule.
+        
+        @param request: DeleteNetworkAclEntryRequest
+        @return: DeleteNetworkAclEntryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_network_acl_entry_with_options_async(request, runtime)
 
@@ -5888,6 +7274,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteObjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteObjectResponse:
+        """
+        @summary Deletes an object.
+        
+        @param request: DeleteObjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteObjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bucket_name):
@@ -5918,6 +7311,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteObjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteObjectResponse:
+        """
+        @summary Deletes an object.
+        
+        @param request: DeleteObjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteObjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bucket_name):
@@ -5947,6 +7347,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteObjectRequest,
     ) -> ens_20171110_models.DeleteObjectResponse:
+        """
+        @summary Deletes an object.
+        
+        @param request: DeleteObjectRequest
+        @return: DeleteObjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_object_with_options(request, runtime)
 
@@ -5954,8 +7360,126 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteObjectRequest,
     ) -> ens_20171110_models.DeleteObjectResponse:
+        """
+        @summary Deletes an object.
+        
+        @param request: DeleteObjectRequest
+        @return: DeleteObjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_object_with_options_async(request, runtime)
+
+    def delete_sdgwith_options(
+        self,
+        tmp_req: ens_20171110_models.DeleteSDGRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteSDGResponse:
+        """
+        @summary Deletes a shared data group (SDG).
+        
+        @description ## [](#)
+        If all the SDGs corresponding to the original disk are deleted, the original disk is automatically cleared.
+        
+        @param tmp_req: DeleteSDGRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSDGResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.DeleteSDGShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sdgid):
+            request.sdgid_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sdgid, 'SDGId', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSDG',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteSDGResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_sdgwith_options_async(
+        self,
+        tmp_req: ens_20171110_models.DeleteSDGRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DeleteSDGResponse:
+        """
+        @summary Deletes a shared data group (SDG).
+        
+        @description ## [](#)
+        If all the SDGs corresponding to the original disk are deleted, the original disk is automatically cleared.
+        
+        @param tmp_req: DeleteSDGRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSDGResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.DeleteSDGShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.sdgid):
+            request.sdgid_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sdgid, 'SDGId', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteSDG',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DeleteSDGResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_sdg(
+        self,
+        request: ens_20171110_models.DeleteSDGRequest,
+    ) -> ens_20171110_models.DeleteSDGResponse:
+        """
+        @summary Deletes a shared data group (SDG).
+        
+        @description ## [](#)
+        If all the SDGs corresponding to the original disk are deleted, the original disk is automatically cleared.
+        
+        @param request: DeleteSDGRequest
+        @return: DeleteSDGResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_sdgwith_options(request, runtime)
+
+    async def delete_sdg_async(
+        self,
+        request: ens_20171110_models.DeleteSDGRequest,
+    ) -> ens_20171110_models.DeleteSDGResponse:
+        """
+        @summary Deletes a shared data group (SDG).
+        
+        @description ## [](#)
+        If all the SDGs corresponding to the original disk are deleted, the original disk is automatically cleared.
+        
+        @param request: DeleteSDGRequest
+        @return: DeleteSDGResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_sdgwith_options_async(request, runtime)
 
     def delete_security_group_with_options(
         self,
@@ -5963,7 +7487,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteSecurityGroupResponse:
         """
-        Before you delete a security group, make sure that no instances exist in the security group.
+        @summary Deletes a security group.
+        
+        @description Before you delete a security group, make sure that no instances exist in the security group.
         
         @param request: DeleteSecurityGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5998,7 +7524,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteSecurityGroupResponse:
         """
-        Before you delete a security group, make sure that no instances exist in the security group.
+        @summary Deletes a security group.
+        
+        @description Before you delete a security group, make sure that no instances exist in the security group.
         
         @param request: DeleteSecurityGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6032,7 +7560,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteSecurityGroupRequest,
     ) -> ens_20171110_models.DeleteSecurityGroupResponse:
         """
-        Before you delete a security group, make sure that no instances exist in the security group.
+        @summary Deletes a security group.
+        
+        @description Before you delete a security group, make sure that no instances exist in the security group.
         
         @param request: DeleteSecurityGroupRequest
         @return: DeleteSecurityGroupResponse
@@ -6045,7 +7575,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteSecurityGroupRequest,
     ) -> ens_20171110_models.DeleteSecurityGroupResponse:
         """
-        Before you delete a security group, make sure that no instances exist in the security group.
+        @summary Deletes a security group.
+        
+        @description Before you delete a security group, make sure that no instances exist in the security group.
         
         @param request: DeleteSecurityGroupRequest
         @return: DeleteSecurityGroupResponse
@@ -6058,6 +7590,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteSnapshotRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteSnapshotResponse:
+        """
+        @summary Deletes a snapshot.
+        
+        @param request: DeleteSnapshotRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSnapshotResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.snapshot_id):
@@ -6086,6 +7625,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteSnapshotRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteSnapshotResponse:
+        """
+        @summary Deletes a snapshot.
+        
+        @param request: DeleteSnapshotRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSnapshotResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.snapshot_id):
@@ -6113,6 +7659,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteSnapshotRequest,
     ) -> ens_20171110_models.DeleteSnapshotResponse:
+        """
+        @summary Deletes a snapshot.
+        
+        @param request: DeleteSnapshotRequest
+        @return: DeleteSnapshotResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_snapshot_with_options(request, runtime)
 
@@ -6120,6 +7672,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteSnapshotRequest,
     ) -> ens_20171110_models.DeleteSnapshotResponse:
+        """
+        @summary Deletes a snapshot.
+        
+        @param request: DeleteSnapshotRequest
+        @return: DeleteSnapshotResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_snapshot_with_options_async(request, runtime)
 
@@ -6128,6 +7686,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteSnatEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteSnatEntryResponse:
+        """
+        @summary Deletes a source network address translation (SNAT) entry from a specified SNAT table.
+        
+        @param request: DeleteSnatEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSnatEntryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.snat_entry_id):
@@ -6156,6 +7721,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteSnatEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteSnatEntryResponse:
+        """
+        @summary Deletes a source network address translation (SNAT) entry from a specified SNAT table.
+        
+        @param request: DeleteSnatEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSnatEntryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.snat_entry_id):
@@ -6183,6 +7755,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteSnatEntryRequest,
     ) -> ens_20171110_models.DeleteSnatEntryResponse:
+        """
+        @summary Deletes a source network address translation (SNAT) entry from a specified SNAT table.
+        
+        @param request: DeleteSnatEntryRequest
+        @return: DeleteSnatEntryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_snat_entry_with_options(request, runtime)
 
@@ -6190,6 +7768,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteSnatEntryRequest,
     ) -> ens_20171110_models.DeleteSnatEntryResponse:
+        """
+        @summary Deletes a source network address translation (SNAT) entry from a specified SNAT table.
+        
+        @param request: DeleteSnatEntryRequest
+        @return: DeleteSnatEntryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_snat_entry_with_options_async(request, runtime)
 
@@ -6198,6 +7782,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteSnatIpForSnatEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteSnatIpForSnatEntryResponse:
+        """
+        @summary Deletes an elastic IP address (EIP) from a source network address translation (SNAT) entry.
+        
+        @param request: DeleteSnatIpForSnatEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSnatIpForSnatEntryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.snat_entry_id):
@@ -6228,6 +7819,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteSnatIpForSnatEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteSnatIpForSnatEntryResponse:
+        """
+        @summary Deletes an elastic IP address (EIP) from a source network address translation (SNAT) entry.
+        
+        @param request: DeleteSnatIpForSnatEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSnatIpForSnatEntryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.snat_entry_id):
@@ -6257,6 +7855,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteSnatIpForSnatEntryRequest,
     ) -> ens_20171110_models.DeleteSnatIpForSnatEntryResponse:
+        """
+        @summary Deletes an elastic IP address (EIP) from a source network address translation (SNAT) entry.
+        
+        @param request: DeleteSnatIpForSnatEntryRequest
+        @return: DeleteSnatIpForSnatEntryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_snat_ip_for_snat_entry_with_options(request, runtime)
 
@@ -6264,6 +7868,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeleteSnatIpForSnatEntryRequest,
     ) -> ens_20171110_models.DeleteSnatIpForSnatEntryResponse:
+        """
+        @summary Deletes an elastic IP address (EIP) from a source network address translation (SNAT) entry.
+        
+        @param request: DeleteSnatIpForSnatEntryRequest
+        @return: DeleteSnatIpForSnatEntryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_snat_ip_for_snat_entry_with_options_async(request, runtime)
 
@@ -6273,7 +7883,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteVSwitchResponse:
         """
-        Before you delete a vSwitch, make sure that no instances exist in the vSwitch.
+        @summary Deletes a vSwitch.
+        
+        @description Before you delete a vSwitch, make sure that no instances exist in the vSwitch.
         
         @param request: DeleteVSwitchRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6308,7 +7920,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeleteVSwitchResponse:
         """
-        Before you delete a vSwitch, make sure that no instances exist in the vSwitch.
+        @summary Deletes a vSwitch.
+        
+        @description Before you delete a vSwitch, make sure that no instances exist in the vSwitch.
         
         @param request: DeleteVSwitchRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6342,7 +7956,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteVSwitchRequest,
     ) -> ens_20171110_models.DeleteVSwitchResponse:
         """
-        Before you delete a vSwitch, make sure that no instances exist in the vSwitch.
+        @summary Deletes a vSwitch.
+        
+        @description Before you delete a vSwitch, make sure that no instances exist in the vSwitch.
         
         @param request: DeleteVSwitchRequest
         @return: DeleteVSwitchResponse
@@ -6355,7 +7971,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DeleteVSwitchRequest,
     ) -> ens_20171110_models.DeleteVSwitchResponse:
         """
-        Before you delete a vSwitch, make sure that no instances exist in the vSwitch.
+        @summary Deletes a vSwitch.
+        
+        @description Before you delete a vSwitch, make sure that no instances exist in the vSwitch.
         
         @param request: DeleteVSwitchRequest
         @return: DeleteVSwitchResponse
@@ -6368,6 +7986,13 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.DeploySDGRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeploySDGResponse:
+        """
+        @summary Deploys shared data groups (SDGs).
+        
+        @param tmp_req: DeploySDGRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeploySDGResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.DeploySDGShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6398,6 +8023,13 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.DeploySDGRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DeploySDGResponse:
+        """
+        @summary Deploys shared data groups (SDGs).
+        
+        @param tmp_req: DeploySDGRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeploySDGResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.DeploySDGShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6427,6 +8059,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeploySDGRequest,
     ) -> ens_20171110_models.DeploySDGResponse:
+        """
+        @summary Deploys shared data groups (SDGs).
+        
+        @param request: DeploySDGRequest
+        @return: DeploySDGResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.deploy_sdgwith_options(request, runtime)
 
@@ -6434,6 +8072,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DeploySDGRequest,
     ) -> ens_20171110_models.DeploySDGResponse:
+        """
+        @summary Deploys shared data groups (SDGs).
+        
+        @param request: DeploySDGRequest
+        @return: DeploySDGResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.deploy_sdgwith_options_async(request, runtime)
 
@@ -6442,6 +8086,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeAICImagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeAICImagesResponse:
+        """
+        @summary Queries information about images of the Android in Container (AIC) instance.
+        
+        @param request: DescribeAICImagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAICImagesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -6486,6 +8137,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeAICImagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeAICImagesResponse:
+        """
+        @summary Queries information about images of the Android in Container (AIC) instance.
+        
+        @param request: DescribeAICImagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAICImagesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -6529,6 +8187,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeAICImagesRequest,
     ) -> ens_20171110_models.DescribeAICImagesResponse:
+        """
+        @summary Queries information about images of the Android in Container (AIC) instance.
+        
+        @param request: DescribeAICImagesRequest
+        @return: DescribeAICImagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_aicimages_with_options(request, runtime)
 
@@ -6536,6 +8200,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeAICImagesRequest,
     ) -> ens_20171110_models.DescribeAICImagesResponse:
+        """
+        @summary Queries information about images of the Android in Container (AIC) instance.
+        
+        @param request: DescribeAICImagesRequest
+        @return: DescribeAICImagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_aicimages_with_options_async(request, runtime)
 
@@ -6544,6 +8214,13 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.DescribeARMServerInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeARMServerInstancesResponse:
+        """
+        @summary Queries information about ARM servers and Android in Container (AIC) instances.
+        
+        @param tmp_req: DescribeARMServerInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeARMServerInstancesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.DescribeARMServerInstancesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6582,6 +8259,13 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.DescribeARMServerInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeARMServerInstancesResponse:
+        """
+        @summary Queries information about ARM servers and Android in Container (AIC) instances.
+        
+        @param tmp_req: DescribeARMServerInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeARMServerInstancesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.DescribeARMServerInstancesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6619,6 +8303,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeARMServerInstancesRequest,
     ) -> ens_20171110_models.DescribeARMServerInstancesResponse:
+        """
+        @summary Queries information about ARM servers and Android in Container (AIC) instances.
+        
+        @param request: DescribeARMServerInstancesRequest
+        @return: DescribeARMServerInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_armserver_instances_with_options(request, runtime)
 
@@ -6626,6 +8316,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeARMServerInstancesRequest,
     ) -> ens_20171110_models.DescribeARMServerInstancesResponse:
+        """
+        @summary Queries information about ARM servers and Android in Container (AIC) instances.
+        
+        @param request: DescribeARMServerInstancesRequest
+        @return: DescribeARMServerInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_armserver_instances_with_options_async(request, runtime)
 
@@ -6634,6 +8330,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeApplicationResponse:
+        """
+        @summary Queries the basic properties, resources, and container status of an application.
+        
+        @param request: DescribeApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6644,6 +8347,8 @@ class Client(OpenApiClient):
             query['Level'] = request.level
         if not UtilClient.is_unset(request.out_detail_stat_params):
             query['OutDetailStatParams'] = request.out_detail_stat_params
+        if not UtilClient.is_unset(request.resource_selector):
+            query['ResourceSelector'] = request.resource_selector
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6668,6 +8373,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeApplicationResponse:
+        """
+        @summary Queries the basic properties, resources, and container status of an application.
+        
+        @param request: DescribeApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6678,6 +8390,8 @@ class Client(OpenApiClient):
             query['Level'] = request.level
         if not UtilClient.is_unset(request.out_detail_stat_params):
             query['OutDetailStatParams'] = request.out_detail_stat_params
+        if not UtilClient.is_unset(request.resource_selector):
+            query['ResourceSelector'] = request.resource_selector
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -6701,6 +8415,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeApplicationRequest,
     ) -> ens_20171110_models.DescribeApplicationResponse:
+        """
+        @summary Queries the basic properties, resources, and container status of an application.
+        
+        @param request: DescribeApplicationRequest
+        @return: DescribeApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_application_with_options(request, runtime)
 
@@ -6708,6 +8428,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeApplicationRequest,
     ) -> ens_20171110_models.DescribeApplicationResponse:
+        """
+        @summary Queries the basic properties, resources, and container status of an application.
+        
+        @param request: DescribeApplicationRequest
+        @return: DescribeApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_application_with_options_async(request, runtime)
 
@@ -6716,6 +8442,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeApplicationResourceSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeApplicationResourceSummaryResponse:
+        """
+        @summary Queries the total quota of resources and the resource usage in different region levels. You can perform resource scale-out based on this information.
+        
+        @param request: DescribeApplicationResourceSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApplicationResourceSummaryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.level):
@@ -6746,6 +8479,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeApplicationResourceSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeApplicationResourceSummaryResponse:
+        """
+        @summary Queries the total quota of resources and the resource usage in different region levels. You can perform resource scale-out based on this information.
+        
+        @param request: DescribeApplicationResourceSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApplicationResourceSummaryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.level):
@@ -6775,6 +8515,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeApplicationResourceSummaryRequest,
     ) -> ens_20171110_models.DescribeApplicationResourceSummaryResponse:
+        """
+        @summary Queries the total quota of resources and the resource usage in different region levels. You can perform resource scale-out based on this information.
+        
+        @param request: DescribeApplicationResourceSummaryRequest
+        @return: DescribeApplicationResourceSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_application_resource_summary_with_options(request, runtime)
 
@@ -6782,6 +8528,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeApplicationResourceSummaryRequest,
     ) -> ens_20171110_models.DescribeApplicationResourceSummaryResponse:
+        """
+        @summary Queries the total quota of resources and the resource usage in different region levels. You can perform resource scale-out based on this information.
+        
+        @param request: DescribeApplicationResourceSummaryRequest
+        @return: DescribeApplicationResourceSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_application_resource_summary_with_options_async(request, runtime)
 
@@ -6789,6 +8541,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeAvailableResourceResponse:
+        """
+        @summary Queries the resources that can be created.
+        
+        @param request: DescribeAvailableResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAvailableResourceResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeAvailableResource',
@@ -6810,6 +8569,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeAvailableResourceResponse:
+        """
+        @summary Queries the resources that can be created.
+        
+        @param request: DescribeAvailableResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAvailableResourceResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeAvailableResource',
@@ -6828,10 +8594,20 @@ class Client(OpenApiClient):
         )
 
     def describe_available_resource(self) -> ens_20171110_models.DescribeAvailableResourceResponse:
+        """
+        @summary Queries the resources that can be created.
+        
+        @return: DescribeAvailableResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_available_resource_with_options(runtime)
 
     async def describe_available_resource_async(self) -> ens_20171110_models.DescribeAvailableResourceResponse:
+        """
+        @summary Queries the resources that can be created.
+        
+        @return: DescribeAvailableResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_available_resource_with_options_async(runtime)
 
@@ -6839,6 +8615,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeAvailableResourceInfoResponse:
+        """
+        @summary Queries the specifications of resources that you can purchase when you create an instance.
+        
+        @param request: DescribeAvailableResourceInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAvailableResourceInfoResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeAvailableResourceInfo',
@@ -6860,6 +8643,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeAvailableResourceInfoResponse:
+        """
+        @summary Queries the specifications of resources that you can purchase when you create an instance.
+        
+        @param request: DescribeAvailableResourceInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAvailableResourceInfoResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeAvailableResourceInfo',
@@ -6878,10 +8668,20 @@ class Client(OpenApiClient):
         )
 
     def describe_available_resource_info(self) -> ens_20171110_models.DescribeAvailableResourceInfoResponse:
+        """
+        @summary Queries the specifications of resources that you can purchase when you create an instance.
+        
+        @return: DescribeAvailableResourceInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_available_resource_info_with_options(runtime)
 
     async def describe_available_resource_info_async(self) -> ens_20171110_models.DescribeAvailableResourceInfoResponse:
+        """
+        @summary Queries the specifications of resources that you can purchase when you create an instance.
+        
+        @return: DescribeAvailableResourceInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_available_resource_info_with_options_async(runtime)
 
@@ -6889,6 +8689,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeBandWithdChargeTypeResponse:
+        """
+        @summary Queries available bandwidth metering methods.
+        
+        @param request: DescribeBandWithdChargeTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBandWithdChargeTypeResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeBandWithdChargeType',
@@ -6910,6 +8717,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeBandWithdChargeTypeResponse:
+        """
+        @summary Queries available bandwidth metering methods.
+        
+        @param request: DescribeBandWithdChargeTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBandWithdChargeTypeResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeBandWithdChargeType',
@@ -6928,10 +8742,20 @@ class Client(OpenApiClient):
         )
 
     def describe_band_withd_charge_type(self) -> ens_20171110_models.DescribeBandWithdChargeTypeResponse:
+        """
+        @summary Queries available bandwidth metering methods.
+        
+        @return: DescribeBandWithdChargeTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_band_withd_charge_type_with_options(runtime)
 
     async def describe_band_withd_charge_type_async(self) -> ens_20171110_models.DescribeBandWithdChargeTypeResponse:
+        """
+        @summary Queries available bandwidth metering methods.
+        
+        @return: DescribeBandWithdChargeTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_band_withd_charge_type_with_options_async(runtime)
 
@@ -6940,6 +8764,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeBandwitdhByInternetChargeTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeBandwitdhByInternetChargeTypeResponse:
+        """
+        @summary Queries the metering method for the bandwidth.
+        
+        @param request: DescribeBandwitdhByInternetChargeTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBandwitdhByInternetChargeTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -6974,6 +8805,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeBandwitdhByInternetChargeTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeBandwitdhByInternetChargeTypeResponse:
+        """
+        @summary Queries the metering method for the bandwidth.
+        
+        @param request: DescribeBandwitdhByInternetChargeTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBandwitdhByInternetChargeTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -7007,6 +8845,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeBandwitdhByInternetChargeTypeRequest,
     ) -> ens_20171110_models.DescribeBandwitdhByInternetChargeTypeResponse:
+        """
+        @summary Queries the metering method for the bandwidth.
+        
+        @param request: DescribeBandwitdhByInternetChargeTypeRequest
+        @return: DescribeBandwitdhByInternetChargeTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_bandwitdh_by_internet_charge_type_with_options(request, runtime)
 
@@ -7014,6 +8858,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeBandwitdhByInternetChargeTypeRequest,
     ) -> ens_20171110_models.DescribeBandwitdhByInternetChargeTypeResponse:
+        """
+        @summary Queries the metering method for the bandwidth.
+        
+        @param request: DescribeBandwitdhByInternetChargeTypeRequest
+        @return: DescribeBandwitdhByInternetChargeTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_bandwitdh_by_internet_charge_type_with_options_async(request, runtime)
 
@@ -7021,6 +8871,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeCloudDiskAvailableResourceInfoResponse:
+        """
+        @summary Queries the available resources in a region.
+        
+        @param request: DescribeCloudDiskAvailableResourceInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudDiskAvailableResourceInfoResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeCloudDiskAvailableResourceInfo',
@@ -7042,6 +8899,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeCloudDiskAvailableResourceInfoResponse:
+        """
+        @summary Queries the available resources in a region.
+        
+        @param request: DescribeCloudDiskAvailableResourceInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudDiskAvailableResourceInfoResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeCloudDiskAvailableResourceInfo',
@@ -7060,10 +8924,20 @@ class Client(OpenApiClient):
         )
 
     def describe_cloud_disk_available_resource_info(self) -> ens_20171110_models.DescribeCloudDiskAvailableResourceInfoResponse:
+        """
+        @summary Queries the available resources in a region.
+        
+        @return: DescribeCloudDiskAvailableResourceInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_cloud_disk_available_resource_info_with_options(runtime)
 
     async def describe_cloud_disk_available_resource_info_async(self) -> ens_20171110_models.DescribeCloudDiskAvailableResourceInfoResponse:
+        """
+        @summary Queries the available resources in a region.
+        
+        @return: DescribeCloudDiskAvailableResourceInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cloud_disk_available_resource_info_with_options_async(runtime)
 
@@ -7072,6 +8946,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeCloudDiskTypesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeCloudDiskTypesResponse:
+        """
+        @summary Queries the specifications of resources that you can purchase when you create an instance.
+        
+        @param request: DescribeCloudDiskTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudDiskTypesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -7098,6 +8979,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeCloudDiskTypesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeCloudDiskTypesResponse:
+        """
+        @summary Queries the specifications of resources that you can purchase when you create an instance.
+        
+        @param request: DescribeCloudDiskTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudDiskTypesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -7123,6 +9011,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeCloudDiskTypesRequest,
     ) -> ens_20171110_models.DescribeCloudDiskTypesResponse:
+        """
+        @summary Queries the specifications of resources that you can purchase when you create an instance.
+        
+        @param request: DescribeCloudDiskTypesRequest
+        @return: DescribeCloudDiskTypesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_cloud_disk_types_with_options(request, runtime)
 
@@ -7130,6 +9024,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeCloudDiskTypesRequest,
     ) -> ens_20171110_models.DescribeCloudDiskTypesResponse:
+        """
+        @summary Queries the specifications of resources that you can purchase when you create an instance.
+        
+        @param request: DescribeCloudDiskTypesRequest
+        @return: DescribeCloudDiskTypesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cloud_disk_types_with_options_async(request, runtime)
 
@@ -7138,6 +9038,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeCreatePrePaidInstanceResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeCreatePrePaidInstanceResultResponse:
+        """
+        @summary Queries the results of creating an instance.
+        
+        @param request: DescribeCreatePrePaidInstanceResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCreatePrePaidInstanceResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -7166,6 +9073,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeCreatePrePaidInstanceResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeCreatePrePaidInstanceResultResponse:
+        """
+        @summary Queries the results of creating an instance.
+        
+        @param request: DescribeCreatePrePaidInstanceResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCreatePrePaidInstanceResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -7193,6 +9107,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeCreatePrePaidInstanceResultRequest,
     ) -> ens_20171110_models.DescribeCreatePrePaidInstanceResultResponse:
+        """
+        @summary Queries the results of creating an instance.
+        
+        @param request: DescribeCreatePrePaidInstanceResultRequest
+        @return: DescribeCreatePrePaidInstanceResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_create_pre_paid_instance_result_with_options(request, runtime)
 
@@ -7200,6 +9120,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeCreatePrePaidInstanceResultRequest,
     ) -> ens_20171110_models.DescribeCreatePrePaidInstanceResultResponse:
+        """
+        @summary Queries the results of creating an instance.
+        
+        @param request: DescribeCreatePrePaidInstanceResultRequest
+        @return: DescribeCreatePrePaidInstanceResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_create_pre_paid_instance_result_with_options_async(request, runtime)
 
@@ -7208,6 +9134,13 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.DescribeDataDistResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeDataDistResultResponse:
+        """
+        @summary Queries the distribution status of data files on edge instances of an application.
+        
+        @param tmp_req: DescribeDataDistResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDataDistResultResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.DescribeDataDistResultShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7256,6 +9189,13 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.DescribeDataDistResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeDataDistResultResponse:
+        """
+        @summary Queries the distribution status of data files on edge instances of an application.
+        
+        @param tmp_req: DescribeDataDistResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDataDistResultResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.DescribeDataDistResultShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7303,6 +9243,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeDataDistResultRequest,
     ) -> ens_20171110_models.DescribeDataDistResultResponse:
+        """
+        @summary Queries the distribution status of data files on edge instances of an application.
+        
+        @param request: DescribeDataDistResultRequest
+        @return: DescribeDataDistResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_data_dist_result_with_options(request, runtime)
 
@@ -7310,6 +9256,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeDataDistResultRequest,
     ) -> ens_20171110_models.DescribeDataDistResultResponse:
+        """
+        @summary Queries the distribution status of data files on edge instances of an application.
+        
+        @param request: DescribeDataDistResultRequest
+        @return: DescribeDataDistResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_data_dist_result_with_options_async(request, runtime)
 
@@ -7318,6 +9270,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeDataDownloadURLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeDataDownloadURLResponse:
+        """
+        @summary Queries the download URLs of application data on file servers and returns the file servers on which data is pushed.
+        
+        @param request: DescribeDataDownloadURLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDataDownloadURLResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -7344,6 +9303,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeDataDownloadURLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeDataDownloadURLResponse:
+        """
+        @summary Queries the download URLs of application data on file servers and returns the file servers on which data is pushed.
+        
+        @param request: DescribeDataDownloadURLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDataDownloadURLResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -7369,6 +9335,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeDataDownloadURLRequest,
     ) -> ens_20171110_models.DescribeDataDownloadURLResponse:
+        """
+        @summary Queries the download URLs of application data on file servers and returns the file servers on which data is pushed.
+        
+        @param request: DescribeDataDownloadURLRequest
+        @return: DescribeDataDownloadURLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_data_download_urlwith_options(request, runtime)
 
@@ -7376,6 +9348,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeDataDownloadURLRequest,
     ) -> ens_20171110_models.DescribeDataDownloadURLResponse:
+        """
+        @summary Queries the download URLs of application data on file servers and returns the file servers on which data is pushed.
+        
+        @param request: DescribeDataDownloadURLRequest
+        @return: DescribeDataDownloadURLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_data_download_urlwith_options_async(request, runtime)
 
@@ -7384,6 +9362,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeDataPushResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeDataPushResultResponse:
+        """
+        @summary Queries the push status of application data files on Edge Node Service (ENS) nodes.
+        
+        @param request: DescribeDataPushResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDataPushResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -7426,6 +9411,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeDataPushResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeDataPushResultResponse:
+        """
+        @summary Queries the push status of application data files on Edge Node Service (ENS) nodes.
+        
+        @param request: DescribeDataPushResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDataPushResultResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -7467,6 +9459,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeDataPushResultRequest,
     ) -> ens_20171110_models.DescribeDataPushResultResponse:
+        """
+        @summary Queries the push status of application data files on Edge Node Service (ENS) nodes.
+        
+        @param request: DescribeDataPushResultRequest
+        @return: DescribeDataPushResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_data_push_result_with_options(request, runtime)
 
@@ -7474,6 +9472,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeDataPushResultRequest,
     ) -> ens_20171110_models.DescribeDataPushResultResponse:
+        """
+        @summary Queries the push status of application data files on Edge Node Service (ENS) nodes.
+        
+        @param request: DescribeDataPushResultRequest
+        @return: DescribeDataPushResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_data_push_result_with_options_async(request, runtime)
 
@@ -7482,6 +9486,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeDeviceServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeDeviceServiceResponse:
+        """
+        @summary Queries the properties of instances and virtual devices in a specific edge application.
+        
+        @param request: DescribeDeviceServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDeviceServiceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -7508,6 +9519,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeDeviceServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeDeviceServiceResponse:
+        """
+        @summary Queries the properties of instances and virtual devices in a specific edge application.
+        
+        @param request: DescribeDeviceServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDeviceServiceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -7533,6 +9551,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeDeviceServiceRequest,
     ) -> ens_20171110_models.DescribeDeviceServiceResponse:
+        """
+        @summary Queries the properties of instances and virtual devices in a specific edge application.
+        
+        @param request: DescribeDeviceServiceRequest
+        @return: DescribeDeviceServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_device_service_with_options(request, runtime)
 
@@ -7540,6 +9564,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeDeviceServiceRequest,
     ) -> ens_20171110_models.DescribeDeviceServiceResponse:
+        """
+        @summary Queries the properties of instances and virtual devices in a specific edge application.
+        
+        @param request: DescribeDeviceServiceRequest
+        @return: DescribeDeviceServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_device_service_with_options_async(request, runtime)
 
@@ -7548,6 +9578,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeDisksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeDisksResponse:
+        """
+        @summary Queries the information about one or more disks.
+        
+        @param request: DescribeDisksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDisksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -7604,6 +9641,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeDisksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeDisksResponse:
+        """
+        @summary Queries the information about one or more disks.
+        
+        @param request: DescribeDisksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDisksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -7659,6 +9703,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeDisksRequest,
     ) -> ens_20171110_models.DescribeDisksResponse:
+        """
+        @summary Queries the information about one or more disks.
+        
+        @param request: DescribeDisksRequest
+        @return: DescribeDisksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_disks_with_options(request, runtime)
 
@@ -7666,6 +9716,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeDisksRequest,
     ) -> ens_20171110_models.DescribeDisksResponse:
+        """
+        @summary Queries the information about one or more disks.
+        
+        @param request: DescribeDisksRequest
+        @return: DescribeDisksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_disks_with_options_async(request, runtime)
 
@@ -7674,6 +9730,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEipAddressesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEipAddressesResponse:
+        """
+        @summary Queries the properties of elastic IP addresses (EIPs).
+        
+        @param request: DescribeEipAddressesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEipAddressesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.eips):
@@ -7704,6 +9767,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEipAddressesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEipAddressesResponse:
+        """
+        @summary Queries the properties of elastic IP addresses (EIPs).
+        
+        @param request: DescribeEipAddressesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEipAddressesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.eips):
@@ -7733,6 +9803,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEipAddressesRequest,
     ) -> ens_20171110_models.DescribeEipAddressesResponse:
+        """
+        @summary Queries the properties of elastic IP addresses (EIPs).
+        
+        @param request: DescribeEipAddressesRequest
+        @return: DescribeEipAddressesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_eip_addresses_with_options(request, runtime)
 
@@ -7740,6 +9816,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEipAddressesRequest,
     ) -> ens_20171110_models.DescribeEipAddressesResponse:
+        """
+        @summary Queries the properties of elastic IP addresses (EIPs).
+        
+        @param request: DescribeEipAddressesRequest
+        @return: DescribeEipAddressesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_eip_addresses_with_options_async(request, runtime)
 
@@ -7747,6 +9829,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeElbAvailableResourceInfoResponse:
+        """
+        @summary Queries the specifications of resources that you can purchase when you create an instance.
+        
+        @param request: DescribeElbAvailableResourceInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeElbAvailableResourceInfoResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeElbAvailableResourceInfo',
@@ -7768,6 +9857,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeElbAvailableResourceInfoResponse:
+        """
+        @summary Queries the specifications of resources that you can purchase when you create an instance.
+        
+        @param request: DescribeElbAvailableResourceInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeElbAvailableResourceInfoResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeElbAvailableResourceInfo',
@@ -7786,10 +9882,20 @@ class Client(OpenApiClient):
         )
 
     def describe_elb_available_resource_info(self) -> ens_20171110_models.DescribeElbAvailableResourceInfoResponse:
+        """
+        @summary Queries the specifications of resources that you can purchase when you create an instance.
+        
+        @return: DescribeElbAvailableResourceInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_elb_available_resource_info_with_options(runtime)
 
     async def describe_elb_available_resource_info_async(self) -> ens_20171110_models.DescribeElbAvailableResourceInfoResponse:
+        """
+        @summary Queries the specifications of resources that you can purchase when you create an instance.
+        
+        @return: DescribeElbAvailableResourceInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_elb_available_resource_info_with_options_async(runtime)
 
@@ -7798,6 +9904,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEnsCommodityCodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEnsCommodityCodeResponse:
+        """
+        @summary 描述商品code
+        
+        @param request: DescribeEnsCommodityCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEnsCommodityCodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.commodity_code):
@@ -7826,6 +9939,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEnsCommodityCodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEnsCommodityCodeResponse:
+        """
+        @summary 描述商品code
+        
+        @param request: DescribeEnsCommodityCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEnsCommodityCodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.commodity_code):
@@ -7853,6 +9973,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEnsCommodityCodeRequest,
     ) -> ens_20171110_models.DescribeEnsCommodityCodeResponse:
+        """
+        @summary 描述商品code
+        
+        @param request: DescribeEnsCommodityCodeRequest
+        @return: DescribeEnsCommodityCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ens_commodity_code_with_options(request, runtime)
 
@@ -7860,6 +9986,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEnsCommodityCodeRequest,
     ) -> ens_20171110_models.DescribeEnsCommodityCodeResponse:
+        """
+        @summary 描述商品code
+        
+        @param request: DescribeEnsCommodityCodeRequest
+        @return: DescribeEnsCommodityCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ens_commodity_code_with_options_async(request, runtime)
 
@@ -7868,6 +10000,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEnsCommodityModuleCodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEnsCommodityModuleCodeResponse:
+        """
+        @summary 获取模块code
+        
+        @param request: DescribeEnsCommodityModuleCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEnsCommodityModuleCodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.commodity_code):
@@ -7898,6 +10037,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEnsCommodityModuleCodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEnsCommodityModuleCodeResponse:
+        """
+        @summary 获取模块code
+        
+        @param request: DescribeEnsCommodityModuleCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEnsCommodityModuleCodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.commodity_code):
@@ -7927,6 +10073,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEnsCommodityModuleCodeRequest,
     ) -> ens_20171110_models.DescribeEnsCommodityModuleCodeResponse:
+        """
+        @summary 获取模块code
+        
+        @param request: DescribeEnsCommodityModuleCodeRequest
+        @return: DescribeEnsCommodityModuleCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ens_commodity_module_code_with_options(request, runtime)
 
@@ -7934,6 +10086,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEnsCommodityModuleCodeRequest,
     ) -> ens_20171110_models.DescribeEnsCommodityModuleCodeResponse:
+        """
+        @summary 获取模块code
+        
+        @param request: DescribeEnsCommodityModuleCodeRequest
+        @return: DescribeEnsCommodityModuleCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ens_commodity_module_code_with_options_async(request, runtime)
 
@@ -7942,6 +10100,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEnsEipAddressesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEnsEipAddressesResponse:
+        """
+        @summary Queries elastic IP addresses (EIPs).
+        
+        @param request: DescribeEnsEipAddressesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEnsEipAddressesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.allocation_id):
@@ -7986,6 +10151,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEnsEipAddressesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEnsEipAddressesResponse:
+        """
+        @summary Queries elastic IP addresses (EIPs).
+        
+        @param request: DescribeEnsEipAddressesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEnsEipAddressesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.allocation_id):
@@ -8029,6 +10201,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEnsEipAddressesRequest,
     ) -> ens_20171110_models.DescribeEnsEipAddressesResponse:
+        """
+        @summary Queries elastic IP addresses (EIPs).
+        
+        @param request: DescribeEnsEipAddressesRequest
+        @return: DescribeEnsEipAddressesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ens_eip_addresses_with_options(request, runtime)
 
@@ -8036,6 +10214,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEnsEipAddressesRequest,
     ) -> ens_20171110_models.DescribeEnsEipAddressesResponse:
+        """
+        @summary Queries elastic IP addresses (EIPs).
+        
+        @param request: DescribeEnsEipAddressesRequest
+        @return: DescribeEnsEipAddressesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ens_eip_addresses_with_options_async(request, runtime)
 
@@ -8044,6 +10228,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEnsNetDistrictRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEnsNetDistrictResponse:
+        """
+        @summary Queries regions in which ENS resources can be created.
+        
+        @param request: DescribeEnsNetDistrictRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEnsNetDistrictResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.net_district_code):
@@ -8074,6 +10265,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEnsNetDistrictRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEnsNetDistrictResponse:
+        """
+        @summary Queries regions in which ENS resources can be created.
+        
+        @param request: DescribeEnsNetDistrictRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEnsNetDistrictResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.net_district_code):
@@ -8103,6 +10301,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEnsNetDistrictRequest,
     ) -> ens_20171110_models.DescribeEnsNetDistrictResponse:
+        """
+        @summary Queries regions in which ENS resources can be created.
+        
+        @param request: DescribeEnsNetDistrictRequest
+        @return: DescribeEnsNetDistrictResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ens_net_district_with_options(request, runtime)
 
@@ -8110,6 +10314,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEnsNetDistrictRequest,
     ) -> ens_20171110_models.DescribeEnsNetDistrictResponse:
+        """
+        @summary Queries regions in which ENS resources can be created.
+        
+        @param request: DescribeEnsNetDistrictRequest
+        @return: DescribeEnsNetDistrictResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ens_net_district_with_options_async(request, runtime)
 
@@ -8117,6 +10327,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEnsNetLevelResponse:
+        """
+        @summary Queries the supported network levels.
+        
+        @param request: DescribeEnsNetLevelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEnsNetLevelResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeEnsNetLevel',
@@ -8138,6 +10355,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEnsNetLevelResponse:
+        """
+        @summary Queries the supported network levels.
+        
+        @param request: DescribeEnsNetLevelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEnsNetLevelResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeEnsNetLevel',
@@ -8156,10 +10380,20 @@ class Client(OpenApiClient):
         )
 
     def describe_ens_net_level(self) -> ens_20171110_models.DescribeEnsNetLevelResponse:
+        """
+        @summary Queries the supported network levels.
+        
+        @return: DescribeEnsNetLevelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ens_net_level_with_options(runtime)
 
     async def describe_ens_net_level_async(self) -> ens_20171110_models.DescribeEnsNetLevelResponse:
+        """
+        @summary Queries the supported network levels.
+        
+        @return: DescribeEnsNetLevelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ens_net_level_with_options_async(runtime)
 
@@ -8168,6 +10402,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEnsNetSaleDistrictRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEnsNetSaleDistrictResponse:
+        """
+        @summary Queries the information about ISPs and number of ISPs in an area.
+        
+        @param request: DescribeEnsNetSaleDistrictRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEnsNetSaleDistrictResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.net_district_code):
@@ -8198,6 +10439,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEnsNetSaleDistrictRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEnsNetSaleDistrictResponse:
+        """
+        @summary Queries the information about ISPs and number of ISPs in an area.
+        
+        @param request: DescribeEnsNetSaleDistrictRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEnsNetSaleDistrictResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.net_district_code):
@@ -8227,6 +10475,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEnsNetSaleDistrictRequest,
     ) -> ens_20171110_models.DescribeEnsNetSaleDistrictResponse:
+        """
+        @summary Queries the information about ISPs and number of ISPs in an area.
+        
+        @param request: DescribeEnsNetSaleDistrictRequest
+        @return: DescribeEnsNetSaleDistrictResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ens_net_sale_district_with_options(request, runtime)
 
@@ -8234,6 +10488,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEnsNetSaleDistrictRequest,
     ) -> ens_20171110_models.DescribeEnsNetSaleDistrictResponse:
+        """
+        @summary Queries the information about ISPs and number of ISPs in an area.
+        
+        @param request: DescribeEnsNetSaleDistrictRequest
+        @return: DescribeEnsNetSaleDistrictResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ens_net_sale_district_with_options_async(request, runtime)
 
@@ -8242,6 +10502,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEnsRegionIdIpv6InfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEnsRegionIdIpv6InfoResponse:
+        """
+        @summary Queries whether an edge node supports IPv6.
+        
+        @param request: DescribeEnsRegionIdIpv6InfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEnsRegionIdIpv6InfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ens_region_id):
@@ -8270,6 +10537,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEnsRegionIdIpv6InfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEnsRegionIdIpv6InfoResponse:
+        """
+        @summary Queries whether an edge node supports IPv6.
+        
+        @param request: DescribeEnsRegionIdIpv6InfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEnsRegionIdIpv6InfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ens_region_id):
@@ -8297,6 +10571,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEnsRegionIdIpv6InfoRequest,
     ) -> ens_20171110_models.DescribeEnsRegionIdIpv6InfoResponse:
+        """
+        @summary Queries whether an edge node supports IPv6.
+        
+        @param request: DescribeEnsRegionIdIpv6InfoRequest
+        @return: DescribeEnsRegionIdIpv6InfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ens_region_id_ipv_6info_with_options(request, runtime)
 
@@ -8304,6 +10584,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEnsRegionIdIpv6InfoRequest,
     ) -> ens_20171110_models.DescribeEnsRegionIdIpv6InfoResponse:
+        """
+        @summary Queries whether an edge node supports IPv6.
+        
+        @param request: DescribeEnsRegionIdIpv6InfoRequest
+        @return: DescribeEnsRegionIdIpv6InfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ens_region_id_ipv_6info_with_options_async(request, runtime)
 
@@ -8313,7 +10599,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEnsRegionIdResourceResponse:
         """
-        ***\
+        @summary Queries node resources.
+        
+        @description ***\
         
         @param request: DescribeEnsRegionIdResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8358,7 +10646,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEnsRegionIdResourceResponse:
         """
-        ***\
+        @summary Queries node resources.
+        
+        @description ***\
         
         @param request: DescribeEnsRegionIdResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8402,7 +10692,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEnsRegionIdResourceRequest,
     ) -> ens_20171110_models.DescribeEnsRegionIdResourceResponse:
         """
-        ***\
+        @summary Queries node resources.
+        
+        @description ***\
         
         @param request: DescribeEnsRegionIdResourceRequest
         @return: DescribeEnsRegionIdResourceResponse
@@ -8415,7 +10707,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEnsRegionIdResourceRequest,
     ) -> ens_20171110_models.DescribeEnsRegionIdResourceResponse:
         """
-        ***\
+        @summary Queries node resources.
+        
+        @description ***\
         
         @param request: DescribeEnsRegionIdResourceRequest
         @return: DescribeEnsRegionIdResourceResponse
@@ -8428,6 +10722,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEnsRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEnsRegionsResponse:
+        """
+        @summary Queries the Edge Node Service (ENS) nodes that you can use.
+        
+        @param request: DescribeEnsRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEnsRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ens_region_id):
@@ -8456,6 +10757,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEnsRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEnsRegionsResponse:
+        """
+        @summary Queries the Edge Node Service (ENS) nodes that you can use.
+        
+        @param request: DescribeEnsRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEnsRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ens_region_id):
@@ -8483,6 +10791,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEnsRegionsRequest,
     ) -> ens_20171110_models.DescribeEnsRegionsResponse:
+        """
+        @summary Queries the Edge Node Service (ENS) nodes that you can use.
+        
+        @param request: DescribeEnsRegionsRequest
+        @return: DescribeEnsRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ens_regions_with_options(request, runtime)
 
@@ -8490,6 +10804,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEnsRegionsRequest,
     ) -> ens_20171110_models.DescribeEnsRegionsResponse:
+        """
+        @summary Queries the Edge Node Service (ENS) nodes that you can use.
+        
+        @param request: DescribeEnsRegionsRequest
+        @return: DescribeEnsRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ens_regions_with_options_async(request, runtime)
 
@@ -8498,6 +10818,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEnsResourceUsageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEnsResourceUsageResponse:
+        """
+        @summary Queries the usage summary of ENS virtual machines (VMs), disks, and networks.
+        
+        @param request: DescribeEnsResourceUsageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEnsResourceUsageResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8524,6 +10851,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEnsResourceUsageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEnsResourceUsageResponse:
+        """
+        @summary Queries the usage summary of ENS virtual machines (VMs), disks, and networks.
+        
+        @param request: DescribeEnsResourceUsageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEnsResourceUsageResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8549,6 +10883,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEnsResourceUsageRequest,
     ) -> ens_20171110_models.DescribeEnsResourceUsageResponse:
+        """
+        @summary Queries the usage summary of ENS virtual machines (VMs), disks, and networks.
+        
+        @param request: DescribeEnsResourceUsageRequest
+        @return: DescribeEnsResourceUsageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ens_resource_usage_with_options(request, runtime)
 
@@ -8556,6 +10896,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEnsResourceUsageRequest,
     ) -> ens_20171110_models.DescribeEnsResourceUsageResponse:
+        """
+        @summary Queries the usage summary of ENS virtual machines (VMs), disks, and networks.
+        
+        @param request: DescribeEnsResourceUsageRequest
+        @return: DescribeEnsResourceUsageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ens_resource_usage_with_options_async(request, runtime)
 
@@ -8564,6 +10910,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEnsRouteEntryListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEnsRouteEntryListResponse:
+        """
+        @summary Queries route entries.
+        
+        @param request: DescribeEnsRouteEntryListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEnsRouteEntryListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.destination_cidr_block):
@@ -8608,6 +10961,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEnsRouteEntryListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEnsRouteEntryListResponse:
+        """
+        @summary Queries route entries.
+        
+        @param request: DescribeEnsRouteEntryListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEnsRouteEntryListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.destination_cidr_block):
@@ -8651,6 +11011,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEnsRouteEntryListRequest,
     ) -> ens_20171110_models.DescribeEnsRouteEntryListResponse:
+        """
+        @summary Queries route entries.
+        
+        @param request: DescribeEnsRouteEntryListRequest
+        @return: DescribeEnsRouteEntryListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ens_route_entry_list_with_options(request, runtime)
 
@@ -8658,6 +11024,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEnsRouteEntryListRequest,
     ) -> ens_20171110_models.DescribeEnsRouteEntryListResponse:
+        """
+        @summary Queries route entries.
+        
+        @param request: DescribeEnsRouteEntryListRequest
+        @return: DescribeEnsRouteEntryListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ens_route_entry_list_with_options_async(request, runtime)
 
@@ -8666,6 +11038,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEnsSaleControlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEnsSaleControlResponse:
+        """
+        @summary 展示配置的售卖约束信息
+        
+        @param request: DescribeEnsSaleControlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEnsSaleControlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ali_uid_account):
@@ -8702,6 +11081,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEnsSaleControlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEnsSaleControlResponse:
+        """
+        @summary 展示配置的售卖约束信息
+        
+        @param request: DescribeEnsSaleControlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEnsSaleControlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ali_uid_account):
@@ -8737,6 +11123,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEnsSaleControlRequest,
     ) -> ens_20171110_models.DescribeEnsSaleControlResponse:
+        """
+        @summary 展示配置的售卖约束信息
+        
+        @param request: DescribeEnsSaleControlRequest
+        @return: DescribeEnsSaleControlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ens_sale_control_with_options(request, runtime)
 
@@ -8744,6 +11136,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEnsSaleControlRequest,
     ) -> ens_20171110_models.DescribeEnsSaleControlResponse:
+        """
+        @summary 展示配置的售卖约束信息
+        
+        @param request: DescribeEnsSaleControlRequest
+        @return: DescribeEnsSaleControlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ens_sale_control_with_options_async(request, runtime)
 
@@ -8752,6 +11150,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEnsSaleControlAvailableResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEnsSaleControlAvailableResourceResponse:
+        """
+        @summary 获取可用资源
+        
+        @param request: DescribeEnsSaleControlAvailableResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEnsSaleControlAvailableResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.commodity_code):
@@ -8784,6 +11189,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEnsSaleControlAvailableResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEnsSaleControlAvailableResourceResponse:
+        """
+        @summary 获取可用资源
+        
+        @param request: DescribeEnsSaleControlAvailableResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEnsSaleControlAvailableResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.commodity_code):
@@ -8815,6 +11227,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEnsSaleControlAvailableResourceRequest,
     ) -> ens_20171110_models.DescribeEnsSaleControlAvailableResourceResponse:
+        """
+        @summary 获取可用资源
+        
+        @param request: DescribeEnsSaleControlAvailableResourceRequest
+        @return: DescribeEnsSaleControlAvailableResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ens_sale_control_available_resource_with_options(request, runtime)
 
@@ -8822,6 +11240,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEnsSaleControlAvailableResourceRequest,
     ) -> ens_20171110_models.DescribeEnsSaleControlAvailableResourceResponse:
+        """
+        @summary 获取可用资源
+        
+        @param request: DescribeEnsSaleControlAvailableResourceRequest
+        @return: DescribeEnsSaleControlAvailableResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ens_sale_control_available_resource_with_options_async(request, runtime)
 
@@ -8830,6 +11254,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEnsSaleControlStockRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEnsSaleControlStockResponse:
+        """
+        @summary 获取售卖约束库存
+        
+        @param request: DescribeEnsSaleControlStockRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEnsSaleControlStockResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ali_uid_account):
@@ -8866,6 +11297,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEnsSaleControlStockRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEnsSaleControlStockResponse:
+        """
+        @summary 获取售卖约束库存
+        
+        @param request: DescribeEnsSaleControlStockRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEnsSaleControlStockResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ali_uid_account):
@@ -8901,6 +11339,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEnsSaleControlStockRequest,
     ) -> ens_20171110_models.DescribeEnsSaleControlStockResponse:
+        """
+        @summary 获取售卖约束库存
+        
+        @param request: DescribeEnsSaleControlStockRequest
+        @return: DescribeEnsSaleControlStockResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ens_sale_control_stock_with_options(request, runtime)
 
@@ -8908,6 +11352,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEnsSaleControlStockRequest,
     ) -> ens_20171110_models.DescribeEnsSaleControlStockResponse:
+        """
+        @summary 获取售卖约束库存
+        
+        @param request: DescribeEnsSaleControlStockRequest
+        @return: DescribeEnsSaleControlStockResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ens_sale_control_stock_with_options_async(request, runtime)
 
@@ -8916,6 +11366,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEpnBandWidthDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEpnBandWidthDataResponse:
+        """
+        @summary Queries the EPN bandwidth usage.
+        
+        @param request: DescribeEpnBandWidthDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEpnBandWidthDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.epninstance_id):
@@ -8958,6 +11415,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEpnBandWidthDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEpnBandWidthDataResponse:
+        """
+        @summary Queries the EPN bandwidth usage.
+        
+        @param request: DescribeEpnBandWidthDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEpnBandWidthDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.epninstance_id):
@@ -8999,6 +11463,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEpnBandWidthDataRequest,
     ) -> ens_20171110_models.DescribeEpnBandWidthDataResponse:
+        """
+        @summary Queries the EPN bandwidth usage.
+        
+        @param request: DescribeEpnBandWidthDataRequest
+        @return: DescribeEpnBandWidthDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_epn_band_width_data_with_options(request, runtime)
 
@@ -9006,6 +11476,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEpnBandWidthDataRequest,
     ) -> ens_20171110_models.DescribeEpnBandWidthDataResponse:
+        """
+        @summary Queries the EPN bandwidth usage.
+        
+        @param request: DescribeEpnBandWidthDataRequest
+        @return: DescribeEpnBandWidthDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_epn_band_width_data_with_options_async(request, runtime)
 
@@ -9014,6 +11490,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEpnBandwitdhByInternetChargeTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEpnBandwitdhByInternetChargeTypeResponse:
+        """
+        @summary Queries the metering method of the EPN bandwidth within a time period.
+        
+        @param request: DescribeEpnBandwitdhByInternetChargeTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEpnBandwitdhByInternetChargeTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -9050,6 +11533,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEpnBandwitdhByInternetChargeTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEpnBandwitdhByInternetChargeTypeResponse:
+        """
+        @summary Queries the metering method of the EPN bandwidth within a time period.
+        
+        @param request: DescribeEpnBandwitdhByInternetChargeTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEpnBandwitdhByInternetChargeTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -9085,6 +11575,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEpnBandwitdhByInternetChargeTypeRequest,
     ) -> ens_20171110_models.DescribeEpnBandwitdhByInternetChargeTypeResponse:
+        """
+        @summary Queries the metering method of the EPN bandwidth within a time period.
+        
+        @param request: DescribeEpnBandwitdhByInternetChargeTypeRequest
+        @return: DescribeEpnBandwitdhByInternetChargeTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_epn_bandwitdh_by_internet_charge_type_with_options(request, runtime)
 
@@ -9092,6 +11588,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEpnBandwitdhByInternetChargeTypeRequest,
     ) -> ens_20171110_models.DescribeEpnBandwitdhByInternetChargeTypeResponse:
+        """
+        @summary Queries the metering method of the EPN bandwidth within a time period.
+        
+        @param request: DescribeEpnBandwitdhByInternetChargeTypeRequest
+        @return: DescribeEpnBandwitdhByInternetChargeTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_epn_bandwitdh_by_internet_charge_type_with_options_async(request, runtime)
 
@@ -9101,7 +11603,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEpnInstanceAttributeResponse:
         """
-        In internal networking mode, the value of Instances is empty in the response. In public networking mode, the value of VSwitches is empty in the response.
+        @summary Queries networking information about an EPN instance.
+        
+        @description In internal networking mode, the value of Instances is empty in the response. In public networking mode, the value of VSwitches is empty in the response.
         
         @param request: DescribeEpnInstanceAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9136,7 +11640,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEpnInstanceAttributeResponse:
         """
-        In internal networking mode, the value of Instances is empty in the response. In public networking mode, the value of VSwitches is empty in the response.
+        @summary Queries networking information about an EPN instance.
+        
+        @description In internal networking mode, the value of Instances is empty in the response. In public networking mode, the value of VSwitches is empty in the response.
         
         @param request: DescribeEpnInstanceAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9170,7 +11676,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEpnInstanceAttributeRequest,
     ) -> ens_20171110_models.DescribeEpnInstanceAttributeResponse:
         """
-        In internal networking mode, the value of Instances is empty in the response. In public networking mode, the value of VSwitches is empty in the response.
+        @summary Queries networking information about an EPN instance.
+        
+        @description In internal networking mode, the value of Instances is empty in the response. In public networking mode, the value of VSwitches is empty in the response.
         
         @param request: DescribeEpnInstanceAttributeRequest
         @return: DescribeEpnInstanceAttributeResponse
@@ -9183,7 +11691,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEpnInstanceAttributeRequest,
     ) -> ens_20171110_models.DescribeEpnInstanceAttributeResponse:
         """
-        In internal networking mode, the value of Instances is empty in the response. In public networking mode, the value of VSwitches is empty in the response.
+        @summary Queries networking information about an EPN instance.
+        
+        @description In internal networking mode, the value of Instances is empty in the response. In public networking mode, the value of VSwitches is empty in the response.
         
         @param request: DescribeEpnInstanceAttributeRequest
         @return: DescribeEpnInstanceAttributeResponse
@@ -9196,6 +11706,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEpnInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEpnInstancesResponse:
+        """
+        @summary Queries EPN instances.
+        
+        @param request: DescribeEpnInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEpnInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.epninstance_id):
@@ -9230,6 +11747,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEpnInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEpnInstancesResponse:
+        """
+        @summary Queries EPN instances.
+        
+        @param request: DescribeEpnInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEpnInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.epninstance_id):
@@ -9263,6 +11787,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEpnInstancesRequest,
     ) -> ens_20171110_models.DescribeEpnInstancesResponse:
+        """
+        @summary Queries EPN instances.
+        
+        @param request: DescribeEpnInstancesRequest
+        @return: DescribeEpnInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_epn_instances_with_options(request, runtime)
 
@@ -9270,6 +11800,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEpnInstancesRequest,
     ) -> ens_20171110_models.DescribeEpnInstancesResponse:
+        """
+        @summary Queries EPN instances.
+        
+        @param request: DescribeEpnInstancesRequest
+        @return: DescribeEpnInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_epn_instances_with_options_async(request, runtime)
 
@@ -9278,6 +11814,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEpnMeasurementDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEpnMeasurementDataResponse:
+        """
+        @summary Queries the metering data of the edge private network (EPN).
+        
+        @param request: DescribeEpnMeasurementDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEpnMeasurementDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_date):
@@ -9308,6 +11851,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeEpnMeasurementDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeEpnMeasurementDataResponse:
+        """
+        @summary Queries the metering data of the edge private network (EPN).
+        
+        @param request: DescribeEpnMeasurementDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEpnMeasurementDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_date):
@@ -9337,6 +11887,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEpnMeasurementDataRequest,
     ) -> ens_20171110_models.DescribeEpnMeasurementDataResponse:
+        """
+        @summary Queries the metering data of the edge private network (EPN).
+        
+        @param request: DescribeEpnMeasurementDataRequest
+        @return: DescribeEpnMeasurementDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_epn_measurement_data_with_options(request, runtime)
 
@@ -9344,6 +11900,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeEpnMeasurementDataRequest,
     ) -> ens_20171110_models.DescribeEpnMeasurementDataResponse:
+        """
+        @summary Queries the metering data of the edge private network (EPN).
+        
+        @param request: DescribeEpnMeasurementDataRequest
+        @return: DescribeEpnMeasurementDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_epn_measurement_data_with_options_async(request, runtime)
 
@@ -9353,9 +11915,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeExportImageInfoResponse:
         """
-        You can call this operation to query information about all custom images in your account. The information include the image properties, image export status, and the Object Storage Service (OSS) download links.
-        *   Empty strings are returned for images that are not exported.
-        *   The download links may become invalid if you delete objects in OSS.
+        @summary Queries the export result of an image.
+        
+        @description    You can call this operation to query information about all custom images in your account. The information include the image properties, image export status, and the Object Storage Service (OSS) download links.
+        Empty strings are returned for images that are not exported.
+        The download links may become invalid if you delete objects in OSS.
         
         @param request: DescribeExportImageInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9396,9 +11960,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeExportImageInfoResponse:
         """
-        You can call this operation to query information about all custom images in your account. The information include the image properties, image export status, and the Object Storage Service (OSS) download links.
-        *   Empty strings are returned for images that are not exported.
-        *   The download links may become invalid if you delete objects in OSS.
+        @summary Queries the export result of an image.
+        
+        @description    You can call this operation to query information about all custom images in your account. The information include the image properties, image export status, and the Object Storage Service (OSS) download links.
+        Empty strings are returned for images that are not exported.
+        The download links may become invalid if you delete objects in OSS.
         
         @param request: DescribeExportImageInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9438,9 +12004,11 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeExportImageInfoRequest,
     ) -> ens_20171110_models.DescribeExportImageInfoResponse:
         """
-        You can call this operation to query information about all custom images in your account. The information include the image properties, image export status, and the Object Storage Service (OSS) download links.
-        *   Empty strings are returned for images that are not exported.
-        *   The download links may become invalid if you delete objects in OSS.
+        @summary Queries the export result of an image.
+        
+        @description    You can call this operation to query information about all custom images in your account. The information include the image properties, image export status, and the Object Storage Service (OSS) download links.
+        Empty strings are returned for images that are not exported.
+        The download links may become invalid if you delete objects in OSS.
         
         @param request: DescribeExportImageInfoRequest
         @return: DescribeExportImageInfoResponse
@@ -9453,9 +12021,11 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeExportImageInfoRequest,
     ) -> ens_20171110_models.DescribeExportImageInfoResponse:
         """
-        You can call this operation to query information about all custom images in your account. The information include the image properties, image export status, and the Object Storage Service (OSS) download links.
-        *   Empty strings are returned for images that are not exported.
-        *   The download links may become invalid if you delete objects in OSS.
+        @summary Queries the export result of an image.
+        
+        @description    You can call this operation to query information about all custom images in your account. The information include the image properties, image export status, and the Object Storage Service (OSS) download links.
+        Empty strings are returned for images that are not exported.
+        The download links may become invalid if you delete objects in OSS.
         
         @param request: DescribeExportImageInfoRequest
         @return: DescribeExportImageInfoResponse
@@ -9468,6 +12038,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeExportImageStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeExportImageStatusResponse:
+        """
+        @summary Queries the export status of an image.
+        
+        @param request: DescribeExportImageStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeExportImageStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_id):
@@ -9496,6 +12073,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeExportImageStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeExportImageStatusResponse:
+        """
+        @summary Queries the export status of an image.
+        
+        @param request: DescribeExportImageStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeExportImageStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_id):
@@ -9523,6 +12107,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeExportImageStatusRequest,
     ) -> ens_20171110_models.DescribeExportImageStatusResponse:
+        """
+        @summary Queries the export status of an image.
+        
+        @param request: DescribeExportImageStatusRequest
+        @return: DescribeExportImageStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_export_image_status_with_options(request, runtime)
 
@@ -9530,6 +12120,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeExportImageStatusRequest,
     ) -> ens_20171110_models.DescribeExportImageStatusResponse:
+        """
+        @summary Queries the export status of an image.
+        
+        @param request: DescribeExportImageStatusRequest
+        @return: DescribeExportImageStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_export_image_status_with_options_async(request, runtime)
 
@@ -9538,6 +12134,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeFileSystemsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeFileSystemsResponse:
+        """
+        @summary Queries the information about file systems.
+        
+        @param request: DescribeFileSystemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFileSystemsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -9564,6 +12167,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeFileSystemsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeFileSystemsResponse:
+        """
+        @summary Queries the information about file systems.
+        
+        @param request: DescribeFileSystemsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFileSystemsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -9589,6 +12199,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeFileSystemsRequest,
     ) -> ens_20171110_models.DescribeFileSystemsResponse:
+        """
+        @summary Queries the information about file systems.
+        
+        @param request: DescribeFileSystemsRequest
+        @return: DescribeFileSystemsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_file_systems_with_options(request, runtime)
 
@@ -9596,6 +12212,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeFileSystemsRequest,
     ) -> ens_20171110_models.DescribeFileSystemsResponse:
+        """
+        @summary Queries the information about file systems.
+        
+        @param request: DescribeFileSystemsRequest
+        @return: DescribeFileSystemsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_file_systems_with_options_async(request, runtime)
 
@@ -9604,6 +12226,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeForwardTableEntriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeForwardTableEntriesResponse:
+        """
+        @summary Queries Destination Network Address Translation (DNAT) entries that you created.
+        
+        @param request: DescribeForwardTableEntriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeForwardTableEntriesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.external_ip):
@@ -9646,6 +12275,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeForwardTableEntriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeForwardTableEntriesResponse:
+        """
+        @summary Queries Destination Network Address Translation (DNAT) entries that you created.
+        
+        @param request: DescribeForwardTableEntriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeForwardTableEntriesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.external_ip):
@@ -9687,6 +12323,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeForwardTableEntriesRequest,
     ) -> ens_20171110_models.DescribeForwardTableEntriesResponse:
+        """
+        @summary Queries Destination Network Address Translation (DNAT) entries that you created.
+        
+        @param request: DescribeForwardTableEntriesRequest
+        @return: DescribeForwardTableEntriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_forward_table_entries_with_options(request, runtime)
 
@@ -9694,6 +12336,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeForwardTableEntriesRequest,
     ) -> ens_20171110_models.DescribeForwardTableEntriesResponse:
+        """
+        @summary Queries Destination Network Address Translation (DNAT) entries that you created.
+        
+        @param request: DescribeForwardTableEntriesRequest
+        @return: DescribeForwardTableEntriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_forward_table_entries_with_options_async(request, runtime)
 
@@ -9702,6 +12350,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeImageInfosRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeImageInfosResponse:
+        """
+        @summary Queries available images.
+        
+        @param request: DescribeImageInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeImageInfosResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.os_type):
@@ -9730,6 +12385,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeImageInfosRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeImageInfosResponse:
+        """
+        @summary Queries available images.
+        
+        @param request: DescribeImageInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeImageInfosResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.os_type):
@@ -9757,6 +12419,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeImageInfosRequest,
     ) -> ens_20171110_models.DescribeImageInfosResponse:
+        """
+        @summary Queries available images.
+        
+        @param request: DescribeImageInfosRequest
+        @return: DescribeImageInfosResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_image_infos_with_options(request, runtime)
 
@@ -9764,6 +12432,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeImageInfosRequest,
     ) -> ens_20171110_models.DescribeImageInfosResponse:
+        """
+        @summary Queries available images.
+        
+        @param request: DescribeImageInfosRequest
+        @return: DescribeImageInfosResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_image_infos_with_options_async(request, runtime)
 
@@ -9772,6 +12446,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeImageSharePermissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeImageSharePermissionResponse:
+        """
+        @summary Queries the accounts with which you share an image specified by the ImageId parameter.
+        
+        @param request: DescribeImageSharePermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeImageSharePermissionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aliyun_id):
@@ -9806,6 +12487,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeImageSharePermissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeImageSharePermissionResponse:
+        """
+        @summary Queries the accounts with which you share an image specified by the ImageId parameter.
+        
+        @param request: DescribeImageSharePermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeImageSharePermissionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aliyun_id):
@@ -9839,6 +12527,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeImageSharePermissionRequest,
     ) -> ens_20171110_models.DescribeImageSharePermissionResponse:
+        """
+        @summary Queries the accounts with which you share an image specified by the ImageId parameter.
+        
+        @param request: DescribeImageSharePermissionRequest
+        @return: DescribeImageSharePermissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_image_share_permission_with_options(request, runtime)
 
@@ -9846,6 +12540,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeImageSharePermissionRequest,
     ) -> ens_20171110_models.DescribeImageSharePermissionResponse:
+        """
+        @summary Queries the accounts with which you share an image specified by the ImageId parameter.
+        
+        @param request: DescribeImageSharePermissionRequest
+        @return: DescribeImageSharePermissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_image_share_permission_with_options_async(request, runtime)
 
@@ -9854,6 +12554,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeImagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeImagesResponse:
+        """
+        @summary Queries available images.
+        
+        @param request: DescribeImagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeImagesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ens_region_id):
@@ -9894,6 +12601,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeImagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeImagesResponse:
+        """
+        @summary Queries available images.
+        
+        @param request: DescribeImagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeImagesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ens_region_id):
@@ -9933,6 +12647,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeImagesRequest,
     ) -> ens_20171110_models.DescribeImagesResponse:
+        """
+        @summary Queries available images.
+        
+        @param request: DescribeImagesRequest
+        @return: DescribeImagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_images_with_options(request, runtime)
 
@@ -9940,6 +12660,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeImagesRequest,
     ) -> ens_20171110_models.DescribeImagesResponse:
+        """
+        @summary Queries available images.
+        
+        @param request: DescribeImagesRequest
+        @return: DescribeImagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_images_with_options_async(request, runtime)
 
@@ -9948,6 +12674,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeInstanceAutoRenewAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeInstanceAutoRenewAttributeResponse:
+        """
+        @summary You can call this operation to query whether auto-renewal is enabled for an instance.
+        
+        @param request: DescribeInstanceAutoRenewAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceAutoRenewAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_ids):
@@ -9978,6 +12711,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeInstanceAutoRenewAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeInstanceAutoRenewAttributeResponse:
+        """
+        @summary You can call this operation to query whether auto-renewal is enabled for an instance.
+        
+        @param request: DescribeInstanceAutoRenewAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceAutoRenewAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_ids):
@@ -10007,6 +12747,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeInstanceAutoRenewAttributeRequest,
     ) -> ens_20171110_models.DescribeInstanceAutoRenewAttributeResponse:
+        """
+        @summary You can call this operation to query whether auto-renewal is enabled for an instance.
+        
+        @param request: DescribeInstanceAutoRenewAttributeRequest
+        @return: DescribeInstanceAutoRenewAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_auto_renew_attribute_with_options(request, runtime)
 
@@ -10014,6 +12760,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeInstanceAutoRenewAttributeRequest,
     ) -> ens_20171110_models.DescribeInstanceAutoRenewAttributeResponse:
+        """
+        @summary You can call this operation to query whether auto-renewal is enabled for an instance.
+        
+        @param request: DescribeInstanceAutoRenewAttributeRequest
+        @return: DescribeInstanceAutoRenewAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_auto_renew_attribute_with_options_async(request, runtime)
 
@@ -10022,6 +12774,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeInstanceMonitorDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeInstanceMonitorDataResponse:
+        """
+        @summary Queries the vCPU and memory usage of an instance.
+        
+        @param request: DescribeInstanceMonitorDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceMonitorDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -10056,6 +12815,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeInstanceMonitorDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeInstanceMonitorDataResponse:
+        """
+        @summary Queries the vCPU and memory usage of an instance.
+        
+        @param request: DescribeInstanceMonitorDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceMonitorDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -10089,6 +12855,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeInstanceMonitorDataRequest,
     ) -> ens_20171110_models.DescribeInstanceMonitorDataResponse:
+        """
+        @summary Queries the vCPU and memory usage of an instance.
+        
+        @param request: DescribeInstanceMonitorDataRequest
+        @return: DescribeInstanceMonitorDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_monitor_data_with_options(request, runtime)
 
@@ -10096,6 +12868,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeInstanceMonitorDataRequest,
     ) -> ens_20171110_models.DescribeInstanceMonitorDataResponse:
+        """
+        @summary Queries the vCPU and memory usage of an instance.
+        
+        @param request: DescribeInstanceMonitorDataRequest
+        @return: DescribeInstanceMonitorDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_monitor_data_with_options_async(request, runtime)
 
@@ -10103,6 +12881,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeInstanceSpecResponse:
+        """
+        @summary Queries the instance specifications that you can purchase.
+        
+        @param request: DescribeInstanceSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceSpecResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeInstanceSpec',
@@ -10124,6 +12909,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeInstanceSpecResponse:
+        """
+        @summary Queries the instance specifications that you can purchase.
+        
+        @param request: DescribeInstanceSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceSpecResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeInstanceSpec',
@@ -10142,10 +12934,20 @@ class Client(OpenApiClient):
         )
 
     def describe_instance_spec(self) -> ens_20171110_models.DescribeInstanceSpecResponse:
+        """
+        @summary Queries the instance specifications that you can purchase.
+        
+        @return: DescribeInstanceSpecResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_spec_with_options(runtime)
 
     async def describe_instance_spec_async(self) -> ens_20171110_models.DescribeInstanceSpecResponse:
+        """
+        @summary Queries the instance specifications that you can purchase.
+        
+        @return: DescribeInstanceSpecResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_spec_with_options_async(runtime)
 
@@ -10153,6 +12955,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeInstanceTypesResponse:
+        """
+        @summary Queries the specifications of instance types.
+        
+        @param request: DescribeInstanceTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceTypesResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeInstanceTypes',
@@ -10174,6 +12983,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeInstanceTypesResponse:
+        """
+        @summary Queries the specifications of instance types.
+        
+        @param request: DescribeInstanceTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceTypesResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeInstanceTypes',
@@ -10192,10 +13008,20 @@ class Client(OpenApiClient):
         )
 
     def describe_instance_types(self) -> ens_20171110_models.DescribeInstanceTypesResponse:
+        """
+        @summary Queries the specifications of instance types.
+        
+        @return: DescribeInstanceTypesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_types_with_options(runtime)
 
     async def describe_instance_types_async(self) -> ens_20171110_models.DescribeInstanceTypesResponse:
+        """
+        @summary Queries the specifications of instance types.
+        
+        @return: DescribeInstanceTypesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_types_with_options_async(runtime)
 
@@ -10204,6 +13030,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeInstanceVncUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeInstanceVncUrlResponse:
+        """
+        @summary Queries the Virtual Network Computing (VNC) URL of an Edge Node Service (ENS) instance.
+        
+        @param request: DescribeInstanceVncUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceVncUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -10232,6 +13065,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeInstanceVncUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeInstanceVncUrlResponse:
+        """
+        @summary Queries the Virtual Network Computing (VNC) URL of an Edge Node Service (ENS) instance.
+        
+        @param request: DescribeInstanceVncUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceVncUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -10259,6 +13099,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeInstanceVncUrlRequest,
     ) -> ens_20171110_models.DescribeInstanceVncUrlResponse:
+        """
+        @summary Queries the Virtual Network Computing (VNC) URL of an Edge Node Service (ENS) instance.
+        
+        @param request: DescribeInstanceVncUrlRequest
+        @return: DescribeInstanceVncUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_vnc_url_with_options(request, runtime)
 
@@ -10266,6 +13112,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeInstanceVncUrlRequest,
     ) -> ens_20171110_models.DescribeInstanceVncUrlResponse:
+        """
+        @summary Queries the Virtual Network Computing (VNC) URL of an Edge Node Service (ENS) instance.
+        
+        @param request: DescribeInstanceVncUrlRequest
+        @return: DescribeInstanceVncUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_vnc_url_with_options_async(request, runtime)
 
@@ -10275,9 +13127,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeInstancesResponse:
         """
-        You can call this operation up to 800 times per second per account.
-        *   You can call this operation up to 100 times per second per user.
-        *   You can specify multiple request parameters to be queried. Specified parameters are evaluated by using the AND operator. Only the specified parameters are included in the filter conditions. However, if InstanceIds is set to an empty JSON array, it is regarded as a valid filter condition and an empty result is returned.
+        @summary Queries the details of one or more Edge Node Service (ENS) instances.
+        
+        @description    You can call this operation up to 800 times per second per account.
+        You can call this operation up to 100 times per second per user.
+        You can specify multiple request parameters to be queried. Specified parameters are evaluated by using the AND operator. Only the specified parameters are included in the filter conditions. However, if InstanceIds is set to an empty JSON array, it is regarded as a valid filter condition and an empty result is returned.
         
         @param tmp_req: DescribeInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10350,9 +13204,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeInstancesResponse:
         """
-        You can call this operation up to 800 times per second per account.
-        *   You can call this operation up to 100 times per second per user.
-        *   You can specify multiple request parameters to be queried. Specified parameters are evaluated by using the AND operator. Only the specified parameters are included in the filter conditions. However, if InstanceIds is set to an empty JSON array, it is regarded as a valid filter condition and an empty result is returned.
+        @summary Queries the details of one or more Edge Node Service (ENS) instances.
+        
+        @description    You can call this operation up to 800 times per second per account.
+        You can call this operation up to 100 times per second per user.
+        You can specify multiple request parameters to be queried. Specified parameters are evaluated by using the AND operator. Only the specified parameters are included in the filter conditions. However, if InstanceIds is set to an empty JSON array, it is regarded as a valid filter condition and an empty result is returned.
         
         @param tmp_req: DescribeInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10424,9 +13280,11 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeInstancesRequest,
     ) -> ens_20171110_models.DescribeInstancesResponse:
         """
-        You can call this operation up to 800 times per second per account.
-        *   You can call this operation up to 100 times per second per user.
-        *   You can specify multiple request parameters to be queried. Specified parameters are evaluated by using the AND operator. Only the specified parameters are included in the filter conditions. However, if InstanceIds is set to an empty JSON array, it is regarded as a valid filter condition and an empty result is returned.
+        @summary Queries the details of one or more Edge Node Service (ENS) instances.
+        
+        @description    You can call this operation up to 800 times per second per account.
+        You can call this operation up to 100 times per second per user.
+        You can specify multiple request parameters to be queried. Specified parameters are evaluated by using the AND operator. Only the specified parameters are included in the filter conditions. However, if InstanceIds is set to an empty JSON array, it is regarded as a valid filter condition and an empty result is returned.
         
         @param request: DescribeInstancesRequest
         @return: DescribeInstancesResponse
@@ -10439,9 +13297,11 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeInstancesRequest,
     ) -> ens_20171110_models.DescribeInstancesResponse:
         """
-        You can call this operation up to 800 times per second per account.
-        *   You can call this operation up to 100 times per second per user.
-        *   You can specify multiple request parameters to be queried. Specified parameters are evaluated by using the AND operator. Only the specified parameters are included in the filter conditions. However, if InstanceIds is set to an empty JSON array, it is regarded as a valid filter condition and an empty result is returned.
+        @summary Queries the details of one or more Edge Node Service (ENS) instances.
+        
+        @description    You can call this operation up to 800 times per second per account.
+        You can call this operation up to 100 times per second per user.
+        You can specify multiple request parameters to be queried. Specified parameters are evaluated by using the AND operator. Only the specified parameters are included in the filter conditions. However, if InstanceIds is set to an empty JSON array, it is regarded as a valid filter condition and an empty result is returned.
         
         @param request: DescribeInstancesRequest
         @return: DescribeInstancesResponse
@@ -10454,6 +13314,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeKeyPairsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeKeyPairsResponse:
+        """
+        @summary Queries one or more key pairs.
+        
+        @param request: DescribeKeyPairsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeKeyPairsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_pair_id):
@@ -10488,6 +13355,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeKeyPairsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeKeyPairsResponse:
+        """
+        @summary Queries one or more key pairs.
+        
+        @param request: DescribeKeyPairsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeKeyPairsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_pair_id):
@@ -10521,6 +13395,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeKeyPairsRequest,
     ) -> ens_20171110_models.DescribeKeyPairsResponse:
+        """
+        @summary Queries one or more key pairs.
+        
+        @param request: DescribeKeyPairsRequest
+        @return: DescribeKeyPairsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_key_pairs_with_options(request, runtime)
 
@@ -10528,6 +13408,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeKeyPairsRequest,
     ) -> ens_20171110_models.DescribeKeyPairsResponse:
+        """
+        @summary Queries one or more key pairs.
+        
+        @param request: DescribeKeyPairsRequest
+        @return: DescribeKeyPairsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_key_pairs_with_options_async(request, runtime)
 
@@ -10537,9 +13423,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeLoadBalancerAttributeResponse:
         """
-        >
-        *   You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Queries detailed information about an Edge Load Balancer (ELB) instance.
+        
+        @description >
+        You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: DescribeLoadBalancerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10574,9 +13462,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeLoadBalancerAttributeResponse:
         """
-        >
-        *   You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Queries detailed information about an Edge Load Balancer (ELB) instance.
+        
+        @description >
+        You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: DescribeLoadBalancerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10610,9 +13500,11 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeLoadBalancerAttributeRequest,
     ) -> ens_20171110_models.DescribeLoadBalancerAttributeResponse:
         """
-        >
-        *   You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Queries detailed information about an Edge Load Balancer (ELB) instance.
+        
+        @description >
+        You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: DescribeLoadBalancerAttributeRequest
         @return: DescribeLoadBalancerAttributeResponse
@@ -10625,9 +13517,11 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeLoadBalancerAttributeRequest,
     ) -> ens_20171110_models.DescribeLoadBalancerAttributeResponse:
         """
-        >
-        *   You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Queries detailed information about an Edge Load Balancer (ELB) instance.
+        
+        @description >
+        You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: DescribeLoadBalancerAttributeRequest
         @return: DescribeLoadBalancerAttributeResponse
@@ -10641,9 +13535,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeLoadBalancerHTTPListenerAttributeResponse:
         """
-        >
-        *   You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Queries the configuration of an HTTP listener.
+        
+        @description >
+        You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: DescribeLoadBalancerHTTPListenerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10680,9 +13576,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeLoadBalancerHTTPListenerAttributeResponse:
         """
-        >
-        *   You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Queries the configuration of an HTTP listener.
+        
+        @description >
+        You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: DescribeLoadBalancerHTTPListenerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10718,9 +13616,11 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeLoadBalancerHTTPListenerAttributeRequest,
     ) -> ens_20171110_models.DescribeLoadBalancerHTTPListenerAttributeResponse:
         """
-        >
-        *   You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Queries the configuration of an HTTP listener.
+        
+        @description >
+        You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: DescribeLoadBalancerHTTPListenerAttributeRequest
         @return: DescribeLoadBalancerHTTPListenerAttributeResponse
@@ -10733,9 +13633,11 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeLoadBalancerHTTPListenerAttributeRequest,
     ) -> ens_20171110_models.DescribeLoadBalancerHTTPListenerAttributeResponse:
         """
-        >
-        *   You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Queries the configuration of an HTTP listener.
+        
+        @description >
+        You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: DescribeLoadBalancerHTTPListenerAttributeRequest
         @return: DescribeLoadBalancerHTTPListenerAttributeResponse
@@ -10749,8 +13651,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeLoadBalancerHTTPSListenerAttributeResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Queries the configurations of an HTTPS listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: DescribeLoadBalancerHTTPSListenerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10787,8 +13691,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeLoadBalancerHTTPSListenerAttributeResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Queries the configurations of an HTTPS listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: DescribeLoadBalancerHTTPSListenerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10824,8 +13730,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeLoadBalancerHTTPSListenerAttributeRequest,
     ) -> ens_20171110_models.DescribeLoadBalancerHTTPSListenerAttributeResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Queries the configurations of an HTTPS listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: DescribeLoadBalancerHTTPSListenerAttributeRequest
         @return: DescribeLoadBalancerHTTPSListenerAttributeResponse
@@ -10838,8 +13746,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeLoadBalancerHTTPSListenerAttributeRequest,
     ) -> ens_20171110_models.DescribeLoadBalancerHTTPSListenerAttributeResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Queries the configurations of an HTTPS listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: DescribeLoadBalancerHTTPSListenerAttributeRequest
         @return: DescribeLoadBalancerHTTPSListenerAttributeResponse
@@ -10852,6 +13762,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeLoadBalancerSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeLoadBalancerSpecResponse:
+        """
+        @summary Queries the specifications of an Edge Load Balancer (ELB) instance.
+        
+        @param request: DescribeLoadBalancerSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLoadBalancerSpecResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -10878,6 +13795,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeLoadBalancerSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeLoadBalancerSpecResponse:
+        """
+        @summary Queries the specifications of an Edge Load Balancer (ELB) instance.
+        
+        @param request: DescribeLoadBalancerSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLoadBalancerSpecResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -10903,6 +13827,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeLoadBalancerSpecRequest,
     ) -> ens_20171110_models.DescribeLoadBalancerSpecResponse:
+        """
+        @summary Queries the specifications of an Edge Load Balancer (ELB) instance.
+        
+        @param request: DescribeLoadBalancerSpecRequest
+        @return: DescribeLoadBalancerSpecResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_load_balancer_spec_with_options(request, runtime)
 
@@ -10910,6 +13840,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeLoadBalancerSpecRequest,
     ) -> ens_20171110_models.DescribeLoadBalancerSpecResponse:
+        """
+        @summary Queries the specifications of an Edge Load Balancer (ELB) instance.
+        
+        @param request: DescribeLoadBalancerSpecRequest
+        @return: DescribeLoadBalancerSpecResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_load_balancer_spec_with_options_async(request, runtime)
 
@@ -10919,8 +13855,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeLoadBalancerTCPListenerAttributeResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Queries the configurations of a Transmission Control Protocol (TCP) listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: DescribeLoadBalancerTCPListenerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10957,8 +13895,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeLoadBalancerTCPListenerAttributeResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Queries the configurations of a Transmission Control Protocol (TCP) listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: DescribeLoadBalancerTCPListenerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10994,8 +13934,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeLoadBalancerTCPListenerAttributeRequest,
     ) -> ens_20171110_models.DescribeLoadBalancerTCPListenerAttributeResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Queries the configurations of a Transmission Control Protocol (TCP) listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: DescribeLoadBalancerTCPListenerAttributeRequest
         @return: DescribeLoadBalancerTCPListenerAttributeResponse
@@ -11008,8 +13950,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeLoadBalancerTCPListenerAttributeRequest,
     ) -> ens_20171110_models.DescribeLoadBalancerTCPListenerAttributeResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Queries the configurations of a Transmission Control Protocol (TCP) listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: DescribeLoadBalancerTCPListenerAttributeRequest
         @return: DescribeLoadBalancerTCPListenerAttributeResponse
@@ -11023,8 +13967,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeLoadBalancerUDPListenerAttributeResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Queries the configuration of a User Datagram Protocol (UDP) listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: DescribeLoadBalancerUDPListenerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11061,8 +14007,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeLoadBalancerUDPListenerAttributeResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Queries the configuration of a User Datagram Protocol (UDP) listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: DescribeLoadBalancerUDPListenerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11098,8 +14046,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeLoadBalancerUDPListenerAttributeRequest,
     ) -> ens_20171110_models.DescribeLoadBalancerUDPListenerAttributeResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Queries the configuration of a User Datagram Protocol (UDP) listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: DescribeLoadBalancerUDPListenerAttributeRequest
         @return: DescribeLoadBalancerUDPListenerAttributeResponse
@@ -11112,8 +14062,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeLoadBalancerUDPListenerAttributeRequest,
     ) -> ens_20171110_models.DescribeLoadBalancerUDPListenerAttributeResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Queries the configuration of a User Datagram Protocol (UDP) listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: DescribeLoadBalancerUDPListenerAttributeRequest
         @return: DescribeLoadBalancerUDPListenerAttributeResponse
@@ -11127,8 +14079,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeLoadBalancersResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Queries Edge Load Balancer (ELB) instances.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: DescribeLoadBalancersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11161,8 +14115,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeLoadBalancersResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Queries Edge Load Balancer (ELB) instances.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: DescribeLoadBalancersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11194,8 +14150,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeLoadBalancersRequest,
     ) -> ens_20171110_models.DescribeLoadBalancersResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Queries Edge Load Balancer (ELB) instances.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: DescribeLoadBalancersRequest
         @return: DescribeLoadBalancersResponse
@@ -11208,8 +14166,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeLoadBalancersRequest,
     ) -> ens_20171110_models.DescribeLoadBalancersResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Queries Edge Load Balancer (ELB) instances.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: DescribeLoadBalancersRequest
         @return: DescribeLoadBalancersResponse
@@ -11222,6 +14182,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeMeasurementDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeMeasurementDataResponse:
+        """
+        @summary Queries the metering data of the user.
+        
+        @param request: DescribeMeasurementDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMeasurementDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_date):
@@ -11252,6 +14219,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeMeasurementDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeMeasurementDataResponse:
+        """
+        @summary Queries the metering data of the user.
+        
+        @param request: DescribeMeasurementDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMeasurementDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_date):
@@ -11281,6 +14255,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeMeasurementDataRequest,
     ) -> ens_20171110_models.DescribeMeasurementDataResponse:
+        """
+        @summary Queries the metering data of the user.
+        
+        @param request: DescribeMeasurementDataRequest
+        @return: DescribeMeasurementDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_measurement_data_with_options(request, runtime)
 
@@ -11288,6 +14268,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeMeasurementDataRequest,
     ) -> ens_20171110_models.DescribeMeasurementDataResponse:
+        """
+        @summary Queries the metering data of the user.
+        
+        @param request: DescribeMeasurementDataRequest
+        @return: DescribeMeasurementDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_measurement_data_with_options_async(request, runtime)
 
@@ -11296,6 +14282,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeMountTargetsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeMountTargetsResponse:
+        """
+        @summary Queries the information about mount targets.
+        
+        @param request: DescribeMountTargetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMountTargetsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ens_region_id):
@@ -11332,6 +14325,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeMountTargetsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeMountTargetsResponse:
+        """
+        @summary Queries the information about mount targets.
+        
+        @param request: DescribeMountTargetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMountTargetsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ens_region_id):
@@ -11367,6 +14367,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeMountTargetsRequest,
     ) -> ens_20171110_models.DescribeMountTargetsResponse:
+        """
+        @summary Queries the information about mount targets.
+        
+        @param request: DescribeMountTargetsRequest
+        @return: DescribeMountTargetsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_mount_targets_with_options(request, runtime)
 
@@ -11374,6 +14380,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeMountTargetsRequest,
     ) -> ens_20171110_models.DescribeMountTargetsResponse:
+        """
+        @summary Queries the information about mount targets.
+        
+        @param request: DescribeMountTargetsRequest
+        @return: DescribeMountTargetsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_mount_targets_with_options_async(request, runtime)
 
@@ -11382,6 +14394,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeNCInformationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeNCInformationResponse:
+        """
+        @summary 根据筛选条件获取指定NC属性和资源量信息
+        
+        @param request: DescribeNCInformationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNCInformationResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -11408,6 +14427,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeNCInformationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeNCInformationResponse:
+        """
+        @summary 根据筛选条件获取指定NC属性和资源量信息
+        
+        @param request: DescribeNCInformationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNCInformationResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -11433,6 +14459,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeNCInformationRequest,
     ) -> ens_20171110_models.DescribeNCInformationResponse:
+        """
+        @summary 根据筛选条件获取指定NC属性和资源量信息
+        
+        @param request: DescribeNCInformationRequest
+        @return: DescribeNCInformationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_ncinformation_with_options(request, runtime)
 
@@ -11440,6 +14472,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeNCInformationRequest,
     ) -> ens_20171110_models.DescribeNCInformationResponse:
+        """
+        @summary 根据筛选条件获取指定NC属性和资源量信息
+        
+        @param request: DescribeNCInformationRequest
+        @return: DescribeNCInformationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_ncinformation_with_options_async(request, runtime)
 
@@ -11448,6 +14486,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeNatGatewaysRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeNatGatewaysResponse:
+        """
+        @summary Queries created Network Address Translation (NAT) gateways.
+        
+        @param request: DescribeNatGatewaysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNatGatewaysResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -11474,6 +14519,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeNatGatewaysRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeNatGatewaysResponse:
+        """
+        @summary Queries created Network Address Translation (NAT) gateways.
+        
+        @param request: DescribeNatGatewaysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNatGatewaysResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -11499,6 +14551,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeNatGatewaysRequest,
     ) -> ens_20171110_models.DescribeNatGatewaysResponse:
+        """
+        @summary Queries created Network Address Translation (NAT) gateways.
+        
+        @param request: DescribeNatGatewaysRequest
+        @return: DescribeNatGatewaysResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_nat_gateways_with_options(request, runtime)
 
@@ -11506,6 +14564,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeNatGatewaysRequest,
     ) -> ens_20171110_models.DescribeNatGatewaysResponse:
+        """
+        @summary Queries created Network Address Translation (NAT) gateways.
+        
+        @param request: DescribeNatGatewaysRequest
+        @return: DescribeNatGatewaysResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_nat_gateways_with_options_async(request, runtime)
 
@@ -11514,6 +14578,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeNetworkAclsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeNetworkAclsResponse:
+        """
+        @summary Queries network access control lists (ACLs).
+        
+        @param request: DescribeNetworkAclsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNetworkAclsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -11540,6 +14611,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeNetworkAclsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeNetworkAclsResponse:
+        """
+        @summary Queries network access control lists (ACLs).
+        
+        @param request: DescribeNetworkAclsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNetworkAclsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -11565,6 +14643,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeNetworkAclsRequest,
     ) -> ens_20171110_models.DescribeNetworkAclsResponse:
+        """
+        @summary Queries network access control lists (ACLs).
+        
+        @param request: DescribeNetworkAclsRequest
+        @return: DescribeNetworkAclsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_network_acls_with_options(request, runtime)
 
@@ -11572,6 +14656,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeNetworkAclsRequest,
     ) -> ens_20171110_models.DescribeNetworkAclsResponse:
+        """
+        @summary Queries network access control lists (ACLs).
+        
+        @param request: DescribeNetworkAclsRequest
+        @return: DescribeNetworkAclsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_network_acls_with_options_async(request, runtime)
 
@@ -11581,8 +14671,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeNetworkAttributeResponse:
         """
-        You can call this operation up to 100 times per second.
-        *   You can call this operation up to 10 times per second per account.
+        @summary Queries the configuration of a specified network.
+        
+        @description    You can call this operation up to 100 times per second.
+        You can call this operation up to 10 times per second per account.
         
         @param request: DescribeNetworkAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11617,8 +14709,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeNetworkAttributeResponse:
         """
-        You can call this operation up to 100 times per second.
-        *   You can call this operation up to 10 times per second per account.
+        @summary Queries the configuration of a specified network.
+        
+        @description    You can call this operation up to 100 times per second.
+        You can call this operation up to 10 times per second per account.
         
         @param request: DescribeNetworkAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11652,8 +14746,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeNetworkAttributeRequest,
     ) -> ens_20171110_models.DescribeNetworkAttributeResponse:
         """
-        You can call this operation up to 100 times per second.
-        *   You can call this operation up to 10 times per second per account.
+        @summary Queries the configuration of a specified network.
+        
+        @description    You can call this operation up to 100 times per second.
+        You can call this operation up to 10 times per second per account.
         
         @param request: DescribeNetworkAttributeRequest
         @return: DescribeNetworkAttributeResponse
@@ -11666,8 +14762,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeNetworkAttributeRequest,
     ) -> ens_20171110_models.DescribeNetworkAttributeResponse:
         """
-        You can call this operation up to 100 times per second.
-        *   You can call this operation up to 10 times per second per account.
+        @summary Queries the configuration of a specified network.
+        
+        @description    You can call this operation up to 100 times per second.
+        You can call this operation up to 10 times per second per account.
         
         @param request: DescribeNetworkAttributeRequest
         @return: DescribeNetworkAttributeResponse
@@ -11680,6 +14778,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeNetworkInterfacesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeNetworkInterfacesResponse:
+        """
+        @summary Queries Elastic Network Interfaces (ENIs).
+        
+        @param request: DescribeNetworkInterfacesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNetworkInterfacesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ens_region_id):
@@ -11730,6 +14835,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeNetworkInterfacesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeNetworkInterfacesResponse:
+        """
+        @summary Queries Elastic Network Interfaces (ENIs).
+        
+        @param request: DescribeNetworkInterfacesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNetworkInterfacesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ens_region_id):
@@ -11779,6 +14891,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeNetworkInterfacesRequest,
     ) -> ens_20171110_models.DescribeNetworkInterfacesResponse:
+        """
+        @summary Queries Elastic Network Interfaces (ENIs).
+        
+        @param request: DescribeNetworkInterfacesRequest
+        @return: DescribeNetworkInterfacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_network_interfaces_with_options(request, runtime)
 
@@ -11786,6 +14904,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeNetworkInterfacesRequest,
     ) -> ens_20171110_models.DescribeNetworkInterfacesResponse:
+        """
+        @summary Queries Elastic Network Interfaces (ENIs).
+        
+        @param request: DescribeNetworkInterfacesRequest
+        @return: DescribeNetworkInterfacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_network_interfaces_with_options_async(request, runtime)
 
@@ -11795,8 +14919,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeNetworksResponse:
         """
-        You can call this operation up to 100 times per second.
-        *   You can call this operation up to 10 times per second per account.
+        @summary Query the network list.
+        
+        @description    You can call this operation up to 100 times per second.
+        You can call this operation up to 10 times per second per account.
         
         @param request: DescribeNetworksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11839,8 +14965,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeNetworksResponse:
         """
-        You can call this operation up to 100 times per second.
-        *   You can call this operation up to 10 times per second per account.
+        @summary Query the network list.
+        
+        @description    You can call this operation up to 100 times per second.
+        You can call this operation up to 10 times per second per account.
         
         @param request: DescribeNetworksRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11882,8 +15010,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeNetworksRequest,
     ) -> ens_20171110_models.DescribeNetworksResponse:
         """
-        You can call this operation up to 100 times per second.
-        *   You can call this operation up to 10 times per second per account.
+        @summary Query the network list.
+        
+        @description    You can call this operation up to 100 times per second.
+        You can call this operation up to 10 times per second per account.
         
         @param request: DescribeNetworksRequest
         @return: DescribeNetworksResponse
@@ -11896,8 +15026,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeNetworksRequest,
     ) -> ens_20171110_models.DescribeNetworksResponse:
         """
-        You can call this operation up to 100 times per second.
-        *   You can call this operation up to 10 times per second per account.
+        @summary Query the network list.
+        
+        @description    You can call this operation up to 100 times per second.
+        You can call this operation up to 10 times per second per account.
         
         @param request: DescribeNetworksRequest
         @return: DescribeNetworksResponse
@@ -11910,6 +15042,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribePrePaidInstanceStockRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribePrePaidInstanceStockResponse:
+        """
+        @summary Queries the specifications of resources that you can purchase.
+        
+        @param request: DescribePrePaidInstanceStockRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePrePaidInstanceStockResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.data_disk_size):
@@ -11944,6 +15083,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribePrePaidInstanceStockRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribePrePaidInstanceStockResponse:
+        """
+        @summary Queries the specifications of resources that you can purchase.
+        
+        @param request: DescribePrePaidInstanceStockRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePrePaidInstanceStockResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.data_disk_size):
@@ -11977,6 +15123,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribePrePaidInstanceStockRequest,
     ) -> ens_20171110_models.DescribePrePaidInstanceStockResponse:
+        """
+        @summary Queries the specifications of resources that you can purchase.
+        
+        @param request: DescribePrePaidInstanceStockRequest
+        @return: DescribePrePaidInstanceStockResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_pre_paid_instance_stock_with_options(request, runtime)
 
@@ -11984,6 +15136,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribePrePaidInstanceStockRequest,
     ) -> ens_20171110_models.DescribePrePaidInstanceStockResponse:
+        """
+        @summary Queries the specifications of resources that you can purchase.
+        
+        @param request: DescribePrePaidInstanceStockRequest
+        @return: DescribePrePaidInstanceStockResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_pre_paid_instance_stock_with_options_async(request, runtime)
 
@@ -11992,6 +15150,13 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.DescribePriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribePriceResponse:
+        """
+        @summary Queries the most recent price of an Edge Node Service (ENS) instance.
+        
+        @param tmp_req: DescribePriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePriceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.DescribePriceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -12040,6 +15205,13 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.DescribePriceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribePriceResponse:
+        """
+        @summary Queries the most recent price of an Edge Node Service (ENS) instance.
+        
+        @param tmp_req: DescribePriceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePriceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.DescribePriceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -12087,6 +15259,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribePriceRequest,
     ) -> ens_20171110_models.DescribePriceResponse:
+        """
+        @summary Queries the most recent price of an Edge Node Service (ENS) instance.
+        
+        @param request: DescribePriceRequest
+        @return: DescribePriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_price_with_options(request, runtime)
 
@@ -12094,6 +15272,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribePriceRequest,
     ) -> ens_20171110_models.DescribePriceResponse:
+        """
+        @summary Queries the most recent price of an Edge Node Service (ENS) instance.
+        
+        @param request: DescribePriceRequest
+        @return: DescribePriceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_price_with_options_async(request, runtime)
 
@@ -12102,6 +15286,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeRegionIspsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeRegionIspsResponse:
+        """
+        @summary Queries information about the Internet service providers (ISPs) of edge nodes.
+        
+        @param request: DescribeRegionIspsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionIspsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -12128,6 +15319,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeRegionIspsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeRegionIspsResponse:
+        """
+        @summary Queries information about the Internet service providers (ISPs) of edge nodes.
+        
+        @param request: DescribeRegionIspsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionIspsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -12153,6 +15351,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeRegionIspsRequest,
     ) -> ens_20171110_models.DescribeRegionIspsResponse:
+        """
+        @summary Queries information about the Internet service providers (ISPs) of edge nodes.
+        
+        @param request: DescribeRegionIspsRequest
+        @return: DescribeRegionIspsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_region_isps_with_options(request, runtime)
 
@@ -12160,6 +15364,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeRegionIspsRequest,
     ) -> ens_20171110_models.DescribeRegionIspsResponse:
+        """
+        @summary Queries information about the Internet service providers (ISPs) of edge nodes.
+        
+        @param request: DescribeRegionIspsRequest
+        @return: DescribeRegionIspsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_region_isps_with_options_async(request, runtime)
 
@@ -12168,6 +15378,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeRegionResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeRegionResourceResponse:
+        """
+        @summary 获取区域节点资源量信息
+        
+        @param request: DescribeRegionResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionResourceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -12194,6 +15411,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeRegionResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeRegionResourceResponse:
+        """
+        @summary 获取区域节点资源量信息
+        
+        @param request: DescribeRegionResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionResourceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -12219,6 +15443,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeRegionResourceRequest,
     ) -> ens_20171110_models.DescribeRegionResourceResponse:
+        """
+        @summary 获取区域节点资源量信息
+        
+        @param request: DescribeRegionResourceRequest
+        @return: DescribeRegionResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_region_resource_with_options(request, runtime)
 
@@ -12226,6 +15456,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeRegionResourceRequest,
     ) -> ens_20171110_models.DescribeRegionResourceResponse:
+        """
+        @summary 获取区域节点资源量信息
+        
+        @param request: DescribeRegionResourceRequest
+        @return: DescribeRegionResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_region_resource_with_options_async(request, runtime)
 
@@ -12233,6 +15469,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeReservedResourceResponse:
+        """
+        @summary Queries the specifications of resources that you can purchase.
+        
+        @param request: DescribeReservedResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeReservedResourceResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeReservedResource',
@@ -12254,6 +15497,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeReservedResourceResponse:
+        """
+        @summary Queries the specifications of resources that you can purchase.
+        
+        @param request: DescribeReservedResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeReservedResourceResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeReservedResource',
@@ -12272,10 +15522,20 @@ class Client(OpenApiClient):
         )
 
     def describe_reserved_resource(self) -> ens_20171110_models.DescribeReservedResourceResponse:
+        """
+        @summary Queries the specifications of resources that you can purchase.
+        
+        @return: DescribeReservedResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_reserved_resource_with_options(runtime)
 
     async def describe_reserved_resource_async(self) -> ens_20171110_models.DescribeReservedResourceResponse:
+        """
+        @summary Queries the specifications of resources that you can purchase.
+        
+        @return: DescribeReservedResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_reserved_resource_with_options_async(runtime)
 
@@ -12284,6 +15544,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeResourceTimelineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeResourceTimelineResponse:
+        """
+        @summary 获取资源状态变化时间线
+        
+        @param request: DescribeResourceTimelineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeResourceTimelineResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -12310,6 +15577,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeResourceTimelineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeResourceTimelineResponse:
+        """
+        @summary 获取资源状态变化时间线
+        
+        @param request: DescribeResourceTimelineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeResourceTimelineResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -12335,6 +15609,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeResourceTimelineRequest,
     ) -> ens_20171110_models.DescribeResourceTimelineResponse:
+        """
+        @summary 获取资源状态变化时间线
+        
+        @param request: DescribeResourceTimelineRequest
+        @return: DescribeResourceTimelineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_resource_timeline_with_options(request, runtime)
 
@@ -12342,6 +15622,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeResourceTimelineRequest,
     ) -> ens_20171110_models.DescribeResourceTimelineResponse:
+        """
+        @summary 获取资源状态变化时间线
+        
+        @param request: DescribeResourceTimelineRequest
+        @return: DescribeResourceTimelineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_resource_timeline_with_options_async(request, runtime)
 
@@ -12350,6 +15636,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeSDGDeploymentStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeSDGDeploymentStatusResponse:
+        """
+        @summary Queries the deployment status of the shared data group (SDG).
+        
+        @param request: DescribeSDGDeploymentStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSDGDeploymentStatusResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -12376,6 +15669,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeSDGDeploymentStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeSDGDeploymentStatusResponse:
+        """
+        @summary Queries the deployment status of the shared data group (SDG).
+        
+        @param request: DescribeSDGDeploymentStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSDGDeploymentStatusResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -12401,6 +15701,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeSDGDeploymentStatusRequest,
     ) -> ens_20171110_models.DescribeSDGDeploymentStatusResponse:
+        """
+        @summary Queries the deployment status of the shared data group (SDG).
+        
+        @param request: DescribeSDGDeploymentStatusRequest
+        @return: DescribeSDGDeploymentStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_sdgdeployment_status_with_options(request, runtime)
 
@@ -12408,14 +15714,131 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeSDGDeploymentStatusRequest,
     ) -> ens_20171110_models.DescribeSDGDeploymentStatusResponse:
+        """
+        @summary Queries the deployment status of the shared data group (SDG).
+        
+        @param request: DescribeSDGDeploymentStatusRequest
+        @return: DescribeSDGDeploymentStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_sdgdeployment_status_with_options_async(request, runtime)
+
+    def describe_sdgs_with_options(
+        self,
+        tmp_req: ens_20171110_models.DescribeSDGsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeSDGsResponse:
+        """
+        @summary Queries information about created shared data groups (SDGs).
+        
+        @param tmp_req: DescribeSDGsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSDGsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.DescribeSDGsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        if not UtilClient.is_unset(tmp_req.sdgids):
+            request.sdgids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sdgids, 'SDGIds', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSDGs',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeSDGsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_sdgs_with_options_async(
+        self,
+        tmp_req: ens_20171110_models.DescribeSDGsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.DescribeSDGsResponse:
+        """
+        @summary Queries information about created shared data groups (SDGs).
+        
+        @param tmp_req: DescribeSDGsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSDGsResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.DescribeSDGsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        if not UtilClient.is_unset(tmp_req.sdgids):
+            request.sdgids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.sdgids, 'SDGIds', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeSDGs',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.DescribeSDGsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_sdgs(
+        self,
+        request: ens_20171110_models.DescribeSDGsRequest,
+    ) -> ens_20171110_models.DescribeSDGsResponse:
+        """
+        @summary Queries information about created shared data groups (SDGs).
+        
+        @param request: DescribeSDGsRequest
+        @return: DescribeSDGsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_sdgs_with_options(request, runtime)
+
+    async def describe_sdgs_async(
+        self,
+        request: ens_20171110_models.DescribeSDGsRequest,
+    ) -> ens_20171110_models.DescribeSDGsResponse:
+        """
+        @summary Queries information about created shared data groups (SDGs).
+        
+        @param request: DescribeSDGsRequest
+        @return: DescribeSDGsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_sdgs_with_options_async(request, runtime)
 
     def describe_security_group_attribute_with_options(
         self,
         request: ens_20171110_models.DescribeSecurityGroupAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeSecurityGroupAttributeResponse:
+        """
+        @summary Queries the rules of a security group.
+        
+        @param request: DescribeSecurityGroupAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSecurityGroupAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.security_group_id):
@@ -12444,6 +15867,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeSecurityGroupAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeSecurityGroupAttributeResponse:
+        """
+        @summary Queries the rules of a security group.
+        
+        @param request: DescribeSecurityGroupAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSecurityGroupAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.security_group_id):
@@ -12471,6 +15901,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeSecurityGroupAttributeRequest,
     ) -> ens_20171110_models.DescribeSecurityGroupAttributeResponse:
+        """
+        @summary Queries the rules of a security group.
+        
+        @param request: DescribeSecurityGroupAttributeRequest
+        @return: DescribeSecurityGroupAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_security_group_attribute_with_options(request, runtime)
 
@@ -12478,6 +15914,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeSecurityGroupAttributeRequest,
     ) -> ens_20171110_models.DescribeSecurityGroupAttributeResponse:
+        """
+        @summary Queries the rules of a security group.
+        
+        @param request: DescribeSecurityGroupAttributeRequest
+        @return: DescribeSecurityGroupAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_security_group_attribute_with_options_async(request, runtime)
 
@@ -12486,6 +15928,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeSecurityGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeSecurityGroupsResponse:
+        """
+        @summary Queries details about created security groups.
+        
+        @param request: DescribeSecurityGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSecurityGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -12520,6 +15969,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeSecurityGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeSecurityGroupsResponse:
+        """
+        @summary Queries details about created security groups.
+        
+        @param request: DescribeSecurityGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSecurityGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -12553,6 +16009,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeSecurityGroupsRequest,
     ) -> ens_20171110_models.DescribeSecurityGroupsResponse:
+        """
+        @summary Queries details about created security groups.
+        
+        @param request: DescribeSecurityGroupsRequest
+        @return: DescribeSecurityGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_security_groups_with_options(request, runtime)
 
@@ -12560,6 +16022,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeSecurityGroupsRequest,
     ) -> ens_20171110_models.DescribeSecurityGroupsResponse:
+        """
+        @summary Queries details about created security groups.
+        
+        @param request: DescribeSecurityGroupsRequest
+        @return: DescribeSecurityGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_security_groups_with_options_async(request, runtime)
 
@@ -12568,6 +16036,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeSelfImagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeSelfImagesResponse:
+        """
+        @summary Queries custom images.
+        
+        @param request: DescribeSelfImagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSelfImagesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_id):
@@ -12604,6 +16079,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeSelfImagesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeSelfImagesResponse:
+        """
+        @summary Queries custom images.
+        
+        @param request: DescribeSelfImagesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSelfImagesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_id):
@@ -12639,6 +16121,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeSelfImagesRequest,
     ) -> ens_20171110_models.DescribeSelfImagesResponse:
+        """
+        @summary Queries custom images.
+        
+        @param request: DescribeSelfImagesRequest
+        @return: DescribeSelfImagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_self_images_with_options(request, runtime)
 
@@ -12646,6 +16134,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeSelfImagesRequest,
     ) -> ens_20171110_models.DescribeSelfImagesResponse:
+        """
+        @summary Queries custom images.
+        
+        @param request: DescribeSelfImagesRequest
+        @return: DescribeSelfImagesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_self_images_with_options_async(request, runtime)
 
@@ -12654,6 +16148,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeServcieScheduleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeServcieScheduleResponse:
+        """
+        @summary You can call the DescribeServcieSchedule to query the real-time status of the instance device or container that is being occupied by the UUID.
+        
+        @param request: DescribeServcieScheduleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServcieScheduleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -12686,6 +16187,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeServcieScheduleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeServcieScheduleResponse:
+        """
+        @summary You can call the DescribeServcieSchedule to query the real-time status of the instance device or container that is being occupied by the UUID.
+        
+        @param request: DescribeServcieScheduleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeServcieScheduleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -12717,6 +16225,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeServcieScheduleRequest,
     ) -> ens_20171110_models.DescribeServcieScheduleResponse:
+        """
+        @summary You can call the DescribeServcieSchedule to query the real-time status of the instance device or container that is being occupied by the UUID.
+        
+        @param request: DescribeServcieScheduleRequest
+        @return: DescribeServcieScheduleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_servcie_schedule_with_options(request, runtime)
 
@@ -12724,6 +16238,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeServcieScheduleRequest,
     ) -> ens_20171110_models.DescribeServcieScheduleResponse:
+        """
+        @summary You can call the DescribeServcieSchedule to query the real-time status of the instance device or container that is being occupied by the UUID.
+        
+        @param request: DescribeServcieScheduleRequest
+        @return: DescribeServcieScheduleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_servcie_schedule_with_options_async(request, runtime)
 
@@ -12732,6 +16252,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeSnapshotsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeSnapshotsResponse:
+        """
+        @summary Queries information about snapshots.
+        
+        @param request: DescribeSnapshotsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSnapshotsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.disk_id):
@@ -12770,6 +16297,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeSnapshotsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeSnapshotsResponse:
+        """
+        @summary Queries information about snapshots.
+        
+        @param request: DescribeSnapshotsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSnapshotsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.disk_id):
@@ -12807,6 +16341,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeSnapshotsRequest,
     ) -> ens_20171110_models.DescribeSnapshotsResponse:
+        """
+        @summary Queries information about snapshots.
+        
+        @param request: DescribeSnapshotsRequest
+        @return: DescribeSnapshotsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_snapshots_with_options(request, runtime)
 
@@ -12814,6 +16354,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeSnapshotsRequest,
     ) -> ens_20171110_models.DescribeSnapshotsResponse:
+        """
+        @summary Queries information about snapshots.
+        
+        @param request: DescribeSnapshotsRequest
+        @return: DescribeSnapshotsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_snapshots_with_options_async(request, runtime)
 
@@ -12822,6 +16368,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeSnatAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeSnatAttributeResponse:
+        """
+        @summary Queries the details of a specific source network address translation (SNAT) entry.
+        
+        @param request: DescribeSnatAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSnatAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.snat_entry_id):
@@ -12850,6 +16403,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeSnatAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeSnatAttributeResponse:
+        """
+        @summary Queries the details of a specific source network address translation (SNAT) entry.
+        
+        @param request: DescribeSnatAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSnatAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.snat_entry_id):
@@ -12877,6 +16437,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeSnatAttributeRequest,
     ) -> ens_20171110_models.DescribeSnatAttributeResponse:
+        """
+        @summary Queries the details of a specific source network address translation (SNAT) entry.
+        
+        @param request: DescribeSnatAttributeRequest
+        @return: DescribeSnatAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_snat_attribute_with_options(request, runtime)
 
@@ -12884,6 +16450,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeSnatAttributeRequest,
     ) -> ens_20171110_models.DescribeSnatAttributeResponse:
+        """
+        @summary Queries the details of a specific source network address translation (SNAT) entry.
+        
+        @param request: DescribeSnatAttributeRequest
+        @return: DescribeSnatAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_snat_attribute_with_options_async(request, runtime)
 
@@ -12892,6 +16464,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeSnatTableEntriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeSnatTableEntriesResponse:
+        """
+        @summary Queries source network address translation (SNAT) entries.
+        
+        @param request: DescribeSnatTableEntriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSnatTableEntriesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -12918,6 +16497,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeSnatTableEntriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeSnatTableEntriesResponse:
+        """
+        @summary Queries source network address translation (SNAT) entries.
+        
+        @param request: DescribeSnatTableEntriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSnatTableEntriesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -12943,6 +16529,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeSnatTableEntriesRequest,
     ) -> ens_20171110_models.DescribeSnatTableEntriesResponse:
+        """
+        @summary Queries source network address translation (SNAT) entries.
+        
+        @param request: DescribeSnatTableEntriesRequest
+        @return: DescribeSnatTableEntriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_snat_table_entries_with_options(request, runtime)
 
@@ -12950,6 +16542,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeSnatTableEntriesRequest,
     ) -> ens_20171110_models.DescribeSnatTableEntriesResponse:
+        """
+        @summary Queries source network address translation (SNAT) entries.
+        
+        @param request: DescribeSnatTableEntriesRequest
+        @return: DescribeSnatTableEntriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_snat_table_entries_with_options_async(request, runtime)
 
@@ -12958,6 +16556,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeUserBandWidthDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeUserBandWidthDataResponse:
+        """
+        @summary Queries the bandwidth that you use within a specified period of time.
+        
+        @param request: DescribeUserBandWidthDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserBandWidthDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -12996,6 +16601,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeUserBandWidthDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeUserBandWidthDataResponse:
+        """
+        @summary Queries the bandwidth that you use within a specified period of time.
+        
+        @param request: DescribeUserBandWidthDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserBandWidthDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -13033,6 +16645,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeUserBandWidthDataRequest,
     ) -> ens_20171110_models.DescribeUserBandWidthDataResponse:
+        """
+        @summary Queries the bandwidth that you use within a specified period of time.
+        
+        @param request: DescribeUserBandWidthDataRequest
+        @return: DescribeUserBandWidthDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_user_band_width_data_with_options(request, runtime)
 
@@ -13040,6 +16658,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeUserBandWidthDataRequest,
     ) -> ens_20171110_models.DescribeUserBandWidthDataResponse:
+        """
+        @summary Queries the bandwidth that you use within a specified period of time.
+        
+        @param request: DescribeUserBandWidthDataRequest
+        @return: DescribeUserBandWidthDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_user_band_width_data_with_options_async(request, runtime)
 
@@ -13048,6 +16672,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeVSwitchesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeVSwitchesResponse:
+        """
+        @summary Queries information about available vSwitches.
+        
+        @param request: DescribeVSwitchesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVSwitchesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ens_region_id):
@@ -13088,6 +16719,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DescribeVSwitchesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DescribeVSwitchesResponse:
+        """
+        @summary Queries information about available vSwitches.
+        
+        @param request: DescribeVSwitchesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVSwitchesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ens_region_id):
@@ -13127,6 +16765,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeVSwitchesRequest,
     ) -> ens_20171110_models.DescribeVSwitchesResponse:
+        """
+        @summary Queries information about available vSwitches.
+        
+        @param request: DescribeVSwitchesRequest
+        @return: DescribeVSwitchesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vswitches_with_options(request, runtime)
 
@@ -13134,198 +16778,27 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DescribeVSwitchesRequest,
     ) -> ens_20171110_models.DescribeVSwitchesResponse:
+        """
+        @summary Queries information about available vSwitches.
+        
+        @param request: DescribeVSwitchesRequest
+        @return: DescribeVSwitchesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vswitches_with_options_async(request, runtime)
-
-    def describe_workflow_with_options(
-        self,
-        request: ens_20171110_models.DescribeWorkflowRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.DescribeWorkflowResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.ali_uid):
-            query['AliUid'] = request.ali_uid
-        if not UtilClient.is_unset(request.business_id):
-            query['BusinessId'] = request.business_id
-        if not UtilClient.is_unset(request.end_date):
-            query['EndDate'] = request.end_date
-        if not UtilClient.is_unset(request.ens_region_id):
-            query['EnsRegionId'] = request.ens_region_id
-        if not UtilClient.is_unset(request.id):
-            query['Id'] = request.id
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.page_num):
-            query['PageNum'] = request.page_num
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.start_date):
-            query['StartDate'] = request.start_date
-        if not UtilClient.is_unset(request.status):
-            query['Status'] = request.status
-        if not UtilClient.is_unset(request.work_flow_id):
-            query['WorkFlowId'] = request.work_flow_id
-        if not UtilClient.is_unset(request.work_flow_name):
-            query['WorkFlowName'] = request.work_flow_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeWorkflow',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ens_20171110_models.DescribeWorkflowResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_workflow_with_options_async(
-        self,
-        request: ens_20171110_models.DescribeWorkflowRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.DescribeWorkflowResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.ali_uid):
-            query['AliUid'] = request.ali_uid
-        if not UtilClient.is_unset(request.business_id):
-            query['BusinessId'] = request.business_id
-        if not UtilClient.is_unset(request.end_date):
-            query['EndDate'] = request.end_date
-        if not UtilClient.is_unset(request.ens_region_id):
-            query['EnsRegionId'] = request.ens_region_id
-        if not UtilClient.is_unset(request.id):
-            query['Id'] = request.id
-        if not UtilClient.is_unset(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.page_num):
-            query['PageNum'] = request.page_num
-        if not UtilClient.is_unset(request.page_size):
-            query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.start_date):
-            query['StartDate'] = request.start_date
-        if not UtilClient.is_unset(request.status):
-            query['Status'] = request.status
-        if not UtilClient.is_unset(request.work_flow_id):
-            query['WorkFlowId'] = request.work_flow_id
-        if not UtilClient.is_unset(request.work_flow_name):
-            query['WorkFlowName'] = request.work_flow_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeWorkflow',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ens_20171110_models.DescribeWorkflowResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_workflow(
-        self,
-        request: ens_20171110_models.DescribeWorkflowRequest,
-    ) -> ens_20171110_models.DescribeWorkflowResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_workflow_with_options(request, runtime)
-
-    async def describe_workflow_async(
-        self,
-        request: ens_20171110_models.DescribeWorkflowRequest,
-    ) -> ens_20171110_models.DescribeWorkflowResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_workflow_with_options_async(request, runtime)
-
-    def describe_workflow_activity_with_options(
-        self,
-        request: ens_20171110_models.DescribeWorkflowActivityRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.DescribeWorkflowActivityResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.work_flow_id):
-            query['WorkFlowId'] = request.work_flow_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeWorkflowActivity',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ens_20171110_models.DescribeWorkflowActivityResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def describe_workflow_activity_with_options_async(
-        self,
-        request: ens_20171110_models.DescribeWorkflowActivityRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.DescribeWorkflowActivityResponse:
-        UtilClient.validate_model(request)
-        query = {}
-        if not UtilClient.is_unset(request.work_flow_id):
-            query['WorkFlowId'] = request.work_flow_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='DescribeWorkflowActivity',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ens_20171110_models.DescribeWorkflowActivityResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def describe_workflow_activity(
-        self,
-        request: ens_20171110_models.DescribeWorkflowActivityRequest,
-    ) -> ens_20171110_models.DescribeWorkflowActivityResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.describe_workflow_activity_with_options(request, runtime)
-
-    async def describe_workflow_activity_async(
-        self,
-        request: ens_20171110_models.DescribeWorkflowActivityRequest,
-    ) -> ens_20171110_models.DescribeWorkflowActivityResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.describe_workflow_activity_with_options_async(request, runtime)
 
     def detach_disk_with_options(
         self,
         request: ens_20171110_models.DetachDiskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DetachDiskResponse:
+        """
+        @summary Detaches a pay-as-you-go data disk or a system disk from an Elastic Compute Service (ECS) instance.
+        
+        @param request: DetachDiskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachDiskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.disk_id):
@@ -13356,6 +16829,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DetachDiskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DetachDiskResponse:
+        """
+        @summary Detaches a pay-as-you-go data disk or a system disk from an Elastic Compute Service (ECS) instance.
+        
+        @param request: DetachDiskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetachDiskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.disk_id):
@@ -13385,6 +16865,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DetachDiskRequest,
     ) -> ens_20171110_models.DetachDiskResponse:
+        """
+        @summary Detaches a pay-as-you-go data disk or a system disk from an Elastic Compute Service (ECS) instance.
+        
+        @param request: DetachDiskRequest
+        @return: DetachDiskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detach_disk_with_options(request, runtime)
 
@@ -13392,6 +16878,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DetachDiskRequest,
     ) -> ens_20171110_models.DetachDiskResponse:
+        """
+        @summary Detaches a pay-as-you-go data disk or a system disk from an Elastic Compute Service (ECS) instance.
+        
+        @param request: DetachDiskRequest
+        @return: DetachDiskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detach_disk_with_options_async(request, runtime)
 
@@ -13400,6 +16892,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DistApplicationDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DistApplicationDataResponse:
+        """
+        @summary Distributes pushed data to the Edge Node Service (ENS) instances of the application. You can specify multiple canary release policies, decompress files, and restart containers.
+        
+        @param request: DistApplicationDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DistApplicationDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -13432,6 +16931,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.DistApplicationDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.DistApplicationDataResponse:
+        """
+        @summary Distributes pushed data to the Edge Node Service (ENS) instances of the application. You can specify multiple canary release policies, decompress files, and restart containers.
+        
+        @param request: DistApplicationDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DistApplicationDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -13463,6 +16969,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DistApplicationDataRequest,
     ) -> ens_20171110_models.DistApplicationDataResponse:
+        """
+        @summary Distributes pushed data to the Edge Node Service (ENS) instances of the application. You can specify multiple canary release policies, decompress files, and restart containers.
+        
+        @param request: DistApplicationDataRequest
+        @return: DistApplicationDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.dist_application_data_with_options(request, runtime)
 
@@ -13470,6 +16982,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.DistApplicationDataRequest,
     ) -> ens_20171110_models.DistApplicationDataResponse:
+        """
+        @summary Distributes pushed data to the Edge Node Service (ENS) instances of the application. You can specify multiple canary release policies, decompress files, and restart containers.
+        
+        @param request: DistApplicationDataRequest
+        @return: DistApplicationDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.dist_application_data_with_options_async(request, runtime)
 
@@ -13478,6 +16996,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ExportBillDetailDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ExportBillDetailDataResponse:
+        """
+        @summary Exports billing details within a specific time range.
+        
+        @param request: ExportBillDetailDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportBillDetailDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_date):
@@ -13508,6 +17033,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ExportBillDetailDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ExportBillDetailDataResponse:
+        """
+        @summary Exports billing details within a specific time range.
+        
+        @param request: ExportBillDetailDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportBillDetailDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_date):
@@ -13537,6 +17069,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ExportBillDetailDataRequest,
     ) -> ens_20171110_models.ExportBillDetailDataResponse:
+        """
+        @summary Exports billing details within a specific time range.
+        
+        @param request: ExportBillDetailDataRequest
+        @return: ExportBillDetailDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.export_bill_detail_data_with_options(request, runtime)
 
@@ -13544,6 +17082,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ExportBillDetailDataRequest,
     ) -> ens_20171110_models.ExportBillDetailDataResponse:
+        """
+        @summary Exports billing details within a specific time range.
+        
+        @param request: ExportBillDetailDataRequest
+        @return: ExportBillDetailDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.export_bill_detail_data_with_options_async(request, runtime)
 
@@ -13552,6 +17096,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ExportImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ExportImageResponse:
+        """
+        @summary Exports a custom image to an Object Storage Service (OSS) bucket in the same region.
+        
+        @param request: ExportImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_id):
@@ -13588,6 +17139,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ExportImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ExportImageResponse:
+        """
+        @summary Exports a custom image to an Object Storage Service (OSS) bucket in the same region.
+        
+        @param request: ExportImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_id):
@@ -13623,6 +17181,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ExportImageRequest,
     ) -> ens_20171110_models.ExportImageResponse:
+        """
+        @summary Exports a custom image to an Object Storage Service (OSS) bucket in the same region.
+        
+        @param request: ExportImageRequest
+        @return: ExportImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.export_image_with_options(request, runtime)
 
@@ -13630,6 +17194,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ExportImageRequest,
     ) -> ens_20171110_models.ExportImageResponse:
+        """
+        @summary Exports a custom image to an Object Storage Service (OSS) bucket in the same region.
+        
+        @param request: ExportImageRequest
+        @return: ExportImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.export_image_with_options_async(request, runtime)
 
@@ -13638,6 +17208,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ExportMeasurementDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ExportMeasurementDataResponse:
+        """
+        @summary Exports the metering data within a specific time range.
+        
+        @param request: ExportMeasurementDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportMeasurementDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_date):
@@ -13668,6 +17245,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ExportMeasurementDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ExportMeasurementDataResponse:
+        """
+        @summary Exports the metering data within a specific time range.
+        
+        @param request: ExportMeasurementDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportMeasurementDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_date):
@@ -13697,6 +17281,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ExportMeasurementDataRequest,
     ) -> ens_20171110_models.ExportMeasurementDataResponse:
+        """
+        @summary Exports the metering data within a specific time range.
+        
+        @param request: ExportMeasurementDataRequest
+        @return: ExportMeasurementDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.export_measurement_data_with_options(request, runtime)
 
@@ -13704,6 +17294,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ExportMeasurementDataRequest,
     ) -> ens_20171110_models.ExportMeasurementDataResponse:
+        """
+        @summary Exports the metering data within a specific time range.
+        
+        @param request: ExportMeasurementDataRequest
+        @return: ExportMeasurementDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.export_measurement_data_with_options_async(request, runtime)
 
@@ -13712,6 +17308,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.GetBucketAclRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.GetBucketAclResponse:
+        """
+        @summary Queries the access control list (ACL) of a bucket.
+        
+        @param request: GetBucketAclRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBucketAclResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -13738,6 +17341,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.GetBucketAclRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.GetBucketAclResponse:
+        """
+        @summary Queries the access control list (ACL) of a bucket.
+        
+        @param request: GetBucketAclRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBucketAclResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -13763,6 +17373,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.GetBucketAclRequest,
     ) -> ens_20171110_models.GetBucketAclResponse:
+        """
+        @summary Queries the access control list (ACL) of a bucket.
+        
+        @param request: GetBucketAclRequest
+        @return: GetBucketAclResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_bucket_acl_with_options(request, runtime)
 
@@ -13770,6 +17386,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.GetBucketAclRequest,
     ) -> ens_20171110_models.GetBucketAclResponse:
+        """
+        @summary Queries the access control list (ACL) of a bucket.
+        
+        @param request: GetBucketAclRequest
+        @return: GetBucketAclResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_bucket_acl_with_options_async(request, runtime)
 
@@ -13778,6 +17400,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.GetBucketInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.GetBucketInfoResponse:
+        """
+        @summary Queries the detailed information about a bucket.
+        
+        @param request: GetBucketInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBucketInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bucket_name):
@@ -13806,6 +17435,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.GetBucketInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.GetBucketInfoResponse:
+        """
+        @summary Queries the detailed information about a bucket.
+        
+        @param request: GetBucketInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBucketInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bucket_name):
@@ -13833,6 +17469,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.GetBucketInfoRequest,
     ) -> ens_20171110_models.GetBucketInfoResponse:
+        """
+        @summary Queries the detailed information about a bucket.
+        
+        @param request: GetBucketInfoRequest
+        @return: GetBucketInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_bucket_info_with_options(request, runtime)
 
@@ -13840,6 +17482,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.GetBucketInfoRequest,
     ) -> ens_20171110_models.GetBucketInfoResponse:
+        """
+        @summary Queries the detailed information about a bucket.
+        
+        @param request: GetBucketInfoRequest
+        @return: GetBucketInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_bucket_info_with_options_async(request, runtime)
 
@@ -13848,6 +17496,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.GetBucketLifecycleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.GetBucketLifecycleResponse:
+        """
+        @summary Queries lifecycle rules.
+        
+        @param request: GetBucketLifecycleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBucketLifecycleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bucket_name):
@@ -13878,6 +17533,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.GetBucketLifecycleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.GetBucketLifecycleResponse:
+        """
+        @summary Queries lifecycle rules.
+        
+        @param request: GetBucketLifecycleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBucketLifecycleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bucket_name):
@@ -13907,6 +17569,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.GetBucketLifecycleRequest,
     ) -> ens_20171110_models.GetBucketLifecycleResponse:
+        """
+        @summary Queries lifecycle rules.
+        
+        @param request: GetBucketLifecycleRequest
+        @return: GetBucketLifecycleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_bucket_lifecycle_with_options(request, runtime)
 
@@ -13914,6 +17582,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.GetBucketLifecycleRequest,
     ) -> ens_20171110_models.GetBucketLifecycleResponse:
+        """
+        @summary Queries lifecycle rules.
+        
+        @param request: GetBucketLifecycleRequest
+        @return: GetBucketLifecycleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_bucket_lifecycle_with_options_async(request, runtime)
 
@@ -13922,6 +17596,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.GetDeviceInternetPortRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.GetDeviceInternetPortResponse:
+        """
+        @summary Queries the network address translation (NAT) rule details of a device such as a server or container by its ID.
+        
+        @param request: GetDeviceInternetPortRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDeviceInternetPortResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -13948,6 +17629,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.GetDeviceInternetPortRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.GetDeviceInternetPortResponse:
+        """
+        @summary Queries the network address translation (NAT) rule details of a device such as a server or container by its ID.
+        
+        @param request: GetDeviceInternetPortRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDeviceInternetPortResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -13973,6 +17661,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.GetDeviceInternetPortRequest,
     ) -> ens_20171110_models.GetDeviceInternetPortResponse:
+        """
+        @summary Queries the network address translation (NAT) rule details of a device such as a server or container by its ID.
+        
+        @param request: GetDeviceInternetPortRequest
+        @return: GetDeviceInternetPortResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_device_internet_port_with_options(request, runtime)
 
@@ -13980,6 +17674,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.GetDeviceInternetPortRequest,
     ) -> ens_20171110_models.GetDeviceInternetPortResponse:
+        """
+        @summary Queries the network address translation (NAT) rule details of a device such as a server or container by its ID.
+        
+        @param request: GetDeviceInternetPortRequest
+        @return: GetDeviceInternetPortResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_device_internet_port_with_options_async(request, runtime)
 
@@ -13988,6 +17688,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.GetOssStorageAndAccByBucketsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.GetOssStorageAndAccByBucketsResponse:
+        """
+        @summary Queries the storage usage in the previous billing cycle and the cumulative number of calls in this month.
+        
+        @param request: GetOssStorageAndAccByBucketsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOssStorageAndAccByBucketsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -14014,6 +17721,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.GetOssStorageAndAccByBucketsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.GetOssStorageAndAccByBucketsResponse:
+        """
+        @summary Queries the storage usage in the previous billing cycle and the cumulative number of calls in this month.
+        
+        @param request: GetOssStorageAndAccByBucketsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOssStorageAndAccByBucketsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -14039,6 +17753,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.GetOssStorageAndAccByBucketsRequest,
     ) -> ens_20171110_models.GetOssStorageAndAccByBucketsResponse:
+        """
+        @summary Queries the storage usage in the previous billing cycle and the cumulative number of calls in this month.
+        
+        @param request: GetOssStorageAndAccByBucketsRequest
+        @return: GetOssStorageAndAccByBucketsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_oss_storage_and_acc_by_buckets_with_options(request, runtime)
 
@@ -14046,6 +17766,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.GetOssStorageAndAccByBucketsRequest,
     ) -> ens_20171110_models.GetOssStorageAndAccByBucketsResponse:
+        """
+        @summary Queries the storage usage in the previous billing cycle and the cumulative number of calls in this month.
+        
+        @param request: GetOssStorageAndAccByBucketsRequest
+        @return: GetOssStorageAndAccByBucketsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_oss_storage_and_acc_by_buckets_with_options_async(request, runtime)
 
@@ -14055,7 +17781,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.GetOssUsageDataResponse:
         """
-        The query and aggregation granularity of bandwidth and storage usage cannot exceed one day. Data aggregation is to collect the maximum values of usage data within a period of time.
+        @summary Queries the storage and bandwidth usage within a specific time range.
+        
+        @description The query and aggregation granularity of bandwidth and storage usage cannot exceed one day. Data aggregation is to collect the maximum values of usage data within a period of time.
         
         @param request: GetOssUsageDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14088,7 +17816,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.GetOssUsageDataResponse:
         """
-        The query and aggregation granularity of bandwidth and storage usage cannot exceed one day. Data aggregation is to collect the maximum values of usage data within a period of time.
+        @summary Queries the storage and bandwidth usage within a specific time range.
+        
+        @description The query and aggregation granularity of bandwidth and storage usage cannot exceed one day. Data aggregation is to collect the maximum values of usage data within a period of time.
         
         @param request: GetOssUsageDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14120,7 +17850,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.GetOssUsageDataRequest,
     ) -> ens_20171110_models.GetOssUsageDataResponse:
         """
-        The query and aggregation granularity of bandwidth and storage usage cannot exceed one day. Data aggregation is to collect the maximum values of usage data within a period of time.
+        @summary Queries the storage and bandwidth usage within a specific time range.
+        
+        @description The query and aggregation granularity of bandwidth and storage usage cannot exceed one day. Data aggregation is to collect the maximum values of usage data within a period of time.
         
         @param request: GetOssUsageDataRequest
         @return: GetOssUsageDataResponse
@@ -14133,7 +17865,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.GetOssUsageDataRequest,
     ) -> ens_20171110_models.GetOssUsageDataResponse:
         """
-        The query and aggregation granularity of bandwidth and storage usage cannot exceed one day. Data aggregation is to collect the maximum values of usage data within a period of time.
+        @summary Queries the storage and bandwidth usage within a specific time range.
+        
+        @description The query and aggregation granularity of bandwidth and storage usage cannot exceed one day. Data aggregation is to collect the maximum values of usage data within a period of time.
         
         @param request: GetOssUsageDataRequest
         @return: GetOssUsageDataResponse
@@ -14147,8 +17881,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ImportKeyPairResponse:
         """
-        After the key pair is imported, ENS stores the public key. You must securely store the private key.
-        *   The key pair can be only in the ssh-rsa format.
+        @summary Imports the public key of a Rivest–Shamir–Adleman (RSA)-encrypted key pair that is generated by a third-party tool.
+        
+        @description    After the key pair is imported, ENS stores the public key. You must securely store the private key.
+        The key pair can be only in the ssh-rsa format.
         
         @param request: ImportKeyPairRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14185,8 +17921,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ImportKeyPairResponse:
         """
-        After the key pair is imported, ENS stores the public key. You must securely store the private key.
-        *   The key pair can be only in the ssh-rsa format.
+        @summary Imports the public key of a Rivest–Shamir–Adleman (RSA)-encrypted key pair that is generated by a third-party tool.
+        
+        @description    After the key pair is imported, ENS stores the public key. You must securely store the private key.
+        The key pair can be only in the ssh-rsa format.
         
         @param request: ImportKeyPairRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14222,8 +17960,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ImportKeyPairRequest,
     ) -> ens_20171110_models.ImportKeyPairResponse:
         """
-        After the key pair is imported, ENS stores the public key. You must securely store the private key.
-        *   The key pair can be only in the ssh-rsa format.
+        @summary Imports the public key of a Rivest–Shamir–Adleman (RSA)-encrypted key pair that is generated by a third-party tool.
+        
+        @description    After the key pair is imported, ENS stores the public key. You must securely store the private key.
+        The key pair can be only in the ssh-rsa format.
         
         @param request: ImportKeyPairRequest
         @return: ImportKeyPairResponse
@@ -14236,8 +17976,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ImportKeyPairRequest,
     ) -> ens_20171110_models.ImportKeyPairResponse:
         """
-        After the key pair is imported, ENS stores the public key. You must securely store the private key.
-        *   The key pair can be only in the ssh-rsa format.
+        @summary Imports the public key of a Rivest–Shamir–Adleman (RSA)-encrypted key pair that is generated by a third-party tool.
+        
+        @description    After the key pair is imported, ENS stores the public key. You must securely store the private key.
+        The key pair can be only in the ssh-rsa format.
         
         @param request: ImportKeyPairRequest
         @return: ImportKeyPairResponse
@@ -14250,6 +17992,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.JoinPublicIpsToEpnInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.JoinPublicIpsToEpnInstanceResponse:
+        """
+        @summary Assigns public IP addresses to an EPN instance.
+        
+        @param request: JoinPublicIpsToEpnInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: JoinPublicIpsToEpnInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.epninstance_id):
@@ -14280,6 +18029,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.JoinPublicIpsToEpnInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.JoinPublicIpsToEpnInstanceResponse:
+        """
+        @summary Assigns public IP addresses to an EPN instance.
+        
+        @param request: JoinPublicIpsToEpnInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: JoinPublicIpsToEpnInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.epninstance_id):
@@ -14309,6 +18065,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.JoinPublicIpsToEpnInstanceRequest,
     ) -> ens_20171110_models.JoinPublicIpsToEpnInstanceResponse:
+        """
+        @summary Assigns public IP addresses to an EPN instance.
+        
+        @param request: JoinPublicIpsToEpnInstanceRequest
+        @return: JoinPublicIpsToEpnInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.join_public_ips_to_epn_instance_with_options(request, runtime)
 
@@ -14316,6 +18078,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.JoinPublicIpsToEpnInstanceRequest,
     ) -> ens_20171110_models.JoinPublicIpsToEpnInstanceResponse:
+        """
+        @summary Assigns public IP addresses to an EPN instance.
+        
+        @param request: JoinPublicIpsToEpnInstanceRequest
+        @return: JoinPublicIpsToEpnInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.join_public_ips_to_epn_instance_with_options_async(request, runtime)
 
@@ -14325,7 +18093,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.JoinSecurityGroupResponse:
         """
-        Before you call this operation to add an instance to a security group, make sure that the instance is in the Stopped or Running state.
+        @summary Adds an Edge Node Service (ENS) instance to a specified security group.
+        
+        @description Before you call this operation to add an instance to a security group, make sure that the instance is in the Stopped or Running state.
         
         @param request: JoinSecurityGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14364,7 +18134,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.JoinSecurityGroupResponse:
         """
-        Before you call this operation to add an instance to a security group, make sure that the instance is in the Stopped or Running state.
+        @summary Adds an Edge Node Service (ENS) instance to a specified security group.
+        
+        @description Before you call this operation to add an instance to a security group, make sure that the instance is in the Stopped or Running state.
         
         @param request: JoinSecurityGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14402,7 +18174,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.JoinSecurityGroupRequest,
     ) -> ens_20171110_models.JoinSecurityGroupResponse:
         """
-        Before you call this operation to add an instance to a security group, make sure that the instance is in the Stopped or Running state.
+        @summary Adds an Edge Node Service (ENS) instance to a specified security group.
+        
+        @description Before you call this operation to add an instance to a security group, make sure that the instance is in the Stopped or Running state.
         
         @param request: JoinSecurityGroupRequest
         @return: JoinSecurityGroupResponse
@@ -14415,7 +18189,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.JoinSecurityGroupRequest,
     ) -> ens_20171110_models.JoinSecurityGroupResponse:
         """
-        Before you call this operation to add an instance to a security group, make sure that the instance is in the Stopped or Running state.
+        @summary Adds an Edge Node Service (ENS) instance to a specified security group.
+        
+        @description Before you call this operation to add an instance to a security group, make sure that the instance is in the Stopped or Running state.
         
         @param request: JoinSecurityGroupRequest
         @return: JoinSecurityGroupResponse
@@ -14428,6 +18204,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.JoinVSwitchesToEpnInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.JoinVSwitchesToEpnInstanceResponse:
+        """
+        @summary For internal connections, instances that are associated with a vSwitch automatically take effect. For public connections such as intelligent acceleration, you need to manually add the instances.
+        
+        @param request: JoinVSwitchesToEpnInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: JoinVSwitchesToEpnInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.epninstance_id):
@@ -14458,6 +18241,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.JoinVSwitchesToEpnInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.JoinVSwitchesToEpnInstanceResponse:
+        """
+        @summary For internal connections, instances that are associated with a vSwitch automatically take effect. For public connections such as intelligent acceleration, you need to manually add the instances.
+        
+        @param request: JoinVSwitchesToEpnInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: JoinVSwitchesToEpnInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.epninstance_id):
@@ -14487,6 +18277,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.JoinVSwitchesToEpnInstanceRequest,
     ) -> ens_20171110_models.JoinVSwitchesToEpnInstanceResponse:
+        """
+        @summary For internal connections, instances that are associated with a vSwitch automatically take effect. For public connections such as intelligent acceleration, you need to manually add the instances.
+        
+        @param request: JoinVSwitchesToEpnInstanceRequest
+        @return: JoinVSwitchesToEpnInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.join_vswitches_to_epn_instance_with_options(request, runtime)
 
@@ -14494,6 +18290,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.JoinVSwitchesToEpnInstanceRequest,
     ) -> ens_20171110_models.JoinVSwitchesToEpnInstanceResponse:
+        """
+        @summary For internal connections, instances that are associated with a vSwitch automatically take effect. For public connections such as intelligent acceleration, you need to manually add the instances.
+        
+        @param request: JoinVSwitchesToEpnInstanceRequest
+        @return: JoinVSwitchesToEpnInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.join_vswitches_to_epn_instance_with_options_async(request, runtime)
 
@@ -14503,7 +18305,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.LeaveSecurityGroupResponse:
         """
-        Before you remove an instance from a security group, the instance must be in the Stopped or Running state.
+        @summary Removes an instance from a security group.
+        
+        @description Before you remove an instance from a security group, the instance must be in the Stopped or Running state.
         
         @param request: LeaveSecurityGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14542,7 +18346,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.LeaveSecurityGroupResponse:
         """
-        Before you remove an instance from a security group, the instance must be in the Stopped or Running state.
+        @summary Removes an instance from a security group.
+        
+        @description Before you remove an instance from a security group, the instance must be in the Stopped or Running state.
         
         @param request: LeaveSecurityGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -14580,7 +18386,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.LeaveSecurityGroupRequest,
     ) -> ens_20171110_models.LeaveSecurityGroupResponse:
         """
-        Before you remove an instance from a security group, the instance must be in the Stopped or Running state.
+        @summary Removes an instance from a security group.
+        
+        @description Before you remove an instance from a security group, the instance must be in the Stopped or Running state.
         
         @param request: LeaveSecurityGroupRequest
         @return: LeaveSecurityGroupResponse
@@ -14593,7 +18401,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.LeaveSecurityGroupRequest,
     ) -> ens_20171110_models.LeaveSecurityGroupResponse:
         """
-        Before you remove an instance from a security group, the instance must be in the Stopped or Running state.
+        @summary Removes an instance from a security group.
+        
+        @description Before you remove an instance from a security group, the instance must be in the Stopped or Running state.
         
         @param request: LeaveSecurityGroupRequest
         @return: LeaveSecurityGroupResponse
@@ -14606,6 +18416,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ListApplicationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ListApplicationsResponse:
+        """
+        @summary Queries the created applications.
+        
+        @param request: ListApplicationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_versions):
@@ -14648,6 +18465,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ListApplicationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ListApplicationsResponse:
+        """
+        @summary Queries the created applications.
+        
+        @param request: ListApplicationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_versions):
@@ -14689,6 +18513,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ListApplicationsRequest,
     ) -> ens_20171110_models.ListApplicationsResponse:
+        """
+        @summary Queries the created applications.
+        
+        @param request: ListApplicationsRequest
+        @return: ListApplicationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_applications_with_options(request, runtime)
 
@@ -14696,6 +18526,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ListApplicationsRequest,
     ) -> ens_20171110_models.ListApplicationsResponse:
+        """
+        @summary Queries the created applications.
+        
+        @param request: ListApplicationsRequest
+        @return: ListApplicationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_applications_with_options_async(request, runtime)
 
@@ -14704,6 +18540,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ListBucketsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ListBucketsResponse:
+        """
+        @summary Queries all buckets of a user.
+        
+        @param request: ListBucketsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBucketsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -14736,6 +18579,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ListBucketsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ListBucketsResponse:
+        """
+        @summary Queries all buckets of a user.
+        
+        @param request: ListBucketsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBucketsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_number):
@@ -14767,6 +18617,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ListBucketsRequest,
     ) -> ens_20171110_models.ListBucketsResponse:
+        """
+        @summary Queries all buckets of a user.
+        
+        @param request: ListBucketsRequest
+        @return: ListBucketsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_buckets_with_options(request, runtime)
 
@@ -14774,6 +18630,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ListBucketsRequest,
     ) -> ens_20171110_models.ListBucketsResponse:
+        """
+        @summary Queries all buckets of a user.
+        
+        @param request: ListBucketsRequest
+        @return: ListBucketsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_buckets_with_options_async(request, runtime)
 
@@ -14782,6 +18644,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ListObjectsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ListObjectsResponse:
+        """
+        @summary Lists all objects in a bucket.
+        
+        @param request: ListObjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListObjectsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bucket_name):
@@ -14822,6 +18691,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ListObjectsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ListObjectsResponse:
+        """
+        @summary Lists all objects in a bucket.
+        
+        @param request: ListObjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListObjectsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bucket_name):
@@ -14861,6 +18737,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ListObjectsRequest,
     ) -> ens_20171110_models.ListObjectsResponse:
+        """
+        @summary Lists all objects in a bucket.
+        
+        @param request: ListObjectsRequest
+        @return: ListObjectsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_objects_with_options(request, runtime)
 
@@ -14868,6 +18750,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ListObjectsRequest,
     ) -> ens_20171110_models.ListObjectsResponse:
+        """
+        @summary Lists all objects in a bucket.
+        
+        @param request: ListObjectsRequest
+        @return: ListObjectsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_objects_with_options_async(request, runtime)
 
@@ -14876,6 +18764,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyEnsEipAddressAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyEnsEipAddressAttributeResponse:
+        """
+        @summary Modifies the name, description, and peak bandwidth of a specified elastic IP address (EIP).
+        
+        @param request: ModifyEnsEipAddressAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyEnsEipAddressAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.allocation_id):
@@ -14910,6 +18805,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyEnsEipAddressAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyEnsEipAddressAttributeResponse:
+        """
+        @summary Modifies the name, description, and peak bandwidth of a specified elastic IP address (EIP).
+        
+        @param request: ModifyEnsEipAddressAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyEnsEipAddressAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.allocation_id):
@@ -14943,6 +18845,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ModifyEnsEipAddressAttributeRequest,
     ) -> ens_20171110_models.ModifyEnsEipAddressAttributeResponse:
+        """
+        @summary Modifies the name, description, and peak bandwidth of a specified elastic IP address (EIP).
+        
+        @param request: ModifyEnsEipAddressAttributeRequest
+        @return: ModifyEnsEipAddressAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_ens_eip_address_attribute_with_options(request, runtime)
 
@@ -14950,6 +18858,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ModifyEnsEipAddressAttributeRequest,
     ) -> ens_20171110_models.ModifyEnsEipAddressAttributeResponse:
+        """
+        @summary Modifies the name, description, and peak bandwidth of a specified elastic IP address (EIP).
+        
+        @param request: ModifyEnsEipAddressAttributeRequest
+        @return: ModifyEnsEipAddressAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_ens_eip_address_attribute_with_options_async(request, runtime)
 
@@ -14958,6 +18872,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyEpnInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyEpnInstanceResponse:
+        """
+        @summary Modifies an Edge Private Network (EPN) instance.
+        
+        @param request: ModifyEpnInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyEpnInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.epninstance_id):
@@ -14992,6 +18913,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyEpnInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyEpnInstanceResponse:
+        """
+        @summary Modifies an Edge Private Network (EPN) instance.
+        
+        @param request: ModifyEpnInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyEpnInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.epninstance_id):
@@ -15025,6 +18953,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ModifyEpnInstanceRequest,
     ) -> ens_20171110_models.ModifyEpnInstanceResponse:
+        """
+        @summary Modifies an Edge Private Network (EPN) instance.
+        
+        @param request: ModifyEpnInstanceRequest
+        @return: ModifyEpnInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_epn_instance_with_options(request, runtime)
 
@@ -15032,6 +18966,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ModifyEpnInstanceRequest,
     ) -> ens_20171110_models.ModifyEpnInstanceResponse:
+        """
+        @summary Modifies an Edge Private Network (EPN) instance.
+        
+        @param request: ModifyEpnInstanceRequest
+        @return: ModifyEpnInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_epn_instance_with_options_async(request, runtime)
 
@@ -15040,6 +18980,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyFileSystemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyFileSystemResponse:
+        """
+        @summary Modifies the description of a file system.
+        
+        @param request: ModifyFileSystemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyFileSystemResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -15072,6 +19019,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyFileSystemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyFileSystemResponse:
+        """
+        @summary Modifies the description of a file system.
+        
+        @param request: ModifyFileSystemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyFileSystemResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -15103,6 +19057,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ModifyFileSystemRequest,
     ) -> ens_20171110_models.ModifyFileSystemResponse:
+        """
+        @summary Modifies the description of a file system.
+        
+        @param request: ModifyFileSystemRequest
+        @return: ModifyFileSystemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_file_system_with_options(request, runtime)
 
@@ -15110,6 +19070,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ModifyFileSystemRequest,
     ) -> ens_20171110_models.ModifyFileSystemResponse:
+        """
+        @summary Modifies the description of a file system.
+        
+        @param request: ModifyFileSystemRequest
+        @return: ModifyFileSystemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_file_system_with_options_async(request, runtime)
 
@@ -15118,6 +19084,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyForwardEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyForwardEntryResponse:
+        """
+        @summary Modifies a Destination Network Address Translation (DNAT) rule.
+        
+        @param request: ModifyForwardEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyForwardEntryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.forward_entry_id):
@@ -15150,6 +19123,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyForwardEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyForwardEntryResponse:
+        """
+        @summary Modifies a Destination Network Address Translation (DNAT) rule.
+        
+        @param request: ModifyForwardEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyForwardEntryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.forward_entry_id):
@@ -15181,6 +19161,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ModifyForwardEntryRequest,
     ) -> ens_20171110_models.ModifyForwardEntryResponse:
+        """
+        @summary Modifies a Destination Network Address Translation (DNAT) rule.
+        
+        @param request: ModifyForwardEntryRequest
+        @return: ModifyForwardEntryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_forward_entry_with_options(request, runtime)
 
@@ -15188,6 +19174,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ModifyForwardEntryRequest,
     ) -> ens_20171110_models.ModifyForwardEntryResponse:
+        """
+        @summary Modifies a Destination Network Address Translation (DNAT) rule.
+        
+        @param request: ModifyForwardEntryRequest
+        @return: ModifyForwardEntryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_forward_entry_with_options_async(request, runtime)
 
@@ -15196,6 +19188,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyImageAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyImageAttributeResponse:
+        """
+        @summary Modifies the image attributes.
+        
+        @param request: ModifyImageAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyImageAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_id):
@@ -15226,6 +19225,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyImageAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyImageAttributeResponse:
+        """
+        @summary Modifies the image attributes.
+        
+        @param request: ModifyImageAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyImageAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.image_id):
@@ -15255,6 +19261,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ModifyImageAttributeRequest,
     ) -> ens_20171110_models.ModifyImageAttributeResponse:
+        """
+        @summary Modifies the image attributes.
+        
+        @param request: ModifyImageAttributeRequest
+        @return: ModifyImageAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_image_attribute_with_options(request, runtime)
 
@@ -15262,6 +19274,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ModifyImageAttributeRequest,
     ) -> ens_20171110_models.ModifyImageAttributeResponse:
+        """
+        @summary Modifies the image attributes.
+        
+        @param request: ModifyImageAttributeRequest
+        @return: ModifyImageAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_image_attribute_with_options_async(request, runtime)
 
@@ -15270,6 +19288,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyImageSharePermissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyImageSharePermissionResponse:
+        """
+        @summary Shares or unshares an image.
+        
+        @param request: ModifyImageSharePermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyImageSharePermissionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.add_accounts):
@@ -15302,6 +19327,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyImageSharePermissionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyImageSharePermissionResponse:
+        """
+        @summary Shares or unshares an image.
+        
+        @param request: ModifyImageSharePermissionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyImageSharePermissionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.add_accounts):
@@ -15333,6 +19365,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ModifyImageSharePermissionRequest,
     ) -> ens_20171110_models.ModifyImageSharePermissionResponse:
+        """
+        @summary Shares or unshares an image.
+        
+        @param request: ModifyImageSharePermissionRequest
+        @return: ModifyImageSharePermissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_image_share_permission_with_options(request, runtime)
 
@@ -15340,6 +19378,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ModifyImageSharePermissionRequest,
     ) -> ens_20171110_models.ModifyImageSharePermissionResponse:
+        """
+        @summary Shares or unshares an image.
+        
+        @param request: ModifyImageSharePermissionRequest
+        @return: ModifyImageSharePermissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_image_share_permission_with_options_async(request, runtime)
 
@@ -15349,9 +19393,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyInstanceAttributeResponse:
         """
-        If an instance is in the Starting state, you cannot reset the password of the instance.
-        *   When the instance is in the Running state, you cannot change the password of the instance.
-        *   After resetting the password, you must Restart the instance in the ECS console or call the RebootInstance operation to validate the modifications. The restart operation within the instance does not validate the modifications.
+        @summary Changes the attributes of an instance, such as the name and the password.
+        
+        @description    If an instance is in the Starting state, you cannot reset the password of the instance.
+        When the instance is in the Running state, you cannot change the password of the instance.
+        After resetting the password, you must Restart the instance in the ECS console or call the RebootInstance operation to validate the modifications. The restart operation within the instance does not validate the modifications.
         
         @param request: ModifyInstanceAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15394,9 +19440,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyInstanceAttributeResponse:
         """
-        If an instance is in the Starting state, you cannot reset the password of the instance.
-        *   When the instance is in the Running state, you cannot change the password of the instance.
-        *   After resetting the password, you must Restart the instance in the ECS console or call the RebootInstance operation to validate the modifications. The restart operation within the instance does not validate the modifications.
+        @summary Changes the attributes of an instance, such as the name and the password.
+        
+        @description    If an instance is in the Starting state, you cannot reset the password of the instance.
+        When the instance is in the Running state, you cannot change the password of the instance.
+        After resetting the password, you must Restart the instance in the ECS console or call the RebootInstance operation to validate the modifications. The restart operation within the instance does not validate the modifications.
         
         @param request: ModifyInstanceAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15438,9 +19486,11 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyInstanceAttributeRequest,
     ) -> ens_20171110_models.ModifyInstanceAttributeResponse:
         """
-        If an instance is in the Starting state, you cannot reset the password of the instance.
-        *   When the instance is in the Running state, you cannot change the password of the instance.
-        *   After resetting the password, you must Restart the instance in the ECS console or call the RebootInstance operation to validate the modifications. The restart operation within the instance does not validate the modifications.
+        @summary Changes the attributes of an instance, such as the name and the password.
+        
+        @description    If an instance is in the Starting state, you cannot reset the password of the instance.
+        When the instance is in the Running state, you cannot change the password of the instance.
+        After resetting the password, you must Restart the instance in the ECS console or call the RebootInstance operation to validate the modifications. The restart operation within the instance does not validate the modifications.
         
         @param request: ModifyInstanceAttributeRequest
         @return: ModifyInstanceAttributeResponse
@@ -15453,9 +19503,11 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyInstanceAttributeRequest,
     ) -> ens_20171110_models.ModifyInstanceAttributeResponse:
         """
-        If an instance is in the Starting state, you cannot reset the password of the instance.
-        *   When the instance is in the Running state, you cannot change the password of the instance.
-        *   After resetting the password, you must Restart the instance in the ECS console or call the RebootInstance operation to validate the modifications. The restart operation within the instance does not validate the modifications.
+        @summary Changes the attributes of an instance, such as the name and the password.
+        
+        @description    If an instance is in the Starting state, you cannot reset the password of the instance.
+        When the instance is in the Running state, you cannot change the password of the instance.
+        After resetting the password, you must Restart the instance in the ECS console or call the RebootInstance operation to validate the modifications. The restart operation within the instance does not validate the modifications.
         
         @param request: ModifyInstanceAttributeRequest
         @return: ModifyInstanceAttributeResponse
@@ -15468,6 +19520,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyInstanceAutoRenewAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyInstanceAutoRenewAttributeResponse:
+        """
+        @summary Configures auto-renewal for instances.
+        
+        @param request: ModifyInstanceAutoRenewAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceAutoRenewAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_renew):
@@ -15504,6 +19563,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyInstanceAutoRenewAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyInstanceAutoRenewAttributeResponse:
+        """
+        @summary Configures auto-renewal for instances.
+        
+        @param request: ModifyInstanceAutoRenewAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceAutoRenewAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_renew):
@@ -15539,6 +19605,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ModifyInstanceAutoRenewAttributeRequest,
     ) -> ens_20171110_models.ModifyInstanceAutoRenewAttributeResponse:
+        """
+        @summary Configures auto-renewal for instances.
+        
+        @param request: ModifyInstanceAutoRenewAttributeRequest
+        @return: ModifyInstanceAutoRenewAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_instance_auto_renew_attribute_with_options(request, runtime)
 
@@ -15546,6 +19618,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ModifyInstanceAutoRenewAttributeRequest,
     ) -> ens_20171110_models.ModifyInstanceAutoRenewAttributeResponse:
+        """
+        @summary Configures auto-renewal for instances.
+        
+        @param request: ModifyInstanceAutoRenewAttributeRequest
+        @return: ModifyInstanceAutoRenewAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_auto_renew_attribute_with_options_async(request, runtime)
 
@@ -15554,6 +19632,16 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.ModifyInstanceChargeTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyInstanceChargeTypeResponse:
+        """
+        @summary Changes the billing method of Edge Node Service (ENS) instances. You can switch between the pay-as-you-go and subscription billing methods for instances. You can also change the billing method for disks that you created with pay-as-you-go instances to subscription.
+        
+        @description Before you call this operation, make sure that you fully understand the billing methods and pricing of ENS.
+        The instances must be in the Running or Stopped state, and you have no overdue payments for them.
+        
+        @param tmp_req: ModifyInstanceChargeTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceChargeTypeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.ModifyInstanceChargeTypeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15598,6 +19686,16 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.ModifyInstanceChargeTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyInstanceChargeTypeResponse:
+        """
+        @summary Changes the billing method of Edge Node Service (ENS) instances. You can switch between the pay-as-you-go and subscription billing methods for instances. You can also change the billing method for disks that you created with pay-as-you-go instances to subscription.
+        
+        @description Before you call this operation, make sure that you fully understand the billing methods and pricing of ENS.
+        The instances must be in the Running or Stopped state, and you have no overdue payments for them.
+        
+        @param tmp_req: ModifyInstanceChargeTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceChargeTypeResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.ModifyInstanceChargeTypeShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15641,6 +19739,15 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ModifyInstanceChargeTypeRequest,
     ) -> ens_20171110_models.ModifyInstanceChargeTypeResponse:
+        """
+        @summary Changes the billing method of Edge Node Service (ENS) instances. You can switch between the pay-as-you-go and subscription billing methods for instances. You can also change the billing method for disks that you created with pay-as-you-go instances to subscription.
+        
+        @description Before you call this operation, make sure that you fully understand the billing methods and pricing of ENS.
+        The instances must be in the Running or Stopped state, and you have no overdue payments for them.
+        
+        @param request: ModifyInstanceChargeTypeRequest
+        @return: ModifyInstanceChargeTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_instance_charge_type_with_options(request, runtime)
 
@@ -15648,6 +19755,15 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ModifyInstanceChargeTypeRequest,
     ) -> ens_20171110_models.ModifyInstanceChargeTypeResponse:
+        """
+        @summary Changes the billing method of Edge Node Service (ENS) instances. You can switch between the pay-as-you-go and subscription billing methods for instances. You can also change the billing method for disks that you created with pay-as-you-go instances to subscription.
+        
+        @description Before you call this operation, make sure that you fully understand the billing methods and pricing of ENS.
+        The instances must be in the Running or Stopped state, and you have no overdue payments for them.
+        
+        @param request: ModifyInstanceChargeTypeRequest
+        @return: ModifyInstanceChargeTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_charge_type_with_options_async(request, runtime)
 
@@ -15657,8 +19773,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyLoadBalancerAttributeResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Modifies the information about an Edge Load Balancer (ELB) instance.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: ModifyLoadBalancerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15695,8 +19813,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyLoadBalancerAttributeResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Modifies the information about an Edge Load Balancer (ELB) instance.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: ModifyLoadBalancerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15732,8 +19852,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyLoadBalancerAttributeRequest,
     ) -> ens_20171110_models.ModifyLoadBalancerAttributeResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Modifies the information about an Edge Load Balancer (ELB) instance.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: ModifyLoadBalancerAttributeRequest
         @return: ModifyLoadBalancerAttributeResponse
@@ -15746,8 +19868,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyLoadBalancerAttributeRequest,
     ) -> ens_20171110_models.ModifyLoadBalancerAttributeResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Modifies the information about an Edge Load Balancer (ELB) instance.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: ModifyLoadBalancerAttributeRequest
         @return: ModifyLoadBalancerAttributeResponse
@@ -15761,8 +19885,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyNetworkAttributeResponse:
         """
-        You can call this operation up to 100 times per second.
-        *   You can call this operation up to 5 times per second per user.
+        @summary Modifies the network information.
+        
+        @description    You can call this operation up to 100 times per second.
+        You can call this operation up to 5 times per second per user.
         
         @param request: ModifyNetworkAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15801,8 +19927,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyNetworkAttributeResponse:
         """
-        You can call this operation up to 100 times per second.
-        *   You can call this operation up to 5 times per second per user.
+        @summary Modifies the network information.
+        
+        @description    You can call this operation up to 100 times per second.
+        You can call this operation up to 5 times per second per user.
         
         @param request: ModifyNetworkAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15840,8 +19968,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyNetworkAttributeRequest,
     ) -> ens_20171110_models.ModifyNetworkAttributeResponse:
         """
-        You can call this operation up to 100 times per second.
-        *   You can call this operation up to 5 times per second per user.
+        @summary Modifies the network information.
+        
+        @description    You can call this operation up to 100 times per second.
+        You can call this operation up to 5 times per second per user.
         
         @param request: ModifyNetworkAttributeRequest
         @return: ModifyNetworkAttributeResponse
@@ -15854,8 +19984,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyNetworkAttributeRequest,
     ) -> ens_20171110_models.ModifyNetworkAttributeResponse:
         """
-        You can call this operation up to 100 times per second.
-        *   You can call this operation up to 5 times per second per user.
+        @summary Modifies the network information.
+        
+        @description    You can call this operation up to 100 times per second.
+        You can call this operation up to 5 times per second per user.
         
         @param request: ModifyNetworkAttributeRequest
         @return: ModifyNetworkAttributeResponse
@@ -15868,6 +20000,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyPrepayInstanceSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyPrepayInstanceSpecResponse:
+        """
+        @summary Upgrades or downgrades the instance type of a subscription Edge Node Service (ENS) instance. The new instance type takes effect for the remaining lifecycle of the instance.
+        
+        @param request: ModifyPrepayInstanceSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPrepayInstanceSpecResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -15898,6 +20037,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyPrepayInstanceSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyPrepayInstanceSpecResponse:
+        """
+        @summary Upgrades or downgrades the instance type of a subscription Edge Node Service (ENS) instance. The new instance type takes effect for the remaining lifecycle of the instance.
+        
+        @param request: ModifyPrepayInstanceSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyPrepayInstanceSpecResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -15927,6 +20073,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ModifyPrepayInstanceSpecRequest,
     ) -> ens_20171110_models.ModifyPrepayInstanceSpecResponse:
+        """
+        @summary Upgrades or downgrades the instance type of a subscription Edge Node Service (ENS) instance. The new instance type takes effect for the remaining lifecycle of the instance.
+        
+        @param request: ModifyPrepayInstanceSpecRequest
+        @return: ModifyPrepayInstanceSpecResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_prepay_instance_spec_with_options(request, runtime)
 
@@ -15934,6 +20086,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ModifyPrepayInstanceSpecRequest,
     ) -> ens_20171110_models.ModifyPrepayInstanceSpecResponse:
+        """
+        @summary Upgrades or downgrades the instance type of a subscription Edge Node Service (ENS) instance. The new instance type takes effect for the remaining lifecycle of the instance.
+        
+        @param request: ModifyPrepayInstanceSpecRequest
+        @return: ModifyPrepayInstanceSpecResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_prepay_instance_spec_with_options_async(request, runtime)
 
@@ -15943,8 +20101,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifySecurityGroupAttributeResponse:
         """
-        You can call this operation up to 100 times per second.
-        *   You can call this operation up to 5 times per second per user.
+        @summary Modifies the information about a security group.
+        
+        @description    You can call this operation up to 100 times per second.
+        You can call this operation up to 5 times per second per user.
         
         @param request: ModifySecurityGroupAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -15983,8 +20143,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifySecurityGroupAttributeResponse:
         """
-        You can call this operation up to 100 times per second.
-        *   You can call this operation up to 5 times per second per user.
+        @summary Modifies the information about a security group.
+        
+        @description    You can call this operation up to 100 times per second.
+        You can call this operation up to 5 times per second per user.
         
         @param request: ModifySecurityGroupAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16022,8 +20184,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifySecurityGroupAttributeRequest,
     ) -> ens_20171110_models.ModifySecurityGroupAttributeResponse:
         """
-        You can call this operation up to 100 times per second.
-        *   You can call this operation up to 5 times per second per user.
+        @summary Modifies the information about a security group.
+        
+        @description    You can call this operation up to 100 times per second.
+        You can call this operation up to 5 times per second per user.
         
         @param request: ModifySecurityGroupAttributeRequest
         @return: ModifySecurityGroupAttributeResponse
@@ -16036,8 +20200,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifySecurityGroupAttributeRequest,
     ) -> ens_20171110_models.ModifySecurityGroupAttributeResponse:
         """
-        You can call this operation up to 100 times per second.
-        *   You can call this operation up to 5 times per second per user.
+        @summary Modifies the information about a security group.
+        
+        @description    You can call this operation up to 100 times per second.
+        You can call this operation up to 5 times per second per user.
         
         @param request: ModifySecurityGroupAttributeRequest
         @return: ModifySecurityGroupAttributeResponse
@@ -16050,6 +20216,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifySnapshotAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifySnapshotAttributeResponse:
+        """
+        @summary Modifies the information about a snapshot.
+        
+        @param request: ModifySnapshotAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySnapshotAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -16082,6 +20255,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifySnapshotAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifySnapshotAttributeResponse:
+        """
+        @summary Modifies the information about a snapshot.
+        
+        @param request: ModifySnapshotAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySnapshotAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -16113,6 +20293,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ModifySnapshotAttributeRequest,
     ) -> ens_20171110_models.ModifySnapshotAttributeResponse:
+        """
+        @summary Modifies the information about a snapshot.
+        
+        @param request: ModifySnapshotAttributeRequest
+        @return: ModifySnapshotAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_snapshot_attribute_with_options(request, runtime)
 
@@ -16120,6 +20306,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ModifySnapshotAttributeRequest,
     ) -> ens_20171110_models.ModifySnapshotAttributeResponse:
+        """
+        @summary Modifies the information about a snapshot.
+        
+        @param request: ModifySnapshotAttributeRequest
+        @return: ModifySnapshotAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_snapshot_attribute_with_options_async(request, runtime)
 
@@ -16129,8 +20321,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyVSwitchAttributeResponse:
         """
-        You can call this operation up to 100 times per second.
-        *   You can call this operation up to 5 times per second per user.
+        @summary Modifies information about a vSwitch.
+        
+        @description    You can call this operation up to 100 times per second.
+        You can call this operation up to 5 times per second per user.
         
         @param request: ModifyVSwitchAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16169,8 +20363,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ModifyVSwitchAttributeResponse:
         """
-        You can call this operation up to 100 times per second.
-        *   You can call this operation up to 5 times per second per user.
+        @summary Modifies information about a vSwitch.
+        
+        @description    You can call this operation up to 100 times per second.
+        You can call this operation up to 5 times per second per user.
         
         @param request: ModifyVSwitchAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16208,8 +20404,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyVSwitchAttributeRequest,
     ) -> ens_20171110_models.ModifyVSwitchAttributeResponse:
         """
-        You can call this operation up to 100 times per second.
-        *   You can call this operation up to 5 times per second per user.
+        @summary Modifies information about a vSwitch.
+        
+        @description    You can call this operation up to 100 times per second.
+        You can call this operation up to 5 times per second per user.
         
         @param request: ModifyVSwitchAttributeRequest
         @return: ModifyVSwitchAttributeResponse
@@ -16222,8 +20420,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ModifyVSwitchAttributeRequest,
     ) -> ens_20171110_models.ModifyVSwitchAttributeResponse:
         """
-        You can call this operation up to 100 times per second.
-        *   You can call this operation up to 5 times per second per user.
+        @summary Modifies information about a vSwitch.
+        
+        @description    You can call this operation up to 100 times per second.
+        You can call this operation up to 5 times per second per user.
         
         @param request: ModifyVSwitchAttributeRequest
         @return: ModifyVSwitchAttributeResponse
@@ -16236,6 +20436,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.PushApplicationDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.PushApplicationDataResponse:
+        """
+        @summary Pushes the business or service data of an application to file servers.
+        
+        @param request: PushApplicationDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushApplicationDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -16270,6 +20477,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.PushApplicationDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.PushApplicationDataResponse:
+        """
+        @summary Pushes the business or service data of an application to file servers.
+        
+        @param request: PushApplicationDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PushApplicationDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -16303,6 +20517,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.PushApplicationDataRequest,
     ) -> ens_20171110_models.PushApplicationDataResponse:
+        """
+        @summary Pushes the business or service data of an application to file servers.
+        
+        @param request: PushApplicationDataRequest
+        @return: PushApplicationDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.push_application_data_with_options(request, runtime)
 
@@ -16310,6 +20530,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.PushApplicationDataRequest,
     ) -> ens_20171110_models.PushApplicationDataResponse:
+        """
+        @summary Pushes the business or service data of an application to file servers.
+        
+        @param request: PushApplicationDataRequest
+        @return: PushApplicationDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.push_application_data_with_options_async(request, runtime)
 
@@ -16318,6 +20544,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.PutBucketRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.PutBucketResponse:
+        """
+        @summary Creates an EOS bucket.
+        
+        @param request: PutBucketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutBucketResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.bucket_acl):
@@ -16354,6 +20587,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.PutBucketRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.PutBucketResponse:
+        """
+        @summary Creates an EOS bucket.
+        
+        @param request: PutBucketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutBucketResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.bucket_acl):
@@ -16389,6 +20629,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.PutBucketRequest,
     ) -> ens_20171110_models.PutBucketResponse:
+        """
+        @summary Creates an EOS bucket.
+        
+        @param request: PutBucketRequest
+        @return: PutBucketResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.put_bucket_with_options(request, runtime)
 
@@ -16396,6 +20642,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.PutBucketRequest,
     ) -> ens_20171110_models.PutBucketResponse:
+        """
+        @summary Creates an EOS bucket.
+        
+        @param request: PutBucketRequest
+        @return: PutBucketResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.put_bucket_with_options_async(request, runtime)
 
@@ -16404,6 +20656,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.PutBucketAclRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.PutBucketAclResponse:
+        """
+        @summary Modifies the access control list (ACL) of a bucket.
+        
+        @param request: PutBucketAclRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutBucketAclResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bucket_acl):
@@ -16434,6 +20693,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.PutBucketAclRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.PutBucketAclResponse:
+        """
+        @summary Modifies the access control list (ACL) of a bucket.
+        
+        @param request: PutBucketAclRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutBucketAclResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bucket_acl):
@@ -16463,6 +20729,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.PutBucketAclRequest,
     ) -> ens_20171110_models.PutBucketAclResponse:
+        """
+        @summary Modifies the access control list (ACL) of a bucket.
+        
+        @param request: PutBucketAclRequest
+        @return: PutBucketAclResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.put_bucket_acl_with_options(request, runtime)
 
@@ -16470,6 +20742,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.PutBucketAclRequest,
     ) -> ens_20171110_models.PutBucketAclResponse:
+        """
+        @summary Modifies the access control list (ACL) of a bucket.
+        
+        @param request: PutBucketAclRequest
+        @return: PutBucketAclResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.put_bucket_acl_with_options_async(request, runtime)
 
@@ -16479,7 +20757,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.PutBucketLifecycleResponse:
         """
-        - You can configure up to 1000 rules.
+        @summary Configures lifecycle rules for objects.
+        
+        @description - You can configure up to 1000 rules.
         - If an object meets multiple rules, the rule that has the earliest expiration time prevails.
         
         @param request: PutBucketLifecycleRequest
@@ -16527,7 +20807,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.PutBucketLifecycleResponse:
         """
-        - You can configure up to 1000 rules.
+        @summary Configures lifecycle rules for objects.
+        
+        @description - You can configure up to 1000 rules.
         - If an object meets multiple rules, the rule that has the earliest expiration time prevails.
         
         @param request: PutBucketLifecycleRequest
@@ -16574,7 +20856,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.PutBucketLifecycleRequest,
     ) -> ens_20171110_models.PutBucketLifecycleResponse:
         """
-        - You can configure up to 1000 rules.
+        @summary Configures lifecycle rules for objects.
+        
+        @description - You can configure up to 1000 rules.
         - If an object meets multiple rules, the rule that has the earliest expiration time prevails.
         
         @param request: PutBucketLifecycleRequest
@@ -16588,7 +20872,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.PutBucketLifecycleRequest,
     ) -> ens_20171110_models.PutBucketLifecycleResponse:
         """
-        - You can configure up to 1000 rules.
+        @summary Configures lifecycle rules for objects.
+        
+        @description - You can configure up to 1000 rules.
         - If an object meets multiple rules, the rule that has the earliest expiration time prevails.
         
         @param request: PutBucketLifecycleRequest
@@ -16602,6 +20888,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ReInitDiskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ReInitDiskResponse:
+        """
+        @summary Initializes a disk.
+        
+        @param request: ReInitDiskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReInitDiskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.disk_id):
@@ -16632,6 +20925,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ReInitDiskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ReInitDiskResponse:
+        """
+        @summary Initializes a disk.
+        
+        @param request: ReInitDiskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReInitDiskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.disk_id):
@@ -16661,6 +20961,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ReInitDiskRequest,
     ) -> ens_20171110_models.ReInitDiskResponse:
+        """
+        @summary Initializes a disk.
+        
+        @param request: ReInitDiskRequest
+        @return: ReInitDiskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.re_init_disk_with_options(request, runtime)
 
@@ -16668,6 +20974,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ReInitDiskRequest,
     ) -> ens_20171110_models.ReInitDiskResponse:
+        """
+        @summary Initializes a disk.
+        
+        @param request: ReInitDiskRequest
+        @return: ReInitDiskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.re_init_disk_with_options_async(request, runtime)
 
@@ -16676,6 +20988,13 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.RebootAICInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RebootAICInstanceResponse:
+        """
+        @summary Restarts an Android in Container (AIC) instance.
+        
+        @param tmp_req: RebootAICInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RebootAICInstanceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.RebootAICInstanceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -16706,6 +21025,13 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.RebootAICInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RebootAICInstanceResponse:
+        """
+        @summary Restarts an Android in Container (AIC) instance.
+        
+        @param tmp_req: RebootAICInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RebootAICInstanceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.RebootAICInstanceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -16735,6 +21061,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.RebootAICInstanceRequest,
     ) -> ens_20171110_models.RebootAICInstanceResponse:
+        """
+        @summary Restarts an Android in Container (AIC) instance.
+        
+        @param request: RebootAICInstanceRequest
+        @return: RebootAICInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reboot_aicinstance_with_options(request, runtime)
 
@@ -16742,6 +21074,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.RebootAICInstanceRequest,
     ) -> ens_20171110_models.RebootAICInstanceResponse:
+        """
+        @summary Restarts an Android in Container (AIC) instance.
+        
+        @param request: RebootAICInstanceRequest
+        @return: RebootAICInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reboot_aicinstance_with_options_async(request, runtime)
 
@@ -16750,6 +21088,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RebootARMServerInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RebootARMServerInstanceResponse:
+        """
+        @summary Reboots an Android in Container (AIC) server.
+        
+        @param request: RebootARMServerInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RebootARMServerInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -16776,6 +21121,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RebootARMServerInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RebootARMServerInstanceResponse:
+        """
+        @summary Reboots an Android in Container (AIC) server.
+        
+        @param request: RebootARMServerInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RebootARMServerInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -16801,6 +21153,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.RebootARMServerInstanceRequest,
     ) -> ens_20171110_models.RebootARMServerInstanceResponse:
+        """
+        @summary Reboots an Android in Container (AIC) server.
+        
+        @param request: RebootARMServerInstanceRequest
+        @return: RebootARMServerInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reboot_armserver_instance_with_options(request, runtime)
 
@@ -16808,6 +21166,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.RebootARMServerInstanceRequest,
     ) -> ens_20171110_models.RebootARMServerInstanceResponse:
+        """
+        @summary Reboots an Android in Container (AIC) server.
+        
+        @param request: RebootARMServerInstanceRequest
+        @return: RebootARMServerInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reboot_armserver_instance_with_options_async(request, runtime)
 
@@ -16817,8 +21181,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RebootInstanceResponse:
         """
-        Only instances that are in the Running state can be restarted.
-        *   If the operation is successful, the status of the instance becomes Starting.
+        @summary Reboots an instance.
+        
+        @description    Only instances that are in the Running state can be restarted.
+        If the operation is successful, the status of the instance becomes Starting.
         
         @param request: RebootInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16855,8 +21221,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RebootInstanceResponse:
         """
-        Only instances that are in the Running state can be restarted.
-        *   If the operation is successful, the status of the instance becomes Starting.
+        @summary Reboots an instance.
+        
+        @description    Only instances that are in the Running state can be restarted.
+        If the operation is successful, the status of the instance becomes Starting.
         
         @param request: RebootInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -16892,8 +21260,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RebootInstanceRequest,
     ) -> ens_20171110_models.RebootInstanceResponse:
         """
-        Only instances that are in the Running state can be restarted.
-        *   If the operation is successful, the status of the instance becomes Starting.
+        @summary Reboots an instance.
+        
+        @description    Only instances that are in the Running state can be restarted.
+        If the operation is successful, the status of the instance becomes Starting.
         
         @param request: RebootInstanceRequest
         @return: RebootInstanceResponse
@@ -16906,8 +21276,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RebootInstanceRequest,
     ) -> ens_20171110_models.RebootInstanceResponse:
         """
-        Only instances that are in the Running state can be restarted.
-        *   If the operation is successful, the status of the instance becomes Starting.
+        @summary Reboots an instance.
+        
+        @description    Only instances that are in the Running state can be restarted.
+        If the operation is successful, the status of the instance becomes Starting.
         
         @param request: RebootInstanceRequest
         @return: RebootInstanceResponse
@@ -16920,6 +21292,13 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.RebootInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RebootInstancesResponse:
+        """
+        @summary 选择批量实例进行重启操作
+        
+        @param tmp_req: RebootInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RebootInstancesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.RebootInstancesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -16952,6 +21331,13 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.RebootInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RebootInstancesResponse:
+        """
+        @summary 选择批量实例进行重启操作
+        
+        @param tmp_req: RebootInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RebootInstancesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.RebootInstancesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -16983,6 +21369,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.RebootInstancesRequest,
     ) -> ens_20171110_models.RebootInstancesResponse:
+        """
+        @summary 选择批量实例进行重启操作
+        
+        @param request: RebootInstancesRequest
+        @return: RebootInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reboot_instances_with_options(request, runtime)
 
@@ -16990,6 +21382,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.RebootInstancesRequest,
     ) -> ens_20171110_models.RebootInstancesResponse:
+        """
+        @summary 选择批量实例进行重启操作
+        
+        @param request: RebootInstancesRequest
+        @return: RebootInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reboot_instances_with_options_async(request, runtime)
 
@@ -16998,6 +21396,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RecoverAICInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RecoverAICInstanceResponse:
+        """
+        @summary Recovers an Android in Container (AIC) instance on the server.
+        
+        @param request: RecoverAICInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RecoverAICInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -17024,6 +21429,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RecoverAICInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RecoverAICInstanceResponse:
+        """
+        @summary Recovers an Android in Container (AIC) instance on the server.
+        
+        @param request: RecoverAICInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RecoverAICInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -17049,6 +21461,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.RecoverAICInstanceRequest,
     ) -> ens_20171110_models.RecoverAICInstanceResponse:
+        """
+        @summary Recovers an Android in Container (AIC) instance on the server.
+        
+        @param request: RecoverAICInstanceRequest
+        @return: RecoverAICInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.recover_aicinstance_with_options(request, runtime)
 
@@ -17056,6 +21474,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.RecoverAICInstanceRequest,
     ) -> ens_20171110_models.RecoverAICInstanceResponse:
+        """
+        @summary Recovers an Android in Container (AIC) instance on the server.
+        
+        @param request: RecoverAICInstanceRequest
+        @return: RecoverAICInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.recover_aicinstance_with_options_async(request, runtime)
 
@@ -17064,6 +21488,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ReinitInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ReinitInstanceResponse:
+        """
+        @summary Resets an instance based on specific parameters.
+        
+        @param request: ReinitInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReinitInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.image_id):
@@ -17096,6 +21527,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ReinitInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ReinitInstanceResponse:
+        """
+        @summary Resets an instance based on specific parameters.
+        
+        @param request: ReinitInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReinitInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.image_id):
@@ -17127,6 +21565,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ReinitInstanceRequest,
     ) -> ens_20171110_models.ReinitInstanceResponse:
+        """
+        @summary Resets an instance based on specific parameters.
+        
+        @param request: ReinitInstanceRequest
+        @return: ReinitInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reinit_instance_with_options(request, runtime)
 
@@ -17134,6 +21578,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ReinitInstanceRequest,
     ) -> ens_20171110_models.ReinitInstanceResponse:
+        """
+        @summary Resets an instance based on specific parameters.
+        
+        @param request: ReinitInstanceRequest
+        @return: ReinitInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reinit_instance_with_options_async(request, runtime)
 
@@ -17142,6 +21592,13 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.ReinitInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ReinitInstancesResponse:
+        """
+        @summary 选择批量实例进行重置操作
+        
+        @param tmp_req: ReinitInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReinitInstancesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.ReinitInstancesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -17178,6 +21635,13 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.ReinitInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ReinitInstancesResponse:
+        """
+        @summary 选择批量实例进行重置操作
+        
+        @param tmp_req: ReinitInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReinitInstancesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.ReinitInstancesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -17213,6 +21677,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ReinitInstancesRequest,
     ) -> ens_20171110_models.ReinitInstancesResponse:
+        """
+        @summary 选择批量实例进行重置操作
+        
+        @param request: ReinitInstancesRequest
+        @return: ReinitInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reinit_instances_with_options(request, runtime)
 
@@ -17220,6 +21690,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ReinitInstancesRequest,
     ) -> ens_20171110_models.ReinitInstancesResponse:
+        """
+        @summary 选择批量实例进行重置操作
+        
+        @param request: ReinitInstancesRequest
+        @return: ReinitInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reinit_instances_with_options_async(request, runtime)
 
@@ -17228,6 +21704,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ReleaseAICInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ReleaseAICInstanceResponse:
+        """
+        @summary Releases an Android in Container (AIC) instance from the server.
+        
+        @param request: ReleaseAICInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseAICInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.server_id):
@@ -17256,6 +21739,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ReleaseAICInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ReleaseAICInstanceResponse:
+        """
+        @summary Releases an Android in Container (AIC) instance from the server.
+        
+        @param request: ReleaseAICInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseAICInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.server_id):
@@ -17283,6 +21773,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ReleaseAICInstanceRequest,
     ) -> ens_20171110_models.ReleaseAICInstanceResponse:
+        """
+        @summary Releases an Android in Container (AIC) instance from the server.
+        
+        @param request: ReleaseAICInstanceRequest
+        @return: ReleaseAICInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.release_aicinstance_with_options(request, runtime)
 
@@ -17290,6 +21786,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ReleaseAICInstanceRequest,
     ) -> ens_20171110_models.ReleaseAICInstanceResponse:
+        """
+        @summary Releases an Android in Container (AIC) instance from the server.
+        
+        @param request: ReleaseAICInstanceRequest
+        @return: ReleaseAICInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.release_aicinstance_with_options_async(request, runtime)
 
@@ -17298,6 +21800,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ReleaseARMServerInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ReleaseARMServerInstanceResponse:
+        """
+        @summary Releases an ARM server.
+        
+        @param request: ReleaseARMServerInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseARMServerInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -17326,6 +21835,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ReleaseARMServerInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ReleaseARMServerInstanceResponse:
+        """
+        @summary Releases an ARM server.
+        
+        @param request: ReleaseARMServerInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseARMServerInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -17353,6 +21869,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ReleaseARMServerInstanceRequest,
     ) -> ens_20171110_models.ReleaseARMServerInstanceResponse:
+        """
+        @summary Releases an ARM server.
+        
+        @param request: ReleaseARMServerInstanceRequest
+        @return: ReleaseARMServerInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.release_armserver_instance_with_options(request, runtime)
 
@@ -17360,6 +21882,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ReleaseARMServerInstanceRequest,
     ) -> ens_20171110_models.ReleaseARMServerInstanceResponse:
+        """
+        @summary Releases an ARM server.
+        
+        @param request: ReleaseARMServerInstanceRequest
+        @return: ReleaseARMServerInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.release_armserver_instance_with_options_async(request, runtime)
 
@@ -17369,8 +21897,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ReleaseInstanceResponse:
         """
-        You can call this operation up to 10,000 times per second per account.
-        *   The maximum number of times that each user can call this operation per second is 50.
+        @summary Releases an instance.
+        
+        @description    You can call this operation up to 10,000 times per second per account.
+        The maximum number of times that each user can call this operation per second is 50.
         
         @param request: ReleaseInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17405,8 +21935,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ReleaseInstanceResponse:
         """
-        You can call this operation up to 10,000 times per second per account.
-        *   The maximum number of times that each user can call this operation per second is 50.
+        @summary Releases an instance.
+        
+        @description    You can call this operation up to 10,000 times per second per account.
+        The maximum number of times that each user can call this operation per second is 50.
         
         @param request: ReleaseInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17440,8 +21972,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ReleaseInstanceRequest,
     ) -> ens_20171110_models.ReleaseInstanceResponse:
         """
-        You can call this operation up to 10,000 times per second per account.
-        *   The maximum number of times that each user can call this operation per second is 50.
+        @summary Releases an instance.
+        
+        @description    You can call this operation up to 10,000 times per second per account.
+        The maximum number of times that each user can call this operation per second is 50.
         
         @param request: ReleaseInstanceRequest
         @return: ReleaseInstanceResponse
@@ -17454,8 +21988,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ReleaseInstanceRequest,
     ) -> ens_20171110_models.ReleaseInstanceResponse:
         """
-        You can call this operation up to 10,000 times per second per account.
-        *   The maximum number of times that each user can call this operation per second is 50.
+        @summary Releases an instance.
+        
+        @description    You can call this operation up to 10,000 times per second per account.
+        The maximum number of times that each user can call this operation per second is 50.
         
         @param request: ReleaseInstanceRequest
         @return: ReleaseInstanceResponse
@@ -17468,6 +22004,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ReleasePostPaidInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ReleasePostPaidInstanceResponse:
+        """
+        @summary Deletes a pay-as-you-go instance.
+        
+        @param request: ReleasePostPaidInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleasePostPaidInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -17496,6 +22039,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ReleasePostPaidInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ReleasePostPaidInstanceResponse:
+        """
+        @summary Deletes a pay-as-you-go instance.
+        
+        @param request: ReleasePostPaidInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleasePostPaidInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -17523,6 +22073,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ReleasePostPaidInstanceRequest,
     ) -> ens_20171110_models.ReleasePostPaidInstanceResponse:
+        """
+        @summary Deletes a pay-as-you-go instance.
+        
+        @param request: ReleasePostPaidInstanceRequest
+        @return: ReleasePostPaidInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.release_post_paid_instance_with_options(request, runtime)
 
@@ -17530,6 +22086,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ReleasePostPaidInstanceRequest,
     ) -> ens_20171110_models.ReleasePostPaidInstanceResponse:
+        """
+        @summary Deletes a pay-as-you-go instance.
+        
+        @param request: ReleasePostPaidInstanceRequest
+        @return: ReleasePostPaidInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.release_post_paid_instance_with_options_async(request, runtime)
 
@@ -17538,6 +22100,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ReleasePrePaidInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ReleasePrePaidInstanceResponse:
+        """
+        @summary Call ReleasePrePaidInstance to delete a subscription instance.
+        
+        @param request: ReleasePrePaidInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleasePrePaidInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -17566,6 +22135,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ReleasePrePaidInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ReleasePrePaidInstanceResponse:
+        """
+        @summary Call ReleasePrePaidInstance to delete a subscription instance.
+        
+        @param request: ReleasePrePaidInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleasePrePaidInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -17593,6 +22169,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ReleasePrePaidInstanceRequest,
     ) -> ens_20171110_models.ReleasePrePaidInstanceResponse:
+        """
+        @summary Call ReleasePrePaidInstance to delete a subscription instance.
+        
+        @param request: ReleasePrePaidInstanceRequest
+        @return: ReleasePrePaidInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.release_pre_paid_instance_with_options(request, runtime)
 
@@ -17600,6 +22182,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ReleasePrePaidInstanceRequest,
     ) -> ens_20171110_models.ReleasePrePaidInstanceResponse:
+        """
+        @summary Call ReleasePrePaidInstance to delete a subscription instance.
+        
+        @param request: ReleasePrePaidInstanceRequest
+        @return: ReleasePrePaidInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.release_pre_paid_instance_with_options_async(request, runtime)
 
@@ -17609,8 +22197,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RemoveBackendServersResponse:
         """
-        You can call this operation up to 100 times per second.
-        *   You can call this operation up to 10 times per second per account.
+        @summary Removes backend servers.
+        
+        @description    You can call this operation up to 100 times per second.
+        You can call this operation up to 10 times per second per account.
         
         @param tmp_req: RemoveBackendServersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17651,8 +22241,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RemoveBackendServersResponse:
         """
-        You can call this operation up to 100 times per second.
-        *   You can call this operation up to 10 times per second per account.
+        @summary Removes backend servers.
+        
+        @description    You can call this operation up to 100 times per second.
+        You can call this operation up to 10 times per second per account.
         
         @param tmp_req: RemoveBackendServersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17692,8 +22284,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RemoveBackendServersRequest,
     ) -> ens_20171110_models.RemoveBackendServersResponse:
         """
-        You can call this operation up to 100 times per second.
-        *   You can call this operation up to 10 times per second per account.
+        @summary Removes backend servers.
+        
+        @description    You can call this operation up to 100 times per second.
+        You can call this operation up to 10 times per second per account.
         
         @param request: RemoveBackendServersRequest
         @return: RemoveBackendServersResponse
@@ -17706,8 +22300,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RemoveBackendServersRequest,
     ) -> ens_20171110_models.RemoveBackendServersResponse:
         """
-        You can call this operation up to 100 times per second.
-        *   You can call this operation up to 10 times per second per account.
+        @summary Removes backend servers.
+        
+        @description    You can call this operation up to 100 times per second.
+        You can call this operation up to 10 times per second per account.
         
         @param request: RemoveBackendServersRequest
         @return: RemoveBackendServersResponse
@@ -17720,6 +22316,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RemovePublicIpsFromEpnInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RemovePublicIpsFromEpnInstanceResponse:
+        """
+        @summary Removes IP addresses from an edge private network (EPN) instance.
+        
+        @param request: RemovePublicIpsFromEpnInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemovePublicIpsFromEpnInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.epninstance_id):
@@ -17750,6 +22353,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RemovePublicIpsFromEpnInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RemovePublicIpsFromEpnInstanceResponse:
+        """
+        @summary Removes IP addresses from an edge private network (EPN) instance.
+        
+        @param request: RemovePublicIpsFromEpnInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemovePublicIpsFromEpnInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.epninstance_id):
@@ -17779,6 +22389,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.RemovePublicIpsFromEpnInstanceRequest,
     ) -> ens_20171110_models.RemovePublicIpsFromEpnInstanceResponse:
+        """
+        @summary Removes IP addresses from an edge private network (EPN) instance.
+        
+        @param request: RemovePublicIpsFromEpnInstanceRequest
+        @return: RemovePublicIpsFromEpnInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_public_ips_from_epn_instance_with_options(request, runtime)
 
@@ -17786,14 +22402,127 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.RemovePublicIpsFromEpnInstanceRequest,
     ) -> ens_20171110_models.RemovePublicIpsFromEpnInstanceResponse:
+        """
+        @summary Removes IP addresses from an edge private network (EPN) instance.
+        
+        @param request: RemovePublicIpsFromEpnInstanceRequest
+        @return: RemovePublicIpsFromEpnInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_public_ips_from_epn_instance_with_options_async(request, runtime)
+
+    def remove_sdgwith_options(
+        self,
+        tmp_req: ens_20171110_models.RemoveSDGRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.RemoveSDGResponse:
+        """
+        @summary Removes shared data groups (SDGs) that are deployed on instances.
+        
+        @param tmp_req: RemoveSDGRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveSDGResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.RemoveSDGShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveSDG',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.RemoveSDGResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_sdgwith_options_async(
+        self,
+        tmp_req: ens_20171110_models.RemoveSDGRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.RemoveSDGResponse:
+        """
+        @summary Removes shared data groups (SDGs) that are deployed on instances.
+        
+        @param tmp_req: RemoveSDGRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveSDGResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ens_20171110_models.RemoveSDGShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.instance_ids):
+            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='RemoveSDG',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.RemoveSDGResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_sdg(
+        self,
+        request: ens_20171110_models.RemoveSDGRequest,
+    ) -> ens_20171110_models.RemoveSDGResponse:
+        """
+        @summary Removes shared data groups (SDGs) that are deployed on instances.
+        
+        @param request: RemoveSDGRequest
+        @return: RemoveSDGResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.remove_sdgwith_options(request, runtime)
+
+    async def remove_sdg_async(
+        self,
+        request: ens_20171110_models.RemoveSDGRequest,
+    ) -> ens_20171110_models.RemoveSDGResponse:
+        """
+        @summary Removes shared data groups (SDGs) that are deployed on instances.
+        
+        @param request: RemoveSDGRequest
+        @return: RemoveSDGResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.remove_sdgwith_options_async(request, runtime)
 
     def remove_vswitches_from_epn_instance_with_options(
         self,
         request: ens_20171110_models.RemoveVSwitchesFromEpnInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RemoveVSwitchesFromEpnInstanceResponse:
+        """
+        @summary Deletes the networking information. This operation is applicable only for instances that reside in the internal network.
+        
+        @param request: RemoveVSwitchesFromEpnInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveVSwitchesFromEpnInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.epninstance_id):
@@ -17824,6 +22553,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RemoveVSwitchesFromEpnInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RemoveVSwitchesFromEpnInstanceResponse:
+        """
+        @summary Deletes the networking information. This operation is applicable only for instances that reside in the internal network.
+        
+        @param request: RemoveVSwitchesFromEpnInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveVSwitchesFromEpnInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.epninstance_id):
@@ -17853,6 +22589,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.RemoveVSwitchesFromEpnInstanceRequest,
     ) -> ens_20171110_models.RemoveVSwitchesFromEpnInstanceResponse:
+        """
+        @summary Deletes the networking information. This operation is applicable only for instances that reside in the internal network.
+        
+        @param request: RemoveVSwitchesFromEpnInstanceRequest
+        @return: RemoveVSwitchesFromEpnInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_vswitches_from_epn_instance_with_options(request, runtime)
 
@@ -17860,6 +22602,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.RemoveVSwitchesFromEpnInstanceRequest,
     ) -> ens_20171110_models.RemoveVSwitchesFromEpnInstanceResponse:
+        """
+        @summary Deletes the networking information. This operation is applicable only for instances that reside in the internal network.
+        
+        @param request: RemoveVSwitchesFromEpnInstanceRequest
+        @return: RemoveVSwitchesFromEpnInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_vswitches_from_epn_instance_with_options_async(request, runtime)
 
@@ -17868,6 +22616,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RenewARMServerInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RenewARMServerInstanceResponse:
+        """
+        @summary Renews a subscription Android in Container (AIC) instance.
+        
+        @param request: RenewARMServerInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewARMServerInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_renew):
@@ -17902,6 +22657,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RenewARMServerInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RenewARMServerInstanceResponse:
+        """
+        @summary Renews a subscription Android in Container (AIC) instance.
+        
+        @param request: RenewARMServerInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewARMServerInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_renew):
@@ -17935,6 +22697,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.RenewARMServerInstanceRequest,
     ) -> ens_20171110_models.RenewARMServerInstanceResponse:
+        """
+        @summary Renews a subscription Android in Container (AIC) instance.
+        
+        @param request: RenewARMServerInstanceRequest
+        @return: RenewARMServerInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.renew_armserver_instance_with_options(request, runtime)
 
@@ -17942,6 +22710,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.RenewARMServerInstanceRequest,
     ) -> ens_20171110_models.RenewARMServerInstanceResponse:
+        """
+        @summary Renews a subscription Android in Container (AIC) instance.
+        
+        @param request: RenewARMServerInstanceRequest
+        @return: RenewARMServerInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.renew_armserver_instance_with_options_async(request, runtime)
 
@@ -17950,6 +22724,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RenewInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RenewInstanceResponse:
+        """
+        @summary Renews a subscription instance.
+        
+        @param request: RenewInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -17976,6 +22757,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RenewInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RenewInstanceResponse:
+        """
+        @summary Renews a subscription instance.
+        
+        @param request: RenewInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -18001,6 +22789,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.RenewInstanceRequest,
     ) -> ens_20171110_models.RenewInstanceResponse:
+        """
+        @summary Renews a subscription instance.
+        
+        @param request: RenewInstanceRequest
+        @return: RenewInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.renew_instance_with_options(request, runtime)
 
@@ -18008,6 +22802,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.RenewInstanceRequest,
     ) -> ens_20171110_models.RenewInstanceResponse:
+        """
+        @summary Renews a subscription instance.
+        
+        @param request: RenewInstanceRequest
+        @return: RenewInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.renew_instance_with_options_async(request, runtime)
 
@@ -18016,6 +22816,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RescaleApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RescaleApplicationResponse:
+        """
+        @summary Scales resources in an asynchronous manner and deploys or releases the container.
+        
+        @param request: RescaleApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RescaleApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -18054,6 +22861,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RescaleApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RescaleApplicationResponse:
+        """
+        @summary Scales resources in an asynchronous manner and deploys or releases the container.
+        
+        @param request: RescaleApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RescaleApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -18091,6 +22905,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.RescaleApplicationRequest,
     ) -> ens_20171110_models.RescaleApplicationResponse:
+        """
+        @summary Scales resources in an asynchronous manner and deploys or releases the container.
+        
+        @param request: RescaleApplicationRequest
+        @return: RescaleApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.rescale_application_with_options(request, runtime)
 
@@ -18098,6 +22918,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.RescaleApplicationRequest,
     ) -> ens_20171110_models.RescaleApplicationResponse:
+        """
+        @summary Scales resources in an asynchronous manner and deploys or releases the container.
+        
+        @param request: RescaleApplicationRequest
+        @return: RescaleApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.rescale_application_with_options_async(request, runtime)
 
@@ -18106,6 +22932,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RescaleDeviceServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RescaleDeviceServiceResponse:
+        """
+        @summary Scales out a bare metal device.
+        
+        @param request: RescaleDeviceServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RescaleDeviceServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -18154,6 +22987,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RescaleDeviceServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RescaleDeviceServiceResponse:
+        """
+        @summary Scales out a bare metal device.
+        
+        @param request: RescaleDeviceServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RescaleDeviceServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -18201,6 +23041,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.RescaleDeviceServiceRequest,
     ) -> ens_20171110_models.RescaleDeviceServiceResponse:
+        """
+        @summary Scales out a bare metal device.
+        
+        @param request: RescaleDeviceServiceRequest
+        @return: RescaleDeviceServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.rescale_device_service_with_options(request, runtime)
 
@@ -18208,19 +23054,28 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.RescaleDeviceServiceRequest,
     ) -> ens_20171110_models.RescaleDeviceServiceResponse:
+        """
+        @summary Scales out a bare metal device.
+        
+        @param request: RescaleDeviceServiceRequest
+        @return: RescaleDeviceServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.rescale_device_service_with_options_async(request, runtime)
 
     def reset_aicinstance_with_options(
         self,
-        tmp_req: ens_20171110_models.ResetAICInstanceRequest,
+        request: ens_20171110_models.ResetAICInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ResetAICInstanceResponse:
-        UtilClient.validate_model(tmp_req)
-        request = ens_20171110_models.ResetAICInstanceShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.instance_ids):
-            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        """
+        @summary Resets an Android in Container (AIC) instance.
+        
+        @param request: ResetAICInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetAICInstanceResponse
+        """
+        UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -18243,14 +23098,17 @@ class Client(OpenApiClient):
 
     async def reset_aicinstance_with_options_async(
         self,
-        tmp_req: ens_20171110_models.ResetAICInstanceRequest,
+        request: ens_20171110_models.ResetAICInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ResetAICInstanceResponse:
-        UtilClient.validate_model(tmp_req)
-        request = ens_20171110_models.ResetAICInstanceShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.instance_ids):
-            request.instance_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_ids, 'InstanceIds', 'json')
+        """
+        @summary Resets an Android in Container (AIC) instance.
+        
+        @param request: ResetAICInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetAICInstanceResponse
+        """
+        UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
@@ -18275,6 +23133,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ResetAICInstanceRequest,
     ) -> ens_20171110_models.ResetAICInstanceResponse:
+        """
+        @summary Resets an Android in Container (AIC) instance.
+        
+        @param request: ResetAICInstanceRequest
+        @return: ResetAICInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reset_aicinstance_with_options(request, runtime)
 
@@ -18282,6 +23146,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ResetAICInstanceRequest,
     ) -> ens_20171110_models.ResetAICInstanceResponse:
+        """
+        @summary Resets an Android in Container (AIC) instance.
+        
+        @param request: ResetAICInstanceRequest
+        @return: ResetAICInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reset_aicinstance_with_options_async(request, runtime)
 
@@ -18290,6 +23160,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ResetDeviceInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ResetDeviceInstanceResponse:
+        """
+        @summary Resets an instance including its image.
+        
+        @param request: ResetDeviceInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetDeviceInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -18316,6 +23193,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ResetDeviceInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ResetDeviceInstanceResponse:
+        """
+        @summary Resets an instance including its image.
+        
+        @param request: ResetDeviceInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetDeviceInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -18341,6 +23225,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ResetDeviceInstanceRequest,
     ) -> ens_20171110_models.ResetDeviceInstanceResponse:
+        """
+        @summary Resets an instance including its image.
+        
+        @param request: ResetDeviceInstanceRequest
+        @return: ResetDeviceInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reset_device_instance_with_options(request, runtime)
 
@@ -18348,6 +23238,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ResetDeviceInstanceRequest,
     ) -> ens_20171110_models.ResetDeviceInstanceResponse:
+        """
+        @summary Resets an instance including its image.
+        
+        @param request: ResetDeviceInstanceRequest
+        @return: ResetDeviceInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reset_device_instance_with_options_async(request, runtime)
 
@@ -18357,11 +23253,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ResetDiskResponse:
         """
-        When you call this operation, take note of the following items:
-        *   The disk must be in the In Use (In_Use) or Unattached (Available) state.
-        *   The instance to which the disk is attached must be in the Stopped (Stopped) state. You can call the **StopInstance** operation to stop an instance.
-        *   The snapshot specified by the SnapshotId parameter must be created from the disk specified by the DiskId parameter.
-        *   When you call the **DescribeInstance** operation to query instance information, if the response contains `{"OperationLocks": {"LockReason" : "security"}}` for an instance, the instance is locked for security reasons and you cannot perform operations on the instance.
+        @summary Rolls back a disk by using a snapshot.
+        
+        @description When you call this operation, take note of the following items:
+        The disk must be in the In Use (In_Use) or Unattached (Available) state.
+        The instance to which the disk is attached must be in the Stopped (Stopped) state. You can call the **StopInstance** operation to stop an instance.
+        The snapshot specified by the SnapshotId parameter must be created from the disk specified by the DiskId parameter.
+        When you call the **DescribeInstance** operation to query instance information, if the response contains `{"OperationLocks": {"LockReason" : "security"}}` for an instance, the instance is locked for security reasons and you cannot perform operations on the instance.
         
         @param request: ResetDiskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18398,11 +23296,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ResetDiskResponse:
         """
-        When you call this operation, take note of the following items:
-        *   The disk must be in the In Use (In_Use) or Unattached (Available) state.
-        *   The instance to which the disk is attached must be in the Stopped (Stopped) state. You can call the **StopInstance** operation to stop an instance.
-        *   The snapshot specified by the SnapshotId parameter must be created from the disk specified by the DiskId parameter.
-        *   When you call the **DescribeInstance** operation to query instance information, if the response contains `{"OperationLocks": {"LockReason" : "security"}}` for an instance, the instance is locked for security reasons and you cannot perform operations on the instance.
+        @summary Rolls back a disk by using a snapshot.
+        
+        @description When you call this operation, take note of the following items:
+        The disk must be in the In Use (In_Use) or Unattached (Available) state.
+        The instance to which the disk is attached must be in the Stopped (Stopped) state. You can call the **StopInstance** operation to stop an instance.
+        The snapshot specified by the SnapshotId parameter must be created from the disk specified by the DiskId parameter.
+        When you call the **DescribeInstance** operation to query instance information, if the response contains `{"OperationLocks": {"LockReason" : "security"}}` for an instance, the instance is locked for security reasons and you cannot perform operations on the instance.
         
         @param request: ResetDiskRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18438,11 +23338,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ResetDiskRequest,
     ) -> ens_20171110_models.ResetDiskResponse:
         """
-        When you call this operation, take note of the following items:
-        *   The disk must be in the In Use (In_Use) or Unattached (Available) state.
-        *   The instance to which the disk is attached must be in the Stopped (Stopped) state. You can call the **StopInstance** operation to stop an instance.
-        *   The snapshot specified by the SnapshotId parameter must be created from the disk specified by the DiskId parameter.
-        *   When you call the **DescribeInstance** operation to query instance information, if the response contains `{"OperationLocks": {"LockReason" : "security"}}` for an instance, the instance is locked for security reasons and you cannot perform operations on the instance.
+        @summary Rolls back a disk by using a snapshot.
+        
+        @description When you call this operation, take note of the following items:
+        The disk must be in the In Use (In_Use) or Unattached (Available) state.
+        The instance to which the disk is attached must be in the Stopped (Stopped) state. You can call the **StopInstance** operation to stop an instance.
+        The snapshot specified by the SnapshotId parameter must be created from the disk specified by the DiskId parameter.
+        When you call the **DescribeInstance** operation to query instance information, if the response contains `{"OperationLocks": {"LockReason" : "security"}}` for an instance, the instance is locked for security reasons and you cannot perform operations on the instance.
         
         @param request: ResetDiskRequest
         @return: ResetDiskResponse
@@ -18455,11 +23357,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ResetDiskRequest,
     ) -> ens_20171110_models.ResetDiskResponse:
         """
-        When you call this operation, take note of the following items:
-        *   The disk must be in the In Use (In_Use) or Unattached (Available) state.
-        *   The instance to which the disk is attached must be in the Stopped (Stopped) state. You can call the **StopInstance** operation to stop an instance.
-        *   The snapshot specified by the SnapshotId parameter must be created from the disk specified by the DiskId parameter.
-        *   When you call the **DescribeInstance** operation to query instance information, if the response contains `{"OperationLocks": {"LockReason" : "security"}}` for an instance, the instance is locked for security reasons and you cannot perform operations on the instance.
+        @summary Rolls back a disk by using a snapshot.
+        
+        @description When you call this operation, take note of the following items:
+        The disk must be in the In Use (In_Use) or Unattached (Available) state.
+        The instance to which the disk is attached must be in the Stopped (Stopped) state. You can call the **StopInstance** operation to stop an instance.
+        The snapshot specified by the SnapshotId parameter must be created from the disk specified by the DiskId parameter.
+        When you call the **DescribeInstance** operation to query instance information, if the response contains `{"OperationLocks": {"LockReason" : "security"}}` for an instance, the instance is locked for security reasons and you cannot perform operations on the instance.
         
         @param request: ResetDiskRequest
         @return: ResetDiskResponse
@@ -18472,6 +23376,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ResizeDiskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ResizeDiskResponse:
+        """
+        @summary Resizes a pay-as-you-go disk that you purchase.
+        
+        @param request: ResizeDiskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResizeDiskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.disk_id):
@@ -18502,6 +23413,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.ResizeDiskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.ResizeDiskResponse:
+        """
+        @summary Resizes a pay-as-you-go disk that you purchase.
+        
+        @param request: ResizeDiskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResizeDiskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.disk_id):
@@ -18531,6 +23449,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ResizeDiskRequest,
     ) -> ens_20171110_models.ResizeDiskResponse:
+        """
+        @summary Resizes a pay-as-you-go disk that you purchase.
+        
+        @param request: ResizeDiskRequest
+        @return: ResizeDiskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.resize_disk_with_options(request, runtime)
 
@@ -18538,6 +23462,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.ResizeDiskRequest,
     ) -> ens_20171110_models.ResizeDiskResponse:
+        """
+        @summary Resizes a pay-as-you-go disk that you purchase.
+        
+        @param request: ResizeDiskRequest
+        @return: ResizeDiskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.resize_disk_with_options_async(request, runtime)
 
@@ -18546,6 +23476,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RestartDeviceInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RestartDeviceInstanceResponse:
+        """
+        @summary Restarts applications deployed on an instance and returns the restart results in a synchronous manner.
+        
+        @param request: RestartDeviceInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartDeviceInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -18572,6 +23509,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RestartDeviceInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RestartDeviceInstanceResponse:
+        """
+        @summary Restarts applications deployed on an instance and returns the restart results in a synchronous manner.
+        
+        @param request: RestartDeviceInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartDeviceInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -18597,6 +23541,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.RestartDeviceInstanceRequest,
     ) -> ens_20171110_models.RestartDeviceInstanceResponse:
+        """
+        @summary Restarts applications deployed on an instance and returns the restart results in a synchronous manner.
+        
+        @param request: RestartDeviceInstanceRequest
+        @return: RestartDeviceInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.restart_device_instance_with_options(request, runtime)
 
@@ -18604,164 +23554,14 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.RestartDeviceInstanceRequest,
     ) -> ens_20171110_models.RestartDeviceInstanceResponse:
+        """
+        @summary Restarts applications deployed on an instance and returns the restart results in a synchronous manner.
+        
+        @param request: RestartDeviceInstanceRequest
+        @return: RestartDeviceInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.restart_device_instance_with_options_async(request, runtime)
-
-    def restart_workflow_with_options(
-        self,
-        tmp_req: ens_20171110_models.RestartWorkflowRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.RestartWorkflowResponse:
-        UtilClient.validate_model(tmp_req)
-        request = ens_20171110_models.RestartWorkflowShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.workflow_ids):
-            request.workflow_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.workflow_ids, 'WorkflowIds', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.workflow_ids_shrink):
-            query['WorkflowIds'] = request.workflow_ids_shrink
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='RestartWorkflow',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ens_20171110_models.RestartWorkflowResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def restart_workflow_with_options_async(
-        self,
-        tmp_req: ens_20171110_models.RestartWorkflowRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.RestartWorkflowResponse:
-        UtilClient.validate_model(tmp_req)
-        request = ens_20171110_models.RestartWorkflowShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.workflow_ids):
-            request.workflow_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.workflow_ids, 'WorkflowIds', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.workflow_ids_shrink):
-            query['WorkflowIds'] = request.workflow_ids_shrink
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='RestartWorkflow',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ens_20171110_models.RestartWorkflowResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def restart_workflow(
-        self,
-        request: ens_20171110_models.RestartWorkflowRequest,
-    ) -> ens_20171110_models.RestartWorkflowResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.restart_workflow_with_options(request, runtime)
-
-    async def restart_workflow_async(
-        self,
-        request: ens_20171110_models.RestartWorkflowRequest,
-    ) -> ens_20171110_models.RestartWorkflowResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.restart_workflow_with_options_async(request, runtime)
-
-    def retry_workflow_with_options(
-        self,
-        tmp_req: ens_20171110_models.RetryWorkflowRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.RetryWorkflowResponse:
-        UtilClient.validate_model(tmp_req)
-        request = ens_20171110_models.RetryWorkflowShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.workflow_ids):
-            request.workflow_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.workflow_ids, 'WorkflowIds', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.workflow_ids_shrink):
-            query['WorkflowIds'] = request.workflow_ids_shrink
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='RetryWorkflow',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ens_20171110_models.RetryWorkflowResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def retry_workflow_with_options_async(
-        self,
-        tmp_req: ens_20171110_models.RetryWorkflowRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.RetryWorkflowResponse:
-        UtilClient.validate_model(tmp_req)
-        request = ens_20171110_models.RetryWorkflowShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.workflow_ids):
-            request.workflow_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.workflow_ids, 'WorkflowIds', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.workflow_ids_shrink):
-            query['WorkflowIds'] = request.workflow_ids_shrink
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='RetryWorkflow',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ens_20171110_models.RetryWorkflowResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def retry_workflow(
-        self,
-        request: ens_20171110_models.RetryWorkflowRequest,
-    ) -> ens_20171110_models.RetryWorkflowResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.retry_workflow_with_options(request, runtime)
-
-    async def retry_workflow_async(
-        self,
-        request: ens_20171110_models.RetryWorkflowRequest,
-    ) -> ens_20171110_models.RetryWorkflowResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.retry_workflow_with_options_async(request, runtime)
 
     def revoke_security_group_with_options(
         self,
@@ -18769,9 +23569,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RevokeSecurityGroupResponse:
         """
-        In the security group-related API documents, inbound traffic refers to the traffic sent by the source and received by the destination.
-        *   You can determine an inbound security group rule by specifying one of the following groups of parameters. You cannot determine a security group rule by specifying only one parameter.
-        *   You can specify one or more of the following parameters to remove access control for a CIDR block: IpProtocol, PortRange, Policy, and SourceCidrIp.
+        @summary Deletes an inbound security group rule. After the rule is deleted, the access control implemented by the rule is removed.
+        
+        @description    In the security group-related API documents, inbound traffic refers to the traffic sent by the source and received by the destination.
+        You can determine an inbound security group rule by specifying one of the following groups of parameters. You cannot determine a security group rule by specifying only one parameter.
+        You can specify one or more of the following parameters to remove access control for a CIDR block: IpProtocol, PortRange, Policy, and SourceCidrIp.
         
         @param request: RevokeSecurityGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18818,9 +23620,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RevokeSecurityGroupResponse:
         """
-        In the security group-related API documents, inbound traffic refers to the traffic sent by the source and received by the destination.
-        *   You can determine an inbound security group rule by specifying one of the following groups of parameters. You cannot determine a security group rule by specifying only one parameter.
-        *   You can specify one or more of the following parameters to remove access control for a CIDR block: IpProtocol, PortRange, Policy, and SourceCidrIp.
+        @summary Deletes an inbound security group rule. After the rule is deleted, the access control implemented by the rule is removed.
+        
+        @description    In the security group-related API documents, inbound traffic refers to the traffic sent by the source and received by the destination.
+        You can determine an inbound security group rule by specifying one of the following groups of parameters. You cannot determine a security group rule by specifying only one parameter.
+        You can specify one or more of the following parameters to remove access control for a CIDR block: IpProtocol, PortRange, Policy, and SourceCidrIp.
         
         @param request: RevokeSecurityGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18866,9 +23670,11 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RevokeSecurityGroupRequest,
     ) -> ens_20171110_models.RevokeSecurityGroupResponse:
         """
-        In the security group-related API documents, inbound traffic refers to the traffic sent by the source and received by the destination.
-        *   You can determine an inbound security group rule by specifying one of the following groups of parameters. You cannot determine a security group rule by specifying only one parameter.
-        *   You can specify one or more of the following parameters to remove access control for a CIDR block: IpProtocol, PortRange, Policy, and SourceCidrIp.
+        @summary Deletes an inbound security group rule. After the rule is deleted, the access control implemented by the rule is removed.
+        
+        @description    In the security group-related API documents, inbound traffic refers to the traffic sent by the source and received by the destination.
+        You can determine an inbound security group rule by specifying one of the following groups of parameters. You cannot determine a security group rule by specifying only one parameter.
+        You can specify one or more of the following parameters to remove access control for a CIDR block: IpProtocol, PortRange, Policy, and SourceCidrIp.
         
         @param request: RevokeSecurityGroupRequest
         @return: RevokeSecurityGroupResponse
@@ -18881,9 +23687,11 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RevokeSecurityGroupRequest,
     ) -> ens_20171110_models.RevokeSecurityGroupResponse:
         """
-        In the security group-related API documents, inbound traffic refers to the traffic sent by the source and received by the destination.
-        *   You can determine an inbound security group rule by specifying one of the following groups of parameters. You cannot determine a security group rule by specifying only one parameter.
-        *   You can specify one or more of the following parameters to remove access control for a CIDR block: IpProtocol, PortRange, Policy, and SourceCidrIp.
+        @summary Deletes an inbound security group rule. After the rule is deleted, the access control implemented by the rule is removed.
+        
+        @description    In the security group-related API documents, inbound traffic refers to the traffic sent by the source and received by the destination.
+        You can determine an inbound security group rule by specifying one of the following groups of parameters. You cannot determine a security group rule by specifying only one parameter.
+        You can specify one or more of the following parameters to remove access control for a CIDR block: IpProtocol, PortRange, Policy, and SourceCidrIp.
         
         @param request: RevokeSecurityGroupRequest
         @return: RevokeSecurityGroupResponse
@@ -18897,7 +23705,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RevokeSecurityGroupEgressResponse:
         """
-        >  In the security group-related API documents, outbound traffic refers to the traffic sent by the source and received by the destination.
+        @summary Deletes an outbound security group rule. After the rule is deleted, the access control implemented by the rule is removed.
+        
+        @description >  In the security group-related API documents, outbound traffic refers to the traffic sent by the source and received by the destination.
         
         @param request: RevokeSecurityGroupEgressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18944,7 +23754,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RevokeSecurityGroupEgressResponse:
         """
-        >  In the security group-related API documents, outbound traffic refers to the traffic sent by the source and received by the destination.
+        @summary Deletes an outbound security group rule. After the rule is deleted, the access control implemented by the rule is removed.
+        
+        @description >  In the security group-related API documents, outbound traffic refers to the traffic sent by the source and received by the destination.
         
         @param request: RevokeSecurityGroupEgressRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -18990,7 +23802,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RevokeSecurityGroupEgressRequest,
     ) -> ens_20171110_models.RevokeSecurityGroupEgressResponse:
         """
-        >  In the security group-related API documents, outbound traffic refers to the traffic sent by the source and received by the destination.
+        @summary Deletes an outbound security group rule. After the rule is deleted, the access control implemented by the rule is removed.
+        
+        @description >  In the security group-related API documents, outbound traffic refers to the traffic sent by the source and received by the destination.
         
         @param request: RevokeSecurityGroupEgressRequest
         @return: RevokeSecurityGroupEgressResponse
@@ -19003,7 +23817,9 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RevokeSecurityGroupEgressRequest,
     ) -> ens_20171110_models.RevokeSecurityGroupEgressResponse:
         """
-        >  In the security group-related API documents, outbound traffic refers to the traffic sent by the source and received by the destination.
+        @summary Deletes an outbound security group rule. After the rule is deleted, the access control implemented by the rule is removed.
+        
+        @description >  In the security group-related API documents, outbound traffic refers to the traffic sent by the source and received by the destination.
         
         @param request: RevokeSecurityGroupEgressRequest
         @return: RevokeSecurityGroupEgressResponse
@@ -19016,6 +23832,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RollbackApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RollbackApplicationResponse:
+        """
+        @summary Rolls back the container version of a specific application.
+        
+        @param request: RollbackApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RollbackApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -19050,6 +23873,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RollbackApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RollbackApplicationResponse:
+        """
+        @summary Rolls back the container version of a specific application.
+        
+        @param request: RollbackApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RollbackApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -19083,6 +23913,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.RollbackApplicationRequest,
     ) -> ens_20171110_models.RollbackApplicationResponse:
+        """
+        @summary Rolls back the container version of a specific application.
+        
+        @param request: RollbackApplicationRequest
+        @return: RollbackApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.rollback_application_with_options(request, runtime)
 
@@ -19090,92 +23926,27 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.RollbackApplicationRequest,
     ) -> ens_20171110_models.RollbackApplicationResponse:
+        """
+        @summary Rolls back the container version of a specific application.
+        
+        @param request: RollbackApplicationRequest
+        @return: RollbackApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.rollback_application_with_options_async(request, runtime)
-
-    def rollback_workflow_with_options(
-        self,
-        tmp_req: ens_20171110_models.RollbackWorkflowRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.RollbackWorkflowResponse:
-        UtilClient.validate_model(tmp_req)
-        request = ens_20171110_models.RollbackWorkflowShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.workflow_ids):
-            request.workflow_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.workflow_ids, 'WorkflowIds', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.workflow_ids_shrink):
-            query['WorkflowIds'] = request.workflow_ids_shrink
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='RollbackWorkflow',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ens_20171110_models.RollbackWorkflowResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def rollback_workflow_with_options_async(
-        self,
-        tmp_req: ens_20171110_models.RollbackWorkflowRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.RollbackWorkflowResponse:
-        UtilClient.validate_model(tmp_req)
-        request = ens_20171110_models.RollbackWorkflowShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.workflow_ids):
-            request.workflow_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.workflow_ids, 'WorkflowIds', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.workflow_ids_shrink):
-            query['WorkflowIds'] = request.workflow_ids_shrink
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='RollbackWorkflow',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ens_20171110_models.RollbackWorkflowResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def rollback_workflow(
-        self,
-        request: ens_20171110_models.RollbackWorkflowRequest,
-    ) -> ens_20171110_models.RollbackWorkflowResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.rollback_workflow_with_options(request, runtime)
-
-    async def rollback_workflow_async(
-        self,
-        request: ens_20171110_models.RollbackWorkflowRequest,
-    ) -> ens_20171110_models.RollbackWorkflowResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.rollback_workflow_with_options_async(request, runtime)
 
     def run_instances_with_options(
         self,
         tmp_req: ens_20171110_models.RunInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RunInstancesResponse:
+        """
+        @summary Creates one or more pay-as-you-go or subscription Edge Node Service (ENS) instances.
+        
+        @param tmp_req: RunInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunInstancesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.RunInstancesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -19186,6 +23957,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.amount):
             query['Amount'] = request.amount
+        if not UtilClient.is_unset(request.auto_release_time):
+            query['AutoReleaseTime'] = request.auto_release_time
         if not UtilClient.is_unset(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.auto_use_coupon):
@@ -19242,6 +24015,8 @@ class Client(OpenApiClient):
             query['SchedulingStrategy'] = request.scheduling_strategy
         if not UtilClient.is_unset(request.security_id):
             query['SecurityId'] = request.security_id
+        if not UtilClient.is_unset(request.spot_strategy):
+            query['SpotStrategy'] = request.spot_strategy
         if not UtilClient.is_unset(request.system_disk_shrink):
             query['SystemDisk'] = request.system_disk_shrink
         if not UtilClient.is_unset(request.tag):
@@ -19276,6 +24051,13 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.RunInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RunInstancesResponse:
+        """
+        @summary Creates one or more pay-as-you-go or subscription Edge Node Service (ENS) instances.
+        
+        @param tmp_req: RunInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunInstancesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.RunInstancesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -19286,6 +24068,8 @@ class Client(OpenApiClient):
         query = {}
         if not UtilClient.is_unset(request.amount):
             query['Amount'] = request.amount
+        if not UtilClient.is_unset(request.auto_release_time):
+            query['AutoReleaseTime'] = request.auto_release_time
         if not UtilClient.is_unset(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
         if not UtilClient.is_unset(request.auto_use_coupon):
@@ -19342,6 +24126,8 @@ class Client(OpenApiClient):
             query['SchedulingStrategy'] = request.scheduling_strategy
         if not UtilClient.is_unset(request.security_id):
             query['SecurityId'] = request.security_id
+        if not UtilClient.is_unset(request.spot_strategy):
+            query['SpotStrategy'] = request.spot_strategy
         if not UtilClient.is_unset(request.system_disk_shrink):
             query['SystemDisk'] = request.system_disk_shrink
         if not UtilClient.is_unset(request.tag):
@@ -19375,6 +24161,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.RunInstancesRequest,
     ) -> ens_20171110_models.RunInstancesResponse:
+        """
+        @summary Creates one or more pay-as-you-go or subscription Edge Node Service (ENS) instances.
+        
+        @param request: RunInstancesRequest
+        @return: RunInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.run_instances_with_options(request, runtime)
 
@@ -19382,6 +24174,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.RunInstancesRequest,
     ) -> ens_20171110_models.RunInstancesResponse:
+        """
+        @summary Creates one or more pay-as-you-go or subscription Edge Node Service (ENS) instances.
+        
+        @param request: RunInstancesRequest
+        @return: RunInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.run_instances_with_options_async(request, runtime)
 
@@ -19390,6 +24188,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RunServiceScheduleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RunServiceScheduleResponse:
+        """
+        @summary Schedules the nearest idle resources including instances and pods for your device based on the user ID and IP address and initializes the virtual environment.
+        
+        @param request: RunServiceScheduleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunServiceScheduleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -19434,6 +24239,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.RunServiceScheduleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.RunServiceScheduleResponse:
+        """
+        @summary Schedules the nearest idle resources including instances and pods for your device based on the user ID and IP address and initializes the virtual environment.
+        
+        @param request: RunServiceScheduleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunServiceScheduleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -19477,6 +24289,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.RunServiceScheduleRequest,
     ) -> ens_20171110_models.RunServiceScheduleResponse:
+        """
+        @summary Schedules the nearest idle resources including instances and pods for your device based on the user ID and IP address and initializes the virtual environment.
+        
+        @param request: RunServiceScheduleRequest
+        @return: RunServiceScheduleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.run_service_schedule_with_options(request, runtime)
 
@@ -19484,8 +24302,106 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.RunServiceScheduleRequest,
     ) -> ens_20171110_models.RunServiceScheduleResponse:
+        """
+        @summary Schedules the nearest idle resources including instances and pods for your device based on the user ID and IP address and initializes the virtual environment.
+        
+        @param request: RunServiceScheduleRequest
+        @return: RunServiceScheduleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.run_service_schedule_with_options_async(request, runtime)
+
+    def save_sdgwith_options(
+        self,
+        request: ens_20171110_models.SaveSDGRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.SaveSDGResponse:
+        """
+        @summary Saves the disk of a specific device as a shared data group (SDG).
+        
+        @param request: SaveSDGRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveSDGResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SaveSDG',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.SaveSDGResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def save_sdgwith_options_async(
+        self,
+        request: ens_20171110_models.SaveSDGRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ens_20171110_models.SaveSDGResponse:
+        """
+        @summary Saves the disk of a specific device as a shared data group (SDG).
+        
+        @param request: SaveSDGRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SaveSDGResponse
+        """
+        UtilClient.validate_model(request)
+        query = OpenApiUtilClient.query(UtilClient.to_map(request))
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SaveSDG',
+            version='2017-11-10',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ens_20171110_models.SaveSDGResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def save_sdg(
+        self,
+        request: ens_20171110_models.SaveSDGRequest,
+    ) -> ens_20171110_models.SaveSDGResponse:
+        """
+        @summary Saves the disk of a specific device as a shared data group (SDG).
+        
+        @param request: SaveSDGRequest
+        @return: SaveSDGResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.save_sdgwith_options(request, runtime)
+
+    async def save_sdg_async(
+        self,
+        request: ens_20171110_models.SaveSDGRequest,
+    ) -> ens_20171110_models.SaveSDGResponse:
+        """
+        @summary Saves the disk of a specific device as a shared data group (SDG).
+        
+        @param request: SaveSDGRequest
+        @return: SaveSDGResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.save_sdgwith_options_async(request, runtime)
 
     def set_backend_servers_with_options(
         self,
@@ -19493,8 +24409,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.SetBackendServersResponse:
         """
-        You can call this operation up to 100 times per second.
-        *   You can call this operation up to 10 times per second per account.
+        @summary Sets the weights of backend servers.
+        
+        @description    You can call this operation up to 100 times per second.
+        You can call this operation up to 10 times per second per account.
         
         @param tmp_req: SetBackendServersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19535,8 +24453,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.SetBackendServersResponse:
         """
-        You can call this operation up to 100 times per second.
-        *   You can call this operation up to 10 times per second per account.
+        @summary Sets the weights of backend servers.
+        
+        @description    You can call this operation up to 100 times per second.
+        You can call this operation up to 10 times per second per account.
         
         @param tmp_req: SetBackendServersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19576,8 +24496,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.SetBackendServersRequest,
     ) -> ens_20171110_models.SetBackendServersResponse:
         """
-        You can call this operation up to 100 times per second.
-        *   You can call this operation up to 10 times per second per account.
+        @summary Sets the weights of backend servers.
+        
+        @description    You can call this operation up to 100 times per second.
+        You can call this operation up to 10 times per second per account.
         
         @param request: SetBackendServersRequest
         @return: SetBackendServersResponse
@@ -19590,8 +24512,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.SetBackendServersRequest,
     ) -> ens_20171110_models.SetBackendServersResponse:
         """
-        You can call this operation up to 100 times per second.
-        *   You can call this operation up to 10 times per second per account.
+        @summary Sets the weights of backend servers.
+        
+        @description    You can call this operation up to 100 times per second.
+        You can call this operation up to 10 times per second per account.
         
         @param request: SetBackendServersRequest
         @return: SetBackendServersResponse
@@ -19605,8 +24529,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.SetLoadBalancerHTTPListenerAttributeResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Modifies the configurations of an HTTP listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: SetLoadBalancerHTTPListenerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19671,8 +24597,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.SetLoadBalancerHTTPListenerAttributeResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Modifies the configurations of an HTTP listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: SetLoadBalancerHTTPListenerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19736,8 +24664,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.SetLoadBalancerHTTPListenerAttributeRequest,
     ) -> ens_20171110_models.SetLoadBalancerHTTPListenerAttributeResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Modifies the configurations of an HTTP listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: SetLoadBalancerHTTPListenerAttributeRequest
         @return: SetLoadBalancerHTTPListenerAttributeResponse
@@ -19750,8 +24680,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.SetLoadBalancerHTTPListenerAttributeRequest,
     ) -> ens_20171110_models.SetLoadBalancerHTTPListenerAttributeResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Modifies the configurations of an HTTP listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: SetLoadBalancerHTTPListenerAttributeRequest
         @return: SetLoadBalancerHTTPListenerAttributeResponse
@@ -19765,8 +24697,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.SetLoadBalancerHTTPSListenerAttributeResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Modifies the configurations of an HTTPS listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: SetLoadBalancerHTTPSListenerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19833,8 +24767,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.SetLoadBalancerHTTPSListenerAttributeResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Modifies the configurations of an HTTPS listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: SetLoadBalancerHTTPSListenerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19900,8 +24836,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.SetLoadBalancerHTTPSListenerAttributeRequest,
     ) -> ens_20171110_models.SetLoadBalancerHTTPSListenerAttributeResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Modifies the configurations of an HTTPS listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: SetLoadBalancerHTTPSListenerAttributeRequest
         @return: SetLoadBalancerHTTPSListenerAttributeResponse
@@ -19914,8 +24852,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.SetLoadBalancerHTTPSListenerAttributeRequest,
     ) -> ens_20171110_models.SetLoadBalancerHTTPSListenerAttributeResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Modifies the configurations of an HTTPS listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: SetLoadBalancerHTTPSListenerAttributeRequest
         @return: SetLoadBalancerHTTPSListenerAttributeResponse
@@ -19929,8 +24869,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.SetLoadBalancerStatusResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Modifies the status of an Edge Load Balancer (ELB) instance.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: SetLoadBalancerStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19967,8 +24909,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.SetLoadBalancerStatusResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Modifies the status of an Edge Load Balancer (ELB) instance.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: SetLoadBalancerStatusRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20004,8 +24948,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.SetLoadBalancerStatusRequest,
     ) -> ens_20171110_models.SetLoadBalancerStatusResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Modifies the status of an Edge Load Balancer (ELB) instance.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: SetLoadBalancerStatusRequest
         @return: SetLoadBalancerStatusResponse
@@ -20018,8 +24964,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.SetLoadBalancerStatusRequest,
     ) -> ens_20171110_models.SetLoadBalancerStatusResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Modifies the status of an Edge Load Balancer (ELB) instance.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: SetLoadBalancerStatusRequest
         @return: SetLoadBalancerStatusResponse
@@ -20033,8 +24981,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.SetLoadBalancerTCPListenerAttributeResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Modifies the configurations of a TCP listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: SetLoadBalancerTCPListenerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20099,8 +25049,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.SetLoadBalancerTCPListenerAttributeResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Modifies the configurations of a TCP listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: SetLoadBalancerTCPListenerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20164,8 +25116,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.SetLoadBalancerTCPListenerAttributeRequest,
     ) -> ens_20171110_models.SetLoadBalancerTCPListenerAttributeResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Modifies the configurations of a TCP listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: SetLoadBalancerTCPListenerAttributeRequest
         @return: SetLoadBalancerTCPListenerAttributeResponse
@@ -20178,8 +25132,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.SetLoadBalancerTCPListenerAttributeRequest,
     ) -> ens_20171110_models.SetLoadBalancerTCPListenerAttributeResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Modifies the configurations of a TCP listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: SetLoadBalancerTCPListenerAttributeRequest
         @return: SetLoadBalancerTCPListenerAttributeResponse
@@ -20193,9 +25149,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.SetLoadBalancerUDPListenerAttributeResponse:
         """
-        >
-        *   You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Modifies the configurations of a UDP listener.
+        
+        @description >
+        You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: SetLoadBalancerUDPListenerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20252,9 +25210,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.SetLoadBalancerUDPListenerAttributeResponse:
         """
-        >
-        *   You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Modifies the configurations of a UDP listener.
+        
+        @description >
+        You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: SetLoadBalancerUDPListenerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20310,9 +25270,11 @@ class Client(OpenApiClient):
         request: ens_20171110_models.SetLoadBalancerUDPListenerAttributeRequest,
     ) -> ens_20171110_models.SetLoadBalancerUDPListenerAttributeResponse:
         """
-        >
-        *   You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Modifies the configurations of a UDP listener.
+        
+        @description >
+        You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: SetLoadBalancerUDPListenerAttributeRequest
         @return: SetLoadBalancerUDPListenerAttributeResponse
@@ -20325,9 +25287,11 @@ class Client(OpenApiClient):
         request: ens_20171110_models.SetLoadBalancerUDPListenerAttributeRequest,
     ) -> ens_20171110_models.SetLoadBalancerUDPListenerAttributeResponse:
         """
-        >
-        *   You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Modifies the configurations of a UDP listener.
+        
+        @description >
+        You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: SetLoadBalancerUDPListenerAttributeRequest
         @return: SetLoadBalancerUDPListenerAttributeResponse
@@ -20340,6 +25304,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.StartEpnInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.StartEpnInstanceResponse:
+        """
+        @summary Starts an edge network instance.
+        
+        @param request: StartEpnInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartEpnInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.epninstance_id):
@@ -20368,6 +25339,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.StartEpnInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.StartEpnInstanceResponse:
+        """
+        @summary Starts an edge network instance.
+        
+        @param request: StartEpnInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartEpnInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.epninstance_id):
@@ -20395,6 +25373,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.StartEpnInstanceRequest,
     ) -> ens_20171110_models.StartEpnInstanceResponse:
+        """
+        @summary Starts an edge network instance.
+        
+        @param request: StartEpnInstanceRequest
+        @return: StartEpnInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_epn_instance_with_options(request, runtime)
 
@@ -20402,6 +25386,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.StartEpnInstanceRequest,
     ) -> ens_20171110_models.StartEpnInstanceResponse:
+        """
+        @summary Starts an edge network instance.
+        
+        @param request: StartEpnInstanceRequest
+        @return: StartEpnInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_epn_instance_with_options_async(request, runtime)
 
@@ -20411,8 +25401,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.StartInstanceResponse:
         """
-        You can call the operation only when the instance is in the Stopped state.
-        *   If the operation is successful, the status of the instance becomes Starting.
+        @summary Starts an instance.
+        
+        @description    You can call the operation only when the instance is in the Stopped state.
+        If the operation is successful, the status of the instance becomes Starting.
         
         @param request: StartInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20447,8 +25439,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.StartInstanceResponse:
         """
-        You can call the operation only when the instance is in the Stopped state.
-        *   If the operation is successful, the status of the instance becomes Starting.
+        @summary Starts an instance.
+        
+        @description    You can call the operation only when the instance is in the Stopped state.
+        If the operation is successful, the status of the instance becomes Starting.
         
         @param request: StartInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20482,8 +25476,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.StartInstanceRequest,
     ) -> ens_20171110_models.StartInstanceResponse:
         """
-        You can call the operation only when the instance is in the Stopped state.
-        *   If the operation is successful, the status of the instance becomes Starting.
+        @summary Starts an instance.
+        
+        @description    You can call the operation only when the instance is in the Stopped state.
+        If the operation is successful, the status of the instance becomes Starting.
         
         @param request: StartInstanceRequest
         @return: StartInstanceResponse
@@ -20496,8 +25492,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.StartInstanceRequest,
     ) -> ens_20171110_models.StartInstanceResponse:
         """
-        You can call the operation only when the instance is in the Stopped state.
-        *   If the operation is successful, the status of the instance becomes Starting.
+        @summary Starts an instance.
+        
+        @description    You can call the operation only when the instance is in the Stopped state.
+        If the operation is successful, the status of the instance becomes Starting.
         
         @param request: StartInstanceRequest
         @return: StartInstanceResponse
@@ -20510,6 +25508,13 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.StartInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.StartInstancesResponse:
+        """
+        @summary 选择批量实例进行启动操作
+        
+        @param tmp_req: StartInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartInstancesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.StartInstancesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -20542,6 +25547,13 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.StartInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.StartInstancesResponse:
+        """
+        @summary 选择批量实例进行启动操作
+        
+        @param tmp_req: StartInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartInstancesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.StartInstancesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -20573,6 +25585,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.StartInstancesRequest,
     ) -> ens_20171110_models.StartInstancesResponse:
+        """
+        @summary 选择批量实例进行启动操作
+        
+        @param request: StartInstancesRequest
+        @return: StartInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_instances_with_options(request, runtime)
 
@@ -20580,6 +25598,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.StartInstancesRequest,
     ) -> ens_20171110_models.StartInstancesResponse:
+        """
+        @summary 选择批量实例进行启动操作
+        
+        @param request: StartInstancesRequest
+        @return: StartInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_instances_with_options_async(request, runtime)
 
@@ -20589,8 +25613,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.StartLoadBalancerListenerResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Enables a listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: StartLoadBalancerListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20629,8 +25655,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.StartLoadBalancerListenerResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Enables a listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: StartLoadBalancerListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20668,8 +25696,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.StartLoadBalancerListenerRequest,
     ) -> ens_20171110_models.StartLoadBalancerListenerResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Enables a listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: StartLoadBalancerListenerRequest
         @return: StartLoadBalancerListenerResponse
@@ -20682,8 +25712,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.StartLoadBalancerListenerRequest,
     ) -> ens_20171110_models.StartLoadBalancerListenerResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Enables a listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: StartLoadBalancerListenerRequest
         @return: StartLoadBalancerListenerResponse
@@ -20696,6 +25728,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.StartSnatIpForSnatEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.StartSnatIpForSnatEntryResponse:
+        """
+        @summary Starts the elastic IP address (EIP) specified in a source network address translation (SNAT) entry.
+        
+        @param request: StartSnatIpForSnatEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartSnatIpForSnatEntryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.snat_entry_id):
@@ -20726,6 +25765,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.StartSnatIpForSnatEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.StartSnatIpForSnatEntryResponse:
+        """
+        @summary Starts the elastic IP address (EIP) specified in a source network address translation (SNAT) entry.
+        
+        @param request: StartSnatIpForSnatEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartSnatIpForSnatEntryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.snat_entry_id):
@@ -20755,6 +25801,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.StartSnatIpForSnatEntryRequest,
     ) -> ens_20171110_models.StartSnatIpForSnatEntryResponse:
+        """
+        @summary Starts the elastic IP address (EIP) specified in a source network address translation (SNAT) entry.
+        
+        @param request: StartSnatIpForSnatEntryRequest
+        @return: StartSnatIpForSnatEntryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_snat_ip_for_snat_entry_with_options(request, runtime)
 
@@ -20762,6 +25814,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.StartSnatIpForSnatEntryRequest,
     ) -> ens_20171110_models.StartSnatIpForSnatEntryResponse:
+        """
+        @summary Starts the elastic IP address (EIP) specified in a source network address translation (SNAT) entry.
+        
+        @param request: StartSnatIpForSnatEntryRequest
+        @return: StartSnatIpForSnatEntryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_snat_ip_for_snat_entry_with_options_async(request, runtime)
 
@@ -20770,6 +25828,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.StopEpnInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.StopEpnInstanceResponse:
+        """
+        @summary Stops an EPN instance.
+        
+        @param request: StopEpnInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopEpnInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.epninstance_id):
@@ -20798,6 +25863,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.StopEpnInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.StopEpnInstanceResponse:
+        """
+        @summary Stops an EPN instance.
+        
+        @param request: StopEpnInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopEpnInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.epninstance_id):
@@ -20825,6 +25897,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.StopEpnInstanceRequest,
     ) -> ens_20171110_models.StopEpnInstanceResponse:
+        """
+        @summary Stops an EPN instance.
+        
+        @param request: StopEpnInstanceRequest
+        @return: StopEpnInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_epn_instance_with_options(request, runtime)
 
@@ -20832,6 +25910,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.StopEpnInstanceRequest,
     ) -> ens_20171110_models.StopEpnInstanceResponse:
+        """
+        @summary Stops an EPN instance.
+        
+        @param request: StopEpnInstanceRequest
+        @return: StopEpnInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_epn_instance_with_options_async(request, runtime)
 
@@ -20841,10 +25925,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.StopInstanceResponse:
         """
-        You can call this operation to stop instances that are only in the Running state.
-        *   If the call is successful, the state of the instance becomes Stopping.
-        *   Once the instance is stopped, the state of the instance becomes Stopped.
-        *   Force stop is supported, which is equivalent to power-off. Data that is not written to disks on the instance may be lost.
+        @summary Stops an instance.
+        
+        @description    You can call this operation to stop instances that are only in the Running state.
+        If the call is successful, the state of the instance becomes Stopping.
+        Once the instance is stopped, the state of the instance becomes Stopped.
+        Force stop is supported, which is equivalent to power-off. Data that is not written to disks on the instance may be lost.
         
         @param request: StopInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20881,10 +25967,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.StopInstanceResponse:
         """
-        You can call this operation to stop instances that are only in the Running state.
-        *   If the call is successful, the state of the instance becomes Stopping.
-        *   Once the instance is stopped, the state of the instance becomes Stopped.
-        *   Force stop is supported, which is equivalent to power-off. Data that is not written to disks on the instance may be lost.
+        @summary Stops an instance.
+        
+        @description    You can call this operation to stop instances that are only in the Running state.
+        If the call is successful, the state of the instance becomes Stopping.
+        Once the instance is stopped, the state of the instance becomes Stopped.
+        Force stop is supported, which is equivalent to power-off. Data that is not written to disks on the instance may be lost.
         
         @param request: StopInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20920,10 +26008,12 @@ class Client(OpenApiClient):
         request: ens_20171110_models.StopInstanceRequest,
     ) -> ens_20171110_models.StopInstanceResponse:
         """
-        You can call this operation to stop instances that are only in the Running state.
-        *   If the call is successful, the state of the instance becomes Stopping.
-        *   Once the instance is stopped, the state of the instance becomes Stopped.
-        *   Force stop is supported, which is equivalent to power-off. Data that is not written to disks on the instance may be lost.
+        @summary Stops an instance.
+        
+        @description    You can call this operation to stop instances that are only in the Running state.
+        If the call is successful, the state of the instance becomes Stopping.
+        Once the instance is stopped, the state of the instance becomes Stopped.
+        Force stop is supported, which is equivalent to power-off. Data that is not written to disks on the instance may be lost.
         
         @param request: StopInstanceRequest
         @return: StopInstanceResponse
@@ -20936,10 +26026,12 @@ class Client(OpenApiClient):
         request: ens_20171110_models.StopInstanceRequest,
     ) -> ens_20171110_models.StopInstanceResponse:
         """
-        You can call this operation to stop instances that are only in the Running state.
-        *   If the call is successful, the state of the instance becomes Stopping.
-        *   Once the instance is stopped, the state of the instance becomes Stopped.
-        *   Force stop is supported, which is equivalent to power-off. Data that is not written to disks on the instance may be lost.
+        @summary Stops an instance.
+        
+        @description    You can call this operation to stop instances that are only in the Running state.
+        If the call is successful, the state of the instance becomes Stopping.
+        Once the instance is stopped, the state of the instance becomes Stopped.
+        Force stop is supported, which is equivalent to power-off. Data that is not written to disks on the instance may be lost.
         
         @param request: StopInstanceRequest
         @return: StopInstanceResponse
@@ -20952,6 +26044,13 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.StopInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.StopInstancesResponse:
+        """
+        @summary 选择批量实例进行停止操作
+        
+        @param tmp_req: StopInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopInstancesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.StopInstancesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -20984,6 +26083,13 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.StopInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.StopInstancesResponse:
+        """
+        @summary 选择批量实例进行停止操作
+        
+        @param tmp_req: StopInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopInstancesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.StopInstancesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -21015,6 +26121,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.StopInstancesRequest,
     ) -> ens_20171110_models.StopInstancesResponse:
+        """
+        @summary 选择批量实例进行停止操作
+        
+        @param request: StopInstancesRequest
+        @return: StopInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_instances_with_options(request, runtime)
 
@@ -21022,6 +26134,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.StopInstancesRequest,
     ) -> ens_20171110_models.StopInstancesResponse:
+        """
+        @summary 选择批量实例进行停止操作
+        
+        @param request: StopInstancesRequest
+        @return: StopInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_instances_with_options_async(request, runtime)
 
@@ -21031,8 +26149,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.StopLoadBalancerListenerResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Disables a listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: StopLoadBalancerListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21071,8 +26191,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.StopLoadBalancerListenerResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Disables a listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: StopLoadBalancerListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21110,8 +26232,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.StopLoadBalancerListenerRequest,
     ) -> ens_20171110_models.StopLoadBalancerListenerResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Disables a listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: StopLoadBalancerListenerRequest
         @return: StopLoadBalancerListenerResponse
@@ -21124,8 +26248,10 @@ class Client(OpenApiClient):
         request: ens_20171110_models.StopLoadBalancerListenerRequest,
     ) -> ens_20171110_models.StopLoadBalancerListenerResponse:
         """
-        You can call this operation up to 100 times per second per account.
-        *   You can call this operation up to 10 times per second per user.
+        @summary Disables a listener.
+        
+        @description    You can call this operation up to 100 times per second per account.
+        You can call this operation up to 10 times per second per user.
         
         @param request: StopLoadBalancerListenerRequest
         @return: StopLoadBalancerListenerResponse
@@ -21138,6 +26264,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.StopSnatIpForSnatEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.StopSnatIpForSnatEntryResponse:
+        """
+        @summary Disables an elastic IP address (EIP) in a source network address translation (SNAT) entry.
+        
+        @param request: StopSnatIpForSnatEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopSnatIpForSnatEntryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.snat_entry_id):
@@ -21168,6 +26301,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.StopSnatIpForSnatEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.StopSnatIpForSnatEntryResponse:
+        """
+        @summary Disables an elastic IP address (EIP) in a source network address translation (SNAT) entry.
+        
+        @param request: StopSnatIpForSnatEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopSnatIpForSnatEntryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.snat_entry_id):
@@ -21197,6 +26337,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.StopSnatIpForSnatEntryRequest,
     ) -> ens_20171110_models.StopSnatIpForSnatEntryResponse:
+        """
+        @summary Disables an elastic IP address (EIP) in a source network address translation (SNAT) entry.
+        
+        @param request: StopSnatIpForSnatEntryRequest
+        @return: StopSnatIpForSnatEntryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_snat_ip_for_snat_entry_with_options(request, runtime)
 
@@ -21204,92 +26350,27 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.StopSnatIpForSnatEntryRequest,
     ) -> ens_20171110_models.StopSnatIpForSnatEntryResponse:
+        """
+        @summary Disables an elastic IP address (EIP) in a source network address translation (SNAT) entry.
+        
+        @param request: StopSnatIpForSnatEntryRequest
+        @return: StopSnatIpForSnatEntryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_snat_ip_for_snat_entry_with_options_async(request, runtime)
-
-    def terminate_workflow_with_options(
-        self,
-        tmp_req: ens_20171110_models.TerminateWorkflowRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.TerminateWorkflowResponse:
-        UtilClient.validate_model(tmp_req)
-        request = ens_20171110_models.TerminateWorkflowShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.workflow_ids):
-            request.workflow_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.workflow_ids, 'WorkflowIds', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.workflow_ids_shrink):
-            query['WorkflowIds'] = request.workflow_ids_shrink
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='TerminateWorkflow',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ens_20171110_models.TerminateWorkflowResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def terminate_workflow_with_options_async(
-        self,
-        tmp_req: ens_20171110_models.TerminateWorkflowRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> ens_20171110_models.TerminateWorkflowResponse:
-        UtilClient.validate_model(tmp_req)
-        request = ens_20171110_models.TerminateWorkflowShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.workflow_ids):
-            request.workflow_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.workflow_ids, 'WorkflowIds', 'json')
-        query = {}
-        if not UtilClient.is_unset(request.workflow_ids_shrink):
-            query['WorkflowIds'] = request.workflow_ids_shrink
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
-        )
-        params = open_api_models.Params(
-            action='TerminateWorkflow',
-            version='2017-11-10',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
-        )
-        return TeaCore.from_map(
-            ens_20171110_models.TerminateWorkflowResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def terminate_workflow(
-        self,
-        request: ens_20171110_models.TerminateWorkflowRequest,
-    ) -> ens_20171110_models.TerminateWorkflowResponse:
-        runtime = util_models.RuntimeOptions()
-        return self.terminate_workflow_with_options(request, runtime)
-
-    async def terminate_workflow_async(
-        self,
-        request: ens_20171110_models.TerminateWorkflowRequest,
-    ) -> ens_20171110_models.TerminateWorkflowResponse:
-        runtime = util_models.RuntimeOptions()
-        return await self.terminate_workflow_with_options_async(request, runtime)
 
     def un_associate_ens_eip_address_with_options(
         self,
         request: ens_20171110_models.UnAssociateEnsEipAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.UnAssociateEnsEipAddressResponse:
+        """
+        @summary Disassociates an elastic IP address (EIP) from an instance.
+        
+        @param request: UnAssociateEnsEipAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnAssociateEnsEipAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.allocation_id):
@@ -21318,6 +26399,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.UnAssociateEnsEipAddressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.UnAssociateEnsEipAddressResponse:
+        """
+        @summary Disassociates an elastic IP address (EIP) from an instance.
+        
+        @param request: UnAssociateEnsEipAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnAssociateEnsEipAddressResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.allocation_id):
@@ -21345,6 +26433,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.UnAssociateEnsEipAddressRequest,
     ) -> ens_20171110_models.UnAssociateEnsEipAddressResponse:
+        """
+        @summary Disassociates an elastic IP address (EIP) from an instance.
+        
+        @param request: UnAssociateEnsEipAddressRequest
+        @return: UnAssociateEnsEipAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.un_associate_ens_eip_address_with_options(request, runtime)
 
@@ -21352,6 +26446,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.UnAssociateEnsEipAddressRequest,
     ) -> ens_20171110_models.UnAssociateEnsEipAddressResponse:
+        """
+        @summary Disassociates an elastic IP address (EIP) from an instance.
+        
+        @param request: UnAssociateEnsEipAddressRequest
+        @return: UnAssociateEnsEipAddressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.un_associate_ens_eip_address_with_options_async(request, runtime)
 
@@ -21360,6 +26460,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.UnassignPrivateIpAddressesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.UnassignPrivateIpAddressesResponse:
+        """
+        @summary Unassigns secondary private IP addresses from an elastic network interface (ENI).
+        
+        @param request: UnassignPrivateIpAddressesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnassignPrivateIpAddressesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.network_interface_id):
@@ -21390,6 +26497,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.UnassignPrivateIpAddressesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.UnassignPrivateIpAddressesResponse:
+        """
+        @summary Unassigns secondary private IP addresses from an elastic network interface (ENI).
+        
+        @param request: UnassignPrivateIpAddressesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnassignPrivateIpAddressesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.network_interface_id):
@@ -21419,6 +26533,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.UnassignPrivateIpAddressesRequest,
     ) -> ens_20171110_models.UnassignPrivateIpAddressesResponse:
+        """
+        @summary Unassigns secondary private IP addresses from an elastic network interface (ENI).
+        
+        @param request: UnassignPrivateIpAddressesRequest
+        @return: UnassignPrivateIpAddressesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.unassign_private_ip_addresses_with_options(request, runtime)
 
@@ -21426,6 +26546,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.UnassignPrivateIpAddressesRequest,
     ) -> ens_20171110_models.UnassignPrivateIpAddressesResponse:
+        """
+        @summary Unassigns secondary private IP addresses from an elastic network interface (ENI).
+        
+        @param request: UnassignPrivateIpAddressesRequest
+        @return: UnassignPrivateIpAddressesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.unassign_private_ip_addresses_with_options_async(request, runtime)
 
@@ -21434,6 +26560,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.UnassociateNetworkAclRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.UnassociateNetworkAclResponse:
+        """
+        @summary Disassociates a network access control list (ACL) from a network.
+        
+        @param request: UnassociateNetworkAclRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnassociateNetworkAclResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.network_acl_id):
@@ -21464,6 +26597,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.UnassociateNetworkAclRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.UnassociateNetworkAclResponse:
+        """
+        @summary Disassociates a network access control list (ACL) from a network.
+        
+        @param request: UnassociateNetworkAclRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnassociateNetworkAclResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.network_acl_id):
@@ -21493,6 +26633,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.UnassociateNetworkAclRequest,
     ) -> ens_20171110_models.UnassociateNetworkAclResponse:
+        """
+        @summary Disassociates a network access control list (ACL) from a network.
+        
+        @param request: UnassociateNetworkAclRequest
+        @return: UnassociateNetworkAclResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.unassociate_network_acl_with_options(request, runtime)
 
@@ -21500,6 +26646,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.UnassociateNetworkAclRequest,
     ) -> ens_20171110_models.UnassociateNetworkAclResponse:
+        """
+        @summary Disassociates a network access control list (ACL) from a network.
+        
+        @param request: UnassociateNetworkAclRequest
+        @return: UnassociateNetworkAclResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.unassociate_network_acl_with_options_async(request, runtime)
 
@@ -21508,6 +26660,13 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.UpdateEnsSaleControlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.UpdateEnsSaleControlResponse:
+        """
+        @summary 修改售卖约束
+        
+        @param tmp_req: UpdateEnsSaleControlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateEnsSaleControlResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.UpdateEnsSaleControlShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -21544,6 +26703,13 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.UpdateEnsSaleControlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.UpdateEnsSaleControlResponse:
+        """
+        @summary 修改售卖约束
+        
+        @param tmp_req: UpdateEnsSaleControlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateEnsSaleControlResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.UpdateEnsSaleControlShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -21579,6 +26745,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.UpdateEnsSaleControlRequest,
     ) -> ens_20171110_models.UpdateEnsSaleControlResponse:
+        """
+        @summary 修改售卖约束
+        
+        @param request: UpdateEnsSaleControlRequest
+        @return: UpdateEnsSaleControlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_ens_sale_control_with_options(request, runtime)
 
@@ -21586,6 +26758,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.UpdateEnsSaleControlRequest,
     ) -> ens_20171110_models.UpdateEnsSaleControlResponse:
+        """
+        @summary 修改售卖约束
+        
+        @param request: UpdateEnsSaleControlRequest
+        @return: UpdateEnsSaleControlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_ens_sale_control_with_options_async(request, runtime)
 
@@ -21594,6 +26772,13 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.UpgradeAICInstanceImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.UpgradeAICInstanceImageResponse:
+        """
+        @summary Updates the image of an Android in Container (AIC) instance.
+        
+        @param tmp_req: UpgradeAICInstanceImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeAICInstanceImageResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.UpgradeAICInstanceImageShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -21624,6 +26809,13 @@ class Client(OpenApiClient):
         tmp_req: ens_20171110_models.UpgradeAICInstanceImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.UpgradeAICInstanceImageResponse:
+        """
+        @summary Updates the image of an Android in Container (AIC) instance.
+        
+        @param tmp_req: UpgradeAICInstanceImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeAICInstanceImageResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ens_20171110_models.UpgradeAICInstanceImageShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -21653,6 +26845,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.UpgradeAICInstanceImageRequest,
     ) -> ens_20171110_models.UpgradeAICInstanceImageResponse:
+        """
+        @summary Updates the image of an Android in Container (AIC) instance.
+        
+        @param request: UpgradeAICInstanceImageRequest
+        @return: UpgradeAICInstanceImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.upgrade_aicinstance_image_with_options(request, runtime)
 
@@ -21660,6 +26858,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.UpgradeAICInstanceImageRequest,
     ) -> ens_20171110_models.UpgradeAICInstanceImageResponse:
+        """
+        @summary Updates the image of an Android in Container (AIC) instance.
+        
+        @param request: UpgradeAICInstanceImageRequest
+        @return: UpgradeAICInstanceImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.upgrade_aicinstance_image_with_options_async(request, runtime)
 
@@ -21668,6 +26872,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.UpgradeApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.UpgradeApplicationResponse:
+        """
+        @summary Updates the container in an asynchronous manner. You can configure multiple canary release policies.
+        
+        @param request: UpgradeApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -21700,6 +26911,13 @@ class Client(OpenApiClient):
         request: ens_20171110_models.UpgradeApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ens_20171110_models.UpgradeApplicationResponse:
+        """
+        @summary Updates the container in an asynchronous manner. You can configure multiple canary release policies.
+        
+        @param request: UpgradeApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -21731,6 +26949,12 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.UpgradeApplicationRequest,
     ) -> ens_20171110_models.UpgradeApplicationResponse:
+        """
+        @summary Updates the container in an asynchronous manner. You can configure multiple canary release policies.
+        
+        @param request: UpgradeApplicationRequest
+        @return: UpgradeApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.upgrade_application_with_options(request, runtime)
 
@@ -21738,5 +26962,11 @@ class Client(OpenApiClient):
         self,
         request: ens_20171110_models.UpgradeApplicationRequest,
     ) -> ens_20171110_models.UpgradeApplicationResponse:
+        """
+        @summary Updates the container in an asynchronous manner. You can configure multiple canary release policies.
+        
+        @param request: UpgradeApplicationRequest
+        @return: UpgradeApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.upgrade_application_with_options_async(request, runtime)

@@ -1,3 +1,31 @@
+2024-05-22 Version: 6.0.0
+- Support API CreateSDG.
+- Support API DeleteSDG.
+- Support API DescribeSDGs.
+- Support API RemoveSDG.
+- Support API SaveSDG.
+- Delete API DescribeWorkflow.
+- Delete API DescribeWorkflowActivity.
+- Delete API RestartWorkflow.
+- Delete API RetryWorkflow.
+- Delete API RollbackWorkflow.
+- Delete API TerminateWorkflow.
+- Update API CreateARMServerInstances: update param InstanceType.
+- Update API CreateARMServerInstances: update param ServerType.
+- Update API CreateImage: update response param.
+- Update API DeleteBucket: update response param.
+- Update API DeleteBucketLifecycle: update response param.
+- Update API DescribeApplication: add param ResourceSelector.
+- Update API DescribeInstances: update response param.
+- Update API GetBucketLifecycle: update response param.
+- Update API PutBucketAcl: update response param.
+- Update API PutBucketLifecycle: update response param.
+- Update API ResetAICInstance: delete param InstanceIds.
+- Update API RunInstances: add param AutoReleaseTime.
+- Update API RunInstances: add param SpotStrategy.
+- Update API UpgradeApplication: update response param.
+
+
 2024-02-06 Version: 5.0.0
 - Generated python 2017-11-10 for Ens.
 
