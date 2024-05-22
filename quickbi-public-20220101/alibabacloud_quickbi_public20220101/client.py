@@ -1945,6 +1945,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_ticket_with_options_async(request, runtime)
 
+    def create_ticket_4copilot_with_options(
+        self,
+        request: quickbi_public_20220101_models.CreateTicket4CopilotRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.CreateTicket4CopilotResponse:
+        """
+        @summary 生成智能小Q嵌入ticket
+        
+        @param request: CreateTicket4CopilotRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTicket4CopilotResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_type):
+            query['AccountType'] = request.account_type
+        if not UtilClient.is_unset(request.copilot_id):
+            query['CopilotId'] = request.copilot_id
+        if not UtilClient.is_unset(request.expire_time):
+            query['ExpireTime'] = request.expire_time
+        if not UtilClient.is_unset(request.ticket_num):
+            query['TicketNum'] = request.ticket_num
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTicket4Copilot',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.CreateTicket4CopilotResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_ticket_4copilot_with_options_async(
+        self,
+        request: quickbi_public_20220101_models.CreateTicket4CopilotRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> quickbi_public_20220101_models.CreateTicket4CopilotResponse:
+        """
+        @summary 生成智能小Q嵌入ticket
+        
+        @param request: CreateTicket4CopilotRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTicket4CopilotResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.account_name):
+            query['AccountName'] = request.account_name
+        if not UtilClient.is_unset(request.account_type):
+            query['AccountType'] = request.account_type
+        if not UtilClient.is_unset(request.copilot_id):
+            query['CopilotId'] = request.copilot_id
+        if not UtilClient.is_unset(request.expire_time):
+            query['ExpireTime'] = request.expire_time
+        if not UtilClient.is_unset(request.ticket_num):
+            query['TicketNum'] = request.ticket_num
+        if not UtilClient.is_unset(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateTicket4Copilot',
+            version='2022-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            quickbi_public_20220101_models.CreateTicket4CopilotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_ticket_4copilot(
+        self,
+        request: quickbi_public_20220101_models.CreateTicket4CopilotRequest,
+    ) -> quickbi_public_20220101_models.CreateTicket4CopilotResponse:
+        """
+        @summary 生成智能小Q嵌入ticket
+        
+        @param request: CreateTicket4CopilotRequest
+        @return: CreateTicket4CopilotResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_ticket_4copilot_with_options(request, runtime)
+
+    async def create_ticket_4copilot_async(
+        self,
+        request: quickbi_public_20220101_models.CreateTicket4CopilotRequest,
+    ) -> quickbi_public_20220101_models.CreateTicket4CopilotResponse:
+        """
+        @summary 生成智能小Q嵌入ticket
+        
+        @param request: CreateTicket4CopilotRequest
+        @return: CreateTicket4CopilotResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_ticket_4copilot_with_options_async(request, runtime)
+
     def create_user_group_with_options(
         self,
         request: quickbi_public_20220101_models.CreateUserGroupRequest,

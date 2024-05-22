@@ -2621,6 +2621,144 @@ class CreateTicketResponse(TeaModel):
         return self
 
 
+class CreateTicket4CopilotRequest(TeaModel):
+    def __init__(
+        self,
+        account_name: str = None,
+        account_type: int = None,
+        copilot_id: str = None,
+        expire_time: int = None,
+        ticket_num: int = None,
+        user_id: str = None,
+    ):
+        self.account_name = account_name
+        self.account_type = account_type
+        # This parameter is required.
+        self.copilot_id = copilot_id
+        self.expire_time = expire_time
+        self.ticket_num = ticket_num
+        self.user_id = user_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_name is not None:
+            result['AccountName'] = self.account_name
+        if self.account_type is not None:
+            result['AccountType'] = self.account_type
+        if self.copilot_id is not None:
+            result['CopilotId'] = self.copilot_id
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.ticket_num is not None:
+            result['TicketNum'] = self.ticket_num
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountName') is not None:
+            self.account_name = m.get('AccountName')
+        if m.get('AccountType') is not None:
+            self.account_type = m.get('AccountType')
+        if m.get('CopilotId') is not None:
+            self.copilot_id = m.get('CopilotId')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('TicketNum') is not None:
+            self.ticket_num = m.get('TicketNum')
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+        return self
+
+
+class CreateTicket4CopilotResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.result = result
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateTicket4CopilotResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateTicket4CopilotResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateTicket4CopilotResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateUserGroupRequest(TeaModel):
     def __init__(
         self,
@@ -9185,6 +9323,7 @@ class QueryDatasetInfoResponseBodyResult(TeaModel):
         gmt_create: str = None,
         gmt_modify: str = None,
         measure_list: List[QueryDatasetInfoResponseBodyResultMeasureList] = None,
+        open_offline_acceleration: bool = None,
         owner_id: str = None,
         owner_name: str = None,
         row_level: bool = None,
@@ -9223,6 +9362,7 @@ class QueryDatasetInfoResponseBodyResult(TeaModel):
         self.gmt_modify = gmt_modify
         # The unique ID of the table to which the table belongs, which corresponds to the UniqueId of the CubeTypeList.
         self.measure_list = measure_list
+        self.open_offline_acceleration = open_offline_acceleration
         # Test Space
         self.owner_id = owner_id
         # The unique ID of the data source.
@@ -9289,6 +9429,8 @@ class QueryDatasetInfoResponseBodyResult(TeaModel):
         if self.measure_list is not None:
             for k in self.measure_list:
                 result['MeasureList'].append(k.to_map() if k else None)
+        if self.open_offline_acceleration is not None:
+            result['OpenOfflineAcceleration'] = self.open_offline_acceleration
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
         if self.owner_name is not None:
@@ -9337,6 +9479,8 @@ class QueryDatasetInfoResponseBodyResult(TeaModel):
             for k in m.get('MeasureList'):
                 temp_model = QueryDatasetInfoResponseBodyResultMeasureList()
                 self.measure_list.append(temp_model.from_map(k))
+        if m.get('OpenOfflineAcceleration') is not None:
+            self.open_offline_acceleration = m.get('OpenOfflineAcceleration')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
         if m.get('OwnerName') is not None:
@@ -9606,6 +9750,7 @@ class QueryDatasetListResponseBodyResultData(TeaModel):
         description: str = None,
         directory: QueryDatasetListResponseBodyResultDataDirectory = None,
         modify_time: str = None,
+        open_offline_acceleration: bool = None,
         owner_id: str = None,
         owner_name: str = None,
         row_level: bool = None,
@@ -9626,6 +9771,7 @@ class QueryDatasetListResponseBodyResultData(TeaModel):
         self.directory = directory
         # The nickname of the dataset owner.
         self.modify_time = modify_time
+        self.open_offline_acceleration = open_offline_acceleration
         # The creation time.
         self.owner_id = owner_id
         # Whether to enable row-level permissions. Valid values:
@@ -9666,6 +9812,8 @@ class QueryDatasetListResponseBodyResultData(TeaModel):
             result['Directory'] = self.directory.to_map()
         if self.modify_time is not None:
             result['ModifyTime'] = self.modify_time
+        if self.open_offline_acceleration is not None:
+            result['OpenOfflineAcceleration'] = self.open_offline_acceleration
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
         if self.owner_name is not None:
@@ -9696,6 +9844,8 @@ class QueryDatasetListResponseBodyResultData(TeaModel):
             self.directory = temp_model.from_map(m['Directory'])
         if m.get('ModifyTime') is not None:
             self.modify_time = m.get('ModifyTime')
+        if m.get('OpenOfflineAcceleration') is not None:
+            self.open_offline_acceleration = m.get('OpenOfflineAcceleration')
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
         if m.get('OwnerName') is not None:

@@ -1,3 +1,16 @@
+2024-05-22 Version: 1.4.0
+- Support API CreateTicket4Copilot.
+- Support API ListOrganizationRoleUsers.
+- Support API ListOrganizationRoles.
+- Support API ListWorkspaceRoleUsers.
+- Support API ListWorkspaceRoles.
+- Support API QueryOrganizationRoleConfig.
+- Support API QueryWorkspaceRoleConfig.
+- Update API ListFavoriteReports: update response param.
+- Update API QueryDatasetInfo: update response param.
+- Update API QueryDatasetList: update response param.
+
+
 2024-05-21 Version: 1.3.0
 - Support API ListOrganizationRoleUsers.
 - Support API ListOrganizationRoles.
