@@ -47,7 +47,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.AddCustomLineResponse:
         """
-        In each CIDR block, the end IP address must be greater than or equal to the start IP address.\\
+        @summary Adds a custom line.
+        
+        @description In each CIDR block, the end IP address must be greater than or equal to the start IP address.\\
         The CIDR blocks that are specified for all custom lines of a domain name cannot be overlapped.
         
         @param request: AddCustomLineRequest
@@ -89,7 +91,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.AddCustomLineResponse:
         """
-        In each CIDR block, the end IP address must be greater than or equal to the start IP address.\\
+        @summary Adds a custom line.
+        
+        @description In each CIDR block, the end IP address must be greater than or equal to the start IP address.\\
         The CIDR blocks that are specified for all custom lines of a domain name cannot be overlapped.
         
         @param request: AddCustomLineRequest
@@ -130,7 +134,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.AddCustomLineRequest,
     ) -> alidns_20150109_models.AddCustomLineResponse:
         """
-        In each CIDR block, the end IP address must be greater than or equal to the start IP address.\\
+        @summary Adds a custom line.
+        
+        @description In each CIDR block, the end IP address must be greater than or equal to the start IP address.\\
         The CIDR blocks that are specified for all custom lines of a domain name cannot be overlapped.
         
         @param request: AddCustomLineRequest
@@ -144,7 +150,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.AddCustomLineRequest,
     ) -> alidns_20150109_models.AddCustomLineResponse:
         """
-        In each CIDR block, the end IP address must be greater than or equal to the start IP address.\\
+        @summary Adds a custom line.
+        
+        @description In each CIDR block, the end IP address must be greater than or equal to the start IP address.\\
         The CIDR blocks that are specified for all custom lines of a domain name cannot be overlapped.
         
         @param request: AddCustomLineRequest
@@ -158,6 +166,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.AddDnsCacheDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.AddDnsCacheDomainResponse:
+        """
+        @param request: AddDnsCacheDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDnsCacheDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cache_ttl_max):
@@ -202,6 +215,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.AddDnsCacheDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.AddDnsCacheDomainResponse:
+        """
+        @param request: AddDnsCacheDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDnsCacheDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cache_ttl_max):
@@ -245,6 +263,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.AddDnsCacheDomainRequest,
     ) -> alidns_20150109_models.AddDnsCacheDomainResponse:
+        """
+        @param request: AddDnsCacheDomainRequest
+        @return: AddDnsCacheDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_dns_cache_domain_with_options(request, runtime)
 
@@ -252,6 +274,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.AddDnsCacheDomainRequest,
     ) -> alidns_20150109_models.AddDnsCacheDomainResponse:
+        """
+        @param request: AddDnsCacheDomainRequest
+        @return: AddDnsCacheDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_dns_cache_domain_with_options_async(request, runtime)
 
@@ -260,6 +286,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.AddDnsGtmAccessStrategyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.AddDnsGtmAccessStrategyResponse:
+        """
+        @summary Creates an access policy.
+        
+        @param request: AddDnsGtmAccessStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDnsGtmAccessStrategyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.default_addr_pool):
@@ -320,6 +353,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.AddDnsGtmAccessStrategyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.AddDnsGtmAccessStrategyResponse:
+        """
+        @summary Creates an access policy.
+        
+        @param request: AddDnsGtmAccessStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDnsGtmAccessStrategyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.default_addr_pool):
@@ -379,6 +419,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.AddDnsGtmAccessStrategyRequest,
     ) -> alidns_20150109_models.AddDnsGtmAccessStrategyResponse:
+        """
+        @summary Creates an access policy.
+        
+        @param request: AddDnsGtmAccessStrategyRequest
+        @return: AddDnsGtmAccessStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_dns_gtm_access_strategy_with_options(request, runtime)
 
@@ -386,6 +432,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.AddDnsGtmAccessStrategyRequest,
     ) -> alidns_20150109_models.AddDnsGtmAccessStrategyResponse:
+        """
+        @summary Creates an access policy.
+        
+        @param request: AddDnsGtmAccessStrategyRequest
+        @return: AddDnsGtmAccessStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_dns_gtm_access_strategy_with_options_async(request, runtime)
 
@@ -394,6 +446,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.AddDnsGtmAddressPoolRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.AddDnsGtmAddressPoolResponse:
+        """
+        @summary Creates an address pool.
+        
+        @param request: AddDnsGtmAddressPoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDnsGtmAddressPoolResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.addr):
@@ -446,6 +505,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.AddDnsGtmAddressPoolRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.AddDnsGtmAddressPoolResponse:
+        """
+        @summary Creates an address pool.
+        
+        @param request: AddDnsGtmAddressPoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDnsGtmAddressPoolResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.addr):
@@ -497,6 +563,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.AddDnsGtmAddressPoolRequest,
     ) -> alidns_20150109_models.AddDnsGtmAddressPoolResponse:
+        """
+        @summary Creates an address pool.
+        
+        @param request: AddDnsGtmAddressPoolRequest
+        @return: AddDnsGtmAddressPoolResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_dns_gtm_address_pool_with_options(request, runtime)
 
@@ -504,6 +576,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.AddDnsGtmAddressPoolRequest,
     ) -> alidns_20150109_models.AddDnsGtmAddressPoolResponse:
+        """
+        @summary Creates an address pool.
+        
+        @param request: AddDnsGtmAddressPoolRequest
+        @return: AddDnsGtmAddressPoolResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_dns_gtm_address_pool_with_options_async(request, runtime)
 
@@ -513,7 +591,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.AddDnsGtmMonitorResponse:
         """
-        **\
+        @summary Creates a health check task.
+        
+        @description **\
         
         @param request: AddDnsGtmMonitorRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -562,7 +642,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.AddDnsGtmMonitorResponse:
         """
-        **\
+        @summary Creates a health check task.
+        
+        @description **\
         
         @param request: AddDnsGtmMonitorRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -610,7 +692,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.AddDnsGtmMonitorRequest,
     ) -> alidns_20150109_models.AddDnsGtmMonitorResponse:
         """
-        **\
+        @summary Creates a health check task.
+        
+        @description **\
         
         @param request: AddDnsGtmMonitorRequest
         @return: AddDnsGtmMonitorResponse
@@ -623,7 +707,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.AddDnsGtmMonitorRequest,
     ) -> alidns_20150109_models.AddDnsGtmMonitorResponse:
         """
-        **\
+        @summary Creates a health check task.
+        
+        @description **\
         
         @param request: AddDnsGtmMonitorRequest
         @return: AddDnsGtmMonitorResponse
@@ -637,7 +723,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.AddDomainResponse:
         """
-        For more information about how to check whether a domain name is valid, see
+        @summary Adds a domain name based on the specified parameters.
+        
+        @description For more information about how to check whether a domain name is valid, see
         [Domain name validity](https://www.alibabacloud.com/help/zh/doc-detail/67788.htm).
         
         @param request: AddDomainRequest
@@ -679,7 +767,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.AddDomainResponse:
         """
-        For more information about how to check whether a domain name is valid, see
+        @summary Adds a domain name based on the specified parameters.
+        
+        @description For more information about how to check whether a domain name is valid, see
         [Domain name validity](https://www.alibabacloud.com/help/zh/doc-detail/67788.htm).
         
         @param request: AddDomainRequest
@@ -720,7 +810,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.AddDomainRequest,
     ) -> alidns_20150109_models.AddDomainResponse:
         """
-        For more information about how to check whether a domain name is valid, see
+        @summary Adds a domain name based on the specified parameters.
+        
+        @description For more information about how to check whether a domain name is valid, see
         [Domain name validity](https://www.alibabacloud.com/help/zh/doc-detail/67788.htm).
         
         @param request: AddDomainRequest
@@ -734,7 +826,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.AddDomainRequest,
     ) -> alidns_20150109_models.AddDomainResponse:
         """
-        For more information about how to check whether a domain name is valid, see
+        @summary Adds a domain name based on the specified parameters.
+        
+        @description For more information about how to check whether a domain name is valid, see
         [Domain name validity](https://www.alibabacloud.com/help/zh/doc-detail/67788.htm).
         
         @param request: AddDomainRequest
@@ -748,6 +842,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.AddDomainBackupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.AddDomainBackupResponse:
+        """
+        @summary Creates a backup task for a domain name.
+        
+        @param request: AddDomainBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDomainBackupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -780,6 +881,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.AddDomainBackupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.AddDomainBackupResponse:
+        """
+        @summary Creates a backup task for a domain name.
+        
+        @param request: AddDomainBackupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDomainBackupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -811,6 +919,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.AddDomainBackupRequest,
     ) -> alidns_20150109_models.AddDomainBackupResponse:
+        """
+        @summary Creates a backup task for a domain name.
+        
+        @param request: AddDomainBackupRequest
+        @return: AddDomainBackupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_domain_backup_with_options(request, runtime)
 
@@ -818,6 +932,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.AddDomainBackupRequest,
     ) -> alidns_20150109_models.AddDomainBackupResponse:
+        """
+        @summary Creates a backup task for a domain name.
+        
+        @param request: AddDomainBackupRequest
+        @return: AddDomainBackupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_domain_backup_with_options_async(request, runtime)
 
@@ -826,6 +946,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.AddDomainGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.AddDomainGroupResponse:
+        """
+        @summary Creates a domain name group based on the specified parameters.
+        
+        @param request: AddDomainGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDomainGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -856,6 +983,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.AddDomainGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.AddDomainGroupResponse:
+        """
+        @summary Creates a domain name group based on the specified parameters.
+        
+        @param request: AddDomainGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDomainGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -885,6 +1019,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.AddDomainGroupRequest,
     ) -> alidns_20150109_models.AddDomainGroupResponse:
+        """
+        @summary Creates a domain name group based on the specified parameters.
+        
+        @param request: AddDomainGroupRequest
+        @return: AddDomainGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_domain_group_with_options(request, runtime)
 
@@ -892,6 +1032,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.AddDomainGroupRequest,
     ) -> alidns_20150109_models.AddDomainGroupResponse:
+        """
+        @summary Creates a domain name group based on the specified parameters.
+        
+        @param request: AddDomainGroupRequest
+        @return: AddDomainGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_domain_group_with_options_async(request, runtime)
 
@@ -900,6 +1046,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.AddDomainRecordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.AddDomainRecordResponse:
+        """
+        @summary Adds a Domain Name System (DNS) record based on the specified parameters.
+        
+        @param request: AddDomainRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDomainRecordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -944,6 +1097,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.AddDomainRecordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.AddDomainRecordResponse:
+        """
+        @summary Adds a Domain Name System (DNS) record based on the specified parameters.
+        
+        @param request: AddDomainRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddDomainRecordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -987,6 +1147,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.AddDomainRecordRequest,
     ) -> alidns_20150109_models.AddDomainRecordResponse:
+        """
+        @summary Adds a Domain Name System (DNS) record based on the specified parameters.
+        
+        @param request: AddDomainRecordRequest
+        @return: AddDomainRecordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_domain_record_with_options(request, runtime)
 
@@ -994,6 +1160,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.AddDomainRecordRequest,
     ) -> alidns_20150109_models.AddDomainRecordResponse:
+        """
+        @summary Adds a Domain Name System (DNS) record based on the specified parameters.
+        
+        @param request: AddDomainRecordRequest
+        @return: AddDomainRecordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_domain_record_with_options_async(request, runtime)
 
@@ -1002,6 +1174,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.AddGtmAccessStrategyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.AddGtmAccessStrategyResponse:
+        """
+        @param request: AddGtmAccessStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddGtmAccessStrategyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_lines):
@@ -1040,6 +1217,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.AddGtmAccessStrategyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.AddGtmAccessStrategyResponse:
+        """
+        @param request: AddGtmAccessStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddGtmAccessStrategyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_lines):
@@ -1077,6 +1259,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.AddGtmAccessStrategyRequest,
     ) -> alidns_20150109_models.AddGtmAccessStrategyResponse:
+        """
+        @param request: AddGtmAccessStrategyRequest
+        @return: AddGtmAccessStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_gtm_access_strategy_with_options(request, runtime)
 
@@ -1084,6 +1270,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.AddGtmAccessStrategyRequest,
     ) -> alidns_20150109_models.AddGtmAccessStrategyResponse:
+        """
+        @param request: AddGtmAccessStrategyRequest
+        @return: AddGtmAccessStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_gtm_access_strategy_with_options_async(request, runtime)
 
@@ -1092,6 +1282,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.AddGtmAddressPoolRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.AddGtmAddressPoolResponse:
+        """
+        @summary Creates an address pool.
+        
+        @param request: AddGtmAddressPoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddGtmAddressPoolResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.addr):
@@ -1144,6 +1341,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.AddGtmAddressPoolRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.AddGtmAddressPoolResponse:
+        """
+        @summary Creates an address pool.
+        
+        @param request: AddGtmAddressPoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddGtmAddressPoolResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.addr):
@@ -1195,6 +1399,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.AddGtmAddressPoolRequest,
     ) -> alidns_20150109_models.AddGtmAddressPoolResponse:
+        """
+        @summary Creates an address pool.
+        
+        @param request: AddGtmAddressPoolRequest
+        @return: AddGtmAddressPoolResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_gtm_address_pool_with_options(request, runtime)
 
@@ -1202,6 +1412,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.AddGtmAddressPoolRequest,
     ) -> alidns_20150109_models.AddGtmAddressPoolResponse:
+        """
+        @summary Creates an address pool.
+        
+        @param request: AddGtmAddressPoolRequest
+        @return: AddGtmAddressPoolResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_gtm_address_pool_with_options_async(request, runtime)
 
@@ -1210,6 +1426,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.AddGtmMonitorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.AddGtmMonitorResponse:
+        """
+        @summary Creates a health check task.
+        
+        @param request: AddGtmMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddGtmMonitorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.addr_pool_id):
@@ -1252,6 +1475,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.AddGtmMonitorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.AddGtmMonitorResponse:
+        """
+        @summary Creates a health check task.
+        
+        @param request: AddGtmMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddGtmMonitorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.addr_pool_id):
@@ -1293,6 +1523,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.AddGtmMonitorRequest,
     ) -> alidns_20150109_models.AddGtmMonitorResponse:
+        """
+        @summary Creates a health check task.
+        
+        @param request: AddGtmMonitorRequest
+        @return: AddGtmMonitorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_gtm_monitor_with_options(request, runtime)
 
@@ -1300,6 +1536,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.AddGtmMonitorRequest,
     ) -> alidns_20150109_models.AddGtmMonitorResponse:
+        """
+        @summary Creates a health check task.
+        
+        @param request: AddGtmMonitorRequest
+        @return: AddGtmMonitorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_gtm_monitor_with_options_async(request, runtime)
 
@@ -1308,6 +1550,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.AddGtmRecoveryPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.AddGtmRecoveryPlanResponse:
+        """
+        @param request: AddGtmRecoveryPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddGtmRecoveryPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.fault_addr_pool):
@@ -1342,6 +1589,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.AddGtmRecoveryPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.AddGtmRecoveryPlanResponse:
+        """
+        @param request: AddGtmRecoveryPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddGtmRecoveryPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.fault_addr_pool):
@@ -1375,6 +1627,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.AddGtmRecoveryPlanRequest,
     ) -> alidns_20150109_models.AddGtmRecoveryPlanResponse:
+        """
+        @param request: AddGtmRecoveryPlanRequest
+        @return: AddGtmRecoveryPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_gtm_recovery_plan_with_options(request, runtime)
 
@@ -1382,6 +1638,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.AddGtmRecoveryPlanRequest,
     ) -> alidns_20150109_models.AddGtmRecoveryPlanResponse:
+        """
+        @param request: AddGtmRecoveryPlanRequest
+        @return: AddGtmRecoveryPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_gtm_recovery_plan_with_options_async(request, runtime)
 
@@ -1391,7 +1651,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.BindInstanceDomainsResponse:
         """
-        A paid Alibaba Cloud DNS instance whose ID starts with dns is an instance of the new version. You can call this API operation to bind multiple domain names to the instance. If the upper limit is exceeded, an error message is returned.\\
+        @summary Binds one or more domain names to a paid Alibaba Cloud DNS instance.
+        
+        @description A paid Alibaba Cloud DNS instance whose ID starts with dns is an instance of the new version. You can call this API operation to bind multiple domain names to the instance. If the upper limit is exceeded, an error message is returned.\\
         A paid Alibaba Cloud DNS instance whose ID does not start with dns is an instance of the old version. You can call this API operation to bind only one domain name to the instance. However, if the instance is already bound to a domain name, you must unbind the original domain name from the instance and bind the desired domain name to the instance.
         
         @param request: BindInstanceDomainsRequest
@@ -1431,7 +1693,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.BindInstanceDomainsResponse:
         """
-        A paid Alibaba Cloud DNS instance whose ID starts with dns is an instance of the new version. You can call this API operation to bind multiple domain names to the instance. If the upper limit is exceeded, an error message is returned.\\
+        @summary Binds one or more domain names to a paid Alibaba Cloud DNS instance.
+        
+        @description A paid Alibaba Cloud DNS instance whose ID starts with dns is an instance of the new version. You can call this API operation to bind multiple domain names to the instance. If the upper limit is exceeded, an error message is returned.\\
         A paid Alibaba Cloud DNS instance whose ID does not start with dns is an instance of the old version. You can call this API operation to bind only one domain name to the instance. However, if the instance is already bound to a domain name, you must unbind the original domain name from the instance and bind the desired domain name to the instance.
         
         @param request: BindInstanceDomainsRequest
@@ -1470,7 +1734,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.BindInstanceDomainsRequest,
     ) -> alidns_20150109_models.BindInstanceDomainsResponse:
         """
-        A paid Alibaba Cloud DNS instance whose ID starts with dns is an instance of the new version. You can call this API operation to bind multiple domain names to the instance. If the upper limit is exceeded, an error message is returned.\\
+        @summary Binds one or more domain names to a paid Alibaba Cloud DNS instance.
+        
+        @description A paid Alibaba Cloud DNS instance whose ID starts with dns is an instance of the new version. You can call this API operation to bind multiple domain names to the instance. If the upper limit is exceeded, an error message is returned.\\
         A paid Alibaba Cloud DNS instance whose ID does not start with dns is an instance of the old version. You can call this API operation to bind only one domain name to the instance. However, if the instance is already bound to a domain name, you must unbind the original domain name from the instance and bind the desired domain name to the instance.
         
         @param request: BindInstanceDomainsRequest
@@ -1484,7 +1750,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.BindInstanceDomainsRequest,
     ) -> alidns_20150109_models.BindInstanceDomainsResponse:
         """
-        A paid Alibaba Cloud DNS instance whose ID starts with dns is an instance of the new version. You can call this API operation to bind multiple domain names to the instance. If the upper limit is exceeded, an error message is returned.\\
+        @summary Binds one or more domain names to a paid Alibaba Cloud DNS instance.
+        
+        @description A paid Alibaba Cloud DNS instance whose ID starts with dns is an instance of the new version. You can call this API operation to bind multiple domain names to the instance. If the upper limit is exceeded, an error message is returned.\\
         A paid Alibaba Cloud DNS instance whose ID does not start with dns is an instance of the old version. You can call this API operation to bind only one domain name to the instance. However, if the instance is already bound to a domain name, you must unbind the original domain name from the instance and bind the desired domain name to the instance.
         
         @param request: BindInstanceDomainsRequest
@@ -1499,7 +1767,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ChangeDomainGroupResponse:
         """
-        You can specify GroupId to move a domain name to a specific domain name group. You can move the domain name to the group that contains all domain names or the default group.
+        @summary Moves a domain name from the original group to the new group based on the specified parameters.
+        
+        @description You can specify GroupId to move a domain name to a specific domain name group. You can move the domain name to the group that contains all domain names or the default group.
         
         @param request: ChangeDomainGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1538,7 +1808,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ChangeDomainGroupResponse:
         """
-        You can specify GroupId to move a domain name to a specific domain name group. You can move the domain name to the group that contains all domain names or the default group.
+        @summary Moves a domain name from the original group to the new group based on the specified parameters.
+        
+        @description You can specify GroupId to move a domain name to a specific domain name group. You can move the domain name to the group that contains all domain names or the default group.
         
         @param request: ChangeDomainGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1576,7 +1848,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ChangeDomainGroupRequest,
     ) -> alidns_20150109_models.ChangeDomainGroupResponse:
         """
-        You can specify GroupId to move a domain name to a specific domain name group. You can move the domain name to the group that contains all domain names or the default group.
+        @summary Moves a domain name from the original group to the new group based on the specified parameters.
+        
+        @description You can specify GroupId to move a domain name to a specific domain name group. You can move the domain name to the group that contains all domain names or the default group.
         
         @param request: ChangeDomainGroupRequest
         @return: ChangeDomainGroupResponse
@@ -1589,7 +1863,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ChangeDomainGroupRequest,
     ) -> alidns_20150109_models.ChangeDomainGroupResponse:
         """
-        You can specify GroupId to move a domain name to a specific domain name group. You can move the domain name to the group that contains all domain names or the default group.
+        @summary Moves a domain name from the original group to the new group based on the specified parameters.
+        
+        @description You can specify GroupId to move a domain name to a specific domain name group. You can move the domain name to the group that contains all domain names or the default group.
         
         @param request: ChangeDomainGroupRequest
         @return: ChangeDomainGroupResponse
@@ -1603,7 +1879,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ChangeDomainOfDnsProductResponse:
         """
-        >  You can call this operation to change the domain name for an Alibaba Cloud DNS instance to which a domain name is bound. You can also call this operation to bind a domain name to an Alibaba Cloud DNS instance to which no domain name is bound. If you need to unbind a domain name from an Alibaba Cloud DNS instance, you can call this operation. In this case, the NewDomain parameter must not be specified.
+        @summary Changes the domain name bound to an Alibaba Cloud DNS instance.
+        
+        @description >  You can call this operation to change the domain name for an Alibaba Cloud DNS instance to which a domain name is bound. You can also call this operation to bind a domain name to an Alibaba Cloud DNS instance to which no domain name is bound. If you need to unbind a domain name from an Alibaba Cloud DNS instance, you can call this operation. In this case, the NewDomain parameter must not be specified.
         
         @param request: ChangeDomainOfDnsProductRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1646,7 +1924,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ChangeDomainOfDnsProductResponse:
         """
-        >  You can call this operation to change the domain name for an Alibaba Cloud DNS instance to which a domain name is bound. You can also call this operation to bind a domain name to an Alibaba Cloud DNS instance to which no domain name is bound. If you need to unbind a domain name from an Alibaba Cloud DNS instance, you can call this operation. In this case, the NewDomain parameter must not be specified.
+        @summary Changes the domain name bound to an Alibaba Cloud DNS instance.
+        
+        @description >  You can call this operation to change the domain name for an Alibaba Cloud DNS instance to which a domain name is bound. You can also call this operation to bind a domain name to an Alibaba Cloud DNS instance to which no domain name is bound. If you need to unbind a domain name from an Alibaba Cloud DNS instance, you can call this operation. In this case, the NewDomain parameter must not be specified.
         
         @param request: ChangeDomainOfDnsProductRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1688,7 +1968,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ChangeDomainOfDnsProductRequest,
     ) -> alidns_20150109_models.ChangeDomainOfDnsProductResponse:
         """
-        >  You can call this operation to change the domain name for an Alibaba Cloud DNS instance to which a domain name is bound. You can also call this operation to bind a domain name to an Alibaba Cloud DNS instance to which no domain name is bound. If you need to unbind a domain name from an Alibaba Cloud DNS instance, you can call this operation. In this case, the NewDomain parameter must not be specified.
+        @summary Changes the domain name bound to an Alibaba Cloud DNS instance.
+        
+        @description >  You can call this operation to change the domain name for an Alibaba Cloud DNS instance to which a domain name is bound. You can also call this operation to bind a domain name to an Alibaba Cloud DNS instance to which no domain name is bound. If you need to unbind a domain name from an Alibaba Cloud DNS instance, you can call this operation. In this case, the NewDomain parameter must not be specified.
         
         @param request: ChangeDomainOfDnsProductRequest
         @return: ChangeDomainOfDnsProductResponse
@@ -1701,7 +1983,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ChangeDomainOfDnsProductRequest,
     ) -> alidns_20150109_models.ChangeDomainOfDnsProductResponse:
         """
-        >  You can call this operation to change the domain name for an Alibaba Cloud DNS instance to which a domain name is bound. You can also call this operation to bind a domain name to an Alibaba Cloud DNS instance to which no domain name is bound. If you need to unbind a domain name from an Alibaba Cloud DNS instance, you can call this operation. In this case, the NewDomain parameter must not be specified.
+        @summary Changes the domain name bound to an Alibaba Cloud DNS instance.
+        
+        @description >  You can call this operation to change the domain name for an Alibaba Cloud DNS instance to which a domain name is bound. You can also call this operation to bind a domain name to an Alibaba Cloud DNS instance to which no domain name is bound. If you need to unbind a domain name from an Alibaba Cloud DNS instance, you can call this operation. In this case, the NewDomain parameter must not be specified.
         
         @param request: ChangeDomainOfDnsProductRequest
         @return: ChangeDomainOfDnsProductResponse
@@ -1714,6 +1998,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.CopyGtmConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.CopyGtmConfigResponse:
+        """
+        @param request: CopyGtmConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CopyGtmConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.copy_type):
@@ -1748,6 +2037,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.CopyGtmConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.CopyGtmConfigResponse:
+        """
+        @param request: CopyGtmConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CopyGtmConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.copy_type):
@@ -1781,6 +2075,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.CopyGtmConfigRequest,
     ) -> alidns_20150109_models.CopyGtmConfigResponse:
+        """
+        @param request: CopyGtmConfigRequest
+        @return: CopyGtmConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.copy_gtm_config_with_options(request, runtime)
 
@@ -1788,6 +2086,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.CopyGtmConfigRequest,
     ) -> alidns_20150109_models.CopyGtmConfigResponse:
+        """
+        @param request: CopyGtmConfigRequest
+        @return: CopyGtmConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.copy_gtm_config_with_options_async(request, runtime)
 
@@ -1796,6 +2098,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.CreatePdnsAppKeyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.CreatePdnsAppKeyResponse:
+        """
+        @summary 创建公共DNS AppKey
+        
+        @param request: CreatePdnsAppKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePdnsAppKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -1824,6 +2133,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.CreatePdnsAppKeyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.CreatePdnsAppKeyResponse:
+        """
+        @summary 创建公共DNS AppKey
+        
+        @param request: CreatePdnsAppKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePdnsAppKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -1851,6 +2167,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.CreatePdnsAppKeyRequest,
     ) -> alidns_20150109_models.CreatePdnsAppKeyResponse:
+        """
+        @summary 创建公共DNS AppKey
+        
+        @param request: CreatePdnsAppKeyRequest
+        @return: CreatePdnsAppKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_pdns_app_key_with_options(request, runtime)
 
@@ -1858,6 +2180,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.CreatePdnsAppKeyRequest,
     ) -> alidns_20150109_models.CreatePdnsAppKeyResponse:
+        """
+        @summary 创建公共DNS AppKey
+        
+        @param request: CreatePdnsAppKeyRequest
+        @return: CreatePdnsAppKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_pdns_app_key_with_options_async(request, runtime)
 
@@ -1866,6 +2194,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.CreatePdnsUdpIpSegmentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.CreatePdnsUdpIpSegmentResponse:
+        """
+        @summary 创建公共DNS Udp Ip地址段
+        
+        @param request: CreatePdnsUdpIpSegmentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePdnsUdpIpSegmentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ip):
@@ -1898,6 +2233,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.CreatePdnsUdpIpSegmentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.CreatePdnsUdpIpSegmentResponse:
+        """
+        @summary 创建公共DNS Udp Ip地址段
+        
+        @param request: CreatePdnsUdpIpSegmentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePdnsUdpIpSegmentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ip):
@@ -1929,6 +2271,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.CreatePdnsUdpIpSegmentRequest,
     ) -> alidns_20150109_models.CreatePdnsUdpIpSegmentResponse:
+        """
+        @summary 创建公共DNS Udp Ip地址段
+        
+        @param request: CreatePdnsUdpIpSegmentRequest
+        @return: CreatePdnsUdpIpSegmentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_pdns_udp_ip_segment_with_options(request, runtime)
 
@@ -1936,6 +2284,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.CreatePdnsUdpIpSegmentRequest,
     ) -> alidns_20150109_models.CreatePdnsUdpIpSegmentResponse:
+        """
+        @summary 创建公共DNS Udp Ip地址段
+        
+        @param request: CreatePdnsUdpIpSegmentRequest
+        @return: CreatePdnsUdpIpSegmentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_pdns_udp_ip_segment_with_options_async(request, runtime)
 
@@ -1944,6 +2298,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DeleteCustomLinesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DeleteCustomLinesResponse:
+        """
+        @summary Deletes multiple custom lines at a time.
+        
+        @param request: DeleteCustomLinesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCustomLinesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -1974,6 +2335,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DeleteCustomLinesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DeleteCustomLinesResponse:
+        """
+        @summary Deletes multiple custom lines at a time.
+        
+        @param request: DeleteCustomLinesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCustomLinesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -2003,6 +2371,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DeleteCustomLinesRequest,
     ) -> alidns_20150109_models.DeleteCustomLinesResponse:
+        """
+        @summary Deletes multiple custom lines at a time.
+        
+        @param request: DeleteCustomLinesRequest
+        @return: DeleteCustomLinesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_custom_lines_with_options(request, runtime)
 
@@ -2010,6 +2384,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DeleteCustomLinesRequest,
     ) -> alidns_20150109_models.DeleteCustomLinesResponse:
+        """
+        @summary Deletes multiple custom lines at a time.
+        
+        @param request: DeleteCustomLinesRequest
+        @return: DeleteCustomLinesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_custom_lines_with_options_async(request, runtime)
 
@@ -2018,6 +2398,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DeleteDnsCacheDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DeleteDnsCacheDomainResponse:
+        """
+        @param request: DeleteDnsCacheDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDnsCacheDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -2048,6 +2433,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DeleteDnsCacheDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DeleteDnsCacheDomainResponse:
+        """
+        @param request: DeleteDnsCacheDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDnsCacheDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -2077,6 +2467,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DeleteDnsCacheDomainRequest,
     ) -> alidns_20150109_models.DeleteDnsCacheDomainResponse:
+        """
+        @param request: DeleteDnsCacheDomainRequest
+        @return: DeleteDnsCacheDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_dns_cache_domain_with_options(request, runtime)
 
@@ -2084,6 +2478,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DeleteDnsCacheDomainRequest,
     ) -> alidns_20150109_models.DeleteDnsCacheDomainResponse:
+        """
+        @param request: DeleteDnsCacheDomainRequest
+        @return: DeleteDnsCacheDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_dns_cache_domain_with_options_async(request, runtime)
 
@@ -2092,6 +2490,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DeleteDnsGtmAccessStrategyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DeleteDnsGtmAccessStrategyResponse:
+        """
+        @param request: DeleteDnsGtmAccessStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDnsGtmAccessStrategyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -2122,6 +2525,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DeleteDnsGtmAccessStrategyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DeleteDnsGtmAccessStrategyResponse:
+        """
+        @param request: DeleteDnsGtmAccessStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDnsGtmAccessStrategyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -2151,6 +2559,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DeleteDnsGtmAccessStrategyRequest,
     ) -> alidns_20150109_models.DeleteDnsGtmAccessStrategyResponse:
+        """
+        @param request: DeleteDnsGtmAccessStrategyRequest
+        @return: DeleteDnsGtmAccessStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_dns_gtm_access_strategy_with_options(request, runtime)
 
@@ -2158,6 +2570,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DeleteDnsGtmAccessStrategyRequest,
     ) -> alidns_20150109_models.DeleteDnsGtmAccessStrategyResponse:
+        """
+        @param request: DeleteDnsGtmAccessStrategyRequest
+        @return: DeleteDnsGtmAccessStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_dns_gtm_access_strategy_with_options_async(request, runtime)
 
@@ -2166,6 +2582,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DeleteDnsGtmAddressPoolRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DeleteDnsGtmAddressPoolResponse:
+        """
+        @param request: DeleteDnsGtmAddressPoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDnsGtmAddressPoolResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.addr_pool_id):
@@ -2196,6 +2617,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DeleteDnsGtmAddressPoolRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DeleteDnsGtmAddressPoolResponse:
+        """
+        @param request: DeleteDnsGtmAddressPoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDnsGtmAddressPoolResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.addr_pool_id):
@@ -2225,6 +2651,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DeleteDnsGtmAddressPoolRequest,
     ) -> alidns_20150109_models.DeleteDnsGtmAddressPoolResponse:
+        """
+        @param request: DeleteDnsGtmAddressPoolRequest
+        @return: DeleteDnsGtmAddressPoolResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_dns_gtm_address_pool_with_options(request, runtime)
 
@@ -2232,6 +2662,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DeleteDnsGtmAddressPoolRequest,
     ) -> alidns_20150109_models.DeleteDnsGtmAddressPoolResponse:
+        """
+        @param request: DeleteDnsGtmAddressPoolRequest
+        @return: DeleteDnsGtmAddressPoolResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_dns_gtm_address_pool_with_options_async(request, runtime)
 
@@ -2240,6 +2674,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DeleteDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DeleteDomainResponse:
+        """
+        @summary Deletes a domain name based on the specified parameters.
+        
+        @param request: DeleteDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -2270,6 +2711,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DeleteDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DeleteDomainResponse:
+        """
+        @summary Deletes a domain name based on the specified parameters.
+        
+        @param request: DeleteDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -2299,6 +2747,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DeleteDomainRequest,
     ) -> alidns_20150109_models.DeleteDomainResponse:
+        """
+        @summary Deletes a domain name based on the specified parameters.
+        
+        @param request: DeleteDomainRequest
+        @return: DeleteDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_domain_with_options(request, runtime)
 
@@ -2306,6 +2760,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DeleteDomainRequest,
     ) -> alidns_20150109_models.DeleteDomainResponse:
+        """
+        @summary Deletes a domain name based on the specified parameters.
+        
+        @param request: DeleteDomainRequest
+        @return: DeleteDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_domain_with_options_async(request, runtime)
 
@@ -2315,7 +2775,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DeleteDomainGroupResponse:
         """
-        >  The default group cannot be deleted.
+        @summary Deletes a domain name group. After you delete the domain name group, the domain names in the group are moved to the default group.
+        
+        @description >  The default group cannot be deleted.
         
         @param request: DeleteDomainGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2352,7 +2814,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DeleteDomainGroupResponse:
         """
-        >  The default group cannot be deleted.
+        @summary Deletes a domain name group. After you delete the domain name group, the domain names in the group are moved to the default group.
+        
+        @description >  The default group cannot be deleted.
         
         @param request: DeleteDomainGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2388,7 +2852,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DeleteDomainGroupRequest,
     ) -> alidns_20150109_models.DeleteDomainGroupResponse:
         """
-        >  The default group cannot be deleted.
+        @summary Deletes a domain name group. After you delete the domain name group, the domain names in the group are moved to the default group.
+        
+        @description >  The default group cannot be deleted.
         
         @param request: DeleteDomainGroupRequest
         @return: DeleteDomainGroupResponse
@@ -2401,7 +2867,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DeleteDomainGroupRequest,
     ) -> alidns_20150109_models.DeleteDomainGroupResponse:
         """
-        >  The default group cannot be deleted.
+        @summary Deletes a domain name group. After you delete the domain name group, the domain names in the group are moved to the default group.
+        
+        @description >  The default group cannot be deleted.
         
         @param request: DeleteDomainGroupRequest
         @return: DeleteDomainGroupResponse
@@ -2414,6 +2882,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DeleteDomainRecordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DeleteDomainRecordResponse:
+        """
+        @summary Deletes a Domain Name System (DNS) record based on the specified parameters.
+        
+        @param request: DeleteDomainRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDomainRecordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -2446,6 +2921,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DeleteDomainRecordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DeleteDomainRecordResponse:
+        """
+        @summary Deletes a Domain Name System (DNS) record based on the specified parameters.
+        
+        @param request: DeleteDomainRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDomainRecordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -2477,6 +2959,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DeleteDomainRecordRequest,
     ) -> alidns_20150109_models.DeleteDomainRecordResponse:
+        """
+        @summary Deletes a Domain Name System (DNS) record based on the specified parameters.
+        
+        @param request: DeleteDomainRecordRequest
+        @return: DeleteDomainRecordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_domain_record_with_options(request, runtime)
 
@@ -2484,6 +2972,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DeleteDomainRecordRequest,
     ) -> alidns_20150109_models.DeleteDomainRecordResponse:
+        """
+        @summary Deletes a Domain Name System (DNS) record based on the specified parameters.
+        
+        @param request: DeleteDomainRecordRequest
+        @return: DeleteDomainRecordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_domain_record_with_options_async(request, runtime)
 
@@ -2492,6 +2986,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DeleteGtmAccessStrategyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DeleteGtmAccessStrategyResponse:
+        """
+        @param request: DeleteGtmAccessStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGtmAccessStrategyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -2522,6 +3021,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DeleteGtmAccessStrategyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DeleteGtmAccessStrategyResponse:
+        """
+        @param request: DeleteGtmAccessStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGtmAccessStrategyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -2551,6 +3055,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DeleteGtmAccessStrategyRequest,
     ) -> alidns_20150109_models.DeleteGtmAccessStrategyResponse:
+        """
+        @param request: DeleteGtmAccessStrategyRequest
+        @return: DeleteGtmAccessStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_gtm_access_strategy_with_options(request, runtime)
 
@@ -2558,6 +3066,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DeleteGtmAccessStrategyRequest,
     ) -> alidns_20150109_models.DeleteGtmAccessStrategyResponse:
+        """
+        @param request: DeleteGtmAccessStrategyRequest
+        @return: DeleteGtmAccessStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_gtm_access_strategy_with_options_async(request, runtime)
 
@@ -2566,6 +3078,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DeleteGtmAddressPoolRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DeleteGtmAddressPoolResponse:
+        """
+        @param request: DeleteGtmAddressPoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGtmAddressPoolResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.addr_pool_id):
@@ -2596,6 +3113,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DeleteGtmAddressPoolRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DeleteGtmAddressPoolResponse:
+        """
+        @param request: DeleteGtmAddressPoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGtmAddressPoolResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.addr_pool_id):
@@ -2625,6 +3147,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DeleteGtmAddressPoolRequest,
     ) -> alidns_20150109_models.DeleteGtmAddressPoolResponse:
+        """
+        @param request: DeleteGtmAddressPoolRequest
+        @return: DeleteGtmAddressPoolResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_gtm_address_pool_with_options(request, runtime)
 
@@ -2632,6 +3158,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DeleteGtmAddressPoolRequest,
     ) -> alidns_20150109_models.DeleteGtmAddressPoolResponse:
+        """
+        @param request: DeleteGtmAddressPoolRequest
+        @return: DeleteGtmAddressPoolResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_gtm_address_pool_with_options_async(request, runtime)
 
@@ -2640,6 +3170,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DeleteGtmRecoveryPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DeleteGtmRecoveryPlanResponse:
+        """
+        @param request: DeleteGtmRecoveryPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGtmRecoveryPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -2670,6 +3205,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DeleteGtmRecoveryPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DeleteGtmRecoveryPlanResponse:
+        """
+        @param request: DeleteGtmRecoveryPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGtmRecoveryPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -2699,6 +3239,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DeleteGtmRecoveryPlanRequest,
     ) -> alidns_20150109_models.DeleteGtmRecoveryPlanResponse:
+        """
+        @param request: DeleteGtmRecoveryPlanRequest
+        @return: DeleteGtmRecoveryPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_gtm_recovery_plan_with_options(request, runtime)
 
@@ -2706,6 +3250,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DeleteGtmRecoveryPlanRequest,
     ) -> alidns_20150109_models.DeleteGtmRecoveryPlanResponse:
+        """
+        @param request: DeleteGtmRecoveryPlanRequest
+        @return: DeleteGtmRecoveryPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_gtm_recovery_plan_with_options_async(request, runtime)
 
@@ -2715,7 +3263,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DeleteSubDomainRecordsResponse:
         """
-        If the DNS records to be deleted contain locked DNS records, locked DNS records will not be deleted.
+        @description If the DNS records to be deleted contain locked DNS records, locked DNS records will not be deleted.
         
         @param request: DeleteSubDomainRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2758,7 +3306,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DeleteSubDomainRecordsResponse:
         """
-        If the DNS records to be deleted contain locked DNS records, locked DNS records will not be deleted.
+        @description If the DNS records to be deleted contain locked DNS records, locked DNS records will not be deleted.
         
         @param request: DeleteSubDomainRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2800,7 +3348,7 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DeleteSubDomainRecordsRequest,
     ) -> alidns_20150109_models.DeleteSubDomainRecordsResponse:
         """
-        If the DNS records to be deleted contain locked DNS records, locked DNS records will not be deleted.
+        @description If the DNS records to be deleted contain locked DNS records, locked DNS records will not be deleted.
         
         @param request: DeleteSubDomainRecordsRequest
         @return: DeleteSubDomainRecordsResponse
@@ -2813,7 +3361,7 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DeleteSubDomainRecordsRequest,
     ) -> alidns_20150109_models.DeleteSubDomainRecordsResponse:
         """
-        If the DNS records to be deleted contain locked DNS records, locked DNS records will not be deleted.
+        @description If the DNS records to be deleted contain locked DNS records, locked DNS records will not be deleted.
         
         @param request: DeleteSubDomainRecordsRequest
         @return: DeleteSubDomainRecordsResponse
@@ -2826,6 +3374,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeBatchResultCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeBatchResultCountResponse:
+        """
+        @param request: DescribeBatchResultCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBatchResultCountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.batch_type):
@@ -2858,6 +3411,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeBatchResultCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeBatchResultCountResponse:
+        """
+        @param request: DescribeBatchResultCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBatchResultCountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.batch_type):
@@ -2889,6 +3447,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeBatchResultCountRequest,
     ) -> alidns_20150109_models.DescribeBatchResultCountResponse:
+        """
+        @param request: DescribeBatchResultCountRequest
+        @return: DescribeBatchResultCountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_batch_result_count_with_options(request, runtime)
 
@@ -2896,6 +3458,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeBatchResultCountRequest,
     ) -> alidns_20150109_models.DescribeBatchResultCountResponse:
+        """
+        @param request: DescribeBatchResultCountRequest
+        @return: DescribeBatchResultCountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_batch_result_count_with_options_async(request, runtime)
 
@@ -2905,7 +3471,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeBatchResultDetailResponse:
         """
-        Before you call this operation, make sure that the batch operation task is complete.
+        @summary Queries the detailed results of a batch operation task.
+        
+        @description Before you call this operation, make sure that the batch operation task is complete.
         
         @param request: DescribeBatchResultDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2950,7 +3518,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeBatchResultDetailResponse:
         """
-        Before you call this operation, make sure that the batch operation task is complete.
+        @summary Queries the detailed results of a batch operation task.
+        
+        @description Before you call this operation, make sure that the batch operation task is complete.
         
         @param request: DescribeBatchResultDetailRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2994,7 +3564,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeBatchResultDetailRequest,
     ) -> alidns_20150109_models.DescribeBatchResultDetailResponse:
         """
-        Before you call this operation, make sure that the batch operation task is complete.
+        @summary Queries the detailed results of a batch operation task.
+        
+        @description Before you call this operation, make sure that the batch operation task is complete.
         
         @param request: DescribeBatchResultDetailRequest
         @return: DescribeBatchResultDetailResponse
@@ -3007,7 +3579,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeBatchResultDetailRequest,
     ) -> alidns_20150109_models.DescribeBatchResultDetailResponse:
         """
-        Before you call this operation, make sure that the batch operation task is complete.
+        @summary Queries the detailed results of a batch operation task.
+        
+        @description Before you call this operation, make sure that the batch operation task is complete.
         
         @param request: DescribeBatchResultDetailRequest
         @return: DescribeBatchResultDetailResponse
@@ -3020,6 +3594,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeCustomLineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeCustomLineResponse:
+        """
+        @summary Queries a custom line.
+        
+        @param request: DescribeCustomLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCustomLineResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -3050,6 +3631,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeCustomLineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeCustomLineResponse:
+        """
+        @summary Queries a custom line.
+        
+        @param request: DescribeCustomLineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCustomLineResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -3079,6 +3667,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeCustomLineRequest,
     ) -> alidns_20150109_models.DescribeCustomLineResponse:
+        """
+        @summary Queries a custom line.
+        
+        @param request: DescribeCustomLineRequest
+        @return: DescribeCustomLineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_custom_line_with_options(request, runtime)
 
@@ -3086,6 +3680,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeCustomLineRequest,
     ) -> alidns_20150109_models.DescribeCustomLineResponse:
+        """
+        @summary Queries a custom line.
+        
+        @param request: DescribeCustomLineRequest
+        @return: DescribeCustomLineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_custom_line_with_options_async(request, runtime)
 
@@ -3094,6 +3694,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeCustomLinesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeCustomLinesResponse:
+        """
+        @summary Queries custom lines.
+        
+        @param request: DescribeCustomLinesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCustomLinesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -3128,6 +3735,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeCustomLinesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeCustomLinesResponse:
+        """
+        @summary Queries custom lines.
+        
+        @param request: DescribeCustomLinesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCustomLinesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -3161,6 +3775,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeCustomLinesRequest,
     ) -> alidns_20150109_models.DescribeCustomLinesResponse:
+        """
+        @summary Queries custom lines.
+        
+        @param request: DescribeCustomLinesRequest
+        @return: DescribeCustomLinesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_custom_lines_with_options(request, runtime)
 
@@ -3168,6 +3788,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeCustomLinesRequest,
     ) -> alidns_20150109_models.DescribeCustomLinesResponse:
+        """
+        @summary Queries custom lines.
+        
+        @param request: DescribeCustomLinesRequest
+        @return: DescribeCustomLinesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_custom_lines_with_options_async(request, runtime)
 
@@ -3176,6 +3802,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDNSSLBSubDomainsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDNSSLBSubDomainsResponse:
+        """
+        @summary Queries the subdomains for which weighted round-robin is enabled based on the specified parameters.
+        
+        @param request: DescribeDNSSLBSubDomainsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDNSSLBSubDomainsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -3214,6 +3847,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDNSSLBSubDomainsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDNSSLBSubDomainsResponse:
+        """
+        @summary Queries the subdomains for which weighted round-robin is enabled based on the specified parameters.
+        
+        @param request: DescribeDNSSLBSubDomainsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDNSSLBSubDomainsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -3251,6 +3891,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDNSSLBSubDomainsRequest,
     ) -> alidns_20150109_models.DescribeDNSSLBSubDomainsResponse:
+        """
+        @summary Queries the subdomains for which weighted round-robin is enabled based on the specified parameters.
+        
+        @param request: DescribeDNSSLBSubDomainsRequest
+        @return: DescribeDNSSLBSubDomainsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dnsslbsub_domains_with_options(request, runtime)
 
@@ -3258,6 +3904,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDNSSLBSubDomainsRequest,
     ) -> alidns_20150109_models.DescribeDNSSLBSubDomainsResponse:
+        """
+        @summary Queries the subdomains for which weighted round-robin is enabled based on the specified parameters.
+        
+        @param request: DescribeDNSSLBSubDomainsRequest
+        @return: DescribeDNSSLBSubDomainsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dnsslbsub_domains_with_options_async(request, runtime)
 
@@ -3266,6 +3918,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsCacheDomainsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsCacheDomainsResponse:
+        """
+        @param request: DescribeDnsCacheDomainsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDnsCacheDomainsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -3300,6 +3957,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsCacheDomainsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsCacheDomainsResponse:
+        """
+        @param request: DescribeDnsCacheDomainsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDnsCacheDomainsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -3333,6 +3995,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDnsCacheDomainsRequest,
     ) -> alidns_20150109_models.DescribeDnsCacheDomainsResponse:
+        """
+        @param request: DescribeDnsCacheDomainsRequest
+        @return: DescribeDnsCacheDomainsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dns_cache_domains_with_options(request, runtime)
 
@@ -3340,6 +4006,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDnsCacheDomainsRequest,
     ) -> alidns_20150109_models.DescribeDnsCacheDomainsResponse:
+        """
+        @param request: DescribeDnsCacheDomainsRequest
+        @return: DescribeDnsCacheDomainsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dns_cache_domains_with_options_async(request, runtime)
 
@@ -3348,6 +4018,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmAccessStrategiesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmAccessStrategiesResponse:
+        """
+        @summary Queries access policies of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmAccessStrategiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDnsGtmAccessStrategiesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -3384,6 +4061,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmAccessStrategiesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmAccessStrategiesResponse:
+        """
+        @summary Queries access policies of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmAccessStrategiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDnsGtmAccessStrategiesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -3419,6 +4103,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDnsGtmAccessStrategiesRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmAccessStrategiesResponse:
+        """
+        @summary Queries access policies of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmAccessStrategiesRequest
+        @return: DescribeDnsGtmAccessStrategiesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dns_gtm_access_strategies_with_options(request, runtime)
 
@@ -3426,6 +4116,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDnsGtmAccessStrategiesRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmAccessStrategiesResponse:
+        """
+        @summary Queries access policies of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmAccessStrategiesRequest
+        @return: DescribeDnsGtmAccessStrategiesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dns_gtm_access_strategies_with_options_async(request, runtime)
 
@@ -3434,6 +4130,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmAccessStrategyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmAccessStrategyResponse:
+        """
+        @summary Queries detailed information about an access policy of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmAccessStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDnsGtmAccessStrategyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -3464,6 +4167,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmAccessStrategyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmAccessStrategyResponse:
+        """
+        @summary Queries detailed information about an access policy of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmAccessStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDnsGtmAccessStrategyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -3493,6 +4203,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDnsGtmAccessStrategyRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmAccessStrategyResponse:
+        """
+        @summary Queries detailed information about an access policy of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmAccessStrategyRequest
+        @return: DescribeDnsGtmAccessStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dns_gtm_access_strategy_with_options(request, runtime)
 
@@ -3500,6 +4216,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDnsGtmAccessStrategyRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmAccessStrategyResponse:
+        """
+        @summary Queries detailed information about an access policy of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmAccessStrategyRequest
+        @return: DescribeDnsGtmAccessStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dns_gtm_access_strategy_with_options_async(request, runtime)
 
@@ -3508,6 +4230,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmAccessStrategyAvailableConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmAccessStrategyAvailableConfigResponse:
+        """
+        @summary Queries the available configurations of an access policy of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmAccessStrategyAvailableConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDnsGtmAccessStrategyAvailableConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -3540,6 +4269,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmAccessStrategyAvailableConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmAccessStrategyAvailableConfigResponse:
+        """
+        @summary Queries the available configurations of an access policy of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmAccessStrategyAvailableConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDnsGtmAccessStrategyAvailableConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -3571,6 +4307,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDnsGtmAccessStrategyAvailableConfigRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmAccessStrategyAvailableConfigResponse:
+        """
+        @summary Queries the available configurations of an access policy of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmAccessStrategyAvailableConfigRequest
+        @return: DescribeDnsGtmAccessStrategyAvailableConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dns_gtm_access_strategy_available_config_with_options(request, runtime)
 
@@ -3578,6 +4320,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDnsGtmAccessStrategyAvailableConfigRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmAccessStrategyAvailableConfigResponse:
+        """
+        @summary Queries the available configurations of an access policy of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmAccessStrategyAvailableConfigRequest
+        @return: DescribeDnsGtmAccessStrategyAvailableConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dns_gtm_access_strategy_available_config_with_options_async(request, runtime)
 
@@ -3586,6 +4334,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmAddrAttributeInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmAddrAttributeInfoResponse:
+        """
+        @param request: DescribeDnsGtmAddrAttributeInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDnsGtmAddrAttributeInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.addrs):
@@ -3618,6 +4371,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmAddrAttributeInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmAddrAttributeInfoResponse:
+        """
+        @param request: DescribeDnsGtmAddrAttributeInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDnsGtmAddrAttributeInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.addrs):
@@ -3649,6 +4407,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDnsGtmAddrAttributeInfoRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmAddrAttributeInfoResponse:
+        """
+        @param request: DescribeDnsGtmAddrAttributeInfoRequest
+        @return: DescribeDnsGtmAddrAttributeInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dns_gtm_addr_attribute_info_with_options(request, runtime)
 
@@ -3656,6 +4418,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDnsGtmAddrAttributeInfoRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmAddrAttributeInfoResponse:
+        """
+        @param request: DescribeDnsGtmAddrAttributeInfoRequest
+        @return: DescribeDnsGtmAddrAttributeInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dns_gtm_addr_attribute_info_with_options_async(request, runtime)
 
@@ -3664,6 +4430,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmAddressPoolAvailableConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmAddressPoolAvailableConfigResponse:
+        """
+        @summary Queries the available configurations of an address pool of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmAddressPoolAvailableConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDnsGtmAddressPoolAvailableConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -3694,6 +4467,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmAddressPoolAvailableConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmAddressPoolAvailableConfigResponse:
+        """
+        @summary Queries the available configurations of an address pool of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmAddressPoolAvailableConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDnsGtmAddressPoolAvailableConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -3723,6 +4503,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDnsGtmAddressPoolAvailableConfigRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmAddressPoolAvailableConfigResponse:
+        """
+        @summary Queries the available configurations of an address pool of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmAddressPoolAvailableConfigRequest
+        @return: DescribeDnsGtmAddressPoolAvailableConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dns_gtm_address_pool_available_config_with_options(request, runtime)
 
@@ -3730,6 +4516,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDnsGtmAddressPoolAvailableConfigRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmAddressPoolAvailableConfigResponse:
+        """
+        @summary Queries the available configurations of an address pool of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmAddressPoolAvailableConfigRequest
+        @return: DescribeDnsGtmAddressPoolAvailableConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dns_gtm_address_pool_available_config_with_options_async(request, runtime)
 
@@ -3738,6 +4530,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmAvailableAlertGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmAvailableAlertGroupResponse:
+        """
+        @param request: DescribeDnsGtmAvailableAlertGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDnsGtmAvailableAlertGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -3766,6 +4563,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmAvailableAlertGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmAvailableAlertGroupResponse:
+        """
+        @param request: DescribeDnsGtmAvailableAlertGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDnsGtmAvailableAlertGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -3793,6 +4595,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDnsGtmAvailableAlertGroupRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmAvailableAlertGroupResponse:
+        """
+        @param request: DescribeDnsGtmAvailableAlertGroupRequest
+        @return: DescribeDnsGtmAvailableAlertGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dns_gtm_available_alert_group_with_options(request, runtime)
 
@@ -3800,6 +4606,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDnsGtmAvailableAlertGroupRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmAvailableAlertGroupResponse:
+        """
+        @param request: DescribeDnsGtmAvailableAlertGroupRequest
+        @return: DescribeDnsGtmAvailableAlertGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dns_gtm_available_alert_group_with_options_async(request, runtime)
 
@@ -3808,6 +4618,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmInstanceResponse:
+        """
+        @summary Queries detailed information about a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDnsGtmInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -3838,6 +4655,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmInstanceResponse:
+        """
+        @summary Queries detailed information about a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDnsGtmInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -3867,6 +4691,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDnsGtmInstanceRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmInstanceResponse:
+        """
+        @summary Queries detailed information about a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmInstanceRequest
+        @return: DescribeDnsGtmInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dns_gtm_instance_with_options(request, runtime)
 
@@ -3874,6 +4704,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDnsGtmInstanceRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmInstanceResponse:
+        """
+        @summary Queries detailed information about a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmInstanceRequest
+        @return: DescribeDnsGtmInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dns_gtm_instance_with_options_async(request, runtime)
 
@@ -3882,6 +4718,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmInstanceAddressPoolRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmInstanceAddressPoolResponse:
+        """
+        @summary Queries detailed information about an address pool of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmInstanceAddressPoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDnsGtmInstanceAddressPoolResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.addr_pool_id):
@@ -3912,6 +4755,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmInstanceAddressPoolRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmInstanceAddressPoolResponse:
+        """
+        @summary Queries detailed information about an address pool of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmInstanceAddressPoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDnsGtmInstanceAddressPoolResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.addr_pool_id):
@@ -3941,6 +4791,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDnsGtmInstanceAddressPoolRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmInstanceAddressPoolResponse:
+        """
+        @summary Queries detailed information about an address pool of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmInstanceAddressPoolRequest
+        @return: DescribeDnsGtmInstanceAddressPoolResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dns_gtm_instance_address_pool_with_options(request, runtime)
 
@@ -3948,6 +4804,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDnsGtmInstanceAddressPoolRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmInstanceAddressPoolResponse:
+        """
+        @summary Queries detailed information about an address pool of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmInstanceAddressPoolRequest
+        @return: DescribeDnsGtmInstanceAddressPoolResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dns_gtm_instance_address_pool_with_options_async(request, runtime)
 
@@ -3956,6 +4818,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmInstanceAddressPoolsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmInstanceAddressPoolsResponse:
+        """
+        @summary Queries the address pools of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmInstanceAddressPoolsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDnsGtmInstanceAddressPoolsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -3990,6 +4859,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmInstanceAddressPoolsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmInstanceAddressPoolsResponse:
+        """
+        @summary Queries the address pools of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmInstanceAddressPoolsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDnsGtmInstanceAddressPoolsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -4023,6 +4899,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDnsGtmInstanceAddressPoolsRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmInstanceAddressPoolsResponse:
+        """
+        @summary Queries the address pools of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmInstanceAddressPoolsRequest
+        @return: DescribeDnsGtmInstanceAddressPoolsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dns_gtm_instance_address_pools_with_options(request, runtime)
 
@@ -4030,6 +4912,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDnsGtmInstanceAddressPoolsRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmInstanceAddressPoolsResponse:
+        """
+        @summary Queries the address pools of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmInstanceAddressPoolsRequest
+        @return: DescribeDnsGtmInstanceAddressPoolsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dns_gtm_instance_address_pools_with_options_async(request, runtime)
 
@@ -4038,6 +4926,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmInstanceStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmInstanceStatusResponse:
+        """
+        @summary Queries the status of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmInstanceStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDnsGtmInstanceStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -4068,6 +4963,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmInstanceStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmInstanceStatusResponse:
+        """
+        @summary Queries the status of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmInstanceStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDnsGtmInstanceStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -4097,6 +4999,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDnsGtmInstanceStatusRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmInstanceStatusResponse:
+        """
+        @summary Queries the status of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmInstanceStatusRequest
+        @return: DescribeDnsGtmInstanceStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dns_gtm_instance_status_with_options(request, runtime)
 
@@ -4104,6 +5012,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDnsGtmInstanceStatusRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmInstanceStatusResponse:
+        """
+        @summary Queries the status of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmInstanceStatusRequest
+        @return: DescribeDnsGtmInstanceStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dns_gtm_instance_status_with_options_async(request, runtime)
 
@@ -4112,6 +5026,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmInstanceSystemCnameRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmInstanceSystemCnameResponse:
+        """
+        @summary Queries the CNAME domain name assigned by the system for a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmInstanceSystemCnameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDnsGtmInstanceSystemCnameResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -4142,6 +5063,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmInstanceSystemCnameRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmInstanceSystemCnameResponse:
+        """
+        @summary Queries the CNAME domain name assigned by the system for a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmInstanceSystemCnameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDnsGtmInstanceSystemCnameResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -4171,6 +5099,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDnsGtmInstanceSystemCnameRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmInstanceSystemCnameResponse:
+        """
+        @summary Queries the CNAME domain name assigned by the system for a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmInstanceSystemCnameRequest
+        @return: DescribeDnsGtmInstanceSystemCnameResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dns_gtm_instance_system_cname_with_options(request, runtime)
 
@@ -4178,6 +5112,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDnsGtmInstanceSystemCnameRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmInstanceSystemCnameResponse:
+        """
+        @summary Queries the CNAME domain name assigned by the system for a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmInstanceSystemCnameRequest
+        @return: DescribeDnsGtmInstanceSystemCnameResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dns_gtm_instance_system_cname_with_options_async(request, runtime)
 
@@ -4186,6 +5126,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmInstancesResponse:
+        """
+        @param request: DescribeDnsGtmInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDnsGtmInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -4222,6 +5167,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmInstancesResponse:
+        """
+        @param request: DescribeDnsGtmInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDnsGtmInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -4257,6 +5207,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDnsGtmInstancesRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmInstancesResponse:
+        """
+        @param request: DescribeDnsGtmInstancesRequest
+        @return: DescribeDnsGtmInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dns_gtm_instances_with_options(request, runtime)
 
@@ -4264,6 +5218,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDnsGtmInstancesRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmInstancesResponse:
+        """
+        @param request: DescribeDnsGtmInstancesRequest
+        @return: DescribeDnsGtmInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dns_gtm_instances_with_options_async(request, runtime)
 
@@ -4272,6 +5230,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmLogsResponse:
+        """
+        @summary Queries operation logs of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDnsGtmLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_timestamp):
@@ -4312,6 +5277,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmLogsResponse:
+        """
+        @summary Queries operation logs of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDnsGtmLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_timestamp):
@@ -4351,6 +5323,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDnsGtmLogsRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmLogsResponse:
+        """
+        @summary Queries operation logs of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmLogsRequest
+        @return: DescribeDnsGtmLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dns_gtm_logs_with_options(request, runtime)
 
@@ -4358,6 +5336,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDnsGtmLogsRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmLogsResponse:
+        """
+        @summary Queries operation logs of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmLogsRequest
+        @return: DescribeDnsGtmLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dns_gtm_logs_with_options_async(request, runtime)
 
@@ -4366,6 +5350,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmMonitorAvailableConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmMonitorAvailableConfigResponse:
+        """
+        @summary Queries available monitored nodes.
+        
+        @param request: DescribeDnsGtmMonitorAvailableConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDnsGtmMonitorAvailableConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -4394,6 +5385,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmMonitorAvailableConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmMonitorAvailableConfigResponse:
+        """
+        @summary Queries available monitored nodes.
+        
+        @param request: DescribeDnsGtmMonitorAvailableConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDnsGtmMonitorAvailableConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -4421,6 +5419,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDnsGtmMonitorAvailableConfigRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmMonitorAvailableConfigResponse:
+        """
+        @summary Queries available monitored nodes.
+        
+        @param request: DescribeDnsGtmMonitorAvailableConfigRequest
+        @return: DescribeDnsGtmMonitorAvailableConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dns_gtm_monitor_available_config_with_options(request, runtime)
 
@@ -4428,6 +5432,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDnsGtmMonitorAvailableConfigRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmMonitorAvailableConfigResponse:
+        """
+        @summary Queries available monitored nodes.
+        
+        @param request: DescribeDnsGtmMonitorAvailableConfigRequest
+        @return: DescribeDnsGtmMonitorAvailableConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dns_gtm_monitor_available_config_with_options_async(request, runtime)
 
@@ -4436,6 +5446,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmMonitorConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmMonitorConfigResponse:
+        """
+        @summary Queries the health check configurations of an address pool of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmMonitorConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDnsGtmMonitorConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -4466,6 +5483,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsGtmMonitorConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsGtmMonitorConfigResponse:
+        """
+        @summary Queries the health check configurations of an address pool of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmMonitorConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDnsGtmMonitorConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -4495,6 +5519,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDnsGtmMonitorConfigRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmMonitorConfigResponse:
+        """
+        @summary Queries the health check configurations of an address pool of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmMonitorConfigRequest
+        @return: DescribeDnsGtmMonitorConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dns_gtm_monitor_config_with_options(request, runtime)
 
@@ -4502,6 +5532,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDnsGtmMonitorConfigRequest,
     ) -> alidns_20150109_models.DescribeDnsGtmMonitorConfigResponse:
+        """
+        @summary Queries the health check configurations of an address pool of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeDnsGtmMonitorConfigRequest
+        @return: DescribeDnsGtmMonitorConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dns_gtm_monitor_config_with_options_async(request, runtime)
 
@@ -4510,6 +5546,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsProductInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsProductInstanceResponse:
+        """
+        @summary Queries the details about a paid Alibaba Cloud DNS instance based on the instance ID.
+        
+        @param request: DescribeDnsProductInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDnsProductInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -4542,6 +5585,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsProductInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsProductInstanceResponse:
+        """
+        @summary Queries the details about a paid Alibaba Cloud DNS instance based on the instance ID.
+        
+        @param request: DescribeDnsProductInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDnsProductInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -4573,6 +5623,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDnsProductInstanceRequest,
     ) -> alidns_20150109_models.DescribeDnsProductInstanceResponse:
+        """
+        @summary Queries the details about a paid Alibaba Cloud DNS instance based on the instance ID.
+        
+        @param request: DescribeDnsProductInstanceRequest
+        @return: DescribeDnsProductInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_dns_product_instance_with_options(request, runtime)
 
@@ -4580,6 +5636,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDnsProductInstanceRequest,
     ) -> alidns_20150109_models.DescribeDnsProductInstanceResponse:
+        """
+        @summary Queries the details about a paid Alibaba Cloud DNS instance based on the instance ID.
+        
+        @param request: DescribeDnsProductInstanceRequest
+        @return: DescribeDnsProductInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_dns_product_instance_with_options_async(request, runtime)
 
@@ -4589,7 +5651,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsProductInstancesResponse:
         """
-        >  If the response parameters of an Alibaba Cloud DNS instance do not contain domain names, no domain names are bound to the instance.
+        @summary Calls the DescribeDnsProductInstances operation to query the list of paid Alibaba Cloud DNS instances based on input parameters.
+        
+        @description >  If the response parameters of an Alibaba Cloud DNS instance do not contain domain names, no domain names are bound to the instance.
         
         @param request: DescribeDnsProductInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4638,7 +5702,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDnsProductInstancesResponse:
         """
-        >  If the response parameters of an Alibaba Cloud DNS instance do not contain domain names, no domain names are bound to the instance.
+        @summary Calls the DescribeDnsProductInstances operation to query the list of paid Alibaba Cloud DNS instances based on input parameters.
+        
+        @description >  If the response parameters of an Alibaba Cloud DNS instance do not contain domain names, no domain names are bound to the instance.
         
         @param request: DescribeDnsProductInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4686,7 +5752,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsProductInstancesRequest,
     ) -> alidns_20150109_models.DescribeDnsProductInstancesResponse:
         """
-        >  If the response parameters of an Alibaba Cloud DNS instance do not contain domain names, no domain names are bound to the instance.
+        @summary Calls the DescribeDnsProductInstances operation to query the list of paid Alibaba Cloud DNS instances based on input parameters.
+        
+        @description >  If the response parameters of an Alibaba Cloud DNS instance do not contain domain names, no domain names are bound to the instance.
         
         @param request: DescribeDnsProductInstancesRequest
         @return: DescribeDnsProductInstancesResponse
@@ -4699,7 +5767,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDnsProductInstancesRequest,
     ) -> alidns_20150109_models.DescribeDnsProductInstancesResponse:
         """
-        >  If the response parameters of an Alibaba Cloud DNS instance do not contain domain names, no domain names are bound to the instance.
+        @summary Calls the DescribeDnsProductInstances operation to query the list of paid Alibaba Cloud DNS instances based on input parameters.
+        
+        @description >  If the response parameters of an Alibaba Cloud DNS instance do not contain domain names, no domain names are bound to the instance.
         
         @param request: DescribeDnsProductInstancesRequest
         @return: DescribeDnsProductInstancesResponse
@@ -4712,6 +5782,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDohAccountStatisticsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDohAccountStatisticsResponse:
+        """
+        @param request: DescribeDohAccountStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDohAccountStatisticsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_date):
@@ -4744,6 +5819,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDohAccountStatisticsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDohAccountStatisticsResponse:
+        """
+        @param request: DescribeDohAccountStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDohAccountStatisticsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_date):
@@ -4775,6 +5855,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDohAccountStatisticsRequest,
     ) -> alidns_20150109_models.DescribeDohAccountStatisticsResponse:
+        """
+        @param request: DescribeDohAccountStatisticsRequest
+        @return: DescribeDohAccountStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_doh_account_statistics_with_options(request, runtime)
 
@@ -4782,6 +5866,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDohAccountStatisticsRequest,
     ) -> alidns_20150109_models.DescribeDohAccountStatisticsResponse:
+        """
+        @param request: DescribeDohAccountStatisticsRequest
+        @return: DescribeDohAccountStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_doh_account_statistics_with_options_async(request, runtime)
 
@@ -4790,6 +5878,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDohDomainStatisticsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDohDomainStatisticsResponse:
+        """
+        @param request: DescribeDohDomainStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDohDomainStatisticsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -4824,6 +5917,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDohDomainStatisticsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDohDomainStatisticsResponse:
+        """
+        @param request: DescribeDohDomainStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDohDomainStatisticsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -4857,6 +5955,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDohDomainStatisticsRequest,
     ) -> alidns_20150109_models.DescribeDohDomainStatisticsResponse:
+        """
+        @param request: DescribeDohDomainStatisticsRequest
+        @return: DescribeDohDomainStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_doh_domain_statistics_with_options(request, runtime)
 
@@ -4864,6 +5966,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDohDomainStatisticsRequest,
     ) -> alidns_20150109_models.DescribeDohDomainStatisticsResponse:
+        """
+        @param request: DescribeDohDomainStatisticsRequest
+        @return: DescribeDohDomainStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_doh_domain_statistics_with_options_async(request, runtime)
 
@@ -4872,6 +5978,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDohDomainStatisticsSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDohDomainStatisticsSummaryResponse:
+        """
+        @param request: DescribeDohDomainStatisticsSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDohDomainStatisticsSummaryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -4910,6 +6021,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDohDomainStatisticsSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDohDomainStatisticsSummaryResponse:
+        """
+        @param request: DescribeDohDomainStatisticsSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDohDomainStatisticsSummaryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -4947,6 +6063,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDohDomainStatisticsSummaryRequest,
     ) -> alidns_20150109_models.DescribeDohDomainStatisticsSummaryResponse:
+        """
+        @param request: DescribeDohDomainStatisticsSummaryRequest
+        @return: DescribeDohDomainStatisticsSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_doh_domain_statistics_summary_with_options(request, runtime)
 
@@ -4954,6 +6074,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDohDomainStatisticsSummaryRequest,
     ) -> alidns_20150109_models.DescribeDohDomainStatisticsSummaryResponse:
+        """
+        @param request: DescribeDohDomainStatisticsSummaryRequest
+        @return: DescribeDohDomainStatisticsSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_doh_domain_statistics_summary_with_options_async(request, runtime)
 
@@ -4962,6 +6086,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDohSubDomainStatisticsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDohSubDomainStatisticsResponse:
+        """
+        @param request: DescribeDohSubDomainStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDohSubDomainStatisticsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_date):
@@ -4996,6 +6125,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDohSubDomainStatisticsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDohSubDomainStatisticsResponse:
+        """
+        @param request: DescribeDohSubDomainStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDohSubDomainStatisticsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_date):
@@ -5029,6 +6163,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDohSubDomainStatisticsRequest,
     ) -> alidns_20150109_models.DescribeDohSubDomainStatisticsResponse:
+        """
+        @param request: DescribeDohSubDomainStatisticsRequest
+        @return: DescribeDohSubDomainStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_doh_sub_domain_statistics_with_options(request, runtime)
 
@@ -5036,6 +6174,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDohSubDomainStatisticsRequest,
     ) -> alidns_20150109_models.DescribeDohSubDomainStatisticsResponse:
+        """
+        @param request: DescribeDohSubDomainStatisticsRequest
+        @return: DescribeDohSubDomainStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_doh_sub_domain_statistics_with_options_async(request, runtime)
 
@@ -5044,6 +6186,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDohSubDomainStatisticsSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDohSubDomainStatisticsSummaryResponse:
+        """
+        @param request: DescribeDohSubDomainStatisticsSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDohSubDomainStatisticsSummaryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -5084,6 +6231,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDohSubDomainStatisticsSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDohSubDomainStatisticsSummaryResponse:
+        """
+        @param request: DescribeDohSubDomainStatisticsSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDohSubDomainStatisticsSummaryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -5123,6 +6275,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDohSubDomainStatisticsSummaryRequest,
     ) -> alidns_20150109_models.DescribeDohSubDomainStatisticsSummaryResponse:
+        """
+        @param request: DescribeDohSubDomainStatisticsSummaryRequest
+        @return: DescribeDohSubDomainStatisticsSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_doh_sub_domain_statistics_summary_with_options(request, runtime)
 
@@ -5130,6 +6286,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDohSubDomainStatisticsSummaryRequest,
     ) -> alidns_20150109_models.DescribeDohSubDomainStatisticsSummaryResponse:
+        """
+        @param request: DescribeDohSubDomainStatisticsSummaryRequest
+        @return: DescribeDohSubDomainStatisticsSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_doh_sub_domain_statistics_summary_with_options_async(request, runtime)
 
@@ -5138,6 +6298,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDohUserInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDohUserInfoResponse:
+        """
+        @summary Queries the numbers of accessed domains and subdomains by using DNS over HTTPS (DoH).
+        
+        @param request: DescribeDohUserInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDohUserInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_date):
@@ -5170,6 +6337,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDohUserInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDohUserInfoResponse:
+        """
+        @summary Queries the numbers of accessed domains and subdomains by using DNS over HTTPS (DoH).
+        
+        @param request: DescribeDohUserInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDohUserInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_date):
@@ -5201,6 +6375,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDohUserInfoRequest,
     ) -> alidns_20150109_models.DescribeDohUserInfoResponse:
+        """
+        @summary Queries the numbers of accessed domains and subdomains by using DNS over HTTPS (DoH).
+        
+        @param request: DescribeDohUserInfoRequest
+        @return: DescribeDohUserInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_doh_user_info_with_options(request, runtime)
 
@@ -5208,6 +6388,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDohUserInfoRequest,
     ) -> alidns_20150109_models.DescribeDohUserInfoResponse:
+        """
+        @summary Queries the numbers of accessed domains and subdomains by using DNS over HTTPS (DoH).
+        
+        @param request: DescribeDohUserInfoRequest
+        @return: DescribeDohUserInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_doh_user_info_with_options_async(request, runtime)
 
@@ -5216,6 +6402,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDomainDnssecInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDomainDnssecInfoResponse:
+        """
+        @summary Queries the Domain Name System Security Extensions (DNSSEC) configurations of a domain name based on the specified parameters.
+        
+        @param request: DescribeDomainDnssecInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainDnssecInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -5246,6 +6439,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDomainDnssecInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDomainDnssecInfoResponse:
+        """
+        @summary Queries the Domain Name System Security Extensions (DNSSEC) configurations of a domain name based on the specified parameters.
+        
+        @param request: DescribeDomainDnssecInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainDnssecInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -5275,6 +6475,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDomainDnssecInfoRequest,
     ) -> alidns_20150109_models.DescribeDomainDnssecInfoResponse:
+        """
+        @summary Queries the Domain Name System Security Extensions (DNSSEC) configurations of a domain name based on the specified parameters.
+        
+        @param request: DescribeDomainDnssecInfoRequest
+        @return: DescribeDomainDnssecInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_domain_dnssec_info_with_options(request, runtime)
 
@@ -5282,6 +6488,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDomainDnssecInfoRequest,
     ) -> alidns_20150109_models.DescribeDomainDnssecInfoResponse:
+        """
+        @summary Queries the Domain Name System Security Extensions (DNSSEC) configurations of a domain name based on the specified parameters.
+        
+        @param request: DescribeDomainDnssecInfoRequest
+        @return: DescribeDomainDnssecInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_domain_dnssec_info_with_options_async(request, runtime)
 
@@ -5290,6 +6502,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDomainGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDomainGroupsResponse:
+        """
+        @summary Queries all domain name groups based on the specified parameters.
+        
+        @param request: DescribeDomainGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_word):
@@ -5324,6 +6543,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDomainGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDomainGroupsResponse:
+        """
+        @summary Queries all domain name groups based on the specified parameters.
+        
+        @param request: DescribeDomainGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_word):
@@ -5357,6 +6583,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDomainGroupsRequest,
     ) -> alidns_20150109_models.DescribeDomainGroupsResponse:
+        """
+        @summary Queries all domain name groups based on the specified parameters.
+        
+        @param request: DescribeDomainGroupsRequest
+        @return: DescribeDomainGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_domain_groups_with_options(request, runtime)
 
@@ -5364,6 +6596,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDomainGroupsRequest,
     ) -> alidns_20150109_models.DescribeDomainGroupsResponse:
+        """
+        @summary Queries all domain name groups based on the specified parameters.
+        
+        @param request: DescribeDomainGroupsRequest
+        @return: DescribeDomainGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_domain_groups_with_options_async(request, runtime)
 
@@ -5373,7 +6611,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDomainInfoResponse:
         """
-        In this example, the domain name is bound to an instance of Alibaba Cloud DNS Enterprise Ultimate Edition. For more information about valid Domain Name System (DNS) request lines, see the return values of the RecordLines parameter.
+        @summary Queries the information about a domain name based on specified parameters.
+        
+        @description In this example, the domain name is bound to an instance of Alibaba Cloud DNS Enterprise Ultimate Edition. For more information about valid Domain Name System (DNS) request lines, see the return values of the RecordLines parameter.
         
         @param request: DescribeDomainInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5412,7 +6652,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDomainInfoResponse:
         """
-        In this example, the domain name is bound to an instance of Alibaba Cloud DNS Enterprise Ultimate Edition. For more information about valid Domain Name System (DNS) request lines, see the return values of the RecordLines parameter.
+        @summary Queries the information about a domain name based on specified parameters.
+        
+        @description In this example, the domain name is bound to an instance of Alibaba Cloud DNS Enterprise Ultimate Edition. For more information about valid Domain Name System (DNS) request lines, see the return values of the RecordLines parameter.
         
         @param request: DescribeDomainInfoRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5450,7 +6692,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDomainInfoRequest,
     ) -> alidns_20150109_models.DescribeDomainInfoResponse:
         """
-        In this example, the domain name is bound to an instance of Alibaba Cloud DNS Enterprise Ultimate Edition. For more information about valid Domain Name System (DNS) request lines, see the return values of the RecordLines parameter.
+        @summary Queries the information about a domain name based on specified parameters.
+        
+        @description In this example, the domain name is bound to an instance of Alibaba Cloud DNS Enterprise Ultimate Edition. For more information about valid Domain Name System (DNS) request lines, see the return values of the RecordLines parameter.
         
         @param request: DescribeDomainInfoRequest
         @return: DescribeDomainInfoResponse
@@ -5463,7 +6707,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDomainInfoRequest,
     ) -> alidns_20150109_models.DescribeDomainInfoResponse:
         """
-        In this example, the domain name is bound to an instance of Alibaba Cloud DNS Enterprise Ultimate Edition. For more information about valid Domain Name System (DNS) request lines, see the return values of the RecordLines parameter.
+        @summary Queries the information about a domain name based on specified parameters.
+        
+        @description In this example, the domain name is bound to an instance of Alibaba Cloud DNS Enterprise Ultimate Edition. For more information about valid Domain Name System (DNS) request lines, see the return values of the RecordLines parameter.
         
         @param request: DescribeDomainInfoRequest
         @return: DescribeDomainInfoResponse
@@ -5476,6 +6722,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDomainLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDomainLogsResponse:
+        """
+        @summary Queries the operation logs of domain names based on the specified parameters.
+        
+        @param request: DescribeDomainLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -5518,6 +6771,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDomainLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDomainLogsResponse:
+        """
+        @summary Queries the operation logs of domain names based on the specified parameters.
+        
+        @param request: DescribeDomainLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -5559,6 +6819,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDomainLogsRequest,
     ) -> alidns_20150109_models.DescribeDomainLogsResponse:
+        """
+        @summary Queries the operation logs of domain names based on the specified parameters.
+        
+        @param request: DescribeDomainLogsRequest
+        @return: DescribeDomainLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_domain_logs_with_options(request, runtime)
 
@@ -5566,6 +6832,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDomainLogsRequest,
     ) -> alidns_20150109_models.DescribeDomainLogsResponse:
+        """
+        @summary Queries the operation logs of domain names based on the specified parameters.
+        
+        @param request: DescribeDomainLogsRequest
+        @return: DescribeDomainLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_domain_logs_with_options_async(request, runtime)
 
@@ -5575,7 +6847,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDomainNsResponse:
         """
-        >  You can call this operation to query the authoritative servers of a domain name registry to obtain the name servers for a domain name. If the domain name is in an invalid state, such as serverHold or clientHold, an error may be returned.
+        @summary Queries the name servers configured for a specified domain name and checks whether all the name servers are Alibaba Cloud Domain Name System (DNS) servers.
+        
+        @description >  You can call this operation to query the authoritative servers of a domain name registry to obtain the name servers for a domain name. If the domain name is in an invalid state, such as serverHold or clientHold, an error may be returned.
         
         @param request: DescribeDomainNsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5612,7 +6886,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDomainNsResponse:
         """
-        >  You can call this operation to query the authoritative servers of a domain name registry to obtain the name servers for a domain name. If the domain name is in an invalid state, such as serverHold or clientHold, an error may be returned.
+        @summary Queries the name servers configured for a specified domain name and checks whether all the name servers are Alibaba Cloud Domain Name System (DNS) servers.
+        
+        @description >  You can call this operation to query the authoritative servers of a domain name registry to obtain the name servers for a domain name. If the domain name is in an invalid state, such as serverHold or clientHold, an error may be returned.
         
         @param request: DescribeDomainNsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5648,7 +6924,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDomainNsRequest,
     ) -> alidns_20150109_models.DescribeDomainNsResponse:
         """
-        >  You can call this operation to query the authoritative servers of a domain name registry to obtain the name servers for a domain name. If the domain name is in an invalid state, such as serverHold or clientHold, an error may be returned.
+        @summary Queries the name servers configured for a specified domain name and checks whether all the name servers are Alibaba Cloud Domain Name System (DNS) servers.
+        
+        @description >  You can call this operation to query the authoritative servers of a domain name registry to obtain the name servers for a domain name. If the domain name is in an invalid state, such as serverHold or clientHold, an error may be returned.
         
         @param request: DescribeDomainNsRequest
         @return: DescribeDomainNsResponse
@@ -5661,7 +6939,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDomainNsRequest,
     ) -> alidns_20150109_models.DescribeDomainNsResponse:
         """
-        >  You can call this operation to query the authoritative servers of a domain name registry to obtain the name servers for a domain name. If the domain name is in an invalid state, such as serverHold or clientHold, an error may be returned.
+        @summary Queries the name servers configured for a specified domain name and checks whether all the name servers are Alibaba Cloud Domain Name System (DNS) servers.
+        
+        @description >  You can call this operation to query the authoritative servers of a domain name registry to obtain the name servers for a domain name. If the domain name is in an invalid state, such as serverHold or clientHold, an error may be returned.
         
         @param request: DescribeDomainNsRequest
         @return: DescribeDomainNsResponse
@@ -5675,7 +6955,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDomainRecordInfoResponse:
         """
-        ## Debugging
+        @summary Queries the information about a Domain Name System (DNS) record.
+        
+        @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Alidns\\&api=DescribeDomainRecordInfo\\&type=RPC\\&version=2015-01-09)
         
         @param request: DescribeDomainRecordInfoRequest
@@ -5715,7 +6997,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDomainRecordInfoResponse:
         """
-        ## Debugging
+        @summary Queries the information about a Domain Name System (DNS) record.
+        
+        @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Alidns\\&api=DescribeDomainRecordInfo\\&type=RPC\\&version=2015-01-09)
         
         @param request: DescribeDomainRecordInfoRequest
@@ -5754,7 +7038,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDomainRecordInfoRequest,
     ) -> alidns_20150109_models.DescribeDomainRecordInfoResponse:
         """
-        ## Debugging
+        @summary Queries the information about a Domain Name System (DNS) record.
+        
+        @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Alidns\\&api=DescribeDomainRecordInfo\\&type=RPC\\&version=2015-01-09)
         
         @param request: DescribeDomainRecordInfoRequest
@@ -5768,7 +7054,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDomainRecordInfoRequest,
     ) -> alidns_20150109_models.DescribeDomainRecordInfoResponse:
         """
-        ## Debugging
+        @summary Queries the information about a Domain Name System (DNS) record.
+        
+        @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Alidns\\&api=DescribeDomainRecordInfo\\&type=RPC\\&version=2015-01-09)
         
         @param request: DescribeDomainRecordInfoRequest
@@ -5783,10 +7071,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDomainRecordsResponse:
         """
-        You can specify DomainName, PageNumber, and PageSize to query the DNS records of the specified domain names.
-        *   You can also specify RRKeyWord, TypeKeyWord, or ValueKeyWord to query the DNS records that contain the specified keyword.
-        *   By default, the DNS records are sorted in reverse chronological order based on the time when they were added.
-        *   You can specify GroupId to query the DNS records of the specified domain names based on the group ID. You can query the DNS records of all domain names and the domain names in the default group.
+        @summary Queries all Domain Name System (DNS) records of the specified primary domain names based on the specified parameters.
+        
+        @description    You can specify DomainName, PageNumber, and PageSize to query the DNS records of the specified domain names.
+        You can also specify RRKeyWord, TypeKeyWord, or ValueKeyWord to query the DNS records that contain the specified keyword.
+        By default, the DNS records are sorted in reverse chronological order based on the time when they were added.
+        You can specify GroupId to query the DNS records of the specified domain names based on the group ID. You can query the DNS records of all domain names and the domain names in the default group.
         
         @param request: DescribeDomainRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5849,10 +7139,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDomainRecordsResponse:
         """
-        You can specify DomainName, PageNumber, and PageSize to query the DNS records of the specified domain names.
-        *   You can also specify RRKeyWord, TypeKeyWord, or ValueKeyWord to query the DNS records that contain the specified keyword.
-        *   By default, the DNS records are sorted in reverse chronological order based on the time when they were added.
-        *   You can specify GroupId to query the DNS records of the specified domain names based on the group ID. You can query the DNS records of all domain names and the domain names in the default group.
+        @summary Queries all Domain Name System (DNS) records of the specified primary domain names based on the specified parameters.
+        
+        @description    You can specify DomainName, PageNumber, and PageSize to query the DNS records of the specified domain names.
+        You can also specify RRKeyWord, TypeKeyWord, or ValueKeyWord to query the DNS records that contain the specified keyword.
+        By default, the DNS records are sorted in reverse chronological order based on the time when they were added.
+        You can specify GroupId to query the DNS records of the specified domain names based on the group ID. You can query the DNS records of all domain names and the domain names in the default group.
         
         @param request: DescribeDomainRecordsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5914,10 +7206,12 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDomainRecordsRequest,
     ) -> alidns_20150109_models.DescribeDomainRecordsResponse:
         """
-        You can specify DomainName, PageNumber, and PageSize to query the DNS records of the specified domain names.
-        *   You can also specify RRKeyWord, TypeKeyWord, or ValueKeyWord to query the DNS records that contain the specified keyword.
-        *   By default, the DNS records are sorted in reverse chronological order based on the time when they were added.
-        *   You can specify GroupId to query the DNS records of the specified domain names based on the group ID. You can query the DNS records of all domain names and the domain names in the default group.
+        @summary Queries all Domain Name System (DNS) records of the specified primary domain names based on the specified parameters.
+        
+        @description    You can specify DomainName, PageNumber, and PageSize to query the DNS records of the specified domain names.
+        You can also specify RRKeyWord, TypeKeyWord, or ValueKeyWord to query the DNS records that contain the specified keyword.
+        By default, the DNS records are sorted in reverse chronological order based on the time when they were added.
+        You can specify GroupId to query the DNS records of the specified domain names based on the group ID. You can query the DNS records of all domain names and the domain names in the default group.
         
         @param request: DescribeDomainRecordsRequest
         @return: DescribeDomainRecordsResponse
@@ -5930,10 +7224,12 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDomainRecordsRequest,
     ) -> alidns_20150109_models.DescribeDomainRecordsResponse:
         """
-        You can specify DomainName, PageNumber, and PageSize to query the DNS records of the specified domain names.
-        *   You can also specify RRKeyWord, TypeKeyWord, or ValueKeyWord to query the DNS records that contain the specified keyword.
-        *   By default, the DNS records are sorted in reverse chronological order based on the time when they were added.
-        *   You can specify GroupId to query the DNS records of the specified domain names based on the group ID. You can query the DNS records of all domain names and the domain names in the default group.
+        @summary Queries all Domain Name System (DNS) records of the specified primary domain names based on the specified parameters.
+        
+        @description    You can specify DomainName, PageNumber, and PageSize to query the DNS records of the specified domain names.
+        You can also specify RRKeyWord, TypeKeyWord, or ValueKeyWord to query the DNS records that contain the specified keyword.
+        By default, the DNS records are sorted in reverse chronological order based on the time when they were added.
+        You can specify GroupId to query the DNS records of the specified domain names based on the group ID. You can query the DNS records of all domain names and the domain names in the default group.
         
         @param request: DescribeDomainRecordsRequest
         @return: DescribeDomainRecordsResponse
@@ -5946,6 +7242,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDomainResolveStatisticsSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDomainResolveStatisticsSummaryResponse:
+        """
+        @summary Queries the resolution requests of all paid domain names within your account.
+        
+        @param request: DescribeDomainResolveStatisticsSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainResolveStatisticsSummaryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.direction):
@@ -5990,6 +7293,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDomainResolveStatisticsSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDomainResolveStatisticsSummaryResponse:
+        """
+        @summary Queries the resolution requests of all paid domain names within your account.
+        
+        @param request: DescribeDomainResolveStatisticsSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainResolveStatisticsSummaryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.direction):
@@ -6033,6 +7343,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDomainResolveStatisticsSummaryRequest,
     ) -> alidns_20150109_models.DescribeDomainResolveStatisticsSummaryResponse:
+        """
+        @summary Queries the resolution requests of all paid domain names within your account.
+        
+        @param request: DescribeDomainResolveStatisticsSummaryRequest
+        @return: DescribeDomainResolveStatisticsSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_domain_resolve_statistics_summary_with_options(request, runtime)
 
@@ -6040,6 +7356,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDomainResolveStatisticsSummaryRequest,
     ) -> alidns_20150109_models.DescribeDomainResolveStatisticsSummaryResponse:
+        """
+        @summary Queries the resolution requests of all paid domain names within your account.
+        
+        @param request: DescribeDomainResolveStatisticsSummaryRequest
+        @return: DescribeDomainResolveStatisticsSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_domain_resolve_statistics_summary_with_options_async(request, runtime)
 
@@ -6049,7 +7371,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDomainStatisticsResponse:
         """
-        Real-time data is collected per hour.
+        @summary Queries the real-time statistics on the Domain Name System (DNS) requests for a primary domain name.
+        
+        @description Real-time data is collected per hour.
         
         @param request: DescribeDomainStatisticsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6092,7 +7416,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDomainStatisticsResponse:
         """
-        Real-time data is collected per hour.
+        @summary Queries the real-time statistics on the Domain Name System (DNS) requests for a primary domain name.
+        
+        @description Real-time data is collected per hour.
         
         @param request: DescribeDomainStatisticsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6134,7 +7460,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDomainStatisticsRequest,
     ) -> alidns_20150109_models.DescribeDomainStatisticsResponse:
         """
-        Real-time data is collected per hour.
+        @summary Queries the real-time statistics on the Domain Name System (DNS) requests for a primary domain name.
+        
+        @description Real-time data is collected per hour.
         
         @param request: DescribeDomainStatisticsRequest
         @return: DescribeDomainStatisticsResponse
@@ -6147,7 +7475,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDomainStatisticsRequest,
     ) -> alidns_20150109_models.DescribeDomainStatisticsResponse:
         """
-        Real-time data is collected per hour.
+        @summary Queries the real-time statistics on the Domain Name System (DNS) requests for a primary domain name.
+        
+        @description Real-time data is collected per hour.
         
         @param request: DescribeDomainStatisticsRequest
         @return: DescribeDomainStatisticsResponse
@@ -6160,6 +7490,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDomainStatisticsSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDomainStatisticsSummaryResponse:
+        """
+        @summary Calls the DescribeDomainStatisticsSummary operation to obtain the query volume of all paid domain names under your account.
+        
+        @param request: DescribeDomainStatisticsSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainStatisticsSummaryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_date):
@@ -6202,6 +7539,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDomainStatisticsSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDomainStatisticsSummaryResponse:
+        """
+        @summary Calls the DescribeDomainStatisticsSummary operation to obtain the query volume of all paid domain names under your account.
+        
+        @param request: DescribeDomainStatisticsSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainStatisticsSummaryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_date):
@@ -6243,6 +7587,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDomainStatisticsSummaryRequest,
     ) -> alidns_20150109_models.DescribeDomainStatisticsSummaryResponse:
+        """
+        @summary Calls the DescribeDomainStatisticsSummary operation to obtain the query volume of all paid domain names under your account.
+        
+        @param request: DescribeDomainStatisticsSummaryRequest
+        @return: DescribeDomainStatisticsSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_domain_statistics_summary_with_options(request, runtime)
 
@@ -6250,6 +7600,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeDomainStatisticsSummaryRequest,
     ) -> alidns_20150109_models.DescribeDomainStatisticsSummaryResponse:
+        """
+        @summary Calls the DescribeDomainStatisticsSummary operation to obtain the query volume of all paid domain names under your account.
+        
+        @param request: DescribeDomainStatisticsSummaryRequest
+        @return: DescribeDomainStatisticsSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_domain_statistics_summary_with_options_async(request, runtime)
 
@@ -6259,10 +7615,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDomainsResponse:
         """
-        You can specify the PageNumber and PageSize parameters to query domain names.
-        *   You can specify the KeyWord parameter to query domain names that contain the specified keyword.
-        *   By default, the domain names in a list are sorted in descending order of the time they were added.
-        *   You can specify the GroupId parameter. If you do not specify this parameter, all domain names are queried by default.
+        @summary Calls the DescribeDomains operation to query domain names of a user based on input parameters.
+        
+        @description    You can specify the PageNumber and PageSize parameters to query domain names.
+        You can specify the KeyWord parameter to query domain names that contain the specified keyword.
+        By default, the domain names in a list are sorted in descending order of the time they were added.
+        You can specify the GroupId parameter. If you do not specify this parameter, all domain names are queried by default.
         
         @param request: DescribeDomainsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6311,10 +7669,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeDomainsResponse:
         """
-        You can specify the PageNumber and PageSize parameters to query domain names.
-        *   You can specify the KeyWord parameter to query domain names that contain the specified keyword.
-        *   By default, the domain names in a list are sorted in descending order of the time they were added.
-        *   You can specify the GroupId parameter. If you do not specify this parameter, all domain names are queried by default.
+        @summary Calls the DescribeDomains operation to query domain names of a user based on input parameters.
+        
+        @description    You can specify the PageNumber and PageSize parameters to query domain names.
+        You can specify the KeyWord parameter to query domain names that contain the specified keyword.
+        By default, the domain names in a list are sorted in descending order of the time they were added.
+        You can specify the GroupId parameter. If you do not specify this parameter, all domain names are queried by default.
         
         @param request: DescribeDomainsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6362,10 +7722,12 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDomainsRequest,
     ) -> alidns_20150109_models.DescribeDomainsResponse:
         """
-        You can specify the PageNumber and PageSize parameters to query domain names.
-        *   You can specify the KeyWord parameter to query domain names that contain the specified keyword.
-        *   By default, the domain names in a list are sorted in descending order of the time they were added.
-        *   You can specify the GroupId parameter. If you do not specify this parameter, all domain names are queried by default.
+        @summary Calls the DescribeDomains operation to query domain names of a user based on input parameters.
+        
+        @description    You can specify the PageNumber and PageSize parameters to query domain names.
+        You can specify the KeyWord parameter to query domain names that contain the specified keyword.
+        By default, the domain names in a list are sorted in descending order of the time they were added.
+        You can specify the GroupId parameter. If you do not specify this parameter, all domain names are queried by default.
         
         @param request: DescribeDomainsRequest
         @return: DescribeDomainsResponse
@@ -6378,10 +7740,12 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeDomainsRequest,
     ) -> alidns_20150109_models.DescribeDomainsResponse:
         """
-        You can specify the PageNumber and PageSize parameters to query domain names.
-        *   You can specify the KeyWord parameter to query domain names that contain the specified keyword.
-        *   By default, the domain names in a list are sorted in descending order of the time they were added.
-        *   You can specify the GroupId parameter. If you do not specify this parameter, all domain names are queried by default.
+        @summary Calls the DescribeDomains operation to query domain names of a user based on input parameters.
+        
+        @description    You can specify the PageNumber and PageSize parameters to query domain names.
+        You can specify the KeyWord parameter to query domain names that contain the specified keyword.
+        By default, the domain names in a list are sorted in descending order of the time they were added.
+        You can specify the GroupId parameter. If you do not specify this parameter, all domain names are queried by default.
         
         @param request: DescribeDomainsRequest
         @return: DescribeDomainsResponse
@@ -6394,6 +7758,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmAccessStrategiesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmAccessStrategiesResponse:
+        """
+        @summary You can call this operation to query the access policies of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmAccessStrategiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGtmAccessStrategiesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6428,6 +7799,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmAccessStrategiesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmAccessStrategiesResponse:
+        """
+        @summary You can call this operation to query the access policies of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmAccessStrategiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGtmAccessStrategiesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6461,6 +7839,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeGtmAccessStrategiesRequest,
     ) -> alidns_20150109_models.DescribeGtmAccessStrategiesResponse:
+        """
+        @summary You can call this operation to query the access policies of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmAccessStrategiesRequest
+        @return: DescribeGtmAccessStrategiesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_gtm_access_strategies_with_options(request, runtime)
 
@@ -6468,6 +7852,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeGtmAccessStrategiesRequest,
     ) -> alidns_20150109_models.DescribeGtmAccessStrategiesResponse:
+        """
+        @summary You can call this operation to query the access policies of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmAccessStrategiesRequest
+        @return: DescribeGtmAccessStrategiesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_gtm_access_strategies_with_options_async(request, runtime)
 
@@ -6476,6 +7866,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmAccessStrategyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmAccessStrategyResponse:
+        """
+        @summary You can call this operation to query the details about an access policy of a Global Traffic Manager (GTM) instance based on the policy ID.
+        
+        @param request: DescribeGtmAccessStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGtmAccessStrategyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -6506,6 +7903,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmAccessStrategyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmAccessStrategyResponse:
+        """
+        @summary You can call this operation to query the details about an access policy of a Global Traffic Manager (GTM) instance based on the policy ID.
+        
+        @param request: DescribeGtmAccessStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGtmAccessStrategyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -6535,6 +7939,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeGtmAccessStrategyRequest,
     ) -> alidns_20150109_models.DescribeGtmAccessStrategyResponse:
+        """
+        @summary You can call this operation to query the details about an access policy of a Global Traffic Manager (GTM) instance based on the policy ID.
+        
+        @param request: DescribeGtmAccessStrategyRequest
+        @return: DescribeGtmAccessStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_gtm_access_strategy_with_options(request, runtime)
 
@@ -6542,6 +7952,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeGtmAccessStrategyRequest,
     ) -> alidns_20150109_models.DescribeGtmAccessStrategyResponse:
+        """
+        @summary You can call this operation to query the details about an access policy of a Global Traffic Manager (GTM) instance based on the policy ID.
+        
+        @param request: DescribeGtmAccessStrategyRequest
+        @return: DescribeGtmAccessStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_gtm_access_strategy_with_options_async(request, runtime)
 
@@ -6550,6 +7966,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmAccessStrategyAvailableConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmAccessStrategyAvailableConfigResponse:
+        """
+        @summary Queries the configuration items that can be set for an access policy.
+        
+        @param request: DescribeGtmAccessStrategyAvailableConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGtmAccessStrategyAvailableConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6580,6 +8003,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmAccessStrategyAvailableConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmAccessStrategyAvailableConfigResponse:
+        """
+        @summary Queries the configuration items that can be set for an access policy.
+        
+        @param request: DescribeGtmAccessStrategyAvailableConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGtmAccessStrategyAvailableConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6609,6 +8039,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeGtmAccessStrategyAvailableConfigRequest,
     ) -> alidns_20150109_models.DescribeGtmAccessStrategyAvailableConfigResponse:
+        """
+        @summary Queries the configuration items that can be set for an access policy.
+        
+        @param request: DescribeGtmAccessStrategyAvailableConfigRequest
+        @return: DescribeGtmAccessStrategyAvailableConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_gtm_access_strategy_available_config_with_options(request, runtime)
 
@@ -6616,6 +8052,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeGtmAccessStrategyAvailableConfigRequest,
     ) -> alidns_20150109_models.DescribeGtmAccessStrategyAvailableConfigResponse:
+        """
+        @summary Queries the configuration items that can be set for an access policy.
+        
+        @param request: DescribeGtmAccessStrategyAvailableConfigRequest
+        @return: DescribeGtmAccessStrategyAvailableConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_gtm_access_strategy_available_config_with_options_async(request, runtime)
 
@@ -6624,6 +8066,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmAvailableAlertGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmAvailableAlertGroupResponse:
+        """
+        @param request: DescribeGtmAvailableAlertGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGtmAvailableAlertGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -6652,6 +8099,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmAvailableAlertGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmAvailableAlertGroupResponse:
+        """
+        @param request: DescribeGtmAvailableAlertGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGtmAvailableAlertGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -6679,6 +8131,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeGtmAvailableAlertGroupRequest,
     ) -> alidns_20150109_models.DescribeGtmAvailableAlertGroupResponse:
+        """
+        @param request: DescribeGtmAvailableAlertGroupRequest
+        @return: DescribeGtmAvailableAlertGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_gtm_available_alert_group_with_options(request, runtime)
 
@@ -6686,6 +8142,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeGtmAvailableAlertGroupRequest,
     ) -> alidns_20150109_models.DescribeGtmAvailableAlertGroupResponse:
+        """
+        @param request: DescribeGtmAvailableAlertGroupRequest
+        @return: DescribeGtmAvailableAlertGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_gtm_available_alert_group_with_options_async(request, runtime)
 
@@ -6694,6 +8154,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmInstanceResponse:
+        """
+        @summary Queries the details about a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGtmInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6726,6 +8193,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmInstanceResponse:
+        """
+        @summary Queries the details about a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGtmInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6757,6 +8231,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeGtmInstanceRequest,
     ) -> alidns_20150109_models.DescribeGtmInstanceResponse:
+        """
+        @summary Queries the details about a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmInstanceRequest
+        @return: DescribeGtmInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_gtm_instance_with_options(request, runtime)
 
@@ -6764,6 +8244,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeGtmInstanceRequest,
     ) -> alidns_20150109_models.DescribeGtmInstanceResponse:
+        """
+        @summary Queries the details about a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmInstanceRequest
+        @return: DescribeGtmInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_gtm_instance_with_options_async(request, runtime)
 
@@ -6772,6 +8258,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmInstanceAddressPoolRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmInstanceAddressPoolResponse:
+        """
+        @summary You can call this operation to query the details about an address pool of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmInstanceAddressPoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGtmInstanceAddressPoolResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.addr_pool_id):
@@ -6802,6 +8295,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmInstanceAddressPoolRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmInstanceAddressPoolResponse:
+        """
+        @summary You can call this operation to query the details about an address pool of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmInstanceAddressPoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGtmInstanceAddressPoolResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.addr_pool_id):
@@ -6831,6 +8331,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeGtmInstanceAddressPoolRequest,
     ) -> alidns_20150109_models.DescribeGtmInstanceAddressPoolResponse:
+        """
+        @summary You can call this operation to query the details about an address pool of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmInstanceAddressPoolRequest
+        @return: DescribeGtmInstanceAddressPoolResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_gtm_instance_address_pool_with_options(request, runtime)
 
@@ -6838,6 +8344,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeGtmInstanceAddressPoolRequest,
     ) -> alidns_20150109_models.DescribeGtmInstanceAddressPoolResponse:
+        """
+        @summary You can call this operation to query the details about an address pool of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmInstanceAddressPoolRequest
+        @return: DescribeGtmInstanceAddressPoolResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_gtm_instance_address_pool_with_options_async(request, runtime)
 
@@ -6846,6 +8358,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmInstanceAddressPoolsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmInstanceAddressPoolsResponse:
+        """
+        @summary You can call this operation to query the address pools of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmInstanceAddressPoolsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGtmInstanceAddressPoolsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6880,6 +8399,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmInstanceAddressPoolsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmInstanceAddressPoolsResponse:
+        """
+        @summary You can call this operation to query the address pools of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmInstanceAddressPoolsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGtmInstanceAddressPoolsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6913,6 +8439,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeGtmInstanceAddressPoolsRequest,
     ) -> alidns_20150109_models.DescribeGtmInstanceAddressPoolsResponse:
+        """
+        @summary You can call this operation to query the address pools of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmInstanceAddressPoolsRequest
+        @return: DescribeGtmInstanceAddressPoolsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_gtm_instance_address_pools_with_options(request, runtime)
 
@@ -6920,6 +8452,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeGtmInstanceAddressPoolsRequest,
     ) -> alidns_20150109_models.DescribeGtmInstanceAddressPoolsResponse:
+        """
+        @summary You can call this operation to query the address pools of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmInstanceAddressPoolsRequest
+        @return: DescribeGtmInstanceAddressPoolsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_gtm_instance_address_pools_with_options_async(request, runtime)
 
@@ -6928,6 +8466,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmInstanceStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmInstanceStatusResponse:
+        """
+        @summary Queries the current status of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmInstanceStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGtmInstanceStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6958,6 +8503,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmInstanceStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmInstanceStatusResponse:
+        """
+        @summary Queries the current status of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmInstanceStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGtmInstanceStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6987,6 +8539,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeGtmInstanceStatusRequest,
     ) -> alidns_20150109_models.DescribeGtmInstanceStatusResponse:
+        """
+        @summary Queries the current status of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmInstanceStatusRequest
+        @return: DescribeGtmInstanceStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_gtm_instance_status_with_options(request, runtime)
 
@@ -6994,6 +8552,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeGtmInstanceStatusRequest,
     ) -> alidns_20150109_models.DescribeGtmInstanceStatusResponse:
+        """
+        @summary Queries the current status of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmInstanceStatusRequest
+        @return: DescribeGtmInstanceStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_gtm_instance_status_with_options_async(request, runtime)
 
@@ -7002,6 +8566,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmInstanceSystemCnameRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmInstanceSystemCnameResponse:
+        """
+        @param request: DescribeGtmInstanceSystemCnameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGtmInstanceSystemCnameResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -7032,6 +8601,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmInstanceSystemCnameRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmInstanceSystemCnameResponse:
+        """
+        @param request: DescribeGtmInstanceSystemCnameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGtmInstanceSystemCnameResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -7061,6 +8635,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeGtmInstanceSystemCnameRequest,
     ) -> alidns_20150109_models.DescribeGtmInstanceSystemCnameResponse:
+        """
+        @param request: DescribeGtmInstanceSystemCnameRequest
+        @return: DescribeGtmInstanceSystemCnameResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_gtm_instance_system_cname_with_options(request, runtime)
 
@@ -7068,6 +8646,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeGtmInstanceSystemCnameRequest,
     ) -> alidns_20150109_models.DescribeGtmInstanceSystemCnameResponse:
+        """
+        @param request: DescribeGtmInstanceSystemCnameRequest
+        @return: DescribeGtmInstanceSystemCnameResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_gtm_instance_system_cname_with_options_async(request, runtime)
 
@@ -7076,6 +8658,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmInstancesResponse:
+        """
+        @summary Queries the Global Traffic Manager (GTM) instances under your account.
+        
+        @param request: DescribeGtmInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGtmInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -7114,6 +8703,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmInstancesResponse:
+        """
+        @summary Queries the Global Traffic Manager (GTM) instances under your account.
+        
+        @param request: DescribeGtmInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGtmInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -7151,6 +8747,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeGtmInstancesRequest,
     ) -> alidns_20150109_models.DescribeGtmInstancesResponse:
+        """
+        @summary Queries the Global Traffic Manager (GTM) instances under your account.
+        
+        @param request: DescribeGtmInstancesRequest
+        @return: DescribeGtmInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_gtm_instances_with_options(request, runtime)
 
@@ -7158,6 +8760,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeGtmInstancesRequest,
     ) -> alidns_20150109_models.DescribeGtmInstancesResponse:
+        """
+        @summary Queries the Global Traffic Manager (GTM) instances under your account.
+        
+        @param request: DescribeGtmInstancesRequest
+        @return: DescribeGtmInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_gtm_instances_with_options_async(request, runtime)
 
@@ -7166,6 +8774,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmLogsResponse:
+        """
+        @summary You can call this operation to query logs of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGtmLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_timestamp):
@@ -7206,6 +8821,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmLogsResponse:
+        """
+        @summary You can call this operation to query logs of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGtmLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_timestamp):
@@ -7245,6 +8867,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeGtmLogsRequest,
     ) -> alidns_20150109_models.DescribeGtmLogsResponse:
+        """
+        @summary You can call this operation to query logs of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmLogsRequest
+        @return: DescribeGtmLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_gtm_logs_with_options(request, runtime)
 
@@ -7252,6 +8880,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeGtmLogsRequest,
     ) -> alidns_20150109_models.DescribeGtmLogsResponse:
+        """
+        @summary You can call this operation to query logs of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmLogsRequest
+        @return: DescribeGtmLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_gtm_logs_with_options_async(request, runtime)
 
@@ -7260,6 +8894,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmMonitorAvailableConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmMonitorAvailableConfigResponse:
+        """
+        @summary Queries available monitored nodes.
+        
+        @param request: DescribeGtmMonitorAvailableConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGtmMonitorAvailableConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -7288,6 +8929,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmMonitorAvailableConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmMonitorAvailableConfigResponse:
+        """
+        @summary Queries available monitored nodes.
+        
+        @param request: DescribeGtmMonitorAvailableConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGtmMonitorAvailableConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -7315,6 +8963,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeGtmMonitorAvailableConfigRequest,
     ) -> alidns_20150109_models.DescribeGtmMonitorAvailableConfigResponse:
+        """
+        @summary Queries available monitored nodes.
+        
+        @param request: DescribeGtmMonitorAvailableConfigRequest
+        @return: DescribeGtmMonitorAvailableConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_gtm_monitor_available_config_with_options(request, runtime)
 
@@ -7322,6 +8976,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeGtmMonitorAvailableConfigRequest,
     ) -> alidns_20150109_models.DescribeGtmMonitorAvailableConfigResponse:
+        """
+        @summary Queries available monitored nodes.
+        
+        @param request: DescribeGtmMonitorAvailableConfigRequest
+        @return: DescribeGtmMonitorAvailableConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_gtm_monitor_available_config_with_options_async(request, runtime)
 
@@ -7330,6 +8990,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmMonitorConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmMonitorConfigResponse:
+        """
+        @summary Queries the health check configuration of an address pool of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmMonitorConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGtmMonitorConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -7360,6 +9027,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmMonitorConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmMonitorConfigResponse:
+        """
+        @summary Queries the health check configuration of an address pool of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmMonitorConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGtmMonitorConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -7389,6 +9063,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeGtmMonitorConfigRequest,
     ) -> alidns_20150109_models.DescribeGtmMonitorConfigResponse:
+        """
+        @summary Queries the health check configuration of an address pool of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmMonitorConfigRequest
+        @return: DescribeGtmMonitorConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_gtm_monitor_config_with_options(request, runtime)
 
@@ -7396,6 +9076,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeGtmMonitorConfigRequest,
     ) -> alidns_20150109_models.DescribeGtmMonitorConfigResponse:
+        """
+        @summary Queries the health check configuration of an address pool of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmMonitorConfigRequest
+        @return: DescribeGtmMonitorConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_gtm_monitor_config_with_options_async(request, runtime)
 
@@ -7404,6 +9090,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmRecoveryPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmRecoveryPlanResponse:
+        """
+        @summary You can call this operation to query the detailed information of a disaster recovery plan for a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmRecoveryPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGtmRecoveryPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -7434,6 +9127,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmRecoveryPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmRecoveryPlanResponse:
+        """
+        @summary You can call this operation to query the detailed information of a disaster recovery plan for a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmRecoveryPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGtmRecoveryPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -7463,6 +9163,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeGtmRecoveryPlanRequest,
     ) -> alidns_20150109_models.DescribeGtmRecoveryPlanResponse:
+        """
+        @summary You can call this operation to query the detailed information of a disaster recovery plan for a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmRecoveryPlanRequest
+        @return: DescribeGtmRecoveryPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_gtm_recovery_plan_with_options(request, runtime)
 
@@ -7470,6 +9176,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeGtmRecoveryPlanRequest,
     ) -> alidns_20150109_models.DescribeGtmRecoveryPlanResponse:
+        """
+        @summary You can call this operation to query the detailed information of a disaster recovery plan for a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmRecoveryPlanRequest
+        @return: DescribeGtmRecoveryPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_gtm_recovery_plan_with_options_async(request, runtime)
 
@@ -7478,6 +9190,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmRecoveryPlanAvailableConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmRecoveryPlanAvailableConfigResponse:
+        """
+        @summary You can call this operation to query the available configurations of a disaster recovery plan of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmRecoveryPlanAvailableConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGtmRecoveryPlanAvailableConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -7506,6 +9225,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmRecoveryPlanAvailableConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmRecoveryPlanAvailableConfigResponse:
+        """
+        @summary You can call this operation to query the available configurations of a disaster recovery plan of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmRecoveryPlanAvailableConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGtmRecoveryPlanAvailableConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -7533,6 +9259,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeGtmRecoveryPlanAvailableConfigRequest,
     ) -> alidns_20150109_models.DescribeGtmRecoveryPlanAvailableConfigResponse:
+        """
+        @summary You can call this operation to query the available configurations of a disaster recovery plan of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmRecoveryPlanAvailableConfigRequest
+        @return: DescribeGtmRecoveryPlanAvailableConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_gtm_recovery_plan_available_config_with_options(request, runtime)
 
@@ -7540,6 +9272,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeGtmRecoveryPlanAvailableConfigRequest,
     ) -> alidns_20150109_models.DescribeGtmRecoveryPlanAvailableConfigResponse:
+        """
+        @summary You can call this operation to query the available configurations of a disaster recovery plan of a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmRecoveryPlanAvailableConfigRequest
+        @return: DescribeGtmRecoveryPlanAvailableConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_gtm_recovery_plan_available_config_with_options_async(request, runtime)
 
@@ -7548,6 +9286,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmRecoveryPlansRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmRecoveryPlansResponse:
+        """
+        @summary Queries the disaster recovery plans for a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmRecoveryPlansRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGtmRecoveryPlansResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -7582,6 +9327,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeGtmRecoveryPlansRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeGtmRecoveryPlansResponse:
+        """
+        @summary Queries the disaster recovery plans for a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmRecoveryPlansRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGtmRecoveryPlansResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.keyword):
@@ -7615,6 +9367,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeGtmRecoveryPlansRequest,
     ) -> alidns_20150109_models.DescribeGtmRecoveryPlansResponse:
+        """
+        @summary Queries the disaster recovery plans for a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmRecoveryPlansRequest
+        @return: DescribeGtmRecoveryPlansResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_gtm_recovery_plans_with_options(request, runtime)
 
@@ -7622,6 +9380,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeGtmRecoveryPlansRequest,
     ) -> alidns_20150109_models.DescribeGtmRecoveryPlansResponse:
+        """
+        @summary Queries the disaster recovery plans for a Global Traffic Manager (GTM) instance.
+        
+        @param request: DescribeGtmRecoveryPlansRequest
+        @return: DescribeGtmRecoveryPlansResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_gtm_recovery_plans_with_options_async(request, runtime)
 
@@ -7630,6 +9394,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeInstanceDomainsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeInstanceDomainsResponse:
+        """
+        @summary Queries the domain names that are bound to an Alibaba Cloud DNS instance.
+        
+        @param request: DescribeInstanceDomainsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceDomainsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -7664,6 +9435,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeInstanceDomainsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeInstanceDomainsResponse:
+        """
+        @summary Queries the domain names that are bound to an Alibaba Cloud DNS instance.
+        
+        @param request: DescribeInstanceDomainsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceDomainsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -7697,6 +9475,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeInstanceDomainsRequest,
     ) -> alidns_20150109_models.DescribeInstanceDomainsResponse:
+        """
+        @summary Queries the domain names that are bound to an Alibaba Cloud DNS instance.
+        
+        @param request: DescribeInstanceDomainsRequest
+        @return: DescribeInstanceDomainsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_domains_with_options(request, runtime)
 
@@ -7704,6 +9488,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeInstanceDomainsRequest,
     ) -> alidns_20150109_models.DescribeInstanceDomainsResponse:
+        """
+        @summary Queries the domain names that are bound to an Alibaba Cloud DNS instance.
+        
+        @param request: DescribeInstanceDomainsRequest
+        @return: DescribeInstanceDomainsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_domains_with_options_async(request, runtime)
 
@@ -7712,8 +9502,15 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeInternetDnsLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeInternetDnsLogsResponse:
+        """
+        @param request: DescribeInternetDnsLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInternetDnsLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
         if not UtilClient.is_unset(request.domain_name):
             query['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.end_timestamp):
@@ -7754,8 +9551,15 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeInternetDnsLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeInternetDnsLogsResponse:
+        """
+        @param request: DescribeInternetDnsLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInternetDnsLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.account_id):
+            query['AccountId'] = request.account_id
         if not UtilClient.is_unset(request.domain_name):
             query['DomainName'] = request.domain_name
         if not UtilClient.is_unset(request.end_timestamp):
@@ -7795,6 +9599,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeInternetDnsLogsRequest,
     ) -> alidns_20150109_models.DescribeInternetDnsLogsResponse:
+        """
+        @param request: DescribeInternetDnsLogsRequest
+        @return: DescribeInternetDnsLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_internet_dns_logs_with_options(request, runtime)
 
@@ -7802,6 +9610,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeInternetDnsLogsRequest,
     ) -> alidns_20150109_models.DescribeInternetDnsLogsResponse:
+        """
+        @param request: DescribeInternetDnsLogsRequest
+        @return: DescribeInternetDnsLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_internet_dns_logs_with_options_async(request, runtime)
 
@@ -7810,6 +9622,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeIspFlushCacheInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeIspFlushCacheInstancesResponse:
+        """
+        @summary 获取缓存刷新套餐包列表
+        
+        @param request: DescribeIspFlushCacheInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIspFlushCacheInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.direction):
@@ -7852,6 +9671,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeIspFlushCacheInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeIspFlushCacheInstancesResponse:
+        """
+        @summary 获取缓存刷新套餐包列表
+        
+        @param request: DescribeIspFlushCacheInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIspFlushCacheInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.direction):
@@ -7893,6 +9719,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeIspFlushCacheInstancesRequest,
     ) -> alidns_20150109_models.DescribeIspFlushCacheInstancesResponse:
+        """
+        @summary 获取缓存刷新套餐包列表
+        
+        @param request: DescribeIspFlushCacheInstancesRequest
+        @return: DescribeIspFlushCacheInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_isp_flush_cache_instances_with_options(request, runtime)
 
@@ -7900,6 +9732,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeIspFlushCacheInstancesRequest,
     ) -> alidns_20150109_models.DescribeIspFlushCacheInstancesResponse:
+        """
+        @summary 获取缓存刷新套餐包列表
+        
+        @param request: DescribeIspFlushCacheInstancesRequest
+        @return: DescribeIspFlushCacheInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_isp_flush_cache_instances_with_options_async(request, runtime)
 
@@ -7908,6 +9746,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeIspFlushCacheRemainQuotaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeIspFlushCacheRemainQuotaResponse:
+        """
+        @summary 获取剩余可缓存刷新次数
+        
+        @param request: DescribeIspFlushCacheRemainQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIspFlushCacheRemainQuotaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -7936,6 +9781,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeIspFlushCacheRemainQuotaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeIspFlushCacheRemainQuotaResponse:
+        """
+        @summary 获取剩余可缓存刷新次数
+        
+        @param request: DescribeIspFlushCacheRemainQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIspFlushCacheRemainQuotaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -7963,6 +9815,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeIspFlushCacheRemainQuotaRequest,
     ) -> alidns_20150109_models.DescribeIspFlushCacheRemainQuotaResponse:
+        """
+        @summary 获取剩余可缓存刷新次数
+        
+        @param request: DescribeIspFlushCacheRemainQuotaRequest
+        @return: DescribeIspFlushCacheRemainQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_isp_flush_cache_remain_quota_with_options(request, runtime)
 
@@ -7970,6 +9828,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeIspFlushCacheRemainQuotaRequest,
     ) -> alidns_20150109_models.DescribeIspFlushCacheRemainQuotaResponse:
+        """
+        @summary 获取剩余可缓存刷新次数
+        
+        @param request: DescribeIspFlushCacheRemainQuotaRequest
+        @return: DescribeIspFlushCacheRemainQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_isp_flush_cache_remain_quota_with_options_async(request, runtime)
 
@@ -7978,6 +9842,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeIspFlushCacheTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeIspFlushCacheTaskResponse:
+        """
+        @summary 获取缓存刷新任务详情
+        
+        @param request: DescribeIspFlushCacheTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIspFlushCacheTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -8008,6 +9879,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeIspFlushCacheTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeIspFlushCacheTaskResponse:
+        """
+        @summary 获取缓存刷新任务详情
+        
+        @param request: DescribeIspFlushCacheTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIspFlushCacheTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -8037,6 +9915,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeIspFlushCacheTaskRequest,
     ) -> alidns_20150109_models.DescribeIspFlushCacheTaskResponse:
+        """
+        @summary 获取缓存刷新任务详情
+        
+        @param request: DescribeIspFlushCacheTaskRequest
+        @return: DescribeIspFlushCacheTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_isp_flush_cache_task_with_options(request, runtime)
 
@@ -8044,6 +9928,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeIspFlushCacheTaskRequest,
     ) -> alidns_20150109_models.DescribeIspFlushCacheTaskResponse:
+        """
+        @summary 获取缓存刷新任务详情
+        
+        @param request: DescribeIspFlushCacheTaskRequest
+        @return: DescribeIspFlushCacheTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_isp_flush_cache_task_with_options_async(request, runtime)
 
@@ -8052,6 +9942,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeIspFlushCacheTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeIspFlushCacheTasksResponse:
+        """
+        @summary 获取缓存刷新任务列表
+        
+        @param request: DescribeIspFlushCacheTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIspFlushCacheTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.direction):
@@ -8094,6 +9991,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeIspFlushCacheTasksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeIspFlushCacheTasksResponse:
+        """
+        @summary 获取缓存刷新任务列表
+        
+        @param request: DescribeIspFlushCacheTasksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIspFlushCacheTasksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.direction):
@@ -8135,6 +10039,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeIspFlushCacheTasksRequest,
     ) -> alidns_20150109_models.DescribeIspFlushCacheTasksResponse:
+        """
+        @summary 获取缓存刷新任务列表
+        
+        @param request: DescribeIspFlushCacheTasksRequest
+        @return: DescribeIspFlushCacheTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_isp_flush_cache_tasks_with_options(request, runtime)
 
@@ -8142,6 +10052,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeIspFlushCacheTasksRequest,
     ) -> alidns_20150109_models.DescribeIspFlushCacheTasksResponse:
+        """
+        @summary 获取缓存刷新任务列表
+        
+        @param request: DescribeIspFlushCacheTasksRequest
+        @return: DescribeIspFlushCacheTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_isp_flush_cache_tasks_with_options_async(request, runtime)
 
@@ -8150,6 +10066,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribePdnsAccountSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribePdnsAccountSummaryResponse:
+        """
+        @summary 获取公共DNS用户数据概览
+        
+        @param request: DescribePdnsAccountSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePdnsAccountSummaryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_date):
@@ -8182,6 +10105,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribePdnsAccountSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribePdnsAccountSummaryResponse:
+        """
+        @summary 获取公共DNS用户数据概览
+        
+        @param request: DescribePdnsAccountSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePdnsAccountSummaryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_date):
@@ -8213,6 +10143,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribePdnsAccountSummaryRequest,
     ) -> alidns_20150109_models.DescribePdnsAccountSummaryResponse:
+        """
+        @summary 获取公共DNS用户数据概览
+        
+        @param request: DescribePdnsAccountSummaryRequest
+        @return: DescribePdnsAccountSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_pdns_account_summary_with_options(request, runtime)
 
@@ -8220,6 +10156,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribePdnsAccountSummaryRequest,
     ) -> alidns_20150109_models.DescribePdnsAccountSummaryResponse:
+        """
+        @summary 获取公共DNS用户数据概览
+        
+        @param request: DescribePdnsAccountSummaryRequest
+        @return: DescribePdnsAccountSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_pdns_account_summary_with_options_async(request, runtime)
 
@@ -8228,6 +10170,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribePdnsAppKeyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribePdnsAppKeyResponse:
+        """
+        @summary 获取公共DNS AppKey 详情
+        
+        @param request: DescribePdnsAppKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePdnsAppKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key_id):
@@ -8260,6 +10209,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribePdnsAppKeyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribePdnsAppKeyResponse:
+        """
+        @summary 获取公共DNS AppKey 详情
+        
+        @param request: DescribePdnsAppKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePdnsAppKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key_id):
@@ -8291,6 +10247,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribePdnsAppKeyRequest,
     ) -> alidns_20150109_models.DescribePdnsAppKeyResponse:
+        """
+        @summary 获取公共DNS AppKey 详情
+        
+        @param request: DescribePdnsAppKeyRequest
+        @return: DescribePdnsAppKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_pdns_app_key_with_options(request, runtime)
 
@@ -8298,6 +10260,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribePdnsAppKeyRequest,
     ) -> alidns_20150109_models.DescribePdnsAppKeyResponse:
+        """
+        @summary 获取公共DNS AppKey 详情
+        
+        @param request: DescribePdnsAppKeyRequest
+        @return: DescribePdnsAppKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_pdns_app_key_with_options_async(request, runtime)
 
@@ -8306,6 +10274,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribePdnsAppKeysRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribePdnsAppKeysResponse:
+        """
+        @summary 获取公共DNS AppKey 列表
+        
+        @param request: DescribePdnsAppKeysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePdnsAppKeysResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -8334,6 +10309,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribePdnsAppKeysRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribePdnsAppKeysResponse:
+        """
+        @summary 获取公共DNS AppKey 列表
+        
+        @param request: DescribePdnsAppKeysRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePdnsAppKeysResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -8361,6 +10343,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribePdnsAppKeysRequest,
     ) -> alidns_20150109_models.DescribePdnsAppKeysResponse:
+        """
+        @summary 获取公共DNS AppKey 列表
+        
+        @param request: DescribePdnsAppKeysRequest
+        @return: DescribePdnsAppKeysResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_pdns_app_keys_with_options(request, runtime)
 
@@ -8368,6 +10356,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribePdnsAppKeysRequest,
     ) -> alidns_20150109_models.DescribePdnsAppKeysResponse:
+        """
+        @summary 获取公共DNS AppKey 列表
+        
+        @param request: DescribePdnsAppKeysRequest
+        @return: DescribePdnsAppKeysResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_pdns_app_keys_with_options_async(request, runtime)
 
@@ -8376,6 +10370,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribePdnsOperateLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribePdnsOperateLogsResponse:
+        """
+        @summary 获取公共DNS 操作日志列表
+        
+        @param request: DescribePdnsOperateLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePdnsOperateLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.action_type):
@@ -8416,6 +10417,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribePdnsOperateLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribePdnsOperateLogsResponse:
+        """
+        @summary 获取公共DNS 操作日志列表
+        
+        @param request: DescribePdnsOperateLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePdnsOperateLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.action_type):
@@ -8455,6 +10463,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribePdnsOperateLogsRequest,
     ) -> alidns_20150109_models.DescribePdnsOperateLogsResponse:
+        """
+        @summary 获取公共DNS 操作日志列表
+        
+        @param request: DescribePdnsOperateLogsRequest
+        @return: DescribePdnsOperateLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_pdns_operate_logs_with_options(request, runtime)
 
@@ -8462,6 +10476,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribePdnsOperateLogsRequest,
     ) -> alidns_20150109_models.DescribePdnsOperateLogsResponse:
+        """
+        @summary 获取公共DNS 操作日志列表
+        
+        @param request: DescribePdnsOperateLogsRequest
+        @return: DescribePdnsOperateLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_pdns_operate_logs_with_options_async(request, runtime)
 
@@ -8470,6 +10490,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribePdnsRequestStatisticRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribePdnsRequestStatisticResponse:
+        """
+        @summary 获取公共DNS 请求统计
+        
+        @param request: DescribePdnsRequestStatisticRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePdnsRequestStatisticResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -8506,6 +10533,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribePdnsRequestStatisticRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribePdnsRequestStatisticResponse:
+        """
+        @summary 获取公共DNS 请求统计
+        
+        @param request: DescribePdnsRequestStatisticRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePdnsRequestStatisticResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -8541,6 +10575,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribePdnsRequestStatisticRequest,
     ) -> alidns_20150109_models.DescribePdnsRequestStatisticResponse:
+        """
+        @summary 获取公共DNS 请求统计
+        
+        @param request: DescribePdnsRequestStatisticRequest
+        @return: DescribePdnsRequestStatisticResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_pdns_request_statistic_with_options(request, runtime)
 
@@ -8548,6 +10588,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribePdnsRequestStatisticRequest,
     ) -> alidns_20150109_models.DescribePdnsRequestStatisticResponse:
+        """
+        @summary 获取公共DNS 请求统计
+        
+        @param request: DescribePdnsRequestStatisticRequest
+        @return: DescribePdnsRequestStatisticResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_pdns_request_statistic_with_options_async(request, runtime)
 
@@ -8556,6 +10602,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribePdnsRequestStatisticsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribePdnsRequestStatisticsResponse:
+        """
+        @summary 获取公共DNS 请求统计列表
+        
+        @param request: DescribePdnsRequestStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePdnsRequestStatisticsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -8598,6 +10651,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribePdnsRequestStatisticsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribePdnsRequestStatisticsResponse:
+        """
+        @summary 获取公共DNS 请求统计列表
+        
+        @param request: DescribePdnsRequestStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePdnsRequestStatisticsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -8639,6 +10699,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribePdnsRequestStatisticsRequest,
     ) -> alidns_20150109_models.DescribePdnsRequestStatisticsResponse:
+        """
+        @summary 获取公共DNS 请求统计列表
+        
+        @param request: DescribePdnsRequestStatisticsRequest
+        @return: DescribePdnsRequestStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_pdns_request_statistics_with_options(request, runtime)
 
@@ -8646,6 +10712,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribePdnsRequestStatisticsRequest,
     ) -> alidns_20150109_models.DescribePdnsRequestStatisticsResponse:
+        """
+        @summary 获取公共DNS 请求统计列表
+        
+        @param request: DescribePdnsRequestStatisticsRequest
+        @return: DescribePdnsRequestStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_pdns_request_statistics_with_options_async(request, runtime)
 
@@ -8654,6 +10726,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribePdnsThreatLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribePdnsThreatLogsResponse:
+        """
+        @summary 获取公共DNS 威胁日志列表
+        
+        @param request: DescribePdnsThreatLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePdnsThreatLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_date):
@@ -8698,6 +10777,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribePdnsThreatLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribePdnsThreatLogsResponse:
+        """
+        @summary 获取公共DNS 威胁日志列表
+        
+        @param request: DescribePdnsThreatLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePdnsThreatLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_date):
@@ -8741,6 +10827,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribePdnsThreatLogsRequest,
     ) -> alidns_20150109_models.DescribePdnsThreatLogsResponse:
+        """
+        @summary 获取公共DNS 威胁日志列表
+        
+        @param request: DescribePdnsThreatLogsRequest
+        @return: DescribePdnsThreatLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_pdns_threat_logs_with_options(request, runtime)
 
@@ -8748,6 +10840,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribePdnsThreatLogsRequest,
     ) -> alidns_20150109_models.DescribePdnsThreatLogsResponse:
+        """
+        @summary 获取公共DNS 威胁日志列表
+        
+        @param request: DescribePdnsThreatLogsRequest
+        @return: DescribePdnsThreatLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_pdns_threat_logs_with_options_async(request, runtime)
 
@@ -8756,6 +10854,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribePdnsThreatStatisticRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribePdnsThreatStatisticResponse:
+        """
+        @summary 获取公共DNS 威胁统计
+        
+        @param request: DescribePdnsThreatStatisticRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePdnsThreatStatisticResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_date):
@@ -8790,6 +10895,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribePdnsThreatStatisticRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribePdnsThreatStatisticResponse:
+        """
+        @summary 获取公共DNS 威胁统计
+        
+        @param request: DescribePdnsThreatStatisticRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePdnsThreatStatisticResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_date):
@@ -8823,6 +10935,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribePdnsThreatStatisticRequest,
     ) -> alidns_20150109_models.DescribePdnsThreatStatisticResponse:
+        """
+        @summary 获取公共DNS 威胁统计
+        
+        @param request: DescribePdnsThreatStatisticRequest
+        @return: DescribePdnsThreatStatisticResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_pdns_threat_statistic_with_options(request, runtime)
 
@@ -8830,6 +10948,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribePdnsThreatStatisticRequest,
     ) -> alidns_20150109_models.DescribePdnsThreatStatisticResponse:
+        """
+        @summary 获取公共DNS 威胁统计
+        
+        @param request: DescribePdnsThreatStatisticRequest
+        @return: DescribePdnsThreatStatisticResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_pdns_threat_statistic_with_options_async(request, runtime)
 
@@ -8838,6 +10962,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribePdnsThreatStatisticsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribePdnsThreatStatisticsResponse:
+        """
+        @summary 获取公共DNS 威胁统计列表
+        
+        @param request: DescribePdnsThreatStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePdnsThreatStatisticsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.direction):
@@ -8890,6 +11021,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribePdnsThreatStatisticsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribePdnsThreatStatisticsResponse:
+        """
+        @summary 获取公共DNS 威胁统计列表
+        
+        @param request: DescribePdnsThreatStatisticsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePdnsThreatStatisticsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.direction):
@@ -8941,6 +11079,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribePdnsThreatStatisticsRequest,
     ) -> alidns_20150109_models.DescribePdnsThreatStatisticsResponse:
+        """
+        @summary 获取公共DNS 威胁统计列表
+        
+        @param request: DescribePdnsThreatStatisticsRequest
+        @return: DescribePdnsThreatStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_pdns_threat_statistics_with_options(request, runtime)
 
@@ -8948,6 +11092,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribePdnsThreatStatisticsRequest,
     ) -> alidns_20150109_models.DescribePdnsThreatStatisticsResponse:
+        """
+        @summary 获取公共DNS 威胁统计列表
+        
+        @param request: DescribePdnsThreatStatisticsRequest
+        @return: DescribePdnsThreatStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_pdns_threat_statistics_with_options_async(request, runtime)
 
@@ -8956,6 +11106,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribePdnsUdpIpSegmentsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribePdnsUdpIpSegmentsResponse:
+        """
+        @summary 获取公共DNS Udp IP段列表
+        
+        @param request: DescribePdnsUdpIpSegmentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePdnsUdpIpSegmentsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -8988,6 +11145,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribePdnsUdpIpSegmentsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribePdnsUdpIpSegmentsResponse:
+        """
+        @summary 获取公共DNS Udp IP段列表
+        
+        @param request: DescribePdnsUdpIpSegmentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePdnsUdpIpSegmentsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -9019,6 +11183,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribePdnsUdpIpSegmentsRequest,
     ) -> alidns_20150109_models.DescribePdnsUdpIpSegmentsResponse:
+        """
+        @summary 获取公共DNS Udp IP段列表
+        
+        @param request: DescribePdnsUdpIpSegmentsRequest
+        @return: DescribePdnsUdpIpSegmentsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_pdns_udp_ip_segments_with_options(request, runtime)
 
@@ -9026,6 +11196,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribePdnsUdpIpSegmentsRequest,
     ) -> alidns_20150109_models.DescribePdnsUdpIpSegmentsResponse:
+        """
+        @summary 获取公共DNS Udp IP段列表
+        
+        @param request: DescribePdnsUdpIpSegmentsRequest
+        @return: DescribePdnsUdpIpSegmentsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_pdns_udp_ip_segments_with_options_async(request, runtime)
 
@@ -9034,6 +11210,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribePdnsUserInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribePdnsUserInfoResponse:
+        """
+        @summary 获取公共DNS用户信息
+        
+        @param request: DescribePdnsUserInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePdnsUserInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -9062,6 +11245,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribePdnsUserInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribePdnsUserInfoResponse:
+        """
+        @summary 获取公共DNS用户信息
+        
+        @param request: DescribePdnsUserInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePdnsUserInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -9089,6 +11279,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribePdnsUserInfoRequest,
     ) -> alidns_20150109_models.DescribePdnsUserInfoResponse:
+        """
+        @summary 获取公共DNS用户信息
+        
+        @param request: DescribePdnsUserInfoRequest
+        @return: DescribePdnsUserInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_pdns_user_info_with_options(request, runtime)
 
@@ -9096,6 +11292,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribePdnsUserInfoRequest,
     ) -> alidns_20150109_models.DescribePdnsUserInfoResponse:
+        """
+        @summary 获取公共DNS用户信息
+        
+        @param request: DescribePdnsUserInfoRequest
+        @return: DescribePdnsUserInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_pdns_user_info_with_options_async(request, runtime)
 
@@ -9104,6 +11306,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeRecordLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeRecordLogsResponse:
+        """
+        @summary Queries the operation logs of a domain name based on the specified parameters.
+        
+        @param request: DescribeRecordLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRecordLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -9146,6 +11355,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeRecordLogsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeRecordLogsResponse:
+        """
+        @summary Queries the operation logs of a domain name based on the specified parameters.
+        
+        @param request: DescribeRecordLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRecordLogsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -9187,6 +11403,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeRecordLogsRequest,
     ) -> alidns_20150109_models.DescribeRecordLogsResponse:
+        """
+        @summary Queries the operation logs of a domain name based on the specified parameters.
+        
+        @param request: DescribeRecordLogsRequest
+        @return: DescribeRecordLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_record_logs_with_options(request, runtime)
 
@@ -9194,6 +11416,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeRecordLogsRequest,
     ) -> alidns_20150109_models.DescribeRecordLogsResponse:
+        """
+        @summary Queries the operation logs of a domain name based on the specified parameters.
+        
+        @param request: DescribeRecordLogsRequest
+        @return: DescribeRecordLogsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_record_logs_with_options_async(request, runtime)
 
@@ -9202,6 +11430,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeRecordResolveStatisticsSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeRecordResolveStatisticsSummaryResponse:
+        """
+        @summary Queries the number of resolution requests for all subdomain names of a specified domain name.
+        
+        @param request: DescribeRecordResolveStatisticsSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRecordResolveStatisticsSummaryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.direction):
@@ -9250,6 +11485,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeRecordResolveStatisticsSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeRecordResolveStatisticsSummaryResponse:
+        """
+        @summary Queries the number of resolution requests for all subdomain names of a specified domain name.
+        
+        @param request: DescribeRecordResolveStatisticsSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRecordResolveStatisticsSummaryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.direction):
@@ -9297,6 +11539,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeRecordResolveStatisticsSummaryRequest,
     ) -> alidns_20150109_models.DescribeRecordResolveStatisticsSummaryResponse:
+        """
+        @summary Queries the number of resolution requests for all subdomain names of a specified domain name.
+        
+        @param request: DescribeRecordResolveStatisticsSummaryRequest
+        @return: DescribeRecordResolveStatisticsSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_record_resolve_statistics_summary_with_options(request, runtime)
 
@@ -9304,6 +11552,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeRecordResolveStatisticsSummaryRequest,
     ) -> alidns_20150109_models.DescribeRecordResolveStatisticsSummaryResponse:
+        """
+        @summary Queries the number of resolution requests for all subdomain names of a specified domain name.
+        
+        @param request: DescribeRecordResolveStatisticsSummaryRequest
+        @return: DescribeRecordResolveStatisticsSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_record_resolve_statistics_summary_with_options_async(request, runtime)
 
@@ -9313,7 +11567,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeRecordStatisticsResponse:
         """
-        Real-time data is collected per hour.
+        @summary Queries the real-time statistics on the Domain Name System (DNS) requests for a subdomain name.
+        
+        @description Real-time data is collected per hour.
         
         @param request: DescribeRecordStatisticsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9358,7 +11614,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeRecordStatisticsResponse:
         """
-        Real-time data is collected per hour.
+        @summary Queries the real-time statistics on the Domain Name System (DNS) requests for a subdomain name.
+        
+        @description Real-time data is collected per hour.
         
         @param request: DescribeRecordStatisticsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9402,7 +11660,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeRecordStatisticsRequest,
     ) -> alidns_20150109_models.DescribeRecordStatisticsResponse:
         """
-        Real-time data is collected per hour.
+        @summary Queries the real-time statistics on the Domain Name System (DNS) requests for a subdomain name.
+        
+        @description Real-time data is collected per hour.
         
         @param request: DescribeRecordStatisticsRequest
         @return: DescribeRecordStatisticsResponse
@@ -9415,7 +11675,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeRecordStatisticsRequest,
     ) -> alidns_20150109_models.DescribeRecordStatisticsResponse:
         """
-        Real-time data is collected per hour.
+        @summary Queries the real-time statistics on the Domain Name System (DNS) requests for a subdomain name.
+        
+        @description Real-time data is collected per hour.
         
         @param request: DescribeRecordStatisticsRequest
         @return: DescribeRecordStatisticsResponse
@@ -9428,6 +11690,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeRecordStatisticsSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeRecordStatisticsSummaryResponse:
+        """
+        @summary Queries the number of Domain Name System (DNS) requests for all subdomain names of a specified domain name.
+        
+        @param request: DescribeRecordStatisticsSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRecordStatisticsSummaryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -9474,6 +11743,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeRecordStatisticsSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeRecordStatisticsSummaryResponse:
+        """
+        @summary Queries the number of Domain Name System (DNS) requests for all subdomain names of a specified domain name.
+        
+        @param request: DescribeRecordStatisticsSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRecordStatisticsSummaryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -9519,6 +11795,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeRecordStatisticsSummaryRequest,
     ) -> alidns_20150109_models.DescribeRecordStatisticsSummaryResponse:
+        """
+        @summary Queries the number of Domain Name System (DNS) requests for all subdomain names of a specified domain name.
+        
+        @param request: DescribeRecordStatisticsSummaryRequest
+        @return: DescribeRecordStatisticsSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_record_statistics_summary_with_options(request, runtime)
 
@@ -9526,6 +11808,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeRecordStatisticsSummaryRequest,
     ) -> alidns_20150109_models.DescribeRecordStatisticsSummaryResponse:
+        """
+        @summary Queries the number of Domain Name System (DNS) requests for all subdomain names of a specified domain name.
+        
+        @param request: DescribeRecordStatisticsSummaryRequest
+        @return: DescribeRecordStatisticsSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_record_statistics_summary_with_options_async(request, runtime)
 
@@ -9534,6 +11822,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeSubDomainRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeSubDomainRecordsResponse:
+        """
+        @summary Queries all Domain Name System (DNS) records of a subdomain name based on the specified parameters.
+        
+        @param request: DescribeSubDomainRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSubDomainRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -9576,6 +11871,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeSubDomainRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeSubDomainRecordsResponse:
+        """
+        @summary Queries all Domain Name System (DNS) records of a subdomain name based on the specified parameters.
+        
+        @param request: DescribeSubDomainRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSubDomainRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -9617,6 +11919,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeSubDomainRecordsRequest,
     ) -> alidns_20150109_models.DescribeSubDomainRecordsResponse:
+        """
+        @summary Queries all Domain Name System (DNS) records of a subdomain name based on the specified parameters.
+        
+        @param request: DescribeSubDomainRecordsRequest
+        @return: DescribeSubDomainRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_sub_domain_records_with_options(request, runtime)
 
@@ -9624,6 +11932,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeSubDomainRecordsRequest,
     ) -> alidns_20150109_models.DescribeSubDomainRecordsResponse:
+        """
+        @summary Queries all Domain Name System (DNS) records of a subdomain name based on the specified parameters.
+        
+        @param request: DescribeSubDomainRecordsRequest
+        @return: DescribeSubDomainRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_sub_domain_records_with_options_async(request, runtime)
 
@@ -9632,6 +11946,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeSupportLinesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeSupportLinesResponse:
+        """
+        @summary 查询云解析支持的所有线路列表。
+        
+        @param request: DescribeSupportLinesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSupportLinesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -9664,6 +11985,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeSupportLinesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeSupportLinesResponse:
+        """
+        @summary 查询云解析支持的所有线路列表。
+        
+        @param request: DescribeSupportLinesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSupportLinesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -9695,6 +12023,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeSupportLinesRequest,
     ) -> alidns_20150109_models.DescribeSupportLinesResponse:
+        """
+        @summary 查询云解析支持的所有线路列表。
+        
+        @param request: DescribeSupportLinesRequest
+        @return: DescribeSupportLinesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_support_lines_with_options(request, runtime)
 
@@ -9702,6 +12036,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeSupportLinesRequest,
     ) -> alidns_20150109_models.DescribeSupportLinesResponse:
+        """
+        @summary 查询云解析支持的所有线路列表。
+        
+        @param request: DescribeSupportLinesRequest
+        @return: DescribeSupportLinesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_support_lines_with_options_async(request, runtime)
 
@@ -9710,6 +12050,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeTagsResponse:
+        """
+        @summary Queries existing tags.
+        
+        @param request: DescribeTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -9744,6 +12091,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeTagsResponse:
+        """
+        @summary Queries existing tags.
+        
+        @param request: DescribeTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -9777,6 +12131,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeTagsRequest,
     ) -> alidns_20150109_models.DescribeTagsResponse:
+        """
+        @summary Queries existing tags.
+        
+        @param request: DescribeTagsRequest
+        @return: DescribeTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_tags_with_options(request, runtime)
 
@@ -9784,6 +12144,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeTagsRequest,
     ) -> alidns_20150109_models.DescribeTagsResponse:
+        """
+        @summary Queries existing tags.
+        
+        @param request: DescribeTagsRequest
+        @return: DescribeTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_tags_with_options_async(request, runtime)
 
@@ -9792,6 +12158,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeTransferDomainsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeTransferDomainsResponse:
+        """
+        @summary Queries the domain names that were transferred between the current account and another account based on the specified parameters.
+        
+        @param request: DescribeTransferDomainsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTransferDomainsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -9832,6 +12205,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.DescribeTransferDomainsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.DescribeTransferDomainsResponse:
+        """
+        @summary Queries the domain names that were transferred between the current account and another account based on the specified parameters.
+        
+        @param request: DescribeTransferDomainsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTransferDomainsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -9871,6 +12251,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeTransferDomainsRequest,
     ) -> alidns_20150109_models.DescribeTransferDomainsResponse:
+        """
+        @summary Queries the domain names that were transferred between the current account and another account based on the specified parameters.
+        
+        @param request: DescribeTransferDomainsRequest
+        @return: DescribeTransferDomainsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_transfer_domains_with_options(request, runtime)
 
@@ -9878,6 +12264,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.DescribeTransferDomainsRequest,
     ) -> alidns_20150109_models.DescribeTransferDomainsResponse:
+        """
+        @summary Queries the domain names that were transferred between the current account and another account based on the specified parameters.
+        
+        @param request: DescribeTransferDomainsRequest
+        @return: DescribeTransferDomainsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_transfer_domains_with_options_async(request, runtime)
 
@@ -9886,6 +12278,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ExecuteGtmRecoveryPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ExecuteGtmRecoveryPlanResponse:
+        """
+        @param request: ExecuteGtmRecoveryPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteGtmRecoveryPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -9916,6 +12313,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ExecuteGtmRecoveryPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ExecuteGtmRecoveryPlanResponse:
+        """
+        @param request: ExecuteGtmRecoveryPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecuteGtmRecoveryPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -9945,6 +12347,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.ExecuteGtmRecoveryPlanRequest,
     ) -> alidns_20150109_models.ExecuteGtmRecoveryPlanResponse:
+        """
+        @param request: ExecuteGtmRecoveryPlanRequest
+        @return: ExecuteGtmRecoveryPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.execute_gtm_recovery_plan_with_options(request, runtime)
 
@@ -9952,6 +12358,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.ExecuteGtmRecoveryPlanRequest,
     ) -> alidns_20150109_models.ExecuteGtmRecoveryPlanResponse:
+        """
+        @param request: ExecuteGtmRecoveryPlanRequest
+        @return: ExecuteGtmRecoveryPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.execute_gtm_recovery_plan_with_options_async(request, runtime)
 
@@ -9961,7 +12371,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.GetMainDomainNameResponse:
         """
-        For more information about the difference between primary domain names and subdomain names, see
+        @summary Queries a primary domain name based on the specified parameters.
+        
+        @description For more information about the difference between primary domain names and subdomain names, see
         [Subdomain levels](https://www.alibabacloud.com/help/zh/faq-detail/39803.htm). For example, if you enter `www.abc.com`, abc.com is obtained.
         
         @param request: GetMainDomainNameRequest
@@ -9999,7 +12411,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.GetMainDomainNameResponse:
         """
-        For more information about the difference between primary domain names and subdomain names, see
+        @summary Queries a primary domain name based on the specified parameters.
+        
+        @description For more information about the difference between primary domain names and subdomain names, see
         [Subdomain levels](https://www.alibabacloud.com/help/zh/faq-detail/39803.htm). For example, if you enter `www.abc.com`, abc.com is obtained.
         
         @param request: GetMainDomainNameRequest
@@ -10036,7 +12450,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.GetMainDomainNameRequest,
     ) -> alidns_20150109_models.GetMainDomainNameResponse:
         """
-        For more information about the difference between primary domain names and subdomain names, see
+        @summary Queries a primary domain name based on the specified parameters.
+        
+        @description For more information about the difference between primary domain names and subdomain names, see
         [Subdomain levels](https://www.alibabacloud.com/help/zh/faq-detail/39803.htm). For example, if you enter `www.abc.com`, abc.com is obtained.
         
         @param request: GetMainDomainNameRequest
@@ -10050,7 +12466,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.GetMainDomainNameRequest,
     ) -> alidns_20150109_models.GetMainDomainNameResponse:
         """
-        For more information about the difference between primary domain names and subdomain names, see
+        @summary Queries a primary domain name based on the specified parameters.
+        
+        @description For more information about the difference between primary domain names and subdomain names, see
         [Subdomain levels](https://www.alibabacloud.com/help/zh/faq-detail/39803.htm). For example, if you enter `www.abc.com`, abc.com is obtained.
         
         @param request: GetMainDomainNameRequest
@@ -10064,6 +12482,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.GetTxtRecordForVerifyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.GetTxtRecordForVerifyResponse:
+        """
+        @summary Generates a text (TXT) record. TXT records are used to retrieve domain names and subdomain names, enable the subdomain name verification feature, and perform batch retrievals.
+        
+        @param request: GetTxtRecordForVerifyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTxtRecordForVerifyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -10096,6 +12521,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.GetTxtRecordForVerifyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.GetTxtRecordForVerifyResponse:
+        """
+        @summary Generates a text (TXT) record. TXT records are used to retrieve domain names and subdomain names, enable the subdomain name verification feature, and perform batch retrievals.
+        
+        @param request: GetTxtRecordForVerifyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTxtRecordForVerifyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -10127,6 +12559,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.GetTxtRecordForVerifyRequest,
     ) -> alidns_20150109_models.GetTxtRecordForVerifyResponse:
+        """
+        @summary Generates a text (TXT) record. TXT records are used to retrieve domain names and subdomain names, enable the subdomain name verification feature, and perform batch retrievals.
+        
+        @param request: GetTxtRecordForVerifyRequest
+        @return: GetTxtRecordForVerifyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_txt_record_for_verify_with_options(request, runtime)
 
@@ -10134,6 +12572,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.GetTxtRecordForVerifyRequest,
     ) -> alidns_20150109_models.GetTxtRecordForVerifyResponse:
+        """
+        @summary Generates a text (TXT) record. TXT records are used to retrieve domain names and subdomain names, enable the subdomain name verification feature, and perform batch retrievals.
+        
+        @param request: GetTxtRecordForVerifyRequest
+        @return: GetTxtRecordForVerifyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_txt_record_for_verify_with_options_async(request, runtime)
 
@@ -10143,10 +12587,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ListTagResourcesResponse:
         """
-        Set ResourceId.N or Tag.N that consists of Tag.N.Key and Tag.N.Value in the request to specify the object to be queried.
-        *   Tag.N is a resource tag that consists of a key-value pair. If you set only Tag.N.Key, all tag values that are assigned to the specified key are returned. If you set only Tag.N.Value, an error message is returned.
-        *   If you set both Tag.N and ResourceId.N to filter tags, ResourceId.N must match all specified key-value pairs.
-        *   If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
+        @summary Queries the tags that are added to a specified resource.
+        
+        @description    Set ResourceId.N or Tag.N that consists of Tag.N.Key and Tag.N.Value in the request to specify the object to be queried.
+        Tag.N is a resource tag that consists of a key-value pair. If you set only Tag.N.Key, all tag values that are assigned to the specified key are returned. If you set only Tag.N.Value, an error message is returned.
+        If you set both Tag.N and ResourceId.N to filter tags, ResourceId.N must match all specified key-value pairs.
+        If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10189,10 +12635,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ListTagResourcesResponse:
         """
-        Set ResourceId.N or Tag.N that consists of Tag.N.Key and Tag.N.Value in the request to specify the object to be queried.
-        *   Tag.N is a resource tag that consists of a key-value pair. If you set only Tag.N.Key, all tag values that are assigned to the specified key are returned. If you set only Tag.N.Value, an error message is returned.
-        *   If you set both Tag.N and ResourceId.N to filter tags, ResourceId.N must match all specified key-value pairs.
-        *   If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
+        @summary Queries the tags that are added to a specified resource.
+        
+        @description    Set ResourceId.N or Tag.N that consists of Tag.N.Key and Tag.N.Value in the request to specify the object to be queried.
+        Tag.N is a resource tag that consists of a key-value pair. If you set only Tag.N.Key, all tag values that are assigned to the specified key are returned. If you set only Tag.N.Value, an error message is returned.
+        If you set both Tag.N and ResourceId.N to filter tags, ResourceId.N must match all specified key-value pairs.
+        If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10234,10 +12682,12 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ListTagResourcesRequest,
     ) -> alidns_20150109_models.ListTagResourcesResponse:
         """
-        Set ResourceId.N or Tag.N that consists of Tag.N.Key and Tag.N.Value in the request to specify the object to be queried.
-        *   Tag.N is a resource tag that consists of a key-value pair. If you set only Tag.N.Key, all tag values that are assigned to the specified key are returned. If you set only Tag.N.Value, an error message is returned.
-        *   If you set both Tag.N and ResourceId.N to filter tags, ResourceId.N must match all specified key-value pairs.
-        *   If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
+        @summary Queries the tags that are added to a specified resource.
+        
+        @description    Set ResourceId.N or Tag.N that consists of Tag.N.Key and Tag.N.Value in the request to specify the object to be queried.
+        Tag.N is a resource tag that consists of a key-value pair. If you set only Tag.N.Key, all tag values that are assigned to the specified key are returned. If you set only Tag.N.Value, an error message is returned.
+        If you set both Tag.N and ResourceId.N to filter tags, ResourceId.N must match all specified key-value pairs.
+        If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -10250,10 +12700,12 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ListTagResourcesRequest,
     ) -> alidns_20150109_models.ListTagResourcesResponse:
         """
-        Set ResourceId.N or Tag.N that consists of Tag.N.Key and Tag.N.Value in the request to specify the object to be queried.
-        *   Tag.N is a resource tag that consists of a key-value pair. If you set only Tag.N.Key, all tag values that are assigned to the specified key are returned. If you set only Tag.N.Value, an error message is returned.
-        *   If you set both Tag.N and ResourceId.N to filter tags, ResourceId.N must match all specified key-value pairs.
-        *   If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
+        @summary Queries the tags that are added to a specified resource.
+        
+        @description    Set ResourceId.N or Tag.N that consists of Tag.N.Key and Tag.N.Value in the request to specify the object to be queried.
+        Tag.N is a resource tag that consists of a key-value pair. If you set only Tag.N.Key, all tag values that are assigned to the specified key are returned. If you set only Tag.N.Value, an error message is returned.
+        If you set both Tag.N and ResourceId.N to filter tags, ResourceId.N must match all specified key-value pairs.
+        If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -10267,7 +12719,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ModifyHichinaDomainDNSResponse:
         """
-        If the operation succeeds, the name of the DNS server changes to that of an Alibaba Cloud DNS server (ending with hichina.com).
+        @summary Calls the ModifyHichinaDomainDNS operation to change the name of a DNS server based on input parameters.
+        
+        @description If the operation succeeds, the name of the DNS server changes to that of an Alibaba Cloud DNS server (ending with hichina.com).
         >  Before you call this operation, make sure that your domain name has been registered with Alibaba Cloud and the DNS server in use is not an Alibaba Cloud DNS server.
         
         @param request: ModifyHichinaDomainDNSRequest
@@ -10307,7 +12761,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ModifyHichinaDomainDNSResponse:
         """
-        If the operation succeeds, the name of the DNS server changes to that of an Alibaba Cloud DNS server (ending with hichina.com).
+        @summary Calls the ModifyHichinaDomainDNS operation to change the name of a DNS server based on input parameters.
+        
+        @description If the operation succeeds, the name of the DNS server changes to that of an Alibaba Cloud DNS server (ending with hichina.com).
         >  Before you call this operation, make sure that your domain name has been registered with Alibaba Cloud and the DNS server in use is not an Alibaba Cloud DNS server.
         
         @param request: ModifyHichinaDomainDNSRequest
@@ -10346,7 +12802,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ModifyHichinaDomainDNSRequest,
     ) -> alidns_20150109_models.ModifyHichinaDomainDNSResponse:
         """
-        If the operation succeeds, the name of the DNS server changes to that of an Alibaba Cloud DNS server (ending with hichina.com).
+        @summary Calls the ModifyHichinaDomainDNS operation to change the name of a DNS server based on input parameters.
+        
+        @description If the operation succeeds, the name of the DNS server changes to that of an Alibaba Cloud DNS server (ending with hichina.com).
         >  Before you call this operation, make sure that your domain name has been registered with Alibaba Cloud and the DNS server in use is not an Alibaba Cloud DNS server.
         
         @param request: ModifyHichinaDomainDNSRequest
@@ -10360,7 +12818,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ModifyHichinaDomainDNSRequest,
     ) -> alidns_20150109_models.ModifyHichinaDomainDNSResponse:
         """
-        If the operation succeeds, the name of the DNS server changes to that of an Alibaba Cloud DNS server (ending with hichina.com).
+        @summary Calls the ModifyHichinaDomainDNS operation to change the name of a DNS server based on input parameters.
+        
+        @description If the operation succeeds, the name of the DNS server changes to that of an Alibaba Cloud DNS server (ending with hichina.com).
         >  Before you call this operation, make sure that your domain name has been registered with Alibaba Cloud and the DNS server in use is not an Alibaba Cloud DNS server.
         
         @param request: ModifyHichinaDomainDNSRequest
@@ -10374,6 +12834,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.MoveDomainResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.MoveDomainResourceGroupResponse:
+        """
+        @summary Moves a domain name to another resource group.
+        
+        @param request: MoveDomainResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MoveDomainResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -10406,6 +12873,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.MoveDomainResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.MoveDomainResourceGroupResponse:
+        """
+        @summary Moves a domain name to another resource group.
+        
+        @param request: MoveDomainResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MoveDomainResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -10437,6 +12911,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.MoveDomainResourceGroupRequest,
     ) -> alidns_20150109_models.MoveDomainResourceGroupResponse:
+        """
+        @summary Moves a domain name to another resource group.
+        
+        @param request: MoveDomainResourceGroupRequest
+        @return: MoveDomainResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.move_domain_resource_group_with_options(request, runtime)
 
@@ -10444,6 +12924,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.MoveDomainResourceGroupRequest,
     ) -> alidns_20150109_models.MoveDomainResourceGroupResponse:
+        """
+        @summary Moves a domain name to another resource group.
+        
+        @param request: MoveDomainResourceGroupRequest
+        @return: MoveDomainResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.move_domain_resource_group_with_options_async(request, runtime)
 
@@ -10452,6 +12938,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.MoveGtmResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.MoveGtmResourceGroupResponse:
+        """
+        @param request: MoveGtmResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MoveGtmResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -10484,6 +12975,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.MoveGtmResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.MoveGtmResourceGroupResponse:
+        """
+        @param request: MoveGtmResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MoveGtmResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -10515,6 +13011,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.MoveGtmResourceGroupRequest,
     ) -> alidns_20150109_models.MoveGtmResourceGroupResponse:
+        """
+        @param request: MoveGtmResourceGroupRequest
+        @return: MoveGtmResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.move_gtm_resource_group_with_options(request, runtime)
 
@@ -10522,6 +13022,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.MoveGtmResourceGroupRequest,
     ) -> alidns_20150109_models.MoveGtmResourceGroupResponse:
+        """
+        @param request: MoveGtmResourceGroupRequest
+        @return: MoveGtmResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.move_gtm_resource_group_with_options_async(request, runtime)
 
@@ -10531,7 +13035,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.OperateBatchDomainResponse:
         """
-        Scenario: You need to execute a large number of tasks related to DNS resolution and you do not have high requirements for efficiency.
+        @summary Submits a batch operation task to add or delete multiple domain names or multiple Domain Name System (DNS) records at a time.
+        
+        @description Scenario: You need to execute a large number of tasks related to DNS resolution and you do not have high requirements for efficiency.
         
         @param request: OperateBatchDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10570,7 +13076,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.OperateBatchDomainResponse:
         """
-        Scenario: You need to execute a large number of tasks related to DNS resolution and you do not have high requirements for efficiency.
+        @summary Submits a batch operation task to add or delete multiple domain names or multiple Domain Name System (DNS) records at a time.
+        
+        @description Scenario: You need to execute a large number of tasks related to DNS resolution and you do not have high requirements for efficiency.
         
         @param request: OperateBatchDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10608,7 +13116,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.OperateBatchDomainRequest,
     ) -> alidns_20150109_models.OperateBatchDomainResponse:
         """
-        Scenario: You need to execute a large number of tasks related to DNS resolution and you do not have high requirements for efficiency.
+        @summary Submits a batch operation task to add or delete multiple domain names or multiple Domain Name System (DNS) records at a time.
+        
+        @description Scenario: You need to execute a large number of tasks related to DNS resolution and you do not have high requirements for efficiency.
         
         @param request: OperateBatchDomainRequest
         @return: OperateBatchDomainResponse
@@ -10621,7 +13131,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.OperateBatchDomainRequest,
     ) -> alidns_20150109_models.OperateBatchDomainResponse:
         """
-        Scenario: You need to execute a large number of tasks related to DNS resolution and you do not have high requirements for efficiency.
+        @summary Submits a batch operation task to add or delete multiple domain names or multiple Domain Name System (DNS) records at a time.
+        
+        @description Scenario: You need to execute a large number of tasks related to DNS resolution and you do not have high requirements for efficiency.
         
         @param request: OperateBatchDomainRequest
         @return: OperateBatchDomainResponse
@@ -10634,6 +13146,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.PausePdnsServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.PausePdnsServiceResponse:
+        """
+        @summary 暂停公共DNS服务
+        
+        @param request: PausePdnsServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PausePdnsServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -10664,6 +13183,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.PausePdnsServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.PausePdnsServiceResponse:
+        """
+        @summary 暂停公共DNS服务
+        
+        @param request: PausePdnsServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PausePdnsServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -10693,6 +13219,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.PausePdnsServiceRequest,
     ) -> alidns_20150109_models.PausePdnsServiceResponse:
+        """
+        @summary 暂停公共DNS服务
+        
+        @param request: PausePdnsServiceRequest
+        @return: PausePdnsServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.pause_pdns_service_with_options(request, runtime)
 
@@ -10700,6 +13232,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.PausePdnsServiceRequest,
     ) -> alidns_20150109_models.PausePdnsServiceResponse:
+        """
+        @summary 暂停公共DNS服务
+        
+        @param request: PausePdnsServiceRequest
+        @return: PausePdnsServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.pause_pdns_service_with_options_async(request, runtime)
 
@@ -10708,6 +13246,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.PreviewGtmRecoveryPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.PreviewGtmRecoveryPlanResponse:
+        """
+        @summary You can call this operation to preview a disaster recovery plan of a Global Traffic Manager (GTM) instance.
+        
+        @param request: PreviewGtmRecoveryPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PreviewGtmRecoveryPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -10742,6 +13287,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.PreviewGtmRecoveryPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.PreviewGtmRecoveryPlanResponse:
+        """
+        @summary You can call this operation to preview a disaster recovery plan of a Global Traffic Manager (GTM) instance.
+        
+        @param request: PreviewGtmRecoveryPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PreviewGtmRecoveryPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -10775,6 +13327,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.PreviewGtmRecoveryPlanRequest,
     ) -> alidns_20150109_models.PreviewGtmRecoveryPlanResponse:
+        """
+        @summary You can call this operation to preview a disaster recovery plan of a Global Traffic Manager (GTM) instance.
+        
+        @param request: PreviewGtmRecoveryPlanRequest
+        @return: PreviewGtmRecoveryPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.preview_gtm_recovery_plan_with_options(request, runtime)
 
@@ -10782,6 +13340,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.PreviewGtmRecoveryPlanRequest,
     ) -> alidns_20150109_models.PreviewGtmRecoveryPlanResponse:
+        """
+        @summary You can call this operation to preview a disaster recovery plan of a Global Traffic Manager (GTM) instance.
+        
+        @param request: PreviewGtmRecoveryPlanRequest
+        @return: PreviewGtmRecoveryPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.preview_gtm_recovery_plan_with_options_async(request, runtime)
 
@@ -10790,6 +13354,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.RemovePdnsAppKeyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.RemovePdnsAppKeyResponse:
+        """
+        @summary 删除公共DNS AppKey
+        
+        @param request: RemovePdnsAppKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemovePdnsAppKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key_id):
@@ -10820,6 +13391,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.RemovePdnsAppKeyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.RemovePdnsAppKeyResponse:
+        """
+        @summary 删除公共DNS AppKey
+        
+        @param request: RemovePdnsAppKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemovePdnsAppKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key_id):
@@ -10849,6 +13427,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.RemovePdnsAppKeyRequest,
     ) -> alidns_20150109_models.RemovePdnsAppKeyResponse:
+        """
+        @summary 删除公共DNS AppKey
+        
+        @param request: RemovePdnsAppKeyRequest
+        @return: RemovePdnsAppKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_pdns_app_key_with_options(request, runtime)
 
@@ -10856,6 +13440,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.RemovePdnsAppKeyRequest,
     ) -> alidns_20150109_models.RemovePdnsAppKeyResponse:
+        """
+        @summary 删除公共DNS AppKey
+        
+        @param request: RemovePdnsAppKeyRequest
+        @return: RemovePdnsAppKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_pdns_app_key_with_options_async(request, runtime)
 
@@ -10864,6 +13454,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.RemovePdnsUdpIpSegmentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.RemovePdnsUdpIpSegmentResponse:
+        """
+        @summary 删除公共DNS Udp Ip地址段
+        
+        @param request: RemovePdnsUdpIpSegmentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemovePdnsUdpIpSegmentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ip):
@@ -10894,6 +13491,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.RemovePdnsUdpIpSegmentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.RemovePdnsUdpIpSegmentResponse:
+        """
+        @summary 删除公共DNS Udp Ip地址段
+        
+        @param request: RemovePdnsUdpIpSegmentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemovePdnsUdpIpSegmentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ip):
@@ -10923,6 +13527,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.RemovePdnsUdpIpSegmentRequest,
     ) -> alidns_20150109_models.RemovePdnsUdpIpSegmentResponse:
+        """
+        @summary 删除公共DNS Udp Ip地址段
+        
+        @param request: RemovePdnsUdpIpSegmentRequest
+        @return: RemovePdnsUdpIpSegmentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_pdns_udp_ip_segment_with_options(request, runtime)
 
@@ -10930,6 +13540,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.RemovePdnsUdpIpSegmentRequest,
     ) -> alidns_20150109_models.RemovePdnsUdpIpSegmentResponse:
+        """
+        @summary 删除公共DNS Udp Ip地址段
+        
+        @param request: RemovePdnsUdpIpSegmentRequest
+        @return: RemovePdnsUdpIpSegmentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_pdns_udp_ip_segment_with_options_async(request, runtime)
 
@@ -10938,6 +13554,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ResumePdnsServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ResumePdnsServiceResponse:
+        """
+        @summary 恢复公共DNS服务
+        
+        @param request: ResumePdnsServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumePdnsServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -10968,6 +13591,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ResumePdnsServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ResumePdnsServiceResponse:
+        """
+        @summary 恢复公共DNS服务
+        
+        @param request: ResumePdnsServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumePdnsServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -10997,6 +13627,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.ResumePdnsServiceRequest,
     ) -> alidns_20150109_models.ResumePdnsServiceResponse:
+        """
+        @summary 恢复公共DNS服务
+        
+        @param request: ResumePdnsServiceRequest
+        @return: ResumePdnsServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.resume_pdns_service_with_options(request, runtime)
 
@@ -11004,6 +13640,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.ResumePdnsServiceRequest,
     ) -> alidns_20150109_models.ResumePdnsServiceResponse:
+        """
+        @summary 恢复公共DNS服务
+        
+        @param request: ResumePdnsServiceRequest
+        @return: ResumePdnsServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.resume_pdns_service_with_options_async(request, runtime)
 
@@ -11013,7 +13655,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.RetrieveDomainResponse:
         """
-        To retrieve a domain name, you must verify a text (TXT) record. Therefore, before you call this API operation to retrieve a domain name, call the [GetTxtRecordForVerify](https://www.alibabacloud.com/help/zh/alibaba-cloud-dns/latest/generating-a-txt-record) operation to generate a TXT record.
+        @summary Retrieves a domain name.
+        
+        @description To retrieve a domain name, you must verify a text (TXT) record. Therefore, before you call this API operation to retrieve a domain name, call the [GetTxtRecordForVerify](https://www.alibabacloud.com/help/zh/alibaba-cloud-dns/latest/generating-a-txt-record) operation to generate a TXT record.
         
         @param request: RetrieveDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11050,7 +13694,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.RetrieveDomainResponse:
         """
-        To retrieve a domain name, you must verify a text (TXT) record. Therefore, before you call this API operation to retrieve a domain name, call the [GetTxtRecordForVerify](https://www.alibabacloud.com/help/zh/alibaba-cloud-dns/latest/generating-a-txt-record) operation to generate a TXT record.
+        @summary Retrieves a domain name.
+        
+        @description To retrieve a domain name, you must verify a text (TXT) record. Therefore, before you call this API operation to retrieve a domain name, call the [GetTxtRecordForVerify](https://www.alibabacloud.com/help/zh/alibaba-cloud-dns/latest/generating-a-txt-record) operation to generate a TXT record.
         
         @param request: RetrieveDomainRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11086,7 +13732,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.RetrieveDomainRequest,
     ) -> alidns_20150109_models.RetrieveDomainResponse:
         """
-        To retrieve a domain name, you must verify a text (TXT) record. Therefore, before you call this API operation to retrieve a domain name, call the [GetTxtRecordForVerify](https://www.alibabacloud.com/help/zh/alibaba-cloud-dns/latest/generating-a-txt-record) operation to generate a TXT record.
+        @summary Retrieves a domain name.
+        
+        @description To retrieve a domain name, you must verify a text (TXT) record. Therefore, before you call this API operation to retrieve a domain name, call the [GetTxtRecordForVerify](https://www.alibabacloud.com/help/zh/alibaba-cloud-dns/latest/generating-a-txt-record) operation to generate a TXT record.
         
         @param request: RetrieveDomainRequest
         @return: RetrieveDomainResponse
@@ -11099,7 +13747,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.RetrieveDomainRequest,
     ) -> alidns_20150109_models.RetrieveDomainResponse:
         """
-        To retrieve a domain name, you must verify a text (TXT) record. Therefore, before you call this API operation to retrieve a domain name, call the [GetTxtRecordForVerify](https://www.alibabacloud.com/help/zh/alibaba-cloud-dns/latest/generating-a-txt-record) operation to generate a TXT record.
+        @summary Retrieves a domain name.
+        
+        @description To retrieve a domain name, you must verify a text (TXT) record. Therefore, before you call this API operation to retrieve a domain name, call the [GetTxtRecordForVerify](https://www.alibabacloud.com/help/zh/alibaba-cloud-dns/latest/generating-a-txt-record) operation to generate a TXT record.
         
         @param request: RetrieveDomainRequest
         @return: RetrieveDomainResponse
@@ -11112,6 +13762,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.RollbackGtmRecoveryPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.RollbackGtmRecoveryPlanResponse:
+        """
+        @param request: RollbackGtmRecoveryPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RollbackGtmRecoveryPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -11142,6 +13797,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.RollbackGtmRecoveryPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.RollbackGtmRecoveryPlanResponse:
+        """
+        @param request: RollbackGtmRecoveryPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RollbackGtmRecoveryPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -11171,6 +13831,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.RollbackGtmRecoveryPlanRequest,
     ) -> alidns_20150109_models.RollbackGtmRecoveryPlanResponse:
+        """
+        @param request: RollbackGtmRecoveryPlanRequest
+        @return: RollbackGtmRecoveryPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.rollback_gtm_recovery_plan_with_options(request, runtime)
 
@@ -11178,6 +13842,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.RollbackGtmRecoveryPlanRequest,
     ) -> alidns_20150109_models.RollbackGtmRecoveryPlanResponse:
+        """
+        @param request: RollbackGtmRecoveryPlanRequest
+        @return: RollbackGtmRecoveryPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.rollback_gtm_recovery_plan_with_options_async(request, runtime)
 
@@ -11186,6 +13854,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.SetDNSSLBStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.SetDNSSLBStatusResponse:
+        """
+        @summary Enables or disables weighted round-robin based on the specified parameters.
+        
+        @param request: SetDNSSLBStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDNSSLBStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -11226,6 +13901,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.SetDNSSLBStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.SetDNSSLBStatusResponse:
+        """
+        @summary Enables or disables weighted round-robin based on the specified parameters.
+        
+        @param request: SetDNSSLBStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDNSSLBStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -11265,6 +13947,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.SetDNSSLBStatusRequest,
     ) -> alidns_20150109_models.SetDNSSLBStatusResponse:
+        """
+        @summary Enables or disables weighted round-robin based on the specified parameters.
+        
+        @param request: SetDNSSLBStatusRequest
+        @return: SetDNSSLBStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_dnsslbstatus_with_options(request, runtime)
 
@@ -11272,6 +13960,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.SetDNSSLBStatusRequest,
     ) -> alidns_20150109_models.SetDNSSLBStatusResponse:
+        """
+        @summary Enables or disables weighted round-robin based on the specified parameters.
+        
+        @param request: SetDNSSLBStatusRequest
+        @return: SetDNSSLBStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_dnsslbstatus_with_options_async(request, runtime)
 
@@ -11281,7 +13975,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.SetDnsGtmAccessModeResponse:
         """
-        ***\
+        @description ***\
         
         @param request: SetDnsGtmAccessModeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11320,7 +14014,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.SetDnsGtmAccessModeResponse:
         """
-        ***\
+        @description ***\
         
         @param request: SetDnsGtmAccessModeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11358,7 +14052,7 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.SetDnsGtmAccessModeRequest,
     ) -> alidns_20150109_models.SetDnsGtmAccessModeResponse:
         """
-        ***\
+        @description ***\
         
         @param request: SetDnsGtmAccessModeRequest
         @return: SetDnsGtmAccessModeResponse
@@ -11371,7 +14065,7 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.SetDnsGtmAccessModeRequest,
     ) -> alidns_20150109_models.SetDnsGtmAccessModeResponse:
         """
-        ***\
+        @description ***\
         
         @param request: SetDnsGtmAccessModeRequest
         @return: SetDnsGtmAccessModeResponse
@@ -11384,6 +14078,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.SetDnsGtmMonitorStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.SetDnsGtmMonitorStatusResponse:
+        """
+        @summary Specifies the health check status of an address pool.
+        
+        @param request: SetDnsGtmMonitorStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDnsGtmMonitorStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -11416,6 +14117,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.SetDnsGtmMonitorStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.SetDnsGtmMonitorStatusResponse:
+        """
+        @summary Specifies the health check status of an address pool.
+        
+        @param request: SetDnsGtmMonitorStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDnsGtmMonitorStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -11447,6 +14155,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.SetDnsGtmMonitorStatusRequest,
     ) -> alidns_20150109_models.SetDnsGtmMonitorStatusResponse:
+        """
+        @summary Specifies the health check status of an address pool.
+        
+        @param request: SetDnsGtmMonitorStatusRequest
+        @return: SetDnsGtmMonitorStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_dns_gtm_monitor_status_with_options(request, runtime)
 
@@ -11454,6 +14168,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.SetDnsGtmMonitorStatusRequest,
     ) -> alidns_20150109_models.SetDnsGtmMonitorStatusResponse:
+        """
+        @summary Specifies the health check status of an address pool.
+        
+        @param request: SetDnsGtmMonitorStatusRequest
+        @return: SetDnsGtmMonitorStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_dns_gtm_monitor_status_with_options_async(request, runtime)
 
@@ -11462,6 +14182,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.SetDomainDnssecStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.SetDomainDnssecStatusResponse:
+        """
+        @summary Sets the Domain Name System Security Extensions (DNSSEC) status of a domain name.
+        
+        @param request: SetDomainDnssecStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDomainDnssecStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -11494,6 +14221,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.SetDomainDnssecStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.SetDomainDnssecStatusResponse:
+        """
+        @summary Sets the Domain Name System Security Extensions (DNSSEC) status of a domain name.
+        
+        @param request: SetDomainDnssecStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDomainDnssecStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -11525,6 +14259,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.SetDomainDnssecStatusRequest,
     ) -> alidns_20150109_models.SetDomainDnssecStatusResponse:
+        """
+        @summary Sets the Domain Name System Security Extensions (DNSSEC) status of a domain name.
+        
+        @param request: SetDomainDnssecStatusRequest
+        @return: SetDomainDnssecStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_domain_dnssec_status_with_options(request, runtime)
 
@@ -11532,6 +14272,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.SetDomainDnssecStatusRequest,
     ) -> alidns_20150109_models.SetDomainDnssecStatusResponse:
+        """
+        @summary Sets the Domain Name System Security Extensions (DNSSEC) status of a domain name.
+        
+        @param request: SetDomainDnssecStatusRequest
+        @return: SetDomainDnssecStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_domain_dnssec_status_with_options_async(request, runtime)
 
@@ -11540,6 +14286,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.SetDomainRecordStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.SetDomainRecordStatusResponse:
+        """
+        @summary Specifies the status of a Domain Name System (DNS) record based on the specified parameters.
+        
+        @param request: SetDomainRecordStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDomainRecordStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -11574,6 +14327,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.SetDomainRecordStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.SetDomainRecordStatusResponse:
+        """
+        @summary Specifies the status of a Domain Name System (DNS) record based on the specified parameters.
+        
+        @param request: SetDomainRecordStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDomainRecordStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -11607,6 +14367,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.SetDomainRecordStatusRequest,
     ) -> alidns_20150109_models.SetDomainRecordStatusResponse:
+        """
+        @summary Specifies the status of a Domain Name System (DNS) record based on the specified parameters.
+        
+        @param request: SetDomainRecordStatusRequest
+        @return: SetDomainRecordStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_domain_record_status_with_options(request, runtime)
 
@@ -11614,6 +14380,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.SetDomainRecordStatusRequest,
     ) -> alidns_20150109_models.SetDomainRecordStatusResponse:
+        """
+        @summary Specifies the status of a Domain Name System (DNS) record based on the specified parameters.
+        
+        @param request: SetDomainRecordStatusRequest
+        @return: SetDomainRecordStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_domain_record_status_with_options_async(request, runtime)
 
@@ -11622,6 +14394,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.SetGtmAccessModeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.SetGtmAccessModeResponse:
+        """
+        @param request: SetGtmAccessModeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetGtmAccessModeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_mode):
@@ -11654,6 +14431,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.SetGtmAccessModeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.SetGtmAccessModeResponse:
+        """
+        @param request: SetGtmAccessModeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetGtmAccessModeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_mode):
@@ -11685,6 +14467,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.SetGtmAccessModeRequest,
     ) -> alidns_20150109_models.SetGtmAccessModeResponse:
+        """
+        @param request: SetGtmAccessModeRequest
+        @return: SetGtmAccessModeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_gtm_access_mode_with_options(request, runtime)
 
@@ -11692,6 +14478,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.SetGtmAccessModeRequest,
     ) -> alidns_20150109_models.SetGtmAccessModeResponse:
+        """
+        @param request: SetGtmAccessModeRequest
+        @return: SetGtmAccessModeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_gtm_access_mode_with_options_async(request, runtime)
 
@@ -11700,6 +14490,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.SetGtmMonitorStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.SetGtmMonitorStatusResponse:
+        """
+        @param request: SetGtmMonitorStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetGtmMonitorStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -11732,6 +14527,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.SetGtmMonitorStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.SetGtmMonitorStatusResponse:
+        """
+        @param request: SetGtmMonitorStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetGtmMonitorStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -11763,6 +14563,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.SetGtmMonitorStatusRequest,
     ) -> alidns_20150109_models.SetGtmMonitorStatusResponse:
+        """
+        @param request: SetGtmMonitorStatusRequest
+        @return: SetGtmMonitorStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_gtm_monitor_status_with_options(request, runtime)
 
@@ -11770,6 +14574,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.SetGtmMonitorStatusRequest,
     ) -> alidns_20150109_models.SetGtmMonitorStatusResponse:
+        """
+        @param request: SetGtmMonitorStatusRequest
+        @return: SetGtmMonitorStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_gtm_monitor_status_with_options_async(request, runtime)
 
@@ -11778,6 +14586,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.SubmitIspFlushCacheTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.SubmitIspFlushCacheTaskResponse:
+        """
+        @summary 提交缓存刷新任务
+        
+        @param request: SubmitIspFlushCacheTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitIspFlushCacheTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -11812,6 +14627,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.SubmitIspFlushCacheTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.SubmitIspFlushCacheTaskResponse:
+        """
+        @summary 提交缓存刷新任务
+        
+        @param request: SubmitIspFlushCacheTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitIspFlushCacheTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -11845,6 +14667,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.SubmitIspFlushCacheTaskRequest,
     ) -> alidns_20150109_models.SubmitIspFlushCacheTaskResponse:
+        """
+        @summary 提交缓存刷新任务
+        
+        @param request: SubmitIspFlushCacheTaskRequest
+        @return: SubmitIspFlushCacheTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_isp_flush_cache_task_with_options(request, runtime)
 
@@ -11852,6 +14680,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.SubmitIspFlushCacheTaskRequest,
     ) -> alidns_20150109_models.SubmitIspFlushCacheTaskResponse:
+        """
+        @summary 提交缓存刷新任务
+        
+        @param request: SubmitIspFlushCacheTaskRequest
+        @return: SubmitIspFlushCacheTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_isp_flush_cache_task_with_options_async(request, runtime)
 
@@ -11860,6 +14694,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.SwitchDnsGtmInstanceStrategyModeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.SwitchDnsGtmInstanceStrategyModeResponse:
+        """
+        @summary Changes the access policy type for a Global Traffic Manager (GTM) instance.
+        
+        @param request: SwitchDnsGtmInstanceStrategyModeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SwitchDnsGtmInstanceStrategyModeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -11892,6 +14733,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.SwitchDnsGtmInstanceStrategyModeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.SwitchDnsGtmInstanceStrategyModeResponse:
+        """
+        @summary Changes the access policy type for a Global Traffic Manager (GTM) instance.
+        
+        @param request: SwitchDnsGtmInstanceStrategyModeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SwitchDnsGtmInstanceStrategyModeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -11923,6 +14771,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.SwitchDnsGtmInstanceStrategyModeRequest,
     ) -> alidns_20150109_models.SwitchDnsGtmInstanceStrategyModeResponse:
+        """
+        @summary Changes the access policy type for a Global Traffic Manager (GTM) instance.
+        
+        @param request: SwitchDnsGtmInstanceStrategyModeRequest
+        @return: SwitchDnsGtmInstanceStrategyModeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.switch_dns_gtm_instance_strategy_mode_with_options(request, runtime)
 
@@ -11930,6 +14784,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.SwitchDnsGtmInstanceStrategyModeRequest,
     ) -> alidns_20150109_models.SwitchDnsGtmInstanceStrategyModeResponse:
+        """
+        @summary Changes the access policy type for a Global Traffic Manager (GTM) instance.
+        
+        @param request: SwitchDnsGtmInstanceStrategyModeRequest
+        @return: SwitchDnsGtmInstanceStrategyModeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.switch_dns_gtm_instance_strategy_mode_with_options_async(request, runtime)
 
@@ -11938,6 +14798,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.TagResourcesResponse:
+        """
+        @summary Adds and modifies a tag for a resource.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -11972,6 +14839,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.TagResourcesResponse:
+        """
+        @summary Adds and modifies a tag for a resource.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -12005,6 +14879,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.TagResourcesRequest,
     ) -> alidns_20150109_models.TagResourcesResponse:
+        """
+        @summary Adds and modifies a tag for a resource.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.tag_resources_with_options(request, runtime)
 
@@ -12012,6 +14892,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.TagResourcesRequest,
     ) -> alidns_20150109_models.TagResourcesResponse:
+        """
+        @summary Adds and modifies a tag for a resource.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
@@ -12020,6 +14906,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.TransferDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.TransferDomainResponse:
+        """
+        @summary Transfers multiple domain names from the current account to another account at a time.
+        
+        @param request: TransferDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransferDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_names):
@@ -12054,6 +14947,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.TransferDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.TransferDomainResponse:
+        """
+        @summary Transfers multiple domain names from the current account to another account at a time.
+        
+        @param request: TransferDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransferDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_names):
@@ -12087,6 +14987,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.TransferDomainRequest,
     ) -> alidns_20150109_models.TransferDomainResponse:
+        """
+        @summary Transfers multiple domain names from the current account to another account at a time.
+        
+        @param request: TransferDomainRequest
+        @return: TransferDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.transfer_domain_with_options(request, runtime)
 
@@ -12094,6 +15000,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.TransferDomainRequest,
     ) -> alidns_20150109_models.TransferDomainResponse:
+        """
+        @summary Transfers multiple domain names from the current account to another account at a time.
+        
+        @param request: TransferDomainRequest
+        @return: TransferDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.transfer_domain_with_options_async(request, runtime)
 
@@ -12103,7 +15015,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UnbindInstanceDomainsResponse:
         """
-        A paid Alibaba Cloud DNS instance whose ID starts with dns is an instance of the new version. You can call an API operation to bind multiple domain names to the instance. If the upper limit is exceeded, an error message is returned.\\
+        @summary Unbinds one or more domain names from a paid Alibaba Cloud DNS instance based on the instance ID.
+        
+        @description A paid Alibaba Cloud DNS instance whose ID starts with dns is an instance of the new version. You can call an API operation to bind multiple domain names to the instance. If the upper limit is exceeded, an error message is returned.\\
         A paid Alibaba Cloud DNS instance whose ID does not start with dns is an instance of the old version. You can call an API operation to bind only one domain name to the instance. However, if the instance that you want to bind to the desired domain name is already bound to a domain name, you can call this operation to unbind the original domain name from the instance and then bind the desired domain name to the instance.
         
         @param request: UnbindInstanceDomainsRequest
@@ -12143,7 +15057,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UnbindInstanceDomainsResponse:
         """
-        A paid Alibaba Cloud DNS instance whose ID starts with dns is an instance of the new version. You can call an API operation to bind multiple domain names to the instance. If the upper limit is exceeded, an error message is returned.\\
+        @summary Unbinds one or more domain names from a paid Alibaba Cloud DNS instance based on the instance ID.
+        
+        @description A paid Alibaba Cloud DNS instance whose ID starts with dns is an instance of the new version. You can call an API operation to bind multiple domain names to the instance. If the upper limit is exceeded, an error message is returned.\\
         A paid Alibaba Cloud DNS instance whose ID does not start with dns is an instance of the old version. You can call an API operation to bind only one domain name to the instance. However, if the instance that you want to bind to the desired domain name is already bound to a domain name, you can call this operation to unbind the original domain name from the instance and then bind the desired domain name to the instance.
         
         @param request: UnbindInstanceDomainsRequest
@@ -12182,7 +15098,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UnbindInstanceDomainsRequest,
     ) -> alidns_20150109_models.UnbindInstanceDomainsResponse:
         """
-        A paid Alibaba Cloud DNS instance whose ID starts with dns is an instance of the new version. You can call an API operation to bind multiple domain names to the instance. If the upper limit is exceeded, an error message is returned.\\
+        @summary Unbinds one or more domain names from a paid Alibaba Cloud DNS instance based on the instance ID.
+        
+        @description A paid Alibaba Cloud DNS instance whose ID starts with dns is an instance of the new version. You can call an API operation to bind multiple domain names to the instance. If the upper limit is exceeded, an error message is returned.\\
         A paid Alibaba Cloud DNS instance whose ID does not start with dns is an instance of the old version. You can call an API operation to bind only one domain name to the instance. However, if the instance that you want to bind to the desired domain name is already bound to a domain name, you can call this operation to unbind the original domain name from the instance and then bind the desired domain name to the instance.
         
         @param request: UnbindInstanceDomainsRequest
@@ -12196,7 +15114,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UnbindInstanceDomainsRequest,
     ) -> alidns_20150109_models.UnbindInstanceDomainsResponse:
         """
-        A paid Alibaba Cloud DNS instance whose ID starts with dns is an instance of the new version. You can call an API operation to bind multiple domain names to the instance. If the upper limit is exceeded, an error message is returned.\\
+        @summary Unbinds one or more domain names from a paid Alibaba Cloud DNS instance based on the instance ID.
+        
+        @description A paid Alibaba Cloud DNS instance whose ID starts with dns is an instance of the new version. You can call an API operation to bind multiple domain names to the instance. If the upper limit is exceeded, an error message is returned.\\
         A paid Alibaba Cloud DNS instance whose ID does not start with dns is an instance of the old version. You can call an API operation to bind only one domain name to the instance. However, if the instance that you want to bind to the desired domain name is already bound to a domain name, you can call this operation to unbind the original domain name from the instance and then bind the desired domain name to the instance.
         
         @param request: UnbindInstanceDomainsRequest
@@ -12210,6 +15130,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from resources.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -12246,6 +15173,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from resources.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -12281,6 +15215,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UntagResourcesRequest,
     ) -> alidns_20150109_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from resources.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.untag_resources_with_options(request, runtime)
 
@@ -12288,6 +15228,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UntagResourcesRequest,
     ) -> alidns_20150109_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from resources.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
 
@@ -12296,6 +15242,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateAppKeyStateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateAppKeyStateResponse:
+        """
+        @summary 修改 AppKey 状态
+        
+        @param request: UpdateAppKeyStateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAppKeyStateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key_id):
@@ -12328,6 +15281,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateAppKeyStateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateAppKeyStateResponse:
+        """
+        @summary 修改 AppKey 状态
+        
+        @param request: UpdateAppKeyStateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAppKeyStateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_key_id):
@@ -12359,6 +15319,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UpdateAppKeyStateRequest,
     ) -> alidns_20150109_models.UpdateAppKeyStateResponse:
+        """
+        @summary 修改 AppKey 状态
+        
+        @param request: UpdateAppKeyStateRequest
+        @return: UpdateAppKeyStateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_app_key_state_with_options(request, runtime)
 
@@ -12366,6 +15332,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UpdateAppKeyStateRequest,
     ) -> alidns_20150109_models.UpdateAppKeyStateResponse:
+        """
+        @summary 修改 AppKey 状态
+        
+        @param request: UpdateAppKeyStateRequest
+        @return: UpdateAppKeyStateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_app_key_state_with_options_async(request, runtime)
 
@@ -12375,7 +15347,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateCustomLineResponse:
         """
-        In each CIDR block, the end IP address must be greater than or equal to the start IP address.\\
+        @summary Modifies a custom line.
+        
+        @description In each CIDR block, the end IP address must be greater than or equal to the start IP address.\\
         The CIDR blocks that are specified for all custom lines of a domain name cannot be overlapped.
         
         @param request: UpdateCustomLineRequest
@@ -12417,7 +15391,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateCustomLineResponse:
         """
-        In each CIDR block, the end IP address must be greater than or equal to the start IP address.\\
+        @summary Modifies a custom line.
+        
+        @description In each CIDR block, the end IP address must be greater than or equal to the start IP address.\\
         The CIDR blocks that are specified for all custom lines of a domain name cannot be overlapped.
         
         @param request: UpdateCustomLineRequest
@@ -12458,7 +15434,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateCustomLineRequest,
     ) -> alidns_20150109_models.UpdateCustomLineResponse:
         """
-        In each CIDR block, the end IP address must be greater than or equal to the start IP address.\\
+        @summary Modifies a custom line.
+        
+        @description In each CIDR block, the end IP address must be greater than or equal to the start IP address.\\
         The CIDR blocks that are specified for all custom lines of a domain name cannot be overlapped.
         
         @param request: UpdateCustomLineRequest
@@ -12472,7 +15450,9 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateCustomLineRequest,
     ) -> alidns_20150109_models.UpdateCustomLineResponse:
         """
-        In each CIDR block, the end IP address must be greater than or equal to the start IP address.\\
+        @summary Modifies a custom line.
+        
+        @description In each CIDR block, the end IP address must be greater than or equal to the start IP address.\\
         The CIDR blocks that are specified for all custom lines of a domain name cannot be overlapped.
         
         @param request: UpdateCustomLineRequest
@@ -12486,6 +15466,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateDNSSLBWeightRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateDNSSLBWeightResponse:
+        """
+        @summary Modifies the weight of a Domain Name System (DNS) record based on the specified parameters.
+        
+        @param request: UpdateDNSSLBWeightRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDNSSLBWeightResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -12520,6 +15507,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateDNSSLBWeightRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateDNSSLBWeightResponse:
+        """
+        @summary Modifies the weight of a Domain Name System (DNS) record based on the specified parameters.
+        
+        @param request: UpdateDNSSLBWeightRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDNSSLBWeightResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -12553,6 +15547,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UpdateDNSSLBWeightRequest,
     ) -> alidns_20150109_models.UpdateDNSSLBWeightResponse:
+        """
+        @summary Modifies the weight of a Domain Name System (DNS) record based on the specified parameters.
+        
+        @param request: UpdateDNSSLBWeightRequest
+        @return: UpdateDNSSLBWeightResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_dnsslbweight_with_options(request, runtime)
 
@@ -12560,6 +15560,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UpdateDNSSLBWeightRequest,
     ) -> alidns_20150109_models.UpdateDNSSLBWeightResponse:
+        """
+        @summary Modifies the weight of a Domain Name System (DNS) record based on the specified parameters.
+        
+        @param request: UpdateDNSSLBWeightRequest
+        @return: UpdateDNSSLBWeightResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_dnsslbweight_with_options_async(request, runtime)
 
@@ -12568,6 +15574,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateDnsCacheDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateDnsCacheDomainResponse:
+        """
+        @param request: UpdateDnsCacheDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDnsCacheDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cache_ttl_max):
@@ -12610,6 +15621,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateDnsCacheDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateDnsCacheDomainResponse:
+        """
+        @param request: UpdateDnsCacheDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDnsCacheDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cache_ttl_max):
@@ -12651,6 +15667,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UpdateDnsCacheDomainRequest,
     ) -> alidns_20150109_models.UpdateDnsCacheDomainResponse:
+        """
+        @param request: UpdateDnsCacheDomainRequest
+        @return: UpdateDnsCacheDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_dns_cache_domain_with_options(request, runtime)
 
@@ -12658,6 +15678,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UpdateDnsCacheDomainRequest,
     ) -> alidns_20150109_models.UpdateDnsCacheDomainResponse:
+        """
+        @param request: UpdateDnsCacheDomainRequest
+        @return: UpdateDnsCacheDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_dns_cache_domain_with_options_async(request, runtime)
 
@@ -12666,6 +15690,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateDnsCacheDomainRemarkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateDnsCacheDomainRemarkResponse:
+        """
+        @param request: UpdateDnsCacheDomainRemarkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDnsCacheDomainRemarkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -12698,6 +15727,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateDnsCacheDomainRemarkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateDnsCacheDomainRemarkResponse:
+        """
+        @param request: UpdateDnsCacheDomainRemarkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDnsCacheDomainRemarkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -12729,6 +15763,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UpdateDnsCacheDomainRemarkRequest,
     ) -> alidns_20150109_models.UpdateDnsCacheDomainRemarkResponse:
+        """
+        @param request: UpdateDnsCacheDomainRemarkRequest
+        @return: UpdateDnsCacheDomainRemarkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_dns_cache_domain_remark_with_options(request, runtime)
 
@@ -12736,6 +15774,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UpdateDnsCacheDomainRemarkRequest,
     ) -> alidns_20150109_models.UpdateDnsCacheDomainRemarkResponse:
+        """
+        @param request: UpdateDnsCacheDomainRemarkRequest
+        @return: UpdateDnsCacheDomainRemarkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_dns_cache_domain_remark_with_options_async(request, runtime)
 
@@ -12744,6 +15786,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateDnsGtmAccessStrategyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateDnsGtmAccessStrategyResponse:
+        """
+        @summary Modifies an access policy.
+        
+        @param request: UpdateDnsGtmAccessStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDnsGtmAccessStrategyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_mode):
@@ -12804,6 +15853,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateDnsGtmAccessStrategyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateDnsGtmAccessStrategyResponse:
+        """
+        @summary Modifies an access policy.
+        
+        @param request: UpdateDnsGtmAccessStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDnsGtmAccessStrategyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_mode):
@@ -12863,6 +15919,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UpdateDnsGtmAccessStrategyRequest,
     ) -> alidns_20150109_models.UpdateDnsGtmAccessStrategyResponse:
+        """
+        @summary Modifies an access policy.
+        
+        @param request: UpdateDnsGtmAccessStrategyRequest
+        @return: UpdateDnsGtmAccessStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_dns_gtm_access_strategy_with_options(request, runtime)
 
@@ -12870,6 +15932,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UpdateDnsGtmAccessStrategyRequest,
     ) -> alidns_20150109_models.UpdateDnsGtmAccessStrategyResponse:
+        """
+        @summary Modifies an access policy.
+        
+        @param request: UpdateDnsGtmAccessStrategyRequest
+        @return: UpdateDnsGtmAccessStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_dns_gtm_access_strategy_with_options_async(request, runtime)
 
@@ -12878,6 +15946,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateDnsGtmAddressPoolRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateDnsGtmAddressPoolResponse:
+        """
+        @summary Modifies the configurations of address pools for a GTM instance.
+        
+        @param request: UpdateDnsGtmAddressPoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDnsGtmAddressPoolResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.addr):
@@ -12914,6 +15989,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateDnsGtmAddressPoolRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateDnsGtmAddressPoolResponse:
+        """
+        @summary Modifies the configurations of address pools for a GTM instance.
+        
+        @param request: UpdateDnsGtmAddressPoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDnsGtmAddressPoolResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.addr):
@@ -12949,6 +16031,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UpdateDnsGtmAddressPoolRequest,
     ) -> alidns_20150109_models.UpdateDnsGtmAddressPoolResponse:
+        """
+        @summary Modifies the configurations of address pools for a GTM instance.
+        
+        @param request: UpdateDnsGtmAddressPoolRequest
+        @return: UpdateDnsGtmAddressPoolResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_dns_gtm_address_pool_with_options(request, runtime)
 
@@ -12956,6 +16044,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UpdateDnsGtmAddressPoolRequest,
     ) -> alidns_20150109_models.UpdateDnsGtmAddressPoolResponse:
+        """
+        @summary Modifies the configurations of address pools for a GTM instance.
+        
+        @param request: UpdateDnsGtmAddressPoolRequest
+        @return: UpdateDnsGtmAddressPoolResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_dns_gtm_address_pool_with_options_async(request, runtime)
 
@@ -12964,6 +16058,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateDnsGtmInstanceGlobalConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateDnsGtmInstanceGlobalConfigResponse:
+        """
+        @summary Modifies the configurations of a Global Traffic Manager (GTM) instance.
+        
+        @param request: UpdateDnsGtmInstanceGlobalConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDnsGtmInstanceGlobalConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alert_config):
@@ -13014,6 +16115,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateDnsGtmInstanceGlobalConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateDnsGtmInstanceGlobalConfigResponse:
+        """
+        @summary Modifies the configurations of a Global Traffic Manager (GTM) instance.
+        
+        @param request: UpdateDnsGtmInstanceGlobalConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDnsGtmInstanceGlobalConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alert_config):
@@ -13063,6 +16171,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UpdateDnsGtmInstanceGlobalConfigRequest,
     ) -> alidns_20150109_models.UpdateDnsGtmInstanceGlobalConfigResponse:
+        """
+        @summary Modifies the configurations of a Global Traffic Manager (GTM) instance.
+        
+        @param request: UpdateDnsGtmInstanceGlobalConfigRequest
+        @return: UpdateDnsGtmInstanceGlobalConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_dns_gtm_instance_global_config_with_options(request, runtime)
 
@@ -13070,6 +16184,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UpdateDnsGtmInstanceGlobalConfigRequest,
     ) -> alidns_20150109_models.UpdateDnsGtmInstanceGlobalConfigResponse:
+        """
+        @summary Modifies the configurations of a Global Traffic Manager (GTM) instance.
+        
+        @param request: UpdateDnsGtmInstanceGlobalConfigRequest
+        @return: UpdateDnsGtmInstanceGlobalConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_dns_gtm_instance_global_config_with_options_async(request, runtime)
 
@@ -13078,6 +16198,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateDnsGtmMonitorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateDnsGtmMonitorResponse:
+        """
+        @summary Modifies a health check task.
+        
+        @param request: UpdateDnsGtmMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDnsGtmMonitorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.evaluation_count):
@@ -13120,6 +16247,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateDnsGtmMonitorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateDnsGtmMonitorResponse:
+        """
+        @summary Modifies a health check task.
+        
+        @param request: UpdateDnsGtmMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDnsGtmMonitorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.evaluation_count):
@@ -13161,6 +16295,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UpdateDnsGtmMonitorRequest,
     ) -> alidns_20150109_models.UpdateDnsGtmMonitorResponse:
+        """
+        @summary Modifies a health check task.
+        
+        @param request: UpdateDnsGtmMonitorRequest
+        @return: UpdateDnsGtmMonitorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_dns_gtm_monitor_with_options(request, runtime)
 
@@ -13168,6 +16308,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UpdateDnsGtmMonitorRequest,
     ) -> alidns_20150109_models.UpdateDnsGtmMonitorResponse:
+        """
+        @summary Modifies a health check task.
+        
+        @param request: UpdateDnsGtmMonitorRequest
+        @return: UpdateDnsGtmMonitorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_dns_gtm_monitor_with_options_async(request, runtime)
 
@@ -13176,6 +16322,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateDomainGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateDomainGroupResponse:
+        """
+        @summary Modifies the name of a domain name group based on the specified parameters.
+        
+        @param request: UpdateDomainGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDomainGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -13208,6 +16361,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateDomainGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateDomainGroupResponse:
+        """
+        @summary Modifies the name of a domain name group based on the specified parameters.
+        
+        @param request: UpdateDomainGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDomainGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -13239,6 +16399,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UpdateDomainGroupRequest,
     ) -> alidns_20150109_models.UpdateDomainGroupResponse:
+        """
+        @summary Modifies the name of a domain name group based on the specified parameters.
+        
+        @param request: UpdateDomainGroupRequest
+        @return: UpdateDomainGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_domain_group_with_options(request, runtime)
 
@@ -13246,6 +16412,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UpdateDomainGroupRequest,
     ) -> alidns_20150109_models.UpdateDomainGroupResponse:
+        """
+        @summary Modifies the name of a domain name group based on the specified parameters.
+        
+        @param request: UpdateDomainGroupRequest
+        @return: UpdateDomainGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_domain_group_with_options_async(request, runtime)
 
@@ -13254,6 +16426,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateDomainRecordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateDomainRecordResponse:
+        """
+        @summary Modifies a Domain Name System (DNS) record based on the specified parameters.
+        
+        @param request: UpdateDomainRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDomainRecordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -13298,6 +16477,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateDomainRecordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateDomainRecordResponse:
+        """
+        @summary Modifies a Domain Name System (DNS) record based on the specified parameters.
+        
+        @param request: UpdateDomainRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDomainRecordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -13341,6 +16527,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UpdateDomainRecordRequest,
     ) -> alidns_20150109_models.UpdateDomainRecordResponse:
+        """
+        @summary Modifies a Domain Name System (DNS) record based on the specified parameters.
+        
+        @param request: UpdateDomainRecordRequest
+        @return: UpdateDomainRecordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_domain_record_with_options(request, runtime)
 
@@ -13348,6 +16540,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UpdateDomainRecordRequest,
     ) -> alidns_20150109_models.UpdateDomainRecordResponse:
+        """
+        @summary Modifies a Domain Name System (DNS) record based on the specified parameters.
+        
+        @param request: UpdateDomainRecordRequest
+        @return: UpdateDomainRecordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_domain_record_with_options_async(request, runtime)
 
@@ -13356,6 +16554,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateDomainRecordRemarkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateDomainRecordRemarkResponse:
+        """
+        @summary Modifies the description of a Domain Name System (DNS) record based on the specified parameters.
+        
+        @param request: UpdateDomainRecordRemarkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDomainRecordRemarkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -13390,6 +16595,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateDomainRecordRemarkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateDomainRecordRemarkResponse:
+        """
+        @summary Modifies the description of a Domain Name System (DNS) record based on the specified parameters.
+        
+        @param request: UpdateDomainRecordRemarkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDomainRecordRemarkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -13423,6 +16635,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UpdateDomainRecordRemarkRequest,
     ) -> alidns_20150109_models.UpdateDomainRecordRemarkResponse:
+        """
+        @summary Modifies the description of a Domain Name System (DNS) record based on the specified parameters.
+        
+        @param request: UpdateDomainRecordRemarkRequest
+        @return: UpdateDomainRecordRemarkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_domain_record_remark_with_options(request, runtime)
 
@@ -13430,6 +16648,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UpdateDomainRecordRemarkRequest,
     ) -> alidns_20150109_models.UpdateDomainRecordRemarkResponse:
+        """
+        @summary Modifies the description of a Domain Name System (DNS) record based on the specified parameters.
+        
+        @param request: UpdateDomainRecordRemarkRequest
+        @return: UpdateDomainRecordRemarkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_domain_record_remark_with_options_async(request, runtime)
 
@@ -13438,6 +16662,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateDomainRemarkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateDomainRemarkResponse:
+        """
+        @summary Modifies the description of a domain name based on the specified parameters.
+        
+        @param request: UpdateDomainRemarkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDomainRemarkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -13470,6 +16701,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateDomainRemarkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateDomainRemarkResponse:
+        """
+        @summary Modifies the description of a domain name based on the specified parameters.
+        
+        @param request: UpdateDomainRemarkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDomainRemarkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_name):
@@ -13501,6 +16739,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UpdateDomainRemarkRequest,
     ) -> alidns_20150109_models.UpdateDomainRemarkResponse:
+        """
+        @summary Modifies the description of a domain name based on the specified parameters.
+        
+        @param request: UpdateDomainRemarkRequest
+        @return: UpdateDomainRemarkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_domain_remark_with_options(request, runtime)
 
@@ -13508,6 +16752,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UpdateDomainRemarkRequest,
     ) -> alidns_20150109_models.UpdateDomainRemarkResponse:
+        """
+        @summary Modifies the description of a domain name based on the specified parameters.
+        
+        @param request: UpdateDomainRemarkRequest
+        @return: UpdateDomainRemarkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_domain_remark_with_options_async(request, runtime)
 
@@ -13516,6 +16766,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateGtmAccessStrategyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateGtmAccessStrategyResponse:
+        """
+        @param request: UpdateGtmAccessStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGtmAccessStrategyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_lines):
@@ -13554,6 +16809,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateGtmAccessStrategyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateGtmAccessStrategyResponse:
+        """
+        @param request: UpdateGtmAccessStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGtmAccessStrategyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_lines):
@@ -13591,6 +16851,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UpdateGtmAccessStrategyRequest,
     ) -> alidns_20150109_models.UpdateGtmAccessStrategyResponse:
+        """
+        @param request: UpdateGtmAccessStrategyRequest
+        @return: UpdateGtmAccessStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_gtm_access_strategy_with_options(request, runtime)
 
@@ -13598,6 +16862,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UpdateGtmAccessStrategyRequest,
     ) -> alidns_20150109_models.UpdateGtmAccessStrategyResponse:
+        """
+        @param request: UpdateGtmAccessStrategyRequest
+        @return: UpdateGtmAccessStrategyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_gtm_access_strategy_with_options_async(request, runtime)
 
@@ -13606,6 +16874,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateGtmAddressPoolRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateGtmAddressPoolResponse:
+        """
+        @param request: UpdateGtmAddressPoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGtmAddressPoolResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.addr):
@@ -13644,6 +16917,11 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateGtmAddressPoolRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateGtmAddressPoolResponse:
+        """
+        @param request: UpdateGtmAddressPoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGtmAddressPoolResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.addr):
@@ -13681,6 +16959,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UpdateGtmAddressPoolRequest,
     ) -> alidns_20150109_models.UpdateGtmAddressPoolResponse:
+        """
+        @param request: UpdateGtmAddressPoolRequest
+        @return: UpdateGtmAddressPoolResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_gtm_address_pool_with_options(request, runtime)
 
@@ -13688,6 +16970,10 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UpdateGtmAddressPoolRequest,
     ) -> alidns_20150109_models.UpdateGtmAddressPoolResponse:
+        """
+        @param request: UpdateGtmAddressPoolRequest
+        @return: UpdateGtmAddressPoolResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_gtm_address_pool_with_options_async(request, runtime)
 
@@ -13696,6 +16982,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateGtmInstanceGlobalConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateGtmInstanceGlobalConfigResponse:
+        """
+        @summary Modifies the configurations of a Global Traffic Manager (GTM) instance based on the specified parameters.
+        
+        @param request: UpdateGtmInstanceGlobalConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGtmInstanceGlobalConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alert_group):
@@ -13740,6 +17033,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateGtmInstanceGlobalConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateGtmInstanceGlobalConfigResponse:
+        """
+        @summary Modifies the configurations of a Global Traffic Manager (GTM) instance based on the specified parameters.
+        
+        @param request: UpdateGtmInstanceGlobalConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGtmInstanceGlobalConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.alert_group):
@@ -13783,6 +17083,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UpdateGtmInstanceGlobalConfigRequest,
     ) -> alidns_20150109_models.UpdateGtmInstanceGlobalConfigResponse:
+        """
+        @summary Modifies the configurations of a Global Traffic Manager (GTM) instance based on the specified parameters.
+        
+        @param request: UpdateGtmInstanceGlobalConfigRequest
+        @return: UpdateGtmInstanceGlobalConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_gtm_instance_global_config_with_options(request, runtime)
 
@@ -13790,6 +17096,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UpdateGtmInstanceGlobalConfigRequest,
     ) -> alidns_20150109_models.UpdateGtmInstanceGlobalConfigResponse:
+        """
+        @summary Modifies the configurations of a Global Traffic Manager (GTM) instance based on the specified parameters.
+        
+        @param request: UpdateGtmInstanceGlobalConfigRequest
+        @return: UpdateGtmInstanceGlobalConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_gtm_instance_global_config_with_options_async(request, runtime)
 
@@ -13798,6 +17110,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateGtmMonitorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateGtmMonitorResponse:
+        """
+        @summary Modifies the health check configuration for an address pool of a Global Traffic Manager (GTM) instance.
+        
+        @param request: UpdateGtmMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGtmMonitorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.evaluation_count):
@@ -13840,6 +17159,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateGtmMonitorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateGtmMonitorResponse:
+        """
+        @summary Modifies the health check configuration for an address pool of a Global Traffic Manager (GTM) instance.
+        
+        @param request: UpdateGtmMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGtmMonitorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.evaluation_count):
@@ -13881,6 +17207,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UpdateGtmMonitorRequest,
     ) -> alidns_20150109_models.UpdateGtmMonitorResponse:
+        """
+        @summary Modifies the health check configuration for an address pool of a Global Traffic Manager (GTM) instance.
+        
+        @param request: UpdateGtmMonitorRequest
+        @return: UpdateGtmMonitorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_gtm_monitor_with_options(request, runtime)
 
@@ -13888,6 +17220,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UpdateGtmMonitorRequest,
     ) -> alidns_20150109_models.UpdateGtmMonitorResponse:
+        """
+        @summary Modifies the health check configuration for an address pool of a Global Traffic Manager (GTM) instance.
+        
+        @param request: UpdateGtmMonitorRequest
+        @return: UpdateGtmMonitorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_gtm_monitor_with_options_async(request, runtime)
 
@@ -13896,6 +17234,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateGtmRecoveryPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateGtmRecoveryPlanResponse:
+        """
+        @summary Modifies a disaster recovery plan for a Global Traffic Manager (GTM) instance.
+        
+        @param request: UpdateGtmRecoveryPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGtmRecoveryPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.fault_addr_pool):
@@ -13932,6 +17277,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateGtmRecoveryPlanRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateGtmRecoveryPlanResponse:
+        """
+        @summary Modifies a disaster recovery plan for a Global Traffic Manager (GTM) instance.
+        
+        @param request: UpdateGtmRecoveryPlanRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGtmRecoveryPlanResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.fault_addr_pool):
@@ -13967,6 +17319,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UpdateGtmRecoveryPlanRequest,
     ) -> alidns_20150109_models.UpdateGtmRecoveryPlanResponse:
+        """
+        @summary Modifies a disaster recovery plan for a Global Traffic Manager (GTM) instance.
+        
+        @param request: UpdateGtmRecoveryPlanRequest
+        @return: UpdateGtmRecoveryPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_gtm_recovery_plan_with_options(request, runtime)
 
@@ -13974,6 +17332,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UpdateGtmRecoveryPlanRequest,
     ) -> alidns_20150109_models.UpdateGtmRecoveryPlanResponse:
+        """
+        @summary Modifies a disaster recovery plan for a Global Traffic Manager (GTM) instance.
+        
+        @param request: UpdateGtmRecoveryPlanRequest
+        @return: UpdateGtmRecoveryPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_gtm_recovery_plan_with_options_async(request, runtime)
 
@@ -13982,6 +17346,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateIspFlushCacheInstanceConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateIspFlushCacheInstanceConfigResponse:
+        """
+        @summary 修改缓存刷新套餐包配置
+        
+        @param request: UpdateIspFlushCacheInstanceConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateIspFlushCacheInstanceConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -14014,6 +17385,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.UpdateIspFlushCacheInstanceConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.UpdateIspFlushCacheInstanceConfigResponse:
+        """
+        @summary 修改缓存刷新套餐包配置
+        
+        @param request: UpdateIspFlushCacheInstanceConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateIspFlushCacheInstanceConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -14045,6 +17423,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UpdateIspFlushCacheInstanceConfigRequest,
     ) -> alidns_20150109_models.UpdateIspFlushCacheInstanceConfigResponse:
+        """
+        @summary 修改缓存刷新套餐包配置
+        
+        @param request: UpdateIspFlushCacheInstanceConfigRequest
+        @return: UpdateIspFlushCacheInstanceConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_isp_flush_cache_instance_config_with_options(request, runtime)
 
@@ -14052,6 +17436,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.UpdateIspFlushCacheInstanceConfigRequest,
     ) -> alidns_20150109_models.UpdateIspFlushCacheInstanceConfigResponse:
+        """
+        @summary 修改缓存刷新套餐包配置
+        
+        @param request: UpdateIspFlushCacheInstanceConfigRequest
+        @return: UpdateIspFlushCacheInstanceConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_isp_flush_cache_instance_config_with_options_async(request, runtime)
 
@@ -14060,6 +17450,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ValidateDnsGtmCnameRrCanUseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ValidateDnsGtmCnameRrCanUseResponse:
+        """
+        @summary 检查实例主机名是否可添加
+        
+        @param request: ValidateDnsGtmCnameRrCanUseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ValidateDnsGtmCnameRrCanUseResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cname_mode):
@@ -14098,6 +17495,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ValidateDnsGtmCnameRrCanUseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ValidateDnsGtmCnameRrCanUseResponse:
+        """
+        @summary 检查实例主机名是否可添加
+        
+        @param request: ValidateDnsGtmCnameRrCanUseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ValidateDnsGtmCnameRrCanUseResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cname_mode):
@@ -14135,6 +17539,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.ValidateDnsGtmCnameRrCanUseRequest,
     ) -> alidns_20150109_models.ValidateDnsGtmCnameRrCanUseResponse:
+        """
+        @summary 检查实例主机名是否可添加
+        
+        @param request: ValidateDnsGtmCnameRrCanUseRequest
+        @return: ValidateDnsGtmCnameRrCanUseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.validate_dns_gtm_cname_rr_can_use_with_options(request, runtime)
 
@@ -14142,6 +17552,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.ValidateDnsGtmCnameRrCanUseRequest,
     ) -> alidns_20150109_models.ValidateDnsGtmCnameRrCanUseResponse:
+        """
+        @summary 检查实例主机名是否可添加
+        
+        @param request: ValidateDnsGtmCnameRrCanUseRequest
+        @return: ValidateDnsGtmCnameRrCanUseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.validate_dns_gtm_cname_rr_can_use_with_options_async(request, runtime)
 
@@ -14150,6 +17566,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ValidatePdnsUdpIpSegmentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ValidatePdnsUdpIpSegmentResponse:
+        """
+        @summary 验证公共DNS Udp Ip地址段
+        
+        @param request: ValidatePdnsUdpIpSegmentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ValidatePdnsUdpIpSegmentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ip):
@@ -14180,6 +17603,13 @@ class Client(OpenApiClient):
         request: alidns_20150109_models.ValidatePdnsUdpIpSegmentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> alidns_20150109_models.ValidatePdnsUdpIpSegmentResponse:
+        """
+        @summary 验证公共DNS Udp Ip地址段
+        
+        @param request: ValidatePdnsUdpIpSegmentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ValidatePdnsUdpIpSegmentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ip):
@@ -14209,6 +17639,12 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.ValidatePdnsUdpIpSegmentRequest,
     ) -> alidns_20150109_models.ValidatePdnsUdpIpSegmentResponse:
+        """
+        @summary 验证公共DNS Udp Ip地址段
+        
+        @param request: ValidatePdnsUdpIpSegmentRequest
+        @return: ValidatePdnsUdpIpSegmentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.validate_pdns_udp_ip_segment_with_options(request, runtime)
 
@@ -14216,5 +17652,11 @@ class Client(OpenApiClient):
         self,
         request: alidns_20150109_models.ValidatePdnsUdpIpSegmentRequest,
     ) -> alidns_20150109_models.ValidatePdnsUdpIpSegmentResponse:
+        """
+        @summary 验证公共DNS Udp Ip地址段
+        
+        @param request: ValidatePdnsUdpIpSegmentRequest
+        @return: ValidatePdnsUdpIpSegmentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.validate_pdns_udp_ip_segment_with_options_async(request, runtime)

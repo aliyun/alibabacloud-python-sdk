@@ -1,3 +1,10 @@
+2024-05-22 Version: 3.3.0
+- Support API DescribeInternetDnsLogs.
+- Update API DescribePdnsAppKey: add param AuthCode.
+- Update API DescribePdnsAppKey: update response param.
+- Update API DescribePdnsAppKeys: update response param.
+
+
 2024-03-13 Version: 3.2.0
 - Support API DescribeInternetDnsLogs.
 - Update API DescribePdnsAppKey: add param AuthCode.

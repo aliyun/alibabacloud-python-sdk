@@ -48,12 +48,18 @@ class AddCustomLineRequest(TeaModel):
         line_name: str = None,
     ):
         # The domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The CIDR blocks.
+        # 
+        # This parameter is required.
         self.ip_segment = ip_segment
         # The language.
         self.lang = lang
         # The name of the custom line.
+        # 
+        # This parameter is required.
         self.line_name = line_name
 
     def validate(self):
@@ -186,8 +192,12 @@ class AddDnsCacheDomainRequestSourceDnsServer(TeaModel):
         port: str = None,
     ):
         # The domain name or IP address of the origin DNS server.
+        # 
+        # This parameter is required.
         self.host = host
         # The port of the origin DNS server.
+        # 
+        # This parameter is required.
         self.port = port
 
     def validate(self):
@@ -228,22 +238,36 @@ class AddDnsCacheDomainRequest(TeaModel):
         source_protocol: str = None,
     ):
         # The maximum TTL period of the cached data retrieved from the origin DNS server. Unit: seconds. Valid values: 30 to 86400.
+        # 
+        # This parameter is required.
         self.cache_ttl_max = cache_ttl_max
         # The minimum time-to-live (TTL) period of the cached data retrieved from the origin Domain Name System (DNS) server. Unit: seconds. Valid values: 30 to 86400.
+        # 
+        # This parameter is required.
         self.cache_ttl_min = cache_ttl_min
         # The domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The instance ID of the cache-accelerated domain name.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The language.
         self.lang = lang
         # The remarks.
         self.remark = remark
         # The origin DNS servers. A maximum of 10 origin DNS servers are supported.
+        # 
+        # This parameter is required.
         self.source_dns_server = source_dns_server
         # Specifies whether the origin DNS server supports Extension Mechanisms for DNS (EDNS). Valid values: NOT_SUPPORT and SUPPORT.
+        # 
+        # This parameter is required.
         self.source_edns = source_edns
         # The origin protocol policy. Valid values: TCP and UDP. Default value: UDP.
+        # 
+        # This parameter is required.
         self.source_protocol = source_protocol
 
     def validate(self):
@@ -467,12 +491,16 @@ class AddDnsGtmAccessStrategyRequest(TeaModel):
         strategy_name: str = None,
     ):
         # The address pools in the primary address pool set.
+        # 
+        # This parameter is required.
         self.default_addr_pool = default_addr_pool
         # The type of the primary address pool. Valid values:
         # 
         # *   IPV4
         # *   IPV6
         # *   DOMAIN
+        # 
+        # This parameter is required.
         self.default_addr_pool_type = default_addr_pool_type
         # Specifies whether to enable DNS resolution with optimal latency for the primary address pool set. Valid values:
         # 
@@ -487,6 +515,8 @@ class AddDnsGtmAccessStrategyRequest(TeaModel):
         # The maximum number of addresses returned from the primary address pool set.
         self.default_max_return_addr_num = default_max_return_addr_num
         # The minimum number of available addresses in the primary address pool set.
+        # 
+        # This parameter is required.
         self.default_min_available_addr_num = default_min_available_addr_num
         # The address pools in the secondary address pool set. If no address pool exists in the secondary address pool set, set this parameter to EMPTY.
         self.failover_addr_pool = failover_addr_pool
@@ -511,6 +541,8 @@ class AddDnsGtmAccessStrategyRequest(TeaModel):
         # The minimum number of available addresses in the secondary address pool set.
         self.failover_min_available_addr_num = failover_min_available_addr_num
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The language of the values for specific response parameters. Default value: en. Valid values: en, zh, and ja.
         self.lang = lang
@@ -520,8 +552,12 @@ class AddDnsGtmAccessStrategyRequest(TeaModel):
         # 
         # *   GEO: geographical location-based access policy
         # *   LATENCY: latency-based access policy
+        # 
+        # This parameter is required.
         self.strategy_mode = strategy_mode
         # The name of the access policy.
+        # 
+        # This parameter is required.
         self.strategy_name = strategy_name
 
     def validate(self):
@@ -711,6 +747,8 @@ class AddDnsGtmAddressPoolRequestAddr(TeaModel):
         remark: str = None,
     ):
         # The address in the address pool.
+        # 
+        # This parameter is required.
         self.addr = addr
         # The information about the source region of the address. The value of this parameter is a JSON string. Valid values:
         # 
@@ -721,6 +759,8 @@ class AddDnsGtmAddressPoolRequestAddr(TeaModel):
         #     *   NO_NEED: no need for rectification
         #     *   RECTIFIED: rectified
         #     *   AUTO: automatic rectification
+        # 
+        # This parameter is required.
         self.attribute_info = attribute_info
         # The weight of the address pool.
         self.lba_weight = lba_weight
@@ -729,6 +769,8 @@ class AddDnsGtmAddressPoolRequestAddr(TeaModel):
         # *   SMART: smart return
         # *   ONLINE: always online
         # *   OFFLINE: always offline
+        # 
+        # This parameter is required.
         self.mode = mode
         # The remarks.
         self.remark = remark
@@ -826,10 +868,14 @@ class AddDnsGtmAddressPoolRequest(TeaModel):
         type: str = None,
     ):
         # The address pools.
+        # 
+        # This parameter is required.
         self.addr = addr
         # The number of consecutive failures.
         self.evaluation_count = evaluation_count
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The health check interval. Unit: seconds.
         self.interval = interval
@@ -841,6 +887,8 @@ class AddDnsGtmAddressPoolRequest(TeaModel):
         # 
         # *   ALL_RR: returns all addresses.
         # *   RATIO: returns addresses by weight.
+        # 
+        # This parameter is required.
         self.lba_strategy = lba_strategy
         # The extended information. The required parameters vary based on the value of ProtocolType.
         # 
@@ -896,6 +944,8 @@ class AddDnsGtmAddressPoolRequest(TeaModel):
         # *   CLOSE: disables the health check feature.
         self.monitor_status = monitor_status
         # The name of the address pool.
+        # 
+        # This parameter is required.
         self.name = name
         # The health check protocol. Valid values:
         # 
@@ -911,6 +961,8 @@ class AddDnsGtmAddressPoolRequest(TeaModel):
         # *   IPV4: IPv4 address
         # *   IPV6: IPv6 address
         # *   DOMAIN: domain name
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -1129,12 +1181,20 @@ class AddDnsGtmMonitorRequest(TeaModel):
         timeout: int = None,
     ):
         # The ID of the address pool.
+        # 
+        # This parameter is required.
         self.addr_pool_id = addr_pool_id
         # The maximum number of consecutive exceptions detected. If the number of consecutive exceptions detected reaches the maximum number, the application service is deemed abnormal.
+        # 
+        # This parameter is required.
         self.evaluation_count = evaluation_count
         # The health check interval. Unit: seconds.
+        # 
+        # This parameter is required.
         self.interval = interval
         # The monitored nodes.
+        # 
+        # This parameter is required.
         self.isp_city_node = isp_city_node
         # The language of the values of specific response parameters. Default value: en. Valid values: en, zh, and ja.
         self.lang = lang
@@ -1185,6 +1245,8 @@ class AddDnsGtmMonitorRequest(TeaModel):
         # 
         #         *   IPV4
         #         *   IPV6
+        # 
+        # This parameter is required.
         self.monitor_extend_info = monitor_extend_info
         # The protocol used for the health check. Valid values:
         # 
@@ -1192,8 +1254,12 @@ class AddDnsGtmMonitorRequest(TeaModel):
         # *   HTTPS
         # *   PING
         # *   TCP
+        # 
+        # This parameter is required.
         self.protocol_type = protocol_type
         # The health check timeout period. Unit: milliseconds.
+        # 
+        # This parameter is required.
         self.timeout = timeout
 
     def validate(self):
@@ -1337,6 +1403,8 @@ class AddDomainRequest(TeaModel):
         resource_group_id: str = None,
     ):
         # The domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The ID of the group to which the domain name will belong. The default value is the ID of the default group.
         self.group_id = group_id
@@ -1525,6 +1593,8 @@ class AddDomainBackupRequest(TeaModel):
         period_type: str = None,
     ):
         # The domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages.
         self.lang = lang
@@ -1532,6 +1602,8 @@ class AddDomainBackupRequest(TeaModel):
         # 
         # *   **DAY**: Backs up data once every day.
         # *   **HOUR**: Backs up data once every hour.
+        # 
+        # This parameter is required.
         self.period_type = period_type
 
     def validate(self):
@@ -1652,6 +1724,8 @@ class AddDomainGroupRequest(TeaModel):
         lang: str = None,
     ):
         # The name of the domain name group.
+        # 
+        # This parameter is required.
         self.group_name = group_name
         # The language.
         self.lang = lang
@@ -1777,6 +1851,8 @@ class AddDomainRecordRequest(TeaModel):
         value: str = None,
     ):
         # The domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The language.
         self.lang = lang
@@ -1791,6 +1867,8 @@ class AddDomainRecordRequest(TeaModel):
         # The hostname.
         # 
         # For example, if you want to resolve @.example.com, you must set RR to an at sign (@) instead of leaving it empty.
+        # 
+        # This parameter is required.
         self.rr = rr
         # The time-to-live (TTL) of the DNS record. Default value: 600. Unit: seconds. For more information, see
         # 
@@ -1799,10 +1877,14 @@ class AddDomainRecordRequest(TeaModel):
         # The type of the DNS record. For more information, see
         # 
         # [DNS record types](https://www.alibabacloud.com/help/zh/doc-detail/29805.htm).
+        # 
+        # This parameter is required.
         self.type = type
         # The IP address of the client.
         self.user_client_ip = user_client_ip
         # The record value.
+        # 
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -1944,18 +2026,28 @@ class AddGtmAccessStrategyRequest(TeaModel):
         strategy_name: str = None,
     ):
         # The line codes of access regions.
+        # 
+        # This parameter is required.
         self.access_lines = access_lines
         # The ID of the default address pool.
+        # 
+        # This parameter is required.
         self.default_addr_pool_id = default_addr_pool_id
         # The ID of the failover address pool.
         # 
         # If the failover address pool is not set, pass the **Empty** value.
+        # 
+        # This parameter is required.
         self.failover_addr_pool_id = failover_addr_pool_id
         # The ID of the GTM instance for which you want to create an access policy.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The language used by the user.
         self.lang = lang
         # The name of the access policy.
+        # 
+        # This parameter is required.
         self.strategy_name = strategy_name
 
     def validate(self):
@@ -2175,10 +2267,14 @@ class AddGtmAddressPoolRequest(TeaModel):
         type: str = None,
     ):
         # The address pools.
+        # 
+        # This parameter is required.
         self.addr = addr
         # The number of consecutive failures.
         self.evaluation_count = evaluation_count
         # The ID of the GTM instance for which you want to create an address pool.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The health check interval. Unit: seconds. Set the value to 60.
         self.interval = interval
@@ -2187,6 +2283,8 @@ class AddGtmAddressPoolRequest(TeaModel):
         # The language of the values of specific response parameters.
         self.lang = lang
         # The minimum number of available addresses in the address pool.
+        # 
+        # This parameter is required.
         self.min_available_addr_num = min_available_addr_num
         # The extended information. The required parameters vary based on the value of ProtocolType.
         # 
@@ -2215,6 +2313,8 @@ class AddGtmAddressPoolRequest(TeaModel):
         # *   **CLOSE**: disables the health check. This is the default value.
         self.monitor_status = monitor_status
         # The name of the address pool.
+        # 
+        # This parameter is required.
         self.name = name
         # The health check protocol. Valid values:
         # 
@@ -2229,6 +2329,8 @@ class AddGtmAddressPoolRequest(TeaModel):
         # 
         # *   **IP**: IPv4 address
         # *   **DOMAIN**: domain name
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -2452,12 +2554,20 @@ class AddGtmMonitorRequest(TeaModel):
         timeout: int = None,
     ):
         # The ID of the address pool.
+        # 
+        # This parameter is required.
         self.addr_pool_id = addr_pool_id
         # The number of consecutive failures.
+        # 
+        # This parameter is required.
         self.evaluation_count = evaluation_count
         # The health check interval. Unit: seconds. Set the value to 60.
+        # 
+        # This parameter is required.
         self.interval = interval
         # The nodes for monitoring.
+        # 
+        # This parameter is required.
         self.isp_city_node = isp_city_node
         # The language.
         self.lang = lang
@@ -2481,6 +2591,8 @@ class AddGtmMonitorRequest(TeaModel):
         # 
         # *   port: the port that you want to check
         # *   failureRate: the failure rate
+        # 
+        # This parameter is required.
         self.monitor_extend_info = monitor_extend_info
         # The protocol used for the health check. Valid values:
         # 
@@ -2488,8 +2600,12 @@ class AddGtmMonitorRequest(TeaModel):
         # *   HTTPS
         # *   PING
         # *   TCP
+        # 
+        # This parameter is required.
         self.protocol_type = protocol_type
         # The health check timeout period. Unit: milliseconds. Valid values: 2000, 3000, 5000, and 10000.
+        # 
+        # This parameter is required.
         self.timeout = timeout
 
     def validate(self):
@@ -2633,10 +2749,14 @@ class AddGtmRecoveryPlanRequest(TeaModel):
         remark: str = None,
     ):
         # The list of IDs of faulty address pools.
+        # 
+        # This parameter is required.
         self.fault_addr_pool = fault_addr_pool
         # The language used by the user.
         self.lang = lang
         # The name of the disaster recovery plan that you want to create.
+        # 
+        # This parameter is required.
         self.name = name
         # The remarks on the disaster recovery plan.
         self.remark = remark
@@ -2759,8 +2879,12 @@ class BindInstanceDomainsRequest(TeaModel):
         # The domain names.
         # 
         # >  Separate multiple domain names with commas (,). Up to 100 domain names can be entered.
+        # 
+        # This parameter is required.
         self.domain_names = domain_names
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The language.
         self.lang = lang
@@ -2884,6 +3008,8 @@ class ChangeDomainGroupRequest(TeaModel):
         lang: str = None,
     ):
         # The domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The ID of the destination domain name group.
         # 
@@ -3018,6 +3144,8 @@ class ChangeDomainOfDnsProductRequest(TeaModel):
         # Specifies whether to force bind a domain name to the instance.
         self.force = force
         # The ID of the Alibaba Cloud DNS instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages.
         self.lang = lang
@@ -3147,12 +3275,18 @@ class CopyGtmConfigRequest(TeaModel):
         target_id: str = None,
     ):
         # The type of the object that you want to copy. Only the INSTANCE type is supported.
+        # 
+        # This parameter is required.
         self.copy_type = copy_type
         # The language that specific response parameters will use.
         self.lang = lang
         # The ID of the source object. Only instance IDs are supported.
+        # 
+        # This parameter is required.
         self.source_id = source_id
         # The ID of the target object. Only instance IDs are supported.
+        # 
+        # This parameter is required.
         self.target_id = target_id
 
     def validate(self):
@@ -3473,6 +3607,8 @@ class DeleteCustomLinesRequest(TeaModel):
         # The language.
         self.lang = lang
         # The unique IDs of the custom lines that you want to delete. Separate the unique IDs with commas (,).
+        # 
+        # This parameter is required.
         self.line_ids = line_ids
 
     def validate(self):
@@ -3575,6 +3711,8 @@ class DeleteDnsCacheDomainRequest(TeaModel):
         lang: str = None,
     ):
         # The domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The language.
         self.lang = lang
@@ -3681,6 +3819,8 @@ class DeleteDnsGtmAccessStrategyRequest(TeaModel):
         # The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
         self.lang = lang
         # The ID of the access policy.
+        # 
+        # This parameter is required.
         self.strategy_id = strategy_id
 
     def validate(self):
@@ -3783,6 +3923,8 @@ class DeleteDnsGtmAddressPoolRequest(TeaModel):
         lang: str = None,
     ):
         # The ID of the address pool.
+        # 
+        # This parameter is required.
         self.addr_pool_id = addr_pool_id
         # The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
         self.lang = lang
@@ -3887,6 +4029,8 @@ class DeleteDomainRequest(TeaModel):
         lang: str = None,
     ):
         # The domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The language.
         self.lang = lang
@@ -3998,6 +4142,8 @@ class DeleteDomainGroupRequest(TeaModel):
         lang: str = None,
     ):
         # The ID of the domain name group.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The language type.
         self.lang = lang
@@ -4114,6 +4260,8 @@ class DeleteDomainRecordRequest(TeaModel):
         # The ID of the DNS record.
         # 
         # This parameter is returned when you add a DNS record or when you query a list of DNS records.
+        # 
+        # This parameter is required.
         self.record_id = record_id
         # The IP address of the client.
         self.user_client_ip = user_client_ip
@@ -4333,6 +4481,8 @@ class DeleteGtmAddressPoolRequest(TeaModel):
         lang: str = None,
     ):
         # The ID of the address pool that you want to delete.
+        # 
+        # This parameter is required.
         self.addr_pool_id = addr_pool_id
         # The language used by the user.
         self.lang = lang
@@ -4439,6 +4589,8 @@ class DeleteGtmRecoveryPlanRequest(TeaModel):
         # The language used by the user.
         self.lang = lang
         # The ID of the disaster recovery plan that you want to delete.
+        # 
+        # This parameter is required.
         self.recovery_plan_id = recovery_plan_id
 
     def validate(self):
@@ -4544,12 +4696,16 @@ class DeleteSubDomainRecordsRequest(TeaModel):
         user_client_ip: str = None,
     ):
         # The domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The language type.
         self.lang = lang
         # The host record.
         # 
         # For example, to resolve @.example.com, you must set RR to an at sign (@) instead of leaving it blank.
+        # 
+        # This parameter is required.
         self.rr = rr
         # The type of the DNS record. If you do not specify this parameter, all DNS record types corresponding to the subdomain name are returned.
         # 
@@ -5375,6 +5531,8 @@ class DescribeCustomLinesRequest(TeaModel):
         page_size: int = None,
     ):
         # The domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The language.
         self.lang = lang
@@ -5580,6 +5738,8 @@ class DescribeDNSSLBSubDomainsRequest(TeaModel):
         user_client_ip: str = None,
     ):
         # The domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The language.
         self.lang = lang
@@ -6237,6 +6397,8 @@ class DescribeDnsGtmAccessStrategiesRequest(TeaModel):
         strategy_mode: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
         self.lang = lang
@@ -6248,6 +6410,8 @@ class DescribeDnsGtmAccessStrategiesRequest(TeaModel):
         # 
         # *   GEO: geographical location-based
         # *   LATENCY: latency-based
+        # 
+        # This parameter is required.
         self.strategy_mode = strategy_mode
 
     def validate(self):
@@ -6703,6 +6867,8 @@ class DescribeDnsGtmAccessStrategyRequest(TeaModel):
         # The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
         self.lang = lang
         # The ID of the access policy.
+        # 
+        # This parameter is required.
         self.strategy_id = strategy_id
 
     def validate(self):
@@ -7277,6 +7443,8 @@ class DescribeDnsGtmAccessStrategyAvailableConfigRequest(TeaModel):
         strategy_mode: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
         self.lang = lang
@@ -7284,6 +7452,8 @@ class DescribeDnsGtmAccessStrategyAvailableConfigRequest(TeaModel):
         # 
         # *   GEO: geographical location-based
         # *   LATENCY: latency-based
+        # 
+        # This parameter is required.
         self.strategy_mode = strategy_mode
 
     def validate(self):
@@ -7867,6 +8037,8 @@ class DescribeDnsGtmAddrAttributeInfoRequest(TeaModel):
         type: str = None,
     ):
         # The addresses whose source regions you want to query.
+        # 
+        # This parameter is required.
         self.addrs = addrs
         # The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
         self.lang = lang
@@ -7875,6 +8047,8 @@ class DescribeDnsGtmAddrAttributeInfoRequest(TeaModel):
         # *   IPV4: IPv4 address
         # *   IPV6: IPv6 address
         # *   DOMAIN: domain name
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -8118,6 +8292,8 @@ class DescribeDnsGtmAddressPoolAvailableConfigRequest(TeaModel):
         lang: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
         self.lang = lang
@@ -8426,6 +8602,8 @@ class DescribeDnsGtmInstanceRequest(TeaModel):
         lang: str = None,
     ):
         # The ID of the instance about which you want to query the information.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages. Default value: en. Valid values: en, zh, and ja.
         self.lang = lang
@@ -8866,6 +9044,8 @@ class DescribeDnsGtmInstanceAddressPoolRequest(TeaModel):
         lang: str = None,
     ):
         # The ID of the address pool.
+        # 
+        # This parameter is required.
         self.addr_pool_id = addr_pool_id
         # The language of the values of specific response parameters. Default value: en. Valid values: en, zh, and ja.
         self.lang = lang
@@ -9206,6 +9386,8 @@ class DescribeDnsGtmInstanceAddressPoolsRequest(TeaModel):
         page_size: int = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
         self.lang = lang
@@ -9503,6 +9685,8 @@ class DescribeDnsGtmInstanceStatusRequest(TeaModel):
         lang: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
         self.lang = lang
@@ -9642,6 +9826,8 @@ class DescribeDnsGtmInstanceSystemCnameRequest(TeaModel):
         lang: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
         self.lang = lang
@@ -10254,6 +10440,8 @@ class DescribeDnsGtmLogsRequest(TeaModel):
         # The timestamp that specifies the end of the time range to query.
         self.end_timestamp = end_timestamp
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The keyword for searches in "%KeyWord%" mode. The value is not case-sensitive.
         self.keyword = keyword
@@ -11249,6 +11437,8 @@ class DescribeDnsGtmMonitorConfigRequest(TeaModel):
         # The language of the values of specific response parameters. Default value: en. Valid values: en, zh, and ja.
         self.lang = lang
         # The ID of the health check task.
+        # 
+        # This parameter is required.
         self.monitor_config_id = monitor_config_id
 
     def validate(self):
@@ -11580,6 +11770,8 @@ class DescribeDnsProductInstanceRequest(TeaModel):
         user_client_ip: str = None,
     ):
         # The instance ID. You can call the **DescribeDomainInfo** operation to obtain the instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The language.
         self.lang = lang
@@ -12665,6 +12857,8 @@ class DescribeDohDomainStatisticsRequest(TeaModel):
         start_date: str = None,
     ):
         # The domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The end of the time range to query. Specify the time in the YYYY-MM-DD format.
         # 
@@ -13138,6 +13332,8 @@ class DescribeDohSubDomainStatisticsRequest(TeaModel):
         # You can query only the DNS records of the latest 90 days. `The value of StartDate must be greater than or equal to the difference between the current date and 90`.
         self.start_date = start_date
         # The subdomain whose statistics you want to query.
+        # 
+        # This parameter is required.
         self.sub_domain = sub_domain
 
     def validate(self):
@@ -13732,6 +13928,8 @@ class DescribeDomainDnssecInfoRequest(TeaModel):
         lang: str = None,
     ):
         # The domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The language.
         self.lang = lang
@@ -14131,6 +14329,8 @@ class DescribeDomainInfoRequest(TeaModel):
         need_detail_attributes: bool = None,
     ):
         # The domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The language type.
         self.lang = lang
@@ -14843,6 +15043,8 @@ class DescribeDomainNsRequest(TeaModel):
         lang: str = None,
     ):
         # The domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The language.
         self.lang = lang
@@ -15046,6 +15248,8 @@ class DescribeDomainRecordInfoRequest(TeaModel):
         # The ID of the DNS record.
         # 
         # This parameter is returned when you add a DNS record or when you query a list of DNS records.
+        # 
+        # This parameter is required.
         self.record_id = record_id
         # The IP address of the client.
         self.user_client_ip = user_client_ip
@@ -15274,6 +15478,8 @@ class DescribeDomainRecordsRequest(TeaModel):
         # The order in which you want to sort the returned DNS records. Valid values: DESC and ASC. Default value: DESC.
         self.direction = direction
         # The domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The ID of the domain name group.
         # 
@@ -15686,6 +15892,8 @@ class DescribeDomainResolveStatisticsSummaryRequest(TeaModel):
         # *   EXACT: exact search
         self.search_mode = search_mode
         # The start time in the yyyy-MM-dd format, for example, 2023-03-01.
+        # 
+        # This parameter is required.
         self.start_date = start_date
         # The threshold for the number of Domain Name System (DNS) requests. You can query the domain names at the specified quantity level of DNS requests and query the number of DNS requests for each domain name.
         # 
@@ -15932,6 +16140,8 @@ class DescribeDomainStatisticsRequest(TeaModel):
         # The start date of the query. Specify the start date in the **YYYY-MM-DD** format.
         # 
         # You can only query the DNS records within the last 90 days.``
+        # 
+        # This parameter is required.
         self.start_date = start_date
 
     def validate(self):
@@ -16157,6 +16367,8 @@ class DescribeDomainStatisticsSummaryRequest(TeaModel):
         # The beginning of the time range to query. Specify the time in the **YYYY-MM-DD** format.
         # 
         # You can only query DNS records of the last 90 days.
+        # 
+        # This parameter is required.
         self.start_date = start_date
         # The threshold of query volume that can be obtained. You can also obtain data about a domain name with the query volume less than or equal to the threshold. For example, if you set this parameter to 100, you can query domain names with less than 100 queries.
         self.threshold = threshold
@@ -16227,6 +16439,10 @@ class DescribeDomainStatisticsSummaryResponseBodyStatisticsStatistic(TeaModel):
         # 
         # CACHE: cache-accelerated domain name
         self.domain_type = domain_type
+        # Indicates whether the DNS traffic analysis feature is enabled for the domain name. Valid values:
+        # 
+        # *   OPEN
+        # *   CLOSE
         self.resolve_analysis_status = resolve_analysis_status
 
     def validate(self):
@@ -17323,6 +17539,8 @@ class DescribeGtmAccessStrategyRequest(TeaModel):
         # The language used by the user.
         self.lang = lang
         # The ID of the access policy that you want to query.
+        # 
+        # This parameter is required.
         self.strategy_id = strategy_id
 
     def validate(self):
@@ -17619,6 +17837,8 @@ class DescribeGtmAccessStrategyAvailableConfigRequest(TeaModel):
         lang: str = None,
     ):
         # The ID of the Global Traffic Manager (GTM) instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The language.
         self.lang = lang
@@ -18025,6 +18245,8 @@ class DescribeGtmInstanceRequest(TeaModel):
         need_detail_attributes: bool = None,
     ):
         # The ID of the GTM instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The language of the values of specific response parameters.
         self.lang = lang
@@ -18253,6 +18475,8 @@ class DescribeGtmInstanceAddressPoolRequest(TeaModel):
         lang: str = None,
     ):
         # The ID of the address pool that you want to query.
+        # 
+        # This parameter is required.
         self.addr_pool_id = addr_pool_id
         # The language used by the user.
         self.lang = lang
@@ -18586,6 +18810,8 @@ class DescribeGtmInstanceAddressPoolsRequest(TeaModel):
         page_size: int = None,
     ):
         # The ID of the GTM instance that you want to query.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The language used by the user.
         self.lang = lang
@@ -18888,6 +19114,8 @@ class DescribeGtmInstanceStatusRequest(TeaModel):
         lang: str = None,
     ):
         # The ID of the instance to query.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages.
         self.lang = lang
@@ -19040,6 +19268,8 @@ class DescribeGtmInstanceSystemCnameRequest(TeaModel):
         lang: str = None,
     ):
         # The ID of the Global Traffic Manager (GTM) instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The language used by the user.
         self.lang = lang
@@ -20016,6 +20246,8 @@ class DescribeGtmMonitorConfigRequest(TeaModel):
         # The language of the values of specific response parameters.
         self.lang = lang
         # The ID of the health check configuration.
+        # 
+        # This parameter is required.
         self.monitor_config_id = monitor_config_id
 
     def validate(self):
@@ -20316,6 +20548,8 @@ class DescribeGtmRecoveryPlanRequest(TeaModel):
         # The language used by the user.
         self.lang = lang
         # The ID of the disaster recovery plan that you want to query.
+        # 
+        # This parameter is required.
         self.recovery_plan_id = recovery_plan_id
 
     def validate(self):
@@ -21243,8 +21477,12 @@ class DescribeInstanceDomainsRequest(TeaModel):
         page_size: int = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
+        # The language.
         self.lang = lang
+        # The number of the page to return. Pages start from page 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Valid values: 1 to 100. Default value: 20.
         self.page_size = page_size
@@ -21339,8 +21577,11 @@ class DescribeInstanceDomainsResponseBody(TeaModel):
         self.page_number = page_number
         # The number of entries per page. Valid values: **1 to 100**. Default value: **20**.
         self.page_size = page_size
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of entries returned on all pages.
         self.total_items = total_items
+        # The total number of pages returned.
         self.total_pages = total_pages
 
     def validate(self):
@@ -21435,6 +21676,7 @@ class DescribeInstanceDomainsResponse(TeaModel):
 class DescribeInternetDnsLogsRequest(TeaModel):
     def __init__(
         self,
+        account_id: int = None,
         domain_name: str = None,
         end_timestamp: int = None,
         lang: str = None,
@@ -21444,6 +21686,7 @@ class DescribeInternetDnsLogsRequest(TeaModel):
         query_condition: str = None,
         start_timestamp: int = None,
     ):
+        self.account_id = account_id
         self.domain_name = domain_name
         self.end_timestamp = end_timestamp
         self.lang = lang
@@ -21462,6 +21705,8 @@ class DescribeInternetDnsLogsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
         if self.end_timestamp is not None:
@@ -21482,6 +21727,8 @@ class DescribeInternetDnsLogsRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
         if m.get('EndTimestamp') is not None:
@@ -21541,6 +21788,7 @@ class DescribeInternetDnsLogsResponseBodyLogsLog(TeaModel):
         status: str = None,
         subnet_ip: str = None,
         value: DescribeInternetDnsLogsResponseBodyLogsLogValue = None,
+        zone_name: str = None,
     ):
         self.dns_msg_id = dns_msg_id
         self.log_time = log_time
@@ -21552,6 +21800,7 @@ class DescribeInternetDnsLogsResponseBodyLogsLog(TeaModel):
         self.status = status
         self.subnet_ip = subnet_ip
         self.value = value
+        self.zone_name = zone_name
 
     def validate(self):
         if self.value:
@@ -21583,6 +21832,8 @@ class DescribeInternetDnsLogsResponseBodyLogsLog(TeaModel):
             result['SubnetIp'] = self.subnet_ip
         if self.value is not None:
             result['Value'] = self.value.to_map()
+        if self.zone_name is not None:
+            result['ZoneName'] = self.zone_name
         return result
 
     def from_map(self, m: dict = None):
@@ -21608,6 +21859,8 @@ class DescribeInternetDnsLogsResponseBodyLogsLog(TeaModel):
         if m.get('Value') is not None:
             temp_model = DescribeInternetDnsLogsResponseBodyLogsLogValue()
             self.value = temp_model.from_map(m['Value'])
+        if m.get('ZoneName') is not None:
+            self.zone_name = m.get('ZoneName')
         return self
 
 
@@ -22139,6 +22392,7 @@ class DescribeIspFlushCacheTaskRequest(TeaModel):
         task_id: str = None,
     ):
         self.lang = lang
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -25008,6 +25262,8 @@ class DescribeRecordLogsRequest(TeaModel):
         end_date: str = None,
     ):
         # The domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The keyword for searches in "%KeyWord%" mode. The value is not case-sensitive.
         self.key_word = key_word
@@ -25283,6 +25539,8 @@ class DescribeRecordResolveStatisticsSummaryRequest(TeaModel):
         # *   ASC: ascending order
         self.direction = direction
         # The domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The type of the domain name. The parameter value is not case-sensitive. Valid values:
         # 
@@ -25305,6 +25563,8 @@ class DescribeRecordResolveStatisticsSummaryRequest(TeaModel):
         # *   EXACT: exact search
         self.search_mode = search_mode
         # The start date of the time range to be queried. Specify the time in the yyyy-MM-dd format, such as 2023-03-01.
+        # 
+        # This parameter is required.
         self.start_date = start_date
         # The threshold for the number of Domain Name System (DNS) requests. You can query the subdomain names at the specified quantity level of DNS requests and query the number of DNS requests for each subdomain name.
         # 
@@ -25552,6 +25812,8 @@ class DescribeRecordStatisticsRequest(TeaModel):
         start_date: str = None,
     ):
         # The domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The type of the domain name. The parameter value is not case-sensitive. Valid values:
         # 
@@ -25565,6 +25827,8 @@ class DescribeRecordStatisticsRequest(TeaModel):
         # The language.
         self.lang = lang
         # The hostname. If you want to resolve the subdomain name www.dns-exmaple.top, set this parameter to www.
+        # 
+        # This parameter is required.
         self.rr = rr
         # The start date of the query. Specify the start date in the **YYYY-MM-DD** format.
         # 
@@ -25573,6 +25837,8 @@ class DescribeRecordStatisticsRequest(TeaModel):
         # If the time range is less than or equal to seven days, data is returned on an hourly basis.````
         # 
         # If the time range is greater than seven days, data is returned on a daily basis.````
+        # 
+        # This parameter is required.
         self.start_date = start_date
 
     def validate(self):
@@ -25778,6 +26044,8 @@ class DescribeRecordStatisticsSummaryRequest(TeaModel):
         threshold: int = None,
     ):
         # The domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The type of the domain name. The parameter value is not case-sensitive. Valid values:
         # 
@@ -25804,6 +26072,8 @@ class DescribeRecordStatisticsSummaryRequest(TeaModel):
         # The start date of the query. Specify the start date in the **YYYY-MM-DD** format.
         # 
         # You can only query the DNS records within the last 90 days.``
+        # 
+        # This parameter is required.
         self.start_date = start_date
         # The maximum number of DNS requests that you can obtain. You can obtain data about a domain name with DNS request volume less than or equal to the maximum number. For example, if you set this parameter to 100, you can query domain names with less than 100 DNS requests.
         self.threshold = threshold
@@ -26065,6 +26335,8 @@ class DescribeSubDomainRecordsRequest(TeaModel):
         # If you set SubDomain to `a.www.example.com` and leave
         # 
         # DomainName empty, the system returns the DNS records that contain the hostname `a.www` for the domain name example.com. If you set SubDomain to a.www.example.com and set DomainName to www.example.com, the system returns the DNS records that contain the hostname `a` for the domain name www.example.com. If you set SubDomain to a.www.example.com and set DomainName to a.www.example.com, the system returns the DNS records that contain the hostname `@` for the domain name a.www.example.com.
+        # 
+        # This parameter is required.
         self.sub_domain = sub_domain
         # The type of DNS records. If you do not specify this parameter, all types of DNS records for the subdomain name are returned.
         # 
@@ -26579,6 +26851,8 @@ class DescribeTagsRequest(TeaModel):
         # The number of entries to return per page. Default value: 200.
         self.page_size = page_size
         # The type of the resources from which you want to query tags. Set the value to DOMAIN.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -26780,6 +27054,8 @@ class DescribeTransferDomainsRequest(TeaModel):
         # 
         # *   IN: The domain name was transferred to the current account.
         # *   OUT: The domain name was transferred from the current account.
+        # 
+        # This parameter is required.
         self.transfer_type = transfer_type
 
     def validate(self):
@@ -27032,6 +27308,8 @@ class ExecuteGtmRecoveryPlanRequest(TeaModel):
         # The language used by the user.
         self.lang = lang
         # The ID of the disaster recovery plan that you want to executed.
+        # 
+        # This parameter is required.
         self.recovery_plan_id = recovery_plan_id
 
     def validate(self):
@@ -27134,6 +27412,8 @@ class GetMainDomainNameRequest(TeaModel):
         lang: str = None,
     ):
         # The string. The string can be up to 128 characters in length.
+        # 
+        # This parameter is required.
         self.input_string = input_string
         # The language.
         self.lang = lang
@@ -27267,6 +27547,8 @@ class GetTxtRecordForVerifyRequest(TeaModel):
         # 
         # *   ADD_SUB_DOMAIN
         # *   RETRIEVAL
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -27442,6 +27724,8 @@ class ListTagResourcesRequest(TeaModel):
         # The ID of the resource.
         self.resource_id = resource_id
         # The resource type.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # An array of tag key-value pairs.
         self.tag = tag
@@ -27638,6 +27922,8 @@ class ModifyHichinaDomainDNSRequest(TeaModel):
         user_client_ip: str = None,
     ):
         # The domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The language type.
         self.lang = lang
@@ -27824,8 +28110,12 @@ class MoveDomainResourceGroupRequest(TeaModel):
         # The language of the values of specific response parameters. Default value: en. Valid values: en, zh, and ja.
         self.lang = lang
         # The ID of the new resource group.
+        # 
+        # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
         # The resource ID. If Tag is left empty, ResourceId is required.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
 
     def validate(self):
@@ -27933,7 +28223,9 @@ class MoveGtmResourceGroupRequest(TeaModel):
         resource_id: str = None,
     ):
         self.lang = lang
+        # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
+        # This parameter is required.
         self.resource_id = resource_id
 
     def validate(self):
@@ -28049,6 +28341,8 @@ class OperateBatchDomainRequestDomainRecordInfo(TeaModel):
         # The domain name.
         # 
         # >  You can submit 1 to 1,000 domain names. Due to the limit on the length of HTTP request headers, excessive domain names are ignored. Do not enter more than 1,000 domain names.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The resolution line. Default value: default.
         self.line = line
@@ -28138,6 +28432,8 @@ class OperateBatchDomainRequest(TeaModel):
         type: str = None,
     ):
         # The DNS records. You can submit up to 1000 DNS records.
+        # 
+        # This parameter is required.
         self.domain_record_info = domain_record_info
         # The language.
         self.lang = lang
@@ -28147,6 +28443,8 @@ class OperateBatchDomainRequest(TeaModel):
         # *   **DOMAIN_DEL**: deletes domain names in batches.
         # *   **RR_ADD**: adds DNS records in batches.
         # *   **RR_DEL**: deletes DNS records in batches. This operation deletes the DNS records with the specified hostname or record value. If you do not specify the Rr and Value parameters, this operation deletes the DNS records that are added for the specified domain names.
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -28377,6 +28675,8 @@ class PreviewGtmRecoveryPlanRequest(TeaModel):
         # The number of entries to return on per page. Maximum value: **20**. Default value: **5**.
         self.page_size = page_size
         # The ID of the disaster recovery plan that you want to preview.
+        # 
+        # This parameter is required.
         self.recovery_plan_id = recovery_plan_id
 
     def validate(self):
@@ -28495,7 +28795,7 @@ class PreviewGtmRecoveryPlanResponseBodyPreviewsPreview(TeaModel):
         self.name = name
         # The returned information of the switching policies for address pools.
         self.switch_infos = switch_infos
-        # The user\"s domain name or domain name list.
+        # The user\\"s domain name or domain name list.
         self.user_domain_name = user_domain_name
 
     def validate(self):
@@ -28983,6 +29283,8 @@ class RetrieveDomainRequest(TeaModel):
         lang: str = None,
     ):
         # The domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The language.
         self.lang = lang
@@ -29089,6 +29391,8 @@ class RollbackGtmRecoveryPlanRequest(TeaModel):
         # The language used by the user.
         self.lang = lang
         # The ID of the disaster recovery plan that you want to roll back.
+        # 
+        # This parameter is required.
         self.recovery_plan_id = recovery_plan_id
 
     def validate(self):
@@ -29207,6 +29511,8 @@ class SetDNSSLBStatusRequest(TeaModel):
         # *   **false**: disables weighted round-robin.
         self.open = open
         # The subdomain name for which you want to enable weighted round-robin. Set the parameter to @.example.com instead of example.com.
+        # 
+        # This parameter is required.
         self.sub_domain = sub_domain
         # The type of the Domain Name System (DNS) record. Valid values: A and AAAA. Default value: A.
         self.type = type
@@ -29352,10 +29658,14 @@ class SetDnsGtmAccessModeRequest(TeaModel):
         # *   AUTO: performs automatic switchover between the primary and secondary address pool groups upon failures.
         # *   DEFAULT: uses the primary address pool group.
         # *   FAILOVER: uses the secondary address pool group.
+        # 
+        # This parameter is required.
         self.access_mode = access_mode
         # The language to return some response parameters. Default value: en. Valid values: en, zh, and ja.
         self.lang = lang
         # The ID of the policy.
+        # 
+        # This parameter is required.
         self.strategy_id = strategy_id
 
     def validate(self):
@@ -29465,11 +29775,15 @@ class SetDnsGtmMonitorStatusRequest(TeaModel):
         # The language of the values for specific response parameters. Default value: en. Valid values: en, zh, and ja.
         self.lang = lang
         # The ID of the health check task.
+        # 
+        # This parameter is required.
         self.monitor_config_id = monitor_config_id
         # Specifies whether to enable the health check feature. Valid values:
         # 
         # *   OPEN: enables the health check feature.
         # *   CLOSE: disables the health check feature.
+        # 
+        # This parameter is required.
         self.status = status
 
     def validate(self):
@@ -29577,6 +29891,8 @@ class SetDomainDnssecStatusRequest(TeaModel):
         status: str = None,
     ):
         # The domain name for which you want to set the DNSSEC status.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The language in which you want the values of some response parameters to be returned. These response parameters support multiple languages. Default value: en. Valid values: en, zh, and ja.
         self.lang = lang
@@ -29584,6 +29900,8 @@ class SetDomainDnssecStatusRequest(TeaModel):
         # 
         # *   ON: enables DNSSEC for the domain name.
         # *   OFF: disables DNSSEC for the domain name.
+        # 
+        # This parameter is required.
         self.status = status
 
     def validate(self):
@@ -29694,11 +30012,15 @@ class SetDomainRecordStatusRequest(TeaModel):
         # The language.
         self.lang = lang
         # The ID of the DNS record.
+        # 
+        # This parameter is required.
         self.record_id = record_id
         # The state of the DNS record. Valid values:
         # 
         # *   **Enable**: enables the DNS record.
         # *   **Disable**: disables the DNS record.
+        # 
+        # This parameter is required.
         self.status = status
         # The IP address of the client.
         self.user_client_ip = user_client_ip
@@ -29830,10 +30152,14 @@ class SetGtmAccessModeRequest(TeaModel):
         # *   **AUTO**: Automatic switch
         # *   **DEFAULT**: Default address pool
         # *   **FAILOVER**: Failover address pool
+        # 
+        # This parameter is required.
         self.access_mode = access_mode
         # The language used by the user.
         self.lang = lang
         # The ID of the access policy.
+        # 
+        # This parameter is required.
         self.strategy_id = strategy_id
 
     def validate(self):
@@ -29943,11 +30269,15 @@ class SetGtmMonitorStatusRequest(TeaModel):
         # The language used by the user.
         self.lang = lang
         # The health check ID.
+        # 
+        # This parameter is required.
         self.monitor_config_id = monitor_config_id
         # Specifies whether health check is enabled for the address pool. Valid values:
         # 
         # *   **OPEN**: Enabled
         # *   **CLOSE**: Disabled
+        # 
+        # This parameter is required.
         self.status = status
 
     def validate(self):
@@ -30055,8 +30385,11 @@ class SubmitIspFlushCacheTaskRequest(TeaModel):
         isp: List[str] = None,
         lang: str = None,
     ):
+        # This parameter is required.
         self.client_token = client_token
+        # This parameter is required.
         self.domain_name = domain_name
+        # This parameter is required.
         self.isp = isp
         self.lang = lang
 
@@ -30168,6 +30501,8 @@ class SwitchDnsGtmInstanceStrategyModeRequest(TeaModel):
         strategy_mode: str = None,
     ):
         # The ID of the GTM instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The language of the values of specific response parameters. Default value: en. Valid values: en, zh, and ja.
         self.lang = lang
@@ -30175,6 +30510,8 @@ class SwitchDnsGtmInstanceStrategyModeRequest(TeaModel):
         # 
         # *   GEO: geographical location-based
         # *   LATENCY: latency-based
+        # 
+        # This parameter is required.
         self.strategy_mode = strategy_mode
 
     def validate(self):
@@ -30320,10 +30657,16 @@ class TagResourcesRequest(TeaModel):
         # The language.
         self.lang = lang
         # The resource ID.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The resource type.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tag to add to the resource.
+        # 
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -30444,6 +30787,8 @@ class TransferDomainRequest(TeaModel):
         target_user_id: int = None,
     ):
         # The domain names. Separate multiple domain names with commas (,). Only domain names registered with Alibaba Cloud are supported.
+        # 
+        # This parameter is required.
         self.domain_names = domain_names
         # The language of the content within the request and response. Default value: **zh**. Valid values:
         # 
@@ -30453,6 +30798,8 @@ class TransferDomainRequest(TeaModel):
         # The description of the domain name.
         self.remark = remark
         # The destination user ID. The domain names and their Domain Name System (DNS) records are transferred to the destination user ID.
+        # 
+        # This parameter is required.
         self.target_user_id = target_user_id
 
     def validate(self):
@@ -30573,8 +30920,12 @@ class UnbindInstanceDomainsRequest(TeaModel):
         # The domain names.
         # 
         # Separate multiple domain names with commas (,). Up to 100 domain names can be entered.
+        # 
+        # This parameter is required.
         self.domain_names = domain_names
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The language.
         self.lang = lang
@@ -30704,8 +31055,12 @@ class UntagResourcesRequest(TeaModel):
         # The language.
         self.lang = lang
         # The resource ID.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The resource type.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags added to the resource.
         self.tag_key = tag_key
@@ -30970,8 +31325,10 @@ class UpdateCustomLineRequest(TeaModel):
         # The language.
         self.lang = lang
         # The unique ID of the custom line.
+        # 
+        # This parameter is required.
         self.line_id = line_id
-        # The name of the custom line. The name must be 1 to 20 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+        # The name of the custom line. The name must be 1 to 20 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
         self.line_name = line_name
 
     def validate(self):
@@ -31094,10 +31451,14 @@ class UpdateDNSSLBWeightRequest(TeaModel):
         # The language.
         self.lang = lang
         # The ID of the DNS record.
+        # 
+        # This parameter is required.
         self.record_id = record_id
         # The IP address of the client.
         self.user_client_ip = user_client_ip
         # The weight of the DNS record that you want to specify. Valid values: `1 to 100`.
+        # 
+        # This parameter is required.
         self.weight = weight
 
     def validate(self):
@@ -31267,6 +31628,8 @@ class UpdateDnsCacheDomainRequest(TeaModel):
         # The minimum time-to-live (TTL) period of the cached data retrieved from the origin Domain Name System (DNS) server. Unit: seconds. Valid values: 30 to 86400.
         self.cache_ttl_min = cache_ttl_min
         # The domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The instance ID of the cache-accelerated domain name.
         self.instance_id = instance_id
@@ -31412,10 +31775,12 @@ class UpdateDnsCacheDomainRemarkRequest(TeaModel):
         remark: str = None,
     ):
         # The domain name.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The language.
         self.lang = lang
-        # The remarks. The remarks can be up to 50 characters in length and can contain only letters, digits, periods (.), underscores (\_), and hyphens (-).
+        # The remarks. The remarks can be up to 50 characters in length and can contain only letters, digits, periods (.), underscores (_), and hyphens (-).
         self.remark = remark
 
     def validate(self):
@@ -31613,12 +31978,16 @@ class UpdateDnsGtmAccessStrategyRequest(TeaModel):
         # *   FAILOVER: the secondary address pool set
         self.access_mode = access_mode
         # The address pools in the primary address pool set.
+        # 
+        # This parameter is required.
         self.default_addr_pool = default_addr_pool
         # The type of the primary address pool. Valid values:
         # 
         # *   IPV4
         # *   IPV6
         # *   DOMAIN
+        # 
+        # This parameter is required.
         self.default_addr_pool_type = default_addr_pool_type
         # Specifies whether to enable Domain Name System (DNS) resolution with optimal latency for the primary address pool set. Valid values:
         # 
@@ -31633,6 +32002,8 @@ class UpdateDnsGtmAccessStrategyRequest(TeaModel):
         # The maximum number of addresses returned from the primary address pool set.
         self.default_max_return_addr_num = default_max_return_addr_num
         # The minimum number of available addresses in the primary address pool set.
+        # 
+        # This parameter is required.
         self.default_min_available_addr_num = default_min_available_addr_num
         # The address pools in the secondary address pool set. If no address pool exists in the secondary address pool set, set this parameter to EMPTY.
         self.failover_addr_pool = failover_addr_pool
@@ -31661,8 +32032,12 @@ class UpdateDnsGtmAccessStrategyRequest(TeaModel):
         # The line codes of the source regions. Example: `["default", "drpeng"]`, which indicates the global line and Dr. Peng Group line.
         self.lines = lines
         # The ID of the access policy.
+        # 
+        # This parameter is required.
         self.strategy_id = strategy_id
         # The name of the access policy.
+        # 
+        # This parameter is required.
         self.strategy_name = strategy_name
 
     def validate(self):
@@ -31852,6 +32227,8 @@ class UpdateDnsGtmAddressPoolRequestAddr(TeaModel):
         remark: str = None,
     ):
         # The address in the address pool.
+        # 
+        # This parameter is required.
         self.addr = addr
         # The source region of the address, in JSON-formatted string.
         # 
@@ -31872,6 +32249,8 @@ class UpdateDnsGtmAddressPoolRequestAddr(TeaModel):
         # *   SMART: smart return.
         # *   ONLINE: always online.
         # *   OFFLINE: always offline.
+        # 
+        # This parameter is required.
         self.mode = mode
         # The additional information about the address.
         self.remark = remark
@@ -31922,8 +32301,12 @@ class UpdateDnsGtmAddressPoolRequest(TeaModel):
         name: str = None,
     ):
         # The address pools.
+        # 
+        # This parameter is required.
         self.addr = addr
         # The ID of the address pool.
+        # 
+        # This parameter is required.
         self.addr_pool_id = addr_pool_id
         # The language of the values of specific response parameters. Default value: en. Valid values: en, zh, and ja.
         self.lang = lang
@@ -31931,6 +32314,8 @@ class UpdateDnsGtmAddressPoolRequest(TeaModel):
         # 
         # *   ALL_RR: returns all addresses.
         # *   RATIO: returns addresses by weight.
+        # 
+        # This parameter is required.
         self.lba_strategy = lba_strategy
         # The name of the address pool.
         self.name = name
@@ -32122,6 +32507,8 @@ class UpdateDnsGtmInstanceGlobalConfigRequest(TeaModel):
         # *   false: disables force update. If a conflict occurs, the system displays an alert. null: This valid value of ForceUpdate provides the same information as the false value.
         self.force_update = force_update
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The name of the instance. This parameter is required only for the first update.
         self.instance_name = instance_name
@@ -32336,10 +32723,14 @@ class UpdateDnsGtmMonitorRequest(TeaModel):
         # The health check interval. Unit: seconds.
         self.interval = interval
         # The monitored nodes.
+        # 
+        # This parameter is required.
         self.isp_city_node = isp_city_node
         # The language of the values of specific response parameters. Default value: en. Valid values: en, zh, and ja.
         self.lang = lang
         # The ID of the health check configuration.
+        # 
+        # This parameter is required.
         self.monitor_config_id = monitor_config_id
         # The extended information. The required parameters vary based on the health check protocol.
         # 
@@ -32388,6 +32779,8 @@ class UpdateDnsGtmMonitorRequest(TeaModel):
         # 
         #         *   IPV4
         #         *   IPV6
+        # 
+        # This parameter is required.
         self.monitor_extend_info = monitor_extend_info
         # The protocol used for the health check. Valid values:
         # 
@@ -32395,6 +32788,8 @@ class UpdateDnsGtmMonitorRequest(TeaModel):
         # *   HTTPS
         # *   PING
         # *   TCP
+        # 
+        # This parameter is required.
         self.protocol_type = protocol_type
         # The health check timeout period. Unit: milliseconds.
         self.timeout = timeout
@@ -32532,8 +32927,12 @@ class UpdateDomainGroupRequest(TeaModel):
         lang: str = None,
     ):
         # The ID of the domain name group.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The new name of the domain name group.
+        # 
+        # This parameter is required.
         self.group_name = group_name
         # The language.
         self.lang = lang
@@ -32677,8 +33076,12 @@ class UpdateDomainRecordRequest(TeaModel):
         # The hostname.
         # 
         # For example, if you want to resolve @.example.com, you must set RR to an at sign (@) instead of leaving it empty.
+        # 
+        # This parameter is required.
         self.rr = rr
         # The ID of the DNS record.
+        # 
+        # This parameter is required.
         self.record_id = record_id
         # The time-to-live (TTL) of the DNS record. Default value: 600. Unit: seconds.
         # 
@@ -32689,10 +33092,14 @@ class UpdateDomainRecordRequest(TeaModel):
         # The type of the DNS record. For more information, see
         # 
         # [DNS record types](https://www.alibabacloud.com/help/zh/doc-detail/29805.htm).
+        # 
+        # This parameter is required.
         self.type = type
         # The IP address of the client.
         self.user_client_ip = user_client_ip
         # The record value.
+        # 
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -32834,6 +33241,8 @@ class UpdateDomainRecordRemarkRequest(TeaModel):
         # The language.
         self.lang = lang
         # The ID of the DNS record.
+        # 
+        # This parameter is required.
         self.record_id = record_id
         # The description of the DNS record.
         self.remark = remark
@@ -32949,6 +33358,8 @@ class UpdateDomainRemarkRequest(TeaModel):
         remark: str = None,
     ):
         # The domain name that already exists in Alibaba Cloud DNS.
+        # 
+        # This parameter is required.
         self.domain_name = domain_name
         # The language.
         self.lang = lang
@@ -33071,6 +33482,8 @@ class UpdateGtmAccessStrategyRequest(TeaModel):
         # The language used by the user.
         self.lang = lang
         # The ID of the access policy that you want to query for the GTM instance.
+        # 
+        # This parameter is required.
         self.strategy_id = strategy_id
         # The name of the access policy.
         self.strategy_name = strategy_name
@@ -33240,8 +33653,11 @@ class UpdateGtmAddressPoolRequest(TeaModel):
         name: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.addr = addr
         # The ID of the address pool that you want to modify.
+        # 
+        # This parameter is required.
         self.addr_pool_id = addr_pool_id
         # The language used by the user.
         self.lang = lang
@@ -33250,6 +33666,8 @@ class UpdateGtmAddressPoolRequest(TeaModel):
         # The name of the address pool that you want to modify.
         self.name = name
         # The type of the address pool that you want to modify.
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -33394,6 +33812,8 @@ class UpdateGtmInstanceGlobalConfigRequest(TeaModel):
         # *   **CUSTOM**: custom CNAME
         self.cname_mode = cname_mode
         # The ID of the GTM instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The name of the GTM instance.
         # 
@@ -33590,10 +34010,14 @@ class UpdateGtmMonitorRequest(TeaModel):
         # The health check interval. Unit: seconds. Set the value to 60.
         self.interval = interval
         # The monitored nodes.
+        # 
+        # This parameter is required.
         self.isp_city_node = isp_city_node
         # The language of the values of specific response parameters.
         self.lang = lang
         # The ID of the health check configuration.
+        # 
+        # This parameter is required.
         self.monitor_config_id = monitor_config_id
         # The extended information, that is, the parameters required for the protocol. Different protocols require different parameters:
         # 
@@ -33615,8 +34039,12 @@ class UpdateGtmMonitorRequest(TeaModel):
         # 
         # *   port: the port to check.
         # *   failureRate: the failure rate.
+        # 
+        # This parameter is required.
         self.monitor_extend_info = monitor_extend_info
         # The protocol used for the health check.
+        # 
+        # This parameter is required.
         self.protocol_type = protocol_type
         # The health check timeout period. Unit: milliseconds. Valid values: 2000, 3000, 5000, and 10000.
         self.timeout = timeout
@@ -33762,6 +34190,8 @@ class UpdateGtmRecoveryPlanRequest(TeaModel):
         # The name of the disaster recovery plan.
         self.name = name
         # The ID of the disaster recovery plan.
+        # 
+        # This parameter is required.
         self.recovery_plan_id = recovery_plan_id
         # The remarks about the disaster recovery plan.
         self.remark = remark
@@ -33878,7 +34308,9 @@ class UpdateIspFlushCacheInstanceConfigRequest(TeaModel):
         instance_name: str = None,
         lang: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.instance_name = instance_name
         self.lang = lang
 
@@ -33988,10 +34420,15 @@ class ValidateDnsGtmCnameRrCanUseRequest(TeaModel):
         instance_id: str = None,
         lang: str = None,
     ):
+        # This parameter is required.
         self.cname_mode = cname_mode
+        # This parameter is required.
         self.cname_rr = cname_rr
+        # This parameter is required.
         self.cname_type = cname_type
+        # This parameter is required.
         self.cname_zone = cname_zone
+        # This parameter is required.
         self.instance_id = instance_id
         self.lang = lang
 
