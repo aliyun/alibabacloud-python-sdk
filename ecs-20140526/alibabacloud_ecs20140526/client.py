@@ -31508,17 +31508,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeSpotAdviceResponse:
         """
-        @summary Queries information such as the average release rate of preemptible instances and the percentage of the average preemptible instance price relative to the pay-as-you-go instance price in the last 30 days, and real-time discounts of preemptible instances in a specified region.
+        @summary Queries information about preemptible instances in a region in the previous 30 days. The information includes the average release rate of preemptible instances and the percentage of the average preemptible instance price relative to the pay-as-you-go instance price.
         
-        @description    You can call this operation to query information that is generated for preemptible instances in the last 30 days and select suitable instance types based on the query results. The information that you can query includes:
+        @description ## [](#)Usage notes
+        You can call this operation to query information about preemptible instances in the previous 30 days and select suitable instance types based on the query results. The information that you can query includes:
         Average release rate of preemptible instances
         Percentage of the average preemptible instance price relative to the pay-as-you-go instance price
         Average preemptible instance price that is calculated based on the preceding percentage
         This operation is applicable only to I/O optimized preemptible instances that reside in virtual private clouds (VPCs).
-        You can use one of the following methods to query information that is generated for preemptible instances in the last 30 days:
-        Configure `Cores` and `Memory` or `MinCores` and `MinMemory` to query information about an instance type that meets the specified vCPU and memory requirements.
-        Configure the `InstanceTypes.N` parameter to query information about a specified instance type.
-        Configure `Cores` and `Memory` or `MinCores` and `MinMemory`, and then configure `InstanceTypeFamily` or `InstanceFamilyLevel` to query information about an instance type that meets the specified vCPU and memory requirements within the specified instance family or at a specified instance family level.
+        You can use one of the following methods to query information about preemptible instances in the previous 30 days:
+        Configure the `Cores` and `Memory` parameters or the `MinCores` and `MinMemory` parameters to query information about instance types that meet the specified vCPU and memory requirements.
+        Configure the `InstanceTypes.N` parameter to query information about specified instance types.
+        Configure the `Cores` and `Memory` parameters or the `MinCores` and `MinMemory` parameters and then configure the `InstanceTypeFamily` or `InstanceFamilyLevel` parameter to query information about instance types that meet the specified vCPU and memory requirements within the specified instance family or at a specified instance family level.
         
         @param request: DescribeSpotAdviceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31581,17 +31582,18 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecs_20140526_models.DescribeSpotAdviceResponse:
         """
-        @summary Queries information such as the average release rate of preemptible instances and the percentage of the average preemptible instance price relative to the pay-as-you-go instance price in the last 30 days, and real-time discounts of preemptible instances in a specified region.
+        @summary Queries information about preemptible instances in a region in the previous 30 days. The information includes the average release rate of preemptible instances and the percentage of the average preemptible instance price relative to the pay-as-you-go instance price.
         
-        @description    You can call this operation to query information that is generated for preemptible instances in the last 30 days and select suitable instance types based on the query results. The information that you can query includes:
+        @description ## [](#)Usage notes
+        You can call this operation to query information about preemptible instances in the previous 30 days and select suitable instance types based on the query results. The information that you can query includes:
         Average release rate of preemptible instances
         Percentage of the average preemptible instance price relative to the pay-as-you-go instance price
         Average preemptible instance price that is calculated based on the preceding percentage
         This operation is applicable only to I/O optimized preemptible instances that reside in virtual private clouds (VPCs).
-        You can use one of the following methods to query information that is generated for preemptible instances in the last 30 days:
-        Configure `Cores` and `Memory` or `MinCores` and `MinMemory` to query information about an instance type that meets the specified vCPU and memory requirements.
-        Configure the `InstanceTypes.N` parameter to query information about a specified instance type.
-        Configure `Cores` and `Memory` or `MinCores` and `MinMemory`, and then configure `InstanceTypeFamily` or `InstanceFamilyLevel` to query information about an instance type that meets the specified vCPU and memory requirements within the specified instance family or at a specified instance family level.
+        You can use one of the following methods to query information about preemptible instances in the previous 30 days:
+        Configure the `Cores` and `Memory` parameters or the `MinCores` and `MinMemory` parameters to query information about instance types that meet the specified vCPU and memory requirements.
+        Configure the `InstanceTypes.N` parameter to query information about specified instance types.
+        Configure the `Cores` and `Memory` parameters or the `MinCores` and `MinMemory` parameters and then configure the `InstanceTypeFamily` or `InstanceFamilyLevel` parameter to query information about instance types that meet the specified vCPU and memory requirements within the specified instance family or at a specified instance family level.
         
         @param request: DescribeSpotAdviceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -31653,17 +31655,18 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeSpotAdviceRequest,
     ) -> ecs_20140526_models.DescribeSpotAdviceResponse:
         """
-        @summary Queries information such as the average release rate of preemptible instances and the percentage of the average preemptible instance price relative to the pay-as-you-go instance price in the last 30 days, and real-time discounts of preemptible instances in a specified region.
+        @summary Queries information about preemptible instances in a region in the previous 30 days. The information includes the average release rate of preemptible instances and the percentage of the average preemptible instance price relative to the pay-as-you-go instance price.
         
-        @description    You can call this operation to query information that is generated for preemptible instances in the last 30 days and select suitable instance types based on the query results. The information that you can query includes:
+        @description ## [](#)Usage notes
+        You can call this operation to query information about preemptible instances in the previous 30 days and select suitable instance types based on the query results. The information that you can query includes:
         Average release rate of preemptible instances
         Percentage of the average preemptible instance price relative to the pay-as-you-go instance price
         Average preemptible instance price that is calculated based on the preceding percentage
         This operation is applicable only to I/O optimized preemptible instances that reside in virtual private clouds (VPCs).
-        You can use one of the following methods to query information that is generated for preemptible instances in the last 30 days:
-        Configure `Cores` and `Memory` or `MinCores` and `MinMemory` to query information about an instance type that meets the specified vCPU and memory requirements.
-        Configure the `InstanceTypes.N` parameter to query information about a specified instance type.
-        Configure `Cores` and `Memory` or `MinCores` and `MinMemory`, and then configure `InstanceTypeFamily` or `InstanceFamilyLevel` to query information about an instance type that meets the specified vCPU and memory requirements within the specified instance family or at a specified instance family level.
+        You can use one of the following methods to query information about preemptible instances in the previous 30 days:
+        Configure the `Cores` and `Memory` parameters or the `MinCores` and `MinMemory` parameters to query information about instance types that meet the specified vCPU and memory requirements.
+        Configure the `InstanceTypes.N` parameter to query information about specified instance types.
+        Configure the `Cores` and `Memory` parameters or the `MinCores` and `MinMemory` parameters and then configure the `InstanceTypeFamily` or `InstanceFamilyLevel` parameter to query information about instance types that meet the specified vCPU and memory requirements within the specified instance family or at a specified instance family level.
         
         @param request: DescribeSpotAdviceRequest
         @return: DescribeSpotAdviceResponse
@@ -31676,17 +31679,18 @@ class Client(OpenApiClient):
         request: ecs_20140526_models.DescribeSpotAdviceRequest,
     ) -> ecs_20140526_models.DescribeSpotAdviceResponse:
         """
-        @summary Queries information such as the average release rate of preemptible instances and the percentage of the average preemptible instance price relative to the pay-as-you-go instance price in the last 30 days, and real-time discounts of preemptible instances in a specified region.
+        @summary Queries information about preemptible instances in a region in the previous 30 days. The information includes the average release rate of preemptible instances and the percentage of the average preemptible instance price relative to the pay-as-you-go instance price.
         
-        @description    You can call this operation to query information that is generated for preemptible instances in the last 30 days and select suitable instance types based on the query results. The information that you can query includes:
+        @description ## [](#)Usage notes
+        You can call this operation to query information about preemptible instances in the previous 30 days and select suitable instance types based on the query results. The information that you can query includes:
         Average release rate of preemptible instances
         Percentage of the average preemptible instance price relative to the pay-as-you-go instance price
         Average preemptible instance price that is calculated based on the preceding percentage
         This operation is applicable only to I/O optimized preemptible instances that reside in virtual private clouds (VPCs).
-        You can use one of the following methods to query information that is generated for preemptible instances in the last 30 days:
-        Configure `Cores` and `Memory` or `MinCores` and `MinMemory` to query information about an instance type that meets the specified vCPU and memory requirements.
-        Configure the `InstanceTypes.N` parameter to query information about a specified instance type.
-        Configure `Cores` and `Memory` or `MinCores` and `MinMemory`, and then configure `InstanceTypeFamily` or `InstanceFamilyLevel` to query information about an instance type that meets the specified vCPU and memory requirements within the specified instance family or at a specified instance family level.
+        You can use one of the following methods to query information about preemptible instances in the previous 30 days:
+        Configure the `Cores` and `Memory` parameters or the `MinCores` and `MinMemory` parameters to query information about instance types that meet the specified vCPU and memory requirements.
+        Configure the `InstanceTypes.N` parameter to query information about specified instance types.
+        Configure the `Cores` and `Memory` parameters or the `MinCores` and `MinMemory` parameters and then configure the `InstanceTypeFamily` or `InstanceFamilyLevel` parameter to query information about instance types that meet the specified vCPU and memory requirements within the specified instance family or at a specified instance family level.
         
         @param request: DescribeSpotAdviceRequest
         @return: DescribeSpotAdviceResponse
