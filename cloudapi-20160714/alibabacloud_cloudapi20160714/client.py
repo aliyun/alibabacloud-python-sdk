@@ -9753,6 +9753,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_app_attributes_with_options_async(request, runtime)
 
+    def describe_app_securities_with_options(
+        self,
+        request: cloud_api20160714_models.DescribeAppSecuritiesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DescribeAppSecuritiesResponse:
+        """
+        @summary 查询APP的密钥信息
+        
+        @param request: DescribeAppSecuritiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppSecuritiesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAppSecurities',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.DescribeAppSecuritiesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_app_securities_with_options_async(
+        self,
+        request: cloud_api20160714_models.DescribeAppSecuritiesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DescribeAppSecuritiesResponse:
+        """
+        @summary 查询APP的密钥信息
+        
+        @param request: DescribeAppSecuritiesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppSecuritiesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.app_id):
+            query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeAppSecurities',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.DescribeAppSecuritiesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_app_securities(
+        self,
+        request: cloud_api20160714_models.DescribeAppSecuritiesRequest,
+    ) -> cloud_api20160714_models.DescribeAppSecuritiesResponse:
+        """
+        @summary 查询APP的密钥信息
+        
+        @param request: DescribeAppSecuritiesRequest
+        @return: DescribeAppSecuritiesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_app_securities_with_options(request, runtime)
+
+    async def describe_app_securities_async(
+        self,
+        request: cloud_api20160714_models.DescribeAppSecuritiesRequest,
+    ) -> cloud_api20160714_models.DescribeAppSecuritiesResponse:
+        """
+        @summary 查询APP的密钥信息
+        
+        @param request: DescribeAppSecuritiesRequest
+        @return: DescribeAppSecuritiesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_app_securities_with_options_async(request, runtime)
+
     def describe_app_security_with_options(
         self,
         request: cloud_api20160714_models.DescribeAppSecurityRequest,

@@ -19528,6 +19528,202 @@ class DescribeAppAttributesResponse(TeaModel):
         return self
 
 
+class DescribeAppSecuritiesRequest(TeaModel):
+    def __init__(
+        self,
+        app_id: int = None,
+        security_token: str = None,
+    ):
+        # This parameter is required.
+        self.app_id = app_id
+        self.security_token = security_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_id is not None:
+            result['AppId'] = self.app_id
+        if self.security_token is not None:
+            result['SecurityToken'] = self.security_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppId') is not None:
+            self.app_id = m.get('AppId')
+        if m.get('SecurityToken') is not None:
+            self.security_token = m.get('SecurityToken')
+        return self
+
+
+class DescribeAppSecuritiesResponseBodyAppSecuritysAppSecurity(TeaModel):
+    def __init__(
+        self,
+        app_code: str = None,
+        app_key: str = None,
+        app_secret: str = None,
+        created_time: str = None,
+        modified_time: str = None,
+    ):
+        self.app_code = app_code
+        self.app_key = app_key
+        self.app_secret = app_secret
+        self.created_time = created_time
+        self.modified_time = modified_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_code is not None:
+            result['AppCode'] = self.app_code
+        if self.app_key is not None:
+            result['AppKey'] = self.app_key
+        if self.app_secret is not None:
+            result['AppSecret'] = self.app_secret
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppCode') is not None:
+            self.app_code = m.get('AppCode')
+        if m.get('AppKey') is not None:
+            self.app_key = m.get('AppKey')
+        if m.get('AppSecret') is not None:
+            self.app_secret = m.get('AppSecret')
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+        return self
+
+
+class DescribeAppSecuritiesResponseBodyAppSecuritys(TeaModel):
+    def __init__(
+        self,
+        app_security: List[DescribeAppSecuritiesResponseBodyAppSecuritysAppSecurity] = None,
+    ):
+        self.app_security = app_security
+
+    def validate(self):
+        if self.app_security:
+            for k in self.app_security:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AppSecurity'] = []
+        if self.app_security is not None:
+            for k in self.app_security:
+                result['AppSecurity'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.app_security = []
+        if m.get('AppSecurity') is not None:
+            for k in m.get('AppSecurity'):
+                temp_model = DescribeAppSecuritiesResponseBodyAppSecuritysAppSecurity()
+                self.app_security.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeAppSecuritiesResponseBody(TeaModel):
+    def __init__(
+        self,
+        app_securitys: DescribeAppSecuritiesResponseBodyAppSecuritys = None,
+        request_id: str = None,
+    ):
+        self.app_securitys = app_securitys
+        self.request_id = request_id
+
+    def validate(self):
+        if self.app_securitys:
+            self.app_securitys.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.app_securitys is not None:
+            result['AppSecuritys'] = self.app_securitys.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AppSecuritys') is not None:
+            temp_model = DescribeAppSecuritiesResponseBodyAppSecuritys()
+            self.app_securitys = temp_model.from_map(m['AppSecuritys'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeAppSecuritiesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeAppSecuritiesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeAppSecuritiesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeAppSecurityRequestTag(TeaModel):
     def __init__(
         self,
