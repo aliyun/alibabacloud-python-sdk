@@ -46,6 +46,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.AddRecordTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.AddRecordTemplateResponse:
+        """
+        @param request: AddRecordTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddRecordTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -110,6 +115,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.AddRecordTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.AddRecordTemplateResponse:
+        """
+        @param request: AddRecordTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddRecordTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -173,6 +183,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.AddRecordTemplateRequest,
     ) -> rtc_20180111_models.AddRecordTemplateResponse:
+        """
+        @param request: AddRecordTemplateRequest
+        @return: AddRecordTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_record_template_with_options(request, runtime)
 
@@ -180,6 +194,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.AddRecordTemplateRequest,
     ) -> rtc_20180111_models.AddRecordTemplateResponse:
+        """
+        @param request: AddRecordTemplateRequest
+        @return: AddRecordTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_record_template_with_options_async(request, runtime)
 
@@ -188,6 +206,13 @@ class Client(OpenApiClient):
         tmp_req: rtc_20180111_models.CreateAppStreamingOutTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.CreateAppStreamingOutTemplateResponse:
+        """
+        @summary 创建应用推流模版
+        
+        @param tmp_req: CreateAppStreamingOutTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppStreamingOutTemplateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = rtc_20180111_models.CreateAppStreamingOutTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -222,6 +247,13 @@ class Client(OpenApiClient):
         tmp_req: rtc_20180111_models.CreateAppStreamingOutTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.CreateAppStreamingOutTemplateResponse:
+        """
+        @summary 创建应用推流模版
+        
+        @param tmp_req: CreateAppStreamingOutTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppStreamingOutTemplateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = rtc_20180111_models.CreateAppStreamingOutTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -255,6 +287,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.CreateAppStreamingOutTemplateRequest,
     ) -> rtc_20180111_models.CreateAppStreamingOutTemplateResponse:
+        """
+        @summary 创建应用推流模版
+        
+        @param request: CreateAppStreamingOutTemplateRequest
+        @return: CreateAppStreamingOutTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_app_streaming_out_template_with_options(request, runtime)
 
@@ -262,6 +300,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.CreateAppStreamingOutTemplateRequest,
     ) -> rtc_20180111_models.CreateAppStreamingOutTemplateResponse:
+        """
+        @summary 创建应用推流模版
+        
+        @param request: CreateAppStreamingOutTemplateRequest
+        @return: CreateAppStreamingOutTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_app_streaming_out_template_with_options_async(request, runtime)
 
@@ -270,6 +314,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.CreateAutoLiveStreamRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.CreateAutoLiveStreamRuleResponse:
+        """
+        @param request: CreateAutoLiveStreamRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAutoLiveStreamRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -312,6 +361,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.CreateAutoLiveStreamRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.CreateAutoLiveStreamRuleResponse:
+        """
+        @param request: CreateAutoLiveStreamRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAutoLiveStreamRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -353,6 +407,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.CreateAutoLiveStreamRuleRequest,
     ) -> rtc_20180111_models.CreateAutoLiveStreamRuleResponse:
+        """
+        @param request: CreateAutoLiveStreamRuleRequest
+        @return: CreateAutoLiveStreamRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_auto_live_stream_rule_with_options(request, runtime)
 
@@ -360,6 +418,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.CreateAutoLiveStreamRuleRequest,
     ) -> rtc_20180111_models.CreateAutoLiveStreamRuleResponse:
+        """
+        @param request: CreateAutoLiveStreamRuleRequest
+        @return: CreateAutoLiveStreamRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_auto_live_stream_rule_with_options_async(request, runtime)
 
@@ -368,6 +430,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.CreateEventSubscribeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.CreateEventSubscribeResponse:
+        """
+        @param request: CreateEventSubscribeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEventSubscribeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -412,6 +479,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.CreateEventSubscribeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.CreateEventSubscribeResponse:
+        """
+        @param request: CreateEventSubscribeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEventSubscribeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -455,6 +527,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.CreateEventSubscribeRequest,
     ) -> rtc_20180111_models.CreateEventSubscribeResponse:
+        """
+        @param request: CreateEventSubscribeRequest
+        @return: CreateEventSubscribeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_event_subscribe_with_options(request, runtime)
 
@@ -462,6 +538,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.CreateEventSubscribeRequest,
     ) -> rtc_20180111_models.CreateEventSubscribeResponse:
+        """
+        @param request: CreateEventSubscribeRequest
+        @return: CreateEventSubscribeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_event_subscribe_with_options_async(request, runtime)
 
@@ -470,6 +550,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.CreateMPULayoutRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.CreateMPULayoutResponse:
+        """
+        @param request: CreateMPULayoutRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMPULayoutResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -506,6 +591,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.CreateMPULayoutRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.CreateMPULayoutResponse:
+        """
+        @param request: CreateMPULayoutRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMPULayoutResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -541,6 +631,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.CreateMPULayoutRequest,
     ) -> rtc_20180111_models.CreateMPULayoutResponse:
+        """
+        @param request: CreateMPULayoutRequest
+        @return: CreateMPULayoutResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_mpulayout_with_options(request, runtime)
 
@@ -548,6 +642,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.CreateMPULayoutRequest,
     ) -> rtc_20180111_models.CreateMPULayoutResponse:
+        """
+        @param request: CreateMPULayoutRequest
+        @return: CreateMPULayoutResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_mpulayout_with_options_async(request, runtime)
 
@@ -556,6 +654,13 @@ class Client(OpenApiClient):
         tmp_req: rtc_20180111_models.DeleteAppStreamingOutTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DeleteAppStreamingOutTemplateResponse:
+        """
+        @summary 删除应用推流模版
+        
+        @param tmp_req: DeleteAppStreamingOutTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAppStreamingOutTemplateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = rtc_20180111_models.DeleteAppStreamingOutTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -590,6 +695,13 @@ class Client(OpenApiClient):
         tmp_req: rtc_20180111_models.DeleteAppStreamingOutTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DeleteAppStreamingOutTemplateResponse:
+        """
+        @summary 删除应用推流模版
+        
+        @param tmp_req: DeleteAppStreamingOutTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAppStreamingOutTemplateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = rtc_20180111_models.DeleteAppStreamingOutTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -623,6 +735,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DeleteAppStreamingOutTemplateRequest,
     ) -> rtc_20180111_models.DeleteAppStreamingOutTemplateResponse:
+        """
+        @summary 删除应用推流模版
+        
+        @param request: DeleteAppStreamingOutTemplateRequest
+        @return: DeleteAppStreamingOutTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_app_streaming_out_template_with_options(request, runtime)
 
@@ -630,6 +748,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DeleteAppStreamingOutTemplateRequest,
     ) -> rtc_20180111_models.DeleteAppStreamingOutTemplateResponse:
+        """
+        @summary 删除应用推流模版
+        
+        @param request: DeleteAppStreamingOutTemplateRequest
+        @return: DeleteAppStreamingOutTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_app_streaming_out_template_with_options_async(request, runtime)
 
@@ -638,6 +762,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DeleteAutoLiveStreamRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DeleteAutoLiveStreamRuleResponse:
+        """
+        @param request: DeleteAutoLiveStreamRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAutoLiveStreamRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -670,6 +799,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DeleteAutoLiveStreamRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DeleteAutoLiveStreamRuleResponse:
+        """
+        @param request: DeleteAutoLiveStreamRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAutoLiveStreamRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -701,6 +835,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DeleteAutoLiveStreamRuleRequest,
     ) -> rtc_20180111_models.DeleteAutoLiveStreamRuleResponse:
+        """
+        @param request: DeleteAutoLiveStreamRuleRequest
+        @return: DeleteAutoLiveStreamRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_auto_live_stream_rule_with_options(request, runtime)
 
@@ -708,6 +846,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DeleteAutoLiveStreamRuleRequest,
     ) -> rtc_20180111_models.DeleteAutoLiveStreamRuleResponse:
+        """
+        @param request: DeleteAutoLiveStreamRuleRequest
+        @return: DeleteAutoLiveStreamRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_auto_live_stream_rule_with_options_async(request, runtime)
 
@@ -716,6 +858,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DeleteChannelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DeleteChannelResponse:
+        """
+        @param request: DeleteChannelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteChannelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -748,6 +895,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DeleteChannelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DeleteChannelResponse:
+        """
+        @param request: DeleteChannelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteChannelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -779,6 +931,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DeleteChannelRequest,
     ) -> rtc_20180111_models.DeleteChannelResponse:
+        """
+        @param request: DeleteChannelRequest
+        @return: DeleteChannelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_channel_with_options(request, runtime)
 
@@ -786,6 +942,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DeleteChannelRequest,
     ) -> rtc_20180111_models.DeleteChannelResponse:
+        """
+        @param request: DeleteChannelRequest
+        @return: DeleteChannelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_channel_with_options_async(request, runtime)
 
@@ -794,6 +954,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DeleteEventSubscribeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DeleteEventSubscribeResponse:
+        """
+        @param request: DeleteEventSubscribeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEventSubscribeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -826,6 +991,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DeleteEventSubscribeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DeleteEventSubscribeResponse:
+        """
+        @param request: DeleteEventSubscribeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEventSubscribeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -857,6 +1027,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DeleteEventSubscribeRequest,
     ) -> rtc_20180111_models.DeleteEventSubscribeResponse:
+        """
+        @param request: DeleteEventSubscribeRequest
+        @return: DeleteEventSubscribeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_event_subscribe_with_options(request, runtime)
 
@@ -864,6 +1038,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DeleteEventSubscribeRequest,
     ) -> rtc_20180111_models.DeleteEventSubscribeResponse:
+        """
+        @param request: DeleteEventSubscribeRequest
+        @return: DeleteEventSubscribeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_event_subscribe_with_options_async(request, runtime)
 
@@ -872,6 +1050,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DeleteMPULayoutRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DeleteMPULayoutResponse:
+        """
+        @param request: DeleteMPULayoutRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMPULayoutResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -904,6 +1087,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DeleteMPULayoutRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DeleteMPULayoutResponse:
+        """
+        @param request: DeleteMPULayoutRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMPULayoutResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -935,6 +1123,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DeleteMPULayoutRequest,
     ) -> rtc_20180111_models.DeleteMPULayoutResponse:
+        """
+        @param request: DeleteMPULayoutRequest
+        @return: DeleteMPULayoutResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_mpulayout_with_options(request, runtime)
 
@@ -942,6 +1134,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DeleteMPULayoutRequest,
     ) -> rtc_20180111_models.DeleteMPULayoutResponse:
+        """
+        @param request: DeleteMPULayoutRequest
+        @return: DeleteMPULayoutResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_mpulayout_with_options_async(request, runtime)
 
@@ -950,6 +1146,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DeleteRecordTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DeleteRecordTemplateResponse:
+        """
+        @param request: DeleteRecordTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRecordTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -982,6 +1183,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DeleteRecordTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DeleteRecordTemplateResponse:
+        """
+        @param request: DeleteRecordTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRecordTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1013,6 +1219,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DeleteRecordTemplateRequest,
     ) -> rtc_20180111_models.DeleteRecordTemplateResponse:
+        """
+        @param request: DeleteRecordTemplateRequest
+        @return: DeleteRecordTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_record_template_with_options(request, runtime)
 
@@ -1020,6 +1230,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DeleteRecordTemplateRequest,
     ) -> rtc_20180111_models.DeleteRecordTemplateResponse:
+        """
+        @param request: DeleteRecordTemplateRequest
+        @return: DeleteRecordTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_record_template_with_options_async(request, runtime)
 
@@ -1028,6 +1242,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeAppKeyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeAppKeyResponse:
+        """
+        @summary 查看AppKey
+        
+        @param request: DescribeAppKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1058,6 +1279,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeAppKeyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeAppKeyResponse:
+        """
+        @summary 查看AppKey
+        
+        @param request: DescribeAppKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1087,6 +1315,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeAppKeyRequest,
     ) -> rtc_20180111_models.DescribeAppKeyResponse:
+        """
+        @summary 查看AppKey
+        
+        @param request: DescribeAppKeyRequest
+        @return: DescribeAppKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_app_key_with_options(request, runtime)
 
@@ -1094,6 +1328,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeAppKeyRequest,
     ) -> rtc_20180111_models.DescribeAppKeyResponse:
+        """
+        @summary 查看AppKey
+        
+        @param request: DescribeAppKeyRequest
+        @return: DescribeAppKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_app_key_with_options_async(request, runtime)
 
@@ -1102,6 +1342,13 @@ class Client(OpenApiClient):
         tmp_req: rtc_20180111_models.DescribeAppStreamingOutTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeAppStreamingOutTemplatesResponse:
+        """
+        @summary 应用推流模版列表
+        
+        @param tmp_req: DescribeAppStreamingOutTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppStreamingOutTemplatesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = rtc_20180111_models.DescribeAppStreamingOutTemplatesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1140,6 +1387,13 @@ class Client(OpenApiClient):
         tmp_req: rtc_20180111_models.DescribeAppStreamingOutTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeAppStreamingOutTemplatesResponse:
+        """
+        @summary 应用推流模版列表
+        
+        @param tmp_req: DescribeAppStreamingOutTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppStreamingOutTemplatesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = rtc_20180111_models.DescribeAppStreamingOutTemplatesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1177,6 +1431,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeAppStreamingOutTemplatesRequest,
     ) -> rtc_20180111_models.DescribeAppStreamingOutTemplatesResponse:
+        """
+        @summary 应用推流模版列表
+        
+        @param request: DescribeAppStreamingOutTemplatesRequest
+        @return: DescribeAppStreamingOutTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_app_streaming_out_templates_with_options(request, runtime)
 
@@ -1184,6 +1444,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeAppStreamingOutTemplatesRequest,
     ) -> rtc_20180111_models.DescribeAppStreamingOutTemplatesResponse:
+        """
+        @summary 应用推流模版列表
+        
+        @param request: DescribeAppStreamingOutTemplatesRequest
+        @return: DescribeAppStreamingOutTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_app_streaming_out_templates_with_options_async(request, runtime)
 
@@ -1192,10 +1458,19 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeAppsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeAppsResponse:
+        """
+        @summary App列表
+        
+        @param request: DescribeAppsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_version):
+            query['AppVersion'] = request.app_version
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
         if not UtilClient.is_unset(request.owner_id):
@@ -1230,10 +1505,19 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeAppsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeAppsResponse:
+        """
+        @summary App列表
+        
+        @param request: DescribeAppsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAppsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
             query['AppId'] = request.app_id
+        if not UtilClient.is_unset(request.app_version):
+            query['AppVersion'] = request.app_version
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
         if not UtilClient.is_unset(request.owner_id):
@@ -1267,6 +1551,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeAppsRequest,
     ) -> rtc_20180111_models.DescribeAppsResponse:
+        """
+        @summary App列表
+        
+        @param request: DescribeAppsRequest
+        @return: DescribeAppsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_apps_with_options(request, runtime)
 
@@ -1274,6 +1564,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeAppsRequest,
     ) -> rtc_20180111_models.DescribeAppsResponse:
+        """
+        @summary App列表
+        
+        @param request: DescribeAppsRequest
+        @return: DescribeAppsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_apps_with_options_async(request, runtime)
 
@@ -1282,6 +1578,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeAutoLiveStreamRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeAutoLiveStreamRuleResponse:
+        """
+        @param request: DescribeAutoLiveStreamRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAutoLiveStreamRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1312,6 +1613,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeAutoLiveStreamRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeAutoLiveStreamRuleResponse:
+        """
+        @param request: DescribeAutoLiveStreamRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAutoLiveStreamRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1341,6 +1647,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeAutoLiveStreamRuleRequest,
     ) -> rtc_20180111_models.DescribeAutoLiveStreamRuleResponse:
+        """
+        @param request: DescribeAutoLiveStreamRuleRequest
+        @return: DescribeAutoLiveStreamRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_auto_live_stream_rule_with_options(request, runtime)
 
@@ -1348,6 +1658,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeAutoLiveStreamRuleRequest,
     ) -> rtc_20180111_models.DescribeAutoLiveStreamRuleResponse:
+        """
+        @param request: DescribeAutoLiveStreamRuleRequest
+        @return: DescribeAutoLiveStreamRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_auto_live_stream_rule_with_options_async(request, runtime)
 
@@ -1356,6 +1670,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeCallResponse:
+        """
+        @summary 调用DescribeCall获取单次通信详情。
+        
+        @param request: DescribeCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1394,6 +1715,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeCallRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeCallResponse:
+        """
+        @summary 调用DescribeCall获取单次通信详情。
+        
+        @param request: DescribeCallRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCallResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1431,6 +1759,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeCallRequest,
     ) -> rtc_20180111_models.DescribeCallResponse:
+        """
+        @summary 调用DescribeCall获取单次通信详情。
+        
+        @param request: DescribeCallRequest
+        @return: DescribeCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_call_with_options(request, runtime)
 
@@ -1438,6 +1772,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeCallRequest,
     ) -> rtc_20180111_models.DescribeCallResponse:
+        """
+        @summary 调用DescribeCall获取单次通信详情。
+        
+        @param request: DescribeCallRequest
+        @return: DescribeCallResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_call_with_options_async(request, runtime)
 
@@ -1446,6 +1786,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeCallListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeCallListResponse:
+        """
+        @summary 调用DescribeCallList分页查询时间范围内创建的通信信息。
+        
+        @param request: DescribeCallListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCallListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1492,6 +1839,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeCallListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeCallListResponse:
+        """
+        @summary 调用DescribeCallList分页查询时间范围内创建的通信信息。
+        
+        @param request: DescribeCallListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCallListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1537,6 +1891,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeCallListRequest,
     ) -> rtc_20180111_models.DescribeCallListResponse:
+        """
+        @summary 调用DescribeCallList分页查询时间范围内创建的通信信息。
+        
+        @param request: DescribeCallListRequest
+        @return: DescribeCallListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_call_list_with_options(request, runtime)
 
@@ -1544,6 +1904,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeCallListRequest,
     ) -> rtc_20180111_models.DescribeCallListResponse:
+        """
+        @summary 调用DescribeCallList分页查询时间范围内创建的通信信息。
+        
+        @param request: DescribeCallListRequest
+        @return: DescribeCallListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_call_list_with_options_async(request, runtime)
 
@@ -1552,6 +1918,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeChannelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeChannelResponse:
+        """
+        @summary DescribeChannel
+        
+        @param request: DescribeChannelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeChannelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1582,6 +1955,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeChannelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeChannelResponse:
+        """
+        @summary DescribeChannel
+        
+        @param request: DescribeChannelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeChannelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1611,6 +1991,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeChannelRequest,
     ) -> rtc_20180111_models.DescribeChannelResponse:
+        """
+        @summary DescribeChannel
+        
+        @param request: DescribeChannelRequest
+        @return: DescribeChannelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_channel_with_options(request, runtime)
 
@@ -1618,6 +2004,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeChannelRequest,
     ) -> rtc_20180111_models.DescribeChannelResponse:
+        """
+        @summary DescribeChannel
+        
+        @param request: DescribeChannelRequest
+        @return: DescribeChannelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_channel_with_options_async(request, runtime)
 
@@ -1626,6 +2018,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeChannelAllUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeChannelAllUsersResponse:
+        """
+        @summary 查询频道的所有参会者
+        
+        @param request: DescribeChannelAllUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeChannelAllUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1656,6 +2055,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeChannelAllUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeChannelAllUsersResponse:
+        """
+        @summary 查询频道的所有参会者
+        
+        @param request: DescribeChannelAllUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeChannelAllUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1685,6 +2091,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeChannelAllUsersRequest,
     ) -> rtc_20180111_models.DescribeChannelAllUsersResponse:
+        """
+        @summary 查询频道的所有参会者
+        
+        @param request: DescribeChannelAllUsersRequest
+        @return: DescribeChannelAllUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_channel_all_users_with_options(request, runtime)
 
@@ -1692,6 +2104,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeChannelAllUsersRequest,
     ) -> rtc_20180111_models.DescribeChannelAllUsersResponse:
+        """
+        @summary 查询频道的所有参会者
+        
+        @param request: DescribeChannelAllUsersRequest
+        @return: DescribeChannelAllUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_channel_all_users_with_options_async(request, runtime)
 
@@ -1700,6 +2118,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeChannelAreaDistributionStatDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeChannelAreaDistributionStatDataResponse:
+        """
+        @summary 调用DescribeChannelAreaDistributionStatData获取频道地区分布统计数据。
+        
+        @param request: DescribeChannelAreaDistributionStatDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeChannelAreaDistributionStatDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1736,6 +2161,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeChannelAreaDistributionStatDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeChannelAreaDistributionStatDataResponse:
+        """
+        @summary 调用DescribeChannelAreaDistributionStatData获取频道地区分布统计数据。
+        
+        @param request: DescribeChannelAreaDistributionStatDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeChannelAreaDistributionStatDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1771,6 +2203,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeChannelAreaDistributionStatDataRequest,
     ) -> rtc_20180111_models.DescribeChannelAreaDistributionStatDataResponse:
+        """
+        @summary 调用DescribeChannelAreaDistributionStatData获取频道地区分布统计数据。
+        
+        @param request: DescribeChannelAreaDistributionStatDataRequest
+        @return: DescribeChannelAreaDistributionStatDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_channel_area_distribution_stat_data_with_options(request, runtime)
 
@@ -1778,6 +2216,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeChannelAreaDistributionStatDataRequest,
     ) -> rtc_20180111_models.DescribeChannelAreaDistributionStatDataResponse:
+        """
+        @summary 调用DescribeChannelAreaDistributionStatData获取频道地区分布统计数据。
+        
+        @param request: DescribeChannelAreaDistributionStatDataRequest
+        @return: DescribeChannelAreaDistributionStatDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_channel_area_distribution_stat_data_with_options_async(request, runtime)
 
@@ -1786,6 +2230,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeChannelDistributionStatDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeChannelDistributionStatDataResponse:
+        """
+        @summary 调用DescribeChannelDistributionStatData获取频道分布统计数据。
+        
+        @param request: DescribeChannelDistributionStatDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeChannelDistributionStatDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1822,6 +2273,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeChannelDistributionStatDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeChannelDistributionStatDataResponse:
+        """
+        @summary 调用DescribeChannelDistributionStatData获取频道分布统计数据。
+        
+        @param request: DescribeChannelDistributionStatDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeChannelDistributionStatDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1857,6 +2315,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeChannelDistributionStatDataRequest,
     ) -> rtc_20180111_models.DescribeChannelDistributionStatDataResponse:
+        """
+        @summary 调用DescribeChannelDistributionStatData获取频道分布统计数据。
+        
+        @param request: DescribeChannelDistributionStatDataRequest
+        @return: DescribeChannelDistributionStatDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_channel_distribution_stat_data_with_options(request, runtime)
 
@@ -1864,6 +2328,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeChannelDistributionStatDataRequest,
     ) -> rtc_20180111_models.DescribeChannelDistributionStatDataResponse:
+        """
+        @summary 调用DescribeChannelDistributionStatData获取频道分布统计数据。
+        
+        @param request: DescribeChannelDistributionStatDataRequest
+        @return: DescribeChannelDistributionStatDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_channel_distribution_stat_data_with_options_async(request, runtime)
 
@@ -1872,6 +2342,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeChannelOverallDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeChannelOverallDataResponse:
+        """
+        @summary 调用DescribeChannelOverallData查询频道概览数据。
+        
+        @param request: DescribeChannelOverallDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeChannelOverallDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1906,6 +2383,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeChannelOverallDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeChannelOverallDataResponse:
+        """
+        @summary 调用DescribeChannelOverallData查询频道概览数据。
+        
+        @param request: DescribeChannelOverallDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeChannelOverallDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1939,6 +2423,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeChannelOverallDataRequest,
     ) -> rtc_20180111_models.DescribeChannelOverallDataResponse:
+        """
+        @summary 调用DescribeChannelOverallData查询频道概览数据。
+        
+        @param request: DescribeChannelOverallDataRequest
+        @return: DescribeChannelOverallDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_channel_overall_data_with_options(request, runtime)
 
@@ -1946,6 +2436,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeChannelOverallDataRequest,
     ) -> rtc_20180111_models.DescribeChannelOverallDataResponse:
+        """
+        @summary 调用DescribeChannelOverallData查询频道概览数据。
+        
+        @param request: DescribeChannelOverallDataRequest
+        @return: DescribeChannelOverallDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_channel_overall_data_with_options_async(request, runtime)
 
@@ -1954,6 +2450,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeChannelParticipantsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeChannelParticipantsResponse:
+        """
+        @param request: DescribeChannelParticipantsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeChannelParticipantsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1992,6 +2493,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeChannelParticipantsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeChannelParticipantsResponse:
+        """
+        @param request: DescribeChannelParticipantsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeChannelParticipantsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2029,6 +2535,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeChannelParticipantsRequest,
     ) -> rtc_20180111_models.DescribeChannelParticipantsResponse:
+        """
+        @param request: DescribeChannelParticipantsRequest
+        @return: DescribeChannelParticipantsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_channel_participants_with_options(request, runtime)
 
@@ -2036,6 +2546,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeChannelParticipantsRequest,
     ) -> rtc_20180111_models.DescribeChannelParticipantsResponse:
+        """
+        @param request: DescribeChannelParticipantsRequest
+        @return: DescribeChannelParticipantsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_channel_participants_with_options_async(request, runtime)
 
@@ -2044,6 +2558,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeChannelTopPubUserListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeChannelTopPubUserListResponse:
+        """
+        @summary 调用DescribeChannelTopPubUserList获取频道内发布端的用户列表（按用户在线时长降序）。
+        
+        @param request: DescribeChannelTopPubUserListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeChannelTopPubUserListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2078,6 +2599,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeChannelTopPubUserListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeChannelTopPubUserListResponse:
+        """
+        @summary 调用DescribeChannelTopPubUserList获取频道内发布端的用户列表（按用户在线时长降序）。
+        
+        @param request: DescribeChannelTopPubUserListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeChannelTopPubUserListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2111,6 +2639,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeChannelTopPubUserListRequest,
     ) -> rtc_20180111_models.DescribeChannelTopPubUserListResponse:
+        """
+        @summary 调用DescribeChannelTopPubUserList获取频道内发布端的用户列表（按用户在线时长降序）。
+        
+        @param request: DescribeChannelTopPubUserListRequest
+        @return: DescribeChannelTopPubUserListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_channel_top_pub_user_list_with_options(request, runtime)
 
@@ -2118,6 +2652,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeChannelTopPubUserListRequest,
     ) -> rtc_20180111_models.DescribeChannelTopPubUserListResponse:
+        """
+        @summary 调用DescribeChannelTopPubUserList获取频道内发布端的用户列表（按用户在线时长降序）。
+        
+        @param request: DescribeChannelTopPubUserListRequest
+        @return: DescribeChannelTopPubUserListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_channel_top_pub_user_list_with_options_async(request, runtime)
 
@@ -2126,6 +2666,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeChannelUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeChannelUserResponse:
+        """
+        @summary DescribeChannelUser
+        
+        @param request: DescribeChannelUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeChannelUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2158,6 +2705,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeChannelUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeChannelUserResponse:
+        """
+        @summary DescribeChannelUser
+        
+        @param request: DescribeChannelUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeChannelUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2189,6 +2743,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeChannelUserRequest,
     ) -> rtc_20180111_models.DescribeChannelUserResponse:
+        """
+        @summary DescribeChannelUser
+        
+        @param request: DescribeChannelUserRequest
+        @return: DescribeChannelUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_channel_user_with_options(request, runtime)
 
@@ -2196,6 +2756,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeChannelUserRequest,
     ) -> rtc_20180111_models.DescribeChannelUserResponse:
+        """
+        @summary DescribeChannelUser
+        
+        @param request: DescribeChannelUserRequest
+        @return: DescribeChannelUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_channel_user_with_options_async(request, runtime)
 
@@ -2204,6 +2770,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeChannelUserMetricsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeChannelUserMetricsResponse:
+        """
+        @summary 调用DescribeChannelUserMetrics查询频道总览中的用户数据。
+        
+        @param request: DescribeChannelUserMetricsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeChannelUserMetricsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2238,6 +2811,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeChannelUserMetricsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeChannelUserMetricsResponse:
+        """
+        @summary 调用DescribeChannelUserMetrics查询频道总览中的用户数据。
+        
+        @param request: DescribeChannelUserMetricsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeChannelUserMetricsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2271,6 +2851,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeChannelUserMetricsRequest,
     ) -> rtc_20180111_models.DescribeChannelUserMetricsResponse:
+        """
+        @summary 调用DescribeChannelUserMetrics查询频道总览中的用户数据。
+        
+        @param request: DescribeChannelUserMetricsRequest
+        @return: DescribeChannelUserMetricsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_channel_user_metrics_with_options(request, runtime)
 
@@ -2278,6 +2864,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeChannelUserMetricsRequest,
     ) -> rtc_20180111_models.DescribeChannelUserMetricsResponse:
+        """
+        @summary 调用DescribeChannelUserMetrics查询频道总览中的用户数据。
+        
+        @param request: DescribeChannelUserMetricsRequest
+        @return: DescribeChannelUserMetricsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_channel_user_metrics_with_options_async(request, runtime)
 
@@ -2286,6 +2878,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeChannelUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeChannelUsersResponse:
+        """
+        @param request: DescribeChannelUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeChannelUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2318,6 +2915,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeChannelUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeChannelUsersResponse:
+        """
+        @param request: DescribeChannelUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeChannelUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2349,6 +2951,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeChannelUsersRequest,
     ) -> rtc_20180111_models.DescribeChannelUsersResponse:
+        """
+        @param request: DescribeChannelUsersRequest
+        @return: DescribeChannelUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_channel_users_with_options(request, runtime)
 
@@ -2356,6 +2962,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeChannelUsersRequest,
     ) -> rtc_20180111_models.DescribeChannelUsersResponse:
+        """
+        @param request: DescribeChannelUsersRequest
+        @return: DescribeChannelUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_channel_users_with_options_async(request, runtime)
 
@@ -2364,6 +2974,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeEndPointEventListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeEndPointEventListResponse:
+        """
+        @summary 调用DescribeEndPointEventList获取端对端用户事件列表。
+        
+        @param request: DescribeEndPointEventListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEndPointEventListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2400,6 +3017,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeEndPointEventListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeEndPointEventListResponse:
+        """
+        @summary 调用DescribeEndPointEventList获取端对端用户事件列表。
+        
+        @param request: DescribeEndPointEventListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEndPointEventListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2435,6 +3059,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeEndPointEventListRequest,
     ) -> rtc_20180111_models.DescribeEndPointEventListResponse:
+        """
+        @summary 调用DescribeEndPointEventList获取端对端用户事件列表。
+        
+        @param request: DescribeEndPointEventListRequest
+        @return: DescribeEndPointEventListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_end_point_event_list_with_options(request, runtime)
 
@@ -2442,6 +3072,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeEndPointEventListRequest,
     ) -> rtc_20180111_models.DescribeEndPointEventListResponse:
+        """
+        @summary 调用DescribeEndPointEventList获取端对端用户事件列表。
+        
+        @param request: DescribeEndPointEventListRequest
+        @return: DescribeEndPointEventListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_end_point_event_list_with_options_async(request, runtime)
 
@@ -2450,6 +3086,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeEndPointMetricDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeEndPointMetricDataResponse:
+        """
+        @summary 调用DescribeEndPointMetricData获取端对端指标数据。
+        
+        @param request: DescribeEndPointMetricDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEndPointMetricDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2492,6 +3135,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeEndPointMetricDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeEndPointMetricDataResponse:
+        """
+        @summary 调用DescribeEndPointMetricData获取端对端指标数据。
+        
+        @param request: DescribeEndPointMetricDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEndPointMetricDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2533,6 +3183,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeEndPointMetricDataRequest,
     ) -> rtc_20180111_models.DescribeEndPointMetricDataResponse:
+        """
+        @summary 调用DescribeEndPointMetricData获取端对端指标数据。
+        
+        @param request: DescribeEndPointMetricDataRequest
+        @return: DescribeEndPointMetricDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_end_point_metric_data_with_options(request, runtime)
 
@@ -2540,6 +3196,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeEndPointMetricDataRequest,
     ) -> rtc_20180111_models.DescribeEndPointMetricDataResponse:
+        """
+        @summary 调用DescribeEndPointMetricData获取端对端指标数据。
+        
+        @param request: DescribeEndPointMetricDataRequest
+        @return: DescribeEndPointMetricDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_end_point_metric_data_with_options_async(request, runtime)
 
@@ -2548,6 +3210,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeFaultDiagnosisFactorDistributionStatRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeFaultDiagnosisFactorDistributionStatResponse:
+        """
+        @summary 获取异常诊断影响因素分布
+        
+        @param request: DescribeFaultDiagnosisFactorDistributionStatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFaultDiagnosisFactorDistributionStatResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2580,6 +3249,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeFaultDiagnosisFactorDistributionStatRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeFaultDiagnosisFactorDistributionStatResponse:
+        """
+        @summary 获取异常诊断影响因素分布
+        
+        @param request: DescribeFaultDiagnosisFactorDistributionStatRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFaultDiagnosisFactorDistributionStatResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2611,6 +3287,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeFaultDiagnosisFactorDistributionStatRequest,
     ) -> rtc_20180111_models.DescribeFaultDiagnosisFactorDistributionStatResponse:
+        """
+        @summary 获取异常诊断影响因素分布
+        
+        @param request: DescribeFaultDiagnosisFactorDistributionStatRequest
+        @return: DescribeFaultDiagnosisFactorDistributionStatResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_fault_diagnosis_factor_distribution_stat_with_options(request, runtime)
 
@@ -2618,6 +3300,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeFaultDiagnosisFactorDistributionStatRequest,
     ) -> rtc_20180111_models.DescribeFaultDiagnosisFactorDistributionStatResponse:
+        """
+        @summary 获取异常诊断影响因素分布
+        
+        @param request: DescribeFaultDiagnosisFactorDistributionStatRequest
+        @return: DescribeFaultDiagnosisFactorDistributionStatResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_fault_diagnosis_factor_distribution_stat_with_options_async(request, runtime)
 
@@ -2626,6 +3314,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeFaultDiagnosisOverallDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeFaultDiagnosisOverallDataResponse:
+        """
+        @summary 获取异常诊断总览数据
+        
+        @param request: DescribeFaultDiagnosisOverallDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFaultDiagnosisOverallDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2660,6 +3355,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeFaultDiagnosisOverallDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeFaultDiagnosisOverallDataResponse:
+        """
+        @summary 获取异常诊断总览数据
+        
+        @param request: DescribeFaultDiagnosisOverallDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFaultDiagnosisOverallDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2693,6 +3395,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeFaultDiagnosisOverallDataRequest,
     ) -> rtc_20180111_models.DescribeFaultDiagnosisOverallDataResponse:
+        """
+        @summary 获取异常诊断总览数据
+        
+        @param request: DescribeFaultDiagnosisOverallDataRequest
+        @return: DescribeFaultDiagnosisOverallDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_fault_diagnosis_overall_data_with_options(request, runtime)
 
@@ -2700,6 +3408,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeFaultDiagnosisOverallDataRequest,
     ) -> rtc_20180111_models.DescribeFaultDiagnosisOverallDataResponse:
+        """
+        @summary 获取异常诊断总览数据
+        
+        @param request: DescribeFaultDiagnosisOverallDataRequest
+        @return: DescribeFaultDiagnosisOverallDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_fault_diagnosis_overall_data_with_options_async(request, runtime)
 
@@ -2708,6 +3422,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeFaultDiagnosisUserDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeFaultDiagnosisUserDetailResponse:
+        """
+        @summary 获取异常诊断用户详情
+        
+        @param request: DescribeFaultDiagnosisUserDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFaultDiagnosisUserDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2746,6 +3467,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeFaultDiagnosisUserDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeFaultDiagnosisUserDetailResponse:
+        """
+        @summary 获取异常诊断用户详情
+        
+        @param request: DescribeFaultDiagnosisUserDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFaultDiagnosisUserDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2783,6 +3511,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeFaultDiagnosisUserDetailRequest,
     ) -> rtc_20180111_models.DescribeFaultDiagnosisUserDetailResponse:
+        """
+        @summary 获取异常诊断用户详情
+        
+        @param request: DescribeFaultDiagnosisUserDetailRequest
+        @return: DescribeFaultDiagnosisUserDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_fault_diagnosis_user_detail_with_options(request, runtime)
 
@@ -2790,6 +3524,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeFaultDiagnosisUserDetailRequest,
     ) -> rtc_20180111_models.DescribeFaultDiagnosisUserDetailResponse:
+        """
+        @summary 获取异常诊断用户详情
+        
+        @param request: DescribeFaultDiagnosisUserDetailRequest
+        @return: DescribeFaultDiagnosisUserDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_fault_diagnosis_user_detail_with_options_async(request, runtime)
 
@@ -2798,6 +3538,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeFaultDiagnosisUserListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeFaultDiagnosisUserListResponse:
+        """
+        @summary 获取异常诊断用户明细列表
+        
+        @param request: DescribeFaultDiagnosisUserListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFaultDiagnosisUserListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2840,6 +3587,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeFaultDiagnosisUserListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeFaultDiagnosisUserListResponse:
+        """
+        @summary 获取异常诊断用户明细列表
+        
+        @param request: DescribeFaultDiagnosisUserListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFaultDiagnosisUserListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2881,6 +3635,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeFaultDiagnosisUserListRequest,
     ) -> rtc_20180111_models.DescribeFaultDiagnosisUserListResponse:
+        """
+        @summary 获取异常诊断用户明细列表
+        
+        @param request: DescribeFaultDiagnosisUserListRequest
+        @return: DescribeFaultDiagnosisUserListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_fault_diagnosis_user_list_with_options(request, runtime)
 
@@ -2888,6 +3648,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeFaultDiagnosisUserListRequest,
     ) -> rtc_20180111_models.DescribeFaultDiagnosisUserListResponse:
+        """
+        @summary 获取异常诊断用户明细列表
+        
+        @param request: DescribeFaultDiagnosisUserListRequest
+        @return: DescribeFaultDiagnosisUserListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_fault_diagnosis_user_list_with_options_async(request, runtime)
 
@@ -2896,6 +3662,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeMPULayoutInfoListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeMPULayoutInfoListResponse:
+        """
+        @param request: DescribeMPULayoutInfoListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMPULayoutInfoListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2934,6 +3705,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeMPULayoutInfoListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeMPULayoutInfoListResponse:
+        """
+        @param request: DescribeMPULayoutInfoListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMPULayoutInfoListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -2971,6 +3747,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeMPULayoutInfoListRequest,
     ) -> rtc_20180111_models.DescribeMPULayoutInfoListResponse:
+        """
+        @param request: DescribeMPULayoutInfoListRequest
+        @return: DescribeMPULayoutInfoListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_mpulayout_info_list_with_options(request, runtime)
 
@@ -2978,6 +3758,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeMPULayoutInfoListRequest,
     ) -> rtc_20180111_models.DescribeMPULayoutInfoListResponse:
+        """
+        @param request: DescribeMPULayoutInfoListRequest
+        @return: DescribeMPULayoutInfoListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_mpulayout_info_list_with_options_async(request, runtime)
 
@@ -2986,6 +3770,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribePubUserListBySubUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribePubUserListBySubUserResponse:
+        """
+        @summary 调用DescribePubUserListBySubUser根据订阅端获取通信中发布端用户列表。
+        
+        @param request: DescribePubUserListBySubUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePubUserListBySubUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3022,6 +3813,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribePubUserListBySubUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribePubUserListBySubUserResponse:
+        """
+        @summary 调用DescribePubUserListBySubUser根据订阅端获取通信中发布端用户列表。
+        
+        @param request: DescribePubUserListBySubUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePubUserListBySubUserResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3057,6 +3855,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribePubUserListBySubUserRequest,
     ) -> rtc_20180111_models.DescribePubUserListBySubUserResponse:
+        """
+        @summary 调用DescribePubUserListBySubUser根据订阅端获取通信中发布端用户列表。
+        
+        @param request: DescribePubUserListBySubUserRequest
+        @return: DescribePubUserListBySubUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_pub_user_list_by_sub_user_with_options(request, runtime)
 
@@ -3064,6 +3868,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribePubUserListBySubUserRequest,
     ) -> rtc_20180111_models.DescribePubUserListBySubUserResponse:
+        """
+        @summary 调用DescribePubUserListBySubUser根据订阅端获取通信中发布端用户列表。
+        
+        @param request: DescribePubUserListBySubUserRequest
+        @return: DescribePubUserListBySubUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_pub_user_list_by_sub_user_with_options_async(request, runtime)
 
@@ -3072,6 +3882,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeQoeMetricDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeQoeMetricDataResponse:
+        """
+        @summary 调用DescribeQoeMetricData获取单次通信中用户的下行体验质量指标。
+        
+        @param request: DescribeQoeMetricDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeQoeMetricDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3108,6 +3925,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeQoeMetricDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeQoeMetricDataResponse:
+        """
+        @summary 调用DescribeQoeMetricData获取单次通信中用户的下行体验质量指标。
+        
+        @param request: DescribeQoeMetricDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeQoeMetricDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3143,6 +3967,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeQoeMetricDataRequest,
     ) -> rtc_20180111_models.DescribeQoeMetricDataResponse:
+        """
+        @summary 调用DescribeQoeMetricData获取单次通信中用户的下行体验质量指标。
+        
+        @param request: DescribeQoeMetricDataRequest
+        @return: DescribeQoeMetricDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_qoe_metric_data_with_options(request, runtime)
 
@@ -3150,6 +3980,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeQoeMetricDataRequest,
     ) -> rtc_20180111_models.DescribeQoeMetricDataResponse:
+        """
+        @summary 调用DescribeQoeMetricData获取单次通信中用户的下行体验质量指标。
+        
+        @param request: DescribeQoeMetricDataRequest
+        @return: DescribeQoeMetricDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_qoe_metric_data_with_options_async(request, runtime)
 
@@ -3158,6 +3994,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeQualityAreaDistributionStatDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeQualityAreaDistributionStatDataResponse:
+        """
+        @summary 获取质量统计区域分布统计数据
+        
+        @param request: DescribeQualityAreaDistributionStatDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeQualityAreaDistributionStatDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3192,6 +4035,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeQualityAreaDistributionStatDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeQualityAreaDistributionStatDataResponse:
+        """
+        @summary 获取质量统计区域分布统计数据
+        
+        @param request: DescribeQualityAreaDistributionStatDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeQualityAreaDistributionStatDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3225,6 +4075,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeQualityAreaDistributionStatDataRequest,
     ) -> rtc_20180111_models.DescribeQualityAreaDistributionStatDataResponse:
+        """
+        @summary 获取质量统计区域分布统计数据
+        
+        @param request: DescribeQualityAreaDistributionStatDataRequest
+        @return: DescribeQualityAreaDistributionStatDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_quality_area_distribution_stat_data_with_options(request, runtime)
 
@@ -3232,6 +4088,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeQualityAreaDistributionStatDataRequest,
     ) -> rtc_20180111_models.DescribeQualityAreaDistributionStatDataResponse:
+        """
+        @summary 获取质量统计区域分布统计数据
+        
+        @param request: DescribeQualityAreaDistributionStatDataRequest
+        @return: DescribeQualityAreaDistributionStatDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_quality_area_distribution_stat_data_with_options_async(request, runtime)
 
@@ -3240,6 +4102,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeQualityDistributionStatDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeQualityDistributionStatDataResponse:
+        """
+        @summary 获取质量统计分布数据
+        
+        @param request: DescribeQualityDistributionStatDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeQualityDistributionStatDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3274,6 +4143,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeQualityDistributionStatDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeQualityDistributionStatDataResponse:
+        """
+        @summary 获取质量统计分布数据
+        
+        @param request: DescribeQualityDistributionStatDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeQualityDistributionStatDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3307,6 +4183,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeQualityDistributionStatDataRequest,
     ) -> rtc_20180111_models.DescribeQualityDistributionStatDataResponse:
+        """
+        @summary 获取质量统计分布数据
+        
+        @param request: DescribeQualityDistributionStatDataRequest
+        @return: DescribeQualityDistributionStatDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_quality_distribution_stat_data_with_options(request, runtime)
 
@@ -3314,6 +4196,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeQualityDistributionStatDataRequest,
     ) -> rtc_20180111_models.DescribeQualityDistributionStatDataResponse:
+        """
+        @summary 获取质量统计分布数据
+        
+        @param request: DescribeQualityDistributionStatDataRequest
+        @return: DescribeQualityDistributionStatDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_quality_distribution_stat_data_with_options_async(request, runtime)
 
@@ -3322,6 +4210,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeQualityOsSdkVersionDistributionStatDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeQualityOsSdkVersionDistributionStatDataResponse:
+        """
+        @summary 获取质量统计各操作系统下SDK版本分布数据
+        
+        @param request: DescribeQualityOsSdkVersionDistributionStatDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeQualityOsSdkVersionDistributionStatDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3354,6 +4249,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeQualityOsSdkVersionDistributionStatDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeQualityOsSdkVersionDistributionStatDataResponse:
+        """
+        @summary 获取质量统计各操作系统下SDK版本分布数据
+        
+        @param request: DescribeQualityOsSdkVersionDistributionStatDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeQualityOsSdkVersionDistributionStatDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3385,6 +4287,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeQualityOsSdkVersionDistributionStatDataRequest,
     ) -> rtc_20180111_models.DescribeQualityOsSdkVersionDistributionStatDataResponse:
+        """
+        @summary 获取质量统计各操作系统下SDK版本分布数据
+        
+        @param request: DescribeQualityOsSdkVersionDistributionStatDataRequest
+        @return: DescribeQualityOsSdkVersionDistributionStatDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_quality_os_sdk_version_distribution_stat_data_with_options(request, runtime)
 
@@ -3392,6 +4300,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeQualityOsSdkVersionDistributionStatDataRequest,
     ) -> rtc_20180111_models.DescribeQualityOsSdkVersionDistributionStatDataResponse:
+        """
+        @summary 获取质量统计各操作系统下SDK版本分布数据
+        
+        @param request: DescribeQualityOsSdkVersionDistributionStatDataRequest
+        @return: DescribeQualityOsSdkVersionDistributionStatDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_quality_os_sdk_version_distribution_stat_data_with_options_async(request, runtime)
 
@@ -3400,6 +4314,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeQualityOverallDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeQualityOverallDataResponse:
+        """
+        @summary 获取质量统计概览数据
+        
+        @param request: DescribeQualityOverallDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeQualityOverallDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3434,6 +4355,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeQualityOverallDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeQualityOverallDataResponse:
+        """
+        @summary 获取质量统计概览数据
+        
+        @param request: DescribeQualityOverallDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeQualityOverallDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3467,6 +4395,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeQualityOverallDataRequest,
     ) -> rtc_20180111_models.DescribeQualityOverallDataResponse:
+        """
+        @summary 获取质量统计概览数据
+        
+        @param request: DescribeQualityOverallDataRequest
+        @return: DescribeQualityOverallDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_quality_overall_data_with_options(request, runtime)
 
@@ -3474,6 +4408,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeQualityOverallDataRequest,
     ) -> rtc_20180111_models.DescribeQualityOverallDataResponse:
+        """
+        @summary 获取质量统计概览数据
+        
+        @param request: DescribeQualityOverallDataRequest
+        @return: DescribeQualityOverallDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_quality_overall_data_with_options_async(request, runtime)
 
@@ -3482,6 +4422,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeRecordFilesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeRecordFilesResponse:
+        """
+        @param request: DescribeRecordFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRecordFilesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3524,6 +4469,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeRecordFilesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeRecordFilesResponse:
+        """
+        @param request: DescribeRecordFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRecordFilesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3565,6 +4515,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeRecordFilesRequest,
     ) -> rtc_20180111_models.DescribeRecordFilesResponse:
+        """
+        @param request: DescribeRecordFilesRequest
+        @return: DescribeRecordFilesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_record_files_with_options(request, runtime)
 
@@ -3572,6 +4526,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeRecordFilesRequest,
     ) -> rtc_20180111_models.DescribeRecordFilesResponse:
+        """
+        @param request: DescribeRecordFilesRequest
+        @return: DescribeRecordFilesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_record_files_with_options_async(request, runtime)
 
@@ -3580,6 +4538,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeRecordTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeRecordTemplatesResponse:
+        """
+        @param request: DescribeRecordTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRecordTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3616,6 +4579,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeRecordTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeRecordTemplatesResponse:
+        """
+        @param request: DescribeRecordTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRecordTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3651,6 +4619,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeRecordTemplatesRequest,
     ) -> rtc_20180111_models.DescribeRecordTemplatesResponse:
+        """
+        @param request: DescribeRecordTemplatesRequest
+        @return: DescribeRecordTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_record_templates_with_options(request, runtime)
 
@@ -3658,6 +4630,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeRecordTemplatesRequest,
     ) -> rtc_20180111_models.DescribeRecordTemplatesResponse:
+        """
+        @param request: DescribeRecordTemplatesRequest
+        @return: DescribeRecordTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_record_templates_with_options_async(request, runtime)
 
@@ -3666,6 +4642,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeRtcChannelListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeRtcChannelListResponse:
+        """
+        @param request: DescribeRtcChannelListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRtcChannelListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3710,6 +4691,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeRtcChannelListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeRtcChannelListResponse:
+        """
+        @param request: DescribeRtcChannelListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRtcChannelListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3753,6 +4739,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeRtcChannelListRequest,
     ) -> rtc_20180111_models.DescribeRtcChannelListResponse:
+        """
+        @param request: DescribeRtcChannelListRequest
+        @return: DescribeRtcChannelListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_rtc_channel_list_with_options(request, runtime)
 
@@ -3760,6 +4750,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeRtcChannelListRequest,
     ) -> rtc_20180111_models.DescribeRtcChannelListResponse:
+        """
+        @param request: DescribeRtcChannelListRequest
+        @return: DescribeRtcChannelListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_rtc_channel_list_with_options_async(request, runtime)
 
@@ -3768,6 +4762,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeRtcChannelMetricRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeRtcChannelMetricResponse:
+        """
+        @param request: DescribeRtcChannelMetricRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRtcChannelMetricResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3802,6 +4801,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeRtcChannelMetricRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeRtcChannelMetricResponse:
+        """
+        @param request: DescribeRtcChannelMetricRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRtcChannelMetricResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3835,6 +4839,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeRtcChannelMetricRequest,
     ) -> rtc_20180111_models.DescribeRtcChannelMetricResponse:
+        """
+        @param request: DescribeRtcChannelMetricRequest
+        @return: DescribeRtcChannelMetricResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_rtc_channel_metric_with_options(request, runtime)
 
@@ -3842,6 +4850,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeRtcChannelMetricRequest,
     ) -> rtc_20180111_models.DescribeRtcChannelMetricResponse:
+        """
+        @param request: DescribeRtcChannelMetricRequest
+        @return: DescribeRtcChannelMetricResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_rtc_channel_metric_with_options_async(request, runtime)
 
@@ -3850,6 +4862,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeRtcDurationDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeRtcDurationDataResponse:
+        """
+        @param request: DescribeRtcDurationDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRtcDurationDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3888,6 +4905,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeRtcDurationDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeRtcDurationDataResponse:
+        """
+        @param request: DescribeRtcDurationDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRtcDurationDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3925,6 +4947,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeRtcDurationDataRequest,
     ) -> rtc_20180111_models.DescribeRtcDurationDataResponse:
+        """
+        @param request: DescribeRtcDurationDataRequest
+        @return: DescribeRtcDurationDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_rtc_duration_data_with_options(request, runtime)
 
@@ -3932,6 +4958,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeRtcDurationDataRequest,
     ) -> rtc_20180111_models.DescribeRtcDurationDataResponse:
+        """
+        @param request: DescribeRtcDurationDataRequest
+        @return: DescribeRtcDurationDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_rtc_duration_data_with_options_async(request, runtime)
 
@@ -3940,6 +4970,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeRtcPeakChannelCntDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeRtcPeakChannelCntDataResponse:
+        """
+        @param request: DescribeRtcPeakChannelCntDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRtcPeakChannelCntDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -3978,6 +5013,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeRtcPeakChannelCntDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeRtcPeakChannelCntDataResponse:
+        """
+        @param request: DescribeRtcPeakChannelCntDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRtcPeakChannelCntDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4015,6 +5055,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeRtcPeakChannelCntDataRequest,
     ) -> rtc_20180111_models.DescribeRtcPeakChannelCntDataResponse:
+        """
+        @param request: DescribeRtcPeakChannelCntDataRequest
+        @return: DescribeRtcPeakChannelCntDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_rtc_peak_channel_cnt_data_with_options(request, runtime)
 
@@ -4022,6 +5066,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeRtcPeakChannelCntDataRequest,
     ) -> rtc_20180111_models.DescribeRtcPeakChannelCntDataResponse:
+        """
+        @param request: DescribeRtcPeakChannelCntDataRequest
+        @return: DescribeRtcPeakChannelCntDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_rtc_peak_channel_cnt_data_with_options_async(request, runtime)
 
@@ -4030,6 +5078,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeRtcUserCntDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeRtcUserCntDataResponse:
+        """
+        @param request: DescribeRtcUserCntDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRtcUserCntDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4068,6 +5121,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeRtcUserCntDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeRtcUserCntDataResponse:
+        """
+        @param request: DescribeRtcUserCntDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRtcUserCntDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4105,6 +5163,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeRtcUserCntDataRequest,
     ) -> rtc_20180111_models.DescribeRtcUserCntDataResponse:
+        """
+        @param request: DescribeRtcUserCntDataRequest
+        @return: DescribeRtcUserCntDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_rtc_user_cnt_data_with_options(request, runtime)
 
@@ -4112,6 +5174,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeRtcUserCntDataRequest,
     ) -> rtc_20180111_models.DescribeRtcUserCntDataResponse:
+        """
+        @param request: DescribeRtcUserCntDataRequest
+        @return: DescribeRtcUserCntDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_rtc_user_cnt_data_with_options_async(request, runtime)
 
@@ -4120,6 +5186,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeUsageAreaDistributionStatDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeUsageAreaDistributionStatDataResponse:
+        """
+        @summary 获取用量统计地域分布数据
+        
+        @param request: DescribeUsageAreaDistributionStatDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUsageAreaDistributionStatDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4154,6 +5227,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeUsageAreaDistributionStatDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeUsageAreaDistributionStatDataResponse:
+        """
+        @summary 获取用量统计地域分布数据
+        
+        @param request: DescribeUsageAreaDistributionStatDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUsageAreaDistributionStatDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4187,6 +5267,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeUsageAreaDistributionStatDataRequest,
     ) -> rtc_20180111_models.DescribeUsageAreaDistributionStatDataResponse:
+        """
+        @summary 获取用量统计地域分布数据
+        
+        @param request: DescribeUsageAreaDistributionStatDataRequest
+        @return: DescribeUsageAreaDistributionStatDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_usage_area_distribution_stat_data_with_options(request, runtime)
 
@@ -4194,6 +5280,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeUsageAreaDistributionStatDataRequest,
     ) -> rtc_20180111_models.DescribeUsageAreaDistributionStatDataResponse:
+        """
+        @summary 获取用量统计地域分布数据
+        
+        @param request: DescribeUsageAreaDistributionStatDataRequest
+        @return: DescribeUsageAreaDistributionStatDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_usage_area_distribution_stat_data_with_options_async(request, runtime)
 
@@ -4202,6 +5294,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeUsageDistributionStatDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeUsageDistributionStatDataResponse:
+        """
+        @summary 获取用量统计分布数据
+        
+        @param request: DescribeUsageDistributionStatDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUsageDistributionStatDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4236,6 +5335,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeUsageDistributionStatDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeUsageDistributionStatDataResponse:
+        """
+        @summary 获取用量统计分布数据
+        
+        @param request: DescribeUsageDistributionStatDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUsageDistributionStatDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4269,6 +5375,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeUsageDistributionStatDataRequest,
     ) -> rtc_20180111_models.DescribeUsageDistributionStatDataResponse:
+        """
+        @summary 获取用量统计分布数据
+        
+        @param request: DescribeUsageDistributionStatDataRequest
+        @return: DescribeUsageDistributionStatDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_usage_distribution_stat_data_with_options(request, runtime)
 
@@ -4276,6 +5388,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeUsageDistributionStatDataRequest,
     ) -> rtc_20180111_models.DescribeUsageDistributionStatDataResponse:
+        """
+        @summary 获取用量统计分布数据
+        
+        @param request: DescribeUsageDistributionStatDataRequest
+        @return: DescribeUsageDistributionStatDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_usage_distribution_stat_data_with_options_async(request, runtime)
 
@@ -4284,6 +5402,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeUsageOsSdkVersionDistributionStatDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeUsageOsSdkVersionDistributionStatDataResponse:
+        """
+        @summary 获取用量统计各操作系统下SDK版本分布数据
+        
+        @param request: DescribeUsageOsSdkVersionDistributionStatDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUsageOsSdkVersionDistributionStatDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4316,6 +5441,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeUsageOsSdkVersionDistributionStatDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeUsageOsSdkVersionDistributionStatDataResponse:
+        """
+        @summary 获取用量统计各操作系统下SDK版本分布数据
+        
+        @param request: DescribeUsageOsSdkVersionDistributionStatDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUsageOsSdkVersionDistributionStatDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4347,6 +5479,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeUsageOsSdkVersionDistributionStatDataRequest,
     ) -> rtc_20180111_models.DescribeUsageOsSdkVersionDistributionStatDataResponse:
+        """
+        @summary 获取用量统计各操作系统下SDK版本分布数据
+        
+        @param request: DescribeUsageOsSdkVersionDistributionStatDataRequest
+        @return: DescribeUsageOsSdkVersionDistributionStatDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_usage_os_sdk_version_distribution_stat_data_with_options(request, runtime)
 
@@ -4354,6 +5492,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeUsageOsSdkVersionDistributionStatDataRequest,
     ) -> rtc_20180111_models.DescribeUsageOsSdkVersionDistributionStatDataResponse:
+        """
+        @summary 获取用量统计各操作系统下SDK版本分布数据
+        
+        @param request: DescribeUsageOsSdkVersionDistributionStatDataRequest
+        @return: DescribeUsageOsSdkVersionDistributionStatDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_usage_os_sdk_version_distribution_stat_data_with_options_async(request, runtime)
 
@@ -4362,6 +5506,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeUsageOverallDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeUsageOverallDataResponse:
+        """
+        @summary 获取用量统计概览数据
+        
+        @param request: DescribeUsageOverallDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUsageOverallDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4396,6 +5547,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeUsageOverallDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeUsageOverallDataResponse:
+        """
+        @summary 获取用量统计概览数据
+        
+        @param request: DescribeUsageOverallDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUsageOverallDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4429,6 +5587,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeUsageOverallDataRequest,
     ) -> rtc_20180111_models.DescribeUsageOverallDataResponse:
+        """
+        @summary 获取用量统计概览数据
+        
+        @param request: DescribeUsageOverallDataRequest
+        @return: DescribeUsageOverallDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_usage_overall_data_with_options(request, runtime)
 
@@ -4436,6 +5600,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeUsageOverallDataRequest,
     ) -> rtc_20180111_models.DescribeUsageOverallDataResponse:
+        """
+        @summary 获取用量统计概览数据
+        
+        @param request: DescribeUsageOverallDataRequest
+        @return: DescribeUsageOverallDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_usage_overall_data_with_options_async(request, runtime)
 
@@ -4444,6 +5614,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeUserInfoInChannelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeUserInfoInChannelResponse:
+        """
+        @param request: DescribeUserInfoInChannelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserInfoInChannelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4478,6 +5653,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DescribeUserInfoInChannelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DescribeUserInfoInChannelResponse:
+        """
+        @param request: DescribeUserInfoInChannelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeUserInfoInChannelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4511,6 +5691,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeUserInfoInChannelRequest,
     ) -> rtc_20180111_models.DescribeUserInfoInChannelResponse:
+        """
+        @param request: DescribeUserInfoInChannelRequest
+        @return: DescribeUserInfoInChannelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_user_info_in_channel_with_options(request, runtime)
 
@@ -4518,6 +5702,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DescribeUserInfoInChannelRequest,
     ) -> rtc_20180111_models.DescribeUserInfoInChannelResponse:
+        """
+        @param request: DescribeUserInfoInChannelRequest
+        @return: DescribeUserInfoInChannelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_user_info_in_channel_with_options_async(request, runtime)
 
@@ -4526,6 +5714,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DisableAutoLiveStreamRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DisableAutoLiveStreamRuleResponse:
+        """
+        @param request: DisableAutoLiveStreamRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableAutoLiveStreamRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4558,6 +5751,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.DisableAutoLiveStreamRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.DisableAutoLiveStreamRuleResponse:
+        """
+        @param request: DisableAutoLiveStreamRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableAutoLiveStreamRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4589,6 +5787,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DisableAutoLiveStreamRuleRequest,
     ) -> rtc_20180111_models.DisableAutoLiveStreamRuleResponse:
+        """
+        @param request: DisableAutoLiveStreamRuleRequest
+        @return: DisableAutoLiveStreamRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.disable_auto_live_stream_rule_with_options(request, runtime)
 
@@ -4596,6 +5798,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.DisableAutoLiveStreamRuleRequest,
     ) -> rtc_20180111_models.DisableAutoLiveStreamRuleResponse:
+        """
+        @param request: DisableAutoLiveStreamRuleRequest
+        @return: DisableAutoLiveStreamRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.disable_auto_live_stream_rule_with_options_async(request, runtime)
 
@@ -4604,6 +5810,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.EnableAutoLiveStreamRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.EnableAutoLiveStreamRuleResponse:
+        """
+        @param request: EnableAutoLiveStreamRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableAutoLiveStreamRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4636,6 +5847,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.EnableAutoLiveStreamRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.EnableAutoLiveStreamRuleResponse:
+        """
+        @param request: EnableAutoLiveStreamRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableAutoLiveStreamRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4667,6 +5883,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.EnableAutoLiveStreamRuleRequest,
     ) -> rtc_20180111_models.EnableAutoLiveStreamRuleResponse:
+        """
+        @param request: EnableAutoLiveStreamRuleRequest
+        @return: EnableAutoLiveStreamRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.enable_auto_live_stream_rule_with_options(request, runtime)
 
@@ -4674,6 +5894,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.EnableAutoLiveStreamRuleRequest,
     ) -> rtc_20180111_models.EnableAutoLiveStreamRuleResponse:
+        """
+        @param request: EnableAutoLiveStreamRuleRequest
+        @return: EnableAutoLiveStreamRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.enable_auto_live_stream_rule_with_options_async(request, runtime)
 
@@ -4682,6 +5906,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.GetMPUTaskStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.GetMPUTaskStatusResponse:
+        """
+        @param request: GetMPUTaskStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMPUTaskStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4714,6 +5943,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.GetMPUTaskStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.GetMPUTaskStatusResponse:
+        """
+        @param request: GetMPUTaskStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMPUTaskStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4745,6 +5979,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.GetMPUTaskStatusRequest,
     ) -> rtc_20180111_models.GetMPUTaskStatusResponse:
+        """
+        @param request: GetMPUTaskStatusRequest
+        @return: GetMPUTaskStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_mputask_status_with_options(request, runtime)
 
@@ -4752,6 +5990,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.GetMPUTaskStatusRequest,
     ) -> rtc_20180111_models.GetMPUTaskStatusResponse:
+        """
+        @param request: GetMPUTaskStatusRequest
+        @return: GetMPUTaskStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_mputask_status_with_options_async(request, runtime)
 
@@ -4760,6 +6002,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.ModifyAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.ModifyAppResponse:
+        """
+        @summary 修改App信息
+        
+        @param request: ModifyAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4792,6 +6041,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.ModifyAppRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.ModifyAppResponse:
+        """
+        @summary 修改App信息
+        
+        @param request: ModifyAppRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4823,6 +6079,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.ModifyAppRequest,
     ) -> rtc_20180111_models.ModifyAppResponse:
+        """
+        @summary 修改App信息
+        
+        @param request: ModifyAppRequest
+        @return: ModifyAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_app_with_options(request, runtime)
 
@@ -4830,6 +6092,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.ModifyAppRequest,
     ) -> rtc_20180111_models.ModifyAppResponse:
+        """
+        @summary 修改App信息
+        
+        @param request: ModifyAppRequest
+        @return: ModifyAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_app_with_options_async(request, runtime)
 
@@ -4838,6 +6106,13 @@ class Client(OpenApiClient):
         tmp_req: rtc_20180111_models.ModifyAppStreamingOutTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.ModifyAppStreamingOutTemplateResponse:
+        """
+        @summary 更新应用推流模版
+        
+        @param tmp_req: ModifyAppStreamingOutTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAppStreamingOutTemplateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = rtc_20180111_models.ModifyAppStreamingOutTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4872,6 +6147,13 @@ class Client(OpenApiClient):
         tmp_req: rtc_20180111_models.ModifyAppStreamingOutTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.ModifyAppStreamingOutTemplateResponse:
+        """
+        @summary 更新应用推流模版
+        
+        @param tmp_req: ModifyAppStreamingOutTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyAppStreamingOutTemplateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = rtc_20180111_models.ModifyAppStreamingOutTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4905,6 +6187,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.ModifyAppStreamingOutTemplateRequest,
     ) -> rtc_20180111_models.ModifyAppStreamingOutTemplateResponse:
+        """
+        @summary 更新应用推流模版
+        
+        @param request: ModifyAppStreamingOutTemplateRequest
+        @return: ModifyAppStreamingOutTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_app_streaming_out_template_with_options(request, runtime)
 
@@ -4912,6 +6200,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.ModifyAppStreamingOutTemplateRequest,
     ) -> rtc_20180111_models.ModifyAppStreamingOutTemplateResponse:
+        """
+        @summary 更新应用推流模版
+        
+        @param request: ModifyAppStreamingOutTemplateRequest
+        @return: ModifyAppStreamingOutTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_app_streaming_out_template_with_options_async(request, runtime)
 
@@ -4920,6 +6214,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.ModifyMPULayoutRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.ModifyMPULayoutResponse:
+        """
+        @param request: ModifyMPULayoutRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyMPULayoutResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4958,6 +6257,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.ModifyMPULayoutRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.ModifyMPULayoutResponse:
+        """
+        @param request: ModifyMPULayoutRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyMPULayoutResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -4995,6 +6299,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.ModifyMPULayoutRequest,
     ) -> rtc_20180111_models.ModifyMPULayoutResponse:
+        """
+        @param request: ModifyMPULayoutRequest
+        @return: ModifyMPULayoutResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_mpulayout_with_options(request, runtime)
 
@@ -5002,6 +6310,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.ModifyMPULayoutRequest,
     ) -> rtc_20180111_models.ModifyMPULayoutResponse:
+        """
+        @param request: ModifyMPULayoutRequest
+        @return: ModifyMPULayoutResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_mpulayout_with_options_async(request, runtime)
 
@@ -5010,6 +6322,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.RemoveTerminalsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.RemoveTerminalsResponse:
+        """
+        @param request: RemoveTerminalsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveTerminalsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5044,6 +6361,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.RemoveTerminalsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.RemoveTerminalsResponse:
+        """
+        @param request: RemoveTerminalsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveTerminalsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5077,6 +6399,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.RemoveTerminalsRequest,
     ) -> rtc_20180111_models.RemoveTerminalsResponse:
+        """
+        @param request: RemoveTerminalsRequest
+        @return: RemoveTerminalsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_terminals_with_options(request, runtime)
 
@@ -5084,6 +6410,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.RemoveTerminalsRequest,
     ) -> rtc_20180111_models.RemoveTerminalsResponse:
+        """
+        @param request: RemoveTerminalsRequest
+        @return: RemoveTerminalsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_terminals_with_options_async(request, runtime)
 
@@ -5092,6 +6422,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.RemoveUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.RemoveUsersResponse:
+        """
+        @summary RemoveUsers
+        
+        @param request: RemoveUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5124,6 +6461,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.RemoveUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.RemoveUsersResponse:
+        """
+        @summary RemoveUsers
+        
+        @param request: RemoveUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveUsersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5155,6 +6499,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.RemoveUsersRequest,
     ) -> rtc_20180111_models.RemoveUsersResponse:
+        """
+        @summary RemoveUsers
+        
+        @param request: RemoveUsersRequest
+        @return: RemoveUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_users_with_options(request, runtime)
 
@@ -5162,6 +6512,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.RemoveUsersRequest,
     ) -> rtc_20180111_models.RemoveUsersResponse:
+        """
+        @summary RemoveUsers
+        
+        @param request: RemoveUsersRequest
+        @return: RemoveUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_users_with_options_async(request, runtime)
 
@@ -5170,6 +6526,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.StartCloudRecordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.StartCloudRecordResponse:
+        """
+        @summary StartCloudRecord
+        
+        @param request: StartCloudRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartCloudRecordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5208,6 +6571,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.StartCloudRecordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.StartCloudRecordResponse:
+        """
+        @summary StartCloudRecord
+        
+        @param request: StartCloudRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartCloudRecordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5245,6 +6615,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.StartCloudRecordRequest,
     ) -> rtc_20180111_models.StartCloudRecordResponse:
+        """
+        @summary StartCloudRecord
+        
+        @param request: StartCloudRecordRequest
+        @return: StartCloudRecordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_cloud_record_with_options(request, runtime)
 
@@ -5252,6 +6628,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.StartCloudRecordRequest,
     ) -> rtc_20180111_models.StartCloudRecordResponse:
+        """
+        @summary StartCloudRecord
+        
+        @param request: StartCloudRecordRequest
+        @return: StartCloudRecordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_cloud_record_with_options_async(request, runtime)
 
@@ -5260,6 +6642,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.StartMPUTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.StartMPUTaskResponse:
+        """
+        @param request: StartMPUTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartMPUTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5351,6 +6738,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.StartMPUTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.StartMPUTaskResponse:
+        """
+        @param request: StartMPUTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartMPUTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5441,6 +6833,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.StartMPUTaskRequest,
     ) -> rtc_20180111_models.StartMPUTaskResponse:
+        """
+        @param request: StartMPUTaskRequest
+        @return: StartMPUTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_mputask_with_options(request, runtime)
 
@@ -5448,6 +6844,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.StartMPUTaskRequest,
     ) -> rtc_20180111_models.StartMPUTaskResponse:
+        """
+        @param request: StartMPUTaskRequest
+        @return: StartMPUTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_mputask_with_options_async(request, runtime)
 
@@ -5456,6 +6856,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.StartRecordTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.StartRecordTaskResponse:
+        """
+        @param request: StartRecordTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartRecordTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5522,6 +6927,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.StartRecordTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.StartRecordTaskResponse:
+        """
+        @param request: StartRecordTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartRecordTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5587,6 +6997,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.StartRecordTaskRequest,
     ) -> rtc_20180111_models.StartRecordTaskResponse:
+        """
+        @param request: StartRecordTaskRequest
+        @return: StartRecordTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_record_task_with_options(request, runtime)
 
@@ -5594,6 +7008,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.StartRecordTaskRequest,
     ) -> rtc_20180111_models.StartRecordTaskResponse:
+        """
+        @param request: StartRecordTaskRequest
+        @return: StartRecordTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_record_task_with_options_async(request, runtime)
 
@@ -5602,6 +7020,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.StartStreamingOutRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.StartStreamingOutResponse:
+        """
+        @summary StartStreamingOut
+        
+        @param request: StartStreamingOutRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartStreamingOutResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5640,6 +7065,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.StartStreamingOutRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.StartStreamingOutResponse:
+        """
+        @summary StartStreamingOut
+        
+        @param request: StartStreamingOutRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartStreamingOutResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5677,6 +7109,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.StartStreamingOutRequest,
     ) -> rtc_20180111_models.StartStreamingOutResponse:
+        """
+        @summary StartStreamingOut
+        
+        @param request: StartStreamingOutRequest
+        @return: StartStreamingOutResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_streaming_out_with_options(request, runtime)
 
@@ -5684,6 +7122,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.StartStreamingOutRequest,
     ) -> rtc_20180111_models.StartStreamingOutResponse:
+        """
+        @summary StartStreamingOut
+        
+        @param request: StartStreamingOutRequest
+        @return: StartStreamingOutResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_streaming_out_with_options_async(request, runtime)
 
@@ -5692,6 +7136,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.StopChannelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.StopChannelResponse:
+        """
+        @summary 删除频道
+        
+        @param request: StopChannelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopChannelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5722,6 +7173,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.StopChannelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.StopChannelResponse:
+        """
+        @summary 删除频道
+        
+        @param request: StopChannelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopChannelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5751,6 +7209,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.StopChannelRequest,
     ) -> rtc_20180111_models.StopChannelResponse:
+        """
+        @summary 删除频道
+        
+        @param request: StopChannelRequest
+        @return: StopChannelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_channel_with_options(request, runtime)
 
@@ -5758,6 +7222,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.StopChannelRequest,
     ) -> rtc_20180111_models.StopChannelResponse:
+        """
+        @summary 删除频道
+        
+        @param request: StopChannelRequest
+        @return: StopChannelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_channel_with_options_async(request, runtime)
 
@@ -5766,6 +7236,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.StopCloudRecordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.StopCloudRecordResponse:
+        """
+        @summary StopCloudRecord
+        
+        @param request: StopCloudRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopCloudRecordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5798,6 +7275,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.StopCloudRecordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.StopCloudRecordResponse:
+        """
+        @summary StopCloudRecord
+        
+        @param request: StopCloudRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopCloudRecordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5829,6 +7313,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.StopCloudRecordRequest,
     ) -> rtc_20180111_models.StopCloudRecordResponse:
+        """
+        @summary StopCloudRecord
+        
+        @param request: StopCloudRecordRequest
+        @return: StopCloudRecordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_cloud_record_with_options(request, runtime)
 
@@ -5836,6 +7326,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.StopCloudRecordRequest,
     ) -> rtc_20180111_models.StopCloudRecordResponse:
+        """
+        @summary StopCloudRecord
+        
+        @param request: StopCloudRecordRequest
+        @return: StopCloudRecordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_cloud_record_with_options_async(request, runtime)
 
@@ -5844,6 +7340,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.StopMPUTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.StopMPUTaskResponse:
+        """
+        @param request: StopMPUTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopMPUTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5876,6 +7377,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.StopMPUTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.StopMPUTaskResponse:
+        """
+        @param request: StopMPUTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopMPUTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5907,6 +7413,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.StopMPUTaskRequest,
     ) -> rtc_20180111_models.StopMPUTaskResponse:
+        """
+        @param request: StopMPUTaskRequest
+        @return: StopMPUTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_mputask_with_options(request, runtime)
 
@@ -5914,6 +7424,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.StopMPUTaskRequest,
     ) -> rtc_20180111_models.StopMPUTaskResponse:
+        """
+        @param request: StopMPUTaskRequest
+        @return: StopMPUTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_mputask_with_options_async(request, runtime)
 
@@ -5922,6 +7436,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.StopRecordTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.StopRecordTaskResponse:
+        """
+        @param request: StopRecordTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopRecordTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5954,6 +7473,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.StopRecordTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.StopRecordTaskResponse:
+        """
+        @param request: StopRecordTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopRecordTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -5985,6 +7509,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.StopRecordTaskRequest,
     ) -> rtc_20180111_models.StopRecordTaskResponse:
+        """
+        @param request: StopRecordTaskRequest
+        @return: StopRecordTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_record_task_with_options(request, runtime)
 
@@ -5992,6 +7520,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.StopRecordTaskRequest,
     ) -> rtc_20180111_models.StopRecordTaskResponse:
+        """
+        @param request: StopRecordTaskRequest
+        @return: StopRecordTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_record_task_with_options_async(request, runtime)
 
@@ -6000,6 +7532,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.StopStreamingOutRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.StopStreamingOutResponse:
+        """
+        @summary StopStreamingOut
+        
+        @param request: StopStreamingOutRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopStreamingOutResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6032,6 +7571,13 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.StopStreamingOutRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.StopStreamingOutResponse:
+        """
+        @summary StopStreamingOut
+        
+        @param request: StopStreamingOutRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopStreamingOutResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6063,6 +7609,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.StopStreamingOutRequest,
     ) -> rtc_20180111_models.StopStreamingOutResponse:
+        """
+        @summary StopStreamingOut
+        
+        @param request: StopStreamingOutRequest
+        @return: StopStreamingOutResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_streaming_out_with_options(request, runtime)
 
@@ -6070,6 +7622,12 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.StopStreamingOutRequest,
     ) -> rtc_20180111_models.StopStreamingOutResponse:
+        """
+        @summary StopStreamingOut
+        
+        @param request: StopStreamingOutRequest
+        @return: StopStreamingOutResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_streaming_out_with_options_async(request, runtime)
 
@@ -6078,6 +7636,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.UpdateAutoLiveStreamRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.UpdateAutoLiveStreamRuleResponse:
+        """
+        @param request: UpdateAutoLiveStreamRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAutoLiveStreamRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6122,6 +7685,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.UpdateAutoLiveStreamRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.UpdateAutoLiveStreamRuleResponse:
+        """
+        @param request: UpdateAutoLiveStreamRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAutoLiveStreamRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6165,6 +7733,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.UpdateAutoLiveStreamRuleRequest,
     ) -> rtc_20180111_models.UpdateAutoLiveStreamRuleResponse:
+        """
+        @param request: UpdateAutoLiveStreamRuleRequest
+        @return: UpdateAutoLiveStreamRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_auto_live_stream_rule_with_options(request, runtime)
 
@@ -6172,6 +7744,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.UpdateAutoLiveStreamRuleRequest,
     ) -> rtc_20180111_models.UpdateAutoLiveStreamRuleResponse:
+        """
+        @param request: UpdateAutoLiveStreamRuleRequest
+        @return: UpdateAutoLiveStreamRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_auto_live_stream_rule_with_options_async(request, runtime)
 
@@ -6180,6 +7756,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.UpdateMPUTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.UpdateMPUTaskResponse:
+        """
+        @param request: UpdateMPUTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMPUTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6248,6 +7829,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.UpdateMPUTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.UpdateMPUTaskResponse:
+        """
+        @param request: UpdateMPUTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMPUTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6315,6 +7901,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.UpdateMPUTaskRequest,
     ) -> rtc_20180111_models.UpdateMPUTaskResponse:
+        """
+        @param request: UpdateMPUTaskRequest
+        @return: UpdateMPUTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_mputask_with_options(request, runtime)
 
@@ -6322,6 +7912,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.UpdateMPUTaskRequest,
     ) -> rtc_20180111_models.UpdateMPUTaskResponse:
+        """
+        @param request: UpdateMPUTaskRequest
+        @return: UpdateMPUTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_mputask_with_options_async(request, runtime)
 
@@ -6330,6 +7924,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.UpdateRecordTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.UpdateRecordTaskResponse:
+        """
+        @param request: UpdateRecordTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRecordTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6390,6 +7989,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.UpdateRecordTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.UpdateRecordTaskResponse:
+        """
+        @param request: UpdateRecordTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRecordTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6449,6 +8053,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.UpdateRecordTaskRequest,
     ) -> rtc_20180111_models.UpdateRecordTaskResponse:
+        """
+        @param request: UpdateRecordTaskRequest
+        @return: UpdateRecordTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_record_task_with_options(request, runtime)
 
@@ -6456,6 +8064,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.UpdateRecordTaskRequest,
     ) -> rtc_20180111_models.UpdateRecordTaskResponse:
+        """
+        @param request: UpdateRecordTaskRequest
+        @return: UpdateRecordTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_record_task_with_options_async(request, runtime)
 
@@ -6464,6 +8076,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.UpdateRecordTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.UpdateRecordTemplateResponse:
+        """
+        @param request: UpdateRecordTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRecordTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6530,6 +8147,11 @@ class Client(OpenApiClient):
         request: rtc_20180111_models.UpdateRecordTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> rtc_20180111_models.UpdateRecordTemplateResponse:
+        """
+        @param request: UpdateRecordTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRecordTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -6595,6 +8217,10 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.UpdateRecordTemplateRequest,
     ) -> rtc_20180111_models.UpdateRecordTemplateResponse:
+        """
+        @param request: UpdateRecordTemplateRequest
+        @return: UpdateRecordTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_record_template_with_options(request, runtime)
 
@@ -6602,5 +8228,9 @@ class Client(OpenApiClient):
         self,
         request: rtc_20180111_models.UpdateRecordTemplateRequest,
     ) -> rtc_20180111_models.UpdateRecordTemplateResponse:
+        """
+        @param request: UpdateRecordTemplateRequest
+        @return: UpdateRecordTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_record_template_with_options_async(request, runtime)

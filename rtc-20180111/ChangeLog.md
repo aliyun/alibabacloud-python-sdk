@@ -1,3 +1,7 @@
+2024-05-22 Version: 3.0.1
+- Update API DescribeApps: add param AppVersion.
+
+
 2024-03-21 Version: 3.0.0
 - Support API DescribeChannel.
 - Support API DescribeChannelAllUsers.

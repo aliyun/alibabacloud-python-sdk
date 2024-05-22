@@ -216,23 +216,32 @@ class AddRecordTemplateRequest(TeaModel):
         task_profile: str = None,
         watermarks: List[AddRecordTemplateRequestWatermarks] = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         self.background_color = background_color
         self.backgrounds = backgrounds
         self.clock_widgets = clock_widgets
         self.delay_stop_time = delay_stop_time
         self.enable_m3u_8date_time = enable_m3u_8date_time
+        # This parameter is required.
         self.file_split_interval = file_split_interval
+        # This parameter is required.
         self.formats = formats
         self.http_callback_url = http_callback_url
+        # This parameter is required.
         self.layout_ids = layout_ids
+        # This parameter is required.
         self.media_encode = media_encode
         self.mns_queue = mns_queue
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.oss_bucket = oss_bucket
         self.oss_endpoint = oss_endpoint
+        # This parameter is required.
         self.oss_file_prefix = oss_file_prefix
         self.owner_id = owner_id
+        # This parameter is required.
         self.task_profile = task_profile
         self.watermarks = watermarks
 
@@ -435,8 +444,11 @@ class CreateAppStreamingOutTemplateRequestStreamingOutTemplate(TeaModel):
         media_encode: int = None,
         name: str = None,
     ):
+        # This parameter is required.
         self.layout_ids = layout_ids
+        # This parameter is required.
         self.media_encode = media_encode
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -473,7 +485,9 @@ class CreateAppStreamingOutTemplateRequest(TeaModel):
         app_id: str = None,
         streaming_out_template: CreateAppStreamingOutTemplateRequestStreamingOutTemplate = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.streaming_out_template = streaming_out_template
 
     def validate(self):
@@ -508,7 +522,9 @@ class CreateAppStreamingOutTemplateShrinkRequest(TeaModel):
         app_id: str = None,
         streaming_out_template_shrink: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.streaming_out_template_shrink = streaming_out_template_shrink
 
     def validate(self):
@@ -622,12 +638,14 @@ class CreateAutoLiveStreamRuleRequest(TeaModel):
         play_domain: str = None,
         rule_name: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         self.call_back = call_back
         self.channel_id_prefixes = channel_id_prefixes
         self.channel_ids = channel_ids
         self.media_encode = media_encode
         self.owner_id = owner_id
+        # This parameter is required.
         self.play_domain = play_domain
         self.rule_name = rule_name
 
@@ -766,10 +784,14 @@ class CreateEventSubscribeRequest(TeaModel):
         role: int = None,
         users: List[str] = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.callback_url = callback_url
         self.channel_id = channel_id
+        # This parameter is required.
         self.client_token = client_token
+        # This parameter is required.
         self.events = events
         self.need_callback_auth = need_callback_auth
         self.owner_id = owner_id
@@ -974,10 +996,13 @@ class CreateMPULayoutRequest(TeaModel):
         owner_id: int = None,
         panes: List[CreateMPULayoutRequestPanes] = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.audio_mix_count = audio_mix_count
         self.name = name
         self.owner_id = owner_id
+        # This parameter is required.
         self.panes = panes
 
     def validate(self):
@@ -1103,6 +1128,7 @@ class DeleteAppStreamingOutTemplateRequestStreamingOutTemplate(TeaModel):
         self,
         template_id: str = None,
     ):
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -1131,7 +1157,9 @@ class DeleteAppStreamingOutTemplateRequest(TeaModel):
         app_id: str = None,
         streaming_out_template: DeleteAppStreamingOutTemplateRequestStreamingOutTemplate = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.streaming_out_template = streaming_out_template
 
     def validate(self):
@@ -1166,7 +1194,9 @@ class DeleteAppStreamingOutTemplateShrinkRequest(TeaModel):
         app_id: str = None,
         streaming_out_template_shrink: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.streaming_out_template_shrink = streaming_out_template_shrink
 
     def validate(self):
@@ -1269,8 +1299,10 @@ class DeleteAutoLiveStreamRuleRequest(TeaModel):
         owner_id: int = None,
         rule_id: int = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         self.owner_id = owner_id
+        # This parameter is required.
         self.rule_id = rule_id
 
     def validate(self):
@@ -1376,7 +1408,9 @@ class DeleteChannelRequest(TeaModel):
         channel_id: str = None,
         owner_id: int = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.channel_id = channel_id
         self.owner_id = owner_id
 
@@ -1483,8 +1517,10 @@ class DeleteEventSubscribeRequest(TeaModel):
         owner_id: int = None,
         subscribe_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         self.owner_id = owner_id
+        # This parameter is required.
         self.subscribe_id = subscribe_id
 
     def validate(self):
@@ -1590,7 +1626,9 @@ class DeleteMPULayoutRequest(TeaModel):
         layout_id: int = None,
         owner_id: int = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.layout_id = layout_id
         self.owner_id = owner_id
 
@@ -1697,9 +1735,11 @@ class DeleteRecordTemplateRequest(TeaModel):
         owner_id: int = None,
         template_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         # 1
         self.owner_id = owner_id
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -1804,6 +1844,7 @@ class DescribeAppKeyRequest(TeaModel):
         app_id: str = None,
         owner_id: int = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         self.owner_id = owner_id
 
@@ -1947,6 +1988,7 @@ class DescribeAppStreamingOutTemplatesRequest(TeaModel):
         page_num: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         self.condition = condition
         self.page_num = page_num
@@ -1994,6 +2036,7 @@ class DescribeAppStreamingOutTemplatesShrinkRequest(TeaModel):
         page_num: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         self.condition_shrink = condition_shrink
         self.page_num = page_num
@@ -2181,6 +2224,7 @@ class DescribeAppsRequest(TeaModel):
     def __init__(
         self,
         app_id: str = None,
+        app_version: str = None,
         order: str = None,
         owner_id: int = None,
         page_num: int = None,
@@ -2188,6 +2232,7 @@ class DescribeAppsRequest(TeaModel):
         status: str = None,
     ):
         self.app_id = app_id
+        self.app_version = app_version
         self.order = order
         self.owner_id = owner_id
         self.page_num = page_num
@@ -2205,6 +2250,8 @@ class DescribeAppsRequest(TeaModel):
         result = dict()
         if self.app_id is not None:
             result['AppId'] = self.app_id
+        if self.app_version is not None:
+            result['AppVersion'] = self.app_version
         if self.order is not None:
             result['Order'] = self.order
         if self.owner_id is not None:
@@ -2221,6 +2268,8 @@ class DescribeAppsRequest(TeaModel):
         m = m or dict()
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
+        if m.get('AppVersion') is not None:
+            self.app_version = m.get('AppVersion')
         if m.get('Order') is not None:
             self.order = m.get('Order')
         if m.get('OwnerId') is not None:
@@ -2461,6 +2510,7 @@ class DescribeAutoLiveStreamRuleRequest(TeaModel):
         app_id: str = None,
         owner_id: int = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         self.owner_id = owner_id
 
@@ -2656,8 +2706,12 @@ class DescribeCallRequest(TeaModel):
         query_exp_info: bool = None,
     ):
         # APP ID。
+        # 
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.channel_id = channel_id
+        # This parameter is required.
         self.created_ts = created_ts
         self.destroyed_ts = destroyed_ts
         self.ext_data_type = ext_data_type
@@ -3109,14 +3163,20 @@ class DescribeCallListRequest(TeaModel):
         user_id: str = None,
     ):
         # APP ID。
+        # 
+        # This parameter is required.
         self.app_id = app_id
         self.call_status = call_status
         self.channel_id = channel_id
+        # This parameter is required.
         self.end_ts = end_ts
         self.order_by = order_by
+        # This parameter is required.
         self.page_no = page_no
+        # This parameter is required.
         self.page_size = page_size
         self.query_mode = query_mode
+        # This parameter is required.
         self.start_ts = start_ts
         self.user_id = user_id
 
@@ -3352,7 +3412,9 @@ class DescribeChannelRequest(TeaModel):
         app_id: str = None,
         channel_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.channel_id = channel_id
 
     def validate(self):
@@ -3501,7 +3563,9 @@ class DescribeChannelAllUsersRequest(TeaModel):
         app_id: str = None,
         channel_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.channel_id = channel_id
 
     def validate(self):
@@ -3653,8 +3717,12 @@ class DescribeChannelAreaDistributionStatDataRequest(TeaModel):
         parent_area: str = None,
     ):
         # APP ID。
+        # 
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.channel_id = channel_id
+        # This parameter is required.
         self.created_ts = created_ts
         self.destroyed_ts = destroyed_ts
         self.parent_area = parent_area
@@ -3838,10 +3906,15 @@ class DescribeChannelDistributionStatDataRequest(TeaModel):
         stat_dim: str = None,
     ):
         # APP ID。
+        # 
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.channel_id = channel_id
+        # This parameter is required.
         self.created_ts = created_ts
         self.destroyed_ts = destroyed_ts
+        # This parameter is required.
         self.stat_dim = stat_dim
 
     def validate(self):
@@ -4010,8 +4083,12 @@ class DescribeChannelOverallDataRequest(TeaModel):
         destroyed_ts: int = None,
     ):
         # APP ID。
+        # 
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.channel_id = channel_id
+        # This parameter is required.
         self.created_ts = created_ts
         self.destroyed_ts = destroyed_ts
 
@@ -4345,7 +4422,9 @@ class DescribeChannelParticipantsRequest(TeaModel):
         page_num: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.channel_id = channel_id
         self.order = order
         self.owner_id = owner_id
@@ -4522,8 +4601,12 @@ class DescribeChannelTopPubUserListRequest(TeaModel):
         destroyed_ts: int = None,
     ):
         # APP ID。
+        # 
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.channel_id = channel_id
+        # This parameter is required.
         self.created_ts = created_ts
         self.destroyed_ts = destroyed_ts
 
@@ -4752,8 +4835,11 @@ class DescribeChannelUserRequest(TeaModel):
         channel_id: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.channel_id = channel_id
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -4926,8 +5012,12 @@ class DescribeChannelUserMetricsRequest(TeaModel):
         destroyed_ts: int = None,
     ):
         # APP ID。
+        # 
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.channel_id = channel_id
+        # This parameter is required.
         self.created_ts = created_ts
         self.destroyed_ts = destroyed_ts
 
@@ -5192,7 +5282,9 @@ class DescribeChannelUsersRequest(TeaModel):
         channel_id: str = None,
         owner_id: int = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.channel_id = channel_id
         self.owner_id = owner_id
 
@@ -5356,10 +5448,15 @@ class DescribeEndPointEventListRequest(TeaModel):
         user_id_list: str = None,
     ):
         # APP ID。
+        # 
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.channel_id = channel_id
+        # This parameter is required.
         self.created_ts = created_ts
         self.destroyed_ts = destroyed_ts
+        # This parameter is required.
         self.user_id_list = user_id_list
 
     def validate(self):
@@ -5620,10 +5717,15 @@ class DescribeEndPointMetricDataRequest(TeaModel):
         sub_user_id: str = None,
     ):
         # APP ID。
+        # 
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.channel_id = channel_id
+        # This parameter is required.
         self.created_ts = created_ts
         self.destroyed_ts = destroyed_ts
+        # This parameter is required.
         self.metrics = metrics
         self.pub_call_id_list = pub_call_id_list
         self.pub_user_id = pub_user_id
@@ -5954,8 +6056,12 @@ class DescribeFaultDiagnosisFactorDistributionStatRequest(TeaModel):
         start_ts: int = None,
     ):
         # APP ID。
+        # 
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.end_ts = end_ts
+        # This parameter is required.
         self.start_ts = start_ts
 
     def validate(self):
@@ -6116,9 +6222,14 @@ class DescribeFaultDiagnosisOverallDataRequest(TeaModel):
         stat_dim: str = None,
     ):
         # APP ID
+        # 
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.end_ts = end_ts
+        # This parameter is required.
         self.start_ts = start_ts
+        # This parameter is required.
         self.stat_dim = stat_dim
 
     def validate(self):
@@ -6362,11 +6473,17 @@ class DescribeFaultDiagnosisUserDetailRequest(TeaModel):
         user_id: str = None,
     ):
         # APP ID。
+        # 
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.channel_id = channel_id
+        # This parameter is required.
         self.created_ts = created_ts
+        # This parameter is required.
         self.fault_type = fault_type
         self.query_call_user_info = query_call_user_info
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -7066,12 +7183,18 @@ class DescribeFaultDiagnosisUserListRequest(TeaModel):
         user_id: str = None,
     ):
         # APP ID。
+        # 
+        # This parameter is required.
         self.app_id = app_id
         self.channel_id = channel_id
+        # This parameter is required.
         self.end_ts = end_ts
         self.fault_types = fault_types
+        # This parameter is required.
         self.page_no = page_no
+        # This parameter is required.
         self.page_size = page_size
+        # This parameter is required.
         self.start_ts = start_ts
         self.user_id = user_id
 
@@ -7325,6 +7448,7 @@ class DescribeMPULayoutInfoListRequest(TeaModel):
         page_num: int = None,
         page_size: int = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         self.layout_id = layout_id
         self.name = name
@@ -7650,10 +7774,15 @@ class DescribePubUserListBySubUserRequest(TeaModel):
         sub_user_id: str = None,
     ):
         # APP ID。
+        # 
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.channel_id = channel_id
+        # This parameter is required.
         self.created_ts = created_ts
         self.destroyed_ts = destroyed_ts
+        # This parameter is required.
         self.sub_user_id = sub_user_id
 
     def validate(self):
@@ -8121,10 +8250,15 @@ class DescribeQoeMetricDataRequest(TeaModel):
         user_id: str = None,
     ):
         # APP ID。
+        # 
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.channel_id = channel_id
+        # This parameter is required.
         self.created_ts = created_ts
         self.destroyed_ts = destroyed_ts
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -8429,9 +8563,13 @@ class DescribeQualityAreaDistributionStatDataRequest(TeaModel):
         start_date: int = None,
     ):
         # APP ID
+        # 
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.end_date = end_date
         self.parent_area = parent_area
+        # This parameter is required.
         self.start_date = start_date
 
     def validate(self):
@@ -8644,9 +8782,14 @@ class DescribeQualityDistributionStatDataRequest(TeaModel):
         stat_dim: str = None,
     ):
         # APP ID
+        # 
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.end_date = end_date
+        # This parameter is required.
         self.start_date = start_date
+        # This parameter is required.
         self.stat_dim = stat_dim
 
     def validate(self):
@@ -8858,8 +9001,12 @@ class DescribeQualityOsSdkVersionDistributionStatDataRequest(TeaModel):
         start_date: int = None,
     ):
         # APP ID
+        # 
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.end_date = end_date
+        # This parameter is required.
         self.start_date = start_date
 
     def validate(self):
@@ -9074,9 +9221,14 @@ class DescribeQualityOverallDataRequest(TeaModel):
         types: str = None,
     ):
         # APP ID
+        # 
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.end_date = end_date
+        # This parameter is required.
         self.start_date = start_date
+        # This parameter is required.
         self.types = types
 
     def validate(self):
@@ -9285,6 +9437,7 @@ class DescribeRecordFilesRequest(TeaModel):
         start_time: str = None,
         task_ids: List[str] = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         self.channel_id = channel_id
         self.end_time = end_time
@@ -9514,6 +9667,7 @@ class DescribeRecordTemplatesRequest(TeaModel):
         page_size: int = None,
         template_ids: List[str] = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         # 1
         self.owner_id = owner_id
@@ -10011,10 +10165,13 @@ class DescribeRtcChannelListRequest(TeaModel):
         self.app_id = app_id
         self.channel_id = channel_id
         self.owner_id = owner_id
+        # This parameter is required.
         self.page_no = page_no
+        # This parameter is required.
         self.page_size = page_size
         self.service_area = service_area
         self.sort_type = sort_type
+        # This parameter is required.
         self.time_point = time_point
         self.user_id = user_id
 
@@ -10287,9 +10444,12 @@ class DescribeRtcChannelMetricRequest(TeaModel):
         owner_id: int = None,
         time_point: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.channel_id = channel_id
         self.owner_id = owner_id
+        # This parameter is required.
         self.time_point = time_point
 
     def validate(self):
@@ -11283,9 +11443,13 @@ class DescribeUsageAreaDistributionStatDataRequest(TeaModel):
         start_date: str = None,
     ):
         # APP ID
+        # 
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.end_date = end_date
         self.parent_area = parent_area
+        # This parameter is required.
         self.start_date = start_date
 
     def validate(self):
@@ -11456,9 +11620,14 @@ class DescribeUsageDistributionStatDataRequest(TeaModel):
         stat_dim: str = None,
     ):
         # APP ID
+        # 
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.end_date = end_date
+        # This parameter is required.
         self.start_date = start_date
+        # This parameter is required.
         self.stat_dim = stat_dim
 
     def validate(self):
@@ -11634,8 +11803,12 @@ class DescribeUsageOsSdkVersionDistributionStatDataRequest(TeaModel):
         start_date: int = None,
     ):
         # APP ID
+        # 
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.end_date = end_date
+        # This parameter is required.
         self.start_date = start_date
 
     def validate(self):
@@ -11814,9 +11987,14 @@ class DescribeUsageOverallDataRequest(TeaModel):
         types: str = None,
     ):
         # APP ID
+        # 
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.end_date = end_date
+        # This parameter is required.
         self.start_date = start_date
+        # This parameter is required.
         self.types = types
 
     def validate(self):
@@ -12015,9 +12193,12 @@ class DescribeUserInfoInChannelRequest(TeaModel):
         owner_id: int = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.channel_id = channel_id
         self.owner_id = owner_id
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -12198,8 +12379,10 @@ class DisableAutoLiveStreamRuleRequest(TeaModel):
         owner_id: int = None,
         rule_id: int = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         self.owner_id = owner_id
+        # This parameter is required.
         self.rule_id = rule_id
 
     def validate(self):
@@ -12305,8 +12488,10 @@ class EnableAutoLiveStreamRuleRequest(TeaModel):
         owner_id: int = None,
         rule_id: int = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         self.owner_id = owner_id
+        # This parameter is required.
         self.rule_id = rule_id
 
     def validate(self):
@@ -12412,8 +12597,10 @@ class GetMPUTaskStatusRequest(TeaModel):
         owner_id: int = None,
         task_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         self.owner_id = owner_id
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -12525,7 +12712,9 @@ class ModifyAppRequest(TeaModel):
         app_name: str = None,
         owner_id: int = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.app_name = app_name
         self.owner_id = owner_id
 
@@ -12633,9 +12822,13 @@ class ModifyAppStreamingOutTemplateRequestStreamingOutTemplate(TeaModel):
         name: str = None,
         template_id: str = None,
     ):
+        # This parameter is required.
         self.layout_ids = layout_ids
+        # This parameter is required.
         self.media_encode = media_encode
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -12676,7 +12869,9 @@ class ModifyAppStreamingOutTemplateRequest(TeaModel):
         app_id: str = None,
         streaming_out_template: ModifyAppStreamingOutTemplateRequestStreamingOutTemplate = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.streaming_out_template = streaming_out_template
 
     def validate(self):
@@ -12711,7 +12906,9 @@ class ModifyAppStreamingOutTemplateShrinkRequest(TeaModel):
         app_id: str = None,
         streaming_out_template_shrink: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.streaming_out_template_shrink = streaming_out_template_shrink
 
     def validate(self):
@@ -12886,8 +13083,10 @@ class ModifyMPULayoutRequest(TeaModel):
         owner_id: int = None,
         panes: List[ModifyMPULayoutRequestPanes] = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         self.audio_mix_count = audio_mix_count
+        # This parameter is required.
         self.layout_id = layout_id
         self.name = name
         self.owner_id = owner_id
@@ -13017,9 +13216,12 @@ class RemoveTerminalsRequest(TeaModel):
         owner_id: int = None,
         terminal_ids: List[str] = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.channel_id = channel_id
         self.owner_id = owner_id
+        # This parameter is required.
         self.terminal_ids = terminal_ids
 
     def validate(self):
@@ -13209,6 +13411,7 @@ class RemoveUsersRequestUsers(TeaModel):
         self,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -13238,8 +13441,11 @@ class RemoveUsersRequest(TeaModel):
         channel_id: str = None,
         users: List[RemoveUsersRequestUsers] = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.channel_id = channel_id
+        # This parameter is required.
         self.users = users
 
     def validate(self):
@@ -13406,6 +13612,8 @@ class StartCloudRecordRequestPanes(TeaModel):
         source_type: str = None,
     ):
         # paneId
+        # 
+        # This parameter is required.
         self.pane_id = pane_id
         # sourceType
         self.source_type = source_type
@@ -13444,14 +13652,24 @@ class StartCloudRecordRequestStorageConfig(TeaModel):
         vendor: int = None,
     ):
         # accessKey
+        # 
+        # This parameter is required.
         self.access_key = access_key
         # bucket
+        # 
+        # This parameter is required.
         self.bucket = bucket
         # region
+        # 
+        # This parameter is required.
         self.region = region
         # secretKey
+        # 
+        # This parameter is required.
         self.secret_key = secret_key
         # vendor
+        # 
+        # This parameter is required.
         self.vendor = vendor
 
     def validate(self):
@@ -13501,16 +13719,24 @@ class StartCloudRecordRequest(TeaModel):
         template_id: str = None,
     ):
         # appId
+        # 
+        # This parameter is required.
         self.app_id = app_id
         # channelName
+        # 
+        # This parameter is required.
         self.channel_id = channel_id
         # panes
         self.panes = panes
         # storageConfig
+        # 
+        # This parameter is required.
         self.storage_config = storage_config
         # taskId
         self.task_id = task_id
         # templateId
+        # 
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -14162,9 +14388,11 @@ class StartMPUTaskRequest(TeaModel):
         vad_interval: int = None,
         watermarks: List[StartMPUTaskRequestWatermarks] = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         self.background_color = background_color
         self.backgrounds = backgrounds
+        # This parameter is required.
         self.channel_id = channel_id
         self.clock_widgets = clock_widgets
         self.crop_mode = crop_mode
@@ -14183,6 +14411,7 @@ class StartMPUTaskRequest(TeaModel):
         self.sub_spec_camera_users = sub_spec_camera_users
         self.sub_spec_share_screen_users = sub_spec_share_screen_users
         self.sub_spec_users = sub_spec_users
+        # This parameter is required.
         self.task_id = task_id
         self.task_type = task_type
         self.time_stamp_ref = time_stamp_ref
@@ -14653,7 +14882,9 @@ class StartRecordTaskRequest(TeaModel):
         unsub_spec_share_screen_users: List[str] = None,
         user_panes: List[StartRecordTaskRequestUserPanes] = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.channel_id = channel_id
         self.crop_mode = crop_mode
         self.layout_ids = layout_ids
@@ -14666,8 +14897,10 @@ class StartRecordTaskRequest(TeaModel):
         self.sub_spec_camera_users = sub_spec_camera_users
         self.sub_spec_share_screen_users = sub_spec_share_screen_users
         self.sub_spec_users = sub_spec_users
+        # This parameter is required.
         self.task_id = task_id
         self.task_profile = task_profile
+        # This parameter is required.
         self.template_id = template_id
         self.unsub_spec_audio_users = unsub_spec_audio_users
         self.unsub_spec_camera_users = unsub_spec_camera_users
@@ -14852,6 +15085,7 @@ class StartStreamingOutRequestPanes(TeaModel):
         pane_id: str = None,
         source_type: str = None,
     ):
+        # This parameter is required.
         self.pane_id = pane_id
         self.source_type = source_type
 
@@ -14889,11 +15123,15 @@ class StartStreamingOutRequest(TeaModel):
         template_id: str = None,
         url: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.channel_id = channel_id
         self.panes = panes
         self.task_id = task_id
+        # This parameter is required.
         self.template_id = template_id
+        # This parameter is required.
         self.url = url
 
     def validate(self):
@@ -15024,7 +15262,9 @@ class StopChannelRequest(TeaModel):
         app_id: str = None,
         channel_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.channel_id = channel_id
 
     def validate(self):
@@ -15126,8 +15366,11 @@ class StopCloudRecordRequest(TeaModel):
         channel_id: str = None,
         task_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.channel_id = channel_id
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -15239,8 +15482,10 @@ class StopMPUTaskRequest(TeaModel):
         owner_id: int = None,
         task_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         self.owner_id = owner_id
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -15346,8 +15591,10 @@ class StopRecordTaskRequest(TeaModel):
         owner_id: int = None,
         task_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         self.owner_id = owner_id
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -15453,8 +15700,11 @@ class StopStreamingOutRequest(TeaModel):
         channel_id: str = None,
         task_id: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.channel_id = channel_id
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -15572,13 +15822,16 @@ class UpdateAutoLiveStreamRuleRequest(TeaModel):
         rule_id: int = None,
         rule_name: str = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         self.call_back = call_back
         self.channel_id_prefixes = channel_id_prefixes
         self.channel_ids = channel_ids
         self.media_encode = media_encode
         self.owner_id = owner_id
+        # This parameter is required.
         self.play_domain = play_domain
+        # This parameter is required.
         self.rule_id = rule_id
         self.rule_name = rule_name
 
@@ -16188,6 +16441,7 @@ class UpdateMPUTaskRequest(TeaModel):
         user_panes: List[UpdateMPUTaskRequestUserPanes] = None,
         watermarks: List[UpdateMPUTaskRequestWatermarks] = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         self.background_color = background_color
         self.backgrounds = backgrounds
@@ -16203,6 +16457,7 @@ class UpdateMPUTaskRequest(TeaModel):
         self.sub_spec_camera_users = sub_spec_camera_users
         self.sub_spec_share_screen_users = sub_spec_share_screen_users
         self.sub_spec_users = sub_spec_users
+        # This parameter is required.
         self.task_id = task_id
         self.unsub_spec_audio_users = unsub_spec_audio_users
         self.unsub_spec_camera_users = unsub_spec_camera_users
@@ -16628,7 +16883,9 @@ class UpdateRecordTaskRequest(TeaModel):
         unsub_spec_share_screen_users: List[str] = None,
         user_panes: List[UpdateRecordTaskRequestUserPanes] = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
+        # This parameter is required.
         self.channel_id = channel_id
         self.crop_mode = crop_mode
         self.layout_ids = layout_ids
@@ -16638,8 +16895,10 @@ class UpdateRecordTaskRequest(TeaModel):
         self.sub_spec_camera_users = sub_spec_camera_users
         self.sub_spec_share_screen_users = sub_spec_share_screen_users
         self.sub_spec_users = sub_spec_users
+        # This parameter is required.
         self.task_id = task_id
         self.task_profile = task_profile
+        # This parameter is required.
         self.template_id = template_id
         self.unsub_spec_audio_users = unsub_spec_audio_users
         self.unsub_spec_camera_users = unsub_spec_camera_users
@@ -17019,24 +17278,34 @@ class UpdateRecordTemplateRequest(TeaModel):
         template_id: str = None,
         watermarks: List[UpdateRecordTemplateRequestWatermarks] = None,
     ):
+        # This parameter is required.
         self.app_id = app_id
         self.background_color = background_color
         self.backgrounds = backgrounds
         self.clock_widgets = clock_widgets
         self.delay_stop_time = delay_stop_time
         self.enable_m3u_8date_time = enable_m3u_8date_time
+        # This parameter is required.
         self.file_split_interval = file_split_interval
+        # This parameter is required.
         self.formats = formats
         self.http_callback_url = http_callback_url
+        # This parameter is required.
         self.layout_ids = layout_ids
+        # This parameter is required.
         self.media_encode = media_encode
         self.mns_queue = mns_queue
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.oss_bucket = oss_bucket
         self.oss_endpoint = oss_endpoint
+        # This parameter is required.
         self.oss_file_prefix = oss_file_prefix
         self.owner_id = owner_id
+        # This parameter is required.
         self.task_profile = task_profile
+        # This parameter is required.
         self.template_id = template_id
         self.watermarks = watermarks
 
