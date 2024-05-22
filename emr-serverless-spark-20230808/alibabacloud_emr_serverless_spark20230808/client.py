@@ -41,6 +41,122 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_members_with_options(
+        self,
+        request: emr_serverless_spark_20230808_models.AddMembersRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.AddMembersResponse:
+        """
+        @summary 添加用户
+        
+        @param request: AddMembersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddMembersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.member_arns):
+            body['memberArns'] = request.member_arns
+        if not UtilClient.is_unset(request.workspace_id):
+            body['workspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddMembers',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/auth/members',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.AddMembersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_members_with_options_async(
+        self,
+        request: emr_serverless_spark_20230808_models.AddMembersRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.AddMembersResponse:
+        """
+        @summary 添加用户
+        
+        @param request: AddMembersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddMembersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.member_arns):
+            body['memberArns'] = request.member_arns
+        if not UtilClient.is_unset(request.workspace_id):
+            body['workspaceId'] = request.workspace_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='AddMembers',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/auth/members',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.AddMembersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_members(
+        self,
+        request: emr_serverless_spark_20230808_models.AddMembersRequest,
+    ) -> emr_serverless_spark_20230808_models.AddMembersResponse:
+        """
+        @summary 添加用户
+        
+        @param request: AddMembersRequest
+        @return: AddMembersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.add_members_with_options(request, headers, runtime)
+
+    async def add_members_async(
+        self,
+        request: emr_serverless_spark_20230808_models.AddMembersRequest,
+    ) -> emr_serverless_spark_20230808_models.AddMembersResponse:
+        """
+        @summary 添加用户
+        
+        @param request: AddMembersRequest
+        @return: AddMembersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.add_members_with_options_async(request, headers, runtime)
+
     def cancel_job_run_with_options(
         self,
         workspace_id: str,
@@ -264,6 +380,122 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_job_run_with_options_async(workspace_id, job_run_id, request, headers, runtime)
+
+    def grant_role_to_users_with_options(
+        self,
+        request: emr_serverless_spark_20230808_models.GrantRoleToUsersRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.GrantRoleToUsersResponse:
+        """
+        @summary 给用户授权Role列表
+        
+        @param request: GrantRoleToUsersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantRoleToUsersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.role_arn):
+            body['roleArn'] = request.role_arn
+        if not UtilClient.is_unset(request.user_arns):
+            body['userArns'] = request.user_arns
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GrantRoleToUsers',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/auth/roles/grant',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.GrantRoleToUsersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def grant_role_to_users_with_options_async(
+        self,
+        request: emr_serverless_spark_20230808_models.GrantRoleToUsersRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.GrantRoleToUsersResponse:
+        """
+        @summary 给用户授权Role列表
+        
+        @param request: GrantRoleToUsersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GrantRoleToUsersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.role_arn):
+            body['roleArn'] = request.role_arn
+        if not UtilClient.is_unset(request.user_arns):
+            body['userArns'] = request.user_arns
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='GrantRoleToUsers',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/v1/auth/roles/grant',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.GrantRoleToUsersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def grant_role_to_users(
+        self,
+        request: emr_serverless_spark_20230808_models.GrantRoleToUsersRequest,
+    ) -> emr_serverless_spark_20230808_models.GrantRoleToUsersResponse:
+        """
+        @summary 给用户授权Role列表
+        
+        @param request: GrantRoleToUsersRequest
+        @return: GrantRoleToUsersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.grant_role_to_users_with_options(request, headers, runtime)
+
+    async def grant_role_to_users_async(
+        self,
+        request: emr_serverless_spark_20230808_models.GrantRoleToUsersRequest,
+    ) -> emr_serverless_spark_20230808_models.GrantRoleToUsersResponse:
+        """
+        @summary 给用户授权Role列表
+        
+        @param request: GrantRoleToUsersRequest
+        @return: GrantRoleToUsersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.grant_role_to_users_with_options_async(request, headers, runtime)
 
     def list_job_runs_with_options(
         self,

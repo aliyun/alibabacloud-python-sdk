@@ -1,3 +1,8 @@
+2024-05-22 Version: 1.3.0
+- Support API AddMembers.
+- Support API GrantRoleToUsers.
+
+
 2024-05-21 Version: 1.2.0
 - Support API ListSessionClusters.
 
