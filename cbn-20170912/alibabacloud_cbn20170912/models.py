@@ -16859,13 +16859,16 @@ class DescribeFlowlogsResponseBodyFlowLogsFlowLog(TeaModel):
         description: str = None,
         flow_log_id: str = None,
         flow_log_name: str = None,
+        flow_log_version: str = None,
         interval: int = None,
+        log_format_string: str = None,
         log_store_name: str = None,
         project_name: str = None,
         region_id: str = None,
         status: str = None,
         tags: DescribeFlowlogsResponseBodyFlowLogsFlowLogTags = None,
         transit_router_attachment_id: str = None,
+        transit_router_id: str = None,
     ):
         # The ID of the CEN instance.
         self.cen_id = cen_id
@@ -16879,8 +16882,10 @@ class DescribeFlowlogsResponseBodyFlowLogsFlowLog(TeaModel):
         self.flow_log_id = flow_log_id
         # The name of the flow log.
         self.flow_log_name = flow_log_name
+        self.flow_log_version = flow_log_version
         # The time window for collecting log data. Unit: seconds. Valid values: **60** and **600**. Default value: **600**.
         self.interval = interval
+        self.log_format_string = log_format_string
         # The name of the Logstore where the flow log is stored.
         self.log_store_name = log_store_name
         # The name of the project where the flow log is stored.
@@ -16896,6 +16901,7 @@ class DescribeFlowlogsResponseBodyFlowLogsFlowLog(TeaModel):
         self.tags = tags
         # The ID of the network instance connection.
         self.transit_router_attachment_id = transit_router_attachment_id
+        self.transit_router_id = transit_router_id
 
     def validate(self):
         if self.tags:
@@ -16917,8 +16923,12 @@ class DescribeFlowlogsResponseBodyFlowLogsFlowLog(TeaModel):
             result['FlowLogId'] = self.flow_log_id
         if self.flow_log_name is not None:
             result['FlowLogName'] = self.flow_log_name
+        if self.flow_log_version is not None:
+            result['FlowLogVersion'] = self.flow_log_version
         if self.interval is not None:
             result['Interval'] = self.interval
+        if self.log_format_string is not None:
+            result['LogFormatString'] = self.log_format_string
         if self.log_store_name is not None:
             result['LogStoreName'] = self.log_store_name
         if self.project_name is not None:
@@ -16931,6 +16941,8 @@ class DescribeFlowlogsResponseBodyFlowLogsFlowLog(TeaModel):
             result['Tags'] = self.tags.to_map()
         if self.transit_router_attachment_id is not None:
             result['TransitRouterAttachmentId'] = self.transit_router_attachment_id
+        if self.transit_router_id is not None:
+            result['TransitRouterId'] = self.transit_router_id
         return result
 
     def from_map(self, m: dict = None):
@@ -16945,8 +16957,12 @@ class DescribeFlowlogsResponseBodyFlowLogsFlowLog(TeaModel):
             self.flow_log_id = m.get('FlowLogId')
         if m.get('FlowLogName') is not None:
             self.flow_log_name = m.get('FlowLogName')
+        if m.get('FlowLogVersion') is not None:
+            self.flow_log_version = m.get('FlowLogVersion')
         if m.get('Interval') is not None:
             self.interval = m.get('Interval')
+        if m.get('LogFormatString') is not None:
+            self.log_format_string = m.get('LogFormatString')
         if m.get('LogStoreName') is not None:
             self.log_store_name = m.get('LogStoreName')
         if m.get('ProjectName') is not None:
@@ -16960,6 +16976,8 @@ class DescribeFlowlogsResponseBodyFlowLogsFlowLog(TeaModel):
             self.tags = temp_model.from_map(m['Tags'])
         if m.get('TransitRouterAttachmentId') is not None:
             self.transit_router_attachment_id = m.get('TransitRouterAttachmentId')
+        if m.get('TransitRouterId') is not None:
+            self.transit_router_id = m.get('TransitRouterId')
         return self
 
 

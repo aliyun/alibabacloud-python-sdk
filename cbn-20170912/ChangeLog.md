@@ -1,3 +1,8 @@
+2024-05-22 Version: 1.1.2
+- Update API CreateFlowlog: update response param.
+- Update API DescribeFlowlogs: update response param.
+
+
 2024-05-17 Version: 1.1.1
 - Update API DescribeCenInterRegionBandwidthLimits: update response param.
 - Update API ListTransitRouterVpcAttachments: update response param.
