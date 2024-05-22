@@ -1,3 +1,7 @@
+2024-05-22 Version: 2.4.1
+- Update API SubmitTextGenerateJob: add param Action.
+
+
 2024-04-28 Version: 2.4.0
 - Support API ListBatchMediaProducingJobs.
 - Support API ListMediaProducingJobs.

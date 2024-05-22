@@ -11,6 +11,7 @@ class AddCategoryRequest(TeaModel):
         parent_id: int = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.cate_name = cate_name
         self.parent_id = parent_id
         self.type = type
@@ -176,7 +177,9 @@ class AddEditingProjectMaterialsRequest(TeaModel):
         material_maps: str = None,
         project_id: str = None,
     ):
+        # This parameter is required.
         self.material_maps = material_maps
+        # This parameter is required.
         self.project_id = project_id
 
     def validate(self):
@@ -760,7 +763,9 @@ class AddMediaMarksRequest(TeaModel):
         media_id: str = None,
         media_marks: str = None,
     ):
+        # This parameter is required.
         self.media_id = media_id
+        # This parameter is required.
         self.media_marks = media_marks
 
     def validate(self):
@@ -1098,6 +1103,7 @@ class AlterSearchIndexRequest(TeaModel):
     ):
         self.index_config = index_config
         self.index_status = index_status
+        # This parameter is required.
         self.index_type = index_type
         self.search_lib_name = search_lib_name
 
@@ -1635,6 +1641,7 @@ class CancelDNAJobRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # This parameter is required.
         self.job_id = job_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -1857,6 +1864,7 @@ class CreateAuditRequest(TeaModel):
         self,
         audit_content: str = None,
     ):
+        # This parameter is required.
         self.audit_content = audit_content
 
     def validate(self):
@@ -1959,6 +1967,7 @@ class CreateAvatarTrainingJobRequest(TeaModel):
         video: str = None,
     ):
         self.avatar_description = avatar_description
+        # This parameter is required.
         self.avatar_name = avatar_name
         self.avatar_type = avatar_type
         self.portrait = portrait
@@ -2127,9 +2136,12 @@ class CreateCustomTemplateRequest(TeaModel):
         template_config: str = None,
         type: int = None,
     ):
+        # This parameter is required.
         self.name = name
         self.subtype = subtype
+        # This parameter is required.
         self.template_config = template_config
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -2330,9 +2342,12 @@ class CreateCustomizedVoiceJobRequest(TeaModel):
         voice_id: str = None,
         voice_name: str = None,
     ):
+        # This parameter is required.
         self.gender = gender
+        # This parameter is required.
         self.scenario = scenario
         self.voice_desc = voice_desc
+        # This parameter is required.
         self.voice_id = voice_id
         self.voice_name = voice_name
 
@@ -2500,6 +2515,7 @@ class CreateDNADBRequest(TeaModel):
     ):
         self.description = description
         self.model = model
+        # This parameter is required.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -2700,6 +2716,7 @@ class CreateEditingProjectRequest(TeaModel):
         self.template_id = template_id
         self.template_type = template_type
         self.timeline = timeline
+        # This parameter is required.
         self.title = title
 
     def validate(self):
@@ -2975,6 +2992,8 @@ class CreateLiveRecordTemplateRequestRecordFormat(TeaModel):
     ):
         self.cycle_duration = cycle_duration
         # 格式
+        # 
+        # This parameter is required.
         self.format = format
         # Oss对象名，不包含后缀
         self.oss_object_prefix = oss_object_prefix
@@ -3026,8 +3045,12 @@ class CreateLiveRecordTemplateRequest(TeaModel):
         record_format: List[CreateLiveRecordTemplateRequestRecordFormat] = None,
     ):
         # 代表资源名称的资源属性字段
+        # 
+        # This parameter is required.
         self.name = name
         # 录制格式
+        # 
+        # This parameter is required.
         self.record_format = record_format
 
     def validate(self):
@@ -3069,8 +3092,12 @@ class CreateLiveRecordTemplateShrinkRequest(TeaModel):
         record_format_shrink: str = None,
     ):
         # 代表资源名称的资源属性字段
+        # 
+        # This parameter is required.
         self.name = name
         # 录制格式
+        # 
+        # This parameter is required.
         self.record_format_shrink = record_format_shrink
 
     def validate(self):
@@ -3182,7 +3209,9 @@ class CreateLiveSnapshotTemplateRequest(TeaModel):
     ):
         self.overwrite_format = overwrite_format
         self.sequence_format = sequence_format
+        # This parameter is required.
         self.template_name = template_name
+        # This parameter is required.
         self.time_interval = time_interval
 
     def validate(self):
@@ -3450,8 +3479,10 @@ class CreateLiveTranscodeTemplateRequest(TeaModel):
         template_config: CreateLiveTranscodeTemplateRequestTemplateConfig = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.name = name
         self.template_config = template_config
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -3491,8 +3522,10 @@ class CreateLiveTranscodeTemplateShrinkRequest(TeaModel):
         template_config_shrink: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.name = name
         self.template_config_shrink = template_config_shrink
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -3604,8 +3637,10 @@ class CreatePipelineRequest(TeaModel):
         priority: int = None,
         speed: str = None,
     ):
+        # This parameter is required.
         self.name = name
         self.priority = priority
+        # This parameter is required.
         self.speed = speed
 
     def validate(self):
@@ -3785,6 +3820,7 @@ class CreateSearchIndexRequest(TeaModel):
     ):
         self.index_config = index_config
         self.index_status = index_status
+        # This parameter is required.
         self.index_type = index_type
         self.search_lib_name = search_lib_name
 
@@ -3905,6 +3941,7 @@ class CreateSearchLibRequest(TeaModel):
         self,
         search_lib_name: str = None,
     ):
+        # This parameter is required.
         self.search_lib_name = search_lib_name
 
     def validate(self):
@@ -4323,6 +4360,7 @@ class DecryptKMSDataKeyRequest(TeaModel):
         self,
         ciphertext_blob: str = None,
     ):
+        # This parameter is required.
         self.ciphertext_blob = ciphertext_blob
 
     def validate(self):
@@ -4459,6 +4497,7 @@ class DeleteAvatarTrainingJobRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -4595,6 +4634,7 @@ class DeleteCategoryRequest(TeaModel):
         self,
         cate_id: int = None,
     ):
+        # This parameter is required.
         self.cate_id = cate_id
 
     def validate(self):
@@ -4690,6 +4730,7 @@ class DeleteCustomTemplateRequest(TeaModel):
         self,
         template_id: str = None,
     ):
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -4791,6 +4832,7 @@ class DeleteCustomizedVoiceJobRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -4896,6 +4938,7 @@ class DeleteDNADBRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # This parameter is required.
         self.dbid = dbid
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -5016,9 +5059,11 @@ class DeleteDNAFilesRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # This parameter is required.
         self.dbid = dbid
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # This parameter is required.
         self.primary_keys = primary_keys
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -5138,8 +5183,11 @@ class DeleteEditingProjectMaterialsRequest(TeaModel):
         material_type: str = None,
         project_id: str = None,
     ):
+        # This parameter is required.
         self.material_ids = material_ids
+        # This parameter is required.
         self.material_type = material_type
+        # This parameter is required.
         self.project_id = project_id
 
     def validate(self):
@@ -5339,6 +5387,7 @@ class DeleteLiveRecordFilesRequest(TeaModel):
         record_ids: List[str] = None,
         remove_file: bool = None,
     ):
+        # This parameter is required.
         self.record_ids = record_ids
         self.remove_file = remove_file
 
@@ -5500,6 +5549,8 @@ class DeleteLiveRecordTemplateRequest(TeaModel):
         template_id: str = None,
     ):
         # 代表资源一级ID的资源属性字段
+        # 
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -5597,8 +5648,10 @@ class DeleteLiveSnapshotFilesRequest(TeaModel):
         delete_original_file: bool = None,
         job_id: str = None,
     ):
+        # This parameter is required.
         self.create_timestamp_list = create_timestamp_list
         self.delete_original_file = delete_original_file
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -5636,8 +5689,10 @@ class DeleteLiveSnapshotFilesShrinkRequest(TeaModel):
         delete_original_file: bool = None,
         job_id: str = None,
     ):
+        # This parameter is required.
         self.create_timestamp_list_shrink = create_timestamp_list_shrink
         self.delete_original_file = delete_original_file
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -5788,6 +5843,7 @@ class DeleteLiveSnapshotTemplateRequest(TeaModel):
         self,
         template_id: str = None,
     ):
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -5883,6 +5939,7 @@ class DeleteLiveTranscodeJobRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -5978,6 +6035,7 @@ class DeleteLiveTranscodeTemplateRequest(TeaModel):
         self,
         template_id: str = None,
     ):
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -6075,6 +6133,7 @@ class DeleteMediaFromSearchLibRequest(TeaModel):
         msg_body: str = None,
         search_lib_name: str = None,
     ):
+        # This parameter is required.
         self.media_id = media_id
         self.msg_body = msg_body
         self.search_lib_name = search_lib_name
@@ -6430,6 +6489,7 @@ class DeletePipelineRequest(TeaModel):
         self,
         pipeline_id: str = None,
     ):
+        # This parameter is required.
         self.pipeline_id = pipeline_id
 
     def validate(self):
@@ -6844,9 +6904,12 @@ class DescribeMeterImsEditUsageRequest(TeaModel):
         region: str = None,
         start_ts: int = None,
     ):
+        # This parameter is required.
         self.end_ts = end_ts
+        # This parameter is required.
         self.interval = interval
         self.region = region
+        # This parameter is required.
         self.start_ts = start_ts
 
     def validate(self):
@@ -7010,9 +7073,12 @@ class DescribeMeterImsMediaConvertUHDUsageRequest(TeaModel):
         region_id: str = None,
         start_ts: int = None,
     ):
+        # This parameter is required.
         self.end_ts = end_ts
+        # This parameter is required.
         self.interval = interval
         self.region_id = region_id
+        # This parameter is required.
         self.start_ts = start_ts
 
     def validate(self):
@@ -7176,9 +7242,12 @@ class DescribeMeterImsMediaConvertUsageRequest(TeaModel):
         region: str = None,
         start_ts: int = None,
     ):
+        # This parameter is required.
         self.end_ts = end_ts
+        # This parameter is required.
         self.interval = interval
         self.region = region
+        # This parameter is required.
         self.start_ts = start_ts
 
     def validate(self):
@@ -7342,9 +7411,12 @@ class DescribeMeterImsMpsAiUsageRequest(TeaModel):
         region: str = None,
         start_ts: int = None,
     ):
+        # This parameter is required.
         self.end_ts = end_ts
+        # This parameter is required.
         self.interval = interval
         self.region = region
+        # This parameter is required.
         self.start_ts = start_ts
 
     def validate(self):
@@ -7507,8 +7579,10 @@ class DescribeMeterImsSummaryRequest(TeaModel):
         region: str = None,
         start_ts: int = None,
     ):
+        # This parameter is required.
         self.end_ts = end_ts
         self.region = region
+        # This parameter is required.
         self.start_ts = start_ts
 
     def validate(self):
@@ -7703,11 +7777,15 @@ class DescribePlayListRequest(TeaModel):
         status: str = None,
         trace_id: str = None,
     ):
+        # This parameter is required.
         self.begin_ts = begin_ts
+        # This parameter is required.
         self.end_ts = end_ts
         self.order_name = order_name
         self.order_type = order_type
+        # This parameter is required.
         self.page_no = page_no
+        # This parameter is required.
         self.page_size = page_size
         self.play_type = play_type
         self.status = status
@@ -7954,8 +8032,11 @@ class DetectAudioForCustomizedVoiceJobRequest(TeaModel):
         record_url: str = None,
         voice_id: str = None,
     ):
+        # This parameter is required.
         self.audio_record_id = audio_record_id
+        # This parameter is required.
         self.record_url = record_url
+        # This parameter is required.
         self.voice_id = voice_id
 
     def validate(self):
@@ -8107,6 +8188,7 @@ class DropSearchIndexRequest(TeaModel):
         index_type: str = None,
         search_lib_name: str = None,
     ):
+        # This parameter is required.
         self.index_type = index_type
         self.search_lib_name = search_lib_name
 
@@ -8219,6 +8301,7 @@ class DropSearchLibRequest(TeaModel):
         self,
         search_lib_name: str = None,
     ):
+        # This parameter is required.
         self.search_lib_name = search_lib_name
 
     def validate(self):
@@ -8442,6 +8525,7 @@ class GetAvatarRequest(TeaModel):
         self,
         avatar_id: str = None,
     ):
+        # This parameter is required.
         self.avatar_id = avatar_id
 
     def validate(self):
@@ -8655,6 +8739,7 @@ class GetAvatarTrainingJobRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -9980,6 +10065,7 @@ class GetCustomizedVoiceJobRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -10291,6 +10377,7 @@ class GetDemonstrationForCustomizedVoiceJobRequest(TeaModel):
         self,
         scenario: str = None,
     ):
+        # This parameter is required.
         self.scenario = scenario
 
     def validate(self):
@@ -10872,6 +10959,7 @@ class GetEditingProjectRequest(TeaModel):
         project_id: str = None,
         request_source: str = None,
     ):
+        # This parameter is required.
         self.project_id = project_id
         self.request_source = request_source
 
@@ -11115,6 +11203,7 @@ class GetEditingProjectMaterialsRequest(TeaModel):
         self,
         project_id: str = None,
     ):
+        # This parameter is required.
         self.project_id = project_id
 
     def validate(self):
@@ -12168,6 +12257,7 @@ class GetLiveRecordJobRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -12276,6 +12366,8 @@ class GetLiveRecordJobResponseBodyRecordJob(TeaModel):
         template_name: str = None,
     ):
         # 代表创建时间的资源属性字段
+        # 
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.create_time = create_time
         # 代表资源名称的资源属性字段
         self.job_id = job_id
@@ -12433,6 +12525,7 @@ class GetLiveRecordTemplateRequest(TeaModel):
         template_id: str = None,
     ):
         self.job_id = job_id
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -12524,8 +12617,12 @@ class GetLiveRecordTemplateResponseBodyRecordTemplate(TeaModel):
         type: str = None,
     ):
         # 代表创建时间的资源属性字段
+        # 
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.create_time = create_time
         # 代表创建时间的资源属性字段
+        # 
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.last_modified = last_modified
         # 代表资源名称的资源属性字段
         self.name = name
@@ -12666,6 +12763,7 @@ class GetLiveSnapshotJobRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -12916,6 +13014,7 @@ class GetLiveSnapshotTemplateRequest(TeaModel):
         self,
         template_id: str = None,
     ):
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -13059,6 +13158,7 @@ class GetLiveTranscodeJobRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -13349,6 +13449,7 @@ class GetLiveTranscodeTemplateRequest(TeaModel):
         self,
         template_id: str = None,
     ):
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -15723,6 +15824,7 @@ class GetPackageJobRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -16049,6 +16151,7 @@ class GetPipelineRequest(TeaModel):
         self,
         pipeline_id: str = None,
     ):
+        # This parameter is required.
         self.pipeline_id = pipeline_id
 
     def validate(self):
@@ -17733,6 +17836,7 @@ class GetSnapshotJobRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -18279,6 +18383,7 @@ class GetSystemTemplateRequest(TeaModel):
         self,
         template_id: str = None,
     ):
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -18667,6 +18772,7 @@ class GetTemplateMaterialsRequest(TeaModel):
         template_id: str = None,
     ):
         self.file_list = file_list
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -19042,9 +19148,11 @@ class GetTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigCombi
         start: float = None,
         video_index: str = None,
     ):
+        # This parameter is required.
         self.audio_index = audio_index
         self.duration = duration
         self.start = start
+        # This parameter is required.
         self.video_index = video_index
 
     def validate(self):
@@ -20692,9 +20800,11 @@ class GetTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessConfig
         start: float = None,
         video_index: str = None,
     ):
+        # This parameter is required.
         self.audio_index = audio_index
         self.duration = duration
         self.start = start
+        # This parameter is required.
         self.video_index = video_index
 
     def validate(self):
@@ -22880,6 +22990,7 @@ class InsertMediaToSearchLibRequest(TeaModel):
         msg_body: str = None,
         search_lib_name: str = None,
     ):
+        # This parameter is required.
         self.input = input
         self.media_id = media_id
         self.media_type = media_type
@@ -23958,6 +24069,7 @@ class ListCustomTemplatesRequest(TeaModel):
         self.page_size = page_size
         self.subtype = subtype
         self.template_id = template_id
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -24848,6 +24960,7 @@ class ListDNAFilesRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # This parameter is required.
         self.dbid = dbid
         self.next_page_token = next_page_token
         self.owner_account = owner_account
@@ -25656,11 +25769,13 @@ class ListLiveRecordJobsRequest(TeaModel):
         start_time: str = None,
         status: str = None,
     ):
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.end_time = end_time
         self.keyword = keyword
         self.page_no = page_no
         self.page_size = page_size
         self.sort_by = sort_by
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.start_time = start_time
         self.status = status
 
@@ -25794,6 +25909,8 @@ class ListLiveRecordJobsResponseBodyLiveRecordJobs(TeaModel):
         template_name: str = None,
     ):
         # 代表创建时间的资源属性字段
+        # 
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.create_time = create_time
         self.job_id = job_id
         # 代表资源名称的资源属性字段
@@ -26093,8 +26210,12 @@ class ListLiveRecordTemplatesResponseBodyRecordTemplateList(TeaModel):
         type: str = None,
     ):
         # 代表创建时间的资源属性字段
+        # 
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.create_time = create_time
         # 最后修改时间
+        # 
+        # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.last_modified = last_modified
         # 代表资源名称的资源属性字段
         self.name = name
@@ -26268,10 +26389,13 @@ class ListLiveSnapshotFilesRequest(TeaModel):
         sort_by: str = None,
         start_time: str = None,
     ):
+        # This parameter is required.
         self.end_time = end_time
+        # This parameter is required.
         self.job_id = job_id
         self.limit = limit
         self.sort_by = sort_by
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -31389,6 +31513,7 @@ class ListSystemTemplatesRequest(TeaModel):
         self.status = status
         self.subtype = subtype
         self.template_id = template_id
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -31992,9 +32117,11 @@ class ListTranscodeJobsResponseBodyJobsOutputGroupProcessConfigCombineConfigs(Te
         start: float = None,
         video_index: str = None,
     ):
+        # This parameter is required.
         self.audio_index = audio_index
         self.duration = duration
         self.start = start
+        # This parameter is required.
         self.video_index = video_index
 
     def validate(self):
@@ -33543,6 +33670,7 @@ class QueryIProductionJobRequest(TeaModel):
         job_id: str = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -33845,6 +33973,7 @@ class QueryMediaCensorJobDetailRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # This parameter is required.
         self.job_id = job_id
         self.maximum_page_size = maximum_page_size
         self.next_page_token = next_page_token
@@ -35885,6 +36014,7 @@ class QueryMediaIndexJobRequest(TeaModel):
         media_id: str = None,
         search_lib_name: str = None,
     ):
+        # This parameter is required.
         self.media_id = media_id
         self.search_lib_name = search_lib_name
 
@@ -36057,6 +36187,7 @@ class QuerySearchIndexRequest(TeaModel):
         index_type: str = None,
         search_lib_name: str = None,
     ):
+        # This parameter is required.
         self.index_type = index_type
         self.search_lib_name = search_lib_name
 
@@ -36194,6 +36325,7 @@ class QuerySearchLibRequest(TeaModel):
         self,
         search_lib_name: str = None,
     ):
+        # This parameter is required.
         self.search_lib_name = search_lib_name
 
     def validate(self):
@@ -36315,6 +36447,7 @@ class QuerySmarttagJobRequest(TeaModel):
         job_id: str = None,
         params: str = None,
     ):
+        # This parameter is required.
         self.job_id = job_id
         self.params = params
 
@@ -36635,6 +36768,7 @@ class RegisterMediaInfoRequest(TeaModel):
         self.client_token = client_token
         self.cover_url = cover_url
         self.description = description
+        # This parameter is required.
         self.input_url = input_url
         self.media_tags = media_tags
         self.media_type = media_type
@@ -38810,10 +38944,12 @@ class SearchMediaByFaceRequest(TeaModel):
         search_lib_name: str = None,
     ):
         self.entity_id = entity_id
+        # This parameter is required.
         self.face_search_token = face_search_token
         self.media_type = media_type
         self.page_no = page_no
         self.page_size = page_size
+        # This parameter is required.
         self.person_image_url = person_image_url
         self.search_lib_name = search_lib_name
 
@@ -39230,7 +39366,9 @@ class SearchMediaClipByFaceRequest(TeaModel):
         search_lib_name: str = None,
     ):
         self.entity_id = entity_id
+        # This parameter is required.
         self.face_search_token = face_search_token
+        # This parameter is required.
         self.media_id = media_id
         self.page_no = page_no
         self.page_size = page_size
@@ -39962,7 +40100,9 @@ class SendLiveSnapshotJobCommandRequest(TeaModel):
         command: str = None,
         job_id: str = None,
     ):
+        # This parameter is required.
         self.command = command
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -40063,7 +40203,9 @@ class SendLiveTranscodeJobCommandRequest(TeaModel):
         command: str = None,
         job_id: str = None,
     ):
+        # This parameter is required.
         self.command = command
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -40276,6 +40418,7 @@ class SetDefaultCustomTemplateRequest(TeaModel):
         self,
         template_id: str = None,
     ):
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -40878,8 +41021,11 @@ class SubmitAudioProduceJobRequest(TeaModel):
         user_data: str = None,
     ):
         self.description = description
+        # This parameter is required.
         self.editing_config = editing_config
+        # This parameter is required.
         self.input_config = input_config
+        # This parameter is required.
         self.output_config = output_config
         self.overwrite = overwrite
         self.title = title
@@ -41020,6 +41166,7 @@ class SubmitAvatarTrainingJobRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -41421,6 +41568,7 @@ class SubmitCustomizedVoiceJobRequest(TeaModel):
         voice_id: str = None,
     ):
         self.demo_audio_media_url = demo_audio_media_url
+        # This parameter is required.
         self.voice_id = voice_id
 
     def validate(self):
@@ -41568,7 +41716,9 @@ class SubmitDNAJobRequestInput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.media = media
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -41611,11 +41761,14 @@ class SubmitDNAJobRequest(TeaModel):
         user_data: str = None,
     ):
         self.config = config
+        # This parameter is required.
         self.dbid = dbid
+        # This parameter is required.
         self.input = input
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.pipeline_id = pipeline_id
+        # This parameter is required.
         self.primary_key = primary_key
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -41700,11 +41853,14 @@ class SubmitDNAJobShrinkRequest(TeaModel):
         user_data: str = None,
     ):
         self.config = config
+        # This parameter is required.
         self.dbid = dbid
+        # This parameter is required.
         self.input_shrink = input_shrink
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.pipeline_id = pipeline_id
+        # This parameter is required.
         self.primary_key = primary_key
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -41866,10 +42022,13 @@ class SubmitDynamicChartJobRequest(TeaModel):
         self.background = background
         self.chart_config = chart_config
         self.chart_title = chart_title
+        # This parameter is required.
         self.chart_type = chart_type
         self.data_source = data_source
         self.description = description
+        # This parameter is required.
         self.input = input
+        # This parameter is required.
         self.output_config = output_config
         self.subtitle = subtitle
         self.title = title
@@ -42024,7 +42183,9 @@ class SubmitDynamicImageJobRequestInput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.media = media
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -42057,7 +42218,9 @@ class SubmitDynamicImageJobRequestOutput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.media = media
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -42228,6 +42391,7 @@ class SubmitDynamicImageJobRequestTemplateConfig(TeaModel):
         template_id: str = None,
     ):
         self.overwrite_params = overwrite_params
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -42266,10 +42430,13 @@ class SubmitDynamicImageJobRequest(TeaModel):
         template_config: SubmitDynamicImageJobRequestTemplateConfig = None,
         user_data: str = None,
     ):
+        # This parameter is required.
         self.input = input
         self.name = name
+        # This parameter is required.
         self.output = output
         self.schedule_config = schedule_config
+        # This parameter is required.
         self.template_config = template_config
         self.user_data = user_data
 
@@ -42334,10 +42501,13 @@ class SubmitDynamicImageJobShrinkRequest(TeaModel):
         template_config_shrink: str = None,
         user_data: str = None,
     ):
+        # This parameter is required.
         self.input_shrink = input_shrink
         self.name = name
+        # This parameter is required.
         self.output_shrink = output_shrink
         self.schedule_config_shrink = schedule_config_shrink
+        # This parameter is required.
         self.template_config_shrink = template_config_shrink
         self.user_data = user_data
 
@@ -42461,7 +42631,9 @@ class SubmitIProductionJobRequestInput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.media = media
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -42494,7 +42666,9 @@ class SubmitIProductionJobRequestOutput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.media = media
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -42566,10 +42740,13 @@ class SubmitIProductionJobRequest(TeaModel):
         template_id: str = None,
         user_data: str = None,
     ):
+        # This parameter is required.
         self.function_name = function_name
+        # This parameter is required.
         self.input = input
         self.job_params = job_params
         self.name = name
+        # This parameter is required.
         self.output = output
         self.schedule_config = schedule_config
         self.template_id = template_id
@@ -42643,10 +42820,13 @@ class SubmitIProductionJobShrinkRequest(TeaModel):
         template_id: str = None,
         user_data: str = None,
     ):
+        # This parameter is required.
         self.function_name = function_name
+        # This parameter is required.
         self.input_shrink = input_shrink
         self.job_params = job_params
         self.name = name
+        # This parameter is required.
         self.output_shrink = output_shrink
         self.schedule_config_shrink = schedule_config_shrink
         self.template_id = template_id
@@ -42785,6 +42965,7 @@ class SubmitLiveEditingJobRequest(TeaModel):
         project_id: str = None,
         user_data: str = None,
     ):
+        # This parameter is required.
         self.clips = clips
         self.live_stream_config = live_stream_config
         self.media_produce_config = media_produce_config
@@ -42944,6 +43125,7 @@ class SubmitLiveRecordJobRequestRecordOutput(TeaModel):
     ):
         self.bucket = bucket
         self.endpoint = endpoint
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -42980,6 +43162,7 @@ class SubmitLiveRecordJobRequestStreamInput(TeaModel):
         type: str = None,
         url: str = None,
     ):
+        # This parameter is required.
         self.type = type
         self.url = url
 
@@ -43017,12 +43200,18 @@ class SubmitLiveRecordJobRequest(TeaModel):
         template_id: str = None,
     ):
         # 代表资源名称的资源属性字段
+        # 
+        # This parameter is required.
         self.name = name
         # 回调地址
         self.notify_url = notify_url
+        # This parameter is required.
         self.record_output = record_output
+        # This parameter is required.
         self.stream_input = stream_input
         # 录制模板ID
+        # 
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -43076,12 +43265,18 @@ class SubmitLiveRecordJobShrinkRequest(TeaModel):
         template_id: str = None,
     ):
         # 代表资源名称的资源属性字段
+        # 
+        # This parameter is required.
         self.name = name
         # 回调地址
         self.notify_url = notify_url
+        # This parameter is required.
         self.record_output_shrink = record_output_shrink
+        # This parameter is required.
         self.stream_input_shrink = stream_input_shrink
         # 录制模板ID
+        # 
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -43201,8 +43396,11 @@ class SubmitLiveSnapshotJobRequestSnapshotOutput(TeaModel):
         endpoint: str = None,
         storage_type: str = None,
     ):
+        # This parameter is required.
         self.bucket = bucket
+        # This parameter is required.
         self.endpoint = endpoint
+        # This parameter is required.
         self.storage_type = storage_type
 
     def validate(self):
@@ -43239,7 +43437,9 @@ class SubmitLiveSnapshotJobRequestStreamInput(TeaModel):
         type: str = None,
         url: str = None,
     ):
+        # This parameter is required.
         self.type = type
+        # This parameter is required.
         self.url = url
 
     def validate(self):
@@ -43276,9 +43476,13 @@ class SubmitLiveSnapshotJobRequest(TeaModel):
         template_id: str = None,
     ):
         self.callback_url = callback_url
+        # This parameter is required.
         self.job_name = job_name
+        # This parameter is required.
         self.snapshot_output = snapshot_output
+        # This parameter is required.
         self.stream_input = stream_input
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -43332,9 +43536,13 @@ class SubmitLiveSnapshotJobShrinkRequest(TeaModel):
         template_id: str = None,
     ):
         self.callback_url = callback_url
+        # This parameter is required.
         self.job_name = job_name
+        # This parameter is required.
         self.snapshot_output_shrink = snapshot_output_shrink
+        # This parameter is required.
         self.stream_input_shrink = stream_input_shrink
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -43453,7 +43661,9 @@ class SubmitLiveTranscodeJobRequestStreamInput(TeaModel):
         input_url: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.input_url = input_url
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -43520,6 +43730,7 @@ class SubmitLiveTranscodeJobRequestTranscodeOutput(TeaModel):
         type: str = None,
     ):
         self.domain_name = domain_name
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -43556,11 +43767,16 @@ class SubmitLiveTranscodeJobRequest(TeaModel):
         timed_config: SubmitLiveTranscodeJobRequestTimedConfig = None,
         transcode_output: SubmitLiveTranscodeJobRequestTranscodeOutput = None,
     ):
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.start_mode = start_mode
+        # This parameter is required.
         self.stream_input = stream_input
+        # This parameter is required.
         self.template_id = template_id
         self.timed_config = timed_config
+        # This parameter is required.
         self.transcode_output = transcode_output
 
     def validate(self):
@@ -43621,11 +43837,16 @@ class SubmitLiveTranscodeJobShrinkRequest(TeaModel):
         timed_config_shrink: str = None,
         transcode_output_shrink: str = None,
     ):
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.start_mode = start_mode
+        # This parameter is required.
         self.stream_input_shrink = stream_input_shrink
+        # This parameter is required.
         self.template_id = template_id
         self.timed_config_shrink = timed_config_shrink
+        # This parameter is required.
         self.transcode_output_shrink = transcode_output_shrink
 
     def validate(self):
@@ -44055,7 +44276,9 @@ class SubmitMediaInfoJobRequestInput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.media = media
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -44123,6 +44346,7 @@ class SubmitMediaInfoJobRequest(TeaModel):
         schedule_config: SubmitMediaInfoJobRequestScheduleConfig = None,
         user_data: str = None,
     ):
+        # This parameter is required.
         self.input = input
         self.name = name
         self.schedule_config = schedule_config
@@ -44173,6 +44397,7 @@ class SubmitMediaInfoJobShrinkRequest(TeaModel):
         schedule_config_shrink: str = None,
         user_data: str = None,
     ):
+        # This parameter is required.
         self.input_shrink = input_shrink
         self.name = name
         self.schedule_config_shrink = schedule_config_shrink
@@ -44902,6 +45127,7 @@ class SubmitMediaProducingJobRequest(TeaModel):
         self.clips_param = clips_param
         self.editing_produce_config = editing_produce_config
         self.media_metadata = media_metadata
+        # This parameter is required.
         self.output_media_config = output_media_config
         self.output_media_target = output_media_target
         self.project_id = project_id
@@ -45073,7 +45299,9 @@ class SubmitPackageJobRequestInputsInput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.media = media
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -45105,6 +45333,7 @@ class SubmitPackageJobRequestInputs(TeaModel):
         self,
         input: SubmitPackageJobRequestInputsInput = None,
     ):
+        # This parameter is required.
         self.input = input
 
     def validate(self):
@@ -45135,7 +45364,9 @@ class SubmitPackageJobRequestOutput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.media = media
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -45204,8 +45435,10 @@ class SubmitPackageJobRequest(TeaModel):
         schedule_config: SubmitPackageJobRequestScheduleConfig = None,
         user_data: str = None,
     ):
+        # This parameter is required.
         self.inputs = inputs
         self.name = name
+        # This parameter is required.
         self.output = output
         self.schedule_config = schedule_config
         self.user_data = user_data
@@ -45269,8 +45502,10 @@ class SubmitPackageJobShrinkRequest(TeaModel):
         schedule_config_shrink: str = None,
         user_data: str = None,
     ):
+        # This parameter is required.
         self.inputs_shrink = inputs_shrink
         self.name = name
+        # This parameter is required.
         self.output_shrink = output_shrink
         self.schedule_config_shrink = schedule_config_shrink
         self.user_data = user_data
@@ -45702,7 +45937,9 @@ class SubmitSnapshotJobRequestInput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.media = media
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -45735,7 +45972,9 @@ class SubmitSnapshotJobRequestOutput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.media = media
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -45948,6 +46187,7 @@ class SubmitSnapshotJobRequestTemplateConfig(TeaModel):
         template_id: str = None,
     ):
         self.overwrite_params = overwrite_params
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -45986,10 +46226,13 @@ class SubmitSnapshotJobRequest(TeaModel):
         template_config: SubmitSnapshotJobRequestTemplateConfig = None,
         user_data: str = None,
     ):
+        # This parameter is required.
         self.input = input
         self.name = name
+        # This parameter is required.
         self.output = output
         self.schedule_config = schedule_config
+        # This parameter is required.
         self.template_config = template_config
         self.user_data = user_data
 
@@ -46054,10 +46297,13 @@ class SubmitSnapshotJobShrinkRequest(TeaModel):
         template_config_shrink: str = None,
         user_data: str = None,
     ):
+        # This parameter is required.
         self.input_shrink = input_shrink
         self.name = name
+        # This parameter is required.
         self.output_shrink = output_shrink
         self.schedule_config_shrink = schedule_config_shrink
+        # This parameter is required.
         self.template_config_shrink = template_config_shrink
         self.user_data = user_data
 
@@ -46341,7 +46587,9 @@ class SubmitSyncMediaInfoJobRequestInput(TeaModel):
         media: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.media = media
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -46409,6 +46657,7 @@ class SubmitSyncMediaInfoJobRequest(TeaModel):
         schedule_config: SubmitSyncMediaInfoJobRequestScheduleConfig = None,
         user_data: str = None,
     ):
+        # This parameter is required.
         self.input = input
         self.name = name
         self.schedule_config = schedule_config
@@ -46459,6 +46708,7 @@ class SubmitSyncMediaInfoJobShrinkRequest(TeaModel):
         schedule_config_shrink: str = None,
         user_data: str = None,
     ):
+        # This parameter is required.
         self.input_shrink = input_shrink
         self.name = name
         self.schedule_config_shrink = schedule_config_shrink
@@ -47302,7 +47552,9 @@ class SubmitTranscodeJobRequestInputGroup(TeaModel):
         type: str = None,
     ):
         self.input_url = input_url
+        # This parameter is required.
         self.media = media
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -47340,8 +47592,10 @@ class SubmitTranscodeJobRequestOutputGroupOutput(TeaModel):
         output_url: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.media = media
         self.output_url = output_url
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -47380,9 +47634,11 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigCombineConfigs(TeaModel):
         start: float = None,
         video_index: str = None,
     ):
+        # This parameter is required.
         self.audio_index = audio_index
         self.duration = duration
         self.start = start
+        # This parameter is required.
         self.video_index = video_index
 
     def validate(self):
@@ -47603,6 +47859,7 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigImageWatermarks(TeaModel)
         template_id: str = None,
     ):
         self.overwrite_params = overwrite_params
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -47712,6 +47969,7 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigSubtitles(TeaModel):
         template_id: str = None,
     ):
         self.overwrite_params = overwrite_params
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -47828,6 +48086,7 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigTextWatermarks(TeaModel):
         template_id: str = None,
     ):
         self.overwrite_params = overwrite_params
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -48325,6 +48584,7 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfigTranscode(TeaModel):
         template_id: str = None,
     ):
         self.overwrite_params = overwrite_params
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -48368,6 +48628,7 @@ class SubmitTranscodeJobRequestOutputGroupProcessConfig(TeaModel):
         self.image_watermarks = image_watermarks
         self.subtitles = subtitles
         self.text_watermarks = text_watermarks
+        # This parameter is required.
         self.transcode = transcode
 
     def validate(self):
@@ -48457,7 +48718,9 @@ class SubmitTranscodeJobRequestOutputGroup(TeaModel):
         output: SubmitTranscodeJobRequestOutputGroupOutput = None,
         process_config: SubmitTranscodeJobRequestOutputGroupProcessConfig = None,
     ):
+        # This parameter is required.
         self.output = output
+        # This parameter is required.
         self.process_config = process_config
 
     def validate(self):
@@ -48533,8 +48796,10 @@ class SubmitTranscodeJobRequest(TeaModel):
         user_data: str = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.input_group = input_group
         self.name = name
+        # This parameter is required.
         self.output_group = output_group
         self.schedule_config = schedule_config
         self.user_data = user_data
@@ -48610,8 +48875,10 @@ class SubmitTranscodeJobShrinkRequest(TeaModel):
         user_data: str = None,
     ):
         self.client_token = client_token
+        # This parameter is required.
         self.input_group_shrink = input_group_shrink
         self.name = name
+        # This parameter is required.
         self.output_group_shrink = output_group_shrink
         self.schedule_config_shrink = schedule_config_shrink
         self.user_data = user_data
@@ -48730,9 +48997,11 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobOutputGroupProcessConfigCo
         start: float = None,
         video_index: str = None,
     ):
+        # This parameter is required.
         self.audio_index = audio_index
         self.duration = duration
         self.start = start
+        # This parameter is required.
         self.video_index = video_index
 
     def validate(self):
@@ -50380,9 +50649,11 @@ class SubmitTranscodeJobResponseBodyTranscodeParentJobTranscodeJobListProcessCon
         start: float = None,
         video_index: str = None,
     ):
+        # This parameter is required.
         self.audio_index = audio_index
         self.duration = duration
         self.start = start
+        # This parameter is required.
         self.video_index = video_index
 
     def validate(self):
@@ -51851,6 +52122,7 @@ class UpdateAvatarTrainingJobRequest(TeaModel):
     ):
         self.avatar_description = avatar_description
         self.avatar_name = avatar_name
+        # This parameter is required.
         self.job_id = job_id
         self.portrait = portrait
         self.thumbnail = thumbnail
@@ -52016,7 +52288,9 @@ class UpdateCategoryRequest(TeaModel):
         cate_id: int = None,
         cate_name: str = None,
     ):
+        # This parameter is required.
         self.cate_id = cate_id
+        # This parameter is required.
         self.cate_name = cate_name
 
     def validate(self):
@@ -52120,6 +52394,7 @@ class UpdateCustomTemplateRequest(TeaModel):
     ):
         self.name = name
         self.template_config = template_config
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -52231,6 +52506,7 @@ class UpdateCustomizedVoiceRequest(TeaModel):
         voice_id: str = None,
     ):
         self.demo_audio_media_id = demo_audio_media_id
+        # This parameter is required.
         self.voice_id = voice_id
 
     def validate(self):
@@ -52347,6 +52623,7 @@ class UpdateEditingProjectRequest(TeaModel):
         self.clips_param = clips_param
         self.cover_url = cover_url
         self.description = description
+        # This parameter is required.
         self.project_id = project_id
         self.template_id = template_id
         self.timeline = timeline
@@ -52479,6 +52756,8 @@ class UpdateLiveRecordTemplateRequestRecordFormat(TeaModel):
     ):
         self.cycle_duration = cycle_duration
         # 格式
+        # 
+        # This parameter is required.
         self.format = format
         # Oss对象名，不包含后缀
         self.oss_object_prefix = oss_object_prefix
@@ -52531,10 +52810,16 @@ class UpdateLiveRecordTemplateRequest(TeaModel):
         template_id: str = None,
     ):
         # 代表资源名称的资源属性字段
+        # 
+        # This parameter is required.
         self.name = name
         # 录制格式
+        # 
+        # This parameter is required.
         self.record_format = record_format
         # 代表资源一级ID的资源属性字段
+        # 
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -52581,10 +52866,16 @@ class UpdateLiveRecordTemplateShrinkRequest(TeaModel):
         template_id: str = None,
     ):
         # 代表资源名称的资源属性字段
+        # 
+        # This parameter is required.
         self.name = name
         # 录制格式
+        # 
+        # This parameter is required.
         self.record_format_shrink = record_format_shrink
         # 代表资源一级ID的资源属性字段
+        # 
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -52695,8 +52986,11 @@ class UpdateLiveSnapshotTemplateRequest(TeaModel):
     ):
         self.overwrite_format = overwrite_format
         self.sequence_format = sequence_format
+        # This parameter is required.
         self.template_id = template_id
+        # This parameter is required.
         self.template_name = template_name
+        # This parameter is required.
         self.time_interval = time_interval
 
     def validate(self):
@@ -52809,7 +53103,9 @@ class UpdateLiveTranscodeJobRequestStreamInput(TeaModel):
         input_url: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.input_url = input_url
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -52875,7 +53171,9 @@ class UpdateLiveTranscodeJobRequestTranscodeOutput(TeaModel):
         domain_name: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.domain_name = domain_name
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -52911,6 +53209,7 @@ class UpdateLiveTranscodeJobRequest(TeaModel):
         timed_config: UpdateLiveTranscodeJobRequestTimedConfig = None,
         transcode_output: UpdateLiveTranscodeJobRequestTranscodeOutput = None,
     ):
+        # This parameter is required.
         self.job_id = job_id
         self.name = name
         self.stream_input = stream_input
@@ -52970,6 +53269,7 @@ class UpdateLiveTranscodeJobShrinkRequest(TeaModel):
         timed_config_shrink: str = None,
         transcode_output_shrink: str = None,
     ):
+        # This parameter is required.
         self.job_id = job_id
         self.name = name
         self.stream_input_shrink = stream_input_shrink
@@ -53241,6 +53541,7 @@ class UpdateLiveTranscodeTemplateRequest(TeaModel):
     ):
         self.name = name
         self.template_config = template_config
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -53282,6 +53583,7 @@ class UpdateLiveTranscodeTemplateShrinkRequest(TeaModel):
     ):
         self.name = name
         self.template_config_shrink = template_config_shrink
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -53553,7 +53855,9 @@ class UpdateMediaMarksRequest(TeaModel):
         media_id: str = None,
         media_marks: str = None,
     ):
+        # This parameter is required.
         self.media_id = media_id
+        # This parameter is required.
         self.media_marks = media_marks
 
     def validate(self):
@@ -53667,7 +53971,9 @@ class UpdateMediaToSearchLibRequest(TeaModel):
         msg_body: str = None,
         search_lib_name: str = None,
     ):
+        # This parameter is required.
         self.media_id = media_id
+        # This parameter is required.
         self.msg_body = msg_body
         self.search_lib_name = search_lib_name
 
@@ -53794,6 +54100,7 @@ class UpdatePipelineRequest(TeaModel):
         status: str = None,
     ):
         self.name = name
+        # This parameter is required.
         self.pipeline_id = pipeline_id
         self.priority = priority
         self.status = status

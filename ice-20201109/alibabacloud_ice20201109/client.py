@@ -105,6 +105,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.AddCategoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.AddCategoryResponse:
+        """
+        @summary 创建媒资分类
+        
+        @param request: AddCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddCategoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cate_name):
@@ -137,6 +144,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.AddCategoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.AddCategoryResponse:
+        """
+        @summary 创建媒资分类
+        
+        @param request: AddCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddCategoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cate_name):
@@ -168,6 +182,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.AddCategoryRequest,
     ) -> ice20201109_models.AddCategoryResponse:
+        """
+        @summary 创建媒资分类
+        
+        @param request: AddCategoryRequest
+        @return: AddCategoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_category_with_options(request, runtime)
 
@@ -175,6 +195,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.AddCategoryRequest,
     ) -> ice20201109_models.AddCategoryResponse:
+        """
+        @summary 创建媒资分类
+        
+        @param request: AddCategoryRequest
+        @return: AddCategoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_category_with_options_async(request, runtime)
 
@@ -183,6 +209,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.AddEditingProjectMaterialsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.AddEditingProjectMaterialsResponse:
+        """
+        @summary 剪辑工程增加素材
+        
+        @param request: AddEditingProjectMaterialsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddEditingProjectMaterialsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.material_maps):
@@ -213,6 +246,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.AddEditingProjectMaterialsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.AddEditingProjectMaterialsResponse:
+        """
+        @summary 剪辑工程增加素材
+        
+        @param request: AddEditingProjectMaterialsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddEditingProjectMaterialsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.material_maps):
@@ -242,6 +282,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.AddEditingProjectMaterialsRequest,
     ) -> ice20201109_models.AddEditingProjectMaterialsResponse:
+        """
+        @summary 剪辑工程增加素材
+        
+        @param request: AddEditingProjectMaterialsRequest
+        @return: AddEditingProjectMaterialsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_editing_project_materials_with_options(request, runtime)
 
@@ -249,6 +295,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.AddEditingProjectMaterialsRequest,
     ) -> ice20201109_models.AddEditingProjectMaterialsResponse:
+        """
+        @summary 剪辑工程增加素材
+        
+        @param request: AddEditingProjectMaterialsRequest
+        @return: AddEditingProjectMaterialsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_editing_project_materials_with_options_async(request, runtime)
 
@@ -257,6 +309,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.AddFavoritePublicMediaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.AddFavoritePublicMediaResponse:
+        """
+        @summary 收藏公共媒资
+        
+        @param request: AddFavoritePublicMediaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddFavoritePublicMediaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.media_ids):
@@ -285,6 +344,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.AddFavoritePublicMediaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.AddFavoritePublicMediaResponse:
+        """
+        @summary 收藏公共媒资
+        
+        @param request: AddFavoritePublicMediaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddFavoritePublicMediaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.media_ids):
@@ -312,6 +378,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.AddFavoritePublicMediaRequest,
     ) -> ice20201109_models.AddFavoritePublicMediaResponse:
+        """
+        @summary 收藏公共媒资
+        
+        @param request: AddFavoritePublicMediaRequest
+        @return: AddFavoritePublicMediaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_favorite_public_media_with_options(request, runtime)
 
@@ -319,6 +391,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.AddFavoritePublicMediaRequest,
     ) -> ice20201109_models.AddFavoritePublicMediaResponse:
+        """
+        @summary 收藏公共媒资
+        
+        @param request: AddFavoritePublicMediaRequest
+        @return: AddFavoritePublicMediaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_favorite_public_media_with_options_async(request, runtime)
 
@@ -327,6 +405,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.AddMediaMarksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.AddMediaMarksResponse:
+        """
+        @summary 为媒资增加标注信息
+        
+        @param request: AddMediaMarksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddMediaMarksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.media_id):
@@ -357,6 +442,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.AddMediaMarksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.AddMediaMarksResponse:
+        """
+        @summary 为媒资增加标注信息
+        
+        @param request: AddMediaMarksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddMediaMarksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.media_id):
@@ -386,6 +478,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.AddMediaMarksRequest,
     ) -> ice20201109_models.AddMediaMarksResponse:
+        """
+        @summary 为媒资增加标注信息
+        
+        @param request: AddMediaMarksRequest
+        @return: AddMediaMarksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_media_marks_with_options(request, runtime)
 
@@ -393,6 +491,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.AddMediaMarksRequest,
     ) -> ice20201109_models.AddMediaMarksResponse:
+        """
+        @summary 为媒资增加标注信息
+        
+        @param request: AddMediaMarksRequest
+        @return: AddMediaMarksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_media_marks_with_options_async(request, runtime)
 
@@ -401,6 +505,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.AddTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.AddTemplateResponse:
+        """
+        @summary AddTemplate
+        
+        @param request: AddTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cover_url):
@@ -445,6 +556,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.AddTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.AddTemplateResponse:
+        """
+        @summary AddTemplate
+        
+        @param request: AddTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cover_url):
@@ -488,6 +606,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.AddTemplateRequest,
     ) -> ice20201109_models.AddTemplateResponse:
+        """
+        @summary AddTemplate
+        
+        @param request: AddTemplateRequest
+        @return: AddTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_template_with_options(request, runtime)
 
@@ -495,6 +619,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.AddTemplateRequest,
     ) -> ice20201109_models.AddTemplateResponse:
+        """
+        @summary AddTemplate
+        
+        @param request: AddTemplateRequest
+        @return: AddTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_template_with_options_async(request, runtime)
 
@@ -503,6 +633,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.AlterSearchIndexRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.AlterSearchIndexResponse:
+        """
+        @summary 更新搜索索引
+        
+        @param request: AlterSearchIndexRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AlterSearchIndexResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.index_config):
@@ -537,6 +674,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.AlterSearchIndexRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.AlterSearchIndexResponse:
+        """
+        @summary 更新搜索索引
+        
+        @param request: AlterSearchIndexRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AlterSearchIndexResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.index_config):
@@ -570,6 +714,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.AlterSearchIndexRequest,
     ) -> ice20201109_models.AlterSearchIndexResponse:
+        """
+        @summary 更新搜索索引
+        
+        @param request: AlterSearchIndexRequest
+        @return: AlterSearchIndexResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.alter_search_index_with_options(request, runtime)
 
@@ -577,6 +727,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.AlterSearchIndexRequest,
     ) -> ice20201109_models.AlterSearchIndexResponse:
+        """
+        @summary 更新搜索索引
+        
+        @param request: AlterSearchIndexRequest
+        @return: AlterSearchIndexResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.alter_search_index_with_options_async(request, runtime)
 
@@ -585,6 +741,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.BatchGetMediaInfosRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.BatchGetMediaInfosResponse:
+        """
+        @summary 批量获取媒资信息
+        
+        @param request: BatchGetMediaInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchGetMediaInfosResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.addition_type):
@@ -615,6 +778,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.BatchGetMediaInfosRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.BatchGetMediaInfosResponse:
+        """
+        @summary 批量获取媒资信息
+        
+        @param request: BatchGetMediaInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchGetMediaInfosResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.addition_type):
@@ -644,6 +814,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.BatchGetMediaInfosRequest,
     ) -> ice20201109_models.BatchGetMediaInfosResponse:
+        """
+        @summary 批量获取媒资信息
+        
+        @param request: BatchGetMediaInfosRequest
+        @return: BatchGetMediaInfosResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.batch_get_media_infos_with_options(request, runtime)
 
@@ -651,6 +827,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.BatchGetMediaInfosRequest,
     ) -> ice20201109_models.BatchGetMediaInfosResponse:
+        """
+        @summary 批量获取媒资信息
+        
+        @param request: BatchGetMediaInfosRequest
+        @return: BatchGetMediaInfosResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.batch_get_media_infos_with_options_async(request, runtime)
 
@@ -659,6 +841,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.CancelDNAJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CancelDNAJobResponse:
+        """
+        @summary 取消DNA作业
+        
+        @param request: CancelDNAJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelDNAJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -695,6 +884,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.CancelDNAJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CancelDNAJobResponse:
+        """
+        @summary 取消DNA作业
+        
+        @param request: CancelDNAJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelDNAJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -730,6 +926,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.CancelDNAJobRequest,
     ) -> ice20201109_models.CancelDNAJobResponse:
+        """
+        @summary 取消DNA作业
+        
+        @param request: CancelDNAJobRequest
+        @return: CancelDNAJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cancel_dnajob_with_options(request, runtime)
 
@@ -737,6 +939,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.CancelDNAJobRequest,
     ) -> ice20201109_models.CancelDNAJobResponse:
+        """
+        @summary 取消DNA作业
+        
+        @param request: CancelDNAJobRequest
+        @return: CancelDNAJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_dnajob_with_options_async(request, runtime)
 
@@ -745,6 +953,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.CancelFavoritePublicMediaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CancelFavoritePublicMediaResponse:
+        """
+        @summary 取消收藏公共媒资
+        
+        @param request: CancelFavoritePublicMediaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelFavoritePublicMediaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.media_ids):
@@ -773,6 +988,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.CancelFavoritePublicMediaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CancelFavoritePublicMediaResponse:
+        """
+        @summary 取消收藏公共媒资
+        
+        @param request: CancelFavoritePublicMediaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelFavoritePublicMediaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.media_ids):
@@ -800,6 +1022,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.CancelFavoritePublicMediaRequest,
     ) -> ice20201109_models.CancelFavoritePublicMediaResponse:
+        """
+        @summary 取消收藏公共媒资
+        
+        @param request: CancelFavoritePublicMediaRequest
+        @return: CancelFavoritePublicMediaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cancel_favorite_public_media_with_options(request, runtime)
 
@@ -807,6 +1035,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.CancelFavoritePublicMediaRequest,
     ) -> ice20201109_models.CancelFavoritePublicMediaResponse:
+        """
+        @summary 取消收藏公共媒资
+        
+        @param request: CancelFavoritePublicMediaRequest
+        @return: CancelFavoritePublicMediaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_favorite_public_media_with_options_async(request, runtime)
 
@@ -815,6 +1049,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateAuditRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateAuditResponse:
+        """
+        @summary 提交人工审核
+        
+        @param request: CreateAuditRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAuditResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.audit_content):
@@ -843,6 +1084,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateAuditRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateAuditResponse:
+        """
+        @summary 提交人工审核
+        
+        @param request: CreateAuditRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAuditResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.audit_content):
@@ -870,6 +1118,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.CreateAuditRequest,
     ) -> ice20201109_models.CreateAuditResponse:
+        """
+        @summary 提交人工审核
+        
+        @param request: CreateAuditRequest
+        @return: CreateAuditResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_audit_with_options(request, runtime)
 
@@ -877,6 +1131,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.CreateAuditRequest,
     ) -> ice20201109_models.CreateAuditResponse:
+        """
+        @summary 提交人工审核
+        
+        @param request: CreateAuditRequest
+        @return: CreateAuditResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_audit_with_options_async(request, runtime)
 
@@ -885,6 +1145,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateAvatarTrainingJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateAvatarTrainingJobResponse:
+        """
+        @summary 创建数字人训练任务
+        
+        @param request: CreateAvatarTrainingJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAvatarTrainingJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.avatar_description):
@@ -925,6 +1192,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateAvatarTrainingJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateAvatarTrainingJobResponse:
+        """
+        @summary 创建数字人训练任务
+        
+        @param request: CreateAvatarTrainingJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAvatarTrainingJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.avatar_description):
@@ -964,6 +1238,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.CreateAvatarTrainingJobRequest,
     ) -> ice20201109_models.CreateAvatarTrainingJobResponse:
+        """
+        @summary 创建数字人训练任务
+        
+        @param request: CreateAvatarTrainingJobRequest
+        @return: CreateAvatarTrainingJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_avatar_training_job_with_options(request, runtime)
 
@@ -971,6 +1251,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.CreateAvatarTrainingJobRequest,
     ) -> ice20201109_models.CreateAvatarTrainingJobResponse:
+        """
+        @summary 创建数字人训练任务
+        
+        @param request: CreateAvatarTrainingJobRequest
+        @return: CreateAvatarTrainingJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_avatar_training_job_with_options_async(request, runtime)
 
@@ -979,6 +1265,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateCustomTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateCustomTemplateResponse:
+        """
+        @summary 创建媒体处理自定义模板
+        
+        @param request: CreateCustomTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCustomTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -1013,6 +1306,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateCustomTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateCustomTemplateResponse:
+        """
+        @summary 创建媒体处理自定义模板
+        
+        @param request: CreateCustomTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCustomTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -1046,6 +1346,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.CreateCustomTemplateRequest,
     ) -> ice20201109_models.CreateCustomTemplateResponse:
+        """
+        @summary 创建媒体处理自定义模板
+        
+        @param request: CreateCustomTemplateRequest
+        @return: CreateCustomTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_custom_template_with_options(request, runtime)
 
@@ -1053,6 +1359,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.CreateCustomTemplateRequest,
     ) -> ice20201109_models.CreateCustomTemplateResponse:
+        """
+        @summary 创建媒体处理自定义模板
+        
+        @param request: CreateCustomTemplateRequest
+        @return: CreateCustomTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_custom_template_with_options_async(request, runtime)
 
@@ -1061,6 +1373,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateCustomizedVoiceJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateCustomizedVoiceJobResponse:
+        """
+        @summary 创建人声克隆任务
+        
+        @param request: CreateCustomizedVoiceJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCustomizedVoiceJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.gender):
@@ -1097,6 +1416,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateCustomizedVoiceJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateCustomizedVoiceJobResponse:
+        """
+        @summary 创建人声克隆任务
+        
+        @param request: CreateCustomizedVoiceJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCustomizedVoiceJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.gender):
@@ -1132,6 +1458,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.CreateCustomizedVoiceJobRequest,
     ) -> ice20201109_models.CreateCustomizedVoiceJobResponse:
+        """
+        @summary 创建人声克隆任务
+        
+        @param request: CreateCustomizedVoiceJobRequest
+        @return: CreateCustomizedVoiceJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_customized_voice_job_with_options(request, runtime)
 
@@ -1139,6 +1471,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.CreateCustomizedVoiceJobRequest,
     ) -> ice20201109_models.CreateCustomizedVoiceJobResponse:
+        """
+        @summary 创建人声克隆任务
+        
+        @param request: CreateCustomizedVoiceJobRequest
+        @return: CreateCustomizedVoiceJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_customized_voice_job_with_options_async(request, runtime)
 
@@ -1147,6 +1485,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateDNADBRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateDNADBResponse:
+        """
+        @summary 创建指纹库
+        
+        @param request: CreateDNADBRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDNADBResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -1187,6 +1532,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateDNADBRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateDNADBResponse:
+        """
+        @summary 创建指纹库
+        
+        @param request: CreateDNADBRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDNADBResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -1226,6 +1578,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.CreateDNADBRequest,
     ) -> ice20201109_models.CreateDNADBResponse:
+        """
+        @summary 创建指纹库
+        
+        @param request: CreateDNADBRequest
+        @return: CreateDNADBResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_dnadbwith_options(request, runtime)
 
@@ -1233,6 +1591,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.CreateDNADBRequest,
     ) -> ice20201109_models.CreateDNADBResponse:
+        """
+        @summary 创建指纹库
+        
+        @param request: CreateDNADBRequest
+        @return: CreateDNADBResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_dnadbwith_options_async(request, runtime)
 
@@ -1241,6 +1605,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateEditingProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateEditingProjectResponse:
+        """
+        @summary 创建云剪辑工程
+        
+        @param request: CreateEditingProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEditingProjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.business_config):
@@ -1289,6 +1660,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateEditingProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateEditingProjectResponse:
+        """
+        @summary 创建云剪辑工程
+        
+        @param request: CreateEditingProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEditingProjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.business_config):
@@ -1336,6 +1714,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.CreateEditingProjectRequest,
     ) -> ice20201109_models.CreateEditingProjectResponse:
+        """
+        @summary 创建云剪辑工程
+        
+        @param request: CreateEditingProjectRequest
+        @return: CreateEditingProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_editing_project_with_options(request, runtime)
 
@@ -1343,6 +1727,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.CreateEditingProjectRequest,
     ) -> ice20201109_models.CreateEditingProjectResponse:
+        """
+        @summary 创建云剪辑工程
+        
+        @param request: CreateEditingProjectRequest
+        @return: CreateEditingProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_editing_project_with_options_async(request, runtime)
 
@@ -1351,6 +1741,13 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.CreateLiveRecordTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateLiveRecordTemplateResponse:
+        """
+        @summary 创建直播录制模板
+        
+        @param tmp_req: CreateLiveRecordTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLiveRecordTemplateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.CreateLiveRecordTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1385,6 +1782,13 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.CreateLiveRecordTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateLiveRecordTemplateResponse:
+        """
+        @summary 创建直播录制模板
+        
+        @param tmp_req: CreateLiveRecordTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLiveRecordTemplateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.CreateLiveRecordTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1418,6 +1822,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.CreateLiveRecordTemplateRequest,
     ) -> ice20201109_models.CreateLiveRecordTemplateResponse:
+        """
+        @summary 创建直播录制模板
+        
+        @param request: CreateLiveRecordTemplateRequest
+        @return: CreateLiveRecordTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_live_record_template_with_options(request, runtime)
 
@@ -1425,6 +1835,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.CreateLiveRecordTemplateRequest,
     ) -> ice20201109_models.CreateLiveRecordTemplateResponse:
+        """
+        @summary 创建直播录制模板
+        
+        @param request: CreateLiveRecordTemplateRequest
+        @return: CreateLiveRecordTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_live_record_template_with_options_async(request, runtime)
 
@@ -1433,6 +1849,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateLiveSnapshotTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateLiveSnapshotTemplateResponse:
+        """
+        @summary 创建直播截图模板
+        
+        @param request: CreateLiveSnapshotTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLiveSnapshotTemplateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.overwrite_format):
@@ -1467,6 +1890,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateLiveSnapshotTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateLiveSnapshotTemplateResponse:
+        """
+        @summary 创建直播截图模板
+        
+        @param request: CreateLiveSnapshotTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLiveSnapshotTemplateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.overwrite_format):
@@ -1500,6 +1930,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.CreateLiveSnapshotTemplateRequest,
     ) -> ice20201109_models.CreateLiveSnapshotTemplateResponse:
+        """
+        @summary 创建直播截图模板
+        
+        @param request: CreateLiveSnapshotTemplateRequest
+        @return: CreateLiveSnapshotTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_live_snapshot_template_with_options(request, runtime)
 
@@ -1507,6 +1943,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.CreateLiveSnapshotTemplateRequest,
     ) -> ice20201109_models.CreateLiveSnapshotTemplateResponse:
+        """
+        @summary 创建直播截图模板
+        
+        @param request: CreateLiveSnapshotTemplateRequest
+        @return: CreateLiveSnapshotTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_live_snapshot_template_with_options_async(request, runtime)
 
@@ -1515,6 +1957,13 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.CreateLiveTranscodeTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateLiveTranscodeTemplateResponse:
+        """
+        @summary 创建转码模版
+        
+        @param tmp_req: CreateLiveTranscodeTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLiveTranscodeTemplateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.CreateLiveTranscodeTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1551,6 +2000,13 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.CreateLiveTranscodeTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateLiveTranscodeTemplateResponse:
+        """
+        @summary 创建转码模版
+        
+        @param tmp_req: CreateLiveTranscodeTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLiveTranscodeTemplateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.CreateLiveTranscodeTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1586,6 +2042,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.CreateLiveTranscodeTemplateRequest,
     ) -> ice20201109_models.CreateLiveTranscodeTemplateResponse:
+        """
+        @summary 创建转码模版
+        
+        @param request: CreateLiveTranscodeTemplateRequest
+        @return: CreateLiveTranscodeTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_live_transcode_template_with_options(request, runtime)
 
@@ -1593,6 +2055,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.CreateLiveTranscodeTemplateRequest,
     ) -> ice20201109_models.CreateLiveTranscodeTemplateResponse:
+        """
+        @summary 创建转码模版
+        
+        @param request: CreateLiveTranscodeTemplateRequest
+        @return: CreateLiveTranscodeTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_live_transcode_template_with_options_async(request, runtime)
 
@@ -1601,6 +2069,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreatePipelineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreatePipelineResponse:
+        """
+        @summary 添加用户管道配置
+        
+        @param request: CreatePipelineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePipelineResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -1633,6 +2108,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreatePipelineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreatePipelineResponse:
+        """
+        @summary 添加用户管道配置
+        
+        @param request: CreatePipelineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePipelineResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -1664,6 +2146,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.CreatePipelineRequest,
     ) -> ice20201109_models.CreatePipelineResponse:
+        """
+        @summary 添加用户管道配置
+        
+        @param request: CreatePipelineRequest
+        @return: CreatePipelineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_pipeline_with_options(request, runtime)
 
@@ -1671,6 +2159,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.CreatePipelineRequest,
     ) -> ice20201109_models.CreatePipelineResponse:
+        """
+        @summary 添加用户管道配置
+        
+        @param request: CreatePipelineRequest
+        @return: CreatePipelineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_pipeline_with_options_async(request, runtime)
 
@@ -1679,6 +2173,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateSearchIndexRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateSearchIndexResponse:
+        """
+        @summary 创建搜索索引
+        
+        @param request: CreateSearchIndexRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSearchIndexResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.index_config):
@@ -1713,6 +2214,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateSearchIndexRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateSearchIndexResponse:
+        """
+        @summary 创建搜索索引
+        
+        @param request: CreateSearchIndexRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSearchIndexResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.index_config):
@@ -1746,6 +2254,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.CreateSearchIndexRequest,
     ) -> ice20201109_models.CreateSearchIndexResponse:
+        """
+        @summary 创建搜索索引
+        
+        @param request: CreateSearchIndexRequest
+        @return: CreateSearchIndexResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_search_index_with_options(request, runtime)
 
@@ -1753,6 +2267,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.CreateSearchIndexRequest,
     ) -> ice20201109_models.CreateSearchIndexResponse:
+        """
+        @summary 创建搜索索引
+        
+        @param request: CreateSearchIndexRequest
+        @return: CreateSearchIndexResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_search_index_with_options_async(request, runtime)
 
@@ -1761,6 +2281,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateSearchLibRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateSearchLibResponse:
+        """
+        @summary 创建库
+        
+        @param request: CreateSearchLibRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSearchLibResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.search_lib_name):
@@ -1789,6 +2316,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateSearchLibRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateSearchLibResponse:
+        """
+        @summary 创建库
+        
+        @param request: CreateSearchLibRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSearchLibResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.search_lib_name):
@@ -1816,6 +2350,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.CreateSearchLibRequest,
     ) -> ice20201109_models.CreateSearchLibResponse:
+        """
+        @summary 创建库
+        
+        @param request: CreateSearchLibRequest
+        @return: CreateSearchLibResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_search_lib_with_options(request, runtime)
 
@@ -1823,6 +2363,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.CreateSearchLibRequest,
     ) -> ice20201109_models.CreateSearchLibResponse:
+        """
+        @summary 创建库
+        
+        @param request: CreateSearchLibRequest
+        @return: CreateSearchLibResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_search_lib_with_options_async(request, runtime)
 
@@ -1831,6 +2377,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateUploadMediaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateUploadMediaResponse:
+        """
+        @summary 本地媒资上传
+        
+        @param request: CreateUploadMediaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUploadMediaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1871,6 +2424,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateUploadMediaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateUploadMediaResponse:
+        """
+        @summary 本地媒资上传
+        
+        @param request: CreateUploadMediaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUploadMediaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -1910,6 +2470,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.CreateUploadMediaRequest,
     ) -> ice20201109_models.CreateUploadMediaResponse:
+        """
+        @summary 本地媒资上传
+        
+        @param request: CreateUploadMediaRequest
+        @return: CreateUploadMediaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_upload_media_with_options(request, runtime)
 
@@ -1917,6 +2483,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.CreateUploadMediaRequest,
     ) -> ice20201109_models.CreateUploadMediaResponse:
+        """
+        @summary 本地媒资上传
+        
+        @param request: CreateUploadMediaRequest
+        @return: CreateUploadMediaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_upload_media_with_options_async(request, runtime)
 
@@ -1925,6 +2497,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateUploadStreamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateUploadStreamResponse:
+        """
+        @summary 本地上传媒体流
+        
+        @param request: CreateUploadStreamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUploadStreamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.definition):
@@ -1961,6 +2540,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.CreateUploadStreamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.CreateUploadStreamResponse:
+        """
+        @summary 本地上传媒体流
+        
+        @param request: CreateUploadStreamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUploadStreamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.definition):
@@ -1996,6 +2582,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.CreateUploadStreamRequest,
     ) -> ice20201109_models.CreateUploadStreamResponse:
+        """
+        @summary 本地上传媒体流
+        
+        @param request: CreateUploadStreamRequest
+        @return: CreateUploadStreamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_upload_stream_with_options(request, runtime)
 
@@ -2003,6 +2595,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.CreateUploadStreamRequest,
     ) -> ice20201109_models.CreateUploadStreamResponse:
+        """
+        @summary 本地上传媒体流
+        
+        @param request: CreateUploadStreamRequest
+        @return: CreateUploadStreamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_upload_stream_with_options_async(request, runtime)
 
@@ -2011,6 +2609,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DecryptKMSDataKeyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DecryptKMSDataKeyResponse:
+        """
+        @summary 解密KMS密钥DataKey
+        
+        @param request: DecryptKMSDataKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DecryptKMSDataKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ciphertext_blob):
@@ -2039,6 +2644,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DecryptKMSDataKeyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DecryptKMSDataKeyResponse:
+        """
+        @summary 解密KMS密钥DataKey
+        
+        @param request: DecryptKMSDataKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DecryptKMSDataKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ciphertext_blob):
@@ -2066,6 +2678,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DecryptKMSDataKeyRequest,
     ) -> ice20201109_models.DecryptKMSDataKeyResponse:
+        """
+        @summary 解密KMS密钥DataKey
+        
+        @param request: DecryptKMSDataKeyRequest
+        @return: DecryptKMSDataKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.decrypt_kmsdata_key_with_options(request, runtime)
 
@@ -2073,6 +2691,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DecryptKMSDataKeyRequest,
     ) -> ice20201109_models.DecryptKMSDataKeyResponse:
+        """
+        @summary 解密KMS密钥DataKey
+        
+        @param request: DecryptKMSDataKeyRequest
+        @return: DecryptKMSDataKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.decrypt_kmsdata_key_with_options_async(request, runtime)
 
@@ -2081,6 +2705,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteAvatarTrainingJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteAvatarTrainingJobResponse:
+        """
+        @summary 更新数字人训练任务信息
+        
+        @param request: DeleteAvatarTrainingJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAvatarTrainingJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -2109,6 +2740,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteAvatarTrainingJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteAvatarTrainingJobResponse:
+        """
+        @summary 更新数字人训练任务信息
+        
+        @param request: DeleteAvatarTrainingJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAvatarTrainingJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -2136,6 +2774,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteAvatarTrainingJobRequest,
     ) -> ice20201109_models.DeleteAvatarTrainingJobResponse:
+        """
+        @summary 更新数字人训练任务信息
+        
+        @param request: DeleteAvatarTrainingJobRequest
+        @return: DeleteAvatarTrainingJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_avatar_training_job_with_options(request, runtime)
 
@@ -2143,6 +2787,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteAvatarTrainingJobRequest,
     ) -> ice20201109_models.DeleteAvatarTrainingJobResponse:
+        """
+        @summary 更新数字人训练任务信息
+        
+        @param request: DeleteAvatarTrainingJobRequest
+        @return: DeleteAvatarTrainingJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_avatar_training_job_with_options_async(request, runtime)
 
@@ -2151,6 +2801,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteCategoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteCategoryResponse:
+        """
+        @summary 删除媒资分类
+        
+        @param request: DeleteCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCategoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cate_id):
@@ -2179,6 +2836,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteCategoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteCategoryResponse:
+        """
+        @summary 删除媒资分类
+        
+        @param request: DeleteCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCategoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cate_id):
@@ -2206,6 +2870,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteCategoryRequest,
     ) -> ice20201109_models.DeleteCategoryResponse:
+        """
+        @summary 删除媒资分类
+        
+        @param request: DeleteCategoryRequest
+        @return: DeleteCategoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_category_with_options(request, runtime)
 
@@ -2213,6 +2883,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteCategoryRequest,
     ) -> ice20201109_models.DeleteCategoryResponse:
+        """
+        @summary 删除媒资分类
+        
+        @param request: DeleteCategoryRequest
+        @return: DeleteCategoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_category_with_options_async(request, runtime)
 
@@ -2221,6 +2897,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteCustomTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteCustomTemplateResponse:
+        """
+        @summary 删除媒体处理自定义模板
+        
+        @param request: DeleteCustomTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCustomTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.template_id):
@@ -2249,6 +2932,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteCustomTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteCustomTemplateResponse:
+        """
+        @summary 删除媒体处理自定义模板
+        
+        @param request: DeleteCustomTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCustomTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.template_id):
@@ -2276,6 +2966,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteCustomTemplateRequest,
     ) -> ice20201109_models.DeleteCustomTemplateResponse:
+        """
+        @summary 删除媒体处理自定义模板
+        
+        @param request: DeleteCustomTemplateRequest
+        @return: DeleteCustomTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_custom_template_with_options(request, runtime)
 
@@ -2283,6 +2979,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteCustomTemplateRequest,
     ) -> ice20201109_models.DeleteCustomTemplateResponse:
+        """
+        @summary 删除媒体处理自定义模板
+        
+        @param request: DeleteCustomTemplateRequest
+        @return: DeleteCustomTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_custom_template_with_options_async(request, runtime)
 
@@ -2291,6 +2993,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteCustomizedVoiceJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteCustomizedVoiceJobResponse:
+        """
+        @summary 删除用户的专属人声任务
+        
+        @param request: DeleteCustomizedVoiceJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCustomizedVoiceJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -2319,6 +3028,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteCustomizedVoiceJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteCustomizedVoiceJobResponse:
+        """
+        @summary 删除用户的专属人声任务
+        
+        @param request: DeleteCustomizedVoiceJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCustomizedVoiceJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -2346,6 +3062,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteCustomizedVoiceJobRequest,
     ) -> ice20201109_models.DeleteCustomizedVoiceJobResponse:
+        """
+        @summary 删除用户的专属人声任务
+        
+        @param request: DeleteCustomizedVoiceJobRequest
+        @return: DeleteCustomizedVoiceJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_customized_voice_job_with_options(request, runtime)
 
@@ -2353,6 +3075,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteCustomizedVoiceJobRequest,
     ) -> ice20201109_models.DeleteCustomizedVoiceJobResponse:
+        """
+        @summary 删除用户的专属人声任务
+        
+        @param request: DeleteCustomizedVoiceJobRequest
+        @return: DeleteCustomizedVoiceJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_customized_voice_job_with_options_async(request, runtime)
 
@@ -2361,6 +3089,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteDNADBRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteDNADBResponse:
+        """
+        @summary 删除DNA库
+        
+        @param request: DeleteDNADBRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDNADBResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbid):
@@ -2397,6 +3132,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteDNADBRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteDNADBResponse:
+        """
+        @summary 删除DNA库
+        
+        @param request: DeleteDNADBRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDNADBResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbid):
@@ -2432,6 +3174,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteDNADBRequest,
     ) -> ice20201109_models.DeleteDNADBResponse:
+        """
+        @summary 删除DNA库
+        
+        @param request: DeleteDNADBRequest
+        @return: DeleteDNADBResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_dnadbwith_options(request, runtime)
 
@@ -2439,6 +3187,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteDNADBRequest,
     ) -> ice20201109_models.DeleteDNADBResponse:
+        """
+        @summary 删除DNA库
+        
+        @param request: DeleteDNADBRequest
+        @return: DeleteDNADBResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_dnadbwith_options_async(request, runtime)
 
@@ -2447,6 +3201,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteDNAFilesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteDNAFilesResponse:
+        """
+        @summary 删除DNA文件
+        
+        @param request: DeleteDNAFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDNAFilesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbid):
@@ -2485,6 +3246,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteDNAFilesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteDNAFilesResponse:
+        """
+        @summary 删除DNA文件
+        
+        @param request: DeleteDNAFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDNAFilesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbid):
@@ -2522,6 +3290,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteDNAFilesRequest,
     ) -> ice20201109_models.DeleteDNAFilesResponse:
+        """
+        @summary 删除DNA文件
+        
+        @param request: DeleteDNAFilesRequest
+        @return: DeleteDNAFilesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_dnafiles_with_options(request, runtime)
 
@@ -2529,6 +3303,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteDNAFilesRequest,
     ) -> ice20201109_models.DeleteDNAFilesResponse:
+        """
+        @summary 删除DNA文件
+        
+        @param request: DeleteDNAFilesRequest
+        @return: DeleteDNAFilesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_dnafiles_with_options_async(request, runtime)
 
@@ -2537,6 +3317,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteEditingProjectMaterialsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteEditingProjectMaterialsResponse:
+        """
+        @summary 删除剪辑工程关联素材
+        
+        @param request: DeleteEditingProjectMaterialsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEditingProjectMaterialsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.material_ids):
@@ -2569,6 +3356,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteEditingProjectMaterialsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteEditingProjectMaterialsResponse:
+        """
+        @summary 删除剪辑工程关联素材
+        
+        @param request: DeleteEditingProjectMaterialsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEditingProjectMaterialsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.material_ids):
@@ -2600,6 +3394,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteEditingProjectMaterialsRequest,
     ) -> ice20201109_models.DeleteEditingProjectMaterialsResponse:
+        """
+        @summary 删除剪辑工程关联素材
+        
+        @param request: DeleteEditingProjectMaterialsRequest
+        @return: DeleteEditingProjectMaterialsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_editing_project_materials_with_options(request, runtime)
 
@@ -2607,6 +3407,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteEditingProjectMaterialsRequest,
     ) -> ice20201109_models.DeleteEditingProjectMaterialsResponse:
+        """
+        @summary 删除剪辑工程关联素材
+        
+        @param request: DeleteEditingProjectMaterialsRequest
+        @return: DeleteEditingProjectMaterialsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_editing_project_materials_with_options_async(request, runtime)
 
@@ -2615,6 +3421,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteEditingProjectsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteEditingProjectsResponse:
+        """
+        @summary 删除云剪辑工程
+        
+        @param request: DeleteEditingProjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEditingProjectsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.project_ids):
@@ -2643,6 +3456,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteEditingProjectsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteEditingProjectsResponse:
+        """
+        @summary 删除云剪辑工程
+        
+        @param request: DeleteEditingProjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEditingProjectsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.project_ids):
@@ -2670,6 +3490,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteEditingProjectsRequest,
     ) -> ice20201109_models.DeleteEditingProjectsResponse:
+        """
+        @summary 删除云剪辑工程
+        
+        @param request: DeleteEditingProjectsRequest
+        @return: DeleteEditingProjectsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_editing_projects_with_options(request, runtime)
 
@@ -2677,6 +3503,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteEditingProjectsRequest,
     ) -> ice20201109_models.DeleteEditingProjectsResponse:
+        """
+        @summary 删除云剪辑工程
+        
+        @param request: DeleteEditingProjectsRequest
+        @return: DeleteEditingProjectsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_editing_projects_with_options_async(request, runtime)
 
@@ -2685,6 +3517,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteLiveRecordFilesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteLiveRecordFilesResponse:
+        """
+        @summary 实时媒体服务-删除录制文件
+        
+        @param request: DeleteLiveRecordFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLiveRecordFilesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.record_ids):
@@ -2715,6 +3554,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteLiveRecordFilesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteLiveRecordFilesResponse:
+        """
+        @summary 实时媒体服务-删除录制文件
+        
+        @param request: DeleteLiveRecordFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLiveRecordFilesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.record_ids):
@@ -2744,6 +3590,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteLiveRecordFilesRequest,
     ) -> ice20201109_models.DeleteLiveRecordFilesResponse:
+        """
+        @summary 实时媒体服务-删除录制文件
+        
+        @param request: DeleteLiveRecordFilesRequest
+        @return: DeleteLiveRecordFilesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_live_record_files_with_options(request, runtime)
 
@@ -2751,6 +3603,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteLiveRecordFilesRequest,
     ) -> ice20201109_models.DeleteLiveRecordFilesResponse:
+        """
+        @summary 实时媒体服务-删除录制文件
+        
+        @param request: DeleteLiveRecordFilesRequest
+        @return: DeleteLiveRecordFilesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_live_record_files_with_options_async(request, runtime)
 
@@ -2759,6 +3617,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteLiveRecordTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteLiveRecordTemplateResponse:
+        """
+        @summary 删除直播录制模板
+        
+        @param request: DeleteLiveRecordTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLiveRecordTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.template_id):
@@ -2787,6 +3652,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteLiveRecordTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteLiveRecordTemplateResponse:
+        """
+        @summary 删除直播录制模板
+        
+        @param request: DeleteLiveRecordTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLiveRecordTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.template_id):
@@ -2814,6 +3686,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteLiveRecordTemplateRequest,
     ) -> ice20201109_models.DeleteLiveRecordTemplateResponse:
+        """
+        @summary 删除直播录制模板
+        
+        @param request: DeleteLiveRecordTemplateRequest
+        @return: DeleteLiveRecordTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_live_record_template_with_options(request, runtime)
 
@@ -2821,6 +3699,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteLiveRecordTemplateRequest,
     ) -> ice20201109_models.DeleteLiveRecordTemplateResponse:
+        """
+        @summary 删除直播录制模板
+        
+        @param request: DeleteLiveRecordTemplateRequest
+        @return: DeleteLiveRecordTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_live_record_template_with_options_async(request, runtime)
 
@@ -2829,6 +3713,13 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.DeleteLiveSnapshotFilesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteLiveSnapshotFilesResponse:
+        """
+        @summary 批量删除直播截图文件
+        
+        @param tmp_req: DeleteLiveSnapshotFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLiveSnapshotFilesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.DeleteLiveSnapshotFilesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2865,6 +3756,13 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.DeleteLiveSnapshotFilesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteLiveSnapshotFilesResponse:
+        """
+        @summary 批量删除直播截图文件
+        
+        @param tmp_req: DeleteLiveSnapshotFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLiveSnapshotFilesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.DeleteLiveSnapshotFilesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2900,6 +3798,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteLiveSnapshotFilesRequest,
     ) -> ice20201109_models.DeleteLiveSnapshotFilesResponse:
+        """
+        @summary 批量删除直播截图文件
+        
+        @param request: DeleteLiveSnapshotFilesRequest
+        @return: DeleteLiveSnapshotFilesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_live_snapshot_files_with_options(request, runtime)
 
@@ -2907,6 +3811,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteLiveSnapshotFilesRequest,
     ) -> ice20201109_models.DeleteLiveSnapshotFilesResponse:
+        """
+        @summary 批量删除直播截图文件
+        
+        @param request: DeleteLiveSnapshotFilesRequest
+        @return: DeleteLiveSnapshotFilesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_live_snapshot_files_with_options_async(request, runtime)
 
@@ -2915,6 +3825,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteLiveSnapshotTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteLiveSnapshotTemplateResponse:
+        """
+        @summary 删除直播截图模板
+        
+        @param request: DeleteLiveSnapshotTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLiveSnapshotTemplateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.template_id):
@@ -2943,6 +3860,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteLiveSnapshotTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteLiveSnapshotTemplateResponse:
+        """
+        @summary 删除直播截图模板
+        
+        @param request: DeleteLiveSnapshotTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLiveSnapshotTemplateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.template_id):
@@ -2970,6 +3894,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteLiveSnapshotTemplateRequest,
     ) -> ice20201109_models.DeleteLiveSnapshotTemplateResponse:
+        """
+        @summary 删除直播截图模板
+        
+        @param request: DeleteLiveSnapshotTemplateRequest
+        @return: DeleteLiveSnapshotTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_live_snapshot_template_with_options(request, runtime)
 
@@ -2977,6 +3907,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteLiveSnapshotTemplateRequest,
     ) -> ice20201109_models.DeleteLiveSnapshotTemplateResponse:
+        """
+        @summary 删除直播截图模板
+        
+        @param request: DeleteLiveSnapshotTemplateRequest
+        @return: DeleteLiveSnapshotTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_live_snapshot_template_with_options_async(request, runtime)
 
@@ -2985,6 +3921,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteLiveTranscodeJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteLiveTranscodeJobResponse:
+        """
+        @summary 删除指定转码任务
+        
+        @param request: DeleteLiveTranscodeJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLiveTranscodeJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -3013,6 +3956,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteLiveTranscodeJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteLiveTranscodeJobResponse:
+        """
+        @summary 删除指定转码任务
+        
+        @param request: DeleteLiveTranscodeJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLiveTranscodeJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -3040,6 +3990,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteLiveTranscodeJobRequest,
     ) -> ice20201109_models.DeleteLiveTranscodeJobResponse:
+        """
+        @summary 删除指定转码任务
+        
+        @param request: DeleteLiveTranscodeJobRequest
+        @return: DeleteLiveTranscodeJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_live_transcode_job_with_options(request, runtime)
 
@@ -3047,6 +4003,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteLiveTranscodeJobRequest,
     ) -> ice20201109_models.DeleteLiveTranscodeJobResponse:
+        """
+        @summary 删除指定转码任务
+        
+        @param request: DeleteLiveTranscodeJobRequest
+        @return: DeleteLiveTranscodeJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_live_transcode_job_with_options_async(request, runtime)
 
@@ -3055,6 +4017,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteLiveTranscodeTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteLiveTranscodeTemplateResponse:
+        """
+        @summary 删除指定转码模版
+        
+        @param request: DeleteLiveTranscodeTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLiveTranscodeTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.template_id):
@@ -3083,6 +4052,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteLiveTranscodeTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteLiveTranscodeTemplateResponse:
+        """
+        @summary 删除指定转码模版
+        
+        @param request: DeleteLiveTranscodeTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLiveTranscodeTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.template_id):
@@ -3110,6 +4086,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteLiveTranscodeTemplateRequest,
     ) -> ice20201109_models.DeleteLiveTranscodeTemplateResponse:
+        """
+        @summary 删除指定转码模版
+        
+        @param request: DeleteLiveTranscodeTemplateRequest
+        @return: DeleteLiveTranscodeTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_live_transcode_template_with_options(request, runtime)
 
@@ -3117,6 +4099,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteLiveTranscodeTemplateRequest,
     ) -> ice20201109_models.DeleteLiveTranscodeTemplateResponse:
+        """
+        @summary 删除指定转码模版
+        
+        @param request: DeleteLiveTranscodeTemplateRequest
+        @return: DeleteLiveTranscodeTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_live_transcode_template_with_options_async(request, runtime)
 
@@ -3125,6 +4113,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteMediaFromSearchLibRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteMediaFromSearchLibResponse:
+        """
+        @summary 删除媒资从搜索
+        
+        @param request: DeleteMediaFromSearchLibRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMediaFromSearchLibResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.media_id):
@@ -3157,6 +4152,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteMediaFromSearchLibRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteMediaFromSearchLibResponse:
+        """
+        @summary 删除媒资从搜索
+        
+        @param request: DeleteMediaFromSearchLibRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMediaFromSearchLibResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.media_id):
@@ -3188,6 +4190,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteMediaFromSearchLibRequest,
     ) -> ice20201109_models.DeleteMediaFromSearchLibResponse:
+        """
+        @summary 删除媒资从搜索
+        
+        @param request: DeleteMediaFromSearchLibRequest
+        @return: DeleteMediaFromSearchLibResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_media_from_search_lib_with_options(request, runtime)
 
@@ -3195,6 +4203,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteMediaFromSearchLibRequest,
     ) -> ice20201109_models.DeleteMediaFromSearchLibResponse:
+        """
+        @summary 删除媒资从搜索
+        
+        @param request: DeleteMediaFromSearchLibRequest
+        @return: DeleteMediaFromSearchLibResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_media_from_search_lib_with_options_async(request, runtime)
 
@@ -3203,6 +4217,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteMediaInfosRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteMediaInfosResponse:
+        """
+        @summary 删除媒资信息
+        
+        @param request: DeleteMediaInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMediaInfosResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.delete_physical_files):
@@ -3235,6 +4256,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteMediaInfosRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteMediaInfosResponse:
+        """
+        @summary 删除媒资信息
+        
+        @param request: DeleteMediaInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMediaInfosResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.delete_physical_files):
@@ -3266,6 +4294,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteMediaInfosRequest,
     ) -> ice20201109_models.DeleteMediaInfosResponse:
+        """
+        @summary 删除媒资信息
+        
+        @param request: DeleteMediaInfosRequest
+        @return: DeleteMediaInfosResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_media_infos_with_options(request, runtime)
 
@@ -3273,6 +4307,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteMediaInfosRequest,
     ) -> ice20201109_models.DeleteMediaInfosResponse:
+        """
+        @summary 删除媒资信息
+        
+        @param request: DeleteMediaInfosRequest
+        @return: DeleteMediaInfosResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_media_infos_with_options_async(request, runtime)
 
@@ -3281,6 +4321,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteMediaMarksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteMediaMarksResponse:
+        """
+        @summary 删除媒资标注信息
+        
+        @param request: DeleteMediaMarksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMediaMarksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.media_id):
@@ -3311,6 +4358,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteMediaMarksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteMediaMarksResponse:
+        """
+        @summary 删除媒资标注信息
+        
+        @param request: DeleteMediaMarksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMediaMarksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.media_id):
@@ -3340,6 +4394,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteMediaMarksRequest,
     ) -> ice20201109_models.DeleteMediaMarksResponse:
+        """
+        @summary 删除媒资标注信息
+        
+        @param request: DeleteMediaMarksRequest
+        @return: DeleteMediaMarksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_media_marks_with_options(request, runtime)
 
@@ -3347,6 +4407,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteMediaMarksRequest,
     ) -> ice20201109_models.DeleteMediaMarksResponse:
+        """
+        @summary 删除媒资标注信息
+        
+        @param request: DeleteMediaMarksRequest
+        @return: DeleteMediaMarksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_media_marks_with_options_async(request, runtime)
 
@@ -3355,6 +4421,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeletePipelineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeletePipelineResponse:
+        """
+        @summary 删除管道配置
+        
+        @param request: DeletePipelineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePipelineResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.pipeline_id):
@@ -3383,6 +4456,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeletePipelineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeletePipelineResponse:
+        """
+        @summary 删除管道配置
+        
+        @param request: DeletePipelineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePipelineResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.pipeline_id):
@@ -3410,6 +4490,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeletePipelineRequest,
     ) -> ice20201109_models.DeletePipelineResponse:
+        """
+        @summary 删除管道配置
+        
+        @param request: DeletePipelineRequest
+        @return: DeletePipelineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_pipeline_with_options(request, runtime)
 
@@ -3417,6 +4503,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeletePipelineRequest,
     ) -> ice20201109_models.DeletePipelineResponse:
+        """
+        @summary 删除管道配置
+        
+        @param request: DeletePipelineRequest
+        @return: DeletePipelineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_pipeline_with_options_async(request, runtime)
 
@@ -3425,6 +4517,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeletePlayInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeletePlayInfoResponse:
+        """
+        @summary 删除播放信息
+        
+        @param request: DeletePlayInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePlayInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.delete_physical_files):
@@ -3457,6 +4556,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeletePlayInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeletePlayInfoResponse:
+        """
+        @summary 删除播放信息
+        
+        @param request: DeletePlayInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePlayInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.delete_physical_files):
@@ -3488,6 +4594,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeletePlayInfoRequest,
     ) -> ice20201109_models.DeletePlayInfoResponse:
+        """
+        @summary 删除播放信息
+        
+        @param request: DeletePlayInfoRequest
+        @return: DeletePlayInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_play_info_with_options(request, runtime)
 
@@ -3495,6 +4607,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeletePlayInfoRequest,
     ) -> ice20201109_models.DeletePlayInfoResponse:
+        """
+        @summary 删除播放信息
+        
+        @param request: DeletePlayInfoRequest
+        @return: DeletePlayInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_play_info_with_options_async(request, runtime)
 
@@ -3503,6 +4621,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteSmartJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteSmartJobResponse:
+        """
+        @summary DeleteSmartJob
+        
+        @param request: DeleteSmartJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSmartJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -3531,6 +4656,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteSmartJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteSmartJobResponse:
+        """
+        @summary DeleteSmartJob
+        
+        @param request: DeleteSmartJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSmartJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -3558,6 +4690,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteSmartJobRequest,
     ) -> ice20201109_models.DeleteSmartJobResponse:
+        """
+        @summary DeleteSmartJob
+        
+        @param request: DeleteSmartJobRequest
+        @return: DeleteSmartJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_smart_job_with_options(request, runtime)
 
@@ -3565,6 +4703,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteSmartJobRequest,
     ) -> ice20201109_models.DeleteSmartJobResponse:
+        """
+        @summary DeleteSmartJob
+        
+        @param request: DeleteSmartJobRequest
+        @return: DeleteSmartJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_smart_job_with_options_async(request, runtime)
 
@@ -3573,6 +4717,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteTemplateResponse:
+        """
+        @summary DeleteTemplate
+        
+        @param request: DeleteTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3599,6 +4750,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DeleteTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DeleteTemplateResponse:
+        """
+        @summary DeleteTemplate
+        
+        @param request: DeleteTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -3624,6 +4782,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteTemplateRequest,
     ) -> ice20201109_models.DeleteTemplateResponse:
+        """
+        @summary DeleteTemplate
+        
+        @param request: DeleteTemplateRequest
+        @return: DeleteTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_template_with_options(request, runtime)
 
@@ -3631,6 +4795,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DeleteTemplateRequest,
     ) -> ice20201109_models.DeleteTemplateResponse:
+        """
+        @summary DeleteTemplate
+        
+        @param request: DeleteTemplateRequest
+        @return: DeleteTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_template_with_options_async(request, runtime)
 
@@ -3639,6 +4809,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.DescribeMeterImsEditUsageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DescribeMeterImsEditUsageResponse:
+        """
+        @param request: DescribeMeterImsEditUsageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMeterImsEditUsageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_ts):
@@ -3673,6 +4848,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.DescribeMeterImsEditUsageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DescribeMeterImsEditUsageResponse:
+        """
+        @param request: DescribeMeterImsEditUsageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMeterImsEditUsageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_ts):
@@ -3706,6 +4886,10 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DescribeMeterImsEditUsageRequest,
     ) -> ice20201109_models.DescribeMeterImsEditUsageResponse:
+        """
+        @param request: DescribeMeterImsEditUsageRequest
+        @return: DescribeMeterImsEditUsageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_meter_ims_edit_usage_with_options(request, runtime)
 
@@ -3713,6 +4897,10 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DescribeMeterImsEditUsageRequest,
     ) -> ice20201109_models.DescribeMeterImsEditUsageResponse:
+        """
+        @param request: DescribeMeterImsEditUsageRequest
+        @return: DescribeMeterImsEditUsageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_meter_ims_edit_usage_with_options_async(request, runtime)
 
@@ -3721,6 +4909,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.DescribeMeterImsMediaConvertUHDUsageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DescribeMeterImsMediaConvertUHDUsageResponse:
+        """
+        @param request: DescribeMeterImsMediaConvertUHDUsageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMeterImsMediaConvertUHDUsageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_ts):
@@ -3755,6 +4948,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.DescribeMeterImsMediaConvertUHDUsageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DescribeMeterImsMediaConvertUHDUsageResponse:
+        """
+        @param request: DescribeMeterImsMediaConvertUHDUsageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMeterImsMediaConvertUHDUsageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_ts):
@@ -3788,6 +4986,10 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DescribeMeterImsMediaConvertUHDUsageRequest,
     ) -> ice20201109_models.DescribeMeterImsMediaConvertUHDUsageResponse:
+        """
+        @param request: DescribeMeterImsMediaConvertUHDUsageRequest
+        @return: DescribeMeterImsMediaConvertUHDUsageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_meter_ims_media_convert_uhdusage_with_options(request, runtime)
 
@@ -3795,6 +4997,10 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DescribeMeterImsMediaConvertUHDUsageRequest,
     ) -> ice20201109_models.DescribeMeterImsMediaConvertUHDUsageResponse:
+        """
+        @param request: DescribeMeterImsMediaConvertUHDUsageRequest
+        @return: DescribeMeterImsMediaConvertUHDUsageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_meter_ims_media_convert_uhdusage_with_options_async(request, runtime)
 
@@ -3803,6 +5009,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DescribeMeterImsMediaConvertUsageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DescribeMeterImsMediaConvertUsageResponse:
+        """
+        @summary 智能媒体服务点播转码用量
+        
+        @param request: DescribeMeterImsMediaConvertUsageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMeterImsMediaConvertUsageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_ts):
@@ -3837,6 +5050,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DescribeMeterImsMediaConvertUsageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DescribeMeterImsMediaConvertUsageResponse:
+        """
+        @summary 智能媒体服务点播转码用量
+        
+        @param request: DescribeMeterImsMediaConvertUsageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMeterImsMediaConvertUsageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_ts):
@@ -3870,6 +5090,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DescribeMeterImsMediaConvertUsageRequest,
     ) -> ice20201109_models.DescribeMeterImsMediaConvertUsageResponse:
+        """
+        @summary 智能媒体服务点播转码用量
+        
+        @param request: DescribeMeterImsMediaConvertUsageRequest
+        @return: DescribeMeterImsMediaConvertUsageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_meter_ims_media_convert_usage_with_options(request, runtime)
 
@@ -3877,6 +5103,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DescribeMeterImsMediaConvertUsageRequest,
     ) -> ice20201109_models.DescribeMeterImsMediaConvertUsageResponse:
+        """
+        @summary 智能媒体服务点播转码用量
+        
+        @param request: DescribeMeterImsMediaConvertUsageRequest
+        @return: DescribeMeterImsMediaConvertUsageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_meter_ims_media_convert_usage_with_options_async(request, runtime)
 
@@ -3885,6 +5117,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.DescribeMeterImsMpsAiUsageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DescribeMeterImsMpsAiUsageResponse:
+        """
+        @param request: DescribeMeterImsMpsAiUsageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMeterImsMpsAiUsageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_ts):
@@ -3919,6 +5156,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.DescribeMeterImsMpsAiUsageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DescribeMeterImsMpsAiUsageResponse:
+        """
+        @param request: DescribeMeterImsMpsAiUsageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMeterImsMpsAiUsageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_ts):
@@ -3952,6 +5194,10 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DescribeMeterImsMpsAiUsageRequest,
     ) -> ice20201109_models.DescribeMeterImsMpsAiUsageResponse:
+        """
+        @param request: DescribeMeterImsMpsAiUsageRequest
+        @return: DescribeMeterImsMpsAiUsageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_meter_ims_mps_ai_usage_with_options(request, runtime)
 
@@ -3959,6 +5205,10 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DescribeMeterImsMpsAiUsageRequest,
     ) -> ice20201109_models.DescribeMeterImsMpsAiUsageResponse:
+        """
+        @param request: DescribeMeterImsMpsAiUsageRequest
+        @return: DescribeMeterImsMpsAiUsageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_meter_ims_mps_ai_usage_with_options_async(request, runtime)
 
@@ -3967,6 +5217,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.DescribeMeterImsSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DescribeMeterImsSummaryResponse:
+        """
+        @param request: DescribeMeterImsSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMeterImsSummaryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_ts):
@@ -3999,6 +5254,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.DescribeMeterImsSummaryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DescribeMeterImsSummaryResponse:
+        """
+        @param request: DescribeMeterImsSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMeterImsSummaryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_ts):
@@ -4030,6 +5290,10 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DescribeMeterImsSummaryRequest,
     ) -> ice20201109_models.DescribeMeterImsSummaryResponse:
+        """
+        @param request: DescribeMeterImsSummaryRequest
+        @return: DescribeMeterImsSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_meter_ims_summary_with_options(request, runtime)
 
@@ -4037,6 +5301,10 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DescribeMeterImsSummaryRequest,
     ) -> ice20201109_models.DescribeMeterImsSummaryResponse:
+        """
+        @param request: DescribeMeterImsSummaryRequest
+        @return: DescribeMeterImsSummaryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_meter_ims_summary_with_options_async(request, runtime)
 
@@ -4045,6 +5313,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.DescribePlayListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DescribePlayListResponse:
+        """
+        @param request: DescribePlayListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePlayListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.begin_ts):
@@ -4089,6 +5362,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.DescribePlayListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DescribePlayListResponse:
+        """
+        @param request: DescribePlayListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePlayListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.begin_ts):
@@ -4132,6 +5410,10 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DescribePlayListRequest,
     ) -> ice20201109_models.DescribePlayListResponse:
+        """
+        @param request: DescribePlayListRequest
+        @return: DescribePlayListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_play_list_with_options(request, runtime)
 
@@ -4139,6 +5421,10 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DescribePlayListRequest,
     ) -> ice20201109_models.DescribePlayListResponse:
+        """
+        @param request: DescribePlayListRequest
+        @return: DescribePlayListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_play_list_with_options_async(request, runtime)
 
@@ -4147,6 +5433,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DetectAudioForCustomizedVoiceJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DetectAudioForCustomizedVoiceJobResponse:
+        """
+        @summary 本接口用来检测用户的朗读是否有明显的发音错误、嘈杂的环境等
+        
+        @param request: DetectAudioForCustomizedVoiceJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectAudioForCustomizedVoiceJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.audio_record_id):
@@ -4179,6 +5472,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DetectAudioForCustomizedVoiceJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DetectAudioForCustomizedVoiceJobResponse:
+        """
+        @summary 本接口用来检测用户的朗读是否有明显的发音错误、嘈杂的环境等
+        
+        @param request: DetectAudioForCustomizedVoiceJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DetectAudioForCustomizedVoiceJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.audio_record_id):
@@ -4210,6 +5510,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DetectAudioForCustomizedVoiceJobRequest,
     ) -> ice20201109_models.DetectAudioForCustomizedVoiceJobResponse:
+        """
+        @summary 本接口用来检测用户的朗读是否有明显的发音错误、嘈杂的环境等
+        
+        @param request: DetectAudioForCustomizedVoiceJobRequest
+        @return: DetectAudioForCustomizedVoiceJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.detect_audio_for_customized_voice_job_with_options(request, runtime)
 
@@ -4217,6 +5523,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DetectAudioForCustomizedVoiceJobRequest,
     ) -> ice20201109_models.DetectAudioForCustomizedVoiceJobResponse:
+        """
+        @summary 本接口用来检测用户的朗读是否有明显的发音错误、嘈杂的环境等
+        
+        @param request: DetectAudioForCustomizedVoiceJobRequest
+        @return: DetectAudioForCustomizedVoiceJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.detect_audio_for_customized_voice_job_with_options_async(request, runtime)
 
@@ -4225,6 +5537,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DropSearchIndexRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DropSearchIndexResponse:
+        """
+        @summary 删除搜索索引
+        
+        @param request: DropSearchIndexRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DropSearchIndexResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.index_type):
@@ -4255,6 +5574,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DropSearchIndexRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DropSearchIndexResponse:
+        """
+        @summary 删除搜索索引
+        
+        @param request: DropSearchIndexRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DropSearchIndexResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.index_type):
@@ -4284,6 +5610,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DropSearchIndexRequest,
     ) -> ice20201109_models.DropSearchIndexResponse:
+        """
+        @summary 删除搜索索引
+        
+        @param request: DropSearchIndexRequest
+        @return: DropSearchIndexResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.drop_search_index_with_options(request, runtime)
 
@@ -4291,6 +5623,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DropSearchIndexRequest,
     ) -> ice20201109_models.DropSearchIndexResponse:
+        """
+        @summary 删除搜索索引
+        
+        @param request: DropSearchIndexRequest
+        @return: DropSearchIndexResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.drop_search_index_with_options_async(request, runtime)
 
@@ -4299,6 +5637,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DropSearchLibRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DropSearchLibResponse:
+        """
+        @summary 删除库
+        
+        @param request: DropSearchLibRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DropSearchLibResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.search_lib_name):
@@ -4327,6 +5672,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.DropSearchLibRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.DropSearchLibResponse:
+        """
+        @summary 删除库
+        
+        @param request: DropSearchLibRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DropSearchLibResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.search_lib_name):
@@ -4354,6 +5706,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DropSearchLibRequest,
     ) -> ice20201109_models.DropSearchLibResponse:
+        """
+        @summary 删除库
+        
+        @param request: DropSearchLibRequest
+        @return: DropSearchLibResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.drop_search_lib_with_options(request, runtime)
 
@@ -4361,6 +5719,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.DropSearchLibRequest,
     ) -> ice20201109_models.DropSearchLibResponse:
+        """
+        @summary 删除库
+        
+        @param request: DropSearchLibRequest
+        @return: DropSearchLibResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.drop_search_lib_with_options_async(request, runtime)
 
@@ -4368,6 +5732,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GenerateKMSDataKeyResponse:
+        """
+        @summary 生成KMS密钥DataKey
+        
+        @param request: GenerateKMSDataKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateKMSDataKeyResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GenerateKMSDataKey',
@@ -4389,6 +5760,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GenerateKMSDataKeyResponse:
+        """
+        @summary 生成KMS密钥DataKey
+        
+        @param request: GenerateKMSDataKeyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateKMSDataKeyResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GenerateKMSDataKey',
@@ -4407,10 +5785,20 @@ class Client(OpenApiClient):
         )
 
     def generate_kmsdata_key(self) -> ice20201109_models.GenerateKMSDataKeyResponse:
+        """
+        @summary 生成KMS密钥DataKey
+        
+        @return: GenerateKMSDataKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.generate_kmsdata_key_with_options(runtime)
 
     async def generate_kmsdata_key_async(self) -> ice20201109_models.GenerateKMSDataKeyResponse:
+        """
+        @summary 生成KMS密钥DataKey
+        
+        @return: GenerateKMSDataKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.generate_kmsdata_key_with_options_async(runtime)
 
@@ -4419,6 +5807,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetAvatarRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetAvatarResponse:
+        """
+        @summary 查询单个数字人
+        
+        @param request: GetAvatarRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAvatarResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.avatar_id):
@@ -4447,6 +5842,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetAvatarRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetAvatarResponse:
+        """
+        @summary 查询单个数字人
+        
+        @param request: GetAvatarRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAvatarResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.avatar_id):
@@ -4474,6 +5876,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetAvatarRequest,
     ) -> ice20201109_models.GetAvatarResponse:
+        """
+        @summary 查询单个数字人
+        
+        @param request: GetAvatarRequest
+        @return: GetAvatarResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_avatar_with_options(request, runtime)
 
@@ -4481,6 +5889,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetAvatarRequest,
     ) -> ice20201109_models.GetAvatarResponse:
+        """
+        @summary 查询单个数字人
+        
+        @param request: GetAvatarRequest
+        @return: GetAvatarResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_avatar_with_options_async(request, runtime)
 
@@ -4489,6 +5903,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetAvatarTrainingJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetAvatarTrainingJobResponse:
+        """
+        @summary 查询单个数字人训练任务
+        
+        @param request: GetAvatarTrainingJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAvatarTrainingJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -4517,6 +5938,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetAvatarTrainingJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetAvatarTrainingJobResponse:
+        """
+        @summary 查询单个数字人训练任务
+        
+        @param request: GetAvatarTrainingJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAvatarTrainingJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -4544,6 +5972,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetAvatarTrainingJobRequest,
     ) -> ice20201109_models.GetAvatarTrainingJobResponse:
+        """
+        @summary 查询单个数字人训练任务
+        
+        @param request: GetAvatarTrainingJobRequest
+        @return: GetAvatarTrainingJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_avatar_training_job_with_options(request, runtime)
 
@@ -4551,6 +5985,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetAvatarTrainingJobRequest,
     ) -> ice20201109_models.GetAvatarTrainingJobResponse:
+        """
+        @summary 查询单个数字人训练任务
+        
+        @param request: GetAvatarTrainingJobRequest
+        @return: GetAvatarTrainingJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_avatar_training_job_with_options_async(request, runtime)
 
@@ -4559,6 +5999,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetBatchMediaProducingJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetBatchMediaProducingJobResponse:
+        """
+        @summary 一键成片-批量获取剪辑任务
+        
+        @param request: GetBatchMediaProducingJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBatchMediaProducingJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -4597,6 +6044,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetBatchMediaProducingJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetBatchMediaProducingJobResponse:
+        """
+        @summary 一键成片-批量获取剪辑任务
+        
+        @param request: GetBatchMediaProducingJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBatchMediaProducingJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -4634,6 +6088,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetBatchMediaProducingJobRequest,
     ) -> ice20201109_models.GetBatchMediaProducingJobResponse:
+        """
+        @summary 一键成片-批量获取剪辑任务
+        
+        @param request: GetBatchMediaProducingJobRequest
+        @return: GetBatchMediaProducingJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_batch_media_producing_job_with_options(request, runtime)
 
@@ -4641,6 +6101,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetBatchMediaProducingJobRequest,
     ) -> ice20201109_models.GetBatchMediaProducingJobResponse:
+        """
+        @summary 一键成片-批量获取剪辑任务
+        
+        @param request: GetBatchMediaProducingJobRequest
+        @return: GetBatchMediaProducingJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_batch_media_producing_job_with_options_async(request, runtime)
 
@@ -4649,6 +6115,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetCategoriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetCategoriesResponse:
+        """
+        @summary 查询媒资分类
+        
+        @param request: GetCategoriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCategoriesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cate_id):
@@ -4685,6 +6158,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetCategoriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetCategoriesResponse:
+        """
+        @summary 查询媒资分类
+        
+        @param request: GetCategoriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCategoriesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cate_id):
@@ -4720,6 +6200,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetCategoriesRequest,
     ) -> ice20201109_models.GetCategoriesResponse:
+        """
+        @summary 查询媒资分类
+        
+        @param request: GetCategoriesRequest
+        @return: GetCategoriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_categories_with_options(request, runtime)
 
@@ -4727,6 +6213,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetCategoriesRequest,
     ) -> ice20201109_models.GetCategoriesResponse:
+        """
+        @summary 查询媒资分类
+        
+        @param request: GetCategoriesRequest
+        @return: GetCategoriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_categories_with_options_async(request, runtime)
 
@@ -4734,6 +6226,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetContentAnalyzeConfigResponse:
+        """
+        @summary 获取内容分析搜索配置
+        
+        @param request: GetContentAnalyzeConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetContentAnalyzeConfigResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetContentAnalyzeConfig',
@@ -4755,6 +6254,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetContentAnalyzeConfigResponse:
+        """
+        @summary 获取内容分析搜索配置
+        
+        @param request: GetContentAnalyzeConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetContentAnalyzeConfigResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetContentAnalyzeConfig',
@@ -4773,10 +6279,20 @@ class Client(OpenApiClient):
         )
 
     def get_content_analyze_config(self) -> ice20201109_models.GetContentAnalyzeConfigResponse:
+        """
+        @summary 获取内容分析搜索配置
+        
+        @return: GetContentAnalyzeConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_content_analyze_config_with_options(runtime)
 
     async def get_content_analyze_config_async(self) -> ice20201109_models.GetContentAnalyzeConfigResponse:
+        """
+        @summary 获取内容分析搜索配置
+        
+        @return: GetContentAnalyzeConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_content_analyze_config_with_options_async(runtime)
 
@@ -4785,6 +6301,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetCustomTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetCustomTemplateResponse:
+        """
+        @summary 获取单个媒体处理自定义模板
+        
+        @param request: GetCustomTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCustomTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.subtype):
@@ -4817,6 +6340,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetCustomTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetCustomTemplateResponse:
+        """
+        @summary 获取单个媒体处理自定义模板
+        
+        @param request: GetCustomTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCustomTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.subtype):
@@ -4848,6 +6378,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetCustomTemplateRequest,
     ) -> ice20201109_models.GetCustomTemplateResponse:
+        """
+        @summary 获取单个媒体处理自定义模板
+        
+        @param request: GetCustomTemplateRequest
+        @return: GetCustomTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_custom_template_with_options(request, runtime)
 
@@ -4855,6 +6391,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetCustomTemplateRequest,
     ) -> ice20201109_models.GetCustomTemplateResponse:
+        """
+        @summary 获取单个媒体处理自定义模板
+        
+        @param request: GetCustomTemplateRequest
+        @return: GetCustomTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_custom_template_with_options_async(request, runtime)
 
@@ -4863,6 +6405,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetCustomizedVoiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetCustomizedVoiceResponse:
+        """
+        @summary 获取用户的专属人声
+        
+        @param request: GetCustomizedVoiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCustomizedVoiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.voice_id):
@@ -4891,6 +6440,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetCustomizedVoiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetCustomizedVoiceResponse:
+        """
+        @summary 获取用户的专属人声
+        
+        @param request: GetCustomizedVoiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCustomizedVoiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.voice_id):
@@ -4918,6 +6474,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetCustomizedVoiceRequest,
     ) -> ice20201109_models.GetCustomizedVoiceResponse:
+        """
+        @summary 获取用户的专属人声
+        
+        @param request: GetCustomizedVoiceRequest
+        @return: GetCustomizedVoiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_customized_voice_with_options(request, runtime)
 
@@ -4925,6 +6487,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetCustomizedVoiceRequest,
     ) -> ice20201109_models.GetCustomizedVoiceResponse:
+        """
+        @summary 获取用户的专属人声
+        
+        @param request: GetCustomizedVoiceRequest
+        @return: GetCustomizedVoiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_customized_voice_with_options_async(request, runtime)
 
@@ -4933,6 +6501,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetCustomizedVoiceJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetCustomizedVoiceJobResponse:
+        """
+        @summary 查询单个人声克隆训练任务
+        
+        @param request: GetCustomizedVoiceJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCustomizedVoiceJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -4961,6 +6536,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetCustomizedVoiceJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetCustomizedVoiceJobResponse:
+        """
+        @summary 查询单个人声克隆训练任务
+        
+        @param request: GetCustomizedVoiceJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCustomizedVoiceJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -4988,6 +6570,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetCustomizedVoiceJobRequest,
     ) -> ice20201109_models.GetCustomizedVoiceJobResponse:
+        """
+        @summary 查询单个人声克隆训练任务
+        
+        @param request: GetCustomizedVoiceJobRequest
+        @return: GetCustomizedVoiceJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_customized_voice_job_with_options(request, runtime)
 
@@ -4995,6 +6583,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetCustomizedVoiceJobRequest,
     ) -> ice20201109_models.GetCustomizedVoiceJobResponse:
+        """
+        @summary 查询单个人声克隆训练任务
+        
+        @param request: GetCustomizedVoiceJobRequest
+        @return: GetCustomizedVoiceJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_customized_voice_job_with_options_async(request, runtime)
 
@@ -5002,6 +6596,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetDefaultStorageLocationResponse:
+        """
+        @summary 获取用户默认存储地址
+        
+        @param request: GetDefaultStorageLocationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDefaultStorageLocationResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetDefaultStorageLocation',
@@ -5023,6 +6624,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetDefaultStorageLocationResponse:
+        """
+        @summary 获取用户默认存储地址
+        
+        @param request: GetDefaultStorageLocationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDefaultStorageLocationResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetDefaultStorageLocation',
@@ -5041,10 +6649,20 @@ class Client(OpenApiClient):
         )
 
     def get_default_storage_location(self) -> ice20201109_models.GetDefaultStorageLocationResponse:
+        """
+        @summary 获取用户默认存储地址
+        
+        @return: GetDefaultStorageLocationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_default_storage_location_with_options(runtime)
 
     async def get_default_storage_location_async(self) -> ice20201109_models.GetDefaultStorageLocationResponse:
+        """
+        @summary 获取用户默认存储地址
+        
+        @return: GetDefaultStorageLocationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_default_storage_location_with_options_async(runtime)
 
@@ -5053,6 +6671,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetDemonstrationForCustomizedVoiceJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetDemonstrationForCustomizedVoiceJobResponse:
+        """
+        @summary 通过本接口来获取需要给用户朗读的文本及示例音频
+        
+        @param request: GetDemonstrationForCustomizedVoiceJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDemonstrationForCustomizedVoiceJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.scenario):
@@ -5081,6 +6706,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetDemonstrationForCustomizedVoiceJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetDemonstrationForCustomizedVoiceJobResponse:
+        """
+        @summary 通过本接口来获取需要给用户朗读的文本及示例音频
+        
+        @param request: GetDemonstrationForCustomizedVoiceJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDemonstrationForCustomizedVoiceJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.scenario):
@@ -5108,6 +6740,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetDemonstrationForCustomizedVoiceJobRequest,
     ) -> ice20201109_models.GetDemonstrationForCustomizedVoiceJobResponse:
+        """
+        @summary 通过本接口来获取需要给用户朗读的文本及示例音频
+        
+        @param request: GetDemonstrationForCustomizedVoiceJobRequest
+        @return: GetDemonstrationForCustomizedVoiceJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_demonstration_for_customized_voice_job_with_options(request, runtime)
 
@@ -5115,6 +6753,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetDemonstrationForCustomizedVoiceJobRequest,
     ) -> ice20201109_models.GetDemonstrationForCustomizedVoiceJobResponse:
+        """
+        @summary 通过本接口来获取需要给用户朗读的文本及示例音频
+        
+        @param request: GetDemonstrationForCustomizedVoiceJobRequest
+        @return: GetDemonstrationForCustomizedVoiceJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_demonstration_for_customized_voice_job_with_options_async(request, runtime)
 
@@ -5123,6 +6767,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetDynamicImageJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetDynamicImageJobResponse:
+        """
+        @summary 查询动图任务详情接口
+        
+        @param request: GetDynamicImageJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDynamicImageJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -5151,6 +6802,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetDynamicImageJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetDynamicImageJobResponse:
+        """
+        @summary 查询动图任务详情接口
+        
+        @param request: GetDynamicImageJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetDynamicImageJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -5178,6 +6836,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetDynamicImageJobRequest,
     ) -> ice20201109_models.GetDynamicImageJobResponse:
+        """
+        @summary 查询动图任务详情接口
+        
+        @param request: GetDynamicImageJobRequest
+        @return: GetDynamicImageJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_dynamic_image_job_with_options(request, runtime)
 
@@ -5185,6 +6849,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetDynamicImageJobRequest,
     ) -> ice20201109_models.GetDynamicImageJobResponse:
+        """
+        @summary 查询动图任务详情接口
+        
+        @param request: GetDynamicImageJobRequest
+        @return: GetDynamicImageJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_dynamic_image_job_with_options_async(request, runtime)
 
@@ -5193,6 +6863,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetEditingProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetEditingProjectResponse:
+        """
+        @summary 获取单个云剪辑工程
+        
+        @param request: GetEditingProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEditingProjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.project_id):
@@ -5223,6 +6900,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetEditingProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetEditingProjectResponse:
+        """
+        @summary 获取单个云剪辑工程
+        
+        @param request: GetEditingProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEditingProjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.project_id):
@@ -5252,6 +6936,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetEditingProjectRequest,
     ) -> ice20201109_models.GetEditingProjectResponse:
+        """
+        @summary 获取单个云剪辑工程
+        
+        @param request: GetEditingProjectRequest
+        @return: GetEditingProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_editing_project_with_options(request, runtime)
 
@@ -5259,6 +6949,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetEditingProjectRequest,
     ) -> ice20201109_models.GetEditingProjectResponse:
+        """
+        @summary 获取单个云剪辑工程
+        
+        @param request: GetEditingProjectRequest
+        @return: GetEditingProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_editing_project_with_options_async(request, runtime)
 
@@ -5267,6 +6963,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetEditingProjectMaterialsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetEditingProjectMaterialsResponse:
+        """
+        @summary 获取剪辑工程关联素材
+        
+        @param request: GetEditingProjectMaterialsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEditingProjectMaterialsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.project_id):
@@ -5295,6 +6998,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetEditingProjectMaterialsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetEditingProjectMaterialsResponse:
+        """
+        @summary 获取剪辑工程关联素材
+        
+        @param request: GetEditingProjectMaterialsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEditingProjectMaterialsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.project_id):
@@ -5322,6 +7032,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetEditingProjectMaterialsRequest,
     ) -> ice20201109_models.GetEditingProjectMaterialsResponse:
+        """
+        @summary 获取剪辑工程关联素材
+        
+        @param request: GetEditingProjectMaterialsRequest
+        @return: GetEditingProjectMaterialsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_editing_project_materials_with_options(request, runtime)
 
@@ -5329,6 +7045,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetEditingProjectMaterialsRequest,
     ) -> ice20201109_models.GetEditingProjectMaterialsResponse:
+        """
+        @summary 获取剪辑工程关联素材
+        
+        @param request: GetEditingProjectMaterialsRequest
+        @return: GetEditingProjectMaterialsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_editing_project_materials_with_options_async(request, runtime)
 
@@ -5336,6 +7058,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetEventCallbackResponse:
+        """
+        @summary 获取事件回调地址
+        
+        @param request: GetEventCallbackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEventCallbackResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetEventCallback',
@@ -5357,6 +7086,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetEventCallbackResponse:
+        """
+        @summary 获取事件回调地址
+        
+        @param request: GetEventCallbackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEventCallbackResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='GetEventCallback',
@@ -5375,10 +7111,20 @@ class Client(OpenApiClient):
         )
 
     def get_event_callback(self) -> ice20201109_models.GetEventCallbackResponse:
+        """
+        @summary 获取事件回调地址
+        
+        @return: GetEventCallbackResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_event_callback_with_options(runtime)
 
     async def get_event_callback_async(self) -> ice20201109_models.GetEventCallbackResponse:
+        """
+        @summary 获取事件回调地址
+        
+        @return: GetEventCallbackResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_event_callback_with_options_async(runtime)
 
@@ -5387,6 +7133,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLiveEditingIndexFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLiveEditingIndexFileResponse:
+        """
+        @summary 获取直播剪辑m3u8索引文件
+        
+        @param request: GetLiveEditingIndexFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLiveEditingIndexFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_name):
@@ -5421,6 +7174,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLiveEditingIndexFileRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLiveEditingIndexFileResponse:
+        """
+        @summary 获取直播剪辑m3u8索引文件
+        
+        @param request: GetLiveEditingIndexFileRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLiveEditingIndexFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_name):
@@ -5454,6 +7214,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetLiveEditingIndexFileRequest,
     ) -> ice20201109_models.GetLiveEditingIndexFileResponse:
+        """
+        @summary 获取直播剪辑m3u8索引文件
+        
+        @param request: GetLiveEditingIndexFileRequest
+        @return: GetLiveEditingIndexFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_live_editing_index_file_with_options(request, runtime)
 
@@ -5461,6 +7227,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetLiveEditingIndexFileRequest,
     ) -> ice20201109_models.GetLiveEditingIndexFileResponse:
+        """
+        @summary 获取直播剪辑m3u8索引文件
+        
+        @param request: GetLiveEditingIndexFileRequest
+        @return: GetLiveEditingIndexFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_live_editing_index_file_with_options_async(request, runtime)
 
@@ -5469,6 +7241,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLiveEditingJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLiveEditingJobResponse:
+        """
+        @summary 获取直播剪辑任务
+        
+        @param request: GetLiveEditingJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLiveEditingJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -5497,6 +7276,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLiveEditingJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLiveEditingJobResponse:
+        """
+        @summary 获取直播剪辑任务
+        
+        @param request: GetLiveEditingJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLiveEditingJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -5524,6 +7310,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetLiveEditingJobRequest,
     ) -> ice20201109_models.GetLiveEditingJobResponse:
+        """
+        @summary 获取直播剪辑任务
+        
+        @param request: GetLiveEditingJobRequest
+        @return: GetLiveEditingJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_live_editing_job_with_options(request, runtime)
 
@@ -5531,6 +7323,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetLiveEditingJobRequest,
     ) -> ice20201109_models.GetLiveEditingJobResponse:
+        """
+        @summary 获取直播剪辑任务
+        
+        @param request: GetLiveEditingJobRequest
+        @return: GetLiveEditingJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_live_editing_job_with_options_async(request, runtime)
 
@@ -5539,6 +7337,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLiveRecordJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLiveRecordJobResponse:
+        """
+        @summary 查询录制任务明细
+        
+        @param request: GetLiveRecordJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLiveRecordJobResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5565,6 +7370,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLiveRecordJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLiveRecordJobResponse:
+        """
+        @summary 查询录制任务明细
+        
+        @param request: GetLiveRecordJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLiveRecordJobResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5590,6 +7402,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetLiveRecordJobRequest,
     ) -> ice20201109_models.GetLiveRecordJobResponse:
+        """
+        @summary 查询录制任务明细
+        
+        @param request: GetLiveRecordJobRequest
+        @return: GetLiveRecordJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_live_record_job_with_options(request, runtime)
 
@@ -5597,6 +7415,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetLiveRecordJobRequest,
     ) -> ice20201109_models.GetLiveRecordJobResponse:
+        """
+        @summary 查询录制任务明细
+        
+        @param request: GetLiveRecordJobRequest
+        @return: GetLiveRecordJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_live_record_job_with_options_async(request, runtime)
 
@@ -5605,6 +7429,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLiveRecordTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLiveRecordTemplateResponse:
+        """
+        @summary 查询直播录制模板详情
+        
+        @param request: GetLiveRecordTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLiveRecordTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5631,6 +7462,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLiveRecordTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLiveRecordTemplateResponse:
+        """
+        @summary 查询直播录制模板详情
+        
+        @param request: GetLiveRecordTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLiveRecordTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5656,6 +7494,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetLiveRecordTemplateRequest,
     ) -> ice20201109_models.GetLiveRecordTemplateResponse:
+        """
+        @summary 查询直播录制模板详情
+        
+        @param request: GetLiveRecordTemplateRequest
+        @return: GetLiveRecordTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_live_record_template_with_options(request, runtime)
 
@@ -5663,6 +7507,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetLiveRecordTemplateRequest,
     ) -> ice20201109_models.GetLiveRecordTemplateResponse:
+        """
+        @summary 查询直播录制模板详情
+        
+        @param request: GetLiveRecordTemplateRequest
+        @return: GetLiveRecordTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_live_record_template_with_options_async(request, runtime)
 
@@ -5671,6 +7521,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLiveSnapshotJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLiveSnapshotJobResponse:
+        """
+        @summary 查询直播截图任务
+        
+        @param request: GetLiveSnapshotJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLiveSnapshotJobResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5697,6 +7554,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLiveSnapshotJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLiveSnapshotJobResponse:
+        """
+        @summary 查询直播截图任务
+        
+        @param request: GetLiveSnapshotJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLiveSnapshotJobResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5722,6 +7586,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetLiveSnapshotJobRequest,
     ) -> ice20201109_models.GetLiveSnapshotJobResponse:
+        """
+        @summary 查询直播截图任务
+        
+        @param request: GetLiveSnapshotJobRequest
+        @return: GetLiveSnapshotJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_live_snapshot_job_with_options(request, runtime)
 
@@ -5729,6 +7599,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetLiveSnapshotJobRequest,
     ) -> ice20201109_models.GetLiveSnapshotJobResponse:
+        """
+        @summary 查询直播截图任务
+        
+        @param request: GetLiveSnapshotJobRequest
+        @return: GetLiveSnapshotJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_live_snapshot_job_with_options_async(request, runtime)
 
@@ -5737,6 +7613,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLiveSnapshotTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLiveSnapshotTemplateResponse:
+        """
+        @summary 查询直播截图模板
+        
+        @param request: GetLiveSnapshotTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLiveSnapshotTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5763,6 +7646,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLiveSnapshotTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLiveSnapshotTemplateResponse:
+        """
+        @summary 查询直播截图模板
+        
+        @param request: GetLiveSnapshotTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLiveSnapshotTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -5788,6 +7678,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetLiveSnapshotTemplateRequest,
     ) -> ice20201109_models.GetLiveSnapshotTemplateResponse:
+        """
+        @summary 查询直播截图模板
+        
+        @param request: GetLiveSnapshotTemplateRequest
+        @return: GetLiveSnapshotTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_live_snapshot_template_with_options(request, runtime)
 
@@ -5795,6 +7691,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetLiveSnapshotTemplateRequest,
     ) -> ice20201109_models.GetLiveSnapshotTemplateResponse:
+        """
+        @summary 查询直播截图模板
+        
+        @param request: GetLiveSnapshotTemplateRequest
+        @return: GetLiveSnapshotTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_live_snapshot_template_with_options_async(request, runtime)
 
@@ -5803,6 +7705,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLiveTranscodeJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLiveTranscodeJobResponse:
+        """
+        @summary 查询转码任务详情
+        
+        @param request: GetLiveTranscodeJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLiveTranscodeJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -5831,6 +7740,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLiveTranscodeJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLiveTranscodeJobResponse:
+        """
+        @summary 查询转码任务详情
+        
+        @param request: GetLiveTranscodeJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLiveTranscodeJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -5858,6 +7774,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetLiveTranscodeJobRequest,
     ) -> ice20201109_models.GetLiveTranscodeJobResponse:
+        """
+        @summary 查询转码任务详情
+        
+        @param request: GetLiveTranscodeJobRequest
+        @return: GetLiveTranscodeJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_live_transcode_job_with_options(request, runtime)
 
@@ -5865,6 +7787,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetLiveTranscodeJobRequest,
     ) -> ice20201109_models.GetLiveTranscodeJobResponse:
+        """
+        @summary 查询转码任务详情
+        
+        @param request: GetLiveTranscodeJobRequest
+        @return: GetLiveTranscodeJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_live_transcode_job_with_options_async(request, runtime)
 
@@ -5873,6 +7801,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLiveTranscodeTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLiveTranscodeTemplateResponse:
+        """
+        @summary 查询转码模版详情
+        
+        @param request: GetLiveTranscodeTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLiveTranscodeTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.template_id):
@@ -5901,6 +7836,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetLiveTranscodeTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetLiveTranscodeTemplateResponse:
+        """
+        @summary 查询转码模版详情
+        
+        @param request: GetLiveTranscodeTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLiveTranscodeTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.template_id):
@@ -5928,6 +7870,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetLiveTranscodeTemplateRequest,
     ) -> ice20201109_models.GetLiveTranscodeTemplateResponse:
+        """
+        @summary 查询转码模版详情
+        
+        @param request: GetLiveTranscodeTemplateRequest
+        @return: GetLiveTranscodeTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_live_transcode_template_with_options(request, runtime)
 
@@ -5935,6 +7883,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetLiveTranscodeTemplateRequest,
     ) -> ice20201109_models.GetLiveTranscodeTemplateResponse:
+        """
+        @summary 查询转码模版详情
+        
+        @param request: GetLiveTranscodeTemplateRequest
+        @return: GetLiveTranscodeTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_live_transcode_template_with_options_async(request, runtime)
 
@@ -5943,6 +7897,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetMediaInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetMediaInfoResponse:
+        """
+        @summary 获取媒资内容信息
+        
+        @param request: GetMediaInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMediaInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.input_url):
@@ -5977,6 +7938,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetMediaInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetMediaInfoResponse:
+        """
+        @summary 获取媒资内容信息
+        
+        @param request: GetMediaInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMediaInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.input_url):
@@ -6010,6 +7978,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetMediaInfoRequest,
     ) -> ice20201109_models.GetMediaInfoResponse:
+        """
+        @summary 获取媒资内容信息
+        
+        @param request: GetMediaInfoRequest
+        @return: GetMediaInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_media_info_with_options(request, runtime)
 
@@ -6017,6 +7991,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetMediaInfoRequest,
     ) -> ice20201109_models.GetMediaInfoResponse:
+        """
+        @summary 获取媒资内容信息
+        
+        @param request: GetMediaInfoRequest
+        @return: GetMediaInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_media_info_with_options_async(request, runtime)
 
@@ -6025,6 +8005,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetMediaInfoJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetMediaInfoJobResponse:
+        """
+        @param request: GetMediaInfoJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMediaInfoJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -6053,6 +8038,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetMediaInfoJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetMediaInfoJobResponse:
+        """
+        @param request: GetMediaInfoJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMediaInfoJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -6080,6 +8070,10 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetMediaInfoJobRequest,
     ) -> ice20201109_models.GetMediaInfoJobResponse:
+        """
+        @param request: GetMediaInfoJobRequest
+        @return: GetMediaInfoJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_media_info_job_with_options(request, runtime)
 
@@ -6087,6 +8081,10 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetMediaInfoJobRequest,
     ) -> ice20201109_models.GetMediaInfoJobResponse:
+        """
+        @param request: GetMediaInfoJobRequest
+        @return: GetMediaInfoJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_media_info_job_with_options_async(request, runtime)
 
@@ -6095,6 +8093,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetMediaMarksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetMediaMarksResponse:
+        """
+        @summary 获取媒资标注信息
+        
+        @param request: GetMediaMarksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMediaMarksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.media_id):
@@ -6125,6 +8130,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetMediaMarksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetMediaMarksResponse:
+        """
+        @summary 获取媒资标注信息
+        
+        @param request: GetMediaMarksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMediaMarksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.media_id):
@@ -6154,6 +8166,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetMediaMarksRequest,
     ) -> ice20201109_models.GetMediaMarksResponse:
+        """
+        @summary 获取媒资标注信息
+        
+        @param request: GetMediaMarksRequest
+        @return: GetMediaMarksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_media_marks_with_options(request, runtime)
 
@@ -6161,6 +8179,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetMediaMarksRequest,
     ) -> ice20201109_models.GetMediaMarksResponse:
+        """
+        @summary 获取媒资标注信息
+        
+        @param request: GetMediaMarksRequest
+        @return: GetMediaMarksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_media_marks_with_options_async(request, runtime)
 
@@ -6169,6 +8193,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetMediaProducingJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetMediaProducingJobResponse:
+        """
+        @summary GetMediaProducingJob
+        
+        @param request: GetMediaProducingJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMediaProducingJobResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -6195,6 +8226,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetMediaProducingJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetMediaProducingJobResponse:
+        """
+        @summary GetMediaProducingJob
+        
+        @param request: GetMediaProducingJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMediaProducingJobResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -6220,6 +8258,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetMediaProducingJobRequest,
     ) -> ice20201109_models.GetMediaProducingJobResponse:
+        """
+        @summary GetMediaProducingJob
+        
+        @param request: GetMediaProducingJobRequest
+        @return: GetMediaProducingJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_media_producing_job_with_options(request, runtime)
 
@@ -6227,6 +8271,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetMediaProducingJobRequest,
     ) -> ice20201109_models.GetMediaProducingJobResponse:
+        """
+        @summary GetMediaProducingJob
+        
+        @param request: GetMediaProducingJobRequest
+        @return: GetMediaProducingJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_media_producing_job_with_options_async(request, runtime)
 
@@ -6235,6 +8285,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetPackageJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetPackageJobResponse:
+        """
+        @summary 获取单个打包任务信息
+        
+        @param request: GetPackageJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPackageJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -6263,6 +8320,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetPackageJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetPackageJobResponse:
+        """
+        @summary 获取单个打包任务信息
+        
+        @param request: GetPackageJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPackageJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -6290,6 +8354,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetPackageJobRequest,
     ) -> ice20201109_models.GetPackageJobResponse:
+        """
+        @summary 获取单个打包任务信息
+        
+        @param request: GetPackageJobRequest
+        @return: GetPackageJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_package_job_with_options(request, runtime)
 
@@ -6297,6 +8367,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetPackageJobRequest,
     ) -> ice20201109_models.GetPackageJobResponse:
+        """
+        @summary 获取单个打包任务信息
+        
+        @param request: GetPackageJobRequest
+        @return: GetPackageJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_package_job_with_options_async(request, runtime)
 
@@ -6305,6 +8381,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetPipelineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetPipelineResponse:
+        """
+        @summary 获取单个管道配置
+        
+        @param request: GetPipelineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPipelineResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.pipeline_id):
@@ -6333,6 +8416,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetPipelineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetPipelineResponse:
+        """
+        @summary 获取单个管道配置
+        
+        @param request: GetPipelineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPipelineResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.pipeline_id):
@@ -6360,6 +8450,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetPipelineRequest,
     ) -> ice20201109_models.GetPipelineResponse:
+        """
+        @summary 获取单个管道配置
+        
+        @param request: GetPipelineRequest
+        @return: GetPipelineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_pipeline_with_options(request, runtime)
 
@@ -6367,6 +8463,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetPipelineRequest,
     ) -> ice20201109_models.GetPipelineResponse:
+        """
+        @summary 获取单个管道配置
+        
+        @param request: GetPipelineRequest
+        @return: GetPipelineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_pipeline_with_options_async(request, runtime)
 
@@ -6375,6 +8477,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetPlayInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetPlayInfoResponse:
+        """
+        @summary 获取播放信息
+        
+        @param request: GetPlayInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPlayInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.input_url):
@@ -6405,6 +8514,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetPlayInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetPlayInfoResponse:
+        """
+        @summary 获取播放信息
+        
+        @param request: GetPlayInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPlayInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.input_url):
@@ -6434,6 +8550,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetPlayInfoRequest,
     ) -> ice20201109_models.GetPlayInfoResponse:
+        """
+        @summary 获取播放信息
+        
+        @param request: GetPlayInfoRequest
+        @return: GetPlayInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_play_info_with_options(request, runtime)
 
@@ -6441,6 +8563,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetPlayInfoRequest,
     ) -> ice20201109_models.GetPlayInfoResponse:
+        """
+        @summary 获取播放信息
+        
+        @param request: GetPlayInfoRequest
+        @return: GetPlayInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_play_info_with_options_async(request, runtime)
 
@@ -6449,6 +8577,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetPublicMediaInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetPublicMediaInfoResponse:
+        """
+        @summary 获取公共媒资内容信息
+        
+        @param request: GetPublicMediaInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPublicMediaInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.media_id):
@@ -6477,6 +8612,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetPublicMediaInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetPublicMediaInfoResponse:
+        """
+        @summary 获取公共媒资内容信息
+        
+        @param request: GetPublicMediaInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPublicMediaInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.media_id):
@@ -6504,6 +8646,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetPublicMediaInfoRequest,
     ) -> ice20201109_models.GetPublicMediaInfoResponse:
+        """
+        @summary 获取公共媒资内容信息
+        
+        @param request: GetPublicMediaInfoRequest
+        @return: GetPublicMediaInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_public_media_info_with_options(request, runtime)
 
@@ -6511,6 +8659,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetPublicMediaInfoRequest,
     ) -> ice20201109_models.GetPublicMediaInfoResponse:
+        """
+        @summary 获取公共媒资内容信息
+        
+        @param request: GetPublicMediaInfoRequest
+        @return: GetPublicMediaInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_public_media_info_with_options_async(request, runtime)
 
@@ -6519,6 +8673,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetSmartHandleJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetSmartHandleJobResponse:
+        """
+        @summary GetSmartHandleJob
+        
+        @param request: GetSmartHandleJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSmartHandleJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -6547,6 +8708,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetSmartHandleJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetSmartHandleJobResponse:
+        """
+        @summary GetSmartHandleJob
+        
+        @param request: GetSmartHandleJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSmartHandleJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -6574,6 +8742,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetSmartHandleJobRequest,
     ) -> ice20201109_models.GetSmartHandleJobResponse:
+        """
+        @summary GetSmartHandleJob
+        
+        @param request: GetSmartHandleJobRequest
+        @return: GetSmartHandleJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_smart_handle_job_with_options(request, runtime)
 
@@ -6581,6 +8755,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetSmartHandleJobRequest,
     ) -> ice20201109_models.GetSmartHandleJobResponse:
+        """
+        @summary GetSmartHandleJob
+        
+        @param request: GetSmartHandleJobRequest
+        @return: GetSmartHandleJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_smart_handle_job_with_options_async(request, runtime)
 
@@ -6589,6 +8769,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetSnapshotJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetSnapshotJobResponse:
+        """
+        @summary 查询单个截图任务
+        
+        @param request: GetSnapshotJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSnapshotJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -6617,6 +8804,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetSnapshotJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetSnapshotJobResponse:
+        """
+        @summary 查询单个截图任务
+        
+        @param request: GetSnapshotJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSnapshotJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -6644,6 +8838,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetSnapshotJobRequest,
     ) -> ice20201109_models.GetSnapshotJobResponse:
+        """
+        @summary 查询单个截图任务
+        
+        @param request: GetSnapshotJobRequest
+        @return: GetSnapshotJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_snapshot_job_with_options(request, runtime)
 
@@ -6651,6 +8851,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetSnapshotJobRequest,
     ) -> ice20201109_models.GetSnapshotJobResponse:
+        """
+        @summary 查询单个截图任务
+        
+        @param request: GetSnapshotJobRequest
+        @return: GetSnapshotJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_snapshot_job_with_options_async(request, runtime)
 
@@ -6659,6 +8865,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetSnapshotUrlsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetSnapshotUrlsResponse:
+        """
+        @summary 获取截图文件URL
+        
+        @param request: GetSnapshotUrlsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSnapshotUrlsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -6695,6 +8908,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetSnapshotUrlsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetSnapshotUrlsResponse:
+        """
+        @summary 获取截图文件URL
+        
+        @param request: GetSnapshotUrlsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSnapshotUrlsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -6730,6 +8950,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetSnapshotUrlsRequest,
     ) -> ice20201109_models.GetSnapshotUrlsResponse:
+        """
+        @summary 获取截图文件URL
+        
+        @param request: GetSnapshotUrlsRequest
+        @return: GetSnapshotUrlsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_snapshot_urls_with_options(request, runtime)
 
@@ -6737,6 +8963,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetSnapshotUrlsRequest,
     ) -> ice20201109_models.GetSnapshotUrlsResponse:
+        """
+        @summary 获取截图文件URL
+        
+        @param request: GetSnapshotUrlsRequest
+        @return: GetSnapshotUrlsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_snapshot_urls_with_options_async(request, runtime)
 
@@ -6745,6 +8977,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetSystemTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetSystemTemplateResponse:
+        """
+        @summary 获取单个媒体处理系统模板
+        
+        @param request: GetSystemTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSystemTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.template_id):
@@ -6773,6 +9012,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetSystemTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetSystemTemplateResponse:
+        """
+        @summary 获取单个媒体处理系统模板
+        
+        @param request: GetSystemTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSystemTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.template_id):
@@ -6800,6 +9046,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetSystemTemplateRequest,
     ) -> ice20201109_models.GetSystemTemplateResponse:
+        """
+        @summary 获取单个媒体处理系统模板
+        
+        @param request: GetSystemTemplateRequest
+        @return: GetSystemTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_system_template_with_options(request, runtime)
 
@@ -6807,6 +9059,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetSystemTemplateRequest,
     ) -> ice20201109_models.GetSystemTemplateResponse:
+        """
+        @summary 获取单个媒体处理系统模板
+        
+        @param request: GetSystemTemplateRequest
+        @return: GetSystemTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_system_template_with_options_async(request, runtime)
 
@@ -6815,6 +9073,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetTemplateResponse:
+        """
+        @summary GetTemplate
+        
+        @param request: GetTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.related_mediaid_flag):
@@ -6845,6 +9110,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetTemplateResponse:
+        """
+        @summary GetTemplate
+        
+        @param request: GetTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.related_mediaid_flag):
@@ -6874,6 +9146,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetTemplateRequest,
     ) -> ice20201109_models.GetTemplateResponse:
+        """
+        @summary GetTemplate
+        
+        @param request: GetTemplateRequest
+        @return: GetTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_template_with_options(request, runtime)
 
@@ -6881,6 +9159,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetTemplateRequest,
     ) -> ice20201109_models.GetTemplateResponse:
+        """
+        @summary GetTemplate
+        
+        @param request: GetTemplateRequest
+        @return: GetTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_template_with_options_async(request, runtime)
 
@@ -6889,6 +9173,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetTemplateMaterialsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetTemplateMaterialsResponse:
+        """
+        @summary 获取模板关联素材信息
+        
+        @param request: GetTemplateMaterialsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTemplateMaterialsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_list):
@@ -6919,6 +9210,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetTemplateMaterialsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetTemplateMaterialsResponse:
+        """
+        @summary 获取模板关联素材信息
+        
+        @param request: GetTemplateMaterialsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTemplateMaterialsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_list):
@@ -6948,6 +9246,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetTemplateMaterialsRequest,
     ) -> ice20201109_models.GetTemplateMaterialsResponse:
+        """
+        @summary 获取模板关联素材信息
+        
+        @param request: GetTemplateMaterialsRequest
+        @return: GetTemplateMaterialsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_template_materials_with_options(request, runtime)
 
@@ -6955,6 +9259,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetTemplateMaterialsRequest,
     ) -> ice20201109_models.GetTemplateMaterialsResponse:
+        """
+        @summary 获取模板关联素材信息
+        
+        @param request: GetTemplateMaterialsRequest
+        @return: GetTemplateMaterialsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_template_materials_with_options_async(request, runtime)
 
@@ -6963,6 +9273,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetTemplateParamsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetTemplateParamsResponse:
+        """
+        @summary 获取模板参数信息
+        
+        @param request: GetTemplateParamsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTemplateParamsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -6989,6 +9306,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetTemplateParamsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetTemplateParamsResponse:
+        """
+        @summary 获取模板参数信息
+        
+        @param request: GetTemplateParamsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTemplateParamsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -7014,6 +9338,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetTemplateParamsRequest,
     ) -> ice20201109_models.GetTemplateParamsResponse:
+        """
+        @summary 获取模板参数信息
+        
+        @param request: GetTemplateParamsRequest
+        @return: GetTemplateParamsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_template_params_with_options(request, runtime)
 
@@ -7021,6 +9351,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetTemplateParamsRequest,
     ) -> ice20201109_models.GetTemplateParamsResponse:
+        """
+        @summary 获取模板参数信息
+        
+        @param request: GetTemplateParamsRequest
+        @return: GetTemplateParamsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_template_params_with_options_async(request, runtime)
 
@@ -7029,6 +9365,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetTranscodeJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetTranscodeJobResponse:
+        """
+        @param request: GetTranscodeJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTranscodeJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.parent_job_id):
@@ -7057,6 +9398,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetTranscodeJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetTranscodeJobResponse:
+        """
+        @param request: GetTranscodeJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTranscodeJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.parent_job_id):
@@ -7084,6 +9430,10 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetTranscodeJobRequest,
     ) -> ice20201109_models.GetTranscodeJobResponse:
+        """
+        @param request: GetTranscodeJobRequest
+        @return: GetTranscodeJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_transcode_job_with_options(request, runtime)
 
@@ -7091,6 +9441,10 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetTranscodeJobRequest,
     ) -> ice20201109_models.GetTranscodeJobResponse:
+        """
+        @param request: GetTranscodeJobRequest
+        @return: GetTranscodeJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_transcode_job_with_options_async(request, runtime)
 
@@ -7099,6 +9453,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetUrlUploadInfosRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetUrlUploadInfosResponse:
+        """
+        @summary 获取URL上传信息
+        
+        @param request: GetUrlUploadInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUrlUploadInfosResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_ids):
@@ -7129,6 +9490,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetUrlUploadInfosRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetUrlUploadInfosResponse:
+        """
+        @summary 获取URL上传信息
+        
+        @param request: GetUrlUploadInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUrlUploadInfosResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_ids):
@@ -7158,6 +9526,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetUrlUploadInfosRequest,
     ) -> ice20201109_models.GetUrlUploadInfosResponse:
+        """
+        @summary 获取URL上传信息
+        
+        @param request: GetUrlUploadInfosRequest
+        @return: GetUrlUploadInfosResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_url_upload_infos_with_options(request, runtime)
 
@@ -7165,6 +9539,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetUrlUploadInfosRequest,
     ) -> ice20201109_models.GetUrlUploadInfosResponse:
+        """
+        @summary 获取URL上传信息
+        
+        @param request: GetUrlUploadInfosRequest
+        @return: GetUrlUploadInfosResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_url_upload_infos_with_options_async(request, runtime)
 
@@ -7173,6 +9553,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetVideoListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetVideoListResponse:
+        """
+        @summary 获取媒资新增列表
+        
+        @param request: GetVideoListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVideoListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cate_id):
@@ -7213,6 +9600,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetVideoListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetVideoListResponse:
+        """
+        @summary 获取媒资新增列表
+        
+        @param request: GetVideoListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVideoListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cate_id):
@@ -7252,6 +9646,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetVideoListRequest,
     ) -> ice20201109_models.GetVideoListResponse:
+        """
+        @summary 获取媒资新增列表
+        
+        @param request: GetVideoListRequest
+        @return: GetVideoListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_video_list_with_options(request, runtime)
 
@@ -7259,6 +9659,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetVideoListRequest,
     ) -> ice20201109_models.GetVideoListResponse:
+        """
+        @summary 获取媒资新增列表
+        
+        @param request: GetVideoListRequest
+        @return: GetVideoListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_video_list_with_options_async(request, runtime)
 
@@ -7267,6 +9673,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetWorkflowTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetWorkflowTaskResponse:
+        """
+        @summary 获取工作流任务
+        
+        @param request: GetWorkflowTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWorkflowTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.task_id):
@@ -7295,6 +9708,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.GetWorkflowTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.GetWorkflowTaskResponse:
+        """
+        @summary 获取工作流任务
+        
+        @param request: GetWorkflowTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWorkflowTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.task_id):
@@ -7322,6 +9742,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetWorkflowTaskRequest,
     ) -> ice20201109_models.GetWorkflowTaskResponse:
+        """
+        @summary 获取工作流任务
+        
+        @param request: GetWorkflowTaskRequest
+        @return: GetWorkflowTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_workflow_task_with_options(request, runtime)
 
@@ -7329,6 +9755,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.GetWorkflowTaskRequest,
     ) -> ice20201109_models.GetWorkflowTaskResponse:
+        """
+        @summary 获取工作流任务
+        
+        @param request: GetWorkflowTaskRequest
+        @return: GetWorkflowTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_workflow_task_with_options_async(request, runtime)
 
@@ -7337,6 +9769,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.InsertMediaToSearchLibRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.InsertMediaToSearchLibResponse:
+        """
+        @summary 插入媒资到搜索
+        
+        @param request: InsertMediaToSearchLibRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsertMediaToSearchLibResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.input):
@@ -7373,6 +9812,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.InsertMediaToSearchLibRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.InsertMediaToSearchLibResponse:
+        """
+        @summary 插入媒资到搜索
+        
+        @param request: InsertMediaToSearchLibRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InsertMediaToSearchLibResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.input):
@@ -7408,6 +9854,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.InsertMediaToSearchLibRequest,
     ) -> ice20201109_models.InsertMediaToSearchLibResponse:
+        """
+        @summary 插入媒资到搜索
+        
+        @param request: InsertMediaToSearchLibRequest
+        @return: InsertMediaToSearchLibResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.insert_media_to_search_lib_with_options(request, runtime)
 
@@ -7415,6 +9867,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.InsertMediaToSearchLibRequest,
     ) -> ice20201109_models.InsertMediaToSearchLibResponse:
+        """
+        @summary 插入媒资到搜索
+        
+        @param request: InsertMediaToSearchLibRequest
+        @return: InsertMediaToSearchLibResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.insert_media_to_search_lib_with_options_async(request, runtime)
 
@@ -7423,6 +9881,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListAllPublicMediaTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListAllPublicMediaTagsResponse:
+        """
+        @summary 列出公共素材库所有标签
+        
+        @param request: ListAllPublicMediaTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAllPublicMediaTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.business_type):
@@ -7453,6 +9918,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListAllPublicMediaTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListAllPublicMediaTagsResponse:
+        """
+        @summary 列出公共素材库所有标签
+        
+        @param request: ListAllPublicMediaTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAllPublicMediaTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.business_type):
@@ -7482,6 +9954,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListAllPublicMediaTagsRequest,
     ) -> ice20201109_models.ListAllPublicMediaTagsResponse:
+        """
+        @summary 列出公共素材库所有标签
+        
+        @param request: ListAllPublicMediaTagsRequest
+        @return: ListAllPublicMediaTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_all_public_media_tags_with_options(request, runtime)
 
@@ -7489,6 +9967,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListAllPublicMediaTagsRequest,
     ) -> ice20201109_models.ListAllPublicMediaTagsResponse:
+        """
+        @summary 列出公共素材库所有标签
+        
+        @param request: ListAllPublicMediaTagsRequest
+        @return: ListAllPublicMediaTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_all_public_media_tags_with_options_async(request, runtime)
 
@@ -7497,6 +9981,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListAvatarTrainingJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListAvatarTrainingJobsResponse:
+        """
+        @summary 查询数字人训练任务列表，列出当前用户的所有数字人训练任务
+        
+        @param request: ListAvatarTrainingJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAvatarTrainingJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_no):
@@ -7529,6 +10020,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListAvatarTrainingJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListAvatarTrainingJobsResponse:
+        """
+        @summary 查询数字人训练任务列表，列出当前用户的所有数字人训练任务
+        
+        @param request: ListAvatarTrainingJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAvatarTrainingJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_no):
@@ -7560,6 +10058,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListAvatarTrainingJobsRequest,
     ) -> ice20201109_models.ListAvatarTrainingJobsResponse:
+        """
+        @summary 查询数字人训练任务列表，列出当前用户的所有数字人训练任务
+        
+        @param request: ListAvatarTrainingJobsRequest
+        @return: ListAvatarTrainingJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_avatar_training_jobs_with_options(request, runtime)
 
@@ -7567,6 +10071,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListAvatarTrainingJobsRequest,
     ) -> ice20201109_models.ListAvatarTrainingJobsResponse:
+        """
+        @summary 查询数字人训练任务列表，列出当前用户的所有数字人训练任务
+        
+        @param request: ListAvatarTrainingJobsRequest
+        @return: ListAvatarTrainingJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_avatar_training_jobs_with_options_async(request, runtime)
 
@@ -7575,6 +10085,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListAvatarsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListAvatarsResponse:
+        """
+        @summary 查询数字人列表，列出当前用户的所有数字人
+        
+        @param request: ListAvatarsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAvatarsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.avatar_type):
@@ -7607,6 +10124,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListAvatarsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListAvatarsResponse:
+        """
+        @summary 查询数字人列表，列出当前用户的所有数字人
+        
+        @param request: ListAvatarsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAvatarsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.avatar_type):
@@ -7638,6 +10162,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListAvatarsRequest,
     ) -> ice20201109_models.ListAvatarsResponse:
+        """
+        @summary 查询数字人列表，列出当前用户的所有数字人
+        
+        @param request: ListAvatarsRequest
+        @return: ListAvatarsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_avatars_with_options(request, runtime)
 
@@ -7645,6 +10175,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListAvatarsRequest,
     ) -> ice20201109_models.ListAvatarsResponse:
+        """
+        @summary 查询数字人列表，列出当前用户的所有数字人
+        
+        @param request: ListAvatarsRequest
+        @return: ListAvatarsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_avatars_with_options_async(request, runtime)
 
@@ -7653,6 +10189,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListBatchMediaProducingJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListBatchMediaProducingJobsResponse:
+        """
+        @summary 获取一键成片任务列表
+        
+        @param request: ListBatchMediaProducingJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBatchMediaProducingJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -7695,6 +10238,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListBatchMediaProducingJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListBatchMediaProducingJobsResponse:
+        """
+        @summary 获取一键成片任务列表
+        
+        @param request: ListBatchMediaProducingJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListBatchMediaProducingJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -7736,6 +10286,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListBatchMediaProducingJobsRequest,
     ) -> ice20201109_models.ListBatchMediaProducingJobsResponse:
+        """
+        @summary 获取一键成片任务列表
+        
+        @param request: ListBatchMediaProducingJobsRequest
+        @return: ListBatchMediaProducingJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_batch_media_producing_jobs_with_options(request, runtime)
 
@@ -7743,6 +10299,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListBatchMediaProducingJobsRequest,
     ) -> ice20201109_models.ListBatchMediaProducingJobsResponse:
+        """
+        @summary 获取一键成片任务列表
+        
+        @param request: ListBatchMediaProducingJobsRequest
+        @return: ListBatchMediaProducingJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_batch_media_producing_jobs_with_options_async(request, runtime)
 
@@ -7751,6 +10313,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListCustomTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListCustomTemplatesResponse:
+        """
+        @summary 获取媒体处理自定义模板列表
+        
+        @param request: ListCustomTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCustomTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -7791,6 +10360,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListCustomTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListCustomTemplatesResponse:
+        """
+        @summary 获取媒体处理自定义模板列表
+        
+        @param request: ListCustomTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCustomTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -7830,6 +10406,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListCustomTemplatesRequest,
     ) -> ice20201109_models.ListCustomTemplatesResponse:
+        """
+        @summary 获取媒体处理自定义模板列表
+        
+        @param request: ListCustomTemplatesRequest
+        @return: ListCustomTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_custom_templates_with_options(request, runtime)
 
@@ -7837,6 +10419,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListCustomTemplatesRequest,
     ) -> ice20201109_models.ListCustomTemplatesResponse:
+        """
+        @summary 获取媒体处理自定义模板列表
+        
+        @param request: ListCustomTemplatesRequest
+        @return: ListCustomTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_custom_templates_with_options_async(request, runtime)
 
@@ -7845,6 +10433,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListCustomizedVoiceJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListCustomizedVoiceJobsResponse:
+        """
+        @summary 查询人声克隆训练任务列表，列出当前用户的所有人声克隆训练任务
+        
+        @param request: ListCustomizedVoiceJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCustomizedVoiceJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_no):
@@ -7877,6 +10472,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListCustomizedVoiceJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListCustomizedVoiceJobsResponse:
+        """
+        @summary 查询人声克隆训练任务列表，列出当前用户的所有人声克隆训练任务
+        
+        @param request: ListCustomizedVoiceJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCustomizedVoiceJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_no):
@@ -7908,6 +10510,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListCustomizedVoiceJobsRequest,
     ) -> ice20201109_models.ListCustomizedVoiceJobsResponse:
+        """
+        @summary 查询人声克隆训练任务列表，列出当前用户的所有人声克隆训练任务
+        
+        @param request: ListCustomizedVoiceJobsRequest
+        @return: ListCustomizedVoiceJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_customized_voice_jobs_with_options(request, runtime)
 
@@ -7915,6 +10523,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListCustomizedVoiceJobsRequest,
     ) -> ice20201109_models.ListCustomizedVoiceJobsResponse:
+        """
+        @summary 查询人声克隆训练任务列表，列出当前用户的所有人声克隆训练任务
+        
+        @param request: ListCustomizedVoiceJobsRequest
+        @return: ListCustomizedVoiceJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_customized_voice_jobs_with_options_async(request, runtime)
 
@@ -7923,6 +10537,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListCustomizedVoicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListCustomizedVoicesResponse:
+        """
+        @summary 获取用户的专属人声列表
+        
+        @param request: ListCustomizedVoicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCustomizedVoicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_no):
@@ -7955,6 +10576,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListCustomizedVoicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListCustomizedVoicesResponse:
+        """
+        @summary 获取用户的专属人声列表
+        
+        @param request: ListCustomizedVoicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCustomizedVoicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_no):
@@ -7986,6 +10614,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListCustomizedVoicesRequest,
     ) -> ice20201109_models.ListCustomizedVoicesResponse:
+        """
+        @summary 获取用户的专属人声列表
+        
+        @param request: ListCustomizedVoicesRequest
+        @return: ListCustomizedVoicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_customized_voices_with_options(request, runtime)
 
@@ -7993,6 +10627,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListCustomizedVoicesRequest,
     ) -> ice20201109_models.ListCustomizedVoicesResponse:
+        """
+        @summary 获取用户的专属人声列表
+        
+        @param request: ListCustomizedVoicesRequest
+        @return: ListCustomizedVoicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_customized_voices_with_options_async(request, runtime)
 
@@ -8001,6 +10641,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListDNADBRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListDNADBResponse:
+        """
+        @summary 查询DNA库
+        
+        @param request: ListDNADBRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDNADBResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbids):
@@ -8037,6 +10684,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListDNADBRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListDNADBResponse:
+        """
+        @summary 查询DNA库
+        
+        @param request: ListDNADBRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDNADBResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbids):
@@ -8072,6 +10726,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListDNADBRequest,
     ) -> ice20201109_models.ListDNADBResponse:
+        """
+        @summary 查询DNA库
+        
+        @param request: ListDNADBRequest
+        @return: ListDNADBResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_dnadbwith_options(request, runtime)
 
@@ -8079,6 +10739,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListDNADBRequest,
     ) -> ice20201109_models.ListDNADBResponse:
+        """
+        @summary 查询DNA库
+        
+        @param request: ListDNADBRequest
+        @return: ListDNADBResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_dnadbwith_options_async(request, runtime)
 
@@ -8087,6 +10753,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListDNAFilesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListDNAFilesResponse:
+        """
+        @summary 查询DNA文件
+        
+        @param request: ListDNAFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDNAFilesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbid):
@@ -8127,6 +10800,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListDNAFilesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListDNAFilesResponse:
+        """
+        @summary 查询DNA文件
+        
+        @param request: ListDNAFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDNAFilesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dbid):
@@ -8166,6 +10846,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListDNAFilesRequest,
     ) -> ice20201109_models.ListDNAFilesResponse:
+        """
+        @summary 查询DNA文件
+        
+        @param request: ListDNAFilesRequest
+        @return: ListDNAFilesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_dnafiles_with_options(request, runtime)
 
@@ -8173,6 +10859,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListDNAFilesRequest,
     ) -> ice20201109_models.ListDNAFilesResponse:
+        """
+        @summary 查询DNA文件
+        
+        @param request: ListDNAFilesRequest
+        @return: ListDNAFilesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_dnafiles_with_options_async(request, runtime)
 
@@ -8181,6 +10873,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListDynamicImageJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListDynamicImageJobsResponse:
+        """
+        @summary 查询截图任务列表接口
+        
+        @param request: ListDynamicImageJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDynamicImageJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_of_create_time):
@@ -8221,6 +10920,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListDynamicImageJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListDynamicImageJobsResponse:
+        """
+        @summary 查询截图任务列表接口
+        
+        @param request: ListDynamicImageJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDynamicImageJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_of_create_time):
@@ -8260,6 +10966,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListDynamicImageJobsRequest,
     ) -> ice20201109_models.ListDynamicImageJobsResponse:
+        """
+        @summary 查询截图任务列表接口
+        
+        @param request: ListDynamicImageJobsRequest
+        @return: ListDynamicImageJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_dynamic_image_jobs_with_options(request, runtime)
 
@@ -8267,6 +10979,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListDynamicImageJobsRequest,
     ) -> ice20201109_models.ListDynamicImageJobsResponse:
+        """
+        @summary 查询截图任务列表接口
+        
+        @param request: ListDynamicImageJobsRequest
+        @return: ListDynamicImageJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_dynamic_image_jobs_with_options_async(request, runtime)
 
@@ -8275,6 +10993,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLiveRecordFilesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLiveRecordFilesResponse:
+        """
+        @summary 查询录制文件
+        
+        @param request: ListLiveRecordFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLiveRecordFilesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8301,6 +11026,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLiveRecordFilesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLiveRecordFilesResponse:
+        """
+        @summary 查询录制文件
+        
+        @param request: ListLiveRecordFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLiveRecordFilesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8326,6 +11058,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListLiveRecordFilesRequest,
     ) -> ice20201109_models.ListLiveRecordFilesResponse:
+        """
+        @summary 查询录制文件
+        
+        @param request: ListLiveRecordFilesRequest
+        @return: ListLiveRecordFilesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_live_record_files_with_options(request, runtime)
 
@@ -8333,6 +11071,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListLiveRecordFilesRequest,
     ) -> ice20201109_models.ListLiveRecordFilesResponse:
+        """
+        @summary 查询录制文件
+        
+        @param request: ListLiveRecordFilesRequest
+        @return: ListLiveRecordFilesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_live_record_files_with_options_async(request, runtime)
 
@@ -8341,6 +11085,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLiveRecordJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLiveRecordJobsResponse:
+        """
+        @summary 查询录制任务
+        
+        @param request: ListLiveRecordJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLiveRecordJobsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8367,6 +11118,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLiveRecordJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLiveRecordJobsResponse:
+        """
+        @summary 查询录制任务
+        
+        @param request: ListLiveRecordJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLiveRecordJobsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8392,6 +11150,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListLiveRecordJobsRequest,
     ) -> ice20201109_models.ListLiveRecordJobsResponse:
+        """
+        @summary 查询录制任务
+        
+        @param request: ListLiveRecordJobsRequest
+        @return: ListLiveRecordJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_live_record_jobs_with_options(request, runtime)
 
@@ -8399,6 +11163,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListLiveRecordJobsRequest,
     ) -> ice20201109_models.ListLiveRecordJobsResponse:
+        """
+        @summary 查询录制任务
+        
+        @param request: ListLiveRecordJobsRequest
+        @return: ListLiveRecordJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_live_record_jobs_with_options_async(request, runtime)
 
@@ -8407,6 +11177,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLiveRecordTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLiveRecordTemplatesResponse:
+        """
+        @summary 查询直播录制模板
+        
+        @param request: ListLiveRecordTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLiveRecordTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8433,6 +11210,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLiveRecordTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLiveRecordTemplatesResponse:
+        """
+        @summary 查询直播录制模板
+        
+        @param request: ListLiveRecordTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLiveRecordTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8458,6 +11242,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListLiveRecordTemplatesRequest,
     ) -> ice20201109_models.ListLiveRecordTemplatesResponse:
+        """
+        @summary 查询直播录制模板
+        
+        @param request: ListLiveRecordTemplatesRequest
+        @return: ListLiveRecordTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_live_record_templates_with_options(request, runtime)
 
@@ -8465,6 +11255,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListLiveRecordTemplatesRequest,
     ) -> ice20201109_models.ListLiveRecordTemplatesResponse:
+        """
+        @summary 查询直播录制模板
+        
+        @param request: ListLiveRecordTemplatesRequest
+        @return: ListLiveRecordTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_live_record_templates_with_options_async(request, runtime)
 
@@ -8473,6 +11269,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLiveSnapshotFilesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLiveSnapshotFilesResponse:
+        """
+        @summary 查询直播截图文件列表
+        
+        @param request: ListLiveSnapshotFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLiveSnapshotFilesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8499,6 +11302,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLiveSnapshotFilesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLiveSnapshotFilesResponse:
+        """
+        @summary 查询直播截图文件列表
+        
+        @param request: ListLiveSnapshotFilesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLiveSnapshotFilesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8524,6 +11334,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListLiveSnapshotFilesRequest,
     ) -> ice20201109_models.ListLiveSnapshotFilesResponse:
+        """
+        @summary 查询直播截图文件列表
+        
+        @param request: ListLiveSnapshotFilesRequest
+        @return: ListLiveSnapshotFilesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_live_snapshot_files_with_options(request, runtime)
 
@@ -8531,6 +11347,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListLiveSnapshotFilesRequest,
     ) -> ice20201109_models.ListLiveSnapshotFilesResponse:
+        """
+        @summary 查询直播截图文件列表
+        
+        @param request: ListLiveSnapshotFilesRequest
+        @return: ListLiveSnapshotFilesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_live_snapshot_files_with_options_async(request, runtime)
 
@@ -8539,6 +11361,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLiveSnapshotJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLiveSnapshotJobsResponse:
+        """
+        @summary 查询直播截图任务列表
+        
+        @param request: ListLiveSnapshotJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLiveSnapshotJobsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8565,6 +11394,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLiveSnapshotJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLiveSnapshotJobsResponse:
+        """
+        @summary 查询直播截图任务列表
+        
+        @param request: ListLiveSnapshotJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLiveSnapshotJobsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8590,6 +11426,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListLiveSnapshotJobsRequest,
     ) -> ice20201109_models.ListLiveSnapshotJobsResponse:
+        """
+        @summary 查询直播截图任务列表
+        
+        @param request: ListLiveSnapshotJobsRequest
+        @return: ListLiveSnapshotJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_live_snapshot_jobs_with_options(request, runtime)
 
@@ -8597,6 +11439,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListLiveSnapshotJobsRequest,
     ) -> ice20201109_models.ListLiveSnapshotJobsResponse:
+        """
+        @summary 查询直播截图任务列表
+        
+        @param request: ListLiveSnapshotJobsRequest
+        @return: ListLiveSnapshotJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_live_snapshot_jobs_with_options_async(request, runtime)
 
@@ -8605,6 +11453,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLiveSnapshotTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLiveSnapshotTemplatesResponse:
+        """
+        @summary 查询直播截图模板列表
+        
+        @param request: ListLiveSnapshotTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLiveSnapshotTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8631,6 +11486,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLiveSnapshotTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLiveSnapshotTemplatesResponse:
+        """
+        @summary 查询直播截图模板列表
+        
+        @param request: ListLiveSnapshotTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLiveSnapshotTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -8656,6 +11518,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListLiveSnapshotTemplatesRequest,
     ) -> ice20201109_models.ListLiveSnapshotTemplatesResponse:
+        """
+        @summary 查询直播截图模板列表
+        
+        @param request: ListLiveSnapshotTemplatesRequest
+        @return: ListLiveSnapshotTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_live_snapshot_templates_with_options(request, runtime)
 
@@ -8663,6 +11531,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListLiveSnapshotTemplatesRequest,
     ) -> ice20201109_models.ListLiveSnapshotTemplatesResponse:
+        """
+        @summary 查询直播截图模板列表
+        
+        @param request: ListLiveSnapshotTemplatesRequest
+        @return: ListLiveSnapshotTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_live_snapshot_templates_with_options_async(request, runtime)
 
@@ -8671,6 +11545,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLiveTranscodeJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLiveTranscodeJobsResponse:
+        """
+        @summary 查询转码任务列表
+        
+        @param request: ListLiveTranscodeJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLiveTranscodeJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_word):
@@ -8711,6 +11592,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLiveTranscodeJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLiveTranscodeJobsResponse:
+        """
+        @summary 查询转码任务列表
+        
+        @param request: ListLiveTranscodeJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLiveTranscodeJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.key_word):
@@ -8750,6 +11638,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListLiveTranscodeJobsRequest,
     ) -> ice20201109_models.ListLiveTranscodeJobsResponse:
+        """
+        @summary 查询转码任务列表
+        
+        @param request: ListLiveTranscodeJobsRequest
+        @return: ListLiveTranscodeJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_live_transcode_jobs_with_options(request, runtime)
 
@@ -8757,6 +11651,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListLiveTranscodeJobsRequest,
     ) -> ice20201109_models.ListLiveTranscodeJobsResponse:
+        """
+        @summary 查询转码任务列表
+        
+        @param request: ListLiveTranscodeJobsRequest
+        @return: ListLiveTranscodeJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_live_transcode_jobs_with_options_async(request, runtime)
 
@@ -8765,6 +11665,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLiveTranscodeTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLiveTranscodeTemplatesResponse:
+        """
+        @summary 查询转码模版列表
+        
+        @param request: ListLiveTranscodeTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLiveTranscodeTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -8805,6 +11712,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListLiveTranscodeTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListLiveTranscodeTemplatesResponse:
+        """
+        @summary 查询转码模版列表
+        
+        @param request: ListLiveTranscodeTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLiveTranscodeTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -8844,6 +11758,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListLiveTranscodeTemplatesRequest,
     ) -> ice20201109_models.ListLiveTranscodeTemplatesResponse:
+        """
+        @summary 查询转码模版列表
+        
+        @param request: ListLiveTranscodeTemplatesRequest
+        @return: ListLiveTranscodeTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_live_transcode_templates_with_options(request, runtime)
 
@@ -8851,6 +11771,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListLiveTranscodeTemplatesRequest,
     ) -> ice20201109_models.ListLiveTranscodeTemplatesResponse:
+        """
+        @summary 查询转码模版列表
+        
+        @param request: ListLiveTranscodeTemplatesRequest
+        @return: ListLiveTranscodeTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_live_transcode_templates_with_options_async(request, runtime)
 
@@ -8859,6 +11785,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListMediaBasicInfosRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListMediaBasicInfosResponse:
+        """
+        @summary 列出符合条件的媒资基础信息
+        
+        @param request: ListMediaBasicInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMediaBasicInfosResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.business_type):
@@ -8907,6 +11840,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListMediaBasicInfosRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListMediaBasicInfosResponse:
+        """
+        @summary 列出符合条件的媒资基础信息
+        
+        @param request: ListMediaBasicInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMediaBasicInfosResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.business_type):
@@ -8954,6 +11894,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListMediaBasicInfosRequest,
     ) -> ice20201109_models.ListMediaBasicInfosResponse:
+        """
+        @summary 列出符合条件的媒资基础信息
+        
+        @param request: ListMediaBasicInfosRequest
+        @return: ListMediaBasicInfosResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_media_basic_infos_with_options(request, runtime)
 
@@ -8961,6 +11907,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListMediaBasicInfosRequest,
     ) -> ice20201109_models.ListMediaBasicInfosResponse:
+        """
+        @summary 列出符合条件的媒资基础信息
+        
+        @param request: ListMediaBasicInfosRequest
+        @return: ListMediaBasicInfosResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_media_basic_infos_with_options_async(request, runtime)
 
@@ -8969,6 +11921,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListMediaInfoJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListMediaInfoJobsResponse:
+        """
+        @param request: ListMediaInfoJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMediaInfoJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_of_create_time):
@@ -9009,6 +11966,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListMediaInfoJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListMediaInfoJobsResponse:
+        """
+        @param request: ListMediaInfoJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMediaInfoJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_of_create_time):
@@ -9048,6 +12010,10 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListMediaInfoJobsRequest,
     ) -> ice20201109_models.ListMediaInfoJobsResponse:
+        """
+        @param request: ListMediaInfoJobsRequest
+        @return: ListMediaInfoJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_media_info_jobs_with_options(request, runtime)
 
@@ -9055,6 +12021,10 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListMediaInfoJobsRequest,
     ) -> ice20201109_models.ListMediaInfoJobsResponse:
+        """
+        @param request: ListMediaInfoJobsRequest
+        @return: ListMediaInfoJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_media_info_jobs_with_options_async(request, runtime)
 
@@ -9063,6 +12033,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListMediaMarksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListMediaMarksResponse:
+        """
+        @summary 获取媒资的标注信息
+        
+        @param request: ListMediaMarksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMediaMarksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.media_id):
@@ -9093,6 +12070,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListMediaMarksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListMediaMarksResponse:
+        """
+        @summary 获取媒资的标注信息
+        
+        @param request: ListMediaMarksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMediaMarksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.media_id):
@@ -9122,6 +12106,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListMediaMarksRequest,
     ) -> ice20201109_models.ListMediaMarksResponse:
+        """
+        @summary 获取媒资的标注信息
+        
+        @param request: ListMediaMarksRequest
+        @return: ListMediaMarksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_media_marks_with_options(request, runtime)
 
@@ -9129,6 +12119,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListMediaMarksRequest,
     ) -> ice20201109_models.ListMediaMarksResponse:
+        """
+        @summary 获取媒资的标注信息
+        
+        @param request: ListMediaMarksRequest
+        @return: ListMediaMarksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_media_marks_with_options_async(request, runtime)
 
@@ -9137,6 +12133,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListMediaProducingJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListMediaProducingJobsResponse:
+        """
+        @summary 列出合成任务列表
+        
+        @param request: ListMediaProducingJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMediaProducingJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -9181,6 +12184,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListMediaProducingJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListMediaProducingJobsResponse:
+        """
+        @summary 列出合成任务列表
+        
+        @param request: ListMediaProducingJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMediaProducingJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -9224,6 +12234,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListMediaProducingJobsRequest,
     ) -> ice20201109_models.ListMediaProducingJobsResponse:
+        """
+        @summary 列出合成任务列表
+        
+        @param request: ListMediaProducingJobsRequest
+        @return: ListMediaProducingJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_media_producing_jobs_with_options(request, runtime)
 
@@ -9231,6 +12247,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListMediaProducingJobsRequest,
     ) -> ice20201109_models.ListMediaProducingJobsResponse:
+        """
+        @summary 列出合成任务列表
+        
+        @param request: ListMediaProducingJobsRequest
+        @return: ListMediaProducingJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_media_producing_jobs_with_options_async(request, runtime)
 
@@ -9239,6 +12261,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListPackageJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListPackageJobsResponse:
+        """
+        @summary 获取打包任务列表
+        
+        @param request: ListPackageJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPackageJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_of_create_time):
@@ -9279,6 +12308,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListPackageJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListPackageJobsResponse:
+        """
+        @summary 获取打包任务列表
+        
+        @param request: ListPackageJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPackageJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_of_create_time):
@@ -9318,6 +12354,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListPackageJobsRequest,
     ) -> ice20201109_models.ListPackageJobsResponse:
+        """
+        @summary 获取打包任务列表
+        
+        @param request: ListPackageJobsRequest
+        @return: ListPackageJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_package_jobs_with_options(request, runtime)
 
@@ -9325,6 +12367,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListPackageJobsRequest,
     ) -> ice20201109_models.ListPackageJobsResponse:
+        """
+        @summary 获取打包任务列表
+        
+        @param request: ListPackageJobsRequest
+        @return: ListPackageJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_package_jobs_with_options_async(request, runtime)
 
@@ -9333,6 +12381,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListPipelinesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListPipelinesResponse:
+        """
+        @summary 获取管道配置列表
+        
+        @param request: ListPipelinesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPipelinesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.speed):
@@ -9361,6 +12416,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListPipelinesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListPipelinesResponse:
+        """
+        @summary 获取管道配置列表
+        
+        @param request: ListPipelinesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPipelinesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.speed):
@@ -9388,6 +12450,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListPipelinesRequest,
     ) -> ice20201109_models.ListPipelinesResponse:
+        """
+        @summary 获取管道配置列表
+        
+        @param request: ListPipelinesRequest
+        @return: ListPipelinesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_pipelines_with_options(request, runtime)
 
@@ -9395,6 +12463,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListPipelinesRequest,
     ) -> ice20201109_models.ListPipelinesResponse:
+        """
+        @summary 获取管道配置列表
+        
+        @param request: ListPipelinesRequest
+        @return: ListPipelinesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_pipelines_with_options_async(request, runtime)
 
@@ -9403,6 +12477,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListPublicMediaBasicInfosRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListPublicMediaBasicInfosResponse:
+        """
+        @summary 列出公共素材库素材的基础信息
+        
+        @param request: ListPublicMediaBasicInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPublicMediaBasicInfosResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.business_type):
@@ -9443,6 +12524,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListPublicMediaBasicInfosRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListPublicMediaBasicInfosResponse:
+        """
+        @summary 列出公共素材库素材的基础信息
+        
+        @param request: ListPublicMediaBasicInfosRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPublicMediaBasicInfosResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.business_type):
@@ -9482,6 +12570,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListPublicMediaBasicInfosRequest,
     ) -> ice20201109_models.ListPublicMediaBasicInfosResponse:
+        """
+        @summary 列出公共素材库素材的基础信息
+        
+        @param request: ListPublicMediaBasicInfosRequest
+        @return: ListPublicMediaBasicInfosResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_public_media_basic_infos_with_options(request, runtime)
 
@@ -9489,6 +12583,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListPublicMediaBasicInfosRequest,
     ) -> ice20201109_models.ListPublicMediaBasicInfosResponse:
+        """
+        @summary 列出公共素材库素材的基础信息
+        
+        @param request: ListPublicMediaBasicInfosRequest
+        @return: ListPublicMediaBasicInfosResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_public_media_basic_infos_with_options_async(request, runtime)
 
@@ -9497,6 +12597,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListSmartJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListSmartJobsResponse:
+        """
+        @summary ListSmartJobs
+        
+        @param request: ListSmartJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSmartJobsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -9523,6 +12630,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListSmartJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListSmartJobsResponse:
+        """
+        @summary ListSmartJobs
+        
+        @param request: ListSmartJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSmartJobsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -9548,6 +12662,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListSmartJobsRequest,
     ) -> ice20201109_models.ListSmartJobsResponse:
+        """
+        @summary ListSmartJobs
+        
+        @param request: ListSmartJobsRequest
+        @return: ListSmartJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_smart_jobs_with_options(request, runtime)
 
@@ -9555,6 +12675,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListSmartJobsRequest,
     ) -> ice20201109_models.ListSmartJobsResponse:
+        """
+        @summary ListSmartJobs
+        
+        @param request: ListSmartJobsRequest
+        @return: ListSmartJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_smart_jobs_with_options_async(request, runtime)
 
@@ -9563,6 +12689,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListSmartSysAvatarModelsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListSmartSysAvatarModelsResponse:
+        """
+        @summary 列出虚拟人官方模特配置
+        
+        @param request: ListSmartSysAvatarModelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSmartSysAvatarModelsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_no):
@@ -9595,6 +12728,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListSmartSysAvatarModelsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListSmartSysAvatarModelsResponse:
+        """
+        @summary 列出虚拟人官方模特配置
+        
+        @param request: ListSmartSysAvatarModelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSmartSysAvatarModelsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_no):
@@ -9626,6 +12766,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListSmartSysAvatarModelsRequest,
     ) -> ice20201109_models.ListSmartSysAvatarModelsResponse:
+        """
+        @summary 列出虚拟人官方模特配置
+        
+        @param request: ListSmartSysAvatarModelsRequest
+        @return: ListSmartSysAvatarModelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_smart_sys_avatar_models_with_options(request, runtime)
 
@@ -9633,6 +12779,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListSmartSysAvatarModelsRequest,
     ) -> ice20201109_models.ListSmartSysAvatarModelsResponse:
+        """
+        @summary 列出虚拟人官方模特配置
+        
+        @param request: ListSmartSysAvatarModelsRequest
+        @return: ListSmartSysAvatarModelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_smart_sys_avatar_models_with_options_async(request, runtime)
 
@@ -9640,6 +12792,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListSmartVoiceGroupsResponse:
+        """
+        @summary 列出智能语音发音人信息
+        
+        @param request: ListSmartVoiceGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSmartVoiceGroupsResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListSmartVoiceGroups',
@@ -9661,6 +12820,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListSmartVoiceGroupsResponse:
+        """
+        @summary 列出智能语音发音人信息
+        
+        @param request: ListSmartVoiceGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSmartVoiceGroupsResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListSmartVoiceGroups',
@@ -9679,10 +12845,20 @@ class Client(OpenApiClient):
         )
 
     def list_smart_voice_groups(self) -> ice20201109_models.ListSmartVoiceGroupsResponse:
+        """
+        @summary 列出智能语音发音人信息
+        
+        @return: ListSmartVoiceGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_smart_voice_groups_with_options(runtime)
 
     async def list_smart_voice_groups_async(self) -> ice20201109_models.ListSmartVoiceGroupsResponse:
+        """
+        @summary 列出智能语音发音人信息
+        
+        @return: ListSmartVoiceGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_smart_voice_groups_with_options_async(runtime)
 
@@ -9691,6 +12867,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListSnapshotJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListSnapshotJobsResponse:
+        """
+        @summary 查询截图任务列表接口
+        
+        @param request: ListSnapshotJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSnapshotJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_of_create_time):
@@ -9731,6 +12914,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListSnapshotJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListSnapshotJobsResponse:
+        """
+        @summary 查询截图任务列表接口
+        
+        @param request: ListSnapshotJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSnapshotJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_of_create_time):
@@ -9770,6 +12960,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListSnapshotJobsRequest,
     ) -> ice20201109_models.ListSnapshotJobsResponse:
+        """
+        @summary 查询截图任务列表接口
+        
+        @param request: ListSnapshotJobsRequest
+        @return: ListSnapshotJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_snapshot_jobs_with_options(request, runtime)
 
@@ -9777,6 +12973,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListSnapshotJobsRequest,
     ) -> ice20201109_models.ListSnapshotJobsResponse:
+        """
+        @summary 查询截图任务列表接口
+        
+        @param request: ListSnapshotJobsRequest
+        @return: ListSnapshotJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_snapshot_jobs_with_options_async(request, runtime)
 
@@ -9785,6 +12987,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListSystemTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListSystemTemplatesResponse:
+        """
+        @summary 获取媒体处理系统模板列表
+        
+        @param request: ListSystemTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSystemTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -9825,6 +13034,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListSystemTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListSystemTemplatesResponse:
+        """
+        @summary 获取媒体处理系统模板列表
+        
+        @param request: ListSystemTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSystemTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -9864,6 +13080,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListSystemTemplatesRequest,
     ) -> ice20201109_models.ListSystemTemplatesResponse:
+        """
+        @summary 获取媒体处理系统模板列表
+        
+        @param request: ListSystemTemplatesRequest
+        @return: ListSystemTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_system_templates_with_options(request, runtime)
 
@@ -9871,6 +13093,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListSystemTemplatesRequest,
     ) -> ice20201109_models.ListSystemTemplatesResponse:
+        """
+        @summary 获取媒体处理系统模板列表
+        
+        @param request: ListSystemTemplatesRequest
+        @return: ListSystemTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_system_templates_with_options_async(request, runtime)
 
@@ -9879,6 +13107,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListTemplatesResponse:
+        """
+        @summary ListTemplates
+        
+        @param request: ListTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.create_source):
@@ -9919,6 +13154,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListTemplatesResponse:
+        """
+        @summary ListTemplates
+        
+        @param request: ListTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.create_source):
@@ -9958,6 +13200,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListTemplatesRequest,
     ) -> ice20201109_models.ListTemplatesResponse:
+        """
+        @summary ListTemplates
+        
+        @param request: ListTemplatesRequest
+        @return: ListTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_templates_with_options(request, runtime)
 
@@ -9965,6 +13213,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListTemplatesRequest,
     ) -> ice20201109_models.ListTemplatesResponse:
+        """
+        @summary ListTemplates
+        
+        @param request: ListTemplatesRequest
+        @return: ListTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_templates_with_options_async(request, runtime)
 
@@ -9973,6 +13227,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListTranscodeJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListTranscodeJobsResponse:
+        """
+        @param request: ListTranscodeJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTranscodeJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_of_create_time):
@@ -10013,6 +13272,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.ListTranscodeJobsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.ListTranscodeJobsResponse:
+        """
+        @param request: ListTranscodeJobsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTranscodeJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_of_create_time):
@@ -10052,6 +13316,10 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListTranscodeJobsRequest,
     ) -> ice20201109_models.ListTranscodeJobsResponse:
+        """
+        @param request: ListTranscodeJobsRequest
+        @return: ListTranscodeJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_transcode_jobs_with_options(request, runtime)
 
@@ -10059,6 +13327,10 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.ListTranscodeJobsRequest,
     ) -> ice20201109_models.ListTranscodeJobsResponse:
+        """
+        @param request: ListTranscodeJobsRequest
+        @return: ListTranscodeJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_transcode_jobs_with_options_async(request, runtime)
 
@@ -10067,6 +13339,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.QueryDNAJobListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QueryDNAJobListResponse:
+        """
+        @summary 查询DNA作业
+        
+        @param request: QueryDNAJobListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDNAJobListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_ids):
@@ -10103,6 +13382,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.QueryDNAJobListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QueryDNAJobListResponse:
+        """
+        @summary 查询DNA作业
+        
+        @param request: QueryDNAJobListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryDNAJobListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_ids):
@@ -10138,6 +13424,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.QueryDNAJobListRequest,
     ) -> ice20201109_models.QueryDNAJobListResponse:
+        """
+        @summary 查询DNA作业
+        
+        @param request: QueryDNAJobListRequest
+        @return: QueryDNAJobListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_dnajob_list_with_options(request, runtime)
 
@@ -10145,6 +13437,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.QueryDNAJobListRequest,
     ) -> ice20201109_models.QueryDNAJobListResponse:
+        """
+        @summary 查询DNA作业
+        
+        @param request: QueryDNAJobListRequest
+        @return: QueryDNAJobListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_dnajob_list_with_options_async(request, runtime)
 
@@ -10153,6 +13451,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.QueryIProductionJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QueryIProductionJobResponse:
+        """
+        @summary 查询智能生产作业
+        
+        @param request: QueryIProductionJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryIProductionJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -10183,6 +13488,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.QueryIProductionJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QueryIProductionJobResponse:
+        """
+        @summary 查询智能生产作业
+        
+        @param request: QueryIProductionJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryIProductionJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -10212,6 +13524,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.QueryIProductionJobRequest,
     ) -> ice20201109_models.QueryIProductionJobResponse:
+        """
+        @summary 查询智能生产作业
+        
+        @param request: QueryIProductionJobRequest
+        @return: QueryIProductionJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_iproduction_job_with_options(request, runtime)
 
@@ -10219,6 +13537,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.QueryIProductionJobRequest,
     ) -> ice20201109_models.QueryIProductionJobResponse:
+        """
+        @summary 查询智能生产作业
+        
+        @param request: QueryIProductionJobRequest
+        @return: QueryIProductionJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_iproduction_job_with_options_async(request, runtime)
 
@@ -10227,6 +13551,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.QueryMediaCensorJobDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QueryMediaCensorJobDetailResponse:
+        """
+        @param request: QueryMediaCensorJobDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMediaCensorJobDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -10267,6 +13596,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.QueryMediaCensorJobDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QueryMediaCensorJobDetailResponse:
+        """
+        @param request: QueryMediaCensorJobDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMediaCensorJobDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -10306,6 +13640,10 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.QueryMediaCensorJobDetailRequest,
     ) -> ice20201109_models.QueryMediaCensorJobDetailResponse:
+        """
+        @param request: QueryMediaCensorJobDetailRequest
+        @return: QueryMediaCensorJobDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_media_censor_job_detail_with_options(request, runtime)
 
@@ -10313,6 +13651,10 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.QueryMediaCensorJobDetailRequest,
     ) -> ice20201109_models.QueryMediaCensorJobDetailResponse:
+        """
+        @param request: QueryMediaCensorJobDetailRequest
+        @return: QueryMediaCensorJobDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_media_censor_job_detail_with_options_async(request, runtime)
 
@@ -10321,6 +13663,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.QueryMediaCensorJobListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QueryMediaCensorJobListResponse:
+        """
+        @param request: QueryMediaCensorJobListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMediaCensorJobListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_of_job_created_time_range):
@@ -10369,6 +13716,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.QueryMediaCensorJobListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QueryMediaCensorJobListResponse:
+        """
+        @param request: QueryMediaCensorJobListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMediaCensorJobListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_of_job_created_time_range):
@@ -10416,6 +13768,10 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.QueryMediaCensorJobListRequest,
     ) -> ice20201109_models.QueryMediaCensorJobListResponse:
+        """
+        @param request: QueryMediaCensorJobListRequest
+        @return: QueryMediaCensorJobListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_media_censor_job_list_with_options(request, runtime)
 
@@ -10423,6 +13779,10 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.QueryMediaCensorJobListRequest,
     ) -> ice20201109_models.QueryMediaCensorJobListResponse:
+        """
+        @param request: QueryMediaCensorJobListRequest
+        @return: QueryMediaCensorJobListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_media_censor_job_list_with_options_async(request, runtime)
 
@@ -10431,6 +13791,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.QueryMediaIndexJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QueryMediaIndexJobResponse:
+        """
+        @summary 查询索引任务
+        
+        @param request: QueryMediaIndexJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMediaIndexJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.media_id):
@@ -10461,6 +13828,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.QueryMediaIndexJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QueryMediaIndexJobResponse:
+        """
+        @summary 查询索引任务
+        
+        @param request: QueryMediaIndexJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMediaIndexJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.media_id):
@@ -10490,6 +13864,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.QueryMediaIndexJobRequest,
     ) -> ice20201109_models.QueryMediaIndexJobResponse:
+        """
+        @summary 查询索引任务
+        
+        @param request: QueryMediaIndexJobRequest
+        @return: QueryMediaIndexJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_media_index_job_with_options(request, runtime)
 
@@ -10497,6 +13877,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.QueryMediaIndexJobRequest,
     ) -> ice20201109_models.QueryMediaIndexJobResponse:
+        """
+        @summary 查询索引任务
+        
+        @param request: QueryMediaIndexJobRequest
+        @return: QueryMediaIndexJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_media_index_job_with_options_async(request, runtime)
 
@@ -10505,6 +13891,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.QuerySearchIndexRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QuerySearchIndexResponse:
+        """
+        @summary 查询搜索索引
+        
+        @param request: QuerySearchIndexRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySearchIndexResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.index_type):
@@ -10535,6 +13928,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.QuerySearchIndexRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QuerySearchIndexResponse:
+        """
+        @summary 查询搜索索引
+        
+        @param request: QuerySearchIndexRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySearchIndexResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.index_type):
@@ -10564,6 +13964,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.QuerySearchIndexRequest,
     ) -> ice20201109_models.QuerySearchIndexResponse:
+        """
+        @summary 查询搜索索引
+        
+        @param request: QuerySearchIndexRequest
+        @return: QuerySearchIndexResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_search_index_with_options(request, runtime)
 
@@ -10571,6 +13977,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.QuerySearchIndexRequest,
     ) -> ice20201109_models.QuerySearchIndexResponse:
+        """
+        @summary 查询搜索索引
+        
+        @param request: QuerySearchIndexRequest
+        @return: QuerySearchIndexResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_search_index_with_options_async(request, runtime)
 
@@ -10579,6 +13991,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.QuerySearchLibRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QuerySearchLibResponse:
+        """
+        @summary 查询库
+        
+        @param request: QuerySearchLibRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySearchLibResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.search_lib_name):
@@ -10607,6 +14026,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.QuerySearchLibRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QuerySearchLibResponse:
+        """
+        @summary 查询库
+        
+        @param request: QuerySearchLibRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySearchLibResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.search_lib_name):
@@ -10634,6 +14060,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.QuerySearchLibRequest,
     ) -> ice20201109_models.QuerySearchLibResponse:
+        """
+        @summary 查询库
+        
+        @param request: QuerySearchLibRequest
+        @return: QuerySearchLibResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_search_lib_with_options(request, runtime)
 
@@ -10641,6 +14073,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.QuerySearchLibRequest,
     ) -> ice20201109_models.QuerySearchLibResponse:
+        """
+        @summary 查询库
+        
+        @param request: QuerySearchLibRequest
+        @return: QuerySearchLibResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_search_lib_with_options_async(request, runtime)
 
@@ -10649,6 +14087,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.QuerySmarttagJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QuerySmarttagJobResponse:
+        """
+        @param request: QuerySmarttagJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySmarttagJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -10679,6 +14122,11 @@ class Client(OpenApiClient):
         request: ice20201109_models.QuerySmarttagJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.QuerySmarttagJobResponse:
+        """
+        @param request: QuerySmarttagJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySmarttagJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -10708,6 +14156,10 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.QuerySmarttagJobRequest,
     ) -> ice20201109_models.QuerySmarttagJobResponse:
+        """
+        @param request: QuerySmarttagJobRequest
+        @return: QuerySmarttagJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_smarttag_job_with_options(request, runtime)
 
@@ -10715,6 +14167,10 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.QuerySmarttagJobRequest,
     ) -> ice20201109_models.QuerySmarttagJobResponse:
+        """
+        @param request: QuerySmarttagJobRequest
+        @return: QuerySmarttagJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_smarttag_job_with_options_async(request, runtime)
 
@@ -10723,6 +14179,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.RefreshUploadMediaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.RefreshUploadMediaResponse:
+        """
+        @summary 刷新媒资上传凭证
+        
+        @param request: RefreshUploadMediaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefreshUploadMediaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.media_id):
@@ -10751,6 +14214,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.RefreshUploadMediaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.RefreshUploadMediaResponse:
+        """
+        @summary 刷新媒资上传凭证
+        
+        @param request: RefreshUploadMediaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefreshUploadMediaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.media_id):
@@ -10778,6 +14248,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.RefreshUploadMediaRequest,
     ) -> ice20201109_models.RefreshUploadMediaResponse:
+        """
+        @summary 刷新媒资上传凭证
+        
+        @param request: RefreshUploadMediaRequest
+        @return: RefreshUploadMediaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.refresh_upload_media_with_options(request, runtime)
 
@@ -10785,6 +14261,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.RefreshUploadMediaRequest,
     ) -> ice20201109_models.RefreshUploadMediaResponse:
+        """
+        @summary 刷新媒资上传凭证
+        
+        @param request: RefreshUploadMediaRequest
+        @return: RefreshUploadMediaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.refresh_upload_media_with_options_async(request, runtime)
 
@@ -10793,6 +14275,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.RegisterMediaInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.RegisterMediaInfoResponse:
+        """
+        @summary 注册内容库资源
+        
+        @param request: RegisterMediaInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RegisterMediaInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.business_type):
@@ -10849,6 +14338,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.RegisterMediaInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.RegisterMediaInfoResponse:
+        """
+        @summary 注册内容库资源
+        
+        @param request: RegisterMediaInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RegisterMediaInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.business_type):
@@ -10904,6 +14400,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.RegisterMediaInfoRequest,
     ) -> ice20201109_models.RegisterMediaInfoResponse:
+        """
+        @summary 注册内容库资源
+        
+        @param request: RegisterMediaInfoRequest
+        @return: RegisterMediaInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.register_media_info_with_options(request, runtime)
 
@@ -10911,6 +14413,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.RegisterMediaInfoRequest,
     ) -> ice20201109_models.RegisterMediaInfoResponse:
+        """
+        @summary 注册内容库资源
+        
+        @param request: RegisterMediaInfoRequest
+        @return: RegisterMediaInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.register_media_info_with_options_async(request, runtime)
 
@@ -10919,6 +14427,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.RegisterMediaStreamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.RegisterMediaStreamResponse:
+        """
+        @summary 注册媒体流
+        
+        @param request: RegisterMediaStreamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RegisterMediaStreamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.input_url):
@@ -10951,6 +14466,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.RegisterMediaStreamRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.RegisterMediaStreamResponse:
+        """
+        @summary 注册媒体流
+        
+        @param request: RegisterMediaStreamRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RegisterMediaStreamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.input_url):
@@ -10982,6 +14504,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.RegisterMediaStreamRequest,
     ) -> ice20201109_models.RegisterMediaStreamResponse:
+        """
+        @summary 注册媒体流
+        
+        @param request: RegisterMediaStreamRequest
+        @return: RegisterMediaStreamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.register_media_stream_with_options(request, runtime)
 
@@ -10989,6 +14517,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.RegisterMediaStreamRequest,
     ) -> ice20201109_models.RegisterMediaStreamResponse:
+        """
+        @summary 注册媒体流
+        
+        @param request: RegisterMediaStreamRequest
+        @return: RegisterMediaStreamResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.register_media_stream_with_options_async(request, runtime)
 
@@ -10997,6 +14531,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SearchEditingProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SearchEditingProjectResponse:
+        """
+        @summary SearchEditingProject
+        
+        @param request: SearchEditingProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchEditingProjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.create_source):
@@ -11041,6 +14582,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SearchEditingProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SearchEditingProjectResponse:
+        """
+        @summary SearchEditingProject
+        
+        @param request: SearchEditingProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchEditingProjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.create_source):
@@ -11084,6 +14632,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SearchEditingProjectRequest,
     ) -> ice20201109_models.SearchEditingProjectResponse:
+        """
+        @summary SearchEditingProject
+        
+        @param request: SearchEditingProjectRequest
+        @return: SearchEditingProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.search_editing_project_with_options(request, runtime)
 
@@ -11091,6 +14645,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SearchEditingProjectRequest,
     ) -> ice20201109_models.SearchEditingProjectResponse:
+        """
+        @summary SearchEditingProject
+        
+        @param request: SearchEditingProjectRequest
+        @return: SearchEditingProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.search_editing_project_with_options_async(request, runtime)
 
@@ -11099,6 +14659,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SearchMediaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SearchMediaResponse:
+        """
+        @summary 媒资搜索
+        
+        @param request: SearchMediaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchMediaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.entity_id):
@@ -11139,6 +14706,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SearchMediaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SearchMediaResponse:
+        """
+        @summary 媒资搜索
+        
+        @param request: SearchMediaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchMediaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.entity_id):
@@ -11178,6 +14752,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SearchMediaRequest,
     ) -> ice20201109_models.SearchMediaResponse:
+        """
+        @summary 媒资搜索
+        
+        @param request: SearchMediaRequest
+        @return: SearchMediaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.search_media_with_options(request, runtime)
 
@@ -11185,6 +14765,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SearchMediaRequest,
     ) -> ice20201109_models.SearchMediaResponse:
+        """
+        @summary 媒资搜索
+        
+        @param request: SearchMediaRequest
+        @return: SearchMediaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.search_media_with_options_async(request, runtime)
 
@@ -11193,6 +14779,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SearchMediaByAILabelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SearchMediaByAILabelResponse:
+        """
+        @summary 智能标签搜索
+        
+        @param request: SearchMediaByAILabelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchMediaByAILabelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.media_id):
@@ -11237,6 +14830,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SearchMediaByAILabelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SearchMediaByAILabelResponse:
+        """
+        @summary 智能标签搜索
+        
+        @param request: SearchMediaByAILabelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchMediaByAILabelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.media_id):
@@ -11280,6 +14880,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SearchMediaByAILabelRequest,
     ) -> ice20201109_models.SearchMediaByAILabelResponse:
+        """
+        @summary 智能标签搜索
+        
+        @param request: SearchMediaByAILabelRequest
+        @return: SearchMediaByAILabelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.search_media_by_ailabel_with_options(request, runtime)
 
@@ -11287,6 +14893,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SearchMediaByAILabelRequest,
     ) -> ice20201109_models.SearchMediaByAILabelResponse:
+        """
+        @summary 智能标签搜索
+        
+        @param request: SearchMediaByAILabelRequest
+        @return: SearchMediaByAILabelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.search_media_by_ailabel_with_options_async(request, runtime)
 
@@ -11295,6 +14907,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SearchMediaByFaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SearchMediaByFaceResponse:
+        """
+        @summary 人脸搜粗搜接口，输入一张人脸图片，搜索该人物所在媒资的相关信息
+        
+        @param request: SearchMediaByFaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchMediaByFaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.entity_id):
@@ -11335,6 +14954,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SearchMediaByFaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SearchMediaByFaceResponse:
+        """
+        @summary 人脸搜粗搜接口，输入一张人脸图片，搜索该人物所在媒资的相关信息
+        
+        @param request: SearchMediaByFaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchMediaByFaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.entity_id):
@@ -11374,6 +15000,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SearchMediaByFaceRequest,
     ) -> ice20201109_models.SearchMediaByFaceResponse:
+        """
+        @summary 人脸搜粗搜接口，输入一张人脸图片，搜索该人物所在媒资的相关信息
+        
+        @param request: SearchMediaByFaceRequest
+        @return: SearchMediaByFaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.search_media_by_face_with_options(request, runtime)
 
@@ -11381,6 +15013,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SearchMediaByFaceRequest,
     ) -> ice20201109_models.SearchMediaByFaceResponse:
+        """
+        @summary 人脸搜粗搜接口，输入一张人脸图片，搜索该人物所在媒资的相关信息
+        
+        @param request: SearchMediaByFaceRequest
+        @return: SearchMediaByFaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.search_media_by_face_with_options_async(request, runtime)
 
@@ -11389,6 +15027,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SearchMediaByMultimodalRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SearchMediaByMultimodalResponse:
+        """
+        @summary 多模态搜索
+        
+        @param request: SearchMediaByMultimodalRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchMediaByMultimodalResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.media_type):
@@ -11425,6 +15070,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SearchMediaByMultimodalRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SearchMediaByMultimodalResponse:
+        """
+        @summary 多模态搜索
+        
+        @param request: SearchMediaByMultimodalRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchMediaByMultimodalResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.media_type):
@@ -11460,6 +15112,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SearchMediaByMultimodalRequest,
     ) -> ice20201109_models.SearchMediaByMultimodalResponse:
+        """
+        @summary 多模态搜索
+        
+        @param request: SearchMediaByMultimodalRequest
+        @return: SearchMediaByMultimodalResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.search_media_by_multimodal_with_options(request, runtime)
 
@@ -11467,6 +15125,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SearchMediaByMultimodalRequest,
     ) -> ice20201109_models.SearchMediaByMultimodalResponse:
+        """
+        @summary 多模态搜索
+        
+        @param request: SearchMediaByMultimodalRequest
+        @return: SearchMediaByMultimodalResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.search_media_by_multimodal_with_options_async(request, runtime)
 
@@ -11475,6 +15139,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SearchMediaClipByFaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SearchMediaClipByFaceResponse:
+        """
+        @summary 人脸搜精搜接口，基于粗搜结果返回该人物所在媒资的相关人物片段信息
+        
+        @param request: SearchMediaClipByFaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchMediaClipByFaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.entity_id):
@@ -11513,6 +15184,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SearchMediaClipByFaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SearchMediaClipByFaceResponse:
+        """
+        @summary 人脸搜精搜接口，基于粗搜结果返回该人物所在媒资的相关人物片段信息
+        
+        @param request: SearchMediaClipByFaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchMediaClipByFaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.entity_id):
@@ -11550,6 +15228,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SearchMediaClipByFaceRequest,
     ) -> ice20201109_models.SearchMediaClipByFaceResponse:
+        """
+        @summary 人脸搜精搜接口，基于粗搜结果返回该人物所在媒资的相关人物片段信息
+        
+        @param request: SearchMediaClipByFaceRequest
+        @return: SearchMediaClipByFaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.search_media_clip_by_face_with_options(request, runtime)
 
@@ -11557,6 +15241,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SearchMediaClipByFaceRequest,
     ) -> ice20201109_models.SearchMediaClipByFaceResponse:
+        """
+        @summary 人脸搜精搜接口，基于粗搜结果返回该人物所在媒资的相关人物片段信息
+        
+        @param request: SearchMediaClipByFaceRequest
+        @return: SearchMediaClipByFaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.search_media_clip_by_face_with_options_async(request, runtime)
 
@@ -11565,6 +15255,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SearchPublicMediaInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SearchPublicMediaInfoResponse:
+        """
+        @summary 搜索公共媒资信息
+        
+        @param request: SearchPublicMediaInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchPublicMediaInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.authorized):
@@ -11607,6 +15304,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SearchPublicMediaInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SearchPublicMediaInfoResponse:
+        """
+        @summary 搜索公共媒资信息
+        
+        @param request: SearchPublicMediaInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchPublicMediaInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.authorized):
@@ -11648,6 +15352,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SearchPublicMediaInfoRequest,
     ) -> ice20201109_models.SearchPublicMediaInfoResponse:
+        """
+        @summary 搜索公共媒资信息
+        
+        @param request: SearchPublicMediaInfoRequest
+        @return: SearchPublicMediaInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.search_public_media_info_with_options(request, runtime)
 
@@ -11655,6 +15365,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SearchPublicMediaInfoRequest,
     ) -> ice20201109_models.SearchPublicMediaInfoResponse:
+        """
+        @summary 搜索公共媒资信息
+        
+        @param request: SearchPublicMediaInfoRequest
+        @return: SearchPublicMediaInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.search_public_media_info_with_options_async(request, runtime)
 
@@ -11663,6 +15379,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SendLiveSnapshotJobCommandRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SendLiveSnapshotJobCommandResponse:
+        """
+        @summary 发送实时截图任务指令
+        
+        @param request: SendLiveSnapshotJobCommandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendLiveSnapshotJobCommandResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.command):
@@ -11693,6 +15416,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SendLiveSnapshotJobCommandRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SendLiveSnapshotJobCommandResponse:
+        """
+        @summary 发送实时截图任务指令
+        
+        @param request: SendLiveSnapshotJobCommandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendLiveSnapshotJobCommandResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.command):
@@ -11722,6 +15452,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SendLiveSnapshotJobCommandRequest,
     ) -> ice20201109_models.SendLiveSnapshotJobCommandResponse:
+        """
+        @summary 发送实时截图任务指令
+        
+        @param request: SendLiveSnapshotJobCommandRequest
+        @return: SendLiveSnapshotJobCommandResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.send_live_snapshot_job_command_with_options(request, runtime)
 
@@ -11729,6 +15465,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SendLiveSnapshotJobCommandRequest,
     ) -> ice20201109_models.SendLiveSnapshotJobCommandResponse:
+        """
+        @summary 发送实时截图任务指令
+        
+        @param request: SendLiveSnapshotJobCommandRequest
+        @return: SendLiveSnapshotJobCommandResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.send_live_snapshot_job_command_with_options_async(request, runtime)
 
@@ -11737,6 +15479,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SendLiveTranscodeJobCommandRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SendLiveTranscodeJobCommandResponse:
+        """
+        @summary 给指定转码任务发实时命令
+        
+        @param request: SendLiveTranscodeJobCommandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendLiveTranscodeJobCommandResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.command):
@@ -11767,6 +15516,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SendLiveTranscodeJobCommandRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SendLiveTranscodeJobCommandResponse:
+        """
+        @summary 给指定转码任务发实时命令
+        
+        @param request: SendLiveTranscodeJobCommandRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendLiveTranscodeJobCommandResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.command):
@@ -11796,6 +15552,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SendLiveTranscodeJobCommandRequest,
     ) -> ice20201109_models.SendLiveTranscodeJobCommandResponse:
+        """
+        @summary 给指定转码任务发实时命令
+        
+        @param request: SendLiveTranscodeJobCommandRequest
+        @return: SendLiveTranscodeJobCommandResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.send_live_transcode_job_command_with_options(request, runtime)
 
@@ -11803,6 +15565,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SendLiveTranscodeJobCommandRequest,
     ) -> ice20201109_models.SendLiveTranscodeJobCommandResponse:
+        """
+        @summary 给指定转码任务发实时命令
+        
+        @param request: SendLiveTranscodeJobCommandRequest
+        @return: SendLiveTranscodeJobCommandResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.send_live_transcode_job_command_with_options_async(request, runtime)
 
@@ -11811,6 +15579,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SetContentAnalyzeConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SetContentAnalyzeConfigResponse:
+        """
+        @summary 设置内容分析搜索配置
+        
+        @param request: SetContentAnalyzeConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetContentAnalyzeConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto):
@@ -11843,6 +15618,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SetContentAnalyzeConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SetContentAnalyzeConfigResponse:
+        """
+        @summary 设置内容分析搜索配置
+        
+        @param request: SetContentAnalyzeConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetContentAnalyzeConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto):
@@ -11874,6 +15656,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SetContentAnalyzeConfigRequest,
     ) -> ice20201109_models.SetContentAnalyzeConfigResponse:
+        """
+        @summary 设置内容分析搜索配置
+        
+        @param request: SetContentAnalyzeConfigRequest
+        @return: SetContentAnalyzeConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_content_analyze_config_with_options(request, runtime)
 
@@ -11881,6 +15669,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SetContentAnalyzeConfigRequest,
     ) -> ice20201109_models.SetContentAnalyzeConfigResponse:
+        """
+        @summary 设置内容分析搜索配置
+        
+        @param request: SetContentAnalyzeConfigRequest
+        @return: SetContentAnalyzeConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_content_analyze_config_with_options_async(request, runtime)
 
@@ -11889,6 +15683,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SetDefaultCustomTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SetDefaultCustomTemplateResponse:
+        """
+        @summary 设置默认媒体处理模板
+        
+        @param request: SetDefaultCustomTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDefaultCustomTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.template_id):
@@ -11917,6 +15718,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SetDefaultCustomTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SetDefaultCustomTemplateResponse:
+        """
+        @summary 设置默认媒体处理模板
+        
+        @param request: SetDefaultCustomTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDefaultCustomTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.template_id):
@@ -11944,6 +15752,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SetDefaultCustomTemplateRequest,
     ) -> ice20201109_models.SetDefaultCustomTemplateResponse:
+        """
+        @summary 设置默认媒体处理模板
+        
+        @param request: SetDefaultCustomTemplateRequest
+        @return: SetDefaultCustomTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_default_custom_template_with_options(request, runtime)
 
@@ -11951,6 +15765,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SetDefaultCustomTemplateRequest,
     ) -> ice20201109_models.SetDefaultCustomTemplateResponse:
+        """
+        @summary 设置默认媒体处理模板
+        
+        @param request: SetDefaultCustomTemplateRequest
+        @return: SetDefaultCustomTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_default_custom_template_with_options_async(request, runtime)
 
@@ -11959,6 +15779,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SetDefaultStorageLocationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SetDefaultStorageLocationResponse:
+        """
+        @summary 设置默认存储路径
+        
+        @param request: SetDefaultStorageLocationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDefaultStorageLocationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bucket):
@@ -11991,6 +15818,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SetDefaultStorageLocationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SetDefaultStorageLocationResponse:
+        """
+        @summary 设置默认存储路径
+        
+        @param request: SetDefaultStorageLocationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetDefaultStorageLocationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.bucket):
@@ -12022,6 +15856,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SetDefaultStorageLocationRequest,
     ) -> ice20201109_models.SetDefaultStorageLocationResponse:
+        """
+        @summary 设置默认存储路径
+        
+        @param request: SetDefaultStorageLocationRequest
+        @return: SetDefaultStorageLocationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_default_storage_location_with_options(request, runtime)
 
@@ -12029,6 +15869,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SetDefaultStorageLocationRequest,
     ) -> ice20201109_models.SetDefaultStorageLocationResponse:
+        """
+        @summary 设置默认存储路径
+        
+        @param request: SetDefaultStorageLocationRequest
+        @return: SetDefaultStorageLocationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_default_storage_location_with_options_async(request, runtime)
 
@@ -12037,6 +15883,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SetEventCallbackRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SetEventCallbackResponse:
+        """
+        @summary 配置事件回调地址
+        
+        @param request: SetEventCallbackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetEventCallbackResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auth_key):
@@ -12075,6 +15928,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SetEventCallbackRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SetEventCallbackResponse:
+        """
+        @summary 配置事件回调地址
+        
+        @param request: SetEventCallbackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetEventCallbackResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auth_key):
@@ -12112,6 +15972,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SetEventCallbackRequest,
     ) -> ice20201109_models.SetEventCallbackResponse:
+        """
+        @summary 配置事件回调地址
+        
+        @param request: SetEventCallbackRequest
+        @return: SetEventCallbackResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_event_callback_with_options(request, runtime)
 
@@ -12119,6 +15985,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SetEventCallbackRequest,
     ) -> ice20201109_models.SetEventCallbackResponse:
+        """
+        @summary 配置事件回调地址
+        
+        @param request: SetEventCallbackRequest
+        @return: SetEventCallbackResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_event_callback_with_options_async(request, runtime)
 
@@ -12127,6 +15999,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.StartWorkflowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.StartWorkflowResponse:
+        """
+        @summary 启动工作流
+        
+        @param request: StartWorkflowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartWorkflowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.task_input):
@@ -12159,6 +16038,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.StartWorkflowRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.StartWorkflowResponse:
+        """
+        @summary 启动工作流
+        
+        @param request: StartWorkflowRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartWorkflowResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.task_input):
@@ -12190,6 +16076,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.StartWorkflowRequest,
     ) -> ice20201109_models.StartWorkflowResponse:
+        """
+        @summary 启动工作流
+        
+        @param request: StartWorkflowRequest
+        @return: StartWorkflowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_workflow_with_options(request, runtime)
 
@@ -12197,6 +16089,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.StartWorkflowRequest,
     ) -> ice20201109_models.StartWorkflowResponse:
+        """
+        @summary 启动工作流
+        
+        @param request: StartWorkflowRequest
+        @return: StartWorkflowResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_workflow_with_options_async(request, runtime)
 
@@ -12205,6 +16103,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitASRJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitASRJobResponse:
+        """
+        @summary SubmitASRJob
+        
+        @param request: SubmitASRJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitASRJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -12243,6 +16148,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitASRJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitASRJobResponse:
+        """
+        @summary SubmitASRJob
+        
+        @param request: SubmitASRJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitASRJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -12280,6 +16192,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitASRJobRequest,
     ) -> ice20201109_models.SubmitASRJobResponse:
+        """
+        @summary SubmitASRJob
+        
+        @param request: SubmitASRJobRequest
+        @return: SubmitASRJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_asrjob_with_options(request, runtime)
 
@@ -12287,6 +16205,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitASRJobRequest,
     ) -> ice20201109_models.SubmitASRJobResponse:
+        """
+        @summary SubmitASRJob
+        
+        @param request: SubmitASRJobRequest
+        @return: SubmitASRJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_asrjob_with_options_async(request, runtime)
 
@@ -12295,6 +16219,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitAudioProduceJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitAudioProduceJobResponse:
+        """
+        @summary SubmitAudioProduceJob
+        
+        @param request: SubmitAudioProduceJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitAudioProduceJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -12335,6 +16266,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitAudioProduceJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitAudioProduceJobResponse:
+        """
+        @summary SubmitAudioProduceJob
+        
+        @param request: SubmitAudioProduceJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitAudioProduceJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -12374,6 +16312,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitAudioProduceJobRequest,
     ) -> ice20201109_models.SubmitAudioProduceJobResponse:
+        """
+        @summary SubmitAudioProduceJob
+        
+        @param request: SubmitAudioProduceJobRequest
+        @return: SubmitAudioProduceJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_audio_produce_job_with_options(request, runtime)
 
@@ -12381,6 +16325,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitAudioProduceJobRequest,
     ) -> ice20201109_models.SubmitAudioProduceJobResponse:
+        """
+        @summary SubmitAudioProduceJob
+        
+        @param request: SubmitAudioProduceJobRequest
+        @return: SubmitAudioProduceJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_audio_produce_job_with_options_async(request, runtime)
 
@@ -12389,6 +16339,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitAvatarTrainingJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitAvatarTrainingJobResponse:
+        """
+        @summary 提交数字人训练任务
+        
+        @param request: SubmitAvatarTrainingJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitAvatarTrainingJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -12417,6 +16374,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitAvatarTrainingJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitAvatarTrainingJobResponse:
+        """
+        @summary 提交数字人训练任务
+        
+        @param request: SubmitAvatarTrainingJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitAvatarTrainingJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.job_id):
@@ -12444,6 +16408,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitAvatarTrainingJobRequest,
     ) -> ice20201109_models.SubmitAvatarTrainingJobResponse:
+        """
+        @summary 提交数字人训练任务
+        
+        @param request: SubmitAvatarTrainingJobRequest
+        @return: SubmitAvatarTrainingJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_avatar_training_job_with_options(request, runtime)
 
@@ -12451,6 +16421,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitAvatarTrainingJobRequest,
     ) -> ice20201109_models.SubmitAvatarTrainingJobResponse:
+        """
+        @summary 提交数字人训练任务
+        
+        @param request: SubmitAvatarTrainingJobRequest
+        @return: SubmitAvatarTrainingJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_avatar_training_job_with_options_async(request, runtime)
 
@@ -12459,6 +16435,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitAvatarVideoJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitAvatarVideoJobResponse:
+        """
+        @summary 提交虚拟人视频合成任务
+        
+        @param request: SubmitAvatarVideoJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitAvatarVideoJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -12497,6 +16480,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitAvatarVideoJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitAvatarVideoJobResponse:
+        """
+        @summary 提交虚拟人视频合成任务
+        
+        @param request: SubmitAvatarVideoJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitAvatarVideoJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -12534,6 +16524,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitAvatarVideoJobRequest,
     ) -> ice20201109_models.SubmitAvatarVideoJobResponse:
+        """
+        @summary 提交虚拟人视频合成任务
+        
+        @param request: SubmitAvatarVideoJobRequest
+        @return: SubmitAvatarVideoJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_avatar_video_job_with_options(request, runtime)
 
@@ -12541,6 +16537,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitAvatarVideoJobRequest,
     ) -> ice20201109_models.SubmitAvatarVideoJobResponse:
+        """
+        @summary 提交虚拟人视频合成任务
+        
+        @param request: SubmitAvatarVideoJobRequest
+        @return: SubmitAvatarVideoJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_avatar_video_job_with_options_async(request, runtime)
 
@@ -12549,6 +16551,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitBatchMediaProducingJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitBatchMediaProducingJobResponse:
+        """
+        @summary SubmitBatchMediaProducingJob
+        
+        @param request: SubmitBatchMediaProducingJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitBatchMediaProducingJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -12587,6 +16596,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitBatchMediaProducingJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitBatchMediaProducingJobResponse:
+        """
+        @summary SubmitBatchMediaProducingJob
+        
+        @param request: SubmitBatchMediaProducingJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitBatchMediaProducingJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -12624,6 +16640,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitBatchMediaProducingJobRequest,
     ) -> ice20201109_models.SubmitBatchMediaProducingJobResponse:
+        """
+        @summary SubmitBatchMediaProducingJob
+        
+        @param request: SubmitBatchMediaProducingJobRequest
+        @return: SubmitBatchMediaProducingJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_batch_media_producing_job_with_options(request, runtime)
 
@@ -12631,6 +16653,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitBatchMediaProducingJobRequest,
     ) -> ice20201109_models.SubmitBatchMediaProducingJobResponse:
+        """
+        @summary SubmitBatchMediaProducingJob
+        
+        @param request: SubmitBatchMediaProducingJobRequest
+        @return: SubmitBatchMediaProducingJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_batch_media_producing_job_with_options_async(request, runtime)
 
@@ -12639,6 +16667,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitCustomizedVoiceJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitCustomizedVoiceJobResponse:
+        """
+        @summary 提交人声克隆训练任务
+        
+        @param request: SubmitCustomizedVoiceJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitCustomizedVoiceJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.demo_audio_media_url):
@@ -12669,6 +16704,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitCustomizedVoiceJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitCustomizedVoiceJobResponse:
+        """
+        @summary 提交人声克隆训练任务
+        
+        @param request: SubmitCustomizedVoiceJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitCustomizedVoiceJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.demo_audio_media_url):
@@ -12698,6 +16740,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitCustomizedVoiceJobRequest,
     ) -> ice20201109_models.SubmitCustomizedVoiceJobResponse:
+        """
+        @summary 提交人声克隆训练任务
+        
+        @param request: SubmitCustomizedVoiceJobRequest
+        @return: SubmitCustomizedVoiceJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_customized_voice_job_with_options(request, runtime)
 
@@ -12705,6 +16753,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitCustomizedVoiceJobRequest,
     ) -> ice20201109_models.SubmitCustomizedVoiceJobResponse:
+        """
+        @summary 提交人声克隆训练任务
+        
+        @param request: SubmitCustomizedVoiceJobRequest
+        @return: SubmitCustomizedVoiceJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_customized_voice_job_with_options_async(request, runtime)
 
@@ -12713,6 +16767,13 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.SubmitDNAJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitDNAJobResponse:
+        """
+        @summary 提交DNA作业
+        
+        @param tmp_req: SubmitDNAJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitDNAJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.SubmitDNAJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -12765,6 +16826,13 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.SubmitDNAJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitDNAJobResponse:
+        """
+        @summary 提交DNA作业
+        
+        @param tmp_req: SubmitDNAJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitDNAJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.SubmitDNAJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -12816,6 +16884,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitDNAJobRequest,
     ) -> ice20201109_models.SubmitDNAJobResponse:
+        """
+        @summary 提交DNA作业
+        
+        @param request: SubmitDNAJobRequest
+        @return: SubmitDNAJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_dnajob_with_options(request, runtime)
 
@@ -12823,6 +16897,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitDNAJobRequest,
     ) -> ice20201109_models.SubmitDNAJobResponse:
+        """
+        @summary 提交DNA作业
+        
+        @param request: SubmitDNAJobRequest
+        @return: SubmitDNAJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_dnajob_with_options_async(request, runtime)
 
@@ -12831,6 +16911,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitDynamicChartJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitDynamicChartJobResponse:
+        """
+        @summary 提交动态图表任务
+        
+        @param request: SubmitDynamicChartJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitDynamicChartJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.axis_params):
@@ -12883,6 +16970,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitDynamicChartJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitDynamicChartJobResponse:
+        """
+        @summary 提交动态图表任务
+        
+        @param request: SubmitDynamicChartJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitDynamicChartJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.axis_params):
@@ -12934,6 +17028,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitDynamicChartJobRequest,
     ) -> ice20201109_models.SubmitDynamicChartJobResponse:
+        """
+        @summary 提交动态图表任务
+        
+        @param request: SubmitDynamicChartJobRequest
+        @return: SubmitDynamicChartJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_dynamic_chart_job_with_options(request, runtime)
 
@@ -12941,6 +17041,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitDynamicChartJobRequest,
     ) -> ice20201109_models.SubmitDynamicChartJobResponse:
+        """
+        @summary 提交动态图表任务
+        
+        @param request: SubmitDynamicChartJobRequest
+        @return: SubmitDynamicChartJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_dynamic_chart_job_with_options_async(request, runtime)
 
@@ -12949,6 +17055,13 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.SubmitDynamicImageJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitDynamicImageJobResponse:
+        """
+        @summary 提交异步动图任务接口
+        
+        @param tmp_req: SubmitDynamicImageJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitDynamicImageJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.SubmitDynamicImageJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -12997,6 +17110,13 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.SubmitDynamicImageJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitDynamicImageJobResponse:
+        """
+        @summary 提交异步动图任务接口
+        
+        @param tmp_req: SubmitDynamicImageJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitDynamicImageJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.SubmitDynamicImageJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13044,6 +17164,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitDynamicImageJobRequest,
     ) -> ice20201109_models.SubmitDynamicImageJobResponse:
+        """
+        @summary 提交异步动图任务接口
+        
+        @param request: SubmitDynamicImageJobRequest
+        @return: SubmitDynamicImageJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_dynamic_image_job_with_options(request, runtime)
 
@@ -13051,6 +17177,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitDynamicImageJobRequest,
     ) -> ice20201109_models.SubmitDynamicImageJobResponse:
+        """
+        @summary 提交异步动图任务接口
+        
+        @param request: SubmitDynamicImageJobRequest
+        @return: SubmitDynamicImageJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_dynamic_image_job_with_options_async(request, runtime)
 
@@ -13059,6 +17191,13 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.SubmitIProductionJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitIProductionJobResponse:
+        """
+        @summary 提交智能生产作业
+        
+        @param tmp_req: SubmitIProductionJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitIProductionJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.SubmitIProductionJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13109,6 +17248,13 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.SubmitIProductionJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitIProductionJobResponse:
+        """
+        @summary 提交智能生产作业
+        
+        @param tmp_req: SubmitIProductionJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitIProductionJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.SubmitIProductionJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13158,6 +17304,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitIProductionJobRequest,
     ) -> ice20201109_models.SubmitIProductionJobResponse:
+        """
+        @summary 提交智能生产作业
+        
+        @param request: SubmitIProductionJobRequest
+        @return: SubmitIProductionJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_iproduction_job_with_options(request, runtime)
 
@@ -13165,6 +17317,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitIProductionJobRequest,
     ) -> ice20201109_models.SubmitIProductionJobResponse:
+        """
+        @summary 提交智能生产作业
+        
+        @param request: SubmitIProductionJobRequest
+        @return: SubmitIProductionJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_iproduction_job_with_options_async(request, runtime)
 
@@ -13173,6 +17331,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitLiveEditingJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitLiveEditingJobResponse:
+        """
+        @summary 提交直播剪辑任务
+        
+        @param request: SubmitLiveEditingJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitLiveEditingJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.clips):
@@ -13213,6 +17378,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitLiveEditingJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitLiveEditingJobResponse:
+        """
+        @summary 提交直播剪辑任务
+        
+        @param request: SubmitLiveEditingJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitLiveEditingJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.clips):
@@ -13252,6 +17424,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitLiveEditingJobRequest,
     ) -> ice20201109_models.SubmitLiveEditingJobResponse:
+        """
+        @summary 提交直播剪辑任务
+        
+        @param request: SubmitLiveEditingJobRequest
+        @return: SubmitLiveEditingJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_live_editing_job_with_options(request, runtime)
 
@@ -13259,6 +17437,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitLiveEditingJobRequest,
     ) -> ice20201109_models.SubmitLiveEditingJobResponse:
+        """
+        @summary 提交直播剪辑任务
+        
+        @param request: SubmitLiveEditingJobRequest
+        @return: SubmitLiveEditingJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_live_editing_job_with_options_async(request, runtime)
 
@@ -13267,6 +17451,13 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.SubmitLiveRecordJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitLiveRecordJobResponse:
+        """
+        @summary 提交录制任务
+        
+        @param tmp_req: SubmitLiveRecordJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitLiveRecordJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.SubmitLiveRecordJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13309,6 +17500,13 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.SubmitLiveRecordJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitLiveRecordJobResponse:
+        """
+        @summary 提交录制任务
+        
+        @param tmp_req: SubmitLiveRecordJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitLiveRecordJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.SubmitLiveRecordJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13350,6 +17548,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitLiveRecordJobRequest,
     ) -> ice20201109_models.SubmitLiveRecordJobResponse:
+        """
+        @summary 提交录制任务
+        
+        @param request: SubmitLiveRecordJobRequest
+        @return: SubmitLiveRecordJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_live_record_job_with_options(request, runtime)
 
@@ -13357,6 +17561,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitLiveRecordJobRequest,
     ) -> ice20201109_models.SubmitLiveRecordJobResponse:
+        """
+        @summary 提交录制任务
+        
+        @param request: SubmitLiveRecordJobRequest
+        @return: SubmitLiveRecordJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_live_record_job_with_options_async(request, runtime)
 
@@ -13365,6 +17575,13 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.SubmitLiveSnapshotJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitLiveSnapshotJobResponse:
+        """
+        @summary 创建直播截图任务
+        
+        @param tmp_req: SubmitLiveSnapshotJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitLiveSnapshotJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.SubmitLiveSnapshotJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13407,6 +17624,13 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.SubmitLiveSnapshotJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitLiveSnapshotJobResponse:
+        """
+        @summary 创建直播截图任务
+        
+        @param tmp_req: SubmitLiveSnapshotJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitLiveSnapshotJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.SubmitLiveSnapshotJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13448,6 +17672,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitLiveSnapshotJobRequest,
     ) -> ice20201109_models.SubmitLiveSnapshotJobResponse:
+        """
+        @summary 创建直播截图任务
+        
+        @param request: SubmitLiveSnapshotJobRequest
+        @return: SubmitLiveSnapshotJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_live_snapshot_job_with_options(request, runtime)
 
@@ -13455,6 +17685,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitLiveSnapshotJobRequest,
     ) -> ice20201109_models.SubmitLiveSnapshotJobResponse:
+        """
+        @summary 创建直播截图任务
+        
+        @param request: SubmitLiveSnapshotJobRequest
+        @return: SubmitLiveSnapshotJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_live_snapshot_job_with_options_async(request, runtime)
 
@@ -13463,6 +17699,13 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.SubmitLiveTranscodeJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitLiveTranscodeJobResponse:
+        """
+        @summary 提交转码任务
+        
+        @param tmp_req: SubmitLiveTranscodeJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitLiveTranscodeJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.SubmitLiveTranscodeJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13509,6 +17752,13 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.SubmitLiveTranscodeJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitLiveTranscodeJobResponse:
+        """
+        @summary 提交转码任务
+        
+        @param tmp_req: SubmitLiveTranscodeJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitLiveTranscodeJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.SubmitLiveTranscodeJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13554,6 +17804,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitLiveTranscodeJobRequest,
     ) -> ice20201109_models.SubmitLiveTranscodeJobResponse:
+        """
+        @summary 提交转码任务
+        
+        @param request: SubmitLiveTranscodeJobRequest
+        @return: SubmitLiveTranscodeJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_live_transcode_job_with_options(request, runtime)
 
@@ -13561,6 +17817,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitLiveTranscodeJobRequest,
     ) -> ice20201109_models.SubmitLiveTranscodeJobResponse:
+        """
+        @summary 提交转码任务
+        
+        @param request: SubmitLiveTranscodeJobRequest
+        @return: SubmitLiveTranscodeJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_live_transcode_job_with_options_async(request, runtime)
 
@@ -13569,6 +17831,11 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.SubmitMediaCensorJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitMediaCensorJobResponse:
+        """
+        @param tmp_req: SubmitMediaCensorJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitMediaCensorJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.SubmitMediaCensorJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13621,6 +17888,11 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.SubmitMediaCensorJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitMediaCensorJobResponse:
+        """
+        @param tmp_req: SubmitMediaCensorJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitMediaCensorJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.SubmitMediaCensorJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13672,6 +17944,10 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitMediaCensorJobRequest,
     ) -> ice20201109_models.SubmitMediaCensorJobResponse:
+        """
+        @param request: SubmitMediaCensorJobRequest
+        @return: SubmitMediaCensorJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_media_censor_job_with_options(request, runtime)
 
@@ -13679,6 +17955,10 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitMediaCensorJobRequest,
     ) -> ice20201109_models.SubmitMediaCensorJobResponse:
+        """
+        @param request: SubmitMediaCensorJobRequest
+        @return: SubmitMediaCensorJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_media_censor_job_with_options_async(request, runtime)
 
@@ -13687,6 +17967,11 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.SubmitMediaInfoJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitMediaInfoJobResponse:
+        """
+        @param tmp_req: SubmitMediaInfoJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitMediaInfoJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.SubmitMediaInfoJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13727,6 +18012,11 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.SubmitMediaInfoJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitMediaInfoJobResponse:
+        """
+        @param tmp_req: SubmitMediaInfoJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitMediaInfoJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.SubmitMediaInfoJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13766,6 +18056,10 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitMediaInfoJobRequest,
     ) -> ice20201109_models.SubmitMediaInfoJobResponse:
+        """
+        @param request: SubmitMediaInfoJobRequest
+        @return: SubmitMediaInfoJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_media_info_job_with_options(request, runtime)
 
@@ -13773,6 +18067,10 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitMediaInfoJobRequest,
     ) -> ice20201109_models.SubmitMediaInfoJobResponse:
+        """
+        @param request: SubmitMediaInfoJobRequest
+        @return: SubmitMediaInfoJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_media_info_job_with_options_async(request, runtime)
 
@@ -13781,6 +18079,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitMediaProducingJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitMediaProducingJobResponse:
+        """
+        @summary SubmitMediaProducingJob
+        
+        @param request: SubmitMediaProducingJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitMediaProducingJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -13833,6 +18138,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitMediaProducingJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitMediaProducingJobResponse:
+        """
+        @summary SubmitMediaProducingJob
+        
+        @param request: SubmitMediaProducingJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitMediaProducingJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -13884,6 +18196,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitMediaProducingJobRequest,
     ) -> ice20201109_models.SubmitMediaProducingJobResponse:
+        """
+        @summary SubmitMediaProducingJob
+        
+        @param request: SubmitMediaProducingJobRequest
+        @return: SubmitMediaProducingJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_media_producing_job_with_options(request, runtime)
 
@@ -13891,6 +18209,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitMediaProducingJobRequest,
     ) -> ice20201109_models.SubmitMediaProducingJobResponse:
+        """
+        @summary SubmitMediaProducingJob
+        
+        @param request: SubmitMediaProducingJobRequest
+        @return: SubmitMediaProducingJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_media_producing_job_with_options_async(request, runtime)
 
@@ -13899,6 +18223,13 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.SubmitPackageJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitPackageJobResponse:
+        """
+        @summary 提交打包任务
+        
+        @param tmp_req: SubmitPackageJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitPackageJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.SubmitPackageJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13943,6 +18274,13 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.SubmitPackageJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitPackageJobResponse:
+        """
+        @summary 提交打包任务
+        
+        @param tmp_req: SubmitPackageJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitPackageJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.SubmitPackageJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13986,6 +18324,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitPackageJobRequest,
     ) -> ice20201109_models.SubmitPackageJobResponse:
+        """
+        @summary 提交打包任务
+        
+        @param request: SubmitPackageJobRequest
+        @return: SubmitPackageJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_package_job_with_options(request, runtime)
 
@@ -13993,6 +18337,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitPackageJobRequest,
     ) -> ice20201109_models.SubmitPackageJobResponse:
+        """
+        @summary 提交打包任务
+        
+        @param request: SubmitPackageJobRequest
+        @return: SubmitPackageJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_package_job_with_options_async(request, runtime)
 
@@ -14001,6 +18351,11 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.SubmitSmarttagJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitSmarttagJobResponse:
+        """
+        @param tmp_req: SubmitSmarttagJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitSmarttagJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.SubmitSmarttagJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -14053,6 +18408,11 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.SubmitSmarttagJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitSmarttagJobResponse:
+        """
+        @param tmp_req: SubmitSmarttagJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitSmarttagJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.SubmitSmarttagJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -14104,6 +18464,10 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitSmarttagJobRequest,
     ) -> ice20201109_models.SubmitSmarttagJobResponse:
+        """
+        @param request: SubmitSmarttagJobRequest
+        @return: SubmitSmarttagJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_smarttag_job_with_options(request, runtime)
 
@@ -14111,6 +18475,10 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitSmarttagJobRequest,
     ) -> ice20201109_models.SubmitSmarttagJobResponse:
+        """
+        @param request: SubmitSmarttagJobRequest
+        @return: SubmitSmarttagJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_smarttag_job_with_options_async(request, runtime)
 
@@ -14119,6 +18487,13 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.SubmitSnapshotJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitSnapshotJobResponse:
+        """
+        @summary 提交异步截图任务
+        
+        @param tmp_req: SubmitSnapshotJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitSnapshotJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.SubmitSnapshotJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -14167,6 +18542,13 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.SubmitSnapshotJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitSnapshotJobResponse:
+        """
+        @summary 提交异步截图任务
+        
+        @param tmp_req: SubmitSnapshotJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitSnapshotJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.SubmitSnapshotJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -14214,6 +18596,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitSnapshotJobRequest,
     ) -> ice20201109_models.SubmitSnapshotJobResponse:
+        """
+        @summary 提交异步截图任务
+        
+        @param request: SubmitSnapshotJobRequest
+        @return: SubmitSnapshotJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_snapshot_job_with_options(request, runtime)
 
@@ -14221,6 +18609,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitSnapshotJobRequest,
     ) -> ice20201109_models.SubmitSnapshotJobResponse:
+        """
+        @summary 提交异步截图任务
+        
+        @param request: SubmitSnapshotJobRequest
+        @return: SubmitSnapshotJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_snapshot_job_with_options_async(request, runtime)
 
@@ -14229,6 +18623,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitStandardCustomizedVoiceJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitStandardCustomizedVoiceJobResponse:
+        """
+        @summary 提交标准版人声克隆训练任务
+        
+        @param request: SubmitStandardCustomizedVoiceJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitStandardCustomizedVoiceJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.audios):
@@ -14265,6 +18666,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitStandardCustomizedVoiceJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitStandardCustomizedVoiceJobResponse:
+        """
+        @summary 提交标准版人声克隆训练任务
+        
+        @param request: SubmitStandardCustomizedVoiceJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitStandardCustomizedVoiceJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.audios):
@@ -14300,6 +18708,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitStandardCustomizedVoiceJobRequest,
     ) -> ice20201109_models.SubmitStandardCustomizedVoiceJobResponse:
+        """
+        @summary 提交标准版人声克隆训练任务
+        
+        @param request: SubmitStandardCustomizedVoiceJobRequest
+        @return: SubmitStandardCustomizedVoiceJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_standard_customized_voice_job_with_options(request, runtime)
 
@@ -14307,6 +18721,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitStandardCustomizedVoiceJobRequest,
     ) -> ice20201109_models.SubmitStandardCustomizedVoiceJobResponse:
+        """
+        @summary 提交标准版人声克隆训练任务
+        
+        @param request: SubmitStandardCustomizedVoiceJobRequest
+        @return: SubmitStandardCustomizedVoiceJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_standard_customized_voice_job_with_options_async(request, runtime)
 
@@ -14315,6 +18735,11 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.SubmitSyncMediaInfoJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitSyncMediaInfoJobResponse:
+        """
+        @param tmp_req: SubmitSyncMediaInfoJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitSyncMediaInfoJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.SubmitSyncMediaInfoJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -14355,6 +18780,11 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.SubmitSyncMediaInfoJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitSyncMediaInfoJobResponse:
+        """
+        @param tmp_req: SubmitSyncMediaInfoJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitSyncMediaInfoJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.SubmitSyncMediaInfoJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -14394,6 +18824,10 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitSyncMediaInfoJobRequest,
     ) -> ice20201109_models.SubmitSyncMediaInfoJobResponse:
+        """
+        @param request: SubmitSyncMediaInfoJobRequest
+        @return: SubmitSyncMediaInfoJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_sync_media_info_job_with_options(request, runtime)
 
@@ -14401,6 +18835,10 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitSyncMediaInfoJobRequest,
     ) -> ice20201109_models.SubmitSyncMediaInfoJobResponse:
+        """
+        @param request: SubmitSyncMediaInfoJobRequest
+        @return: SubmitSyncMediaInfoJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_sync_media_info_job_with_options_async(request, runtime)
 
@@ -14409,6 +18847,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitTextGenerateJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitTextGenerateJobResponse:
+        """
+        @summary 提交文本生成任务
+        
+        @param request: SubmitTextGenerateJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitTextGenerateJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -14445,6 +18890,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.SubmitTextGenerateJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitTextGenerateJobResponse:
+        """
+        @summary 提交文本生成任务
+        
+        @param request: SubmitTextGenerateJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitTextGenerateJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -14480,6 +18932,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitTextGenerateJobRequest,
     ) -> ice20201109_models.SubmitTextGenerateJobResponse:
+        """
+        @summary 提交文本生成任务
+        
+        @param request: SubmitTextGenerateJobRequest
+        @return: SubmitTextGenerateJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_text_generate_job_with_options(request, runtime)
 
@@ -14487,6 +18945,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitTextGenerateJobRequest,
     ) -> ice20201109_models.SubmitTextGenerateJobResponse:
+        """
+        @summary 提交文本生成任务
+        
+        @param request: SubmitTextGenerateJobRequest
+        @return: SubmitTextGenerateJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_text_generate_job_with_options_async(request, runtime)
 
@@ -14495,6 +18959,11 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.SubmitTranscodeJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitTranscodeJobResponse:
+        """
+        @param tmp_req: SubmitTranscodeJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitTranscodeJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.SubmitTranscodeJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -14541,6 +19010,11 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.SubmitTranscodeJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.SubmitTranscodeJobResponse:
+        """
+        @param tmp_req: SubmitTranscodeJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubmitTranscodeJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.SubmitTranscodeJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -14586,6 +19060,10 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitTranscodeJobRequest,
     ) -> ice20201109_models.SubmitTranscodeJobResponse:
+        """
+        @param request: SubmitTranscodeJobRequest
+        @return: SubmitTranscodeJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.submit_transcode_job_with_options(request, runtime)
 
@@ -14593,6 +19071,10 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.SubmitTranscodeJobRequest,
     ) -> ice20201109_models.SubmitTranscodeJobResponse:
+        """
+        @param request: SubmitTranscodeJobRequest
+        @return: SubmitTranscodeJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.submit_transcode_job_with_options_async(request, runtime)
 
@@ -14601,6 +19083,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateAvatarTrainingJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateAvatarTrainingJobResponse:
+        """
+        @summary 更新数字人训练任务信息
+        
+        @param request: UpdateAvatarTrainingJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAvatarTrainingJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.avatar_description):
@@ -14641,6 +19130,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateAvatarTrainingJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateAvatarTrainingJobResponse:
+        """
+        @summary 更新数字人训练任务信息
+        
+        @param request: UpdateAvatarTrainingJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAvatarTrainingJobResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.avatar_description):
@@ -14680,6 +19176,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.UpdateAvatarTrainingJobRequest,
     ) -> ice20201109_models.UpdateAvatarTrainingJobResponse:
+        """
+        @summary 更新数字人训练任务信息
+        
+        @param request: UpdateAvatarTrainingJobRequest
+        @return: UpdateAvatarTrainingJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_avatar_training_job_with_options(request, runtime)
 
@@ -14687,6 +19189,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.UpdateAvatarTrainingJobRequest,
     ) -> ice20201109_models.UpdateAvatarTrainingJobResponse:
+        """
+        @summary 更新数字人训练任务信息
+        
+        @param request: UpdateAvatarTrainingJobRequest
+        @return: UpdateAvatarTrainingJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_avatar_training_job_with_options_async(request, runtime)
 
@@ -14695,6 +19203,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateCategoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateCategoryResponse:
+        """
+        @summary 更新媒资分类
+        
+        @param request: UpdateCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCategoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cate_id):
@@ -14725,6 +19240,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateCategoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateCategoryResponse:
+        """
+        @summary 更新媒资分类
+        
+        @param request: UpdateCategoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCategoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cate_id):
@@ -14754,6 +19276,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.UpdateCategoryRequest,
     ) -> ice20201109_models.UpdateCategoryResponse:
+        """
+        @summary 更新媒资分类
+        
+        @param request: UpdateCategoryRequest
+        @return: UpdateCategoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_category_with_options(request, runtime)
 
@@ -14761,6 +19289,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.UpdateCategoryRequest,
     ) -> ice20201109_models.UpdateCategoryResponse:
+        """
+        @summary 更新媒资分类
+        
+        @param request: UpdateCategoryRequest
+        @return: UpdateCategoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_category_with_options_async(request, runtime)
 
@@ -14769,6 +19303,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateCustomTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateCustomTemplateResponse:
+        """
+        @summary 更新媒体处理自定义模板
+        
+        @param request: UpdateCustomTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCustomTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -14801,6 +19342,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateCustomTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateCustomTemplateResponse:
+        """
+        @summary 更新媒体处理自定义模板
+        
+        @param request: UpdateCustomTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCustomTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -14832,6 +19380,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.UpdateCustomTemplateRequest,
     ) -> ice20201109_models.UpdateCustomTemplateResponse:
+        """
+        @summary 更新媒体处理自定义模板
+        
+        @param request: UpdateCustomTemplateRequest
+        @return: UpdateCustomTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_custom_template_with_options(request, runtime)
 
@@ -14839,6 +19393,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.UpdateCustomTemplateRequest,
     ) -> ice20201109_models.UpdateCustomTemplateResponse:
+        """
+        @summary 更新媒体处理自定义模板
+        
+        @param request: UpdateCustomTemplateRequest
+        @return: UpdateCustomTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_custom_template_with_options_async(request, runtime)
 
@@ -14847,6 +19407,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateCustomizedVoiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateCustomizedVoiceResponse:
+        """
+        @summary 更新用户的专属人声
+        
+        @param request: UpdateCustomizedVoiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCustomizedVoiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.demo_audio_media_id):
@@ -14877,6 +19444,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateCustomizedVoiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateCustomizedVoiceResponse:
+        """
+        @summary 更新用户的专属人声
+        
+        @param request: UpdateCustomizedVoiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCustomizedVoiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.demo_audio_media_id):
@@ -14906,6 +19480,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.UpdateCustomizedVoiceRequest,
     ) -> ice20201109_models.UpdateCustomizedVoiceResponse:
+        """
+        @summary 更新用户的专属人声
+        
+        @param request: UpdateCustomizedVoiceRequest
+        @return: UpdateCustomizedVoiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_customized_voice_with_options(request, runtime)
 
@@ -14913,6 +19493,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.UpdateCustomizedVoiceRequest,
     ) -> ice20201109_models.UpdateCustomizedVoiceResponse:
+        """
+        @summary 更新用户的专属人声
+        
+        @param request: UpdateCustomizedVoiceRequest
+        @return: UpdateCustomizedVoiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_customized_voice_with_options_async(request, runtime)
 
@@ -14921,6 +19507,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateEditingProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateEditingProjectResponse:
+        """
+        @summary 修改云剪辑工程
+        
+        @param request: UpdateEditingProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateEditingProjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.business_status):
@@ -14965,6 +19558,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateEditingProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateEditingProjectResponse:
+        """
+        @summary 修改云剪辑工程
+        
+        @param request: UpdateEditingProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateEditingProjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.business_status):
@@ -15008,6 +19608,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.UpdateEditingProjectRequest,
     ) -> ice20201109_models.UpdateEditingProjectResponse:
+        """
+        @summary 修改云剪辑工程
+        
+        @param request: UpdateEditingProjectRequest
+        @return: UpdateEditingProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_editing_project_with_options(request, runtime)
 
@@ -15015,6 +19621,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.UpdateEditingProjectRequest,
     ) -> ice20201109_models.UpdateEditingProjectResponse:
+        """
+        @summary 修改云剪辑工程
+        
+        @param request: UpdateEditingProjectRequest
+        @return: UpdateEditingProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_editing_project_with_options_async(request, runtime)
 
@@ -15023,6 +19635,13 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.UpdateLiveRecordTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateLiveRecordTemplateResponse:
+        """
+        @summary 修改直播录制模板
+        
+        @param tmp_req: UpdateLiveRecordTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLiveRecordTemplateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.UpdateLiveRecordTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15059,6 +19678,13 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.UpdateLiveRecordTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateLiveRecordTemplateResponse:
+        """
+        @summary 修改直播录制模板
+        
+        @param tmp_req: UpdateLiveRecordTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLiveRecordTemplateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.UpdateLiveRecordTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15094,6 +19720,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.UpdateLiveRecordTemplateRequest,
     ) -> ice20201109_models.UpdateLiveRecordTemplateResponse:
+        """
+        @summary 修改直播录制模板
+        
+        @param request: UpdateLiveRecordTemplateRequest
+        @return: UpdateLiveRecordTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_live_record_template_with_options(request, runtime)
 
@@ -15101,6 +19733,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.UpdateLiveRecordTemplateRequest,
     ) -> ice20201109_models.UpdateLiveRecordTemplateResponse:
+        """
+        @summary 修改直播录制模板
+        
+        @param request: UpdateLiveRecordTemplateRequest
+        @return: UpdateLiveRecordTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_live_record_template_with_options_async(request, runtime)
 
@@ -15109,6 +19747,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateLiveSnapshotTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateLiveSnapshotTemplateResponse:
+        """
+        @summary 更新直播截图模板
+        
+        @param request: UpdateLiveSnapshotTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLiveSnapshotTemplateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.overwrite_format):
@@ -15145,6 +19790,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateLiveSnapshotTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateLiveSnapshotTemplateResponse:
+        """
+        @summary 更新直播截图模板
+        
+        @param request: UpdateLiveSnapshotTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLiveSnapshotTemplateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.overwrite_format):
@@ -15180,6 +19832,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.UpdateLiveSnapshotTemplateRequest,
     ) -> ice20201109_models.UpdateLiveSnapshotTemplateResponse:
+        """
+        @summary 更新直播截图模板
+        
+        @param request: UpdateLiveSnapshotTemplateRequest
+        @return: UpdateLiveSnapshotTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_live_snapshot_template_with_options(request, runtime)
 
@@ -15187,6 +19845,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.UpdateLiveSnapshotTemplateRequest,
     ) -> ice20201109_models.UpdateLiveSnapshotTemplateResponse:
+        """
+        @summary 更新直播截图模板
+        
+        @param request: UpdateLiveSnapshotTemplateRequest
+        @return: UpdateLiveSnapshotTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_live_snapshot_template_with_options_async(request, runtime)
 
@@ -15195,6 +19859,13 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.UpdateLiveTranscodeJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateLiveTranscodeJobResponse:
+        """
+        @summary 更新转码任务配置
+        
+        @param tmp_req: UpdateLiveTranscodeJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLiveTranscodeJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.UpdateLiveTranscodeJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15239,6 +19910,13 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.UpdateLiveTranscodeJobRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateLiveTranscodeJobResponse:
+        """
+        @summary 更新转码任务配置
+        
+        @param tmp_req: UpdateLiveTranscodeJobRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLiveTranscodeJobResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.UpdateLiveTranscodeJobShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15282,6 +19960,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.UpdateLiveTranscodeJobRequest,
     ) -> ice20201109_models.UpdateLiveTranscodeJobResponse:
+        """
+        @summary 更新转码任务配置
+        
+        @param request: UpdateLiveTranscodeJobRequest
+        @return: UpdateLiveTranscodeJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_live_transcode_job_with_options(request, runtime)
 
@@ -15289,6 +19973,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.UpdateLiveTranscodeJobRequest,
     ) -> ice20201109_models.UpdateLiveTranscodeJobResponse:
+        """
+        @summary 更新转码任务配置
+        
+        @param request: UpdateLiveTranscodeJobRequest
+        @return: UpdateLiveTranscodeJobResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_live_transcode_job_with_options_async(request, runtime)
 
@@ -15297,6 +19987,13 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.UpdateLiveTranscodeTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateLiveTranscodeTemplateResponse:
+        """
+        @summary 更新转码模版
+        
+        @param tmp_req: UpdateLiveTranscodeTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLiveTranscodeTemplateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.UpdateLiveTranscodeTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15333,6 +20030,13 @@ class Client(OpenApiClient):
         tmp_req: ice20201109_models.UpdateLiveTranscodeTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateLiveTranscodeTemplateResponse:
+        """
+        @summary 更新转码模版
+        
+        @param tmp_req: UpdateLiveTranscodeTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLiveTranscodeTemplateResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ice20201109_models.UpdateLiveTranscodeTemplateShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15368,6 +20072,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.UpdateLiveTranscodeTemplateRequest,
     ) -> ice20201109_models.UpdateLiveTranscodeTemplateResponse:
+        """
+        @summary 更新转码模版
+        
+        @param request: UpdateLiveTranscodeTemplateRequest
+        @return: UpdateLiveTranscodeTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_live_transcode_template_with_options(request, runtime)
 
@@ -15375,6 +20085,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.UpdateLiveTranscodeTemplateRequest,
     ) -> ice20201109_models.UpdateLiveTranscodeTemplateResponse:
+        """
+        @summary 更新转码模版
+        
+        @param request: UpdateLiveTranscodeTemplateRequest
+        @return: UpdateLiveTranscodeTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_live_transcode_template_with_options_async(request, runtime)
 
@@ -15383,6 +20099,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateMediaInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateMediaInfoResponse:
+        """
+        @summary UpdateMediaInfo
+        
+        @param request: UpdateMediaInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMediaInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.append_tags):
@@ -15433,6 +20156,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateMediaInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateMediaInfoResponse:
+        """
+        @summary UpdateMediaInfo
+        
+        @param request: UpdateMediaInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMediaInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.append_tags):
@@ -15482,6 +20212,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.UpdateMediaInfoRequest,
     ) -> ice20201109_models.UpdateMediaInfoResponse:
+        """
+        @summary UpdateMediaInfo
+        
+        @param request: UpdateMediaInfoRequest
+        @return: UpdateMediaInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_media_info_with_options(request, runtime)
 
@@ -15489,6 +20225,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.UpdateMediaInfoRequest,
     ) -> ice20201109_models.UpdateMediaInfoResponse:
+        """
+        @summary UpdateMediaInfo
+        
+        @param request: UpdateMediaInfoRequest
+        @return: UpdateMediaInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_media_info_with_options_async(request, runtime)
 
@@ -15497,6 +20239,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateMediaMarksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateMediaMarksResponse:
+        """
+        @summary 为媒资修改标注信息
+        
+        @param request: UpdateMediaMarksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMediaMarksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.media_id):
@@ -15527,6 +20276,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateMediaMarksRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateMediaMarksResponse:
+        """
+        @summary 为媒资修改标注信息
+        
+        @param request: UpdateMediaMarksRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMediaMarksResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.media_id):
@@ -15556,6 +20312,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.UpdateMediaMarksRequest,
     ) -> ice20201109_models.UpdateMediaMarksResponse:
+        """
+        @summary 为媒资修改标注信息
+        
+        @param request: UpdateMediaMarksRequest
+        @return: UpdateMediaMarksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_media_marks_with_options(request, runtime)
 
@@ -15563,6 +20325,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.UpdateMediaMarksRequest,
     ) -> ice20201109_models.UpdateMediaMarksResponse:
+        """
+        @summary 为媒资修改标注信息
+        
+        @param request: UpdateMediaMarksRequest
+        @return: UpdateMediaMarksResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_media_marks_with_options_async(request, runtime)
 
@@ -15571,6 +20339,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateMediaToSearchLibRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateMediaToSearchLibResponse:
+        """
+        @summary 更新媒资到搜索
+        
+        @param request: UpdateMediaToSearchLibRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMediaToSearchLibResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.media_id):
@@ -15603,6 +20378,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateMediaToSearchLibRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateMediaToSearchLibResponse:
+        """
+        @summary 更新媒资到搜索
+        
+        @param request: UpdateMediaToSearchLibRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMediaToSearchLibResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.media_id):
@@ -15634,6 +20416,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.UpdateMediaToSearchLibRequest,
     ) -> ice20201109_models.UpdateMediaToSearchLibResponse:
+        """
+        @summary 更新媒资到搜索
+        
+        @param request: UpdateMediaToSearchLibRequest
+        @return: UpdateMediaToSearchLibResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_media_to_search_lib_with_options(request, runtime)
 
@@ -15641,6 +20429,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.UpdateMediaToSearchLibRequest,
     ) -> ice20201109_models.UpdateMediaToSearchLibResponse:
+        """
+        @summary 更新媒资到搜索
+        
+        @param request: UpdateMediaToSearchLibRequest
+        @return: UpdateMediaToSearchLibResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_media_to_search_lib_with_options_async(request, runtime)
 
@@ -15649,6 +20443,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdatePipelineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdatePipelineResponse:
+        """
+        @summary 更新管道配置
+        
+        @param request: UpdatePipelineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePipelineResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -15683,6 +20484,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdatePipelineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdatePipelineResponse:
+        """
+        @summary 更新管道配置
+        
+        @param request: UpdatePipelineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePipelineResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -15716,6 +20524,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.UpdatePipelineRequest,
     ) -> ice20201109_models.UpdatePipelineResponse:
+        """
+        @summary 更新管道配置
+        
+        @param request: UpdatePipelineRequest
+        @return: UpdatePipelineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_pipeline_with_options(request, runtime)
 
@@ -15723,6 +20537,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.UpdatePipelineRequest,
     ) -> ice20201109_models.UpdatePipelineResponse:
+        """
+        @summary 更新管道配置
+        
+        @param request: UpdatePipelineRequest
+        @return: UpdatePipelineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_pipeline_with_options_async(request, runtime)
 
@@ -15731,6 +20551,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateTemplateResponse:
+        """
+        @summary UpdateTemplate
+        
+        @param request: UpdateTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cover_url):
@@ -15775,6 +20602,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.UpdateTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UpdateTemplateResponse:
+        """
+        @summary UpdateTemplate
+        
+        @param request: UpdateTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cover_url):
@@ -15818,6 +20652,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.UpdateTemplateRequest,
     ) -> ice20201109_models.UpdateTemplateResponse:
+        """
+        @summary UpdateTemplate
+        
+        @param request: UpdateTemplateRequest
+        @return: UpdateTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_template_with_options(request, runtime)
 
@@ -15825,6 +20665,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.UpdateTemplateRequest,
     ) -> ice20201109_models.UpdateTemplateResponse:
+        """
+        @summary UpdateTemplate
+        
+        @param request: UpdateTemplateRequest
+        @return: UpdateTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_template_with_options_async(request, runtime)
 
@@ -15833,6 +20679,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.UploadMediaByURLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UploadMediaByURLResponse:
+        """
+        @summary URL拉取上传
+        
+        @param request: UploadMediaByURLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadMediaByURLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -15873,6 +20726,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.UploadMediaByURLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UploadMediaByURLResponse:
+        """
+        @summary URL拉取上传
+        
+        @param request: UploadMediaByURLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadMediaByURLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_id):
@@ -15912,6 +20772,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.UploadMediaByURLRequest,
     ) -> ice20201109_models.UploadMediaByURLResponse:
+        """
+        @summary URL拉取上传
+        
+        @param request: UploadMediaByURLRequest
+        @return: UploadMediaByURLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.upload_media_by_urlwith_options(request, runtime)
 
@@ -15919,6 +20785,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.UploadMediaByURLRequest,
     ) -> ice20201109_models.UploadMediaByURLResponse:
+        """
+        @summary URL拉取上传
+        
+        @param request: UploadMediaByURLRequest
+        @return: UploadMediaByURLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.upload_media_by_urlwith_options_async(request, runtime)
 
@@ -15927,6 +20799,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.UploadStreamByURLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UploadStreamByURLResponse:
+        """
+        @summary URL拉取上传媒体流
+        
+        @param request: UploadStreamByURLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadStreamByURLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.definition):
@@ -15965,6 +20844,13 @@ class Client(OpenApiClient):
         request: ice20201109_models.UploadStreamByURLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ice20201109_models.UploadStreamByURLResponse:
+        """
+        @summary URL拉取上传媒体流
+        
+        @param request: UploadStreamByURLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UploadStreamByURLResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.definition):
@@ -16002,6 +20888,12 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.UploadStreamByURLRequest,
     ) -> ice20201109_models.UploadStreamByURLResponse:
+        """
+        @summary URL拉取上传媒体流
+        
+        @param request: UploadStreamByURLRequest
+        @return: UploadStreamByURLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.upload_stream_by_urlwith_options(request, runtime)
 
@@ -16009,5 +20901,11 @@ class Client(OpenApiClient):
         self,
         request: ice20201109_models.UploadStreamByURLRequest,
     ) -> ice20201109_models.UploadStreamByURLResponse:
+        """
+        @summary URL拉取上传媒体流
+        
+        @param request: UploadStreamByURLRequest
+        @return: UploadStreamByURLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.upload_stream_by_urlwith_options_async(request, runtime)
