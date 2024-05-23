@@ -14,6 +14,8 @@ class ActivateMigrationTargetInstanceRequest(TeaModel):
         switch_time_mode: str = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
         # Specifies whether to forcefully perform a switchover. Set the value to 1. The value 1 specifies a forceful switchover.
         self.force_switch = force_switch
@@ -214,10 +216,14 @@ class AddTagsToResourceRequest(TeaModel):
         # The instance ID.
         # 
         # >  You can enter up to 30 instance IDs in a single request. If you enter more than one instance ID, you must separate the instance IDs with commas (,).
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -383,13 +389,17 @@ class AllocateInstancePublicConnectionRequest(TeaModel):
     ):
         # The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
         # 
-        # > This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](~~428613~~).
+        # > This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://help.aliyun.com/document_detail/428613.html).
         self.babelfish_port = babelfish_port
         # The prefix of the public endpoint. A valid public endpoint is in the following format: `Prefix.Database engine.rds.aliyuncs.com`. Example: `test1234.mysql.rds.aliyuncs.com`.
         # 
-        # > The value can be 5 to 40 characters in length and can contain letters, digits, and hyphens (-). The value cannot contain any of the following characters: ~ ! # % ^ & \* = + | {} ; : \" " , <> / ?
+        # > The value can be 5 to 40 characters in length and can contain letters, digits, and hyphens (-). The value cannot contain any of the following characters: ~ ! # % ^ & \\* = + | {} ; : \\" " , <> / ?
+        # 
+        # This parameter is required.
         self.connection_string_prefix = connection_string_prefix
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the dedicated cluster to which the instance belongs. This parameter is available only when the instance is created in an ApsaraDB MyBase cluster that runs MySQL on Standard Edition.
         self.general_group_name = general_group_name
@@ -400,6 +410,8 @@ class AllocateInstancePublicConnectionRequest(TeaModel):
         # > This parameter is available only for instances that run PostgreSQL.
         self.pgbouncer_port = pgbouncer_port
         # The public port of the instance. Valid values: **1000 to 5999**.
+        # 
+        # This parameter is required.
         self.port = port
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -563,6 +575,8 @@ class AllocateReadWriteSplittingConnectionRequest(TeaModel):
         # >  The default prefix consists of the name of the primary instance followed by the letters rw.
         self.connection_string_prefix = connection_string_prefix
         # The primary instance ID. You can call the DescribeDBInstances operation to query the primary instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The method that is used to assign read weights. Valid values:
         # 
@@ -738,13 +752,18 @@ class AttachWhitelistTemplateToInstanceRequest(TeaModel):
         template_id: int = None,
     ):
         # The name of the instance.
+        # 
+        # This parameter is required.
         self.ins_name = ins_name
+        # The region ID.
         self.region_id = region_id
         # The ID of the resource group. For more information about resource groups, see Resource groups.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the whitelist template. You can call the DescribeAllWhitelistTemplate operation to obtain the ID of the whitelist template.
+        # 
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -944,6 +963,8 @@ class CalculateDBInstanceWeightRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The primary instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.resource_owner_id = resource_owner_id
 
@@ -1148,10 +1169,14 @@ class CancelImportRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The migration task ID.
         # 
         # >  This parameter is returned when the migration task is started. For more information, see ImportDatabaseBetweenInstances.
+        # 
+        # This parameter is required.
         self.import_id = import_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -1289,7 +1314,7 @@ class CheckAccountNameAvailableRequest(TeaModel):
         # 
         # *   The value must start with a lowercase letter, and end with a lowercase letter or a digit.
         # 
-        # *   The value can contain lowercase letters, digits, and underscores (\_).
+        # *   The value can contain lowercase letters, digits, and underscores (_).
         # 
         # *   The length of the value must meet the following requirements:
         # 
@@ -1300,11 +1325,15 @@ class CheckAccountNameAvailableRequest(TeaModel):
         #     *   If the instance runs PostgreSQL with local disks, the value must be 2 to 16 characters in length.
         #     *   If the instance runs MariaDB, the value must be 2 to 16 characters in length.
         # 
-        # *   For more information about invalid characters, see [Forbidden keywords table](~~26317~~).
+        # *   For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/document_detail/26317.html).
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -1512,7 +1541,7 @@ class CheckCloudResourceAuthorizedResponseBody(TeaModel):
         self.authorization_state = authorization_state
         # The request ID.
         self.request_id = request_id
-        # The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](~~93689~~).
+        # The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://help.aliyun.com/document_detail/93689.html).
         self.role_arn = role_arn
 
     def validate(self):
@@ -1606,24 +1635,34 @@ class CheckCreateDdrDBInstanceRequest(TeaModel):
         # 
         # >  This parameter must be specified when the **RestoreType** parameter is set to **0**.
         self.backup_set_id = backup_set_id
-        # The instance type of the destination instance. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~).
+        # The instance type of the destination instance. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
+        # 
+        # This parameter is required.
         self.dbinstance_class = dbinstance_class
-        # The storage capacity of the destination instance. Valid values: **5 to 2000**. Unit: GB. You can increase the storage capacity in increments of 5 GB. For more information, see [Primary instance types](~~26312~~).
+        # The storage capacity of the destination instance. Valid values: **5 to 2000**. Unit: GB. You can increase the storage capacity in increments of 5 GB. For more information, see [Primary instance types](https://help.aliyun.com/document_detail/26312.html).
+        # 
+        # This parameter is required.
         self.dbinstance_storage = dbinstance_storage
         # The database engine of the destination instance. Valid values:
         # 
         # *   **MySQL**\
         # *   **SQLServer**\
         # *   **PostgreSQL**\
+        # 
+        # This parameter is required.
         self.engine = engine
         # The major engine version of the destination instance. The value of this parameter varies based on the value of **Engine**.
         # 
         # *   Valid values when Engine is set to MySQL: **5.5, 5.6, 5.7, and 8.0**\
-        # *   Valid values when Engine is set to SQLServer: **2008r2, 08r2\_ent_ha, 2012, 2012\_ent_ha, 2012\_std_ha, 2012\_web, 2014\_std_ha, 2016\_ent_ha, 2016\_std_ha, 2016\_web, 2017\_std_ha, 2017\_ent, 2019\_std_ha, and 2019\_ent**\
+        # *   Valid values when Engine is set to SQLServer: **2008r2, 08r2_ent_ha, 2012, 2012_ent_ha, 2012_std_ha, 2012_web, 2014_std_ha, 2016_ent_ha, 2016_std_ha, 2016_web, 2017_std_ha, 2017_ent, 2019_std_ha, and 2019_ent**\
         # *   PostgreSQL: **10.0, 11.0, 12.0, 13.0, 14.0, and 15.0**\
+        # 
+        # This parameter is required.
         self.engine_version = engine_version
         self.owner_id = owner_id
         # The region ID of the destination instance. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID. You can call the DescribeDBInstanceAttribute to query the resource group ID.
         self.resource_group_id = resource_group_id
@@ -1639,6 +1678,8 @@ class CheckCreateDdrDBInstanceRequest(TeaModel):
         # *   **1**: restores data to a point in time. If you set this parameter to 1, you must also specify the **RestoreTime**, **SourceRegion**, and **SourceDBInstanceName** parameters.
         # 
         # Default value: **0**.
+        # 
+        # This parameter is required.
         self.restore_type = restore_type
         # The ID of the source instance if you want to restore data to a point in time.
         # 
@@ -1814,8 +1855,12 @@ class CheckDBNameAvailableRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The database name that you want to check.
+        # 
+        # This parameter is required.
         self.dbname = dbname
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -1945,7 +1990,7 @@ class CheckInstanceExistRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the instance.
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -1989,11 +2034,7 @@ class CheckInstanceExistResponseBody(TeaModel):
         is_exist_instance: bool = None,
         request_id: str = None,
     ):
-        # Indicates whether the instance exists. Valid values:
-        # - **true**: The instance exists.
-        # - **false**: The instance does not exist.
         self.is_exist_instance = is_exist_instance
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -2074,7 +2115,9 @@ class CheckServiceLinkedRoleRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID.
         # 
-        # >  You can specify any region for this parameter, which does not affect your query results. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
+        # >  You can specify any region for this parameter, which does not affect your query results. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -2082,7 +2125,9 @@ class CheckServiceLinkedRoleRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # The SLR name.
         # 
-        # >  For more information about the SLRs supported by ApsaraDB RDS, see [Service-linked roles](~~342840~~).
+        # >  For more information about the SLRs supported by ApsaraDB RDS, see [Service-linked roles](https://help.aliyun.com/document_detail/342840.html).
+        # 
+        # This parameter is required.
         self.service_linked_role = service_linked_role
 
     def validate(self):
@@ -2211,10 +2256,11 @@ class CloneDBInstanceRequestServerlessConfig(TeaModel):
     ):
         # Specifies whether to enable the automatic start and stop feature for the serverless ApsaraDB RDS for MySQL instance. After the automatic start and stop feature is enabled, if no connections to the instance are established within 10 minutes, the instance is suspended. After a connection is established to the instance, the instance is automatically resumed. Valid values:
         # 
-        # *   **true**: enables the feature.
-        # *   **false** (default): disables the feature.
+        # *   **true**\
+        # *   **false** (default)
         # 
-        # > This parameter is supported only for serverless ApsaraDB RDS for MySQL instances.
+        # > *   This parameter is supported only for serverless ApsaraDB RDS for MySQL instances.
+        # > *   This parameter is available only on the China site (aliyun.com).
         self.auto_pause = auto_pause
         # The maximum number of RDS Capacity Units (RCUs). Valid values:
         # 
@@ -2222,7 +2268,11 @@ class CloneDBInstanceRequestServerlessConfig(TeaModel):
         # *   Serverless ApsaraDB RDS for SQL Server instances: **2 to 8**\
         # *   Serverless ApsaraDB RDS for PostgreSQL instances: **1 to 12**\
         # 
-        # > The value of this parameter must be greater than or equal to the value of **MinCapacity** and can be specified only to an **integer**.
+        # > 
+        # 
+        # *   The value of this parameter must be greater than or equal to the value of **MinCapacity** and can be specified only to an **integer**.
+        # 
+        # *   This parameter is available only on the China site (aliyun.com).
         self.max_capacity = max_capacity
         # The minimum number of RCUs. Valid values:
         # 
@@ -2230,14 +2280,22 @@ class CloneDBInstanceRequestServerlessConfig(TeaModel):
         # *   Serverless ApsaraDB RDS for SQL Server instances: **2 to 8**. Only integers are supported.
         # *   Serverless ApsaraDB RDS for PostgreSQL instances: **0.5 to 12**.
         # 
-        # > The value of this parameter must be less than or equal to the value of **MaxCapacity**.
+        # > 
+        # 
+        # *   The value of this parameter must be less than or equal to the value of **MaxCapacity**.
+        # 
+        # *   This parameter is available only on the China site (aliyun.com).
         self.min_capacity = min_capacity
         # Specifies whether to enable the forced scaling feature for the serverless ApsaraDB RDS for MySQL instance. In most cases, ApsaraDB RDS automatically scales in or out the RCUs of a serverless instance based on business requirements in real time. In rare cases, the scaling does not take effect in real time. You can enable the forced scaling feature to forcefully scales in or out the RCUs of the instance. Valid values:
         # 
-        # *   **true**: enables the feature.
-        # *   **false** (default): disables the feature.
+        # *   **true**\
+        # *   **false** (default)
         # 
-        # > This parameter is supported only for serverless ApsaraDB RDS for MySQL instances.
+        # > 
+        # 
+        # *   This parameter is supported only for serverless ApsaraDB RDS for MySQL instances.
+        # 
+        # *   This parameter is available only on the China site (aliyun.com).
         self.switch_force = switch_force
 
     def validate(self):
@@ -2344,13 +2402,15 @@ class CloneDBInstanceRequest(TeaModel):
         # 
         # >  You do not need to configure this parameter. The value of this parameter is the same as that of the original instance.
         self.category = category
-        # The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](~~26312~~).
+        # The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
         # 
         # > By default, the new instance uses the same instance type as the original primary instance.
         self.dbinstance_class = dbinstance_class
         # The instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The storage capacity of the new instance. Unit: GB. You can increase the storage capacity in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~).
+        # The storage capacity of the new instance. Unit: GB. You can increase the storage capacity in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
         # 
         # > By default, the new instance has the same storage capacity as the original primary instance.
         self.dbinstance_storage = dbinstance_storage
@@ -2386,7 +2446,9 @@ class CloneDBInstanceRequest(TeaModel):
         # 
         # *   **Postpaid**: pay-as-you-go.
         # *   **Prepaid**: subscription.
-        # *   **Serverless**: serverless. This value is not supported for instances that run MariaDB. For more information, see [Overview of serverless ApsaraDB RDS for MySQL instances](~~411291~~), [Overview of serverless ApsaraDB RDS for SQL Server instances](~~604344~~), and [Overview of serverless ApsaraDB RDS for PostgreSQL instances](~~607742~~).
+        # *   **Serverless**: serverless. This value is not supported for instances that run MariaDB. For more information, see [Overview of serverless ApsaraDB RDS for MySQL instances](https://help.aliyun.com/document_detail/411291.html), [Overview of serverless ApsaraDB RDS for SQL Server instances](https://help.aliyun.com/document_detail/604344.html), and [Overview of serverless ApsaraDB RDS for PostgreSQL instances](https://help.aliyun.com/document_detail/607742.html).
+        # 
+        # This parameter is required.
         self.pay_type = pay_type
         # The unit that is used to calculate the billing cycle of the new instance. Valid values:
         # 
@@ -2406,7 +2468,9 @@ class CloneDBInstanceRequest(TeaModel):
         # 
         # > You must specify at least one of the **BackupId** and **RestoreTime** parameters.
         self.restore_time = restore_time
-        # The configuration of the serverless instance. You must specify this parameter only when you restore data to a new serverless instance.
+        # The specifications for the serverless instance. You must specify this parameter only when you restore data to a new serverless instance.
+        # 
+        # >  This parameter is available only on the China site (aliyun.com).
         self.serverless_config = serverless_config
         # The information about the database and table that you want to restore. The value is in the following format: `[{"type":"db","name":"Name of Database 1","newname":"New name of Database 1","tables":[{"type":"table","name":"Name of Table 1 in Database 1","newname":"New name of Table 1"},{"type":"table","name":"Name of Table 2 in Database 1","newname":"New name of Table 2"}]},{"type":"db","name":"Name of Database 2","newname":"New name of Database 2","tables":[{"type":"table","name":"Name of Table 1 in Database 2","newname":"New name of Table 1"},{"type":"table","name":"Name of Table 2 in Database 2","newname":"New name of Table 2"}]}]`
         self.table_meta = table_meta
@@ -2645,13 +2709,15 @@ class CloneDBInstanceShrinkRequest(TeaModel):
         # 
         # >  You do not need to configure this parameter. The value of this parameter is the same as that of the original instance.
         self.category = category
-        # The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](~~26312~~).
+        # The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
         # 
         # > By default, the new instance uses the same instance type as the original primary instance.
         self.dbinstance_class = dbinstance_class
         # The instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The storage capacity of the new instance. Unit: GB. You can increase the storage capacity in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~).
+        # The storage capacity of the new instance. Unit: GB. You can increase the storage capacity in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
         # 
         # > By default, the new instance has the same storage capacity as the original primary instance.
         self.dbinstance_storage = dbinstance_storage
@@ -2687,7 +2753,9 @@ class CloneDBInstanceShrinkRequest(TeaModel):
         # 
         # *   **Postpaid**: pay-as-you-go.
         # *   **Prepaid**: subscription.
-        # *   **Serverless**: serverless. This value is not supported for instances that run MariaDB. For more information, see [Overview of serverless ApsaraDB RDS for MySQL instances](~~411291~~), [Overview of serverless ApsaraDB RDS for SQL Server instances](~~604344~~), and [Overview of serverless ApsaraDB RDS for PostgreSQL instances](~~607742~~).
+        # *   **Serverless**: serverless. This value is not supported for instances that run MariaDB. For more information, see [Overview of serverless ApsaraDB RDS for MySQL instances](https://help.aliyun.com/document_detail/411291.html), [Overview of serverless ApsaraDB RDS for SQL Server instances](https://help.aliyun.com/document_detail/604344.html), and [Overview of serverless ApsaraDB RDS for PostgreSQL instances](https://help.aliyun.com/document_detail/607742.html).
+        # 
+        # This parameter is required.
         self.pay_type = pay_type
         # The unit that is used to calculate the billing cycle of the new instance. Valid values:
         # 
@@ -2707,7 +2775,9 @@ class CloneDBInstanceShrinkRequest(TeaModel):
         # 
         # > You must specify at least one of the **BackupId** and **RestoreTime** parameters.
         self.restore_time = restore_time
-        # The configuration of the serverless instance. You must specify this parameter only when you restore data to a new serverless instance.
+        # The specifications for the serverless instance. You must specify this parameter only when you restore data to a new serverless instance.
+        # 
+        # >  This parameter is available only on the China site (aliyun.com).
         self.serverless_config_shrink = serverless_config_shrink
         # The information about the database and table that you want to restore. The value is in the following format: `[{"type":"db","name":"Name of Database 1","newname":"New name of Database 1","tables":[{"type":"table","name":"Name of Table 1 in Database 1","newname":"New name of Table 1"},{"type":"table","name":"Name of Table 2 in Database 1","newname":"New name of Table 2"}]},{"type":"db","name":"Name of Database 2","newname":"New name of Database 2","tables":[{"type":"table","name":"Name of Table 1 in Database 2","newname":"New name of Table 1"},{"type":"table","name":"Name of Table 2 in Database 2","newname":"New name of Table 2"}]}]`
         self.table_meta = table_meta
@@ -2972,16 +3042,24 @@ class CloneParameterGroupRequest(TeaModel):
         # The description of the parameter template in the destination region.
         self.parameter_group_desc = parameter_group_desc
         # The ID of the parameter template. You can call the DescribeParameterGroups operation to query the parameter template ID.
+        # 
+        # This parameter is required.
         self.parameter_group_id = parameter_group_id
         # The name of the parameter template in the destination region.
+        # 
+        # This parameter is required.
         self.parameter_group_name = parameter_group_name
         # The ID of the source region to which the parameter template belongs. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group. You can leave this parameter empty.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the destination region. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.target_region_id = target_region_id
 
     def validate(self):
@@ -3112,8 +3190,12 @@ class ConfirmNotifyRequest(TeaModel):
         notify_id_list: List[int] = None,
     ):
         # The ID of the Alibaba Cloud account that is used to confirm the notification. You can set this parameter to **0**, which indicates that the notification is confirmed by the system.
+        # 
+        # This parameter is required.
         self.confirmor = confirmor
         # The notification IDs.
+        # 
+        # This parameter is required.
         self.notify_id_list = notify_id_list
 
     def validate(self):
@@ -3147,8 +3229,12 @@ class ConfirmNotifyShrinkRequest(TeaModel):
         notify_id_list_shrink: str = None,
     ):
         # The ID of the Alibaba Cloud account that is used to confirm the notification. You can set this parameter to **0**, which indicates that the notification is confirmed by the system.
+        # 
+        # This parameter is required.
         self.confirmor = confirmor
         # The notification IDs.
+        # 
+        # This parameter is required.
         self.notify_id_list_shrink = notify_id_list_shrink
 
     def validate(self):
@@ -3395,13 +3481,17 @@ class CopyDatabaseBetweenInstancesRequest(TeaModel):
         sync_user_privilege: str = None,
         target_dbinstance_id: str = None,
     ):
-        # The ID of the backup set by which you want to restore databases of the source instance. When you replicate databases by backup set, you can call the DescribeBackups operation to obtain the ID of the backup set.
+        # The ID of the backup set based on which you want to restore databases of the source instance. When you replicate databases by backup set, you can call the DescribeBackups operation to obtain the ID of the backup set.
         # 
-        # > : You must specify one of the **BackupId** and **RestoreTime** parameters.
+        # >  You must specify one of the **BackupId** and **RestoreTime** parameters.
         self.backup_id = backup_id
         # The source instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The names of the databases that you want to copy. Format: `Source database name 1,Source database name 2`.
+        # 
+        # This parameter is required.
         self.db_names = db_names
         self.resource_owner_id = resource_owner_id
         # The point in time when the system replicates databases. You can select a point in time within the backup retention period. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
@@ -3416,6 +3506,8 @@ class CopyDatabaseBetweenInstancesRequest(TeaModel):
         # Default value: **NO**.
         self.sync_user_privilege = sync_user_privilege
         # The destination instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.target_dbinstance_id = target_dbinstance_id
 
     def validate(self):
@@ -3544,7 +3636,7 @@ class CreateAccountRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (\_), and hyphens (-), and must start with a letter.
+        # The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
         # 
         # > : The name cannot start with http:// or https://.
         self.account_description = account_description
@@ -3553,7 +3645,7 @@ class CreateAccountRequest(TeaModel):
         # 
         # *   The name must be unique.
         # 
-        # *   The name can contain lowercase letters, digits, and underscores (\_). For MySQL databases, the name can contain uppercase letters.
+        # *   The name can contain lowercase letters, digits, and underscores (_). For MySQL databases, the name can contain uppercase letters.
         # 
         # *   The name must start with a letter and end with a letter or digit.
         # 
@@ -3568,7 +3660,9 @@ class CreateAccountRequest(TeaModel):
         #     *   If the instance runs PostgreSQL with local disks, the value must be 2 to 16 characters in length.
         #     *   If the instance runs MariaDB, the value must be 2 to 16 characters in length.
         # 
-        # *   For more information about invalid characters, see [Forbidden keywords](~~26317~~).
+        # *   For more information about invalid characters, see [Forbidden keywords](https://help.aliyun.com/document_detail/26317.html).
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The password of the account.
         #  
@@ -3578,6 +3672,8 @@ class CreateAccountRequest(TeaModel):
         # *   The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
         # 
         # *   Special characters include `! @ # $ % ^ & * ( ) _ + - =`
+        # 
+        # This parameter is required.
         self.account_password = account_password
         # The account type. Valid values:
         # 
@@ -3585,9 +3681,11 @@ class CreateAccountRequest(TeaModel):
         # *   **Super**: privileged account.
         # *   **Sysadmin**: system admin account. The account type is available only for ApsaraDB RDS for SQL Server instances.
         # 
-        # Before you create a system admin account, check whether the RDS instance meets all prerequisites. For more information, see [Create a system admin account](~~170736~~).
+        # Before you create a system admin account, check whether the RDS instance meets all prerequisites. For more information, see [Create a system admin account](https://help.aliyun.com/document_detail/170736.html).
         self.account_type = account_type
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -3736,7 +3834,7 @@ class CreateBackupRequest(TeaModel):
         # 
         # > *   You can perform a logical backup only when databases are created on the instance.
         # > *   When you perform a snapshot backup on an ApsaraDB RDS for MariaDB instance, you must set this parameter to **Physical**.
-        # > *   For more information about the supported backup types, see [Use the data backup feature](~~98818~~).
+        # > *   For more information about the supported backup types, see [Use the data backup feature](https://help.aliyun.com/document_detail/98818.html).
         # > *   When you perform a snapshot backup on an ApsaraDB RDS for SQL Server instance that uses cloud disks, you must set this parameter to **Snapshot**.
         self.backup_method = backup_method
         # The backup policy. Valid values:
@@ -3757,6 +3855,8 @@ class CreateBackupRequest(TeaModel):
         # > *   This parameter is valid only when you set the **BackupMethod** parameter to **Physical**.
         self.backup_type = backup_type
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The names of the databases whose data you want to back up. Separate the names of the databases with commas (,).
         # 
@@ -3899,23 +3999,35 @@ class CreateCloudMigrationPrecheckTaskRequest(TeaModel):
         task_name: str = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
         self.resource_owner_id = resource_owner_id
-        # The username of the account that is used to connect to the self-managed PostgreSQL instance. Enter the username of the account that you created in the [Create an account for cloud migration on a self-managed PostgreSQL instance](~~369500~~) topic.
+        # The username of the account that is used to connect to the self-managed PostgreSQL instance. Enter the username of the account that you created in the [Create an account for cloud migration on a self-managed PostgreSQL instance](https://help.aliyun.com/document_detail/369500.html) topic.
+        # 
+        # This parameter is required.
         self.source_account = source_account
         # The environment in which the self-managed PostgreSQL instance runs.
         # 
         # *   **idcOnVpc**: The self-managed PostgreSQL instance resides in a data center. The data center can communicate with the VPC to which the ApsaraDB RDS for PostgreSQL instance belongs.
         # *   **ecsOnVpc**: The self-managed PostgreSQL instance resides on an ECS instance.
+        # 
+        # This parameter is required.
         self.source_category = source_category
         # The private IP address that is used to connect to the self-managed PostgreSQL instance.
         # 
-        # *   If the self-managed PostgreSQL instance resides on an ECS instance, enter the private IP address of the ECS instance. For more information about how to obtain the private IP address of an ECS instance, see [View IP addresses](~~273914~~).
+        # *   If the self-managed PostgreSQL instance resides on an ECS instance, enter the private IP address of the ECS instance. For more information about how to obtain the private IP address of an ECS instance, see [View IP addresses](https://help.aliyun.com/document_detail/273914.html).
         # *   If the self-managed PostgreSQL instance resides in an on-premises data center, enter the private IP address of the on-premises data center.
+        # 
+        # This parameter is required.
         self.source_ip_address = source_ip_address
-        # The password of the account that is used to connect to the self-managed PostgreSQL instance. Enter the password of the account that you created in the [Create an account for cloud migration on a self-managed PostgreSQL instance](~~369500~~) topic.
+        # The password of the account that is used to connect to the self-managed PostgreSQL instance. Enter the password of the account that you created in the [Create an account for cloud migration on a self-managed PostgreSQL instance](https://help.aliyun.com/document_detail/369500.html) topic.
+        # 
+        # This parameter is required.
         self.source_password = source_password
         # The port that is used to connect to the self-managed PostgreSQL instance. You can run the `netstat -a | grep PGSQL` command to view the port.
+        # 
+        # This parameter is required.
         self.source_port = source_port
         # The name of the task. If you do not specify this parameter, ApsaraDB RDS automatically generates a name for the cloud migration task.
         self.task_name = task_name
@@ -4071,23 +4183,35 @@ class CreateCloudMigrationTaskRequest(TeaModel):
         task_name: str = None,
     ):
         # The ID of the destination instance. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
         self.resource_owner_id = resource_owner_id
-        # The username of the account that is used to connect to the self-managed PostgreSQL instance. Enter the username of the account that you created in the [Create an account for cloud migration on a self-managed PostgreSQL instance](~~369500~~) topic.
+        # The username of the account that is used to connect to the self-managed PostgreSQL instance. Enter the username of the account that you created in the [Create an account for cloud migration on a self-managed PostgreSQL instance](https://help.aliyun.com/document_detail/369500.html) topic.
+        # 
+        # This parameter is required.
         self.source_account = source_account
         # The environment in which the self-managed PostgreSQL instance runs.
         # 
         # *   **idcOnVpc**: The self-managed PostgreSQL instance resides in a data center. The data center can communicate with the VPC to which the ApsaraDB RDS for PostgreSQL instance belongs.
         # *   **ecsOnVpc**: The self-managed PostgreSQL instance resides on an ECS instance.
+        # 
+        # This parameter is required.
         self.source_category = source_category
         # The private or public IP address that is used to connect to the self-managed PostgreSQL instance.
         # 
-        # *   If the self-managed PostgreSQL instance resides on an Elastic Compute Service (ECS) instance, enter the private IP address of the ECS instance. For more information about how to obtain the private IP address of an ECS instance, see [View IP addresses](~~273914~~).
+        # *   If the self-managed PostgreSQL instance resides on an Elastic Compute Service (ECS) instance, enter the private IP address of the ECS instance. For more information about how to obtain the private IP address of an ECS instance, see [View IP addresses](https://help.aliyun.com/document_detail/273914.html).
         # *   If the self-managed PostgreSQL instance resides in a data center, enter the private IP address of the data center.
+        # 
+        # This parameter is required.
         self.source_ip_address = source_ip_address
-        # The password of the account that is used to connect to the self-managed PostgreSQL instance. Enter the password of the account that you created in the [Create an account for cloud migration on a self-managed PostgreSQL instance](~~369500~~) topic.
+        # The password of the account that is used to connect to the self-managed PostgreSQL instance. Enter the password of the account that you created in the [Create an account for cloud migration on a self-managed PostgreSQL instance](https://help.aliyun.com/document_detail/369500.html) topic.
+        # 
+        # This parameter is required.
         self.source_password = source_password
         # The port number that is used to connect to the self-managed PostgreSQL instance. You can run the `netstat -a | grep PGSQL` command to obtain the port number.
+        # 
+        # This parameter is required.
         self.source_port = source_port
         # The name of the task. If you do not specify this parameter, ApsaraDB RDS automatically generates a name for the cloud migration task.
         self.task_name = task_name
@@ -4437,10 +4561,10 @@ class CreateDBInstanceRequest(TeaModel):
         # 
         # *   **babelfishEnabled**: specifies whether to enable Babelfish for the instance. If you set this field to **true**, you enable Babelfish for the instance. If you leave this parameter empty, Babelfish is disabled for the instance.
         # *   **migrationMode**: The migration mode of the instance. Valid values: **single-db** and **multi-db**.
-        # *   **masterUsername**: The username of the administrator account. The username can contain lowercase letters, digits, and underscores (\_). It must start with a letter and end with a letter or digit. It can be up to 63 characters in length and cannot start with pg.
+        # *   **masterUsername**: The username of the administrator account. The username can contain lowercase letters, digits, and underscores (_). It must start with a letter and end with a letter or digit. It can be up to 63 characters in length and cannot start with pg.
         # *   **masterUserPassword**: The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters: `! @ # $ % ^ & * ( ) _ + - =`.
         # 
-        # > This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](~~428613~~).
+        # > This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://help.aliyun.com/document_detail/428613.html).
         self.babelfish_config = babelfish_config
         # A deprecated parameter. You do not need to specify this parameter.
         self.bpe_enabled = bpe_enabled
@@ -4468,7 +4592,7 @@ class CreateDBInstanceRequest(TeaModel):
         self.category = category
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # A reserved parameter. You do not need to specify this parameter.
+        # A reserved parameter.
         self.cold_data_enabled = cold_data_enabled
         # The connection mode of the instance. Valid values:
         # 
@@ -4486,7 +4610,7 @@ class CreateDBInstanceRequest(TeaModel):
         # *   **Atomicity** (default): atomicity. The instances are all created together. If one instance cannot be created, none of the instances are created.
         # *   **Partial**: non-atomicity. Each instance is independently created. The failure in creating an instance does not affect the creation of the other instances.
         self.create_strategy = create_strategy
-        # The instance type of the instance. You can specify a standard instance type or an economy instance type. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~).
+        # The instance type of the instance. You can specify a standard instance type or an economy instance type. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
         # 
         # To create a serverless instance, set this parameter to one of the following values:
         # 
@@ -4495,14 +4619,20 @@ class CreateDBInstanceRequest(TeaModel):
         # *   If you want to create a serverless instance that runs SQL Server, set this parameter to **mssql.mem2.serverless.s2**.
         # *   If you want to create a serverless instance that runs PostgreSQL on RDS Basic Edition, set this parameter to **pg.n2.serverless.1c**.
         # *   If you want to create a serverless instance that runs PostgreSQL on RDS High-availability Edition, set this parameter to **pg.n2.serverless.2c**.
+        # 
+        # This parameter is required.
         self.dbinstance_class = dbinstance_class
-        # The instance name. The name must be 2 to 255 characters in length and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+        # The instance name. The name must be 2 to 255 characters in length and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
         # 
         # > The name cannot start with http:// or https://.
         self.dbinstance_description = dbinstance_description
         # The network connection type of the instance. The value of this parameter is fixed as **Intranet**, indicating an internal network connection.
+        # 
+        # This parameter is required.
         self.dbinstance_net_type = dbinstance_net_type
-        # The storage capacity of the instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~).
+        # The storage capacity of the instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
+        # 
+        # This parameter is required.
         self.dbinstance_storage = dbinstance_storage
         # The storage type of the instance. Valid values:
         # 
@@ -4533,11 +4663,11 @@ class CreateDBInstanceRequest(TeaModel):
         # *   If you set **Engine** to **MySQL**:
         # 
         #     *   The time zone of the instance is in UTC. Valid values: **-12:59** to **+13:00**.
-        #     *   If the instance uses local SSDs, you can specify the name of the time zone. Example: Asia/Hong_Kong. For more information, see [Time zones](~~297356~~).
+        #     *   If the instance uses local SSDs, you can specify the name of the time zone. Example: Asia/Hong_Kong. For more information, see [Time zones](https://help.aliyun.com/document_detail/297356.html).
         # 
         # *   If you set **Engine** to **PostgreSQL**:
         # 
-        #     *   The time zone of the instance is not in UTC. For more information, see [Time zones](~~297356~~).
+        #     *   The time zone of the instance is not in UTC. For more information, see [Time zones](https://help.aliyun.com/document_detail/297356.html).
         #     *   You can specify this parameter only when the instance runs PostgreSQL with standard SSDs or ESSDs.
         # 
         # > *   You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance.
@@ -4562,9 +4692,14 @@ class CreateDBInstanceRequest(TeaModel):
         self.dry_run = dry_run
         # The ID of the key that was used to encrypt the disk in the region where the disk is deployed. If this parameter is specified, disk encryption is enabled and you must also specify the **RoleARN** parameter. Disk encryption cannot be disabled after it is enabled.
         # 
-        # You can obtain the ID of the key in the Key Management Service (KMS) console or create a key. For more information, see [Create a CMK](~~181610~~).
+        # You can obtain the ID of the key in the Key Management Service (KMS) console or create a key. For more information, see [Create a CMK](https://help.aliyun.com/document_detail/181610.html).
         # 
-        # >  This parameter is optional when you create an instance that runs MySQL, PostgreSQL, or SQL Server. You need to only specify the **RoleARN** parameter to create an instance that has cloud disk encryption enabled by using the obtained key ID.
+        # > *   This parameter is not required when you create an RDS instance that runs MySQL, PostgreSQL, or SQL Server. You need to only specify the **RoleARN** parameter to create an instance that has cloud disk encryption enabled by using the obtained key ID.
+        # > *   You can configure RAM authorization to require a RAM user to enable cloud disk encryption when the RAM user is used to create an instance. If cloud disk encryption is disabled during the instance creation, the creation operation fails. To complete the configuration, you can attach the following policy to the RAM user: `{"Version":"1","Statement":[{"Effect":"Deny","Action":"rds:CreateDBInstance","Resource":"*","Condition":{"StringEquals":{"rds:DiskEncryptionRequired":"false"}}}]}`
+        # 
+        # 
+        # 
+        # >Warning: The configuration also affects the CreateOrder operation that is called to create instances in the console.
         self.encryption_key = encryption_key
         # The database engine of the instance. Valid values:
         # 
@@ -4572,20 +4707,22 @@ class CreateDBInstanceRequest(TeaModel):
         # *   **SQLServer**\
         # *   **PostgreSQL**\
         # *   **MariaDB**\
+        # 
+        # This parameter is required.
         self.engine = engine
         # The database engine version of the instance. Valid values:
         # 
         # *   Regular instance
         # 
         #     *   Valid values when you set Engine to MySQL: **5.5**, **5.6**, **5.7**, and **8.0**\
-        #     *   Valid values when you set Engine to SQLServer: **08r2\_ent_ha** (cloud disks, discontinued), **2008r2** (local disks, discontinued), **2012** (SQL Server EE Basic), **2012\_ent_ha**, **2012\_std_ha**, **2012\_web**, **2014\_ent_ha**, **2014\_std_ha**, **2016\_ent_ha**, **2016\_std_ha**, **2016\_web**, **2017\_ent**, **2017\_std_ha**, **2017\_web**, **2019\_ent**, **2019\_std_ha**, **2019\_web**, **2022\_ent**, **2022\_std_ha**, and **2022\_web**\
+        #     *   Valid values when you set Engine to SQLServer: **08r2_ent_ha** (cloud disks, discontinued), **2008r2** (local disks, discontinued), **2012** (SQL Server EE Basic), **2012_ent_ha**, **2012_std_ha**, **2012_web**, **2014_ent_ha**, **2014_std_ha**, **2016_ent_ha**, **2016_std_ha**, **2016_web**, **2017_ent**, **2017_std_ha**, **2017_web**, **2019_ent**, **2019_std_ha**, **2019_web**, **2022_ent**, **2022_std_ha**, and **2022_web**\
         #     *   Valid values when you set Engine to PostgreSQL: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, **15.0**, and **16.0**\
-        #     *   Valid value if you set the Engine parameter to MariaDB: **10.3**\
+        #     *   Valid values when you set Engine to MariaDB: **10.3**\
         # 
         # *   Serverless instance
         # 
         #     *   Valid values when you set Engine to MySQL: **5.7** and **8.0**\
-        #     *   Valid values when you set Engine to SQLServer: **2016\_std_sl**, **2017\_std_sl**, and **2019\_std_sl**\
+        #     *   Valid values when you set Engine to SQLServer: **2016_std_sl**, **2017_std_sl**, and **2019_std_sl**\
         #     *   Valid values when you set Engine to PostgreSQL: **14.0**, **15.0**, and **16.0**\
         # 
         # > 
@@ -4596,7 +4733,9 @@ class CreateDBInstanceRequest(TeaModel):
         # 
         # *   RDS instances that run SQL Server 2014 are not available for purchase on the international site (alibabacloud.com).
         # 
-        # *   ApsaraDB RDS for PostgreSQL instances for which Babelfish is enabled support only PostgreSQL 13.0, PostgreSQL 14.0, and PostgreSQL 15.0.
+        # *   Babelfish is supported only for ApsaraDB RDS for PostgreSQL instances that run PostgreSQL 15.
+        # 
+        # This parameter is required.
         self.engine_version = engine_version
         # The network type of the instance. Valid values:
         # 
@@ -4613,9 +4752,11 @@ class CreateDBInstanceRequest(TeaModel):
         # 
         # *   **Postpaid**: pay-as-you-go.
         # *   **Prepaid**: subscription.
-        # *   **Serverless**: serverless. This value is not supported for instances that run MariaDB. For more information, see [Overview of serverless ApsaraDB RDS for MySQL instances](~~411291~~), [Overview of serverless ApsaraDB RDS for SQL Server instances](~~604344~~), and [Overview of serverless ApsaraDB RDS for PostgreSQL instances](~~607742~~).
+        # *   **Serverless**: serverless. This value is not supported for instances that run MariaDB. For more information, see [Overview of serverless ApsaraDB RDS for MySQL instances](https://help.aliyun.com/document_detail/411291.html), [Overview of serverless ApsaraDB RDS for SQL Server instances](https://help.aliyun.com/document_detail/604344.html), and [Overview of serverless ApsaraDB RDS for PostgreSQL instances](https://help.aliyun.com/document_detail/607742.html).
         # 
         # > The system automatically generates a purchase order and completes the payment.
+        # 
+        # This parameter is required.
         self.pay_type = pay_type
         # The unit of the subscription duration. Valid values:
         # 
@@ -4632,16 +4773,20 @@ class CreateDBInstanceRequest(TeaModel):
         # The private IP address of the instance. The private IP address must be within the CIDR block that is supported by the specified vSwitch. ApsaraDB RDS automatically assigns a private IP address to the instance based on the values of the **VPCId** and **vSwitchId** parameters.
         self.private_ip_address = private_ip_address
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_id = resource_owner_id
         # The Alibaba Cloud Resource Name (ARN) that is provided by your Alibaba Cloud account for RAM users. RAM users can use the ARN to connect ApsaraDB RDS to KMS. You can call the CheckCloudResourceAuthorized operation to query the ARN.
         self.role_arn = role_arn
-        # The IP address whitelist of the instance. For more information, see [Use a database client or the CLI to connect to an ApsaraDB RDS for MySQL instance](~~43185~~). If the IP address whitelist contains more than one entry, separate the entries with commas (,). Each entry must be unique. The IP address whitelist can contain up to 1,000 entries. The entries in the IP address whitelist must be in one of the following formats:
+        # The IP address whitelist of the instance. For more information, see [Use a database client or the CLI to connect to an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/43185.html). If the IP address whitelist contains more than one entry, separate the entries with commas (,). Each entry must be unique. The IP address whitelist can contain up to 1,000 entries. The entries in the IP address whitelist must be in one of the following formats:
         # 
         # *   IP addresses, such as 10.10.XX.XX.
         # *   CIDR blocks, such as 10.10.XX.XX/24. In this example, 24 indicates that the prefix of each IP address in the IP address whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
+        # 
+        # This parameter is required.
         self.security_iplist = security_iplist
         # The settings of the serverless instance. This parameter is required when you create a serverless instance.
         # 
@@ -4652,7 +4797,7 @@ class CreateDBInstanceRequest(TeaModel):
         # *   **Enable**\
         # *   **Disable** (default)
         # 
-        # >  After the instance is created, you can call the ModifyDasInstanceConfig operation to adjust the settings of automatic storage expansion for the instance. For more information, see [Configure automatic storage expansion](~~173826~~).
+        # >  After the instance is created, you can call the ModifyDasInstanceConfig operation to adjust the settings of automatic storage expansion for the instance. For more information, see [Configure automatic storage expansion](https://help.aliyun.com/document_detail/173826.html).
         self.storage_auto_scale = storage_auto_scale
         # The threshold in percentage based on which automatic storage expansion is triggered.
         # 
@@ -4702,12 +4847,12 @@ class CreateDBInstanceRequest(TeaModel):
         #     *   xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
         #     *   xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
         # 
-        #     > You can call the DescribeDBMiniEngineVersions operation to query the minor engine version. For more information about the differences between minor engine versions of AliSQL, see [Release notes](~~96060~~).
+        #     > You can call the DescribeDBMiniEngineVersions operation to query the minor engine version. For more information about the differences between minor engine versions of AliSQL, see [Release notes](https://help.aliyun.com/document_detail/96060.html).
         # 
         # *   If you create an instance that runs PostgreSQL, the value is in the following format: `rds_postgres_<Major engine version>00_<Minor engine version>`. Example: `rds_postgres_1400_20220830`.
         # 
         #     *   1400: The major engine version is PostgreSQL 14.
-        #     *   20220830: the AliPG version. You can call the DescribeDBMiniEngineVersions operation to query the AliPG version. For more information about minor engine versions, see [Release notes for AliPG](~~126002~~).
+        #     *   20220830: the AliPG version. You can call the DescribeDBMiniEngineVersions operation to query the AliPG version. For more information about minor engine versions, see [Release notes for AliPG](https://help.aliyun.com/document_detail/126002.html).
         # 
         #     > If you configure the **BabelfishConfig** parameter for your instance that runs PostgreSQL and set the babelfishEnabled field to true, the value of this parameter is in the following format: `rds_postgres_Major engine version00_AliPG version_babelfish`.
         self.target_minor_version = target_minor_version
@@ -4736,6 +4881,7 @@ class CreateDBInstanceRequest(TeaModel):
         # *   If you set **InstanceNetworkType** to **VPC**, you must also specify this parameter.
         # *   If you specify the ZoneSlaveId1 parameter, you must specify the IDs of two vSwitches for this parameter and separate the IDs with a comma (,).
         self.v_switch_id = v_switch_id
+        # The whitelists. If you enter more than one IP address or CIDR block, you must separate these IP addresses or CIDR blocks with commas (,). Do not add spaces preceding or following the commas. Example: `192.168.0.1,172.16.213.9`.
         self.whitelist_template_list = whitelist_template_list
         # The zone ID of the primary instance.
         # 
@@ -5139,10 +5285,10 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         # 
         # *   **babelfishEnabled**: specifies whether to enable Babelfish for the instance. If you set this field to **true**, you enable Babelfish for the instance. If you leave this parameter empty, Babelfish is disabled for the instance.
         # *   **migrationMode**: The migration mode of the instance. Valid values: **single-db** and **multi-db**.
-        # *   **masterUsername**: The username of the administrator account. The username can contain lowercase letters, digits, and underscores (\_). It must start with a letter and end with a letter or digit. It can be up to 63 characters in length and cannot start with pg.
+        # *   **masterUsername**: The username of the administrator account. The username can contain lowercase letters, digits, and underscores (_). It must start with a letter and end with a letter or digit. It can be up to 63 characters in length and cannot start with pg.
         # *   **masterUserPassword**: The password of the administrator account. The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. It must be 8 to 32 characters in length. The password can contain any of the following characters: `! @ # $ % ^ & * ( ) _ + - =`.
         # 
-        # > This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](~~428613~~).
+        # > This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://help.aliyun.com/document_detail/428613.html).
         self.babelfish_config = babelfish_config
         # A deprecated parameter. You do not need to specify this parameter.
         self.bpe_enabled = bpe_enabled
@@ -5170,7 +5316,7 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         self.category = category
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # A reserved parameter. You do not need to specify this parameter.
+        # A reserved parameter.
         self.cold_data_enabled = cold_data_enabled
         # The connection mode of the instance. Valid values:
         # 
@@ -5188,7 +5334,7 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         # *   **Atomicity** (default): atomicity. The instances are all created together. If one instance cannot be created, none of the instances are created.
         # *   **Partial**: non-atomicity. Each instance is independently created. The failure in creating an instance does not affect the creation of the other instances.
         self.create_strategy = create_strategy
-        # The instance type of the instance. You can specify a standard instance type or an economy instance type. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~).
+        # The instance type of the instance. You can specify a standard instance type or an economy instance type. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
         # 
         # To create a serverless instance, set this parameter to one of the following values:
         # 
@@ -5197,14 +5343,20 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         # *   If you want to create a serverless instance that runs SQL Server, set this parameter to **mssql.mem2.serverless.s2**.
         # *   If you want to create a serverless instance that runs PostgreSQL on RDS Basic Edition, set this parameter to **pg.n2.serverless.1c**.
         # *   If you want to create a serverless instance that runs PostgreSQL on RDS High-availability Edition, set this parameter to **pg.n2.serverless.2c**.
+        # 
+        # This parameter is required.
         self.dbinstance_class = dbinstance_class
-        # The instance name. The name must be 2 to 255 characters in length and can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+        # The instance name. The name must be 2 to 255 characters in length and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
         # 
         # > The name cannot start with http:// or https://.
         self.dbinstance_description = dbinstance_description
         # The network connection type of the instance. The value of this parameter is fixed as **Intranet**, indicating an internal network connection.
+        # 
+        # This parameter is required.
         self.dbinstance_net_type = dbinstance_net_type
-        # The storage capacity of the instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~).
+        # The storage capacity of the instance. Unit: GB. The storage capacity increases in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
+        # 
+        # This parameter is required.
         self.dbinstance_storage = dbinstance_storage
         # The storage type of the instance. Valid values:
         # 
@@ -5235,11 +5387,11 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         # *   If you set **Engine** to **MySQL**:
         # 
         #     *   The time zone of the instance is in UTC. Valid values: **-12:59** to **+13:00**.
-        #     *   If the instance uses local SSDs, you can specify the name of the time zone. Example: Asia/Hong_Kong. For more information, see [Time zones](~~297356~~).
+        #     *   If the instance uses local SSDs, you can specify the name of the time zone. Example: Asia/Hong_Kong. For more information, see [Time zones](https://help.aliyun.com/document_detail/297356.html).
         # 
         # *   If you set **Engine** to **PostgreSQL**:
         # 
-        #     *   The time zone of the instance is not in UTC. For more information, see [Time zones](~~297356~~).
+        #     *   The time zone of the instance is not in UTC. For more information, see [Time zones](https://help.aliyun.com/document_detail/297356.html).
         #     *   You can specify this parameter only when the instance runs PostgreSQL with standard SSDs or ESSDs.
         # 
         # > *   You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance.
@@ -5264,9 +5416,14 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         self.dry_run = dry_run
         # The ID of the key that was used to encrypt the disk in the region where the disk is deployed. If this parameter is specified, disk encryption is enabled and you must also specify the **RoleARN** parameter. Disk encryption cannot be disabled after it is enabled.
         # 
-        # You can obtain the ID of the key in the Key Management Service (KMS) console or create a key. For more information, see [Create a CMK](~~181610~~).
+        # You can obtain the ID of the key in the Key Management Service (KMS) console or create a key. For more information, see [Create a CMK](https://help.aliyun.com/document_detail/181610.html).
         # 
-        # >  This parameter is optional when you create an instance that runs MySQL, PostgreSQL, or SQL Server. You need to only specify the **RoleARN** parameter to create an instance that has cloud disk encryption enabled by using the obtained key ID.
+        # > *   This parameter is not required when you create an RDS instance that runs MySQL, PostgreSQL, or SQL Server. You need to only specify the **RoleARN** parameter to create an instance that has cloud disk encryption enabled by using the obtained key ID.
+        # > *   You can configure RAM authorization to require a RAM user to enable cloud disk encryption when the RAM user is used to create an instance. If cloud disk encryption is disabled during the instance creation, the creation operation fails. To complete the configuration, you can attach the following policy to the RAM user: `{"Version":"1","Statement":[{"Effect":"Deny","Action":"rds:CreateDBInstance","Resource":"*","Condition":{"StringEquals":{"rds:DiskEncryptionRequired":"false"}}}]}`
+        # 
+        # 
+        # 
+        # >Warning: The configuration also affects the CreateOrder operation that is called to create instances in the console.
         self.encryption_key = encryption_key
         # The database engine of the instance. Valid values:
         # 
@@ -5274,20 +5431,22 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         # *   **SQLServer**\
         # *   **PostgreSQL**\
         # *   **MariaDB**\
+        # 
+        # This parameter is required.
         self.engine = engine
         # The database engine version of the instance. Valid values:
         # 
         # *   Regular instance
         # 
         #     *   Valid values when you set Engine to MySQL: **5.5**, **5.6**, **5.7**, and **8.0**\
-        #     *   Valid values when you set Engine to SQLServer: **08r2\_ent_ha** (cloud disks, discontinued), **2008r2** (local disks, discontinued), **2012** (SQL Server EE Basic), **2012\_ent_ha**, **2012\_std_ha**, **2012\_web**, **2014\_ent_ha**, **2014\_std_ha**, **2016\_ent_ha**, **2016\_std_ha**, **2016\_web**, **2017\_ent**, **2017\_std_ha**, **2017\_web**, **2019\_ent**, **2019\_std_ha**, **2019\_web**, **2022\_ent**, **2022\_std_ha**, and **2022\_web**\
+        #     *   Valid values when you set Engine to SQLServer: **08r2_ent_ha** (cloud disks, discontinued), **2008r2** (local disks, discontinued), **2012** (SQL Server EE Basic), **2012_ent_ha**, **2012_std_ha**, **2012_web**, **2014_ent_ha**, **2014_std_ha**, **2016_ent_ha**, **2016_std_ha**, **2016_web**, **2017_ent**, **2017_std_ha**, **2017_web**, **2019_ent**, **2019_std_ha**, **2019_web**, **2022_ent**, **2022_std_ha**, and **2022_web**\
         #     *   Valid values when you set Engine to PostgreSQL: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, **15.0**, and **16.0**\
-        #     *   Valid value if you set the Engine parameter to MariaDB: **10.3**\
+        #     *   Valid values when you set Engine to MariaDB: **10.3**\
         # 
         # *   Serverless instance
         # 
         #     *   Valid values when you set Engine to MySQL: **5.7** and **8.0**\
-        #     *   Valid values when you set Engine to SQLServer: **2016\_std_sl**, **2017\_std_sl**, and **2019\_std_sl**\
+        #     *   Valid values when you set Engine to SQLServer: **2016_std_sl**, **2017_std_sl**, and **2019_std_sl**\
         #     *   Valid values when you set Engine to PostgreSQL: **14.0**, **15.0**, and **16.0**\
         # 
         # > 
@@ -5298,7 +5457,9 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         # 
         # *   RDS instances that run SQL Server 2014 are not available for purchase on the international site (alibabacloud.com).
         # 
-        # *   ApsaraDB RDS for PostgreSQL instances for which Babelfish is enabled support only PostgreSQL 13.0, PostgreSQL 14.0, and PostgreSQL 15.0.
+        # *   Babelfish is supported only for ApsaraDB RDS for PostgreSQL instances that run PostgreSQL 15.
+        # 
+        # This parameter is required.
         self.engine_version = engine_version
         # The network type of the instance. Valid values:
         # 
@@ -5315,9 +5476,11 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         # 
         # *   **Postpaid**: pay-as-you-go.
         # *   **Prepaid**: subscription.
-        # *   **Serverless**: serverless. This value is not supported for instances that run MariaDB. For more information, see [Overview of serverless ApsaraDB RDS for MySQL instances](~~411291~~), [Overview of serverless ApsaraDB RDS for SQL Server instances](~~604344~~), and [Overview of serverless ApsaraDB RDS for PostgreSQL instances](~~607742~~).
+        # *   **Serverless**: serverless. This value is not supported for instances that run MariaDB. For more information, see [Overview of serverless ApsaraDB RDS for MySQL instances](https://help.aliyun.com/document_detail/411291.html), [Overview of serverless ApsaraDB RDS for SQL Server instances](https://help.aliyun.com/document_detail/604344.html), and [Overview of serverless ApsaraDB RDS for PostgreSQL instances](https://help.aliyun.com/document_detail/607742.html).
         # 
         # > The system automatically generates a purchase order and completes the payment.
+        # 
+        # This parameter is required.
         self.pay_type = pay_type
         # The unit of the subscription duration. Valid values:
         # 
@@ -5334,16 +5497,20 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         # The private IP address of the instance. The private IP address must be within the CIDR block that is supported by the specified vSwitch. ApsaraDB RDS automatically assigns a private IP address to the instance based on the values of the **VPCId** and **vSwitchId** parameters.
         self.private_ip_address = private_ip_address
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_id = resource_owner_id
         # The Alibaba Cloud Resource Name (ARN) that is provided by your Alibaba Cloud account for RAM users. RAM users can use the ARN to connect ApsaraDB RDS to KMS. You can call the CheckCloudResourceAuthorized operation to query the ARN.
         self.role_arn = role_arn
-        # The IP address whitelist of the instance. For more information, see [Use a database client or the CLI to connect to an ApsaraDB RDS for MySQL instance](~~43185~~). If the IP address whitelist contains more than one entry, separate the entries with commas (,). Each entry must be unique. The IP address whitelist can contain up to 1,000 entries. The entries in the IP address whitelist must be in one of the following formats:
+        # The IP address whitelist of the instance. For more information, see [Use a database client or the CLI to connect to an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/43185.html). If the IP address whitelist contains more than one entry, separate the entries with commas (,). Each entry must be unique. The IP address whitelist can contain up to 1,000 entries. The entries in the IP address whitelist must be in one of the following formats:
         # 
         # *   IP addresses, such as 10.10.XX.XX.
         # *   CIDR blocks, such as 10.10.XX.XX/24. In this example, 24 indicates that the prefix of each IP address in the IP address whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
+        # 
+        # This parameter is required.
         self.security_iplist = security_iplist
         # The settings of the serverless instance. This parameter is required when you create a serverless instance.
         # 
@@ -5354,7 +5521,7 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         # *   **Enable**\
         # *   **Disable** (default)
         # 
-        # >  After the instance is created, you can call the ModifyDasInstanceConfig operation to adjust the settings of automatic storage expansion for the instance. For more information, see [Configure automatic storage expansion](~~173826~~).
+        # >  After the instance is created, you can call the ModifyDasInstanceConfig operation to adjust the settings of automatic storage expansion for the instance. For more information, see [Configure automatic storage expansion](https://help.aliyun.com/document_detail/173826.html).
         self.storage_auto_scale = storage_auto_scale
         # The threshold in percentage based on which automatic storage expansion is triggered.
         # 
@@ -5404,12 +5571,12 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         #     *   xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
         #     *   xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
         # 
-        #     > You can call the DescribeDBMiniEngineVersions operation to query the minor engine version. For more information about the differences between minor engine versions of AliSQL, see [Release notes](~~96060~~).
+        #     > You can call the DescribeDBMiniEngineVersions operation to query the minor engine version. For more information about the differences between minor engine versions of AliSQL, see [Release notes](https://help.aliyun.com/document_detail/96060.html).
         # 
         # *   If you create an instance that runs PostgreSQL, the value is in the following format: `rds_postgres_<Major engine version>00_<Minor engine version>`. Example: `rds_postgres_1400_20220830`.
         # 
         #     *   1400: The major engine version is PostgreSQL 14.
-        #     *   20220830: the AliPG version. You can call the DescribeDBMiniEngineVersions operation to query the AliPG version. For more information about minor engine versions, see [Release notes for AliPG](~~126002~~).
+        #     *   20220830: the AliPG version. You can call the DescribeDBMiniEngineVersions operation to query the AliPG version. For more information about minor engine versions, see [Release notes for AliPG](https://help.aliyun.com/document_detail/126002.html).
         # 
         #     > If you configure the **BabelfishConfig** parameter for your instance that runs PostgreSQL and set the babelfishEnabled field to true, the value of this parameter is in the following format: `rds_postgres_Major engine version00_AliPG version_babelfish`.
         self.target_minor_version = target_minor_version
@@ -5438,6 +5605,7 @@ class CreateDBInstanceShrinkRequest(TeaModel):
         # *   If you set **InstanceNetworkType** to **VPC**, you must also specify this parameter.
         # *   If you specify the ZoneSlaveId1 parameter, you must specify the IDs of two vSwitches for this parameter and separate the IDs with a comma (,).
         self.v_switch_id = v_switch_id
+        # The whitelists. If you enter more than one IP address or CIDR block, you must separate these IP addresses or CIDR blocks with commas (,). Do not add spaces preceding or following the commas. Example: `192.168.0.1,172.16.213.9`.
         self.whitelist_template_list = whitelist_template_list
         # The zone ID of the primary instance.
         # 
@@ -5863,9 +6031,13 @@ class CreateDBInstanceEndpointRequestNodeItems(TeaModel):
         node_id: str = None,
         weight: int = None,
     ):
-        # The instance ID. You can call the [DescribeDBInstances](~~610396~~) operation to query the ID of the instance.
+        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The node ID.
+        # 
+        # This parameter is required.
         self.node_id = node_id
         # The weight of the node. Read requests are distributed based on the weight.
         # 
@@ -5923,30 +6095,44 @@ class CreateDBInstanceEndpointRequest(TeaModel):
         # The prefix of the internal endpoint.
         # 
         # When you create any type of endpoint, an internal endpoint is automatically created for the endpoint. This parameter specifies the prefix of the internal endpoint.
+        # 
+        # This parameter is required.
         self.connection_string_prefix = connection_string_prefix
         # The user-defined description of the endpoint.
         self.dbinstance_endpoint_description = dbinstance_endpoint_description
-        # The type of the endpoint. Valid values:
+        # The endpoint type. Valid values:
         # 
         # *   Primary: read/write endpoint of the instance
         # *   Readonly: read-only endpoint of the instance
+        # 
+        # This parameter is required.
         self.dbinstance_endpoint_type = dbinstance_endpoint_type
-        # The instance ID. You can call the [DescribeDBInstances](~~610396~~) operation to query the ID of the instance.
+        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The information about the node that is configured for the endpoint.
+        # The information about the endpoint.
+        # 
+        # This parameter is required.
         self.node_items = node_items
         # The port number of the internal endpoint. You can specify the port number for the internal endpoint.
         # 
         # Valid values: 3000 to 5999.
+        # 
+        # This parameter is required.
         self.port = port
         # The IP address of the internal endpoint.
         self.private_ip_address = private_ip_address
-        # The ID of the resource group. You can call the [DescribeDBInstanceAttribute](~~610394~~) to obtain the ID of the resource group.
+        # The resource group ID. You can call the DescribeDBInstanceAttribute operation to obtain the ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_id = resource_owner_id
         # The vSwitch ID of the internal endpoint.
+        # 
+        # This parameter is required.
         self.v_switch_id = v_switch_id
-        # The virtual private cloud (VPC) ID of the internal endpoint.
+        # The VPC ID of the internal endpoint.
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -6044,30 +6230,44 @@ class CreateDBInstanceEndpointShrinkRequest(TeaModel):
         # The prefix of the internal endpoint.
         # 
         # When you create any type of endpoint, an internal endpoint is automatically created for the endpoint. This parameter specifies the prefix of the internal endpoint.
+        # 
+        # This parameter is required.
         self.connection_string_prefix = connection_string_prefix
         # The user-defined description of the endpoint.
         self.dbinstance_endpoint_description = dbinstance_endpoint_description
-        # The type of the endpoint. Valid values:
+        # The endpoint type. Valid values:
         # 
         # *   Primary: read/write endpoint of the instance
         # *   Readonly: read-only endpoint of the instance
+        # 
+        # This parameter is required.
         self.dbinstance_endpoint_type = dbinstance_endpoint_type
-        # The instance ID. You can call the [DescribeDBInstances](~~610396~~) operation to query the ID of the instance.
+        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The information about the node that is configured for the endpoint.
+        # The information about the endpoint.
+        # 
+        # This parameter is required.
         self.node_items_shrink = node_items_shrink
         # The port number of the internal endpoint. You can specify the port number for the internal endpoint.
         # 
         # Valid values: 3000 to 5999.
+        # 
+        # This parameter is required.
         self.port = port
         # The IP address of the internal endpoint.
         self.private_ip_address = private_ip_address
-        # The ID of the resource group. You can call the [DescribeDBInstanceAttribute](~~610394~~) to obtain the ID of the resource group.
+        # The resource group ID. You can call the DescribeDBInstanceAttribute operation to obtain the ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_id = resource_owner_id
         # The vSwitch ID of the internal endpoint.
+        # 
+        # This parameter is required.
         self.v_switch_id = v_switch_id
-        # The virtual private cloud (VPC) ID of the internal endpoint.
+        # The VPC ID of the internal endpoint.
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -6271,16 +6471,26 @@ class CreateDBInstanceEndpointAddressRequest(TeaModel):
         # The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The prefix of the public endpoint.
+        # 
+        # This parameter is required.
         self.connection_string_prefix = connection_string_prefix
-        # The endpoint ID of the instance. You can call the [DescribeDBInstanceEndpoints](~~610488~~) operation to query the endpoint ID of the instance.
+        # The endpoint ID of the instance. You can call the DescribeDBInstanceEndpoints operation to query the endpoint ID.
+        # 
+        # This parameter is required.
         self.dbinstance_endpoint_id = dbinstance_endpoint_id
-        # The instance ID. You can call the [DescribeDBInstances](~~610396~~) operation to query the ID of the instance.
+        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The network type of the endpoint. Only Internet is supported. Set the value to **Public**.
+        # 
+        # This parameter is required.
         self.ip_type = ip_type
         # The port number of the public endpoint.
+        # 
+        # This parameter is required.
         self.port = port
-        # The ID of the resource group. You can call the [DescribeDBInstanceAttribute](~~610394~~) to obtain the ID of the resource group.
+        # The resource group ID. You can call the DescribeDBInstanceAttribute operation to obtain the ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_id = resource_owner_id
 
@@ -6481,11 +6691,13 @@ class CreateDBInstanceForRebuildRequest(TeaModel):
         # 
         # The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The name of the instance. The name must be 2 to 256 characters in length. The name can contain letters, digits, underscores (\_), and hyphens (-). The name must start with a letter.
+        # The name of the instance. The name must be 2 to 256 characters in length. The name can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
         # 
         # > : The name cannot start with http:// or https://.
         self.dbinstance_description = dbinstance_description
-        # The instance ID. You can call the [DescribeDBInstances](~~610396~~) operation to query the ID of the instance.
+        # The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) operation to query the ID of the instance.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The type of the network connection to the instance. Valid values:
         # 
@@ -6507,6 +6719,8 @@ class CreateDBInstanceForRebuildRequest(TeaModel):
         # 
         # *   **Postpaid**: pay-as-you-go
         # *   **Prepaid**: subscription
+        # 
+        # This parameter is required.
         self.pay_type = pay_type
         # The unit of the subscription duration. Valid values:
         # 
@@ -6515,13 +6729,15 @@ class CreateDBInstanceForRebuildRequest(TeaModel):
         # 
         # >  If you set the PayType parameter to **Prepaid**, you must specify this parameter.
         self.period = period
-        # The region ID. You can call the [DescribeRegions](~~610399~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group. The value of this parameter can be NULL.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The IP address whitelist of the serverless instance. For more information, see [Use a database client or the CLI to connect to an ApsaraDB RDS for PostgreSQL instance](~~43185~~). If the IP address whitelist contains more than one entry, separate the entries with commas (,). Each entry must be unique. You can specify up to 1,000 entries. The entries in the IP address whitelist must be in one of the following formats:
+        # The IP address whitelist of the serverless instance. For more information, see [Use a database client or the CLI to connect to an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/43185.html). If the IP address whitelist contains more than one entry, separate the entries with commas (,). Each entry must be unique. You can specify up to 1,000 entries. The entries in the IP address whitelist must be in one of the following formats:
         # 
         # *   IP addresses, such as 10.10.XX.XX.
         # *   CIDR blocks, such as 10.10.XX.XX/24. In this example, 24 indicates that the prefix of each IP address in the IP address whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
@@ -6548,7 +6764,7 @@ class CreateDBInstanceForRebuildRequest(TeaModel):
         # 
         # *   If you specify the ZoneSlaveId1 parameter, you must specify the IDs of two vSwitches for this parameter and separate the IDs with a comma (,).
         self.v_switch_id = v_switch_id
-        # The zone ID of the primary instance. You can call the [DescribeRegions](~~26243~~) operation to query the most recent zone list.
+        # The zone ID of the primary instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent zone list.
         # 
         # > If you specify a virtual private cloud (VPC) and a vSwitch, you must specify this parameter to identify the zone for the vSwitch.
         self.zone_id = zone_id
@@ -6766,9 +6982,14 @@ class CreateDBNodesRequestDBNode(TeaModel):
         zone_id: str = None,
     ):
         # The specification information of the node.
+        # 
+        # This parameter is required.
         self.class_code = class_code
+        # The vSwitch ID of the node.
         self.vswitch_id = vswitch_id
-        # The zone ID of the node.
+        # The ID of the zone in which the node is deployed.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -6816,8 +7037,12 @@ class CreateDBNodesRequest(TeaModel):
         # The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance ID You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The details of the node.
+        # 
+        # This parameter is required.
         self.dbnode = dbnode
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -6899,8 +7124,12 @@ class CreateDBNodesShrinkRequest(TeaModel):
         # The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance ID You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The details of the node.
+        # 
+        # This parameter is required.
         self.dbnode_shrink = dbnode_shrink
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -7062,8 +7291,12 @@ class CreateDBProxyEndpointAddressRequest(TeaModel):
         v_switch_id: str = None,
     ):
         # The prefix of the proxy endpoint Enter a custom prefix.
+        # 
+        # This parameter is required.
         self.connection_string_prefix = connection_string_prefix
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The network type of the proxy endpoint. Valid values:
         # 
@@ -7072,8 +7305,12 @@ class CreateDBProxyEndpointAddressRequest(TeaModel):
         # *   **Classic**: classic network
         # 
         # Default value: **Classic**\
+        # 
+        # This parameter is required.
         self.dbproxy_connect_string_net_type = dbproxy_connect_string_net_type
         # The proxy endpoint ID. You can call the DescribeDBProxyEndpoint operation to query the proxy endpoint ID.
+        # 
+        # This parameter is required.
         self.dbproxy_endpoint_id = dbproxy_endpoint_id
         # A reserved parameter. You do not need to specify this parameter.
         self.dbproxy_engine_type = dbproxy_engine_type
@@ -7237,27 +7474,33 @@ class CreateDatabaseRequest(TeaModel):
         # 
         # *   Valid values for MySQL or MariaDB databases: **utf8, gbk, latin1, and utf8mb4**\
         # 
-        # *   Valid values for SQL Server databases: **Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1\_General_CP1\_CI_AS, SQL_Latin1\_General_CP1\_CS_AS, and Chinese_PRC_BIN**\
+        # *   Valid values for SQL Server databases: **Chinese_PRC_CI_AS, Chinese_PRC_CS_AS, SQL_Latin1_General_CP1_CI_AS, SQL_Latin1_General_CP1_CS_AS, and Chinese_PRC_BIN**\
         # 
         # *   Valid values for PostgreSQL databases: a value in the `Character set,<Collate>,<Ctype>` format. Example: `UTF8,C,en_US.utf8`.
         # 
-        #     *   Valid values for the character set: **KOI8U, UTF8, WIN866, WIN874, WIN1250, WIN1251, WIN1252, WIN1253, WIN1254, WIN1255, WIN1256, WIN1257, WIN1258, EUC_CN, EUC_KR, EUC_TW, EUC_JP, EUC_JIS\_2004, KOI8R, MULE_INTERNAL, LATIN1, LATIN2, LATIN3, LATIN4, LATIN5, LATIN6, LATIN7, LATIN8, LATIN9, LATIN10, ISO\_8859\_5, ISO\_8859\_6, ISO\_8859\_7, ISO\_8859\_8, and SQL_ASCII**\
+        #     *   Valid values for the character set: **KOI8U, UTF8, WIN866, WIN874, WIN1250, WIN1251, WIN1252, WIN1253, WIN1254, WIN1255, WIN1256, WIN1257, WIN1258, EUC_CN, EUC_KR, EUC_TW, EUC_JP, EUC_JIS_2004, KOI8R, MULE_INTERNAL, LATIN1, LATIN2, LATIN3, LATIN4, LATIN5, LATIN6, LATIN7, LATIN8, LATIN9, LATIN10, ISO_8859_5, ISO_8859_6, ISO_8859_7, ISO_8859_8, and SQL_ASCII**\
         #     *   Valid values for the **Collate** field: You can execute the `SELECT DISTINCT collname FROM pg_collation;` statement to obtain the field value. The default value is **C**.
         #     *   Valid values for the **Ctype** field: You can execute the `SELECT DISTINCT collctype FROM pg_collation;` statement to obtain the field value. The default value is **en_US.utf8**.
+        # 
+        # This parameter is required.
         self.character_set_name = character_set_name
-        # The description of the database. The description must be 2 to 256 characters in length and can contain letters, digits, underscores (\_), and hyphens (-). The description must start with a letter.
+        # The description of the database. The description must be 2 to 256 characters in length and can contain letters, digits, underscores (_), and hyphens (-). The description must start with a letter.
         # 
         # > The value cannot start with `http://` or `https://`.
         self.dbdescription = dbdescription
-        # The instance ID. You can call the [DescribeDBInstances](~~610396~~) operation to query the ID of the instance.
+        # The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) operation to query the ID of the instance.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the database.
         # 
         # > *   The name must be 2 to 64 characters in length.
         # > *   The name must start with a lowercase letter and end with a lowercase letter or digit.
-        # > *   The name can contain lowercase letters, digits, underscores (\_), and hyphens (-).
+        # > *   The name can contain lowercase letters, digits, underscores (_), and hyphens (-).
         # > *   The name must be unique within the instance.
-        # > *   For more information about invalid characters, see [Forbidden keywords table](~~26317~~).
+        # > *   For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/document_detail/26317.html).
+        # 
+        # This parameter is required.
         self.dbname = dbname
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -7434,9 +7677,11 @@ class CreateDdrInstanceRequest(TeaModel):
         # 
         # Default value: **Standard**.
         self.connection_mode = connection_mode
-        # The instance type of the destination instance. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~).
+        # The instance type of the destination instance. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
+        # 
+        # This parameter is required.
         self.dbinstance_class = dbinstance_class
-        # The instance name. The name must be 2 to 256 characters in length. The value can contain letters, digits, underscores (\_), and hyphens (-), and must start with a letter.
+        # The instance name. The name must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
         # 
         # >  The value cannot start with http:// or https://.
         self.dbinstance_description = dbinstance_description
@@ -7444,8 +7689,12 @@ class CreateDdrInstanceRequest(TeaModel):
         # 
         # *   **Internet**\
         # *   **Intranet**\
+        # 
+        # This parameter is required.
         self.dbinstance_net_type = dbinstance_net_type
-        # The storage capacity of the destination instance. Valid values: **5 to 2000**. Unit: GB. You can increase the storage capacity at a step size of 5 GB. For more information, see [Primary instance types](~~26312~~).
+        # The storage capacity of the destination instance. Valid values: **5 to 2000**. Unit: GB. You can increase the storage capacity at a step size of 5 GB. For more information, see [Primary instance types](https://help.aliyun.com/document_detail/26312.html).
+        # 
+        # This parameter is required.
         self.dbinstance_storage = dbinstance_storage
         # The storage type of the destination instance. Only the local SSD storage type is supported. Default value: **local_ssd**.
         self.dbinstance_storage_type = dbinstance_storage_type
@@ -7454,12 +7703,16 @@ class CreateDdrInstanceRequest(TeaModel):
         # *   **MySQL**\
         # *   **SQLServer**\
         # *   **PostgreSQL**\
+        # 
+        # This parameter is required.
         self.engine = engine
         # The major engine version of the destination instance. The value of this parameter varies based on the value of **Engine**.
         # 
         # *   Valid values when Engine is set to MySQL: **5.5, 5.6, 5.7, and 8.0**\
-        # *   Valid values when Engine is set to SQLServer: **2008r2, 08r2\_ent_ha, 2012, 2012\_ent_ha, 2012\_std_ha, 2012\_web, 2014\_std_ha, 2016\_ent_ha, 2016\_std_ha, 2016\_web, 2017\_std_ha, 2017\_ent, 2019\_std_ha, and 2019\_ent**\
+        # *   Valid values when Engine is set to SQLServer: **2008r2, 08r2_ent_ha, 2012, 2012_ent_ha, 2012_std_ha, 2012_web, 2014_std_ha, 2016_ent_ha, 2016_std_ha, 2016_web, 2017_std_ha, 2017_ent, 2019_std_ha, and 2019_ent**\
         # *   Valid values when Engine is set to PostgreSQL: **9.4, 10.0, 11.0, 12.0, and 13.0**\
+        # 
+        # This parameter is required.
         self.engine_version = engine_version
         # The network type of the instance. Valid values:
         # 
@@ -7476,6 +7729,8 @@ class CreateDdrInstanceRequest(TeaModel):
         # 
         # *   **Postpaid**: pay-as-you-go
         # *   **Prepaid**: subscription
+        # 
+        # This parameter is required.
         self.pay_type = pay_type
         # The unit that is used to measure the subscription duration of the destination instance. Valid values:
         # 
@@ -7487,6 +7742,8 @@ class CreateDdrInstanceRequest(TeaModel):
         # The private IP address of the destination instance. The private IP address must be within the CIDR block that is supported by the specified vSwitch. The system automatically assigns an internal IP address based on the values of the **VPCId** and **VSwitchId** parameters.
         self.private_ip_address = private_ip_address
         # The region ID of the destination instance. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -7500,11 +7757,15 @@ class CreateDdrInstanceRequest(TeaModel):
         # 
         # *   **BackupSet**: restores data from a backup set. If you use this value, you must also specify **BackupSetId**.
         # *   **BackupTime**: restores data to a point in time. If you use this value, you must also specify **RestoreTime**, **SourceRegion**, and **SourceDBInstanceName**.
+        # 
+        # This parameter is required.
         self.restore_type = restore_type
-        # The IP address whitelist of the destination instance. If you want to add more than one entry to the IP address whitelist, separate the entries with commas (,). Each entry must be unique. You can add a maximum of 1,000 entries. For more information, see [Configure an IP address whitelist for an ApsaraDB RDS for MySQL instance](~~43185~~). The entries in the IP address whitelist must be in one of the following formats:
+        # The IP address whitelist of the destination instance. If you want to add more than one entry to the IP address whitelist, separate the entries with commas (,). Each entry must be unique. You can add a maximum of 1,000 entries. For more information, see [Configure an IP address whitelist for an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/43185.html). The entries in the IP address whitelist must be in one of the following formats:
         # 
         # *   IP address. Example: 10.23.12.24.
         # *   CIDR block. Example: 10.23.12.24/24. In this example, 24 indicates that the prefix of the CIDR block is 24 bits in length. You can replace 24 with a value that ranges from 1 to 32.
+        # 
+        # This parameter is required.
         self.security_iplist = security_iplist
         # The source instance ID, which is used if you want to restore data to a point in time.
         # 
@@ -7786,10 +8047,16 @@ class CreateDiagnosticReportRequest(TeaModel):
         start_time: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The end time of the monitored data that is used to generate the diagnostic report. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The start time of the monitored data that is used to generate the diagnostic report. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -7954,12 +8221,12 @@ class CreateGADInstanceRequestUnitNode(TeaModel):
         # The name of the unit node that you want to create. The name must meet the following requirements:
         # 
         # *   The name must be **2 to 255** characters in length.
-        # *   The name can contain letters, digits, underscores (\_), and hyphens (-) and must start with a letter.
+        # *   The name can contain letters, digits, underscores (_), and hyphens (-) and must start with a letter.
         # *   The name cannot start with `http://` or `https://`.
         # 
         # **N** in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
         self.dbinstance_description = dbinstance_description
-        # The storage capacity of the unit node that you want to create. Unit: GB You can adjust the storage capacity in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~). You can also call the DescribeAvailableResource operation to query the storage capacity range that is supported by the new instance type.
+        # The storage capacity of the unit node that you want to create. Unit: GB You can adjust the storage capacity in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html). You can also call the DescribeAvailableResource operation to query the storage capacity range that is supported by the new instance type.
         # 
         # **N** in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
         self.dbinstance_storage = dbinstance_storage
@@ -7976,7 +8243,7 @@ class CreateGADInstanceRequestUnitNode(TeaModel):
         # *   If the instance type specifies the local SSD storage type, the default value of this parameter is **local_ssd**.
         # *   If the instance type specifies the cloud disk storage type, the default value of this parameter is **cloud_essd**.
         self.dbinstance_storage_type = dbinstance_storage_type
-        # The instance type of the unit node that you want to create. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~). You can call the DescribeAvailableResource operation to query the available instance types in a region.
+        # The instance type of the unit node that you want to create. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html). You can call the DescribeAvailableResource operation to query the available instance types in a region.
         # 
         # **N** in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
         self.db_instance_class = db_instance_class
@@ -7987,6 +8254,8 @@ class CreateGADInstanceRequestUnitNode(TeaModel):
         # *   **ignore**: DTS hides the conflicting primary key on the node.
         # 
         # **N** in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
+        # 
+        # This parameter is required.
         self.dts_conflict = dts_conflict
         # The specifications of the data synchronization task for the unit node that you want to create. Valid values:
         # 
@@ -7995,9 +8264,11 @@ class CreateGADInstanceRequestUnitNode(TeaModel):
         # *   **large**\
         # *   **micro**\
         # 
-        # >  For more information, see [Specifications of data synchronization tasks](~~26605~~).
+        # >  For more information, see [Specifications of data synchronization tasks](https://help.aliyun.com/document_detail/26605.html).
         # 
         # **N** in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
+        # 
+        # This parameter is required.
         self.dts_instance_class = dts_instance_class
         # The database engine of the unit node that you want to create. Set the value to **MySQL**.
         # 
@@ -8024,8 +8295,10 @@ class CreateGADInstanceRequestUnitNode(TeaModel):
         # The region ID of the unit node that you want to create. You can call the DescribeRegions operation to query the most recent region list.
         # 
         # **N** in this parameter specifies the Nth unit node. The value of N is an integer within the range of **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The [IP address whitelist](~~43185~~) of the unit node that you want to create. If you want to add more than one entry to the IP address whitelist, separate the entries with commas (,). Each entry must be unique. The IP address whitelist can contain up to 1,000 entries. The entries in the IP address whitelist must be in one of the following formats:
+        # The [IP address whitelist](https://help.aliyun.com/document_detail/43185.html) of the unit node that you want to create. If you want to add more than one entry to the IP address whitelist, separate the entries with commas (,). Each entry must be unique. The IP address whitelist can contain up to 1,000 entries. The entries in the IP address whitelist must be in one of the following formats:
         # 
         # *   IP addresses, such as `10.10.10.10`.
         # *   CIDR blocks, such as `10.10.10.10/24`. In this example, **24** indicates that the prefix of the IP address in the whitelist is 24 bits in length. You can replace 24 with a value within the range of **1 to 32**.
@@ -8156,12 +8429,20 @@ class CreateGADInstanceRequest(TeaModel):
         # 
         # > *   A primary instance can serve only as the central node of a single global active database cluster.
         # > *   The primary instance can serve as the central node of the global active database cluster only in the following regions: China (Hangzhou), China (Shanghai), China (Qingdao), China (Beijing), China (Zhangjiakou), China (Shenzhen), and China (Chengdu).
+        # 
+        # This parameter is required.
         self.central_dbinstance_id = central_dbinstance_id
         # The username of the privileged account of the central node. You can call the DescribeAccounts operation to query the privileged account of the central node.
+        # 
+        # This parameter is required.
         self.central_rds_dts_admin_account = central_rds_dts_admin_account
         # The password of the privileged account of the central node.
+        # 
+        # This parameter is required.
         self.central_rds_dts_admin_password = central_rds_dts_admin_password
         # The region ID of the central node. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.central_region_id = central_region_id
         # A JSON array that consists of the information about a specified database on the central node. All database information that you specify in this array is synchronized to the unit nodes of the global active database cluster. The JSON array contains the following fields:
         # 
@@ -8170,6 +8451,8 @@ class CreateGADInstanceRequest(TeaModel):
         # *   **Table**: the name of the table. If you set the **all** field to **false**, you must nest the name of the table that you want to synchronize into the JSON array.
         # 
         # Example: `{ "testdb": { "name": "testdb", "all": false, "Table": { "order": { "name": "order", "all": true }, "ordernew": { "name": "ordernew", "all": true } } } }`
+        # 
+        # This parameter is required.
         self.dblist = dblist
         # The name of the global active database cluster.
         self.description = description
@@ -8178,6 +8461,8 @@ class CreateGADInstanceRequest(TeaModel):
         # An array that consists of the details about the tag.
         self.tag = tag
         # The information about the unit node.
+        # 
+        # This parameter is required.
         self.unit_node = unit_node
 
     def validate(self):
@@ -8391,12 +8676,12 @@ class CreateGadInstanceMemberRequestUnitNode(TeaModel):
         # The name of the unit node that you want to create. The name must meet the following requirements:
         # 
         # *   The name must be **2 to 255** characters in length.
-        # *   The name can contain letters, digits, underscores (\_), and hyphens (-) and must start with a letter.
+        # *   The name can contain letters, digits, underscores (_), and hyphens (-) and must start with a letter.
         # *   The name cannot start with `http://` or `https://`.
         # 
         # **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
         self.dbinstance_description = dbinstance_description
-        # The storage capacity of the unit node that you want to create. Unit: GB. You can adjust the storage capacity in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~). You can also call the DescribeAvailableResource operation to query the storage capacity range that is available for a specific instance type in a region.
+        # The storage capacity of the unit node that you want to create. Unit: GB. You can adjust the storage capacity in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html). You can also call the DescribeAvailableResource operation to query the storage capacity range that is available for a specific instance type in a region.
         # 
         # **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
         self.dbinstance_storage = dbinstance_storage
@@ -8408,7 +8693,7 @@ class CreateGadInstanceMemberRequestUnitNode(TeaModel):
         # *   **cloud_essd2**: PL2 ESSDs
         # *   **cloud_essd3**: PL3 ESSD
         self.dbinstance_storage_type = dbinstance_storage_type
-        # The instance type of the unit node that you want to create. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~). You can call the DescribeAvailableResource operation to query the available instance types in a region.
+        # The instance type of the unit node that you want to create. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html). You can call the DescribeAvailableResource operation to query the available instance types in a region.
         # 
         # **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
         self.db_instance_class = db_instance_class
@@ -8419,6 +8704,8 @@ class CreateGadInstanceMemberRequestUnitNode(TeaModel):
         # *   **ignore**: DTS overwrites the conflicting primary key on the logger node.
         # 
         # **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
+        # 
+        # This parameter is required.
         self.dts_conflict = dts_conflict
         # The specifications of the data synchronization task for the unit node that you want to create. Valid values:
         # 
@@ -8427,9 +8714,11 @@ class CreateGadInstanceMemberRequestUnitNode(TeaModel):
         # *   **large**\
         # *   **micro**\
         # 
-        # >  For more information, see [Specifications of data synchronization instances](~~26605~~).
+        # >  For more information, see [Specifications of data synchronization instances](https://help.aliyun.com/document_detail/26605.html).
         # 
         # **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
+        # 
+        # This parameter is required.
         self.dts_instance_class = dts_instance_class
         # The database engine of the unit node that you want to create. Set the value to **MySQL**.
         # 
@@ -8447,8 +8736,10 @@ class CreateGadInstanceMemberRequestUnitNode(TeaModel):
         # The region ID of the unit node that you want to create. You can call the DescribeRegions operation to query the most recent region list.
         # 
         # **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The IP address whitelist of the unit node that you want to create. For more information, see [IP address whitelist](~~43185~~). If you want to add more than one entry to the IP address whitelist, separate the entries with commas (,). Each entry must be unique. The IP address whitelist can contain up to 1,000 entries. The entries in the IP address whitelist must be in one of the following formats:
+        # The IP address whitelist of the unit node that you want to create. For more information, see [IP address whitelist](https://help.aliyun.com/document_detail/43185.html). If you want to add more than one entry to the IP address whitelist, separate the entries with commas (,). Each entry must be unique. The IP address whitelist can contain up to 1,000 entries. The entries in the IP address whitelist must be in one of the following formats:
         # 
         # *   IP addresses, such as `10.10.XX.XX`.
         # *   CIDR blocks, such as `10.10.XX.XX/24`. In this example, **24** indicates that the prefix of each IP address in the IP address whitelist is 24 bits in length. You can replace 24 with a value within the range of **1 to 32**.
@@ -8458,10 +8749,14 @@ class CreateGadInstanceMemberRequestUnitNode(TeaModel):
         # The vSwitch ID of the unit node that you want to create.
         # 
         # **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
+        # 
+        # This parameter is required.
         self.v_switch_id = v_switch_id
         # The virtual private cloud (VPC) ID of the unit node that you want to create.
         # 
         # **N** specifies unit node N. The value of N is an integer that ranges from **1 to 10**. You can create up to 10 unit nodes in a global active database cluster.
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
         # The zone ID of the unit node that you want to create. You can call the DescribeRegions operation to query zone ID.
         # 
@@ -8570,12 +8865,20 @@ class CreateGadInstanceMemberRequest(TeaModel):
         unit_node: List[CreateGadInstanceMemberRequestUnitNode] = None,
     ):
         # The ID of the central node . You can call the DescribeGadInstances operation to query the ID.
+        # 
+        # This parameter is required.
         self.central_dbinstance_id = central_dbinstance_id
         # The username of the privileged account of the central node. You can call the DescribeAccounts operation to query the privileged account of the central node.
+        # 
+        # This parameter is required.
         self.central_rds_dts_admin_account = central_rds_dts_admin_account
         # The password of the privileged account of the central node.
+        # 
+        # This parameter is required.
         self.central_rds_dts_admin_password = central_rds_dts_admin_password
         # The region ID of the central node. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.central_region_id = central_region_id
         # A JSON array that consists of the information about the databases on the central node. All database information that you specify in this array is synchronized to the unit nodes of the global active database cluster. The JSON array contains the following fields:
         # 
@@ -8585,11 +8888,17 @@ class CreateGadInstanceMemberRequest(TeaModel):
         # 
         # Example: `{ "testdb": { "name": "testdb", "all": false, "Table": { "order": { "name": "order", "all": true }, "ordernew": { "name": "ordernew", "all": true } } } }`
         # 
-        # >  For more information, see [Objects of DTS tasks](~~209545~~).
+        # >  For more information, see [Objects of DTS tasks](https://help.aliyun.com/document_detail/209545.html).
+        # 
+        # This parameter is required.
         self.dblist = dblist
         # The ID of the global active database cluster. You can call the DescribeGadInstances operation to query the ID.
+        # 
+        # This parameter is required.
         self.gad_instance_id = gad_instance_id
         # The information about the unit node.
+        # 
+        # This parameter is required.
         self.unit_node = unit_node
 
     def validate(self):
@@ -8808,6 +9117,7 @@ class CreateMaskingRulesRequest(TeaModel):
         rule_config: CreateMaskingRulesRequestRuleConfig = None,
         rule_name: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
         self.default_algo = default_algo
         self.masking_algo = masking_algo
@@ -8815,6 +9125,7 @@ class CreateMaskingRulesRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.rule_config = rule_config
+        # This parameter is required.
         self.rule_name = rule_name
 
     def validate(self):
@@ -8879,6 +9190,7 @@ class CreateMaskingRulesShrinkRequest(TeaModel):
         rule_config_shrink: str = None,
         rule_name: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
         self.default_algo = default_algo
         self.masking_algo = masking_algo
@@ -8886,6 +9198,7 @@ class CreateMaskingRulesShrinkRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.rule_config_shrink = rule_config_shrink
+        # This parameter is required.
         self.rule_name = rule_name
 
     def validate(self):
@@ -9041,19 +9354,25 @@ class CreateMigrateTaskRequest(TeaModel):
         # 
         # *   **FULL**: The migration task migrates full backup files.
         # *   **UPDF**: The migration task migrates incremental or log backup files.
+        # 
+        # This parameter is required.
         self.backup_mode = backup_mode
         # The consistency check method for the database. Valid values:
         # 
-        # *   **SyncExecuteDBCheck**: synchronous database check.
-        # *   **AsyncExecuteDBCheck**: asynchronous database check.
+        # *   **SyncExecuteDBCheck**: synchronous database check
+        # *   **AsyncExecuteDBCheck**: asynchronous database check
         # 
-        # Default value: **AsyncExecuteDBCheck** (compatible with SQL Server 2008 R2).
+        # Default value: **AsyncExecuteDBCheck** (compatible with SQL Server 2008 R2)
         # 
         # >  This parameter is valid when **IsOnlineDB** is set to **True**.
         self.check_dbmode = check_dbmode
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the destination database.
+        # 
+        # This parameter is required.
         self.dbname = dbname
         # Specifies whether to make the restored database data available for user access. Valid values:
         # 
@@ -9061,6 +9380,8 @@ class CreateMigrateTaskRequest(TeaModel):
         # *   **False**\
         # 
         # >  Set the value to **True** for instances that run SQL Server 2008 R2.
+        # 
+        # This parameter is required.
         self.is_online_db = is_online_db
         # The migration task ID.
         # 
@@ -9080,7 +9401,7 @@ class CreateMigrateTaskRequest(TeaModel):
         # 
         # *   OSS endpoint: oss-ap-southeast-1.aliyuncs.com.
         # *   Name of the OSS bucket: rdsmssqlsingapore.
-        # *   Key of the backup file in the OSS bucket: autotest\_2008R2\_TestMigration_FULL.bak.
+        # *   Key of the backup file in the OSS bucket: autotest_2008R2_TestMigration_FULL.bak.
         # 
         # > *   This parameter is optional for instances that run SQL Server 2008 R2.
         # > *   This parameter is required for instances that run a major engine version later than SQL Server 2008 R2.
@@ -9275,14 +9596,22 @@ class CreateOnlineDatabaseTaskRequest(TeaModel):
         # *   **AsyncExecuteDBCheck**: asynchronous database check
         # 
         # > The check methods are supported for RDS instances that run SQL Server 2008 R2.
+        # 
+        # This parameter is required.
         self.check_dbmode = check_dbmode
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the database.
+        # 
+        # This parameter is required.
         self.dbname = dbname
         # The ID of the migration task.
+        # 
+        # This parameter is required.
         self.migrate_task_id = migrate_task_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -9451,8 +9780,10 @@ class CreateOrderForDeleteDBNodesRequest(TeaModel):
         # *   **rds_intl**: The instance is a subscription primary instance.
         # *   **rords_intl**: The instance is a pay-as-you-go read-only instance.
         # *   **rds_rordspre_public_intl**: The instance is a subscription read-only instance.
+        # 
+        # This parameter is required.
         self.commodity_code = commodity_code
-        # The instance ID. You can call the [DescribeDBInstances](~~610396~~) operation to query the ID of the instance.
+        # The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) operation to query the ID of the instance.
         self.dbinstance_id = dbinstance_id
         # An array that consists of information about the ID of the node.
         self.dbnode_id = dbnode_id
@@ -9468,7 +9799,7 @@ class CreateOrderForDeleteDBNodesRequest(TeaModel):
         self.owner_id = owner_id
         # The coupon code.
         self.promotion_code = promotion_code
-        # The region ID. You can call the [DescribeRegions](~~610399~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) operation to query the most recent region list.
         self.region_id = region_id
         # The resources.
         self.resource = resource
@@ -9600,8 +9931,10 @@ class CreateOrderForDeleteDBNodesShrinkRequest(TeaModel):
         # *   **rds_intl**: The instance is a subscription primary instance.
         # *   **rords_intl**: The instance is a pay-as-you-go read-only instance.
         # *   **rds_rordspre_public_intl**: The instance is a subscription read-only instance.
+        # 
+        # This parameter is required.
         self.commodity_code = commodity_code
-        # The instance ID. You can call the [DescribeDBInstances](~~610396~~) operation to query the ID of the instance.
+        # The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) operation to query the ID of the instance.
         self.dbinstance_id = dbinstance_id
         # An array that consists of information about the ID of the node.
         self.dbnode_id_shrink = dbnode_id_shrink
@@ -9617,7 +9950,7 @@ class CreateOrderForDeleteDBNodesShrinkRequest(TeaModel):
         self.owner_id = owner_id
         # The coupon code.
         self.promotion_code = promotion_code
-        # The region ID. You can call the [DescribeRegions](~~610399~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) operation to query the most recent region list.
         self.region_id = region_id
         # The resources.
         self.resource = resource
@@ -9809,6 +10142,8 @@ class CreateParameterGroupRequest(TeaModel):
         # 
         # *   **mysql**\
         # *   **PostgreSQL**\
+        # 
+        # This parameter is required.
         self.engine = engine
         # The database engine version of the instance.
         # 
@@ -9826,18 +10161,26 @@ class CreateParameterGroupRequest(TeaModel):
         #     *   **13.0**\
         #     *   **14.0**\
         #     *   **15.0**\
+        # 
+        # This parameter is required.
         self.engine_version = engine_version
         self.owner_id = owner_id
         # The description of the parameter template. The value can be up to 200 characters in length.
         self.parameter_group_desc = parameter_group_desc
         # The name of the parameter template.
         # 
-        # *   The value must start with a letter and can contain letters, digits, periods (.), and underscores (\_).
+        # *   The value must start with a letter and can contain letters, digits, periods (.), and underscores (_).
         # *   The value can be 8 to 64 characters in length.
+        # 
+        # This parameter is required.
         self.parameter_group_name = parameter_group_name
-        # A JSON string that consists of parameters and their values in the parameter template. Format: {"Parameter 1":"Value of Parameter 1","Parameter 2":"Value of Parameter 2"...}. For more information about the parameters that can be modified, see [Modify the parameters of an ApsaraDB RDS for MySQL instance](~~96063~~) or [Modify the parameters of an ApsaraDB RDS for PostgreSQL instance](~~96751~~).
+        # A JSON string that consists of parameters and their values in the parameter template. Format: {"Parameter 1":"Value of Parameter 1","Parameter 2":"Value of Parameter 2"...}. For more information about the parameters that can be modified, see [Modify the parameters of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96063.html) or [Modify the parameters of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96751.html).
+        # 
+        # This parameter is required.
         self.parameters = parameters
         # The region ID of the parameter template. You can call the DescribeRegions operation to query the most recent zone list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID. You can call the DescribeDBInstanceAttribute operation to obtain the resource group ID.
         self.resource_group_id = resource_group_id
@@ -9906,7 +10249,7 @@ class CreateParameterGroupResponseBody(TeaModel):
         parameter_group_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the parameter template. You can call the [DescribeParameterGroups](~~144491~~) operation to query the IDs of parameter templates.
+        # The ID of the parameter template. You can call the [DescribeParameterGroups](https://help.aliyun.com/document_detail/144491.html) operation to query the IDs of parameter templates.
         self.parameter_group_id = parameter_group_id
         # The ID of the request.
         self.request_id = request_id
@@ -9993,12 +10336,18 @@ class CreatePostgresExtensionsRequest(TeaModel):
         source_database: str = None,
     ):
         # The account of the user who owns the extension. Only privileged accounts are supported.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the generated token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The database name. You can call the DescribeDatabases operation to query the database name.
+        # 
+        # This parameter is required.
         self.dbnames = dbnames
         # The extension that you want to install. If you want to install multiple extensions, separate them with commas (,). If you do not specify the **SourceDatabase** parameter, you must specify this parameter.
         self.extensions = extensions
@@ -10013,7 +10362,7 @@ class CreatePostgresExtensionsRequest(TeaModel):
         # *   true
         # *   false
         # 
-        # >  For more information about the risks, see [Limits on extension creation for ApsaraDB RDS for PostgreSQL instances](~~2587815~~).
+        # >  For more information about the risks, see [Limits on extension creation for ApsaraDB RDS for PostgreSQL instances](https://help.aliyun.com/document_detail/2587815.html).
         self.risk_confirmed = risk_confirmed
         # The source database from which you want to synchronize the extension to the destination database. If you do not specify the **Extensions** parameter, you must specify this parameter.
         self.source_database = source_database
@@ -10219,15 +10568,21 @@ class CreateReadOnlyDBInstanceRequest(TeaModel):
         self.category = category
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The instance type of the read-only instance. For more information, see [Read-only instance types](~~145759~~). We recommend that you specify an instance type whose specifications are higher than or equal to the specifications of the instance type of the primary instance. If the specifications of the read-only instance are lower than the specifications of the primary instance, the read-only instance may encounter issues such as high latency and heavy load.
+        # The instance type of the read-only instance. For more information, see [Read-only instance types](https://help.aliyun.com/document_detail/145759.html). We recommend that you specify an instance type whose specifications are higher than or equal to the specifications of the instance type of the primary instance. If the specifications of the read-only instance are lower than the specifications of the primary instance, the read-only instance may encounter issues such as high latency and heavy load.
+        # 
+        # This parameter is required.
         self.dbinstance_class = dbinstance_class
-        # The description of the read-only instance. The description must be 2 to 256 characters in length and can contain letters, digits, underscores (\_), and hyphens (-). The value must start with a letter
+        # The description of the read-only instance. The description must be 2 to 256 characters in length and can contain letters, digits, underscores (_), and hyphens (-). The value must start with a letter
         # 
         # > The value cannot start with [http:// or https://.](http://https://。)
         self.dbinstance_description = dbinstance_description
         # The primary instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The storage capacity of the read-only instance. The storage capacity of the read-only instance must be greater than or equal to that of the primary instance. For more information, see the **Storage capacity** column in [Read-only instance types](~~145759~~). This value must be a multiple of 5. Unit: GB.
+        # The storage capacity of the read-only instance. The storage capacity of the read-only instance must be greater than or equal to that of the primary instance. For more information, see the **Storage capacity** column in [Read-only instance types](https://help.aliyun.com/document_detail/145759.html). This value must be a multiple of 5. Unit: GB.
+        # 
+        # This parameter is required.
         self.dbinstance_storage = dbinstance_storage
         # The storage type of the instance. Valid values:
         # 
@@ -10252,8 +10607,10 @@ class CreateReadOnlyDBInstanceRequest(TeaModel):
         # The version of the database engine. The read-only instance and the primary instance must run the same major engine version.
         # 
         # *   If the read-only instance runs MySQL, set this parameter to **5.6**, **5.7**, or **8.0**.
-        # *   If the read-only instance runs MySQL, set this parameter to **2017\_ent, 2019\_ent, or 2022\_ent**.
+        # *   If the read-only instance runs MySQL, set this parameter to **2017_ent, 2019_ent, or 2022_ent**.
         # *   If the read-only instance runs PostgreSQL, set this parameter to **10.0, 11.0, 12.0, 13.0, 14.0, or 15.0**.
+        # 
+        # This parameter is required.
         self.engine_version = engine_version
         # A reserved parameter.
         self.gdn_instance_name = gdn_instance_name
@@ -10276,6 +10633,8 @@ class CreateReadOnlyDBInstanceRequest(TeaModel):
         # 
         # *   **Postpaid**: pay-as-you-go
         # *   **Prepaid**: subscription
+        # 
+        # This parameter is required.
         self.pay_type = pay_type
         # The renewal cycle of the read-only instance. Valid values:
         # 
@@ -10289,6 +10648,8 @@ class CreateReadOnlyDBInstanceRequest(TeaModel):
         # The private IP address of the read-only instance. The private IP address must be within the CIDR block that is supported by the specified vSwitch. The system assigns a private IP address to the read-only instance based on the values of the **VPCId** and **VSwitchId** parameters.
         self.private_ip_address = private_ip_address
         # The region ID. The read-only instance and the primary instance must reside in the same region. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -10315,6 +10676,8 @@ class CreateReadOnlyDBInstanceRequest(TeaModel):
         # The vSwitch ID of the read-only instance. If you leave the **InstanceNetworkType** parameter empty or set it to **VPC**, you must specify the VSwitchId parameter.
         self.v_switch_id = v_switch_id
         # The zone ID. You can call the DescribeRegions operation to query the zone ID.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -10590,6 +10953,8 @@ class CreateSecretRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the generated token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The ID of the instance. You can call the DescribeDBInstances operation to query the ID of the instance.
+        # 
+        # This parameter is required.
         self.db_instance_id = db_instance_id
         # The name of the database.
         self.db_names = db_names
@@ -10598,19 +10963,29 @@ class CreateSecretRequest(TeaModel):
         # The engine of the database.
         # 
         # > Only MySQL is supported.
+        # 
+        # This parameter is required.
         self.engine = engine
         self.owner_id = owner_id
         # The password that is used to access the database.
+        # 
+        # This parameter is required.
         self.password = password
         # The region ID of the instance. You can call the DescribeDBInstanceAttribute operation to query the region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the instance belongs. You can call the DescribeDBInstanceAttribute operation to query the ID of the resource group.
+        # 
+        # This parameter is required.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The name of the credential.
         self.secret_name = secret_name
         # The username that is used to access the database.
+        # 
+        # This parameter is required.
         self.username = username
 
     def validate(self):
@@ -10785,6 +11160,8 @@ class CreateServiceLinkedRoleRequest(TeaModel):
     ):
         self.owner_id = owner_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -10792,6 +11169,8 @@ class CreateServiceLinkedRoleRequest(TeaModel):
         # 
         # *   **AliyunServiceRoleForRdsPgsqlOnEcs**: the service-linked role for ApsaraDB RDS for PostgreSQL.
         # *   **AliyunServiceRoleForRDSProxyOnEcs**: the service-linked role for the database proxy feature of ApsaraDB RDS for PostgreSQL.
+        # 
+        # This parameter is required.
         self.service_linked_role = service_linked_role
 
     def validate(self):
@@ -10913,9 +11292,11 @@ class CreateTempDBInstanceRequest(TeaModel):
     ):
         # The backup set ID. You can call the DescribeBackups operation to query the backup set ID.
         # 
-        # >  You must specify at least one of the **BackupId** or **RestoreTime** parameters.
+        # >  You must specify at least one of **BackupId** and **RestoreTime** parameters.
         self.backup_id = backup_id
         # The instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -11064,11 +11445,17 @@ class CreateYouhuiForOrderRequest(TeaModel):
         resource_owner_id: str = None,
     ):
         # The activity ID.
+        # 
+        # This parameter is required.
         self.activity_id = activity_id
         self.owner_id = owner_id
         # The promotion ID. You can call the GetResourcePrice operation to query the promotion ID.
+        # 
+        # This parameter is required.
         self.promotion_id = promotion_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -11209,9 +11596,13 @@ class DeleteADSettingRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -11336,8 +11727,12 @@ class DeleteAccountRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The name of the account.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -11466,8 +11861,12 @@ class DeleteBackupRequest(TeaModel):
         # The backup set ID. You can call the DescribeBackups operation to query the backup set ID. Separate multiple values with commas (,). You can specify a maximum of 100 values in a single request.
         # 
         # >  You can delete only backup sets whose **StoreStatus** is **Enabled** in the response to the DescribeBackups operation call.
+        # 
+        # This parameter is required.
         self.backup_id = backup_id
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -11606,6 +12005,8 @@ class DeleteBackupFileRequest(TeaModel):
         # Specifies whether to delete the backup sets that are generated before the specified point in time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.backup_time = backup_time
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the database.
         self.dbname = dbname
@@ -11779,6 +12180,8 @@ class DeleteDBInstanceRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -11839,7 +12242,7 @@ class DeleteDBInstanceResponseBody(TeaModel):
         region_id: str = None,
         request_id: str = None,
     ):
-        # The region ID of the instance. You can call the [DescribeDBInstanceAttribute](~~26231~~) operation to query region ID of the instance.
+        # The region ID of the instance. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/26231.html) operation to query region ID of the instance.
         self.region_id = region_id
         # The ID of the request.
         self.request_id = request_id
@@ -11919,9 +12322,13 @@ class DeleteDBInstanceEndpointRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotency of requests. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The endpoint ID of the instance. You can call the [DescribeDBInstanceEndpoints](~~610488~~) operation to query the endpoint ID of the instance.
+        # The endpoint ID of the instance. You can call the DescribeDBInstanceEndpoints operation to query the endpoint ID.
+        # 
+        # This parameter is required.
         self.dbinstance_endpoint_id = dbinstance_endpoint_id
-        # The instance ID. You can call the [DescribeDBInstances](~~610396~~) operation to query the ID of the instance.
+        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.resource_owner_id = resource_owner_id
 
@@ -12084,10 +12491,16 @@ class DeleteDBInstanceEndpointAddressRequest(TeaModel):
         # The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The public endpoint.
+        # 
+        # This parameter is required.
         self.connection_string = connection_string
-        # The endpoint ID of the instance. You can call the [DescribeDBInstanceEndpoints](~~610488~~) operation to query the endpoint ID of the instance.
+        # The endpoint ID of the instance. You can call the DescribeDBInstanceEndpoints operation to query the endpoint ID.
+        # 
+        # This parameter is required.
         self.dbinstance_endpoint_id = dbinstance_endpoint_id
-        # The ID of the instance. You can call the [DescribeDBInstances](~~610396~~) operation to query the ID of the instance.
+        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.resource_owner_id = resource_owner_id
 
@@ -12256,13 +12669,17 @@ class DeleteDBNodesRequest(TeaModel):
         # 
         # The token can only contain ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The instance ID. You can call the [DescribeDBInstances](~~610396~~) operation to query the ID of the instance.
+        # The instance ID. You can call the DescribeDBInstances operation to query the ID of the instance.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The node IDs.
+        # 
+        # This parameter is required.
         self.dbnode_id = dbnode_id
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the resource group. You can call the [DescribeDBInstanceAttribute](~~610394~~) operation to obtain the ID of the resource group.
+        # The ID of the resource group. You can call the DescribeDBInstanceAttribute operation to obtain the ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -12331,13 +12748,17 @@ class DeleteDBNodesShrinkRequest(TeaModel):
         # 
         # The token can only contain ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The instance ID. You can call the [DescribeDBInstances](~~610396~~) operation to query the ID of the instance.
+        # The instance ID. You can call the DescribeDBInstances operation to query the ID of the instance.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The node IDs.
+        # 
+        # This parameter is required.
         self.dbnode_id_shrink = dbnode_id_shrink
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the resource group. You can call the [DescribeDBInstanceAttribute](~~610394~~) operation to obtain the ID of the resource group.
+        # The ID of the resource group. You can call the DescribeDBInstanceAttribute operation to obtain the ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -12483,6 +12904,8 @@ class DeleteDBProxyEndpointAddressRequest(TeaModel):
         region_id: str = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The network type of the proxy endpoint. Valid values:
         # 
@@ -12493,8 +12916,12 @@ class DeleteDBProxyEndpointAddressRequest(TeaModel):
         # If the instance runs MySQL, the default value of this parameter is **Classic**.
         # 
         # > If the instance runs PostgreSQL, you must set this parameter to **Public** or **VPC**.
+        # 
+        # This parameter is required.
         self.dbproxy_connect_string_net_type = dbproxy_connect_string_net_type
         # The proxy endpoint ID. You can call the DescribeDBProxyEndpoint operation to query the proxy endpoint ID.
+        # 
+        # This parameter is required.
         self.dbproxy_endpoint_id = dbproxy_endpoint_id
         # A reserved parameter. You do not need to specify this parameter.
         self.dbproxy_engine_type = dbproxy_engine_type
@@ -12614,8 +13041,12 @@ class DeleteDatabaseRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the database.
+        # 
+        # This parameter is required.
         self.dbname = dbname
         self.resource_owner_id = resource_owner_id
 
@@ -12724,6 +13155,8 @@ class DeleteGadInstanceRequest(TeaModel):
         resource_group_id: str = None,
     ):
         # The ID of the global active database cluster. You can call the GadInstanceName operation to query the cluster ID.
+        # 
+        # This parameter is required.
         self.gad_instance_name = gad_instance_name
         # The region ID of the central node of the global active database cluster. The central node refers to the primary node. You can call the DescribeGadInstances operation to query the region ID.
         self.region_id = region_id
@@ -12836,10 +13269,12 @@ class DeleteMaskingRulesRequest(TeaModel):
         resource_owner_id: int = None,
         rule_name: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.rule_name = rule_name
 
     def validate(self):
@@ -12976,8 +13411,12 @@ class DeleteParameterGroupRequest(TeaModel):
     ):
         self.owner_id = owner_id
         # The parameter template ID. You can call the DescribeParameterGroups operation to query the parameter template ID.
+        # 
+        # This parameter is required.
         self.parameter_group_id = parameter_group_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID. You can call the DescribeDBInstanceAttribute to obtain the resource group ID.
         self.resource_group_id = resource_group_id
@@ -13115,11 +13554,17 @@ class DeletePostgresExtensionsRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The instance ID. You can call the [DescribeDBInstances](~~610396~~) operation to query the ID of the instance.
+        # The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) operation to query the ID of the instance.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The database on which the extension is installed. If you want to specify multiple databases, separate the databases with commas (,).
+        # 
+        # This parameter is required.
         self.dbnames = dbnames
         # The name of the extension. If you want to specify multiple extensions, separate the extension names with commas (,).
+        # 
+        # This parameter is required.
         self.extensions = extensions
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -13272,9 +13717,13 @@ class DeleteSecretRequest(TeaModel):
         # The engine of the database.
         # 
         # > Only MySQL is supported.
+        # 
+        # This parameter is required.
         self.engine = engine
         self.owner_id = owner_id
         # The region ID. You can call the DescribeSecrets operation to query the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID. You can call the DescribeDBInstanceAttribute operation to query the resource group ID.
         self.resource_group_id = resource_group_id
@@ -13457,6 +13906,8 @@ class DeleteSlotRequest(TeaModel):
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         self.client_token = client_token
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -13465,11 +13916,15 @@ class DeleteSlotRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The name of the replication slot. You can call the DescribeSlots operation to query the name of the replication slot.
+        # 
+        # This parameter is required.
         self.slot_name = slot_name
         # The status of the replication slot. You can call the DescribeSlots operation to query the status of the replication slot. Valid values:
         # 
         # *   ACTIVE
         # *   INACTIVE
+        # 
+        # This parameter is required.
         self.slot_status = slot_status
 
     def validate(self):
@@ -13611,9 +14066,13 @@ class DeleteUserBackupFileRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the full backup file. You can call the ListUserBackupFiles operation to query the information about all full backup files in a region.
+        # 
+        # This parameter is required.
         self.backup_id = backup_id
         self.owner_id = owner_id
         # The region ID of the instance. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID. You can call the DescribeDBInstanceAttribute operation to query the resource group ID.
         self.resource_group_id = resource_group_id
@@ -13756,10 +14215,16 @@ class DescibeImportsFromDatabaseRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance ID. You can call the DescribeDBInstances operation to query the IDs of instances.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The database engine of the instance. Set the value to **MySQL**\
+        # 
+        # This parameter is required.
         self.engine = engine
         # The ID of the migration task.
         self.import_id = import_id
@@ -13782,6 +14247,8 @@ class DescibeImportsFromDatabaseRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -14069,9 +14536,13 @@ class DescribeADInfoRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the generated token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -14233,6 +14704,7 @@ class DescribeAccountMaskingPrivilegeRequest(TeaModel):
         resource_owner_id: int = None,
         user_name: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -14440,6 +14912,8 @@ class DescribeAccountsRequest(TeaModel):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
         # 
         # >  This parameter is not supported for RDS instances that run SQL Server 2017 on RDS Cluster Edition.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The page number. Default value: **1**. Valid values: any non-zero positive integer.
         self.page_number = page_number
@@ -14503,7 +14977,7 @@ class DescribeAccountsResponseBodyAccountsDBInstanceAccountDatabasePrivilegesDat
         # *   **DMLOnly**: DML-only permissions.
         # *   **Custom**: custom permissions. You can modify the permissions of the account by using SQL commands.
         self.account_privilege = account_privilege
-        # The permissions that are granted to the account. For more information, see [Account permissions](~~146395~~).
+        # The permissions that are granted to the account. For more information, see [Account permissions](https://help.aliyun.com/document_detail/146395.html).
         self.account_privilege_detail = account_privilege_detail
         # The name of the database.
         self.dbname = dbname
@@ -14774,7 +15248,7 @@ class DescribeAccountsResponseBody(TeaModel):
         # *   **true**: The system admin account was enabled.
         # *   **false**: The system admin account was disabled.
         # 
-        # >  The [system admin account](~~170736~~) is supported only for the instances that run SQL Server. If the instance runs SQL Server, a value is returned for this parameter. If the instance runs a different database engine, no value is returned for this parameter.
+        # >  The [system admin account](https://help.aliyun.com/document_detail/170736.html) is supported only for the instances that run SQL Server. If the instance runs SQL Server, a value is returned for this parameter. If the instance runs a different database engine, no value is returned for this parameter.
         self.system_admin_account_status = system_admin_account_status
         # The total number of entries that are returned.
         self.total_record_count = total_record_count
@@ -14873,6 +15347,8 @@ class DescribeActionEventPolicyRequest(TeaModel):
     ):
         self.owner_id = owner_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID. You can call the DescribeDBInstanceAttribute to query the resource group ID.
         self.resource_group_id = resource_group_id
@@ -15034,7 +15510,7 @@ class DescribeActiveOperationTasksRequest(TeaModel):
         # 
         # *   **all**: all types
         # *   **S0**: returns the tasks of the exception fixing level.
-        # *   **S1**: returns the tasks of the system O\&M level.
+        # *   **S1**: returns the tasks of the system O\\&M level.
         self.change_level = change_level
         # The type of the database. Default value: all. Valid values: mysql, pgsql, and mssql.
         self.db_type = db_type
@@ -15044,7 +15520,7 @@ class DescribeActiveOperationTasksRequest(TeaModel):
         self.owner_id = owner_id
         # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page. Valid values: 1 to 100. Default value: 25.
+        # The number of entries per page. Default value: 25. Maximum value: 100.
         self.page_size = page_size
         # The name of the service. Valid values: RDS, POLARDB, MongoDB, and Redis. For RDS instances, set the value to RDS.
         self.product_id = product_id
@@ -15189,7 +15665,7 @@ class DescribeActiveOperationTasksResponseBodyItems(TeaModel):
         self.allow_cancel = allow_cancel
         # Indicates whether the switching time can be changed. The value 1 indicates that the switching time can be changed. The value 0 indicates that the switching time cannot be changed.
         self.allow_change = allow_change
-        # The code of the task level. The value S1 indicates the system O\&M level. The value S0 indicates the exception fixing level.
+        # The code of the task level. The value S1 indicates the system O\\&M level. The value S0 indicates the exception fixing level.
         self.change_level = change_level
         # The level of the task in English.
         self.change_level_en = change_level_en
@@ -15241,7 +15717,7 @@ class DescribeActiveOperationTasksResponseBodyItems(TeaModel):
         self.switch_time = switch_time
         # The task parameters.
         self.task_params = task_params
-        # The type of the O\&M task. Valid values:
+        # The type of the O\\&M task. Valid values:
         # 
         # *   **rds_apsaradb_ha**: primary/secondary switchover
         # *   **rds_apsaradb_transfer**: instance migration
@@ -15390,7 +15866,7 @@ class DescribeActiveOperationTasksResponseBody(TeaModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The details about the O\&M task.
+        # The details about the O\\&M task.
         self.items = items
         # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
@@ -15504,9 +15980,14 @@ class DescribeAllWhitelistTemplateRequest(TeaModel):
         # *   **false**\
         self.fuzzy_search = fuzzy_search
         # The number of entries to return on each page. Enumerated valid values: 10, 30, and 50.
+        # 
+        # This parameter is required.
         self.max_records_per_page = max_records_per_page
         # The page number.
+        # 
+        # This parameter is required.
         self.page_numbers = page_numbers
+        # The region ID.
         self.region_id = region_id
         # The resource group ID. For more information about resource groups, see related documentation.
         self.resource_group_id = resource_group_id
@@ -15832,9 +16313,13 @@ class DescribeAnalyticdbByPrimaryDBInstanceRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -15983,6 +16468,8 @@ class DescribeAvailableClassesRequest(TeaModel):
         #     *   **serverless_ha**: RDS High-availability Edition for ApsaraDB RDS for SQL Server.
         # 
         #     > If you create a serverless instance, you must specify this parameter.
+        # 
+        # This parameter is required.
         self.category = category
         # The commodity code of the instance. Valid values:
         # 
@@ -16010,6 +16497,8 @@ class DescribeAvailableClassesRequest(TeaModel):
         # *   **cloud_essd3**: ESSD of PL3
         # 
         # > Serverless instances support only ESSDs of PL 1. For a serverless instance, you must set this parameter to **cloud_essd**.
+        # 
+        # This parameter is required.
         self.dbinstance_storage_type = dbinstance_storage_type
         # The database engine that is run by the instance. Valid values:
         # 
@@ -16017,23 +16506,27 @@ class DescribeAvailableClassesRequest(TeaModel):
         # * **SQLServer**\
         # * **PostgreSQL**\
         # * **MariaDB**\
+        # 
+        # This parameter is required.
         self.engine = engine
         # The database engine version of the instance. Valid values:
         # 
         # *   Regular instance
         # 
         #     *   Valid values if you set Engine to MySQL: **5.5, 5.6, 5.7, and 8.0**\
-        #     *   Valid values if you set Engine to SQLServer: **2008r2, 08r2\_ent_ha, 2012, 2012\_ent_ha, 2012\_std_ha, 2012\_web, 2014\_std_ha, 2016\_ent_ha, 2016\_std_ha, 2016\_web, 2017\_std_ha, 2017\_ent, 2019\_std_ha, and 2019\_ent**\
+        #     *   Valid values if you set Engine to SQLServer: **2008r2, 08r2_ent_ha, 2012, 2012_ent_ha, 2012_std_ha, 2012_web, 2014_std_ha, 2016_ent_ha, 2016_std_ha, 2016_web, 2017_std_ha, 2017_ent, 2019_std_ha, and 2019_ent**\
         #     *   Valid values if you set Engine to PostgreSQL: **10.0, 11.0, 12.0, 13.0, 14.0, and 15.0**\
         #     *   Valid value when you set Engine to MariaDB: **10.3**\
         # 
         # *   Serverless instance
         # 
         #     *   Valid values if you set Engine to MySQL: **5.7** and **8.0**\
-        #     *   Valid values if you set Engine to SQLServer: **2016\_std_sl**, **2017\_std_sl**, and **2019\_std_sl**\
+        #     *   Valid values if you set Engine to SQLServer: **2016_std_sl**, **2017_std_sl**, and **2019_std_sl**\
         #     *   Valid value if you set Engine to PostgreSQL: **14.0**\
         # 
         #     > ApsaraDB RDS for MariaDB does not support serverless instances.
+        # 
+        # This parameter is required.
         self.engine_version = engine_version
         # The billing method of the instance. Valid values:
         # 
@@ -16046,11 +16539,15 @@ class DescribeAvailableClassesRequest(TeaModel):
         # The type of the order. Set the value to **BUY**\
         self.order_type = order_type
         # The region ID of the instance. You can call the DescribeDBInstanceAttribute operation to query the region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_id = resource_owner_id
         # The zone ID of the instance. You can call the DescribeDBInstanceAttribute operation to query the zone ID of the instance.
         # 
-        # > If the DescribeDBInstanceAttribute operation returns multiple zones, you must specify only one of the returned zones.`` For example, if the DescribeDBInstanceAttribute operation returns `cn-hangzhou-MAZ9(g,h)`, you can set this parameter to `cn-hangzhou-g` or cn-hangzhou-h.
+        # >  If the DescribeDBInstanceAttribute operation returns multiple zones, you must specify only one of the returned zones. For example, if the DescribeDBInstanceAttribute operation returns `cn-hangzhou-MAZ9(g,h)`, you can set this parameter to `cn-hangzhou-g` or `cn-hangzhou-h`.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -16286,6 +16783,8 @@ class DescribeAvailableCrossRegionRequest(TeaModel):
     ):
         self.owner_id = owner_id
         # The region ID. You can call the DescribeRegions operation to query the most recent zone list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -16435,6 +16934,8 @@ class DescribeAvailableMetricsRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -16669,6 +17170,8 @@ class DescribeAvailableRecoveryTimeRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the cross-region data backup file. You can call the DescribeCrossRegionBackups operation to query the backup file ID.
+        # 
+        # This parameter is required.
         self.cross_backup_id = cross_backup_id
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
         self.dbinstance_id = dbinstance_id
@@ -16885,20 +17388,22 @@ class DescribeAvailableZonesRequest(TeaModel):
         # *   **SQLServer**\
         # *   **PostgreSQL**\
         # *   **MariaDB**\
+        # 
+        # This parameter is required.
         self.engine = engine
         # The database engine version. Valid values:
         # 
         # *   Regular instance
         # 
         #     *   Valid values if you set Engine to MySQL: **5.5**, **5.6**, **5.7**, and **8.0**\
-        #     *   Valid values if you set Engine to SQLServer: **2008r2**, **08r2\_ent_ha**, **2012**, **2012\_ent_ha**, **2012\_std_ha**, **2012\_web**, **2014\_std_ha**, **2016\_ent_ha**, **2016\_std_ha**, **2016\_web**, **2017\_std_ha**, **2017\_ent**, **2019\_std_ha**, and **2019\_ent**\
+        #     *   Valid values if you set Engine to SQLServer: **2008r2**, **08r2_ent_ha**, **2012**, **2012_ent_ha**, **2012_std_ha**, **2012_web**, **2014_std_ha**, **2016_ent_ha**, **2016_std_ha**, **2016_web**, **2017_std_ha**, **2017_ent**, **2019_std_ha**, and **2019_ent**\
         #     *   Valid values if you set Engine to PostgreSQL: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, and **15.0**\
         #     *   Valid value when you set Engine to MariaDB: **10.3**\
         # 
         # *   Serverless instance
         # 
         #     *   Valid values if you set Engine to MySQL: **5.7** and **8.0**\
-        #     *   Valid values if you set Engine to SQLServer: **2016\_std_sl**, **2017\_std_sl**, and **2019\_std_sl**\
+        #     *   Valid values if you set Engine to SQLServer: **2016_std_sl**, **2017_std_sl**, and **2019_std_sl**\
         #     *   Valid value if you set Engine to PostgreSQL: **14.0**\
         # 
         #     **\
@@ -16906,6 +17411,8 @@ class DescribeAvailableZonesRequest(TeaModel):
         #     **Note**ApsaraDB RDS for MariaDB does not support serverless instances.
         self.engine_version = engine_version
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_id = resource_owner_id
         # The zone ID. If the instance spans more than one zone, the value of this parameter contains an `MAZ` part, such as `cn-hangzhou-MAZ6(b,f)` and `cn-hangzhou-MAZ5(b,e,f)`. You can call the DescribeRegions operation to query the most recent zone list.
@@ -17266,6 +17773,8 @@ class DescribeBackupDatabaseRequest(TeaModel):
         # The ID of the backup set.
         self.backup_id = backup_id
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -17409,6 +17918,8 @@ class DescribeBackupPolicyRequest(TeaModel):
         # *   **8**: Backup data is compressed by using QuickLZ but cannot be used to restore individual databases or tables.
         self.compress_type = compress_type
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -17509,7 +18020,7 @@ class DescribeBackupPolicyResponseBody(TeaModel):
         self.archive_backup_retention_period = archive_backup_retention_period
         # The backup interval. Unit: minutes.
         # 
-        # *   If the instance runs MySQL, the interval is the same as the value of the Snapshot Backup Start Time parameter rather than the Snapshot Backup Period parameter in the ApsaraDB RDS console. For more information, see [Back up an ApsaraDB RDS for MySQL instance](~~98818~~).
+        # *   If the instance runs MySQL, the interval is the same as the value of the Snapshot Backup Start Time parameter rather than the Snapshot Backup Period parameter in the ApsaraDB RDS console. For more information, see [Back up an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/98818.html).
         # *   If the instance runs SQL Server, the interval is the same as the log backup frequency.
         self.backup_interval = backup_interval
         # Indicates whether the log backup feature is enabled. Valid values:
@@ -17563,7 +18074,7 @@ class DescribeBackupPolicyResponseBody(TeaModel):
         # *   **True**\
         # *   **False**\
         # 
-        # >  This parameter is returned only when the instance runs MySQL. For more information, see [Configure the PITR feature](~~2666046~~).
+        # >  This parameter is returned only when the instance runs MySQL. For more information, see [Configure the PITR feature](https://help.aliyun.com/document_detail/2666046.html).
         self.enable_pitr_protection = enable_pitr_protection
         # Indicates whether the log backup deletion feature is enabled. If the disk usage exceeds 80% or the remaining disk space is less than 5 GB on the instance, this feature deletes binary log files. Valid values:
         # 
@@ -17824,6 +18335,8 @@ class DescribeBackupTasksRequest(TeaModel):
         # Specifies the client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # A reserved parameter.
         self.flag = flag
@@ -18129,6 +18642,8 @@ class DescribeBackupsRequest(TeaModel):
         # *   **IncrementalBackup**: incremental backup
         self.backup_type = backup_type
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
         # 
@@ -18666,11 +19181,15 @@ class DescribeBinlogFilesRequest(TeaModel):
         resource_owner_id: int = None,
         start_time: str = None,
     ):
-        # The instance ID. You can call the [DescribeDBInstances](~~610396~~) operation to query the ID of the instance.
+        # The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) operation to query the ID of the instance.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The end of the time range to query. The end time must be later than the start time.
         # 
         # Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -18689,6 +19208,8 @@ class DescribeBinlogFilesRequest(TeaModel):
         # The beginning of the time range to query.
         # 
         # Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -19007,10 +19528,14 @@ class DescribeCharacterSetNameRequest(TeaModel):
         # *   **mssql**\
         # *   **PostgreSQL**\
         # *   **MariaDB**\
+        # 
+        # This parameter is required.
         self.engine = engine
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID. You can call the DescribeDBInstanceAttribute operation to query the resource group ID.
         self.resource_group_id = resource_group_id
@@ -19188,6 +19713,8 @@ class DescribeClassDetailsRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The code of the instance type.
+        # 
+        # This parameter is required.
         self.class_code = class_code
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the generated token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
@@ -19197,13 +19724,21 @@ class DescribeClassDetailsRequest(TeaModel):
         # *   **rds_intl**: The instance is a subscription primary instance.
         # *   **rords_intl**: The instance is a pay-as-you-go read-only instance.
         # *   **rds_rordspre_public_intl**: The instance is a subscription read-only instance.
+        # 
+        # This parameter is required.
         self.commodity_code = commodity_code
         # The type of the database engine.
+        # 
+        # This parameter is required.
         self.engine = engine
         # The database engine version of the instance.
+        # 
+        # This parameter is required.
         self.engine_version = engine_version
         self.owner_id = owner_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID. You can call the DescribeDBInstanceAttribute operation to query the resource group ID.
         self.resource_group_id = resource_group_id
@@ -19441,15 +19976,21 @@ class DescribeCloudMigrationPrecheckResultRequest(TeaModel):
         task_name: str = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
         # The page number. Pages start from page 1. Default value: **1**.
+        # 
+        # This parameter is required.
         self.page_number = page_number
         # The number of entries per page. Valid values: **30** to **100**. Default value: 30.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         self.resource_owner_id = resource_owner_id
         # The private or public IP address that is used to connect to the self-managed PostgreSQL instance.
         # 
-        # *   If the self-managed PostgreSQL instance resides on an Elastic Compute Service (ECS) instance, enter the private IP address of the ECS instance. For more information about how to obtain the private IP address of an ECS instance, see [View IP addresses](~~273914~~).
+        # *   If the self-managed PostgreSQL instance resides on an Elastic Compute Service (ECS) instance, enter the private IP address of the ECS instance. For more information about how to obtain the private IP address of an ECS instance, see [View IP addresses](https://help.aliyun.com/document_detail/273914.html).
         # *   If the self-managed PostgreSQL instance resides in an on-premises data center, enter the private IP address of the on-premises data center.
         self.source_ip_address = source_ip_address
         # The port number that is used to connect to the self-managed PostgreSQL instance. You can run the netstat -a | grep PGSQL command to obtain the port number.
@@ -19733,15 +20274,21 @@ class DescribeCloudMigrationResultRequest(TeaModel):
         task_name: str = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
         # The number of entries per page.
+        # 
+        # This parameter is required.
         self.page_number = page_number
         # The page number.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         self.resource_owner_id = resource_owner_id
         # The private IP address that is used to connect to the self-managed PostgreSQL instance.
         # 
-        # *   If the self-managed PostgreSQL instance resides on an Elastic Compute Service (ECS) instance, enter the private IP address of the ECS instance. For more information about how to obtain the private IP address of an ECS instance, see [View IP addresses](~~273914~~).
+        # *   If the self-managed PostgreSQL instance resides on an Elastic Compute Service (ECS) instance, enter the private IP address of the ECS instance. For more information about how to obtain the private IP address of an ECS instance, see [View IP addresses](https://help.aliyun.com/document_detail/273914.html).
         # *   If the self-managed PostgreSQL instance resides in a data center, enter the private IP address of the data center.
         self.source_ip_address = source_ip_address
         # The port number that is used to connect to the self-managed PostgreSQL instance. You can run the netstat -a | grep PGSQL command to obtain the port number.
@@ -20261,7 +20808,9 @@ class DescribeCrossBackupMetaListRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the cross-region backup file that you want to use. You can call the [DescribeCrossRegionBackups](~~121733~~) operation to query the ID of the cross-region backup file.
+        # The ID of the cross-region backup file that you want to use. You can call the [DescribeCrossRegionBackups](https://help.aliyun.com/document_detail/121733.html) operation to query the ID of the cross-region backup file.
+        # 
+        # This parameter is required.
         self.backup_set_id = backup_set_id
         # The name of the database that you want to query. The system implements exact match based on the value of this parameter and returns the name of the matched database and the names of the tables in the matched database.
         self.get_db_name = get_db_name
@@ -20552,6 +21101,8 @@ class DescribeCrossRegionBackupDBInstanceRequest(TeaModel):
         # The number of entries to return per page. Default value: 30.
         self.page_size = page_size
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -20629,13 +21180,13 @@ class DescribeCrossRegionBackupDBInstanceResponseBodyItemsItem(TeaModel):
         self.cross_backup_region = cross_backup_region
         # The policy that is used to save the cross-region backup files of the instance. Default value: **1**. The value 1 indicates that all cross-region backup files are saved.
         self.cross_backup_type = cross_backup_type
-        # The name of the instance. It must be 2 to 256 characters in length. The value can contain letters, digits, underscores (\_), and hyphens (-), and must start with a letter.
+        # The name of the instance. It must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
         # 
         # >  The value cannot start with http:// or https://.
         self.dbinstance_description = dbinstance_description
         # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The instance status. For more information, see [Instance statuses](~~26315~~).
+        # The instance status. For more information, see [Instance statuses](https://help.aliyun.com/document_detail/26315.html).
         self.dbinstance_status = dbinstance_status
         # The database engine of the instance.
         self.engine = engine
@@ -20909,6 +21460,8 @@ class DescribeCrossRegionBackupsRequest(TeaModel):
         # The ID of the region in which the cross-region data backup file is stored.
         self.cross_backup_region = cross_backup_region
         # The instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         self.end_time = end_time
@@ -20926,6 +21479,8 @@ class DescribeCrossRegionBackupsRequest(TeaModel):
         # Default value: 30.
         self.page_size = page_size
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -21379,8 +21934,12 @@ class DescribeCrossRegionLogBackupFilesRequest(TeaModel):
         # The ID of the destination region within which the cross-region backup file is stored. You can call the DescribeCrossRegionBackupDBInstance operation to query the region ID.
         self.cross_backup_region = cross_backup_region
         # The instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         self.owner_id = owner_id
         # The page number. Valid values: any non-zero positive integer.
@@ -21396,10 +21955,14 @@ class DescribeCrossRegionLogBackupFilesRequest(TeaModel):
         # Default value: 30.
         self.page_size = page_size
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -21727,9 +22290,13 @@ class DescribeCurrentModifyOrderRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the generated token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.db_instance_id = db_instance_id
         self.owner_id = owner_id
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -21802,7 +22369,7 @@ class DescribeCurrentModifyOrderResponseBodyModifyOrder(TeaModel):
         # The effective time. Valid values:
         # 
         # *   **Immediate**: This is the default value.
-        # *   **MaintainTime**: The effective time is within the maintenance window. For more information, see [ModifyDBInstanceMaintainTime](~~610402~~).
+        # *   **MaintainTime**: The effective time is within the maintenance window. For more information, see [ModifyDBInstanceMaintainTime](https://help.aliyun.com/document_detail/610402.html).
         self.effective_time = effective_time
         # The description of the instance.
         self.mark = mark
@@ -21960,7 +22527,9 @@ class DescribeCustinsResourceInfoRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The instance ID. You can call the [DescribeDBInstances](~~26232~~) operation to query the instance ID.
+        # The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/26232.html) operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_ids = dbinstance_ids
         self.owner_id = owner_id
         # The resource group ID.
@@ -22279,7 +22848,9 @@ class DescribeDBInstanceAttributeRequest(TeaModel):
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
         # 
-        # ><notice>Do not query the details of multiple instances at a time by using multiple instance IDs. Otherwise, the query times out and fails.></notice>
+        # >Notice: Do not query the details of multiple instances at a time by using multiple instance IDs. Otherwise, the query times out and fails.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # Specifies whether the instance expires. Valid values:
         # 
@@ -22331,7 +22902,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeBabelfishCo
         # *   **single-db**\
         # *   **multi-db**\
         # 
-        # >  For more information about migration modes for Babelfish, see [Migration modes](~~428613~~).
+        # >  For more information about migration modes for Babelfish, see [Migration modes](https://help.aliyun.com/document_detail/428613.html).
         self.migration_mode = migration_mode
 
     def validate(self):
@@ -22741,6 +23312,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         babelfish_config: DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeBabelfishConfig = None,
         bpe_enabled: str = None,
         bursting_enabled: bool = None,
+        can_temp_upgrade: bool = None,
         category: str = None,
         cold_data_enabled: bool = None,
         collation: str = None,
@@ -22799,6 +23371,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         slave_zones: DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeSlaveZones = None,
         super_permission_mode: str = None,
         temp_dbinstance_id: str = None,
+        temp_upgrade_time_end: str = None,
+        temp_upgrade_time_start: str = None,
         time_zone: str = None,
         tips: str = None,
         tips_level: int = None,
@@ -22824,12 +23398,13 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.availability_value = availability_value
         # The configuration of the Babelfish feature for the ApsaraDB RDS for PostgreSQL instance.
         # 
-        # >  This parameter applies only to ApsaraDB RDS for PostgreSQL instances for which Babelfish is enabled. For more information, see [Introduction to Babelfish](~~428613~~).
+        # >  This parameter applies only to ApsaraDB RDS for PostgreSQL instances for which Babelfish is enabled. For more information, see [Introduction to Babelfish](https://help.aliyun.com/document_detail/428613.html).
         self.babelfish_config = babelfish_config
         # A deprecated parameter. You do not need to specify this parameter.
         self.bpe_enabled = bpe_enabled
         # An invalid parameter. You do not need to specify this parameter.
         self.bursting_enabled = bursting_enabled
+        self.can_temp_upgrade = can_temp_upgrade
         # The RDS edition. Valid values:
         # 
         # *   **Basic**: RDS Basic Edition
@@ -22865,7 +23440,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.dbcluster_nodes = dbcluster_nodes
         # The number of CPU cores.
         self.dbinstance_cpu = dbinstance_cpu
-        # The instance type of the instance. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~).
+        # The instance type of the instance. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
         self.dbinstance_class = dbinstance_class
         # The instance family. Valid values:
         # 
@@ -22887,7 +23462,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         # *   **Internet**\
         # *   **Intranet**\
         self.dbinstance_net_type = dbinstance_net_type
-        # The status of the instance. For more information, see [Instance states](~~26315~~).
+        # The status of the instance. For more information, see [Instance states](https://help.aliyun.com/document_detail/26315.html).
         self.dbinstance_status = dbinstance_status
         # The storage capacity of the instance. Unit: GB.
         self.dbinstance_storage = dbinstance_storage
@@ -23020,6 +23595,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
         self.super_permission_mode = super_permission_mode
         # The ID of the temporary instance that is attached to the primary instance.
         self.temp_dbinstance_id = temp_dbinstance_id
+        self.temp_upgrade_time_end = temp_upgrade_time_end
+        self.temp_upgrade_time_start = temp_upgrade_time_start
         # The time zone.
         self.time_zone = time_zone
         # The information about the exception that is detected on the instance. This parameter is returned only when the instance is created in an ApsaraDB MyBase cluster that runs MySQL on Standard Edition.
@@ -23074,6 +23651,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
             result['BpeEnabled'] = self.bpe_enabled
         if self.bursting_enabled is not None:
             result['BurstingEnabled'] = self.bursting_enabled
+        if self.can_temp_upgrade is not None:
+            result['CanTempUpgrade'] = self.can_temp_upgrade
         if self.category is not None:
             result['Category'] = self.category
         if self.cold_data_enabled is not None:
@@ -23190,6 +23769,10 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
             result['SuperPermissionMode'] = self.super_permission_mode
         if self.temp_dbinstance_id is not None:
             result['TempDBInstanceId'] = self.temp_dbinstance_id
+        if self.temp_upgrade_time_end is not None:
+            result['TempUpgradeTimeEnd'] = self.temp_upgrade_time_end
+        if self.temp_upgrade_time_start is not None:
+            result['TempUpgradeTimeStart'] = self.temp_upgrade_time_start
         if self.time_zone is not None:
             result['TimeZone'] = self.time_zone
         if self.tips is not None:
@@ -23225,6 +23808,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
             self.bpe_enabled = m.get('BpeEnabled')
         if m.get('BurstingEnabled') is not None:
             self.bursting_enabled = m.get('BurstingEnabled')
+        if m.get('CanTempUpgrade') is not None:
+            self.can_temp_upgrade = m.get('CanTempUpgrade')
         if m.get('Category') is not None:
             self.category = m.get('Category')
         if m.get('ColdDataEnabled') is not None:
@@ -23346,6 +23931,10 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(TeaModel):
             self.super_permission_mode = m.get('SuperPermissionMode')
         if m.get('TempDBInstanceId') is not None:
             self.temp_dbinstance_id = m.get('TempDBInstanceId')
+        if m.get('TempUpgradeTimeEnd') is not None:
+            self.temp_upgrade_time_end = m.get('TempUpgradeTimeEnd')
+        if m.get('TempUpgradeTimeStart') is not None:
+            self.temp_upgrade_time_start = m.get('TempUpgradeTimeStart')
         if m.get('TimeZone') is not None:
             self.time_zone = m.get('TimeZone')
         if m.get('Tips') is not None:
@@ -23505,6 +24094,8 @@ class DescribeDBInstanceByTagsRequest(TeaModel):
         # The number of entries per page. Valid values: **30 to 100**. Default value: **30**.
         self.page_size = page_size
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -23821,6 +24412,8 @@ class DescribeDBInstanceConnectivityRequest(TeaModel):
         source_ip_address: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.db_instance_name = db_instance_name
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -23830,6 +24423,8 @@ class DescribeDBInstanceConnectivityRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
         # The source IP address.
+        # 
+        # This parameter is required.
         self.source_ip_address = source_ip_address
 
     def validate(self):
@@ -23997,7 +24592,7 @@ class DescribeDBInstanceDetailRequest(TeaModel):
         # 
         # > You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The ID of the instance. You can call the [DescribeDBInstances](~~26232~~) operation to query the ID of the instance.
+        # The ID of the instance. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/26232.html) operation to query the ID of the instance.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         # The ID of the resource group.
@@ -24155,18 +24750,18 @@ class DescribeDBInstanceEncryptionKeyRequest(TeaModel):
         security_token: str = None,
         target_region_id: str = None,
     ):
-        # The ID of the instance You can call the [DescribeDBInstances](~~26232~~) operation to query the IDs of instances.
+        # The ID of the instance You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/26232.html) operation to query the IDs of instances.
         self.dbinstance_id = dbinstance_id
         # The ID of the custom key.
         self.encryption_key = encryption_key
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the instance. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
+        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.security_token = security_token
-        # The ID of the destination region. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
+        # The ID of the destination region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
         self.target_region_id = target_region_id
 
     def validate(self):
@@ -24487,7 +25082,9 @@ class DescribeDBInstanceEndpointsRequest(TeaModel):
         # 
         # >  If this parameter is not specified, the information about all endpoints is returned.
         self.dbinstance_endpoint_id = dbinstance_endpoint_id
-        # The instance ID. You can call the [DescribeDBInstances](~~610396~~) operation to query the ID of the instance.
+        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.resource_owner_id = resource_owner_id
 
@@ -24937,6 +25534,8 @@ class DescribeDBInstanceHAConfigRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -25211,6 +25810,8 @@ class DescribeDBInstanceIPArrayListRequest(TeaModel):
         whitelist_network_type: str = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.resource_owner_id = resource_owner_id
@@ -25431,10 +26032,14 @@ class DescribeDBInstanceIpHostnameRequest(TeaModel):
         security_token: str = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # You can call the DescribeDBInstanceAttribute operation to query the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -25575,6 +26180,8 @@ class DescribeDBInstanceMetricsRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -25810,6 +26417,8 @@ class DescribeDBInstanceMonitorRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -25948,6 +26557,8 @@ class DescribeDBInstanceNetInfoRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The type of the endpoint. Valid values:
         # 
@@ -26205,7 +26816,7 @@ class DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo(T
     ):
         # The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
         # 
-        # >  This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](~~428613~~).
+        # >  This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://help.aliyun.com/document_detail/428613.html).
         self.babelfish_port = babelfish_port
         # The endpoint of the instance.
         self.connection_string = connection_string
@@ -26491,7 +27102,9 @@ class DescribeDBInstanceNetInfoForChannelRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The ID of the instance. You can call the [DescribeDBInstances](~~26232~~) operation to query the instance ID.
+        # The ID of the instance. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/26232.html) operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The type of the endpoint to query. Valid values:
         # 
@@ -26986,14 +27599,20 @@ class DescribeDBInstancePerformanceRequest(TeaModel):
         start_time: str = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
         # 
         # >  The time span between the beginning time and the end time must be longer than the monitoring frequency. Otherwise, this operation may return an empty array.
+        # 
+        # This parameter is required.
         self.end_time = end_time
-        # The performance metrics that you want to query. Separate multiple values with commas (,). You can specify up to 30 values. For more information, see [Performance parameters](~~26316~~).
+        # The performance metrics that you want to query. Separate multiple values with commas (,). You can specify up to 30 values. For more information, see [Performance parameters](https://help.aliyun.com/document_detail/26316.html).
         # 
         # >  If you set **Key** to **MySQL_SpaceUsage** or **SQLServer_SpaceUsage**, you can query the monitoring data within only one day.
+        # 
+        # This parameter is required.
         self.key = key
         # The ID of the instance.
         self.node_id = node_id
@@ -27001,6 +27620,8 @@ class DescribeDBInstancePerformanceRequest(TeaModel):
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
         # 
         # >  The time span between the beginning time and the end time must be longer than the monitoring frequency. Otherwise, this operation may return an empty array.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -27127,7 +27748,7 @@ class DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKey(Tea
         self.unit = unit
         # The format in which the value of the performance metric is returned.
         # 
-        # >  If a performance metric value consists of multiple fields, the values are separated with ampersands (&). Example: com_delete\&com_insert\&com_insert_select\&com_replace.
+        # >  If a performance metric value consists of multiple fields, the values are separated with ampersands (&). Example: com_delete\\&com_insert\\&com_insert_select\\&com_replace.
         self.value_format = value_format
         # The performance metric values.
         self.values = values
@@ -27318,8 +27939,12 @@ class DescribeDBInstancePromoteActivityRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the Alibaba Cloud account.
+        # 
+        # This parameter is required.
         self.ali_uid = ali_uid
         # The instance ID.
+        # 
+        # This parameter is required.
         self.db_instance_name = db_instance_name
         self.owner_id = owner_id
         # The resource group ID.
@@ -27383,7 +28008,7 @@ class DescribeDBInstancePromoteActivityResponseBody(TeaModel):
         # *   China site: 26842
         # *   International site: 26888
         self.bid = bid
-        # The instance ID. You can call the [DescribeDBInstances](~~26232~~) operation to query the instance ID.
+        # The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/26232.html) operation to query the instance ID.
         self.dbinstance_id = dbinstance_id
         # The instance name.
         self.dbinstance_name = dbinstance_name
@@ -27393,7 +28018,7 @@ class DescribeDBInstancePromoteActivityResponseBody(TeaModel):
         # *   **PostgreSQL**\
         # *   **Oracle**\
         self.dbtype = dbtype
-        # The activity information about the instance. For more information, see [Instance activities](~~2391834~~).
+        # The activity information about the instance. For more information, see [Instance activities](https://help.aliyun.com/document_detail/2391834.html).
         self.is_activity = is_activity
         # The request ID.
         self.request_id = request_id
@@ -27492,6 +28117,8 @@ class DescribeDBInstanceProxyConfigurationRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -27661,6 +28288,8 @@ class DescribeDBInstanceSSLRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -27748,7 +28377,7 @@ class DescribeDBInstanceSSLResponseBody(TeaModel):
         self.client_cert_revocation_list = client_cert_revocation_list
         # The endpoint that is protected by SSL encryption.
         self.connection_string = connection_string
-        # Indicates whether the forceful SSL encryption feature is enabled. This parameter is supported only for ApsaraDB RDS for SQL Server instances. For more information, see [Configure the SSL encryption feature](~~95715~~).
+        # Indicates whether the forceful SSL encryption feature is enabled. This parameter is supported only for ApsaraDB RDS for SQL Server instances. For more information, see [Configure the SSL encryption feature](https://help.aliyun.com/document_detail/95715.html).
         # 
         # *   **1**: enabled
         # *   **0**: The feature is disabled.
@@ -27808,7 +28437,7 @@ class DescribeDBInstanceSSLResponseBody(TeaModel):
         self.server_cert = server_cert
         # The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disks.
         self.server_key = server_key
-        # The minimum Transport Layer Security (TLS) version. Valid values: 1.0, 1.1, and 1.2. This parameter is supported only for ApsaraDB RDS for SQL Server instances. For more information, see [Configure the SSL encryption feature](~~95715~~).
+        # The minimum Transport Layer Security (TLS) version. Valid values: 1.0, 1.1, and 1.2. This parameter is supported only for ApsaraDB RDS for SQL Server instances. For more information, see [Configure the SSL encryption feature](https://help.aliyun.com/document_detail/95715.html).
         self.tls_version = tls_version
 
     def validate(self):
@@ -27962,6 +28591,8 @@ class DescribeDBInstanceTDERequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -28233,11 +28864,11 @@ class DescribeDBInstancesRequest(TeaModel):
         self.connection_mode = connection_mode
         # The endpoint of the instance. You must specify this parameter only when you want to query a single instance.
         self.connection_string = connection_string
-        # The instance type of the instance. For information, see [Primary ApsaraDB RDS instance types](~~26312~~).
+        # The instance type of the instance. For information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
         self.dbinstance_class = dbinstance_class
         # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The status of the instance. For more information, see [Instance states](~~26315~~).
+        # The status of the instance. For more information, see [Instance states](https://help.aliyun.com/document_detail/26315.html).
         self.dbinstance_status = dbinstance_status
         # The role of the instance. Valid values:
         # 
@@ -28306,6 +28937,8 @@ class DescribeDBInstancesRequest(TeaModel):
         # *   **Prepaid**: subscription
         self.pay_type = pay_type
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -28592,10 +29225,7 @@ class DescribeDBInstancesResponseBodyItemsDBInstance(TeaModel):
         vpc_name: str = None,
         zone_id: str = None,
     ):
-        # Indicates whether the buffer pool extension (BPE) feature is enabled. Valid values:
-        # 
-        # *   **1**\
-        # *   **0**\
+        # A deprecated parameter.
         self.bpe_enabled = bpe_enabled
         # Indicates whether the I/O burst feature is enabled. Valid values:
         # 
@@ -28621,33 +29251,39 @@ class DescribeDBInstancesResponseBodyItemsDBInstance(TeaModel):
         self.connection_string = connection_string
         # The creation time of the instance. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.create_time = create_time
+        # The number of CPU instances.
+        # 
+        # Returns only when the InstanceLevel parameter is 1.
         self.dbinstance_cpu = dbinstance_cpu
-        # The instance type of the instance. For information, see [Primary ApsaraDB RDS instance types](~~26312~~).
+        # The instance type of the instance. For information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
         self.dbinstance_class = dbinstance_class
         # The instance description.
         self.dbinstance_description = dbinstance_description
         # The instance ID.
         self.dbinstance_id = dbinstance_id
+        # The memory size of the node. Unit: MB.
+        # 
+        # Returns only when the InstanceLevel parameter is 1.
         self.dbinstance_memory = dbinstance_memory
         # The type of the network connection to the instance. Valid values:
         # 
         # *   **Internet**\
         # *   **Intranet**\
         self.dbinstance_net_type = dbinstance_net_type
-        # The instance status. For more information, see [Instance statuses](~~26315~~).
+        # The instance status. For more information, see [Instance statuses](https://help.aliyun.com/document_detail/26315.html).
         self.dbinstance_status = dbinstance_status
         # The storage type of the instance.
         self.dbinstance_storage_type = dbinstance_storage_type
-        # The role of the instance. Valid values:
+        # The type of the instance. Valid values:
         # 
         # *   **Primary**: primary instance
         # *   **Readonly**: read-only instance
         # *   **Guard**: disaster recovery instance
         # *   **Temp**: temporary instance
         self.dbinstance_type = dbinstance_type
-        # The ID of the dedicated cluster to which the instances belong.
+        # The ID of the dedicated cluster.
         self.dedicated_host_group_id = dedicated_host_group_id
-        # The name of the dedicated cluster to which the instance belongs.
+        # The name of the dedicated cluster.
         self.dedicated_host_group_name = dedicated_host_group_name
         # The ID of the host on which the logger instance resides.
         self.dedicated_host_id_for_log = dedicated_host_id_for_log
@@ -28691,10 +29327,10 @@ class DescribeDBInstancesResponseBodyItemsDBInstance(TeaModel):
         # *   **Classic**\
         # *   **VPC**\
         self.instance_network_type = instance_network_type
-        # Whether IO acceleration is enabled. The value has the following meanings:
+        # Indicates whether the I/O acceleration feature is enabled. Valid values:
         # 
-        # - 1: enabled
-        # - 0: not enabled
+        # *   1: enabled
+        # *   0: disabled
         self.io_acceleration_enabled = io_acceleration_enabled
         # The lock mode of the instance. Valid values:
         # 
@@ -28721,7 +29357,7 @@ class DescribeDBInstancesResponseBodyItemsDBInstance(TeaModel):
         # *   **Postpaid**: pay-as-you-go
         # *   **Prepaid**: subscription
         self.pay_type = pay_type
-        # The IDs of the read-only instances that are attached to the primary instance. This parameter is returned only when the instance is a primary instance.
+        # The IDs of the read-only instances. This parameter is returned only when the instance is a primary instance and has the read-only instances attached.
         self.read_only_dbinstance_ids = read_only_dbinstance_ids
         # The region ID.
         self.region_id = region_id
@@ -29027,7 +29663,7 @@ class DescribeDBInstancesResponseBody(TeaModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The details of the instance.
+        # The information about the instances.
         self.items = items
         # The token that is used to display the next page. If the returned entries are displayed on multiple pages, the next page can be displayed when you call this operation again with **NextToken** specified.
         self.next_token = next_token
@@ -29147,6 +29783,8 @@ class DescribeDBInstancesAsCsvRequest(TeaModel):
         self.export_key = export_key
         self.owner_id = owner_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -29798,7 +30436,7 @@ class DescribeDBInstancesByExpireTimeResponseBodyItemsDBInstanceExpireTime(TeaMo
         self.dbinstance_description = dbinstance_description
         # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The status of the instance. For more information, see [Instance state table](~~26315~~).
+        # The status of the instance. For more information, see [Instance state table](https://help.aliyun.com/document_detail/26315.html).
         self.dbinstance_status = dbinstance_status
         # The expiration time of the instance. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         # 
@@ -30064,7 +30702,7 @@ class DescribeDBInstancesByPerformanceRequest(TeaModel):
         # 
         # Default value: **30**.
         self.page_size = page_size
-        # The region ID of the instance. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
+        # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -30401,11 +31039,11 @@ class DescribeDBInstancesForCloneRequest(TeaModel):
         self.connection_mode = connection_mode
         # The ID of the current instance.
         self.current_instance_id = current_instance_id
-        # The instance type of the instance. For more information, see [Instance types](~~26312~~).
+        # The instance type of the instance. For more information, see [Instance types](https://help.aliyun.com/document_detail/26312.html).
         self.dbinstance_class = dbinstance_class
         # The ID of the instance.
         self.dbinstance_id = dbinstance_id
-        # The status of the instance. For more information, see [Instance state table](~~26315~~).
+        # The status of the instance. For more information, see [Instance state table](https://help.aliyun.com/document_detail/26315.html).
         self.dbinstance_status = dbinstance_status
         # The role of the instance that you want to query. Valid values:
         # 
@@ -30459,6 +31097,8 @@ class DescribeDBInstancesForCloneRequest(TeaModel):
         # By default, this operation queries the instances that use any of the supported billing methods.
         self.pay_type = pay_type
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -30706,9 +31346,9 @@ class DescribeDBInstancesForCloneResponseBodyItemsDBInstance(TeaModel):
         self.connection_mode = connection_mode
         # The time when the instance was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.create_time = create_time
-        # The instance type of the instance. For more information, see [Instance types](~~26312~~).
+        # The instance type of the instance. For more information, see [Instance types](https://help.aliyun.com/document_detail/26312.html).
         self.dbinstance_class = dbinstance_class
-        # The name of the instance. It must be 2 to 256 characters in length. The value can contain letters, digits, underscores (\_), and hyphens (-). The value must start with a letter.
+        # The name of the instance. It must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-). The value must start with a letter.
         # 
         # > The value cannot start with http:// or https://.
         self.dbinstance_description = dbinstance_description
@@ -30719,7 +31359,7 @@ class DescribeDBInstancesForCloneResponseBodyItemsDBInstance(TeaModel):
         # *   **Internet**\
         # *   **Intranet**\
         self.dbinstance_net_type = dbinstance_net_type
-        # The status of the instance. For more information, see [Instance state table](~~26315~~).
+        # The status of the instance. For more information, see [Instance state table](https://help.aliyun.com/document_detail/26315.html).
         self.dbinstance_status = dbinstance_status
         # The storage type of the instance. Valid values:
         # 
@@ -31107,6 +31747,8 @@ class DescribeDBMiniEngineVersionsRequest(TeaModel):
         # *   **Finance**: RDS Enterprise Edition
         self.node_type = node_type
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_id = resource_owner_id
         # The storage type of the instance. Valid values:
@@ -31186,7 +31828,7 @@ class DescribeDBMiniEngineVersionsResponseBodyMinorVersionItems(TeaModel):
         status_desc: str = None,
         tag: str = None,
     ):
-        # The PostgreSQL version to which the minor engine version corresponds. For more information, see [Release notes for AliPG](~~126002~~).
+        # The PostgreSQL version to which the minor engine version corresponds. For more information, see [Release notes for AliPG](https://help.aliyun.com/document_detail/126002.html).
         # 
         # >  This parameter is available only for instances that run **PostgreSQL**.
         self.community_minor_version = community_minor_version
@@ -31423,6 +32065,8 @@ class DescribeDBProxyRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # A reserved parameter. You do not need to specify this parameter.
         self.dbproxy_engine_type = dbproxy_engine_type
@@ -31931,6 +32575,8 @@ class DescribeDBProxyEndpointRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The proxy endpoint that you want to query. You can call the DescribeDBProxy interface to query the proxy endpoint.
         self.dbproxy_connect_string = dbproxy_connect_string
@@ -32121,7 +32767,7 @@ class DescribeDBProxyEndpointResponseBody(TeaModel):
         self.db_proxy_endpoint_read_write_mode = db_proxy_endpoint_read_write_mode
         # An array that consists of the information about the proxy endpoint.
         self.endpoint_connect_items = endpoint_connect_items
-        # The method that is used to assign read weights. For more information, see [Modify the latency threshold and read weights of ApsaraDB RDS for MySQL instances](~~96076~~). Valid values:
+        # The method that is used to assign read weights. For more information, see [Modify the latency threshold and read weights of ApsaraDB RDS for MySQL instances](https://help.aliyun.com/document_detail/96076.html). Valid values:
         # 
         # *   **Standard**: The system automatically assigns read weights to the instance and its read-only instances based on the specifications of these instances.
         # *   **Custom**: You must manually assign read weights to the instance and its read-only instances.
@@ -32265,6 +32911,8 @@ class DescribeDBProxyPerformanceRequest(TeaModel):
         start_time: str = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # A reserved parameter. You do not need to specify this parameter.
         self.dbproxy_engine_type = dbproxy_engine_type
@@ -32274,6 +32922,8 @@ class DescribeDBProxyPerformanceRequest(TeaModel):
         # *   exclusive: the dedicated database proxy
         self.dbproxy_instance_type = dbproxy_instance_type
         # The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The performance metrics that you want to query.
         # 
@@ -32290,13 +32940,19 @@ class DescribeDBProxyPerformanceRequest(TeaModel):
         # *   **Maxscale_CpuUsage**: CPU utilization
         # 
         # If you want to query more than one performance metric, separate the performance metrics with commas (,). You can specify up to six performance metrics in a single request.
+        # 
+        # This parameter is required.
         self.metrics_name = metrics_name
         self.owner_id = owner_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -32623,10 +33279,14 @@ class DescribeDTCSecurityIpHostsForSQLServerRequest(TeaModel):
         security_token: str = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID. You can call the DescribeDBInstanceAttribute operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID. You can call the DescribeDBInstanceAttribute operation to query the resource group ID.
         self.resource_group_id = resource_group_id
@@ -32859,6 +33519,8 @@ class DescribeDatabasesRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the database.
         self.dbname = dbname
@@ -33418,6 +34080,8 @@ class DescribeDedicatedHostGroupsRequest(TeaModel):
         self.image_category = image_category
         self.owner_id = owner_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -33531,7 +34195,7 @@ class DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGro
         self.cpu_allocate_ration = cpu_allocate_ration
         # The number of allocated cores in the dedicated cluster.
         self.cpu_allocated_amount = cpu_allocated_amount
-        # The core overcommitment ratio of the dedicated cluster. Unit: %. For more information about the core overcommitment ratio, see [Manage a dedicated cluster](~~182328~~).
+        # The core overcommitment ratio of the dedicated cluster. Unit: %. For more information about the core overcommitment ratio, see [Manage a dedicated cluster](https://help.aliyun.com/document_detail/182328.html).
         self.cpu_allocation_ratio = cpu_allocation_ratio
         # The timestamp when the dedicated cluster was created.
         self.create_time = create_time
@@ -33548,7 +34212,7 @@ class DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGro
         self.disk_allocate_ration = disk_allocate_ration
         # The amount of allocated disk space in the dedicated cluster. Unit: GB.
         self.disk_allocated_amount = disk_allocated_amount
-        # The disk overcommitment ratio of the dedicated cluster. Unit: %. For more information about the core overcommitment ratio, see [Manage a dedicated cluster](~~182328~~).
+        # The disk overcommitment ratio of the dedicated cluster. Unit: %. For more information about the core overcommitment ratio, see [Manage a dedicated cluster](https://help.aliyun.com/document_detail/182328.html).
         self.disk_allocation_ratio = disk_allocation_ratio
         # The amount of used disk space in the dedicated cluster. Unit: GB.
         self.disk_used_amount = disk_used_amount
@@ -33569,7 +34233,7 @@ class DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGro
         self.mem_allocate_ration = mem_allocate_ration
         # The amount of allocated memory space in the dedicated cluster.
         self.mem_allocated_amount = mem_allocated_amount
-        # The memory overcommitment ratio of the dedicated cluster. Unit: %. For more information about the core overcommitment ratio, see [Manage a dedicated cluster](~~182328~~).
+        # The memory overcommitment ratio of the dedicated cluster. Unit: %. For more information about the core overcommitment ratio, see [Manage a dedicated cluster](https://help.aliyun.com/document_detail/182328.html).
         self.mem_allocation_ratio = mem_allocation_ratio
         # The amount of used memory space in the dedicated cluster. Unit: MB.
         self.mem_used_amount = mem_used_amount
@@ -33968,7 +34632,7 @@ class DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts(TeaModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # The host account. You can call the [CreateDedicatedHostAccount](~~196877~~) operation to create a host account.
+        # The host account. You can call the [CreateDedicatedHostAccount](https://help.aliyun.com/document_detail/196877.html) operation to create a host account.
         self.account_name = account_name
         # Specifies whether instances can be deployed on the host. Valid values:
         # 
@@ -33977,7 +34641,7 @@ class DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts(TeaModel):
         self.allocation_status = allocation_status
         # The bastion host ID.
         self.bastion_instance_id = bastion_instance_id
-        # The core overcommitment ratio of the dedicated cluster. Unit: percentage. For more information about the core overcommitment ratio, see [Manage a dedicated cluster](~~182328~~).
+        # The core overcommitment ratio of the dedicated cluster. Unit: percentage. For more information about the core overcommitment ratio, see [Manage a dedicated cluster](https://help.aliyun.com/document_detail/182328.html).
         self.cpuallocation_ratio = cpuallocation_ratio
         # The number of used CPU cores on the host. Unit: cores.
         self.cpu_used = cpu_used
@@ -33987,7 +34651,7 @@ class DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts(TeaModel):
         self.dedicated_host_group_id = dedicated_host_group_id
         # The host ID.
         self.dedicated_host_id = dedicated_host_id
-        # The disk overcommitment ratio of the dedicated cluster. Unit: percentage. For more information about the core overcommitment ratio, see [Manage a dedicated cluster](~~182328~~).
+        # The disk overcommitment ratio of the dedicated cluster. Unit: percentage. For more information about the core overcommitment ratio, see [Manage a dedicated cluster](https://help.aliyun.com/document_detail/182328.html).
         self.disk_allocation_ratio = disk_allocation_ratio
         # The time when the host expires.
         self.end_time = end_time
@@ -34341,6 +35005,8 @@ class DescribeDetachedBackupsRequest(TeaModel):
         # > The default value is **30**.
         self.page_size = page_size
         # The region ID of the instance.
+        # 
+        # This parameter is required.
         self.region = region
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -34718,7 +35384,9 @@ class DescribeDiagnosticReportListRequest(TeaModel):
         dbinstance_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the instance. You can call the [DescribeDBInstances](~~610396~~) operation to query the ID of the instance.
+        # The ID of the instance. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) operation to query the ID of the instance.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -34908,8 +35576,12 @@ class DescribeErrorLogsRequest(TeaModel):
         start_time: str = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The end of the time range to query. The end time must be later than the start time. The time span between the start time and the end time must be less than 31 days. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -34922,6 +35594,8 @@ class DescribeErrorLogsRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -35173,6 +35847,8 @@ class DescribeEventsRequest(TeaModel):
         # Default value: **30**.
         self.page_size = page_size
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -35778,9 +36454,13 @@ class DescribeHADiagnoseConfigRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -35910,9 +36590,13 @@ class DescribeHASwitchConfigRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -36061,7 +36745,7 @@ class DescribeHistoryEventsRequest(TeaModel):
     ):
         # The resource status. Valid values: **importing**, failed, checksuccess, and deleted.
         self.archive_status = archive_status
-        # The system event category. For more information, see [View the event history of an ApsaraDB RDS instance](~~129759~~).
+        # The system event category. For more information, see [View the event history of an ApsaraDB RDS instance](https://help.aliyun.com/document_detail/129759.html).
         self.event_category = event_category
         # The event ID.
         self.event_id = event_id
@@ -36077,7 +36761,20 @@ class DescribeHistoryEventsRequest(TeaModel):
         # *   32: handled
         # *   64: expired
         self.event_status = event_status
-        # The system event type. This parameter takes effect only when InstanceEventType.N is not specified. Valid values: SystemMaintenance.Reboot: The instance is restarted due to system maintenance. SystemMaintenance.Redeploy: The instance is redeployed due to system maintenance. SystemFailure.Reboot: The instance is restarted due to a system error. SystemFailure.Redeploy: The instance is redeployed due to a system error. SystemFailure.Delete: The instance is released due to an instance creation failure. InstanceFailure.Reboot: The instance is restarted due to an instance error. InstanceExpiration.Stop: The subscription instance is stopped due to expiration. InstanceExpiration.Delete: The subscription instance is released due to expiration. AccountUnbalanced.Stop: The pay-as-you-go instance is stopped due to an overdue payment. AccountUnbalanced.Delete: The pay-as-you-go instance is released due to an overdue payment. For more information, see Overview. The values of this parameter are applicable only to instance system events, but not to disk system events.
+        # The system event type. This parameter takes effect only when InstanceEventType.N is not specified. Valid values:
+        # 
+        # *   SystemMaintenance.Reboot: The instance is restarted due to system maintenance.
+        # *   SystemMaintenance.Redeploy: The instance is redeployed due to system maintenance.
+        # *   SystemFailure.Reboot: The instance is restarted due to a system error.
+        # *   SystemFailure.Redeploy: The instance is redeployed due to a system error.
+        # *   SystemFailure.Delete: The instance is released due to an instance creation failure.
+        # *   InstanceFailure.Reboot: The instance is restarted due to an instance error.
+        # *   InstanceExpiration.Stop: The subscription instance is stopped due to expiration.
+        # *   InstanceExpiration.Delete: The subscription instance is released due to expiration.
+        # *   AccountUnbalanced.Stop: The pay-as-you-go instance is stopped due to an overdue payment.
+        # *   AccountUnbalanced.Delete: The pay-as-you-go instance is released due to an overdue payment.
+        # 
+        # >  For more information, see Overview. The values of this parameter are applicable only to instance system events, but not to disk system events.
         self.event_type = event_type
         # The beginning of the time range to query. Only tasks that have a start time later than or equal to the time specified by this parameter are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The start time can be up to 30 days earlier than the current time. If you set this parameter to a time more than 30 days earlier than the current time, this time is automatically converted to a time that is exactly 30 days earlier than the current time.
         self.from_start_time = from_start_time
@@ -36087,7 +36784,7 @@ class DescribeHistoryEventsRequest(TeaModel):
         self.page_number = page_number
         # The number of entries per page. Default value: 30.
         self.page_size = page_size
-        # The region ID. You can call the [DescribeRegions](~~610399~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/610399.html) operation to query the most recent region list.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -36220,7 +36917,7 @@ class DescribeHistoryEventsResponseBodyItemsData(TeaModel):
         self.detail_reason = detail_reason
         # The time when the alert was closed. The time follows the ISO 8601 standard in the *yyyy-mm-dd*t*hh:mm*z format. The time is displayed in UTC.
         self.end_time = end_time
-        # The system event category. For more information, see [View the event history of an ApsaraDB RDS instance](~~129759~~).
+        # The system event category. For more information, see [View the event history of an ApsaraDB RDS instance](https://help.aliyun.com/document_detail/129759.html).
         self.event_category = event_category
         # The event code.
         self.event_code = event_code
@@ -36230,7 +36927,7 @@ class DescribeHistoryEventsResponseBodyItemsData(TeaModel):
         self.event_id = event_id
         # The event impact.
         self.event_impact = event_impact
-        # The event level. For more information, see [View the event history of an ApsaraDB RDS instance](~~129759~~).
+        # The event level. For more information, see [View the event history of an ApsaraDB RDS instance](https://help.aliyun.com/document_detail/129759.html).
         self.event_level = event_level
         # The event source.
         self.event_reason = event_reason
@@ -36423,7 +37120,7 @@ class DescribeHistoryEventsResponseBodyItems(TeaModel):
         self.subject = subject
         # The amount of time that has elapsed from the start time of the query. Unit: seconds.
         self.time = time
-        # The event type. For more information, see [View the event history of an ApsaraDB RDS instance](~~129759~~).
+        # The event type. For more information, see [View the event history of an ApsaraDB RDS instance](https://help.aliyun.com/document_detail/129759.html).
         self.type = type
 
     def validate(self):
@@ -36595,6 +37292,8 @@ class DescribeHistoryEventsStatRequest(TeaModel):
         # The beginning of the time range to query. Only tasks that have a start time later than or equal to the time specified by this parameter are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The start time can be up to 30 days earlier than the current time. If you set this parameter to a time more than 30 days earlier than the current time, this time is automatically converted to a time that is exactly 30 days earlier than the current time.
         self.from_start_time = from_start_time
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.security_token = security_token
         # The end of the time range to query. Only tasks that have a start time earlier than or equal to the time specified by this parameter are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -36642,7 +37341,7 @@ class DescribeHistoryEventsStatResponseBodyItems(TeaModel):
         event_category: str = None,
         total_count: int = None,
     ):
-        # The system event category. For more information, see [View the event history of an ApsaraDB RDS instance](~~129759~~).
+        # The system event category. For more information, see [View the event history of an ApsaraDB RDS instance](https://help.aliyun.com/document_detail/129759.html).
         self.event_category = event_category
         # The total number of entries returned.
         self.total_count = total_count
@@ -36779,6 +37478,8 @@ class DescribeHistoryTasksRequest(TeaModel):
         # The minimum execution duration of the task. This parameter is used to filter tasks whose execution duration is longer than the minimum execution duration. Unit: seconds. The default value is 0, which indicates that no limit is imposed.
         self.from_exec_time = from_exec_time
         # The beginning of the time range to query. Only tasks that have a start time later than or equal to the time specified by this parameter are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The start time can be up to 30 days earlier than the current time. If you set this parameter to a time more than 30 days earlier than the current time, the specified time is automatically converted to a time that is exactly 30 days earlier than the current time.
+        # 
+        # This parameter is required.
         self.from_start_time = from_start_time
         # The instance ID. Separate multiple instance IDs with commas (,). You can specify up to 30 instance IDs. This parameter is empty by default, which indicates that you can specify an unlimited number of instance IDs.
         self.instance_id = instance_id
@@ -36815,6 +37516,8 @@ class DescribeHistoryTasksRequest(TeaModel):
         # The maximum execution duration of a task. This parameter is used to filter tasks whose execution duration is shorter than or equal to the maximum execution duration. Unit: seconds. The default value is 0, which indicates that no limit is imposed.
         self.to_exec_time = to_exec_time
         # The end of the time range to query. Only tasks that have a start time earlier than or equal to the time specified by this parameter are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.to_start_time = to_start_time
 
     def validate(self):
@@ -36990,7 +37693,7 @@ class DescribeHistoryTasksResponseBodyItems(TeaModel):
         self.status = status
         # The task details provided in the form of a JSON string. The JSON string can be customized and extended to include additional information about the task. The details vary based on the task type.
         self.task_detail = task_detail
-        # The task ID in the t-\*\*\* format.
+        # The task ID in the t-\\*\\*\\* format.
         self.task_id = task_id
         # The task type or name.
         self.task_type = task_type
@@ -37219,11 +37922,15 @@ class DescribeHistoryTasksStatRequest(TeaModel):
         # The minimum execution duration of a task. This parameter is used to filter tasks whose execution duration is longer than the minimum execution duration. Unit: seconds. The default value is 0, which indicates that no limit is imposed.
         self.from_exec_time = from_exec_time
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*t*HH:mm:ss*z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.from_start_time = from_start_time
         # The instance ID.
         self.instance_id = instance_id
         self.owner_id = owner_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -37249,6 +37956,8 @@ class DescribeHistoryTasksStatRequest(TeaModel):
         # The maximum execution duration of a task. This parameter is used to filter tasks whose execution duration is shorter than or equal to the maximum execution duration. Unit: seconds. The default value is 0, which indicates that no limit is imposed.
         self.to_exec_time = to_exec_time
         # The end of the time range to query. Only tasks that have a start time earlier than or equal to the time specified by this parameter are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.to_start_time = to_start_time
 
     def validate(self):
@@ -37459,8 +38168,12 @@ class DescribeHostGroupElasticStrategyParametersRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The name of the dedicated cluster.
+        # 
+        # This parameter is required.
         self.dedicated_host_group_name = dedicated_host_group_name
-        # The region ID. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -37615,15 +38328,25 @@ class DescribeHostWebShellRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The username of the account that is used to log on to the host of the instance.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The password of the host account.
+        # 
+        # This parameter is required.
         self.account_password = account_password
         # The instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The instance hostname. You can call the DescribeDBInstanceIpHostname operation to query the hostname.
+        # 
+        # This parameter is required.
         self.host_name = host_name
         self.owner_id = owner_id
         # The region ID of the instance. You can call the DescribeDBInstanceAttribute operation to query the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -37781,6 +38504,8 @@ class DescribeInstanceAutoRenewalAttributeRequest(TeaModel):
         # *   **100**\
         self.page_size = page_size
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -38043,9 +38768,13 @@ class DescribeInstanceCrossBackupPolicyRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -38117,13 +38846,13 @@ class DescribeInstanceCrossBackupPolicyResponseBody(TeaModel):
         self.cross_backup_region = cross_backup_region
         # The policy that is used to save the cross-region backup files of the instance. Default value: **1**. The value 1 indicates that all cross-region backup files are saved.
         self.cross_backup_type = cross_backup_type
-        # The name of the instance. It must be 2 to 256 characters in length. The value can contain letters, digits, underscores (\_), and hyphens (-), and must start with a letter.
+        # The name of the instance. It must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
         # 
         # >  The value cannot start with http:// or https://.
         self.dbinstance_description = dbinstance_description
         # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The status of the instance. For more information, see [Instance state table](~~26315~~).
+        # The status of the instance. For more information, see [Instance state table](https://help.aliyun.com/document_detail/26315.html).
         self.dbinstance_status = dbinstance_status
         # The database engine of the instance.
         self.engine = engine
@@ -38453,6 +39182,8 @@ class DescribeInstanceLinkedWhitelistTemplateRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The instance name.
+        # 
+        # This parameter is required.
         self.ins_name = ins_name
         self.region_id = region_id
         # The resource group ID. You can leave this parameter empty.
@@ -38734,12 +39465,18 @@ class DescribeKmsAssociateResourcesRequest(TeaModel):
         # The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The ID of the KMS resource. Only key IDs are supported.
+        # 
+        # This parameter is required.
         self.kms_resource_id = kms_resource_id
         # The ID of the region to which the KMS resource belongs.
         self.kms_resource_region_id = kms_resource_region_id
         # The type of the KMS resource. Only key is supported.
+        # 
+        # This parameter is required.
         self.kms_resource_type = kms_resource_type
         # The ID of the Alibaba Cloud account to which the KMS resource belongs.
+        # 
+        # This parameter is required.
         self.kms_resource_user = kms_resource_user
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -38826,7 +39563,7 @@ class DescribeKmsAssociateResourcesResponseBodyAssociateDBInstances(TeaModel):
         # *   **SQLServer**\
         # *   **PostgreSQL**\
         self.engine = engine
-        # The way in which the key is used. Return values:
+        # The purpose of the key. Valid values:
         # 
         # *   **DiskEncryption**: cloud disk encryption
         # *   **TDE**: transparent data encryption
@@ -38882,7 +39619,7 @@ class DescribeKmsAssociateResourcesResponseBody(TeaModel):
         associate_status: bool = None,
         request_id: str = None,
     ):
-        # The information about the associated ApsaraDB RDS instance.
+        # The information about the associated ApsaraDB RDS instances.
         self.associate_dbinstances = associate_dbinstances
         # Indicates whether an associated RDS instance exists.
         # 
@@ -38980,6 +39717,8 @@ class DescribeLocalAvailableRecoveryTimeRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
@@ -39133,8 +39872,12 @@ class DescribeLogBackupFilesRequest(TeaModel):
         start_time: str = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -39147,6 +39890,8 @@ class DescribeLogBackupFilesRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -39419,6 +40164,8 @@ class DescribeMarketingActivityRequest(TeaModel):
         upgrade_code: str = None,
     ):
         # The ID of the Alibaba Cloud account.
+        # 
+        # This parameter is required.
         self.ali_uid = ali_uid
         # *   China site: 26842
         # *   International site: 26888
@@ -39426,13 +40173,17 @@ class DescribeMarketingActivityRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.owner_id = owner_id
-        # The region ID. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The service name.
+        # 
+        # This parameter is required.
         self.upgrade_code = upgrade_code
 
     def validate(self):
@@ -39530,9 +40281,9 @@ class DescribeMarketingActivityResponseBodyItems(TeaModel):
         # *   POSTPAY: pay-as-you-go
         # *   PREPAY: subscription
         self.charge_type = charge_type
-        # The instance type. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~) and [Read-only ApsaraDB RDS instance types](~~145759~~).
+        # The instance type. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html) and [Read-only ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/145759.html).
         self.class_code = class_code
-        # The instance family. For more information, see [Overview of instance families](~~57184~~).
+        # The instance family. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/57184.html).
         self.class_group = class_group
         # The number of CPU cores that are supported by the instance type. Unit: cores.
         self.cpu = cpu
@@ -39736,6 +40487,8 @@ class DescribeMarketingActivityResponseBody(TeaModel):
         # The region ID.
         self.region_id = region_id
         # The request ID.
+        # 
+        # This parameter is required.
         self.request_id = request_id
 
     def validate(self):
@@ -39832,6 +40585,7 @@ class DescribeMaskingRulesRequest(TeaModel):
         resource_owner_id: int = None,
         rule_name: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -40094,13 +40848,15 @@ class DescribeMetaListRequest(TeaModel):
         restore_time: str = None,
         restore_type: str = None,
     ):
-        # The ID of the backup set from which you want to restore data. You can call the DescribeBackups operation to query the backup set ID.
+        # The ID of the backup set from which you want to restore data. You can call the DescribeBackups operation to query the IDs of data backup files.
         # 
-        # >  This parameter must be specified when the **RestoreType** parameter is set to **BackupSetID**.
+        # >  This parameter is required when you set the **RestoreType** parameter to **BackupSetID**.
         self.backup_set_id = backup_set_id
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the generated token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the database to query. The system implements exact match based on the value of this parameter and returns the name of the matched database and the names of all tables contained in the database.
         # 
@@ -40127,9 +40883,9 @@ class DescribeMetaListRequest(TeaModel):
         # 
         # >  This parameter must be specified when the **RestoreType** parameter is set to **RestoreTime**.
         self.restore_time = restore_time
-        # The method that is used to restore data. Valid values:
+        # The restoration method that you want to use. Valid values:
         # 
-        # *   **BackupSetID**: Data is restored from a backup set. If you use this value, you must also specify the **BackupSetID** parameter.
+        # *   **BackupSetID**: Data is restored from the backup set. If you use this value, you must also specify the **BackupSetID** parameter.
         # *   **RestoreTime**: Data is restored to a specific point in time. If you use this value, you must also specify the **RestoreTime** parameter.
         # 
         # Default value: **BackupSetID**.
@@ -40404,8 +41160,12 @@ class DescribeMigrateTaskByIdRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The migration task ID. You can call the DescribeMigrateTasks operation to query the migration task ID.
+        # 
+        # This parameter is required.
         self.migrate_task_id = migrate_task_id
         self.owner_id = owner_id
         # The ID of the resource group.
@@ -40611,8 +41371,12 @@ class DescribeMigrateTasksRequest(TeaModel):
         start_time: str = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         self.owner_id = owner_id
         # The page number. Valid values: any non-zero positive integer.
@@ -40626,6 +41390,8 @@ class DescribeMigrateTasksRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -40923,6 +41689,8 @@ class DescribeModifyPGHbaConfigLogRequest(TeaModel):
         # A reserved parameter. You do not need to specify this parameter.
         self.client_token = client_token
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
         self.end_time = end_time
@@ -41417,8 +42185,12 @@ class DescribeModifyParameterLogRequest(TeaModel):
         start_time: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -41437,6 +42209,8 @@ class DescribeModifyParameterLogRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -41716,8 +42490,12 @@ class DescribeOssDownloadsRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The migration task ID. You can call the DescribeMigrateTasks operation to query the migration task ID.
+        # 
+        # This parameter is required.
         self.migrate_task_id = migrate_task_id
         self.owner_id = owner_id
         # The ID of the resource group.
@@ -42000,6 +42778,8 @@ class DescribePGHbaConfigRequest(TeaModel):
         # A reserved parameter. You do not need to specify this parameter.
         self.client_token = client_token
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -42411,8 +43191,12 @@ class DescribeParameterGroupRequest(TeaModel):
     ):
         self.owner_id = owner_id
         # The parameter template ID. You can call the DescribeParameterGroups operation to query the parameter template ID.
+        # 
+        # This parameter is required.
         self.parameter_group_id = parameter_group_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -42842,6 +43626,8 @@ class DescribeParameterGroupsRequest(TeaModel):
         self.enable_detail = enable_detail
         self.owner_id = owner_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -43039,7 +43825,7 @@ class DescribeParameterGroupsResponseBody(TeaModel):
         # Indicates whether parameter templates exist in the specified region. Valid values:
         # *   true
         # *   false
-        # ><notice>This parameter is deprecated.></notice>
+        # >Notice: This parameter is deprecated.
         self.signal_for_optimize_params = signal_for_optimize_params
 
     def validate(self):
@@ -43143,6 +43929,8 @@ class DescribeParameterTemplatesRequest(TeaModel):
         # *   **mssql**: SQL Server
         # *   **PostgreSQL**: PostgreSQL
         # *   **MariaDB**: MariaDB
+        # 
+        # This parameter is required.
         self.engine = engine
         # The version of the database engine. Valid values:
         # 
@@ -43150,6 +43938,8 @@ class DescribeParameterTemplatesRequest(TeaModel):
         # *   Valid values when you set the Engine parameter to mssql: **2008r2**.
         # *   Valid values when you set the Engine parameter to PostgreSQL: **10.0, 11.0, 12.0, 13.0, 14.0, and 15.0**.
         # *   Valid values when you set the Engine parameter to MariaDB: **10.3**.
+        # 
+        # This parameter is required.
         self.engine_version = engine_version
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -43430,6 +44220,8 @@ class DescribeParametersRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -43808,8 +44600,12 @@ class DescribePostgresExtensionsRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The database name. You can call the DescribeDatabases operation to query the database name.
+        # 
+        # This parameter is required.
         self.dbname = dbname
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -44253,14 +45049,18 @@ class DescribePriceRequest(TeaModel):
         # 
         # > If you want to query the price of a read-only instance, you must specify this parameter.
         self.commodity_code = commodity_code
-        # The instance type of the instance. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~).
+        # The instance type of the instance. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
+        # 
+        # This parameter is required.
         self.dbinstance_class = dbinstance_class
         # The ID of the instance for which you want to change the specifications or the instance that you want to renew.
         # 
         # > *   If you want to query the price of a specification change order or a renewal order, you must specify this parameter.
         # > *   If the instance is a read-only instance, you must set this parameter to the ID of its primary instance.
         self.dbinstance_id = dbinstance_id
-        # The storage capacity of the instance. Unit: GB. You can increase the storage capacity at a step size of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~).
+        # The storage capacity of the instance. Unit: GB. You can increase the storage capacity at a step size of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
+        # 
+        # This parameter is required.
         self.dbinstance_storage = dbinstance_storage
         # The storage type of the instance. Valid values:
         # 
@@ -44280,15 +45080,19 @@ class DescribePriceRequest(TeaModel):
         # *   **SQLServer**\
         # *   **PostgreSQL**\
         # *   **MariaDB**\
+        # 
+        # This parameter is required.
         self.engine = engine
         # The database engine version of the instance.
         # 
         # *   Valid values if you set Engine to **MySQL**: **5.5**, **5.6**, **5.7**, and **8.0**\
-        # *   Valid values if you set Engine to **SQLServer**: **08r2\_ent_ha** (cloud disks, discontinued), **2008r2**(local disks, discontinued), **2012** (SQL Server EE Basic), **2012\_ent_ha**, **2012\_std_ha**, **2012\_web**, **2016\_ent_ha**, **2016\_std_ha**, **2016\_web**, **2017\_ent**, **2017\_std_ha**, **2017\_web**, **2019\_ent**, **2019\_std_ha**, **2019\_web**, **2022\_ent**, **2022\_std_ha**, and **2022\_web**\
+        # *   Valid values if you set Engine to **SQLServer**: **08r2_ent_ha** (cloud disks, discontinued), **2008r2**(local disks, discontinued), **2012** (SQL Server EE Basic), **2012_ent_ha**, **2012_std_ha**, **2012_web**, **2016_ent_ha**, **2016_std_ha**, **2016_web**, **2017_ent**, **2017_std_ha**, **2017_web**, **2019_ent**, **2019_std_ha**, **2019_web**, **2022_ent**, **2022_std_ha**, and **2022_web**\
         # *   Valid values if you set Engine to **PostgreSQL**: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, and **15.0**\
         # *   Valid value if you set Engine to **MariaDB**: **10.3**\
         # 
         # >  The following information describes the valid values when you set Engine to SQLServer: `_ent` specifies SQL Server EE on RDS Cluster Edition, `_ent_ha` specifies SQL Server EE, `_std_ha` specifies SQL Server SE, and `_web` specifies SQL Server Web.
+        # 
+        # This parameter is required.
         self.engine_version = engine_version
         # The role of the instance. Valid values:
         # 
@@ -44309,6 +45113,8 @@ class DescribePriceRequest(TeaModel):
         # *   **Postpaid**: pay-as-you-go
         self.pay_type = pay_type
         # The number of instances that you want to purchase. Valid values: **0 to 30**.
+        # 
+        # This parameter is required.
         self.quantity = quantity
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         self.region_id = region_id
@@ -44491,14 +45297,18 @@ class DescribePriceShrinkRequest(TeaModel):
         # 
         # > If you want to query the price of a read-only instance, you must specify this parameter.
         self.commodity_code = commodity_code
-        # The instance type of the instance. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~).
+        # The instance type of the instance. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
+        # 
+        # This parameter is required.
         self.dbinstance_class = dbinstance_class
         # The ID of the instance for which you want to change the specifications or the instance that you want to renew.
         # 
         # > *   If you want to query the price of a specification change order or a renewal order, you must specify this parameter.
         # > *   If the instance is a read-only instance, you must set this parameter to the ID of its primary instance.
         self.dbinstance_id = dbinstance_id
-        # The storage capacity of the instance. Unit: GB. You can increase the storage capacity at a step size of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~).
+        # The storage capacity of the instance. Unit: GB. You can increase the storage capacity at a step size of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
+        # 
+        # This parameter is required.
         self.dbinstance_storage = dbinstance_storage
         # The storage type of the instance. Valid values:
         # 
@@ -44518,15 +45328,19 @@ class DescribePriceShrinkRequest(TeaModel):
         # *   **SQLServer**\
         # *   **PostgreSQL**\
         # *   **MariaDB**\
+        # 
+        # This parameter is required.
         self.engine = engine
         # The database engine version of the instance.
         # 
         # *   Valid values if you set Engine to **MySQL**: **5.5**, **5.6**, **5.7**, and **8.0**\
-        # *   Valid values if you set Engine to **SQLServer**: **08r2\_ent_ha** (cloud disks, discontinued), **2008r2**(local disks, discontinued), **2012** (SQL Server EE Basic), **2012\_ent_ha**, **2012\_std_ha**, **2012\_web**, **2016\_ent_ha**, **2016\_std_ha**, **2016\_web**, **2017\_ent**, **2017\_std_ha**, **2017\_web**, **2019\_ent**, **2019\_std_ha**, **2019\_web**, **2022\_ent**, **2022\_std_ha**, and **2022\_web**\
+        # *   Valid values if you set Engine to **SQLServer**: **08r2_ent_ha** (cloud disks, discontinued), **2008r2**(local disks, discontinued), **2012** (SQL Server EE Basic), **2012_ent_ha**, **2012_std_ha**, **2012_web**, **2016_ent_ha**, **2016_std_ha**, **2016_web**, **2017_ent**, **2017_std_ha**, **2017_web**, **2019_ent**, **2019_std_ha**, **2019_web**, **2022_ent**, **2022_std_ha**, and **2022_web**\
         # *   Valid values if you set Engine to **PostgreSQL**: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, and **15.0**\
         # *   Valid value if you set Engine to **MariaDB**: **10.3**\
         # 
         # >  The following information describes the valid values when you set Engine to SQLServer: `_ent` specifies SQL Server EE on RDS Cluster Edition, `_ent_ha` specifies SQL Server EE, `_std_ha` specifies SQL Server SE, and `_web` specifies SQL Server Web.
+        # 
+        # This parameter is required.
         self.engine_version = engine_version
         # The role of the instance. Valid values:
         # 
@@ -44547,6 +45361,8 @@ class DescribePriceShrinkRequest(TeaModel):
         # *   **Postpaid**: pay-as-you-go
         self.pay_type = pay_type
         # The number of instances that you want to purchase. Valid values: **0 to 30**.
+        # 
+        # This parameter is required.
         self.quantity = quantity
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         self.region_id = region_id
@@ -44733,7 +45549,7 @@ class DescribePriceResponseBodyPriceInfoCouponsCoupon(TeaModel):
         self.description = description
         # Indicates whether the coupon is selected.
         self.is_selected = is_selected
-        # The name of the coupon.
+        # The coupon name.
         self.name = name
 
     def validate(self):
@@ -44852,12 +45668,15 @@ class DescribePriceResponseBodyPriceInfo(TeaModel):
         self.currency = currency
         # The discount.
         self.discount_price = discount_price
+        # Order Information
         self.order_lines = order_lines
         # The original price.
         self.original_price = original_price
         # An array that consists of the ID of the promotion rule.
         self.rule_ids = rule_ids
+        # Estimated hourly cost calculated based on the maximum RCU selected by the user.
         self.trade_max_rcuamount = trade_max_rcuamount
+        # Estimated hourly cost calculated based on the minimum RCU selected by the user.
         self.trade_min_rcuamount = trade_min_rcuamount
         # The transaction price, which is equal to the original price minus the discount.
         self.trade_price = trade_price
@@ -45017,15 +45836,25 @@ class DescribePriceResponseBodyServerlessPrice(TeaModel):
         trade_min_rcuamount: float = None,
         storage_discount_amount: float = None,
     ):
+        # MaxRCU discount amount.
         self.rcudiscount_max_amount = rcudiscount_max_amount
+        # MinRCU discount amount.
         self.rcudiscount_min_amount = rcudiscount_min_amount
+        # MaxRCU price.
         self.rcuoriginal_max_amount = rcuoriginal_max_amount
+        # MinRCU price.
         self.rcuoriginal_min_amount = rcuoriginal_min_amount
+        # Original price of the disk.
         self.storage_original_amount = storage_original_amount
+        # Maximum total price before discount.
         self.total_original_max_amount = total_original_max_amount
+        # The minimum total price before the discount.
         self.total_original_min_amount = total_original_min_amount
+        # MaxRCU transaction price.
         self.trade_max_rcuamount = trade_max_rcuamount
+        # MinRCU transaction price.
         self.trade_min_rcuamount = trade_min_rcuamount
+        # Disk discount price.
         self.storage_discount_amount = storage_discount_amount
 
     def validate(self):
@@ -45096,6 +45925,7 @@ class DescribePriceResponseBody(TeaModel):
         trade_max_rcuamount: float = None,
         trade_min_rcuamount: float = None,
     ):
+        # Order parameters.
         self.order_params = order_params
         # The price information.
         self.price_info = price_info
@@ -45103,6 +45933,7 @@ class DescribePriceResponseBody(TeaModel):
         self.request_id = request_id
         # The details of the promotion rule.
         self.rules = rules
+        # Serverless price information.
         self.serverless_price = serverless_price
         # Indicates whether discounts can be used.
         self.show_discount = show_discount
@@ -45227,7 +46058,7 @@ class DescribeQuickSaleConfigRequest(TeaModel):
         # *   **PostgreSQL**\
         # *   **MariaDB**\
         self.engine = engine
-        # The region ID. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
         self.region_id = region_id
 
     def validate(self):
@@ -45353,6 +46184,7 @@ class DescribeRdsResourceSettingsRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         self.owner_id = owner_id
+        # This parameter is required.
         self.resource_niche = resource_niche
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -45588,10 +46420,14 @@ class DescribeReadDBInstanceDelayRequest(TeaModel):
         security_token: str = None,
     ):
         # The primary instance ID. You can call the DescribeDBInstances operation to query the primary instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The read-only instance ID. You can call the DescribeDBInstances operation to query the read-only instance ID.
+        # 
+        # This parameter is required.
         self.read_instance_id = read_instance_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         self.region_id = region_id
@@ -46250,10 +47086,10 @@ class DescribeRegionsResponseBodyRegionsRDSRegion(TeaModel):
     ):
         # The region name. The return value of this parameter is in the language that is specified by the **AcceptLanguage** parameter. For example, if the value of the RegionId parameter in the response is cn-hangzhou, the following values are returned for the LocalName parameter:
         # 
-        # *   If the value of the **AcceptLanguage** parameter is **zh-CN**, the value  1（）is returned for the LocalName parameter.
+        # *   If the value of the **AcceptLanguage** parameter is **zh-CN**, the value `华东1（杭州）` is returned for the LocalName parameter.
         # *   If the value of the **AcceptLanguage** parameter is **en-US**, the value China (Hangzhou) is returned for the LocalName parameter.
         self.local_name = local_name
-        # The endpoint that is used to connect to Alibaba Cloud services in the region. For more information, see [Endpoints](~~610370~~).
+        # The endpoint that is used to connect to Alibaba Cloud services in the region. For more information, see [Endpoints](https://help.aliyun.com/document_detail/610370.html).
         self.region_endpoint = region_endpoint
         # The region ID.
         self.region_id = region_id
@@ -46261,7 +47097,7 @@ class DescribeRegionsResponseBodyRegionsRDSRegion(TeaModel):
         self.zone_id = zone_id
         # The zone name. The return value of this parameter is in the language that is specified by the **AcceptLanguage** parameter. For example, if the value of the ZoneId parameter in the response is cn-hangzhou-h, the following values are returned for the ZoneName parameter:
         # 
-        # *   If the value of the **AcceptLanguage** parameter is **zh-CN**, the value   H is returned for the ZoneName parameter.
+        # *   If the value of the **AcceptLanguage** parameter is **zh-CN**, the `杭州 可用区 H` is returned for the ZoneName parameter.
         # *   If the value of the **AcceptLanguage** parameter is **en-US**, the value Hangzhou Zone H is returned for the ZoneName parameter.
         self.zone_name = zone_name
 
@@ -46437,11 +47273,13 @@ class DescribeRenewalPriceRequest(TeaModel):
         self.business_info = business_info
         # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
-        # The instance type of the instance. For more information, see [Primary instance types](~~26312~~). By default, the current instance type applies.
+        # The instance type of the instance. For more information, see [Primary instance types](https://help.aliyun.com/document_detail/26312.html). By default, the current instance type applies.
         self.dbinstance_class = dbinstance_class
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The type of the order that you want to place. Set the value to **BUY**.
+        # The type of order. Set the value to **BUY**.
         self.order_type = order_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -46462,11 +47300,15 @@ class DescribeRenewalPriceRequest(TeaModel):
         # 
         # *   **Year**\
         # *   **Month**\
+        # 
+        # This parameter is required.
         self.time_type = time_type
         # The subscription duration of the instance. Valid values:
         # 
         # *   If you set the **TimeType** parameter to **Year**, the value of the UsedTime parameter is within the range of **1 to 3**.
         # *   If you set the **TimeType** parameter to **Month**, the value of the UsedTime parameter is within the range of **1 to 9**.
+        # 
+        # This parameter is required.
         self.used_time = used_time
 
     def validate(self):
@@ -46955,9 +47797,13 @@ class DescribeResourceDetailsRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
-        # The region ID. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -47076,7 +47922,7 @@ class DescribeResourceDetailsResponseBody(TeaModel):
         self.request_id = request_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The IP address whitelist of the instance. For more information, see [Configure IP address whitelists](~~43185~~). If the returned IP address whitelist contains more than one entry, these entries are separated with commas (,). Each entry is unique and up to 1,000 entries are returned. The entries in the IP address whitelist must be in one of the following formats:
+        # The IP address whitelist of the instance. For more information, see [Configure IP address whitelists](https://help.aliyun.com/document_detail/43185.html). If the returned IP address whitelist contains more than one entry, these entries are separated with commas (,). Each entry is unique and up to 1,000 entries are returned. The entries in the IP address whitelist must be in one of the following formats:
         # 
         # *   IP addresses, such as 10.10.XX.XX.
         # *   CIDR blocks, such as 10.10.XX.XX/24. In this example, 24 indicates that the prefix of each IP address in the IP address whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
@@ -47222,6 +48068,8 @@ class DescribeResourceUsageRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -47451,6 +48299,8 @@ class DescribeSQLCollectorPolicyRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -47601,6 +48451,8 @@ class DescribeSQLCollectorRetentionRequest(TeaModel):
         security_token: str = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -47751,6 +48603,8 @@ class DescribeSQLLogFilesRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the audit log file.
         self.file_name = file_name
@@ -48033,15 +48887,19 @@ class DescribeSQLLogRecordsRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the generated token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The instance ID. You can call the [DescribeDBInstances](~~610396~~) operation to query the instance ID.
+        # The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the database. You can enter only one database name. If you specify this parameter, this operation returns the logs that are generated only for the specified database. If you do not specify this parameter, this operation returns the logs that are generated for all databases on the instance.
         self.database = database
         # The end of the time range to query. The end time must be later than the start time. The time span between the start time and the end time must be less than 15 days. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # Specifies whether to generate an SQL audit log file or return SQL audit log entries. Valid values:
         # 
-        # *   **File**: If you set this parameter to File, this operation generates an SQL audit log file and returns only common response parameters. After you call this operation, you must call the [DescribeSQLLogFiles](~~26295~~) operation to obtain the download URL of the SQL audit log file.
+        # *   **File**: If you set this parameter to File, this operation generates an SQL audit log file and returns only common response parameters. After you call this operation, you must call the [DescribeSQLLogFiles](https://help.aliyun.com/document_detail/26295.html) operation to obtain the download URL of the SQL audit log file.
         # *   **Stream** (default): If you set this parameter to Stream, this operation returns SQL audit log entries.
         # 
         # > If you set this parameter to **File**, only ApsaraDB RDS for MySQL instances that use local disks and ApsaraDB RDS for SQL Server instances are supported, and a maximum of 1 million log entries are returned.
@@ -48058,7 +48916,7 @@ class DescribeSQLLogRecordsRequest(TeaModel):
         # 
         # *   When you call this operation and set the **Form** parameter to **File** to generate an audit file, you cannot filter log entries by keyword.
         # *   You can specify up to 10 keywords. The keywords are evaluated by using the **AND** operator. Separate multiple keywords with spaces.
-        # *   If a field name in the specified SQL statement is enclosed in backquotes (\`) and you want to use the field name as a keyword, you must enter the backquotes (\`) as part of the field name. For example, if the field name is \`id\`, enter \`id\` instead of id.
+        # *   If a field name in the specified SQL statement is enclosed in backquotes (\\`) and you want to use the field name as a keyword, you must enter the backquotes (\\`) as part of the field name. For example, if the field name is \\`id\\`, enter \\`id\\` instead of id.
         # 
         # >  After you enter a keyword, the system matches the keyword based on the **Database**, **User**, and **QueryKeywords** parameters. The parameters are evaluated by using the **OR** operator.
         self.query_keywords = query_keywords
@@ -48067,6 +48925,8 @@ class DescribeSQLLogRecordsRequest(TeaModel):
         # The unique ID of the SQL statement.
         self.sqlid = sqlid
         # The beginning of the time range to query. You can query data in the last 15 days before the current date. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The username of the account. You can enter only one username. If you specify this parameter, this operation returns the logs that are generated only for the specified account. If you do not specify this parameter, this operation returns the logs that are generated for all accounts on the instance.
         self.user = user
@@ -48372,10 +49232,14 @@ class DescribeSQLLogReportListRequest(TeaModel):
         start_time: str = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time must be in UTC.**\
         # 
         # >  The end time must be later than the start time.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -48394,6 +49258,8 @@ class DescribeSQLLogReportListRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -48810,16 +49676,24 @@ class DescribeSecretsRequest(TeaModel):
         # The database engine of the database.
         # 
         # > Only MySQL is supported.
+        # 
+        # This parameter is required.
         self.engine = engine
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The number of the page to return. Valid values: any non-zero positive integer.
         # 
         # > The default value is 1.
+        # 
+        # This parameter is required.
         self.page_number = page_number
         # The number of entries per page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The region ID. You can call the DescribeDBInstanceAttribute operation to query the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
@@ -49060,6 +49934,8 @@ class DescribeSecurityGroupConfigurationRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -49284,7 +50160,9 @@ class DescribeSlotsRequest(TeaModel):
         # 
         # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
         self.client_token = client_token
-        # The instance ID. You can call the [DescribeDBInstances](~~26232~~) operation to query the ID of the instance.
+        # The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/26232.html) operation to query the ID of the instance.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -49523,13 +50401,17 @@ class DescribeSlowLogRecordsRequest(TeaModel):
         sqlhash: str = None,
         start_time: str = None,
     ):
-        # The ID of the instance. You can call the [DescribeDBInstances](~~610396~~) operation to query the ID of the instance.
+        # The ID of the instance. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) operation to query the ID of the instance.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the database.
         self.dbname = dbname
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ* format. The time must be in UTC.**\
         # 
         # > The end time must be later than the start time.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The ID of the node.
         # 
@@ -49546,6 +50428,8 @@ class DescribeSlowLogRecordsRequest(TeaModel):
         # The unique ID of the SQL statement. The ID is used to obtain the slow query logs of the SQL statement.
         self.sqlhash = sqlhash
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -49948,10 +50832,14 @@ class DescribeSlowLogsRequest(TeaModel):
         start_time: str = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the database.
         self.dbname = dbname
         # The end of the time range to query. The end time must be later than the start time. The time span between the start time and the end time cannot exceed 31 days. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -49973,6 +50861,8 @@ class DescribeSlowLogsRequest(TeaModel):
         # > This parameter is supported only for instances that run SQL Server 2008 R2.
         self.sort_key = sort_key
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -50604,6 +51494,8 @@ class DescribeSupportOnlineResizeDiskRequest(TeaModel):
         owner_account: str = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
 
@@ -50751,6 +51643,8 @@ class DescribeTagsRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -51017,6 +51911,8 @@ class DescribeTasksRequest(TeaModel):
         task_action: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time must be in UTC.
         self.end_time = end_time
@@ -51379,6 +52275,8 @@ class DescribeUpgradeMajorVersionPrecheckTaskRequest(TeaModel):
         task_id: int = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -51481,7 +52379,7 @@ class DescribeUpgradeMajorVersionPrecheckTaskResponseBodyItems(TeaModel):
         # *   Success
         # *   Fail
         # 
-        # >  If the check result is **Fail**, you must check the value of the **Detail** parameter to obtain the information about the errors that occurred, resolve the errors, and then try again. For more information about how to resolve common errors, see [Introduction to the check report for a major engine version upgrade to an ApsaraDB RDS for PostgreSQL instance](~~218391~~).
+        # >  If the check result is **Fail**, you must check the value of the **Detail** parameter to obtain the information about the errors that occurred, resolve the errors, and then try again. For more information about how to resolve common errors, see [Introduction to the check report for a major engine version upgrade to an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/218391.html).
         self.result = result
         # The original major engine version of the instance.
         self.source_major_version = source_major_version
@@ -51653,6 +52551,8 @@ class DescribeUpgradeMajorVersionTasksRequest(TeaModel):
         task_id: int = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -52008,7 +52908,7 @@ class DescribeVSwitchesRequest(TeaModel):
         # 
         # > You must configure this parameter or **DedicatedHostGroupId**.
         self.vpc_id = vpc_id
-        # The zone ID of the vSwitch. You can call the DescribeAvailableZones operation to query the zone ID. If you specify this parameter, the query results are filtered based on the value of this parameter and only the details of the vSwitch that is deployed in the specified zone is returned.
+        # The ID of the zone to which the vSwitch belongs. You can call the DescribeAvailableZones operation to query zone IDs. If you specify this parameter, the query results are filtered based on the value of this parameter and only the details of the vSwitch that is deployed in the specified zone are returned.
         self.zone_id = zone_id
 
     def validate(self):
@@ -52088,6 +52988,8 @@ class DescribeVSwitchesResponseBodyVSwitchs(TeaModel):
         v_switch_name: str = None,
     ):
         # The number of available IP addresses in the vSwitch.
+        # 
+        # This parameter is required.
         self.available_ip_address_count = available_ip_address_count
         # The CIDR block of the vSwitch.
         self.cidr_block = cidr_block
@@ -52102,7 +53004,7 @@ class DescribeVSwitchesResponseBodyVSwitchs(TeaModel):
         self.iz_no = iz_no
         # The status of the vSwitch. Valid values:
         # 
-        # *   **Pending**: The vSwitch is being configured.
+        # *   **Pending**: The vSwitch is being specified.
         # *   **Available**: The vSwitch is available.
         self.status = status
         # The vSwitch ID.
@@ -52175,7 +53077,7 @@ class DescribeVSwitchesResponseBody(TeaModel):
         self.request_id = request_id
         # The total number of returned entries.
         self.total_count = total_count
-        # The information about the vSwitches.
+        # The information about the vSwitch.
         self.v_switchs = v_switchs
 
     def validate(self):
@@ -52272,12 +53174,15 @@ class DescribeWhitelistTemplateRequest(TeaModel):
         resource_owner_id: int = None,
         template_id: int = None,
     ):
+        # The region ID.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The ID of the whitelist template. You can call the [DescribeAllWhitelistTemplate](~~2412075~~) operation to obtain the ID of the whitelist template.
+        # The ID of the whitelist template. You can call the [DescribeAllWhitelistTemplate](https://help.aliyun.com/document_detail/2412075.html) operation to obtain the ID of the whitelist template.
+        # 
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -52530,12 +53435,15 @@ class DescribeWhitelistTemplateLinkedInstanceRequest(TeaModel):
         resource_owner_id: int = None,
         template_id: int = None,
     ):
+        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         self.region_id = region_id
-        # The resource group ID.
+        # The resource group ID. You can leave this parameter empty.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the whitelist template. You can call the DescribeAllWhitelistTemplate operation to obtain the ID of the whitelist template.
+        # 
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -52742,7 +53650,9 @@ class DestroyDBInstanceRequest(TeaModel):
         # 
         # > You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The ID of the instance. You can call the [DescribeDBInstances](~~26232~~) operation to query the ID of the instance.
+        # The ID of the instance. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/26232.html) operation to query the ID of the instance.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -52867,8 +53777,12 @@ class DetachGadInstanceMemberRequest(TeaModel):
         resource_group_id: str = None,
     ):
         # The ID of the global active database cluster.
+        # 
+        # This parameter is required.
         self.gad_instance_name = gad_instance_name
         # The ID of the instance that serves as the unit node you want to remove. You can call the DescribeGadInstances query the instance ID.
+        # 
+        # This parameter is required.
         self.member_instance_name = member_instance_name
         # The region ID of the central node. You can call the DescribeGadInstances operation to query the region ID.
         self.region_id = region_id
@@ -52987,13 +53901,18 @@ class DetachWhitelistTemplateToInstanceRequest(TeaModel):
         template_id: int = None,
     ):
         # The instance name.
+        # 
+        # This parameter is required.
         self.ins_name = ins_name
+        # The region ID.
         self.region_id = region_id
         # The resource group ID. For more information about resource groups, see Resource groups.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the whitelist template. You can call the DescribeAllWhitelistTemplate operation to obtain the ID of the whitelist template.
+        # 
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -53198,9 +54117,13 @@ class EvaluateLocalExtendDiskRequest(TeaModel):
         storage: int = None,
     ):
         # The instance name.
+        # 
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
         self.owner_id = owner_id
-        # The region ID. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -53358,6 +54281,8 @@ class GetDBInstanceTopologyRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         self.resource_owner_id = resource_owner_id
@@ -53464,7 +54389,7 @@ class GetDBInstanceTopologyResponseBodyDataNodes(TeaModel):
         self.dedicated_host_id = dedicated_host_id
         # The ID of the instance.
         # 
-        # > : The value \*\*-1\*\* is returned for an instance that does not reside in a dedicated cluster.
+        # > : The value \\*\\*-1\\*\\* is returned for an instance that does not reside in a dedicated cluster.
         self.node_id = node_id
         # The type of the node. The following result is returned:
         # 
@@ -53675,6 +54600,8 @@ class GetDbProxyInstanceSslRequest(TeaModel):
         # A reserved parameter. You do not need to specify this parameter.
         self.dbproxy_engine_type = dbproxy_engine_type
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.db_instance_id = db_instance_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         self.region_id = region_id
@@ -53886,6 +54813,8 @@ class GrantAccountPrivilegeRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The username of the account.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The permissions that you want to grant to the account. The number of permissions must be the same as the number of databases that you specify for the DBName parameter. You can specify this parameter based on your business requirements. Valid values:
         # 
@@ -53901,10 +54830,16 @@ class GrantAccountPrivilegeRequest(TeaModel):
         # 
         # *   If the instance runs SQL Server, you can set this parameter to **ReadWrite**, **ReadOnly**, or **DBOwner**.
         # *   If the instance runs PostgreSQL and uses cloud disks, you can set this parameter to **DBOwner**.
+        # 
+        # This parameter is required.
         self.account_privilege = account_privilege
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the database on which you want to grant permissions. Separate multiple database names with commas (,).
+        # 
+        # This parameter is required.
         self.dbname = dbname
         self.resource_owner_id = resource_owner_id
 
@@ -54025,8 +54960,12 @@ class GrantOperatorPermissionRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The expiration time of the permissions. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.expired_time = expired_time
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -54034,6 +54973,8 @@ class GrantOperatorPermissionRequest(TeaModel):
         # 
         # *   **Control**: the configuration permissions, which allow you to view and modify configurations of the instance.
         # *   **Data**: the data permissions, which allow you to view schemas, indexes, and SQL statements of the instance.
+        # 
+        # This parameter is required.
         self.privileges = privileges
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -54171,11 +55112,15 @@ class ImportUserBackupFileRequest(TeaModel):
         # 
         # The JSON array contains the following fields:
         # 
-        # *   **Bucket**: The name of the OSS bucket in which the full backup file is stored as an object. You can call the [GetBucket](~~31965~~) operation to query the name of the bucket.
-        # *   **Object**: The path of the full backup file that is stored as an object in the OSS bucket. You can call the [GetObject](~~31980~~) operation to query the path of the object.
-        # *   **Location**: The ID of the region in which the OSS bucket is located. You can call the [GetBucketLocation](~~31967~~) operation to query the region of the bucket.
+        # *   **Bucket**: The name of the OSS bucket in which the full backup file is stored as an object. You can call the [GetBucket](https://help.aliyun.com/document_detail/31965.html) operation to query the name of the bucket.
+        # *   **Object**: The path of the full backup file that is stored as an object in the OSS bucket. You can call the [GetObject](https://help.aliyun.com/document_detail/31980.html) operation to query the path of the object.
+        # *   **Location**: The ID of the region in which the OSS bucket is located. You can call the [GetBucketLocation](https://help.aliyun.com/document_detail/31967.html) operation to query the region of the bucket.
+        # 
+        # This parameter is required.
         self.backup_file = backup_file
         # The region ID of the OSS bucket where the full backup file of the self-managed MySQL database is located. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.bucket_region = bucket_region
         # The description of the full backup file.
         self.comment = comment
@@ -54186,6 +55131,8 @@ class ImportUserBackupFileRequest(TeaModel):
         # 
         # > *   The value of this parameter is the ID of the region in which you want to create the instance.
         # > *   The value of this parameter must be consistent with the value of **BucketRegion**.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID. You can call the DescribeDBInstanceAttribute operation to query the resource group ID.
         self.resource_group_id = resource_group_id
@@ -54371,6 +55318,8 @@ class ListClassesRequest(TeaModel):
         # *   **rds_intl**: The instances are subscription primary instances.
         # *   **rords_intl**: The instances are pay-as-you-go read-only instances.
         # *   **rds_rordspre_public_intl**: The instances are subscription read-only instances.
+        # 
+        # This parameter is required.
         self.commodity_code = commodity_code
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
         # 
@@ -54382,6 +55331,8 @@ class ListClassesRequest(TeaModel):
         # *   **UPGRADE**: specifies the query orders that are used to change the specifications of instances.
         # *   **RENEW**: specifies the query orders that are used to renew instances.
         # *   **CONVERT**: specifies the query orders that are used to change the billing methods of instances.
+        # 
+        # This parameter is required.
         self.order_type = order_type
         self.owner_id = owner_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
@@ -54453,9 +55404,9 @@ class ListClassesResponseBodyItems(TeaModel):
         memory_class: str = None,
         reference_price: str = None,
     ):
-        # The code of the instance type. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~) and [Read-only ApsaraDB RDS instance types](~~145759~~).
+        # The code of the instance type. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html) and [Read-only ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/145759.html).
         self.class_code = class_code
-        # The instance family. For more information, see [Overview of instance families](~~57184~~).
+        # The instance family. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/57184.html).
         self.class_group = class_group
         # The number of CPU cores that are supported by the instance type. Unit: cores.
         self.cpu = cpu
@@ -54682,6 +55633,8 @@ class ListTagResourcesRequest(TeaModel):
         self.next_token = next_token
         self.owner_id = owner_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The instance ID. You can specify a maximum of **50** instance IDs.****\
         # 
@@ -54690,6 +55643,8 @@ class ListTagResourcesRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The type of the resource. Set the value to **INSTANCE**.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tag list.
         self.tag = tag
@@ -54939,12 +55894,14 @@ class ListUserBackupFilesRequest(TeaModel):
         # 
         # > The system implements a fuzzy match based on the value of this parameter.
         self.comment = comment
-        # The URL from which you can download the full backup file that is stored as an object in an Object Storage Service (OSS) bucket. For more information about how to obtain the URL, see [Obtain the access URL after you upload objects](~~39607~~).
+        # The URL from which you can download the full backup file that is stored as an object in an Object Storage Service (OSS) bucket. For more information about how to obtain the URL, see [Obtain the access URL after you upload objects](https://help.aliyun.com/document_detail/39607.html).
         self.oss_url = oss_url
         self.owner_id = owner_id
-        # The ID of the region. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
+        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The resource group ID. You can call the [DescribeDBInstanceAttribute](~~610394~~) to query the resource group ID.
+        # The resource group ID. You can call the DescribeDBInstanceAttribute operation to obtain the ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -55056,7 +56013,7 @@ class ListUserBackupFilesResponseBodyRecords(TeaModel):
         self.modification_time = modification_time
         # The name of the OSS bucket in which the full backup file is stored as an object.
         self.oss_bucket = oss_bucket
-        # The metadata of the full backup file. For more information, see [Manage object metadata](~~31859~~).
+        # The metadata of the full backup file. For more information, see [Manage object metadata](https://help.aliyun.com/document_detail/31859.html).
         self.oss_file_meta_data = oss_file_meta_data
         # The name of the full backup file that is stored as an object in an OSS bucket.
         self.oss_file_name = oss_file_name
@@ -55269,8 +56226,12 @@ class LockAccountRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The account that you want to lock. You can lock only a single account at a time.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -55391,12 +56352,18 @@ class MigrateConnectionToOtherZoneRequest(TeaModel):
         zone_id: str = None,
     ):
         # The endpoint of the instance. The endpoint is specified when you create the instance.
+        # 
+        # This parameter is required.
         self.connection_string = connection_string
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         self.resource_owner_id = resource_owner_id
         # The ID of the zone.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -55535,8 +56502,12 @@ class MigrateDBInstanceRequest(TeaModel):
         zone_id_for_log: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The dedicated cluster ID. You can call the DescribeDedicatedHostGroups operation to query the dedicated cluster ID.
+        # 
+        # This parameter is required.
         self.dedicated_host_group_id = dedicated_host_group_id
         # The time when you want the system to start the migration. Valid values:
         # 
@@ -55557,7 +56528,7 @@ class MigrateDBInstanceRequest(TeaModel):
         self.target_dedicated_host_id_for_master = target_dedicated_host_id_for_master
         # The ID of the host to which you want to migrate the secondary instance. You can call the DescribeDedicatedHosts operation to query the host ID.
         self.target_dedicated_host_id_for_slave = target_dedicated_host_id_for_slave
-        # The zone ID of the secondary instance.
+        # The zone ID of the secondary node.
         self.zone_id_for_follower = zone_id_for_follower
         # The zone ID of the logger instance.
         self.zone_id_for_log = zone_id_for_log
@@ -55718,6 +56689,8 @@ class MigrateSecurityIPModeRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -55883,13 +56856,15 @@ class MigrateToOtherZoneRequest(TeaModel):
         self.category = category
         # The new instance type of the instance. You can change the instance type of the instance. You cannot change the storage type of the instance. If you set **IsModifySpec** to **true**, you must specify at least one of DBInstanceClass and **DBInstanceStorage**.
         # 
-        # For more information about instance types, see [Primary ApsaraDB RDS for MySQL instance types](~~276975~~).
+        # For more information about instance types, see [Primary ApsaraDB RDS for MySQL instance types](https://help.aliyun.com/document_detail/276975.html).
         self.dbinstance_class = dbinstance_class
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The new storage capacity of the instance. If you set **IsModifySpec** to **true**, you must specify at least one of DBInstanceStorage and **DBInstanceClass**.
         # 
-        # Unit: GB. The available storage capacity range varies based on the instance type of the instance. For more information, see [Primary ApsaraDB RDS for MySQL instance types](~~276975~~).
+        # Unit: GB. The available storage capacity range varies based on the instance type of the instance. For more information, see [Primary ApsaraDB RDS for MySQL instance types](https://help.aliyun.com/document_detail/276975.html).
         self.dbinstance_storage = dbinstance_storage
         # The time when you want the change to take effect. Valid values:
         # 
@@ -55927,6 +56902,8 @@ class MigrateToOtherZoneRequest(TeaModel):
         # *   If the instance runs PostgreSQL or SQL Server and a secondary zone is specified for the instance, you can specify multiple vSwitch IDs, each of which corresponds to a zone. Separate the vSwitch IDs with commas (,).
         self.v_switch_id = v_switch_id
         # The ID of the destination zone. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
         # The secondary zone 1 of the instance.
         # 
@@ -56129,9 +57106,13 @@ class ModifyADInfoRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -56272,13 +57253,19 @@ class ModifyAccountDescriptionRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (\_), and hyphens (-), and must start with a letter.
+        # The description of the account. The value must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-), and must start with a letter.
         # 
         # >  The description cannot start with http:// or https://.
+        # 
+        # This parameter is required.
         self.account_description = account_description
         # The username of the account. You can call the DescribeAccounts operation to obtain the username of the account.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -56409,12 +57396,15 @@ class ModifyAccountMaskingPrivilegeRequest(TeaModel):
         resource_owner_id: int = None,
         user_name: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
         self.expire_time = expire_time
         self.owner_id = owner_id
+        # This parameter is required.
         self.privilege = privilege
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.user_name = user_name
 
     def validate(self):
@@ -56560,9 +57550,13 @@ class ModifyActionEventPolicyRequest(TeaModel):
         # 
         # *   **True**\
         # *   **False**\
+        # 
+        # This parameter is required.
         self.enable_event_log = enable_event_log
         self.owner_id = owner_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -56698,9 +57692,11 @@ class ModifyActiveOperationTasksRequest(TeaModel):
         security_token: str = None,
         switch_time: str = None,
     ):
-        # The O\&M task ID. Separate multiple IDs with commas (,).
+        # The O\\&M task ID. Separate multiple IDs with commas (,).
         # 
-        # >  You can call the DescribeActiveOperationTask operation to query the O\&M task ID.
+        # >  You can call the DescribeActiveOperationTask operation to query the O\\&M task ID.
+        # 
+        # This parameter is required.
         self.ids = ids
         # Specifies whether to immediately start scheduling. Valid values:
         # 
@@ -56721,6 +57717,8 @@ class ModifyActiveOperationTasksRequest(TeaModel):
         # The scheduled switching time that you want to specify. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         # 
         # >  The time that is specified by the SwitchTime parameter cannot be later than the time that is specified by the Deadline parameter. You can call the DescribeActiveOperationTasks operation to query the value of the Deadline parameter in the response.
+        # 
+        # This parameter is required.
         self.switch_time = switch_time
 
     def validate(self):
@@ -56777,7 +57775,7 @@ class ModifyActiveOperationTasksResponseBody(TeaModel):
         ids: str = None,
         request_id: str = None,
     ):
-        # The ID of the O\&M task. IDs are separated by commas (,).
+        # The ID of the O\\&M task. IDs are separated by commas (,).
         self.ids = ids
         # The ID of the region.
         self.request_id = request_id
@@ -56907,9 +57905,9 @@ class ModifyBackupPolicyRequest(TeaModel):
         # *   **240**: A snapshot backup is performed every 240 minutes.
         # *   **480**: A snapshot backup is performed every 480 minutes.
         # 
-        # > *   You can configure a backup policy by using this parameter and the **PreferredBackupPeriod** parameter. For example, if you set **PreferredBackupPeriod** to Saturday,Sunday and BackupInterval to \*\*-1\*\*, a snapshot backup is performed on every Saturday and Sunday.
+        # > *   You can configure a backup policy by using this parameter and the **PreferredBackupPeriod** parameter. For example, if you set **PreferredBackupPeriod** to Saturday,Sunday and BackupInterval to \\*\\*-1\\*\\*, a snapshot backup is performed on every Saturday and Sunday.
         # > *   If the instance runs PostgreSQL, BackupInterval is supported only when the instance is equipped with cloud disks.
-        # > *   If the instance runs SQL Server, BackupInterval is supported only when the snapshot backup feature is enabled for the instance. For more information, see [Enable snapshot backups for an ApsaraDB RDS for SQL Server instance](~~211143~~).
+        # > *   If the instance runs SQL Server, BackupInterval is supported only when the snapshot backup feature is enabled for the instance. For more information, see [Enable snapshot backups for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/211143.html).
         # > *   If **Category** is set to **Flash**, BackupInterval is invalid.
         # > *   This parameter takes effect only when **BackupPolicyMode** is set to **DataBackupPolicy**.
         self.backup_interval = backup_interval
@@ -56961,12 +57959,14 @@ class ModifyBackupPolicyRequest(TeaModel):
         # *   **0**: Backups are not compressed.
         # *   **1**: The zlib tool is used to compress backups into .tar.gz files.
         # *   **2**: The zlib tool is used to compress backups in parallel.
-        # *   **4**: The QuickLZ tool is used to compress backups into .xb.gz files. This compression format is supported for instances that run MySQL 5.6 or MySQL 5.7. Backups in this compression format can be used to restore individual databases and tables. For more information, see [Restore individual databases and tables of an ApsaraDB RDS for MySQL instance](~~103175~~).
+        # *   **4**: The QuickLZ tool is used to compress backups into .xb.gz files. This compression format is supported for instances that run MySQL 5.6 or MySQL 5.7. Backups in this compression format can be used to restore individual databases and tables. For more information, see [Restore individual databases and tables of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/103175.html).
         # *   **8**: The QuickLZ tool is used to compress backups into .xb.gz files. This compression format is supported only for instances that run MySQL 8.0. Backups in this compression format cannot be used to restore individual databases and tables.
         # 
         # > This parameter takes effect only when **BackupPolicyMode** is set to **DataBackupPolicy**.
         self.compress_type = compress_type
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # Specifies whether to enable the log backup feature. Valid values:
         # 
@@ -57010,7 +58010,7 @@ class ModifyBackupPolicyRequest(TeaModel):
         # The number of binary log files that you want to retain on the instance. Default value: **60**. Valid values: **6** to **100**.
         # 
         # > *   This parameter takes effect only when **BackupPolicyMode** is set to **LogBackupPolicy**.
-        # > *   If the instance runs MySQL, you can set this parameter to \*\*-1\*\*. The value -1 specifies that no limits are imposed on the number of binary log files retained on the instance.
+        # > *   If the instance runs MySQL, you can set this parameter to \\*\\*-1\\*\\*. The value -1 specifies that no limits are imposed on the number of binary log files retained on the instance.
         self.log_backup_local_retention_number = log_backup_local_retention_number
         # The number of days for which the log backup is retained. Valid values: **7 to 730**. The log backup retention period cannot be longer than the data backup retention period.
         # 
@@ -57315,10 +58315,10 @@ class ModifyCollationTimeZoneRequest(TeaModel):
         # *   **Chinese_PRC_CI_AS**\
         # *   **Chinese_PRC_CS_AS**\
         # *   **Chinese_PRC_BIN**\
-        # *   **Latin1\_General_CI_AS**\
-        # *   **Latin1\_General_CS_AS**\
-        # *   **SQL_Latin1\_General_CP1\_CI_AS**\
-        # *   **SQL_Latin1\_General_CP1\_CS_AS**\
+        # *   **Latin1_General_CI_AS**\
+        # *   **Latin1_General_CS_AS**\
+        # *   **SQL_Latin1_General_CP1_CI_AS**\
+        # *   **SQL_Latin1_General_CP1_CS_AS**\
         # *   **Japanese_CI_AS**\
         # *   **Japanese_CS_AS**\
         # *   **Chinese_Taiwan_Stroke_CI_AS**\
@@ -57331,6 +58331,8 @@ class ModifyCollationTimeZoneRequest(TeaModel):
         # *   You must specify one of the **Collation** and **Timezone** parameters.
         self.collation = collation
         # The instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -57494,7 +58496,9 @@ class ModifyCustinsResourceRequest(TeaModel):
     ):
         # The deadline for the modification.
         self.adjust_deadline = adjust_deadline
-        # The instance ID. You can call the [DescribeDBInstances](~~26232~~) operation to query the instance ID.
+        # The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/26232.html) operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The increase rate in percentage.
         self.increase_ratio = increase_ratio
@@ -57638,10 +58642,16 @@ class ModifyDBDescriptionRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The description of the database.
+        # 
+        # This parameter is required.
         self.dbdescription = dbdescription
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the database.
+        # 
+        # This parameter is required.
         self.dbname = dbname
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -57775,10 +58785,14 @@ class ModifyDBInstanceAutoUpgradeMinorVersionRequest(TeaModel):
         # 
         # *   **Auto:** automatic update.
         # *   **Manual**: manual update. ApsaraDB RDS automatically updates the current minor engine version of the instance only when the current minor engine version is phased out.
+        # 
+        # This parameter is required.
         self.auto_upgrade_minor_version = auto_upgrade_minor_version
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -57908,16 +58922,23 @@ class ModifyDBInstanceConfigRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The name of the configuration item that you want to modify.
+        # The name of the configuration item that you want to modify. Valid values:
         # 
-        # *   **pgbouncer**\
+        # *   **pgbouncer**. This configuration item is supported for ApsaraDB RDS for PostgreSQL instances.
+        # *   **clear_errorlog**. This configuration item is supported for ApsaraDB RDS for SQL Server instances.
+        # 
+        # This parameter is required.
         self.config_name = config_name
-        # The value of the configuration item that you want to modify.
+        # The value of the configuration item that you want to modify. Valid values:
         # 
-        # *   **true**\
-        # *   **false**\
+        # *   If you set ConfigName to pgbouncer, the valid values are **true** and **false**.
+        # *   If you set ConfigName to clear_errorlog, set the value to **1**. The value 1 indicates that error logs are cleaned up.
+        # 
+        # This parameter is required.
         self.config_value = config_value
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -58065,8 +59086,12 @@ class ModifyDBInstanceConnectionModeRequest(TeaModel):
         # The system automatically assigns a connection mode to the instance.
         # 
         # >  SQL Server 2012, SQL Server 2016, and SQL Server 2017 support only the standard mode.
+        # 
+        # This parameter is required.
         self.connection_mode = connection_mode
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -58199,17 +59224,23 @@ class ModifyDBInstanceConnectionStringRequest(TeaModel):
     ):
         # The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
         # 
-        # > This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](~~428613~~).
+        # > This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://help.aliyun.com/document_detail/428613.html).
         self.babelfish_port = babelfish_port
         # The prefix of the endpoint after the change. Only the prefix of the value of **CurrentConnectionString** can be changed.
         # 
-        # > The value must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). The value cannot contain any of the following special characters: ! # % ^ & \* = + | {} ; : \" " ,<> / ?
+        # > The value must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). The value cannot contain any of the following special characters: ! # % ^ & \\* = + | {} ; : \\" " ,<> / ?
+        # 
+        # This parameter is required.
         self.connection_string_prefix = connection_string_prefix
         # The endpoint of the instance. It can be an internal endpoint, a public endpoint, or a classic network endpoint in hybrid access mode.
         # 
         # > The read/write splitting endpoint cannot be changed.
+        # 
+        # This parameter is required.
         self.current_connection_string = current_connection_string
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the dedicated cluster to which the instance belongs. This parameter is returned only when the instance is created in an ApsaraDB MyBase cluster that runs MySQL on Standard Edition.
         self.general_group_name = general_group_name
@@ -58220,6 +59251,8 @@ class ModifyDBInstanceConnectionStringRequest(TeaModel):
         # > This parameter is suitable only for ApsaraDB RDS for PostgreSQL instances. If you enable PgBouncer for your instance, you can change the PgBouncer port of the instance.
         self.pgbouncer_port = pgbouncer_port
         # The port number after the change.
+        # 
+        # This parameter is required.
         self.port = port
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -58362,10 +59395,14 @@ class ModifyDBInstanceDelayedReplicationTimeRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The instance ID. You can call the [DescribeDBInstances](~~26232~~) operation to query the instance ID.
+        # The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/26232.html) operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         # The replication latency of the read-only instance. Unit: seconds.
+        # 
+        # This parameter is required.
         self.read_sqlreplication_time = read_sqlreplication_time
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -58510,11 +59547,15 @@ class ModifyDBInstanceDeletionProtectionRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the generated token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # Specifies whether to enable the release protection feature for the read-only instance. Valid values:
         # 
         # *   **true**\
         # *   **false**\
+        # 
+        # This parameter is required.
         self.deletion_protection = deletion_protection
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -58644,11 +59685,9 @@ class ModifyDBInstanceDescriptionRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The name of the instance.
-        # 
-        # > The name must be 2 to 64 characters in length.
+        # This parameter is required.
         self.dbinstance_description = dbinstance_description
-        # The ID of the instance.
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -58700,7 +59739,6 @@ class ModifyDBInstanceDescriptionResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -58771,14 +59809,14 @@ class ModifyDBInstanceEndpointRequestNodeItems(TeaModel):
         node_id: str = None,
         weight: int = None,
     ):
-        # The instance ID. You can call the [DescribeDBInstances](~~610396~~) operation to query the ID of the instance.
+        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
         self.dbinstance_id = dbinstance_id
         # The node ID.
         # 
-        # You can use one of the following methods to query the ID of the node:
+        # You can query the node ID by using the following methods:
         # 
-        # *   Log on to the ApsaraDB RDS console, go to the instance details page, and then view the ID of the node in the instance topology section.
-        # *   Call the [DescribeDBInstanceAttribute](~~610394~~) operation to query the ID of the node.
+        # *   Log on the ApsaraDB RDS console, go to the instance details page, and then view the ID of the node in the instance topology in the lower part of the instance details page.
+        # *   Call the DescribeDBInstanceAttribute operation to query the node ID.
         self.node_id = node_id
         # The weight of the node. Read requests are distributed based on the weight.
         # 
@@ -58829,11 +59867,15 @@ class ModifyDBInstanceEndpointRequest(TeaModel):
         self.client_token = client_token
         # The user-defined description of the endpoint.
         self.dbinstance_endpoint_description = dbinstance_endpoint_description
-        # The endpoint ID of the instance. You can call the [DescribeDBInstanceEndpoints](~~610488~~) operation to query the endpoint ID of the instance.
+        # The endpoint ID of the instance. You can call the DescribeDBInstanceEndpoints operation to query the endpoint ID.
+        # 
+        # This parameter is required.
         self.dbinstance_endpoint_id = dbinstance_endpoint_id
-        # The instance ID. You can call the [DescribeDBInstances](~~610396~~) operation to query the ID of the instance.
+        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The information about the node that is configured for the endpoint.
+        # The information about the endpoint.
         self.node_items = node_items
         self.resource_owner_id = resource_owner_id
 
@@ -58901,11 +59943,15 @@ class ModifyDBInstanceEndpointShrinkRequest(TeaModel):
         self.client_token = client_token
         # The user-defined description of the endpoint.
         self.dbinstance_endpoint_description = dbinstance_endpoint_description
-        # The endpoint ID of the instance. You can call the [DescribeDBInstanceEndpoints](~~610488~~) operation to query the endpoint ID of the instance.
+        # The endpoint ID of the instance. You can call the DescribeDBInstanceEndpoints operation to query the endpoint ID.
+        # 
+        # This parameter is required.
         self.dbinstance_endpoint_id = dbinstance_endpoint_id
-        # The instance ID. You can call the [DescribeDBInstances](~~610396~~) operation to query the ID of the instance.
+        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The information about the node that is configured for the endpoint.
+        # The information about the endpoint.
         self.node_items_shrink = node_items_shrink
         self.resource_owner_id = resource_owner_id
 
@@ -59081,12 +60127,18 @@ class ModifyDBInstanceEndpointAddressRequest(TeaModel):
         # The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The endpoint that you want to modify. The endpoint can be a public endpoint or an internal endpoint.
+        # 
+        # This parameter is required.
         self.connection_string = connection_string
         # The prefix of the new endpoint. You can modify only the prefix of the endpoint that is specified by the ConnectionString parameter.
         self.connection_string_prefix = connection_string_prefix
-        # The endpoint ID of the instance. You can call the [DescribeDBInstanceEndpoints](~~610488~~) operation to query the endpoint ID of the instance.
+        # The endpoint ID of the instance. You can call the DescribeDBInstanceEndpoints operation to query the endpoint ID of the instance.
+        # 
+        # This parameter is required.
         self.dbinstance_endpoint_id = dbinstance_endpoint_id
-        # The instance ID. You can call the [DescribeDBInstances](~~610396~~) operation to query the ID of the instance.
+        # The instance ID. You can call the DescribeDBInstances operation to query the ID of the instance.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The port number of the new endpoint.
         self.port = port
@@ -59279,17 +60331,21 @@ class ModifyDBInstanceHAConfigRequest(TeaModel):
         sync_mode: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.db_instance_id = db_instance_id
         # The HA mode of the instance.
         # 
         # *   RPO: Data consistency is preferred. The instance ensures data reliability to minimize data losses. If you have high requirements on data consistency, select this mode.
         # *   RTO: Service availability is preferred. The instance restores the database service at the earliest opportunity to ensure service availability. If you have high requirements for service availability, select this mode.
+        # 
+        # This parameter is required.
         self.hamode = hamode
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The data replication mode of the instance. For more information, see [Data replication mode](~~96055~~).
+        # The data replication mode of the instance. For more information, see [Data replication mode](https://help.aliyun.com/document_detail/96055.html).
         # 
         # *   Semi-sync: the semi-synchronous mode.
         # *   Sync: the synchronous mode.
@@ -59297,6 +60353,8 @@ class ModifyDBInstanceHAConfigRequest(TeaModel):
         # *   Mgr: the MySQL group replication (MGR) mode. This mode is available only for the China site (aliyun.com).
         # 
         # > This parameter is not supported for instances that run SQL Server 2017 on RDS Cluster Edition.
+        # 
+        # This parameter is required.
         self.sync_mode = sync_mode
 
     def validate(self):
@@ -59426,8 +60484,12 @@ class ModifyDBInstanceMaintainTimeRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The maintenance window of the instance. Specify the time in the *HH:mm*Z-*HH:mm*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.maintain_time = maintain_time
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -59556,16 +60618,22 @@ class ModifyDBInstanceMetricsRequest(TeaModel):
         scope: str = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
         # The keys of the Enhanced Monitoring metrics that you want to display for the instance. You can enter a maximum of 30 metric keys. If you enter multiple metric keys, you must separate the metric keys with commas (,).
         # 
         # You can call the DescribeAvailableMetrics operation to query the keys of metrics.
+        # 
+        # This parameter is required.
         self.metrics_config = metrics_config
         self.resource_owner_id = resource_owner_id
         # The application scope of this modification. Valid values:
         # 
         # *   **instance**: This modification is applied only to the current instance.
         # *   **region**: This modification is applied to all ApsaraDB RDS for PostgreSQL instances that are equipped with the same type of storage media as the current instance in the region to which the current instance belongs. For example, if the current instance is equipped with cloud disks, this modification is applied to all ApsaraDB RDS for PostgreSQL instances that are equipped with cloud disks in the region to which the current instance belongs.
+        # 
+        # This parameter is required.
         self.scope = scope
 
     def validate(self):
@@ -59700,6 +60768,8 @@ class ModifyDBInstanceMonitorRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -59711,6 +60781,8 @@ class ModifyDBInstanceMonitorRequest(TeaModel):
         # *   **300**\
         # 
         # Unit: seconds.
+        # 
+        # This parameter is required.
         self.period = period
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -59840,13 +60912,19 @@ class ModifyDBInstanceNetworkExpireTimeRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The retention days of the classic network endpoint. Valid values: **1 to 120**. Unit: days.
+        # 
+        # This parameter is required.
         self.classic_expired_days = classic_expired_days
         # The classic network endpoint whose expiration time you want to extend. Two types of classic network endpoints are supported:
         # 
         # *   The internal endpoint of the classic network.
         # *   The read/write splitting endpoint of the classic network.
+        # 
+        # This parameter is required.
         self.connection_string = connection_string
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -59988,8 +61066,12 @@ class ModifyDBInstanceNetworkTypeRequest(TeaModel):
         # > If you set the **RetainClassic** parameter to **True**, you must also specify this parameter.
         self.classic_expired_days = classic_expired_days
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The network type after the modification. Set the value to **VPC**.
+        # 
+        # This parameter is required.
         self.instance_network_type = instance_network_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -60176,13 +61258,19 @@ class ModifyDBInstancePayTypeRequest(TeaModel):
         used_time: int = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The billing method of the instance. The value is fixed as **Prepaid**, which indicates the subscription billing method.
+        # 
+        # This parameter is required.
         self.pay_type = pay_type
         # The renewal cycle of the instance.
         # 
         # *   **Year**\
         # *   **Month**\
+        # 
+        # This parameter is required.
         self.period = period
         self.resource_owner_id = resource_owner_id
         # The subscription duration of the instance. Valid values:
@@ -60307,6 +61395,8 @@ class ModifyDBInstanceProxyConfigurationRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         # The key of the **configuration item** for the database proxy. Valid values:
@@ -60314,6 +61404,8 @@ class ModifyDBInstanceProxyConfigurationRequest(TeaModel):
         # *   **TransparentSwitch**: transparent switchover
         # *   **PersistentConnections**: short-lived connection optimization
         # *   **AttacksProtection**: brute-force attack protection
+        # 
+        # This parameter is required.
         self.proxy_configuration_key = proxy_configuration_key
         # The features and status of the database proxy:
         # 
@@ -60333,6 +61425,8 @@ class ModifyDBInstanceProxyConfigurationRequest(TeaModel):
         #     *   **Disable**: The feature is disabled. This is the default value.
         # 
         # Format: {"Feature 1":"Status 1","Feature 2":"Status 2"...}
+        # 
+        # This parameter is required.
         self.proxy_configuration_value = proxy_configuration_value
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -60502,10 +61596,14 @@ class ModifyDBInstanceSSLRequest(TeaModel):
         # *   **0**: disables the CRL.
         self.client_crl_enabled = client_crl_enabled
         # The internal or public endpoint for which the server certificate needs to be created or updated.
+        # 
+        # This parameter is required.
         self.connection_string = connection_string
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances. For more information, see [Configure the SSL encryption feature](~~95715~~). Valid values:
+        # Specifies whether to enable the forceful SSL encryption feature. This parameter is supported only for ApsaraDB RDS for SQL Server instances. For more information, see [Configure the SSL encryption feature](https://help.aliyun.com/document_detail/95715.html). Valid values:
         # 
         # *   **1**: enables the feature.
         # *   **0**: disables the feature.
@@ -60532,7 +61630,7 @@ class ModifyDBInstanceSSLRequest(TeaModel):
         self.server_cert = server_cert
         # The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with cloud disks. This parameter must be specified when CAType is set to **custom**.
         self.server_key = server_key
-        # The minimum Transport Layer Security (TLS) version. Valid values: 1.0, 1.1, and 1.2. This parameter is supported only for ApsaraDB RDS for SQL Server instances. For more information, see [Configure the SSL encryption feature](~~95715~~).
+        # The minimum Transport Layer Security (TLS) version. Valid values: 1.0, 1.1, and 1.2. This parameter is supported only for ApsaraDB RDS for SQL Server instances. For more information, see [Configure the SSL encryption feature](https://help.aliyun.com/document_detail/95715.html).
         self.tls_version = tls_version
 
     def validate(self):
@@ -60708,7 +61806,7 @@ class ModifyDBInstanceSpecRequestServerlessConfiguration(TeaModel):
         min_capacity: float = None,
         switch_force: bool = None,
     ):
-        # Specifies whether to enable the automatic start and stop feature for the serverless instance. Valid values: Valid values:
+        # Specifies whether to enable the automatic start and stop feature for the serverless instance. Valid values:
         # 
         # *   **true**\
         # *   **false** (default)
@@ -60731,7 +61829,7 @@ class ModifyDBInstanceSpecRequestServerlessConfiguration(TeaModel):
         # 
         # >  The value of this parameter must be less than or equal to the value of **MaxCapacity**.
         self.min_capacity = min_capacity
-        # Specifies whether to enable the forced scaling feature for the serverless instance.
+        # Specifies whether to enable the forced scaling feature for the serverless instance. Valid values:
         # 
         # *   **true**\
         # *   **false** (default)
@@ -60829,16 +61927,18 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         self.category = category
         # A reserved parameter.
         self.cold_data_enabled = cold_data_enabled
-        # The new instance type of the instance. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~). You can also call the DescribeAvailableClasses operation to query the instance types that are supported by an instance.
+        # The new instance type of the instance. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html). You can also call the DescribeAvailableClasses operation to query the instance types that are supported by an instance.
         # 
         # > *   You must specify at least one of DBInstanceClass and **DBInstanceStorage**.
         # > *   You can call the DescribeDBInstanceAttribute operation to query the current instance type of the instance.
         self.dbinstance_class = dbinstance_class
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-        self.dbinstance_id = dbinstance_id
-        # The new storage capacity of the instance. Unit: GB. You can increase the storage capacity in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~). You can also call the DescribeAvailableClasses operation to query the storage capacity range that is supported by the new instance type.
         # 
-        # > *   You must specify at least one of the DBInstanceStorage and **DBInstanceClass**.
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        # The new storage capacity of the instance. Unit: GB. You can increase the storage capacity in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html). You can also call the DescribeAvailableClasses operation to query the storage capacity range that is supported by the new instance type.
+        # 
+        # > *   You must specify at least one of the DBInstanceStorage and **DBInstanceClass** parameters.
         # > *   You can call the DescribeDBInstanceAttribute to query the current storage capacity of the instance.
         self.dbinstance_storage = dbinstance_storage
         # The storage type of the instance. Valid values:
@@ -60851,7 +61951,7 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         # 
         # To change the storage type, take note of the following items:
         # 
-        # If the instance runs PostgreSQL, you can upgrade the storage type of the instance from standard SSD to ESSD. However, you cannot downgrade the storage type of the instance from ESSD to standard SSD. ESSDs provide the following PLs: PL1, PL2, and PL3. You can upgrade or downgrade the storage type between ESSD of PL1, ESSD of PL2, and ESSD of PL3. For more information, see [Configuration items](~~96750~~).
+        # If the instance runs PostgreSQL, you can upgrade the storage type of the instance from standard SSD to ESSD. However, you cannot downgrade the storage type of the instance from ESSD to standard SSD. ESSDs provide the following PLs: PL1, PL2, and PL3. You can upgrade or downgrade the storage type between ESSD of PL1, ESSD of PL2, and ESSD of PL3. For more information, see [Configuration items](https://help.aliyun.com/document_detail/96750.html).
         self.dbinstance_storage_type = dbinstance_storage_type
         # The ID of the dedicated cluster.
         self.dedicated_host_group_id = dedicated_host_group_id
@@ -60866,7 +61966,7 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         self.direction = direction
         # The time when you want the change to take effect. Valid values:
         # 
-        # *   **Immediate**: This is the default value.
+        # *   **Immediate** (default)
         # *   **MaintainTime**: The effective time is within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         self.effective_time = effective_time
         # The database engine version of the instance.
@@ -60874,14 +61974,14 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         # *   Regular instance
         # 
         #     *   Valid values if you set the Engine parameter to MySQL: **5.5**, **5.6**, **5.7**, and **8.0**\
-        #     *   Valid values if you set the Engine parameter to SQLServer: **2008r2**, **08r2\_ent_ha**, **2012**, **2012\_ent_ha**, **2012\_std_ha**, **2012\_web**, **2014\_std_ha**, **2016\_ent_ha**, **2016\_std_ha**, **2016\_web**, **2017\_std_ha**, **2017\_ent**, **2019\_std_ha**, and **2019\_ent**\
+        #     *   Valid values if you set the Engine parameter to SQLServer: **2008r2**, **08r2_ent_ha**, **2012**, **2012_ent_ha**, **2012_std_ha**, **2012_web**, **2014_std_ha**, **2016_ent_ha**, **2016_std_ha**, **2016_web**, **2017_std_ha**, **2017_ent**, **2019_std_ha**, and **2019_ent**\
         #     *   Valid values if you set the Engine parameter to PostgreSQL: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, and **15.0**\
         #     *   Valid value if you set the Engine parameter to MariaDB: **10.3**\
         # 
         # *   Serverless instance
         # 
         #     *   Valid values if you set the Engine parameter to MySQL: **5.7** and **8.0**\
-        #     *   Valid values if you set the Engine parameter to SQLServer: **2016\_std_sl**, **2017\_std_sl**, and **2019\_std_sl**\
+        #     *   Valid values if you set the Engine parameter to SQLServer: **2016_std_sl**, **2017_std_sl**, and **2019_std_sl**\
         #     *   Valid values if you set the Engine parameter to PostgreSQL: **14.0**, **15.0**, **16.0**\
         # 
         # > ApsaraDB RDS for MariaDB does not support serverless instances.
@@ -60894,13 +61994,13 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         # 
         # *   **Postpaid**: pay-as-you-go.
         # *   **Prepaid**: subscription.
-        # *   **Serverless**: serverless. This value is not supported for instances that run MariaDB. If you set the value to Serverless, you must specify the scaling range of computing resources, configure the automatic start and stop feature, and configure auto scaling policies for your serverless instance. For more information, see [Overview of serverless ApsaraDB RDS for MySQL instances](~~411291~~), [Overview of serverless ApsaraDB RDS for SQL Server instances](~~604344~~), and [Overview of serverless ApsaraDB RDS for PostgreSQL instances](~~607742~~).
+        # *   **Serverless**: serverless. This value is not supported for instances that run MariaDB. If you set the value to Serverless, you must specify the scaling range of computing resources, configure the automatic start and stop feature, and configure auto scaling policies for your serverless instance. For more information, see [Overview of serverless ApsaraDB RDS for MySQL instances](https://help.aliyun.com/document_detail/411291.html), [Overview of serverless ApsaraDB RDS for SQL Server instances](https://help.aliyun.com/document_detail/604344.html), and [Overview of serverless ApsaraDB RDS for PostgreSQL instances](https://help.aliyun.com/document_detail/607742.html).
         self.pay_type = pay_type
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The serverless instance specifications that you want to change.
+        # The specifications that you want to change for a serverless instance.
         self.serverless_configuration = serverless_configuration
         # A deprecated parameter. You do not need to specify this parameter.
         self.source_biz = source_biz
@@ -60912,7 +62012,7 @@ class ModifyDBInstanceSpecRequest(TeaModel):
         # 
         # Format: `rds_postgres_<Major engine version>00_<Minor engine version>`. Example: `rds_postgres_1200_20200830`.
         # 
-        # >  For more information about minor engine versions, see [Release notes for AliPG](~~126002~~).
+        # >  For more information about minor engine versions, see [Release notes for AliPG](https://help.aliyun.com/document_detail/126002.html).
         self.target_minor_version = target_minor_version
         # The ID of the order.
         self.used_time = used_time
@@ -61101,16 +62201,18 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
         self.category = category
         # A reserved parameter.
         self.cold_data_enabled = cold_data_enabled
-        # The new instance type of the instance. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~). You can also call the DescribeAvailableClasses operation to query the instance types that are supported by an instance.
+        # The new instance type of the instance. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html). You can also call the DescribeAvailableClasses operation to query the instance types that are supported by an instance.
         # 
         # > *   You must specify at least one of DBInstanceClass and **DBInstanceStorage**.
         # > *   You can call the DescribeDBInstanceAttribute operation to query the current instance type of the instance.
         self.dbinstance_class = dbinstance_class
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
-        self.dbinstance_id = dbinstance_id
-        # The new storage capacity of the instance. Unit: GB. You can increase the storage capacity in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](~~26312~~). You can also call the DescribeAvailableClasses operation to query the storage capacity range that is supported by the new instance type.
         # 
-        # > *   You must specify at least one of the DBInstanceStorage and **DBInstanceClass**.
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        # The new storage capacity of the instance. Unit: GB. You can increase the storage capacity in increments of 5 GB. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html). You can also call the DescribeAvailableClasses operation to query the storage capacity range that is supported by the new instance type.
+        # 
+        # > *   You must specify at least one of the DBInstanceStorage and **DBInstanceClass** parameters.
         # > *   You can call the DescribeDBInstanceAttribute to query the current storage capacity of the instance.
         self.dbinstance_storage = dbinstance_storage
         # The storage type of the instance. Valid values:
@@ -61123,7 +62225,7 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
         # 
         # To change the storage type, take note of the following items:
         # 
-        # If the instance runs PostgreSQL, you can upgrade the storage type of the instance from standard SSD to ESSD. However, you cannot downgrade the storage type of the instance from ESSD to standard SSD. ESSDs provide the following PLs: PL1, PL2, and PL3. You can upgrade or downgrade the storage type between ESSD of PL1, ESSD of PL2, and ESSD of PL3. For more information, see [Configuration items](~~96750~~).
+        # If the instance runs PostgreSQL, you can upgrade the storage type of the instance from standard SSD to ESSD. However, you cannot downgrade the storage type of the instance from ESSD to standard SSD. ESSDs provide the following PLs: PL1, PL2, and PL3. You can upgrade or downgrade the storage type between ESSD of PL1, ESSD of PL2, and ESSD of PL3. For more information, see [Configuration items](https://help.aliyun.com/document_detail/96750.html).
         self.dbinstance_storage_type = dbinstance_storage_type
         # The ID of the dedicated cluster.
         self.dedicated_host_group_id = dedicated_host_group_id
@@ -61138,7 +62240,7 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
         self.direction = direction
         # The time when you want the change to take effect. Valid values:
         # 
-        # *   **Immediate**: This is the default value.
+        # *   **Immediate** (default)
         # *   **MaintainTime**: The effective time is within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
         self.effective_time = effective_time
         # The database engine version of the instance.
@@ -61146,14 +62248,14 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
         # *   Regular instance
         # 
         #     *   Valid values if you set the Engine parameter to MySQL: **5.5**, **5.6**, **5.7**, and **8.0**\
-        #     *   Valid values if you set the Engine parameter to SQLServer: **2008r2**, **08r2\_ent_ha**, **2012**, **2012\_ent_ha**, **2012\_std_ha**, **2012\_web**, **2014\_std_ha**, **2016\_ent_ha**, **2016\_std_ha**, **2016\_web**, **2017\_std_ha**, **2017\_ent**, **2019\_std_ha**, and **2019\_ent**\
+        #     *   Valid values if you set the Engine parameter to SQLServer: **2008r2**, **08r2_ent_ha**, **2012**, **2012_ent_ha**, **2012_std_ha**, **2012_web**, **2014_std_ha**, **2016_ent_ha**, **2016_std_ha**, **2016_web**, **2017_std_ha**, **2017_ent**, **2019_std_ha**, and **2019_ent**\
         #     *   Valid values if you set the Engine parameter to PostgreSQL: **10.0**, **11.0**, **12.0**, **13.0**, **14.0**, and **15.0**\
         #     *   Valid value if you set the Engine parameter to MariaDB: **10.3**\
         # 
         # *   Serverless instance
         # 
         #     *   Valid values if you set the Engine parameter to MySQL: **5.7** and **8.0**\
-        #     *   Valid values if you set the Engine parameter to SQLServer: **2016\_std_sl**, **2017\_std_sl**, and **2019\_std_sl**\
+        #     *   Valid values if you set the Engine parameter to SQLServer: **2016_std_sl**, **2017_std_sl**, and **2019_std_sl**\
         #     *   Valid values if you set the Engine parameter to PostgreSQL: **14.0**, **15.0**, **16.0**\
         # 
         # > ApsaraDB RDS for MariaDB does not support serverless instances.
@@ -61166,13 +62268,13 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
         # 
         # *   **Postpaid**: pay-as-you-go.
         # *   **Prepaid**: subscription.
-        # *   **Serverless**: serverless. This value is not supported for instances that run MariaDB. If you set the value to Serverless, you must specify the scaling range of computing resources, configure the automatic start and stop feature, and configure auto scaling policies for your serverless instance. For more information, see [Overview of serverless ApsaraDB RDS for MySQL instances](~~411291~~), [Overview of serverless ApsaraDB RDS for SQL Server instances](~~604344~~), and [Overview of serverless ApsaraDB RDS for PostgreSQL instances](~~607742~~).
+        # *   **Serverless**: serverless. This value is not supported for instances that run MariaDB. If you set the value to Serverless, you must specify the scaling range of computing resources, configure the automatic start and stop feature, and configure auto scaling policies for your serverless instance. For more information, see [Overview of serverless ApsaraDB RDS for MySQL instances](https://help.aliyun.com/document_detail/411291.html), [Overview of serverless ApsaraDB RDS for SQL Server instances](https://help.aliyun.com/document_detail/604344.html), and [Overview of serverless ApsaraDB RDS for PostgreSQL instances](https://help.aliyun.com/document_detail/607742.html).
         self.pay_type = pay_type
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The serverless instance specifications that you want to change.
+        # The specifications that you want to change for a serverless instance.
         self.serverless_configuration_shrink = serverless_configuration_shrink
         # A deprecated parameter. You do not need to specify this parameter.
         self.source_biz = source_biz
@@ -61184,7 +62286,7 @@ class ModifyDBInstanceSpecShrinkRequest(TeaModel):
         # 
         # Format: `rds_postgres_<Major engine version>00_<Minor engine version>`. Example: `rds_postgres_1200_20200830`.
         # 
-        # >  For more information about minor engine versions, see [Release notes for AliPG](~~126002~~).
+        # >  For more information about minor engine versions, see [Release notes for AliPG](https://help.aliyun.com/document_detail/126002.html).
         self.target_minor_version = target_minor_version
         # The ID of the order.
         self.used_time = used_time
@@ -61414,16 +62516,18 @@ class ModifyDBInstanceTDERequest(TeaModel):
         role_arn: str = None,
         tdestatus: str = None,
     ):
-        # The file that contains the certificate.\
+        # The file that contains the certificate.\\
         # Format:
         # 
         # *   Public endpoint: `oss-<The ID of the region>.aliyuncs.com:<The name of the bucket>:<The name of the certificate file>` (The file name contains the extension.)
         # *   Internal endpoint: `oss-<The ID of the region>-internal.aliyuncs.com:<The name of the bucket>:<The name of the certificate file>` (The file name contains the extension.)
         # 
         # > *   This parameter is available when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
-        # > *   You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
+        # > *   You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
         self.certificate = certificate
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the database for which you want to enable TDE. You can specify up to 50 database names in a single request. If you specify multiple database names, separate the database names with commas (,).
         # 
@@ -61448,18 +62552,18 @@ class ModifyDBInstanceTDERequest(TeaModel):
         # 
         # > This parameter is available when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         self.pass_word = pass_word
-        # The file that contains the private key of the certificate.\
+        # The file that contains the private key of the certificate.\\
         # Format:
         # 
         # *   Public endpoint: `oss-<The ID of the region>.aliyuncs.com:<The name of the bucket>:<The name of the file that contains the private key>` (The file name contains the extension.)
         # *   Internal endpoint: `oss-<The ID of the region>-internal.aliyuncs.com:<The name of the bucket>:<The name of the file that contains the private key>` (The file name contains the extension.)
         # 
         # > *   This parameter is available when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
-        # > *   You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
+        # > *   You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
         self.private_key = private_key
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](~~93689~~).
+        # The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://help.aliyun.com/document_detail/93689.html).
         # 
         # > This parameter is available when the instance runs MySQL or PostgreSQL.
         self.role_arn = role_arn
@@ -61467,6 +62571,8 @@ class ModifyDBInstanceTDERequest(TeaModel):
         # 
         # *   **Enabled**\
         # *   **Disabled**\
+        # 
+        # This parameter is required.
         self.tdestatus = tdestatus
 
     def validate(self):
@@ -61668,8 +62774,10 @@ class ModifyDBNodeRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
         # The instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The new storage capacity of the instance. Unit: GB For more information, see [Instance types](~~26312~~).
+        # The new storage capacity of the instance. Unit: GB For more information, see [Instance types](https://help.aliyun.com/document_detail/26312.html).
         self.dbinstance_storage = dbinstance_storage
         # The storage type of the instance. Valid values:
         # 
@@ -61805,8 +62913,10 @@ class ModifyDBNodeShrinkRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request.
         self.client_token = client_token
         # The instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The new storage capacity of the instance. Unit: GB For more information, see [Instance types](~~26312~~).
+        # The new storage capacity of the instance. Unit: GB For more information, see [Instance types](https://help.aliyun.com/document_detail/26312.html).
         self.dbinstance_storage = dbinstance_storage
         # The storage type of the instance. Valid values:
         # 
@@ -62022,8 +63132,12 @@ class ModifyDBProxyRequest(TeaModel):
         # 
         # *   **Startup**: enables the database proxy feature.
         # *   **Shutdown**: disables the database proxy feature.
+        # 
+        # This parameter is required.
         self.config_dbproxy_service = config_dbproxy_service
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # A reserved parameter. You do not need to specify this parameter.
         self.dbproxy_engine_type = dbproxy_engine_type
@@ -62237,6 +63351,8 @@ class ModifyDBProxyEndpointRequest(TeaModel):
         # >  If the instance runs PostgreSQL, you can enable only the read/write splitting feature, which is specified by **ReadWriteSpliting**.
         self.config_dbproxy_features = config_dbproxy_features
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The ID of the proxy endpoint. You can call the DescribeDBProxyEndpoint operation to query the proxy endpoint ID.
         # 
@@ -62269,7 +63385,7 @@ class ModifyDBProxyEndpointRequest(TeaModel):
         # *   **Standard**: The system automatically allocates read weights to the instance and its read-only instances based on the specifications of the instances.
         # *   **Custom**: You must manually allocate read weights to the instance and its read-only instances.
         # 
-        # > You must specify this parameter only when the read/write splitting feature is enabled. For more information about the permission allocation policy, see [Modify the latency threshold and read weights of ApsaraDB RDS for MySQL instances](~~96076~~) and [Enable and configure the database proxy feature for an ApsaraDB RDS for PostgreSQL instance](~~418272~~).
+        # > You must specify this parameter only when the read/write splitting feature is enabled. For more information about the permission allocation policy, see [Modify the latency threshold and read weights of ApsaraDB RDS for MySQL instances](https://help.aliyun.com/document_detail/96076.html) and [Enable and configure the database proxy feature for an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/418272.html).
         self.read_only_instance_distribution_type = read_only_instance_distribution_type
         # The latency threshold that is allowed for read/write splitting. If the latency on a read-only instance exceeds the threshold that you specified, the system no longer forwards read requests to the read-only instance. Unit: seconds If you do not specify this parameter, the original value of this parameter is retained. Valid values: **0** to **3600**. Default value: **30**.
         # 
@@ -62451,6 +63567,8 @@ class ModifyDBProxyEndpointAddressRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The network type of the proxy endpoint. Valid values:
         # 
@@ -62463,6 +63581,8 @@ class ModifyDBProxyEndpointAddressRequest(TeaModel):
         # > If the instance runs PostgreSQL, you must set this parameter to **Public** or **VPC**.
         self.dbproxy_connect_string_net_type = dbproxy_connect_string_net_type
         # The ID of the dedicated proxy endpoint. You can call the DescribeDBProxyEndpoint operation to query the ID of the proxy endpoint.
+        # 
+        # This parameter is required.
         self.dbproxy_endpoint_id = dbproxy_endpoint_id
         # A reserved parameter. You do not need to specify this parameter.
         self.dbproxy_engine_type = dbproxy_engine_type
@@ -62614,33 +63734,45 @@ class ModifyDBProxyInstanceRequest(TeaModel):
         resource_owner_id: int = None,
         v_switch_ids: str = None,
     ):
-        # The ID of the instance. You can call the [DescribeDBInstances](~~26232~~) operation to query the ID of the instance.
+        # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # An internal parameter. You do not need to specify this parameter.
+        # A deprecated parameter. You do not need to specify this parameter.
         self.dbproxy_engine_type = dbproxy_engine_type
-        # The number of proxy instances that are enabled. If the value of this parameter is 0, the database proxy feature is disabled for the instance. Valid values: **1** to **60**.
+        # The number of database proxies. If you set this parameter to 0, the database proxy feature is disabled for the instance. Valid values: **1** to **16**.
         # 
-        # >  The capability of the database proxy to process requests increases with the number of proxy instances that are enabled. You can monitor the load on the instance and specify an appropriate number of proxy instances based on the load monitoring data.
+        # >  The capability of the database proxy feature to process requests increases with the number of database proxies that are enabled. You can monitor the load on the instance and specify an appropriate number of database proxies based on the load monitoring data.
+        # 
+        # This parameter is required.
         self.dbproxy_instance_num = dbproxy_instance_num
-        # The type of database proxy that is enabled for the instance. Set the value to **DedicatedProxy**.
+        # The database proxy type. Valid values:
+        # 
+        # *   **common**: general-purpose database proxy
+        # *   **exclusive** (default): dedicated database proxy
+        # 
+        # This parameter is required.
         self.dbproxy_instance_type = dbproxy_instance_type
-        # The point in time at which you want to apply the new database proxy settings. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # The point in time that you want to specify. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         # 
-        # >  If you set the **EffectiveTime** parameter to **SpecificTime**, you must specify the EffectiveSpecificTime parameter.
+        # >  If the **EffectiveTime** parameter is set to **SpecificTime**, you must specify this parameter.
         self.effective_specific_time = effective_specific_time
-        # The time when you want to apply the new database proxy settings. Valid values:
+        # The effective time. Valid values:
         # 
-        # *   **Immediate**: ApsaraDB RDS immediately applies the new settings.
-        # *   **MaintainTime**: ApsaraDB RDS applies the new settings during the maintenance window that you specified. For more information, see [Modify the maintenance window](~~26249~~).
-        # *   **SpecificTime**: ApsaraDB RDS applies the new settings at a specified point in time.
+        # *   **Immediate**: The effective time is immediate.
+        # *   **MaintainTime**: The effective time is within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+        # *   **SpecificTime**: The effective time is a specified point in time.
         # 
         # Default value: **MaintainTime**.
         self.effective_time = effective_time
         self.owner_id = owner_id
-        # The ID of the region where the instance resides. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
+        # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the vSwitch in the destination zone. You can call the [DescribeVSwitches](https://help.aliyun.com/document_detail/610431.html) operation to query existing vSwitches.
+        # 
+        # >  Only database proxies for ApsaraDB RDS for MySQL instances that use cloud disks can be migrated to different zones.
         self.v_switch_ids = v_switch_ids
 
     def validate(self):
@@ -62708,7 +63840,7 @@ class ModifyDBProxyInstanceResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -62786,19 +63918,27 @@ class ModifyDTCSecurityIpHostsForSQLServerRequest(TeaModel):
         white_list_group_name: str = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The IP address of the ECS instance and the hostname of the Windows computer. Format: `IP address,Hostname`. Separate multiple entries with semicolon (;).
         # 
-        # >  For more information about how to query the computer hostname, see [Configure a distributed transaction whitelist](~~124321~~).
+        # >  For more information about how to query the computer hostname, see [Configure a distributed transaction whitelist](https://help.aliyun.com/document_detail/124321.html).
+        # 
+        # This parameter is required.
         self.security_ip_hosts = security_ip_hosts
         self.security_token = security_token
         # The name of the IP address whitelist.
+        # 
+        # This parameter is required.
         self.white_list_group_name = white_list_group_name
 
     def validate(self):
@@ -62961,6 +64101,8 @@ class ModifyDasInstanceConfigRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the generated token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -62969,6 +64111,8 @@ class ModifyDasInstanceConfigRequest(TeaModel):
         # 
         # *   **Enable**\
         # *   **Disable**\
+        # 
+        # This parameter is required.
         self.storage_auto_scale = storage_auto_scale
         # The threshold in percentage based on which an automatic storage expansion is triggered. If the available storage reaches the threshold, ApsaraDB RDS increases the storage capacity of the instance. Valid values:
         # 
@@ -63118,14 +64262,22 @@ class ModifyDatabaseConfigRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The database name.
         # 
         # >  You can specify only one database name.
+        # 
+        # This parameter is required.
         self.dbname = dbname
         # The name of the database property that you want to modify.
+        # 
+        # This parameter is required.
         self.database_property_name = database_property_name
         # The value of the database property that you want to modify.
+        # 
+        # This parameter is required.
         self.database_property_value = database_property_value
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -63276,10 +64428,16 @@ class ModifyDbProxyInstanceSslRequest(TeaModel):
         # A reserved parameter. You do not need to specify this parameter.
         self.dbproxy_engine_type = dbproxy_engine_type
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.db_instance_id = db_instance_id
         # The dedicated proxy endpoint of the instance.
+        # 
+        # This parameter is required.
         self.db_proxy_connect_string = db_proxy_connect_string
         # The ID of the proxy endpoint. You can call the DescribeDBProxyEndpoint operation to query the ID of the proxy endpoint.
+        # 
+        # This parameter is required.
         self.db_proxy_endpoint_id = db_proxy_endpoint_id
         # The SSL configuration setting that you want to apply on the instance. Valid values:
         # 
@@ -63288,6 +64446,8 @@ class ModifyDbProxyInstanceSslRequest(TeaModel):
         # *   2: updates the validity period of the SSL certificate.
         # 
         # > This setting causes your instance to restart. Proceed with caution.
+        # 
+        # This parameter is required.
         self.db_proxy_ssl_enabled = db_proxy_ssl_enabled
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         self.region_id = region_id
@@ -63415,8 +64575,12 @@ class ModifyEventInfoRequest(TeaModel):
         # The event handling action. Set this value to archive or undo.
         self.event_action = event_action
         # The event ID. Separate multiple event IDs with commas (,). You can configure up to 20 event IDs.
+        # 
+        # This parameter is required.
         self.event_id = event_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.security_token = security_token
 
@@ -63564,9 +64728,13 @@ class ModifyHADiagnoseConfigRequest(TeaModel):
         tcp_connection_type: str = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -63697,6 +64865,8 @@ class ModifyHASwitchConfigRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The mode of the automatic primary/secondary switchover feature. Valid values:
         # 
@@ -63713,6 +64883,8 @@ class ModifyHASwitchConfigRequest(TeaModel):
         self.manual_hatime = manual_hatime
         self.owner_id = owner_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -63851,6 +65023,8 @@ class ModifyInstanceAutoRenewalAttributeRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The number of months for auto-renewal. Valid values: **1 to 12**.
         # 
@@ -63859,6 +65033,8 @@ class ModifyInstanceAutoRenewalAttributeRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -64011,6 +65187,8 @@ class ModifyInstanceCrossBackupPolicyRequest(TeaModel):
         # The policy that is used to save the cross-region backup files of the instance. Set the value to **1**. The value 1 specifies that all cross-region backup files are saved.
         self.cross_backup_type = cross_backup_type
         # The instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # Specifies whether to enable the cross-region log backup feature on the instance. Valid values:
         # 
@@ -64021,6 +65199,8 @@ class ModifyInstanceCrossBackupPolicyRequest(TeaModel):
         self.log_backup_enabled = log_backup_enabled
         self.owner_id = owner_id
         # The region ID of the source instance. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -64118,7 +65298,7 @@ class ModifyInstanceCrossBackupPolicyResponseBody(TeaModel):
         # *   **Disable**\
         # *   **Enable**\
         self.log_backup_enabled = log_backup_enabled
-        # The region ID of the source instance. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
+        # The region ID of the source instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the request.
         self.request_id = request_id
@@ -64272,6 +65452,7 @@ class ModifyMaskingRulesRequest(TeaModel):
         rule_config: ModifyMaskingRulesRequestRuleConfig = None,
         rule_name: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
         self.default_algo = default_algo
         self.enabled = enabled
@@ -64280,6 +65461,7 @@ class ModifyMaskingRulesRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.rule_config = rule_config
+        # This parameter is required.
         self.rule_name = rule_name
 
     def validate(self):
@@ -64349,6 +65531,7 @@ class ModifyMaskingRulesShrinkRequest(TeaModel):
         rule_config_shrink: str = None,
         rule_name: str = None,
     ):
+        # This parameter is required.
         self.dbinstance_name = dbinstance_name
         self.default_algo = default_algo
         self.enabled = enabled
@@ -64357,6 +65540,7 @@ class ModifyMaskingRulesShrinkRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         self.rule_config_shrink = rule_config_shrink
+        # This parameter is required.
         self.rule_name = rule_name
 
     def validate(self):
@@ -64510,10 +65694,14 @@ class ModifyPGHbaConfigRequestHbaItem(TeaModel):
         user: str = None,
     ):
         # The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
+        # 
+        # This parameter is required.
         self.address = address
         # The name of the database. If you set this parameter to all, the specified users are allowed to access all databases on the instance.
         # 
         # If you specify multiple entries, separate the entries with commas (,).
+        # 
+        # This parameter is required.
         self.database = database
         # The mask of the IP address. If the value of the **Address** parameter is an IP address, you can use this parameter to specify the mask of the IP address.
         self.mask = mask
@@ -64530,12 +65718,16 @@ class ModifyPGHbaConfigRequestHbaItem(TeaModel):
         # *   **radius**\
         # *   **cert**\
         # *   **pam**\
+        # 
+        # This parameter is required.
         self.method = method
         # The options of the authentication method. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
         self.option = option
         # The priority of the record. If you set this parameter to 0, the record has the highest priority. Valid values: 0 to 10000.
         # 
         # This parameter is used to identify each record. When you add a record, the value of the PriorityId parameter for the new record must be different from the value of the PriorityId parameter of any existing record. When you modify or delete a record, you must also modify or delete the value of the PriorityId parameter for this record.
+        # 
+        # This parameter is required.
         self.priority_id = priority_id
         # The connection type.
         # 
@@ -64546,8 +65738,12 @@ class ModifyPGHbaConfigRequestHbaItem(TeaModel):
         # *   **hostnossl**: The record matches only TCP/IP connections that are not established over SSL connections.
         # 
         # >  You can set this parameter to hostssl only when SSL encryption is enabled for the instance. For more information, see Configure SSL encryption for an ApsaraDB RDS for PostgreSQL instance.[](~~229518~~)
+        # 
+        # This parameter is required.
         self.type = type
         # The user who is allowed to access the specified databases. You must specify the user that is used to log on to the RDS instance. If you specify multiple entries, separate the entries with commas (,).
+        # 
+        # This parameter is required.
         self.user = user
 
     def validate(self):
@@ -64613,8 +65809,12 @@ class ModifyPGHbaConfigRequest(TeaModel):
         # A reserved parameter. You do not need to specify this parameter.
         self.client_token = client_token
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # An array that consists of the details of the AD domain services.
+        # 
+        # This parameter is required.
         self.hba_item = hba_item
         # The method that you use to modify the pg_hba.conf file. Valid values:
         # 
@@ -64622,6 +65822,8 @@ class ModifyPGHbaConfigRequest(TeaModel):
         # *   **delete**: deletes one or more records. If you use this method, the record that corresponds to the specified value of the **PriorityId** parameter is deleted from the pg_hba.conf file.
         # *   **modify**: modifies one or more records. If you use this method, the record that corresponds to the specified value of the **PriorityId** parameter is modified.
         # *   **update**: overwrites the existing configuration in the pg_hba.conf file by using the new configuration.
+        # 
+        # This parameter is required.
         self.ops_type = ops_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -64771,6 +65973,8 @@ class ModifyParameterRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # Specifies whether to restart the instance for a new parameter value to take effect. Valid values:
         # 
@@ -64965,15 +66169,17 @@ class ModifyParameterGroupRequest(TeaModel):
         # > If you do not specify this parameter, the original description of the parameter template is retained.
         self.parameter_group_desc = parameter_group_desc
         # The parameter template ID. You can call the DescribeParameterGroups operation to query the parameter template ID.
+        # 
+        # This parameter is required.
         self.parameter_group_id = parameter_group_id
         # The parameter template name.
         # 
-        # *   The name can contain letters, digits, periods (.), and underscores (\_). It must start with a letter.
+        # *   The name can contain letters, digits, periods (.), and underscores (_). It must start with a letter.
         # *   It can be 8 to 64 characters in length.
         # 
         # > If you do not specify this parameter, the original name of the parameter template is retained.
         self.parameter_group_name = parameter_group_name
-        # A JSON string that consists of parameters and their values in the parameter template. Format: {"Parameter 1":"Value of Parameter 1","Parameter 2":"Value of Parameter 2"...}. For more information about the parameters that can be modified, see [Modify the parameters of an ApsaraDB RDS for MySQL instance](~~96063~~) or [Modify the parameters of an ApsaraDB RDS for PostgreSQL instance](~~96751~~).
+        # A JSON string that consists of parameters and their values in the parameter template. Format: {"Parameter 1":"Value of Parameter 1","Parameter 2":"Value of Parameter 2"...}. For more information about the parameters that can be modified, see [Modify the parameters of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96063.html) or [Modify the parameters of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96751.html).
         # 
         # > 
         # 
@@ -64985,6 +66191,8 @@ class ModifyParameterGroupRequest(TeaModel):
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         # 
         # >  The region of a parameter template cannot be changed. You can call the CloneParameterGroup operation to replicate a parameter template to a specific region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID. You can call the DescribeDBInstanceAttribute operation to query the resource group ID.
         self.resource_group_id = resource_group_id
@@ -65142,6 +66350,8 @@ class ModifyReadWriteSplittingConnectionRequest(TeaModel):
         # > The default prefix consists of the name of the primary instance followed by the letters rw.
         self.connection_string_prefix = connection_string_prefix
         # The ID of the primary instance. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The method that is used to assign read weights. Valid values:
         # 
@@ -65309,9 +66519,13 @@ class ModifyReadonlyInstanceDelayReplicationTimeRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the read-only instance. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         # The replication latency of the data replication. Unit: seconds.
+        # 
+        # This parameter is required.
         self.read_sqlreplication_time = read_sqlreplication_time
         # The resource group ID. You can call the DescribeDBInstanceAttribute to query the resource group ID.
         self.resource_group_id = resource_group_id
@@ -65462,10 +66676,14 @@ class ModifyResourceGroupRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The resource group ID. You can call the ListResourceGroups operation to obtain the resource group ID.
+        # 
+        # This parameter is required.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -65595,6 +66813,8 @@ class ModifySQLCollectorPolicyRequest(TeaModel):
         sqlcollector_status: str = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -65606,6 +66826,8 @@ class ModifySQLCollectorPolicyRequest(TeaModel):
         # 
         # *   **Enable**\
         # *   **Disabled**\
+        # 
+        # This parameter is required.
         self.sqlcollector_status = sqlcollector_status
 
     def validate(self):
@@ -65740,8 +66962,12 @@ class ModifySQLCollectorRetentionRequest(TeaModel):
         # *   365: one year
         # *   1095: three years
         # *   1825: five years
+        # 
+        # This parameter is required.
         self.config_value = config_value
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -65878,11 +67104,15 @@ class ModifySecurityGroupConfigurationRequest(TeaModel):
         security_group_id: str = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the ECS security group. Each instance can be added to up to 10 security groups. Separate multiple security groups with commas (,). To delete an ECS security group, leave this parameter empty. You can call the DescribeSecurityGroups operation to query the ID of the ECS security group.
+        # 
+        # This parameter is required.
         self.security_group_id = security_group_id
 
     def validate(self):
@@ -66108,6 +67338,8 @@ class ModifySecurityIpsRequest(TeaModel):
         # > A maximum of 200 IP address whitelists can be configured for each instance.
         self.dbinstance_iparray_name = dbinstance_iparray_name
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The read-only instances to which you want to synchronize the IP address whitelist.
         # 
@@ -66132,6 +67364,8 @@ class ModifySecurityIpsRequest(TeaModel):
         # *   CIDR blocks, such as 10.23.XX.XX/24. In this example, 24 indicates that the prefix of each IP address in the IP address whitelist is 24 bits in length. You can replace 24 with a value within the range of 1 to 32.
         # 
         # > A maximum of 1,000 IP addresses or CIDR blocks can be added for each instance. If you want to add a large number of IP addresses, we recommend that you merge them into CIDR blocks, such as 10.23.XX.XX/24.
+        # 
+        # This parameter is required.
         self.security_ips = security_ips
         # The network type of the IP address whitelist. Valid values:
         # 
@@ -66290,7 +67524,9 @@ class ModifyTaskInfoRequest(TeaModel):
     ):
         # The action parameter.
         self.action_params = action_params
-        # The region ID. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -66305,6 +67541,8 @@ class ModifyTaskInfoRequest(TeaModel):
         # *   ModifyDiskSpec
         self.task_action = task_action
         # The task ID.
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -66462,7 +67700,10 @@ class ModifyWhitelistTemplateRequest(TeaModel):
         # *   CIDR blocks, such as 10.23.XX.XX/24. In this example, 24 indicates that the prefix of the CIDR block is 24-bit in length. You can replace 24 with a value that ranges from 1 to 32.
         # 
         # > : A maximum of 1,000 IP addresses or CIDR blocks can be added for each instance. If you want to add a large number of IP addresses, we recommend that you merge them into CIDR blocks, such as 10.23.XX.XX/24.
+        # 
+        # This parameter is required.
         self.ip_whitelist = ip_whitelist
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent zone list.
         self.region_id = region_id
         # The resource group ID. For more information about resource groups, see related documentation.
         self.resource_group_id = resource_group_id
@@ -66707,6 +67948,8 @@ class PreCheckCreateOrderForDeleteDBNodesRequest(TeaModel):
         # *   **rds_intl**: The instance is a subscription primary instance.
         # *   **rords_intl**: The instance is a pay-as-you-go read-only instance.
         # *   **rds_rordspre_public_intl**: The instance is a subscription read-only instance.
+        # 
+        # This parameter is required.
         self.commodity_code = commodity_code
         # The instance ID.
         self.dbinstance_id = dbinstance_id
@@ -66715,7 +67958,7 @@ class PreCheckCreateOrderForDeleteDBNodesRequest(TeaModel):
         # The major engine version of the destination instance. The value of this parameter varies based on the value of **Engine**.
         # 
         # *   Valid values when Engine is set to MySQL: **5.5, 5.6, 5.7, and 8.0**\
-        # *   Valid values when Engine is set to SQLServer: **2008r2, 08r2\_ent_ha, 2012, 2012\_ent_ha, 2012\_std_ha, 2012\_web, 2014\_std_ha, 2016\_ent_ha, 2016\_std_ha, 2016\_web, 2017\_std_ha, 2017\_ent, 2019\_std_ha, and 2019\_ent**\
+        # *   Valid values when Engine is set to SQLServer: **2008r2, 08r2_ent_ha, 2012, 2012_ent_ha, 2012_std_ha, 2012_web, 2014_std_ha, 2016_ent_ha, 2016_std_ha, 2016_web, 2017_std_ha, 2017_ent, 2019_std_ha, and 2019_ent**\
         # *   Valid values when Engine is set to PostgreSQL: **10.0, 11.0, 12.0, 13.0, 14.0, and 15.0**\
         self.engine_version = engine_version
         # The type of the database node. Valid value:
@@ -66726,7 +67969,7 @@ class PreCheckCreateOrderForDeleteDBNodesRequest(TeaModel):
         self.owner_id = owner_id
         # The coupon code.
         self.promotion_code = promotion_code
-        # The region ID. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
         self.region_id = region_id
         # The resource of the instance.
         self.resource = resource
@@ -66851,6 +68094,8 @@ class PreCheckCreateOrderForDeleteDBNodesShrinkRequest(TeaModel):
         # *   **rds_intl**: The instance is a subscription primary instance.
         # *   **rords_intl**: The instance is a pay-as-you-go read-only instance.
         # *   **rds_rordspre_public_intl**: The instance is a subscription read-only instance.
+        # 
+        # This parameter is required.
         self.commodity_code = commodity_code
         # The instance ID.
         self.dbinstance_id = dbinstance_id
@@ -66859,7 +68104,7 @@ class PreCheckCreateOrderForDeleteDBNodesShrinkRequest(TeaModel):
         # The major engine version of the destination instance. The value of this parameter varies based on the value of **Engine**.
         # 
         # *   Valid values when Engine is set to MySQL: **5.5, 5.6, 5.7, and 8.0**\
-        # *   Valid values when Engine is set to SQLServer: **2008r2, 08r2\_ent_ha, 2012, 2012\_ent_ha, 2012\_std_ha, 2012\_web, 2014\_std_ha, 2016\_ent_ha, 2016\_std_ha, 2016\_web, 2017\_std_ha, 2017\_ent, 2019\_std_ha, and 2019\_ent**\
+        # *   Valid values when Engine is set to SQLServer: **2008r2, 08r2_ent_ha, 2012, 2012_ent_ha, 2012_std_ha, 2012_web, 2014_std_ha, 2016_ent_ha, 2016_std_ha, 2016_web, 2017_std_ha, 2017_ent, 2019_std_ha, and 2019_ent**\
         # *   Valid values when Engine is set to PostgreSQL: **10.0, 11.0, 12.0, 13.0, 14.0, and 15.0**\
         self.engine_version = engine_version
         # The type of the database node. Valid value:
@@ -66870,7 +68115,7 @@ class PreCheckCreateOrderForDeleteDBNodesShrinkRequest(TeaModel):
         self.owner_id = owner_id
         # The coupon code.
         self.promotion_code = promotion_code
-        # The region ID. You can call the [DescribeRegions](~~26243~~) operation to query the most recent region list.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
         self.region_id = region_id
         # The resource of the instance.
         self.resource = resource
@@ -67129,6 +68374,8 @@ class PurgeDBInstanceLogRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -67254,6 +68501,8 @@ class QueryNotifyRequest(TeaModel):
         with_confirmed: bool = None,
     ):
         # The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.from_ = from_
         # The number of the page to return. Valid values: any **non-zero** positive integer.
         # 
@@ -67268,6 +68517,8 @@ class QueryNotifyRequest(TeaModel):
         # Default value: **30**.
         self.page_size = page_size
         # The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
+        # 
+        # This parameter is required.
         self.to = to
         # Specifies whether the query results contain confirmed notifications. Valid values:
         # 
@@ -67275,6 +68526,8 @@ class QueryNotifyRequest(TeaModel):
         # *   **false**\
         # 
         # >  A confirmed notification is a notification that has been marked as confirmed by calling the ConfirmNotify operation.
+        # 
+        # This parameter is required.
         self.with_confirmed = with_confirmed
 
     def validate(self):
@@ -67331,12 +68584,12 @@ class QueryNotifyResponseBodyDataNotifyItemList(TeaModel):
     ):
         # The ID of the Alibaba Cloud account.
         self.ali_uid = ali_uid
-        # Indicates whether the notification has been confirmed. You can call the [ConfirmNotify](~~610444~~) operation to mark the notification as confirmed. Valid values:
+        # Indicates whether the notification has been confirmed. You can call the [ConfirmNotify](https://help.aliyun.com/document_detail/610444.html) operation to mark the notification as confirmed. Valid values:
         # 
         # *   **true**\
         # *   **false**\
         self.confirm_flag = confirm_flag
-        # The UID of the contact who called the [ConfirmNotify](~~610444~~) operation to mark the notification as confirmed. The contact belongs to the current Alibaba Cloud account.
+        # The UID of the contact who called the [ConfirmNotify](https://help.aliyun.com/document_detail/610444.html) operation to mark the notification as confirmed. The contact belongs to the current Alibaba Cloud account.
         # 
         # The value **0** indicates that the notification is automatically confirmed by the system.
         self.confirmor = confirmor
@@ -67379,7 +68632,7 @@ class QueryNotifyResponseBodyDataNotifyItemList(TeaModel):
         # The type of the notification. Valid values:
         # 
         # *   **Sell**: sales notification
-        # *   **Operation**: O\&M notification
+        # *   **Operation**: O\\&M notification
         # *   **Promotion**: promotion notification
         self.type = type
 
@@ -67592,6 +68845,8 @@ class QueryRecommendByCodeRequest(TeaModel):
         resource_owner_id: str = None,
     ):
         # The code.
+        # 
+        # This parameter is required.
         self.code = code
         self.owner_id = owner_id
         # The resource group ID.
@@ -67734,8 +68989,12 @@ class RebuildDBInstanceRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The dedicated cluster ID. You can call the DescribeDedicatedHostGroups operation to query the dedicated cluster ID.
+        # 
+        # This parameter is required.
         self.dedicated_host_group_id = dedicated_host_group_id
         # The ID of the host on which the system rebuilds the secondary instance.
         # 
@@ -67893,9 +69152,13 @@ class ReceiveDBInstanceRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the primary instance. You can call the [DescribeDBInstances](~~26232~~) operation to query the ID of the primary instance.
+        # The ID of the primary instance. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/26232.html) operation to query the ID of the primary instance.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
-        # The ID of the disaster recovery instance. You can call the [DescribeDBInstances](~~26232~~) operation to query the ID of the disaster recovery instance.
+        # The ID of the disaster recovery instance. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/26232.html) operation to query the ID of the disaster recovery instance.
+        # 
+        # This parameter is required.
         self.guard_dbinstance_id = guard_dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -68044,14 +69307,14 @@ class RecoveryDBInstanceRequest(TeaModel):
         # 
         # >  You must specify at least one of the **BackupId** or **RestoreTime** parameters.
         self.backup_id = backup_id
-        # The instance type of the new instance. For more information, see [Instance types](~~26312~~).
+        # The instance type of the new instance. For more information, see [Instance types](https://help.aliyun.com/document_detail/26312.html).
         self.dbinstance_class = dbinstance_class
         # The ID of the original instance.
         # 
         # > *   If you specify BackupId, you do not need to specify this parameter.
         # > *   If you specify RestoreTime, you must also specify this parameter.
         self.dbinstance_id = dbinstance_id
-        # The storage capacity of the new instance. Unit: GB. For more information, see [Instance types](~~26312~~).
+        # The storage capacity of the new instance. Unit: GB. For more information, see [Instance types](https://help.aliyun.com/document_detail/26312.html).
         # 
         # >  You must set this parameter to a value that is greater than or equal to the storage capacity of the original instance.
         self.dbinstance_storage = dbinstance_storage
@@ -68065,6 +69328,8 @@ class RecoveryDBInstanceRequest(TeaModel):
         # 
         # *   If you want to restore databases to a new instance, the value is in the format of `Original database name 1,New database name 2`.
         # *   If you want to restore databases to an existing instance, the value is in the format of `{"Original database name 1":"New database name 1","Original database name 2":"New database name 2"`.
+        # 
+        # This parameter is required.
         self.db_names = db_names
         # The network type of the new instance. Valid values:
         # 
@@ -68283,13 +69548,19 @@ class ReleaseInstanceConnectionRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The public endpoint of the instance.
+        # 
+        # This parameter is required.
         self.current_connection_string = current_connection_string
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The network type of the instance. Valid values:
         # 
         # *   **0**: virtual private cloud (VPC)
         # *   **1**: classic network
+        # 
+        # This parameter is required.
         self.instance_network_type = instance_network_type
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -68420,8 +69691,12 @@ class ReleaseInstancePublicConnectionRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The public endpoint. You can call the DescribeDBInstanceNetInfo operation to query the public endpoint.
+        # 
+        # This parameter is required.
         self.current_connection_string = current_connection_string
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -68547,6 +69822,8 @@ class ReleaseReadWriteSplittingConnectionRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the primary instance. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -68712,10 +69989,14 @@ class RemoveTagsFromResourceRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID. You can call the ListResourceGroups operation to query the resource group ID.
         self.resource_group_id = resource_group_id
@@ -68881,11 +70162,16 @@ class RenewInstanceRequest(TeaModel):
         # 
         # *   **True**: enables automatic payment. Make sure that your Alibaba Cloud account has adequate balance.
         # *   **False** (default): disables automatic payment. You have to manually pay the order in the console.
-        # >  For more information about manual renewal in the console, see the following topics:
-        # > *   [Manually renew an ApsaraDB RDS for MySQL instance](~~96050~~)
-        # > *   [Manually renew an ApsaraDB RDS for PostgreSQL instance](~~96741~~)
-        # > *   [Manually renew an ApsaraDB RDS for SQL Server instance](~~95637~~)
-        # > *   [Manually renew an ApsaraDB RDS for MariaDB instance](~~97122~~)
+        # 
+        # >  For more information about how to manually renew an instance in the console, see the following topic:
+        # 
+        # *   [Manually renew an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96050.html)
+        # 
+        # *   [Manually renew an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96741.html)
+        # 
+        # *   [Manually renew an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/95637.html)
+        # 
+        # *   [Manually renew an ApsaraDB RDS for MariaDB instance](https://help.aliyun.com/document_detail/97122.html)
         self.auto_pay = auto_pay
         # Specifies whether to enable auto-renewal for the instance. Valid values:
         # 
@@ -68895,6 +70181,8 @@ class RenewInstanceRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the generated token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance ID You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         # The duration of the subscription renewal. Unit: month. Valid values:
@@ -68905,6 +70193,8 @@ class RenewInstanceRequest(TeaModel):
         # *   **36**\
         # *   **48**\
         # *   **60**\
+        # 
+        # This parameter is required.
         self.period = period
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -69045,6 +70335,8 @@ class ResetAccountRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The name of the privileged account.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The new password of the privileged account.
         # 
@@ -69055,8 +70347,12 @@ class ResetAccountRequest(TeaModel):
         # *   It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
         # 
         # *   It can contain the following special characters: `! @ # $ & ; % ^ * () _ + - =`.
+        # 
+        # This parameter is required.
         self.account_password = account_password
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -69188,14 +70484,20 @@ class ResetAccountPasswordRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The username of the account.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The new password.
         # 
         # > *   The value must be 8 to 32 characters in length.
         # > *   The value must contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters.
-        # > *   The following special characters are supported: ! @ # $ & % ^ \* ( ) \_ + - =\
+        # > *   The following special characters are supported: ! @ # $ & % ^ \\* ( ) _ + - =\
+        # 
+        # This parameter is required.
         self.account_password = account_password
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -69328,11 +70630,13 @@ class RestartDBInstanceRequest(TeaModel):
     ):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
-        # The instance ID. You can call the [DescribeDBInstances](~~610396~~) operation to query the ID of the instance.
-        self.dbinstance_id = dbinstance_id
-        # The node ID, which can be used to restart a specified node. You can call the [DescribeDBInstanceHAConfig](~~610434~~) operation to obtain the node ID.
+        # The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) operation to query the ID of the instance.
         # 
-        # > : The secondary instance restart feature is supported for RDS instances that run SQL Server EE on RDS Cluster Edition. For more information, see [Restart a secondary database](~~2411880~~).
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        # The node ID, which can be used to restart a specified node. You can call the [DescribeDBInstanceHAConfig](https://help.aliyun.com/document_detail/610434.html) operation to obtain the node ID.
+        # 
+        # > : The secondary instance restart feature is supported for RDS instances that run SQL Server EE on RDS Cluster Edition. For more information, see [Restart a secondary database](https://help.aliyun.com/document_detail/2411880.html).
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -69476,6 +70780,8 @@ class RestoreDdrTableRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The source instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         # The region ID of the destination instance. You can call the DescribeRegions operation to query the most recent region list.
@@ -69494,6 +70800,8 @@ class RestoreDdrTableRequest(TeaModel):
         # *   **1**: restores data to a point in time. If you set this parameter to 1, you must also specify the **RestoreTime**, **SourceRegion**, and **SourceDBInstanceName** parameters.
         # 
         # Default value: **0**.
+        # 
+        # This parameter is required.
         self.restore_type = restore_type
         # The ID of the source instance whose data you want to restore to a point in time.
         # 
@@ -69504,6 +70812,8 @@ class RestoreDdrTableRequest(TeaModel):
         # > : If you set **RestoreType** to **1**, you must also specify this parameter.
         self.source_region = source_region
         # The names of the databases and tables that you want to restore. The value is in the following format: `[{"type":"db","name":"<The name of Database 1 on the source instance>","newname":"<The name of Database 1 on the destination instance>","tables":[{"type":"table","name":"<The name of Table 1 in Database 1 on the source instance>","newname":"<The name of Table 1 in Database 1 on the destination instance>"},{"type":"table","name":"<The name of Table 2 in Database 1 on the source instance>","newname":"<The name of Table 2 in Database 1 on the destination instance>"}]},{"type":"db","name":"<The name of Database 2 on the source instance>","newname":"<The name of Database 2 on the destination instance>","tables":[{"type":"table","name":"<The name of Table 3 in Database 2 on the source instance>","newname":"<The name of Table 3 in Database 2 on the destination instance>"},{"type":"table","name":"<The name of Table 4 in Database 2 on the source instance>","newname":"<The name of Table 4 in Database 2 on the destination instance>"}]}]`
+        # 
+        # This parameter is required.
         self.table_meta = table_meta
 
     def validate(self):
@@ -69671,13 +70981,15 @@ class RestoreTableRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the generated token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # Specifies whether to enable the fast restoration feature for individual databases and tables. Valid values:
         # 
         # *   **true**: enables the feature.
         # *   **false**: disables the feature.
         # 
-        # > For more information, see [Restore individual databases and tables of an ApsaraDB RDS for MySQL instance](~~103175~~).
+        # > For more information, see [Restore individual databases and tables of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/103175.html).
         self.instant_recovery = instant_recovery
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -69686,9 +70998,11 @@ class RestoreTableRequest(TeaModel):
         # The point in time to which you want to restore data. The point in time must fall within the specified log backup retention period. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         # 
         # > *   You must specify at least one of **BackupId** and **RestoreTime**.
-        # > *   You must enable the log backup feature. For more information, see [Back up an ApsaraDB RDS for MySQL instance](~~98818~~).
+        # > *   You must enable the log backup feature. For more information, see [Back up an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/98818.html).
         self.restore_time = restore_time
         # The names of the databases and tables that you want to restore. The value is in the following format: `[{"type":"db","name":"<The name of Database 1 on the source instance>","newname":"<The name of Database 1 on the destination instance>","tables":[{"type":"table","name":"<The name of Table 1 in Database 1 on the source instance>","newname":"<The name of Table 1 in Database 1 on the destination instance>"},{"type":"table","name":"<The name of Table 2 in Database 1 on the source instance>","newname":"<The name of Table 2 in Database 1 on the destination instance>"}]},{"type":"db","name":"<The name of Database 2 on the source instance>","newname":"<The name of Database 2 on the destination instance>","tables":[{"type":"table","name":"<The name of Table 3 in Database 2 on the source instance>","newname":"<The name of Table 3 in Database 2 on the destination instance>"},{"type":"table","name":"<The name of Table 4 in Database 2 on the source instance>","newname":"<The name of Table 4 in Database 2 on the destination instance>"}]}]`
+        # 
+        # This parameter is required.
         self.table_meta = table_meta
 
     def validate(self):
@@ -69828,10 +71142,16 @@ class RevokeAccountPrivilegeRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The name of the account.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The name of the database. You can revoke all permissions of the account on this database. Separate multiple databases with commas (,).
+        # 
+        # This parameter is required.
         self.dbname = dbname
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -69961,6 +71281,8 @@ class RevokeOperatorPermissionRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -70094,6 +71416,8 @@ class StartDBInstanceRequest(TeaModel):
         zone_id: str = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The data migration method of the instance. This parameter is available only for instances that are created in dedicated clusters. Valid values:
         # 
@@ -70318,9 +71642,13 @@ class StopDBInstanceRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -70443,6 +71771,8 @@ class SwitchDBInstanceHARequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The time when the switching takes effect. Valid values:
         # 
@@ -70459,6 +71789,8 @@ class SwitchDBInstanceHARequest(TeaModel):
         # Default value: **No**.
         self.force = force
         # The secondary instance ID. You can call the DescribeDBInstanceHAConfig operation to query the secondary instance ID.
+        # 
+        # This parameter is required.
         self.node_id = node_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -70598,6 +71930,8 @@ class SwitchDBInstanceNetTypeRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The prefix of the custom endpoint. The prefix must be 8 to 64 characters in length and can contain letters and digits. It must start with a lowercase letter. A valid endpoint is in the following format: Prefix.Database engine.rds.aliyuncs.com. Example: test1234.mysql.rds.aliyuncs.com.
+        # 
+        # This parameter is required.
         self.connection_string_prefix = connection_string_prefix
         # The type of the endpoint. Valid values:
         # 
@@ -70607,6 +71941,8 @@ class SwitchDBInstanceNetTypeRequest(TeaModel):
         # By default, the system returns both types of endpoints.
         self.connection_string_type = connection_string_type
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -70760,6 +72096,8 @@ class SwitchDBInstanceVpcRequest(TeaModel):
         v_switch_id: str = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The private IP address of the instance. The private IP address must be within the CIDR block of the vSwitch that is specified by the **VSwitchId** parameter.
         # 
@@ -70769,10 +72107,14 @@ class SwitchDBInstanceVpcRequest(TeaModel):
         # The VPC ID.
         # 
         # > The VPC must reside in the same region as the instance.
+        # 
+        # This parameter is required.
         self.vpcid = vpcid
         # The vSwitch ID of the instance.
         # 
         # > The vSwitch must belong to the same zone as the instance.
+        # 
+        # This parameter is required.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -70891,6 +72233,8 @@ class SwitchGuardToMasterInstanceRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the disaster recovery instance. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -71022,6 +72366,8 @@ class TagResourcesRequestTag(TeaModel):
         value: str = None,
     ):
         # The key of the tag. You can create N tag keys at a time. Valid values of N: **1** to **20**. The value of this parameter cannot be an empty string.
+        # 
+        # This parameter is required.
         self.key = key
         # The value of the tag. You can create N tag values at a time. Valid values of N: **1** to **20**. The value of this parameter can be an empty string.
         self.value = value
@@ -71063,12 +72409,18 @@ class TagResourcesRequest(TeaModel):
     ):
         self.owner_id = owner_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The instance ID.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The type of the resource. Set the value to **INSTANCE**.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The list of tags.
         self.tag = tag
@@ -71204,8 +72556,12 @@ class TerminateMigrateTaskRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The migration task ID. You can call the DescribeMigrateTasks operation to query the migration task ID.
+        # 
+        # This parameter is required.
         self.migrate_task_id = migrate_task_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -71344,6 +72700,8 @@ class TransformDBInstancePayTypeRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance ID. You can call the DescribeDBInstances operation to query the ID of the instance.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -71351,6 +72709,8 @@ class TransformDBInstancePayTypeRequest(TeaModel):
         # 
         # *   **Postpaid**: pay-as-you-go
         # *   **Prepaid**: subscription
+        # 
+        # This parameter is required.
         self.pay_type = pay_type
         # The renewal cycle of the instance. Valid values:
         # 
@@ -71541,8 +72901,12 @@ class UnlockAccountRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The account that you want to unlock. You can unlock a single account at a time.
+        # 
+        # This parameter is required.
         self.account_name = account_name
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -71676,12 +73040,18 @@ class UntagResourcesRequest(TeaModel):
         self.all = all
         self.owner_id = owner_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The instance ID. You can remove tags from N instances at a time. Valid values of N: **1** to **50**.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The type of the resource. Set the value to **INSTANCE**.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The list of tag keys. You can delete N tag keys at a time. Valid values of N: **1** to **20**. The value of this parameter cannot be an empty string.
         self.tag_key = tag_key
@@ -71819,10 +73189,16 @@ class UpdatePostgresExtensionsRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The database name. You can call the DescribeDatabases operation to obtain the database name.
+        # 
+        # This parameter is required.
         self.dbnames = dbnames
         # The name of the extension. Separate multiple extensions with commas (,).
+        # 
+        # This parameter is required.
         self.extensions = extensions
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -71965,11 +73341,15 @@ class UpdateUserBackupFileRequest(TeaModel):
         retention: int = None,
     ):
         # The backup ID. You can call the ListUserBackupFiles operation to query the backup ID.
+        # 
+        # This parameter is required.
         self.backup_id = backup_id
         # The new description of the full backup file.
         self.comment = comment
         self.owner_id = owner_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID. You can call the DescribeDBInstanceAttribute operation to query the resource group ID.
         self.resource_group_id = resource_group_id
@@ -72117,6 +73497,8 @@ class UpgradeDBInstanceEngineVersionRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # The effective time. Valid values:
         # 
@@ -72128,6 +73510,8 @@ class UpgradeDBInstanceEngineVersionRequest(TeaModel):
         # *   **8.0**\
         # *   **5.7**\
         # *   **5.6**\
+        # 
+        # This parameter is required.
         self.engine_version = engine_version
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -72271,8 +73655,10 @@ class UpgradeDBInstanceKernelVersionRequest(TeaModel):
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
         # 
-        # > *   If your instance runs PostgreSQL, you must make sure that the instance uses **cloud disks**. If the instance uses local disks, you must call the [RestartDBInstance](~~26230~~) operation to restart the instance. The system automatically updates the minor engine version of the instance to the latest version during the restart.
+        # > *   If your instance runs PostgreSQL, you must make sure that the instance uses **cloud disks**. If the instance uses local disks, you must call the [RestartDBInstance](https://help.aliyun.com/document_detail/26230.html) operation to restart the instance. The system automatically updates the minor engine version of the instance to the latest version during the restart.
         # > *   If your instance runs SQL Server, you must make sure that the instance runs SQL Server 2019.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
@@ -72295,7 +73681,7 @@ class UpgradeDBInstanceKernelVersionRequest(TeaModel):
         # 
         # If you do not specify this parameter, the instance is updated to the latest minor engine version.
         # 
-        # >  For more information about minor engine versions, see [Release notes of AliPG](~~126002~~), [Release notes of AliSQL](~~96060~~), and [Release notes of minor engine versions of ApsaraDB RDS for SQL Server](~~213577~~).
+        # >  For more information about minor engine versions, see [Release notes of AliPG](https://help.aliyun.com/document_detail/126002.html), [Release notes of AliSQL](https://help.aliyun.com/document_detail/96060.html), and [Release notes of minor engine versions of ApsaraDB RDS for SQL Server](https://help.aliyun.com/document_detail/213577.html).
         self.target_minor_version = target_minor_version
         # The time when the update takes effect. Valid values:
         # 
@@ -72473,7 +73859,7 @@ class UpgradeDBInstanceMajorVersionRequest(TeaModel):
         # 
         # For example, if the instance type of the original instance is `pg.n2.small.2c`, which provides 1 core and 2 GB of memory, the instance type of the new instance can be `pg.n2.medium.2c`, which provides 2 cores and 4 GB of memory.
         # 
-        # > For more information about instance types in ApsaraDB RDS for PostgreSQL, see [Primary ApsaraDB RDS for PostgreSQL instance types](~~276990~~).
+        # > For more information about instance types in ApsaraDB RDS for PostgreSQL, see [Primary ApsaraDB RDS for PostgreSQL instance types](https://help.aliyun.com/document_detail/276990.html).
         self.dbinstance_class = dbinstance_class
         # The ID of the original instance.
         self.dbinstance_id = dbinstance_id
@@ -72487,7 +73873,7 @@ class UpgradeDBInstanceMajorVersionRequest(TeaModel):
         # *   Valid values if you use ESSDs of PL2: 500 to 3200
         # *   Valid values if you use ESSDs of PL3: 1500 to 3200
         # 
-        # > If the original instance uses local disks, you can reduce the storage capacity of the instance when you upgrade the major engine version of the instance. For more information about the minimum available storage capacity, see [Upgrade the major engine version of an ApsaraDB RDS for PostgreSQL instance](~~203309~~).
+        # > If the original instance uses local disks, you can reduce the storage capacity of the instance when you upgrade the major engine version of the instance. For more information about the minimum available storage capacity, see [Upgrade the major engine version of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/203309.html).
         self.dbinstance_storage = dbinstance_storage
         # The storage type of the new instance.
         # 
@@ -72506,11 +73892,13 @@ class UpgradeDBInstanceMajorVersionRequest(TeaModel):
         self.dbinstance_storage_type = dbinstance_storage_type
         # The network type of the new instance. Set the value to VPC. The major engine version upgrade feature is supported only for instances that reside in VPCs.
         # 
-        # If the original instance resides in the classic network, you must migrate the instance to a VPC before you call this operation. For more information about how to view or change the network type of an instance, see [Change the network type of an ApsaraDB RDS for PostgreSQL instance](~~96761~~).
+        # If the original instance resides in the classic network, you must migrate the instance to a VPC before you call this operation. For more information about how to view or change the network type of an instance, see [Change the network type of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96761.html).
         self.instance_network_type = instance_network_type
         # The billing method. Set the value to Postpaid.
         # 
-        # >  For more information about how to change the billing method of an instance after the upgrade, see [Change the billing method of an instance from pay-as-you-go to subscription](~~96743~~).
+        # >  For more information about how to change the billing method of an instance after the upgrade, see [Change the billing method of an instance from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/96743.html).
+        # 
+        # This parameter is required.
         self.pay_type = pay_type
         # A reserved parameter. You do not need to specify this parameter.
         self.period = period
@@ -72530,7 +73918,7 @@ class UpgradeDBInstanceMajorVersionRequest(TeaModel):
         # > *   If read-only instances are attached to the original instance, you can set this parameter only to false. In this case, the read-only instances that are attached to the original instance cannot be cloned. After the upgrade is complete, you must create read-only instances for the new instance.
         # > *   If you set this parameter to false, you must take note of the following information:
         # > *   The data migration does not interrupt your workloads on the original instance.
-        # > *   After data is migrated to the new instance, you must update the endpoint configuration on your application. This update requires you to replace the endpoint of the original instance with the endpoint of the new instance. For more information about how to view the endpoint of an instance, see [View and change the internal and public endpoints and port numbers of an ApsaraDB RDS for PostgreSQL instance](~~96788~~).
+        # > *   After data is migrated to the new instance, you must update the endpoint configuration on your application. This update requires you to replace the endpoint of the original instance with the endpoint of the new instance. For more information about how to view the endpoint of an instance, see [View and change the internal and public endpoints and port numbers of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96788.html).
         self.switch_over = switch_over
         # A reserved parameter. You do not need to specify this parameter.
         self.switch_time = switch_time
@@ -72554,15 +73942,15 @@ class UpgradeDBInstanceMajorVersionRequest(TeaModel):
         # 
         # >  The vSwitches that you specify must reside in the same zone as the original instance. You can call the DescribeVSwitches operation to query the vSwitch IDs.
         self.v_switch_id = v_switch_id
-        # The zone ID of the new instance. You can call the DescribeRegions operation to query the zone ID.
+        # The ID of the zone to which the new primary instance belongs. You can call the DescribeRegions operation to query zone IDs.
         # 
-        # You can select a zone that is different from the zone of the original instance but belongs to the region in which the original instance resides.
+        # You can select a zone that belongs to the region in which the original instance resides.
         self.zone_id = zone_id
-        # The zone ID of the secondary instance for the new instance. You can specify this parameter only when the original instance runs RDS High-availability Edition.
+        # The ID of the zone to which the new secondary instance belongs. This parameter is available only when the original instance runs RDS High-availability Edition.
         # 
-        # You can select a zone that is different from the zone of the original instance but belongs to the region in which the original instance resides.
+        # You can select a zone that belongs to the region in which the original instance resides.
         # 
-        # You can call the DescribeRegions operation to query the zone ID.
+        # You can call the DescribeRegions operation to query zone IDs.
         self.zone_id_slave_1 = zone_id_slave_1
         # A reserved parameter. You do not need to specify this parameter.
         self.zone_id_slave_2 = zone_id_slave_2
@@ -72760,10 +74148,14 @@ class UpgradeDBInstanceMajorVersionPrecheckRequest(TeaModel):
         resource_owner_id: int = None,
         target_major_version: str = None,
     ):
-        # The ID of the instance. You can call the [DescribeDBInstances](~~610396~~) operation to query the ID of the instance.
+        # The ID of the instance. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) operation to query the ID of the instance.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         self.resource_owner_id = resource_owner_id
         # The new major engine version of the instance. The new major engine version must be later than the original major engine version.
+        # 
+        # This parameter is required.
         self.target_major_version = target_major_version
 
     def validate(self):
@@ -72896,6 +74288,8 @@ class UpgradeDBProxyInstanceKernelVersionRequest(TeaModel):
         upgrade_time: str = None,
     ):
         # The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dbinstance_id = dbinstance_id
         # A reserved parameter. You do not need to specify this parameter.
         self.dbproxy_engine_type = dbproxy_engine_type
@@ -72904,15 +74298,15 @@ class UpgradeDBProxyInstanceKernelVersionRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # The specific point in time when you want to perform the upgrade. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
         # 
-        # > If you set **UpgradeTime** to **SpecificTime**, you must specify SwitchTime.
+        # >  If you set **UpgradeTime** to **SpecifyTime**, you must specify SwitchTime.
         self.switch_time = switch_time
         # The time when you want to upgrade the database proxy version of the instance. Valid values:
         # 
-        # *   **MaintainTime** (default): performs the upgrade during the maintenance window that you specified. For more information, see [Modify the maintenance window](~~610402~~).
+        # *   **MaintainTime** (default): performs the upgrade during the maintenance window that you specified. For more information, see [Modify the maintenance window](https://help.aliyun.com/document_detail/610402.html).
         # *   **Immediate**: performs the upgrade immediately.
-        # *   **SpecificTime**: performs the upgrade at a specified point in time.
+        # *   **SpecifyTime**: performs the upgrade at a specified point in time.
         # 
-        # > *   If the instance runs MySQL, you can set this parameter to **MaintainTime**, **Immediate**, or **SpecificTime**.
+        # > *   **If the instance runs MySQL, you can set this parameter to **MaintainTime**, **Immediate**, or SpecifyTime**.
         # > *   If the instance runs PostgreSQL, you can set this parameter to **MaintainTime** or **Immediate**.
         self.upgrade_time = upgrade_time
 

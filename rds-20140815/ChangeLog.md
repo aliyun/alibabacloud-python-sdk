@@ -1,3 +1,7 @@
+2024-05-23 Version: 5.0.1
+- Update API DescribeDBInstanceAttribute: update response param.
+
+
 2024-04-30 Version: 5.0.0
 - Support API CreateMaskingRules.
 - Support API DeleteMaskingRules.
