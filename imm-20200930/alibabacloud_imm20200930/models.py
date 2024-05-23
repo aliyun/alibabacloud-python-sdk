@@ -12793,6 +12793,39 @@ class CreateOfficeConversionTaskResponse(TeaModel):
         return self
 
 
+class CreateProjectRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateProjectRequest(TeaModel):
     def __init__(
         self,
@@ -12805,6 +12838,7 @@ class CreateProjectRequest(TeaModel):
         project_max_dataset_count: int = None,
         project_name: str = None,
         service_role: str = None,
+        tag: List[CreateProjectRequestTag] = None,
         template_id: str = None,
     ):
         self.dataset_max_bind_count = dataset_max_bind_count
@@ -12817,6 +12851,103 @@ class CreateProjectRequest(TeaModel):
         # This parameter is required.
         self.project_name = project_name
         self.service_role = service_role
+        self.tag = tag
+        self.template_id = template_id
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_max_bind_count is not None:
+            result['DatasetMaxBindCount'] = self.dataset_max_bind_count
+        if self.dataset_max_entity_count is not None:
+            result['DatasetMaxEntityCount'] = self.dataset_max_entity_count
+        if self.dataset_max_file_count is not None:
+            result['DatasetMaxFileCount'] = self.dataset_max_file_count
+        if self.dataset_max_relation_count is not None:
+            result['DatasetMaxRelationCount'] = self.dataset_max_relation_count
+        if self.dataset_max_total_file_size is not None:
+            result['DatasetMaxTotalFileSize'] = self.dataset_max_total_file_size
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.project_max_dataset_count is not None:
+            result['ProjectMaxDatasetCount'] = self.project_max_dataset_count
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.service_role is not None:
+            result['ServiceRole'] = self.service_role
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetMaxBindCount') is not None:
+            self.dataset_max_bind_count = m.get('DatasetMaxBindCount')
+        if m.get('DatasetMaxEntityCount') is not None:
+            self.dataset_max_entity_count = m.get('DatasetMaxEntityCount')
+        if m.get('DatasetMaxFileCount') is not None:
+            self.dataset_max_file_count = m.get('DatasetMaxFileCount')
+        if m.get('DatasetMaxRelationCount') is not None:
+            self.dataset_max_relation_count = m.get('DatasetMaxRelationCount')
+        if m.get('DatasetMaxTotalFileSize') is not None:
+            self.dataset_max_total_file_size = m.get('DatasetMaxTotalFileSize')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ProjectMaxDatasetCount') is not None:
+            self.project_max_dataset_count = m.get('ProjectMaxDatasetCount')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('ServiceRole') is not None:
+            self.service_role = m.get('ServiceRole')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateProjectRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class CreateProjectShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dataset_max_bind_count: int = None,
+        dataset_max_entity_count: int = None,
+        dataset_max_file_count: int = None,
+        dataset_max_relation_count: int = None,
+        dataset_max_total_file_size: int = None,
+        description: str = None,
+        project_max_dataset_count: int = None,
+        project_name: str = None,
+        service_role: str = None,
+        tag_shrink: str = None,
+        template_id: str = None,
+    ):
+        self.dataset_max_bind_count = dataset_max_bind_count
+        self.dataset_max_entity_count = dataset_max_entity_count
+        self.dataset_max_file_count = dataset_max_file_count
+        self.dataset_max_relation_count = dataset_max_relation_count
+        self.dataset_max_total_file_size = dataset_max_total_file_size
+        self.description = description
+        self.project_max_dataset_count = project_max_dataset_count
+        # This parameter is required.
+        self.project_name = project_name
+        self.service_role = service_role
+        self.tag_shrink = tag_shrink
         self.template_id = template_id
 
     def validate(self):
@@ -12846,6 +12977,8 @@ class CreateProjectRequest(TeaModel):
             result['ProjectName'] = self.project_name
         if self.service_role is not None:
             result['ServiceRole'] = self.service_role
+        if self.tag_shrink is not None:
+            result['Tag'] = self.tag_shrink
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
         return result
@@ -12870,6 +13003,8 @@ class CreateProjectRequest(TeaModel):
             self.project_name = m.get('ProjectName')
         if m.get('ServiceRole') is not None:
             self.service_role = m.get('ServiceRole')
+        if m.get('Tag') is not None:
+            self.tag_shrink = m.get('Tag')
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
         return self
@@ -21408,16 +21543,104 @@ class ListDatasetsResponse(TeaModel):
         return self
 
 
+class ListProjectsRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListProjectsRequest(TeaModel):
     def __init__(
         self,
         max_results: int = None,
         next_token: str = None,
         prefix: str = None,
+        tag: List[ListProjectsRequestTag] = None,
     ):
         self.max_results = max_results
         self.next_token = next_token
         self.prefix = prefix
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+        if self.prefix is not None:
+            result['Prefix'] = self.prefix
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+        if m.get('Prefix') is not None:
+            self.prefix = m.get('Prefix')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListProjectsRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListProjectsShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        prefix: str = None,
+        tag_shrink: str = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.prefix = prefix
+        self.tag_shrink = tag_shrink
 
     def validate(self):
         pass
@@ -21434,6 +21657,8 @@ class ListProjectsRequest(TeaModel):
             result['NextToken'] = self.next_token
         if self.prefix is not None:
             result['Prefix'] = self.prefix
+        if self.tag_shrink is not None:
+            result['Tag'] = self.tag_shrink
         return result
 
     def from_map(self, m: dict = None):
@@ -21444,6 +21669,8 @@ class ListProjectsRequest(TeaModel):
             self.next_token = m.get('NextToken')
         if m.get('Prefix') is not None:
             self.prefix = m.get('Prefix')
+        if m.get('Tag') is not None:
+            self.tag_shrink = m.get('Tag')
         return self
 
 
@@ -25667,6 +25894,39 @@ class UpdateLocationDateClusterResponse(TeaModel):
         return self
 
 
+class UpdateProjectRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class UpdateProjectRequest(TeaModel):
     def __init__(
         self,
@@ -25679,6 +25939,7 @@ class UpdateProjectRequest(TeaModel):
         project_max_dataset_count: int = None,
         project_name: str = None,
         service_role: str = None,
+        tag: List[UpdateProjectRequestTag] = None,
         template_id: str = None,
     ):
         self.dataset_max_bind_count = dataset_max_bind_count
@@ -25691,6 +25952,103 @@ class UpdateProjectRequest(TeaModel):
         # This parameter is required.
         self.project_name = project_name
         self.service_role = service_role
+        self.tag = tag
+        self.template_id = template_id
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dataset_max_bind_count is not None:
+            result['DatasetMaxBindCount'] = self.dataset_max_bind_count
+        if self.dataset_max_entity_count is not None:
+            result['DatasetMaxEntityCount'] = self.dataset_max_entity_count
+        if self.dataset_max_file_count is not None:
+            result['DatasetMaxFileCount'] = self.dataset_max_file_count
+        if self.dataset_max_relation_count is not None:
+            result['DatasetMaxRelationCount'] = self.dataset_max_relation_count
+        if self.dataset_max_total_file_size is not None:
+            result['DatasetMaxTotalFileSize'] = self.dataset_max_total_file_size
+        if self.description is not None:
+            result['Description'] = self.description
+        if self.project_max_dataset_count is not None:
+            result['ProjectMaxDatasetCount'] = self.project_max_dataset_count
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+        if self.service_role is not None:
+            result['ServiceRole'] = self.service_role
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DatasetMaxBindCount') is not None:
+            self.dataset_max_bind_count = m.get('DatasetMaxBindCount')
+        if m.get('DatasetMaxEntityCount') is not None:
+            self.dataset_max_entity_count = m.get('DatasetMaxEntityCount')
+        if m.get('DatasetMaxFileCount') is not None:
+            self.dataset_max_file_count = m.get('DatasetMaxFileCount')
+        if m.get('DatasetMaxRelationCount') is not None:
+            self.dataset_max_relation_count = m.get('DatasetMaxRelationCount')
+        if m.get('DatasetMaxTotalFileSize') is not None:
+            self.dataset_max_total_file_size = m.get('DatasetMaxTotalFileSize')
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+        if m.get('ProjectMaxDatasetCount') is not None:
+            self.project_max_dataset_count = m.get('ProjectMaxDatasetCount')
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+        if m.get('ServiceRole') is not None:
+            self.service_role = m.get('ServiceRole')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = UpdateProjectRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class UpdateProjectShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dataset_max_bind_count: int = None,
+        dataset_max_entity_count: int = None,
+        dataset_max_file_count: int = None,
+        dataset_max_relation_count: int = None,
+        dataset_max_total_file_size: int = None,
+        description: str = None,
+        project_max_dataset_count: int = None,
+        project_name: str = None,
+        service_role: str = None,
+        tag_shrink: str = None,
+        template_id: str = None,
+    ):
+        self.dataset_max_bind_count = dataset_max_bind_count
+        self.dataset_max_entity_count = dataset_max_entity_count
+        self.dataset_max_file_count = dataset_max_file_count
+        self.dataset_max_relation_count = dataset_max_relation_count
+        self.dataset_max_total_file_size = dataset_max_total_file_size
+        self.description = description
+        self.project_max_dataset_count = project_max_dataset_count
+        # This parameter is required.
+        self.project_name = project_name
+        self.service_role = service_role
+        self.tag_shrink = tag_shrink
         self.template_id = template_id
 
     def validate(self):
@@ -25720,6 +26078,8 @@ class UpdateProjectRequest(TeaModel):
             result['ProjectName'] = self.project_name
         if self.service_role is not None:
             result['ServiceRole'] = self.service_role
+        if self.tag_shrink is not None:
+            result['Tag'] = self.tag_shrink
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
         return result
@@ -25744,6 +26104,8 @@ class UpdateProjectRequest(TeaModel):
             self.project_name = m.get('ProjectName')
         if m.get('ServiceRole') is not None:
             self.service_role = m.get('ServiceRole')
+        if m.get('Tag') is not None:
+            self.tag_shrink = m.get('Tag')
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
         return self

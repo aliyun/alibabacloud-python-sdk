@@ -3682,17 +3682,21 @@ class Client(OpenApiClient):
 
     def create_project_with_options(
         self,
-        request: imm_20200930_models.CreateProjectRequest,
+        tmp_req: imm_20200930_models.CreateProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateProjectResponse:
         """
         @summary 创建项目
         
-        @param request: CreateProjectRequest
+        @param tmp_req: CreateProjectRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateProjectResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateProjectShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.dataset_max_bind_count):
             query['DatasetMaxBindCount'] = request.dataset_max_bind_count
@@ -3712,6 +3716,8 @@ class Client(OpenApiClient):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.service_role):
             query['ServiceRole'] = request.service_role
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
@@ -3735,17 +3741,21 @@ class Client(OpenApiClient):
 
     async def create_project_with_options_async(
         self,
-        request: imm_20200930_models.CreateProjectRequest,
+        tmp_req: imm_20200930_models.CreateProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.CreateProjectResponse:
         """
         @summary 创建项目
         
-        @param request: CreateProjectRequest
+        @param tmp_req: CreateProjectRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: CreateProjectResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.CreateProjectShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.dataset_max_bind_count):
             query['DatasetMaxBindCount'] = request.dataset_max_bind_count
@@ -3765,6 +3775,8 @@ class Client(OpenApiClient):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.service_role):
             query['ServiceRole'] = request.service_role
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
@@ -9302,17 +9314,21 @@ class Client(OpenApiClient):
 
     def list_projects_with_options(
         self,
-        request: imm_20200930_models.ListProjectsRequest,
+        tmp_req: imm_20200930_models.ListProjectsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.ListProjectsResponse:
         """
         @summary 获取项目列表
         
-        @param request: ListProjectsRequest
+        @param tmp_req: ListProjectsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListProjectsResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.ListProjectsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
@@ -9320,6 +9336,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.prefix):
             query['Prefix'] = request.prefix
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -9341,17 +9359,21 @@ class Client(OpenApiClient):
 
     async def list_projects_with_options_async(
         self,
-        request: imm_20200930_models.ListProjectsRequest,
+        tmp_req: imm_20200930_models.ListProjectsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.ListProjectsResponse:
         """
         @summary 获取项目列表
         
-        @param request: ListProjectsRequest
+        @param tmp_req: ListProjectsRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListProjectsResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.ListProjectsShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.max_results):
             query['MaxResults'] = request.max_results
@@ -9359,6 +9381,8 @@ class Client(OpenApiClient):
             query['NextToken'] = request.next_token
         if not UtilClient.is_unset(request.prefix):
             query['Prefix'] = request.prefix
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -12026,17 +12050,21 @@ class Client(OpenApiClient):
 
     def update_project_with_options(
         self,
-        request: imm_20200930_models.UpdateProjectRequest,
+        tmp_req: imm_20200930_models.UpdateProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.UpdateProjectResponse:
         """
         @summary 更新项目
         
-        @param request: UpdateProjectRequest
+        @param tmp_req: UpdateProjectRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateProjectResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.UpdateProjectShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.dataset_max_bind_count):
             query['DatasetMaxBindCount'] = request.dataset_max_bind_count
@@ -12056,6 +12084,8 @@ class Client(OpenApiClient):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.service_role):
             query['ServiceRole'] = request.service_role
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(
@@ -12079,17 +12109,21 @@ class Client(OpenApiClient):
 
     async def update_project_with_options_async(
         self,
-        request: imm_20200930_models.UpdateProjectRequest,
+        tmp_req: imm_20200930_models.UpdateProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> imm_20200930_models.UpdateProjectResponse:
         """
         @summary 更新项目
         
-        @param request: UpdateProjectRequest
+        @param tmp_req: UpdateProjectRequest
         @param runtime: runtime options for this request RuntimeOptions
         @return: UpdateProjectResponse
         """
-        UtilClient.validate_model(request)
+        UtilClient.validate_model(tmp_req)
+        request = imm_20200930_models.UpdateProjectShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.tag):
+            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
         if not UtilClient.is_unset(request.dataset_max_bind_count):
             query['DatasetMaxBindCount'] = request.dataset_max_bind_count
@@ -12109,6 +12143,8 @@ class Client(OpenApiClient):
             query['ProjectName'] = request.project_name
         if not UtilClient.is_unset(request.service_role):
             query['ServiceRole'] = request.service_role
+        if not UtilClient.is_unset(request.tag_shrink):
+            query['Tag'] = request.tag_shrink
         if not UtilClient.is_unset(request.template_id):
             query['TemplateId'] = request.template_id
         req = open_api_models.OpenApiRequest(

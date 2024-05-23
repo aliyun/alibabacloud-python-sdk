@@ -1,3 +1,9 @@
+2024-05-23 Version: 4.5.1
+- Update API CreateProject: add param Tag.
+- Update API ListProjects: add param Tag.
+- Update API UpdateProject: add param Tag.
+
+
 2024-05-11 Version: 4.5.0
 - Support API CreateDecodeBlindWatermarkTask.
 - Support API EncodeBlindWatermark.
