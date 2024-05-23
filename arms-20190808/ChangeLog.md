@@ -1,3 +1,8 @@
+2024-05-23 Version: 4.10.2
+- Update API DescribeEnvironmentFeature: update response param.
+- Update API ListEnvironmentFeatures: add param AliyunLang.
+
+
 2024-05-11 Version: 4.10.1
 - Update API ListAlertEvents: add param ShowNotificationPolicies.
 - Update API ListAlertEvents: update response param.

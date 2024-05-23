@@ -7355,45 +7355,40 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
         # 
         # This parameter is required.
         self.alert_name = alert_name
-        # Alarm Notification Channel Configuration. Used for compatibility with legacy rules.
+        # The configuration of the alert sending channel. This parameter is used to be compatible with the old version of the rule.
         self.alert_piplines = alert_piplines
         # The content of the Application Monitoring or Browser Monitoring alert rule. The following code provides an example of the **AlertRuleContent** parameter. For more information about the meaning of each field, see the supplementary description.
         # 
         # ```json
         # { 
-        #     "Condition": "OR", 
-        #      "AlertRuleItems": [ 
+        #     "Condition": "OR",
+        #      "AlertRuleItems": [
         #              { "Operator": "CURRENT_LTE",
-        #                  "MetricKey": "appstat.jvm.threadcount", 
-        #                  "Value": 1000, 
+        #                  "MetricKey": "appstat.jvm.threadcount",
+        #                  "Value": 1000,
         #                  "Aggregate": "AVG",
-        #                   "N": 1
+        #                   "N": 10,
+        #                   "Tolerability": 169
         #             } 
         #        ]  
         #   }
         # ```
         # 
-        # > The conditional fields vary depending on the values of the **MetricsType** and **AlertRuleItems.MetricKey** parameters. For more information about the types of metrics supported by Application Monitoring and Browser Monitoring and the alert rule fields corresponding to each metric, see the supplementary description.
+        # >  The filter conditions specified by the **AlertRuleItems.MetricKey** field depends on the value of the **MetricsType** parameter. For more information about the types of metrics supported by Application Monitoring and Browser Monitoring and the alert rule fields corresponding to each metric, see the supplementary description.
         self.alert_rule_content = alert_rule_content
         # The status of the alert rule. Valid values:
         # 
         # *   RUNNING (default)
         # *   STOPPED
         self.alert_status = alert_status
-        # The type of the alert rule. Valid values:
+        # The following alert rule types are available:
         # 
         # *   APPLICATION_MONITORING_ALERT_RULE: alert rule for Application Monitoring
         # *   BROWSER_MONITORING_ALERT_RULE: alert rule for Browser Monitoring
-        # *   PROMETHEUS_MONITORING_ALERT_RULE: alert rule for Prometheus Service
-        # 
-        # Valid values:
-        # 
-        # *   PROMETHEUS_MONITORING_ALERT_RULE
-        # *   APPLICATION_MONITORING_ALERT_RULE
-        # *   BROWSER_MONITORING_ALERT_RULE
-        # *   prometheus monitoring alert
-        # *   application monitoring alert
-        # *   browser monitoring alert
+        # *   RUM_MONITORING_ALERT_RULE: alert rule for RUM Monitoring
+        # *   PROMETHEUS_MONITORING_ALERT_RULE: alert rule for Managed Service for Prometheus
+        # *   XTRACE_MONITORING_ALERT_RULE: alert rule for Managed Service for OpenTelemetry
+        # *   EBPF_MONITORING_ALERT_RULE: alert rule for Application Monitoring eBPF Edition
         # 
         # This parameter is required.
         self.alert_type = alert_type
@@ -7415,20 +7410,20 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
         self.data_config = data_config
         # The duration of the Prometheus alert rule. Unit: minutes.
         self.duration = duration
-        # The filter conditions of the Application Monitoring or Browser Monitoring alert rule. The following code shows the format of matching rules:
+        # The filter conditions of the Application Monitoring or Browser Monitoring alert rule. Format:
         # 
         #     "DimFilters": [ 
         #     { 
         #      "FilterOpt": "ALL",
-        #      "FilterValues": [],         // The value of the filter condition. 
-        #      "FilterKey": "rootIp"     // The key of the filter condition. 
+        #     "FilterValues": [],         //The value of the filter condition.
+        #     "FilterKey": "rootIp"     //The key of the filter condition.
         #     }
         #     ]
         # 
         # Valid values of **FilterOpt**:
         # 
         # *   STATIC: matches the value of the specified dimension.
-        # *   ALL: matches the values of all dimensions.
+        # *   ALL: traverses all dimension values. Dynamic thresholds do not support traversal.
         # *   DISABLE: aggregates the values of all dimensions.
         self.filters = filters
         # The tags of the Prometheus alert rule.
@@ -7451,7 +7446,7 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
         self.metrics_key = metrics_key
         # The metric type of the Application Monitoring or Browser Monitoring alert rule. For more information, see the following table.
         self.metrics_type = metrics_type
-        # Effective Time and Notification Time. Used for compatibility with legacy rules.
+        # The effective time and notification time. This parameter is used to be compatible with the old version of the rule.
         self.notice = notice
         # Notification Mode. Normal mode or Simplified mode.
         self.notify_mode = notify_mode
@@ -7462,6 +7457,7 @@ class CreateOrUpdateAlertRuleRequest(TeaModel):
         self.notify_strategy = notify_strategy
         # The process ID (PID) that is associated with the Application Monitoring or Browser Monitoring alert rule.
         self.pids = pids
+        # It is determined when creating the underlying rules of Prometheus. The background will verify whether the product exists, which is used to distinguish cloud product filtering queries.
         self.product = product
         # The PromQL statement of the Prometheus alert rule.
         self.prom_ql = prom_ql
@@ -22808,6 +22804,7 @@ class DescribeEnvironmentFeatureResponseBodyDataFeatureStatus(TeaModel):
         self,
         bind_resource_id: str = None,
         feature_containers: List[DescribeEnvironmentFeatureResponseBodyDataFeatureStatusFeatureContainers] = None,
+        ips: List[str] = None,
         name: str = None,
         namespace: str = None,
         security_group_id: str = None,
@@ -22817,6 +22814,7 @@ class DescribeEnvironmentFeatureResponseBodyDataFeatureStatus(TeaModel):
         self.bind_resource_id = bind_resource_id
         # The containers of the feature.
         self.feature_containers = feature_containers
+        self.ips = ips
         # The Kubernetes resource name of the feature.
         self.name = name
         # The namespace.
@@ -22848,6 +22846,8 @@ class DescribeEnvironmentFeatureResponseBodyDataFeatureStatus(TeaModel):
         if self.feature_containers is not None:
             for k in self.feature_containers:
                 result['FeatureContainers'].append(k.to_map() if k else None)
+        if self.ips is not None:
+            result['Ips'] = self.ips
         if self.name is not None:
             result['Name'] = self.name
         if self.namespace is not None:
@@ -22869,6 +22869,8 @@ class DescribeEnvironmentFeatureResponseBodyDataFeatureStatus(TeaModel):
             for k in m.get('FeatureContainers'):
                 temp_model = DescribeEnvironmentFeatureResponseBodyDataFeatureStatusFeatureContainers()
                 self.feature_containers.append(temp_model.from_map(k))
+        if m.get('Ips') is not None:
+            self.ips = m.get('Ips')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('Namespace') is not None:
@@ -42750,9 +42752,11 @@ class ListEnvironmentDashboardsResponse(TeaModel):
 class ListEnvironmentFeaturesRequest(TeaModel):
     def __init__(
         self,
+        aliyun_lang: str = None,
         environment_id: str = None,
         region_id: str = None,
     ):
+        self.aliyun_lang = aliyun_lang
         # This parameter is required.
         self.environment_id = environment_id
         self.region_id = region_id
@@ -42766,6 +42770,8 @@ class ListEnvironmentFeaturesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.aliyun_lang is not None:
+            result['AliyunLang'] = self.aliyun_lang
         if self.environment_id is not None:
             result['EnvironmentId'] = self.environment_id
         if self.region_id is not None:
@@ -42774,6 +42780,8 @@ class ListEnvironmentFeaturesRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AliyunLang') is not None:
+            self.aliyun_lang = m.get('AliyunLang')
         if m.get('EnvironmentId') is not None:
             self.environment_id = m.get('EnvironmentId')
         if m.get('RegionId') is not None:
@@ -43059,6 +43067,10 @@ class ListEnvironmentsRequest(TeaModel):
         # 
         #     <!-- -->
         self.environment_type = environment_type
+        # The payable resource plan. Valid values:
+        # 
+        # *   If the EnvironmentType parameter is set to CS, set the value to CS_Basic or CS_Pro. Default value: CS_Basic.
+        # *   Otherwise, leave the parameter empty.
         self.fee_package = fee_package
         # The region ID.
         self.region_id = region_id
@@ -43174,6 +43186,10 @@ class ListEnvironmentsShrinkRequest(TeaModel):
         # 
         #     <!-- -->
         self.environment_type = environment_type
+        # The payable resource plan. Valid values:
+        # 
+        # *   If the EnvironmentType parameter is set to CS, set the value to CS_Basic or CS_Pro. Default value: CS_Basic.
+        # *   Otherwise, leave the parameter empty.
         self.fee_package = fee_package
         # The region ID.
         self.region_id = region_id
@@ -43413,6 +43429,10 @@ class ListEnvironmentsResponseBodyDataEnvironments(TeaModel):
         self.environment_type = environment_type
         # The parameters of the feature.
         self.features = features
+        # The payable resource plan. Valid values:
+        # 
+        # *   If the EnvironmentType parameter is set to CS, set the value to CS_Basic or CS_Pro. Default value: CS_Basic.
+        # *   Otherwise, leave the parameter empty.
         self.fee_package = fee_package
         # The unique ID of the Grafana data source.
         self.grafana_datasource_uid = grafana_datasource_uid
@@ -43422,27 +43442,25 @@ class ListEnvironmentsResponseBodyDataEnvironments(TeaModel):
         self.grafana_folder_uid = grafana_folder_uid
         # The time when the last add-on was created.
         self.latest_release_create_time = latest_release_create_time
-        # type of managed:
+        # Indicates whether agents or exporters are managed. Valid values:
         # 
-        # - none: not managed. default value of prometheus for ACK.
-        # 
-        # - agent: managed agent. default value of promehtues for ASK/ACS/AckOne.
-        # 
-        # - agent-exproter: managed agent and exporter. default of prometheus for Cloud.
+        # *   none: No. By default, no managed agents or exporters are provided for ACK clusters.
+        # *   agent: Agents are managed. By default, managed agents are provided for ASK clusters, ACS clusters, and ACK One clusters.
+        # *   agent-exproter: Agents and exporters are managed. By default, managed agents and exporters are provided for cloud services.
         self.managed_type = managed_type
         # The Prometheus ID.
         self.prometheus_id = prometheus_id
         # The ID of the Prometheus instance.
         self.prometheus_instance_id = prometheus_instance_id
-        # The region ID.
+        # The ID of the region where the Message Queue for RabbitMQ instance resides.
         self.region_id = region_id
         # The number of installed add-ons.
         self.release_count = release_count
-        # The ID of the resource group.
+        # The resource group ID.
         self.resource_group_id = resource_group_id
         # The tags of the environment resource.
         self.tags = tags
-        # The user ID.
+        # The ID of the user.
         self.user_id = user_id
 
     def validate(self):

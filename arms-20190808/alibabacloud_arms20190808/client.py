@@ -17599,6 +17599,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.aliyun_lang):
+            query['AliyunLang'] = request.aliyun_lang
         if not UtilClient.is_unset(request.environment_id):
             query['EnvironmentId'] = request.environment_id
         if not UtilClient.is_unset(request.region_id):
@@ -17636,6 +17638,8 @@ class Client(OpenApiClient):
         """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.aliyun_lang):
+            query['AliyunLang'] = request.aliyun_lang
         if not UtilClient.is_unset(request.environment_id):
             query['EnvironmentId'] = request.environment_id
         if not UtilClient.is_unset(request.region_id):
