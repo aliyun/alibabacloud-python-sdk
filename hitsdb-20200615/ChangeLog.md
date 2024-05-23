@@ -1,3 +1,9 @@
+2024-05-23 Version: 4.6.1
+- Update API CreateLindormInstance: add param LtsNum.
+- Update API CreateLindormInstance: add param LtsSpec.
+- Update API GetLindormInstanceList: update response param.
+
+
 2024-03-29 Version: 4.6.0
 - Support API OpenComputePreCheck.
 - Update API GetLindormInstanceList: update param PageNumber.

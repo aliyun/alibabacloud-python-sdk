@@ -46,6 +46,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.CreateLdpsComputeGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.CreateLdpsComputeGroupResponse:
+        """
+        @param request: CreateLdpsComputeGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLdpsComputeGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -90,6 +95,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.CreateLdpsComputeGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.CreateLdpsComputeGroupResponse:
+        """
+        @param request: CreateLdpsComputeGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLdpsComputeGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -133,6 +143,10 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.CreateLdpsComputeGroupRequest,
     ) -> hitsdb_20200615_models.CreateLdpsComputeGroupResponse:
+        """
+        @param request: CreateLdpsComputeGroupRequest
+        @return: CreateLdpsComputeGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_ldps_compute_group_with_options(request, runtime)
 
@@ -140,6 +154,10 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.CreateLdpsComputeGroupRequest,
     ) -> hitsdb_20200615_models.CreateLdpsComputeGroupResponse:
+        """
+        @param request: CreateLdpsComputeGroupRequest
+        @return: CreateLdpsComputeGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_ldps_compute_group_with_options_async(request, runtime)
 
@@ -148,6 +166,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.CreateLdpsNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.CreateLdpsNamespaceResponse:
+        """
+        @param request: CreateLdpsNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLdpsNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -190,6 +213,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.CreateLdpsNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.CreateLdpsNamespaceResponse:
+        """
+        @param request: CreateLdpsNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLdpsNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -231,6 +259,10 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.CreateLdpsNamespaceRequest,
     ) -> hitsdb_20200615_models.CreateLdpsNamespaceResponse:
+        """
+        @param request: CreateLdpsNamespaceRequest
+        @return: CreateLdpsNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_ldps_namespace_with_options(request, runtime)
 
@@ -238,6 +270,10 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.CreateLdpsNamespaceRequest,
     ) -> hitsdb_20200615_models.CreateLdpsNamespaceResponse:
+        """
+        @param request: CreateLdpsNamespaceRequest
+        @return: CreateLdpsNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_ldps_namespace_with_options_async(request, runtime)
 
@@ -247,7 +283,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.CreateLindormInstanceResponse:
         """
-        You must select at least one engine when you create a Lindorm instance. For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine types](~~181971~~) and [Select storage types](~~174643~~).
+        @summary Creates a Lindorm instance.
+        
+        @description You must select at least one engine when you create a Lindorm instance. For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine types](https://help.aliyun.com/document_detail/181971.html) and [Select storage types](https://help.aliyun.com/document_detail/174643.html).
         
         @param request: CreateLindormInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -295,6 +333,10 @@ class Client(OpenApiClient):
             query['LogSingleStorage'] = request.log_single_storage
         if not UtilClient.is_unset(request.log_spec):
             query['LogSpec'] = request.log_spec
+        if not UtilClient.is_unset(request.lts_num):
+            query['LtsNum'] = request.lts_num
+        if not UtilClient.is_unset(request.lts_spec):
+            query['LtsSpec'] = request.lts_spec
         if not UtilClient.is_unset(request.multi_zone_combination):
             query['MultiZoneCombination'] = request.multi_zone_combination
         if not UtilClient.is_unset(request.owner_account):
@@ -366,7 +408,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.CreateLindormInstanceResponse:
         """
-        You must select at least one engine when you create a Lindorm instance. For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine types](~~181971~~) and [Select storage types](~~174643~~).
+        @summary Creates a Lindorm instance.
+        
+        @description You must select at least one engine when you create a Lindorm instance. For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine types](https://help.aliyun.com/document_detail/181971.html) and [Select storage types](https://help.aliyun.com/document_detail/174643.html).
         
         @param request: CreateLindormInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -414,6 +458,10 @@ class Client(OpenApiClient):
             query['LogSingleStorage'] = request.log_single_storage
         if not UtilClient.is_unset(request.log_spec):
             query['LogSpec'] = request.log_spec
+        if not UtilClient.is_unset(request.lts_num):
+            query['LtsNum'] = request.lts_num
+        if not UtilClient.is_unset(request.lts_spec):
+            query['LtsSpec'] = request.lts_spec
         if not UtilClient.is_unset(request.multi_zone_combination):
             query['MultiZoneCombination'] = request.multi_zone_combination
         if not UtilClient.is_unset(request.owner_account):
@@ -484,7 +532,9 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.CreateLindormInstanceRequest,
     ) -> hitsdb_20200615_models.CreateLindormInstanceResponse:
         """
-        You must select at least one engine when you create a Lindorm instance. For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine types](~~181971~~) and [Select storage types](~~174643~~).
+        @summary Creates a Lindorm instance.
+        
+        @description You must select at least one engine when you create a Lindorm instance. For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine types](https://help.aliyun.com/document_detail/181971.html) and [Select storage types](https://help.aliyun.com/document_detail/174643.html).
         
         @param request: CreateLindormInstanceRequest
         @return: CreateLindormInstanceResponse
@@ -497,7 +547,9 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.CreateLindormInstanceRequest,
     ) -> hitsdb_20200615_models.CreateLindormInstanceResponse:
         """
-        You must select at least one engine when you create a Lindorm instance. For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine types](~~181971~~) and [Select storage types](~~174643~~).
+        @summary Creates a Lindorm instance.
+        
+        @description You must select at least one engine when you create a Lindorm instance. For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine types](https://help.aliyun.com/document_detail/181971.html) and [Select storage types](https://help.aliyun.com/document_detail/174643.html).
         
         @param request: CreateLindormInstanceRequest
         @return: CreateLindormInstanceResponse
@@ -510,6 +562,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.DeleteLdpsComputeGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.DeleteLdpsComputeGroupResponse:
+        """
+        @param request: DeleteLdpsComputeGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLdpsComputeGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -552,6 +609,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.DeleteLdpsComputeGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.DeleteLdpsComputeGroupResponse:
+        """
+        @param request: DeleteLdpsComputeGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteLdpsComputeGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -593,6 +655,10 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.DeleteLdpsComputeGroupRequest,
     ) -> hitsdb_20200615_models.DeleteLdpsComputeGroupResponse:
+        """
+        @param request: DeleteLdpsComputeGroupRequest
+        @return: DeleteLdpsComputeGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_ldps_compute_group_with_options(request, runtime)
 
@@ -600,6 +666,10 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.DeleteLdpsComputeGroupRequest,
     ) -> hitsdb_20200615_models.DeleteLdpsComputeGroupResponse:
+        """
+        @param request: DeleteLdpsComputeGroupRequest
+        @return: DeleteLdpsComputeGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_ldps_compute_group_with_options_async(request, runtime)
 
@@ -608,6 +678,13 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.DescribeRegionsResponse:
+        """
+        @summary Obtains the regions supported by Lindorm.
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -646,6 +723,13 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.DescribeRegionsResponse:
+        """
+        @summary Obtains the regions supported by Lindorm.
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -683,6 +767,12 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.DescribeRegionsRequest,
     ) -> hitsdb_20200615_models.DescribeRegionsResponse:
+        """
+        @summary Obtains the regions supported by Lindorm.
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_regions_with_options(request, runtime)
 
@@ -690,6 +780,12 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.DescribeRegionsRequest,
     ) -> hitsdb_20200615_models.DescribeRegionsResponse:
+        """
+        @summary Obtains the regions supported by Lindorm.
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
 
@@ -698,6 +794,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.GetClientSourceIpRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.GetClientSourceIpResponse:
+        """
+        @param request: GetClientSourceIpRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetClientSourceIpResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -738,6 +839,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.GetClientSourceIpRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.GetClientSourceIpResponse:
+        """
+        @param request: GetClientSourceIpRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetClientSourceIpResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -777,6 +883,10 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.GetClientSourceIpRequest,
     ) -> hitsdb_20200615_models.GetClientSourceIpResponse:
+        """
+        @param request: GetClientSourceIpRequest
+        @return: GetClientSourceIpResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_client_source_ip_with_options(request, runtime)
 
@@ -784,6 +894,10 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.GetClientSourceIpRequest,
     ) -> hitsdb_20200615_models.GetClientSourceIpResponse:
+        """
+        @param request: GetClientSourceIpRequest
+        @return: GetClientSourceIpResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_client_source_ip_with_options_async(request, runtime)
 
@@ -792,6 +906,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.GetEngineDefaultAuthRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.GetEngineDefaultAuthResponse:
+        """
+        @param request: GetEngineDefaultAuthRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEngineDefaultAuthResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -832,6 +951,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.GetEngineDefaultAuthRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.GetEngineDefaultAuthResponse:
+        """
+        @param request: GetEngineDefaultAuthRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEngineDefaultAuthResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -871,6 +995,10 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.GetEngineDefaultAuthRequest,
     ) -> hitsdb_20200615_models.GetEngineDefaultAuthResponse:
+        """
+        @param request: GetEngineDefaultAuthRequest
+        @return: GetEngineDefaultAuthResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_engine_default_auth_with_options(request, runtime)
 
@@ -878,6 +1006,10 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.GetEngineDefaultAuthRequest,
     ) -> hitsdb_20200615_models.GetEngineDefaultAuthResponse:
+        """
+        @param request: GetEngineDefaultAuthRequest
+        @return: GetEngineDefaultAuthResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_engine_default_auth_with_options_async(request, runtime)
 
@@ -886,6 +1018,13 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.GetInstanceIpWhiteListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.GetInstanceIpWhiteListResponse:
+        """
+        @summary Queries the whitelists configured for a Lindorm instance.
+        
+        @param request: GetInstanceIpWhiteListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceIpWhiteListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -924,6 +1063,13 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.GetInstanceIpWhiteListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.GetInstanceIpWhiteListResponse:
+        """
+        @summary Queries the whitelists configured for a Lindorm instance.
+        
+        @param request: GetInstanceIpWhiteListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceIpWhiteListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -961,6 +1107,12 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.GetInstanceIpWhiteListRequest,
     ) -> hitsdb_20200615_models.GetInstanceIpWhiteListResponse:
+        """
+        @summary Queries the whitelists configured for a Lindorm instance.
+        
+        @param request: GetInstanceIpWhiteListRequest
+        @return: GetInstanceIpWhiteListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_instance_ip_white_list_with_options(request, runtime)
 
@@ -968,6 +1120,12 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.GetInstanceIpWhiteListRequest,
     ) -> hitsdb_20200615_models.GetInstanceIpWhiteListResponse:
+        """
+        @summary Queries the whitelists configured for a Lindorm instance.
+        
+        @param request: GetInstanceIpWhiteListRequest
+        @return: GetInstanceIpWhiteListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_instance_ip_white_list_with_options_async(request, runtime)
 
@@ -976,6 +1134,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.GetInstanceSecurityGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.GetInstanceSecurityGroupsResponse:
+        """
+        @param request: GetInstanceSecurityGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceSecurityGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1014,6 +1177,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.GetInstanceSecurityGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.GetInstanceSecurityGroupsResponse:
+        """
+        @param request: GetInstanceSecurityGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceSecurityGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1051,6 +1219,10 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.GetInstanceSecurityGroupsRequest,
     ) -> hitsdb_20200615_models.GetInstanceSecurityGroupsResponse:
+        """
+        @param request: GetInstanceSecurityGroupsRequest
+        @return: GetInstanceSecurityGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_instance_security_groups_with_options(request, runtime)
 
@@ -1058,6 +1230,10 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.GetInstanceSecurityGroupsRequest,
     ) -> hitsdb_20200615_models.GetInstanceSecurityGroupsResponse:
+        """
+        @param request: GetInstanceSecurityGroupsRequest
+        @return: GetInstanceSecurityGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_instance_security_groups_with_options_async(request, runtime)
 
@@ -1066,6 +1242,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.GetLdpsComputeGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.GetLdpsComputeGroupResponse:
+        """
+        @param request: GetLdpsComputeGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLdpsComputeGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -1108,6 +1289,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.GetLdpsComputeGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.GetLdpsComputeGroupResponse:
+        """
+        @param request: GetLdpsComputeGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLdpsComputeGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -1149,6 +1335,10 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.GetLdpsComputeGroupRequest,
     ) -> hitsdb_20200615_models.GetLdpsComputeGroupResponse:
+        """
+        @param request: GetLdpsComputeGroupRequest
+        @return: GetLdpsComputeGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_ldps_compute_group_with_options(request, runtime)
 
@@ -1156,6 +1346,10 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.GetLdpsComputeGroupRequest,
     ) -> hitsdb_20200615_models.GetLdpsComputeGroupResponse:
+        """
+        @param request: GetLdpsComputeGroupRequest
+        @return: GetLdpsComputeGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_ldps_compute_group_with_options_async(request, runtime)
 
@@ -1164,6 +1358,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.GetLdpsNamespacedQuotaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.GetLdpsNamespacedQuotaResponse:
+        """
+        @param request: GetLdpsNamespacedQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLdpsNamespacedQuotaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1206,6 +1405,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.GetLdpsNamespacedQuotaRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.GetLdpsNamespacedQuotaResponse:
+        """
+        @param request: GetLdpsNamespacedQuotaRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLdpsNamespacedQuotaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1247,6 +1451,10 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.GetLdpsNamespacedQuotaRequest,
     ) -> hitsdb_20200615_models.GetLdpsNamespacedQuotaResponse:
+        """
+        @param request: GetLdpsNamespacedQuotaRequest
+        @return: GetLdpsNamespacedQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_ldps_namespaced_quota_with_options(request, runtime)
 
@@ -1254,6 +1462,10 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.GetLdpsNamespacedQuotaRequest,
     ) -> hitsdb_20200615_models.GetLdpsNamespacedQuotaResponse:
+        """
+        @param request: GetLdpsNamespacedQuotaRequest
+        @return: GetLdpsNamespacedQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_ldps_namespaced_quota_with_options_async(request, runtime)
 
@@ -1262,6 +1474,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.GetLdpsResourceCostRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.GetLdpsResourceCostResponse:
+        """
+        @param request: GetLdpsResourceCostRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLdpsResourceCostResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -1308,6 +1525,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.GetLdpsResourceCostRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.GetLdpsResourceCostResponse:
+        """
+        @param request: GetLdpsResourceCostRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLdpsResourceCostResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -1353,6 +1575,10 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.GetLdpsResourceCostRequest,
     ) -> hitsdb_20200615_models.GetLdpsResourceCostResponse:
+        """
+        @param request: GetLdpsResourceCostRequest
+        @return: GetLdpsResourceCostResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_ldps_resource_cost_with_options(request, runtime)
 
@@ -1360,6 +1586,10 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.GetLdpsResourceCostRequest,
     ) -> hitsdb_20200615_models.GetLdpsResourceCostResponse:
+        """
+        @param request: GetLdpsResourceCostRequest
+        @return: GetLdpsResourceCostResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_ldps_resource_cost_with_options_async(request, runtime)
 
@@ -1368,6 +1598,13 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.GetLindormInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.GetLindormInstanceResponse:
+        """
+        @summary The storage capacity of the disk of a single core node. This parameter is returned only for multi-zone instances.
+        
+        @param request: GetLindormInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLindormInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1406,6 +1643,13 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.GetLindormInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.GetLindormInstanceResponse:
+        """
+        @summary The storage capacity of the disk of a single core node. This parameter is returned only for multi-zone instances.
+        
+        @param request: GetLindormInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLindormInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1443,6 +1687,12 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.GetLindormInstanceRequest,
     ) -> hitsdb_20200615_models.GetLindormInstanceResponse:
+        """
+        @summary The storage capacity of the disk of a single core node. This parameter is returned only for multi-zone instances.
+        
+        @param request: GetLindormInstanceRequest
+        @return: GetLindormInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_lindorm_instance_with_options(request, runtime)
 
@@ -1450,6 +1700,12 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.GetLindormInstanceRequest,
     ) -> hitsdb_20200615_models.GetLindormInstanceResponse:
+        """
+        @summary The storage capacity of the disk of a single core node. This parameter is returned only for multi-zone instances.
+        
+        @param request: GetLindormInstanceRequest
+        @return: GetLindormInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_lindorm_instance_with_options_async(request, runtime)
 
@@ -1458,6 +1714,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.GetLindormInstanceEngineListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.GetLindormInstanceEngineListResponse:
+        """
+        @param request: GetLindormInstanceEngineListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLindormInstanceEngineListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1498,6 +1759,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.GetLindormInstanceEngineListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.GetLindormInstanceEngineListResponse:
+        """
+        @param request: GetLindormInstanceEngineListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLindormInstanceEngineListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1537,6 +1803,10 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.GetLindormInstanceEngineListRequest,
     ) -> hitsdb_20200615_models.GetLindormInstanceEngineListResponse:
+        """
+        @param request: GetLindormInstanceEngineListRequest
+        @return: GetLindormInstanceEngineListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_lindorm_instance_engine_list_with_options(request, runtime)
 
@@ -1544,6 +1814,10 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.GetLindormInstanceEngineListRequest,
     ) -> hitsdb_20200615_models.GetLindormInstanceEngineListResponse:
+        """
+        @param request: GetLindormInstanceEngineListRequest
+        @return: GetLindormInstanceEngineListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_lindorm_instance_engine_list_with_options_async(request, runtime)
 
@@ -1552,6 +1826,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.GetLindormInstanceListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.GetLindormInstanceListResponse:
+        """
+        @param request: GetLindormInstanceListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLindormInstanceListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -1604,6 +1883,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.GetLindormInstanceListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.GetLindormInstanceListResponse:
+        """
+        @param request: GetLindormInstanceListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLindormInstanceListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -1655,6 +1939,10 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.GetLindormInstanceListRequest,
     ) -> hitsdb_20200615_models.GetLindormInstanceListResponse:
+        """
+        @param request: GetLindormInstanceListRequest
+        @return: GetLindormInstanceListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_lindorm_instance_list_with_options(request, runtime)
 
@@ -1662,6 +1950,10 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.GetLindormInstanceListRequest,
     ) -> hitsdb_20200615_models.GetLindormInstanceListResponse:
+        """
+        @param request: GetLindormInstanceListRequest
+        @return: GetLindormInstanceListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_lindorm_instance_list_with_options_async(request, runtime)
 
@@ -1670,6 +1962,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.ListLdpsComputeGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.ListLdpsComputeGroupsResponse:
+        """
+        @param request: ListLdpsComputeGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLdpsComputeGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1710,6 +2007,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.ListLdpsComputeGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.ListLdpsComputeGroupsResponse:
+        """
+        @param request: ListLdpsComputeGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLdpsComputeGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1749,6 +2051,10 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.ListLdpsComputeGroupsRequest,
     ) -> hitsdb_20200615_models.ListLdpsComputeGroupsResponse:
+        """
+        @param request: ListLdpsComputeGroupsRequest
+        @return: ListLdpsComputeGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_ldps_compute_groups_with_options(request, runtime)
 
@@ -1756,6 +2062,10 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.ListLdpsComputeGroupsRequest,
     ) -> hitsdb_20200615_models.ListLdpsComputeGroupsResponse:
+        """
+        @param request: ListLdpsComputeGroupsRequest
+        @return: ListLdpsComputeGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_ldps_compute_groups_with_options_async(request, runtime)
 
@@ -1764,6 +2074,13 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.ListTagResourcesResponse:
+        """
+        @summary Queries tags associated with the specified Lindorm instances.
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_token):
@@ -1810,6 +2127,13 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.ListTagResourcesResponse:
+        """
+        @summary Queries tags associated with the specified Lindorm instances.
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_token):
@@ -1855,6 +2179,12 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.ListTagResourcesRequest,
     ) -> hitsdb_20200615_models.ListTagResourcesResponse:
+        """
+        @summary Queries tags associated with the specified Lindorm instances.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_resources_with_options(request, runtime)
 
@@ -1862,6 +2192,12 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.ListTagResourcesRequest,
     ) -> hitsdb_20200615_models.ListTagResourcesResponse:
+        """
+        @summary Queries tags associated with the specified Lindorm instances.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
@@ -1871,7 +2207,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.ModifyInstancePayTypeResponse:
         """
-        You can call this operation to change the billing method of an instance to subscription or pay-as-you-go.
+        @summary Changes the billing method of the specified Lindorm instance.
+        
+        @description You can call this operation to change the billing method of an instance to subscription or pay-as-you-go.
         Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product?spm=openapi-amp.newDocPublishment.0.0.6345281fu63xJ3#/hitsdb/detail/hitsdb_lindormpre_public_cn) of Lindorm.
         
         @param request: ModifyInstancePayTypeRequest
@@ -1923,7 +2261,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.ModifyInstancePayTypeResponse:
         """
-        You can call this operation to change the billing method of an instance to subscription or pay-as-you-go.
+        @summary Changes the billing method of the specified Lindorm instance.
+        
+        @description You can call this operation to change the billing method of an instance to subscription or pay-as-you-go.
         Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product?spm=openapi-amp.newDocPublishment.0.0.6345281fu63xJ3#/hitsdb/detail/hitsdb_lindormpre_public_cn) of Lindorm.
         
         @param request: ModifyInstancePayTypeRequest
@@ -1974,7 +2314,9 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.ModifyInstancePayTypeRequest,
     ) -> hitsdb_20200615_models.ModifyInstancePayTypeResponse:
         """
-        You can call this operation to change the billing method of an instance to subscription or pay-as-you-go.
+        @summary Changes the billing method of the specified Lindorm instance.
+        
+        @description You can call this operation to change the billing method of an instance to subscription or pay-as-you-go.
         Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product?spm=openapi-amp.newDocPublishment.0.0.6345281fu63xJ3#/hitsdb/detail/hitsdb_lindormpre_public_cn) of Lindorm.
         
         @param request: ModifyInstancePayTypeRequest
@@ -1988,7 +2330,9 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.ModifyInstancePayTypeRequest,
     ) -> hitsdb_20200615_models.ModifyInstancePayTypeResponse:
         """
-        You can call this operation to change the billing method of an instance to subscription or pay-as-you-go.
+        @summary Changes the billing method of the specified Lindorm instance.
+        
+        @description You can call this operation to change the billing method of an instance to subscription or pay-as-you-go.
         Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product?spm=openapi-amp.newDocPublishment.0.0.6345281fu63xJ3#/hitsdb/detail/hitsdb_lindormpre_public_cn) of Lindorm.
         
         @param request: ModifyInstancePayTypeRequest
@@ -2002,6 +2346,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.OpenComputeEngineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.OpenComputeEngineResponse:
+        """
+        @param request: OpenComputeEngineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenComputeEngineResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cpu_limit):
@@ -2044,6 +2393,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.OpenComputeEngineRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.OpenComputeEngineResponse:
+        """
+        @param request: OpenComputeEngineRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenComputeEngineResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cpu_limit):
@@ -2085,6 +2439,10 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.OpenComputeEngineRequest,
     ) -> hitsdb_20200615_models.OpenComputeEngineResponse:
+        """
+        @param request: OpenComputeEngineRequest
+        @return: OpenComputeEngineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.open_compute_engine_with_options(request, runtime)
 
@@ -2092,6 +2450,10 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.OpenComputeEngineRequest,
     ) -> hitsdb_20200615_models.OpenComputeEngineResponse:
+        """
+        @param request: OpenComputeEngineRequest
+        @return: OpenComputeEngineResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.open_compute_engine_with_options_async(request, runtime)
 
@@ -2100,6 +2462,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.OpenComputePreCheckRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.OpenComputePreCheckResponse:
+        """
+        @param request: OpenComputePreCheckRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenComputePreCheckResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cpu_limit):
@@ -2142,6 +2509,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.OpenComputePreCheckRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.OpenComputePreCheckResponse:
+        """
+        @param request: OpenComputePreCheckRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenComputePreCheckResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cpu_limit):
@@ -2183,6 +2555,10 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.OpenComputePreCheckRequest,
     ) -> hitsdb_20200615_models.OpenComputePreCheckResponse:
+        """
+        @param request: OpenComputePreCheckRequest
+        @return: OpenComputePreCheckResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.open_compute_pre_check_with_options(request, runtime)
 
@@ -2190,6 +2566,10 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.OpenComputePreCheckRequest,
     ) -> hitsdb_20200615_models.OpenComputePreCheckResponse:
+        """
+        @param request: OpenComputePreCheckRequest
+        @return: OpenComputePreCheckResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.open_compute_pre_check_with_options_async(request, runtime)
 
@@ -2198,6 +2578,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.ReleaseLindormInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.ReleaseLindormInstanceResponse:
+        """
+        @param request: ReleaseLindormInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseLindormInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.immediately):
@@ -2238,6 +2623,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.ReleaseLindormInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.ReleaseLindormInstanceResponse:
+        """
+        @param request: ReleaseLindormInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseLindormInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.immediately):
@@ -2277,6 +2667,10 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.ReleaseLindormInstanceRequest,
     ) -> hitsdb_20200615_models.ReleaseLindormInstanceResponse:
+        """
+        @param request: ReleaseLindormInstanceRequest
+        @return: ReleaseLindormInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.release_lindorm_instance_with_options(request, runtime)
 
@@ -2284,6 +2678,10 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.ReleaseLindormInstanceRequest,
     ) -> hitsdb_20200615_models.ReleaseLindormInstanceResponse:
+        """
+        @param request: ReleaseLindormInstanceRequest
+        @return: ReleaseLindormInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.release_lindorm_instance_with_options_async(request, runtime)
 
@@ -2293,7 +2691,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.RenewLindormInstanceResponse:
         """
-        You can call this operation to renew a subscription Lindorm instance for 1 to 9 months or 1 to 3 years.
+        @summary Renews a subscription Lindorm instance.
+        
+        @description You can call this operation to renew a subscription Lindorm instance for 1 to 9 months or 1 to 3 years.
         Before you call this operation, make sure that you fully understand the billing methods and pricing of Lindorm.
         
         @param request: RenewLindormInstanceRequest
@@ -2345,7 +2745,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.RenewLindormInstanceResponse:
         """
-        You can call this operation to renew a subscription Lindorm instance for 1 to 9 months or 1 to 3 years.
+        @summary Renews a subscription Lindorm instance.
+        
+        @description You can call this operation to renew a subscription Lindorm instance for 1 to 9 months or 1 to 3 years.
         Before you call this operation, make sure that you fully understand the billing methods and pricing of Lindorm.
         
         @param request: RenewLindormInstanceRequest
@@ -2396,7 +2798,9 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.RenewLindormInstanceRequest,
     ) -> hitsdb_20200615_models.RenewLindormInstanceResponse:
         """
-        You can call this operation to renew a subscription Lindorm instance for 1 to 9 months or 1 to 3 years.
+        @summary Renews a subscription Lindorm instance.
+        
+        @description You can call this operation to renew a subscription Lindorm instance for 1 to 9 months or 1 to 3 years.
         Before you call this operation, make sure that you fully understand the billing methods and pricing of Lindorm.
         
         @param request: RenewLindormInstanceRequest
@@ -2410,7 +2814,9 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.RenewLindormInstanceRequest,
     ) -> hitsdb_20200615_models.RenewLindormInstanceResponse:
         """
-        You can call this operation to renew a subscription Lindorm instance for 1 to 9 months or 1 to 3 years.
+        @summary Renews a subscription Lindorm instance.
+        
+        @description You can call this operation to renew a subscription Lindorm instance for 1 to 9 months or 1 to 3 years.
         Before you call this operation, make sure that you fully understand the billing methods and pricing of Lindorm.
         
         @param request: RenewLindormInstanceRequest
@@ -2424,6 +2830,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.RestartLdpsComputeGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.RestartLdpsComputeGroupResponse:
+        """
+        @param request: RestartLdpsComputeGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartLdpsComputeGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -2466,6 +2877,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.RestartLdpsComputeGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.RestartLdpsComputeGroupResponse:
+        """
+        @param request: RestartLdpsComputeGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartLdpsComputeGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -2507,6 +2923,10 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.RestartLdpsComputeGroupRequest,
     ) -> hitsdb_20200615_models.RestartLdpsComputeGroupResponse:
+        """
+        @param request: RestartLdpsComputeGroupRequest
+        @return: RestartLdpsComputeGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.restart_ldps_compute_group_with_options(request, runtime)
 
@@ -2514,6 +2934,10 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.RestartLdpsComputeGroupRequest,
     ) -> hitsdb_20200615_models.RestartLdpsComputeGroupResponse:
+        """
+        @param request: RestartLdpsComputeGroupRequest
+        @return: RestartLdpsComputeGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.restart_ldps_compute_group_with_options_async(request, runtime)
 
@@ -2523,9 +2947,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.SwitchLSQLV3MySQLServiceResponse:
         """
-        Prerequisites
-        *   The LindormTable version of your instance is 2.6.0 or later.
-        *   The LindormTable of your instance supports LindormSQL V3. The value of the EnableLsqlVersionV3 parameter in the response of the GetLindormInstance operation is true for Lindorm instances purchased after Oct 24, 2023, which indicates that LindormSQL is supported by these instances by default. If you want to enable LindormSQL for instances purchased before Oct 24, 2023, contact the on-duty technical support.
+        @summary Enables and disables the MySQL compatibility feature.
+        
+        @description Prerequisites
+        The LindormTable version of your instance is 2.6.0 or later.
+        The LindormTable of your instance supports LindormSQL V3. The value of the EnableLsqlVersionV3 parameter in the response of the GetLindormInstance operation is true for Lindorm instances purchased after Oct 24, 2023, which indicates that LindormSQL is supported by these instances by default. If you want to enable LindormSQL for instances purchased before Oct 24, 2023, contact the on-duty technical support.
         You can enable the MySQL compatibility feature for a Lindorm instance only when the instance meets the preceding requirements.
         
         @param request: SwitchLSQLV3MySQLServiceRequest
@@ -2573,9 +2999,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.SwitchLSQLV3MySQLServiceResponse:
         """
-        Prerequisites
-        *   The LindormTable version of your instance is 2.6.0 or later.
-        *   The LindormTable of your instance supports LindormSQL V3. The value of the EnableLsqlVersionV3 parameter in the response of the GetLindormInstance operation is true for Lindorm instances purchased after Oct 24, 2023, which indicates that LindormSQL is supported by these instances by default. If you want to enable LindormSQL for instances purchased before Oct 24, 2023, contact the on-duty technical support.
+        @summary Enables and disables the MySQL compatibility feature.
+        
+        @description Prerequisites
+        The LindormTable version of your instance is 2.6.0 or later.
+        The LindormTable of your instance supports LindormSQL V3. The value of the EnableLsqlVersionV3 parameter in the response of the GetLindormInstance operation is true for Lindorm instances purchased after Oct 24, 2023, which indicates that LindormSQL is supported by these instances by default. If you want to enable LindormSQL for instances purchased before Oct 24, 2023, contact the on-duty technical support.
         You can enable the MySQL compatibility feature for a Lindorm instance only when the instance meets the preceding requirements.
         
         @param request: SwitchLSQLV3MySQLServiceRequest
@@ -2622,9 +3050,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.SwitchLSQLV3MySQLServiceRequest,
     ) -> hitsdb_20200615_models.SwitchLSQLV3MySQLServiceResponse:
         """
-        Prerequisites
-        *   The LindormTable version of your instance is 2.6.0 or later.
-        *   The LindormTable of your instance supports LindormSQL V3. The value of the EnableLsqlVersionV3 parameter in the response of the GetLindormInstance operation is true for Lindorm instances purchased after Oct 24, 2023, which indicates that LindormSQL is supported by these instances by default. If you want to enable LindormSQL for instances purchased before Oct 24, 2023, contact the on-duty technical support.
+        @summary Enables and disables the MySQL compatibility feature.
+        
+        @description Prerequisites
+        The LindormTable version of your instance is 2.6.0 or later.
+        The LindormTable of your instance supports LindormSQL V3. The value of the EnableLsqlVersionV3 parameter in the response of the GetLindormInstance operation is true for Lindorm instances purchased after Oct 24, 2023, which indicates that LindormSQL is supported by these instances by default. If you want to enable LindormSQL for instances purchased before Oct 24, 2023, contact the on-duty technical support.
         You can enable the MySQL compatibility feature for a Lindorm instance only when the instance meets the preceding requirements.
         
         @param request: SwitchLSQLV3MySQLServiceRequest
@@ -2638,9 +3068,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.SwitchLSQLV3MySQLServiceRequest,
     ) -> hitsdb_20200615_models.SwitchLSQLV3MySQLServiceResponse:
         """
-        Prerequisites
-        *   The LindormTable version of your instance is 2.6.0 or later.
-        *   The LindormTable of your instance supports LindormSQL V3. The value of the EnableLsqlVersionV3 parameter in the response of the GetLindormInstance operation is true for Lindorm instances purchased after Oct 24, 2023, which indicates that LindormSQL is supported by these instances by default. If you want to enable LindormSQL for instances purchased before Oct 24, 2023, contact the on-duty technical support.
+        @summary Enables and disables the MySQL compatibility feature.
+        
+        @description Prerequisites
+        The LindormTable version of your instance is 2.6.0 or later.
+        The LindormTable of your instance supports LindormSQL V3. The value of the EnableLsqlVersionV3 parameter in the response of the GetLindormInstance operation is true for Lindorm instances purchased after Oct 24, 2023, which indicates that LindormSQL is supported by these instances by default. If you want to enable LindormSQL for instances purchased before Oct 24, 2023, contact the on-duty technical support.
         You can enable the MySQL compatibility feature for a Lindorm instance only when the instance meets the preceding requirements.
         
         @param request: SwitchLSQLV3MySQLServiceRequest
@@ -2654,6 +3086,13 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.TagResourcesResponse:
+        """
+        @summary Associates tags with a single or multiple Lindorm instances.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -2698,6 +3137,13 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.TagResourcesResponse:
+        """
+        @summary Associates tags with a single or multiple Lindorm instances.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -2741,6 +3187,12 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.TagResourcesRequest,
     ) -> hitsdb_20200615_models.TagResourcesResponse:
+        """
+        @summary Associates tags with a single or multiple Lindorm instances.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.tag_resources_with_options(request, runtime)
 
@@ -2748,6 +3200,12 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.TagResourcesRequest,
     ) -> hitsdb_20200615_models.TagResourcesResponse:
+        """
+        @summary Associates tags with a single or multiple Lindorm instances.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
@@ -2756,6 +3214,13 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.UntagResourcesResponse:
+        """
+        @summary Removes a tag from an instance. If the tag is not associated with another instance, the tag is deleted.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -2800,6 +3265,13 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.UntagResourcesResponse:
+        """
+        @summary Removes a tag from an instance. If the tag is not associated with another instance, the tag is deleted.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -2843,6 +3315,12 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.UntagResourcesRequest,
     ) -> hitsdb_20200615_models.UntagResourcesResponse:
+        """
+        @summary Removes a tag from an instance. If the tag is not associated with another instance, the tag is deleted.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.untag_resources_with_options(request, runtime)
 
@@ -2850,6 +3328,12 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.UntagResourcesRequest,
     ) -> hitsdb_20200615_models.UntagResourcesResponse:
+        """
+        @summary Removes a tag from an instance. If the tag is not associated with another instance, the tag is deleted.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
 
@@ -2858,6 +3342,13 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.UpdateInstanceIpWhiteListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.UpdateInstanceIpWhiteListResponse:
+        """
+        @summary Configures an IP address whitelist for a Lindorm instance.
+        
+        @param request: UpdateInstanceIpWhiteListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateInstanceIpWhiteListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.delete):
@@ -2902,6 +3393,13 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.UpdateInstanceIpWhiteListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.UpdateInstanceIpWhiteListResponse:
+        """
+        @summary Configures an IP address whitelist for a Lindorm instance.
+        
+        @param request: UpdateInstanceIpWhiteListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateInstanceIpWhiteListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.delete):
@@ -2945,6 +3443,12 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.UpdateInstanceIpWhiteListRequest,
     ) -> hitsdb_20200615_models.UpdateInstanceIpWhiteListResponse:
+        """
+        @summary Configures an IP address whitelist for a Lindorm instance.
+        
+        @param request: UpdateInstanceIpWhiteListRequest
+        @return: UpdateInstanceIpWhiteListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_instance_ip_white_list_with_options(request, runtime)
 
@@ -2952,6 +3456,12 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.UpdateInstanceIpWhiteListRequest,
     ) -> hitsdb_20200615_models.UpdateInstanceIpWhiteListResponse:
+        """
+        @summary Configures an IP address whitelist for a Lindorm instance.
+        
+        @param request: UpdateInstanceIpWhiteListRequest
+        @return: UpdateInstanceIpWhiteListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_instance_ip_white_list_with_options_async(request, runtime)
 
@@ -2960,6 +3470,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.UpdateInstanceSecurityGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.UpdateInstanceSecurityGroupsResponse:
+        """
+        @param request: UpdateInstanceSecurityGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateInstanceSecurityGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -3000,6 +3515,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.UpdateInstanceSecurityGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.UpdateInstanceSecurityGroupsResponse:
+        """
+        @param request: UpdateInstanceSecurityGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateInstanceSecurityGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -3039,6 +3559,10 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.UpdateInstanceSecurityGroupsRequest,
     ) -> hitsdb_20200615_models.UpdateInstanceSecurityGroupsResponse:
+        """
+        @param request: UpdateInstanceSecurityGroupsRequest
+        @return: UpdateInstanceSecurityGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_instance_security_groups_with_options(request, runtime)
 
@@ -3046,6 +3570,10 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.UpdateInstanceSecurityGroupsRequest,
     ) -> hitsdb_20200615_models.UpdateInstanceSecurityGroupsResponse:
+        """
+        @param request: UpdateInstanceSecurityGroupsRequest
+        @return: UpdateInstanceSecurityGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_instance_security_groups_with_options_async(request, runtime)
 
@@ -3054,6 +3582,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.UpdateLdpsComputeGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.UpdateLdpsComputeGroupResponse:
+        """
+        @param request: UpdateLdpsComputeGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLdpsComputeGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -3098,6 +3631,11 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.UpdateLdpsComputeGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.UpdateLdpsComputeGroupResponse:
+        """
+        @param request: UpdateLdpsComputeGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLdpsComputeGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_name):
@@ -3141,6 +3679,10 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.UpdateLdpsComputeGroupRequest,
     ) -> hitsdb_20200615_models.UpdateLdpsComputeGroupResponse:
+        """
+        @param request: UpdateLdpsComputeGroupRequest
+        @return: UpdateLdpsComputeGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_ldps_compute_group_with_options(request, runtime)
 
@@ -3148,6 +3690,10 @@ class Client(OpenApiClient):
         self,
         request: hitsdb_20200615_models.UpdateLdpsComputeGroupRequest,
     ) -> hitsdb_20200615_models.UpdateLdpsComputeGroupResponse:
+        """
+        @param request: UpdateLdpsComputeGroupRequest
+        @return: UpdateLdpsComputeGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_ldps_compute_group_with_options_async(request, runtime)
 
@@ -3157,7 +3703,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.UpgradeLindormInstanceResponse:
         """
-        For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine typpes](~~181971~~) and [Select storage types](~~174643~~).
+        @summary Upgrades, scales up, or enable cold storage for a Lindorm instance.
+        
+        @description For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine typpes](https://help.aliyun.com/document_detail/181971.html) and [Select storage types](https://help.aliyun.com/document_detail/174643.html).
         
         @param request: UpgradeLindormInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3244,7 +3792,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> hitsdb_20200615_models.UpgradeLindormInstanceResponse:
         """
-        For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine typpes](~~181971~~) and [Select storage types](~~174643~~).
+        @summary Upgrades, scales up, or enable cold storage for a Lindorm instance.
+        
+        @description For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine typpes](https://help.aliyun.com/document_detail/181971.html) and [Select storage types](https://help.aliyun.com/document_detail/174643.html).
         
         @param request: UpgradeLindormInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3330,7 +3880,9 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.UpgradeLindormInstanceRequest,
     ) -> hitsdb_20200615_models.UpgradeLindormInstanceResponse:
         """
-        For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine typpes](~~181971~~) and [Select storage types](~~174643~~).
+        @summary Upgrades, scales up, or enable cold storage for a Lindorm instance.
+        
+        @description For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine typpes](https://help.aliyun.com/document_detail/181971.html) and [Select storage types](https://help.aliyun.com/document_detail/174643.html).
         
         @param request: UpgradeLindormInstanceRequest
         @return: UpgradeLindormInstanceResponse
@@ -3343,7 +3895,9 @@ class Client(OpenApiClient):
         request: hitsdb_20200615_models.UpgradeLindormInstanceRequest,
     ) -> hitsdb_20200615_models.UpgradeLindormInstanceResponse:
         """
-        For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine typpes](~~181971~~) and [Select storage types](~~174643~~).
+        @summary Upgrades, scales up, or enable cold storage for a Lindorm instance.
+        
+        @description For more information about how to select the storage type and engine type when you create a Lindorm instance, see [Select engine typpes](https://help.aliyun.com/document_detail/181971.html) and [Select storage types](https://help.aliyun.com/document_detail/174643.html).
         
         @param request: UpgradeLindormInstanceRequest
         @return: UpgradeLindormInstanceResponse

@@ -18,6 +18,7 @@ class CreateLdpsComputeGroupRequest(TeaModel):
         security_token: str = None,
     ):
         self.group_name = group_name
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -159,6 +160,7 @@ class CreateLdpsNamespaceRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.namespace = namespace
         self.owner_account = owner_account
@@ -307,6 +309,8 @@ class CreateLindormInstanceRequest(TeaModel):
         log_num: int = None,
         log_single_storage: int = None,
         log_spec: str = None,
+        lts_num: str = None,
+        lts_spec: str = None,
         multi_zone_combination: str = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -370,6 +374,8 @@ class CreateLindormInstanceRequest(TeaModel):
         # *   **capacity_cloud_storage**: This instance uses the Capacity type of storage.
         # *   **local_ssd_pro**: This instance uses local SSDs.
         # *   **local_hdd_pro**: This instance uses local HDDs.
+        # 
+        # This parameter is required.
         self.disk_category = disk_category
         # The subscription period of the instance. The valid values of this parameter depend on the value of the PricingCycle parameter.
         # 
@@ -421,6 +427,8 @@ class CreateLindormInstanceRequest(TeaModel):
         # 
         # **This parameter is required if you want to create a multi-zone instance**.
         self.log_spec = log_spec
+        self.lts_num = lts_num
+        self.lts_spec = lts_spec
         # The combinations of zones that are available for the multi-zone instance. You can go to the purchase page of Lindorm to view the supported zone combinations.
         # 
         # *   **ap-southeast-5abc-aliyun**: Zone A+B+C in the Indonesia (Jakarta) region.
@@ -443,6 +451,8 @@ class CreateLindormInstanceRequest(TeaModel):
         # 
         # *   **PREPAY**: subscription.
         # *   **POSTPAY**: pay-as-you-go.
+        # 
+        # This parameter is required.
         self.pay_type = pay_type
         # The period based on which you are charged for the instance. Valid values:
         # 
@@ -454,7 +464,9 @@ class CreateLindormInstanceRequest(TeaModel):
         # The ID of the vSwitch that is specified for the secondary zone of the instance. The vSwitch must be deployed in the zone specified by the StandbyZoneId parameter. **This parameter is required if you want to create a multi-zone instance**.
         self.primary_vswitch_id = primary_vswitch_id
         self.primary_zone_id = primary_zone_id
-        # The ID of the region in which you want to create the instance. You can call the [DescribeRegions](~~426062~~) operation to query the region in which you can create the instance.
+        # The ID of the region in which you want to create the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation to query the region in which you can create the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the Lindorm instance belongs.
         self.resource_group_id = resource_group_id
@@ -496,10 +508,16 @@ class CreateLindormInstanceRequest(TeaModel):
         # *   **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
         self.tsdb_spec = tsdb_spec
         # The ID of the VPC in which you want to create the instance.
+        # 
+        # This parameter is required.
         self.vpcid = vpcid
         # The ID of the vSwitch to which you want the instance to connect.
+        # 
+        # This parameter is required.
         self.v_switch_id = v_switch_id
         # The ID of the zone in which you want to create the instance.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -551,6 +569,10 @@ class CreateLindormInstanceRequest(TeaModel):
             result['LogSingleStorage'] = self.log_single_storage
         if self.log_spec is not None:
             result['LogSpec'] = self.log_spec
+        if self.lts_num is not None:
+            result['LtsNum'] = self.lts_num
+        if self.lts_spec is not None:
+            result['LtsSpec'] = self.lts_spec
         if self.multi_zone_combination is not None:
             result['MultiZoneCombination'] = self.multi_zone_combination
         if self.owner_account is not None:
@@ -641,6 +663,10 @@ class CreateLindormInstanceRequest(TeaModel):
             self.log_single_storage = m.get('LogSingleStorage')
         if m.get('LogSpec') is not None:
             self.log_spec = m.get('LogSpec')
+        if m.get('LtsNum') is not None:
+            self.lts_num = m.get('LtsNum')
+        if m.get('LtsSpec') is not None:
+            self.lts_spec = m.get('LtsSpec')
         if m.get('MultiZoneCombination') is not None:
             self.multi_zone_combination = m.get('MultiZoneCombination')
         if m.get('OwnerAccount') is not None:
@@ -785,7 +811,9 @@ class DeleteLdpsComputeGroupRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # This parameter is required.
         self.group_name = group_name
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -1108,6 +1136,7 @@ class GetClientSourceIpRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -1245,6 +1274,7 @@ class GetEngineDefaultAuthRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -1434,7 +1464,9 @@ class GetInstanceIpWhiteListRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
-        # The ID of the instance whose whitelists you want to query. You can call the [GetLindormInstanceList](~~426068~~) operation to obtain the instance ID.
+        # The ID of the instance whose whitelists you want to query. You can call the [GetLindormInstanceList](https://help.aliyun.com/document_detail/426068.html) operation to obtain the instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -1621,6 +1653,7 @@ class GetInstanceSecurityGroupsRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -1761,6 +1794,7 @@ class GetLdpsComputeGroupRequest(TeaModel):
         security_token: str = None,
     ):
         self.group_name = group_name
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -1909,6 +1943,7 @@ class GetLdpsNamespacedQuotaRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.namespace = namespace
         self.owner_account = owner_account
@@ -2114,6 +2149,7 @@ class GetLdpsResourceCostRequest(TeaModel):
         start_time: int = None,
     ):
         self.end_time = end_time
+        # This parameter is required.
         self.instance_id = instance_id
         self.job_id = job_id
         self.owner_account = owner_account
@@ -2292,6 +2328,8 @@ class GetLindormInstanceRequest(TeaModel):
         # 
         # *   **cloud_efficiency**: The nodes use the Standard type of storage.
         # *   **cloud_ssd**: The nodes use the Performance type of storage.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -2860,6 +2898,7 @@ class GetLindormInstanceEngineListRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -3265,6 +3304,7 @@ class GetLindormInstanceListResponseBodyInstanceList(TeaModel):
         ali_uid: int = None,
         create_milliseconds: int = None,
         create_time: str = None,
+        enable_column: bool = None,
         enable_compute: bool = None,
         enable_lts: bool = None,
         enable_message: bool = None,
@@ -3289,6 +3329,7 @@ class GetLindormInstanceListResponseBodyInstanceList(TeaModel):
         self.ali_uid = ali_uid
         self.create_milliseconds = create_milliseconds
         self.create_time = create_time
+        self.enable_column = enable_column
         self.enable_compute = enable_compute
         self.enable_lts = enable_lts
         self.enable_message = enable_message
@@ -3328,6 +3369,8 @@ class GetLindormInstanceListResponseBodyInstanceList(TeaModel):
             result['CreateMilliseconds'] = self.create_milliseconds
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+        if self.enable_column is not None:
+            result['EnableColumn'] = self.enable_column
         if self.enable_compute is not None:
             result['EnableCompute'] = self.enable_compute
         if self.enable_lts is not None:
@@ -3380,6 +3423,8 @@ class GetLindormInstanceListResponseBodyInstanceList(TeaModel):
             self.create_milliseconds = m.get('CreateMilliseconds')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+        if m.get('EnableColumn') is not None:
+            self.enable_column = m.get('EnableColumn')
         if m.get('EnableCompute') is not None:
             self.enable_compute = m.get('EnableCompute')
         if m.get('EnableLts') is not None:
@@ -3537,6 +3582,7 @@ class ListLdpsComputeGroupsRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -3763,13 +3809,17 @@ class ListTagResourcesRequest(TeaModel):
         self.next_token = next_token
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region in which the instances whose tags you want to query are located. You can call the [DescribeRegions](~~426062~~) operation to query the region ID.
+        # The ID of the region in which the instances whose tags you want to query are located. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation to query the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The list of resource IDs.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The resource type. Set the value to **INSTANCE**.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         self.security_token = security_token
         # The list of tags associated with the instances you want to query.
@@ -4000,6 +4050,8 @@ class ModifyInstancePayTypeRequest(TeaModel):
         # *   If PricingCycle is set to Year, set this parameter to an integer that ranges from 1 to 3.
         self.duration = duration
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -4007,6 +4059,8 @@ class ModifyInstancePayTypeRequest(TeaModel):
         # 
         # *   **PREPAY**: subscription.
         # *   **POSTPAY**: pay-as-you-go.
+        # 
+        # This parameter is required.
         self.pay_type = pay_type
         # The unit of the subscription duration for the instance. Valid values:
         # 
@@ -4165,6 +4219,7 @@ class OpenComputeEngineRequest(TeaModel):
         security_token: str = None,
     ):
         self.cpu_limit = cpu_limit
+        # This parameter is required.
         self.instance_id = instance_id
         self.memory_limit = memory_limit
         self.owner_account = owner_account
@@ -4302,6 +4357,7 @@ class OpenComputePreCheckRequest(TeaModel):
         security_token: str = None,
     ):
         self.cpu_limit = cpu_limit
+        # This parameter is required.
         self.instance_id = instance_id
         self.memory_limit = memory_limit
         self.owner_account = owner_account
@@ -4439,6 +4495,7 @@ class ReleaseLindormInstanceRequest(TeaModel):
     ):
         # Specifies whether to release the instance immediately. If you set this parameter to false, data in the released instance is retained for seven days before it is completely deleted. If you set this parameter to true, data in the released instance is immediately deleted. The default value is false.
         self.immediately = immediately
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -4575,8 +4632,12 @@ class RenewLindormInstanceRequest(TeaModel):
         # 
         # *   If PricingCycle is set to **Month**, set this parameter to an integer that ranges from **1** to **9**.
         # *   If PricingCycle is set to **Year**, set this parameter to an integer that ranges from **1** to **3**.
+        # 
+        # This parameter is required.
         self.duration = duration
-        # The ID of the instance that you want to renew. You can call the [GetLindormInstanceList](~~426069~~) operation to obtain the instance ID.
+        # The ID of the instance that you want to renew. You can call the [GetLindormInstanceList](https://help.aliyun.com/document_detail/426069.html) operation to obtain the instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -4584,8 +4645,12 @@ class RenewLindormInstanceRequest(TeaModel):
         # 
         # *   **Month**: You are charged for the instance based on months.
         # *   **Year**: You are charged for the instance based on years.
+        # 
+        # This parameter is required.
         self.pricing_cycle = pricing_cycle
-        # The ID of the region in which the instance that you want to renew is located. You can call the [DescribeRegions](~~426062~~) operation to query the region ID.
+        # The ID of the region in which the instance that you want to renew is located. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation to query the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -4738,7 +4803,9 @@ class RestartLdpsComputeGroupRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # This parameter is required.
         self.group_name = group_name
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -4878,8 +4945,12 @@ class SwitchLSQLV3MySQLServiceRequest(TeaModel):
         # 
         # *   1: enables the MySQL compatibility feature.
         # *   0: disables the MySQL compatibility feature.
+        # 
+        # This parameter is required.
         self.action_type = action_type
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -5009,6 +5080,8 @@ class TagResourcesRequestTag(TeaModel):
         # The key of the tag that you want to associate with the resource.
         # 
         # > You can specify the keys of multiple tags. For example, you can specify the key of the first tag in the first key-value pair contained in the value of this parameter and specify the key of the second tag in the second key-value pair.
+        # 
+        # This parameter is required.
         self.key = key
         # The value of the tag that you want to associate with the resource.
         # 
@@ -5054,16 +5127,24 @@ class TagResourcesRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region in which the instances you want to associate tags with are located. You can call the [DescribeRegions](~~426062~~) operation to query the region ID.
+        # The ID of the region in which the instances you want to associate tags with are located. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation to query the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The list of resource IDs.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The resource type. Set the value to **INSTANCE**.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         self.security_token = security_token
         # The tags that you want to associate with the resource.
+        # 
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -5222,10 +5303,14 @@ class UntagResourcesRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The IDs of instances.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The resource type. Set the value to **INSTANCE**.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         self.security_token = security_token
         # The list of keys of the tags that you want to remove.
@@ -5368,7 +5453,9 @@ class UpdateInstanceIpWhiteListRequest(TeaModel):
         # Specifies whether to clear all IP addresses and CIDR blocks in the whitelist.
         self.delete = delete
         self.group_name = group_name
-        # The ID of the instance for which you want to configure a whitelist. You can call the [GetLindormInstanceList](~~426069~~) operation to obtain the ID.
+        # The ID of the instance for which you want to configure a whitelist. You can call the [GetLindormInstanceList](https://help.aliyun.com/document_detail/426069.html) operation to obtain the ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -5377,6 +5464,8 @@ class UpdateInstanceIpWhiteListRequest(TeaModel):
         # The IP addresses or CIDR blocks that you want to add to the whitelist.
         # 
         # >  If you add 127.0.0.1 to the whitelist, all IP addresses cannot be used to access the Lindorm instance. If you add the CIDR block 192.168.0.0/24 to the whitelist, you can use all IP addresses in the CIDR block to access the Lindorm instance. Separate multiple IP addresses or CIDR blocks with commas (,).
+        # 
+        # This parameter is required.
         self.security_ip_list = security_ip_list
         self.security_token = security_token
 
@@ -5512,11 +5601,13 @@ class UpdateInstanceSecurityGroupsRequest(TeaModel):
         security_groups: str = None,
         security_token: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # This parameter is required.
         self.security_groups = security_groups
         self.security_token = security_token
 
@@ -5645,7 +5736,9 @@ class UpdateLdpsComputeGroupRequest(TeaModel):
         resource_owner_id: int = None,
         security_token: str = None,
     ):
+        # This parameter is required.
         self.group_name = group_name
+        # This parameter is required.
         self.instance_id = instance_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -5821,7 +5914,9 @@ class UpgradeLindormInstanceRequest(TeaModel):
         # *   **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
         # *   **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
         self.filestore_spec = filestore_spec
-        # The ID of the instance that you want to upgrade, scale up, or enable cold storage. You can call the [GetLindormInstanceList](~~426069~~) operation to query the instance ID.
+        # The ID of the instance that you want to upgrade, scale up, or enable cold storage. You can call the [GetLindormInstanceList](https://help.aliyun.com/document_detail/426069.html) operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The number of LindormTable nodes in the instance after the instance is upgraded. Valid values: integers from **0** to **90**.
         # 
@@ -5854,7 +5949,9 @@ class UpgradeLindormInstanceRequest(TeaModel):
         self.lts_core_spec = lts_core_spec
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region in which the instance that you want to upgrade, scale up, or enable cold storage is located. You can call the [DescribeRegions](~~426062~~) operation to query the region ID.
+        # The ID of the region in which the instance that you want to upgrade, scale up, or enable cold storage is located. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation to query the region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -5887,8 +5984,12 @@ class UpgradeLindormInstanceRequest(TeaModel):
         # *   **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
         self.tsdb_spec = tsdb_spec
         # The upgrade type of the operation. For more information about upgrade types, see the UpgradeType parameters section.
+        # 
+        # This parameter is required.
         self.upgrade_type = upgrade_type
-        # The ID of the zone in which the instance that you want to upgrade, scale up, or enable cold storage is located. You can call the [GetLindormInstance](~~426067~~) operation to query the zone ID.
+        # The ID of the zone in which the instance that you want to upgrade, scale up, or enable cold storage is located. You can call the [GetLindormInstance](https://help.aliyun.com/document_detail/426067.html) operation to query the zone ID.
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
