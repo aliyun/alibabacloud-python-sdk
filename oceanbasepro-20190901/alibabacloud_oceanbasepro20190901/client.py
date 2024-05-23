@@ -41,11 +41,122 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def batch_kill_process_list_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.BatchKillProcessListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.BatchKillProcessListResponse:
+        """
+        @summary BatchKillProcessList
+        
+        @param request: BatchKillProcessListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchKillProcessListResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.session_list):
+            body['SessionList'] = request.session_list
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchKillProcessList',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.BatchKillProcessListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_kill_process_list_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.BatchKillProcessListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.BatchKillProcessListResponse:
+        """
+        @summary BatchKillProcessList
+        
+        @param request: BatchKillProcessListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BatchKillProcessListResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.session_list):
+            body['SessionList'] = request.session_list
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='BatchKillProcessList',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.BatchKillProcessListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_kill_process_list(
+        self,
+        request: ocean_base_pro_20190901_models.BatchKillProcessListRequest,
+    ) -> ocean_base_pro_20190901_models.BatchKillProcessListResponse:
+        """
+        @summary BatchKillProcessList
+        
+        @param request: BatchKillProcessListRequest
+        @return: BatchKillProcessListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.batch_kill_process_list_with_options(request, runtime)
+
+    async def batch_kill_process_list_async(
+        self,
+        request: ocean_base_pro_20190901_models.BatchKillProcessListRequest,
+    ) -> ocean_base_pro_20190901_models.BatchKillProcessListResponse:
+        """
+        @summary BatchKillProcessList
+        
+        @param request: BatchKillProcessListRequest
+        @return: BatchKillProcessListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.batch_kill_process_list_with_options_async(request, runtime)
+
     def cancel_project_modify_record_with_options(
         self,
         request: ocean_base_pro_20190901_models.CancelProjectModifyRecordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CancelProjectModifyRecordResponse:
+        """
+        @summary 根据记录id取消修改操作 （仅支持处于 PENDING 状态的修改记录）
+        
+        @param request: CancelProjectModifyRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelProjectModifyRecordResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -74,6 +185,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.CancelProjectModifyRecordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CancelProjectModifyRecordResponse:
+        """
+        @summary 根据记录id取消修改操作 （仅支持处于 PENDING 状态的修改记录）
+        
+        @param request: CancelProjectModifyRecordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelProjectModifyRecordResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -101,6 +219,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.CancelProjectModifyRecordRequest,
     ) -> ocean_base_pro_20190901_models.CancelProjectModifyRecordResponse:
+        """
+        @summary 根据记录id取消修改操作 （仅支持处于 PENDING 状态的修改记录）
+        
+        @param request: CancelProjectModifyRecordRequest
+        @return: CancelProjectModifyRecordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.cancel_project_modify_record_with_options(request, runtime)
 
@@ -108,6 +232,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.CancelProjectModifyRecordRequest,
     ) -> ocean_base_pro_20190901_models.CancelProjectModifyRecordResponse:
+        """
+        @summary 根据记录id取消修改操作 （仅支持处于 PENDING 状态的修改记录）
+        
+        @param request: CancelProjectModifyRecordRequest
+        @return: CancelProjectModifyRecordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.cancel_project_modify_record_with_options_async(request, runtime)
 
@@ -116,6 +246,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.CreateBackupSetDownloadLinkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateBackupSetDownloadLinkResponse:
+        """
+        @summary 创建备份任务下载链接
+        
+        @param request: CreateBackupSetDownloadLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBackupSetDownloadLinkResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.backup_set_id):
@@ -146,6 +283,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.CreateBackupSetDownloadLinkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateBackupSetDownloadLinkResponse:
+        """
+        @summary 创建备份任务下载链接
+        
+        @param request: CreateBackupSetDownloadLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBackupSetDownloadLinkResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.backup_set_id):
@@ -175,6 +319,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.CreateBackupSetDownloadLinkRequest,
     ) -> ocean_base_pro_20190901_models.CreateBackupSetDownloadLinkResponse:
+        """
+        @summary 创建备份任务下载链接
+        
+        @param request: CreateBackupSetDownloadLinkRequest
+        @return: CreateBackupSetDownloadLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_backup_set_download_link_with_options(request, runtime)
 
@@ -182,6 +332,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.CreateBackupSetDownloadLinkRequest,
     ) -> ocean_base_pro_20190901_models.CreateBackupSetDownloadLinkResponse:
+        """
+        @summary 创建备份任务下载链接
+        
+        @param request: CreateBackupSetDownloadLinkRequest
+        @return: CreateBackupSetDownloadLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_backup_set_download_link_with_options_async(request, runtime)
 
@@ -190,6 +346,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.CreateDatabaseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateDatabaseResponse:
+        """
+        @summary The request ID.
+        
+        @param request: CreateDatabaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDatabaseResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -230,6 +393,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.CreateDatabaseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateDatabaseResponse:
+        """
+        @summary The request ID.
+        
+        @param request: CreateDatabaseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDatabaseResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_token):
@@ -269,6 +439,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.CreateDatabaseRequest,
     ) -> ocean_base_pro_20190901_models.CreateDatabaseResponse:
+        """
+        @summary The request ID.
+        
+        @param request: CreateDatabaseRequest
+        @return: CreateDatabaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_database_with_options(request, runtime)
 
@@ -276,6 +452,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.CreateDatabaseRequest,
     ) -> ocean_base_pro_20190901_models.CreateDatabaseResponse:
+        """
+        @summary The request ID.
+        
+        @param request: CreateDatabaseRequest
+        @return: CreateDatabaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_database_with_options_async(request, runtime)
 
@@ -284,6 +466,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.CreateInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateInstanceResponse:
+        """
+        @summary You can call this operation to create an OceanBase cluster.
+        
+        @param request: CreateInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auto_renew):
@@ -292,6 +481,8 @@ class Client(OpenApiClient):
             body['AutoRenewPeriod'] = request.auto_renew_period
         if not UtilClient.is_unset(request.charge_type):
             body['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.cpu_arch):
+            body['CpuArch'] = request.cpu_arch
         if not UtilClient.is_unset(request.disk_size):
             body['DiskSize'] = request.disk_size
         if not UtilClient.is_unset(request.disk_type):
@@ -346,6 +537,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.CreateInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateInstanceResponse:
+        """
+        @summary You can call this operation to create an OceanBase cluster.
+        
+        @param request: CreateInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auto_renew):
@@ -354,6 +552,8 @@ class Client(OpenApiClient):
             body['AutoRenewPeriod'] = request.auto_renew_period
         if not UtilClient.is_unset(request.charge_type):
             body['ChargeType'] = request.charge_type
+        if not UtilClient.is_unset(request.cpu_arch):
+            body['CpuArch'] = request.cpu_arch
         if not UtilClient.is_unset(request.disk_size):
             body['DiskSize'] = request.disk_size
         if not UtilClient.is_unset(request.disk_type):
@@ -407,6 +607,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.CreateInstanceRequest,
     ) -> ocean_base_pro_20190901_models.CreateInstanceResponse:
+        """
+        @summary You can call this operation to create an OceanBase cluster.
+        
+        @param request: CreateInstanceRequest
+        @return: CreateInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_instance_with_options(request, runtime)
 
@@ -414,6 +620,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.CreateInstanceRequest,
     ) -> ocean_base_pro_20190901_models.CreateInstanceResponse:
+        """
+        @summary You can call this operation to create an OceanBase cluster.
+        
+        @param request: CreateInstanceRequest
+        @return: CreateInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_instance_with_options_async(request, runtime)
 
@@ -422,6 +634,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.CreateLabelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateLabelResponse:
+        """
+        @summary 创建标签
+        
+        @param request: CreateLabelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLabelResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.name):
@@ -450,6 +669,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.CreateLabelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateLabelResponse:
+        """
+        @summary 创建标签
+        
+        @param request: CreateLabelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLabelResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.name):
@@ -477,6 +703,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.CreateLabelRequest,
     ) -> ocean_base_pro_20190901_models.CreateLabelResponse:
+        """
+        @summary 创建标签
+        
+        @param request: CreateLabelRequest
+        @return: CreateLabelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_label_with_options(request, runtime)
 
@@ -484,6 +716,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.CreateLabelRequest,
     ) -> ocean_base_pro_20190901_models.CreateLabelResponse:
+        """
+        @summary 创建标签
+        
+        @param request: CreateLabelRequest
+        @return: CreateLabelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_label_with_options_async(request, runtime)
 
@@ -492,6 +730,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.CreateMySqlDataSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateMySqlDataSourceResponse:
+        """
+        @summary 创建 MySQL 数据源
+        
+        @param request: CreateMySqlDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMySqlDataSourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -540,6 +785,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.CreateMySqlDataSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateMySqlDataSourceResponse:
+        """
+        @summary 创建 MySQL 数据源
+        
+        @param request: CreateMySqlDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMySqlDataSourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -587,6 +839,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.CreateMySqlDataSourceRequest,
     ) -> ocean_base_pro_20190901_models.CreateMySqlDataSourceResponse:
+        """
+        @summary 创建 MySQL 数据源
+        
+        @param request: CreateMySqlDataSourceRequest
+        @return: CreateMySqlDataSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_my_sql_data_source_with_options(request, runtime)
 
@@ -594,6 +852,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.CreateMySqlDataSourceRequest,
     ) -> ocean_base_pro_20190901_models.CreateMySqlDataSourceResponse:
+        """
+        @summary 创建 MySQL 数据源
+        
+        @param request: CreateMySqlDataSourceRequest
+        @return: CreateMySqlDataSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_my_sql_data_source_with_options_async(request, runtime)
 
@@ -602,6 +866,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.CreateOceanBaseDataSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateOceanBaseDataSourceResponse:
+        """
+        @summary 创建 OceanBase 数据源
+        
+        @param request: CreateOceanBaseDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOceanBaseDataSourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cluster):
@@ -660,6 +931,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.CreateOceanBaseDataSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateOceanBaseDataSourceResponse:
+        """
+        @summary 创建 OceanBase 数据源
+        
+        @param request: CreateOceanBaseDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOceanBaseDataSourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cluster):
@@ -717,6 +995,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.CreateOceanBaseDataSourceRequest,
     ) -> ocean_base_pro_20190901_models.CreateOceanBaseDataSourceResponse:
+        """
+        @summary 创建 OceanBase 数据源
+        
+        @param request: CreateOceanBaseDataSourceRequest
+        @return: CreateOceanBaseDataSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_ocean_base_data_source_with_options(request, runtime)
 
@@ -724,6 +1008,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.CreateOceanBaseDataSourceRequest,
     ) -> ocean_base_pro_20190901_models.CreateOceanBaseDataSourceResponse:
+        """
+        @summary 创建 OceanBase 数据源
+        
+        @param request: CreateOceanBaseDataSourceRequest
+        @return: CreateOceanBaseDataSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_ocean_base_data_source_with_options_async(request, runtime)
 
@@ -733,7 +1023,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateOmsMysqlDataSourceResponse:
         """
-        To call this operation, you must add the IP address of the OceanBase Migration Service (OMS) server to the whitelist of the Alibaba Cloud database instance, the security rules of the ECS instance, or the security settings of your self-managed database (usually the firewall of your self-managed database) to ensure that OMS can successfully access your database instance. To obtain the IP address of the OMS server, go to the OMS data source management page in the OMS console.
+        @summary You can call this operation to create a MySQL data source.
+        
+        @description To call this operation, you must add the IP address of the OceanBase Migration Service (OMS) server to the whitelist of the Alibaba Cloud database instance, the security rules of the ECS instance, or the security settings of your self-managed database (usually the firewall of your self-managed database) to ensure that OMS can successfully access your database instance. To obtain the IP address of the OMS server, go to the OMS data source management page in the OMS console.
         
         @param request: CreateOmsMysqlDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -788,7 +1080,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateOmsMysqlDataSourceResponse:
         """
-        To call this operation, you must add the IP address of the OceanBase Migration Service (OMS) server to the whitelist of the Alibaba Cloud database instance, the security rules of the ECS instance, or the security settings of your self-managed database (usually the firewall of your self-managed database) to ensure that OMS can successfully access your database instance. To obtain the IP address of the OMS server, go to the OMS data source management page in the OMS console.
+        @summary You can call this operation to create a MySQL data source.
+        
+        @description To call this operation, you must add the IP address of the OceanBase Migration Service (OMS) server to the whitelist of the Alibaba Cloud database instance, the security rules of the ECS instance, or the security settings of your self-managed database (usually the firewall of your self-managed database) to ensure that OMS can successfully access your database instance. To obtain the IP address of the OMS server, go to the OMS data source management page in the OMS console.
         
         @param request: CreateOmsMysqlDataSourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -842,7 +1136,9 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.CreateOmsMysqlDataSourceRequest,
     ) -> ocean_base_pro_20190901_models.CreateOmsMysqlDataSourceResponse:
         """
-        To call this operation, you must add the IP address of the OceanBase Migration Service (OMS) server to the whitelist of the Alibaba Cloud database instance, the security rules of the ECS instance, or the security settings of your self-managed database (usually the firewall of your self-managed database) to ensure that OMS can successfully access your database instance. To obtain the IP address of the OMS server, go to the OMS data source management page in the OMS console.
+        @summary You can call this operation to create a MySQL data source.
+        
+        @description To call this operation, you must add the IP address of the OceanBase Migration Service (OMS) server to the whitelist of the Alibaba Cloud database instance, the security rules of the ECS instance, or the security settings of your self-managed database (usually the firewall of your self-managed database) to ensure that OMS can successfully access your database instance. To obtain the IP address of the OMS server, go to the OMS data source management page in the OMS console.
         
         @param request: CreateOmsMysqlDataSourceRequest
         @return: CreateOmsMysqlDataSourceResponse
@@ -855,7 +1151,9 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.CreateOmsMysqlDataSourceRequest,
     ) -> ocean_base_pro_20190901_models.CreateOmsMysqlDataSourceResponse:
         """
-        To call this operation, you must add the IP address of the OceanBase Migration Service (OMS) server to the whitelist of the Alibaba Cloud database instance, the security rules of the ECS instance, or the security settings of your self-managed database (usually the firewall of your self-managed database) to ensure that OMS can successfully access your database instance. To obtain the IP address of the OMS server, go to the OMS data source management page in the OMS console.
+        @summary You can call this operation to create a MySQL data source.
+        
+        @description To call this operation, you must add the IP address of the OceanBase Migration Service (OMS) server to the whitelist of the Alibaba Cloud database instance, the security rules of the ECS instance, or the security settings of your self-managed database (usually the firewall of your self-managed database) to ensure that OMS can successfully access your database instance. To obtain the IP address of the OMS server, go to the OMS data source management page in the OMS console.
         
         @param request: CreateOmsMysqlDataSourceRequest
         @return: CreateOmsMysqlDataSourceResponse
@@ -868,6 +1166,13 @@ class Client(OpenApiClient):
         tmp_req: ocean_base_pro_20190901_models.CreateProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateProjectResponse:
+        """
+        @summary 创建项目
+        
+        @param tmp_req: CreateProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProjectResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ocean_base_pro_20190901_models.CreateProjectShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -950,6 +1255,13 @@ class Client(OpenApiClient):
         tmp_req: ocean_base_pro_20190901_models.CreateProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateProjectResponse:
+        """
+        @summary 创建项目
+        
+        @param tmp_req: CreateProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProjectResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ocean_base_pro_20190901_models.CreateProjectShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1031,6 +1343,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.CreateProjectRequest,
     ) -> ocean_base_pro_20190901_models.CreateProjectResponse:
+        """
+        @summary 创建项目
+        
+        @param request: CreateProjectRequest
+        @return: CreateProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_project_with_options(request, runtime)
 
@@ -1038,6 +1356,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.CreateProjectRequest,
     ) -> ocean_base_pro_20190901_models.CreateProjectResponse:
+        """
+        @summary 创建项目
+        
+        @param request: CreateProjectRequest
+        @return: CreateProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_project_with_options_async(request, runtime)
 
@@ -1046,6 +1370,13 @@ class Client(OpenApiClient):
         tmp_req: ocean_base_pro_20190901_models.CreateProjectModifyRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateProjectModifyRecordsResponse:
+        """
+        @summary 修改传输对象（加减表）(仅支持处于 RUNNING/FAILED/SUSPEND 状态的项目)
+        
+        @param tmp_req: CreateProjectModifyRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProjectModifyRecordsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ocean_base_pro_20190901_models.CreateProjectModifyRecordsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1080,6 +1411,13 @@ class Client(OpenApiClient):
         tmp_req: ocean_base_pro_20190901_models.CreateProjectModifyRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateProjectModifyRecordsResponse:
+        """
+        @summary 修改传输对象（加减表）(仅支持处于 RUNNING/FAILED/SUSPEND 状态的项目)
+        
+        @param tmp_req: CreateProjectModifyRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProjectModifyRecordsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ocean_base_pro_20190901_models.CreateProjectModifyRecordsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1113,6 +1451,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.CreateProjectModifyRecordsRequest,
     ) -> ocean_base_pro_20190901_models.CreateProjectModifyRecordsResponse:
+        """
+        @summary 修改传输对象（加减表）(仅支持处于 RUNNING/FAILED/SUSPEND 状态的项目)
+        
+        @param request: CreateProjectModifyRecordsRequest
+        @return: CreateProjectModifyRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_project_modify_records_with_options(request, runtime)
 
@@ -1120,6 +1464,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.CreateProjectModifyRecordsRequest,
     ) -> ocean_base_pro_20190901_models.CreateProjectModifyRecordsResponse:
+        """
+        @summary 修改传输对象（加减表）(仅支持处于 RUNNING/FAILED/SUSPEND 状态的项目)
+        
+        @param request: CreateProjectModifyRecordsRequest
+        @return: CreateProjectModifyRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_project_modify_records_with_options_async(request, runtime)
 
@@ -1128,6 +1478,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.CreateRdsPostgreSQLDataSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateRdsPostgreSQLDataSourceResponse:
+        """
+        @summary 创建RDS PG 数据源
+        
+        @param request: CreateRdsPostgreSQLDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRdsPostgreSQLDataSourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.database_name):
@@ -1166,6 +1523,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.CreateRdsPostgreSQLDataSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateRdsPostgreSQLDataSourceResponse:
+        """
+        @summary 创建RDS PG 数据源
+        
+        @param request: CreateRdsPostgreSQLDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRdsPostgreSQLDataSourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.database_name):
@@ -1203,6 +1567,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.CreateRdsPostgreSQLDataSourceRequest,
     ) -> ocean_base_pro_20190901_models.CreateRdsPostgreSQLDataSourceResponse:
+        """
+        @summary 创建RDS PG 数据源
+        
+        @param request: CreateRdsPostgreSQLDataSourceRequest
+        @return: CreateRdsPostgreSQLDataSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_rds_postgre_sqldata_source_with_options(request, runtime)
 
@@ -1210,6 +1580,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.CreateRdsPostgreSQLDataSourceRequest,
     ) -> ocean_base_pro_20190901_models.CreateRdsPostgreSQLDataSourceResponse:
+        """
+        @summary 创建RDS PG 数据源
+        
+        @param request: CreateRdsPostgreSQLDataSourceRequest
+        @return: CreateRdsPostgreSQLDataSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_rds_postgre_sqldata_source_with_options_async(request, runtime)
 
@@ -1218,6 +1594,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.CreateSecurityIpGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateSecurityIpGroupResponse:
+        """
+        @summary The name of the whitelist group.
+        
+        @param request: CreateSecurityIpGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSecurityIpGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1250,6 +1633,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.CreateSecurityIpGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateSecurityIpGroupResponse:
+        """
+        @summary The name of the whitelist group.
+        
+        @param request: CreateSecurityIpGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSecurityIpGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1281,6 +1671,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.CreateSecurityIpGroupRequest,
     ) -> ocean_base_pro_20190901_models.CreateSecurityIpGroupResponse:
+        """
+        @summary The name of the whitelist group.
+        
+        @param request: CreateSecurityIpGroupRequest
+        @return: CreateSecurityIpGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_security_ip_group_with_options(request, runtime)
 
@@ -1288,20 +1684,39 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.CreateSecurityIpGroupRequest,
     ) -> ocean_base_pro_20190901_models.CreateSecurityIpGroupResponse:
+        """
+        @summary The name of the whitelist group.
+        
+        @param request: CreateSecurityIpGroupRequest
+        @return: CreateSecurityIpGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_security_ip_group_with_options_async(request, runtime)
 
     def create_tenant_with_options(
         self,
-        request: ocean_base_pro_20190901_models.CreateTenantRequest,
+        tmp_req: ocean_base_pro_20190901_models.CreateTenantRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateTenantResponse:
-        UtilClient.validate_model(request)
+        """
+        @summary You can call this operation to create a tenant.
+        
+        @param tmp_req: CreateTenantRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTenantResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ocean_base_pro_20190901_models.CreateTenantShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.create_params):
+            request.create_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.create_params, 'CreateParams', 'json')
         body = {}
         if not UtilClient.is_unset(request.charset):
             body['Charset'] = request.charset
         if not UtilClient.is_unset(request.cpu):
             body['Cpu'] = request.cpu
+        if not UtilClient.is_unset(request.create_params_shrink):
+            body['CreateParams'] = request.create_params_shrink
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.instance_id):
@@ -1326,6 +1741,8 @@ class Client(OpenApiClient):
             body['UserVSwitchId'] = request.user_vswitch_id
         if not UtilClient.is_unset(request.user_vpc_id):
             body['UserVpcId'] = request.user_vpc_id
+        if not UtilClient.is_unset(request.user_vpc_owner_id):
+            body['UserVpcOwnerId'] = request.user_vpc_owner_id
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1347,15 +1764,28 @@ class Client(OpenApiClient):
 
     async def create_tenant_with_options_async(
         self,
-        request: ocean_base_pro_20190901_models.CreateTenantRequest,
+        tmp_req: ocean_base_pro_20190901_models.CreateTenantRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateTenantResponse:
-        UtilClient.validate_model(request)
+        """
+        @summary You can call this operation to create a tenant.
+        
+        @param tmp_req: CreateTenantRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTenantResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ocean_base_pro_20190901_models.CreateTenantShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.create_params):
+            request.create_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.create_params, 'CreateParams', 'json')
         body = {}
         if not UtilClient.is_unset(request.charset):
             body['Charset'] = request.charset
         if not UtilClient.is_unset(request.cpu):
             body['Cpu'] = request.cpu
+        if not UtilClient.is_unset(request.create_params_shrink):
+            body['CreateParams'] = request.create_params_shrink
         if not UtilClient.is_unset(request.description):
             body['Description'] = request.description
         if not UtilClient.is_unset(request.instance_id):
@@ -1380,6 +1810,8 @@ class Client(OpenApiClient):
             body['UserVSwitchId'] = request.user_vswitch_id
         if not UtilClient.is_unset(request.user_vpc_id):
             body['UserVpcId'] = request.user_vpc_id
+        if not UtilClient.is_unset(request.user_vpc_owner_id):
+            body['UserVpcOwnerId'] = request.user_vpc_owner_id
         req = open_api_models.OpenApiRequest(
             body=OpenApiUtilClient.parse_to_map(body)
         )
@@ -1403,6 +1835,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.CreateTenantRequest,
     ) -> ocean_base_pro_20190901_models.CreateTenantResponse:
+        """
+        @summary You can call this operation to create a tenant.
+        
+        @param request: CreateTenantRequest
+        @return: CreateTenantResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_tenant_with_options(request, runtime)
 
@@ -1410,6 +1848,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.CreateTenantRequest,
     ) -> ocean_base_pro_20190901_models.CreateTenantResponse:
+        """
+        @summary You can call this operation to create a tenant.
+        
+        @param request: CreateTenantRequest
+        @return: CreateTenantResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_tenant_with_options_async(request, runtime)
 
@@ -1418,6 +1862,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.CreateTenantReadOnlyConnectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateTenantReadOnlyConnectionResponse:
+        """
+        @summary The request ID.
+        
+        @param request: CreateTenantReadOnlyConnectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTenantReadOnlyConnectionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1454,6 +1905,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.CreateTenantReadOnlyConnectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateTenantReadOnlyConnectionResponse:
+        """
+        @summary The request ID.
+        
+        @param request: CreateTenantReadOnlyConnectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTenantReadOnlyConnectionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1489,6 +1947,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.CreateTenantReadOnlyConnectionRequest,
     ) -> ocean_base_pro_20190901_models.CreateTenantReadOnlyConnectionResponse:
+        """
+        @summary The request ID.
+        
+        @param request: CreateTenantReadOnlyConnectionRequest
+        @return: CreateTenantReadOnlyConnectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_tenant_read_only_connection_with_options(request, runtime)
 
@@ -1496,6 +1960,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.CreateTenantReadOnlyConnectionRequest,
     ) -> ocean_base_pro_20190901_models.CreateTenantReadOnlyConnectionResponse:
+        """
+        @summary The request ID.
+        
+        @param request: CreateTenantReadOnlyConnectionRequest
+        @return: CreateTenantReadOnlyConnectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_tenant_read_only_connection_with_options_async(request, runtime)
 
@@ -1504,6 +1974,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.CreateTenantSecurityIpGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateTenantSecurityIpGroupResponse:
+        """
+        @summary You can call this operation to create the security whitelist for the tenant.
+        
+        @param request: CreateTenantSecurityIpGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTenantSecurityIpGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1538,6 +2015,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.CreateTenantSecurityIpGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateTenantSecurityIpGroupResponse:
+        """
+        @summary You can call this operation to create the security whitelist for the tenant.
+        
+        @param request: CreateTenantSecurityIpGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTenantSecurityIpGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -1571,6 +2055,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.CreateTenantSecurityIpGroupRequest,
     ) -> ocean_base_pro_20190901_models.CreateTenantSecurityIpGroupResponse:
+        """
+        @summary You can call this operation to create the security whitelist for the tenant.
+        
+        @param request: CreateTenantSecurityIpGroupRequest
+        @return: CreateTenantSecurityIpGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_tenant_security_ip_group_with_options(request, runtime)
 
@@ -1578,6 +2068,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.CreateTenantSecurityIpGroupRequest,
     ) -> ocean_base_pro_20190901_models.CreateTenantSecurityIpGroupResponse:
+        """
+        @summary You can call this operation to create the security whitelist for the tenant.
+        
+        @param request: CreateTenantSecurityIpGroupRequest
+        @return: CreateTenantSecurityIpGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_tenant_security_ip_group_with_options_async(request, runtime)
 
@@ -1586,6 +2082,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.CreateTenantUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateTenantUserResponse:
+        """
+        @summary CreateTenantUser
+        
+        @param request: CreateTenantUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTenantUserResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -1628,6 +2131,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.CreateTenantUserRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.CreateTenantUserResponse:
+        """
+        @summary CreateTenantUser
+        
+        @param request: CreateTenantUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTenantUserResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -1669,6 +2179,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.CreateTenantUserRequest,
     ) -> ocean_base_pro_20190901_models.CreateTenantUserResponse:
+        """
+        @summary CreateTenantUser
+        
+        @param request: CreateTenantUserRequest
+        @return: CreateTenantUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_tenant_user_with_options(request, runtime)
 
@@ -1676,6 +2192,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.CreateTenantUserRequest,
     ) -> ocean_base_pro_20190901_models.CreateTenantUserResponse:
+        """
+        @summary CreateTenantUser
+        
+        @param request: CreateTenantUserRequest
+        @return: CreateTenantUserResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_tenant_user_with_options_async(request, runtime)
 
@@ -1684,6 +2206,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DeleteDataSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DeleteDataSourceResponse:
+        """
+        @summary 删除数据源
+        
+        @param request: DeleteDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataSourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -1712,6 +2241,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DeleteDataSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DeleteDataSourceResponse:
+        """
+        @summary 删除数据源
+        
+        @param request: DeleteDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataSourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -1739,6 +2275,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DeleteDataSourceRequest,
     ) -> ocean_base_pro_20190901_models.DeleteDataSourceResponse:
+        """
+        @summary 删除数据源
+        
+        @param request: DeleteDataSourceRequest
+        @return: DeleteDataSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_data_source_with_options(request, runtime)
 
@@ -1746,6 +2288,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DeleteDataSourceRequest,
     ) -> ocean_base_pro_20190901_models.DeleteDataSourceResponse:
+        """
+        @summary 删除数据源
+        
+        @param request: DeleteDataSourceRequest
+        @return: DeleteDataSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_data_source_with_options_async(request, runtime)
 
@@ -1754,6 +2302,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DeleteDatabasesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DeleteDatabasesResponse:
+        """
+        @summary The request ID.
+        
+        @param request: DeleteDatabasesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDatabasesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.database_names):
@@ -1786,6 +2341,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DeleteDatabasesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DeleteDatabasesResponse:
+        """
+        @summary The request ID.
+        
+        @param request: DeleteDatabasesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDatabasesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.database_names):
@@ -1817,6 +2379,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DeleteDatabasesRequest,
     ) -> ocean_base_pro_20190901_models.DeleteDatabasesResponse:
+        """
+        @summary The request ID.
+        
+        @param request: DeleteDatabasesRequest
+        @return: DeleteDatabasesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_databases_with_options(request, runtime)
 
@@ -1824,6 +2392,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DeleteDatabasesRequest,
     ) -> ocean_base_pro_20190901_models.DeleteDatabasesResponse:
+        """
+        @summary The request ID.
+        
+        @param request: DeleteDatabasesRequest
+        @return: DeleteDatabasesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_databases_with_options_async(request, runtime)
 
@@ -1833,7 +2407,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DeleteInstancesResponse:
         """
-        Before you call this operation, ensure that the following requirements are met:
+        @summary You can call this operation to release an OceanBase cluster.
+        
+        @description Before you call this operation, ensure that the following requirements are met:
         - The cluster is in the Running state.
         - The cluster is a primary cluster and the billing method is pay-as-you-go.
         
@@ -1874,7 +2450,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DeleteInstancesResponse:
         """
-        Before you call this operation, ensure that the following requirements are met:
+        @summary You can call this operation to release an OceanBase cluster.
+        
+        @description Before you call this operation, ensure that the following requirements are met:
         - The cluster is in the Running state.
         - The cluster is a primary cluster and the billing method is pay-as-you-go.
         
@@ -1914,7 +2492,9 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DeleteInstancesRequest,
     ) -> ocean_base_pro_20190901_models.DeleteInstancesResponse:
         """
-        Before you call this operation, ensure that the following requirements are met:
+        @summary You can call this operation to release an OceanBase cluster.
+        
+        @description Before you call this operation, ensure that the following requirements are met:
         - The cluster is in the Running state.
         - The cluster is a primary cluster and the billing method is pay-as-you-go.
         
@@ -1929,7 +2509,9 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DeleteInstancesRequest,
     ) -> ocean_base_pro_20190901_models.DeleteInstancesResponse:
         """
-        Before you call this operation, ensure that the following requirements are met:
+        @summary You can call this operation to release an OceanBase cluster.
+        
+        @description Before you call this operation, ensure that the following requirements are met:
         - The cluster is in the Running state.
         - The cluster is a primary cluster and the billing method is pay-as-you-go.
         
@@ -1944,6 +2526,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DeleteProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DeleteProjectResponse:
+        """
+        @summary 删除项目
+        
+        @param request: DeleteProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteProjectResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -1972,6 +2561,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DeleteProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DeleteProjectResponse:
+        """
+        @summary 删除项目
+        
+        @param request: DeleteProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteProjectResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -1999,6 +2595,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DeleteProjectRequest,
     ) -> ocean_base_pro_20190901_models.DeleteProjectResponse:
+        """
+        @summary 删除项目
+        
+        @param request: DeleteProjectRequest
+        @return: DeleteProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_project_with_options(request, runtime)
 
@@ -2006,6 +2608,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DeleteProjectRequest,
     ) -> ocean_base_pro_20190901_models.DeleteProjectResponse:
+        """
+        @summary 删除项目
+        
+        @param request: DeleteProjectRequest
+        @return: DeleteProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_project_with_options_async(request, runtime)
 
@@ -2014,6 +2622,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DeleteSecurityIpGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DeleteSecurityIpGroupResponse:
+        """
+        @summary The name of the deleted IP address whitelist group.
+        
+        @param request: DeleteSecurityIpGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSecurityIpGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -2044,6 +2659,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DeleteSecurityIpGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DeleteSecurityIpGroupResponse:
+        """
+        @summary The name of the deleted IP address whitelist group.
+        
+        @param request: DeleteSecurityIpGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSecurityIpGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -2073,6 +2695,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DeleteSecurityIpGroupRequest,
     ) -> ocean_base_pro_20190901_models.DeleteSecurityIpGroupResponse:
+        """
+        @summary The name of the deleted IP address whitelist group.
+        
+        @param request: DeleteSecurityIpGroupRequest
+        @return: DeleteSecurityIpGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_security_ip_group_with_options(request, runtime)
 
@@ -2080,6 +2708,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DeleteSecurityIpGroupRequest,
     ) -> ocean_base_pro_20190901_models.DeleteSecurityIpGroupResponse:
+        """
+        @summary The name of the deleted IP address whitelist group.
+        
+        @param request: DeleteSecurityIpGroupRequest
+        @return: DeleteSecurityIpGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_security_ip_group_with_options_async(request, runtime)
 
@@ -2088,6 +2722,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DeleteTenantSecurityIpGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DeleteTenantSecurityIpGroupResponse:
+        """
+        @summary You can call this operation to delete the information on the whitelist group of the tenant.
+        
+        @param request: DeleteTenantSecurityIpGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTenantSecurityIpGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -2120,6 +2761,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DeleteTenantSecurityIpGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DeleteTenantSecurityIpGroupResponse:
+        """
+        @summary You can call this operation to delete the information on the whitelist group of the tenant.
+        
+        @param request: DeleteTenantSecurityIpGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTenantSecurityIpGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -2151,6 +2799,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DeleteTenantSecurityIpGroupRequest,
     ) -> ocean_base_pro_20190901_models.DeleteTenantSecurityIpGroupResponse:
+        """
+        @summary You can call this operation to delete the information on the whitelist group of the tenant.
+        
+        @param request: DeleteTenantSecurityIpGroupRequest
+        @return: DeleteTenantSecurityIpGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_tenant_security_ip_group_with_options(request, runtime)
 
@@ -2158,6 +2812,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DeleteTenantSecurityIpGroupRequest,
     ) -> ocean_base_pro_20190901_models.DeleteTenantSecurityIpGroupResponse:
+        """
+        @summary You can call this operation to delete the information on the whitelist group of the tenant.
+        
+        @param request: DeleteTenantSecurityIpGroupRequest
+        @return: DeleteTenantSecurityIpGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_tenant_security_ip_group_with_options_async(request, runtime)
 
@@ -2166,6 +2826,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DeleteTenantUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DeleteTenantUsersResponse:
+        """
+        @summary You can call this operation to delete one or more database accounts.
+        
+        @param request: DeleteTenantUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTenantUsersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -2198,6 +2865,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DeleteTenantUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DeleteTenantUsersResponse:
+        """
+        @summary You can call this operation to delete one or more database accounts.
+        
+        @param request: DeleteTenantUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTenantUsersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -2229,6 +2903,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DeleteTenantUsersRequest,
     ) -> ocean_base_pro_20190901_models.DeleteTenantUsersResponse:
+        """
+        @summary You can call this operation to delete one or more database accounts.
+        
+        @param request: DeleteTenantUsersRequest
+        @return: DeleteTenantUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_tenant_users_with_options(request, runtime)
 
@@ -2236,6 +2916,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DeleteTenantUsersRequest,
     ) -> ocean_base_pro_20190901_models.DeleteTenantUsersResponse:
+        """
+        @summary You can call this operation to delete one or more database accounts.
+        
+        @param request: DeleteTenantUsersRequest
+        @return: DeleteTenantUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_tenant_users_with_options_async(request, runtime)
 
@@ -2244,6 +2930,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DeleteTenantsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DeleteTenantsResponse:
+        """
+        @summary The return result of the request.
+        
+        @param request: DeleteTenantsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTenantsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -2274,6 +2967,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DeleteTenantsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DeleteTenantsResponse:
+        """
+        @summary The return result of the request.
+        
+        @param request: DeleteTenantsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTenantsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -2303,6 +3003,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DeleteTenantsRequest,
     ) -> ocean_base_pro_20190901_models.DeleteTenantsResponse:
+        """
+        @summary The return result of the request.
+        
+        @param request: DeleteTenantsRequest
+        @return: DeleteTenantsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_tenants_with_options(request, runtime)
 
@@ -2310,6 +3016,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DeleteTenantsRequest,
     ) -> ocean_base_pro_20190901_models.DeleteTenantsResponse:
+        """
+        @summary The return result of the request.
+        
+        @param request: DeleteTenantsRequest
+        @return: DeleteTenantsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_tenants_with_options_async(request, runtime)
 
@@ -2318,6 +3030,13 @@ class Client(OpenApiClient):
         tmp_req: ocean_base_pro_20190901_models.DescribeAnomalySQLListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeAnomalySQLListResponse:
+        """
+        @summary You can call this operation to obtain the list of SQL statements that may have performance problems according to the diagnostic system.
+        
+        @param tmp_req: DescribeAnomalySQLListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAnomalySQLListResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ocean_base_pro_20190901_models.DescribeAnomalySQLListShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2382,6 +3101,13 @@ class Client(OpenApiClient):
         tmp_req: ocean_base_pro_20190901_models.DescribeAnomalySQLListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeAnomalySQLListResponse:
+        """
+        @summary You can call this operation to obtain the list of SQL statements that may have performance problems according to the diagnostic system.
+        
+        @param tmp_req: DescribeAnomalySQLListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAnomalySQLListResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ocean_base_pro_20190901_models.DescribeAnomalySQLListShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -2445,6 +3171,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeAnomalySQLListRequest,
     ) -> ocean_base_pro_20190901_models.DescribeAnomalySQLListResponse:
+        """
+        @summary You can call this operation to obtain the list of SQL statements that may have performance problems according to the diagnostic system.
+        
+        @param request: DescribeAnomalySQLListRequest
+        @return: DescribeAnomalySQLListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_anomaly_sqllist_with_options(request, runtime)
 
@@ -2452,6 +3184,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeAnomalySQLListRequest,
     ) -> ocean_base_pro_20190901_models.DescribeAnomalySQLListResponse:
+        """
+        @summary You can call this operation to obtain the list of SQL statements that may have performance problems according to the diagnostic system.
+        
+        @param request: DescribeAnomalySQLListRequest
+        @return: DescribeAnomalySQLListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_anomaly_sqllist_with_options_async(request, runtime)
 
@@ -2460,6 +3198,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeAvailableCpuResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeAvailableCpuResourceResponse:
+        """
+        @summary The maximum number of CPU cores per resource unit.
+        
+        @param request: DescribeAvailableCpuResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAvailableCpuResourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -2492,6 +3237,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeAvailableCpuResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeAvailableCpuResourceResponse:
+        """
+        @summary The maximum number of CPU cores per resource unit.
+        
+        @param request: DescribeAvailableCpuResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAvailableCpuResourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -2523,6 +3275,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeAvailableCpuResourceRequest,
     ) -> ocean_base_pro_20190901_models.DescribeAvailableCpuResourceResponse:
+        """
+        @summary The maximum number of CPU cores per resource unit.
+        
+        @param request: DescribeAvailableCpuResourceRequest
+        @return: DescribeAvailableCpuResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_available_cpu_resource_with_options(request, runtime)
 
@@ -2530,6 +3288,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeAvailableCpuResourceRequest,
     ) -> ocean_base_pro_20190901_models.DescribeAvailableCpuResourceResponse:
+        """
+        @summary The maximum number of CPU cores per resource unit.
+        
+        @param request: DescribeAvailableCpuResourceRequest
+        @return: DescribeAvailableCpuResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_available_cpu_resource_with_options_async(request, runtime)
 
@@ -2538,6 +3302,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeAvailableMemResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeAvailableMemResourceResponse:
+        """
+        @summary You can call this operation to query the available memory resource of an OceanBase Database tenant.
+        
+        @param request: DescribeAvailableMemResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAvailableMemResourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cpu_num):
@@ -2572,6 +3343,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeAvailableMemResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeAvailableMemResourceResponse:
+        """
+        @summary You can call this operation to query the available memory resource of an OceanBase Database tenant.
+        
+        @param request: DescribeAvailableMemResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAvailableMemResourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cpu_num):
@@ -2605,6 +3383,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeAvailableMemResourceRequest,
     ) -> ocean_base_pro_20190901_models.DescribeAvailableMemResourceResponse:
+        """
+        @summary You can call this operation to query the available memory resource of an OceanBase Database tenant.
+        
+        @param request: DescribeAvailableMemResourceRequest
+        @return: DescribeAvailableMemResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_available_mem_resource_with_options(request, runtime)
 
@@ -2612,6 +3396,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeAvailableMemResourceRequest,
     ) -> ocean_base_pro_20190901_models.DescribeAvailableMemResourceResponse:
+        """
+        @summary You can call this operation to query the available memory resource of an OceanBase Database tenant.
+        
+        @param request: DescribeAvailableMemResourceRequest
+        @return: DescribeAvailableMemResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_available_mem_resource_with_options_async(request, runtime)
 
@@ -2620,6 +3410,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeAvailableSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeAvailableSpecResponse:
+        """
+        @summary 获取集群变配页可选配置
+        
+        @param request: DescribeAvailableSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAvailableSpecResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -2652,6 +3449,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeAvailableSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeAvailableSpecResponse:
+        """
+        @summary 获取集群变配页可选配置
+        
+        @param request: DescribeAvailableSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAvailableSpecResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -2683,6 +3487,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeAvailableSpecRequest,
     ) -> ocean_base_pro_20190901_models.DescribeAvailableSpecResponse:
+        """
+        @summary 获取集群变配页可选配置
+        
+        @param request: DescribeAvailableSpecRequest
+        @return: DescribeAvailableSpecResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_available_spec_with_options(request, runtime)
 
@@ -2690,6 +3500,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeAvailableSpecRequest,
     ) -> ocean_base_pro_20190901_models.DescribeAvailableSpecResponse:
+        """
+        @summary 获取集群变配页可选配置
+        
+        @param request: DescribeAvailableSpecRequest
+        @return: DescribeAvailableSpecResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_available_spec_with_options_async(request, runtime)
 
@@ -2698,8 +3514,17 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeAvailableZoneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeAvailableZoneResponse:
+        """
+        @summary 获取集群售卖页可选配置
+        
+        @param request: DescribeAvailableZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAvailableZoneResponse
+        """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.cpu_arch):
+            body['CpuArch'] = request.cpu_arch
         if not UtilClient.is_unset(request.deploy_type):
             body['DeployType'] = request.deploy_type
         if not UtilClient.is_unset(request.instance_type):
@@ -2734,8 +3559,17 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeAvailableZoneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeAvailableZoneResponse:
+        """
+        @summary 获取集群售卖页可选配置
+        
+        @param request: DescribeAvailableZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAvailableZoneResponse
+        """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.cpu_arch):
+            body['CpuArch'] = request.cpu_arch
         if not UtilClient.is_unset(request.deploy_type):
             body['DeployType'] = request.deploy_type
         if not UtilClient.is_unset(request.instance_type):
@@ -2769,6 +3603,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeAvailableZoneRequest,
     ) -> ocean_base_pro_20190901_models.DescribeAvailableZoneResponse:
+        """
+        @summary 获取集群售卖页可选配置
+        
+        @param request: DescribeAvailableZoneRequest
+        @return: DescribeAvailableZoneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_available_zone_with_options(request, runtime)
 
@@ -2776,6 +3616,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeAvailableZoneRequest,
     ) -> ocean_base_pro_20190901_models.DescribeAvailableZoneResponse:
+        """
+        @summary 获取集群售卖页可选配置
+        
+        @param request: DescribeAvailableZoneRequest
+        @return: DescribeAvailableZoneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_available_zone_with_options_async(request, runtime)
 
@@ -2784,6 +3630,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeBackupSetDownloadLinkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeBackupSetDownloadLinkResponse:
+        """
+        @summary You can call this operation to query the link for downloading a backup set of OceanBase Database.
+        
+        @param request: DescribeBackupSetDownloadLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupSetDownloadLinkResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.download_task_id):
@@ -2814,6 +3667,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeBackupSetDownloadLinkRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeBackupSetDownloadLinkResponse:
+        """
+        @summary You can call this operation to query the link for downloading a backup set of OceanBase Database.
+        
+        @param request: DescribeBackupSetDownloadLinkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeBackupSetDownloadLinkResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.download_task_id):
@@ -2843,6 +3703,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeBackupSetDownloadLinkRequest,
     ) -> ocean_base_pro_20190901_models.DescribeBackupSetDownloadLinkResponse:
+        """
+        @summary You can call this operation to query the link for downloading a backup set of OceanBase Database.
+        
+        @param request: DescribeBackupSetDownloadLinkRequest
+        @return: DescribeBackupSetDownloadLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_backup_set_download_link_with_options(request, runtime)
 
@@ -2850,6 +3716,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeBackupSetDownloadLinkRequest,
     ) -> ocean_base_pro_20190901_models.DescribeBackupSetDownloadLinkResponse:
+        """
+        @summary You can call this operation to query the link for downloading a backup set of OceanBase Database.
+        
+        @param request: DescribeBackupSetDownloadLinkRequest
+        @return: DescribeBackupSetDownloadLinkResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_backup_set_download_link_with_options_async(request, runtime)
 
@@ -2858,6 +3730,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeCharsetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeCharsetResponse:
+        """
+        @summary You can call this operation to query the character sets of an OceanBase Database tenant.
+        
+        @param request: DescribeCharsetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCharsetResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -2890,6 +3769,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeCharsetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeCharsetResponse:
+        """
+        @summary You can call this operation to query the character sets of an OceanBase Database tenant.
+        
+        @param request: DescribeCharsetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCharsetResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -2921,6 +3807,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeCharsetRequest,
     ) -> ocean_base_pro_20190901_models.DescribeCharsetResponse:
+        """
+        @summary You can call this operation to query the character sets of an OceanBase Database tenant.
+        
+        @param request: DescribeCharsetRequest
+        @return: DescribeCharsetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_charset_with_options(request, runtime)
 
@@ -2928,6 +3820,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeCharsetRequest,
     ) -> ocean_base_pro_20190901_models.DescribeCharsetResponse:
+        """
+        @summary You can call this operation to query the character sets of an OceanBase Database tenant.
+        
+        @param request: DescribeCharsetRequest
+        @return: DescribeCharsetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_charset_with_options_async(request, runtime)
 
@@ -2936,6 +3834,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeDataBackupSetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeDataBackupSetResponse:
+        """
+        @summary 查询备份集信息
+        
+        @param request: DescribeDataBackupSetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDataBackupSetResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.backup_object_type):
@@ -2976,6 +3881,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeDataBackupSetRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeDataBackupSetResponse:
+        """
+        @summary 查询备份集信息
+        
+        @param request: DescribeDataBackupSetRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDataBackupSetResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.backup_object_type):
@@ -3015,6 +3927,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeDataBackupSetRequest,
     ) -> ocean_base_pro_20190901_models.DescribeDataBackupSetResponse:
+        """
+        @summary 查询备份集信息
+        
+        @param request: DescribeDataBackupSetRequest
+        @return: DescribeDataBackupSetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_data_backup_set_with_options(request, runtime)
 
@@ -3022,6 +3940,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeDataBackupSetRequest,
     ) -> ocean_base_pro_20190901_models.DescribeDataBackupSetResponse:
+        """
+        @summary 查询备份集信息
+        
+        @param request: DescribeDataBackupSetRequest
+        @return: DescribeDataBackupSetResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_data_backup_set_with_options_async(request, runtime)
 
@@ -3030,6 +3954,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeDatabasesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeDatabasesResponse:
+        """
+        @summary You can call this operation to query databases in a tenant.
+        
+        @param request: DescribeDatabasesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDatabasesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.database_name):
@@ -3070,6 +4001,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeDatabasesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeDatabasesResponse:
+        """
+        @summary You can call this operation to query databases in a tenant.
+        
+        @param request: DescribeDatabasesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDatabasesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.database_name):
@@ -3109,6 +4047,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeDatabasesRequest,
     ) -> ocean_base_pro_20190901_models.DescribeDatabasesResponse:
+        """
+        @summary You can call this operation to query databases in a tenant.
+        
+        @param request: DescribeDatabasesRequest
+        @return: DescribeDatabasesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_databases_with_options(request, runtime)
 
@@ -3116,6 +4060,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeDatabasesRequest,
     ) -> ocean_base_pro_20190901_models.DescribeDatabasesResponse:
+        """
+        @summary You can call this operation to query databases in a tenant.
+        
+        @param request: DescribeDatabasesRequest
+        @return: DescribeDatabasesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_databases_with_options_async(request, runtime)
 
@@ -3124,6 +4074,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeInstanceResponse:
+        """
+        @summary The size of used memory in the cluster, in GB.
+        
+        @param request: DescribeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -3154,6 +4111,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeInstanceResponse:
+        """
+        @summary The size of used memory in the cluster, in GB.
+        
+        @param request: DescribeInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -3183,6 +4147,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeInstanceRequest,
     ) -> ocean_base_pro_20190901_models.DescribeInstanceResponse:
+        """
+        @summary The size of used memory in the cluster, in GB.
+        
+        @param request: DescribeInstanceRequest
+        @return: DescribeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_with_options(request, runtime)
 
@@ -3190,6 +4160,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeInstanceRequest,
     ) -> ocean_base_pro_20190901_models.DescribeInstanceResponse:
+        """
+        @summary The size of used memory in the cluster, in GB.
+        
+        @param request: DescribeInstanceRequest
+        @return: DescribeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_with_options_async(request, runtime)
 
@@ -3198,6 +4174,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeInstanceCreatableZoneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeInstanceCreatableZoneResponse:
+        """
+        @summary The ID of the zone.
+        
+        @param request: DescribeInstanceCreatableZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceCreatableZoneResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -3226,6 +4209,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeInstanceCreatableZoneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeInstanceCreatableZoneResponse:
+        """
+        @summary The ID of the zone.
+        
+        @param request: DescribeInstanceCreatableZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceCreatableZoneResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -3253,6 +4243,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeInstanceCreatableZoneRequest,
     ) -> ocean_base_pro_20190901_models.DescribeInstanceCreatableZoneResponse:
+        """
+        @summary The ID of the zone.
+        
+        @param request: DescribeInstanceCreatableZoneRequest
+        @return: DescribeInstanceCreatableZoneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_creatable_zone_with_options(request, runtime)
 
@@ -3260,6 +4256,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeInstanceCreatableZoneRequest,
     ) -> ocean_base_pro_20190901_models.DescribeInstanceCreatableZoneResponse:
+        """
+        @summary The ID of the zone.
+        
+        @param request: DescribeInstanceCreatableZoneRequest
+        @return: DescribeInstanceCreatableZoneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_creatable_zone_with_options_async(request, runtime)
 
@@ -3268,6 +4270,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeInstanceSSLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeInstanceSSLResponse:
+        """
+        @summary 查询集群SSL配置
+        
+        @param request: DescribeInstanceSSLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceSSLResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -3296,6 +4305,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeInstanceSSLRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeInstanceSSLResponse:
+        """
+        @summary 查询集群SSL配置
+        
+        @param request: DescribeInstanceSSLRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceSSLResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -3323,6 +4339,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeInstanceSSLRequest,
     ) -> ocean_base_pro_20190901_models.DescribeInstanceSSLResponse:
+        """
+        @summary 查询集群SSL配置
+        
+        @param request: DescribeInstanceSSLRequest
+        @return: DescribeInstanceSSLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_sslwith_options(request, runtime)
 
@@ -3330,6 +4352,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeInstanceSSLRequest,
     ) -> ocean_base_pro_20190901_models.DescribeInstanceSSLResponse:
+        """
+        @summary 查询集群SSL配置
+        
+        @param request: DescribeInstanceSSLRequest
+        @return: DescribeInstanceSSLResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_sslwith_options_async(request, runtime)
 
@@ -3338,6 +4366,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeInstanceSecurityConfigsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeInstanceSecurityConfigsResponse:
+        """
+        @summary You can call this operation to query security check items of an OceanBase cluster.
+        
+        @param request: DescribeInstanceSecurityConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceSecurityConfigsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.check_id):
@@ -3368,6 +4403,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeInstanceSecurityConfigsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeInstanceSecurityConfigsResponse:
+        """
+        @summary You can call this operation to query security check items of an OceanBase cluster.
+        
+        @param request: DescribeInstanceSecurityConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceSecurityConfigsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.check_id):
@@ -3397,6 +4439,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeInstanceSecurityConfigsRequest,
     ) -> ocean_base_pro_20190901_models.DescribeInstanceSecurityConfigsResponse:
+        """
+        @summary You can call this operation to query security check items of an OceanBase cluster.
+        
+        @param request: DescribeInstanceSecurityConfigsRequest
+        @return: DescribeInstanceSecurityConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_security_configs_with_options(request, runtime)
 
@@ -3404,6 +4452,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeInstanceSecurityConfigsRequest,
     ) -> ocean_base_pro_20190901_models.DescribeInstanceSecurityConfigsResponse:
+        """
+        @summary You can call this operation to query security check items of an OceanBase cluster.
+        
+        @param request: DescribeInstanceSecurityConfigsRequest
+        @return: DescribeInstanceSecurityConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_security_configs_with_options_async(request, runtime)
 
@@ -3412,6 +4466,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeInstanceTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeInstanceTagsResponse:
+        """
+        @summary The tag of the resource.
+        
+        @param request: DescribeInstanceTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceTagsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_ids):
@@ -3442,6 +4503,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeInstanceTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeInstanceTagsResponse:
+        """
+        @summary The tag of the resource.
+        
+        @param request: DescribeInstanceTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceTagsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_ids):
@@ -3471,6 +4539,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeInstanceTagsRequest,
     ) -> ocean_base_pro_20190901_models.DescribeInstanceTagsResponse:
+        """
+        @summary The tag of the resource.
+        
+        @param request: DescribeInstanceTagsRequest
+        @return: DescribeInstanceTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_tags_with_options(request, runtime)
 
@@ -3478,6 +4552,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeInstanceTagsRequest,
     ) -> ocean_base_pro_20190901_models.DescribeInstanceTagsResponse:
+        """
+        @summary The tag of the resource.
+        
+        @param request: DescribeInstanceTagsRequest
+        @return: DescribeInstanceTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_tags_with_options_async(request, runtime)
 
@@ -3486,6 +4566,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeInstanceTenantModesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeInstanceTenantModesResponse:
+        """
+        @summary The return result of the request.
+        
+        @param request: DescribeInstanceTenantModesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceTenantModesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -3514,6 +4601,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeInstanceTenantModesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeInstanceTenantModesResponse:
+        """
+        @summary The return result of the request.
+        
+        @param request: DescribeInstanceTenantModesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceTenantModesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -3541,6 +4635,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeInstanceTenantModesRequest,
     ) -> ocean_base_pro_20190901_models.DescribeInstanceTenantModesResponse:
+        """
+        @summary The return result of the request.
+        
+        @param request: DescribeInstanceTenantModesRequest
+        @return: DescribeInstanceTenantModesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_tenant_modes_with_options(request, runtime)
 
@@ -3548,6 +4648,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeInstanceTenantModesRequest,
     ) -> ocean_base_pro_20190901_models.DescribeInstanceTenantModesResponse:
+        """
+        @summary The return result of the request.
+        
+        @param request: DescribeInstanceTenantModesRequest
+        @return: DescribeInstanceTenantModesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_tenant_modes_with_options_async(request, runtime)
 
@@ -3556,6 +4662,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeInstanceTopologyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeInstanceTopologyResponse:
+        """
+        @summary The ID of the zone.
+        
+        @param request: DescribeInstanceTopologyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceTopologyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -3584,6 +4697,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeInstanceTopologyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeInstanceTopologyResponse:
+        """
+        @summary The ID of the zone.
+        
+        @param request: DescribeInstanceTopologyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceTopologyResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -3611,6 +4731,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeInstanceTopologyRequest,
     ) -> ocean_base_pro_20190901_models.DescribeInstanceTopologyResponse:
+        """
+        @summary The ID of the zone.
+        
+        @param request: DescribeInstanceTopologyRequest
+        @return: DescribeInstanceTopologyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instance_topology_with_options(request, runtime)
 
@@ -3618,6 +4744,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeInstanceTopologyRequest,
     ) -> ocean_base_pro_20190901_models.DescribeInstanceTopologyResponse:
+        """
+        @summary The ID of the zone.
+        
+        @param request: DescribeInstanceTopologyRequest
+        @return: DescribeInstanceTopologyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instance_topology_with_options_async(request, runtime)
 
@@ -3626,6 +4758,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeInstancesResponse:
+        """
+        @summary You can call this operation to obtain the list of OceanBase clusters.
+        
+        @param request: DescribeInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstancesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -3664,6 +4803,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeInstancesResponse:
+        """
+        @summary You can call this operation to obtain the list of OceanBase clusters.
+        
+        @param request: DescribeInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstancesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -3701,6 +4847,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeInstancesRequest,
     ) -> ocean_base_pro_20190901_models.DescribeInstancesResponse:
+        """
+        @summary You can call this operation to obtain the list of OceanBase clusters.
+        
+        @param request: DescribeInstancesRequest
+        @return: DescribeInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_instances_with_options(request, runtime)
 
@@ -3708,6 +4860,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeInstancesRequest,
     ) -> ocean_base_pro_20190901_models.DescribeInstancesResponse:
+        """
+        @summary You can call this operation to obtain the list of OceanBase clusters.
+        
+        @param request: DescribeInstancesRequest
+        @return: DescribeInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_instances_with_options_async(request, runtime)
 
@@ -3716,6 +4874,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeMetricsDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeMetricsDataResponse:
+        """
+        @summary 查询监控指标数据
+        
+        @param request: DescribeMetricsDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMetricsDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -3764,6 +4929,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeMetricsDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeMetricsDataResponse:
+        """
+        @summary 查询监控指标数据
+        
+        @param request: DescribeMetricsDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMetricsDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -3811,6 +4983,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeMetricsDataRequest,
     ) -> ocean_base_pro_20190901_models.DescribeMetricsDataResponse:
+        """
+        @summary 查询监控指标数据
+        
+        @param request: DescribeMetricsDataRequest
+        @return: DescribeMetricsDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_metrics_data_with_options(request, runtime)
 
@@ -3818,6 +4996,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeMetricsDataRequest,
     ) -> ocean_base_pro_20190901_models.DescribeMetricsDataResponse:
+        """
+        @summary 查询监控指标数据
+        
+        @param request: DescribeMetricsDataRequest
+        @return: DescribeMetricsDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_metrics_data_with_options_async(request, runtime)
 
@@ -3826,6 +5010,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeNodeMetricsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeNodeMetricsResponse:
+        """
+        @summary The list of nodes.
+        
+        @param request: DescribeNodeMetricsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNodeMetricsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.end_time):
@@ -3870,6 +5061,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeNodeMetricsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeNodeMetricsResponse:
+        """
+        @summary The list of nodes.
+        
+        @param request: DescribeNodeMetricsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeNodeMetricsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.end_time):
@@ -3913,6 +5111,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeNodeMetricsRequest,
     ) -> ocean_base_pro_20190901_models.DescribeNodeMetricsResponse:
+        """
+        @summary The list of nodes.
+        
+        @param request: DescribeNodeMetricsRequest
+        @return: DescribeNodeMetricsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_node_metrics_with_options(request, runtime)
 
@@ -3920,6 +5124,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeNodeMetricsRequest,
     ) -> ocean_base_pro_20190901_models.DescribeNodeMetricsResponse:
+        """
+        @summary The list of nodes.
+        
+        @param request: DescribeNodeMetricsRequest
+        @return: DescribeNodeMetricsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_node_metrics_with_options_async(request, runtime)
 
@@ -3928,6 +5138,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeOasAnomalySQLListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeOasAnomalySQLListResponse:
+        """
+        @summary You can call this API to view the list of SQL statements that are identified as having performance issues by the diagnostic system.
+        
+        @param request: DescribeOasAnomalySQLListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOasAnomalySQLListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -3990,6 +5207,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeOasAnomalySQLListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeOasAnomalySQLListResponse:
+        """
+        @summary You can call this API to view the list of SQL statements that are identified as having performance issues by the diagnostic system.
+        
+        @param request: DescribeOasAnomalySQLListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOasAnomalySQLListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -4051,6 +5275,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeOasAnomalySQLListRequest,
     ) -> ocean_base_pro_20190901_models.DescribeOasAnomalySQLListResponse:
+        """
+        @summary You can call this API to view the list of SQL statements that are identified as having performance issues by the diagnostic system.
+        
+        @param request: DescribeOasAnomalySQLListRequest
+        @return: DescribeOasAnomalySQLListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_oas_anomaly_sqllist_with_options(request, runtime)
 
@@ -4058,6 +5288,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeOasAnomalySQLListRequest,
     ) -> ocean_base_pro_20190901_models.DescribeOasAnomalySQLListResponse:
+        """
+        @summary You can call this API to view the list of SQL statements that are identified as having performance issues by the diagnostic system.
+        
+        @param request: DescribeOasAnomalySQLListRequest
+        @return: DescribeOasAnomalySQLListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_oas_anomaly_sqllist_with_options_async(request, runtime)
 
@@ -4066,6 +5302,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeOasSQLDetailsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeOasSQLDetailsResponse:
+        """
+        @summary You can call this API to query detailed information about the SQL, including the SQL text, related table names, and so on.
+        
+        @param request: DescribeOasSQLDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOasSQLDetailsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.db_name):
@@ -4106,6 +5349,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeOasSQLDetailsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeOasSQLDetailsResponse:
+        """
+        @summary You can call this API to query detailed information about the SQL, including the SQL text, related table names, and so on.
+        
+        @param request: DescribeOasSQLDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOasSQLDetailsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.db_name):
@@ -4145,6 +5395,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeOasSQLDetailsRequest,
     ) -> ocean_base_pro_20190901_models.DescribeOasSQLDetailsResponse:
+        """
+        @summary You can call this API to query detailed information about the SQL, including the SQL text, related table names, and so on.
+        
+        @param request: DescribeOasSQLDetailsRequest
+        @return: DescribeOasSQLDetailsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_oas_sqldetails_with_options(request, runtime)
 
@@ -4152,6 +5408,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeOasSQLDetailsRequest,
     ) -> ocean_base_pro_20190901_models.DescribeOasSQLDetailsResponse:
+        """
+        @summary You can call this API to query detailed information about the SQL, including the SQL text, related table names, and so on.
+        
+        @param request: DescribeOasSQLDetailsRequest
+        @return: DescribeOasSQLDetailsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_oas_sqldetails_with_options_async(request, runtime)
 
@@ -4160,6 +5422,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeOasSQLHistoryListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeOasSQLHistoryListResponse:
+        """
+        @summary You can call this API to view the SQL execution history.
+        
+        @param request: DescribeOasSQLHistoryListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOasSQLHistoryListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -4204,6 +5473,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeOasSQLHistoryListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeOasSQLHistoryListResponse:
+        """
+        @summary You can call this API to view the SQL execution history.
+        
+        @param request: DescribeOasSQLHistoryListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOasSQLHistoryListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -4247,6 +5523,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeOasSQLHistoryListRequest,
     ) -> ocean_base_pro_20190901_models.DescribeOasSQLHistoryListResponse:
+        """
+        @summary You can call this API to view the SQL execution history.
+        
+        @param request: DescribeOasSQLHistoryListRequest
+        @return: DescribeOasSQLHistoryListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_oas_sqlhistory_list_with_options(request, runtime)
 
@@ -4254,6 +5536,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeOasSQLHistoryListRequest,
     ) -> ocean_base_pro_20190901_models.DescribeOasSQLHistoryListResponse:
+        """
+        @summary You can call this API to view the SQL execution history.
+        
+        @param request: DescribeOasSQLHistoryListRequest
+        @return: DescribeOasSQLHistoryListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_oas_sqlhistory_list_with_options_async(request, runtime)
 
@@ -4262,6 +5550,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeOasSQLPlansRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeOasSQLPlansResponse:
+        """
+        @summary You can call this API to retrieve information about the SQL execution plan stored in the diagnostic system based on the SQL ID.
+        
+        @param request: DescribeOasSQLPlansRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOasSQLPlansResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -4274,6 +5569,10 @@ class Client(OpenApiClient):
             body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.plan_union_hash):
+            body['PlanUnionHash'] = request.plan_union_hash
+        if not UtilClient.is_unset(request.return_brief_info):
+            body['ReturnBriefInfo'] = request.return_brief_info
         if not UtilClient.is_unset(request.sql_id):
             body['SqlId'] = request.sql_id
         if not UtilClient.is_unset(request.start_time):
@@ -4304,6 +5603,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeOasSQLPlansRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeOasSQLPlansResponse:
+        """
+        @summary You can call this API to retrieve information about the SQL execution plan stored in the diagnostic system based on the SQL ID.
+        
+        @param request: DescribeOasSQLPlansRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOasSQLPlansResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -4316,6 +5622,10 @@ class Client(OpenApiClient):
             body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.plan_union_hash):
+            body['PlanUnionHash'] = request.plan_union_hash
+        if not UtilClient.is_unset(request.return_brief_info):
+            body['ReturnBriefInfo'] = request.return_brief_info
         if not UtilClient.is_unset(request.sql_id):
             body['SqlId'] = request.sql_id
         if not UtilClient.is_unset(request.start_time):
@@ -4345,6 +5655,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeOasSQLPlansRequest,
     ) -> ocean_base_pro_20190901_models.DescribeOasSQLPlansResponse:
+        """
+        @summary You can call this API to retrieve information about the SQL execution plan stored in the diagnostic system based on the SQL ID.
+        
+        @param request: DescribeOasSQLPlansRequest
+        @return: DescribeOasSQLPlansResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_oas_sqlplans_with_options(request, runtime)
 
@@ -4352,6 +5668,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeOasSQLPlansRequest,
     ) -> ocean_base_pro_20190901_models.DescribeOasSQLPlansResponse:
+        """
+        @summary You can call this API to retrieve information about the SQL execution plan stored in the diagnostic system based on the SQL ID.
+        
+        @param request: DescribeOasSQLPlansRequest
+        @return: DescribeOasSQLPlansResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_oas_sqlplans_with_options_async(request, runtime)
 
@@ -4360,6 +5682,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeOasSlowSQLListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeOasSlowSQLListResponse:
+        """
+        @summary You can call this API to view a list of slow queries.
+        
+        @param request: DescribeOasSlowSQLListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOasSlowSQLListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -4418,6 +5747,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeOasSlowSQLListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeOasSlowSQLListResponse:
+        """
+        @summary You can call this API to view a list of slow queries.
+        
+        @param request: DescribeOasSlowSQLListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOasSlowSQLListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -4475,6 +5811,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeOasSlowSQLListRequest,
     ) -> ocean_base_pro_20190901_models.DescribeOasSlowSQLListResponse:
+        """
+        @summary You can call this API to view a list of slow queries.
+        
+        @param request: DescribeOasSlowSQLListRequest
+        @return: DescribeOasSlowSQLListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_oas_slow_sqllist_with_options(request, runtime)
 
@@ -4482,6 +5824,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeOasSlowSQLListRequest,
     ) -> ocean_base_pro_20190901_models.DescribeOasSlowSQLListResponse:
+        """
+        @summary You can call this API to view a list of slow queries.
+        
+        @param request: DescribeOasSlowSQLListRequest
+        @return: DescribeOasSlowSQLListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_oas_slow_sqllist_with_options_async(request, runtime)
 
@@ -4490,6 +5838,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeOasTopSQLListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeOasTopSQLListResponse:
+        """
+        @summary You can call this API to retrieve the list of data on the SQL execution performance collected by the diagnostic system.
+        
+        @param request: DescribeOasTopSQLListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOasTopSQLListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -4548,6 +5903,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeOasTopSQLListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeOasTopSQLListResponse:
+        """
+        @summary You can call this API to retrieve the list of data on the SQL execution performance collected by the diagnostic system.
+        
+        @param request: DescribeOasTopSQLListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOasTopSQLListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -4605,6 +5967,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeOasTopSQLListRequest,
     ) -> ocean_base_pro_20190901_models.DescribeOasTopSQLListResponse:
+        """
+        @summary You can call this API to retrieve the list of data on the SQL execution performance collected by the diagnostic system.
+        
+        @param request: DescribeOasTopSQLListRequest
+        @return: DescribeOasTopSQLListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_oas_top_sqllist_with_options(request, runtime)
 
@@ -4612,6 +5980,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeOasTopSQLListRequest,
     ) -> ocean_base_pro_20190901_models.DescribeOasTopSQLListResponse:
+        """
+        @summary You can call this API to retrieve the list of data on the SQL execution performance collected by the diagnostic system.
+        
+        @param request: DescribeOasTopSQLListRequest
+        @return: DescribeOasTopSQLListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_oas_top_sqllist_with_options_async(request, runtime)
 
@@ -4620,6 +5994,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeOutlineBindingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeOutlineBindingResponse:
+        """
+        @summary You can call this operation to query the outline binding information or throttling information of an SQL statement in the database based on an SQLID.
+        
+        @param request: DescribeOutlineBindingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOutlineBindingResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.database_name):
@@ -4658,6 +6039,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeOutlineBindingRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeOutlineBindingResponse:
+        """
+        @summary You can call this operation to query the outline binding information or throttling information of an SQL statement in the database based on an SQLID.
+        
+        @param request: DescribeOutlineBindingRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOutlineBindingResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.database_name):
@@ -4695,6 +6083,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeOutlineBindingRequest,
     ) -> ocean_base_pro_20190901_models.DescribeOutlineBindingResponse:
+        """
+        @summary You can call this operation to query the outline binding information or throttling information of an SQL statement in the database based on an SQLID.
+        
+        @param request: DescribeOutlineBindingRequest
+        @return: DescribeOutlineBindingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_outline_binding_with_options(request, runtime)
 
@@ -4702,6 +6096,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeOutlineBindingRequest,
     ) -> ocean_base_pro_20190901_models.DescribeOutlineBindingResponse:
+        """
+        @summary You can call this operation to query the outline binding information or throttling information of an SQL statement in the database based on an SQLID.
+        
+        @param request: DescribeOutlineBindingRequest
+        @return: DescribeOutlineBindingResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_outline_binding_with_options_async(request, runtime)
 
@@ -4710,6 +6110,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeParametersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeParametersResponse:
+        """
+        @summary Indicates whether a restart is required for changes to the parameter to take effect. Valid values: - true: A restart is required. - false: A restart is not required.
+        
+        @param request: DescribeParametersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeParametersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dimension):
@@ -4742,6 +6149,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeParametersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeParametersResponse:
+        """
+        @summary Indicates whether a restart is required for changes to the parameter to take effect. Valid values: - true: A restart is required. - false: A restart is not required.
+        
+        @param request: DescribeParametersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeParametersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dimension):
@@ -4773,6 +6187,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeParametersRequest,
     ) -> ocean_base_pro_20190901_models.DescribeParametersResponse:
+        """
+        @summary Indicates whether a restart is required for changes to the parameter to take effect. Valid values: - true: A restart is required. - false: A restart is not required.
+        
+        @param request: DescribeParametersRequest
+        @return: DescribeParametersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_parameters_with_options(request, runtime)
 
@@ -4780,6 +6200,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeParametersRequest,
     ) -> ocean_base_pro_20190901_models.DescribeParametersResponse:
+        """
+        @summary Indicates whether a restart is required for changes to the parameter to take effect. Valid values: - true: A restart is required. - false: A restart is not required.
+        
+        @param request: DescribeParametersRequest
+        @return: DescribeParametersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_parameters_with_options_async(request, runtime)
 
@@ -4788,6 +6214,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeParametersHistoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeParametersHistoryResponse:
+        """
+        @summary You can call this operation to query the modification history of cluster or tenant parameters.
+        
+        @param request: DescribeParametersHistoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeParametersHistoryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dimension):
@@ -4828,6 +6261,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeParametersHistoryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeParametersHistoryResponse:
+        """
+        @summary You can call this operation to query the modification history of cluster or tenant parameters.
+        
+        @param request: DescribeParametersHistoryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeParametersHistoryResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dimension):
@@ -4867,6 +6307,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeParametersHistoryRequest,
     ) -> ocean_base_pro_20190901_models.DescribeParametersHistoryResponse:
+        """
+        @summary You can call this operation to query the modification history of cluster or tenant parameters.
+        
+        @param request: DescribeParametersHistoryRequest
+        @return: DescribeParametersHistoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_parameters_history_with_options(request, runtime)
 
@@ -4874,14 +6320,151 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeParametersHistoryRequest,
     ) -> ocean_base_pro_20190901_models.DescribeParametersHistoryResponse:
+        """
+        @summary You can call this operation to query the modification history of cluster or tenant parameters.
+        
+        @param request: DescribeParametersHistoryRequest
+        @return: DescribeParametersHistoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_parameters_history_with_options_async(request, runtime)
+
+    def describe_process_stats_composition_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeProcessStatsCompositionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeProcessStatsCompositionResponse:
+        """
+        @summary DescribeProcessStatsComposition
+        
+        @param request: DescribeProcessStatsCompositionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProcessStatsCompositionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_ip):
+            body['ClientIp'] = request.client_ip
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.server_ip):
+            body['ServerIp'] = request.server_ip
+        if not UtilClient.is_unset(request.sql_text):
+            body['SqlText'] = request.sql_text
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.uid):
+            body['UId'] = request.uid
+        if not UtilClient.is_unset(request.users):
+            body['Users'] = request.users
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeProcessStatsComposition',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeProcessStatsCompositionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_process_stats_composition_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeProcessStatsCompositionRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeProcessStatsCompositionResponse:
+        """
+        @summary DescribeProcessStatsComposition
+        
+        @param request: DescribeProcessStatsCompositionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProcessStatsCompositionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_ip):
+            body['ClientIp'] = request.client_ip
+        if not UtilClient.is_unset(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.server_ip):
+            body['ServerIp'] = request.server_ip
+        if not UtilClient.is_unset(request.sql_text):
+            body['SqlText'] = request.sql_text
+        if not UtilClient.is_unset(request.status):
+            body['Status'] = request.status
+        if not UtilClient.is_unset(request.tenant_id):
+            body['TenantId'] = request.tenant_id
+        if not UtilClient.is_unset(request.uid):
+            body['UId'] = request.uid
+        if not UtilClient.is_unset(request.users):
+            body['Users'] = request.users
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeProcessStatsComposition',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeProcessStatsCompositionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_process_stats_composition(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeProcessStatsCompositionRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeProcessStatsCompositionResponse:
+        """
+        @summary DescribeProcessStatsComposition
+        
+        @param request: DescribeProcessStatsCompositionRequest
+        @return: DescribeProcessStatsCompositionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_process_stats_composition_with_options(request, runtime)
+
+    async def describe_process_stats_composition_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeProcessStatsCompositionRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeProcessStatsCompositionResponse:
+        """
+        @summary DescribeProcessStatsComposition
+        
+        @param request: DescribeProcessStatsCompositionRequest
+        @return: DescribeProcessStatsCompositionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_process_stats_composition_with_options_async(request, runtime)
 
     def describe_project_with_options(
         self,
         request: ocean_base_pro_20190901_models.DescribeProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeProjectResponse:
+        """
+        @summary 查询项目详情
+        
+        @param request: DescribeProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProjectResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -4910,6 +6493,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeProjectResponse:
+        """
+        @summary 查询项目详情
+        
+        @param request: DescribeProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProjectResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -4937,6 +6527,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeProjectRequest,
     ) -> ocean_base_pro_20190901_models.DescribeProjectResponse:
+        """
+        @summary 查询项目详情
+        
+        @param request: DescribeProjectRequest
+        @return: DescribeProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_project_with_options(request, runtime)
 
@@ -4944,6 +6540,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeProjectRequest,
     ) -> ocean_base_pro_20190901_models.DescribeProjectResponse:
+        """
+        @summary 查询项目详情
+        
+        @param request: DescribeProjectRequest
+        @return: DescribeProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_project_with_options_async(request, runtime)
 
@@ -4952,6 +6554,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeProjectComponentsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeProjectComponentsResponse:
+        """
+        @summary 获取项目的组件信息
+        
+        @param request: DescribeProjectComponentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProjectComponentsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -4980,6 +6589,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeProjectComponentsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeProjectComponentsResponse:
+        """
+        @summary 获取项目的组件信息
+        
+        @param request: DescribeProjectComponentsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProjectComponentsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -5007,6 +6623,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeProjectComponentsRequest,
     ) -> ocean_base_pro_20190901_models.DescribeProjectComponentsResponse:
+        """
+        @summary 获取项目的组件信息
+        
+        @param request: DescribeProjectComponentsRequest
+        @return: DescribeProjectComponentsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_project_components_with_options(request, runtime)
 
@@ -5014,6 +6636,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeProjectComponentsRequest,
     ) -> ocean_base_pro_20190901_models.DescribeProjectComponentsResponse:
+        """
+        @summary 获取项目的组件信息
+        
+        @param request: DescribeProjectComponentsRequest
+        @return: DescribeProjectComponentsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_project_components_with_options_async(request, runtime)
 
@@ -5022,6 +6650,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeProjectProgressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeProjectProgressResponse:
+        """
+        @summary 获取迁移/同步项目 Progress 信息
+        
+        @param request: DescribeProjectProgressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProjectProgressResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -5050,6 +6685,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeProjectProgressRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeProjectProgressResponse:
+        """
+        @summary 获取迁移/同步项目 Progress 信息
+        
+        @param request: DescribeProjectProgressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProjectProgressResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -5077,6 +6719,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeProjectProgressRequest,
     ) -> ocean_base_pro_20190901_models.DescribeProjectProgressResponse:
+        """
+        @summary 获取迁移/同步项目 Progress 信息
+        
+        @param request: DescribeProjectProgressRequest
+        @return: DescribeProjectProgressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_project_progress_with_options(request, runtime)
 
@@ -5084,6 +6732,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeProjectProgressRequest,
     ) -> ocean_base_pro_20190901_models.DescribeProjectProgressResponse:
+        """
+        @summary 获取迁移/同步项目 Progress 信息
+        
+        @param request: DescribeProjectProgressRequest
+        @return: DescribeProjectProgressResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_project_progress_with_options_async(request, runtime)
 
@@ -5092,6 +6746,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeProjectStepMetricRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeProjectStepMetricResponse:
+        """
+        @summary 查询项目步骤指标
+        
+        @param request: DescribeProjectStepMetricRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProjectStepMetricResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.aggregator):
@@ -5132,6 +6793,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeProjectStepMetricRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeProjectStepMetricResponse:
+        """
+        @summary 查询项目步骤指标
+        
+        @param request: DescribeProjectStepMetricRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProjectStepMetricResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.aggregator):
@@ -5171,6 +6839,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeProjectStepMetricRequest,
     ) -> ocean_base_pro_20190901_models.DescribeProjectStepMetricResponse:
+        """
+        @summary 查询项目步骤指标
+        
+        @param request: DescribeProjectStepMetricRequest
+        @return: DescribeProjectStepMetricResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_project_step_metric_with_options(request, runtime)
 
@@ -5178,6 +6852,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeProjectStepMetricRequest,
     ) -> ocean_base_pro_20190901_models.DescribeProjectStepMetricResponse:
+        """
+        @summary 查询项目步骤指标
+        
+        @param request: DescribeProjectStepMetricRequest
+        @return: DescribeProjectStepMetricResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_project_step_metric_with_options_async(request, runtime)
 
@@ -5186,6 +6866,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeProjectStepsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeProjectStepsResponse:
+        """
+        @summary 查询项目步骤
+        
+        @param request: DescribeProjectStepsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProjectStepsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -5214,6 +6901,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeProjectStepsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeProjectStepsResponse:
+        """
+        @summary 查询项目步骤
+        
+        @param request: DescribeProjectStepsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeProjectStepsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -5241,6 +6935,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeProjectStepsRequest,
     ) -> ocean_base_pro_20190901_models.DescribeProjectStepsResponse:
+        """
+        @summary 查询项目步骤
+        
+        @param request: DescribeProjectStepsRequest
+        @return: DescribeProjectStepsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_project_steps_with_options(request, runtime)
 
@@ -5248,6 +6948,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeProjectStepsRequest,
     ) -> ocean_base_pro_20190901_models.DescribeProjectStepsResponse:
+        """
+        @summary 查询项目步骤
+        
+        @param request: DescribeProjectStepsRequest
+        @return: DescribeProjectStepsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_project_steps_with_options_async(request, runtime)
 
@@ -5256,6 +6962,15 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeRecommendIndexRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeRecommendIndexResponse:
+        """
+        @summary The tenant mode.   Valid values:
+        Oracle
+        MySQL
+        
+        @param request: DescribeRecommendIndexRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRecommendIndexResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -5288,6 +7003,15 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeRecommendIndexRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeRecommendIndexResponse:
+        """
+        @summary The tenant mode.   Valid values:
+        Oracle
+        MySQL
+        
+        @param request: DescribeRecommendIndexRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRecommendIndexResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -5319,6 +7043,14 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeRecommendIndexRequest,
     ) -> ocean_base_pro_20190901_models.DescribeRecommendIndexResponse:
+        """
+        @summary The tenant mode.   Valid values:
+        Oracle
+        MySQL
+        
+        @param request: DescribeRecommendIndexRequest
+        @return: DescribeRecommendIndexResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_recommend_index_with_options(request, runtime)
 
@@ -5326,6 +7058,14 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeRecommendIndexRequest,
     ) -> ocean_base_pro_20190901_models.DescribeRecommendIndexResponse:
+        """
+        @summary The tenant mode.   Valid values:
+        Oracle
+        MySQL
+        
+        @param request: DescribeRecommendIndexRequest
+        @return: DescribeRecommendIndexResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_recommend_index_with_options_async(request, runtime)
 
@@ -5334,6 +7074,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeSQLDetailsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeSQLDetailsResponse:
+        """
+        @summary The username.
+        
+        @param request: DescribeSQLDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSQLDetailsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.sqlid):
@@ -5364,6 +7111,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeSQLDetailsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeSQLDetailsResponse:
+        """
+        @summary The username.
+        
+        @param request: DescribeSQLDetailsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSQLDetailsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.sqlid):
@@ -5393,6 +7147,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeSQLDetailsRequest,
     ) -> ocean_base_pro_20190901_models.DescribeSQLDetailsResponse:
+        """
+        @summary The username.
+        
+        @param request: DescribeSQLDetailsRequest
+        @return: DescribeSQLDetailsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_sqldetails_with_options(request, runtime)
 
@@ -5400,6 +7160,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeSQLDetailsRequest,
     ) -> ocean_base_pro_20190901_models.DescribeSQLDetailsResponse:
+        """
+        @summary The username.
+        
+        @param request: DescribeSQLDetailsRequest
+        @return: DescribeSQLDetailsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_sqldetails_with_options_async(request, runtime)
 
@@ -5408,6 +7174,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeSQLHistoryListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeSQLHistoryListResponse:
+        """
+        @summary You can call this operation to query the execution history of an SQL statement in a specified period based on an SQL ID.
+        
+        @param request: DescribeSQLHistoryListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSQLHistoryListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.end_time):
@@ -5446,6 +7219,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeSQLHistoryListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeSQLHistoryListResponse:
+        """
+        @summary You can call this operation to query the execution history of an SQL statement in a specified period based on an SQL ID.
+        
+        @param request: DescribeSQLHistoryListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSQLHistoryListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.end_time):
@@ -5483,6 +7263,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeSQLHistoryListRequest,
     ) -> ocean_base_pro_20190901_models.DescribeSQLHistoryListResponse:
+        """
+        @summary You can call this operation to query the execution history of an SQL statement in a specified period based on an SQL ID.
+        
+        @param request: DescribeSQLHistoryListRequest
+        @return: DescribeSQLHistoryListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_sqlhistory_list_with_options(request, runtime)
 
@@ -5490,6 +7276,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeSQLHistoryListRequest,
     ) -> ocean_base_pro_20190901_models.DescribeSQLHistoryListResponse:
+        """
+        @summary You can call this operation to query the execution history of an SQL statement in a specified period based on an SQL ID.
+        
+        @param request: DescribeSQLHistoryListRequest
+        @return: DescribeSQLHistoryListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_sqlhistory_list_with_options_async(request, runtime)
 
@@ -5498,6 +7290,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeSQLPlansRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeSQLPlansResponse:
+        """
+        @summary You can call this operation to query the information about the SQL execution plans stored in the diagnostic system based on an SQL ID.
+        
+        @param request: DescribeSQLPlansRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSQLPlansResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.sqlid):
@@ -5528,6 +7327,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeSQLPlansRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeSQLPlansResponse:
+        """
+        @summary You can call this operation to query the information about the SQL execution plans stored in the diagnostic system based on an SQL ID.
+        
+        @param request: DescribeSQLPlansRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSQLPlansResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.sqlid):
@@ -5557,6 +7363,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeSQLPlansRequest,
     ) -> ocean_base_pro_20190901_models.DescribeSQLPlansResponse:
+        """
+        @summary You can call this operation to query the information about the SQL execution plans stored in the diagnostic system based on an SQL ID.
+        
+        @param request: DescribeSQLPlansRequest
+        @return: DescribeSQLPlansResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_sqlplans_with_options(request, runtime)
 
@@ -5564,6 +7376,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeSQLPlansRequest,
     ) -> ocean_base_pro_20190901_models.DescribeSQLPlansResponse:
+        """
+        @summary You can call this operation to query the information about the SQL execution plans stored in the diagnostic system based on an SQL ID.
+        
+        @param request: DescribeSQLPlansRequest
+        @return: DescribeSQLPlansResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_sqlplans_with_options_async(request, runtime)
 
@@ -5572,6 +7390,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeSQLSamplesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeSQLSamplesResponse:
+        """
+        @summary You can call this API to view the sample data of the execution details of the slow queries.
+        
+        @param request: DescribeSQLSamplesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSQLSamplesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.db_name):
@@ -5580,6 +7405,8 @@ class Client(OpenApiClient):
             body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.return_sql_text):
+            body['ReturnSqlText'] = request.return_sql_text
         if not UtilClient.is_unset(request.sql_id):
             body['SqlId'] = request.sql_id
         if not UtilClient.is_unset(request.start_time):
@@ -5610,6 +7437,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeSQLSamplesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeSQLSamplesResponse:
+        """
+        @summary You can call this API to view the sample data of the execution details of the slow queries.
+        
+        @param request: DescribeSQLSamplesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSQLSamplesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.db_name):
@@ -5618,6 +7452,8 @@ class Client(OpenApiClient):
             body['EndTime'] = request.end_time
         if not UtilClient.is_unset(request.instance_id):
             body['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.return_sql_text):
+            body['ReturnSqlText'] = request.return_sql_text
         if not UtilClient.is_unset(request.sql_id):
             body['SqlId'] = request.sql_id
         if not UtilClient.is_unset(request.start_time):
@@ -5647,6 +7483,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeSQLSamplesRequest,
     ) -> ocean_base_pro_20190901_models.DescribeSQLSamplesResponse:
+        """
+        @summary You can call this API to view the sample data of the execution details of the slow queries.
+        
+        @param request: DescribeSQLSamplesRequest
+        @return: DescribeSQLSamplesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_sqlsamples_with_options(request, runtime)
 
@@ -5654,6 +7496,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeSQLSamplesRequest,
     ) -> ocean_base_pro_20190901_models.DescribeSQLSamplesResponse:
+        """
+        @summary You can call this API to view the sample data of the execution details of the slow queries.
+        
+        @param request: DescribeSQLSamplesRequest
+        @return: DescribeSQLSamplesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_sqlsamples_with_options_async(request, runtime)
 
@@ -5662,6 +7510,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeSampleSqlRawTextsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeSampleSqlRawTextsResponse:
+        """
+        @summary 查询采样SQL的原始文本
+        
+        @param request: DescribeSampleSqlRawTextsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSampleSqlRawTextsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.db_name):
@@ -5704,6 +7559,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeSampleSqlRawTextsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeSampleSqlRawTextsResponse:
+        """
+        @summary 查询采样SQL的原始文本
+        
+        @param request: DescribeSampleSqlRawTextsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSampleSqlRawTextsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.db_name):
@@ -5745,6 +7607,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeSampleSqlRawTextsRequest,
     ) -> ocean_base_pro_20190901_models.DescribeSampleSqlRawTextsResponse:
+        """
+        @summary 查询采样SQL的原始文本
+        
+        @param request: DescribeSampleSqlRawTextsRequest
+        @return: DescribeSampleSqlRawTextsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_sample_sql_raw_texts_with_options(request, runtime)
 
@@ -5752,6 +7620,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeSampleSqlRawTextsRequest,
     ) -> ocean_base_pro_20190901_models.DescribeSampleSqlRawTextsResponse:
+        """
+        @summary 查询采样SQL的原始文本
+        
+        @param request: DescribeSampleSqlRawTextsRequest
+        @return: DescribeSampleSqlRawTextsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_sample_sql_raw_texts_with_options_async(request, runtime)
 
@@ -5760,6 +7634,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeSecurityIpGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeSecurityIpGroupsResponse:
+        """
+        @summary The name of the security group.
+        
+        @param request: DescribeSecurityIpGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSecurityIpGroupsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -5788,6 +7669,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeSecurityIpGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeSecurityIpGroupsResponse:
+        """
+        @summary The name of the security group.
+        
+        @param request: DescribeSecurityIpGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSecurityIpGroupsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -5815,6 +7703,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeSecurityIpGroupsRequest,
     ) -> ocean_base_pro_20190901_models.DescribeSecurityIpGroupsResponse:
+        """
+        @summary The name of the security group.
+        
+        @param request: DescribeSecurityIpGroupsRequest
+        @return: DescribeSecurityIpGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_security_ip_groups_with_options(request, runtime)
 
@@ -5822,6 +7716,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeSecurityIpGroupsRequest,
     ) -> ocean_base_pro_20190901_models.DescribeSecurityIpGroupsResponse:
+        """
+        @summary The name of the security group.
+        
+        @param request: DescribeSecurityIpGroupsRequest
+        @return: DescribeSecurityIpGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_security_ip_groups_with_options_async(request, runtime)
 
@@ -5830,6 +7730,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeSlowSQLHistoryListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeSlowSQLHistoryListResponse:
+        """
+        @summary You can call this operation to query the execution history of an SQL statement by SQL ID that is determined as a slow SQL statement during a specified period of time.
+        
+        @param request: DescribeSlowSQLHistoryListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSlowSQLHistoryListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.end_time):
@@ -5868,6 +7775,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeSlowSQLHistoryListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeSlowSQLHistoryListResponse:
+        """
+        @summary You can call this operation to query the execution history of an SQL statement by SQL ID that is determined as a slow SQL statement during a specified period of time.
+        
+        @param request: DescribeSlowSQLHistoryListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSlowSQLHistoryListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.end_time):
@@ -5905,6 +7819,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeSlowSQLHistoryListRequest,
     ) -> ocean_base_pro_20190901_models.DescribeSlowSQLHistoryListResponse:
+        """
+        @summary You can call this operation to query the execution history of an SQL statement by SQL ID that is determined as a slow SQL statement during a specified period of time.
+        
+        @param request: DescribeSlowSQLHistoryListRequest
+        @return: DescribeSlowSQLHistoryListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_slow_sqlhistory_list_with_options(request, runtime)
 
@@ -5912,6 +7832,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeSlowSQLHistoryListRequest,
     ) -> ocean_base_pro_20190901_models.DescribeSlowSQLHistoryListResponse:
+        """
+        @summary You can call this operation to query the execution history of an SQL statement by SQL ID that is determined as a slow SQL statement during a specified period of time.
+        
+        @param request: DescribeSlowSQLHistoryListRequest
+        @return: DescribeSlowSQLHistoryListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_slow_sqlhistory_list_with_options_async(request, runtime)
 
@@ -5920,6 +7846,13 @@ class Client(OpenApiClient):
         tmp_req: ocean_base_pro_20190901_models.DescribeSlowSQLListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeSlowSQLListResponse:
+        """
+        @summary You can call this operation to query the list of slow SQL statements
+        
+        @param tmp_req: DescribeSlowSQLListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSlowSQLListResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ocean_base_pro_20190901_models.DescribeSlowSQLListShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5980,6 +7913,13 @@ class Client(OpenApiClient):
         tmp_req: ocean_base_pro_20190901_models.DescribeSlowSQLListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeSlowSQLListResponse:
+        """
+        @summary You can call this operation to query the list of slow SQL statements
+        
+        @param tmp_req: DescribeSlowSQLListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSlowSQLListResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ocean_base_pro_20190901_models.DescribeSlowSQLListShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6039,6 +7979,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeSlowSQLListRequest,
     ) -> ocean_base_pro_20190901_models.DescribeSlowSQLListResponse:
+        """
+        @summary You can call this operation to query the list of slow SQL statements
+        
+        @param request: DescribeSlowSQLListRequest
+        @return: DescribeSlowSQLListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_slow_sqllist_with_options(request, runtime)
 
@@ -6046,6 +7992,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeSlowSQLListRequest,
     ) -> ocean_base_pro_20190901_models.DescribeSlowSQLListResponse:
+        """
+        @summary You can call this operation to query the list of slow SQL statements
+        
+        @param request: DescribeSlowSQLListRequest
+        @return: DescribeSlowSQLListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_slow_sqllist_with_options_async(request, runtime)
 
@@ -6054,6 +8006,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeTenantRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeTenantResponse:
+        """
+        @summary The ID of the VPC.
+        
+        @param request: DescribeTenantRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTenantResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6084,6 +8043,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeTenantRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeTenantResponse:
+        """
+        @summary The ID of the VPC.
+        
+        @param request: DescribeTenantRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTenantResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6113,6 +8079,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeTenantRequest,
     ) -> ocean_base_pro_20190901_models.DescribeTenantResponse:
+        """
+        @summary The ID of the VPC.
+        
+        @param request: DescribeTenantRequest
+        @return: DescribeTenantResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_tenant_with_options(request, runtime)
 
@@ -6120,6 +8092,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeTenantRequest,
     ) -> ocean_base_pro_20190901_models.DescribeTenantResponse:
+        """
+        @summary The ID of the VPC.
+        
+        @param request: DescribeTenantRequest
+        @return: DescribeTenantResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_tenant_with_options_async(request, runtime)
 
@@ -6128,6 +8106,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeTenantEncryptionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeTenantEncryptionResponse:
+        """
+        @summary 查询租户加密信息
+        
+        @param request: DescribeTenantEncryptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTenantEncryptionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6164,6 +8149,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeTenantEncryptionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeTenantEncryptionResponse:
+        """
+        @summary 查询租户加密信息
+        
+        @param request: DescribeTenantEncryptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTenantEncryptionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6199,6 +8191,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeTenantEncryptionRequest,
     ) -> ocean_base_pro_20190901_models.DescribeTenantEncryptionResponse:
+        """
+        @summary 查询租户加密信息
+        
+        @param request: DescribeTenantEncryptionRequest
+        @return: DescribeTenantEncryptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_tenant_encryption_with_options(request, runtime)
 
@@ -6206,6 +8204,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeTenantEncryptionRequest,
     ) -> ocean_base_pro_20190901_models.DescribeTenantEncryptionResponse:
+        """
+        @summary 查询租户加密信息
+        
+        @param request: DescribeTenantEncryptionRequest
+        @return: DescribeTenantEncryptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_tenant_encryption_with_options_async(request, runtime)
 
@@ -6214,6 +8218,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeTenantMetricsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeTenantMetricsResponse:
+        """
+        @summary The list of tenant IDs.
+        
+        @param request: DescribeTenantMetricsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTenantMetricsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.end_time):
@@ -6258,6 +8269,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeTenantMetricsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeTenantMetricsResponse:
+        """
+        @summary The list of tenant IDs.
+        
+        @param request: DescribeTenantMetricsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTenantMetricsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.end_time):
@@ -6301,6 +8319,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeTenantMetricsRequest,
     ) -> ocean_base_pro_20190901_models.DescribeTenantMetricsResponse:
+        """
+        @summary The list of tenant IDs.
+        
+        @param request: DescribeTenantMetricsRequest
+        @return: DescribeTenantMetricsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_tenant_metrics_with_options(request, runtime)
 
@@ -6308,6 +8332,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeTenantMetricsRequest,
     ) -> ocean_base_pro_20190901_models.DescribeTenantMetricsResponse:
+        """
+        @summary The list of tenant IDs.
+        
+        @param request: DescribeTenantMetricsRequest
+        @return: DescribeTenantMetricsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_tenant_metrics_with_options_async(request, runtime)
 
@@ -6316,6 +8346,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeTenantSecurityConfigsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeTenantSecurityConfigsResponse:
+        """
+        @summary You can call this operation to query security check items of an OceanBase Database tenant.
+        
+        @param request: DescribeTenantSecurityConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTenantSecurityConfigsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.check_id):
@@ -6348,6 +8385,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeTenantSecurityConfigsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeTenantSecurityConfigsResponse:
+        """
+        @summary You can call this operation to query security check items of an OceanBase Database tenant.
+        
+        @param request: DescribeTenantSecurityConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTenantSecurityConfigsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.check_id):
@@ -6379,6 +8423,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeTenantSecurityConfigsRequest,
     ) -> ocean_base_pro_20190901_models.DescribeTenantSecurityConfigsResponse:
+        """
+        @summary You can call this operation to query security check items of an OceanBase Database tenant.
+        
+        @param request: DescribeTenantSecurityConfigsRequest
+        @return: DescribeTenantSecurityConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_tenant_security_configs_with_options(request, runtime)
 
@@ -6386,6 +8436,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeTenantSecurityConfigsRequest,
     ) -> ocean_base_pro_20190901_models.DescribeTenantSecurityConfigsResponse:
+        """
+        @summary You can call this operation to query security check items of an OceanBase Database tenant.
+        
+        @param request: DescribeTenantSecurityConfigsRequest
+        @return: DescribeTenantSecurityConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_tenant_security_configs_with_options_async(request, runtime)
 
@@ -6394,6 +8450,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeTenantSecurityIpGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeTenantSecurityIpGroupsResponse:
+        """
+        @summary You can call this operation to view the list of whitelist groups of the tenant.
+        
+        @param request: DescribeTenantSecurityIpGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTenantSecurityIpGroupsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6424,6 +8487,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeTenantSecurityIpGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeTenantSecurityIpGroupsResponse:
+        """
+        @summary You can call this operation to view the list of whitelist groups of the tenant.
+        
+        @param request: DescribeTenantSecurityIpGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTenantSecurityIpGroupsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6453,6 +8523,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeTenantSecurityIpGroupsRequest,
     ) -> ocean_base_pro_20190901_models.DescribeTenantSecurityIpGroupsResponse:
+        """
+        @summary You can call this operation to view the list of whitelist groups of the tenant.
+        
+        @param request: DescribeTenantSecurityIpGroupsRequest
+        @return: DescribeTenantSecurityIpGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_tenant_security_ip_groups_with_options(request, runtime)
 
@@ -6460,6 +8536,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeTenantSecurityIpGroupsRequest,
     ) -> ocean_base_pro_20190901_models.DescribeTenantSecurityIpGroupsResponse:
+        """
+        @summary You can call this operation to view the list of whitelist groups of the tenant.
+        
+        @param request: DescribeTenantSecurityIpGroupsRequest
+        @return: DescribeTenantSecurityIpGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_tenant_security_ip_groups_with_options_async(request, runtime)
 
@@ -6468,6 +8550,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeTenantTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeTenantTagsResponse:
+        """
+        @summary You can call this operation to view tenant tags.
+        
+        @param request: DescribeTenantTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTenantTagsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6500,6 +8589,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeTenantTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeTenantTagsResponse:
+        """
+        @summary You can call this operation to view tenant tags.
+        
+        @param request: DescribeTenantTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTenantTagsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6531,6 +8627,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeTenantTagsRequest,
     ) -> ocean_base_pro_20190901_models.DescribeTenantTagsResponse:
+        """
+        @summary You can call this operation to view tenant tags.
+        
+        @param request: DescribeTenantTagsRequest
+        @return: DescribeTenantTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_tenant_tags_with_options(request, runtime)
 
@@ -6538,6 +8640,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeTenantTagsRequest,
     ) -> ocean_base_pro_20190901_models.DescribeTenantTagsResponse:
+        """
+        @summary You can call this operation to view tenant tags.
+        
+        @param request: DescribeTenantTagsRequest
+        @return: DescribeTenantTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_tenant_tags_with_options_async(request, runtime)
 
@@ -6546,6 +8654,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeTenantUserRolesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeTenantUserRolesResponse:
+        """
+        @summary You can call this operation to obtain the account authorization information of the tenant.
+        
+        @param request: DescribeTenantUserRolesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTenantUserRolesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.tenant_id):
@@ -6574,6 +8689,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeTenantUserRolesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeTenantUserRolesResponse:
+        """
+        @summary You can call this operation to obtain the account authorization information of the tenant.
+        
+        @param request: DescribeTenantUserRolesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTenantUserRolesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.tenant_id):
@@ -6601,6 +8723,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeTenantUserRolesRequest,
     ) -> ocean_base_pro_20190901_models.DescribeTenantUserRolesResponse:
+        """
+        @summary You can call this operation to obtain the account authorization information of the tenant.
+        
+        @param request: DescribeTenantUserRolesRequest
+        @return: DescribeTenantUserRolesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_tenant_user_roles_with_options(request, runtime)
 
@@ -6608,6 +8736,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeTenantUserRolesRequest,
     ) -> ocean_base_pro_20190901_models.DescribeTenantUserRolesResponse:
+        """
+        @summary You can call this operation to obtain the account authorization information of the tenant.
+        
+        @param request: DescribeTenantUserRolesRequest
+        @return: DescribeTenantUserRolesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_tenant_user_roles_with_options_async(request, runtime)
 
@@ -6616,6 +8750,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeTenantUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeTenantUsersResponse:
+        """
+        @summary The return result of the request.
+        
+        @param request: DescribeTenantUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTenantUsersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.page_number):
@@ -6652,6 +8793,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeTenantUsersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeTenantUsersResponse:
+        """
+        @summary The return result of the request.
+        
+        @param request: DescribeTenantUsersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTenantUsersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.page_number):
@@ -6687,6 +8835,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeTenantUsersRequest,
     ) -> ocean_base_pro_20190901_models.DescribeTenantUsersResponse:
+        """
+        @summary The return result of the request.
+        
+        @param request: DescribeTenantUsersRequest
+        @return: DescribeTenantUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_tenant_users_with_options(request, runtime)
 
@@ -6694,6 +8848,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeTenantUsersRequest,
     ) -> ocean_base_pro_20190901_models.DescribeTenantUsersResponse:
+        """
+        @summary The return result of the request.
+        
+        @param request: DescribeTenantUsersRequest
+        @return: DescribeTenantUsersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_tenant_users_with_options_async(request, runtime)
 
@@ -6702,6 +8862,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeTenantZonesReadRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeTenantZonesReadResponse:
+        """
+        @summary Indicates whether a read-only connection has been created.
+        
+        @param request: DescribeTenantZonesReadRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTenantZonesReadResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6732,6 +8899,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeTenantZonesReadRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeTenantZonesReadResponse:
+        """
+        @summary Indicates whether a read-only connection has been created.
+        
+        @param request: DescribeTenantZonesReadRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTenantZonesReadResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6761,6 +8935,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeTenantZonesReadRequest,
     ) -> ocean_base_pro_20190901_models.DescribeTenantZonesReadResponse:
+        """
+        @summary Indicates whether a read-only connection has been created.
+        
+        @param request: DescribeTenantZonesReadRequest
+        @return: DescribeTenantZonesReadResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_tenant_zones_read_with_options(request, runtime)
 
@@ -6768,6 +8948,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeTenantZonesReadRequest,
     ) -> ocean_base_pro_20190901_models.DescribeTenantZonesReadResponse:
+        """
+        @summary Indicates whether a read-only connection has been created.
+        
+        @param request: DescribeTenantZonesReadRequest
+        @return: DescribeTenantZonesReadResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_tenant_zones_read_with_options_async(request, runtime)
 
@@ -6776,6 +8962,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeTenantsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeTenantsResponse:
+        """
+        @summary The total memory size of the tenant, in GB.
+        
+        @param request: DescribeTenantsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTenantsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6814,6 +9007,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeTenantsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeTenantsResponse:
+        """
+        @summary The total memory size of the tenant, in GB.
+        
+        @param request: DescribeTenantsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTenantsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6851,6 +9051,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeTenantsRequest,
     ) -> ocean_base_pro_20190901_models.DescribeTenantsResponse:
+        """
+        @summary The total memory size of the tenant, in GB.
+        
+        @param request: DescribeTenantsRequest
+        @return: DescribeTenantsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_tenants_with_options(request, runtime)
 
@@ -6858,6 +9064,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeTenantsRequest,
     ) -> ocean_base_pro_20190901_models.DescribeTenantsResponse:
+        """
+        @summary The total memory size of the tenant, in GB.
+        
+        @param request: DescribeTenantsRequest
+        @return: DescribeTenantsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_tenants_with_options_async(request, runtime)
 
@@ -6865,6 +9077,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeTimeZonesResponse:
+        """
+        @summary The time zones supported by the tenant.
+        
+        @param request: DescribeTimeZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTimeZonesResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeTimeZones',
@@ -6886,6 +9105,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeTimeZonesResponse:
+        """
+        @summary The time zones supported by the tenant.
+        
+        @param request: DescribeTimeZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTimeZonesResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='DescribeTimeZones',
@@ -6904,10 +9130,20 @@ class Client(OpenApiClient):
         )
 
     def describe_time_zones(self) -> ocean_base_pro_20190901_models.DescribeTimeZonesResponse:
+        """
+        @summary The time zones supported by the tenant.
+        
+        @return: DescribeTimeZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_time_zones_with_options(runtime)
 
     async def describe_time_zones_async(self) -> ocean_base_pro_20190901_models.DescribeTimeZonesResponse:
+        """
+        @summary The time zones supported by the tenant.
+        
+        @return: DescribeTimeZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_time_zones_with_options_async(runtime)
 
@@ -6916,6 +9152,13 @@ class Client(OpenApiClient):
         tmp_req: ocean_base_pro_20190901_models.DescribeTopSQLListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeTopSQLListResponse:
+        """
+        @summary The name of the database.
+        
+        @param tmp_req: DescribeTopSQLListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTopSQLListResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ocean_base_pro_20190901_models.DescribeTopSQLListShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -6976,6 +9219,13 @@ class Client(OpenApiClient):
         tmp_req: ocean_base_pro_20190901_models.DescribeTopSQLListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeTopSQLListResponse:
+        """
+        @summary The name of the database.
+        
+        @param tmp_req: DescribeTopSQLListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTopSQLListResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ocean_base_pro_20190901_models.DescribeTopSQLListShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7035,6 +9285,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeTopSQLListRequest,
     ) -> ocean_base_pro_20190901_models.DescribeTopSQLListResponse:
+        """
+        @summary The name of the database.
+        
+        @param request: DescribeTopSQLListRequest
+        @return: DescribeTopSQLListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_top_sqllist_with_options(request, runtime)
 
@@ -7042,6 +9298,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeTopSQLListRequest,
     ) -> ocean_base_pro_20190901_models.DescribeTopSQLListResponse:
+        """
+        @summary The name of the database.
+        
+        @param request: DescribeTopSQLListRequest
+        @return: DescribeTopSQLListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_top_sqllist_with_options_async(request, runtime)
 
@@ -7050,8 +9312,17 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeZonesResponse:
+        """
+        @summary The deployment mode.
+        
+        @param request: DescribeZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeZonesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.cpu_arch):
+            body['CpuArch'] = request.cpu_arch
         if not UtilClient.is_unset(request.deploy_type):
             body['DeployType'] = request.deploy_type
         if not UtilClient.is_unset(request.series):
@@ -7080,8 +9351,17 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeZonesResponse:
+        """
+        @summary The deployment mode.
+        
+        @param request: DescribeZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeZonesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
+        if not UtilClient.is_unset(request.cpu_arch):
+            body['CpuArch'] = request.cpu_arch
         if not UtilClient.is_unset(request.deploy_type):
             body['DeployType'] = request.deploy_type
         if not UtilClient.is_unset(request.series):
@@ -7109,6 +9389,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeZonesRequest,
     ) -> ocean_base_pro_20190901_models.DescribeZonesResponse:
+        """
+        @summary The deployment mode.
+        
+        @param request: DescribeZonesRequest
+        @return: DescribeZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_zones_with_options(request, runtime)
 
@@ -7116,6 +9402,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.DescribeZonesRequest,
     ) -> ocean_base_pro_20190901_models.DescribeZonesResponse:
+        """
+        @summary The deployment mode.
+        
+        @param request: DescribeZonesRequest
+        @return: DescribeZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_zones_with_options_async(request, runtime)
 
@@ -7124,6 +9416,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.GetUploadOssUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.GetUploadOssUrlResponse:
+        """
+        @summary 公有云上传OSS 获取一个临时上传url
+        
+        @param request: GetUploadOssUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUploadOssUrlResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.effective_time_minutes):
@@ -7154,6 +9453,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.GetUploadOssUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.GetUploadOssUrlResponse:
+        """
+        @summary 公有云上传OSS 获取一个临时上传url
+        
+        @param request: GetUploadOssUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUploadOssUrlResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.effective_time_minutes):
@@ -7183,6 +9489,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.GetUploadOssUrlRequest,
     ) -> ocean_base_pro_20190901_models.GetUploadOssUrlResponse:
+        """
+        @summary 公有云上传OSS 获取一个临时上传url
+        
+        @param request: GetUploadOssUrlRequest
+        @return: GetUploadOssUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_upload_oss_url_with_options(request, runtime)
 
@@ -7190,6 +9502,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.GetUploadOssUrlRequest,
     ) -> ocean_base_pro_20190901_models.GetUploadOssUrlResponse:
+        """
+        @summary 公有云上传OSS 获取一个临时上传url
+        
+        @param request: GetUploadOssUrlRequest
+        @return: GetUploadOssUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_upload_oss_url_with_options_async(request, runtime)
 
@@ -7198,6 +9516,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.KillProcessListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.KillProcessListResponse:
+        """
+        @summary You can call this operation to close a session.
+        
+        @param request: KillProcessListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: KillProcessListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -7230,6 +9555,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.KillProcessListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.KillProcessListResponse:
+        """
+        @summary You can call this operation to close a session.
+        
+        @param request: KillProcessListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: KillProcessListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -7261,6 +9593,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.KillProcessListRequest,
     ) -> ocean_base_pro_20190901_models.KillProcessListResponse:
+        """
+        @summary You can call this operation to close a session.
+        
+        @param request: KillProcessListRequest
+        @return: KillProcessListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.kill_process_list_with_options(request, runtime)
 
@@ -7268,6 +9606,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.KillProcessListRequest,
     ) -> ocean_base_pro_20190901_models.KillProcessListResponse:
+        """
+        @summary You can call this operation to close a session.
+        
+        @param request: KillProcessListRequest
+        @return: KillProcessListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.kill_process_list_with_options_async(request, runtime)
 
@@ -7275,6 +9619,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ListAllLabelsResponse:
+        """
+        @summary 查询标签列表
+        
+        @param request: ListAllLabelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAllLabelsResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListAllLabels',
@@ -7296,6 +9647,13 @@ class Client(OpenApiClient):
         self,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ListAllLabelsResponse:
+        """
+        @summary 查询标签列表
+        
+        @param request: ListAllLabelsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAllLabelsResponse
+        """
         req = open_api_models.OpenApiRequest()
         params = open_api_models.Params(
             action='ListAllLabels',
@@ -7314,10 +9672,20 @@ class Client(OpenApiClient):
         )
 
     def list_all_labels(self) -> ocean_base_pro_20190901_models.ListAllLabelsResponse:
+        """
+        @summary 查询标签列表
+        
+        @return: ListAllLabelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_all_labels_with_options(runtime)
 
     async def list_all_labels_async(self) -> ocean_base_pro_20190901_models.ListAllLabelsResponse:
+        """
+        @summary 查询标签列表
+        
+        @return: ListAllLabelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_all_labels_with_options_async(runtime)
 
@@ -7326,6 +9694,13 @@ class Client(OpenApiClient):
         tmp_req: ocean_base_pro_20190901_models.ListDataSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ListDataSourceResponse:
+        """
+        @summary 查询数据源列表 (MySql、OB_MYSQL、OB_ORACLE)
+        
+        @param tmp_req: ListDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataSourceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ocean_base_pro_20190901_models.ListDataSourceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7368,6 +9743,13 @@ class Client(OpenApiClient):
         tmp_req: ocean_base_pro_20190901_models.ListDataSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ListDataSourceResponse:
+        """
+        @summary 查询数据源列表 (MySql、OB_MYSQL、OB_ORACLE)
+        
+        @param tmp_req: ListDataSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataSourceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ocean_base_pro_20190901_models.ListDataSourceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7409,6 +9791,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ListDataSourceRequest,
     ) -> ocean_base_pro_20190901_models.ListDataSourceResponse:
+        """
+        @summary 查询数据源列表 (MySql、OB_MYSQL、OB_ORACLE)
+        
+        @param request: ListDataSourceRequest
+        @return: ListDataSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_data_source_with_options(request, runtime)
 
@@ -7416,6 +9804,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ListDataSourceRequest,
     ) -> ocean_base_pro_20190901_models.ListDataSourceResponse:
+        """
+        @summary 查询数据源列表 (MySql、OB_MYSQL、OB_ORACLE)
+        
+        @param request: ListDataSourceRequest
+        @return: ListDataSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_data_source_with_options_async(request, runtime)
 
@@ -7424,6 +9818,13 @@ class Client(OpenApiClient):
         tmp_req: ocean_base_pro_20190901_models.ListProjectFullVerifyResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ListProjectFullVerifyResultResponse:
+        """
+        @summary 查询项目的全量校验结果
+        
+        @param tmp_req: ListProjectFullVerifyResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectFullVerifyResultResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ocean_base_pro_20190901_models.ListProjectFullVerifyResultShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7468,6 +9869,13 @@ class Client(OpenApiClient):
         tmp_req: ocean_base_pro_20190901_models.ListProjectFullVerifyResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ListProjectFullVerifyResultResponse:
+        """
+        @summary 查询项目的全量校验结果
+        
+        @param tmp_req: ListProjectFullVerifyResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectFullVerifyResultResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ocean_base_pro_20190901_models.ListProjectFullVerifyResultShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7511,6 +9919,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ListProjectFullVerifyResultRequest,
     ) -> ocean_base_pro_20190901_models.ListProjectFullVerifyResultResponse:
+        """
+        @summary 查询项目的全量校验结果
+        
+        @param request: ListProjectFullVerifyResultRequest
+        @return: ListProjectFullVerifyResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_project_full_verify_result_with_options(request, runtime)
 
@@ -7518,6 +9932,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ListProjectFullVerifyResultRequest,
     ) -> ocean_base_pro_20190901_models.ListProjectFullVerifyResultResponse:
+        """
+        @summary 查询项目的全量校验结果
+        
+        @param request: ListProjectFullVerifyResultRequest
+        @return: ListProjectFullVerifyResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_project_full_verify_result_with_options_async(request, runtime)
 
@@ -7526,6 +9946,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ListProjectModifyRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ListProjectModifyRecordsResponse:
+        """
+        @summary 根据项目 ID 查询项目的修改记录
+        
+        @param request: ListProjectModifyRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectModifyRecordsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -7554,6 +9981,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ListProjectModifyRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ListProjectModifyRecordsResponse:
+        """
+        @summary 根据项目 ID 查询项目的修改记录
+        
+        @param request: ListProjectModifyRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectModifyRecordsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -7581,6 +10015,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ListProjectModifyRecordsRequest,
     ) -> ocean_base_pro_20190901_models.ListProjectModifyRecordsResponse:
+        """
+        @summary 根据项目 ID 查询项目的修改记录
+        
+        @param request: ListProjectModifyRecordsRequest
+        @return: ListProjectModifyRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_project_modify_records_with_options(request, runtime)
 
@@ -7588,6 +10028,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ListProjectModifyRecordsRequest,
     ) -> ocean_base_pro_20190901_models.ListProjectModifyRecordsResponse:
+        """
+        @summary 根据项目 ID 查询项目的修改记录
+        
+        @param request: ListProjectModifyRecordsRequest
+        @return: ListProjectModifyRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_project_modify_records_with_options_async(request, runtime)
 
@@ -7596,6 +10042,13 @@ class Client(OpenApiClient):
         tmp_req: ocean_base_pro_20190901_models.ListProjectsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ListProjectsResponse:
+        """
+        @summary 查询项目列表
+        
+        @param tmp_req: ListProjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ocean_base_pro_20190901_models.ListProjectsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7656,6 +10109,13 @@ class Client(OpenApiClient):
         tmp_req: ocean_base_pro_20190901_models.ListProjectsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ListProjectsResponse:
+        """
+        @summary 查询项目列表
+        
+        @param tmp_req: ListProjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ocean_base_pro_20190901_models.ListProjectsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7715,6 +10175,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ListProjectsRequest,
     ) -> ocean_base_pro_20190901_models.ListProjectsResponse:
+        """
+        @summary 查询项目列表
+        
+        @param request: ListProjectsRequest
+        @return: ListProjectsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_projects_with_options(request, runtime)
 
@@ -7722,6 +10188,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ListProjectsRequest,
     ) -> ocean_base_pro_20190901_models.ListProjectsResponse:
+        """
+        @summary 查询项目列表
+        
+        @param request: ListProjectsRequest
+        @return: ListProjectsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_projects_with_options_async(request, runtime)
 
@@ -7730,6 +10202,13 @@ class Client(OpenApiClient):
         tmp_req: ocean_base_pro_20190901_models.ListWorkerInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ListWorkerInstancesResponse:
+        """
+        @summary 查询传输实例列表
+        
+        @param tmp_req: ListWorkerInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkerInstancesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ocean_base_pro_20190901_models.ListWorkerInstancesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7774,6 +10253,13 @@ class Client(OpenApiClient):
         tmp_req: ocean_base_pro_20190901_models.ListWorkerInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ListWorkerInstancesResponse:
+        """
+        @summary 查询传输实例列表
+        
+        @param tmp_req: ListWorkerInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkerInstancesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = ocean_base_pro_20190901_models.ListWorkerInstancesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -7817,6 +10303,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ListWorkerInstancesRequest,
     ) -> ocean_base_pro_20190901_models.ListWorkerInstancesResponse:
+        """
+        @summary 查询传输实例列表
+        
+        @param request: ListWorkerInstancesRequest
+        @return: ListWorkerInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_worker_instances_with_options(request, runtime)
 
@@ -7824,6 +10316,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ListWorkerInstancesRequest,
     ) -> ocean_base_pro_20190901_models.ListWorkerInstancesResponse:
+        """
+        @summary 查询传输实例列表
+        
+        @param request: ListWorkerInstancesRequest
+        @return: ListWorkerInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_worker_instances_with_options_async(request, runtime)
 
@@ -7832,6 +10330,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyDatabaseDescriptionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyDatabaseDescriptionResponse:
+        """
+        @summary The request ID.
+        
+        @param request: ModifyDatabaseDescriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDatabaseDescriptionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.database_name):
@@ -7866,6 +10371,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyDatabaseDescriptionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyDatabaseDescriptionResponse:
+        """
+        @summary The request ID.
+        
+        @param request: ModifyDatabaseDescriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDatabaseDescriptionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.database_name):
@@ -7899,6 +10411,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ModifyDatabaseDescriptionRequest,
     ) -> ocean_base_pro_20190901_models.ModifyDatabaseDescriptionResponse:
+        """
+        @summary The request ID.
+        
+        @param request: ModifyDatabaseDescriptionRequest
+        @return: ModifyDatabaseDescriptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_database_description_with_options(request, runtime)
 
@@ -7906,6 +10424,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ModifyDatabaseDescriptionRequest,
     ) -> ocean_base_pro_20190901_models.ModifyDatabaseDescriptionResponse:
+        """
+        @summary The request ID.
+        
+        @param request: ModifyDatabaseDescriptionRequest
+        @return: ModifyDatabaseDescriptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_database_description_with_options_async(request, runtime)
 
@@ -7914,6 +10438,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyDatabaseUserRolesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyDatabaseUserRolesResponse:
+        """
+        @summary The accounts that have privileges on the database.
+        
+        @param request: ModifyDatabaseUserRolesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDatabaseUserRolesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.database_name):
@@ -7948,6 +10479,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyDatabaseUserRolesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyDatabaseUserRolesResponse:
+        """
+        @summary The accounts that have privileges on the database.
+        
+        @param request: ModifyDatabaseUserRolesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDatabaseUserRolesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.database_name):
@@ -7981,6 +10519,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ModifyDatabaseUserRolesRequest,
     ) -> ocean_base_pro_20190901_models.ModifyDatabaseUserRolesResponse:
+        """
+        @summary The accounts that have privileges on the database.
+        
+        @param request: ModifyDatabaseUserRolesRequest
+        @return: ModifyDatabaseUserRolesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_database_user_roles_with_options(request, runtime)
 
@@ -7988,6 +10532,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ModifyDatabaseUserRolesRequest,
     ) -> ocean_base_pro_20190901_models.ModifyDatabaseUserRolesResponse:
+        """
+        @summary The accounts that have privileges on the database.
+        
+        @param request: ModifyDatabaseUserRolesRequest
+        @return: ModifyDatabaseUserRolesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_database_user_roles_with_options_async(request, runtime)
 
@@ -7996,6 +10546,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyInstanceNameRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyInstanceNameResponse:
+        """
+        @summary The name of the OceanBase cluster.
+        
+        @param request: ModifyInstanceNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceNameResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -8026,6 +10583,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyInstanceNameRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyInstanceNameResponse:
+        """
+        @summary The name of the OceanBase cluster.
+        
+        @param request: ModifyInstanceNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceNameResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -8055,6 +10619,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ModifyInstanceNameRequest,
     ) -> ocean_base_pro_20190901_models.ModifyInstanceNameResponse:
+        """
+        @summary The name of the OceanBase cluster.
+        
+        @param request: ModifyInstanceNameRequest
+        @return: ModifyInstanceNameResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_instance_name_with_options(request, runtime)
 
@@ -8062,6 +10632,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ModifyInstanceNameRequest,
     ) -> ocean_base_pro_20190901_models.ModifyInstanceNameResponse:
+        """
+        @summary The name of the OceanBase cluster.
+        
+        @param request: ModifyInstanceNameRequest
+        @return: ModifyInstanceNameResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_name_with_options_async(request, runtime)
 
@@ -8070,6 +10646,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyInstanceNodeNumRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyInstanceNodeNumResponse:
+        """
+        @summary You can call this operation to modify the number of nodes in a cluster.
+        
+        @param request: ModifyInstanceNodeNumRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceNodeNumResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -8102,6 +10685,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyInstanceNodeNumRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyInstanceNodeNumResponse:
+        """
+        @summary You can call this operation to modify the number of nodes in a cluster.
+        
+        @param request: ModifyInstanceNodeNumRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceNodeNumResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -8133,6 +10723,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ModifyInstanceNodeNumRequest,
     ) -> ocean_base_pro_20190901_models.ModifyInstanceNodeNumResponse:
+        """
+        @summary You can call this operation to modify the number of nodes in a cluster.
+        
+        @param request: ModifyInstanceNodeNumRequest
+        @return: ModifyInstanceNodeNumResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_instance_node_num_with_options(request, runtime)
 
@@ -8140,6 +10736,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ModifyInstanceNodeNumRequest,
     ) -> ocean_base_pro_20190901_models.ModifyInstanceNodeNumResponse:
+        """
+        @summary You can call this operation to modify the number of nodes in a cluster.
+        
+        @param request: ModifyInstanceNodeNumRequest
+        @return: ModifyInstanceNodeNumResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_node_num_with_options_async(request, runtime)
 
@@ -8148,6 +10750,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyInstanceSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyInstanceSpecResponse:
+        """
+        @summary You can call this operation to modify the cluster specifications and storage space.
+        
+        @param request: ModifyInstanceSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceSpecResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.disk_size):
@@ -8184,6 +10793,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyInstanceSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyInstanceSpecResponse:
+        """
+        @summary You can call this operation to modify the cluster specifications and storage space.
+        
+        @param request: ModifyInstanceSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceSpecResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.disk_size):
@@ -8219,6 +10835,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ModifyInstanceSpecRequest,
     ) -> ocean_base_pro_20190901_models.ModifyInstanceSpecResponse:
+        """
+        @summary You can call this operation to modify the cluster specifications and storage space.
+        
+        @param request: ModifyInstanceSpecRequest
+        @return: ModifyInstanceSpecResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_instance_spec_with_options(request, runtime)
 
@@ -8226,6 +10848,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ModifyInstanceSpecRequest,
     ) -> ocean_base_pro_20190901_models.ModifyInstanceSpecResponse:
+        """
+        @summary You can call this operation to modify the cluster specifications and storage space.
+        
+        @param request: ModifyInstanceSpecRequest
+        @return: ModifyInstanceSpecResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_spec_with_options_async(request, runtime)
 
@@ -8234,6 +10862,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyInstanceTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyInstanceTagsResponse:
+        """
+        @summary The returned response.
+        
+        @param request: ModifyInstanceTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceTagsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -8264,6 +10899,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyInstanceTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyInstanceTagsResponse:
+        """
+        @summary The returned response.
+        
+        @param request: ModifyInstanceTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceTagsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -8293,6 +10935,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ModifyInstanceTagsRequest,
     ) -> ocean_base_pro_20190901_models.ModifyInstanceTagsResponse:
+        """
+        @summary The returned response.
+        
+        @param request: ModifyInstanceTagsRequest
+        @return: ModifyInstanceTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_instance_tags_with_options(request, runtime)
 
@@ -8300,6 +10948,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ModifyInstanceTagsRequest,
     ) -> ocean_base_pro_20190901_models.ModifyInstanceTagsResponse:
+        """
+        @summary The returned response.
+        
+        @param request: ModifyInstanceTagsRequest
+        @return: ModifyInstanceTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_tags_with_options_async(request, runtime)
 
@@ -8308,6 +10962,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyInstanceTemporaryCapacityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyInstanceTemporaryCapacityResponse:
+        """
+        @summary You can call this operation to modify the temporary capacity of the OceanBase cluster.
+        
+        @param request: ModifyInstanceTemporaryCapacityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceTemporaryCapacityResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -8342,6 +11003,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyInstanceTemporaryCapacityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyInstanceTemporaryCapacityResponse:
+        """
+        @summary You can call this operation to modify the temporary capacity of the OceanBase cluster.
+        
+        @param request: ModifyInstanceTemporaryCapacityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyInstanceTemporaryCapacityResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -8375,6 +11043,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ModifyInstanceTemporaryCapacityRequest,
     ) -> ocean_base_pro_20190901_models.ModifyInstanceTemporaryCapacityResponse:
+        """
+        @summary You can call this operation to modify the temporary capacity of the OceanBase cluster.
+        
+        @param request: ModifyInstanceTemporaryCapacityRequest
+        @return: ModifyInstanceTemporaryCapacityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_instance_temporary_capacity_with_options(request, runtime)
 
@@ -8382,6 +11056,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ModifyInstanceTemporaryCapacityRequest,
     ) -> ocean_base_pro_20190901_models.ModifyInstanceTemporaryCapacityResponse:
+        """
+        @summary You can call this operation to modify the temporary capacity of the OceanBase cluster.
+        
+        @param request: ModifyInstanceTemporaryCapacityRequest
+        @return: ModifyInstanceTemporaryCapacityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_instance_temporary_capacity_with_options_async(request, runtime)
 
@@ -8390,6 +11070,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyParametersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyParametersResponse:
+        """
+        @summary The modification results.
+        
+        @param request: ModifyParametersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyParametersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dimension):
@@ -8424,6 +11111,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyParametersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyParametersResponse:
+        """
+        @summary The modification results.
+        
+        @param request: ModifyParametersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyParametersResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.dimension):
@@ -8457,6 +11151,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ModifyParametersRequest,
     ) -> ocean_base_pro_20190901_models.ModifyParametersResponse:
+        """
+        @summary The modification results.
+        
+        @param request: ModifyParametersRequest
+        @return: ModifyParametersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_parameters_with_options(request, runtime)
 
@@ -8464,6 +11164,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ModifyParametersRequest,
     ) -> ocean_base_pro_20190901_models.ModifyParametersResponse:
+        """
+        @summary The modification results.
+        
+        @param request: ModifyParametersRequest
+        @return: ModifyParametersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_parameters_with_options_async(request, runtime)
 
@@ -8472,6 +11178,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifySecurityIpsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifySecurityIpsResponse:
+        """
+        @summary The name of the security group.
+        
+        @param request: ModifySecurityIpsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySecurityIpsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -8504,6 +11217,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifySecurityIpsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifySecurityIpsResponse:
+        """
+        @summary The name of the security group.
+        
+        @param request: ModifySecurityIpsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifySecurityIpsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -8535,6 +11255,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ModifySecurityIpsRequest,
     ) -> ocean_base_pro_20190901_models.ModifySecurityIpsResponse:
+        """
+        @summary The name of the security group.
+        
+        @param request: ModifySecurityIpsRequest
+        @return: ModifySecurityIpsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_security_ips_with_options(request, runtime)
 
@@ -8542,6 +11268,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ModifySecurityIpsRequest,
     ) -> ocean_base_pro_20190901_models.ModifySecurityIpsResponse:
+        """
+        @summary The name of the security group.
+        
+        @param request: ModifySecurityIpsRequest
+        @return: ModifySecurityIpsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_security_ips_with_options_async(request, runtime)
 
@@ -8550,6 +11282,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyTenantEncryptionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyTenantEncryptionResponse:
+        """
+        @summary 租户加密变更
+        
+        @param request: ModifyTenantEncryptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTenantEncryptionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.encryption_key_id):
@@ -8584,6 +11323,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyTenantEncryptionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyTenantEncryptionResponse:
+        """
+        @summary 租户加密变更
+        
+        @param request: ModifyTenantEncryptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTenantEncryptionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.encryption_key_id):
@@ -8617,6 +11363,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ModifyTenantEncryptionRequest,
     ) -> ocean_base_pro_20190901_models.ModifyTenantEncryptionResponse:
+        """
+        @summary 租户加密变更
+        
+        @param request: ModifyTenantEncryptionRequest
+        @return: ModifyTenantEncryptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_tenant_encryption_with_options(request, runtime)
 
@@ -8624,6 +11376,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ModifyTenantEncryptionRequest,
     ) -> ocean_base_pro_20190901_models.ModifyTenantEncryptionResponse:
+        """
+        @summary 租户加密变更
+        
+        @param request: ModifyTenantEncryptionRequest
+        @return: ModifyTenantEncryptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_tenant_encryption_with_options_async(request, runtime)
 
@@ -8632,6 +11390,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyTenantPrimaryZoneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyTenantPrimaryZoneResponse:
+        """
+        @summary The return result of the request.
+        
+        @param request: ModifyTenantPrimaryZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTenantPrimaryZoneResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -8650,6 +11415,8 @@ class Client(OpenApiClient):
             body['UserDirectVSwitchId'] = request.user_direct_vswitch_id
         if not UtilClient.is_unset(request.user_vswitch_id):
             body['UserVSwitchId'] = request.user_vswitch_id
+        if not UtilClient.is_unset(request.user_vpc_owner_id):
+            body['UserVpcOwnerId'] = request.user_vpc_owner_id
         if not UtilClient.is_unset(request.vpc_id):
             body['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
@@ -8676,6 +11443,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyTenantPrimaryZoneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyTenantPrimaryZoneResponse:
+        """
+        @summary The return result of the request.
+        
+        @param request: ModifyTenantPrimaryZoneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTenantPrimaryZoneResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -8694,6 +11468,8 @@ class Client(OpenApiClient):
             body['UserDirectVSwitchId'] = request.user_direct_vswitch_id
         if not UtilClient.is_unset(request.user_vswitch_id):
             body['UserVSwitchId'] = request.user_vswitch_id
+        if not UtilClient.is_unset(request.user_vpc_owner_id):
+            body['UserVpcOwnerId'] = request.user_vpc_owner_id
         if not UtilClient.is_unset(request.vpc_id):
             body['VpcId'] = request.vpc_id
         req = open_api_models.OpenApiRequest(
@@ -8719,6 +11495,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ModifyTenantPrimaryZoneRequest,
     ) -> ocean_base_pro_20190901_models.ModifyTenantPrimaryZoneResponse:
+        """
+        @summary The return result of the request.
+        
+        @param request: ModifyTenantPrimaryZoneRequest
+        @return: ModifyTenantPrimaryZoneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_tenant_primary_zone_with_options(request, runtime)
 
@@ -8726,6 +11508,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ModifyTenantPrimaryZoneRequest,
     ) -> ocean_base_pro_20190901_models.ModifyTenantPrimaryZoneResponse:
+        """
+        @summary The return result of the request.
+        
+        @param request: ModifyTenantPrimaryZoneRequest
+        @return: ModifyTenantPrimaryZoneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_tenant_primary_zone_with_options_async(request, runtime)
 
@@ -8734,6 +11522,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyTenantResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyTenantResourceResponse:
+        """
+        @summary You can call this operation to modify the specifications of a tenant in an OceanBase cluster.
+        
+        @param request: ModifyTenantResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTenantResourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cpu):
@@ -8772,6 +11567,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyTenantResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyTenantResourceResponse:
+        """
+        @summary You can call this operation to modify the specifications of a tenant in an OceanBase cluster.
+        
+        @param request: ModifyTenantResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTenantResourceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cpu):
@@ -8809,6 +11611,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ModifyTenantResourceRequest,
     ) -> ocean_base_pro_20190901_models.ModifyTenantResourceResponse:
+        """
+        @summary You can call this operation to modify the specifications of a tenant in an OceanBase cluster.
+        
+        @param request: ModifyTenantResourceRequest
+        @return: ModifyTenantResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_tenant_resource_with_options(request, runtime)
 
@@ -8816,6 +11624,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ModifyTenantResourceRequest,
     ) -> ocean_base_pro_20190901_models.ModifyTenantResourceResponse:
+        """
+        @summary You can call this operation to modify the specifications of a tenant in an OceanBase cluster.
+        
+        @param request: ModifyTenantResourceRequest
+        @return: ModifyTenantResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_tenant_resource_with_options_async(request, runtime)
 
@@ -8824,6 +11638,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyTenantSecurityIpGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyTenantSecurityIpGroupResponse:
+        """
+        @summary You can call this operation to modify the information on the whitelist group of the tenant.
+        
+        @param request: ModifyTenantSecurityIpGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTenantSecurityIpGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -8858,6 +11679,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyTenantSecurityIpGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyTenantSecurityIpGroupResponse:
+        """
+        @summary You can call this operation to modify the information on the whitelist group of the tenant.
+        
+        @param request: ModifyTenantSecurityIpGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTenantSecurityIpGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -8891,6 +11719,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ModifyTenantSecurityIpGroupRequest,
     ) -> ocean_base_pro_20190901_models.ModifyTenantSecurityIpGroupResponse:
+        """
+        @summary You can call this operation to modify the information on the whitelist group of the tenant.
+        
+        @param request: ModifyTenantSecurityIpGroupRequest
+        @return: ModifyTenantSecurityIpGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_tenant_security_ip_group_with_options(request, runtime)
 
@@ -8898,6 +11732,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ModifyTenantSecurityIpGroupRequest,
     ) -> ocean_base_pro_20190901_models.ModifyTenantSecurityIpGroupResponse:
+        """
+        @summary You can call this operation to modify the information on the whitelist group of the tenant.
+        
+        @param request: ModifyTenantSecurityIpGroupRequest
+        @return: ModifyTenantSecurityIpGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_tenant_security_ip_group_with_options_async(request, runtime)
 
@@ -8906,6 +11746,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyTenantTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyTenantTagsResponse:
+        """
+        @summary You can call this operation to modify tenant tags.
+        
+        @param request: ModifyTenantTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTenantTagsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -8938,6 +11785,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyTenantTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyTenantTagsResponse:
+        """
+        @summary You can call this operation to modify tenant tags.
+        
+        @param request: ModifyTenantTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTenantTagsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -8969,6 +11823,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ModifyTenantTagsRequest,
     ) -> ocean_base_pro_20190901_models.ModifyTenantTagsResponse:
+        """
+        @summary You can call this operation to modify tenant tags.
+        
+        @param request: ModifyTenantTagsRequest
+        @return: ModifyTenantTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_tenant_tags_with_options(request, runtime)
 
@@ -8976,6 +11836,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ModifyTenantTagsRequest,
     ) -> ocean_base_pro_20190901_models.ModifyTenantTagsResponse:
+        """
+        @summary You can call this operation to modify tenant tags.
+        
+        @param request: ModifyTenantTagsRequest
+        @return: ModifyTenantTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_tenant_tags_with_options_async(request, runtime)
 
@@ -8984,6 +11850,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyTenantUserDescriptionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyTenantUserDescriptionResponse:
+        """
+        @summary The description of the database.
+        
+        @param request: ModifyTenantUserDescriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTenantUserDescriptionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -9018,6 +11891,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyTenantUserDescriptionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyTenantUserDescriptionResponse:
+        """
+        @summary The description of the database.
+        
+        @param request: ModifyTenantUserDescriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTenantUserDescriptionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -9051,6 +11931,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ModifyTenantUserDescriptionRequest,
     ) -> ocean_base_pro_20190901_models.ModifyTenantUserDescriptionResponse:
+        """
+        @summary The description of the database.
+        
+        @param request: ModifyTenantUserDescriptionRequest
+        @return: ModifyTenantUserDescriptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_tenant_user_description_with_options(request, runtime)
 
@@ -9058,6 +11944,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ModifyTenantUserDescriptionRequest,
     ) -> ocean_base_pro_20190901_models.ModifyTenantUserDescriptionResponse:
+        """
+        @summary The description of the database.
+        
+        @param request: ModifyTenantUserDescriptionRequest
+        @return: ModifyTenantUserDescriptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_tenant_user_description_with_options_async(request, runtime)
 
@@ -9066,6 +11958,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyTenantUserPasswordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyTenantUserPasswordResponse:
+        """
+        @summary The request ID.
+        
+        @param request: ModifyTenantUserPasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTenantUserPasswordResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.encryption_type):
@@ -9102,6 +12001,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyTenantUserPasswordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyTenantUserPasswordResponse:
+        """
+        @summary The request ID.
+        
+        @param request: ModifyTenantUserPasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTenantUserPasswordResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.encryption_type):
@@ -9137,6 +12043,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ModifyTenantUserPasswordRequest,
     ) -> ocean_base_pro_20190901_models.ModifyTenantUserPasswordResponse:
+        """
+        @summary The request ID.
+        
+        @param request: ModifyTenantUserPasswordRequest
+        @return: ModifyTenantUserPasswordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_tenant_user_password_with_options(request, runtime)
 
@@ -9144,6 +12056,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ModifyTenantUserPasswordRequest,
     ) -> ocean_base_pro_20190901_models.ModifyTenantUserPasswordResponse:
+        """
+        @summary The request ID.
+        
+        @param request: ModifyTenantUserPasswordRequest
+        @return: ModifyTenantUserPasswordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_tenant_user_password_with_options_async(request, runtime)
 
@@ -9152,6 +12070,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyTenantUserRolesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyTenantUserRolesResponse:
+        """
+        @summary Indicates whether the privilege was granted to the role.
+        
+        @param request: ModifyTenantUserRolesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTenantUserRolesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -9188,6 +12113,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyTenantUserRolesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyTenantUserRolesResponse:
+        """
+        @summary Indicates whether the privilege was granted to the role.
+        
+        @param request: ModifyTenantUserRolesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTenantUserRolesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -9223,6 +12155,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ModifyTenantUserRolesRequest,
     ) -> ocean_base_pro_20190901_models.ModifyTenantUserRolesResponse:
+        """
+        @summary Indicates whether the privilege was granted to the role.
+        
+        @param request: ModifyTenantUserRolesRequest
+        @return: ModifyTenantUserRolesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_tenant_user_roles_with_options(request, runtime)
 
@@ -9230,6 +12168,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ModifyTenantUserRolesRequest,
     ) -> ocean_base_pro_20190901_models.ModifyTenantUserRolesResponse:
+        """
+        @summary Indicates whether the privilege was granted to the role.
+        
+        @param request: ModifyTenantUserRolesRequest
+        @return: ModifyTenantUserRolesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_tenant_user_roles_with_options_async(request, runtime)
 
@@ -9238,6 +12182,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyTenantUserStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyTenantUserStatusResponse:
+        """
+        @summary The ID of the tenant.
+        
+        @param request: ModifyTenantUserStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTenantUserStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -9272,6 +12223,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ModifyTenantUserStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ModifyTenantUserStatusResponse:
+        """
+        @summary The ID of the tenant.
+        
+        @param request: ModifyTenantUserStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTenantUserStatusResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -9305,6 +12263,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ModifyTenantUserStatusRequest,
     ) -> ocean_base_pro_20190901_models.ModifyTenantUserStatusResponse:
+        """
+        @summary The ID of the tenant.
+        
+        @param request: ModifyTenantUserStatusRequest
+        @return: ModifyTenantUserStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_tenant_user_status_with_options(request, runtime)
 
@@ -9312,6 +12276,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ModifyTenantUserStatusRequest,
     ) -> ocean_base_pro_20190901_models.ModifyTenantUserStatusResponse:
+        """
+        @summary The ID of the tenant.
+        
+        @param request: ModifyTenantUserStatusRequest
+        @return: ModifyTenantUserStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_tenant_user_status_with_options_async(request, runtime)
 
@@ -9320,6 +12290,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ReleaseProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ReleaseProjectResponse:
+        """
+        @summary 释放项目
+        
+        @param request: ReleaseProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseProjectResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -9348,6 +12325,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ReleaseProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ReleaseProjectResponse:
+        """
+        @summary 释放项目
+        
+        @param request: ReleaseProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseProjectResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -9375,6 +12359,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ReleaseProjectRequest,
     ) -> ocean_base_pro_20190901_models.ReleaseProjectResponse:
+        """
+        @summary 释放项目
+        
+        @param request: ReleaseProjectRequest
+        @return: ReleaseProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.release_project_with_options(request, runtime)
 
@@ -9382,6 +12372,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ReleaseProjectRequest,
     ) -> ocean_base_pro_20190901_models.ReleaseProjectResponse:
+        """
+        @summary 释放项目
+        
+        @param request: ReleaseProjectRequest
+        @return: ReleaseProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.release_project_with_options_async(request, runtime)
 
@@ -9390,6 +12386,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ReleaseWorkerInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ReleaseWorkerInstanceResponse:
+        """
+        @summary 释放传输实例 （未绑定项目时才可以释放）
+        
+        @param request: ReleaseWorkerInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseWorkerInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -9418,6 +12421,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ReleaseWorkerInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ReleaseWorkerInstanceResponse:
+        """
+        @summary 释放传输实例 （未绑定项目时才可以释放）
+        
+        @param request: ReleaseWorkerInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseWorkerInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -9445,6 +12455,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ReleaseWorkerInstanceRequest,
     ) -> ocean_base_pro_20190901_models.ReleaseWorkerInstanceResponse:
+        """
+        @summary 释放传输实例 （未绑定项目时才可以释放）
+        
+        @param request: ReleaseWorkerInstanceRequest
+        @return: ReleaseWorkerInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.release_worker_instance_with_options(request, runtime)
 
@@ -9452,6 +12468,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ReleaseWorkerInstanceRequest,
     ) -> ocean_base_pro_20190901_models.ReleaseWorkerInstanceResponse:
+        """
+        @summary 释放传输实例 （未绑定项目时才可以释放）
+        
+        @param request: ReleaseWorkerInstanceRequest
+        @return: ReleaseWorkerInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.release_worker_instance_with_options_async(request, runtime)
 
@@ -9460,6 +12482,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ResumeProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ResumeProjectResponse:
+        """
+        @summary 恢复项目
+        
+        @param request: ResumeProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeProjectResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -9488,6 +12517,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.ResumeProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.ResumeProjectResponse:
+        """
+        @summary 恢复项目
+        
+        @param request: ResumeProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeProjectResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -9515,6 +12551,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ResumeProjectRequest,
     ) -> ocean_base_pro_20190901_models.ResumeProjectResponse:
+        """
+        @summary 恢复项目
+        
+        @param request: ResumeProjectRequest
+        @return: ResumeProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.resume_project_with_options(request, runtime)
 
@@ -9522,6 +12564,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.ResumeProjectRequest,
     ) -> ocean_base_pro_20190901_models.ResumeProjectResponse:
+        """
+        @summary 恢复项目
+        
+        @param request: ResumeProjectRequest
+        @return: ResumeProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.resume_project_with_options_async(request, runtime)
 
@@ -9530,6 +12578,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.RetryProjectModifyRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.RetryProjectModifyRecordsResponse:
+        """
+        @summary 根据修改记录 ID 重试修改操作（仅支持处于 FAILED 状态的修改记录）
+        
+        @param request: RetryProjectModifyRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RetryProjectModifyRecordsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -9558,6 +12613,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.RetryProjectModifyRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.RetryProjectModifyRecordsResponse:
+        """
+        @summary 根据修改记录 ID 重试修改操作（仅支持处于 FAILED 状态的修改记录）
+        
+        @param request: RetryProjectModifyRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RetryProjectModifyRecordsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -9585,6 +12647,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.RetryProjectModifyRecordsRequest,
     ) -> ocean_base_pro_20190901_models.RetryProjectModifyRecordsResponse:
+        """
+        @summary 根据修改记录 ID 重试修改操作（仅支持处于 FAILED 状态的修改记录）
+        
+        @param request: RetryProjectModifyRecordsRequest
+        @return: RetryProjectModifyRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.retry_project_modify_records_with_options(request, runtime)
 
@@ -9592,6 +12660,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.RetryProjectModifyRecordsRequest,
     ) -> ocean_base_pro_20190901_models.RetryProjectModifyRecordsResponse:
+        """
+        @summary 根据修改记录 ID 重试修改操作（仅支持处于 FAILED 状态的修改记录）
+        
+        @param request: RetryProjectModifyRecordsRequest
+        @return: RetryProjectModifyRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.retry_project_modify_records_with_options_async(request, runtime)
 
@@ -9600,6 +12674,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.StartProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.StartProjectResponse:
+        """
+        @summary 启动项目
+        
+        @param request: StartProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartProjectResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -9628,6 +12709,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.StartProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.StartProjectResponse:
+        """
+        @summary 启动项目
+        
+        @param request: StartProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartProjectResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -9655,6 +12743,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.StartProjectRequest,
     ) -> ocean_base_pro_20190901_models.StartProjectResponse:
+        """
+        @summary 启动项目
+        
+        @param request: StartProjectRequest
+        @return: StartProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_project_with_options(request, runtime)
 
@@ -9662,6 +12756,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.StartProjectRequest,
     ) -> ocean_base_pro_20190901_models.StartProjectResponse:
+        """
+        @summary 启动项目
+        
+        @param request: StartProjectRequest
+        @return: StartProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_project_with_options_async(request, runtime)
 
@@ -9670,6 +12770,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.StartProjectsByLabelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.StartProjectsByLabelResponse:
+        """
+        @summary 启动该label下的所有未启动项目
+        
+        @param request: StartProjectsByLabelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartProjectsByLabelResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -9698,6 +12805,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.StartProjectsByLabelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.StartProjectsByLabelResponse:
+        """
+        @summary 启动该label下的所有未启动项目
+        
+        @param request: StartProjectsByLabelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartProjectsByLabelResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -9725,6 +12839,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.StartProjectsByLabelRequest,
     ) -> ocean_base_pro_20190901_models.StartProjectsByLabelResponse:
+        """
+        @summary 启动该label下的所有未启动项目
+        
+        @param request: StartProjectsByLabelRequest
+        @return: StartProjectsByLabelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_projects_by_label_with_options(request, runtime)
 
@@ -9732,6 +12852,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.StartProjectsByLabelRequest,
     ) -> ocean_base_pro_20190901_models.StartProjectsByLabelResponse:
+        """
+        @summary 启动该label下的所有未启动项目
+        
+        @param request: StartProjectsByLabelRequest
+        @return: StartProjectsByLabelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_projects_by_label_with_options_async(request, runtime)
 
@@ -9740,6 +12866,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.StopProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.StopProjectResponse:
+        """
+        @summary 暂停项目
+        
+        @param request: StopProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopProjectResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -9768,6 +12901,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.StopProjectRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.StopProjectResponse:
+        """
+        @summary 暂停项目
+        
+        @param request: StopProjectRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopProjectResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -9795,6 +12935,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.StopProjectRequest,
     ) -> ocean_base_pro_20190901_models.StopProjectResponse:
+        """
+        @summary 暂停项目
+        
+        @param request: StopProjectRequest
+        @return: StopProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_project_with_options(request, runtime)
 
@@ -9802,6 +12948,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.StopProjectRequest,
     ) -> ocean_base_pro_20190901_models.StopProjectResponse:
+        """
+        @summary 暂停项目
+        
+        @param request: StopProjectRequest
+        @return: StopProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_project_with_options_async(request, runtime)
 
@@ -9810,6 +12962,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.StopProjectModifyRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.StopProjectModifyRecordsResponse:
+        """
+        @summary 根据修改记录 ID 终止修改操作，不可恢复（仅支持处于 RUNNING / FAILED 状态的修改记录）
+        
+        @param request: StopProjectModifyRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopProjectModifyRecordsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -9838,6 +12997,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.StopProjectModifyRecordsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.StopProjectModifyRecordsResponse:
+        """
+        @summary 根据修改记录 ID 终止修改操作，不可恢复（仅支持处于 RUNNING / FAILED 状态的修改记录）
+        
+        @param request: StopProjectModifyRecordsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopProjectModifyRecordsResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -9865,6 +13031,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.StopProjectModifyRecordsRequest,
     ) -> ocean_base_pro_20190901_models.StopProjectModifyRecordsResponse:
+        """
+        @summary 根据修改记录 ID 终止修改操作，不可恢复（仅支持处于 RUNNING / FAILED 状态的修改记录）
+        
+        @param request: StopProjectModifyRecordsRequest
+        @return: StopProjectModifyRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_project_modify_records_with_options(request, runtime)
 
@@ -9872,6 +13044,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.StopProjectModifyRecordsRequest,
     ) -> ocean_base_pro_20190901_models.StopProjectModifyRecordsResponse:
+        """
+        @summary 根据修改记录 ID 终止修改操作，不可恢复（仅支持处于 RUNNING / FAILED 状态的修改记录）
+        
+        @param request: StopProjectModifyRecordsRequest
+        @return: StopProjectModifyRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_project_modify_records_with_options_async(request, runtime)
 
@@ -9880,6 +13058,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.StopProjectsByLabelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.StopProjectsByLabelResponse:
+        """
+        @summary 暂停该label下的所有运行中项目
+        
+        @param request: StopProjectsByLabelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopProjectsByLabelResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -9908,6 +13093,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.StopProjectsByLabelRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.StopProjectsByLabelResponse:
+        """
+        @summary 暂停该label下的所有运行中项目
+        
+        @param request: StopProjectsByLabelRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopProjectsByLabelResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.id):
@@ -9935,6 +13127,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.StopProjectsByLabelRequest,
     ) -> ocean_base_pro_20190901_models.StopProjectsByLabelResponse:
+        """
+        @summary 暂停该label下的所有运行中项目
+        
+        @param request: StopProjectsByLabelRequest
+        @return: StopProjectsByLabelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_projects_by_label_with_options(request, runtime)
 
@@ -9942,6 +13140,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.StopProjectsByLabelRequest,
     ) -> ocean_base_pro_20190901_models.StopProjectsByLabelResponse:
+        """
+        @summary 暂停该label下的所有运行中项目
+        
+        @param request: StopProjectsByLabelRequest
+        @return: StopProjectsByLabelResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_projects_by_label_with_options_async(request, runtime)
 
@@ -9950,6 +13154,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.SwitchoverInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.SwitchoverInstanceResponse:
+        """
+        @summary You can call this operation to switch between the primary and standby instances of OceanBase.
+        
+        @param request: SwitchoverInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SwitchoverInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.forced):
@@ -9982,6 +13193,13 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.SwitchoverInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.SwitchoverInstanceResponse:
+        """
+        @summary You can call this operation to switch between the primary and standby instances of OceanBase.
+        
+        @param request: SwitchoverInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SwitchoverInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.forced):
@@ -10013,6 +13231,12 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.SwitchoverInstanceRequest,
     ) -> ocean_base_pro_20190901_models.SwitchoverInstanceResponse:
+        """
+        @summary You can call this operation to switch between the primary and standby instances of OceanBase.
+        
+        @param request: SwitchoverInstanceRequest
+        @return: SwitchoverInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.switchover_instance_with_options(request, runtime)
 
@@ -10020,5 +13244,135 @@ class Client(OpenApiClient):
         self,
         request: ocean_base_pro_20190901_models.SwitchoverInstanceRequest,
     ) -> ocean_base_pro_20190901_models.SwitchoverInstanceResponse:
+        """
+        @summary You can call this operation to switch between the primary and standby instances of OceanBase.
+        
+        @param request: SwitchoverInstanceRequest
+        @return: SwitchoverInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.switchover_instance_with_options_async(request, runtime)
+
+    def update_project_config_with_options(
+        self,
+        tmp_req: ocean_base_pro_20190901_models.UpdateProjectConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.UpdateProjectConfigResponse:
+        """
+        @summary 更新项目配置 Action=UpdateProjectConfig
+        
+        @param tmp_req: UpdateProjectConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProjectConfigResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ocean_base_pro_20190901_models.UpdateProjectConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.full_transfer_config):
+            request.full_transfer_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.full_transfer_config, 'FullTransferConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.incr_transfer_config):
+            request.incr_transfer_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.incr_transfer_config, 'IncrTransferConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.reverse_incr_transfer_config):
+            request.reverse_incr_transfer_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.reverse_incr_transfer_config, 'ReverseIncrTransferConfig', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.full_transfer_config_shrink):
+            body['FullTransferConfig'] = request.full_transfer_config_shrink
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.incr_transfer_config_shrink):
+            body['IncrTransferConfig'] = request.incr_transfer_config_shrink
+        if not UtilClient.is_unset(request.reverse_incr_transfer_config_shrink):
+            body['ReverseIncrTransferConfig'] = request.reverse_incr_transfer_config_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateProjectConfig',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.UpdateProjectConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_project_config_with_options_async(
+        self,
+        tmp_req: ocean_base_pro_20190901_models.UpdateProjectConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.UpdateProjectConfigResponse:
+        """
+        @summary 更新项目配置 Action=UpdateProjectConfig
+        
+        @param tmp_req: UpdateProjectConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProjectConfigResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = ocean_base_pro_20190901_models.UpdateProjectConfigShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.full_transfer_config):
+            request.full_transfer_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.full_transfer_config, 'FullTransferConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.incr_transfer_config):
+            request.incr_transfer_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.incr_transfer_config, 'IncrTransferConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.reverse_incr_transfer_config):
+            request.reverse_incr_transfer_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.reverse_incr_transfer_config, 'ReverseIncrTransferConfig', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.full_transfer_config_shrink):
+            body['FullTransferConfig'] = request.full_transfer_config_shrink
+        if not UtilClient.is_unset(request.id):
+            body['Id'] = request.id
+        if not UtilClient.is_unset(request.incr_transfer_config_shrink):
+            body['IncrTransferConfig'] = request.incr_transfer_config_shrink
+        if not UtilClient.is_unset(request.reverse_incr_transfer_config_shrink):
+            body['ReverseIncrTransferConfig'] = request.reverse_incr_transfer_config_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateProjectConfig',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.UpdateProjectConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_project_config(
+        self,
+        request: ocean_base_pro_20190901_models.UpdateProjectConfigRequest,
+    ) -> ocean_base_pro_20190901_models.UpdateProjectConfigResponse:
+        """
+        @summary 更新项目配置 Action=UpdateProjectConfig
+        
+        @param request: UpdateProjectConfigRequest
+        @return: UpdateProjectConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_project_config_with_options(request, runtime)
+
+    async def update_project_config_async(
+        self,
+        request: ocean_base_pro_20190901_models.UpdateProjectConfigRequest,
+    ) -> ocean_base_pro_20190901_models.UpdateProjectConfigResponse:
+        """
+        @summary 更新项目配置 Action=UpdateProjectConfig
+        
+        @param request: UpdateProjectConfigRequest
+        @return: UpdateProjectConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_project_config_with_options_async(request, runtime)
