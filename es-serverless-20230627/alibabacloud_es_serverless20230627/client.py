@@ -47,6 +47,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> es_serverless_20230627_models.CreateAppResponse:
+        """
+        @summary 创建Serverless应用
+        
+        @param request: CreateAppRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -68,6 +76,8 @@ class Client(OpenApiClient):
             body['quotaInfo'] = request.quota_info
         if not UtilClient.is_unset(request.region_id):
             body['regionId'] = request.region_id
+        if not UtilClient.is_unset(request.scenario):
+            body['scenario'] = request.scenario
         if not UtilClient.is_unset(request.version):
             body['version'] = request.version
         req = open_api_models.OpenApiRequest(
@@ -97,6 +107,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> es_serverless_20230627_models.CreateAppResponse:
+        """
+        @summary 创建Serverless应用
+        
+        @param request: CreateAppRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.dry_run):
@@ -118,6 +136,8 @@ class Client(OpenApiClient):
             body['quotaInfo'] = request.quota_info
         if not UtilClient.is_unset(request.region_id):
             body['regionId'] = request.region_id
+        if not UtilClient.is_unset(request.scenario):
+            body['scenario'] = request.scenario
         if not UtilClient.is_unset(request.version):
             body['version'] = request.version
         req = open_api_models.OpenApiRequest(
@@ -145,6 +165,12 @@ class Client(OpenApiClient):
         self,
         request: es_serverless_20230627_models.CreateAppRequest,
     ) -> es_serverless_20230627_models.CreateAppResponse:
+        """
+        @summary 创建Serverless应用
+        
+        @param request: CreateAppRequest
+        @return: CreateAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_app_with_options(request, headers, runtime)
@@ -153,9 +179,135 @@ class Client(OpenApiClient):
         self,
         request: es_serverless_20230627_models.CreateAppRequest,
     ) -> es_serverless_20230627_models.CreateAppResponse:
+        """
+        @summary 创建Serverless应用
+        
+        @param request: CreateAppRequest
+        @return: CreateAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_app_with_options_async(request, headers, runtime)
+
+    def create_endpoint_with_options(
+        self,
+        request: es_serverless_20230627_models.CreateEndpointRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> es_serverless_20230627_models.CreateEndpointResponse:
+        """
+        @summary 创建端点
+        
+        @param request: CreateEndpointRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEndpointResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        body = {}
+        if not UtilClient.is_unset(request.endpoint_zones):
+            body['endpointZones'] = request.endpoint_zones
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.vpc_id):
+            body['vpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateEndpoint',
+            version='2023-06-27',
+            protocol='HTTPS',
+            pathname=f'/openapi/es-serverless/endpoints',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.CreateEndpointResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_endpoint_with_options_async(
+        self,
+        request: es_serverless_20230627_models.CreateEndpointRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> es_serverless_20230627_models.CreateEndpointResponse:
+        """
+        @summary 创建端点
+        
+        @param request: CreateEndpointRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEndpointResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.type):
+            query['type'] = request.type
+        body = {}
+        if not UtilClient.is_unset(request.endpoint_zones):
+            body['endpointZones'] = request.endpoint_zones
+        if not UtilClient.is_unset(request.name):
+            body['name'] = request.name
+        if not UtilClient.is_unset(request.vpc_id):
+            body['vpcId'] = request.vpc_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateEndpoint',
+            version='2023-06-27',
+            protocol='HTTPS',
+            pathname=f'/openapi/es-serverless/endpoints',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            es_serverless_20230627_models.CreateEndpointResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_endpoint(
+        self,
+        request: es_serverless_20230627_models.CreateEndpointRequest,
+    ) -> es_serverless_20230627_models.CreateEndpointResponse:
+        """
+        @summary 创建端点
+        
+        @param request: CreateEndpointRequest
+        @return: CreateEndpointResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_endpoint_with_options(request, headers, runtime)
+
+    async def create_endpoint_async(
+        self,
+        request: es_serverless_20230627_models.CreateEndpointRequest,
+    ) -> es_serverless_20230627_models.CreateEndpointResponse:
+        """
+        @summary 创建端点
+        
+        @param request: CreateEndpointRequest
+        @return: CreateEndpointResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_endpoint_with_options_async(request, headers, runtime)
 
     def delete_app_with_options(
         self,
@@ -163,6 +315,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> es_serverless_20230627_models.DeleteAppResponse:
+        """
+        @summary 删除Serverless应用。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAppResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -188,6 +347,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> es_serverless_20230627_models.DeleteAppResponse:
+        """
+        @summary 删除Serverless应用。
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAppResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -211,6 +377,11 @@ class Client(OpenApiClient):
         self,
         app_name: str,
     ) -> es_serverless_20230627_models.DeleteAppResponse:
+        """
+        @summary 删除Serverless应用。
+        
+        @return: DeleteAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_app_with_options(app_name, headers, runtime)
@@ -219,6 +390,11 @@ class Client(OpenApiClient):
         self,
         app_name: str,
     ) -> es_serverless_20230627_models.DeleteAppResponse:
+        """
+        @summary 删除Serverless应用。
+        
+        @return: DeleteAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_app_with_options_async(app_name, headers, runtime)
@@ -230,6 +406,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> es_serverless_20230627_models.GetAppResponse:
+        """
+        @summary 获取Serverless应用详情
+        
+        @param request: GetAppRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.detailed):
@@ -261,6 +445,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> es_serverless_20230627_models.GetAppResponse:
+        """
+        @summary 获取Serverless应用详情
+        
+        @param request: GetAppRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAppResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.detailed):
@@ -290,6 +482,12 @@ class Client(OpenApiClient):
         app_name: str,
         request: es_serverless_20230627_models.GetAppRequest,
     ) -> es_serverless_20230627_models.GetAppResponse:
+        """
+        @summary 获取Serverless应用详情
+        
+        @param request: GetAppRequest
+        @return: GetAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_app_with_options(app_name, request, headers, runtime)
@@ -299,6 +497,12 @@ class Client(OpenApiClient):
         app_name: str,
         request: es_serverless_20230627_models.GetAppRequest,
     ) -> es_serverless_20230627_models.GetAppResponse:
+        """
+        @summary 获取Serverless应用详情
+        
+        @param request: GetAppRequest
+        @return: GetAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_app_with_options_async(app_name, request, headers, runtime)
@@ -309,6 +513,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> es_serverless_20230627_models.GetAppQuotaResponse:
+        """
+        @summary 获取Serverless应用配额详情
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAppQuotaResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -334,6 +545,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> es_serverless_20230627_models.GetAppQuotaResponse:
+        """
+        @summary 获取Serverless应用配额详情
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAppQuotaResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -357,6 +575,11 @@ class Client(OpenApiClient):
         self,
         app_name: str,
     ) -> es_serverless_20230627_models.GetAppQuotaResponse:
+        """
+        @summary 获取Serverless应用配额详情
+        
+        @return: GetAppQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_app_quota_with_options(app_name, headers, runtime)
@@ -365,6 +588,11 @@ class Client(OpenApiClient):
         self,
         app_name: str,
     ) -> es_serverless_20230627_models.GetAppQuotaResponse:
+        """
+        @summary 获取Serverless应用配额详情
+        
+        @return: GetAppQuotaResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_app_quota_with_options_async(app_name, headers, runtime)
@@ -375,6 +603,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> es_serverless_20230627_models.GetMonitorDataResponse:
+        """
+        @summary 获取监控数据
+        
+        @param request: GetMonitorDataRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMonitorDataResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -402,6 +638,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> es_serverless_20230627_models.GetMonitorDataResponse:
+        """
+        @summary 获取监控数据
+        
+        @param request: GetMonitorDataRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMonitorDataResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -427,6 +671,12 @@ class Client(OpenApiClient):
         self,
         request: es_serverless_20230627_models.GetMonitorDataRequest,
     ) -> es_serverless_20230627_models.GetMonitorDataResponse:
+        """
+        @summary 获取监控数据
+        
+        @param request: GetMonitorDataRequest
+        @return: GetMonitorDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_monitor_data_with_options(request, headers, runtime)
@@ -435,6 +685,12 @@ class Client(OpenApiClient):
         self,
         request: es_serverless_20230627_models.GetMonitorDataRequest,
     ) -> es_serverless_20230627_models.GetMonitorDataResponse:
+        """
+        @summary 获取监控数据
+        
+        @param request: GetMonitorDataRequest
+        @return: GetMonitorDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_monitor_data_with_options_async(request, headers, runtime)
@@ -445,6 +701,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> es_serverless_20230627_models.ListAppsResponse:
+        """
+        @summary 查看Serverless应用列表
+        
+        @param request: ListAppsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAppsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_name):
@@ -487,6 +751,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> es_serverless_20230627_models.ListAppsResponse:
+        """
+        @summary 查看Serverless应用列表
+        
+        @param request: ListAppsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAppsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_name):
@@ -527,6 +799,12 @@ class Client(OpenApiClient):
         self,
         request: es_serverless_20230627_models.ListAppsRequest,
     ) -> es_serverless_20230627_models.ListAppsResponse:
+        """
+        @summary 查看Serverless应用列表
+        
+        @param request: ListAppsRequest
+        @return: ListAppsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_apps_with_options(request, headers, runtime)
@@ -535,6 +813,12 @@ class Client(OpenApiClient):
         self,
         request: es_serverless_20230627_models.ListAppsRequest,
     ) -> es_serverless_20230627_models.ListAppsResponse:
+        """
+        @summary 查看Serverless应用列表
+        
+        @param request: ListAppsRequest
+        @return: ListAppsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_apps_with_options_async(request, headers, runtime)
@@ -546,6 +830,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> es_serverless_20230627_models.UpdateAppResponse:
+        """
+        @summary 编辑Serverless应用
+        
+        @param request: UpdateAppRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAppResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.apply_reason):
@@ -589,6 +881,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> es_serverless_20230627_models.UpdateAppResponse:
+        """
+        @summary 编辑Serverless应用
+        
+        @param request: UpdateAppRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAppResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.apply_reason):
@@ -630,6 +930,12 @@ class Client(OpenApiClient):
         app_name: str,
         request: es_serverless_20230627_models.UpdateAppRequest,
     ) -> es_serverless_20230627_models.UpdateAppResponse:
+        """
+        @summary 编辑Serverless应用
+        
+        @param request: UpdateAppRequest
+        @return: UpdateAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_app_with_options(app_name, request, headers, runtime)
@@ -639,6 +945,12 @@ class Client(OpenApiClient):
         app_name: str,
         request: es_serverless_20230627_models.UpdateAppRequest,
     ) -> es_serverless_20230627_models.UpdateAppResponse:
+        """
+        @summary 编辑Serverless应用
+        
+        @param request: UpdateAppRequest
+        @return: UpdateAppResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_app_with_options_async(app_name, request, headers, runtime)
