@@ -27,6 +27,8 @@ class AddAccessControlListEntryRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the network ACL.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -115,9 +117,6 @@ class AddAccessControlListEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -166,7 +165,7 @@ class AddBackendServersRequest(TeaModel):
         # 
         #     If the value is set to 0, no requests are forwarded to the backend server.
         # 
-        # *   **Description**: Optional. The description of the backend server. This value must be a string. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (\_).
+        # *   **Description**: Optional. The description of the backend server. This value must be a string. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
         # 
         # *   **Type**: the type of the backend server. Valid values:
         # 
@@ -182,19 +181,21 @@ class AddBackendServersRequest(TeaModel):
         # Examples:
         # 
         # *   ECS instance: `[{ "ServerId": "i-xxxxxxxxx", "Weight": "100", "Type": "ecs", "Port":"80","Description":"test-112" }]`
-        # *   ENI: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.**.**", "Port":"80","Description":"test-112" }]`
-        # *   ENI with multiple IP addresses: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.**.**", "Port":"80","Description":"test-113" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "172.166.**.**", "Port":"80","Description":"test-113" }]`
-        # *   Elastic container instance: `[{ "ServerId": "eci-xxxxxxxxx", "Weight": "100", "Type": "eci", "ServerIp": "192.168.**.**", "Port":"80","Description":"test-114" }]`
+        # *   ENI: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.\*\*.**", "Port":"80","Description":"test-112" }]`
+        # *   ENI with multiple IP addresses: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.\*\*.**", "Port":"80","Description":"test-113" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "172.166.\*\*.**", "Port":"80","Description":"test-113" }]`
+        # *   Elastic container instance: `[{ "ServerId": "eci-xxxxxxxxx", "Weight": "100", "Type": "eci", "ServerIp": "192.168.\*\*.**", "Port":"80","Description":"test-114" }]`
         # 
         # >  The backend servers that you add to a CLB instance must be in the Running state. You can add at most 20 backend servers to a CLB instance in each request.
         self.backend_servers = backend_servers
         # The ID of the CLB instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the Classic Load Balancer (CLB) instance is deployed.
         # 
-        # You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -391,9 +392,6 @@ class AddBackendServersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -437,18 +435,22 @@ class AddListenerWhiteListItemRequest(TeaModel):
         source_items: str = None,
     ):
         # The frontend port that is used by the CLB instance.
+        # 
+        # This parameter is required.
         self.listener_port = listener_port
         # The frontend protocol that is used by the CLB instance.
         # 
         # >  This parameter is required when listeners that use different protocols listen on the same port.
         self.listener_protocol = listener_protocol
         # The ID of the CLB instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the Classic Load Balancer (CLB) instance is created.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -458,7 +460,9 @@ class AddListenerWhiteListItemRequest(TeaModel):
         # 
         # Separate multiple IP addresses or CIDR blocks with commas (,).
         # 
-        # You cannot enter **0.0.0.0** or **0.0.0.0/0**. To disable access control, you can call the [SetListenerAccessControlStatus](~~27599~~) operation to set the value of the **AccessControlStatus** parameter to **close**.
+        # You cannot enter **0.0.0.0** or **0.0.0.0/0**. To disable access control, you can call the [SetListenerAccessControlStatus](https://help.aliyun.com/document_detail/27599.html) operation to set the value of the **AccessControlStatus** parameter to **close**.
+        # 
+        # This parameter is required.
         self.source_items = source_items
 
     def validate(self):
@@ -553,9 +557,6 @@ class AddListenerWhiteListItemResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -599,14 +600,20 @@ class AddTagsRequest(TeaModel):
         # The name of this action.
         # 
         # Value: **AddTags**\
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region to which the SLB instance belongs.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the region to which the SLB instance belongs.
+        # 
+        # This parameter is required.
         self.tags = tags
 
     def validate(self):
@@ -693,9 +700,6 @@ class AddTagsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -751,7 +755,7 @@ class AddVServerGroupBackendServersRequest(TeaModel):
         #     *   **ecs**: an ECS instance. This is the default value.
         #     *   **eni**: an ENI.
         # 
-        # *   **Description**: Optional. The description of the backend server. This parameter is of the STRING type. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (\_).
+        # *   **Description**: Optional. The description of the backend server. This parameter is of the STRING type. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
         # 
         # *   **ServerIp**: The IP address of the ECS instance or ENI.
         # 
@@ -760,14 +764,20 @@ class AddVServerGroupBackendServersRequest(TeaModel):
         # *   ECS instance:`  [{ "ServerId": "i-xxxxxxxxx", "Weight": "100", "Type": "ecs", "Port": "80", "Description": "test-112" }]. `
         # *   ENI:`  [{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168. **. **", "Port":"80","Description":"test-112" }] `
         # *   ENI with multiple IP addresses:`  [{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168. **. **", "Port":"80","Description":"test-112" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "172.166. **. **", "Port":"80","Description":"test-113" }] `
+        # 
+        # This parameter is required.
         self.backend_servers = backend_servers
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the Classic Load Balancer (CLB) instance is created.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the server group.
+        # 
+        # This parameter is required.
         self.vserver_group_id = vserver_group_id
 
     def validate(self):
@@ -964,9 +974,6 @@ class AddVServerGroupBackendServersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1049,14 +1056,18 @@ class CreateAccessControlListRequest(TeaModel):
         tag: List[CreateAccessControlListRequestTag] = None,
     ):
         # The operation that you want to perform. Set the value to **CreateAccessControlList**.
+        # 
+        # This parameter is required.
         self.acl_name = acl_name
         # The ID of the region where you want to create the ACL.
         self.address_ipversion = address_ipversion
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The name of the ACL. The name must be 1 to 80 characters in length, and can contain letters, digits, periods (.), hyphens (-), forward slashes (/), and underscores (\_). The name of the ACL that you create must be unique within each region.
+        # The name of the ACL. The name must be 1 to 80 characters in length, and can contain letters, digits, periods (.), hyphens (-), forward slashes (/), and underscores (_). The name of the ACL that you create must be unique within each region.
         self.resource_group_id = resource_group_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -1170,9 +1181,6 @@ class CreateAccessControlListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1216,16 +1224,24 @@ class CreateDomainExtensionRequest(TeaModel):
         server_certificate_id: str = None,
     ):
         # The domain name to be created.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The frontend port of the HTTPS listener.
         # 
         # Value range:** 1 to 65535**\
+        # 
+        # This parameter is required.
         self.listener_port = listener_port
         # The ID of the SLB instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region to which the SLB instance belongs.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -1338,9 +1354,6 @@ class CreateDomainExtensionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1497,7 +1510,7 @@ class CreateLoadBalancerRequest(TeaModel):
         self.internet_charge_type = internet_charge_type
         # The CLB instance name.
         # 
-        # The name must be 1 to 80 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
+        # The name must be 1 to 80 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
         # 
         # If you do not specify this parameter, the system automatically assigns a name to the CLB instance.
         self.load_balancer_name = load_balancer_name
@@ -1525,7 +1538,7 @@ class CreateLoadBalancerRequest(TeaModel):
         # 
         # You can call the [DescribeZone](~~DescribeZone~~) operation to query the primary and secondary zones in the region where you want to create the CLB instance.
         self.master_zone_id = master_zone_id
-        # The reason for enabling the configuration read-only mode. The reason must be 1 to 80 characters in length. It must start with a letter and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+        # The reason for enabling the configuration read-only mode. The reason must be 1 to 80 characters in length. It must start with a letter and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         # 
         # >  This parameter takes effect only when **ModificationProtectionStatus** is set to **ConsoleProtection**.
         self.modification_protection_reason = modification_protection_reason
@@ -1552,6 +1565,8 @@ class CreateLoadBalancerRequest(TeaModel):
         # The region ID of the CLB instance.
         # 
         # You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -1808,9 +1823,6 @@ class CreateLoadBalancerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1953,8 +1965,8 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
         self.backend_server_port = backend_server_port
         # The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
         # 
-        # *   **-1**: If you set the value to -1, the bandwidth of the listener is unlimited.
-        # *   **1** to **5120**: The sum of bandwidth values that you specify for all listeners of the CLB instance cannot exceed the maximum bandwidth of the CLB instance.
+        # *   **-1**: If -1 is returned, the bandwidth of the listener is unlimited.
+        # *   **1** to **5120**: The sum of the maximum bandwidth that you specify for all listeners of the CLB instance cannot exceed the maximum bandwidth of the CLB instance.
         # 
         # >  This parameter is available only in the Chinese mainland.
         self.bandwidth = bandwidth
@@ -1972,19 +1984,21 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
         self.cookie_timeout = cookie_timeout
         # The name of the listener.
         # 
-        # The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (\_).
+        # The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
         self.description = description
         # The listening port that is used to redirect HTTP requests to HTTPS.
         self.forward_port = forward_port
-        # Specifies whether to enable `Gzip` compression to compress specific types of files. Valid values:
+        # Specifies whether to enable `GZIP` compression to compress specific types of files. Valid values:
         # 
-        # *   **on** (default): yes
-        # *   **off**: no
+        # *   **on** (default)
+        # *   **off**\
         self.gzip = gzip
         # Specifies whether to enable the health check feature. Valid values:
         # 
         # *   **on**: yes
         # *   **off**: no
+        # 
+        # This parameter is required.
         self.health_check = health_check
         # The backend port that is used for health checks.
         # 
@@ -1994,14 +2008,14 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
         self.health_check_connect_port = health_check_connect_port
         # The domain name that is used for health checks. Valid values:
         # 
-        # *   **$\_ip**: the private IP address of a backend server. If you do not set the HealthCheckDomain parameter or set the parameter to $\_ip, the CLB instance uses the private IP address of each backend server for health checks.
+        # *   **$_ip**: the private IP address of a backend server. If you do not set the HealthCheckDomain parameter or set the parameter to $_ip, the CLB instance uses the private IP address of each backend server for health checks.
         # *   **domain**: The domain name must be 1 to 80 characters in length and can contain letters, digits, periods (.), and hyphens (-).
         # 
         # >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
         self.health_check_domain = health_check_domain
         # The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (,).
         # 
-        # Valid values: **http\_2xx** (default), **http\_3xx**, **http\_4xx**, and **http\_5xx**.
+        # Valid values: **http_2xx** (default), **http_3xx**, **http_4xx**, and **http_5xx**.
         # 
         # >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
         self.health_check_http_code = health_check_http_code
@@ -2049,14 +2063,18 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
         # The frontend port that is used by the CLB instance.
         # 
         # Valid values: **1** to **65535**.
+        # 
+        # This parameter is required.
         self.listener_port = listener_port
         # The ID of the CLB instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the CLB instance is deployed.
         # 
-        # You can query the region ID from the [Regions and zones](~~40654~~) list or by calling the [DescribeRegions](~~27584~~) operation.
+        # You can query the region ID from the [Regions and zones](https://help.aliyun.com/document_detail/40654.html) list or by calling the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation.
         self.region_id = region_id
         # The timeout period of a request. Unit: seconds.
         # 
@@ -2075,6 +2093,8 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
         # 
         # *   **on**: yes
         # *   **off** (default): no
+        # 
+        # This parameter is required.
         self.sticky_session = sticky_session
         # The method that is used to handle a cookie. Valid values:
         # 
@@ -2100,24 +2120,32 @@ class CreateLoadBalancerHTTPListenerRequest(TeaModel):
         self.vserver_group_id = vserver_group_id
         # Specifies whether to use the `X-Forwarded-For` header to retrieve client IP addresses. Valid values:
         # 
-        # *   **on** (default): yes
-        # *   **off**: no
+        # *   **on** (default)
+        # *   **off**\
         self.xforwarded_for = xforwarded_for
-        self.xforwarded_for__client_src_port = xforwarded_for__client_src_port
-        # Specifies whether to use the `SLB-ID` header to retrieve the ID of the CLB instance. Valid values:
+        # Specifies whether to use the `XForwardedFor_ClientSrcPort` header to retrieve the client port. Valid values:
         # 
-        # *   **on**: yes
+        # *   **on**\
+        # *   **off**\
+        self.xforwarded_for__client_src_port = xforwarded_for__client_src_port
+        # Indicates whether the `SLB-ID` header is used to retrieve the ID of the CLB instance. Valid values:
+        # 
+        # *   **on**\
         # *   **off** (default): no
         self.xforwarded_for__slbid = xforwarded_for__slbid
-        # Specifies whether to use the `SLB-IP` header to retrieve the virtual IP address (VIP) of the client. Valid values:
+        # Indicates whether the `SLB-IP` header is used to retrieve the virtual IP address (VIP) requested by the client. Valid values:
         # 
-        # *   **on**: yes
+        # *   **on**\
         # *   **off** (default): no
         self.xforwarded_for__slbip = xforwarded_for__slbip
-        self.xforwarded_for__slbport = xforwarded_for__slbport
-        # Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listening protocol. Valid values:
+        # Specifies whether to use the `XForwardedFor_SLBPORT` header to retrieve the listener port of the CLB instance. Valid values:
         # 
-        # *   **on**: yes
+        # *   **on**\
+        # *   **off**\
+        self.xforwarded_for__slbport = xforwarded_for__slbport
+        # Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listener protocol. Valid values:
+        # 
+        # *   **on**\
         # *   **off** (default): no
         self.xforwarded_for_proto = xforwarded_for_proto
 
@@ -2349,9 +2377,6 @@ class CreateLoadBalancerHTTPListenerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2494,6 +2519,8 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
         # 
         # *   **-1**: For a pay-by-data-transfer Internet-facing CLB instance, you can set this parameter to **-1**. This way, the bandwidth of the listener is unlimited.
         # *   **1** to **5120**: For a pay-by-bandwidth Internet-facing SLB instance, you can specify the bandwidth limit of each listener. The sum of bandwidth limits that you set for all listeners cannot exceed the bandwidth limit of the SLB instance.
+        # 
+        # This parameter is required.
         self.bandwidth = bandwidth
         # The ID of the certification authority (CA) certificate.
         # 
@@ -2515,7 +2542,7 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
         self.cookie_timeout = cookie_timeout
         # The name of the listener.
         # 
-        # The name must be 1 to 256 characters in length and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (\_).
+        # The name must be 1 to 256 characters in length and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
         self.description = description
         # Specifies whether to enable HTTP/2. Valid values:
         # 
@@ -2531,6 +2558,8 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
         # 
         # *   **on**: yes
         # *   **off**: no
+        # 
+        # This parameter is required.
         self.health_check = health_check
         # The port that is used for health checks.
         # 
@@ -2540,14 +2569,14 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
         self.health_check_connect_port = health_check_connect_port
         # The domain name that is used for health checks. Valid values:
         # 
-        # *   **$\_ip**: the private IP address of a backend server. If you do not set the HealthCheckDomain parameter or set the parameter to $\_ip, the CLB instance uses the private IP address of each backend server for health checks.
+        # *   **$_ip**: the private IP address of a backend server. If you do not set the HealthCheckDomain parameter or set the parameter to $_ip, the CLB instance uses the private IP address of each backend server for health checks.
         # *   **domain**: The domain name must be 1 to 80 characters in length and can contain letters, digits, periods (.), and hyphens (-).
         # 
         # >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
         self.health_check_domain = health_check_domain
         # The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (,).
         # 
-        # Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
+        # Valid values: **http_2xx**, **http_3xx**, **http_4xx**, and **http_5xx**.
         # 
         # >  This parameter takes effect only if the **HealthCheck** parameter is set to **on**.
         self.health_check_http_code = health_check_http_code
@@ -2588,14 +2617,18 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
         # The frontend port that is used by the CLB instance.
         # 
         # Valid values: **1** to **65535**.
+        # 
+        # This parameter is required.
         self.listener_port = listener_port
         # The ID of the CLB instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the CLB instance.
         # 
-        # You can query the region ID from the [Regions and zones](~~40654~~) list or by calling the [DescribeRegions](~~25609~~) operation.
+        # You can query the region ID from the [Regions and zones](https://help.aliyun.com/document_detail/40654.html) list or by calling the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation.
         self.region_id = region_id
         # The timeout period of a request. Valid values: **1 to 180**. Default value: **60**. Unit: seconds.
         # 
@@ -2614,6 +2647,8 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
         # 
         # *   **on**: yes
         # *   **off**: no
+        # 
+        # This parameter is required.
         self.sticky_session = sticky_session
         # The method that is used to handle a cookie. Valid values: **insert** and **server**.
         # 
@@ -2629,35 +2664,35 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
         self.sticky_session_type = sticky_session_type
         # The Transport Layer Security (TLS) security policy. Each security policy contains TLS protocol versions and cipher suites available for HTTPS.
         # 
-        # *   **tls_cipher_policy\_1\_0**:
+        # *   **tls_cipher_policy_1_0**:
         # 
         #     Supported TLS versions: TLS 1.0, TLS 1.1, and TLS 1.2
         # 
         #     Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA
         # 
-        # *   **tls_cipher_policy\_1\_1**:
+        # *   **tls_cipher_policy_1_1**:
         # 
         #     Supported TLS versions: TLS 1.1 and TLS 1.2
         # 
         #     Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA
         # 
-        # *   **tls_cipher_policy\_1\_2**\
+        # *   **tls_cipher_policy_1_2**\
         # 
         #     Supported TLS version: TLS 1.2
         # 
         #     Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA
         # 
-        # *   **tls_cipher_policy\_1\_2\_strict**\
+        # *   **tls_cipher_policy_1_2_strict**\
         # 
         #     Supported TLS version: TLS 1.2
         # 
         #     Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA
         # 
-        # *   **tls_cipher_policy\_1\_2\_strict_with\_1\_3**\
+        # *   **tls_cipher_policy_1_2_strict_with_1_3**\
         # 
         #     Supported TLS versions: TLS 1.2 and TLS 1.3
         # 
-        #     Supported cipher suites: TLS_AES\_128\_GCM_SHA256, TLS_AES\_256\_GCM_SHA384, TLS_CHACHA20\_POLY1305\_SHA256, TLS_AES\_128\_CCM_SHA256, TLS_AES\_128\_CCM\_8\_SHA256, ECDHE-ECDSA-AES128-GCM-SHA256, ECDHE-ECDSA-AES256-GCM-SHA384, ECDHE-ECDSA-AES128-SHA256, ECDHE-ECDSA-AES256-SHA384, ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-ECDSA-AES128-SHA, ECDHE-ECDSA-AES256-SHA, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA
+        #     Supported cipher suites: TLS_AES_128_GCM_SHA256, TLS_AES_256_GCM_SHA384, TLS_CHACHA20_POLY1305_SHA256, TLS_AES_128_CCM_SHA256, TLS_AES_128_CCM_8_SHA256, ECDHE-ECDSA-AES128-GCM-SHA256, ECDHE-ECDSA-AES256-GCM-SHA384, ECDHE-ECDSA-AES128-SHA256, ECDHE-ECDSA-AES256-SHA384, ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-ECDSA-AES128-SHA, ECDHE-ECDSA-AES256-SHA, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA
         self.tlscipher_policy = tlscipher_policy
         # The tags.
         self.tag = tag
@@ -2674,6 +2709,10 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
         # *   **on**: yes
         # *   **off**: no
         self.xforwarded_for = xforwarded_for
+        # Specifies whether to use the `XForwardedFor_ClientSrcPort` header to retrieve the client port. Valid values:
+        # 
+        # *   **on**\
+        # *   **off**\
         self.xforwarded_for__client_src_port = xforwarded_for__client_src_port
         # Specifies whether to use the `SLB-ID` header to retrieve the ID of the CLB instance. Valid values:
         # 
@@ -2685,6 +2724,10 @@ class CreateLoadBalancerHTTPSListenerRequest(TeaModel):
         # *   **on**: yes
         # *   **off**: no
         self.xforwarded_for__slbip = xforwarded_for__slbip
+        # Specifies whether to use the `XForwardedFor_SLBPORT` header to retrieve the listener port of the CLB instance. Valid values:
+        # 
+        # *   **on**\
+        # *   **off**\
         self.xforwarded_for__slbport = xforwarded_for__slbport
         # Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listener protocol. Valid values:
         # 
@@ -2928,9 +2971,6 @@ class CreateLoadBalancerHTTPSListenerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3068,6 +3108,8 @@ class CreateLoadBalancerTCPListenerRequest(TeaModel):
         # 
         # *   **-1**: For a pay-by-data-transfer Internet-facing CLB instance, this value can be set to -1, which specifies unlimited bandwidth.
         # *   **1** to **5120**: For a pay-by-bandwidth Internet-facing CLB instance, you can specify the maximum bandwidth of each listener. The sum of the maximum bandwidth values that you set for all listeners cannot exceed the maximum bandwidth of the CLB instance.
+        # 
+        # This parameter is required.
         self.bandwidth = bandwidth
         # Specifies whether to enable connection draining. Valid values:
         # 
@@ -3082,7 +3124,7 @@ class CreateLoadBalancerTCPListenerRequest(TeaModel):
         self.connection_drain_timeout = connection_drain_timeout
         # The name of the listener.
         # 
-        # The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (\_).
+        # The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
         self.description = description
         # The timeout period of a connection. Unit: seconds.
         # 
@@ -3102,15 +3144,15 @@ class CreateLoadBalancerTCPListenerRequest(TeaModel):
         self.health_check_connect_timeout = health_check_connect_timeout
         # The domain name that you want to use for health checks. Valid values:
         # 
-        # *   **$\_ip**: the private IP address of a backend server. If you do not set the HealthCheckDomain parameter or set the parameter to $\_ip, the CLB instance uses the private IP address of each backend server for health checks.
+        # *   **$_ip**: the private IP address of a backend server. If you do not set the HealthCheckDomain parameter or set the parameter to $_ip, the CLB instance uses the private IP address of each backend server for health checks.
         # *   **domain**: The domain name must be 1 to 80 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
         self.health_check_domain = health_check_domain
         # The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (,). Valid values:
         # 
-        # *   **http\_2xx**(default)
-        # *   **http\_3xx**\
-        # *   **http\_4xx**\
-        # *   **http\_5xx**\
+        # *   **http_2xx**(default)
+        # *   **http_3xx**\
+        # *   **http_4xx**\
+        # *   **http_5xx**\
         self.health_check_http_code = health_check_http_code
         # Specifies whether to enable the health check feature. Valid values:
         # 
@@ -3133,8 +3175,12 @@ class CreateLoadBalancerTCPListenerRequest(TeaModel):
         # The frontend port used by the CLB instance.
         # 
         # Valid values: **1** to **65535**.
+        # 
+        # This parameter is required.
         self.listener_port = listener_port
         # The ID of the CLB instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         # The ID of the primary/secondary server group.
         # 
@@ -3155,7 +3201,7 @@ class CreateLoadBalancerTCPListenerRequest(TeaModel):
         self.proxy_protocol_v2enabled = proxy_protocol_v2enabled
         # The ID of the region where the Classic Load Balancer (CLB) instance is deployed.
         # 
-        # You can query the region ID from the [Regions and zones](~~40654~~) list or by calling the [DescribeRegions](~~25609~~) operation.
+        # You can query the region ID from the [Regions and zones](https://help.aliyun.com/document_detail/40654.html) list or by calling the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -3373,9 +3419,6 @@ class CreateLoadBalancerTCPListenerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3504,10 +3547,12 @@ class CreateLoadBalancerUDPListenerRequest(TeaModel):
         # The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
         # 
         # **-1**: For a pay-by-data-transfer Internet-facing CLB instance, you can set this parameter to **-1**. This way, the bandwidth of the listener is unlimited.
+        # 
+        # This parameter is required.
         self.bandwidth = bandwidth
         # The name of the listener.
         # 
-        # The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (\_).
+        # The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
         self.description = description
         # The port that is used for health checks.
         # 
@@ -3533,8 +3578,12 @@ class CreateLoadBalancerUDPListenerRequest(TeaModel):
         # The frontend port used by the CLB instance.
         # 
         # Valid values: **1** to **65535**.
+        # 
+        # This parameter is required.
         self.listener_port = listener_port
         # The ID of the CLB instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         # The ID of the primary/secondary server group.
         # 
@@ -3746,9 +3795,6 @@ class CreateLoadBalancerUDPListenerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3830,6 +3876,8 @@ class CreateMasterSlaveServerGroupRequest(TeaModel):
         tag: List[CreateMasterSlaveServerGroupRequestTag] = None,
     ):
         # The ID of the SLB instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         # The backend servers in the primary/secondary server group.
         # 
@@ -3841,7 +3889,7 @@ class CreateMasterSlaveServerGroupRequest(TeaModel):
         # 
         # *   **Weight**: Required. Specify the weight of the backend server. The value must be of the INTEGER type. Valid values: **0** to **100**.
         # 
-        # *   \*\*Description \*\*: Optional. The description of the backend server. The value must be of the STRING type. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (\_).
+        # *   \\*\\*Description \\*\\*: Optional. The description of the backend server. The value must be of the STRING type. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
         # 
         # *   **ServerType**: the type of the backend server. The value must be of the STRING type. Valid values:
         # 
@@ -3868,17 +3916,19 @@ class CreateMasterSlaveServerGroupRequest(TeaModel):
         # 
         # *   ENIs:
         # 
-        #     `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "Port":"80","ServerType":"Master","Description":"test-112" }, { "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.**.**", "Port":"80","ServerType":"Slave","Description":"test-112" }]`
+        #     `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "Port":"80","ServerType":"Master","Description":"test-112" }, { "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.\*\*.**", "Port":"80","ServerType":"Slave","Description":"test-112" }]`
         # 
         # *   IP addresses of ENIs:
         # 
-        #     `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni","ServerIp": "192.168.**.**", "Port":"80","ServerType":"Master","Description":"test-112" }, { "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni","ServerIp": "192.168.**.**", "Port":"80","ServerType":"Slave","Description":"test-112" }]`
+        #     `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni","ServerIp": "192.168.\*\*.**", "Port":"80","ServerType":"Master","Description":"test-112" }, { "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni","ServerIp": "192.168.\*\*.**", "Port":"80","ServerType":"Slave","Description":"test-112" }]`
         self.master_slave_backend_servers = master_slave_backend_servers
         # The name of the primary/secondary server group.
         self.master_slave_server_group_name = master_slave_server_group_name
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the Server Load Balancer (SLB) instance is deployed.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -4104,9 +4154,6 @@ class CreateMasterSlaveServerGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4152,29 +4199,37 @@ class CreateRulesRequest(TeaModel):
         # The frontend listener port that is used by the SLB instance.
         # 
         # Valid values: **1 to 65535**.
+        # 
+        # This parameter is required.
         self.listener_port = listener_port
         # The frontend protocol that is used by the SLB instance.
         # 
         # > This parameter is required if the same port is used by listeners that use different protocols.
         self.listener_protocol = listener_protocol
         # The ID of the SLB instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the Server Load Balancer (SLB) instance is deployed.
         # 
-        # You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The forwarding rules that you want to create. You can create up to 10 forwarding rules in each request. Each forwarding rule contains the following parameters:
         # 
-        # *   **RuleName**: Required. The value must be of the STRING type. The name of the forwarding rule. The name must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (\_). Forwarding rule names must be unique within the same listener.
+        # *   **RuleName**: Required. The value must be of the STRING type. The name of the forwarding rule. The name must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_). Forwarding rule names must be unique within the same listener.
         # *   **Domain**: Optional. The value must be of the STRING type. The domain name that is associated with the forwarding rule. You must specify at least one of this parameter and **Url**.
         # *   **Url**: Optional. The value must be of the STRING type. The URL must be 1 to 80 characters in length and can contain only letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL cannot be a forward slash (/). However, the URL must start with a forward slash (/). You must specify at least one of this parameter and **Domain**.
         # *   **VServerGroupId**: Required. The value must be of the STRING type. The ID of the vServer group that is associated with the forwarding rule.
         # 
         # > You must specify at least one of `Domain` and `Url`. The combination of `Domain` and `Url` must be unique within the same listener.
+        # 
+        # This parameter is required.
         self.rule_list = rule_list
 
     def validate(self):
@@ -4348,9 +4403,6 @@ class CreateRulesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4428,23 +4480,31 @@ class CreateTLSCipherPolicyRequest(TeaModel):
         # 
         # TLS 1.3 supports the following cipher suites:
         # 
-        # *   **TLS_AES\_128\_GCM_SHA256**\
-        # *   **TLS_AES\_256\_GCM_SHA384**\
-        # *   **TLS_CHACHA20\_POLY1305\_SHA256**\
-        # *   **TLS_AES\_128\_CCM_SHA256**\
-        # *   **TLS_AES\_128\_CCM\_8\_SHA256**\
+        # *   **TLS_AES_128_GCM_SHA256**\
+        # *   **TLS_AES_256_GCM_SHA384**\
+        # *   **TLS_CHACHA20_POLY1305_SHA256**\
+        # *   **TLS_AES_128_CCM_SHA256**\
+        # *   **TLS_AES_128_CCM_8_SHA256**\
+        # 
+        # This parameter is required.
         self.ciphers = ciphers
-        # The name of the TLS policy. The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+        # The name of the TLS policy. The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+        # 
+        # This parameter is required.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the Server Load Balancer (SLB) instance is created.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The version of the TLS protocol. Valid values: **TLSv1.0**, **TLSv1.1**, **TLSv1.2**, and **TLSv1.3**. You can specify at most four TLS versions.
+        # 
+        # This parameter is required.
         self.tlsversions = tlsversions
 
     def validate(self):
@@ -4542,9 +4602,6 @@ class CreateTLSCipherPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4635,7 +4692,7 @@ class CreateVServerGroupRequest(TeaModel):
         # 
         # *   **Weight**: Required. Specify the weight of the backend server. This parameter must be of the INTEGER type. Valid values: **0** to **100**.
         # 
-        # *   **Description**: Optional. Specify the description of the backend server. This parameter must be of the STRING type. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (\_).
+        # *   **Description**: Optional. Specify the description of the backend server. This parameter must be of the STRING type. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_).
         # 
         # *   **Type**: Specify the type of the backend server. This parameter must be of the STRING type. Valid values:
         # 
@@ -4647,14 +4704,18 @@ class CreateVServerGroupRequest(TeaModel):
         # Examples:
         # 
         # *   ECS instance:`  [{ "ServerId": "i-xxxxxxxxx", "Weight": "100", "Type": "ecs", "Port": "80", "Description": "test-112" }]. `
-        # *   ENI:`  [{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.**.**", "Port":"80","Description":"test-112" }] `
-        # *   ENI with multiple IP addresses:`  [{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.**.**", "Port":"80","Description":"test-112" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "172.166.**.**", "Port":"80","Description":"test-113" }] `
+        # *   ENI:`  [{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.\*\*.**", "Port":"80","Description":"test-112" }] `
+        # *   ENI with multiple IP addresses:`  [{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.\*\*.**", "Port":"80","Description":"test-112" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "172.166.\*\*.**", "Port":"80","Description":"test-113" }] `
         self.backend_servers = backend_servers
         # The ID of the Server Load Balancer (SLB) instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the SLB instance is deployed.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -4662,7 +4723,7 @@ class CreateVServerGroupRequest(TeaModel):
         self.tag = tag
         # The name of the vServer group.
         # 
-        # The name must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (\_).
+        # The name must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_).
         self.vserver_group_name = vserver_group_name
 
     def validate(self):
@@ -4875,9 +4936,6 @@ class CreateVServerGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4918,12 +4976,16 @@ class DeleteAccessControlListRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ACL ID.
+        # 
+        # This parameter is required.
         self.acl_id = acl_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the ACL.
         # 
-        # You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -5008,9 +5070,6 @@ class DeleteAccessControlListResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5059,10 +5118,14 @@ class DeleteAccessLogsDownloadAttributeRequest(TeaModel):
         # *   **LogProject**: the name of the project of Log Service.
         # *   **LogStore**: the name of the Logstore of Log Service.
         # *   **LoadBalancerId**: the ID of the CLB instance.
+        # 
+        # This parameter is required.
         self.logs_download_attributes = logs_download_attributes
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the CLB instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -5157,9 +5220,6 @@ class DeleteAccessLogsDownloadAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5200,12 +5260,16 @@ class DeleteCACertificateRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The CA certificate ID.
+        # 
+        # This parameter is required.
         self.cacertificate_id = cacertificate_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region of the CA certificates.
         # 
-        # You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -5290,9 +5354,6 @@ class DeleteCACertificateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5333,10 +5394,14 @@ class DeleteDomainExtensionRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the additional domain name that you want to delete.
+        # 
+        # This parameter is required.
         self.domain_extension_id = domain_extension_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the Server Load Balancer (SLB) instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -5421,9 +5486,6 @@ class DeleteDomainExtensionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5464,12 +5526,14 @@ class DeleteLoadBalancerRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The SLB instance ID.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the SLB instance.
         # 
-        # You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -5554,9 +5618,6 @@ class DeleteLoadBalancerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5601,6 +5662,8 @@ class DeleteLoadBalancerListenerRequest(TeaModel):
         # The frontend port that is used by the CLB instance.
         # 
         # Valid values: **1 to 65535**.
+        # 
+        # This parameter is required.
         self.listener_port = listener_port
         # The frontend protocol that is used by the CLB instance.
         # 
@@ -5609,12 +5672,14 @@ class DeleteLoadBalancerListenerRequest(TeaModel):
         # The ID of the CLB instance.
         # 
         # >  If the endpoint of the selected region is slb.aliyuncs.com, the **RegionId** parameter is required.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the Classic Load Balancer (CLB) instance.
         # 
-        # You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -5707,9 +5772,6 @@ class DeleteLoadBalancerListenerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5752,10 +5814,14 @@ class DeleteMasterSlaveServerGroupRequest(TeaModel):
         # The ID of the active/standby server group to be deleted.
         # 
         # >  An active/standby server group in use cannot be deleted.
+        # 
+        # This parameter is required.
         self.master_slave_server_group_id = master_slave_server_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region to which the associated Server Load Balancer (SLB) instance belongs.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -5840,9 +5906,6 @@ class DeleteMasterSlaveServerGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5886,13 +5949,17 @@ class DeleteRulesRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region where the Server Load Balancer (SLB) instance is deployed.
         # 
-        # You can call the [DescribeRegions](~~27584~~) operation to query region IDs.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query region IDs.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The list of forwarding rules that you want to delete.
         # 
         # >  The RuleIds parameter is required. You can specify up to 10 forwarding rules in each request.
+        # 
+        # This parameter is required.
         self.rule_ids = rule_ids
 
     def validate(self):
@@ -5975,9 +6042,6 @@ class DeleteRulesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6021,11 +6085,13 @@ class DeleteServerCertificateRequest(TeaModel):
         self.owner_id = owner_id
         # The region where the Server Load Balancer (SLB) instance is created.
         # 
-        # You can call the [DescribeRegions](~~27584~~) operation to query region IDs.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query region IDs.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the server certificate.
+        # 
+        # This parameter is required.
         self.server_certificate_id = server_certificate_id
 
     def validate(self):
@@ -6108,9 +6174,6 @@ class DeleteServerCertificateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6154,11 +6217,15 @@ class DeleteTLSCipherPolicyRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region where the Classic Load Balancer (CLB) instance is created.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the TLS policy.
+        # 
+        # This parameter is required.
         self.tlscipher_policy_id = tlscipher_policy_id
 
     def validate(self):
@@ -6241,9 +6308,6 @@ class DeleteTLSCipherPolicyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6286,12 +6350,16 @@ class DeleteVServerGroupRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region to which the associated Server Load Balancer (SLB) instance belongs.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the VServer group to be deleted.
         # 
         # >  If the VServer group is in use, it cannot be deleted.
+        # 
+        # This parameter is required.
         self.vserver_group_id = vserver_group_id
 
     def validate(self):
@@ -6374,9 +6442,6 @@ class DeleteVServerGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6421,9 +6486,11 @@ class DescribeAccessControlListAttributeRequest(TeaModel):
     ):
         # The remarks of the ACL entry.
         # 
-        # It must be 2 to 100 characters in length, and can contain letters, digits, underscores (\_), and hyphens (-). It must start with a letter.
+        # It must be 2 to 100 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
         self.acl_entry_comment = acl_entry_comment
         # The ID of the ACL.
+        # 
+        # This parameter is required.
         self.acl_id = acl_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -6432,6 +6499,8 @@ class DescribeAccessControlListAttributeRequest(TeaModel):
         # The number of entries returned on each page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The time when the network ACL was created. The time follows the `YYYY-MM-DDThh:mm:ssZ` format.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -6736,7 +6805,7 @@ class DescribeAccessControlListAttributeResponseBody(TeaModel):
         self.acl_entrys = acl_entrys
         # The ID of the network ACL.
         self.acl_id = acl_id
-        # The ACL name. The name must be 1 to 80 characters in length, and can contain letters, digits, periods (.), hyphens (-), forward slashes (/), and underscores (\_). The name of each ACL must be unique within a region. Fuzzy match is supported.
+        # The ACL name. The name must be 1 to 80 characters in length, and can contain letters, digits, periods (.), hyphens (-), forward slashes (/), and underscores (_). The name of each ACL must be unique within a region. Fuzzy match is supported.
         self.acl_name = acl_name
         # The IP version. Valid values: **ipv4** and **ipv6**.
         self.address_ipversion = address_ipversion
@@ -6829,9 +6898,6 @@ class DescribeAccessControlListAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6915,7 +6981,7 @@ class DescribeAccessControlListsRequest(TeaModel):
         resource_owner_id: int = None,
         tag: List[DescribeAccessControlListsRequestTag] = None,
     ):
-        # The ACL name. The ACL name. The name must be 1 to 80 characters in length, and can contain letters, digits, periods (.), hyphens (-), forward slashes (/), and underscores (\_). The name of each ACL must be unique within a region. Fuzzy match is supported.
+        # The ACL name. The ACL name. The name must be 1 to 80 characters in length, and can contain letters, digits, periods (.), hyphens (-), forward slashes (/), and underscores (_). The name of each ACL must be unique within a region. Fuzzy match is supported.
         self.acl_name = acl_name
         # The IP version of the Classic Load Balancer (CLB) instance with which the ACL is associated. Valid values:
         # 
@@ -6930,7 +6996,9 @@ class DescribeAccessControlListsRequest(TeaModel):
         self.page_size = page_size
         # The region ID of the ACL.
         # 
-        # You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -7254,9 +7322,6 @@ class DescribeAccessControlListsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7312,7 +7377,9 @@ class DescribeAccessLogsDownloadAttributeRequest(TeaModel):
         self.page_size = page_size
         # The region ID of the CLB instance.
         # 
-        # You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -7538,9 +7605,6 @@ class DescribeAccessLogsDownloadAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7598,6 +7662,8 @@ class DescribeAvailableResourceRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -7848,9 +7914,6 @@ class DescribeAvailableResourceResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -7935,7 +7998,9 @@ class DescribeCACertificatesRequest(TeaModel):
         self.owner_id = owner_id
         # The region of the CA certificates.
         # 
-        # You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -8258,9 +8323,6 @@ class DescribeCACertificatesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8301,10 +8363,14 @@ class DescribeDomainExtensionAttributeRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the additional certificate.
+        # 
+        # This parameter is required.
         self.domain_extension_id = domain_extension_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the Server Load Balancer (SLB) instance is deployed.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -8424,9 +8490,6 @@ class DescribeDomainExtensionAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8471,12 +8534,18 @@ class DescribeDomainExtensionsRequest(TeaModel):
         # The ID of the additional certificate.
         self.domain_extension_id = domain_extension_id
         # The frontend port of the HTTPS listener that is configured for the Classic Load Balancer (CLB) instance. Valid values: **1 to 65535**.
+        # 
+        # This parameter is required.
         self.listener_port = listener_port
         # The ID of the CLB instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the CLB instance is deployed.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -8655,9 +8724,6 @@ class DescribeDomainExtensionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8708,6 +8774,8 @@ class DescribeHealthStatusRequest(TeaModel):
         # The frontend protocol that is used by the CLB instance.
         self.listener_protocol = listener_protocol
         # The ID of the Classic Load Balancer (CLB) instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -8915,9 +8983,6 @@ class DescribeHealthStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -8961,7 +9026,9 @@ class DescribeHighDefinationMonitorRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region where you want to query the configuration of fine-grained monitoring.
         # 
-        # You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -9072,9 +9139,6 @@ class DescribeHighDefinationMonitorResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9119,18 +9183,22 @@ class DescribeListenerAccessControlAttributeRequest(TeaModel):
         # The frontend port that is used by the CLB instance.
         # 
         # Valid values: **1 to 65535**.
+        # 
+        # This parameter is required.
         self.listener_port = listener_port
         # The frontend protocol that is used by the CLB instance.
         # 
         # > This parameter is required if the same port is specified for listeners of different protocols.
         self.listener_protocol = listener_protocol
         # The CLB instance ID.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region where the Classic Load Balancer (CLB) instance is created.
         # 
-        # You can query the region ID from the [Regions and zones](~~40654~~) list or by calling the [DescribeRegions](~~25609~~) operation.
+        # You can query the region ID from the [Regions and zones](https://help.aliyun.com/document_detail/40654.html) list or by calling the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -9240,9 +9308,6 @@ class DescribeListenerAccessControlAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -9283,12 +9348,14 @@ class DescribeLoadBalancerAttributeRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The CLB instance ID.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the CLB instance.
         # 
-        # You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -9784,7 +9851,7 @@ class DescribeLoadBalancerAttributeResponseBody(TeaModel):
         self.load_balancer_status = load_balancer_status
         # The ID of the primary zone to which the CLB instance belongs.
         self.master_zone_id = master_zone_id
-        # The reason why the configuration read-only mode is enabled. The value is 1 to 80 characters in length. It starts with a letter and can contain digits, periods (.), underscores (\_), and hyphens (-).
+        # The reason why the configuration read-only mode is enabled. The value is 1 to 80 characters in length. It starts with a letter and can contain digits, periods (.), underscores (_), and hyphens (-).
         # 
         # >  This parameter is valid only when **ModificationProtectionStatus** is set to **ConsoleProtection**.
         self.modification_protection_reason = modification_protection_reason
@@ -10028,9 +10095,6 @@ class DescribeLoadBalancerAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10074,14 +10138,18 @@ class DescribeLoadBalancerHTTPListenerAttributeRequest(TeaModel):
         # The frontend port that is used by the CLB instance.
         # 
         # Valid values: **1** to **65535**.
+        # 
+        # This parameter is required.
         self.listener_port = listener_port
         # The CLB instance ID.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the CLB instance.
         # 
-        # You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -10139,15 +10207,15 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBodyRulesRule(TeaModel):
         url: str = None,
         vserver_group_id: str = None,
     ):
-        # The endpoint.
+        # The domain name.
         self.domain = domain
         # The ID of the forwarding rule.
         self.rule_id = rule_id
         # The name of the forwarding rule.
         self.rule_name = rule_name
-        # The request path.
+        # The request URL.
         self.url = url
-        # The ID of the server group that is associated with the forwarding rule.
+        # The ID of the server group specified in the forwarding rule.
         self.vserver_group_id = vserver_group_id
 
     def validate(self):
@@ -10227,9 +10295,9 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBodyTagsTag(TeaModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The key of tag N. Valid values of N: **1** to **20**. The tag key cannot be an empty string. The tag key can be up to 64 characters in length, and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+        # The key of tag N. Valid values of N: **1** to **20**. The tag key cannot be an empty string. The tag key can be up to 64 characters in length. The key cannot start with `acs:` or `aliyun` or contain `http://` or `https://`.
         self.tag_key = tag_key
-        # The value of tag N. Valid values of N: **1** to **20**. The tag value can be an empty string. The tag value can be up to 128 characters in length, and cannot start with `acs:`. The tag value cannot contain `http://` or `https://`.
+        # The value of tag N. Valid values of N: **1** to **20**. The tag value can be an empty string. The tag value must be 0 to 128 characters in length, and cannot start with `acs:`. It cannot contain `http://` or `https://`.
         self.tag_value = tag_value
 
     def validate(self):
@@ -10433,7 +10501,7 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBody(TeaModel):
         # The routing algorithm. Valid values:
         # 
         # *   **wrr**: Backend servers that have higher weights receive more requests than backend servers that have lower weights.
-        # *   \*\* rr\*\*: Requests are sequentially distributed to backend servers.
+        # *   \\*\\* rr\\*\\*: Requests are sequentially distributed to backend servers.
         self.scheduler = scheduler
         # Indicates whether the listener is in the Secure state. Valid values:
         # 
@@ -10475,6 +10543,10 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBody(TeaModel):
         # *   **on**\
         # *   **off**\
         self.xforwarded_for = xforwarded_for
+        # Indicates whether the `XForwardedFor_ClientSrcPort` header is used to retrieve the client port. Valid values:
+        # 
+        # *   **on**\
+        # *   **off**\
         self.xforwarded_for__client_src_port = xforwarded_for__client_src_port
         # Indicates whether the `SLB-ID` header is used to retrieve the ID of the CLB instance. Valid values:
         # 
@@ -10486,6 +10558,10 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBody(TeaModel):
         # *   **on**\
         # *   **off**\
         self.xforwarded_for__slbip = xforwarded_for__slbip
+        # Indicates whether the `XForwardedFor_SLBPORT` header is used to retrieve the listener port of the CLB instance. Valid values:
+        # 
+        # *   **on**\
+        # *   **off**\
         self.xforwarded_for__slbport = xforwarded_for__slbport
         # Indicates whether the `X-Forwarded-Proto` header is used to retrieve the listener protocol. Valid values:
         # 
@@ -10686,9 +10762,6 @@ class DescribeLoadBalancerHTTPListenerAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -10732,8 +10805,12 @@ class DescribeLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
         # The frontend port that is used by the CLB instance.
         # 
         # Valid values: **1** to **65535**.
+        # 
+        # This parameter is required.
         self.listener_port = listener_port
         # The CLB instance ID.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -11199,35 +11276,35 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponseBody(TeaModel):
         # 
         # Each security policy contains TLS protocol versions and cipher suites available for HTTPS. Valid values:
         # 
-        # *   **tls_cipher_policy\_1\_0**:
+        # *   **tls_cipher_policy_1_0**:
         # 
         #     Supported TLS versions: TLS 1.0, TLS 1.1, and TLS 1.2
         # 
         #     Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA
         # 
-        # *   **tls_cipher_policy\_1\_1**:
+        # *   **tls_cipher_policy_1_1**:
         # 
         #     Supported TLS versions: TLS 1.1 and TLS 1.2
         # 
         #     Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA
         # 
-        # *   **tls_cipher_policy\_1\_2**\
+        # *   **tls_cipher_policy_1_2**\
         # 
         #     Supported TLS version: TLS 1.2
         # 
         #     Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA
         # 
-        # *   **tls_cipher_policy\_1\_2\_strict**\
+        # *   **tls_cipher_policy_1_2_strict**\
         # 
         #     Supported TLS version: TLS 1.2
         # 
         #     Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA
         # 
-        # *   **tls_cipher_policy\_1\_2\_strict_with\_1\_3**\
+        # *   **tls_cipher_policy_1_2_strict_with_1_3**\
         # 
         #     Supported TLS versions: TLS 1.2 and TLS 1.3
         # 
-        #     Supported cipher suites: TLS_AES\_128\_GCM_SHA256, TLS_AES\_256\_GCM_SHA384, TLS_CHACHA20\_POLY1305\_SHA256, TLS_AES\_128\_CCM_SHA256, TLS_AES\_128\_CCM\_8\_SHA256, ECDHE-ECDSA-AES128-GCM-SHA256, ECDHE-ECDSA-AES256-GCM-SHA384, ECDHE-ECDSA-AES128-SHA256, ECDHE-ECDSA-AES256-SHA384, ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-ECDSA-AES128-SHA, ECDHE-ECDSA-AES256-SHA, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA
+        #     Supported cipher suites: TLS_AES_128_GCM_SHA256, TLS_AES_256_GCM_SHA384, TLS_CHACHA20_POLY1305_SHA256, TLS_AES_128_CCM_SHA256, TLS_AES_128_CCM_8_SHA256, ECDHE-ECDSA-AES128-GCM-SHA256, ECDHE-ECDSA-AES256-GCM-SHA384, ECDHE-ECDSA-AES128-SHA256, ECDHE-ECDSA-AES256-SHA384, ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-ECDSA-AES128-SHA, ECDHE-ECDSA-AES256-SHA, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA
         self.tlscipher_policy = tlscipher_policy
         # The tags.
         self.tags = tags
@@ -11510,9 +11587,6 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12065,35 +12139,35 @@ class DescribeLoadBalancerListenersResponseBodyListenersHTTPSListenerConfig(TeaM
         self.sticky_session_type = sticky_session_type
         # The Transport Layer Security (TLS) security policy. Each security policy contains TLS protocol versions and cipher suites available for HTTPS.
         # 
-        # *   **tls_cipher_policy\_1\_0**:
+        # *   **tls_cipher_policy_1_0**:
         # 
         #     Supported TLS versions: TLS 1.0, TLS 1.1, and TLS 1.2
         # 
         #     Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA
         # 
-        # *   **tls_cipher_policy\_1\_1**:
+        # *   **tls_cipher_policy_1_1**:
         # 
         #     Supported TLS versions: TLS 1.1 and TLS 1.2
         # 
         #     Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA
         # 
-        # *   **tls_cipher_policy\_1\_2**\
+        # *   **tls_cipher_policy_1_2**\
         # 
         #     Supported TLS version: TLS 1.2
         # 
         #     Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA
         # 
-        # *   **tls_cipher_policy\_1\_2\_strict**\
+        # *   **tls_cipher_policy_1_2_strict**\
         # 
         #     Supported TLS version: TLS 1.2
         # 
         #     Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA
         # 
-        # *   **tls_cipher_policy\_1\_2\_strict_with\_1\_3**\
+        # *   **tls_cipher_policy_1_2_strict_with_1_3**\
         # 
         #     Supported TLS versions: TLS 1.2 and TLS 1.3
         # 
-        #     Supported cipher suites: TLS_AES\_128\_GCM_SHA256, TLS_AES\_256\_GCM_SHA384, TLS_CHACHA20\_POLY1305\_SHA256, TLS_AES\_128\_CCM_SHA256, TLS_AES\_128\_CCM\_8\_SHA256, ECDHE-ECDSA-AES128-GCM-SHA256, ECDHE-ECDSA-AES256-GCM-SHA384, ECDHE-ECDSA-AES128-SHA256, ECDHE-ECDSA-AES256-SHA384, ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-ECDSA-AES128-SHA, ECDHE-ECDSA-AES256-SHA, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA
+        #     Supported cipher suites: TLS_AES_128_GCM_SHA256, TLS_AES_256_GCM_SHA384, TLS_CHACHA20_POLY1305_SHA256, TLS_AES_128_CCM_SHA256, TLS_AES_128_CCM_8_SHA256, ECDHE-ECDSA-AES128-GCM-SHA256, ECDHE-ECDSA-AES256-GCM-SHA384, ECDHE-ECDSA-AES128-SHA256, ECDHE-ECDSA-AES256-SHA384, ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-ECDSA-AES128-SHA, ECDHE-ECDSA-AES256-SHA, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA
         self.tlscipher_policy = tlscipher_policy
         # The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status is changed from **success** to **fail**.
         # 
@@ -12469,7 +12543,7 @@ class DescribeLoadBalancerListenersResponseBodyListenersTags(TeaModel):
         self.tag_key = tag_key
         # The tag value.
         # 
-        # For more information about how to obtain a tag value, see [DescribeTagKeyList](~~145557~~).
+        # For more information about how to obtain a tag value, see [DescribeTagKeyList](https://help.aliyun.com/document_detail/145557.html).
         self.tag_value = tag_value
 
     def validate(self):
@@ -12875,9 +12949,6 @@ class DescribeLoadBalancerListenersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -12921,14 +12992,18 @@ class DescribeLoadBalancerTCPListenerAttributeRequest(TeaModel):
         # The frontend port used by the CLB instance.
         # 
         # Valid values: **1** to **65535**.
+        # 
+        # This parameter is required.
         self.listener_port = listener_port
         # The ID of the CLB instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the CLB instance.
         # 
-        # You can query the region ID from the [Regions and zones](~~40654~~) list or by calling the [DescribeRegions](~~25609~~) operation.
+        # You can query the region ID from the [Regions and zones](https://help.aliyun.com/document_detail/40654.html) list or by calling the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -13138,7 +13213,7 @@ class DescribeLoadBalancerTCPListenerAttributeResponseBody(TeaModel):
         self.health_check_connect_timeout = health_check_connect_timeout
         # The domain name that is used for health checks. Valid values:
         # 
-        # *   **$\_ip**: the private IP addresses of backend servers. If you do not set the HealthCheckDomain parameter or set the parameter to $\_ip, the CLB instance uses the private IP address of each backend server for health checks.
+        # *   **$_ip**: the private IP addresses of backend servers. If you do not set the HealthCheckDomain parameter or set the parameter to $_ip, the CLB instance uses the private IP address of each backend server for health checks.
         # *   **domain**: The domain name is 1 to 80 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
         self.health_check_domain = health_check_domain
         # The HTTP status code for a successful health check.
@@ -13350,9 +13425,6 @@ class DescribeLoadBalancerTCPListenerAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13396,8 +13468,12 @@ class DescribeLoadBalancerUDPListenerAttributeRequest(TeaModel):
         # The frontend port used by the CLB instance.
         # 
         # Valid values: **1** to **65535**.
+        # 
+        # This parameter is required.
         self.listener_port = listener_port
         # The ID of the CLB instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -13743,9 +13819,6 @@ class DescribeLoadBalancerUDPListenerAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -13863,7 +13936,7 @@ class DescribeLoadBalancersRequest(TeaModel):
         self.load_balancer_id = load_balancer_id
         # The name of the CLB instance.
         # 
-        # The name must be 1 to 80 characters in length, and can contain digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+        # The name must be 1 to 80 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         # 
         # You can specify up to 10 names. Separate multiple names with commas (,).
         self.load_balancer_name = load_balancer_name
@@ -13896,7 +13969,9 @@ class DescribeLoadBalancersRequest(TeaModel):
         self.pay_type = pay_type
         # The ID of the region where the CLB instance is deployed.
         # 
-        # You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -14201,7 +14276,7 @@ class DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer(TeaModel):
         self.load_balancer_status = load_balancer_status
         # The ID of the primary zone to which the CLB instance belongs.
         self.master_zone_id = master_zone_id
-        # The reason why the configuration read-only mode was enabled. The reason must be 1 to 80 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The reason must start with a letter.
+        # The reason why the configuration read-only mode was enabled. The reason must be 1 to 80 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The reason must start with a letter.
         # 
         # > This parameter takes effect only when you set the `ModificationProtectionStatus` parameter to **ConsoleProtection**.
         self.modification_protection_reason = modification_protection_reason
@@ -14463,9 +14538,6 @@ class DescribeLoadBalancersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14506,10 +14578,14 @@ class DescribeMasterSlaveServerGroupAttributeRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the primary/secondary server group.
+        # 
+        # This parameter is required.
         self.master_slave_server_group_id = master_slave_server_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the Classic Load Balancer (CLB) instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -14812,9 +14888,6 @@ class DescribeMasterSlaveServerGroupAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -14902,10 +14975,14 @@ class DescribeMasterSlaveServerGroupsRequest(TeaModel):
         # *   **false**\
         self.include_listener = include_listener
         # The CLB instance ID.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the CLB instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -15287,9 +15364,6 @@ class DescribeMasterSlaveServerGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15508,9 +15582,6 @@ class DescribeRegionsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15554,11 +15625,15 @@ class DescribeRuleAttributeRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region where the Server Load Balancer (SLB) instance is deployed.
         # 
-        # You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the forwarding rule.
+        # 
+        # This parameter is required.
         self.rule_id = rule_id
 
     def validate(self):
@@ -15656,14 +15731,14 @@ class DescribeRuleAttributeResponseBody(TeaModel):
         self.health_check_connect_port = health_check_connect_port
         # The domain name that is used for health checks. Valid values:
         # 
-        # *   **$\_ip**: The private IP address of the backend server. If the $\_ip parameter is set or the HealthCheckDomain parameter is not set, SLB uses the private IP addresses of backend servers as the domain names for health checks.
+        # *   **$_ip**: The private IP address of the backend server. If the $_ip parameter is set or the HealthCheckDomain parameter is not set, SLB uses the private IP addresses of backend servers as the domain names for health checks.
         # *   **domain**: The domain name must be 1 to 80 characters in length. It can contain only letters, digits, periods (.),and hyphens (-).
         # 
         # >  If you set the **HealthCheck** parameter to **on**, this parameter is required.
         self.health_check_domain = health_check_domain
-        # The HTTP status code that indicates a successful health check. Separate multiple HTTP status codes with commas (,). Default value: **http\_2xx**.
+        # The HTTP status code that indicates a successful health check. Separate multiple HTTP status codes with commas (,). Default value: **http_2xx**.
         # 
-        # Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
+        # Valid values: **http_2xx**, **http_3xx**, **http_4xx**, and **http_5xx**.
         # 
         # >  If you set the **HealthCheck** parameter to **on**, this parameter is required.
         self.health_check_http_code = health_check_http_code
@@ -15857,9 +15932,6 @@ class DescribeRuleAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -15904,18 +15976,24 @@ class DescribeRulesRequest(TeaModel):
         # The frontend listener port that is used by the Server Load Balancer (SLB) instance.
         # 
         # Valid values: **1 to 65535**.
+        # 
+        # This parameter is required.
         self.listener_port = listener_port
         # The frontend listener protocol that is used by the SLB instance.
         # 
         # >  This parameter is required when listeners that use different protocols listen on the same port.
         self.listener_protocol = listener_protocol
         # The ID of the SLB instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the SLB instance is deployed.
         # 
-        # You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -16018,17 +16096,17 @@ class DescribeRulesResponseBodyRulesRule(TeaModel):
         self.health_check_connect_port = health_check_connect_port
         # The domain name that is used for health checks. Valid values:
         # 
-        # *   **$\_ip**: The private IP address of the backend server.
+        # *   **$_ip**: The private IP address of the backend server.
         # 
-        #     If you do not set this parameter or set the parameter to $\_ip, the SLB instance uses the private IP address of each backend server as the domain name for health checks.
+        #     If you do not set this parameter or set the parameter to $_ip, the SLB instance uses the private IP address of each backend server as the domain name for health checks.
         # 
         # *   **domain**: The domain name must be 1 to 80 characters in length. The domain name can contain only letters, digits, periods (.),and hyphens (-).
         # 
         # >  If you set the **HealthCheck** parameter to **on**, this parameter is required.
         self.health_check_domain = health_check_domain
-        # The HTTP status code that indicates a successful health check. Multiple HTTP status codes are separated by commas (,). Default value: **http\_2xx**.
+        # The HTTP status code that indicates a successful health check. Multiple HTTP status codes are separated by commas (,). Default value: **http_2xx**.
         # 
-        # Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
+        # Valid values: **http_2xx**, **http_3xx**, **http_4xx**, and **http_5xx**.
         # 
         # >  If you set the **HealthCheck** parameter to **on**, this parameter is required.
         self.health_check_http_code = health_check_http_code
@@ -16063,7 +16141,7 @@ class DescribeRulesResponseBodyRulesRule(TeaModel):
         self.listener_sync = listener_sync
         # The ID of the forwarding rule.
         self.rule_id = rule_id
-        # The name of the forwarding rule. The name must be 1 to 80 characters in length, and can contain only letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (\_).
+        # The name of the forwarding rule. The name must be 1 to 80 characters in length, and can contain only letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_).
         # 
         # >  The name of each forwarding rule must be unique within a listener.
         self.rule_name = rule_name
@@ -16278,9 +16356,6 @@ class DescribeRulesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16361,7 +16436,7 @@ class DescribeServerCertificatesRequest(TeaModel):
         self.owner_id = owner_id
         # The region where the CLB instances are deployed.
         # 
-        # You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
         # 
         # >  If the endpoint of the region is slb.aliyuncs.com, you must specify the `RegionId` parameter.
         self.region_id = region_id
@@ -16745,9 +16820,6 @@ class DescribeServerCertificatesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -16804,6 +16876,8 @@ class DescribeTagsRequest(TeaModel):
         # The number of entries to return on each page. Default value: 50. Maximum value: 100.
         self.page_size = page_size
         # The ID of the region where the Server Load Balancer (SLB) instance is deployed.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -17013,9 +17087,6 @@ class DescribeTagsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17058,10 +17129,14 @@ class DescribeVServerGroupAttributeRequest(TeaModel):
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the Classic Load Balancer (CLB) instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the vServer group.
+        # 
+        # This parameter is required.
         self.vserver_group_id = vserver_group_id
 
     def validate(self):
@@ -17363,9 +17438,6 @@ class DescribeVServerGroupAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17444,6 +17516,7 @@ class DescribeVServerGroupsRequest(TeaModel):
         resource_owner_id: int = None,
         tag: List[DescribeVServerGroupsRequestTag] = None,
     ):
+        # The name of the vServer group.
         self.description = description
         # Specifies whether to return information about the associated listeners. Valid values:
         # 
@@ -17456,12 +17529,16 @@ class DescribeVServerGroupsRequest(TeaModel):
         # *   **false** (default): no
         self.include_rule = include_rule
         # The ID of the CLB instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the Classic Load Balancer (CLB) instance.
         # 
-        # You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -17950,9 +18027,6 @@ class DescribeVServerGroupsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -17996,6 +18070,8 @@ class DescribeZonesRequest(TeaModel):
         # The ID of the Alibaba Cloud account to which the VPC belongs.
         self.owner_id = owner_id
         # The region ID of the Server Load Balancer (SLB) instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # ResourceOwnerAccount
         self.resource_owner_account = resource_owner_account
@@ -18236,9 +18312,6 @@ class DescribeZonesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18281,14 +18354,20 @@ class EnableHighDefinationMonitorRequest(TeaModel):
         tags: str = None,
     ):
         # The name of the project of Log Service. The name must be 4 to 63 characters in length, and can contain digits and lowercase letters. It must start and end with a digit or a letter.
+        # 
+        # This parameter is required.
         self.log_project = log_project
-        # The name of the Logstore of Log Service. The name must be 2 to 64 characters in length and can contain digits, lowercase letters, hyphens (-) and underscores (\_). It must start and end with a digit or a letter.
+        # The name of the Logstore of Log Service. The name must be 2 to 64 characters in length and can contain digits, lowercase letters, hyphens (-) and underscores (_). It must start and end with a digit or a letter.
+        # 
+        # This parameter is required.
         self.log_store = log_store
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the Classic Load Balancer (CLB) instance is deployed.
         # 
-        # You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -18393,9 +18472,6 @@ class EnableHighDefinationMonitorResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18446,7 +18522,7 @@ class ListTLSCipherPoliciesRequest(TeaModel):
         self.include_listener = include_listener
         # The maximum number of TLS policies to be queried in this call. Valid values: **1** to **100**. If you do not set this parameter, the default value **20** is used.
         self.max_items = max_items
-        # The name of the TLS policy. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+        # The name of the TLS policy. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         self.name = name
         # The token that is used for the next query. Valid values:
         # 
@@ -18457,7 +18533,9 @@ class ListTLSCipherPoliciesRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region where the Classic Load Balancer (CLB) instance is deployed.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -18611,11 +18689,11 @@ class ListTLSCipherPoliciesResponseBodyTLSCipherPolicies(TeaModel):
         # 
         # TLS 1.3 supports the following cipher suites:
         # 
-        # *   TLS_AES\_128\_GCM_SHA256
-        # *   TLS_AES\_256\_GCM_SHA384
-        # *   TLS_CHACHA20\_POLY1305\_SHA256
-        # *   TLS_AES\_128\_CCM_SHA256
-        # *   TLS_AES\_128\_CCM\_8\_SHA256
+        # *   TLS_AES_128_GCM_SHA256
+        # *   TLS_AES_256_GCM_SHA384
+        # *   TLS_CHACHA20_POLY1305_SHA256
+        # *   TLS_AES_128_CCM_SHA256
+        # *   TLS_AES_128_CCM_8_SHA256
         self.ciphers = ciphers
         # The timestamp generated when the TLS policy is created.
         self.create_time = create_time
@@ -18767,9 +18845,6 @@ class ListTLSCipherPoliciesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -18860,7 +18935,9 @@ class ListTagResourcesRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region where the Server Load Balancer (SLB) instance is created.
         # 
-        # You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of a resource. You can specify up to 20 resources.
         self.resource_id = resource_id
@@ -18871,6 +18948,8 @@ class ListTagResourcesRequest(TeaModel):
         # *   **instance**: an SLB instance
         # *   **certificate**: a certificate
         # *   **acl**: a network access control list (ACL)
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags.
         self.tag = tag
@@ -19078,9 +19157,6 @@ class ListTagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19122,14 +19198,20 @@ class ModifyHighDefinationMonitorRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The new name of the project of Log Service. The name must be 4 to 63 characters in length, and can contain digits and lowercase letters. It must start and end with a digit or a letter.
+        # 
+        # This parameter is required.
         self.log_project = log_project
-        # The new name of the Logstore of Log Service. The name must be 2 to 64 characters in length and can contain digits, lowercase letters, hyphens (-) and underscores (\_). It must start and end with a digit or a letter.
+        # The new name of the Logstore of Log Service. The name must be 2 to 64 characters in length and can contain digits, lowercase letters, hyphens (-) and underscores (_). It must start and end with a digit or a letter.
+        # 
+        # This parameter is required.
         self.log_store = log_store
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the Classic Load Balancer (CLB) instance is deployed.
         # 
-        # You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -19228,9 +19310,6 @@ class ModifyHighDefinationMonitorResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19281,6 +19360,8 @@ class ModifyLoadBalancerInstanceChargeTypeRequest(TeaModel):
         # The metering method of the instance after the change.
         # 
         # Valid value: **PayByCLCU**. Only pay-by-LCU is supported.
+        # 
+        # This parameter is required.
         self.instance_charge_type = instance_charge_type
         # The metering method of Internet data transfer after the change.
         # 
@@ -19290,6 +19371,8 @@ class ModifyLoadBalancerInstanceChargeTypeRequest(TeaModel):
         # >*   When you change the metering method, the new metering method takes effect at 00:00:00 the next day.
         self.internet_charge_type = internet_charge_type
         # The ID of the CLB instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         # The specification of the CLB instance.
         # 
@@ -19299,7 +19382,9 @@ class ModifyLoadBalancerInstanceChargeTypeRequest(TeaModel):
         self.owner_id = owner_id
         # The region ID of the CLB instance.
         # 
-        # You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -19400,9 +19485,6 @@ class ModifyLoadBalancerInstanceChargeTypeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19452,6 +19534,8 @@ class ModifyLoadBalancerInstanceSpecRequest(TeaModel):
         # > This parameter takes effect only for subscription instances.
         self.auto_pay = auto_pay
         # The ID of the CLB instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         # The specification of the CLB instance. Valid values:
         # 
@@ -19462,15 +19546,17 @@ class ModifyLoadBalancerInstanceSpecRequest(TeaModel):
         # *   **slb.s3.medium**\
         # *   **slb.s3.large**\
         # 
-        # The specifications available vary by region. For more information about the specifications, see [High-performance CLB instance](~~85931~~).
+        # The specifications available vary by region. For more information about the specifications, see [High-performance CLB instance](https://help.aliyun.com/document_detail/85931.html).
         # 
         # > When you switch a shared-resource CLB instance to a high-performance CLB instance, your service may be interrupted for 10 to 30 seconds. We recommend that you modify the specification during off-peak hours or use Alibaba Cloud DNS to schedule your workloads to another CLB instance before you modify the specification.
+        # 
+        # This parameter is required.
         self.load_balancer_spec = load_balancer_spec
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the CLB instance.
         # 
-        # You can query the region ID from the [Regions and zones](~~40654~~) list or by calling the [DescribeRegions](~~27584~~) operation.
+        # You can query the region ID from the [Regions and zones](https://help.aliyun.com/document_detail/40654.html) list or by calling the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -19570,9 +19656,6 @@ class ModifyLoadBalancerInstanceSpecResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19632,12 +19715,14 @@ class ModifyLoadBalancerInternetSpecRequest(TeaModel):
         # *   **paybytraffic**: pay-by-data-transfer
         self.internet_charge_type = internet_charge_type
         # The ID of the CLB instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the CLB instance is deployed.
         # 
-        # You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -19741,9 +19826,6 @@ class ModifyLoadBalancerInternetSpecResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19802,6 +19884,8 @@ class ModifyLoadBalancerPayTypeRequest(TeaModel):
         # >  This parameter is valid only when the **PayType** parameter is set to **PrePay**. This parameter is valid only for pay-as-you-go instances.
         self.duration = duration
         # The ID of the CLB instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -19819,7 +19903,9 @@ class ModifyLoadBalancerPayTypeRequest(TeaModel):
         self.pricing_cycle = pricing_cycle
         # The ID of the region where the CLB instance is deployed.
         # 
-        # You can query the region ID from the [Regions and zones](~~40654~~) list or by calling the [DescribeRegions](~~25609~~) operation.
+        # You can query the region ID from the [Regions and zones](https://help.aliyun.com/document_detail/40654.html) list or by calling the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -19927,9 +20013,6 @@ class ModifyLoadBalancerPayTypeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -19979,7 +20062,7 @@ class ModifyVServerGroupBackendServersRequest(TeaModel):
         # 
         # *   **Weight**: required. The weight of the backend server. This parameter must be of the INTEGER type. Valid values: **0 to 100**.
         # 
-        # *   **Description**: optional. The description of the backend server. This parameter must be of the STRING type. The description can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (\_).
+        # *   **Description**: optional. The description of the backend server. This parameter must be of the STRING type. The description can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_).
         # 
         # *   **Type**: the type of backend server. This parameter must be of the STRING type. Valid values:
         # 
@@ -19991,8 +20074,8 @@ class ModifyVServerGroupBackendServersRequest(TeaModel):
         # Examples:
         # 
         # *   An ECS instance: `[{ "ServerId": "i-xxxxxxxxx", "Weight": "100", "Type": "ecs", "Port":"80","Description":"test-112" }]`
-        # *   An ENI: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.**.**", "Port":"80","Description":"test-112" }]`
-        # *   An ENI with multiple IP addresses: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.**.**", "Port":"80","Description":"test-112" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "172.166.**.**", "Port":"80","Description":"test-113" }]`
+        # *   An ENI: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.\*\*.**", "Port":"80","Description":"test-112" }]`
+        # *   An ENI with multiple IP addresses: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.\*\*.**", "Port":"80","Description":"test-112" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "172.166.\*\*.**", "Port":"80","Description":"test-113" }]`
         self.new_backend_servers = new_backend_servers
         # The list of backend servers that you want to replace in the vServer group. You can specify at most 20 backend servers for a vServer group in each call.
         # 
@@ -20002,7 +20085,7 @@ class ModifyVServerGroupBackendServersRequest(TeaModel):
         # 
         # *   **Weight**: required. The weight of the backend server. This parameter must be of the INTEGER type. Valid values: **0 to 100**.
         # 
-        # *   **Description**: optional. The description of the backend server. This parameter must be of the STRING type. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (\_).
+        # *   **Description**: optional. The description of the backend server. This parameter must be of the STRING type. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_).
         # 
         # *   **Type**: the type of backend server. This parameter must be of the STRING type. Valid values:
         # 
@@ -20014,16 +20097,20 @@ class ModifyVServerGroupBackendServersRequest(TeaModel):
         # Examples:
         # 
         # *   An ECS instance: `[{ "ServerId": "i-xxxxxxxxx", "Weight": "100", "Type": "ecs", "Port":"80","Description":"test-112" }]`
-        # *   An ENI: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.**.**", "Port":"80","Description":"test-112" }]`
-        # *   An ENI with multiple IP addresses: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.**.**", "Port":"80","Description":"test-112" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "172.166.**.**", "Port":"80","Description":"test-113" }]`
+        # *   An ENI: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.\*\*.**", "Port":"80","Description":"test-112" }]`
+        # *   An ENI with multiple IP addresses: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.\*\*.**", "Port":"80","Description":"test-112" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "172.166.\*\*.**", "Port":"80","Description":"test-113" }]`
         self.old_backend_servers = old_backend_servers
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the Classic Load Balancer (CLB) instance is deployed.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the vServer group.
+        # 
+        # This parameter is required.
         self.vserver_group_id = vserver_group_id
 
     def validate(self):
@@ -20224,9 +20311,6 @@ class ModifyVServerGroupBackendServersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20271,14 +20355,20 @@ class MoveResourceGroupRequest(TeaModel):
         access_key_id: str = None,
     ):
         # The ID of the resource group to which you want to move the resource.
+        # 
+        # This parameter is required.
         self.new_resource_group_id = new_resource_group_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the Classic Load Balancer (CLB) instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
         # The resource ID.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -20287,6 +20377,8 @@ class MoveResourceGroupRequest(TeaModel):
         # *   **loadbalancer**: a CLB instance
         # *   **certificate**: a certificate
         # *   **acl**: an access control list (ACL)
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The AccessKey ID provided by Alibaba Cloud.
         self.access_key_id = access_key_id
@@ -20387,9 +20479,6 @@ class MoveResourceGroupResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20436,12 +20525,16 @@ class RemoveAccessControlListEntryRequest(TeaModel):
         # *   **comment**: the description of the network ACL.
         self.acl_entrys = acl_entrys
         # The ID of the network ACL.
+        # 
+        # This parameter is required.
         self.acl_id = acl_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the network ACL is created.
         # 
-        # You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -20530,9 +20623,6 @@ class RemoveAccessControlListEntryResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20591,8 +20681,12 @@ class RemoveBackendServersRequest(TeaModel):
         # 
         # *   Remove an ECS instance: `[{"ServerId":"i-bp1fq61enf4loa5i****", "Type": "ecs","Weight":"100"}]`
         # *   Remove an ENI: `[{"ServerId":"eni-2ze1sdp5****","Type": "eni","Weight":"100"}]`
+        # 
+        # This parameter is required.
         self.backend_servers = backend_servers
         # The ID of the CLB instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -20788,9 +20882,6 @@ class RemoveBackendServersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20834,24 +20925,30 @@ class RemoveListenerWhiteListItemRequest(TeaModel):
         source_items: str = None,
     ):
         # The listening port.
+        # 
+        # This parameter is required.
         self.listener_port = listener_port
         # The frontend protocol that is used by the CLB instance.
         # 
         # >  This parameter is required when listeners that use different protocols listen on the same port.
         self.listener_protocol = listener_protocol
         # The ID of the CLB instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region where the Classic Load Balancer (CLB) instance is created.
         # 
-        # You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The list of IP addresses or CIDR blocks that you want to remove from the whitelist. Separate multiple IP addresses or CIDR blocks with commas (,).
         # 
         # >  If all IP addresses are removed from the whitelist, the listener does not forward requests.
+        # 
+        # This parameter is required.
         self.source_items = source_items
 
     def validate(self):
@@ -20946,9 +21043,6 @@ class RemoveListenerWhiteListItemResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -20990,14 +21084,20 @@ class RemoveTagsRequest(TeaModel):
         tags: str = None,
     ):
         # The ID of the SLB instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region to which the SLB instance belongs.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # A list of tags to be removed.
+        # 
+        # This parameter is required.
         self.tags = tags
 
     def validate(self):
@@ -21084,9 +21184,6 @@ class RemoveTagsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21139,7 +21236,7 @@ class RemoveVServerGroupBackendServersRequest(TeaModel):
         # 
         # *   **Weight**: the weight of the backend server. Valid values: **0 to 100**.
         # 
-        # *   **Description**: the description of the backend server. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (\_).
+        # *   **Description**: the description of the backend server. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_).
         # 
         # *   **Type**: the type of backend server. Valid values:
         # 
@@ -21147,14 +21244,20 @@ class RemoveVServerGroupBackendServersRequest(TeaModel):
         #     *   **eni**: an ENI.
         # 
         # *   **ServerIp**: the IP address of the ECS instance or ENI.
+        # 
+        # This parameter is required.
         self.backend_servers = backend_servers
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the Classic Load Balancer (CLB) instance is deployed.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the vServer group.
+        # 
+        # This parameter is required.
         self.vserver_group_id = vserver_group_id
 
     def validate(self):
@@ -21344,9 +21447,6 @@ class RemoveVServerGroupBackendServersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21388,14 +21488,20 @@ class SetAccessControlListAttributeRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the network ACL.
+        # 
+        # This parameter is required.
         self.acl_id = acl_id
-        # The new name of the network ACL. The name must be 1 to 80 characters in length, and can contain only letters, digits, periods (.), hyphens (-), forward slashes (/), and underscores (\_). The name of the network ACL must be unique within each region.
+        # The new name of the network ACL. The name must be 1 to 80 characters in length, and can contain only letters, digits, periods (.), hyphens (-), forward slashes (/), and underscores (_). The name of the network ACL must be unique within each region.
+        # 
+        # This parameter is required.
         self.acl_name = acl_name
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the network ACL is created.
         # 
-        # You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -21484,9 +21590,6 @@ class SetAccessControlListAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21535,12 +21638,16 @@ class SetAccessLogsDownloadAttributeRequest(TeaModel):
         # *   **LogProject**: the name of the project.
         # *   **LogStore**: the name of the Logstore.
         # *   **LoadBalancerId**: the ID of the CLB instance.
+        # 
+        # This parameter is required.
         self.logs_download_attributes = logs_download_attributes
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the CLB instance is deployed.
         # 
-        # You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -21637,9 +21744,6 @@ class SetAccessLogsDownloadAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21690,7 +21794,7 @@ class SetBackendServersRequest(TeaModel):
         # 
         # *   **Weight**: Specify the weight of the backend server. This parameter must be of the INTEGER type. Valid values: **0** to **100**.
         # 
-        # *   **Description**: Optional. The description of the backend server. This value must be a string. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (\_).
+        # *   **Description**: Optional. The description of the backend server. This value must be a string. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
         # 
         # *   **Type**: the type of backend server. This parameter must be of the STRING type. Valid values:
         # 
@@ -21702,13 +21806,15 @@ class SetBackendServersRequest(TeaModel):
         # Examples:
         # 
         # *   ECS instance: `[{ "ServerId": "ecs-******FmYAXG", "Weight": "100", "Type": "ecs", "Port":"80","Description":"test-112" }]`
-        # *   ENI: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.**.**", "Port":"80","Description":"test-112" }]`
-        # *   ENI with multiple IP addresses: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.**.**", "Port":"80","Description":"test-112" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "172.166.**.**", "Port":"80","Description":"test-113" }]`
+        # *   ENI: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.\*\*.**", "Port":"80","Description":"test-112" }]`
+        # *   ENI with multiple IP addresses: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.\*\*.**", "Port":"80","Description":"test-112" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "172.166.\*\*.**", "Port":"80","Description":"test-113" }]`
         # 
         # > 
         # *   The backend servers must be in the Running state. You can specify up to 20 backend servers in each request.
         self.backend_servers = backend_servers
         # The ID of the CLB instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
@@ -21904,9 +22010,6 @@ class SetBackendServersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -21948,16 +22051,22 @@ class SetCACertificateNameRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the CA certificate.
+        # 
+        # This parameter is required.
         self.cacertificate_id = cacertificate_id
         # The name of the CA certificate.
         # 
-        # The name must be 1 to 80 characters in length and start with an English letter or a Chinese character. It can contain numbers, underscores (\_), periods (.), and hyphens (-).
+        # The name must be 1 to 80 characters in length and start with an English letter or a Chinese character. It can contain numbers, underscores (_), periods (.), and hyphens (-).
+        # 
+        # This parameter is required.
         self.cacertificate_name = cacertificate_name
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region to which the CA certificate belongs.
         # 
-        # To query the region ID, call [DescribeRegions](~~27584~~).
+        # To query the region ID, call [DescribeRegions](https://help.aliyun.com/document_detail/27584.html).
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -22046,9 +22155,6 @@ class SetCACertificateNameResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22090,10 +22196,14 @@ class SetDomainExtensionAttributeRequest(TeaModel):
         server_certificate_id: str = None,
     ):
         # The ID of the domain name that is associated with the additional certificate to be replaced.
+        # 
+        # This parameter is required.
         self.domain_extension_id = domain_extension_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the SLB instance is created.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -22184,9 +22294,6 @@ class SetDomainExtensionAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22235,22 +22342,28 @@ class SetListenerAccessControlStatusRequest(TeaModel):
         # *   **close**: disables the whitelist.
         # 
         # >  After the whitelist is enabled, if no IP address is added to the whitelist, the CLB instance does not distribute network traffic.
+        # 
+        # This parameter is required.
         self.access_control_status = access_control_status
         # The frontend port that is used by the CLB instance.
         # 
         # Valid values: **1 to 65535**.
+        # 
+        # This parameter is required.
         self.listener_port = listener_port
         # The frontend protocol that is used by the CLB instance.
         # 
         # >  This parameter is required when listeners that use different protocols listen on the same port.
         self.listener_protocol = listener_protocol
         # The ID of the CLB instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region where the Classic Load Balancer (CLB) instance is created.
         # 
-        # You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -22347,9 +22460,6 @@ class SetListenerAccessControlStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22393,14 +22503,20 @@ class SetLoadBalancerDeleteProtectionRequest(TeaModel):
         # Specify whether to enable or disable deletion protection for the SLB instance.
         # 
         # Valid values: **on and off**.
+        # 
+        # This parameter is required.
         self.delete_protection = delete_protection
         # The ID of the SLB instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region where the SLB instance is deployed.
         # 
-        # You can call the [DescribeRegions](~~27584~~) operation to query region IDs.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query region IDs.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -22489,9 +22605,6 @@ class SetLoadBalancerDeleteProtectionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -22620,14 +22733,14 @@ class SetLoadBalancerHTTPListenerAttributeRequest(TeaModel):
         self.health_check_connect_port = health_check_connect_port
         # The domain name that is used for health checks. Valid values:
         # 
-        # *   **$\_ip**: the private IP address of a backend server. If you specify \*\*$\_ip **or** ignore HealthCheckDomain\*\*, CLB uses the private IP addresses of backend servers as the health check domain names.
+        # *   **$_ip**: the private IP address of a backend server. If you specify \\*\\*$_ip **or** ignore HealthCheckDomain\\*\\*, CLB uses the private IP addresses of backend servers as the health check domain names.
         # *   **domain**: The domain name must be 1 to 80 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
         # 
         # > The parameter takes effect only if you set **HealthCheck** to **on**.
         self.health_check_domain = health_check_domain
         # The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (,).
         # 
-        # Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
+        # Valid values: **http_2xx**, **http_3xx**, **http_4xx**, and **http_5xx**.
         # 
         # >  The parameter takes effect only if you set **HealthCheck** to **on**.
         self.health_check_http_code = health_check_http_code
@@ -22666,14 +22779,18 @@ class SetLoadBalancerHTTPListenerAttributeRequest(TeaModel):
         # The frontend port that is used by the CLB instance.
         # 
         # Valid values: **1** to **65535**.
+        # 
+        # This parameter is required.
         self.listener_port = listener_port
         # The CLB instance ID.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the CLB instance.
         # 
-        # You can query the region ID from the [Regions and zones](~~27585~~) list or by calling the [DescribeRegions](~~27584~~) operation.
+        # You can query the region ID from the [Regions and zones](https://help.aliyun.com/document_detail/27585.html) list or by calling the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation.
         self.region_id = region_id
         # The timeout period of a request. Unit: seconds. Valid values: **1 to 180**. Default value: **60**.
         # 
@@ -22721,6 +22838,10 @@ class SetLoadBalancerHTTPListenerAttributeRequest(TeaModel):
         # *   **on** (default)
         # *   **off**\
         self.xforwarded_for = xforwarded_for
+        # Specifies whether to use the `XForwardedFor_ClientSrcPort` header to retrieve the client port. Valid values:
+        # 
+        # *   **on**\
+        # *   **off**\
         self.xforwarded_for__client_src_port = xforwarded_for__client_src_port
         # Specifies whether to use the `SLB-ID` header to retrieve the ID of the CLB instance. Valid values:
         # 
@@ -22732,6 +22853,10 @@ class SetLoadBalancerHTTPListenerAttributeRequest(TeaModel):
         # *   **on**\
         # *   **off**\
         self.xforwarded_for__slbip = xforwarded_for__slbip
+        # Specifies whether to use the `XForwardedFor_SLBPORT` header to retrieve the listener port of the CLB instance. Valid values:
+        # 
+        # *   **on**\
+        # *   **off**\
         self.xforwarded_for__slbport = xforwarded_for__slbport
         # Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listener protocol. Valid values:
         # 
@@ -22947,9 +23072,6 @@ class SetLoadBalancerHTTPListenerAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23095,14 +23217,14 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
         self.health_check_connect_port = health_check_connect_port
         # The domain name that is used for health checks. Valid values:
         # 
-        # *   **$\_ip**: the private IP address of a backend server. If you do not set this parameter or set the parameter to $\_ip, the CLB instance uses the private IP address of each backend server as the domain name for health checks.
+        # *   **$_ip**: the private IP address of a backend server. If you do not set this parameter or set the parameter to $_ip, the CLB instance uses the private IP address of each backend server as the domain name for health checks.
         # *   **domain**: The domain name must be 1 to 80 characters in length, and can contain letters, digits, periods (.),and hyphens (-).
         # 
         # >  This parameter takes effect only when the **HealthCheck** parameter is set to **on**.
         self.health_check_domain = health_check_domain
         # The HTTP status code of a successful health check. Separate multiple HTTP status codes with commas (,).
         # 
-        # Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
+        # Valid values: **http_2xx**, **http_3xx**, **http_4xx**, and **http_5xx**.
         # 
         # >  This parameter takes effect only when the **HealthCheck** parameter is set to **on**.
         self.health_check_http_code = health_check_http_code
@@ -23143,14 +23265,18 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
         # The frontend port that is used by the CLB instance.
         # 
         # Valid values: **1** to **65535**.
+        # 
+        # This parameter is required.
         self.listener_port = listener_port
         # The ID of the CLB instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the CLB instance is deployed.
         # 
-        # You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         self.region_id = region_id
         # The timeout period of a request. Unit: seconds. Valid values: **1 to 180**. Default value: **60**.
         # 
@@ -23184,35 +23310,35 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
         self.sticky_session_type = sticky_session_type
         # The Transport Layer Security (TLS) security policy. Each security policy contains TLS protocol versions and cipher suites available for HTTPS.
         # 
-        # *   **tls_cipher_policy\_1\_0**:
+        # *   **tls_cipher_policy_1_0**:
         # 
         #     Supported TLS versions: TLS 1.0, TLS 1.1, and TLS 1.2
         # 
         #     Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA
         # 
-        # *   **tls_cipher_policy\_1\_1**:
+        # *   **tls_cipher_policy_1_1**:
         # 
         #     Supported TLS versions: TLS 1.1 and TLS 1.2
         # 
         #     Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA
         # 
-        # *   **tls_cipher_policy\_1\_2**\
+        # *   **tls_cipher_policy_1_2**\
         # 
         #     Supported TLS version: TLS 1.2
         # 
         #     Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, AES128-GCM-SHA256, AES256-GCM-SHA384, AES128-SHA256, AES256-SHA256, ECDHE-RSA-AES128-SHA, ECDHE-RSA-AES256-SHA, AES128-SHA, AES256-SHA, and DES-CBC3-SHA
         # 
-        # *   **tls_cipher_policy\_1\_2\_strict**\
+        # *   **tls_cipher_policy_1_2_strict**\
         # 
         #     Supported TLS version: TLS 1.2
         # 
         #     Supported cipher suites: ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA
         # 
-        # *   **tls_cipher_policy\_1\_2\_strict_with\_1\_3**\
+        # *   **tls_cipher_policy_1_2_strict_with_1_3**\
         # 
         #     Supported TLS versions: TLS 1.2 and TLS 1.3
         # 
-        #     Supported cipher suites: TLS_AES\_128\_GCM_SHA256, TLS_AES\_256\_GCM_SHA384, TLS_CHACHA20\_POLY1305\_SHA256, TLS_AES\_128\_CCM_SHA256, TLS_AES\_128\_CCM\_8\_SHA256, ECDHE-ECDSA-AES128-GCM-SHA256, ECDHE-ECDSA-AES256-GCM-SHA384, ECDHE-ECDSA-AES128-SHA256, ECDHE-ECDSA-AES256-SHA384, ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-ECDSA-AES128-SHA, ECDHE-ECDSA-AES256-SHA, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA
+        #     Supported cipher suites: TLS_AES_128_GCM_SHA256, TLS_AES_256_GCM_SHA384, TLS_CHACHA20_POLY1305_SHA256, TLS_AES_128_CCM_SHA256, TLS_AES_128_CCM_8_SHA256, ECDHE-ECDSA-AES128-GCM-SHA256, ECDHE-ECDSA-AES256-GCM-SHA384, ECDHE-ECDSA-AES128-SHA256, ECDHE-ECDSA-AES256-SHA384, ECDHE-RSA-AES128-GCM-SHA256, ECDHE-RSA-AES256-GCM-SHA384, ECDHE-RSA-AES128-SHA256, ECDHE-RSA-AES256-SHA384, ECDHE-ECDSA-AES128-SHA, ECDHE-ECDSA-AES256-SHA, ECDHE-RSA-AES128-SHA, and ECDHE-RSA-AES256-SHA
         self.tlscipher_policy = tlscipher_policy
         # The number of health checks that a healthy backend server must consecutively fail before it can be declared unhealthy (from **success** to **fail**).
         # 
@@ -23232,6 +23358,10 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
         # *   **on**: yes
         # *   **off**: no
         self.xforwarded_for = xforwarded_for
+        # Specifies whether to use the `XForwardedFor_ClientSrcPort` header to retrieve the client port. Valid values:
+        # 
+        # *   **on**\
+        # *   **off**\
         self.xforwarded_for__client_src_port = xforwarded_for__client_src_port
         # Specifies whether to use the `SLB-ID` header to retrieve the ID of the CLB instance. Valid values:
         # 
@@ -23243,6 +23373,10 @@ class SetLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
         # *   **on**: yes
         # *   **off**: no
         self.xforwarded_for__slbip = xforwarded_for__slbip
+        # Specifies whether to use the `XForwardedFor_SLBPORT` header to retrieve the listener port of the CLB instance. Valid values:
+        # 
+        # *   **on**\
+        # *   **off**\
         self.xforwarded_for__slbport = xforwarded_for__slbport
         # Specifies whether to use the `X-Forwarded-Proto` header to retrieve the listener protocol. Valid values:
         # 
@@ -23474,9 +23608,6 @@ class SetLoadBalancerHTTPSListenerAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23519,8 +23650,10 @@ class SetLoadBalancerModificationProtectionRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the CLB instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
-        # The reason why the configuration read-only mode is enabled. The value must be 1 to 80 characters in length. It must start with a letter and can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+        # The reason why the configuration read-only mode is enabled. The value must be 1 to 80 characters in length. It must start with a letter and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         # 
         # >  This parameter is valid only if the **ModificationProtectionStatus** parameter is set to **ConsoleProtection**.
         self.modification_protection_reason = modification_protection_reason
@@ -23530,12 +23663,16 @@ class SetLoadBalancerModificationProtectionRequest(TeaModel):
         # *   **ConsoleProtection**: enables the configuration read-only mode.
         # 
         # >  If you set this parameter to **ConsoleProtection**, you cannot use the CLB console to modify instance configurations. However, you can call API operations to modify instance configurations.
+        # 
+        # This parameter is required.
         self.modification_protection_status = modification_protection_status
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID of the CLB instance.
         # 
-        # You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -23628,9 +23765,6 @@ class SetLoadBalancerModificationProtectionResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23672,16 +23806,20 @@ class SetLoadBalancerNameRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the CLB instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         # The new name of the CLB instance.
         # 
-        # The name must be 1 to 80 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). It must start with a letter.
+        # The name must be 1 to 80 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+        # 
+        # This parameter is required.
         self.load_balancer_name = load_balancer_name
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the CLB instance is deployed.
         # 
-        # You can call the [DescribeRegions](~~25609~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -23770,9 +23908,6 @@ class SetLoadBalancerNameResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -23814,6 +23949,8 @@ class SetLoadBalancerStatusRequest(TeaModel):
         resource_owner_id: int = None,
     ):
         # The ID of the CLB instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         # The state of the CLB instance. Valid values: **active** and **inactive**.
         # 
@@ -23828,12 +23965,14 @@ class SetLoadBalancerStatusRequest(TeaModel):
         #     If a CLB instance is in the **inactive** state, listeners of the CLB instance do not forward traffic.
         # 
         # >  If all listeners of a CLB instance are deleted, the CLB instance automatically switches to the **inactive** state.
+        # 
+        # This parameter is required.
         self.load_balancer_status = load_balancer_status
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the CLB instance is deployed.
         # 
-        # You can query region IDs from the [Regions and zones](~~40654~~) list or by calling the [DescribeRegions](~~25609~~) operation.
+        # You can query region IDs from the [Regions and zones](https://help.aliyun.com/document_detail/40654.html) list or by calling the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -23922,9 +24061,6 @@ class SetLoadBalancerStatusResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24028,7 +24164,7 @@ class SetLoadBalancerTCPListenerAttributeRequest(TeaModel):
         self.connection_drain_timeout = connection_drain_timeout
         # The name of the listener.
         # 
-        # The name must be 1 to 256 characters in length and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (\_).
+        # The name must be 1 to 256 characters in length and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
         self.description = description
         # The timeout period of a connection. Unit: seconds. Valid values: **10** to **900**.
         self.established_timeout = established_timeout
@@ -24046,7 +24182,7 @@ class SetLoadBalancerTCPListenerAttributeRequest(TeaModel):
         self.health_check_connect_timeout = health_check_connect_timeout
         # The domain name that is used for health checks. You can set this parameter when the TCP listener requires HTTP health checks. If you do not set this parameter, TCP health checks are performed.
         # 
-        # *   **$\_ip**: the private IP addresses of the backend servers.
+        # *   **$_ip**: the private IP addresses of the backend servers.
         # 
         #     If you do not set the HealthCheckHost parameter or set the parameter to $SERVER_IP, the CLB instance uses the private IP addresses of backend servers for health checks.
         # 
@@ -24054,7 +24190,7 @@ class SetLoadBalancerTCPListenerAttributeRequest(TeaModel):
         self.health_check_domain = health_check_domain
         # The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (,).
         # 
-        # Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
+        # Valid values: **http_2xx**, **http_3xx**, **http_4xx**, and **http_5xx**.
         self.health_check_http_code = health_check_http_code
         # The interval between two consecutive health checks. Unit: seconds.
         # 
@@ -24080,8 +24216,12 @@ class SetLoadBalancerTCPListenerAttributeRequest(TeaModel):
         # The frontend port used by the CLB instance.
         # 
         # Valid values: **1** to **65535**.
+        # 
+        # This parameter is required.
         self.listener_port = listener_port
         # The ID of the CLB instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         # Specifies whether to use a primary/secondary server group. Valid values:
         # 
@@ -24107,7 +24247,7 @@ class SetLoadBalancerTCPListenerAttributeRequest(TeaModel):
         self.proxy_protocol_v2enabled = proxy_protocol_v2enabled
         # The region ID of the CLB instance.
         # 
-        # You can query the region ID from the [Regions and zones](~~40654~~) list or by calling the [DescribeRegions](~~DescribeRegions~~) operation.
+        # You can query the region ID from the [Regions and zones](https://help.aliyun.com/document_detail/40654.html) list or by calling the [DescribeRegions](~~DescribeRegions~~) operation.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -24331,9 +24471,6 @@ class SetLoadBalancerTCPListenerAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24421,7 +24558,7 @@ class SetLoadBalancerUDPListenerAttributeRequest(TeaModel):
         self.bandwidth = bandwidth
         # The name of the listener.
         # 
-        # The name must be 1 to 256 characters in length and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (\_).
+        # The name must be 1 to 256 characters in length and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
         self.description = description
         # The port that is used for health checks.
         # 
@@ -24449,8 +24586,12 @@ class SetLoadBalancerUDPListenerAttributeRequest(TeaModel):
         # The frontend port used by the CLB instance.
         # 
         # Valid values: **1** to **65535**.
+        # 
+        # This parameter is required.
         self.listener_port = listener_port
         # The ID of the CLB instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         # Specifies whether to use a primary/secondary server group. Valid values:
         # 
@@ -24472,7 +24613,7 @@ class SetLoadBalancerUDPListenerAttributeRequest(TeaModel):
         self.proxy_protocol_v2enabled = proxy_protocol_v2enabled
         # The region ID of the CLB instance.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -24672,9 +24813,6 @@ class SetLoadBalancerUDPListenerAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -24754,14 +24892,14 @@ class SetRuleRequest(TeaModel):
         self.health_check_connect_port = health_check_connect_port
         # The domain name that is used for health checks. Valid values:
         # 
-        # *   **$\_ip**: the private IP address of a backend server. If you do not set this parameter or set the parameter to $\_ip, the SLB instance uses the private IP address of each backend server for health checks.
+        # *   **$_ip**: the private IP address of a backend server. If you do not set this parameter or set the parameter to $_ip, the SLB instance uses the private IP address of each backend server for health checks.
         # *   **domain**: The domain name must be 1 to 80 characters in length, and can contain letters, digits, periods (.), and hyphens (-).
         # 
         # >  This parameter takes effect if the **HealthCheck** parameter is set to **on**.
         self.health_check_domain = health_check_domain
         # The HTTP status code for a successful health check. Multiple HTTP status codes are separated by commas (,).
         # 
-        # Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
+        # Valid values: **http_2xx**, **http_3xx**, **http_4xx**, and **http_5xx**.
         # 
         # >  This parameter is required and takes effect if the **HealthCheck** parameter is set to **on**.
         self.health_check_http_code = health_check_http_code
@@ -24792,13 +24930,17 @@ class SetRuleRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region where the Classic Load Balancer (CLB) instance is deployed.
         # 
-        # You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the forwarding rule.
+        # 
+        # This parameter is required.
         self.rule_id = rule_id
-        # The name of the forwarding rule. The name must be 1 to 80 characters in length and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (\_).
+        # The name of the forwarding rule. The name must be 1 to 80 characters in length and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
         # 
         # >  Forwarding rule names must be unique within the same listener.
         self.rule_name = rule_name
@@ -24985,9 +25127,6 @@ class SetRuleResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25030,17 +25169,19 @@ class SetServerCertificateNameRequest(TeaModel):
     ):
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The ID of the region to which the Server Load Balancer (SLB) instance belongs.
+        # The region ID of the Classic Load Balancer (CLB) instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/2401682.html) operation to query the most recent region list.
         # 
-        # To query the region ID, call [DescribeRegions](~~27584~~).
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the server certificate.
-        self.server_certificate_id = server_certificate_id
-        # The name of the server certificate.
         # 
-        # The name must be 1 to 80 characters in length. It must start with an English letter. It can contain letters, numbers, periods (.), underscores (\_), and hyphens (-).
+        # This parameter is required.
+        self.server_certificate_id = server_certificate_id
+        # The name of the third-party server certificate that you want to upload. The name must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), underscores (_), and asterisks (\\*).
+        # 
+        # This parameter is required.
         self.server_certificate_name = server_certificate_name
 
     def validate(self):
@@ -25092,7 +25233,7 @@ class SetServerCertificateNameResponseBody(TeaModel):
         self,
         request_id: str = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -25127,9 +25268,6 @@ class SetServerCertificateNameResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25207,25 +25345,35 @@ class SetTLSCipherPolicyAttributeRequest(TeaModel):
         # 
         # TLS 1.3 supports the following cipher suites:
         # 
-        # *   TLS_AES\_128\_GCM_SHA256
-        # *   TLS_AES\_256\_GCM_SHA384
-        # *   TLS_CHACHA20\_POLY1305\_SHA256
-        # *   TLS_AES\_128\_CCM_SHA256
-        # *   TLS_AES\_128\_CCM\_8\_SHA256
+        # *   TLS_AES_128_GCM_SHA256
+        # *   TLS_AES_256_GCM_SHA384
+        # *   TLS_CHACHA20_POLY1305_SHA256
+        # *   TLS_AES_128_CCM_SHA256
+        # *   TLS_AES_128_CCM_8_SHA256
+        # 
+        # This parameter is required.
         self.ciphers = ciphers
-        # The name of the TLS policy. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
+        # The name of the TLS policy. The name must be 2 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+        # 
+        # This parameter is required.
         self.name = name
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the Server Load Balancer (SLB) instance is deployed.
         # 
-        # You can call the [DescribeRegions](~~36063~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the TLS policy.
+        # 
+        # This parameter is required.
         self.tlscipher_policy_id = tlscipher_policy_id
         # The version of the TLS protocol. Valid values: **TLSv1.0**, **TLSv1.1**, **TLSv1.2**, and **TLSv1.3**.
+        # 
+        # This parameter is required.
         self.tlsversions = tlsversions
 
     def validate(self):
@@ -25327,9 +25475,6 @@ class SetTLSCipherPolicyAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25379,7 +25524,7 @@ class SetVServerGroupAttributeRequest(TeaModel):
         # 
         # *   **Weight**: required. The weight of the backend server. This parameter must be of the INTEGER type. You can modify this parameter. Valid values: **0 to 100**.
         # 
-        # *   **Description**: optional. The description of the backend server. This parameter must be of the STRING type. You can modify this parameter. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (\_).
+        # *   **Description**: optional. The description of the backend server. This parameter must be of the STRING type. You can modify this parameter. The description must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.),and underscores (_).
         # 
         # *   **Type**: the type of backend server. This parameter must be of the STRING type. Valid values:
         # 
@@ -25391,16 +25536,20 @@ class SetVServerGroupAttributeRequest(TeaModel):
         # Examples:
         # 
         # *   An ECS instance: `[{ "ServerId": "i-xxxxxxxxx", "Weight": "100", "Type": "ecs", "Port":"80","Description":"test-112" }]`
-        # *   An ENI: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.**.**", "Port":"80","Description":"test-112" }]`
-        # *   An ENI with multiple IP addresses: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.**.**", "Port":"80","Description":"test-112" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "172.166.**.**", "Port":"80","Description":"test-113" }]`
+        # *   An ENI: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.\*\*.**", "Port":"80","Description":"test-112" }]`
+        # *   An ENI with multiple IP addresses: `[{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "192.168.\*\*.**", "Port":"80","Description":"test-112" },{ "ServerId": "eni-xxxxxxxxx", "Weight": "100", "Type": "eni", "ServerIp": "172.166.\*\*.**", "Port":"80","Description":"test-113" }]`
         self.backend_servers = backend_servers
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region where the Classic Load Balancer (CLB) instance is deployed. This parameter cannot be modified.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the vServer group. This parameter cannot be modified.
+        # 
+        # This parameter is required.
         self.vserver_group_id = vserver_group_id
         # The name of the vServer group. You can specify a custom name for the vServer group.
         self.vserver_group_name = vserver_group_name
@@ -25610,9 +25759,6 @@ class SetVServerGroupAttributeResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25657,18 +25803,22 @@ class StartLoadBalancerListenerRequest(TeaModel):
         # The listener port of the SLB instance.
         # 
         # Valid values: **1 to 65535**.
+        # 
+        # This parameter is required.
         self.listener_port = listener_port
         # The protocol used by the listener of the SLB instance.
         # 
         # >  If different listeners use the same port, you must specify this parameter.
         self.listener_protocol = listener_protocol
         # The ID of the SLB instance.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region where the SLB instance is deployed.
         # 
-        # You can retrieve the region ID by calling the [DescribeRegions](~~27584~~) operation.
+        # You can retrieve the region ID by calling the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -25761,9 +25911,6 @@ class StartLoadBalancerListenerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25808,18 +25955,22 @@ class StopLoadBalancerListenerRequest(TeaModel):
         # The frontend listening port used by the listener.
         # 
         # Value range: **1 to 65535**\
+        # 
+        # This parameter is required.
         self.listener_port = listener_port
         # The frontend listening protocol used by the SLB instance.
         # 
         # >  This parameter is required when listeners with different protocols use the same port.
         self.listener_protocol = listener_protocol
         # The ID of the SLB instance to which the listener belongs.
+        # 
+        # This parameter is required.
         self.load_balancer_id = load_balancer_id
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The ID of the region to which the SLB instance belongs.
         # 
-        # To query the region ID, refer to the list of [regions and zones](~~40654~~) or call [DescribeRegions](~~25609~~).
+        # To query the region ID, refer to the list of [regions and zones](https://help.aliyun.com/document_detail/40654.html) or call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html).
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -25912,9 +26063,6 @@ class StopLoadBalancerListenerResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -25999,11 +26147,15 @@ class TagResourcesRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region where the Server Load Balancer (SLB) instance is created.
         # 
-        # You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource ID. You can specify up to 20 IDs.
         # 
-        # >  The value of **ResourceId** of a **listener** is **LoadBalancerId\_ Listener protocol_Port**, where LoadBalancerId is the SLB instance ID and port is the listener port. Example: lb-bp1snb10sbml4mqty_http\_80.
+        # >  The value of **ResourceId** of a **listener** is **LoadBalancerId_ Listener protocol_Port**, where LoadBalancerId is the SLB instance ID and port is the listener port. Example: lb-bp1snb10sbml4mqty_http_80.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -26015,8 +26167,12 @@ class TagResourcesRequest(TeaModel):
         # *   **listener**: a listener
         # *   **vservergroup**: a vServer group
         # *   **masterslaveservergroup**: a primary/secondary server group
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags.
+        # 
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -26115,9 +26271,6 @@ class TagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26168,9 +26321,13 @@ class UntagResourcesRequest(TeaModel):
         self.owner_id = owner_id
         # The ID of the region where the Server Load Balancer (SLB) instance is created.
         # 
-        # You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource. Valid values of N: 1 to 20.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -26179,6 +26336,8 @@ class UntagResourcesRequest(TeaModel):
         # *   **instance**: an SLB instance
         # *   **certificate**: a certificate
         # *   **acl**: a network access control list (ACL)
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tag value. Valid values of N: **1** to **20**.
         # 
@@ -26279,9 +26438,6 @@ class UntagResourcesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26366,14 +26522,18 @@ class UploadCACertificateRequest(TeaModel):
         # The name of this action.
         # 
         # Value: **UploadCACertificate**\
+        # 
+        # This parameter is required.
         self.cacertificate = cacertificate
         # The ID of the region to which the CA certificate belongs.
         # 
-        # To query the region ID, call [DescribeRegions](~~27584~~).
+        # To query the region ID, call [DescribeRegions](https://help.aliyun.com/document_detail/27584.html).
         self.cacertificate_name = cacertificate_name
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region id.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The content of the CA certificate to be uploaded.
         self.resource_group_id = resource_group_id
@@ -26545,9 +26705,6 @@ class UploadCACertificateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -26643,7 +26800,9 @@ class UploadServerCertificateRequest(TeaModel):
         self.private_key = private_key
         # The region ID of the CLB instance.
         # 
-        # You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
@@ -26653,7 +26812,7 @@ class UploadServerCertificateRequest(TeaModel):
         self.server_certificate = server_certificate
         # The name of the server certificate.
         # 
-        # The name must be 1 to 80 characters in length. It must start with an English letter. It can contain letters, numbers, periods (.), underscores (\_), and hyphens (-).
+        # The name must be 1 to 80 characters in length. It must start with an English letter. It can contain letters, numbers, periods (.), underscores (_), and hyphens (-).
         self.server_certificate_name = server_certificate_name
         # The tags.
         self.tag = tag
@@ -26802,7 +26961,7 @@ class UploadServerCertificateResponseBody(TeaModel):
         self.is_ali_cloud_certificate = is_ali_cloud_certificate
         # The ID of the region where the Classic Load Balancer (CLB) instance is deployed.
         # 
-        # You can call the [DescribeRegions](~~27584~~) operation to query the most recent region list.
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/27584.html) operation to query the most recent region list.
         self.region_id = region_id
         # The ID of the request.
         self.request_id = request_id
@@ -26812,7 +26971,7 @@ class UploadServerCertificateResponseBody(TeaModel):
         self.server_certificate_id = server_certificate_id
         # The name of the server certificate.
         # 
-        # The name must be 1 to 80 characters in length. It must start with an English letter. It can contain letters, numbers, periods (.), underscores (\_), and hyphens (-).
+        # The name must be 1 to 80 characters in length. It must start with an English letter. It can contain letters, numbers, periods (.), underscores (_), and hyphens (-).
         self.server_certificate_name = server_certificate_name
         # The subject alternative names.
         # 
@@ -26909,9 +27068,6 @@ class UploadServerCertificateResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 

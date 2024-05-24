@@ -92,9 +92,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.AddAccessControlListEntryResponse:
         """
-        Each network ACL can contain one or more IP addresses or CIDR blocks. Take note of the following limits on network ACLs:
-        *   The number of IP entries that can be added to a network ACL with each Alibaba Cloud account at a time: 50
-        *   The maximum number of IP entries that each network ACL can contain: 300
+        @summary Adds IP entries to a network access control list (ACL).
+        
+        @description Each network ACL can contain one or more IP addresses or CIDR blocks. Take note of the following limits on network ACLs:
+        The number of IP entries that can be added to a network ACL with each Alibaba Cloud account at a time: 50
+        The maximum number of IP entries that each network ACL can contain: 300
         
         @param request: AddAccessControlListEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -141,9 +143,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.AddAccessControlListEntryResponse:
         """
-        Each network ACL can contain one or more IP addresses or CIDR blocks. Take note of the following limits on network ACLs:
-        *   The number of IP entries that can be added to a network ACL with each Alibaba Cloud account at a time: 50
-        *   The maximum number of IP entries that each network ACL can contain: 300
+        @summary Adds IP entries to a network access control list (ACL).
+        
+        @description Each network ACL can contain one or more IP addresses or CIDR blocks. Take note of the following limits on network ACLs:
+        The number of IP entries that can be added to a network ACL with each Alibaba Cloud account at a time: 50
+        The maximum number of IP entries that each network ACL can contain: 300
         
         @param request: AddAccessControlListEntryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -189,9 +193,11 @@ class Client(OpenApiClient):
         request: slb_20140515_models.AddAccessControlListEntryRequest,
     ) -> slb_20140515_models.AddAccessControlListEntryResponse:
         """
-        Each network ACL can contain one or more IP addresses or CIDR blocks. Take note of the following limits on network ACLs:
-        *   The number of IP entries that can be added to a network ACL with each Alibaba Cloud account at a time: 50
-        *   The maximum number of IP entries that each network ACL can contain: 300
+        @summary Adds IP entries to a network access control list (ACL).
+        
+        @description Each network ACL can contain one or more IP addresses or CIDR blocks. Take note of the following limits on network ACLs:
+        The number of IP entries that can be added to a network ACL with each Alibaba Cloud account at a time: 50
+        The maximum number of IP entries that each network ACL can contain: 300
         
         @param request: AddAccessControlListEntryRequest
         @return: AddAccessControlListEntryResponse
@@ -204,9 +210,11 @@ class Client(OpenApiClient):
         request: slb_20140515_models.AddAccessControlListEntryRequest,
     ) -> slb_20140515_models.AddAccessControlListEntryResponse:
         """
-        Each network ACL can contain one or more IP addresses or CIDR blocks. Take note of the following limits on network ACLs:
-        *   The number of IP entries that can be added to a network ACL with each Alibaba Cloud account at a time: 50
-        *   The maximum number of IP entries that each network ACL can contain: 300
+        @summary Adds IP entries to a network access control list (ACL).
+        
+        @description Each network ACL can contain one or more IP addresses or CIDR blocks. Take note of the following limits on network ACLs:
+        The number of IP entries that can be added to a network ACL with each Alibaba Cloud account at a time: 50
+        The maximum number of IP entries that each network ACL can contain: 300
         
         @param request: AddAccessControlListEntryRequest
         @return: AddAccessControlListEntryResponse
@@ -220,7 +228,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.AddBackendServersResponse:
         """
-        >  If multiple identical Elastic Compute Service (ECS) instances are specified in a request, only the first ECS instance is added. The other ECS instances are ignored. If the backend server that you add is the same as one of the existing backend servers that are already associated with the listener, an error message is returned.
+        @summary Adds backend servers.
+        
+        @description >  If multiple identical Elastic Compute Service (ECS) instances are specified in a request, only the first ECS instance is added. The other ECS instances are ignored. If the backend server that you add is the same as one of the existing backend servers that are already associated with the listener, an error message is returned.
         
         @param request: AddBackendServersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -267,7 +277,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.AddBackendServersResponse:
         """
-        >  If multiple identical Elastic Compute Service (ECS) instances are specified in a request, only the first ECS instance is added. The other ECS instances are ignored. If the backend server that you add is the same as one of the existing backend servers that are already associated with the listener, an error message is returned.
+        @summary Adds backend servers.
+        
+        @description >  If multiple identical Elastic Compute Service (ECS) instances are specified in a request, only the first ECS instance is added. The other ECS instances are ignored. If the backend server that you add is the same as one of the existing backend servers that are already associated with the listener, an error message is returned.
         
         @param request: AddBackendServersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -313,7 +325,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.AddBackendServersRequest,
     ) -> slb_20140515_models.AddBackendServersResponse:
         """
-        >  If multiple identical Elastic Compute Service (ECS) instances are specified in a request, only the first ECS instance is added. The other ECS instances are ignored. If the backend server that you add is the same as one of the existing backend servers that are already associated with the listener, an error message is returned.
+        @summary Adds backend servers.
+        
+        @description >  If multiple identical Elastic Compute Service (ECS) instances are specified in a request, only the first ECS instance is added. The other ECS instances are ignored. If the backend server that you add is the same as one of the existing backend servers that are already associated with the listener, an error message is returned.
         
         @param request: AddBackendServersRequest
         @return: AddBackendServersResponse
@@ -326,7 +340,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.AddBackendServersRequest,
     ) -> slb_20140515_models.AddBackendServersResponse:
         """
-        >  If multiple identical Elastic Compute Service (ECS) instances are specified in a request, only the first ECS instance is added. The other ECS instances are ignored. If the backend server that you add is the same as one of the existing backend servers that are already associated with the listener, an error message is returned.
+        @summary Adds backend servers.
+        
+        @description >  If multiple identical Elastic Compute Service (ECS) instances are specified in a request, only the first ECS instance is added. The other ECS instances are ignored. If the backend server that you add is the same as one of the existing backend servers that are already associated with the listener, an error message is returned.
         
         @param request: AddBackendServersRequest
         @return: AddBackendServersResponse
@@ -339,6 +355,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.AddListenerWhiteListItemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.AddListenerWhiteListItemResponse:
+        """
+        @summary Adds IP addresses to the whitelist of a listener.
+        
+        @param request: AddListenerWhiteListItemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddListenerWhiteListItemResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_port):
@@ -383,6 +406,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.AddListenerWhiteListItemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.AddListenerWhiteListItemResponse:
+        """
+        @summary Adds IP addresses to the whitelist of a listener.
+        
+        @param request: AddListenerWhiteListItemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddListenerWhiteListItemResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_port):
@@ -426,6 +456,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.AddListenerWhiteListItemRequest,
     ) -> slb_20140515_models.AddListenerWhiteListItemResponse:
+        """
+        @summary Adds IP addresses to the whitelist of a listener.
+        
+        @param request: AddListenerWhiteListItemRequest
+        @return: AddListenerWhiteListItemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_listener_white_list_item_with_options(request, runtime)
 
@@ -433,6 +469,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.AddListenerWhiteListItemRequest,
     ) -> slb_20140515_models.AddListenerWhiteListItemResponse:
+        """
+        @summary Adds IP addresses to the whitelist of a listener.
+        
+        @param request: AddListenerWhiteListItemRequest
+        @return: AddListenerWhiteListItemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_listener_white_list_item_with_options_async(request, runtime)
 
@@ -442,12 +484,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.AddTagsResponse:
         """
-        # Limits
+        @description # Limits
         Before you call this API, note the following limits:
-        *   You can add up to 10 tags to each SLB instance.
-        *   You can add up to five pairs of tags at a time.
-        *   All the tags and keys added to an SLB instance must be unique.
-        *   If you add a tag of which the key is the same as that of an existing tag, but the value is different, the new tag overwrites the existing one.
+        You can add up to 10 tags to each SLB instance.
+        You can add up to five pairs of tags at a time.
+        All the tags and keys added to an SLB instance must be unique.
+        If you add a tag of which the key is the same as that of an existing tag, but the value is different, the new tag overwrites the existing one.
         
         @param request: AddTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -494,12 +536,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.AddTagsResponse:
         """
-        # Limits
+        @description # Limits
         Before you call this API, note the following limits:
-        *   You can add up to 10 tags to each SLB instance.
-        *   You can add up to five pairs of tags at a time.
-        *   All the tags and keys added to an SLB instance must be unique.
-        *   If you add a tag of which the key is the same as that of an existing tag, but the value is different, the new tag overwrites the existing one.
+        You can add up to 10 tags to each SLB instance.
+        You can add up to five pairs of tags at a time.
+        All the tags and keys added to an SLB instance must be unique.
+        If you add a tag of which the key is the same as that of an existing tag, but the value is different, the new tag overwrites the existing one.
         
         @param request: AddTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -545,12 +587,12 @@ class Client(OpenApiClient):
         request: slb_20140515_models.AddTagsRequest,
     ) -> slb_20140515_models.AddTagsResponse:
         """
-        # Limits
+        @description # Limits
         Before you call this API, note the following limits:
-        *   You can add up to 10 tags to each SLB instance.
-        *   You can add up to five pairs of tags at a time.
-        *   All the tags and keys added to an SLB instance must be unique.
-        *   If you add a tag of which the key is the same as that of an existing tag, but the value is different, the new tag overwrites the existing one.
+        You can add up to 10 tags to each SLB instance.
+        You can add up to five pairs of tags at a time.
+        All the tags and keys added to an SLB instance must be unique.
+        If you add a tag of which the key is the same as that of an existing tag, but the value is different, the new tag overwrites the existing one.
         
         @param request: AddTagsRequest
         @return: AddTagsResponse
@@ -563,12 +605,12 @@ class Client(OpenApiClient):
         request: slb_20140515_models.AddTagsRequest,
     ) -> slb_20140515_models.AddTagsResponse:
         """
-        # Limits
+        @description # Limits
         Before you call this API, note the following limits:
-        *   You can add up to 10 tags to each SLB instance.
-        *   You can add up to five pairs of tags at a time.
-        *   All the tags and keys added to an SLB instance must be unique.
-        *   If you add a tag of which the key is the same as that of an existing tag, but the value is different, the new tag overwrites the existing one.
+        You can add up to 10 tags to each SLB instance.
+        You can add up to five pairs of tags at a time.
+        All the tags and keys added to an SLB instance must be unique.
+        If you add a tag of which the key is the same as that of an existing tag, but the value is different, the new tag overwrites the existing one.
         
         @param request: AddTagsRequest
         @return: AddTagsResponse
@@ -581,6 +623,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.AddVServerGroupBackendServersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.AddVServerGroupBackendServersResponse:
+        """
+        @summary Adds backend servers to a specified server group.
+        
+        @param request: AddVServerGroupBackendServersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddVServerGroupBackendServersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backend_servers):
@@ -621,6 +670,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.AddVServerGroupBackendServersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.AddVServerGroupBackendServersResponse:
+        """
+        @summary Adds backend servers to a specified server group.
+        
+        @param request: AddVServerGroupBackendServersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddVServerGroupBackendServersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backend_servers):
@@ -660,6 +716,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.AddVServerGroupBackendServersRequest,
     ) -> slb_20140515_models.AddVServerGroupBackendServersResponse:
+        """
+        @summary Adds backend servers to a specified server group.
+        
+        @param request: AddVServerGroupBackendServersRequest
+        @return: AddVServerGroupBackendServersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_vserver_group_backend_servers_with_options(request, runtime)
 
@@ -667,6 +729,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.AddVServerGroupBackendServersRequest,
     ) -> slb_20140515_models.AddVServerGroupBackendServersResponse:
+        """
+        @summary Adds backend servers to a specified server group.
+        
+        @param request: AddVServerGroupBackendServersRequest
+        @return: AddVServerGroupBackendServersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_vserver_group_backend_servers_with_options_async(request, runtime)
 
@@ -676,10 +744,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateAccessControlListResponse:
         """
-        You can create multiple ACLs. Each ACL can contain one or more IP addresses or CIDR blocks. Before you create an ACL, take note of the following limits:
-        *   An account can have a maximum of 50 ACLs in each region.
-        *   You can add a maximum of 50 IP addresses or CIDR blocks at a time within an account.
-        *   Each ACL can contain a maximum of 300 IP addresses or CIDR blocks.
+        @summary Creates an access control list (ACL).
+        
+        @description You can create multiple ACLs. Each ACL can contain one or more IP addresses or CIDR blocks. Before you create an ACL, take note of the following limits:
+        An account can have a maximum of 50 ACLs in each region.
+        You can add a maximum of 50 IP addresses or CIDR blocks at a time within an account.
+        Each ACL can contain a maximum of 300 IP addresses or CIDR blocks.
         
         @param request: CreateAccessControlListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -730,10 +800,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateAccessControlListResponse:
         """
-        You can create multiple ACLs. Each ACL can contain one or more IP addresses or CIDR blocks. Before you create an ACL, take note of the following limits:
-        *   An account can have a maximum of 50 ACLs in each region.
-        *   You can add a maximum of 50 IP addresses or CIDR blocks at a time within an account.
-        *   Each ACL can contain a maximum of 300 IP addresses or CIDR blocks.
+        @summary Creates an access control list (ACL).
+        
+        @description You can create multiple ACLs. Each ACL can contain one or more IP addresses or CIDR blocks. Before you create an ACL, take note of the following limits:
+        An account can have a maximum of 50 ACLs in each region.
+        You can add a maximum of 50 IP addresses or CIDR blocks at a time within an account.
+        Each ACL can contain a maximum of 300 IP addresses or CIDR blocks.
         
         @param request: CreateAccessControlListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -783,10 +855,12 @@ class Client(OpenApiClient):
         request: slb_20140515_models.CreateAccessControlListRequest,
     ) -> slb_20140515_models.CreateAccessControlListResponse:
         """
-        You can create multiple ACLs. Each ACL can contain one or more IP addresses or CIDR blocks. Before you create an ACL, take note of the following limits:
-        *   An account can have a maximum of 50 ACLs in each region.
-        *   You can add a maximum of 50 IP addresses or CIDR blocks at a time within an account.
-        *   Each ACL can contain a maximum of 300 IP addresses or CIDR blocks.
+        @summary Creates an access control list (ACL).
+        
+        @description You can create multiple ACLs. Each ACL can contain one or more IP addresses or CIDR blocks. Before you create an ACL, take note of the following limits:
+        An account can have a maximum of 50 ACLs in each region.
+        You can add a maximum of 50 IP addresses or CIDR blocks at a time within an account.
+        Each ACL can contain a maximum of 300 IP addresses or CIDR blocks.
         
         @param request: CreateAccessControlListRequest
         @return: CreateAccessControlListResponse
@@ -799,10 +873,12 @@ class Client(OpenApiClient):
         request: slb_20140515_models.CreateAccessControlListRequest,
     ) -> slb_20140515_models.CreateAccessControlListResponse:
         """
-        You can create multiple ACLs. Each ACL can contain one or more IP addresses or CIDR blocks. Before you create an ACL, take note of the following limits:
-        *   An account can have a maximum of 50 ACLs in each region.
-        *   You can add a maximum of 50 IP addresses or CIDR blocks at a time within an account.
-        *   Each ACL can contain a maximum of 300 IP addresses or CIDR blocks.
+        @summary Creates an access control list (ACL).
+        
+        @description You can create multiple ACLs. Each ACL can contain one or more IP addresses or CIDR blocks. Before you create an ACL, take note of the following limits:
+        An account can have a maximum of 50 ACLs in each region.
+        You can add a maximum of 50 IP addresses or CIDR blocks at a time within an account.
+        Each ACL can contain a maximum of 300 IP addresses or CIDR blocks.
         
         @param request: CreateAccessControlListRequest
         @return: CreateAccessControlListResponse
@@ -815,6 +891,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.CreateDomainExtensionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateDomainExtensionResponse:
+        """
+        @summary Creates a domain name extension.
+        
+        @param request: CreateDomainExtensionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDomainExtensionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain):
@@ -859,6 +942,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.CreateDomainExtensionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateDomainExtensionResponse:
+        """
+        @summary Creates a domain name extension.
+        
+        @param request: CreateDomainExtensionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDomainExtensionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain):
@@ -902,6 +992,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.CreateDomainExtensionRequest,
     ) -> slb_20140515_models.CreateDomainExtensionResponse:
+        """
+        @summary Creates a domain name extension.
+        
+        @param request: CreateDomainExtensionRequest
+        @return: CreateDomainExtensionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_domain_extension_with_options(request, runtime)
 
@@ -909,6 +1005,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.CreateDomainExtensionRequest,
     ) -> slb_20140515_models.CreateDomainExtensionResponse:
+        """
+        @summary Creates a domain name extension.
+        
+        @param request: CreateDomainExtensionRequest
+        @return: CreateDomainExtensionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_domain_extension_with_options_async(request, runtime)
 
@@ -918,9 +1020,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateLoadBalancerResponse:
         """
-        Before you create a CLB instance, call the [DescribeAvailableResource](~~DescribeAvailableResource~~) operation to query the resources available for purchase in the region where you want to create the CLB instance.
-        *   After a CLB instance is created, you are charged for using the CLB instance.
-        *   The pay-as-you-go billing method supports the pay-by-specification and pay-by-LCU metering methods.
+        @summary Creates a Classic Load Balancer (CLB) instance.
+        
+        @description    Before you create a CLB instance, call the [DescribeAvailableResource](~~DescribeAvailableResource~~) operation to query the resources available for purchase in the region where you want to create the CLB instance.
+        After a CLB instance is created, you are charged for using the CLB instance.
+        The pay-as-you-go billing method supports the pay-by-specification and pay-by-LCU metering methods.
         
         @param request: CreateLoadBalancerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1007,9 +1111,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateLoadBalancerResponse:
         """
-        Before you create a CLB instance, call the [DescribeAvailableResource](~~DescribeAvailableResource~~) operation to query the resources available for purchase in the region where you want to create the CLB instance.
-        *   After a CLB instance is created, you are charged for using the CLB instance.
-        *   The pay-as-you-go billing method supports the pay-by-specification and pay-by-LCU metering methods.
+        @summary Creates a Classic Load Balancer (CLB) instance.
+        
+        @description    Before you create a CLB instance, call the [DescribeAvailableResource](~~DescribeAvailableResource~~) operation to query the resources available for purchase in the region where you want to create the CLB instance.
+        After a CLB instance is created, you are charged for using the CLB instance.
+        The pay-as-you-go billing method supports the pay-by-specification and pay-by-LCU metering methods.
         
         @param request: CreateLoadBalancerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1095,9 +1201,11 @@ class Client(OpenApiClient):
         request: slb_20140515_models.CreateLoadBalancerRequest,
     ) -> slb_20140515_models.CreateLoadBalancerResponse:
         """
-        Before you create a CLB instance, call the [DescribeAvailableResource](~~DescribeAvailableResource~~) operation to query the resources available for purchase in the region where you want to create the CLB instance.
-        *   After a CLB instance is created, you are charged for using the CLB instance.
-        *   The pay-as-you-go billing method supports the pay-by-specification and pay-by-LCU metering methods.
+        @summary Creates a Classic Load Balancer (CLB) instance.
+        
+        @description    Before you create a CLB instance, call the [DescribeAvailableResource](~~DescribeAvailableResource~~) operation to query the resources available for purchase in the region where you want to create the CLB instance.
+        After a CLB instance is created, you are charged for using the CLB instance.
+        The pay-as-you-go billing method supports the pay-by-specification and pay-by-LCU metering methods.
         
         @param request: CreateLoadBalancerRequest
         @return: CreateLoadBalancerResponse
@@ -1110,9 +1218,11 @@ class Client(OpenApiClient):
         request: slb_20140515_models.CreateLoadBalancerRequest,
     ) -> slb_20140515_models.CreateLoadBalancerResponse:
         """
-        Before you create a CLB instance, call the [DescribeAvailableResource](~~DescribeAvailableResource~~) operation to query the resources available for purchase in the region where you want to create the CLB instance.
-        *   After a CLB instance is created, you are charged for using the CLB instance.
-        *   The pay-as-you-go billing method supports the pay-by-specification and pay-by-LCU metering methods.
+        @summary Creates a Classic Load Balancer (CLB) instance.
+        
+        @description    Before you create a CLB instance, call the [DescribeAvailableResource](~~DescribeAvailableResource~~) operation to query the resources available for purchase in the region where you want to create the CLB instance.
+        After a CLB instance is created, you are charged for using the CLB instance.
+        The pay-as-you-go billing method supports the pay-by-specification and pay-by-LCU metering methods.
         
         @param request: CreateLoadBalancerRequest
         @return: CreateLoadBalancerResponse
@@ -1126,7 +1236,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateLoadBalancerHTTPListenerResponse:
         """
-        A newly created listener is in the *stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](~~StartLoadBalancerListener~~) operation to start the listener. After the listener is started, the listener can forward traffic to backend servers.
+        @summary Creates an HTTP listener for a Classic Load Balancer (CLB) instance.
+        
+        @description A newly created listener is in the *stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](~~StartLoadBalancerListener~~) operation to start the listener. After the listener is started, the listener can forward traffic to backend servers.
         ## Prerequisites
         A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~StartLoadBalancerListener~~).
         
@@ -1243,7 +1355,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateLoadBalancerHTTPListenerResponse:
         """
-        A newly created listener is in the *stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](~~StartLoadBalancerListener~~) operation to start the listener. After the listener is started, the listener can forward traffic to backend servers.
+        @summary Creates an HTTP listener for a Classic Load Balancer (CLB) instance.
+        
+        @description A newly created listener is in the *stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](~~StartLoadBalancerListener~~) operation to start the listener. After the listener is started, the listener can forward traffic to backend servers.
         ## Prerequisites
         A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~StartLoadBalancerListener~~).
         
@@ -1359,7 +1473,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.CreateLoadBalancerHTTPListenerRequest,
     ) -> slb_20140515_models.CreateLoadBalancerHTTPListenerResponse:
         """
-        A newly created listener is in the *stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](~~StartLoadBalancerListener~~) operation to start the listener. After the listener is started, the listener can forward traffic to backend servers.
+        @summary Creates an HTTP listener for a Classic Load Balancer (CLB) instance.
+        
+        @description A newly created listener is in the *stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](~~StartLoadBalancerListener~~) operation to start the listener. After the listener is started, the listener can forward traffic to backend servers.
         ## Prerequisites
         A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~StartLoadBalancerListener~~).
         
@@ -1374,7 +1490,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.CreateLoadBalancerHTTPListenerRequest,
     ) -> slb_20140515_models.CreateLoadBalancerHTTPListenerResponse:
         """
-        A newly created listener is in the *stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](~~StartLoadBalancerListener~~) operation to start the listener. After the listener is started, the listener can forward traffic to backend servers.
+        @summary Creates an HTTP listener for a Classic Load Balancer (CLB) instance.
+        
+        @description A newly created listener is in the *stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](~~StartLoadBalancerListener~~) operation to start the listener. After the listener is started, the listener can forward traffic to backend servers.
         ## Prerequisites
         A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~StartLoadBalancerListener~~).
         
@@ -1390,7 +1508,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateLoadBalancerHTTPSListenerResponse:
         """
-        A newly created listener is in the *stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](~~27597~~) operation to start the listener. After the listener is started, the listener can forward traffic to backend servers.
+        @summary Creates an HTTPS listener.
+        
+        @description A newly created listener is in the *stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](https://help.aliyun.com/document_detail/27597.html) operation to start the listener. After the listener is started, the listener can forward traffic to backend servers.
         ## Prerequisites
         A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createloadbalancer-2).
         
@@ -1511,7 +1631,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateLoadBalancerHTTPSListenerResponse:
         """
-        A newly created listener is in the *stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](~~27597~~) operation to start the listener. After the listener is started, the listener can forward traffic to backend servers.
+        @summary Creates an HTTPS listener.
+        
+        @description A newly created listener is in the *stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](https://help.aliyun.com/document_detail/27597.html) operation to start the listener. After the listener is started, the listener can forward traffic to backend servers.
         ## Prerequisites
         A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createloadbalancer-2).
         
@@ -1631,7 +1753,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.CreateLoadBalancerHTTPSListenerRequest,
     ) -> slb_20140515_models.CreateLoadBalancerHTTPSListenerResponse:
         """
-        A newly created listener is in the *stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](~~27597~~) operation to start the listener. After the listener is started, the listener can forward traffic to backend servers.
+        @summary Creates an HTTPS listener.
+        
+        @description A newly created listener is in the *stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](https://help.aliyun.com/document_detail/27597.html) operation to start the listener. After the listener is started, the listener can forward traffic to backend servers.
         ## Prerequisites
         A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createloadbalancer-2).
         
@@ -1646,7 +1770,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.CreateLoadBalancerHTTPSListenerRequest,
     ) -> slb_20140515_models.CreateLoadBalancerHTTPSListenerResponse:
         """
-        A newly created listener is in the *stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](~~27597~~) operation to start the listener. After the listener is started, the listener can forward traffic to backend servers.
+        @summary Creates an HTTPS listener.
+        
+        @description A newly created listener is in the *stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](https://help.aliyun.com/document_detail/27597.html) operation to start the listener. After the listener is started, the listener can forward traffic to backend servers.
         ## Prerequisites
         A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createloadbalancer-2).
         
@@ -1662,7 +1788,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateLoadBalancerTCPListenerResponse:
         """
-        >  A newly created listener is in the *stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](~~27597~~) operation to enable the listener to forward traffic to backend servers.
+        @summary Creates a TCP listener.
+        
+        @description >  A newly created listener is in the *stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](https://help.aliyun.com/document_detail/27597.html) operation to enable the listener to forward traffic to backend servers.
         
         @param request: CreateLoadBalancerTCPListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1759,7 +1887,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateLoadBalancerTCPListenerResponse:
         """
-        >  A newly created listener is in the *stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](~~27597~~) operation to enable the listener to forward traffic to backend servers.
+        @summary Creates a TCP listener.
+        
+        @description >  A newly created listener is in the *stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](https://help.aliyun.com/document_detail/27597.html) operation to enable the listener to forward traffic to backend servers.
         
         @param request: CreateLoadBalancerTCPListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1855,7 +1985,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.CreateLoadBalancerTCPListenerRequest,
     ) -> slb_20140515_models.CreateLoadBalancerTCPListenerResponse:
         """
-        >  A newly created listener is in the *stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](~~27597~~) operation to enable the listener to forward traffic to backend servers.
+        @summary Creates a TCP listener.
+        
+        @description >  A newly created listener is in the *stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](https://help.aliyun.com/document_detail/27597.html) operation to enable the listener to forward traffic to backend servers.
         
         @param request: CreateLoadBalancerTCPListenerRequest
         @return: CreateLoadBalancerTCPListenerResponse
@@ -1868,7 +2000,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.CreateLoadBalancerTCPListenerRequest,
     ) -> slb_20140515_models.CreateLoadBalancerTCPListenerResponse:
         """
-        >  A newly created listener is in the *stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](~~27597~~) operation to enable the listener to forward traffic to backend servers.
+        @summary Creates a TCP listener.
+        
+        @description >  A newly created listener is in the *stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](https://help.aliyun.com/document_detail/27597.html) operation to enable the listener to forward traffic to backend servers.
         
         @param request: CreateLoadBalancerTCPListenerRequest
         @return: CreateLoadBalancerTCPListenerResponse
@@ -1882,8 +2016,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateLoadBalancerUDPListenerResponse:
         """
-        UDP listeners of Classic Load Balancer (CLB) instances in a classic network cannot pass client IP addresses to backend servers.
-        >  A newly created listener is in the **stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](~~27597~~) operation to enable the listener to forward traffic to backend servers.
+        @summary Creates a UDP listener.
+        
+        @description UDP listeners of Classic Load Balancer (CLB) instances in a classic network cannot pass client IP addresses to backend servers.
+        >  A newly created listener is in the *stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](https://help.aliyun.com/document_detail/27597.html) operation to enable the listener to forward traffic to backend servers.
         
         @param request: CreateLoadBalancerUDPListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1968,8 +2104,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateLoadBalancerUDPListenerResponse:
         """
-        UDP listeners of Classic Load Balancer (CLB) instances in a classic network cannot pass client IP addresses to backend servers.
-        >  A newly created listener is in the **stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](~~27597~~) operation to enable the listener to forward traffic to backend servers.
+        @summary Creates a UDP listener.
+        
+        @description UDP listeners of Classic Load Balancer (CLB) instances in a classic network cannot pass client IP addresses to backend servers.
+        >  A newly created listener is in the *stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](https://help.aliyun.com/document_detail/27597.html) operation to enable the listener to forward traffic to backend servers.
         
         @param request: CreateLoadBalancerUDPListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2053,8 +2191,10 @@ class Client(OpenApiClient):
         request: slb_20140515_models.CreateLoadBalancerUDPListenerRequest,
     ) -> slb_20140515_models.CreateLoadBalancerUDPListenerResponse:
         """
-        UDP listeners of Classic Load Balancer (CLB) instances in a classic network cannot pass client IP addresses to backend servers.
-        >  A newly created listener is in the **stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](~~27597~~) operation to enable the listener to forward traffic to backend servers.
+        @summary Creates a UDP listener.
+        
+        @description UDP listeners of Classic Load Balancer (CLB) instances in a classic network cannot pass client IP addresses to backend servers.
+        >  A newly created listener is in the *stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](https://help.aliyun.com/document_detail/27597.html) operation to enable the listener to forward traffic to backend servers.
         
         @param request: CreateLoadBalancerUDPListenerRequest
         @return: CreateLoadBalancerUDPListenerResponse
@@ -2067,8 +2207,10 @@ class Client(OpenApiClient):
         request: slb_20140515_models.CreateLoadBalancerUDPListenerRequest,
     ) -> slb_20140515_models.CreateLoadBalancerUDPListenerResponse:
         """
-        UDP listeners of Classic Load Balancer (CLB) instances in a classic network cannot pass client IP addresses to backend servers.
-        >  A newly created listener is in the **stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](~~27597~~) operation to enable the listener to forward traffic to backend servers.
+        @summary Creates a UDP listener.
+        
+        @description UDP listeners of Classic Load Balancer (CLB) instances in a classic network cannot pass client IP addresses to backend servers.
+        >  A newly created listener is in the *stopped** state. After a listener is created, you can call the [StartLoadBalancerListener](https://help.aliyun.com/document_detail/27597.html) operation to enable the listener to forward traffic to backend servers.
         
         @param request: CreateLoadBalancerUDPListenerRequest
         @return: CreateLoadBalancerUDPListenerResponse
@@ -2081,6 +2223,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.CreateMasterSlaveServerGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateMasterSlaveServerGroupResponse:
+        """
+        @summary Creates a primary/secondary server group. A primary/secondary server group can contain only two Elastic Compute Service (ECS) instances. One of the ECS instances functions as the primary server and the other functions as the secondary server.
+        
+        @param request: CreateMasterSlaveServerGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMasterSlaveServerGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.load_balancer_id):
@@ -2125,6 +2274,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.CreateMasterSlaveServerGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateMasterSlaveServerGroupResponse:
+        """
+        @summary Creates a primary/secondary server group. A primary/secondary server group can contain only two Elastic Compute Service (ECS) instances. One of the ECS instances functions as the primary server and the other functions as the secondary server.
+        
+        @param request: CreateMasterSlaveServerGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMasterSlaveServerGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.load_balancer_id):
@@ -2168,6 +2324,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.CreateMasterSlaveServerGroupRequest,
     ) -> slb_20140515_models.CreateMasterSlaveServerGroupResponse:
+        """
+        @summary Creates a primary/secondary server group. A primary/secondary server group can contain only two Elastic Compute Service (ECS) instances. One of the ECS instances functions as the primary server and the other functions as the secondary server.
+        
+        @param request: CreateMasterSlaveServerGroupRequest
+        @return: CreateMasterSlaveServerGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_master_slave_server_group_with_options(request, runtime)
 
@@ -2175,6 +2337,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.CreateMasterSlaveServerGroupRequest,
     ) -> slb_20140515_models.CreateMasterSlaveServerGroupResponse:
+        """
+        @summary Creates a primary/secondary server group. A primary/secondary server group can contain only two Elastic Compute Service (ECS) instances. One of the ECS instances functions as the primary server and the other functions as the secondary server.
+        
+        @param request: CreateMasterSlaveServerGroupRequest
+        @return: CreateMasterSlaveServerGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_master_slave_server_group_with_options_async(request, runtime)
 
@@ -2183,6 +2351,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.CreateRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateRulesResponse:
+        """
+        @summary Creates forwarding rules for an HTTP or HTTPS listener.
+        
+        @param request: CreateRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_port):
@@ -2227,6 +2402,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.CreateRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateRulesResponse:
+        """
+        @summary Creates forwarding rules for an HTTP or HTTPS listener.
+        
+        @param request: CreateRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_port):
@@ -2270,6 +2452,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.CreateRulesRequest,
     ) -> slb_20140515_models.CreateRulesResponse:
+        """
+        @summary Creates forwarding rules for an HTTP or HTTPS listener.
+        
+        @param request: CreateRulesRequest
+        @return: CreateRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_rules_with_options(request, runtime)
 
@@ -2277,6 +2465,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.CreateRulesRequest,
     ) -> slb_20140515_models.CreateRulesResponse:
+        """
+        @summary Creates forwarding rules for an HTTP or HTTPS listener.
+        
+        @param request: CreateRulesRequest
+        @return: CreateRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_rules_with_options_async(request, runtime)
 
@@ -2285,6 +2479,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.CreateTLSCipherPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateTLSCipherPolicyResponse:
+        """
+        @summary Creates a Transport Layer Security (TLS) policy.
+        
+        @param request: CreateTLSCipherPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTLSCipherPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ciphers):
@@ -2327,6 +2528,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.CreateTLSCipherPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateTLSCipherPolicyResponse:
+        """
+        @summary Creates a Transport Layer Security (TLS) policy.
+        
+        @param request: CreateTLSCipherPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTLSCipherPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ciphers):
@@ -2368,6 +2576,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.CreateTLSCipherPolicyRequest,
     ) -> slb_20140515_models.CreateTLSCipherPolicyResponse:
+        """
+        @summary Creates a Transport Layer Security (TLS) policy.
+        
+        @param request: CreateTLSCipherPolicyRequest
+        @return: CreateTLSCipherPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_tlscipher_policy_with_options(request, runtime)
 
@@ -2375,6 +2589,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.CreateTLSCipherPolicyRequest,
     ) -> slb_20140515_models.CreateTLSCipherPolicyResponse:
+        """
+        @summary Creates a Transport Layer Security (TLS) policy.
+        
+        @param request: CreateTLSCipherPolicyRequest
+        @return: CreateTLSCipherPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_tlscipher_policy_with_options_async(request, runtime)
 
@@ -2383,6 +2603,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.CreateVServerGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateVServerGroupResponse:
+        """
+        @summary Creates a vServer group and adds backend servers to the vServer group.
+        
+        @param request: CreateVServerGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVServerGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backend_servers):
@@ -2427,6 +2654,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.CreateVServerGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.CreateVServerGroupResponse:
+        """
+        @summary Creates a vServer group and adds backend servers to the vServer group.
+        
+        @param request: CreateVServerGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVServerGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backend_servers):
@@ -2470,6 +2704,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.CreateVServerGroupRequest,
     ) -> slb_20140515_models.CreateVServerGroupResponse:
+        """
+        @summary Creates a vServer group and adds backend servers to the vServer group.
+        
+        @param request: CreateVServerGroupRequest
+        @return: CreateVServerGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_vserver_group_with_options(request, runtime)
 
@@ -2477,6 +2717,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.CreateVServerGroupRequest,
     ) -> slb_20140515_models.CreateVServerGroupResponse:
+        """
+        @summary Creates a vServer group and adds backend servers to the vServer group.
+        
+        @param request: CreateVServerGroupRequest
+        @return: CreateVServerGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_vserver_group_with_options_async(request, runtime)
 
@@ -2486,7 +2732,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteAccessControlListResponse:
         """
-        You can delete an ACL only if it is not associated with a listener.
+        @summary Deletes an access control list (ACL).
+        
+        @description You can delete an ACL only if it is not associated with a listener.
         
         @param request: DeleteAccessControlListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2531,7 +2779,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteAccessControlListResponse:
         """
-        You can delete an ACL only if it is not associated with a listener.
+        @summary Deletes an access control list (ACL).
+        
+        @description You can delete an ACL only if it is not associated with a listener.
         
         @param request: DeleteAccessControlListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2575,7 +2825,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DeleteAccessControlListRequest,
     ) -> slb_20140515_models.DeleteAccessControlListResponse:
         """
-        You can delete an ACL only if it is not associated with a listener.
+        @summary Deletes an access control list (ACL).
+        
+        @description You can delete an ACL only if it is not associated with a listener.
         
         @param request: DeleteAccessControlListRequest
         @return: DeleteAccessControlListResponse
@@ -2588,7 +2840,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DeleteAccessControlListRequest,
     ) -> slb_20140515_models.DeleteAccessControlListResponse:
         """
-        You can delete an ACL only if it is not associated with a listener.
+        @summary Deletes an access control list (ACL).
+        
+        @description You can delete an ACL only if it is not associated with a listener.
         
         @param request: DeleteAccessControlListRequest
         @return: DeleteAccessControlListResponse
@@ -2601,6 +2855,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DeleteAccessLogsDownloadAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteAccessLogsDownloadAttributeResponse:
+        """
+        @summary Deletes the access log of a Classic Load Balancer (CLB) instance.
+        
+        @param request: DeleteAccessLogsDownloadAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAccessLogsDownloadAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.load_balancer_id):
@@ -2643,6 +2904,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DeleteAccessLogsDownloadAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteAccessLogsDownloadAttributeResponse:
+        """
+        @summary Deletes the access log of a Classic Load Balancer (CLB) instance.
+        
+        @param request: DeleteAccessLogsDownloadAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAccessLogsDownloadAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.load_balancer_id):
@@ -2684,6 +2952,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DeleteAccessLogsDownloadAttributeRequest,
     ) -> slb_20140515_models.DeleteAccessLogsDownloadAttributeResponse:
+        """
+        @summary Deletes the access log of a Classic Load Balancer (CLB) instance.
+        
+        @param request: DeleteAccessLogsDownloadAttributeRequest
+        @return: DeleteAccessLogsDownloadAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_access_logs_download_attribute_with_options(request, runtime)
 
@@ -2691,6 +2965,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DeleteAccessLogsDownloadAttributeRequest,
     ) -> slb_20140515_models.DeleteAccessLogsDownloadAttributeResponse:
+        """
+        @summary Deletes the access log of a Classic Load Balancer (CLB) instance.
+        
+        @param request: DeleteAccessLogsDownloadAttributeRequest
+        @return: DeleteAccessLogsDownloadAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_access_logs_download_attribute_with_options_async(request, runtime)
 
@@ -2700,7 +2980,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteCACertificateResponse:
         """
-        You cannot delete a CA certificate that is in use.
+        @summary Deletes a certificate authority (CA) certificate.
+        
+        @description You cannot delete a CA certificate that is in use.
         
         @param request: DeleteCACertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2745,7 +3027,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteCACertificateResponse:
         """
-        You cannot delete a CA certificate that is in use.
+        @summary Deletes a certificate authority (CA) certificate.
+        
+        @description You cannot delete a CA certificate that is in use.
         
         @param request: DeleteCACertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2789,7 +3073,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DeleteCACertificateRequest,
     ) -> slb_20140515_models.DeleteCACertificateResponse:
         """
-        You cannot delete a CA certificate that is in use.
+        @summary Deletes a certificate authority (CA) certificate.
+        
+        @description You cannot delete a CA certificate that is in use.
         
         @param request: DeleteCACertificateRequest
         @return: DeleteCACertificateResponse
@@ -2802,7 +3088,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DeleteCACertificateRequest,
     ) -> slb_20140515_models.DeleteCACertificateResponse:
         """
-        You cannot delete a CA certificate that is in use.
+        @summary Deletes a certificate authority (CA) certificate.
+        
+        @description You cannot delete a CA certificate that is in use.
         
         @param request: DeleteCACertificateRequest
         @return: DeleteCACertificateResponse
@@ -2815,6 +3103,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DeleteDomainExtensionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteDomainExtensionResponse:
+        """
+        @summary Deletes an additional domain name.
+        
+        @param request: DeleteDomainExtensionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDomainExtensionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_extension_id):
@@ -2853,6 +3148,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DeleteDomainExtensionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteDomainExtensionResponse:
+        """
+        @summary Deletes an additional domain name.
+        
+        @param request: DeleteDomainExtensionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDomainExtensionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_extension_id):
@@ -2890,6 +3192,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DeleteDomainExtensionRequest,
     ) -> slb_20140515_models.DeleteDomainExtensionResponse:
+        """
+        @summary Deletes an additional domain name.
+        
+        @param request: DeleteDomainExtensionRequest
+        @return: DeleteDomainExtensionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_domain_extension_with_options(request, runtime)
 
@@ -2897,6 +3205,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DeleteDomainExtensionRequest,
     ) -> slb_20140515_models.DeleteDomainExtensionResponse:
+        """
+        @summary Deletes an additional domain name.
+        
+        @param request: DeleteDomainExtensionRequest
+        @return: DeleteDomainExtensionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_domain_extension_with_options_async(request, runtime)
 
@@ -2906,7 +3220,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteLoadBalancerResponse:
         """
-        > The listeners and tags of the SLB instance are deleted along with the SLB instance.
+        @summary Deletes a pay-as-you-go Server Load Balancer (SLB) instance.
+        
+        @description > The listeners and tags of the SLB instance are deleted along with the SLB instance.
         
         @param request: DeleteLoadBalancerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2951,7 +3267,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteLoadBalancerResponse:
         """
-        > The listeners and tags of the SLB instance are deleted along with the SLB instance.
+        @summary Deletes a pay-as-you-go Server Load Balancer (SLB) instance.
+        
+        @description > The listeners and tags of the SLB instance are deleted along with the SLB instance.
         
         @param request: DeleteLoadBalancerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2995,7 +3313,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DeleteLoadBalancerRequest,
     ) -> slb_20140515_models.DeleteLoadBalancerResponse:
         """
-        > The listeners and tags of the SLB instance are deleted along with the SLB instance.
+        @summary Deletes a pay-as-you-go Server Load Balancer (SLB) instance.
+        
+        @description > The listeners and tags of the SLB instance are deleted along with the SLB instance.
         
         @param request: DeleteLoadBalancerRequest
         @return: DeleteLoadBalancerResponse
@@ -3008,7 +3328,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DeleteLoadBalancerRequest,
     ) -> slb_20140515_models.DeleteLoadBalancerResponse:
         """
-        > The listeners and tags of the SLB instance are deleted along with the SLB instance.
+        @summary Deletes a pay-as-you-go Server Load Balancer (SLB) instance.
+        
+        @description > The listeners and tags of the SLB instance are deleted along with the SLB instance.
         
         @param request: DeleteLoadBalancerRequest
         @return: DeleteLoadBalancerResponse
@@ -3022,7 +3344,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteLoadBalancerListenerResponse:
         """
-        >  You can delete only listeners that are in the *stopped** or **running** state.
+        @summary Deletes a listener.
+        
+        @description >  You can delete only listeners that are in the *stopped** or **running** state.
         
         @param request: DeleteLoadBalancerListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3071,7 +3395,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteLoadBalancerListenerResponse:
         """
-        >  You can delete only listeners that are in the *stopped** or **running** state.
+        @summary Deletes a listener.
+        
+        @description >  You can delete only listeners that are in the *stopped** or **running** state.
         
         @param request: DeleteLoadBalancerListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3119,7 +3445,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DeleteLoadBalancerListenerRequest,
     ) -> slb_20140515_models.DeleteLoadBalancerListenerResponse:
         """
-        >  You can delete only listeners that are in the *stopped** or **running** state.
+        @summary Deletes a listener.
+        
+        @description >  You can delete only listeners that are in the *stopped** or **running** state.
         
         @param request: DeleteLoadBalancerListenerRequest
         @return: DeleteLoadBalancerListenerResponse
@@ -3132,7 +3460,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DeleteLoadBalancerListenerRequest,
     ) -> slb_20140515_models.DeleteLoadBalancerListenerResponse:
         """
-        >  You can delete only listeners that are in the *stopped** or **running** state.
+        @summary Deletes a listener.
+        
+        @description >  You can delete only listeners that are in the *stopped** or **running** state.
         
         @param request: DeleteLoadBalancerListenerRequest
         @return: DeleteLoadBalancerListenerResponse
@@ -3145,6 +3475,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DeleteMasterSlaveServerGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteMasterSlaveServerGroupResponse:
+        """
+        @summary Deletes an active/standby server group.
+        
+        @param request: DeleteMasterSlaveServerGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMasterSlaveServerGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.master_slave_server_group_id):
@@ -3183,6 +3520,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DeleteMasterSlaveServerGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteMasterSlaveServerGroupResponse:
+        """
+        @summary Deletes an active/standby server group.
+        
+        @param request: DeleteMasterSlaveServerGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMasterSlaveServerGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.master_slave_server_group_id):
@@ -3220,6 +3564,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DeleteMasterSlaveServerGroupRequest,
     ) -> slb_20140515_models.DeleteMasterSlaveServerGroupResponse:
+        """
+        @summary Deletes an active/standby server group.
+        
+        @param request: DeleteMasterSlaveServerGroupRequest
+        @return: DeleteMasterSlaveServerGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_master_slave_server_group_with_options(request, runtime)
 
@@ -3227,6 +3577,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DeleteMasterSlaveServerGroupRequest,
     ) -> slb_20140515_models.DeleteMasterSlaveServerGroupResponse:
+        """
+        @summary Deletes an active/standby server group.
+        
+        @param request: DeleteMasterSlaveServerGroupRequest
+        @return: DeleteMasterSlaveServerGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_master_slave_server_group_with_options_async(request, runtime)
 
@@ -3236,7 +3592,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteRulesResponse:
         """
-        ## Limits
+        @summary Deletes forwarding rules.
+        
+        @description ## Limits
         The RuleIds parameter is required. You can specify up to 10 forwarding rules in each request.
         
         @param request: DeleteRulesRequest
@@ -3282,7 +3640,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteRulesResponse:
         """
-        ## Limits
+        @summary Deletes forwarding rules.
+        
+        @description ## Limits
         The RuleIds parameter is required. You can specify up to 10 forwarding rules in each request.
         
         @param request: DeleteRulesRequest
@@ -3327,7 +3687,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DeleteRulesRequest,
     ) -> slb_20140515_models.DeleteRulesResponse:
         """
-        ## Limits
+        @summary Deletes forwarding rules.
+        
+        @description ## Limits
         The RuleIds parameter is required. You can specify up to 10 forwarding rules in each request.
         
         @param request: DeleteRulesRequest
@@ -3341,7 +3703,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DeleteRulesRequest,
     ) -> slb_20140515_models.DeleteRulesResponse:
         """
-        ## Limits
+        @summary Deletes forwarding rules.
+        
+        @description ## Limits
         The RuleIds parameter is required. You can specify up to 10 forwarding rules in each request.
         
         @param request: DeleteRulesRequest
@@ -3356,7 +3720,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteServerCertificateResponse:
         """
-        >  You cannot delete server certificates that are in use.
+        @summary Deletes a server certificate.
+        
+        @description >  You cannot delete server certificates that are in use.
         
         @param request: DeleteServerCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3401,7 +3767,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteServerCertificateResponse:
         """
-        >  You cannot delete server certificates that are in use.
+        @summary Deletes a server certificate.
+        
+        @description >  You cannot delete server certificates that are in use.
         
         @param request: DeleteServerCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3445,7 +3813,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DeleteServerCertificateRequest,
     ) -> slb_20140515_models.DeleteServerCertificateResponse:
         """
-        >  You cannot delete server certificates that are in use.
+        @summary Deletes a server certificate.
+        
+        @description >  You cannot delete server certificates that are in use.
         
         @param request: DeleteServerCertificateRequest
         @return: DeleteServerCertificateResponse
@@ -3458,7 +3828,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DeleteServerCertificateRequest,
     ) -> slb_20140515_models.DeleteServerCertificateResponse:
         """
-        >  You cannot delete server certificates that are in use.
+        @summary Deletes a server certificate.
+        
+        @description >  You cannot delete server certificates that are in use.
         
         @param request: DeleteServerCertificateRequest
         @return: DeleteServerCertificateResponse
@@ -3472,7 +3844,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteTLSCipherPolicyResponse:
         """
-        ## Debugging
+        @summary Deletes a TLS policy.
+        
+        @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Slb\\&api=DeleteTLSCipherPolicy\\&type=RPC\\&version=2014-05-15)
         
         @param request: DeleteTLSCipherPolicyRequest
@@ -3518,7 +3892,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteTLSCipherPolicyResponse:
         """
-        ## Debugging
+        @summary Deletes a TLS policy.
+        
+        @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Slb\\&api=DeleteTLSCipherPolicy\\&type=RPC\\&version=2014-05-15)
         
         @param request: DeleteTLSCipherPolicyRequest
@@ -3563,7 +3939,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DeleteTLSCipherPolicyRequest,
     ) -> slb_20140515_models.DeleteTLSCipherPolicyResponse:
         """
-        ## Debugging
+        @summary Deletes a TLS policy.
+        
+        @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Slb\\&api=DeleteTLSCipherPolicy\\&type=RPC\\&version=2014-05-15)
         
         @param request: DeleteTLSCipherPolicyRequest
@@ -3577,7 +3955,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DeleteTLSCipherPolicyRequest,
     ) -> slb_20140515_models.DeleteTLSCipherPolicyResponse:
         """
-        ## Debugging
+        @summary Deletes a TLS policy.
+        
+        @description ## Debugging
         [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=Slb\\&api=DeleteTLSCipherPolicy\\&type=RPC\\&version=2014-05-15)
         
         @param request: DeleteTLSCipherPolicyRequest
@@ -3591,6 +3971,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DeleteVServerGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteVServerGroupResponse:
+        """
+        @summary Deletes a VServer group.
+        
+        @param request: DeleteVServerGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVServerGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -3629,6 +4016,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DeleteVServerGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DeleteVServerGroupResponse:
+        """
+        @summary Deletes a VServer group.
+        
+        @param request: DeleteVServerGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVServerGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -3666,6 +4060,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DeleteVServerGroupRequest,
     ) -> slb_20140515_models.DeleteVServerGroupResponse:
+        """
+        @summary Deletes a VServer group.
+        
+        @param request: DeleteVServerGroupRequest
+        @return: DeleteVServerGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_vserver_group_with_options(request, runtime)
 
@@ -3673,6 +4073,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DeleteVServerGroupRequest,
     ) -> slb_20140515_models.DeleteVServerGroupResponse:
+        """
+        @summary Deletes a VServer group.
+        
+        @param request: DeleteVServerGroupRequest
+        @return: DeleteVServerGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_vserver_group_with_options_async(request, runtime)
 
@@ -3681,6 +4087,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeAccessControlListAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeAccessControlListAttributeResponse:
+        """
+        @summary Queries the configuration of an access control list (ACL).
+        
+        @param request: DescribeAccessControlListAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccessControlListAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_entry_comment):
@@ -3725,6 +4138,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeAccessControlListAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeAccessControlListAttributeResponse:
+        """
+        @summary Queries the configuration of an access control list (ACL).
+        
+        @param request: DescribeAccessControlListAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccessControlListAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_entry_comment):
@@ -3768,6 +4188,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeAccessControlListAttributeRequest,
     ) -> slb_20140515_models.DescribeAccessControlListAttributeResponse:
+        """
+        @summary Queries the configuration of an access control list (ACL).
+        
+        @param request: DescribeAccessControlListAttributeRequest
+        @return: DescribeAccessControlListAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_access_control_list_attribute_with_options(request, runtime)
 
@@ -3775,6 +4201,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeAccessControlListAttributeRequest,
     ) -> slb_20140515_models.DescribeAccessControlListAttributeResponse:
+        """
+        @summary Queries the configuration of an access control list (ACL).
+        
+        @param request: DescribeAccessControlListAttributeRequest
+        @return: DescribeAccessControlListAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_access_control_list_attribute_with_options_async(request, runtime)
 
@@ -3783,6 +4215,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeAccessControlListsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeAccessControlListsResponse:
+        """
+        @summary Queries access control lists (ACLs).
+        
+        @param request: DescribeAccessControlListsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccessControlListsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_name):
@@ -3831,6 +4270,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeAccessControlListsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeAccessControlListsResponse:
+        """
+        @summary Queries access control lists (ACLs).
+        
+        @param request: DescribeAccessControlListsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccessControlListsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_name):
@@ -3878,6 +4324,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeAccessControlListsRequest,
     ) -> slb_20140515_models.DescribeAccessControlListsResponse:
+        """
+        @summary Queries access control lists (ACLs).
+        
+        @param request: DescribeAccessControlListsRequest
+        @return: DescribeAccessControlListsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_access_control_lists_with_options(request, runtime)
 
@@ -3885,6 +4337,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeAccessControlListsRequest,
     ) -> slb_20140515_models.DescribeAccessControlListsResponse:
+        """
+        @summary Queries access control lists (ACLs).
+        
+        @param request: DescribeAccessControlListsRequest
+        @return: DescribeAccessControlListsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_access_control_lists_with_options_async(request, runtime)
 
@@ -3893,6 +4351,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeAccessLogsDownloadAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeAccessLogsDownloadAttributeResponse:
+        """
+        @summary Queries the access log of a Classic Load Balancer (CLB) instance.
+        
+        @param request: DescribeAccessLogsDownloadAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccessLogsDownloadAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.load_balancer_id):
@@ -3939,6 +4404,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeAccessLogsDownloadAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeAccessLogsDownloadAttributeResponse:
+        """
+        @summary Queries the access log of a Classic Load Balancer (CLB) instance.
+        
+        @param request: DescribeAccessLogsDownloadAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeAccessLogsDownloadAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.load_balancer_id):
@@ -3984,6 +4456,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeAccessLogsDownloadAttributeRequest,
     ) -> slb_20140515_models.DescribeAccessLogsDownloadAttributeResponse:
+        """
+        @summary Queries the access log of a Classic Load Balancer (CLB) instance.
+        
+        @param request: DescribeAccessLogsDownloadAttributeRequest
+        @return: DescribeAccessLogsDownloadAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_access_logs_download_attribute_with_options(request, runtime)
 
@@ -3991,6 +4469,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeAccessLogsDownloadAttributeRequest,
     ) -> slb_20140515_models.DescribeAccessLogsDownloadAttributeResponse:
+        """
+        @summary Queries the access log of a Classic Load Balancer (CLB) instance.
+        
+        @param request: DescribeAccessLogsDownloadAttributeRequest
+        @return: DescribeAccessLogsDownloadAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_access_logs_download_attribute_with_options_async(request, runtime)
 
@@ -4000,7 +4484,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeAvailableResourceResponse:
         """
-        > Only the available resources and zones are returned.
+        @summary Queries the available resources and resources that are available for purchase in the zones of a region.
+        
+        @description > Only the available resources and zones are returned.
         
         @param request: DescribeAvailableResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4047,7 +4533,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeAvailableResourceResponse:
         """
-        > Only the available resources and zones are returned.
+        @summary Queries the available resources and resources that are available for purchase in the zones of a region.
+        
+        @description > Only the available resources and zones are returned.
         
         @param request: DescribeAvailableResourceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4093,7 +4581,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeAvailableResourceRequest,
     ) -> slb_20140515_models.DescribeAvailableResourceResponse:
         """
-        > Only the available resources and zones are returned.
+        @summary Queries the available resources and resources that are available for purchase in the zones of a region.
+        
+        @description > Only the available resources and zones are returned.
         
         @param request: DescribeAvailableResourceRequest
         @return: DescribeAvailableResourceResponse
@@ -4106,7 +4596,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeAvailableResourceRequest,
     ) -> slb_20140515_models.DescribeAvailableResourceResponse:
         """
-        > Only the available resources and zones are returned.
+        @summary Queries the available resources and resources that are available for purchase in the zones of a region.
+        
+        @description > Only the available resources and zones are returned.
         
         @param request: DescribeAvailableResourceRequest
         @return: DescribeAvailableResourceResponse
@@ -4120,7 +4612,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeCACertificatesResponse:
         """
-        > To ensure data confidentiality, only the certificate fingerprint and name are returned. The certificate content is not returned.
+        @summary Queries certificate authority (CA) certificates.
+        
+        @description > To ensure data confidentiality, only the certificate fingerprint and name are returned. The certificate content is not returned.
         
         @param request: DescribeCACertificatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4169,7 +4663,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeCACertificatesResponse:
         """
-        > To ensure data confidentiality, only the certificate fingerprint and name are returned. The certificate content is not returned.
+        @summary Queries certificate authority (CA) certificates.
+        
+        @description > To ensure data confidentiality, only the certificate fingerprint and name are returned. The certificate content is not returned.
         
         @param request: DescribeCACertificatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4217,7 +4713,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeCACertificatesRequest,
     ) -> slb_20140515_models.DescribeCACertificatesResponse:
         """
-        > To ensure data confidentiality, only the certificate fingerprint and name are returned. The certificate content is not returned.
+        @summary Queries certificate authority (CA) certificates.
+        
+        @description > To ensure data confidentiality, only the certificate fingerprint and name are returned. The certificate content is not returned.
         
         @param request: DescribeCACertificatesRequest
         @return: DescribeCACertificatesResponse
@@ -4230,7 +4728,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeCACertificatesRequest,
     ) -> slb_20140515_models.DescribeCACertificatesResponse:
         """
-        > To ensure data confidentiality, only the certificate fingerprint and name are returned. The certificate content is not returned.
+        @summary Queries certificate authority (CA) certificates.
+        
+        @description > To ensure data confidentiality, only the certificate fingerprint and name are returned. The certificate content is not returned.
         
         @param request: DescribeCACertificatesRequest
         @return: DescribeCACertificatesResponse
@@ -4243,6 +4743,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeDomainExtensionAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeDomainExtensionAttributeResponse:
+        """
+        @summary Queries the attributes of an additional certificate.
+        
+        @param request: DescribeDomainExtensionAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainExtensionAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_extension_id):
@@ -4281,6 +4788,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeDomainExtensionAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeDomainExtensionAttributeResponse:
+        """
+        @summary Queries the attributes of an additional certificate.
+        
+        @param request: DescribeDomainExtensionAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainExtensionAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_extension_id):
@@ -4318,6 +4832,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeDomainExtensionAttributeRequest,
     ) -> slb_20140515_models.DescribeDomainExtensionAttributeResponse:
+        """
+        @summary Queries the attributes of an additional certificate.
+        
+        @param request: DescribeDomainExtensionAttributeRequest
+        @return: DescribeDomainExtensionAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_domain_extension_attribute_with_options(request, runtime)
 
@@ -4325,6 +4845,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeDomainExtensionAttributeRequest,
     ) -> slb_20140515_models.DescribeDomainExtensionAttributeResponse:
+        """
+        @summary Queries the attributes of an additional certificate.
+        
+        @param request: DescribeDomainExtensionAttributeRequest
+        @return: DescribeDomainExtensionAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_domain_extension_attribute_with_options_async(request, runtime)
 
@@ -4333,6 +4859,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeDomainExtensionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeDomainExtensionsResponse:
+        """
+        @summary Queries additional certificates.
+        
+        @param request: DescribeDomainExtensionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainExtensionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_extension_id):
@@ -4375,6 +4908,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeDomainExtensionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeDomainExtensionsResponse:
+        """
+        @summary Queries additional certificates.
+        
+        @param request: DescribeDomainExtensionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDomainExtensionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.domain_extension_id):
@@ -4416,6 +4956,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeDomainExtensionsRequest,
     ) -> slb_20140515_models.DescribeDomainExtensionsResponse:
+        """
+        @summary Queries additional certificates.
+        
+        @param request: DescribeDomainExtensionsRequest
+        @return: DescribeDomainExtensionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_domain_extensions_with_options(request, runtime)
 
@@ -4423,6 +4969,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeDomainExtensionsRequest,
     ) -> slb_20140515_models.DescribeDomainExtensionsResponse:
+        """
+        @summary Queries additional certificates.
+        
+        @param request: DescribeDomainExtensionsRequest
+        @return: DescribeDomainExtensionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_domain_extensions_with_options_async(request, runtime)
 
@@ -4431,6 +4983,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeHealthStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeHealthStatusResponse:
+        """
+        @summary Queries the health status of backend servers.
+        
+        @param request: DescribeHealthStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHealthStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_port):
@@ -4473,6 +5032,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeHealthStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeHealthStatusResponse:
+        """
+        @summary Queries the health status of backend servers.
+        
+        @param request: DescribeHealthStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHealthStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_port):
@@ -4514,6 +5080,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeHealthStatusRequest,
     ) -> slb_20140515_models.DescribeHealthStatusResponse:
+        """
+        @summary Queries the health status of backend servers.
+        
+        @param request: DescribeHealthStatusRequest
+        @return: DescribeHealthStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_health_status_with_options(request, runtime)
 
@@ -4521,6 +5093,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeHealthStatusRequest,
     ) -> slb_20140515_models.DescribeHealthStatusResponse:
+        """
+        @summary Queries the health status of backend servers.
+        
+        @param request: DescribeHealthStatusRequest
+        @return: DescribeHealthStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_health_status_with_options_async(request, runtime)
 
@@ -4529,6 +5107,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeHighDefinationMonitorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeHighDefinationMonitorResponse:
+        """
+        @summary Queries the configurations of fine-grained monitoring in a region.
+        
+        @param request: DescribeHighDefinationMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHighDefinationMonitorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -4567,6 +5152,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeHighDefinationMonitorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeHighDefinationMonitorResponse:
+        """
+        @summary Queries the configurations of fine-grained monitoring in a region.
+        
+        @param request: DescribeHighDefinationMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeHighDefinationMonitorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -4604,6 +5196,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeHighDefinationMonitorRequest,
     ) -> slb_20140515_models.DescribeHighDefinationMonitorResponse:
+        """
+        @summary Queries the configurations of fine-grained monitoring in a region.
+        
+        @param request: DescribeHighDefinationMonitorRequest
+        @return: DescribeHighDefinationMonitorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_high_defination_monitor_with_options(request, runtime)
 
@@ -4611,6 +5209,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeHighDefinationMonitorRequest,
     ) -> slb_20140515_models.DescribeHighDefinationMonitorResponse:
+        """
+        @summary Queries the configurations of fine-grained monitoring in a region.
+        
+        @param request: DescribeHighDefinationMonitorRequest
+        @return: DescribeHighDefinationMonitorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_high_defination_monitor_with_options_async(request, runtime)
 
@@ -4619,6 +5223,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeListenerAccessControlAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeListenerAccessControlAttributeResponse:
+        """
+        @summary Queries the whitelist configurations of a listener.
+        
+        @param request: DescribeListenerAccessControlAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeListenerAccessControlAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_port):
@@ -4661,6 +5272,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeListenerAccessControlAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeListenerAccessControlAttributeResponse:
+        """
+        @summary Queries the whitelist configurations of a listener.
+        
+        @param request: DescribeListenerAccessControlAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeListenerAccessControlAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_port):
@@ -4702,6 +5320,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeListenerAccessControlAttributeRequest,
     ) -> slb_20140515_models.DescribeListenerAccessControlAttributeResponse:
+        """
+        @summary Queries the whitelist configurations of a listener.
+        
+        @param request: DescribeListenerAccessControlAttributeRequest
+        @return: DescribeListenerAccessControlAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_listener_access_control_attribute_with_options(request, runtime)
 
@@ -4709,6 +5333,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeListenerAccessControlAttributeRequest,
     ) -> slb_20140515_models.DescribeListenerAccessControlAttributeResponse:
+        """
+        @summary Queries the whitelist configurations of a listener.
+        
+        @param request: DescribeListenerAccessControlAttributeRequest
+        @return: DescribeListenerAccessControlAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_listener_access_control_attribute_with_options_async(request, runtime)
 
@@ -4718,7 +5348,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeLoadBalancerAttributeResponse:
         """
-        >  If backend servers are deployed in a vServer group, you can call the [DescribeVServerGroupAttribute](~~35224~~) operation to query the backend servers.
+        @summary Queries the detail of a Classic Load Balancer (CLB) instance.
+        
+        @description >  If backend servers are deployed in a vServer group, you can call the [DescribeVServerGroupAttribute](https://help.aliyun.com/document_detail/35224.html) operation to query the backend servers.
         
         @param request: DescribeLoadBalancerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4763,7 +5395,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeLoadBalancerAttributeResponse:
         """
-        >  If backend servers are deployed in a vServer group, you can call the [DescribeVServerGroupAttribute](~~35224~~) operation to query the backend servers.
+        @summary Queries the detail of a Classic Load Balancer (CLB) instance.
+        
+        @description >  If backend servers are deployed in a vServer group, you can call the [DescribeVServerGroupAttribute](https://help.aliyun.com/document_detail/35224.html) operation to query the backend servers.
         
         @param request: DescribeLoadBalancerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4807,7 +5441,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeLoadBalancerAttributeRequest,
     ) -> slb_20140515_models.DescribeLoadBalancerAttributeResponse:
         """
-        >  If backend servers are deployed in a vServer group, you can call the [DescribeVServerGroupAttribute](~~35224~~) operation to query the backend servers.
+        @summary Queries the detail of a Classic Load Balancer (CLB) instance.
+        
+        @description >  If backend servers are deployed in a vServer group, you can call the [DescribeVServerGroupAttribute](https://help.aliyun.com/document_detail/35224.html) operation to query the backend servers.
         
         @param request: DescribeLoadBalancerAttributeRequest
         @return: DescribeLoadBalancerAttributeResponse
@@ -4820,7 +5456,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeLoadBalancerAttributeRequest,
     ) -> slb_20140515_models.DescribeLoadBalancerAttributeResponse:
         """
-        >  If backend servers are deployed in a vServer group, you can call the [DescribeVServerGroupAttribute](~~35224~~) operation to query the backend servers.
+        @summary Queries the detail of a Classic Load Balancer (CLB) instance.
+        
+        @description >  If backend servers are deployed in a vServer group, you can call the [DescribeVServerGroupAttribute](https://help.aliyun.com/document_detail/35224.html) operation to query the backend servers.
         
         @param request: DescribeLoadBalancerAttributeRequest
         @return: DescribeLoadBalancerAttributeResponse
@@ -4834,8 +5472,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeLoadBalancerHTTPListenerAttributeResponse:
         """
-        A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~27577~~).
-        *   An HTTP listener is created. For more information about how to create an HTTP listener, see [CreateLoadBalancerHTTPListener](~~27592~~).
+        @summary Queries the configurations of an HTTP listener.
+        
+        @description    A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/27577.html).
+        An HTTP listener is created. For more information about how to create an HTTP listener, see [CreateLoadBalancerHTTPListener](https://help.aliyun.com/document_detail/27592.html).
         
         @param request: DescribeLoadBalancerHTTPListenerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4882,8 +5522,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeLoadBalancerHTTPListenerAttributeResponse:
         """
-        A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~27577~~).
-        *   An HTTP listener is created. For more information about how to create an HTTP listener, see [CreateLoadBalancerHTTPListener](~~27592~~).
+        @summary Queries the configurations of an HTTP listener.
+        
+        @description    A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/27577.html).
+        An HTTP listener is created. For more information about how to create an HTTP listener, see [CreateLoadBalancerHTTPListener](https://help.aliyun.com/document_detail/27592.html).
         
         @param request: DescribeLoadBalancerHTTPListenerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4929,8 +5571,10 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeLoadBalancerHTTPListenerAttributeRequest,
     ) -> slb_20140515_models.DescribeLoadBalancerHTTPListenerAttributeResponse:
         """
-        A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~27577~~).
-        *   An HTTP listener is created. For more information about how to create an HTTP listener, see [CreateLoadBalancerHTTPListener](~~27592~~).
+        @summary Queries the configurations of an HTTP listener.
+        
+        @description    A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/27577.html).
+        An HTTP listener is created. For more information about how to create an HTTP listener, see [CreateLoadBalancerHTTPListener](https://help.aliyun.com/document_detail/27592.html).
         
         @param request: DescribeLoadBalancerHTTPListenerAttributeRequest
         @return: DescribeLoadBalancerHTTPListenerAttributeResponse
@@ -4943,8 +5587,10 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeLoadBalancerHTTPListenerAttributeRequest,
     ) -> slb_20140515_models.DescribeLoadBalancerHTTPListenerAttributeResponse:
         """
-        A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~27577~~).
-        *   An HTTP listener is created. For more information about how to create an HTTP listener, see [CreateLoadBalancerHTTPListener](~~27592~~).
+        @summary Queries the configurations of an HTTP listener.
+        
+        @description    A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/27577.html).
+        An HTTP listener is created. For more information about how to create an HTTP listener, see [CreateLoadBalancerHTTPListener](https://help.aliyun.com/document_detail/27592.html).
         
         @param request: DescribeLoadBalancerHTTPListenerAttributeRequest
         @return: DescribeLoadBalancerHTTPListenerAttributeResponse
@@ -4958,8 +5604,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeLoadBalancerHTTPSListenerAttributeResponse:
         """
-        A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~27577~~).
-        *   An HTTPS listener is created. For more information about how to create an HTTPS listener, see [CreateLoadBalancerHTTPSListener](~~27593~~).
+        @summary Queries the configurations of an HTTPS listener.
+        
+        @description    A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/27577.html).
+        An HTTPS listener is created. For more information about how to create an HTTPS listener, see [CreateLoadBalancerHTTPSListener](https://help.aliyun.com/document_detail/27593.html).
         
         @param request: DescribeLoadBalancerHTTPSListenerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5006,8 +5654,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeLoadBalancerHTTPSListenerAttributeResponse:
         """
-        A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~27577~~).
-        *   An HTTPS listener is created. For more information about how to create an HTTPS listener, see [CreateLoadBalancerHTTPSListener](~~27593~~).
+        @summary Queries the configurations of an HTTPS listener.
+        
+        @description    A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/27577.html).
+        An HTTPS listener is created. For more information about how to create an HTTPS listener, see [CreateLoadBalancerHTTPSListener](https://help.aliyun.com/document_detail/27593.html).
         
         @param request: DescribeLoadBalancerHTTPSListenerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5053,8 +5703,10 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeLoadBalancerHTTPSListenerAttributeRequest,
     ) -> slb_20140515_models.DescribeLoadBalancerHTTPSListenerAttributeResponse:
         """
-        A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~27577~~).
-        *   An HTTPS listener is created. For more information about how to create an HTTPS listener, see [CreateLoadBalancerHTTPSListener](~~27593~~).
+        @summary Queries the configurations of an HTTPS listener.
+        
+        @description    A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/27577.html).
+        An HTTPS listener is created. For more information about how to create an HTTPS listener, see [CreateLoadBalancerHTTPSListener](https://help.aliyun.com/document_detail/27593.html).
         
         @param request: DescribeLoadBalancerHTTPSListenerAttributeRequest
         @return: DescribeLoadBalancerHTTPSListenerAttributeResponse
@@ -5067,8 +5719,10 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeLoadBalancerHTTPSListenerAttributeRequest,
     ) -> slb_20140515_models.DescribeLoadBalancerHTTPSListenerAttributeResponse:
         """
-        A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~27577~~).
-        *   An HTTPS listener is created. For more information about how to create an HTTPS listener, see [CreateLoadBalancerHTTPSListener](~~27593~~).
+        @summary Queries the configurations of an HTTPS listener.
+        
+        @description    A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/27577.html).
+        An HTTPS listener is created. For more information about how to create an HTTPS listener, see [CreateLoadBalancerHTTPSListener](https://help.aliyun.com/document_detail/27593.html).
         
         @param request: DescribeLoadBalancerHTTPSListenerAttributeRequest
         @return: DescribeLoadBalancerHTTPSListenerAttributeResponse
@@ -5082,12 +5736,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeLoadBalancerListenersResponse:
         """
-        A CLB instance is created. For more information, see [CreateLoadBalancer](~~2401685~~).
-        *   One or more listeners are added to the CLB instance. For more information, see the following topics:
-        *   [CreateLoadBalancerUDPListener](~~CreateLoadBalancerUDPListener~~)
-        *   [CreateLoadBalancerTCPListener](~~CreateLoadBalancerTCPListener~~)
-        *   [CreateLoadBalancerHTTPListener](~~CreateLoadBalancerHTTPListener~~)
-        *   [CreateLoadBalancerHTTPSListener](~~CreateLoadBalancerHTTPSListener~~)
+        @summary Queries the listeners of a Classic Load Balancer (CLB) instance.
+        
+        @description    A CLB instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/2401685.html).
+        One or more listeners are added to the CLB instance. For more information, see the following topics:
+        [CreateLoadBalancerUDPListener](~~CreateLoadBalancerUDPListener~~)
+        [CreateLoadBalancerTCPListener](~~CreateLoadBalancerTCPListener~~)
+        [CreateLoadBalancerHTTPListener](~~CreateLoadBalancerHTTPListener~~)
+        [CreateLoadBalancerHTTPSListener](~~CreateLoadBalancerHTTPSListener~~)
         
         @param request: DescribeLoadBalancerListenersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5144,12 +5800,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeLoadBalancerListenersResponse:
         """
-        A CLB instance is created. For more information, see [CreateLoadBalancer](~~2401685~~).
-        *   One or more listeners are added to the CLB instance. For more information, see the following topics:
-        *   [CreateLoadBalancerUDPListener](~~CreateLoadBalancerUDPListener~~)
-        *   [CreateLoadBalancerTCPListener](~~CreateLoadBalancerTCPListener~~)
-        *   [CreateLoadBalancerHTTPListener](~~CreateLoadBalancerHTTPListener~~)
-        *   [CreateLoadBalancerHTTPSListener](~~CreateLoadBalancerHTTPSListener~~)
+        @summary Queries the listeners of a Classic Load Balancer (CLB) instance.
+        
+        @description    A CLB instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/2401685.html).
+        One or more listeners are added to the CLB instance. For more information, see the following topics:
+        [CreateLoadBalancerUDPListener](~~CreateLoadBalancerUDPListener~~)
+        [CreateLoadBalancerTCPListener](~~CreateLoadBalancerTCPListener~~)
+        [CreateLoadBalancerHTTPListener](~~CreateLoadBalancerHTTPListener~~)
+        [CreateLoadBalancerHTTPSListener](~~CreateLoadBalancerHTTPSListener~~)
         
         @param request: DescribeLoadBalancerListenersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5205,12 +5863,14 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeLoadBalancerListenersRequest,
     ) -> slb_20140515_models.DescribeLoadBalancerListenersResponse:
         """
-        A CLB instance is created. For more information, see [CreateLoadBalancer](~~2401685~~).
-        *   One or more listeners are added to the CLB instance. For more information, see the following topics:
-        *   [CreateLoadBalancerUDPListener](~~CreateLoadBalancerUDPListener~~)
-        *   [CreateLoadBalancerTCPListener](~~CreateLoadBalancerTCPListener~~)
-        *   [CreateLoadBalancerHTTPListener](~~CreateLoadBalancerHTTPListener~~)
-        *   [CreateLoadBalancerHTTPSListener](~~CreateLoadBalancerHTTPSListener~~)
+        @summary Queries the listeners of a Classic Load Balancer (CLB) instance.
+        
+        @description    A CLB instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/2401685.html).
+        One or more listeners are added to the CLB instance. For more information, see the following topics:
+        [CreateLoadBalancerUDPListener](~~CreateLoadBalancerUDPListener~~)
+        [CreateLoadBalancerTCPListener](~~CreateLoadBalancerTCPListener~~)
+        [CreateLoadBalancerHTTPListener](~~CreateLoadBalancerHTTPListener~~)
+        [CreateLoadBalancerHTTPSListener](~~CreateLoadBalancerHTTPSListener~~)
         
         @param request: DescribeLoadBalancerListenersRequest
         @return: DescribeLoadBalancerListenersResponse
@@ -5223,12 +5883,14 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeLoadBalancerListenersRequest,
     ) -> slb_20140515_models.DescribeLoadBalancerListenersResponse:
         """
-        A CLB instance is created. For more information, see [CreateLoadBalancer](~~2401685~~).
-        *   One or more listeners are added to the CLB instance. For more information, see the following topics:
-        *   [CreateLoadBalancerUDPListener](~~CreateLoadBalancerUDPListener~~)
-        *   [CreateLoadBalancerTCPListener](~~CreateLoadBalancerTCPListener~~)
-        *   [CreateLoadBalancerHTTPListener](~~CreateLoadBalancerHTTPListener~~)
-        *   [CreateLoadBalancerHTTPSListener](~~CreateLoadBalancerHTTPSListener~~)
+        @summary Queries the listeners of a Classic Load Balancer (CLB) instance.
+        
+        @description    A CLB instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/2401685.html).
+        One or more listeners are added to the CLB instance. For more information, see the following topics:
+        [CreateLoadBalancerUDPListener](~~CreateLoadBalancerUDPListener~~)
+        [CreateLoadBalancerTCPListener](~~CreateLoadBalancerTCPListener~~)
+        [CreateLoadBalancerHTTPListener](~~CreateLoadBalancerHTTPListener~~)
+        [CreateLoadBalancerHTTPSListener](~~CreateLoadBalancerHTTPSListener~~)
         
         @param request: DescribeLoadBalancerListenersRequest
         @return: DescribeLoadBalancerListenersResponse
@@ -5241,6 +5903,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeLoadBalancerTCPListenerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeLoadBalancerTCPListenerAttributeResponse:
+        """
+        @summary Queries the configurations of a TCP listener of Classic Load Balancer (CLB).
+        
+        @param request: DescribeLoadBalancerTCPListenerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLoadBalancerTCPListenerAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_port):
@@ -5281,6 +5950,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeLoadBalancerTCPListenerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeLoadBalancerTCPListenerAttributeResponse:
+        """
+        @summary Queries the configurations of a TCP listener of Classic Load Balancer (CLB).
+        
+        @param request: DescribeLoadBalancerTCPListenerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLoadBalancerTCPListenerAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_port):
@@ -5320,6 +5996,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeLoadBalancerTCPListenerAttributeRequest,
     ) -> slb_20140515_models.DescribeLoadBalancerTCPListenerAttributeResponse:
+        """
+        @summary Queries the configurations of a TCP listener of Classic Load Balancer (CLB).
+        
+        @param request: DescribeLoadBalancerTCPListenerAttributeRequest
+        @return: DescribeLoadBalancerTCPListenerAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_load_balancer_tcplistener_attribute_with_options(request, runtime)
 
@@ -5327,6 +6009,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeLoadBalancerTCPListenerAttributeRequest,
     ) -> slb_20140515_models.DescribeLoadBalancerTCPListenerAttributeResponse:
+        """
+        @summary Queries the configurations of a TCP listener of Classic Load Balancer (CLB).
+        
+        @param request: DescribeLoadBalancerTCPListenerAttributeRequest
+        @return: DescribeLoadBalancerTCPListenerAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_load_balancer_tcplistener_attribute_with_options_async(request, runtime)
 
@@ -5335,6 +6023,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeLoadBalancerUDPListenerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeLoadBalancerUDPListenerAttributeResponse:
+        """
+        @summary Queries the configurations of a UDP listener.
+        
+        @param request: DescribeLoadBalancerUDPListenerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLoadBalancerUDPListenerAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_port):
@@ -5375,6 +6070,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeLoadBalancerUDPListenerAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeLoadBalancerUDPListenerAttributeResponse:
+        """
+        @summary Queries the configurations of a UDP listener.
+        
+        @param request: DescribeLoadBalancerUDPListenerAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLoadBalancerUDPListenerAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_port):
@@ -5414,6 +6116,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeLoadBalancerUDPListenerAttributeRequest,
     ) -> slb_20140515_models.DescribeLoadBalancerUDPListenerAttributeResponse:
+        """
+        @summary Queries the configurations of a UDP listener.
+        
+        @param request: DescribeLoadBalancerUDPListenerAttributeRequest
+        @return: DescribeLoadBalancerUDPListenerAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_load_balancer_udplistener_attribute_with_options(request, runtime)
 
@@ -5421,6 +6129,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeLoadBalancerUDPListenerAttributeRequest,
     ) -> slb_20140515_models.DescribeLoadBalancerUDPListenerAttributeResponse:
+        """
+        @summary Queries the configurations of a UDP listener.
+        
+        @param request: DescribeLoadBalancerUDPListenerAttributeRequest
+        @return: DescribeLoadBalancerUDPListenerAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_load_balancer_udplistener_attribute_with_options_async(request, runtime)
 
@@ -5429,6 +6143,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeLoadBalancersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeLoadBalancersResponse:
+        """
+        @summary Queries Classic Load Balancer (CLB) instances.
+        
+        @param request: DescribeLoadBalancersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLoadBalancersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.address):
@@ -5505,6 +6226,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeLoadBalancersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeLoadBalancersResponse:
+        """
+        @summary Queries Classic Load Balancer (CLB) instances.
+        
+        @param request: DescribeLoadBalancersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLoadBalancersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.address):
@@ -5580,6 +6308,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeLoadBalancersRequest,
     ) -> slb_20140515_models.DescribeLoadBalancersResponse:
+        """
+        @summary Queries Classic Load Balancer (CLB) instances.
+        
+        @param request: DescribeLoadBalancersRequest
+        @return: DescribeLoadBalancersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_load_balancers_with_options(request, runtime)
 
@@ -5587,6 +6321,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeLoadBalancersRequest,
     ) -> slb_20140515_models.DescribeLoadBalancersResponse:
+        """
+        @summary Queries Classic Load Balancer (CLB) instances.
+        
+        @param request: DescribeLoadBalancersRequest
+        @return: DescribeLoadBalancersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_load_balancers_with_options_async(request, runtime)
 
@@ -5595,6 +6335,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeMasterSlaveServerGroupAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeMasterSlaveServerGroupAttributeResponse:
+        """
+        @summary Queries the detailed information about a primary/secondary server group.
+        
+        @param request: DescribeMasterSlaveServerGroupAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMasterSlaveServerGroupAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.master_slave_server_group_id):
@@ -5633,6 +6380,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeMasterSlaveServerGroupAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeMasterSlaveServerGroupAttributeResponse:
+        """
+        @summary Queries the detailed information about a primary/secondary server group.
+        
+        @param request: DescribeMasterSlaveServerGroupAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMasterSlaveServerGroupAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.master_slave_server_group_id):
@@ -5670,6 +6424,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeMasterSlaveServerGroupAttributeRequest,
     ) -> slb_20140515_models.DescribeMasterSlaveServerGroupAttributeResponse:
+        """
+        @summary Queries the detailed information about a primary/secondary server group.
+        
+        @param request: DescribeMasterSlaveServerGroupAttributeRequest
+        @return: DescribeMasterSlaveServerGroupAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_master_slave_server_group_attribute_with_options(request, runtime)
 
@@ -5677,6 +6437,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeMasterSlaveServerGroupAttributeRequest,
     ) -> slb_20140515_models.DescribeMasterSlaveServerGroupAttributeResponse:
+        """
+        @summary Queries the detailed information about a primary/secondary server group.
+        
+        @param request: DescribeMasterSlaveServerGroupAttributeRequest
+        @return: DescribeMasterSlaveServerGroupAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_master_slave_server_group_attribute_with_options_async(request, runtime)
 
@@ -5685,6 +6451,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeMasterSlaveServerGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeMasterSlaveServerGroupsResponse:
+        """
+        @summary Queries primary/secondary server groups.
+        
+        @param request: DescribeMasterSlaveServerGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMasterSlaveServerGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -5729,6 +6502,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeMasterSlaveServerGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeMasterSlaveServerGroupsResponse:
+        """
+        @summary Queries primary/secondary server groups.
+        
+        @param request: DescribeMasterSlaveServerGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeMasterSlaveServerGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -5772,6 +6552,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeMasterSlaveServerGroupsRequest,
     ) -> slb_20140515_models.DescribeMasterSlaveServerGroupsResponse:
+        """
+        @summary Queries primary/secondary server groups.
+        
+        @param request: DescribeMasterSlaveServerGroupsRequest
+        @return: DescribeMasterSlaveServerGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_master_slave_server_groups_with_options(request, runtime)
 
@@ -5779,6 +6565,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeMasterSlaveServerGroupsRequest,
     ) -> slb_20140515_models.DescribeMasterSlaveServerGroupsResponse:
+        """
+        @summary Queries primary/secondary server groups.
+        
+        @param request: DescribeMasterSlaveServerGroupsRequest
+        @return: DescribeMasterSlaveServerGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_master_slave_server_groups_with_options_async(request, runtime)
 
@@ -5787,6 +6579,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeRegionsResponse:
+        """
+        @summary Queries regions.
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -5825,6 +6624,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeRegionsResponse:
+        """
+        @summary Queries regions.
+        
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -5862,6 +6668,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeRegionsRequest,
     ) -> slb_20140515_models.DescribeRegionsResponse:
+        """
+        @summary Queries regions.
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_regions_with_options(request, runtime)
 
@@ -5869,6 +6681,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeRegionsRequest,
     ) -> slb_20140515_models.DescribeRegionsResponse:
+        """
+        @summary Queries regions.
+        
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
 
@@ -5877,6 +6695,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeRuleAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeRuleAttributeResponse:
+        """
+        @summary Queries the configurations of a specified forwarding rule.
+        
+        @param request: DescribeRuleAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRuleAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -5915,6 +6740,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeRuleAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeRuleAttributeResponse:
+        """
+        @summary Queries the configurations of a specified forwarding rule.
+        
+        @param request: DescribeRuleAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRuleAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -5952,6 +6784,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeRuleAttributeRequest,
     ) -> slb_20140515_models.DescribeRuleAttributeResponse:
+        """
+        @summary Queries the configurations of a specified forwarding rule.
+        
+        @param request: DescribeRuleAttributeRequest
+        @return: DescribeRuleAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_rule_attribute_with_options(request, runtime)
 
@@ -5959,6 +6797,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeRuleAttributeRequest,
     ) -> slb_20140515_models.DescribeRuleAttributeResponse:
+        """
+        @summary Queries the configurations of a specified forwarding rule.
+        
+        @param request: DescribeRuleAttributeRequest
+        @return: DescribeRuleAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_rule_attribute_with_options_async(request, runtime)
 
@@ -5967,6 +6811,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeRulesResponse:
+        """
+        @summary Queries the forwarding rules that are configured for a specified listener.
+        
+        @param request: DescribeRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_port):
@@ -6009,6 +6860,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeRulesResponse:
+        """
+        @summary Queries the forwarding rules that are configured for a specified listener.
+        
+        @param request: DescribeRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_port):
@@ -6050,6 +6908,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeRulesRequest,
     ) -> slb_20140515_models.DescribeRulesResponse:
+        """
+        @summary Queries the forwarding rules that are configured for a specified listener.
+        
+        @param request: DescribeRulesRequest
+        @return: DescribeRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_rules_with_options(request, runtime)
 
@@ -6057,6 +6921,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeRulesRequest,
     ) -> slb_20140515_models.DescribeRulesResponse:
+        """
+        @summary Queries the forwarding rules that are configured for a specified listener.
+        
+        @param request: DescribeRulesRequest
+        @return: DescribeRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_rules_with_options_async(request, runtime)
 
@@ -6066,7 +6936,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeServerCertificatesResponse:
         """
-        >  For security reasons, only fingerprints and names of the server certificates are returned. The content of the server certificates and private keys is not returned.
+        @summary Queries server certificates of Classic Load Balancer (CLB) instances in a specified region.
+        
+        @description >  For security reasons, only fingerprints and names of the server certificates are returned. The content of the server certificates and private keys is not returned.
         
         @param request: DescribeServerCertificatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6115,7 +6987,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeServerCertificatesResponse:
         """
-        >  For security reasons, only fingerprints and names of the server certificates are returned. The content of the server certificates and private keys is not returned.
+        @summary Queries server certificates of Classic Load Balancer (CLB) instances in a specified region.
+        
+        @description >  For security reasons, only fingerprints and names of the server certificates are returned. The content of the server certificates and private keys is not returned.
         
         @param request: DescribeServerCertificatesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6163,7 +7037,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeServerCertificatesRequest,
     ) -> slb_20140515_models.DescribeServerCertificatesResponse:
         """
-        >  For security reasons, only fingerprints and names of the server certificates are returned. The content of the server certificates and private keys is not returned.
+        @summary Queries server certificates of Classic Load Balancer (CLB) instances in a specified region.
+        
+        @description >  For security reasons, only fingerprints and names of the server certificates are returned. The content of the server certificates and private keys is not returned.
         
         @param request: DescribeServerCertificatesRequest
         @return: DescribeServerCertificatesResponse
@@ -6176,7 +7052,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeServerCertificatesRequest,
     ) -> slb_20140515_models.DescribeServerCertificatesResponse:
         """
-        >  For security reasons, only fingerprints and names of the server certificates are returned. The content of the server certificates and private keys is not returned.
+        @summary Queries server certificates of Classic Load Balancer (CLB) instances in a specified region.
+        
+        @description >  For security reasons, only fingerprints and names of the server certificates are returned. The content of the server certificates and private keys is not returned.
         
         @param request: DescribeServerCertificatesRequest
         @return: DescribeServerCertificatesResponse
@@ -6190,12 +7068,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeTagsResponse:
         """
-        When you call this operation, take note of the following items:
-        *   You can query tags by instance ID, tag key, and tag value. If the operation is successful, the system returns all tags that match the specified conditions.
-        *   The logical relationship among the specified conditions is AND. Only tags that match all the specified conditions are returned.
-        *   If the Tagkey parameter is set and the Tagvalue parameter is not set, all tags that contain the specified tag key are returned.
-        *   If you set the Tagvalue parameter in a request, you must also set the Tagkey parameter in the request.
-        *   If you set both the Tagkey and Tagvalue parameters, only tags that contain the specified keys and values are returned.
+        @summary Queries tags.
+        
+        @description When you call this operation, take note of the following items:
+        You can query tags by instance ID, tag key, and tag value. If the operation is successful, the system returns all tags that match the specified conditions.
+        The logical relationship among the specified conditions is AND. Only tags that match all the specified conditions are returned.
+        If the Tagkey parameter is set and the Tagvalue parameter is not set, all tags that contain the specified tag key are returned.
+        If you set the Tagvalue parameter in a request, you must also set the Tagkey parameter in the request.
+        If you set both the Tagkey and Tagvalue parameters, only tags that contain the specified keys and values are returned.
         
         @param request: DescribeTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6248,12 +7128,14 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeTagsResponse:
         """
-        When you call this operation, take note of the following items:
-        *   You can query tags by instance ID, tag key, and tag value. If the operation is successful, the system returns all tags that match the specified conditions.
-        *   The logical relationship among the specified conditions is AND. Only tags that match all the specified conditions are returned.
-        *   If the Tagkey parameter is set and the Tagvalue parameter is not set, all tags that contain the specified tag key are returned.
-        *   If you set the Tagvalue parameter in a request, you must also set the Tagkey parameter in the request.
-        *   If you set both the Tagkey and Tagvalue parameters, only tags that contain the specified keys and values are returned.
+        @summary Queries tags.
+        
+        @description When you call this operation, take note of the following items:
+        You can query tags by instance ID, tag key, and tag value. If the operation is successful, the system returns all tags that match the specified conditions.
+        The logical relationship among the specified conditions is AND. Only tags that match all the specified conditions are returned.
+        If the Tagkey parameter is set and the Tagvalue parameter is not set, all tags that contain the specified tag key are returned.
+        If you set the Tagvalue parameter in a request, you must also set the Tagkey parameter in the request.
+        If you set both the Tagkey and Tagvalue parameters, only tags that contain the specified keys and values are returned.
         
         @param request: DescribeTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6305,12 +7187,14 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeTagsRequest,
     ) -> slb_20140515_models.DescribeTagsResponse:
         """
-        When you call this operation, take note of the following items:
-        *   You can query tags by instance ID, tag key, and tag value. If the operation is successful, the system returns all tags that match the specified conditions.
-        *   The logical relationship among the specified conditions is AND. Only tags that match all the specified conditions are returned.
-        *   If the Tagkey parameter is set and the Tagvalue parameter is not set, all tags that contain the specified tag key are returned.
-        *   If you set the Tagvalue parameter in a request, you must also set the Tagkey parameter in the request.
-        *   If you set both the Tagkey and Tagvalue parameters, only tags that contain the specified keys and values are returned.
+        @summary Queries tags.
+        
+        @description When you call this operation, take note of the following items:
+        You can query tags by instance ID, tag key, and tag value. If the operation is successful, the system returns all tags that match the specified conditions.
+        The logical relationship among the specified conditions is AND. Only tags that match all the specified conditions are returned.
+        If the Tagkey parameter is set and the Tagvalue parameter is not set, all tags that contain the specified tag key are returned.
+        If you set the Tagvalue parameter in a request, you must also set the Tagkey parameter in the request.
+        If you set both the Tagkey and Tagvalue parameters, only tags that contain the specified keys and values are returned.
         
         @param request: DescribeTagsRequest
         @return: DescribeTagsResponse
@@ -6323,12 +7207,14 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeTagsRequest,
     ) -> slb_20140515_models.DescribeTagsResponse:
         """
-        When you call this operation, take note of the following items:
-        *   You can query tags by instance ID, tag key, and tag value. If the operation is successful, the system returns all tags that match the specified conditions.
-        *   The logical relationship among the specified conditions is AND. Only tags that match all the specified conditions are returned.
-        *   If the Tagkey parameter is set and the Tagvalue parameter is not set, all tags that contain the specified tag key are returned.
-        *   If you set the Tagvalue parameter in a request, you must also set the Tagkey parameter in the request.
-        *   If you set both the Tagkey and Tagvalue parameters, only tags that contain the specified keys and values are returned.
+        @summary Queries tags.
+        
+        @description When you call this operation, take note of the following items:
+        You can query tags by instance ID, tag key, and tag value. If the operation is successful, the system returns all tags that match the specified conditions.
+        The logical relationship among the specified conditions is AND. Only tags that match all the specified conditions are returned.
+        If the Tagkey parameter is set and the Tagvalue parameter is not set, all tags that contain the specified tag key are returned.
+        If you set the Tagvalue parameter in a request, you must also set the Tagkey parameter in the request.
+        If you set both the Tagkey and Tagvalue parameters, only tags that contain the specified keys and values are returned.
         
         @param request: DescribeTagsRequest
         @return: DescribeTagsResponse
@@ -6341,6 +7227,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeVServerGroupAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeVServerGroupAttributeResponse:
+        """
+        @summary Queries detailed information about a vServer group.
+        
+        @param request: DescribeVServerGroupAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVServerGroupAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -6379,6 +7272,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeVServerGroupAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeVServerGroupAttributeResponse:
+        """
+        @summary Queries detailed information about a vServer group.
+        
+        @param request: DescribeVServerGroupAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVServerGroupAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -6416,6 +7316,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeVServerGroupAttributeRequest,
     ) -> slb_20140515_models.DescribeVServerGroupAttributeResponse:
+        """
+        @summary Queries detailed information about a vServer group.
+        
+        @param request: DescribeVServerGroupAttributeRequest
+        @return: DescribeVServerGroupAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vserver_group_attribute_with_options(request, runtime)
 
@@ -6423,6 +7329,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeVServerGroupAttributeRequest,
     ) -> slb_20140515_models.DescribeVServerGroupAttributeResponse:
+        """
+        @summary Queries detailed information about a vServer group.
+        
+        @param request: DescribeVServerGroupAttributeRequest
+        @return: DescribeVServerGroupAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vserver_group_attribute_with_options_async(request, runtime)
 
@@ -6431,6 +7343,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeVServerGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeVServerGroupsResponse:
+        """
+        @summary Queries server groups.
+        
+        @param request: DescribeVServerGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVServerGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -6477,6 +7396,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeVServerGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeVServerGroupsResponse:
+        """
+        @summary Queries server groups.
+        
+        @param request: DescribeVServerGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeVServerGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -6522,6 +7448,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeVServerGroupsRequest,
     ) -> slb_20140515_models.DescribeVServerGroupsResponse:
+        """
+        @summary Queries server groups.
+        
+        @param request: DescribeVServerGroupsRequest
+        @return: DescribeVServerGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_vserver_groups_with_options(request, runtime)
 
@@ -6529,6 +7461,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeVServerGroupsRequest,
     ) -> slb_20140515_models.DescribeVServerGroupsResponse:
+        """
+        @summary Queries server groups.
+        
+        @param request: DescribeVServerGroupsRequest
+        @return: DescribeVServerGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_vserver_groups_with_options_async(request, runtime)
 
@@ -6537,6 +7475,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeZonesResponse:
+        """
+        @summary Queries the zones in a region.
+        
+        @param request: DescribeZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeZonesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -6573,6 +7518,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.DescribeZonesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.DescribeZonesResponse:
+        """
+        @summary Queries the zones in a region.
+        
+        @param request: DescribeZonesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeZonesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -6608,6 +7560,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeZonesRequest,
     ) -> slb_20140515_models.DescribeZonesResponse:
+        """
+        @summary Queries the zones in a region.
+        
+        @param request: DescribeZonesRequest
+        @return: DescribeZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_zones_with_options(request, runtime)
 
@@ -6615,6 +7573,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.DescribeZonesRequest,
     ) -> slb_20140515_models.DescribeZonesResponse:
+        """
+        @summary Queries the zones in a region.
+        
+        @param request: DescribeZonesRequest
+        @return: DescribeZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_zones_with_options_async(request, runtime)
 
@@ -6623,6 +7587,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.EnableHighDefinationMonitorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.EnableHighDefinationMonitorResponse:
+        """
+        @summary Enables fine-grained monitoring for the current region.
+        
+        @param request: EnableHighDefinationMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableHighDefinationMonitorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.log_project):
@@ -6665,6 +7636,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.EnableHighDefinationMonitorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.EnableHighDefinationMonitorResponse:
+        """
+        @summary Enables fine-grained monitoring for the current region.
+        
+        @param request: EnableHighDefinationMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableHighDefinationMonitorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.log_project):
@@ -6706,6 +7684,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.EnableHighDefinationMonitorRequest,
     ) -> slb_20140515_models.EnableHighDefinationMonitorResponse:
+        """
+        @summary Enables fine-grained monitoring for the current region.
+        
+        @param request: EnableHighDefinationMonitorRequest
+        @return: EnableHighDefinationMonitorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.enable_high_defination_monitor_with_options(request, runtime)
 
@@ -6713,6 +7697,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.EnableHighDefinationMonitorRequest,
     ) -> slb_20140515_models.EnableHighDefinationMonitorResponse:
+        """
+        @summary Enables fine-grained monitoring for the current region.
+        
+        @param request: EnableHighDefinationMonitorRequest
+        @return: EnableHighDefinationMonitorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.enable_high_defination_monitor_with_options_async(request, runtime)
 
@@ -6721,6 +7711,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.ListTLSCipherPoliciesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.ListTLSCipherPoliciesResponse:
+        """
+        @summary Queries Transport Layer Security (TLS) policies.
+        
+        @param request: ListTLSCipherPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTLSCipherPoliciesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.include_listener):
@@ -6767,6 +7764,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.ListTLSCipherPoliciesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.ListTLSCipherPoliciesResponse:
+        """
+        @summary Queries Transport Layer Security (TLS) policies.
+        
+        @param request: ListTLSCipherPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTLSCipherPoliciesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.include_listener):
@@ -6812,6 +7816,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.ListTLSCipherPoliciesRequest,
     ) -> slb_20140515_models.ListTLSCipherPoliciesResponse:
+        """
+        @summary Queries Transport Layer Security (TLS) policies.
+        
+        @param request: ListTLSCipherPoliciesRequest
+        @return: ListTLSCipherPoliciesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tlscipher_policies_with_options(request, runtime)
 
@@ -6819,6 +7829,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.ListTLSCipherPoliciesRequest,
     ) -> slb_20140515_models.ListTLSCipherPoliciesResponse:
+        """
+        @summary Queries Transport Layer Security (TLS) policies.
+        
+        @param request: ListTLSCipherPoliciesRequest
+        @return: ListTLSCipherPoliciesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tlscipher_policies_with_options_async(request, runtime)
 
@@ -6828,10 +7844,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.ListTagResourcesResponse:
         """
-        Set **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object to be queried.
-        *   **Tag.N** is a resource tag that consists of a key-value pair. If you set only **Tag.N.Key**, all tag values that are associated with the specified tag key are returned. If you set only **Tag.N.Value**, an error message is returned.
-        *   If you set **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
-        *   If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
+        @summary Queries tags that are added to one or more instances.
+        
+        @description    Set **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object to be queried.
+        **Tag.N** is a resource tag that consists of a key-value pair. If you set only **Tag.N.Key**, all tag values that are associated with the specified tag key are returned. If you set only **Tag.N.Value**, an error message is returned.
+        If you set **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
+        If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6882,10 +7900,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.ListTagResourcesResponse:
         """
-        Set **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object to be queried.
-        *   **Tag.N** is a resource tag that consists of a key-value pair. If you set only **Tag.N.Key**, all tag values that are associated with the specified tag key are returned. If you set only **Tag.N.Value**, an error message is returned.
-        *   If you set **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
-        *   If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
+        @summary Queries tags that are added to one or more instances.
+        
+        @description    Set **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object to be queried.
+        **Tag.N** is a resource tag that consists of a key-value pair. If you set only **Tag.N.Key**, all tag values that are associated with the specified tag key are returned. If you set only **Tag.N.Value**, an error message is returned.
+        If you set **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
+        If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
         
         @param request: ListTagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6935,10 +7955,12 @@ class Client(OpenApiClient):
         request: slb_20140515_models.ListTagResourcesRequest,
     ) -> slb_20140515_models.ListTagResourcesResponse:
         """
-        Set **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object to be queried.
-        *   **Tag.N** is a resource tag that consists of a key-value pair. If you set only **Tag.N.Key**, all tag values that are associated with the specified tag key are returned. If you set only **Tag.N.Value**, an error message is returned.
-        *   If you set **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
-        *   If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
+        @summary Queries tags that are added to one or more instances.
+        
+        @description    Set **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object to be queried.
+        **Tag.N** is a resource tag that consists of a key-value pair. If you set only **Tag.N.Key**, all tag values that are associated with the specified tag key are returned. If you set only **Tag.N.Value**, an error message is returned.
+        If you set **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
+        If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -6951,10 +7973,12 @@ class Client(OpenApiClient):
         request: slb_20140515_models.ListTagResourcesRequest,
     ) -> slb_20140515_models.ListTagResourcesResponse:
         """
-        Set **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object to be queried.
-        *   **Tag.N** is a resource tag that consists of a key-value pair. If you set only **Tag.N.Key**, all tag values that are associated with the specified tag key are returned. If you set only **Tag.N.Value**, an error message is returned.
-        *   If you set **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
-        *   If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
+        @summary Queries tags that are added to one or more instances.
+        
+        @description    Set **ResourceId.N** or **Tag.N** that consists of **Tag.N.Key** and **Tag.N.Value** in the request to specify the object to be queried.
+        **Tag.N** is a resource tag that consists of a key-value pair. If you set only **Tag.N.Key**, all tag values that are associated with the specified tag key are returned. If you set only **Tag.N.Value**, an error message is returned.
+        If you set **Tag.N** and **ResourceId.N** to filter tags, **ResourceId.N** must match all specified key-value pairs.
+        If you specify multiple key-value pairs, resources that contain these key-value pairs are returned.
         
         @param request: ListTagResourcesRequest
         @return: ListTagResourcesResponse
@@ -6967,6 +7991,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.ModifyHighDefinationMonitorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.ModifyHighDefinationMonitorResponse:
+        """
+        @summary Modifies the configuration of fine-grained monitoring in a specified region.
+        
+        @param request: ModifyHighDefinationMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyHighDefinationMonitorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.log_project):
@@ -7007,6 +8038,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.ModifyHighDefinationMonitorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.ModifyHighDefinationMonitorResponse:
+        """
+        @summary Modifies the configuration of fine-grained monitoring in a specified region.
+        
+        @param request: ModifyHighDefinationMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyHighDefinationMonitorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.log_project):
@@ -7046,6 +8084,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.ModifyHighDefinationMonitorRequest,
     ) -> slb_20140515_models.ModifyHighDefinationMonitorResponse:
+        """
+        @summary Modifies the configuration of fine-grained monitoring in a specified region.
+        
+        @param request: ModifyHighDefinationMonitorRequest
+        @return: ModifyHighDefinationMonitorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_high_defination_monitor_with_options(request, runtime)
 
@@ -7053,6 +8097,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.ModifyHighDefinationMonitorRequest,
     ) -> slb_20140515_models.ModifyHighDefinationMonitorResponse:
+        """
+        @summary Modifies the configuration of fine-grained monitoring in a specified region.
+        
+        @param request: ModifyHighDefinationMonitorRequest
+        @return: ModifyHighDefinationMonitorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_high_defination_monitor_with_options_async(request, runtime)
 
@@ -7062,8 +8112,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.ModifyLoadBalancerInstanceChargeTypeResponse:
         """
-        >    For pay-as-you-go CLB instances, you can only change the metering method from pay-by-specification to pay-by-LCU. You cannot change the metering method from pay-by-LCU to pay-by-specification.
-        >*   This operation can change the metering method of only one instance at a time.
+        @summary Changes the metering method of a pay-as-you-go Classic Load Balancer (CLB) instance.
+        
+        @description >    For pay-as-you-go CLB instances, you can only change the metering method from pay-by-specification to pay-by-LCU. You cannot change the metering method from pay-by-LCU to pay-by-specification.
+        >   This operation can change the metering method of only one instance at a time.
         
         @param request: ModifyLoadBalancerInstanceChargeTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7116,8 +8168,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.ModifyLoadBalancerInstanceChargeTypeResponse:
         """
-        >    For pay-as-you-go CLB instances, you can only change the metering method from pay-by-specification to pay-by-LCU. You cannot change the metering method from pay-by-LCU to pay-by-specification.
-        >*   This operation can change the metering method of only one instance at a time.
+        @summary Changes the metering method of a pay-as-you-go Classic Load Balancer (CLB) instance.
+        
+        @description >    For pay-as-you-go CLB instances, you can only change the metering method from pay-by-specification to pay-by-LCU. You cannot change the metering method from pay-by-LCU to pay-by-specification.
+        >   This operation can change the metering method of only one instance at a time.
         
         @param request: ModifyLoadBalancerInstanceChargeTypeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7169,8 +8223,10 @@ class Client(OpenApiClient):
         request: slb_20140515_models.ModifyLoadBalancerInstanceChargeTypeRequest,
     ) -> slb_20140515_models.ModifyLoadBalancerInstanceChargeTypeResponse:
         """
-        >    For pay-as-you-go CLB instances, you can only change the metering method from pay-by-specification to pay-by-LCU. You cannot change the metering method from pay-by-LCU to pay-by-specification.
-        >*   This operation can change the metering method of only one instance at a time.
+        @summary Changes the metering method of a pay-as-you-go Classic Load Balancer (CLB) instance.
+        
+        @description >    For pay-as-you-go CLB instances, you can only change the metering method from pay-by-specification to pay-by-LCU. You cannot change the metering method from pay-by-LCU to pay-by-specification.
+        >   This operation can change the metering method of only one instance at a time.
         
         @param request: ModifyLoadBalancerInstanceChargeTypeRequest
         @return: ModifyLoadBalancerInstanceChargeTypeResponse
@@ -7183,8 +8239,10 @@ class Client(OpenApiClient):
         request: slb_20140515_models.ModifyLoadBalancerInstanceChargeTypeRequest,
     ) -> slb_20140515_models.ModifyLoadBalancerInstanceChargeTypeResponse:
         """
-        >    For pay-as-you-go CLB instances, you can only change the metering method from pay-by-specification to pay-by-LCU. You cannot change the metering method from pay-by-LCU to pay-by-specification.
-        >*   This operation can change the metering method of only one instance at a time.
+        @summary Changes the metering method of a pay-as-you-go Classic Load Balancer (CLB) instance.
+        
+        @description >    For pay-as-you-go CLB instances, you can only change the metering method from pay-by-specification to pay-by-LCU. You cannot change the metering method from pay-by-LCU to pay-by-specification.
+        >   This operation can change the metering method of only one instance at a time.
         
         @param request: ModifyLoadBalancerInstanceChargeTypeRequest
         @return: ModifyLoadBalancerInstanceChargeTypeResponse
@@ -7197,6 +8255,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.ModifyLoadBalancerInstanceSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.ModifyLoadBalancerInstanceSpecResponse:
+        """
+        @summary Modifies the specification of a Classic Load Balancer (CLB) instance.
+        
+        @param request: ModifyLoadBalancerInstanceSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyLoadBalancerInstanceSpecResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -7239,6 +8304,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.ModifyLoadBalancerInstanceSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.ModifyLoadBalancerInstanceSpecResponse:
+        """
+        @summary Modifies the specification of a Classic Load Balancer (CLB) instance.
+        
+        @param request: ModifyLoadBalancerInstanceSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyLoadBalancerInstanceSpecResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -7280,6 +8352,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.ModifyLoadBalancerInstanceSpecRequest,
     ) -> slb_20140515_models.ModifyLoadBalancerInstanceSpecResponse:
+        """
+        @summary Modifies the specification of a Classic Load Balancer (CLB) instance.
+        
+        @param request: ModifyLoadBalancerInstanceSpecRequest
+        @return: ModifyLoadBalancerInstanceSpecResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_load_balancer_instance_spec_with_options(request, runtime)
 
@@ -7287,6 +8365,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.ModifyLoadBalancerInstanceSpecRequest,
     ) -> slb_20140515_models.ModifyLoadBalancerInstanceSpecResponse:
+        """
+        @summary Modifies the specification of a Classic Load Balancer (CLB) instance.
+        
+        @param request: ModifyLoadBalancerInstanceSpecRequest
+        @return: ModifyLoadBalancerInstanceSpecResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_load_balancer_instance_spec_with_options_async(request, runtime)
 
@@ -7296,9 +8380,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.ModifyLoadBalancerInternetSpecResponse:
         """
-        ## Description
-        *   If you modify only the maximum bandwidth of a pay-by-bandwidth CLB instance, the new bandwidth immediately takes effect.
-        *   If you modify the metering method (for example, switch from pay-by-bandwidth to pay-by-data-transfer), the new metering method and the other changes specified in the operation take effect at 00:00:00 the next day.
+        @summary Modifies the metering method of an Internet-facing Classic Load Balancer (CLB) instance.
+        
+        @description ## Description
+        If you modify only the maximum bandwidth of a pay-by-bandwidth CLB instance, the new bandwidth immediately takes effect.
+        If you modify the metering method (for example, switch from pay-by-bandwidth to pay-by-data-transfer), the new metering method and the other changes specified in the operation take effect at 00:00:00 the next day.
         
         @param request: ModifyLoadBalancerInternetSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7349,9 +8435,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.ModifyLoadBalancerInternetSpecResponse:
         """
-        ## Description
-        *   If you modify only the maximum bandwidth of a pay-by-bandwidth CLB instance, the new bandwidth immediately takes effect.
-        *   If you modify the metering method (for example, switch from pay-by-bandwidth to pay-by-data-transfer), the new metering method and the other changes specified in the operation take effect at 00:00:00 the next day.
+        @summary Modifies the metering method of an Internet-facing Classic Load Balancer (CLB) instance.
+        
+        @description ## Description
+        If you modify only the maximum bandwidth of a pay-by-bandwidth CLB instance, the new bandwidth immediately takes effect.
+        If you modify the metering method (for example, switch from pay-by-bandwidth to pay-by-data-transfer), the new metering method and the other changes specified in the operation take effect at 00:00:00 the next day.
         
         @param request: ModifyLoadBalancerInternetSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7401,9 +8489,11 @@ class Client(OpenApiClient):
         request: slb_20140515_models.ModifyLoadBalancerInternetSpecRequest,
     ) -> slb_20140515_models.ModifyLoadBalancerInternetSpecResponse:
         """
-        ## Description
-        *   If you modify only the maximum bandwidth of a pay-by-bandwidth CLB instance, the new bandwidth immediately takes effect.
-        *   If you modify the metering method (for example, switch from pay-by-bandwidth to pay-by-data-transfer), the new metering method and the other changes specified in the operation take effect at 00:00:00 the next day.
+        @summary Modifies the metering method of an Internet-facing Classic Load Balancer (CLB) instance.
+        
+        @description ## Description
+        If you modify only the maximum bandwidth of a pay-by-bandwidth CLB instance, the new bandwidth immediately takes effect.
+        If you modify the metering method (for example, switch from pay-by-bandwidth to pay-by-data-transfer), the new metering method and the other changes specified in the operation take effect at 00:00:00 the next day.
         
         @param request: ModifyLoadBalancerInternetSpecRequest
         @return: ModifyLoadBalancerInternetSpecResponse
@@ -7416,9 +8506,11 @@ class Client(OpenApiClient):
         request: slb_20140515_models.ModifyLoadBalancerInternetSpecRequest,
     ) -> slb_20140515_models.ModifyLoadBalancerInternetSpecResponse:
         """
-        ## Description
-        *   If you modify only the maximum bandwidth of a pay-by-bandwidth CLB instance, the new bandwidth immediately takes effect.
-        *   If you modify the metering method (for example, switch from pay-by-bandwidth to pay-by-data-transfer), the new metering method and the other changes specified in the operation take effect at 00:00:00 the next day.
+        @summary Modifies the metering method of an Internet-facing Classic Load Balancer (CLB) instance.
+        
+        @description ## Description
+        If you modify only the maximum bandwidth of a pay-by-bandwidth CLB instance, the new bandwidth immediately takes effect.
+        If you modify the metering method (for example, switch from pay-by-bandwidth to pay-by-data-transfer), the new metering method and the other changes specified in the operation take effect at 00:00:00 the next day.
         
         @param request: ModifyLoadBalancerInternetSpecRequest
         @return: ModifyLoadBalancerInternetSpecResponse
@@ -7431,6 +8523,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.ModifyLoadBalancerPayTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.ModifyLoadBalancerPayTypeResponse:
+        """
+        @summary Changes the billing method of a Classic Load Balancer (CLB) instance from pay-as-you-go to subscription.
+        
+        @param request: ModifyLoadBalancerPayTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyLoadBalancerPayTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -7477,6 +8576,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.ModifyLoadBalancerPayTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.ModifyLoadBalancerPayTypeResponse:
+        """
+        @summary Changes the billing method of a Classic Load Balancer (CLB) instance from pay-as-you-go to subscription.
+        
+        @param request: ModifyLoadBalancerPayTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyLoadBalancerPayTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auto_pay):
@@ -7522,6 +8628,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.ModifyLoadBalancerPayTypeRequest,
     ) -> slb_20140515_models.ModifyLoadBalancerPayTypeResponse:
+        """
+        @summary Changes the billing method of a Classic Load Balancer (CLB) instance from pay-as-you-go to subscription.
+        
+        @param request: ModifyLoadBalancerPayTypeRequest
+        @return: ModifyLoadBalancerPayTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_load_balancer_pay_type_with_options(request, runtime)
 
@@ -7529,6 +8641,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.ModifyLoadBalancerPayTypeRequest,
     ) -> slb_20140515_models.ModifyLoadBalancerPayTypeResponse:
+        """
+        @summary Changes the billing method of a Classic Load Balancer (CLB) instance from pay-as-you-go to subscription.
+        
+        @param request: ModifyLoadBalancerPayTypeRequest
+        @return: ModifyLoadBalancerPayTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_load_balancer_pay_type_with_options_async(request, runtime)
 
@@ -7538,7 +8656,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.ModifyVServerGroupBackendServersResponse:
         """
-        You can call this operation to replace the backend servers in a specified vServer group. To modify the configurations of the backend servers, such as their weights, you can call the [SetVServerGroupAttribute](~~35217~~) operation.
+        @summary Replaces backend servers in a specified vServer group.
+        
+        @description You can call this operation to replace the backend servers in a specified vServer group. To modify the configurations of the backend servers, such as their weights, you can call the [SetVServerGroupAttribute](https://help.aliyun.com/document_detail/35217.html) operation.
         
         @param request: ModifyVServerGroupBackendServersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7587,7 +8707,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.ModifyVServerGroupBackendServersResponse:
         """
-        You can call this operation to replace the backend servers in a specified vServer group. To modify the configurations of the backend servers, such as their weights, you can call the [SetVServerGroupAttribute](~~35217~~) operation.
+        @summary Replaces backend servers in a specified vServer group.
+        
+        @description You can call this operation to replace the backend servers in a specified vServer group. To modify the configurations of the backend servers, such as their weights, you can call the [SetVServerGroupAttribute](https://help.aliyun.com/document_detail/35217.html) operation.
         
         @param request: ModifyVServerGroupBackendServersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7635,7 +8757,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.ModifyVServerGroupBackendServersRequest,
     ) -> slb_20140515_models.ModifyVServerGroupBackendServersResponse:
         """
-        You can call this operation to replace the backend servers in a specified vServer group. To modify the configurations of the backend servers, such as their weights, you can call the [SetVServerGroupAttribute](~~35217~~) operation.
+        @summary Replaces backend servers in a specified vServer group.
+        
+        @description You can call this operation to replace the backend servers in a specified vServer group. To modify the configurations of the backend servers, such as their weights, you can call the [SetVServerGroupAttribute](https://help.aliyun.com/document_detail/35217.html) operation.
         
         @param request: ModifyVServerGroupBackendServersRequest
         @return: ModifyVServerGroupBackendServersResponse
@@ -7648,7 +8772,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.ModifyVServerGroupBackendServersRequest,
     ) -> slb_20140515_models.ModifyVServerGroupBackendServersResponse:
         """
-        You can call this operation to replace the backend servers in a specified vServer group. To modify the configurations of the backend servers, such as their weights, you can call the [SetVServerGroupAttribute](~~35217~~) operation.
+        @summary Replaces backend servers in a specified vServer group.
+        
+        @description You can call this operation to replace the backend servers in a specified vServer group. To modify the configurations of the backend servers, such as their weights, you can call the [SetVServerGroupAttribute](https://help.aliyun.com/document_detail/35217.html) operation.
         
         @param request: ModifyVServerGroupBackendServersRequest
         @return: ModifyVServerGroupBackendServersResponse
@@ -7661,6 +8787,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.MoveResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.MoveResourceGroupResponse:
+        """
+        @summary Moves a resource to another resource group.
+        
+        @param request: MoveResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MoveResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.new_resource_group_id):
@@ -7707,6 +8840,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.MoveResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.MoveResourceGroupResponse:
+        """
+        @summary Moves a resource to another resource group.
+        
+        @param request: MoveResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MoveResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.new_resource_group_id):
@@ -7752,6 +8892,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.MoveResourceGroupRequest,
     ) -> slb_20140515_models.MoveResourceGroupResponse:
+        """
+        @summary Moves a resource to another resource group.
+        
+        @param request: MoveResourceGroupRequest
+        @return: MoveResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.move_resource_group_with_options(request, runtime)
 
@@ -7759,6 +8905,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.MoveResourceGroupRequest,
     ) -> slb_20140515_models.MoveResourceGroupResponse:
+        """
+        @summary Moves a resource to another resource group.
+        
+        @param request: MoveResourceGroupRequest
+        @return: MoveResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.move_resource_group_with_options_async(request, runtime)
 
@@ -7767,6 +8919,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.RemoveAccessControlListEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.RemoveAccessControlListEntryResponse:
+        """
+        @summary Removes IP entries from the network access control list (ACL) of a Classic Load Balancer (CLB) instance.
+        
+        @param request: RemoveAccessControlListEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveAccessControlListEntryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_entrys):
@@ -7807,6 +8966,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.RemoveAccessControlListEntryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.RemoveAccessControlListEntryResponse:
+        """
+        @summary Removes IP entries from the network access control list (ACL) of a Classic Load Balancer (CLB) instance.
+        
+        @param request: RemoveAccessControlListEntryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveAccessControlListEntryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_entrys):
@@ -7846,6 +9012,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.RemoveAccessControlListEntryRequest,
     ) -> slb_20140515_models.RemoveAccessControlListEntryResponse:
+        """
+        @summary Removes IP entries from the network access control list (ACL) of a Classic Load Balancer (CLB) instance.
+        
+        @param request: RemoveAccessControlListEntryRequest
+        @return: RemoveAccessControlListEntryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_access_control_list_entry_with_options(request, runtime)
 
@@ -7853,6 +9025,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.RemoveAccessControlListEntryRequest,
     ) -> slb_20140515_models.RemoveAccessControlListEntryResponse:
+        """
+        @summary Removes IP entries from the network access control list (ACL) of a Classic Load Balancer (CLB) instance.
+        
+        @param request: RemoveAccessControlListEntryRequest
+        @return: RemoveAccessControlListEntryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_access_control_list_entry_with_options_async(request, runtime)
 
@@ -7862,7 +9040,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.RemoveBackendServersResponse:
         """
-        >  If the backend servers that you want to remove are not in the server list of the Classic Load Balancer (CLB) instance, the request fails. However, the system does not report an error.
+        @summary Removes backend servers.
+        
+        @description >  If the backend servers that you want to remove are not in the server list of the Classic Load Balancer (CLB) instance, the request fails. However, the system does not report an error.
         
         @param request: RemoveBackendServersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7909,7 +9089,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.RemoveBackendServersResponse:
         """
-        >  If the backend servers that you want to remove are not in the server list of the Classic Load Balancer (CLB) instance, the request fails. However, the system does not report an error.
+        @summary Removes backend servers.
+        
+        @description >  If the backend servers that you want to remove are not in the server list of the Classic Load Balancer (CLB) instance, the request fails. However, the system does not report an error.
         
         @param request: RemoveBackendServersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -7955,7 +9137,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.RemoveBackendServersRequest,
     ) -> slb_20140515_models.RemoveBackendServersResponse:
         """
-        >  If the backend servers that you want to remove are not in the server list of the Classic Load Balancer (CLB) instance, the request fails. However, the system does not report an error.
+        @summary Removes backend servers.
+        
+        @description >  If the backend servers that you want to remove are not in the server list of the Classic Load Balancer (CLB) instance, the request fails. However, the system does not report an error.
         
         @param request: RemoveBackendServersRequest
         @return: RemoveBackendServersResponse
@@ -7968,7 +9152,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.RemoveBackendServersRequest,
     ) -> slb_20140515_models.RemoveBackendServersResponse:
         """
-        >  If the backend servers that you want to remove are not in the server list of the Classic Load Balancer (CLB) instance, the request fails. However, the system does not report an error.
+        @summary Removes backend servers.
+        
+        @description >  If the backend servers that you want to remove are not in the server list of the Classic Load Balancer (CLB) instance, the request fails. However, the system does not report an error.
         
         @param request: RemoveBackendServersRequest
         @return: RemoveBackendServersResponse
@@ -7981,6 +9167,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.RemoveListenerWhiteListItemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.RemoveListenerWhiteListItemResponse:
+        """
+        @summary Removes IP addresses or CIDR blocks from the whitelist of a listener.
+        
+        @param request: RemoveListenerWhiteListItemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveListenerWhiteListItemResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_port):
@@ -8025,6 +9218,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.RemoveListenerWhiteListItemRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.RemoveListenerWhiteListItemResponse:
+        """
+        @summary Removes IP addresses or CIDR blocks from the whitelist of a listener.
+        
+        @param request: RemoveListenerWhiteListItemRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveListenerWhiteListItemResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.listener_port):
@@ -8068,6 +9268,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.RemoveListenerWhiteListItemRequest,
     ) -> slb_20140515_models.RemoveListenerWhiteListItemResponse:
+        """
+        @summary Removes IP addresses or CIDR blocks from the whitelist of a listener.
+        
+        @param request: RemoveListenerWhiteListItemRequest
+        @return: RemoveListenerWhiteListItemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_listener_white_list_item_with_options(request, runtime)
 
@@ -8075,6 +9281,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.RemoveListenerWhiteListItemRequest,
     ) -> slb_20140515_models.RemoveListenerWhiteListItemResponse:
+        """
+        @summary Removes IP addresses or CIDR blocks from the whitelist of a listener.
+        
+        @param request: RemoveListenerWhiteListItemRequest
+        @return: RemoveListenerWhiteListItemResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_listener_white_list_item_with_options_async(request, runtime)
 
@@ -8083,6 +9295,11 @@ class Client(OpenApiClient):
         request: slb_20140515_models.RemoveTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.RemoveTagsResponse:
+        """
+        @param request: RemoveTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.load_balancer_id):
@@ -8123,6 +9340,11 @@ class Client(OpenApiClient):
         request: slb_20140515_models.RemoveTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.RemoveTagsResponse:
+        """
+        @param request: RemoveTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.load_balancer_id):
@@ -8162,6 +9384,10 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.RemoveTagsRequest,
     ) -> slb_20140515_models.RemoveTagsResponse:
+        """
+        @param request: RemoveTagsRequest
+        @return: RemoveTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_tags_with_options(request, runtime)
 
@@ -8169,6 +9395,10 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.RemoveTagsRequest,
     ) -> slb_20140515_models.RemoveTagsResponse:
+        """
+        @param request: RemoveTagsRequest
+        @return: RemoveTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_tags_with_options_async(request, runtime)
 
@@ -8178,7 +9408,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.RemoveVServerGroupBackendServersResponse:
         """
-        >  If one or more backend servers specified by the *BackendServers** parameter do not exist in the specified vServer group, these backend servers are ignored and no error message is returned.
+        @summary Removes one or more backend servers from a specified vServer group.
+        
+        @description >  If one or more backend servers specified by the *BackendServers** parameter do not exist in the specified vServer group, these backend servers are ignored and no error message is returned.
         
         @param request: RemoveVServerGroupBackendServersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8225,7 +9457,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.RemoveVServerGroupBackendServersResponse:
         """
-        >  If one or more backend servers specified by the *BackendServers** parameter do not exist in the specified vServer group, these backend servers are ignored and no error message is returned.
+        @summary Removes one or more backend servers from a specified vServer group.
+        
+        @description >  If one or more backend servers specified by the *BackendServers** parameter do not exist in the specified vServer group, these backend servers are ignored and no error message is returned.
         
         @param request: RemoveVServerGroupBackendServersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8271,7 +9505,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.RemoveVServerGroupBackendServersRequest,
     ) -> slb_20140515_models.RemoveVServerGroupBackendServersResponse:
         """
-        >  If one or more backend servers specified by the *BackendServers** parameter do not exist in the specified vServer group, these backend servers are ignored and no error message is returned.
+        @summary Removes one or more backend servers from a specified vServer group.
+        
+        @description >  If one or more backend servers specified by the *BackendServers** parameter do not exist in the specified vServer group, these backend servers are ignored and no error message is returned.
         
         @param request: RemoveVServerGroupBackendServersRequest
         @return: RemoveVServerGroupBackendServersResponse
@@ -8284,7 +9520,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.RemoveVServerGroupBackendServersRequest,
     ) -> slb_20140515_models.RemoveVServerGroupBackendServersResponse:
         """
-        >  If one or more backend servers specified by the *BackendServers** parameter do not exist in the specified vServer group, these backend servers are ignored and no error message is returned.
+        @summary Removes one or more backend servers from a specified vServer group.
+        
+        @description >  If one or more backend servers specified by the *BackendServers** parameter do not exist in the specified vServer group, these backend servers are ignored and no error message is returned.
         
         @param request: RemoveVServerGroupBackendServersRequest
         @return: RemoveVServerGroupBackendServersResponse
@@ -8297,6 +9535,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetAccessControlListAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetAccessControlListAttributeResponse:
+        """
+        @summary Modifies the name of a network access control list (ACL).
+        
+        @param request: SetAccessControlListAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetAccessControlListAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_id):
@@ -8337,6 +9582,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetAccessControlListAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetAccessControlListAttributeResponse:
+        """
+        @summary Modifies the name of a network access control list (ACL).
+        
+        @param request: SetAccessControlListAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetAccessControlListAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.acl_id):
@@ -8376,6 +9628,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.SetAccessControlListAttributeRequest,
     ) -> slb_20140515_models.SetAccessControlListAttributeResponse:
+        """
+        @summary Modifies the name of a network access control list (ACL).
+        
+        @param request: SetAccessControlListAttributeRequest
+        @return: SetAccessControlListAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_access_control_list_attribute_with_options(request, runtime)
 
@@ -8383,6 +9641,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.SetAccessControlListAttributeRequest,
     ) -> slb_20140515_models.SetAccessControlListAttributeResponse:
+        """
+        @summary Modifies the name of a network access control list (ACL).
+        
+        @param request: SetAccessControlListAttributeRequest
+        @return: SetAccessControlListAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_access_control_list_attribute_with_options_async(request, runtime)
 
@@ -8391,6 +9655,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetAccessLogsDownloadAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetAccessLogsDownloadAttributeResponse:
+        """
+        @summary Adds an access log forwarding rule for a Classic Load Balancer (CLB) instance.
+        
+        @param request: SetAccessLogsDownloadAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetAccessLogsDownloadAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.load_balancer_id):
@@ -8433,6 +9704,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetAccessLogsDownloadAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetAccessLogsDownloadAttributeResponse:
+        """
+        @summary Adds an access log forwarding rule for a Classic Load Balancer (CLB) instance.
+        
+        @param request: SetAccessLogsDownloadAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetAccessLogsDownloadAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.load_balancer_id):
@@ -8474,6 +9752,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.SetAccessLogsDownloadAttributeRequest,
     ) -> slb_20140515_models.SetAccessLogsDownloadAttributeResponse:
+        """
+        @summary Adds an access log forwarding rule for a Classic Load Balancer (CLB) instance.
+        
+        @param request: SetAccessLogsDownloadAttributeRequest
+        @return: SetAccessLogsDownloadAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_access_logs_download_attribute_with_options(request, runtime)
 
@@ -8481,6 +9765,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.SetAccessLogsDownloadAttributeRequest,
     ) -> slb_20140515_models.SetAccessLogsDownloadAttributeResponse:
+        """
+        @summary Adds an access log forwarding rule for a Classic Load Balancer (CLB) instance.
+        
+        @param request: SetAccessLogsDownloadAttributeRequest
+        @return: SetAccessLogsDownloadAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_access_logs_download_attribute_with_options_async(request, runtime)
 
@@ -8489,6 +9779,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetBackendServersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetBackendServersResponse:
+        """
+        @summary Sets the weights of backend servers.
+        
+        @param request: SetBackendServersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetBackendServersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backend_servers):
@@ -8529,6 +9826,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetBackendServersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetBackendServersResponse:
+        """
+        @summary Sets the weights of backend servers.
+        
+        @param request: SetBackendServersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetBackendServersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.backend_servers):
@@ -8568,6 +9872,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.SetBackendServersRequest,
     ) -> slb_20140515_models.SetBackendServersResponse:
+        """
+        @summary Sets the weights of backend servers.
+        
+        @param request: SetBackendServersRequest
+        @return: SetBackendServersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_backend_servers_with_options(request, runtime)
 
@@ -8575,6 +9885,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.SetBackendServersRequest,
     ) -> slb_20140515_models.SetBackendServersResponse:
+        """
+        @summary Sets the weights of backend servers.
+        
+        @param request: SetBackendServersRequest
+        @return: SetBackendServersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_backend_servers_with_options_async(request, runtime)
 
@@ -8583,6 +9899,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetCACertificateNameRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetCACertificateNameResponse:
+        """
+        @summary Sets the name of a CA Certificate.
+        
+        @param request: SetCACertificateNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetCACertificateNameResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cacertificate_id):
@@ -8623,6 +9946,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetCACertificateNameRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetCACertificateNameResponse:
+        """
+        @summary Sets the name of a CA Certificate.
+        
+        @param request: SetCACertificateNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetCACertificateNameResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cacertificate_id):
@@ -8662,6 +9992,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.SetCACertificateNameRequest,
     ) -> slb_20140515_models.SetCACertificateNameResponse:
+        """
+        @summary Sets the name of a CA Certificate.
+        
+        @param request: SetCACertificateNameRequest
+        @return: SetCACertificateNameResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_cacertificate_name_with_options(request, runtime)
 
@@ -8669,6 +10005,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.SetCACertificateNameRequest,
     ) -> slb_20140515_models.SetCACertificateNameResponse:
+        """
+        @summary Sets the name of a CA Certificate.
+        
+        @param request: SetCACertificateNameRequest
+        @return: SetCACertificateNameResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_cacertificate_name_with_options_async(request, runtime)
 
@@ -8678,7 +10020,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetDomainExtensionAttributeResponse:
         """
-        >  You cannot replace an additional certificate for a listener that is added to a shared-resource Server Load Balancer (SLB) instance.
+        @summary Replaces an additional certificate.
+        
+        @description >  You cannot replace an additional certificate for a listener that is added to a shared-resource Server Load Balancer (SLB) instance.
         
         @param request: SetDomainExtensionAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8725,7 +10069,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetDomainExtensionAttributeResponse:
         """
-        >  You cannot replace an additional certificate for a listener that is added to a shared-resource Server Load Balancer (SLB) instance.
+        @summary Replaces an additional certificate.
+        
+        @description >  You cannot replace an additional certificate for a listener that is added to a shared-resource Server Load Balancer (SLB) instance.
         
         @param request: SetDomainExtensionAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8771,7 +10117,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetDomainExtensionAttributeRequest,
     ) -> slb_20140515_models.SetDomainExtensionAttributeResponse:
         """
-        >  You cannot replace an additional certificate for a listener that is added to a shared-resource Server Load Balancer (SLB) instance.
+        @summary Replaces an additional certificate.
+        
+        @description >  You cannot replace an additional certificate for a listener that is added to a shared-resource Server Load Balancer (SLB) instance.
         
         @param request: SetDomainExtensionAttributeRequest
         @return: SetDomainExtensionAttributeResponse
@@ -8784,7 +10132,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetDomainExtensionAttributeRequest,
     ) -> slb_20140515_models.SetDomainExtensionAttributeResponse:
         """
-        >  You cannot replace an additional certificate for a listener that is added to a shared-resource Server Load Balancer (SLB) instance.
+        @summary Replaces an additional certificate.
+        
+        @description >  You cannot replace an additional certificate for a listener that is added to a shared-resource Server Load Balancer (SLB) instance.
         
         @param request: SetDomainExtensionAttributeRequest
         @return: SetDomainExtensionAttributeResponse
@@ -8797,6 +10147,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetListenerAccessControlStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetListenerAccessControlStatusResponse:
+        """
+        @summary Enables or disables the whitelist of a specified listener.
+        
+        @param request: SetListenerAccessControlStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetListenerAccessControlStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_control_status):
@@ -8841,6 +10198,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetListenerAccessControlStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetListenerAccessControlStatusResponse:
+        """
+        @summary Enables or disables the whitelist of a specified listener.
+        
+        @param request: SetListenerAccessControlStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetListenerAccessControlStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_control_status):
@@ -8884,6 +10248,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.SetListenerAccessControlStatusRequest,
     ) -> slb_20140515_models.SetListenerAccessControlStatusResponse:
+        """
+        @summary Enables or disables the whitelist of a specified listener.
+        
+        @param request: SetListenerAccessControlStatusRequest
+        @return: SetListenerAccessControlStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_listener_access_control_status_with_options(request, runtime)
 
@@ -8891,6 +10261,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.SetListenerAccessControlStatusRequest,
     ) -> slb_20140515_models.SetListenerAccessControlStatusResponse:
+        """
+        @summary Enables or disables the whitelist of a specified listener.
+        
+        @param request: SetListenerAccessControlStatusRequest
+        @return: SetListenerAccessControlStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_listener_access_control_status_with_options_async(request, runtime)
 
@@ -8899,6 +10275,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetLoadBalancerDeleteProtectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetLoadBalancerDeleteProtectionResponse:
+        """
+        @summary Enables or disables deletion protection for an SLB instance.
+        
+        @param request: SetLoadBalancerDeleteProtectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetLoadBalancerDeleteProtectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.delete_protection):
@@ -8939,6 +10322,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetLoadBalancerDeleteProtectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetLoadBalancerDeleteProtectionResponse:
+        """
+        @summary Enables or disables deletion protection for an SLB instance.
+        
+        @param request: SetLoadBalancerDeleteProtectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetLoadBalancerDeleteProtectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.delete_protection):
@@ -8978,6 +10368,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.SetLoadBalancerDeleteProtectionRequest,
     ) -> slb_20140515_models.SetLoadBalancerDeleteProtectionResponse:
+        """
+        @summary Enables or disables deletion protection for an SLB instance.
+        
+        @param request: SetLoadBalancerDeleteProtectionRequest
+        @return: SetLoadBalancerDeleteProtectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_load_balancer_delete_protection_with_options(request, runtime)
 
@@ -8985,6 +10381,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.SetLoadBalancerDeleteProtectionRequest,
     ) -> slb_20140515_models.SetLoadBalancerDeleteProtectionResponse:
+        """
+        @summary Enables or disables deletion protection for an SLB instance.
+        
+        @param request: SetLoadBalancerDeleteProtectionRequest
+        @return: SetLoadBalancerDeleteProtectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_load_balancer_delete_protection_with_options_async(request, runtime)
 
@@ -8994,9 +10396,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetLoadBalancerHTTPListenerAttributeResponse:
         """
-        ### Prerequisites
-        *   A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~27577~~).
-        *   An HTTP listener is created. For more information about how to create an HTTP listener, see [CreateLoadBalancerHTTPListener](~~27592~~).
+        @summary Modifies the configurations of an HTTP listener.
+        
+        @description ### Prerequisites
+        A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/27577.html).
+        An HTTP listener is created. For more information about how to create an HTTP listener, see [CreateLoadBalancerHTTPListener](https://help.aliyun.com/document_detail/27592.html).
         
         @param request: SetLoadBalancerHTTPListenerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9105,9 +10509,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetLoadBalancerHTTPListenerAttributeResponse:
         """
-        ### Prerequisites
-        *   A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~27577~~).
-        *   An HTTP listener is created. For more information about how to create an HTTP listener, see [CreateLoadBalancerHTTPListener](~~27592~~).
+        @summary Modifies the configurations of an HTTP listener.
+        
+        @description ### Prerequisites
+        A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/27577.html).
+        An HTTP listener is created. For more information about how to create an HTTP listener, see [CreateLoadBalancerHTTPListener](https://help.aliyun.com/document_detail/27592.html).
         
         @param request: SetLoadBalancerHTTPListenerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9215,9 +10621,11 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetLoadBalancerHTTPListenerAttributeRequest,
     ) -> slb_20140515_models.SetLoadBalancerHTTPListenerAttributeResponse:
         """
-        ### Prerequisites
-        *   A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~27577~~).
-        *   An HTTP listener is created. For more information about how to create an HTTP listener, see [CreateLoadBalancerHTTPListener](~~27592~~).
+        @summary Modifies the configurations of an HTTP listener.
+        
+        @description ### Prerequisites
+        A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/27577.html).
+        An HTTP listener is created. For more information about how to create an HTTP listener, see [CreateLoadBalancerHTTPListener](https://help.aliyun.com/document_detail/27592.html).
         
         @param request: SetLoadBalancerHTTPListenerAttributeRequest
         @return: SetLoadBalancerHTTPListenerAttributeResponse
@@ -9230,9 +10638,11 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetLoadBalancerHTTPListenerAttributeRequest,
     ) -> slb_20140515_models.SetLoadBalancerHTTPListenerAttributeResponse:
         """
-        ### Prerequisites
-        *   A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~27577~~).
-        *   An HTTP listener is created. For more information about how to create an HTTP listener, see [CreateLoadBalancerHTTPListener](~~27592~~).
+        @summary Modifies the configurations of an HTTP listener.
+        
+        @description ### Prerequisites
+        A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/27577.html).
+        An HTTP listener is created. For more information about how to create an HTTP listener, see [CreateLoadBalancerHTTPListener](https://help.aliyun.com/document_detail/27592.html).
         
         @param request: SetLoadBalancerHTTPListenerAttributeRequest
         @return: SetLoadBalancerHTTPListenerAttributeResponse
@@ -9246,8 +10656,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetLoadBalancerHTTPSListenerAttributeResponse:
         """
-        A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~27577~~).
-        *   An HTTPS listener is created. For more information about how to create an HTTPS listener, see [CreateLoadBalancerHTTPSListener](~~27593~~).
+        @summary Modifies the configurations of an HTTPS listener.
+        
+        @description    A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/27577.html).
+        An HTTPS listener is created. For more information about how to create an HTTPS listener, see [CreateLoadBalancerHTTPSListener](https://help.aliyun.com/document_detail/27593.html).
         
         @param request: SetLoadBalancerHTTPSListenerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9364,8 +10776,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetLoadBalancerHTTPSListenerAttributeResponse:
         """
-        A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~27577~~).
-        *   An HTTPS listener is created. For more information about how to create an HTTPS listener, see [CreateLoadBalancerHTTPSListener](~~27593~~).
+        @summary Modifies the configurations of an HTTPS listener.
+        
+        @description    A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/27577.html).
+        An HTTPS listener is created. For more information about how to create an HTTPS listener, see [CreateLoadBalancerHTTPSListener](https://help.aliyun.com/document_detail/27593.html).
         
         @param request: SetLoadBalancerHTTPSListenerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9481,8 +10895,10 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetLoadBalancerHTTPSListenerAttributeRequest,
     ) -> slb_20140515_models.SetLoadBalancerHTTPSListenerAttributeResponse:
         """
-        A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~27577~~).
-        *   An HTTPS listener is created. For more information about how to create an HTTPS listener, see [CreateLoadBalancerHTTPSListener](~~27593~~).
+        @summary Modifies the configurations of an HTTPS listener.
+        
+        @description    A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/27577.html).
+        An HTTPS listener is created. For more information about how to create an HTTPS listener, see [CreateLoadBalancerHTTPSListener](https://help.aliyun.com/document_detail/27593.html).
         
         @param request: SetLoadBalancerHTTPSListenerAttributeRequest
         @return: SetLoadBalancerHTTPSListenerAttributeResponse
@@ -9495,8 +10911,10 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetLoadBalancerHTTPSListenerAttributeRequest,
     ) -> slb_20140515_models.SetLoadBalancerHTTPSListenerAttributeResponse:
         """
-        A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~27577~~).
-        *   An HTTPS listener is created. For more information about how to create an HTTPS listener, see [CreateLoadBalancerHTTPSListener](~~27593~~).
+        @summary Modifies the configurations of an HTTPS listener.
+        
+        @description    A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/27577.html).
+        An HTTPS listener is created. For more information about how to create an HTTPS listener, see [CreateLoadBalancerHTTPSListener](https://help.aliyun.com/document_detail/27593.html).
         
         @param request: SetLoadBalancerHTTPSListenerAttributeRequest
         @return: SetLoadBalancerHTTPSListenerAttributeResponse
@@ -9509,6 +10927,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetLoadBalancerModificationProtectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetLoadBalancerModificationProtectionResponse:
+        """
+        @summary Modifies the configuration of the configuration read-only mode for a Classic Load Balancer (CLB) instance.
+        
+        @param request: SetLoadBalancerModificationProtectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetLoadBalancerModificationProtectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.load_balancer_id):
@@ -9551,6 +10976,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetLoadBalancerModificationProtectionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetLoadBalancerModificationProtectionResponse:
+        """
+        @summary Modifies the configuration of the configuration read-only mode for a Classic Load Balancer (CLB) instance.
+        
+        @param request: SetLoadBalancerModificationProtectionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetLoadBalancerModificationProtectionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.load_balancer_id):
@@ -9592,6 +11024,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.SetLoadBalancerModificationProtectionRequest,
     ) -> slb_20140515_models.SetLoadBalancerModificationProtectionResponse:
+        """
+        @summary Modifies the configuration of the configuration read-only mode for a Classic Load Balancer (CLB) instance.
+        
+        @param request: SetLoadBalancerModificationProtectionRequest
+        @return: SetLoadBalancerModificationProtectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_load_balancer_modification_protection_with_options(request, runtime)
 
@@ -9599,6 +11037,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.SetLoadBalancerModificationProtectionRequest,
     ) -> slb_20140515_models.SetLoadBalancerModificationProtectionResponse:
+        """
+        @summary Modifies the configuration of the configuration read-only mode for a Classic Load Balancer (CLB) instance.
+        
+        @param request: SetLoadBalancerModificationProtectionRequest
+        @return: SetLoadBalancerModificationProtectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_load_balancer_modification_protection_with_options_async(request, runtime)
 
@@ -9607,6 +11051,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetLoadBalancerNameRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetLoadBalancerNameResponse:
+        """
+        @summary Modifies the name of a Classic Load Balancer (CLB) instance.
+        
+        @param request: SetLoadBalancerNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetLoadBalancerNameResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.load_balancer_id):
@@ -9647,6 +11098,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetLoadBalancerNameRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetLoadBalancerNameResponse:
+        """
+        @summary Modifies the name of a Classic Load Balancer (CLB) instance.
+        
+        @param request: SetLoadBalancerNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetLoadBalancerNameResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.load_balancer_id):
@@ -9686,6 +11144,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.SetLoadBalancerNameRequest,
     ) -> slb_20140515_models.SetLoadBalancerNameResponse:
+        """
+        @summary Modifies the name of a Classic Load Balancer (CLB) instance.
+        
+        @param request: SetLoadBalancerNameRequest
+        @return: SetLoadBalancerNameResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_load_balancer_name_with_options(request, runtime)
 
@@ -9693,6 +11157,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.SetLoadBalancerNameRequest,
     ) -> slb_20140515_models.SetLoadBalancerNameResponse:
+        """
+        @summary Modifies the name of a Classic Load Balancer (CLB) instance.
+        
+        @param request: SetLoadBalancerNameRequest
+        @return: SetLoadBalancerNameResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_load_balancer_name_with_options_async(request, runtime)
 
@@ -9701,6 +11171,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetLoadBalancerStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetLoadBalancerStatusResponse:
+        """
+        @summary Modifies the state of a Classic Load Balancer (CLB) instance.
+        
+        @param request: SetLoadBalancerStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetLoadBalancerStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.load_balancer_id):
@@ -9741,6 +11218,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetLoadBalancerStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetLoadBalancerStatusResponse:
+        """
+        @summary Modifies the state of a Classic Load Balancer (CLB) instance.
+        
+        @param request: SetLoadBalancerStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetLoadBalancerStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.load_balancer_id):
@@ -9780,6 +11264,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.SetLoadBalancerStatusRequest,
     ) -> slb_20140515_models.SetLoadBalancerStatusResponse:
+        """
+        @summary Modifies the state of a Classic Load Balancer (CLB) instance.
+        
+        @param request: SetLoadBalancerStatusRequest
+        @return: SetLoadBalancerStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_load_balancer_status_with_options(request, runtime)
 
@@ -9787,6 +11277,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.SetLoadBalancerStatusRequest,
     ) -> slb_20140515_models.SetLoadBalancerStatusResponse:
+        """
+        @summary Modifies the state of a Classic Load Balancer (CLB) instance.
+        
+        @param request: SetLoadBalancerStatusRequest
+        @return: SetLoadBalancerStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_load_balancer_status_with_options_async(request, runtime)
 
@@ -9796,8 +11292,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetLoadBalancerTCPListenerAttributeResponse:
         """
-        A CLB instance is created. For more information, see [CreateLoadBalancer](~~2401685~~).
-        *   A TCP listener is created. For more information, see [CreateLoadBalancerTCPListener](~~CreateLoadBalancerTCPListener~~).
+        @summary Modifies the configurations of a TCP listener of Classic Load Balancer (CLB).
+        
+        @description    A CLB instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/2401685.html).
+        A TCP listener is created. For more information, see [CreateLoadBalancerTCPListener](~~CreateLoadBalancerTCPListener~~).
         
         @param request: SetLoadBalancerTCPListenerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9896,8 +11394,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetLoadBalancerTCPListenerAttributeResponse:
         """
-        A CLB instance is created. For more information, see [CreateLoadBalancer](~~2401685~~).
-        *   A TCP listener is created. For more information, see [CreateLoadBalancerTCPListener](~~CreateLoadBalancerTCPListener~~).
+        @summary Modifies the configurations of a TCP listener of Classic Load Balancer (CLB).
+        
+        @description    A CLB instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/2401685.html).
+        A TCP listener is created. For more information, see [CreateLoadBalancerTCPListener](~~CreateLoadBalancerTCPListener~~).
         
         @param request: SetLoadBalancerTCPListenerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9995,8 +11495,10 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetLoadBalancerTCPListenerAttributeRequest,
     ) -> slb_20140515_models.SetLoadBalancerTCPListenerAttributeResponse:
         """
-        A CLB instance is created. For more information, see [CreateLoadBalancer](~~2401685~~).
-        *   A TCP listener is created. For more information, see [CreateLoadBalancerTCPListener](~~CreateLoadBalancerTCPListener~~).
+        @summary Modifies the configurations of a TCP listener of Classic Load Balancer (CLB).
+        
+        @description    A CLB instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/2401685.html).
+        A TCP listener is created. For more information, see [CreateLoadBalancerTCPListener](~~CreateLoadBalancerTCPListener~~).
         
         @param request: SetLoadBalancerTCPListenerAttributeRequest
         @return: SetLoadBalancerTCPListenerAttributeResponse
@@ -10009,8 +11511,10 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetLoadBalancerTCPListenerAttributeRequest,
     ) -> slb_20140515_models.SetLoadBalancerTCPListenerAttributeResponse:
         """
-        A CLB instance is created. For more information, see [CreateLoadBalancer](~~2401685~~).
-        *   A TCP listener is created. For more information, see [CreateLoadBalancerTCPListener](~~CreateLoadBalancerTCPListener~~).
+        @summary Modifies the configurations of a TCP listener of Classic Load Balancer (CLB).
+        
+        @description    A CLB instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/2401685.html).
+        A TCP listener is created. For more information, see [CreateLoadBalancerTCPListener](~~CreateLoadBalancerTCPListener~~).
         
         @param request: SetLoadBalancerTCPListenerAttributeRequest
         @return: SetLoadBalancerTCPListenerAttributeResponse
@@ -10024,8 +11528,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetLoadBalancerUDPListenerAttributeResponse:
         """
-        A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~27577~~).
-        *   A UDP listener is created. For more information, see [CreateLoadBalancerUDPListener](~~27595~~).
+        @summary Modifies the configurations of a UDP listener.
+        
+        @description    A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/27577.html).
+        A UDP listener is created. For more information, see [CreateLoadBalancerUDPListener](https://help.aliyun.com/document_detail/27595.html).
         
         @param request: SetLoadBalancerUDPListenerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10110,8 +11616,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetLoadBalancerUDPListenerAttributeResponse:
         """
-        A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~27577~~).
-        *   A UDP listener is created. For more information, see [CreateLoadBalancerUDPListener](~~27595~~).
+        @summary Modifies the configurations of a UDP listener.
+        
+        @description    A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/27577.html).
+        A UDP listener is created. For more information, see [CreateLoadBalancerUDPListener](https://help.aliyun.com/document_detail/27595.html).
         
         @param request: SetLoadBalancerUDPListenerAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10195,8 +11703,10 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetLoadBalancerUDPListenerAttributeRequest,
     ) -> slb_20140515_models.SetLoadBalancerUDPListenerAttributeResponse:
         """
-        A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~27577~~).
-        *   A UDP listener is created. For more information, see [CreateLoadBalancerUDPListener](~~27595~~).
+        @summary Modifies the configurations of a UDP listener.
+        
+        @description    A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/27577.html).
+        A UDP listener is created. For more information, see [CreateLoadBalancerUDPListener](https://help.aliyun.com/document_detail/27595.html).
         
         @param request: SetLoadBalancerUDPListenerAttributeRequest
         @return: SetLoadBalancerUDPListenerAttributeResponse
@@ -10209,8 +11719,10 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetLoadBalancerUDPListenerAttributeRequest,
     ) -> slb_20140515_models.SetLoadBalancerUDPListenerAttributeResponse:
         """
-        A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](~~27577~~).
-        *   A UDP listener is created. For more information, see [CreateLoadBalancerUDPListener](~~27595~~).
+        @summary Modifies the configurations of a UDP listener.
+        
+        @description    A Classic Load Balancer (CLB) instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/27577.html).
+        A UDP listener is created. For more information, see [CreateLoadBalancerUDPListener](https://help.aliyun.com/document_detail/27595.html).
         
         @param request: SetLoadBalancerUDPListenerAttributeRequest
         @return: SetLoadBalancerUDPListenerAttributeResponse
@@ -10223,6 +11735,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetRuleResponse:
+        """
+        @summary Modifies a forwarding rule that is associated with a vServer group.
+        
+        @param request: SetRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cookie):
@@ -10295,6 +11814,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetRuleResponse:
+        """
+        @summary Modifies a forwarding rule that is associated with a vServer group.
+        
+        @param request: SetRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cookie):
@@ -10366,6 +11892,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.SetRuleRequest,
     ) -> slb_20140515_models.SetRuleResponse:
+        """
+        @summary Modifies a forwarding rule that is associated with a vServer group.
+        
+        @param request: SetRuleRequest
+        @return: SetRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_rule_with_options(request, runtime)
 
@@ -10373,6 +11905,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.SetRuleRequest,
     ) -> slb_20140515_models.SetRuleResponse:
+        """
+        @summary Modifies a forwarding rule that is associated with a vServer group.
+        
+        @param request: SetRuleRequest
+        @return: SetRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_rule_with_options_async(request, runtime)
 
@@ -10381,6 +11919,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetServerCertificateNameRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetServerCertificateNameResponse:
+        """
+        @summary Sets a name for a server certificate.
+        
+        @param request: SetServerCertificateNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetServerCertificateNameResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -10421,6 +11966,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetServerCertificateNameRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetServerCertificateNameResponse:
+        """
+        @summary Sets a name for a server certificate.
+        
+        @param request: SetServerCertificateNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetServerCertificateNameResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.owner_account):
@@ -10460,6 +12012,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.SetServerCertificateNameRequest,
     ) -> slb_20140515_models.SetServerCertificateNameResponse:
+        """
+        @summary Sets a name for a server certificate.
+        
+        @param request: SetServerCertificateNameRequest
+        @return: SetServerCertificateNameResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_server_certificate_name_with_options(request, runtime)
 
@@ -10467,6 +12025,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.SetServerCertificateNameRequest,
     ) -> slb_20140515_models.SetServerCertificateNameResponse:
+        """
+        @summary Sets a name for a server certificate.
+        
+        @param request: SetServerCertificateNameRequest
+        @return: SetServerCertificateNameResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_server_certificate_name_with_options_async(request, runtime)
 
@@ -10475,6 +12039,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetTLSCipherPolicyAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetTLSCipherPolicyAttributeResponse:
+        """
+        @summary Configures a Transport Layer Security (TLS) policy.
+        
+        @param request: SetTLSCipherPolicyAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetTLSCipherPolicyAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ciphers):
@@ -10519,6 +12090,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetTLSCipherPolicyAttributeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetTLSCipherPolicyAttributeResponse:
+        """
+        @summary Configures a Transport Layer Security (TLS) policy.
+        
+        @param request: SetTLSCipherPolicyAttributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetTLSCipherPolicyAttributeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ciphers):
@@ -10562,6 +12140,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.SetTLSCipherPolicyAttributeRequest,
     ) -> slb_20140515_models.SetTLSCipherPolicyAttributeResponse:
+        """
+        @summary Configures a Transport Layer Security (TLS) policy.
+        
+        @param request: SetTLSCipherPolicyAttributeRequest
+        @return: SetTLSCipherPolicyAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_tlscipher_policy_attribute_with_options(request, runtime)
 
@@ -10569,6 +12153,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.SetTLSCipherPolicyAttributeRequest,
     ) -> slb_20140515_models.SetTLSCipherPolicyAttributeResponse:
+        """
+        @summary Configures a Transport Layer Security (TLS) policy.
+        
+        @param request: SetTLSCipherPolicyAttributeRequest
+        @return: SetTLSCipherPolicyAttributeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_tlscipher_policy_attribute_with_options_async(request, runtime)
 
@@ -10578,9 +12168,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetVServerGroupAttributeResponse:
         """
-        This operation allows you to modify only the name of a vServer group and the weights of the backend servers in the vServer group.
-        *   If you want to modify backend servers in a specified vServer group, call the [ModifyVServerGroupBackendServers](~~35220~~) operation.
-        *   If you want to add backend servers to a specified vServer group, call the [AddVServerGroupBackendServers](~~35218~~) operation.
+        @summary Modifies the configurations of a vServer group.
+        
+        @description This operation allows you to modify only the name of a vServer group and the weights of the backend servers in the vServer group.
+        If you want to modify backend servers in a specified vServer group, call the [ModifyVServerGroupBackendServers](https://help.aliyun.com/document_detail/35220.html) operation.
+        If you want to add backend servers to a specified vServer group, call the [AddVServerGroupBackendServers](https://help.aliyun.com/document_detail/35218.html) operation.
         
         @param request: SetVServerGroupAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10629,9 +12221,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.SetVServerGroupAttributeResponse:
         """
-        This operation allows you to modify only the name of a vServer group and the weights of the backend servers in the vServer group.
-        *   If you want to modify backend servers in a specified vServer group, call the [ModifyVServerGroupBackendServers](~~35220~~) operation.
-        *   If you want to add backend servers to a specified vServer group, call the [AddVServerGroupBackendServers](~~35218~~) operation.
+        @summary Modifies the configurations of a vServer group.
+        
+        @description This operation allows you to modify only the name of a vServer group and the weights of the backend servers in the vServer group.
+        If you want to modify backend servers in a specified vServer group, call the [ModifyVServerGroupBackendServers](https://help.aliyun.com/document_detail/35220.html) operation.
+        If you want to add backend servers to a specified vServer group, call the [AddVServerGroupBackendServers](https://help.aliyun.com/document_detail/35218.html) operation.
         
         @param request: SetVServerGroupAttributeRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10679,9 +12273,11 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetVServerGroupAttributeRequest,
     ) -> slb_20140515_models.SetVServerGroupAttributeResponse:
         """
-        This operation allows you to modify only the name of a vServer group and the weights of the backend servers in the vServer group.
-        *   If you want to modify backend servers in a specified vServer group, call the [ModifyVServerGroupBackendServers](~~35220~~) operation.
-        *   If you want to add backend servers to a specified vServer group, call the [AddVServerGroupBackendServers](~~35218~~) operation.
+        @summary Modifies the configurations of a vServer group.
+        
+        @description This operation allows you to modify only the name of a vServer group and the weights of the backend servers in the vServer group.
+        If you want to modify backend servers in a specified vServer group, call the [ModifyVServerGroupBackendServers](https://help.aliyun.com/document_detail/35220.html) operation.
+        If you want to add backend servers to a specified vServer group, call the [AddVServerGroupBackendServers](https://help.aliyun.com/document_detail/35218.html) operation.
         
         @param request: SetVServerGroupAttributeRequest
         @return: SetVServerGroupAttributeResponse
@@ -10694,9 +12290,11 @@ class Client(OpenApiClient):
         request: slb_20140515_models.SetVServerGroupAttributeRequest,
     ) -> slb_20140515_models.SetVServerGroupAttributeResponse:
         """
-        This operation allows you to modify only the name of a vServer group and the weights of the backend servers in the vServer group.
-        *   If you want to modify backend servers in a specified vServer group, call the [ModifyVServerGroupBackendServers](~~35220~~) operation.
-        *   If you want to add backend servers to a specified vServer group, call the [AddVServerGroupBackendServers](~~35218~~) operation.
+        @summary Modifies the configurations of a vServer group.
+        
+        @description This operation allows you to modify only the name of a vServer group and the weights of the backend servers in the vServer group.
+        If you want to modify backend servers in a specified vServer group, call the [ModifyVServerGroupBackendServers](https://help.aliyun.com/document_detail/35220.html) operation.
+        If you want to add backend servers to a specified vServer group, call the [AddVServerGroupBackendServers](https://help.aliyun.com/document_detail/35218.html) operation.
         
         @param request: SetVServerGroupAttributeRequest
         @return: SetVServerGroupAttributeResponse
@@ -10710,10 +12308,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.StartLoadBalancerListenerResponse:
         """
-        When you call this operation, note the following items:
-        *   You can call the operation only when the listener is in the Stopped state.
-        *   After the operation is called, the status of the listener changes to Starting.
-        *   You cannot call this operation when the SLB instance to which the listener is bound is in the Locked state.
+        @summary You can call this operation to start a listener.
+        
+        @description When you call this operation, note the following items:
+        You can call the operation only when the listener is in the Stopped state.
+        After the operation is called, the status of the listener changes to Starting.
+        You cannot call this operation when the SLB instance to which the listener is bound is in the Locked state.
         
         @param request: StartLoadBalancerListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10762,10 +12362,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.StartLoadBalancerListenerResponse:
         """
-        When you call this operation, note the following items:
-        *   You can call the operation only when the listener is in the Stopped state.
-        *   After the operation is called, the status of the listener changes to Starting.
-        *   You cannot call this operation when the SLB instance to which the listener is bound is in the Locked state.
+        @summary You can call this operation to start a listener.
+        
+        @description When you call this operation, note the following items:
+        You can call the operation only when the listener is in the Stopped state.
+        After the operation is called, the status of the listener changes to Starting.
+        You cannot call this operation when the SLB instance to which the listener is bound is in the Locked state.
         
         @param request: StartLoadBalancerListenerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10813,10 +12415,12 @@ class Client(OpenApiClient):
         request: slb_20140515_models.StartLoadBalancerListenerRequest,
     ) -> slb_20140515_models.StartLoadBalancerListenerResponse:
         """
-        When you call this operation, note the following items:
-        *   You can call the operation only when the listener is in the Stopped state.
-        *   After the operation is called, the status of the listener changes to Starting.
-        *   You cannot call this operation when the SLB instance to which the listener is bound is in the Locked state.
+        @summary You can call this operation to start a listener.
+        
+        @description When you call this operation, note the following items:
+        You can call the operation only when the listener is in the Stopped state.
+        After the operation is called, the status of the listener changes to Starting.
+        You cannot call this operation when the SLB instance to which the listener is bound is in the Locked state.
         
         @param request: StartLoadBalancerListenerRequest
         @return: StartLoadBalancerListenerResponse
@@ -10829,10 +12433,12 @@ class Client(OpenApiClient):
         request: slb_20140515_models.StartLoadBalancerListenerRequest,
     ) -> slb_20140515_models.StartLoadBalancerListenerResponse:
         """
-        When you call this operation, note the following items:
-        *   You can call the operation only when the listener is in the Stopped state.
-        *   After the operation is called, the status of the listener changes to Starting.
-        *   You cannot call this operation when the SLB instance to which the listener is bound is in the Locked state.
+        @summary You can call this operation to start a listener.
+        
+        @description When you call this operation, note the following items:
+        You can call the operation only when the listener is in the Stopped state.
+        After the operation is called, the status of the listener changes to Starting.
+        You cannot call this operation when the SLB instance to which the listener is bound is in the Locked state.
         
         @param request: StartLoadBalancerListenerRequest
         @return: StartLoadBalancerListenerResponse
@@ -10846,9 +12452,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.StopLoadBalancerListenerResponse:
         """
-        Before you make this API call, note the following:
-        *   After the API call is successfully made, the listener enters the stopped state.
-        *   If the Server Load Balancer (SLB) instance to which the listener to be stopped belongs is in the locked state, this API call cannot be made.
+        @summary Stops a listener.
+        
+        @description Before you make this API call, note the following:
+        After the API call is successfully made, the listener enters the stopped state.
+        If the Server Load Balancer (SLB) instance to which the listener to be stopped belongs is in the locked state, this API call cannot be made.
         >  If you stop the listener, your services will be disrupted. Exercise caution when you perform this action.
         
         @param request: StopLoadBalancerListenerRequest
@@ -10898,9 +12506,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.StopLoadBalancerListenerResponse:
         """
-        Before you make this API call, note the following:
-        *   After the API call is successfully made, the listener enters the stopped state.
-        *   If the Server Load Balancer (SLB) instance to which the listener to be stopped belongs is in the locked state, this API call cannot be made.
+        @summary Stops a listener.
+        
+        @description Before you make this API call, note the following:
+        After the API call is successfully made, the listener enters the stopped state.
+        If the Server Load Balancer (SLB) instance to which the listener to be stopped belongs is in the locked state, this API call cannot be made.
         >  If you stop the listener, your services will be disrupted. Exercise caution when you perform this action.
         
         @param request: StopLoadBalancerListenerRequest
@@ -10949,9 +12559,11 @@ class Client(OpenApiClient):
         request: slb_20140515_models.StopLoadBalancerListenerRequest,
     ) -> slb_20140515_models.StopLoadBalancerListenerResponse:
         """
-        Before you make this API call, note the following:
-        *   After the API call is successfully made, the listener enters the stopped state.
-        *   If the Server Load Balancer (SLB) instance to which the listener to be stopped belongs is in the locked state, this API call cannot be made.
+        @summary Stops a listener.
+        
+        @description Before you make this API call, note the following:
+        After the API call is successfully made, the listener enters the stopped state.
+        If the Server Load Balancer (SLB) instance to which the listener to be stopped belongs is in the locked state, this API call cannot be made.
         >  If you stop the listener, your services will be disrupted. Exercise caution when you perform this action.
         
         @param request: StopLoadBalancerListenerRequest
@@ -10965,9 +12577,11 @@ class Client(OpenApiClient):
         request: slb_20140515_models.StopLoadBalancerListenerRequest,
     ) -> slb_20140515_models.StopLoadBalancerListenerResponse:
         """
-        Before you make this API call, note the following:
-        *   After the API call is successfully made, the listener enters the stopped state.
-        *   If the Server Load Balancer (SLB) instance to which the listener to be stopped belongs is in the locked state, this API call cannot be made.
+        @summary Stops a listener.
+        
+        @description Before you make this API call, note the following:
+        After the API call is successfully made, the listener enters the stopped state.
+        If the Server Load Balancer (SLB) instance to which the listener to be stopped belongs is in the locked state, this API call cannot be made.
         >  If you stop the listener, your services will be disrupted. Exercise caution when you perform this action.
         
         @param request: StopLoadBalancerListenerRequest
@@ -10982,7 +12596,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.TagResourcesResponse:
         """
-        >  You can add at most 20 tags to each instance. Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number is reached, an error message is returned.
+        @summary Creates tags and adds the tags to resources.
+        
+        @description >  You can add at most 20 tags to each instance. Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number is reached, an error message is returned.
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11031,7 +12647,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.TagResourcesResponse:
         """
-        >  You can add at most 20 tags to each instance. Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number is reached, an error message is returned.
+        @summary Creates tags and adds the tags to resources.
+        
+        @description >  You can add at most 20 tags to each instance. Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number is reached, an error message is returned.
         
         @param request: TagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11079,7 +12697,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.TagResourcesRequest,
     ) -> slb_20140515_models.TagResourcesResponse:
         """
-        >  You can add at most 20 tags to each instance. Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number is reached, an error message is returned.
+        @summary Creates tags and adds the tags to resources.
+        
+        @description >  You can add at most 20 tags to each instance. Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number is reached, an error message is returned.
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -11092,7 +12712,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.TagResourcesRequest,
     ) -> slb_20140515_models.TagResourcesResponse:
         """
-        >  You can add at most 20 tags to each instance. Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number is reached, an error message is returned.
+        @summary Creates tags and adds the tags to resources.
+        
+        @description >  You can add at most 20 tags to each instance. Before you add tags to a resource, Alibaba Cloud checks the number of existing tags of the resource. If the maximum number is reached, an error message is returned.
         
         @param request: TagResourcesRequest
         @return: TagResourcesResponse
@@ -11105,6 +12727,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from specified resources.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -11149,6 +12778,13 @@ class Client(OpenApiClient):
         request: slb_20140515_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from specified resources.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -11192,6 +12828,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.UntagResourcesRequest,
     ) -> slb_20140515_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from specified resources.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.untag_resources_with_options(request, runtime)
 
@@ -11199,6 +12841,12 @@ class Client(OpenApiClient):
         self,
         request: slb_20140515_models.UntagResourcesRequest,
     ) -> slb_20140515_models.UntagResourcesResponse:
+        """
+        @summary Removes tags from specified resources.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
 
@@ -11208,7 +12856,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.UploadCACertificateResponse:
         """
-        You can upload only one CA certificate at a time. After a CA certificate is uploaded, the certificate ID, name, and fingerprint are returned.
+        @summary Uploads a CA certificate.
+        
+        @description You can upload only one CA certificate at a time. After a CA certificate is uploaded, the certificate ID, name, and fingerprint are returned.
         
         @param request: UploadCACertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11259,7 +12909,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.UploadCACertificateResponse:
         """
-        You can upload only one CA certificate at a time. After a CA certificate is uploaded, the certificate ID, name, and fingerprint are returned.
+        @summary Uploads a CA certificate.
+        
+        @description You can upload only one CA certificate at a time. After a CA certificate is uploaded, the certificate ID, name, and fingerprint are returned.
         
         @param request: UploadCACertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11309,7 +12961,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.UploadCACertificateRequest,
     ) -> slb_20140515_models.UploadCACertificateResponse:
         """
-        You can upload only one CA certificate at a time. After a CA certificate is uploaded, the certificate ID, name, and fingerprint are returned.
+        @summary Uploads a CA certificate.
+        
+        @description You can upload only one CA certificate at a time. After a CA certificate is uploaded, the certificate ID, name, and fingerprint are returned.
         
         @param request: UploadCACertificateRequest
         @return: UploadCACertificateResponse
@@ -11322,7 +12976,9 @@ class Client(OpenApiClient):
         request: slb_20140515_models.UploadCACertificateRequest,
     ) -> slb_20140515_models.UploadCACertificateResponse:
         """
-        You can upload only one CA certificate at a time. After a CA certificate is uploaded, the certificate ID, name, and fingerprint are returned.
+        @summary Uploads a CA certificate.
+        
+        @description You can upload only one CA certificate at a time. After a CA certificate is uploaded, the certificate ID, name, and fingerprint are returned.
         
         @param request: UploadCACertificateRequest
         @return: UploadCACertificateResponse
@@ -11336,8 +12992,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.UploadServerCertificateResponse:
         """
-        You can upload only one server certificate and its private key in each call.
-        *   After a server certificate and its private key are uploaded, the fingerprints of all server certificates that belong to your Alibaba Cloud account are returned.
+        @summary Uploads a server certificate.
+        
+        @description    You can upload only one server certificate and its private key in each call.
+        After a server certificate and its private key are uploaded, the fingerprints of all server certificates that belong to your Alibaba Cloud account are returned.
         
         @param request: UploadServerCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11396,8 +13054,10 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> slb_20140515_models.UploadServerCertificateResponse:
         """
-        You can upload only one server certificate and its private key in each call.
-        *   After a server certificate and its private key are uploaded, the fingerprints of all server certificates that belong to your Alibaba Cloud account are returned.
+        @summary Uploads a server certificate.
+        
+        @description    You can upload only one server certificate and its private key in each call.
+        After a server certificate and its private key are uploaded, the fingerprints of all server certificates that belong to your Alibaba Cloud account are returned.
         
         @param request: UploadServerCertificateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -11455,8 +13115,10 @@ class Client(OpenApiClient):
         request: slb_20140515_models.UploadServerCertificateRequest,
     ) -> slb_20140515_models.UploadServerCertificateResponse:
         """
-        You can upload only one server certificate and its private key in each call.
-        *   After a server certificate and its private key are uploaded, the fingerprints of all server certificates that belong to your Alibaba Cloud account are returned.
+        @summary Uploads a server certificate.
+        
+        @description    You can upload only one server certificate and its private key in each call.
+        After a server certificate and its private key are uploaded, the fingerprints of all server certificates that belong to your Alibaba Cloud account are returned.
         
         @param request: UploadServerCertificateRequest
         @return: UploadServerCertificateResponse
@@ -11469,8 +13131,10 @@ class Client(OpenApiClient):
         request: slb_20140515_models.UploadServerCertificateRequest,
     ) -> slb_20140515_models.UploadServerCertificateResponse:
         """
-        You can upload only one server certificate and its private key in each call.
-        *   After a server certificate and its private key are uploaded, the fingerprints of all server certificates that belong to your Alibaba Cloud account are returned.
+        @summary Uploads a server certificate.
+        
+        @description    You can upload only one server certificate and its private key in each call.
+        After a server certificate and its private key are uploaded, the fingerprints of all server certificates that belong to your Alibaba Cloud account are returned.
         
         @param request: UploadServerCertificateRequest
         @return: UploadServerCertificateResponse
