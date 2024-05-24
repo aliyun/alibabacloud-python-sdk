@@ -556,6 +556,39 @@ class JobSummary(TeaModel):
         return self
 
 
+class LocalVariable(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
 class Log4jLogger(TeaModel):
     def __init__(
         self,
@@ -683,6 +716,7 @@ class Deployment(TeaModel):
         self,
         artifact: Artifact = None,
         batch_resource_setting: BatchResourceSetting = None,
+        created_at: str = None,
         creator: str = None,
         creator_name: str = None,
         deployment_has_changed: bool = None,
@@ -693,15 +727,19 @@ class Deployment(TeaModel):
         execution_mode: str = None,
         flink_conf: Dict[str, Any] = None,
         job_summary: JobSummary = None,
+        local_variables: List[LocalVariable] = None,
         logging: Logging = None,
+        modified_at: str = None,
         modifier: str = None,
         modifier_name: str = None,
         name: str = None,
         namespace: str = None,
         streaming_resource_setting: StreamingResourceSetting = None,
+        workspace: str = None,
     ):
         self.artifact = artifact
         self.batch_resource_setting = batch_resource_setting
+        self.created_at = created_at
         self.creator = creator
         self.creator_name = creator_name
         self.deployment_has_changed = deployment_has_changed
@@ -712,12 +750,15 @@ class Deployment(TeaModel):
         self.execution_mode = execution_mode
         self.flink_conf = flink_conf
         self.job_summary = job_summary
+        self.local_variables = local_variables
         self.logging = logging
+        self.modified_at = modified_at
         self.modifier = modifier
         self.modifier_name = modifier_name
         self.name = name
         self.namespace = namespace
         self.streaming_resource_setting = streaming_resource_setting
+        self.workspace = workspace
 
     def validate(self):
         if self.artifact:
@@ -728,6 +769,10 @@ class Deployment(TeaModel):
             self.deployment_target.validate()
         if self.job_summary:
             self.job_summary.validate()
+        if self.local_variables:
+            for k in self.local_variables:
+                if k:
+                    k.validate()
         if self.logging:
             self.logging.validate()
         if self.streaming_resource_setting:
@@ -743,6 +788,8 @@ class Deployment(TeaModel):
             result['artifact'] = self.artifact.to_map()
         if self.batch_resource_setting is not None:
             result['batchResourceSetting'] = self.batch_resource_setting.to_map()
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
         if self.creator is not None:
             result['creator'] = self.creator
         if self.creator_name is not None:
@@ -763,8 +810,14 @@ class Deployment(TeaModel):
             result['flinkConf'] = self.flink_conf
         if self.job_summary is not None:
             result['jobSummary'] = self.job_summary.to_map()
+        result['localVariables'] = []
+        if self.local_variables is not None:
+            for k in self.local_variables:
+                result['localVariables'].append(k.to_map() if k else None)
         if self.logging is not None:
             result['logging'] = self.logging.to_map()
+        if self.modified_at is not None:
+            result['modifiedAt'] = self.modified_at
         if self.modifier is not None:
             result['modifier'] = self.modifier
         if self.modifier_name is not None:
@@ -775,6 +828,8 @@ class Deployment(TeaModel):
             result['namespace'] = self.namespace
         if self.streaming_resource_setting is not None:
             result['streamingResourceSetting'] = self.streaming_resource_setting.to_map()
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
         return result
 
     def from_map(self, m: dict = None):
@@ -785,6 +840,8 @@ class Deployment(TeaModel):
         if m.get('batchResourceSetting') is not None:
             temp_model = BatchResourceSetting()
             self.batch_resource_setting = temp_model.from_map(m['batchResourceSetting'])
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
         if m.get('creator') is not None:
             self.creator = m.get('creator')
         if m.get('creatorName') is not None:
@@ -807,9 +864,16 @@ class Deployment(TeaModel):
         if m.get('jobSummary') is not None:
             temp_model = JobSummary()
             self.job_summary = temp_model.from_map(m['jobSummary'])
+        self.local_variables = []
+        if m.get('localVariables') is not None:
+            for k in m.get('localVariables'):
+                temp_model = LocalVariable()
+                self.local_variables.append(temp_model.from_map(k))
         if m.get('logging') is not None:
             temp_model = Logging()
             self.logging = temp_model.from_map(m['logging'])
+        if m.get('modifiedAt') is not None:
+            self.modified_at = m.get('modifiedAt')
         if m.get('modifier') is not None:
             self.modifier = m.get('modifier')
         if m.get('modifierName') is not None:
@@ -821,6 +885,8 @@ class Deployment(TeaModel):
         if m.get('streamingResourceSetting') is not None:
             temp_model = StreamingResourceSetting()
             self.streaming_resource_setting = temp_model.from_map(m['streamingResourceSetting'])
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
         return self
 
 
@@ -902,6 +968,45 @@ class DeploymentTarget(TeaModel):
         return self
 
 
+class EditableNamespace(TeaModel):
+    def __init__(
+        self,
+        namespace: str = None,
+        role: str = None,
+        workspace_id: str = None,
+    ):
+        self.namespace = namespace
+        self.role = role
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace is not None:
+            result['Namespace'] = self.namespace
+        if self.role is not None:
+            result['Role'] = self.role
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Namespace') is not None:
+            self.namespace = m.get('Namespace')
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
 class EngineVersionSupportedFeatures(TeaModel):
     def __init__(
         self,
@@ -942,8 +1047,10 @@ class EngineVersionMetadata(TeaModel):
         features: EngineVersionSupportedFeatures = None,
         status: str = None,
     ):
+        # This parameter is required.
         self.engine_version = engine_version
         self.features = features
+        # This parameter is required.
         self.status = status
 
     def validate(self):
@@ -1014,6 +1121,63 @@ class EngineVersionMetadataIndex(TeaModel):
             for k in m.get('engineVersionMetadata'):
                 temp_model = EngineVersionMetadata()
                 self.engine_version_metadata.append(temp_model.from_map(k))
+        return self
+
+
+class ErrorDetails(TeaModel):
+    def __init__(
+        self,
+        column_number: str = None,
+        end_column_number: str = None,
+        end_line_number: str = None,
+        invalidflink_conf: List[str] = None,
+        line_number: str = None,
+        message: str = None,
+    ):
+        self.column_number = column_number
+        self.end_column_number = end_column_number
+        self.end_line_number = end_line_number
+        self.invalidflink_conf = invalidflink_conf
+        self.line_number = line_number
+        self.message = message
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.column_number is not None:
+            result['columnNumber'] = self.column_number
+        if self.end_column_number is not None:
+            result['endColumnNumber'] = self.end_column_number
+        if self.end_line_number is not None:
+            result['endLineNumber'] = self.end_line_number
+        if self.invalidflink_conf is not None:
+            result['invalidflinkConf'] = self.invalidflink_conf
+        if self.line_number is not None:
+            result['lineNumber'] = self.line_number
+        if self.message is not None:
+            result['message'] = self.message
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('columnNumber') is not None:
+            self.column_number = m.get('columnNumber')
+        if m.get('endColumnNumber') is not None:
+            self.end_column_number = m.get('endColumnNumber')
+        if m.get('endLineNumber') is not None:
+            self.end_line_number = m.get('endLineNumber')
+        if m.get('invalidflinkConf') is not None:
+            self.invalidflink_conf = m.get('invalidflinkConf')
+        if m.get('lineNumber') is not None:
+            self.line_number = m.get('lineNumber')
+        if m.get('message') is not None:
+            self.message = m.get('message')
         return self
 
 
@@ -1171,6 +1335,7 @@ class Job(TeaModel):
         self,
         artifact: Artifact = None,
         batch_resource_setting: BatchResourceSetting = None,
+        created_at: str = None,
         creator: str = None,
         creator_name: str = None,
         deployment_id: str = None,
@@ -1180,8 +1345,10 @@ class Job(TeaModel):
         execution_mode: str = None,
         flink_conf: Dict[str, Any] = None,
         job_id: str = None,
+        local_variables: List[LocalVariable] = None,
         logging: Logging = None,
         metric: JobMetric = None,
+        modified_at: str = None,
         modifier: str = None,
         modifier_name: str = None,
         namespace: str = None,
@@ -1191,9 +1358,11 @@ class Job(TeaModel):
         status: JobStatus = None,
         streaming_resource_setting: StreamingResourceSetting = None,
         user_flink_conf: Dict[str, Any] = None,
+        workspace: str = None,
     ):
         self.artifact = artifact
         self.batch_resource_setting = batch_resource_setting
+        self.created_at = created_at
         self.creator = creator
         self.creator_name = creator_name
         self.deployment_id = deployment_id
@@ -1203,8 +1372,10 @@ class Job(TeaModel):
         self.execution_mode = execution_mode
         self.flink_conf = flink_conf
         self.job_id = job_id
+        self.local_variables = local_variables
         self.logging = logging
         self.metric = metric
+        self.modified_at = modified_at
         self.modifier = modifier
         self.modifier_name = modifier_name
         self.namespace = namespace
@@ -1214,12 +1385,17 @@ class Job(TeaModel):
         self.status = status
         self.streaming_resource_setting = streaming_resource_setting
         self.user_flink_conf = user_flink_conf
+        self.workspace = workspace
 
     def validate(self):
         if self.artifact:
             self.artifact.validate()
         if self.batch_resource_setting:
             self.batch_resource_setting.validate()
+        if self.local_variables:
+            for k in self.local_variables:
+                if k:
+                    k.validate()
         if self.logging:
             self.logging.validate()
         if self.metric:
@@ -1241,6 +1417,8 @@ class Job(TeaModel):
             result['artifact'] = self.artifact.to_map()
         if self.batch_resource_setting is not None:
             result['batchResourceSetting'] = self.batch_resource_setting.to_map()
+        if self.created_at is not None:
+            result['createdAt'] = self.created_at
         if self.creator is not None:
             result['creator'] = self.creator
         if self.creator_name is not None:
@@ -1259,10 +1437,16 @@ class Job(TeaModel):
             result['flinkConf'] = self.flink_conf
         if self.job_id is not None:
             result['jobId'] = self.job_id
+        result['localVariables'] = []
+        if self.local_variables is not None:
+            for k in self.local_variables:
+                result['localVariables'].append(k.to_map() if k else None)
         if self.logging is not None:
             result['logging'] = self.logging.to_map()
         if self.metric is not None:
             result['metric'] = self.metric.to_map()
+        if self.modified_at is not None:
+            result['modifiedAt'] = self.modified_at
         if self.modifier is not None:
             result['modifier'] = self.modifier
         if self.modifier_name is not None:
@@ -1281,6 +1465,8 @@ class Job(TeaModel):
             result['streamingResourceSetting'] = self.streaming_resource_setting.to_map()
         if self.user_flink_conf is not None:
             result['userFlinkConf'] = self.user_flink_conf
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
         return result
 
     def from_map(self, m: dict = None):
@@ -1291,6 +1477,8 @@ class Job(TeaModel):
         if m.get('batchResourceSetting') is not None:
             temp_model = BatchResourceSetting()
             self.batch_resource_setting = temp_model.from_map(m['batchResourceSetting'])
+        if m.get('createdAt') is not None:
+            self.created_at = m.get('createdAt')
         if m.get('creator') is not None:
             self.creator = m.get('creator')
         if m.get('creatorName') is not None:
@@ -1309,12 +1497,19 @@ class Job(TeaModel):
             self.flink_conf = m.get('flinkConf')
         if m.get('jobId') is not None:
             self.job_id = m.get('jobId')
+        self.local_variables = []
+        if m.get('localVariables') is not None:
+            for k in m.get('localVariables'):
+                temp_model = LocalVariable()
+                self.local_variables.append(temp_model.from_map(k))
         if m.get('logging') is not None:
             temp_model = Logging()
             self.logging = temp_model.from_map(m['logging'])
         if m.get('metric') is not None:
             temp_model = JobMetric()
             self.metric = temp_model.from_map(m['metric'])
+        if m.get('modifiedAt') is not None:
+            self.modified_at = m.get('modifiedAt')
         if m.get('modifier') is not None:
             self.modifier = m.get('modifier')
         if m.get('modifierName') is not None:
@@ -1336,6 +1531,8 @@ class Job(TeaModel):
             self.streaming_resource_setting = temp_model.from_map(m['streamingResourceSetting'])
         if m.get('userFlinkConf') is not None:
             self.user_flink_conf = m.get('userFlinkConf')
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
         return self
 
 
@@ -1343,14 +1540,20 @@ class JobStartParameters(TeaModel):
     def __init__(
         self,
         deployment_id: str = None,
+        local_variables: List[LocalVariable] = None,
         resource_queue_name: str = None,
         restore_strategy: DeploymentRestoreStrategy = None,
     ):
         self.deployment_id = deployment_id
+        self.local_variables = local_variables
         self.resource_queue_name = resource_queue_name
         self.restore_strategy = restore_strategy
 
     def validate(self):
+        if self.local_variables:
+            for k in self.local_variables:
+                if k:
+                    k.validate()
         if self.restore_strategy:
             self.restore_strategy.validate()
 
@@ -1362,6 +1565,10 @@ class JobStartParameters(TeaModel):
         result = dict()
         if self.deployment_id is not None:
             result['deploymentId'] = self.deployment_id
+        result['localVariables'] = []
+        if self.local_variables is not None:
+            for k in self.local_variables:
+                result['localVariables'].append(k.to_map() if k else None)
         if self.resource_queue_name is not None:
             result['resourceQueueName'] = self.resource_queue_name
         if self.restore_strategy is not None:
@@ -1372,6 +1579,11 @@ class JobStartParameters(TeaModel):
         m = m or dict()
         if m.get('deploymentId') is not None:
             self.deployment_id = m.get('deploymentId')
+        self.local_variables = []
+        if m.get('localVariables') is not None:
+            for k in m.get('localVariables'):
+                temp_model = LocalVariable()
+                self.local_variables.append(temp_model.from_map(k))
         if m.get('resourceQueueName') is not None:
             self.resource_queue_name = m.get('resourceQueueName')
         if m.get('restoreStrategy') is not None:
@@ -1386,6 +1598,7 @@ class Member(TeaModel):
         member: str = None,
         role: str = None,
     ):
+        # This parameter is required.
         self.member = member
         self.role = role
 
@@ -1582,6 +1795,118 @@ class Savepoint(TeaModel):
         return self
 
 
+class SqlStatementValidationResult(TeaModel):
+    def __init__(
+        self,
+        error_details: ErrorDetails = None,
+        message: str = None,
+        success: bool = None,
+        validation_result: str = None,
+    ):
+        self.error_details = error_details
+        self.message = message
+        self.success = success
+        self.validation_result = validation_result
+
+    def validate(self):
+        if self.error_details:
+            self.error_details.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.error_details is not None:
+            result['errorDetails'] = self.error_details.to_map()
+        if self.message is not None:
+            result['message'] = self.message
+        if self.success is not None:
+            result['success'] = self.success
+        if self.validation_result is not None:
+            result['validationResult'] = self.validation_result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('errorDetails') is not None:
+            temp_model = ErrorDetails()
+            self.error_details = temp_model.from_map(m['errorDetails'])
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        if m.get('validationResult') is not None:
+            self.validation_result = m.get('validationResult')
+        return self
+
+
+class SqlStatementWithContext(TeaModel):
+    def __init__(
+        self,
+        additional_dependencies: List[str] = None,
+        batch_mode: bool = None,
+        catalog: str = None,
+        database: str = None,
+        flink_configuration: Dict[str, Any] = None,
+        statement: str = None,
+        version_name: str = None,
+    ):
+        self.additional_dependencies = additional_dependencies
+        # This parameter is required.
+        self.batch_mode = batch_mode
+        self.catalog = catalog
+        self.database = database
+        self.flink_configuration = flink_configuration
+        # This parameter is required.
+        self.statement = statement
+        self.version_name = version_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.additional_dependencies is not None:
+            result['additionalDependencies'] = self.additional_dependencies
+        if self.batch_mode is not None:
+            result['batchMode'] = self.batch_mode
+        if self.catalog is not None:
+            result['catalog'] = self.catalog
+        if self.database is not None:
+            result['database'] = self.database
+        if self.flink_configuration is not None:
+            result['flinkConfiguration'] = self.flink_configuration
+        if self.statement is not None:
+            result['statement'] = self.statement
+        if self.version_name is not None:
+            result['versionName'] = self.version_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('additionalDependencies') is not None:
+            self.additional_dependencies = m.get('additionalDependencies')
+        if m.get('batchMode') is not None:
+            self.batch_mode = m.get('batchMode')
+        if m.get('catalog') is not None:
+            self.catalog = m.get('catalog')
+        if m.get('database') is not None:
+            self.database = m.get('database')
+        if m.get('flinkConfiguration') is not None:
+            self.flink_configuration = m.get('flinkConfiguration')
+        if m.get('statement') is not None:
+            self.statement = m.get('statement')
+        if m.get('versionName') is not None:
+            self.version_name = m.get('versionName')
+        return self
+
+
 class StartJobRequestBody(TeaModel):
     def __init__(
         self,
@@ -1631,6 +1956,7 @@ class StopJobRequestBody(TeaModel):
         self,
         stop_strategy: str = None,
     ):
+        # This parameter is required.
         self.stop_strategy = stop_strategy
 
     def validate(self):
@@ -1662,8 +1988,11 @@ class Variable(TeaModel):
         value: str = None,
     ):
         self.description = description
+        # This parameter is required.
         self.kind = kind
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -1705,6 +2034,7 @@ class CreateDeploymentHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -1736,6 +2066,7 @@ class CreateDeploymentRequest(TeaModel):
         self,
         body: Deployment = None,
     ):
+        # This parameter is required.
         self.body = body
 
     def validate(self):
@@ -1831,9 +2162,6 @@ class CreateDeploymentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -1870,6 +2198,7 @@ class CreateMemberHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -1996,9 +2325,6 @@ class CreateMemberResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2035,6 +2361,7 @@ class CreateSavepointHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -2068,6 +2395,7 @@ class CreateSavepointRequest(TeaModel):
         description: str = None,
         native_format: bool = None,
     ):
+        # This parameter is required.
         self.deployment_id = deployment_id
         self.description = description
         self.native_format = native_format
@@ -2171,9 +2499,6 @@ class CreateSavepointResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2210,6 +2535,7 @@ class CreateVariableHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -2241,6 +2567,7 @@ class CreateVariableRequest(TeaModel):
         self,
         body: Variable = None,
     ):
+        # This parameter is required.
         self.body = body
 
     def validate(self):
@@ -2336,9 +2663,6 @@ class CreateVariableResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2375,6 +2699,7 @@ class DeleteDeploymentHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -2464,9 +2789,6 @@ class DeleteDeploymentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2503,6 +2825,7 @@ class DeleteJobHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -2592,9 +2915,6 @@ class DeleteJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2631,6 +2951,7 @@ class DeleteMemberHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -2720,9 +3041,6 @@ class DeleteMemberResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2759,6 +3077,7 @@ class DeleteSavepointHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -2848,9 +3167,6 @@ class DeleteSavepointResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -2887,6 +3203,7 @@ class DeleteVariableHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -2976,9 +3293,6 @@ class DeleteVariableResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3015,6 +3329,7 @@ class FlinkApiProxyHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -3049,9 +3364,13 @@ class FlinkApiProxyRequest(TeaModel):
         resource_id: str = None,
         resource_type: str = None,
     ):
+        # This parameter is required.
         self.flink_api_path = flink_api_path
+        # This parameter is required.
         self.namespace = namespace
+        # This parameter is required.
         self.resource_id = resource_id
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -3155,9 +3474,6 @@ class FlinkApiProxyResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3194,6 +3510,7 @@ class GenerateResourcePlanWithFlinkConfAsyncHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -3345,9 +3662,6 @@ class GenerateResourcePlanWithFlinkConfAsyncResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3384,6 +3698,7 @@ class GetDeploymentHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -3481,9 +3796,6 @@ class GetDeploymentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3520,6 +3832,7 @@ class GetGenerateResourcePlanResultHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -3617,9 +3930,6 @@ class GetGenerateResourcePlanResultResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3656,6 +3966,7 @@ class GetJobHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -3753,9 +4064,6 @@ class GetJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3792,6 +4100,7 @@ class GetMemberHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -3889,9 +4198,6 @@ class GetMemberResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -3928,6 +4234,7 @@ class GetSavepointHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -4025,9 +4332,6 @@ class GetSavepointResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4064,6 +4368,7 @@ class ListDeploymentTargetsHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -4218,9 +4523,6 @@ class ListDeploymentTargetsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4257,6 +4559,7 @@ class ListDeploymentsHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -4286,15 +4589,25 @@ class ListDeploymentsHeaders(TeaModel):
 class ListDeploymentsRequest(TeaModel):
     def __init__(
         self,
+        creator: str = None,
         execution_mode: str = None,
+        label_key: str = None,
+        label_value_array: str = None,
+        modifier: str = None,
         name: str = None,
         page_index: int = None,
         page_size: int = None,
+        status: str = None,
     ):
+        self.creator = creator
         self.execution_mode = execution_mode
+        self.label_key = label_key
+        self.label_value_array = label_value_array
+        self.modifier = modifier
         self.name = name
         self.page_index = page_index
         self.page_size = page_size
+        self.status = status
 
     def validate(self):
         pass
@@ -4305,26 +4618,46 @@ class ListDeploymentsRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.creator is not None:
+            result['creator'] = self.creator
         if self.execution_mode is not None:
             result['executionMode'] = self.execution_mode
+        if self.label_key is not None:
+            result['labelKey'] = self.label_key
+        if self.label_value_array is not None:
+            result['labelValueArray'] = self.label_value_array
+        if self.modifier is not None:
+            result['modifier'] = self.modifier
         if self.name is not None:
             result['name'] = self.name
         if self.page_index is not None:
             result['pageIndex'] = self.page_index
         if self.page_size is not None:
             result['pageSize'] = self.page_size
+        if self.status is not None:
+            result['status'] = self.status
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('creator') is not None:
+            self.creator = m.get('creator')
         if m.get('executionMode') is not None:
             self.execution_mode = m.get('executionMode')
+        if m.get('labelKey') is not None:
+            self.label_key = m.get('labelKey')
+        if m.get('labelValueArray') is not None:
+            self.label_value_array = m.get('labelValueArray')
+        if m.get('modifier') is not None:
+            self.modifier = m.get('modifier')
         if m.get('name') is not None:
             self.name = m.get('name')
         if m.get('pageIndex') is not None:
             self.page_index = m.get('pageIndex')
         if m.get('pageSize') is not None:
             self.page_size = m.get('pageSize')
+        if m.get('status') is not None:
+            self.status = m.get('status')
         return self
 
 
@@ -4423,9 +4756,6 @@ class ListDeploymentsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4455,6 +4785,211 @@ class ListDeploymentsResponse(TeaModel):
         return self
 
 
+class ListEditableNamespaceRequest(TeaModel):
+    def __init__(
+        self,
+        namespace: str = None,
+        page_index: str = None,
+        page_size: str = None,
+        region_id: str = None,
+        workspace_id: str = None,
+    ):
+        self.namespace = namespace
+        self.page_index = page_index
+        self.page_size = page_size
+        # This parameter is required.
+        self.region_id = region_id
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.namespace is not None:
+            result['namespace'] = self.namespace
+        if self.page_index is not None:
+            result['pageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('namespace') is not None:
+            self.namespace = m.get('namespace')
+        if m.get('pageIndex') is not None:
+            self.page_index = m.get('pageIndex')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
+        return self
+
+
+class ListEditableNamespaceResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        editable_namespaces: List[EditableNamespace] = None,
+        page_index: str = None,
+        page_size: str = None,
+        total: str = None,
+    ):
+        self.editable_namespaces = editable_namespaces
+        self.page_index = page_index
+        self.page_size = page_size
+        self.total = total
+
+    def validate(self):
+        if self.editable_namespaces:
+            for k in self.editable_namespaces:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['editableNamespaces'] = []
+        if self.editable_namespaces is not None:
+            for k in self.editable_namespaces:
+                result['editableNamespaces'].append(k.to_map() if k else None)
+        if self.page_index is not None:
+            result['pageIndex'] = self.page_index
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.editable_namespaces = []
+        if m.get('editableNamespaces') is not None:
+            for k in m.get('editableNamespaces'):
+                temp_model = EditableNamespace()
+                self.editable_namespaces.append(temp_model.from_map(k))
+        if m.get('pageIndex') is not None:
+            self.page_index = m.get('pageIndex')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('total') is not None:
+            self.total = m.get('total')
+        return self
+
+
+class ListEditableNamespaceResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: ListEditableNamespaceResponseBodyData = None,
+        http_code: int = None,
+        message: str = None,
+        reason: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.data = data
+        self.http_code = http_code
+        self.message = message
+        self.reason = reason
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.http_code is not None:
+            result['httpCode'] = self.http_code
+        if self.message is not None:
+            result['message'] = self.message
+        if self.reason is not None:
+            result['reason'] = self.reason
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        if self.success is not None:
+            result['success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = ListEditableNamespaceResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('httpCode') is not None:
+            self.http_code = m.get('httpCode')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('reason') is not None:
+            self.reason = m.get('reason')
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        if m.get('success') is not None:
+            self.success = m.get('success')
+        return self
+
+
+class ListEditableNamespaceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListEditableNamespaceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListEditableNamespaceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListEngineVersionMetadataHeaders(TeaModel):
     def __init__(
         self,
@@ -4462,6 +4997,7 @@ class ListEngineVersionMetadataHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -4559,9 +5095,6 @@ class ListEngineVersionMetadataResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4598,6 +5131,7 @@ class ListJobsHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -4630,10 +5164,13 @@ class ListJobsRequest(TeaModel):
         deployment_id: str = None,
         page_index: int = None,
         page_size: int = None,
+        sort_name: str = None,
     ):
+        # This parameter is required.
         self.deployment_id = deployment_id
         self.page_index = page_index
         self.page_size = page_size
+        self.sort_name = sort_name
 
     def validate(self):
         pass
@@ -4650,6 +5187,8 @@ class ListJobsRequest(TeaModel):
             result['pageIndex'] = self.page_index
         if self.page_size is not None:
             result['pageSize'] = self.page_size
+        if self.sort_name is not None:
+            result['sortName'] = self.sort_name
         return result
 
     def from_map(self, m: dict = None):
@@ -4660,6 +5199,8 @@ class ListJobsRequest(TeaModel):
             self.page_index = m.get('pageIndex')
         if m.get('pageSize') is not None:
             self.page_size = m.get('pageSize')
+        if m.get('sortName') is not None:
+            self.sort_name = m.get('sortName')
         return self
 
 
@@ -4758,9 +5299,6 @@ class ListJobsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4797,6 +5335,7 @@ class ListMembersHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -4951,9 +5490,6 @@ class ListMembersResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -4990,6 +5526,7 @@ class ListSavepointsHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -5156,9 +5693,6 @@ class ListSavepointsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5195,6 +5729,7 @@ class ListVariablesHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -5349,9 +5884,6 @@ class ListVariablesResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5388,6 +5920,7 @@ class StartJobHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -5419,6 +5952,7 @@ class StartJobRequest(TeaModel):
         self,
         body: StartJobRequestBody = None,
     ):
+        # This parameter is required.
         self.body = body
 
     def validate(self):
@@ -5514,9 +6048,6 @@ class StartJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5553,6 +6084,7 @@ class StartJobWithParamsHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -5679,9 +6211,6 @@ class StartJobWithParamsResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5718,6 +6247,7 @@ class StopJobHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -5749,6 +6279,7 @@ class StopJobRequest(TeaModel):
         self,
         body: StopJobRequestBody = None,
     ):
+        # This parameter is required.
         self.body = body
 
     def validate(self):
@@ -5844,9 +6375,6 @@ class StopJobResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -5883,6 +6411,7 @@ class UpdateDeploymentHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -5914,6 +6443,7 @@ class UpdateDeploymentRequest(TeaModel):
         self,
         body: Deployment = None,
     ):
+        # This parameter is required.
         self.body = body
 
     def validate(self):
@@ -6009,9 +6539,6 @@ class UpdateDeploymentResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
@@ -6048,6 +6575,7 @@ class UpdateMemberHeaders(TeaModel):
         workspace: str = None,
     ):
         self.common_headers = common_headers
+        # This parameter is required.
         self.workspace = workspace
 
     def validate(self):
@@ -6174,9 +6702,6 @@ class UpdateMemberResponse(TeaModel):
         self.body = body
 
     def validate(self):
-        self.validate_required(self.headers, 'headers')
-        self.validate_required(self.status_code, 'status_code')
-        self.validate_required(self.body, 'body')
         if self.body:
             self.body.validate()
 
