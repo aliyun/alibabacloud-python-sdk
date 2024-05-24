@@ -928,6 +928,110 @@ class Client(OpenApiClient):
         headers = {}
         return await self.check_control_plane_log_enable_with_options_async(cluster_id, headers, runtime)
 
+    def check_service_role_with_options(
+        self,
+        request: cs20151215_models.CheckServiceRoleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.CheckServiceRoleResponse:
+        """
+        @summary 检查是否授权指定服务角色
+        
+        @param request: CheckServiceRoleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckServiceRoleResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.roles):
+            body['roles'] = request.roles
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CheckServiceRole',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/ram/check-service-role',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.CheckServiceRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_service_role_with_options_async(
+        self,
+        request: cs20151215_models.CheckServiceRoleRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> cs20151215_models.CheckServiceRoleResponse:
+        """
+        @summary 检查是否授权指定服务角色
+        
+        @param request: CheckServiceRoleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CheckServiceRoleResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.roles):
+            body['roles'] = request.roles
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CheckServiceRole',
+            version='2015-12-15',
+            protocol='HTTPS',
+            pathname=f'/ram/check-service-role',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cs20151215_models.CheckServiceRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_service_role(
+        self,
+        request: cs20151215_models.CheckServiceRoleRequest,
+    ) -> cs20151215_models.CheckServiceRoleResponse:
+        """
+        @summary 检查是否授权指定服务角色
+        
+        @param request: CheckServiceRoleRequest
+        @return: CheckServiceRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.check_service_role_with_options(request, headers, runtime)
+
+    async def check_service_role_async(
+        self,
+        request: cs20151215_models.CheckServiceRoleRequest,
+    ) -> cs20151215_models.CheckServiceRoleResponse:
+        """
+        @summary 检查是否授权指定服务角色
+        
+        @param request: CheckServiceRoleRequest
+        @return: CheckServiceRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.check_service_role_with_options_async(request, headers, runtime)
+
     def create_autoscaling_config_with_options(
         self,
         cluster_id: str,
@@ -1592,7 +1696,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CreateClusterNodePoolResponse:
         """
-        @summary You can call the CreateClusterNodePool operation to create a node pool for a Container Service for Kubernetes (ACK) cluster.
+        @summary Creates a node pool for a Container Service for Kubernetes (ACK) cluster. You can use node pools to facilitate node management. For example, you can schedule, configure, or maintain nodes by node pool, and enable auto scaling for a node pool. We recommend that you use a managed node pool, which can help automate specific O\\\\\\&M tasks for nodes, such as Common Vulnerabilities and Exposures (CVE) patching and node repair. This reduces your O\\\\\\&M workload.
         
         @param request: CreateClusterNodePoolRequest
         @param headers: map
@@ -1651,7 +1755,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> cs20151215_models.CreateClusterNodePoolResponse:
         """
-        @summary You can call the CreateClusterNodePool operation to create a node pool for a Container Service for Kubernetes (ACK) cluster.
+        @summary Creates a node pool for a Container Service for Kubernetes (ACK) cluster. You can use node pools to facilitate node management. For example, you can schedule, configure, or maintain nodes by node pool, and enable auto scaling for a node pool. We recommend that you use a managed node pool, which can help automate specific O\\\\\\&M tasks for nodes, such as Common Vulnerabilities and Exposures (CVE) patching and node repair. This reduces your O\\\\\\&M workload.
         
         @param request: CreateClusterNodePoolRequest
         @param headers: map
@@ -1708,7 +1812,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.CreateClusterNodePoolRequest,
     ) -> cs20151215_models.CreateClusterNodePoolResponse:
         """
-        @summary You can call the CreateClusterNodePool operation to create a node pool for a Container Service for Kubernetes (ACK) cluster.
+        @summary Creates a node pool for a Container Service for Kubernetes (ACK) cluster. You can use node pools to facilitate node management. For example, you can schedule, configure, or maintain nodes by node pool, and enable auto scaling for a node pool. We recommend that you use a managed node pool, which can help automate specific O\\\\\\&M tasks for nodes, such as Common Vulnerabilities and Exposures (CVE) patching and node repair. This reduces your O\\\\\\&M workload.
         
         @param request: CreateClusterNodePoolRequest
         @return: CreateClusterNodePoolResponse
@@ -1723,7 +1827,7 @@ class Client(OpenApiClient):
         request: cs20151215_models.CreateClusterNodePoolRequest,
     ) -> cs20151215_models.CreateClusterNodePoolResponse:
         """
-        @summary You can call the CreateClusterNodePool operation to create a node pool for a Container Service for Kubernetes (ACK) cluster.
+        @summary Creates a node pool for a Container Service for Kubernetes (ACK) cluster. You can use node pools to facilitate node management. For example, you can schedule, configure, or maintain nodes by node pool, and enable auto scaling for a node pool. We recommend that you use a managed node pool, which can help automate specific O\\\\\\&M tasks for nodes, such as Common Vulnerabilities and Exposures (CVE) patching and node repair. This reduces your O\\\\\\&M workload.
         
         @param request: CreateClusterNodePoolRequest
         @return: CreateClusterNodePoolResponse
@@ -13512,9 +13616,8 @@ class Client(OpenApiClient):
         """
         @summary Sets the validity period of a kubeconfig file used by a Resource Access Management (RAM) user or RAM role to connect to a Container Service for Kubernetes (ACK) cluster. The validity period ranges from 1 to 876,000 hours. You can call this API operation when you customize configurations by using an Alibaba Cloud account. The default validity period of a kubeconfig file is three years.
         
-        @description *\
-        ***\
-        You can call this operation only with an Alibaba Cloud account. - If the kubeconfig file used by your cluster is revoked, the custom validity period of the kubeconfig file is reset. In this case, you need to call this API operation to reconfigure the validity period of the kubeconfig file.
+        @description - You can call this operation only with an Alibaba Cloud account.
+        - If the kubeconfig file used by your cluster is revoked, the custom validity period of the kubeconfig file is reset. In this case, you need to call this API operation to reconfigure the validity period of the kubeconfig file.
         
         @param request: UpdateK8sClusterUserConfigExpireRequest
         @param headers: map
@@ -13557,9 +13660,8 @@ class Client(OpenApiClient):
         """
         @summary Sets the validity period of a kubeconfig file used by a Resource Access Management (RAM) user or RAM role to connect to a Container Service for Kubernetes (ACK) cluster. The validity period ranges from 1 to 876,000 hours. You can call this API operation when you customize configurations by using an Alibaba Cloud account. The default validity period of a kubeconfig file is three years.
         
-        @description *\
-        ***\
-        You can call this operation only with an Alibaba Cloud account. - If the kubeconfig file used by your cluster is revoked, the custom validity period of the kubeconfig file is reset. In this case, you need to call this API operation to reconfigure the validity period of the kubeconfig file.
+        @description - You can call this operation only with an Alibaba Cloud account.
+        - If the kubeconfig file used by your cluster is revoked, the custom validity period of the kubeconfig file is reset. In this case, you need to call this API operation to reconfigure the validity period of the kubeconfig file.
         
         @param request: UpdateK8sClusterUserConfigExpireRequest
         @param headers: map
@@ -13600,9 +13702,8 @@ class Client(OpenApiClient):
         """
         @summary Sets the validity period of a kubeconfig file used by a Resource Access Management (RAM) user or RAM role to connect to a Container Service for Kubernetes (ACK) cluster. The validity period ranges from 1 to 876,000 hours. You can call this API operation when you customize configurations by using an Alibaba Cloud account. The default validity period of a kubeconfig file is three years.
         
-        @description *\
-        ***\
-        You can call this operation only with an Alibaba Cloud account. - If the kubeconfig file used by your cluster is revoked, the custom validity period of the kubeconfig file is reset. In this case, you need to call this API operation to reconfigure the validity period of the kubeconfig file.
+        @description - You can call this operation only with an Alibaba Cloud account.
+        - If the kubeconfig file used by your cluster is revoked, the custom validity period of the kubeconfig file is reset. In this case, you need to call this API operation to reconfigure the validity period of the kubeconfig file.
         
         @param request: UpdateK8sClusterUserConfigExpireRequest
         @return: UpdateK8sClusterUserConfigExpireResponse
@@ -13619,9 +13720,8 @@ class Client(OpenApiClient):
         """
         @summary Sets the validity period of a kubeconfig file used by a Resource Access Management (RAM) user or RAM role to connect to a Container Service for Kubernetes (ACK) cluster. The validity period ranges from 1 to 876,000 hours. You can call this API operation when you customize configurations by using an Alibaba Cloud account. The default validity period of a kubeconfig file is three years.
         
-        @description *\
-        ***\
-        You can call this operation only with an Alibaba Cloud account. - If the kubeconfig file used by your cluster is revoked, the custom validity period of the kubeconfig file is reset. In this case, you need to call this API operation to reconfigure the validity period of the kubeconfig file.
+        @description - You can call this operation only with an Alibaba Cloud account.
+        - If the kubeconfig file used by your cluster is revoked, the custom validity period of the kubeconfig file is reset. In this case, you need to call this API operation to reconfigure the validity period of the kubeconfig file.
         
         @param request: UpdateK8sClusterUserConfigExpireRequest
         @return: UpdateK8sClusterUserConfigExpireResponse

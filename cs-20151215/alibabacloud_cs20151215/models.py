@@ -2342,6 +2342,185 @@ class CheckControlPlaneLogEnableResponse(TeaModel):
         return self
 
 
+class CheckServiceRoleRequestRoles(TeaModel):
+    def __init__(
+        self,
+        name: str = None,
+    ):
+        # This parameter is required.
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class CheckServiceRoleRequest(TeaModel):
+    def __init__(
+        self,
+        roles: List[CheckServiceRoleRequestRoles] = None,
+    ):
+        # This parameter is required.
+        self.roles = roles
+
+    def validate(self):
+        if self.roles:
+            for k in self.roles:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['roles'] = []
+        if self.roles is not None:
+            for k in self.roles:
+                result['roles'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.roles = []
+        if m.get('roles') is not None:
+            for k in m.get('roles'):
+                temp_model = CheckServiceRoleRequestRoles()
+                self.roles.append(temp_model.from_map(k))
+        return self
+
+
+class CheckServiceRoleResponseBodyRoles(TeaModel):
+    def __init__(
+        self,
+        granted: bool = None,
+        message: str = None,
+        name: str = None,
+    ):
+        self.granted = granted
+        self.message = message
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.granted is not None:
+            result['granted'] = self.granted
+        if self.message is not None:
+            result['message'] = self.message
+        if self.name is not None:
+            result['name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('granted') is not None:
+            self.granted = m.get('granted')
+        if m.get('message') is not None:
+            self.message = m.get('message')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        return self
+
+
+class CheckServiceRoleResponseBody(TeaModel):
+    def __init__(
+        self,
+        roles: List[CheckServiceRoleResponseBodyRoles] = None,
+    ):
+        self.roles = roles
+
+    def validate(self):
+        if self.roles:
+            for k in self.roles:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['roles'] = []
+        if self.roles is not None:
+            for k in self.roles:
+                result['roles'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.roles = []
+        if m.get('roles') is not None:
+            for k in m.get('roles'):
+                temp_model = CheckServiceRoleResponseBodyRoles()
+                self.roles.append(temp_model.from_map(k))
+        return self
+
+
+class CheckServiceRoleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CheckServiceRoleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CheckServiceRoleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateAutoscalingConfigRequest(TeaModel):
     def __init__(
         self,
@@ -3676,17 +3855,25 @@ class CreateClusterNodePoolRequestAutoScaling(TeaModel):
         # This parameter is deprecated.
         # 
         # The maximum bandwidth of the EIP. Unit: Mbit/s.
+        # 
+        # **\
+        # 
+        # **Important** This parameter is deprecated. Use the internet_charge_type and internet_max_bandwidth_out parameters instead.
         self.eip_bandwidth = eip_bandwidth
         # This parameter is deprecated.
         # 
         # The metering method of the EIP. Valid values:
         # 
-        # *   `PayByBandwidth`: pay-by-bandwidth.
-        # *   `PayByTraffic`: pay-by-data-transfer.
+        # *   `PayByBandwidth`: pay-by-bandwidth
+        # *   `PayByTraffic`: pay-by-data-transfer
         # 
         # Default value: `PayByBandwidth`.
+        # 
+        # **\
+        # 
+        # **Important** This parameter is deprecated. Use the internet_charge_type and internet_max_bandwidth_out parameters instead.
         self.eip_internet_charge_type = eip_internet_charge_type
-        # Specifies whether to enable auto scaling. Valid values:
+        # Specifies whether to enable auto scaling for the node pool. Valid values:
         # 
         # *   `true`: enables auto scaling.
         # *   `false`: disables auto scaling. If you set this parameter to false, other parameters in the `auto_scaling` section do not take effect.
@@ -3697,23 +3884,29 @@ class CreateClusterNodePoolRequestAutoScaling(TeaModel):
         # 
         # Specifies whether to associate an elastic IP address (EIP) with the node pool. Valid values:
         # 
-        # *   `true`: associates an EIP with the node pool
+        # *   `true`: associates an EIP with the node pool.
         # *   `false`: does not associate an EIP with the node pool.
         # 
         # Default value: `false`.
-        self.is_bond_eip = is_bond_eip
-        # The maximum number of Elastic Compute Service (ECS) instances that can be created in a node pool.
-        self.max_instances = max_instances
-        # The minimum number of ECS instances that must be kept in a node pool.
-        self.min_instances = min_instances
-        # The instance types that can be used for the auto scaling of the node pool. Valid values:
         # 
-        # *   `cpu`: regular instance.
-        # *   `gpu`: GPU-accelerated instance.
-        # *   `gpushare`: shared GPU-accelerated instance.
+        # **\
+        # 
+        # **Important** This parameter is deprecated. Use the internet_charge_type and internet_max_bandwidth_out parameters instead.
+        self.is_bond_eip = is_bond_eip
+        # The maximum number of instances that can be automatically scaled. The number of nodes in the node pool cannot exceed this value. This parameter takes effect only if you set `enable` to true. Valid values: [min_instances, 2000]. Default value: 0.
+        self.max_instances = max_instances
+        # The minimum number of instances that can be automatically scaled. The number of nodes in the node pool cannot be lower than this value. This parameter takes effect only if you set `enable` to true. Valid values: [0, max_instances]. Default value: 0.
+        self.min_instances = min_instances
+        # The type of instances that are automatically scaled. This parameter takes effect only if you set `enable` to true. Valid values:
+        # 
+        # *   `cpu`: regular instance
+        # *   `gpu`: GPU-accelerated instance
+        # *   `gpushare`: shared GPU-accelerated instance
         # *   `spot`: preemptible instance
         # 
         # Default value: `cpu`.
+        # 
+        # >  You cannot modify this parameter after the node pool is created.
         self.type = type
 
     def validate(self):
@@ -3846,7 +4039,7 @@ class CreateClusterNodePoolRequestKubernetesConfig(TeaModel):
         # 
         # Default value: `false`.
         self.cms_enabled = cms_enabled
-        # The CPU management policy of the nodes in a node pool. The following policies are supported if the Kubernetes version of the cluster is 1.12.6 or later.
+        # The CPU management policy of nodes in the node pool. The following policies are supported if the Kubernetes version of the cluster is 1.12.6 or later:
         # 
         # *   `static`: allows pods with specific resource characteristics on the node to be granted enhanced CPU affinity and exclusivity.
         # *   `none`: specifies that the default CPU affinity is used.
@@ -3868,6 +4061,7 @@ class CreateClusterNodePoolRequestKubernetesConfig(TeaModel):
         self.runtime_version = runtime_version
         # The configuration of taints.
         self.taints = taints
+        # Specifies whether the nodes are schedulable after a scale-out activity is performed.
         self.unschedulable = unschedulable
         # The user-defined data on nodes.
         self.user_data = user_data
@@ -3946,6 +4140,12 @@ class CreateClusterNodePoolRequestManagementAutoRepairPolicy(TeaModel):
         self,
         restart_node: bool = None,
     ):
+        # Specifies whether to allow node restart. This parameter takes effect only if you set `auto_repair` to true. Valid values:
+        # 
+        # *   `true`: allows node restart.
+        # *   `false`: does not allow node restart.
+        # 
+        # When `auto_repair` is set to true, the default value of this parameter is `true`. When `auto_repair` is set to false, the default value of this parameter is `false`.
         self.restart_node = restart_node
 
     def validate(self):
@@ -3975,8 +4175,26 @@ class CreateClusterNodePoolRequestManagementAutoUpgradePolicy(TeaModel):
         auto_upgrade_os: bool = None,
         auto_upgrade_runtime: bool = None,
     ):
+        # Specifies whether to allow auto update of the kubelet. This parameter takes effect only if you set `auto_upgrade` to true. Valid values:
+        # 
+        # *   `true`: allows auto update of the kubelet.
+        # *   `false`: does not allow auto update of the kubelet.
+        # 
+        # When `auto_upgrade` is set to true, the default value of this parameter is `true`. When `auto_upgrade` is set to false, the default value of this parameter is `false`.
         self.auto_upgrade_kubelet = auto_upgrade_kubelet
+        # Specifies whether to allow auto update of the operating system (OS). This parameter takes effect only if you set `auto_upgrade` to true. Valid values:
+        # 
+        # *   `true`: allows auto update of the OS.
+        # *   `false`: does not allow auto update of the OS.
+        # 
+        # Default value: `false`.
         self.auto_upgrade_os = auto_upgrade_os
+        # Specifies whether to allow auto update of the runtime. This parameter takes effect only if you set `auto_upgrade` to true. Valid values:
+        # 
+        # *   `true`: allows auto update of the runtime.
+        # *   `false`: does not allow auto update of the runtime.
+        # 
+        # Default value: `false`.
         self.auto_upgrade_runtime = auto_upgrade_runtime
 
     def validate(self):
@@ -4013,7 +4231,18 @@ class CreateClusterNodePoolRequestManagementAutoVulFixPolicy(TeaModel):
         restart_node: bool = None,
         vul_level: str = None,
     ):
+        # Specifies whether to allow node restart. This parameter takes effect only if you set `auto_vul_fix` to true. Valid values:
+        # 
+        # *   `true`: allows node restart.
+        # *   `false`: does not allow node restart. When `auto_vul_fix` is set to true, the default value of this parameter is `false`. When `auto_vul_fix` is set to false, the default value of this parameter is `false`.
         self.restart_node = restart_node
+        # The level of CVEs that can be automatically patched. Separate multiple levels with commas (,). Example: `asap,later`. Supported CVE levels:
+        # 
+        # *   `asap`: high
+        # *   `later`: medium
+        # *   `nntf`: low
+        # 
+        # When `auto_vul_fix` is set to true, the default value of this parameter is `asap`.
         self.vul_level = vul_level
 
     def validate(self):
@@ -4048,18 +4277,22 @@ class CreateClusterNodePoolRequestManagementUpgradeConfig(TeaModel):
         surge: int = None,
         surge_percentage: int = None,
     ):
-        # Indicates whether auto update is enabled. Valid values:
+        # Specifies whether to enable auto update. Valid values:
         # 
-        # *   `true`: enables auto upgrade.
+        # *   `true`: enables auto update.
         # *   `false`: disables auto update.
+        # 
+        # **\
+        # 
+        # **Important** This parameter is deprecated. Use the preceding auto_upgrade parameter instead.
         self.auto_upgrade = auto_upgrade
-        # The maximum number of nodes that can be in the Unschedulable state. Valid values: 1 to 1000.
+        # The maximum number of unavailable nodes. Valid values: 1 to 1000.
         # 
         # Default value: 1.
         self.max_unavailable = max_unavailable
-        # The number of nodes that are temporarily added to the node pool during an auto update.
+        # The number of additional nodes.
         self.surge = surge
-        # The percentage of additional nodes to the nodes in the node pool. You must set this parameter or `surge`.
+        # The percentage of additional nodes to the total nodes in the node pool. You must specify this parameter or the `surge` parameter.
         self.surge_percentage = surge_percentage
 
     def validate(self):
@@ -4106,22 +4339,41 @@ class CreateClusterNodePoolRequestManagement(TeaModel):
         enable: bool = None,
         upgrade_config: CreateClusterNodePoolRequestManagementUpgradeConfig = None,
     ):
-        # Specifies whether to enable auto repair. This parameter takes effect only when you specify `enable=true`. Valid values:
+        # Specifies whether to enable auto node repair. This parameter takes effect only if you set `enable` to true.
         # 
-        # *   `true`: enables auto repair.
-        # *   `false`: disables auto repair.
+        # *   `true`: enables auto node repair.
+        # *   `false`: disables auto node repair.
+        # 
+        # When `enable` is set to true, the default value of this parameter is `true`. When `enable` is set to false, the default value of this parameter is `false`.
         self.auto_repair = auto_repair
+        # The auto node repair policy.
         self.auto_repair_policy = auto_repair_policy
+        # Specifies whether to enable auto node update. This parameter takes effect only if you set `enable` to true.
+        # 
+        # *   `true`: enables auto node update.
+        # *   `false`: disables auto node update.
+        # 
+        # When `enable` is set to true, the default value of this parameter is `true`. When `enable` is set to false, the default value of this parameter is `false`.
         self.auto_upgrade = auto_upgrade
+        # The auto node update policy.
         self.auto_upgrade_policy = auto_upgrade_policy
+        # Specifies whether to enable auto CVE patching. This parameter takes effect only if you set `enable` to true.
+        # 
+        # *   `true`: enables auto CVE patching.
+        # *   `false`: disables auto CVE patching.
+        # 
+        # When `enable` is set to true, the default value of this parameter is `true`. When `enable` is set to false, the default value of this parameter is `false`.
         self.auto_vul_fix = auto_vul_fix
+        # The auto CVE patching policy.
         self.auto_vul_fix_policy = auto_vul_fix_policy
         # Specifies whether to enable the managed node pool feature. Valid values:
         # 
         # *   `true`: enables the managed node pool feature.
-        # *   `false`: disables the managed node pool feature. Other parameters in this section take effect only when you specify enable=true.
+        # *   `false`: disables the managed node pool feature. Other parameters in this section take effect only if you set enable to true.
+        # 
+        # Default value: false.
         self.enable = enable
-        # The configuration of auto update. The configuration takes effect only when you specify `enable=true`.
+        # The configuration of auto update. The configuration takes effect only if you set `enable` to true.
         self.upgrade_config = upgrade_config
 
     def validate(self):
@@ -4188,6 +4440,7 @@ class CreateClusterNodePoolRequestNodeConfig(TeaModel):
         self,
         kubelet_configuration: KubeletConfig = None,
     ):
+        # The parameter settings of the kubelet.
         self.kubelet_configuration = kubelet_configuration
 
     def validate(self):
@@ -4223,12 +4476,13 @@ class CreateClusterNodePoolRequestNodepoolInfo(TeaModel):
         # 
         # This parameter is required.
         self.name = name
-        # The ID of the resource group to which the node pool belongs.
+        # The ID of the resource group. Instances that are added to the node pool belong to this resource group.
         self.resource_group_id = resource_group_id
-        # The type of node pool. Valid values:
+        # The type of the node pool. Valid values:
         # 
-        # *   `ess`: node pool
+        # *   `ess`: regular node pool (which supports the managed node pool feature and the auto scaling feature)
         # *   `edge`: edge node pool
+        # *   `lingjun`: Lingjun node pool
         self.type = type
 
     def validate(self):
@@ -4267,11 +4521,11 @@ class CreateClusterNodePoolRequestScalingGroupPrivatePoolOptions(TeaModel):
     ):
         # The ID of the private node pool.
         self.id = id
-        # The type of private node pool. This parameter specifies the type of private pool that you want to use to create instances. A private node pool is generated when an elasticity assurance or a capacity reservation service takes effect. The system selects a private node pool to launch instances. Valid values:
+        # The type of the private node pool. This parameter specifies the type of private node pool that you want to use to create instances. A private node pool is generated when an elasticity assurance or a capacity reservation service takes effect. The system selects a private node pool to launch instances. Valid values:
         # 
-        # *   `Open`: open private pool. The system selects an open private node pool to launch instances. If no matching open private node pool is available, the resources in the public node pool are used.
-        # *   `Target`: specific private pool. The system uses the resources of the specified private node pool to launch instances. If the specified private node pool is unavailable, instances cannot be launched.
-        # *   `None`: no private pool is used. The resources of private node pools are not used to launch the instances.
+        # *   `Open`: open private node pool. The system selects an open private node pool to launch instances. If no matching open private node pool is available, the resources in the public node pool are used.
+        # *   `Target`: specified private node pool. The system uses the resources of the specified private node pool to launch instances. If the specified private node pool is unavailable, instances cannot be launched.
+        # *   `None`: no private node pool. The resources of private node pools are not used to launch the instances.
         self.match_criteria = match_criteria
 
     def validate(self):
@@ -4304,9 +4558,9 @@ class CreateClusterNodePoolRequestScalingGroupSpotPriceLimit(TeaModel):
         instance_type: str = None,
         price_limit: str = None,
     ):
-        # The instance type of preemptible instance.
+        # The instance type of preemptible instances.
         self.instance_type = instance_type
-        # The maximum bid price of a preemptible instance.
+        # The price cap of a preemptible instance of the type.
         self.price_limit = price_limit
 
     def validate(self):
@@ -4339,9 +4593,9 @@ class CreateClusterNodePoolRequestScalingGroupTags(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of a label.
+        # The tag key.
         self.key = key
-        # The value of a label.
+        # The tag value.
         self.value = value
 
     def validate(self):
@@ -4416,72 +4670,76 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
         tags: List[CreateClusterNodePoolRequestScalingGroupTags] = None,
         vswitch_ids: List[str] = None,
     ):
-        # Specifies whether to enable auto-renewal for nodes in the node pool. This parameter takes effect only when you set `instance_charge_type` to `PrePaid`. Valid values:
+        # Specifies whether to enable auto-renewal for nodes in the node pool. This parameter takes effect only if you set `instance_charge_type` to `PrePaid`. Valid values:
         # 
-        # *   `true`: enables auto-renewal
+        # *   `true`: enables auto-renewal.
         # *   `false`: disables auto-renewal.
         # 
         # Default value: `true`.
         self.auto_renew = auto_renew
-        # The duration of the auto-renewal. This parameter takes effect and is required only when you set instance_charge_type to PrePaid and auto_renew to true. If `PeriodUnit=Month` is configured, the valid values are 1, 2, 3, 6, and 12.
+        # The auto-renewal duration of nodes in the node pool. This parameter is available and required only if you set instance_charge_type to PrePaid and auto_renew to true. Valid values when `period_unit` is set to Month: 1, 2, 3, 6, and 12.
         # 
         # Default value: 1.
         self.auto_renew_period = auto_renew_period
+        # This parameter is deprecated. Use the security_hardening_os parameter instead.
         self.cis_enabled = cis_enabled
         # Specifies whether to automatically create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created due to reasons such as the cost or insufficient inventory. This parameter takes effect when you set `multi_az_policy` to `COST_OPTIMIZED`. Valid values:
         # 
         # *   `true`: automatically creates pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
         # *   `false`: does not create pay-as-you-go instances to meet the required number of ECS instances if preemptible instances cannot be created.
         self.compensate_with_on_demand = compensate_with_on_demand
-        # The configuration of the data disks that are mounted to the nodes in the node pool.
+        # The configurations of the data disks that are mounted to the nodes in the node pool.
         self.data_disks = data_disks
-        # The ID of the deployment set to which the ECS instances in the node pool belong.
+        # The ID of the deployment set.
         self.deploymentset_id = deploymentset_id
         # The expected number of nodes in the node pool.
         self.desired_size = desired_size
-        # The ID of a custom image. By default, the image provided by ACK is used.
+        # The ID of the custom image. By default, the image provided by the system is used.
         self.image_id = image_id
-        # The type of OS image. You must set this parameter or `platform`. Valid values:
+        # The type of the OS image. You must specify this parameter or the `platform` parameter. Valid values:
         # 
         # *   `AliyunLinux`: Alinux2
         # *   `AliyunLinux3`: Alinux3
         # *   `AliyunLinux3Arm64`: Alinux3 ARM
         # *   `AliyunLinuxUEFI`: Alinux2 UEFI
-        # *   `CentOS`: CentOS
-        # *   `Windows`: Windows
+        # *   `CentOS`
+        # *   `Windows`
         # *   `WindowsCore`: Windows Core
-        # *   `ContainerOS`: ContainerOS
+        # *   `ContainerOS`
         self.image_type = image_type
-        # The billing method of the nodes in the node pool. Valid values:
+        # The billing method of nodes in the node pool. Valid values:
         # 
-        # *   `PrePaid`: the subscription billing method.
-        # *   `PostPaid`: the pay-as-you-go billing method.
+        # *   `PrePaid`: subscription
+        # *   `PostPaid`: pay-as-you-go
         # 
         # Default value: `PostPaid`.
         # 
         # This parameter is required.
         self.instance_charge_type = instance_charge_type
-        # The instance type of the nodes in the node pool.
+        # The instance types of nodes in the node pool. A node that is added to the node pool is assigned one of the specified instance types that is the most appropriate. Allowed number of instance types: 1 to 10.
+        # 
+        # >  To ensure high availability, we recommend that you specify multiple instance types.
         # 
         # This parameter is required.
         self.instance_types = instance_types
         # The metering method of the public IP address. Valid values:
         # 
-        # *   PayByBandwidth: pay-by-bandwidth.
-        # *   PayByTraffic: pay-by-data-transfer.
+        # *   PayByBandwidth: pay-by-bandwidth
+        # *   PayByTraffic: pay-by-data-transfer
         self.internet_charge_type = internet_charge_type
-        # The maximum outbound bandwidth of the public IP address of the node. Unit: Mbit/s. Valid values: 1 to 100.
+        # The maximum outbound bandwidth of the public IP address. Unit: Mbit/s. Valid values: 1 to 100.
         self.internet_max_bandwidth_out = internet_max_bandwidth_out
-        # The name of the key pair. You must set this parameter or the `login_password` parameter.
+        # The name of the key pair. You must specify this parameter or the `login_password` parameter.
         # 
-        # >  If you want to create a managed node pool, you must set `key_pair`.
+        # >  If you want to create a managed node pool, you must specify `key_pair`.
         self.key_pair = key_pair
+        # Specifies whether a non-root user can log on to the ECS instance added to the node pool.
         self.login_as_non_root = login_as_non_root
-        # The password for SSH logon. You must set this parameter or the `key_pair` parameter. The password must be 8 to 30 characters in length, and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+        # The password for SSH logon. You must specify this parameter or the `key_pair` parameter. The password must be 8 to 30 characters in length, and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
         self.login_password = login_password
-        # The ECS instance scaling policy for a multi-zone scaling group. Valid values:
+        # The ECS instance scaling policy for the multi-zone scaling group. Valid values:
         # 
-        # *   `PRIORITY`: ECS instances are created based on the VSwitchIds.N parameter. If Auto Scaling fails to create ECS instances in the zone of the vSwitch with the highest priority, Auto Scaling attempts to create ECS instances in the zone of the vSwitch with a lower priority.
+        # *   `PRIORITY`: ECS instances are created based on the VSwitchIds.N parameter. If an ECS instance cannot be created in the zone where the vSwitch that has the highest priority resides, Auto Scaling creates the ECS instance in the zone where the vSwitch that has the next highest priority resides.
         # 
         # *   `COST_OPTIMIZED`: ECS instances are created based on the vCPU unit price in ascending order. Preemptible instances are preferably created when preemptible instance types are specified in the scaling configuration. You can set the `CompensateWithOnDemand` parameter to specify whether to automatically create pay-as-you-go instances when preemptible instances cannot be created due to insufficient resources.
         # 
@@ -4489,7 +4747,7 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
         # 
         #     **Note** `COST_OPTIMIZED` is valid only when multiple instance types are specified or at least one preemptible instance type is specified.
         # 
-        # *   `BALANCE`: ECS instances are evenly distributed across multiple zones specified by the scaling group. If ECS instances become imbalanced among multiple zones due to insufficient inventory, you can call [RebalanceInstances](https://help.aliyun.com/document_detail/71516.html) of Auto Scaling to balance the instance distribution among zones.
+        # *   `BALANCE`: ECS instances are evenly distributed across multiple zones specified by the scaling group. If the distribution of ECS instances across zones is not balanced due to reasons such as insufficient inventory, you can call the [RebalanceInstances](https://help.aliyun.com/document_detail/71516.html) operation to evenly distribute the ECS instances across zones.
         # 
         # Default value: `PRIORITY`.
         self.multi_az_policy = multi_az_policy
@@ -4497,13 +4755,19 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
         self.on_demand_base_capacity = on_demand_base_capacity
         # The percentage of pay-as-you-go instances among the extra instances that exceed the number specified by `on_demand_base_capacity`. Valid values: 0 to 100.
         self.on_demand_percentage_above_base_capacity = on_demand_percentage_above_base_capacity
-        # The subscription duration of the nodes in the node pool. This parameter takes effect and is required only when you set `instance_charge_type` to `PrePaid`. If you set `period_unit` to Month, the valid values of `period` are 1, 2, 3, 6, and 12.
+        # The subscription duration of nodes in the node pool. This parameter is available and required if you set `instance_charge_type` to `PrePaid`.
         # 
-        # Default value: 1.
+        # *   Valid values when `period_unit` is set to `Week`: 1, 2, 3, and 4.
+        # *   Valid values when `period_unit` is set to `Month`: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
         self.period = period
-        # The billing cycle of the nodes in the node pool. This parameter is required if you set instance_charge_type to `PrePaid`. A value of Month indicates that the billing cycle is measured in months.
+        # The billing cycle of nodes in the node pool. This parameter is available and required if you set `instance_charge_type` to `PrePaid`.
+        # 
+        # *   `Month`: The subscription duration is measured in months.
+        # *   `Week`: The subscription duration is measured in weeks.
+        # 
+        # Default value: `Month`.
         self.period_unit = period_unit
-        # The release version of the operating system. Valid values:
+        # The OS distribution. Valid values:
         # 
         # *   `CentOS`
         # *   `AliyunLinux`
@@ -4514,79 +4778,102 @@ class CreateClusterNodePoolRequestScalingGroup(TeaModel):
         self.platform = platform
         # The configuration of the private node pool.
         self.private_pool_options = private_pool_options
-        # A list of ApsaraDB RDS instances.
+        # The ApsaraDB RDS instances.
         self.rds_instances = rds_instances
         # The scaling mode of the scaling group. Valid values:
         # 
-        # *   `release`: the standard mode. ECS instances are created and released based on resource usage.
-        # *   `recycle`: the swift mode. ECS instances are created, stopped, or started during scaling events. This reduces the time required for the next scale-out event. When the instance is stopped, you are charged only for the storage service. This does not apply to ECS instances attached with local disks.
+        # *   `release`: the standard mode. ECS instances are created and released based on the resource usage.
+        # *   `recycle`: the swift mode. ECS instances are created, stopped, or started during scaling events. This reduces the time required for the next scale-out event. When the instance is stopped, you are charged only for the storage service. This does not apply to ECS instances that are attached with local disks.
         # 
         # Default value: `release`.
         self.scaling_policy = scaling_policy
-        # Specifies the ID of the security group to which you want to add the node pool. You must set this parameter or `security_group_ids`. We recommend that you set `security_group_ids`.
+        # The ID of the security group to which you want to add the node pool. You must specify this parameter or the `security_group_ids` parameter. We recommend that you specify `security_group_ids`.
         self.security_group_id = security_group_id
-        # The IDs of security groups to which you want to add the node pool. You must set this parameter or `security_group_id`. We recommend that you set `security_group_ids`. If you set both `security_group_id` and `security_group_ids`, `security_group_ids` is used.
+        # The IDs of security groups. You must specify this parameter or the `security_group_id` parameter. We recommend that you specify `security_group_ids`. If you specify both `security_group_id` and `security_group_ids`, `security_group_ids` is used.
         self.security_group_ids = security_group_ids
+        # Specifies whether to enable Alibaba Cloud Linux Security Hardening. Valid values:
+        # 
+        # *   `true`: enables Alibaba Cloud Linux Security Hardening.
+        # *   `false`: disables Alibaba Cloud Linux Security Hardening.
+        # 
+        # Default value: `false`.
         self.security_hardening_os = security_hardening_os
+        # Specifies whether to enable reinforcement based on classified protection. You can enable reinforcement based on classified protection only when Alibaba Cloud Linux 2 or Alibaba Cloud Linux 3 is installed on nodes. Alibaba Cloud provides standards for baseline check and a scanner to ensure the compliance of Alibaba Cloud Linux 2 and Alibaba Cloud Linux 3 images with the level 3 standards of classified protection.
         self.soc_enabled = soc_enabled
-        # The number of instance types that are available. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
+        # The number of instance types that are available for creating preemptible instances. Auto Scaling creates preemptible instances of multiple instance types that are available at the lowest cost. Valid values: 1 to 10.
         self.spot_instance_pools = spot_instance_pools
-        # Specifies whether to supplement preemptible instances when the number of preemptible instances drops below the specified minimum number. If this parameter is set to true, when the scaling group receives a system message that a preemptible instance is to be reclaimed, the scaling group attempts to create a new instance to replace this instance. Valid values:
+        # Specifies whether to enable the supplementation of preemptible instances. If you set this parameter to true, when the scaling group receives a system message indicating that a preemptible instance is to be reclaimed, the scaling group attempts to create a new instance to replace this instance. Valid values:
         # 
         # *   `true`: enables the supplementation of preemptible instances.
         # *   `false`: disables the supplementation of preemptible instances.
         self.spot_instance_remedy = spot_instance_remedy
-        # The instance type of preemptible instance and the maximum bid price.
+        # The instance type of preemptible instances and the price cap for the instance type.
         self.spot_price_limit = spot_price_limit
         # The bidding policy of preemptible instances. Valid values:
         # 
-        # *   `NoSpot`: non-preemptible instance.
+        # *   `NoSpot`: non-preemptible.
         # *   `SpotWithPriceLimit`: specifies the highest bid.
         # *   `SpotAsPriceGo`: automatically submits bids based on the up-to-date market price.
         # 
         # For more information, see [Preemptible instances](https://help.aliyun.com/document_detail/165053.html).
         self.spot_strategy = spot_strategy
-        # Specifies whether to enable the burst feature for system disks. Valid values:
+        # Specifies whether to enable the burst feature for the system disk. Valid values:
         # 
         # *   true: enables the burst feature.
         # *   false: disables the burst feature.
         # 
-        # This parameter is supported only when `SystemDiskCategory` is set to `cloud_auto`. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+        # This parameter is available only when `SystemDiskCategory` is set to `cloud_auto`. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
         self.system_disk_bursting_enabled = system_disk_bursting_enabled
+        # The types of system disks. The system attempts to create system disks from a disk type with a lower priority when the disk type with a higher priority is unavailable. Valid values: 
+        # *   `cloud`: basic disk
+        # *   `cloud_efficiency`: ultra disk
+        # *   `cloud_ssd`: standard SSD
+        # *   `cloud_essd`: enhanced SSD (ESSD)
+        # *   `cloud_auto`: ESSD AutoPL disk
+        # *   `cloud_essd_entry`: ESSD Entry disk
+        # 
+        # Default value: `cloud_efficiency`.
         self.system_disk_categories = system_disk_categories
         # The type of system disk. Valid values:
-        # 
-        # *   `cloud_efficiency`: ultra disk.
-        # *   `cloud_ssd`: standard SSD.
-        # *   `cloud_essd`: enhanced SSD.
+        # *   `cloud`: basic disk
+        # *   `cloud_efficiency`: ultra disk
+        # *   `cloud_ssd`: standard SSD
+        # *   `cloud_essd`: enhanced SSD (ESSD)
+        # *   `cloud_auto`: ESSD AutoPL disk
+        # *   `cloud_essd_entry`: ESSD Entry disk
         # 
         # Default value: `cloud_efficiency`.
         self.system_disk_category = system_disk_category
+        # The algorithm that you want to use to encrypt the system disk. Set the value to aes-256.
         self.system_disk_encrypt_algorithm = system_disk_encrypt_algorithm
+        # Specifies whether to encrypt the system disk. Valid values: true: encrypts the system disk. false: does not encrypt the system disk.
         self.system_disk_encrypted = system_disk_encrypted
+        # The ID of the Key Management Service (KMS) key that is used to encrypt the system disk.
         self.system_disk_kms_key_id = system_disk_kms_key_id
-        # The performance level (PL) of the system disk that you want to use for the node. This parameter takes effect only for ESSDs.
+        # The performance level (PL) of the system disk. This parameter takes effect only for an ESSD.
         # 
         # *   PL0: moderate maximum concurrent I/O performance and low I/O latency
         # *   PL1: moderate maximum concurrent I/O performance and low I/O latency
         # *   PL2: high maximum concurrent I/O performance and low I/O latency
         # *   PL3: ultra-high maximum concurrent I/O performance and ultra-low I/O latency
+        # 
+        # >  Disks support all of the preceding PLs. However, when you create a disk, the PLs available vary based on the ECS instance type that you selected. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
         self.system_disk_performance_level = system_disk_performance_level
-        # The predefined IOPS of a system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.
+        # The preset IOPS of the system disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.
         # 
-        # This parameter is supported only when `SystemDiskCategory` is set to `cloud_auto`. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+        # This parameter is available only when `SystemDiskCategory` is set to `cloud_auto`. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
         self.system_disk_provisioned_iops = system_disk_provisioned_iops
-        # The system disk size of a node. Unit: GiB.
+        # The size of the system disk. Unit: GiB.
         # 
-        # Valid values: 40 to 500.
+        # Valid values: 20 to 20,248.
         self.system_disk_size = system_disk_size
-        # The labels that you want to add to the ECS instances.
+        # The tag that you want to add only to ECS instances.
         # 
-        # Each key must be unique and cannot exceed 128 characters in length. Neither keys nor values can start with aliyun or acs:. Neither keys nor values can contain https:// or http://.
+        # The tag key must be unique and cannot exceed 128 characters in length. The tag key and value cannot start with aliyun or acs: or contain https:// or http://.
         self.tags = tags
-        # The vSwitch IDs. Valid values: 1 to 8.
+        # The IDs of vSwitches. Allowed number of vSwitches: 1 to 8.
         # 
-        # >  To ensure high availability, we recommend that you select vSwitches that reside in different zones.
+        # >  To ensure high availability, we recommend that you select vSwitches in different zones.
         # 
         # This parameter is required.
         self.vswitch_ids = vswitch_ids
@@ -4865,18 +5152,18 @@ class CreateClusterNodePoolRequest(TeaModel):
         # 
         # The configuration of the edge node pool.
         self.interconnect_config = interconnect_config
-        # The network type of the edge node pool. This parameter takes effect only when you set the `type` parameter of the node pool to `edge`. Valid values:
+        # The network type of the edge node pool. This parameter takes effect only if you set the `type` parameter of the node pool to `edge`. Valid values:
         # 
         # *   `basic`: basic
-        # *   `improved`: enhanced
         # *   `private`: dedicated Only Kubernetes 1.22 and later support this parameter.
         self.interconnect_mode = interconnect_mode
         # The configuration of the cluster.
         self.kubernetes_config = kubernetes_config
         # The configuration of the managed node pool feature.
         self.management = management
-        # The maximum number of nodes that can be created in the edge node pool. You must specify a value that is equal to or larger than 0. A value of 0 indicates that the number of nodes in the node pool is limited only by the quota of nodes in the cluster. In most cases, this parameter is set to a value larger than 0 for edge node pools. This parameter is set to 0 for node pools of the ess type or default edge node pools.
+        # The maximum number of nodes that can be created in the edge node pool. The value of this parameter must be greater than or equal to 0. A value of 0 indicates that the number of nodes in the node pool is limited only by the quota of nodes in the cluster. In most cases, this parameter is set to a value larger than 0 for edge node pools. This parameter is set to 0 for node pools whose types are ess or default edge node pools.
         self.max_nodes = max_nodes
+        # The node configuration.
         self.node_config = node_config
         # The configuration of the node pool.
         self.nodepool_info = nodepool_info
@@ -4977,6 +5264,7 @@ class CreateClusterNodePoolResponseBody(TeaModel):
     ):
         # The node pool ID.
         self.nodepool_id = nodepool_id
+        # The request ID.
         self.request_id = request_id
         # The ID of the task.
         self.task_id = task_id
@@ -17751,10 +18039,16 @@ class DescribeUserQuotaResponseBodyEdgeImprovedNodepoolQuota(TeaModel):
         count: int = None,
         period: int = None,
     ):
+        # This parameter is deprecated.
+        # 
         # The maximum bandwidth of each enhanced node pool. Unit: Mbit/s.
         self.bandwidth = bandwidth
+        # This parameter is deprecated.
+        # 
         # The quota of enhanced edge node pools that belong to an Alibaba Cloud account.
         self.count = count
+        # This parameter is deprecated.
+        # 
         # The maximum subscription duration of an enhanced edge node pool. Unit: months.
         # 
         # > You can ignore this parameter because enhanced edge node pools are pay-as-you-go resources.
@@ -17807,6 +18101,8 @@ class DescribeUserQuotaResponseBody(TeaModel):
         self.cluster_nodepool_quota = cluster_nodepool_quota
         # The quota of clusters that belong to an Alibaba Cloud account. Default value: 50. If the default quota limit is reached, submit an application in the [Quota Center console](https://quotas.console.aliyun.com/products/csk/quotas) to increase the quota.
         self.cluster_quota = cluster_quota
+        # This parameter is deprecated.
+        # 
         # The quota of enhanced edge node pools.
         self.edge_improved_nodepool_quota = edge_improved_nodepool_quota
         # The quota of nodes in an ACK cluster. Default value: 100. If the default quota limit is reached, submit an application in the [Quota Center console](https://quotas.console.aliyun.com/products/csk/quotas) to increase the quota.

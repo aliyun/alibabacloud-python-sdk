@@ -1,3 +1,7 @@
+2024-05-24 Version: 4.1.0
+- Support API CheckServiceRole.
+
+
 2024-05-15 Version: 4.0.10
 - Generated python 2015-12-15 for CS.
 
