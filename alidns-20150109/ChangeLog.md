@@ -1,3 +1,11 @@
+2024-05-27 Version: 3.4.0
+- Support API DescribeCloudGtmAddressPool.
+- Support API DescribeInternetDnsLogs.
+- Update API DescribePdnsAppKey: add param AuthCode.
+- Update API DescribePdnsAppKey: update response param.
+- Update API DescribePdnsAppKeys: update response param.
+
+
 2024-05-22 Version: 3.3.0
 - Support API DescribeInternetDnsLogs.
 - Update API DescribePdnsAppKey: add param AuthCode.

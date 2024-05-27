@@ -3589,6 +3589,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_batch_result_detail_with_options_async(request, runtime)
 
+    def describe_cloud_gtm_address_pool_with_options(
+        self,
+        request: alidns_20150109_models.DescribeCloudGtmAddressPoolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeCloudGtmAddressPoolResponse:
+        """
+        @param request: DescribeCloudGtmAddressPoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudGtmAddressPoolResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_pool_id):
+            query['AddressPoolId'] = request.address_pool_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudGtmAddressPool',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeCloudGtmAddressPoolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cloud_gtm_address_pool_with_options_async(
+        self,
+        request: alidns_20150109_models.DescribeCloudGtmAddressPoolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeCloudGtmAddressPoolResponse:
+        """
+        @param request: DescribeCloudGtmAddressPoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudGtmAddressPoolResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_pool_id):
+            query['AddressPoolId'] = request.address_pool_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudGtmAddressPool',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeCloudGtmAddressPoolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cloud_gtm_address_pool(
+        self,
+        request: alidns_20150109_models.DescribeCloudGtmAddressPoolRequest,
+    ) -> alidns_20150109_models.DescribeCloudGtmAddressPoolResponse:
+        """
+        @param request: DescribeCloudGtmAddressPoolRequest
+        @return: DescribeCloudGtmAddressPoolResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cloud_gtm_address_pool_with_options(request, runtime)
+
+    async def describe_cloud_gtm_address_pool_async(
+        self,
+        request: alidns_20150109_models.DescribeCloudGtmAddressPoolRequest,
+    ) -> alidns_20150109_models.DescribeCloudGtmAddressPoolResponse:
+        """
+        @param request: DescribeCloudGtmAddressPoolRequest
+        @return: DescribeCloudGtmAddressPoolResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cloud_gtm_address_pool_with_options_async(request, runtime)
+
     def describe_custom_line_with_options(
         self,
         request: alidns_20150109_models.DescribeCustomLineRequest,
