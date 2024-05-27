@@ -8720,6 +8720,7 @@ class DescribeApiResponseBodyRequestConfig(TeaModel):
         self,
         body_format: str = None,
         body_model: str = None,
+        escape_path_param: bool = None,
         post_body_description: str = None,
         request_http_method: str = None,
         request_mode: str = None,
@@ -8732,6 +8733,7 @@ class DescribeApiResponseBodyRequestConfig(TeaModel):
         self.body_format = body_format
         # The body model.
         self.body_model = body_model
+        self.escape_path_param = escape_path_param
         # The description of the request body.
         self.post_body_description = post_body_description
         # The HTTP method used to make the request. Valid values: GET, POST, DELETE, PUT, HEADER, TRACE, PATCH, CONNECT, and OPTIONS.
@@ -8756,6 +8758,8 @@ class DescribeApiResponseBodyRequestConfig(TeaModel):
             result['BodyFormat'] = self.body_format
         if self.body_model is not None:
             result['BodyModel'] = self.body_model
+        if self.escape_path_param is not None:
+            result['EscapePathParam'] = self.escape_path_param
         if self.post_body_description is not None:
             result['PostBodyDescription'] = self.post_body_description
         if self.request_http_method is not None:
@@ -8774,6 +8778,8 @@ class DescribeApiResponseBodyRequestConfig(TeaModel):
             self.body_format = m.get('BodyFormat')
         if m.get('BodyModel') is not None:
             self.body_model = m.get('BodyModel')
+        if m.get('EscapePathParam') is not None:
+            self.escape_path_param = m.get('EscapePathParam')
         if m.get('PostBodyDescription') is not None:
             self.post_body_description = m.get('PostBodyDescription')
         if m.get('RequestHttpMethod') is not None:
@@ -10293,6 +10299,7 @@ class DescribeApiDocResponseBodyRequestConfig(TeaModel):
     def __init__(
         self,
         body_format: str = None,
+        escape_path_param: bool = None,
         post_body_description: str = None,
         request_http_method: str = None,
         request_mode: str = None,
@@ -10303,6 +10310,7 @@ class DescribeApiDocResponseBodyRequestConfig(TeaModel):
         # 
         # The server data transmission method used for POST and PUT requests. Valid values: FORM and STREAM. FORM indicates that data in key-value pairs is transmitted as forms. STREAM indicates that data is transmitted as byte streams.
         self.body_format = body_format
+        self.escape_path_param = escape_path_param
         # The description of the request body.
         self.post_body_description = post_body_description
         # The HTTP method used to make the request. Valid values: GET, POST, DELETE, PUT, HEADER, TRACE, PATCH, CONNECT, and OPTIONS.
@@ -10329,6 +10337,8 @@ class DescribeApiDocResponseBodyRequestConfig(TeaModel):
         result = dict()
         if self.body_format is not None:
             result['BodyFormat'] = self.body_format
+        if self.escape_path_param is not None:
+            result['EscapePathParam'] = self.escape_path_param
         if self.post_body_description is not None:
             result['PostBodyDescription'] = self.post_body_description
         if self.request_http_method is not None:
@@ -10345,6 +10355,8 @@ class DescribeApiDocResponseBodyRequestConfig(TeaModel):
         m = m or dict()
         if m.get('BodyFormat') is not None:
             self.body_format = m.get('BodyFormat')
+        if m.get('EscapePathParam') is not None:
+            self.escape_path_param = m.get('EscapePathParam')
         if m.get('PostBodyDescription') is not None:
             self.post_body_description = m.get('PostBodyDescription')
         if m.get('RequestHttpMethod') is not None:
@@ -12681,6 +12693,7 @@ class DescribeApiHistoryResponseBodyRequestConfig(TeaModel):
         self,
         body_format: str = None,
         body_model: str = None,
+        escape_path_param: bool = None,
         post_body_description: str = None,
         request_http_method: str = None,
         request_mode: str = None,
@@ -12691,6 +12704,7 @@ class DescribeApiHistoryResponseBodyRequestConfig(TeaModel):
         self.body_format = body_format
         # The body model.
         self.body_model = body_model
+        self.escape_path_param = escape_path_param
         # The description of the request body.
         self.post_body_description = post_body_description
         # The HTTP method. Valid values: GET, POST, DELETE, PUT, HEADER, TRACE, PATCH, CONNECT, and OPTIONS.
@@ -12719,6 +12733,8 @@ class DescribeApiHistoryResponseBodyRequestConfig(TeaModel):
             result['BodyFormat'] = self.body_format
         if self.body_model is not None:
             result['BodyModel'] = self.body_model
+        if self.escape_path_param is not None:
+            result['EscapePathParam'] = self.escape_path_param
         if self.post_body_description is not None:
             result['PostBodyDescription'] = self.post_body_description
         if self.request_http_method is not None:
@@ -12737,6 +12753,8 @@ class DescribeApiHistoryResponseBodyRequestConfig(TeaModel):
             self.body_format = m.get('BodyFormat')
         if m.get('BodyModel') is not None:
             self.body_model = m.get('BodyModel')
+        if m.get('EscapePathParam') is not None:
+            self.escape_path_param = m.get('EscapePathParam')
         if m.get('PostBodyDescription') is not None:
             self.post_body_description = m.get('PostBodyDescription')
         if m.get('RequestHttpMethod') is not None:

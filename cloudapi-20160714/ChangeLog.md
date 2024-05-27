@@ -1,3 +1,9 @@
+2024-05-27 Version: 4.2.1
+- Update API DescribeApi: update response param.
+- Update API DescribeApiDoc: update response param.
+- Update API DescribeApiHistory: update response param.
+
+
 2024-05-22 Version: 4.2.0
 - Support API DescribeAppSecurities.
 
