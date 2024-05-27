@@ -46,6 +46,13 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.CreateQueueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.CreateQueueResponse:
+        """
+        @summary CreateQueue
+        
+        @param request: CreateQueueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateQueueResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.delay_seconds):
@@ -60,6 +67,8 @@ class Client(OpenApiClient):
             query['PollingWaitSeconds'] = request.polling_wait_seconds
         if not UtilClient.is_unset(request.queue_name):
             query['QueueName'] = request.queue_name
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.visibility_timeout):
             query['VisibilityTimeout'] = request.visibility_timeout
         req = open_api_models.OpenApiRequest(
@@ -86,6 +95,13 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.CreateQueueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.CreateQueueResponse:
+        """
+        @summary CreateQueue
+        
+        @param request: CreateQueueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateQueueResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.delay_seconds):
@@ -100,6 +116,8 @@ class Client(OpenApiClient):
             query['PollingWaitSeconds'] = request.polling_wait_seconds
         if not UtilClient.is_unset(request.queue_name):
             query['QueueName'] = request.queue_name
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.visibility_timeout):
             query['VisibilityTimeout'] = request.visibility_timeout
         req = open_api_models.OpenApiRequest(
@@ -125,6 +143,12 @@ class Client(OpenApiClient):
         self,
         request: mns_open_20220119_models.CreateQueueRequest,
     ) -> mns_open_20220119_models.CreateQueueResponse:
+        """
+        @summary CreateQueue
+        
+        @param request: CreateQueueRequest
+        @return: CreateQueueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_queue_with_options(request, runtime)
 
@@ -132,6 +156,12 @@ class Client(OpenApiClient):
         self,
         request: mns_open_20220119_models.CreateQueueRequest,
     ) -> mns_open_20220119_models.CreateQueueResponse:
+        """
+        @summary CreateQueue
+        
+        @param request: CreateQueueRequest
+        @return: CreateQueueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_queue_with_options_async(request, runtime)
 
@@ -140,7 +170,17 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.CreateTopicRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.CreateTopicResponse:
+        """
+        @summary CreateTopic
+        
+        @param request: CreateTopicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTopicResponse
+        """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         body = {}
         if not UtilClient.is_unset(request.enable_logging):
             body['EnableLogging'] = request.enable_logging
@@ -149,6 +189,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.topic_name):
             body['TopicName'] = request.topic_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -172,7 +213,17 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.CreateTopicRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.CreateTopicResponse:
+        """
+        @summary CreateTopic
+        
+        @param request: CreateTopicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTopicResponse
+        """
         UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         body = {}
         if not UtilClient.is_unset(request.enable_logging):
             body['EnableLogging'] = request.enable_logging
@@ -181,6 +232,7 @@ class Client(OpenApiClient):
         if not UtilClient.is_unset(request.topic_name):
             body['TopicName'] = request.topic_name
         req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query),
             body=OpenApiUtilClient.parse_to_map(body)
         )
         params = open_api_models.Params(
@@ -203,6 +255,12 @@ class Client(OpenApiClient):
         self,
         request: mns_open_20220119_models.CreateTopicRequest,
     ) -> mns_open_20220119_models.CreateTopicResponse:
+        """
+        @summary CreateTopic
+        
+        @param request: CreateTopicRequest
+        @return: CreateTopicResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_topic_with_options(request, runtime)
 
@@ -210,6 +268,12 @@ class Client(OpenApiClient):
         self,
         request: mns_open_20220119_models.CreateTopicRequest,
     ) -> mns_open_20220119_models.CreateTopicResponse:
+        """
+        @summary CreateTopic
+        
+        @param request: CreateTopicRequest
+        @return: CreateTopicResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_topic_with_options_async(request, runtime)
 
@@ -218,6 +282,13 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.DeleteQueueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.DeleteQueueResponse:
+        """
+        @summary DeleteQueue
+        
+        @param request: DeleteQueueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteQueueResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.queue_name):
@@ -246,6 +317,13 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.DeleteQueueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.DeleteQueueResponse:
+        """
+        @summary DeleteQueue
+        
+        @param request: DeleteQueueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteQueueResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.queue_name):
@@ -273,6 +351,12 @@ class Client(OpenApiClient):
         self,
         request: mns_open_20220119_models.DeleteQueueRequest,
     ) -> mns_open_20220119_models.DeleteQueueResponse:
+        """
+        @summary DeleteQueue
+        
+        @param request: DeleteQueueRequest
+        @return: DeleteQueueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_queue_with_options(request, runtime)
 
@@ -280,6 +364,12 @@ class Client(OpenApiClient):
         self,
         request: mns_open_20220119_models.DeleteQueueRequest,
     ) -> mns_open_20220119_models.DeleteQueueResponse:
+        """
+        @summary DeleteQueue
+        
+        @param request: DeleteQueueRequest
+        @return: DeleteQueueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_queue_with_options_async(request, runtime)
 
@@ -288,6 +378,13 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.DeleteTopicRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.DeleteTopicResponse:
+        """
+        @summary 删除订阅主题
+        
+        @param request: DeleteTopicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTopicResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.topic_name):
@@ -316,6 +413,13 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.DeleteTopicRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.DeleteTopicResponse:
+        """
+        @summary 删除订阅主题
+        
+        @param request: DeleteTopicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTopicResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.topic_name):
@@ -343,6 +447,12 @@ class Client(OpenApiClient):
         self,
         request: mns_open_20220119_models.DeleteTopicRequest,
     ) -> mns_open_20220119_models.DeleteTopicResponse:
+        """
+        @summary 删除订阅主题
+        
+        @param request: DeleteTopicRequest
+        @return: DeleteTopicResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_topic_with_options(request, runtime)
 
@@ -350,6 +460,12 @@ class Client(OpenApiClient):
         self,
         request: mns_open_20220119_models.DeleteTopicRequest,
     ) -> mns_open_20220119_models.DeleteTopicResponse:
+        """
+        @summary 删除订阅主题
+        
+        @param request: DeleteTopicRequest
+        @return: DeleteTopicResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_topic_with_options_async(request, runtime)
 
@@ -358,10 +474,19 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.GetQueueAttributesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.GetQueueAttributesResponse:
+        """
+        @summary GetQueueAttributes
+        
+        @param request: GetQueueAttributesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetQueueAttributesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.queue_name):
             query['QueueName'] = request.queue_name
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -386,10 +511,19 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.GetQueueAttributesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.GetQueueAttributesResponse:
+        """
+        @summary GetQueueAttributes
+        
+        @param request: GetQueueAttributesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetQueueAttributesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.queue_name):
             query['QueueName'] = request.queue_name
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -413,6 +547,12 @@ class Client(OpenApiClient):
         self,
         request: mns_open_20220119_models.GetQueueAttributesRequest,
     ) -> mns_open_20220119_models.GetQueueAttributesResponse:
+        """
+        @summary GetQueueAttributes
+        
+        @param request: GetQueueAttributesRequest
+        @return: GetQueueAttributesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_queue_attributes_with_options(request, runtime)
 
@@ -420,6 +560,12 @@ class Client(OpenApiClient):
         self,
         request: mns_open_20220119_models.GetQueueAttributesRequest,
     ) -> mns_open_20220119_models.GetQueueAttributesResponse:
+        """
+        @summary GetQueueAttributes
+        
+        @param request: GetQueueAttributesRequest
+        @return: GetQueueAttributesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_queue_attributes_with_options_async(request, runtime)
 
@@ -428,6 +574,13 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.GetSubscriptionAttributesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.GetSubscriptionAttributesResponse:
+        """
+        @summary GetSubscription
+        
+        @param request: GetSubscriptionAttributesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSubscriptionAttributesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.subscription_name):
@@ -458,6 +611,13 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.GetSubscriptionAttributesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.GetSubscriptionAttributesResponse:
+        """
+        @summary GetSubscription
+        
+        @param request: GetSubscriptionAttributesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSubscriptionAttributesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.subscription_name):
@@ -487,6 +647,12 @@ class Client(OpenApiClient):
         self,
         request: mns_open_20220119_models.GetSubscriptionAttributesRequest,
     ) -> mns_open_20220119_models.GetSubscriptionAttributesResponse:
+        """
+        @summary GetSubscription
+        
+        @param request: GetSubscriptionAttributesRequest
+        @return: GetSubscriptionAttributesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_subscription_attributes_with_options(request, runtime)
 
@@ -494,6 +660,12 @@ class Client(OpenApiClient):
         self,
         request: mns_open_20220119_models.GetSubscriptionAttributesRequest,
     ) -> mns_open_20220119_models.GetSubscriptionAttributesResponse:
+        """
+        @summary GetSubscription
+        
+        @param request: GetSubscriptionAttributesRequest
+        @return: GetSubscriptionAttributesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_subscription_attributes_with_options_async(request, runtime)
 
@@ -502,8 +674,17 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.GetTopicAttributesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.GetTopicAttributesResponse:
+        """
+        @summary 查询主题
+        
+        @param request: GetTopicAttributesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTopicAttributesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.topic_name):
             query['TopicName'] = request.topic_name
         req = open_api_models.OpenApiRequest(
@@ -530,8 +711,17 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.GetTopicAttributesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.GetTopicAttributesResponse:
+        """
+        @summary 查询主题
+        
+        @param request: GetTopicAttributesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTopicAttributesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.topic_name):
             query['TopicName'] = request.topic_name
         req = open_api_models.OpenApiRequest(
@@ -557,6 +747,12 @@ class Client(OpenApiClient):
         self,
         request: mns_open_20220119_models.GetTopicAttributesRequest,
     ) -> mns_open_20220119_models.GetTopicAttributesResponse:
+        """
+        @summary 查询主题
+        
+        @param request: GetTopicAttributesRequest
+        @return: GetTopicAttributesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_topic_attributes_with_options(request, runtime)
 
@@ -564,6 +760,12 @@ class Client(OpenApiClient):
         self,
         request: mns_open_20220119_models.GetTopicAttributesRequest,
     ) -> mns_open_20220119_models.GetTopicAttributesResponse:
+        """
+        @summary 查询主题
+        
+        @param request: GetTopicAttributesRequest
+        @return: GetTopicAttributesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_topic_attributes_with_options_async(request, runtime)
 
@@ -572,6 +774,13 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.ListQueueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.ListQueueResponse:
+        """
+        @summary ListQueue
+        
+        @param request: ListQueueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQueueResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_num):
@@ -580,6 +789,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.queue_name):
             query['QueueName'] = request.queue_name
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -604,6 +815,13 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.ListQueueRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.ListQueueResponse:
+        """
+        @summary ListQueue
+        
+        @param request: ListQueueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListQueueResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_num):
@@ -612,6 +830,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not UtilClient.is_unset(request.queue_name):
             query['QueueName'] = request.queue_name
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -635,6 +855,12 @@ class Client(OpenApiClient):
         self,
         request: mns_open_20220119_models.ListQueueRequest,
     ) -> mns_open_20220119_models.ListQueueResponse:
+        """
+        @summary ListQueue
+        
+        @param request: ListQueueRequest
+        @return: ListQueueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_queue_with_options(request, runtime)
 
@@ -642,6 +868,12 @@ class Client(OpenApiClient):
         self,
         request: mns_open_20220119_models.ListQueueRequest,
     ) -> mns_open_20220119_models.ListQueueResponse:
+        """
+        @summary ListQueue
+        
+        @param request: ListQueueRequest
+        @return: ListQueueResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_queue_with_options_async(request, runtime)
 
@@ -650,6 +882,13 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.ListSubscriptionByTopicRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.ListSubscriptionByTopicResponse:
+        """
+        @summary ListSubscription
+        
+        @param request: ListSubscriptionByTopicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSubscriptionByTopicResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_num):
@@ -684,6 +923,13 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.ListSubscriptionByTopicRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.ListSubscriptionByTopicResponse:
+        """
+        @summary ListSubscription
+        
+        @param request: ListSubscriptionByTopicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSubscriptionByTopicResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_num):
@@ -717,6 +963,12 @@ class Client(OpenApiClient):
         self,
         request: mns_open_20220119_models.ListSubscriptionByTopicRequest,
     ) -> mns_open_20220119_models.ListSubscriptionByTopicResponse:
+        """
+        @summary ListSubscription
+        
+        @param request: ListSubscriptionByTopicRequest
+        @return: ListSubscriptionByTopicResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_subscription_by_topic_with_options(request, runtime)
 
@@ -724,6 +976,12 @@ class Client(OpenApiClient):
         self,
         request: mns_open_20220119_models.ListSubscriptionByTopicRequest,
     ) -> mns_open_20220119_models.ListSubscriptionByTopicResponse:
+        """
+        @summary ListSubscription
+        
+        @param request: ListSubscriptionByTopicRequest
+        @return: ListSubscriptionByTopicResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_subscription_by_topic_with_options_async(request, runtime)
 
@@ -732,12 +990,21 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.ListTopicRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.ListTopicResponse:
+        """
+        @summary ListTopic
+        
+        @param request: ListTopicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTopicResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_num):
             query['PageNum'] = request.page_num
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.topic_name):
             query['TopicName'] = request.topic_name
         req = open_api_models.OpenApiRequest(
@@ -764,12 +1031,21 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.ListTopicRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.ListTopicResponse:
+        """
+        @summary ListTopic
+        
+        @param request: ListTopicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTopicResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_num):
             query['PageNum'] = request.page_num
         if not UtilClient.is_unset(request.page_size):
             query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.tag):
+            query['Tag'] = request.tag
         if not UtilClient.is_unset(request.topic_name):
             query['TopicName'] = request.topic_name
         req = open_api_models.OpenApiRequest(
@@ -795,6 +1071,12 @@ class Client(OpenApiClient):
         self,
         request: mns_open_20220119_models.ListTopicRequest,
     ) -> mns_open_20220119_models.ListTopicResponse:
+        """
+        @summary ListTopic
+        
+        @param request: ListTopicRequest
+        @return: ListTopicResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_topic_with_options(request, runtime)
 
@@ -802,6 +1084,12 @@ class Client(OpenApiClient):
         self,
         request: mns_open_20220119_models.ListTopicRequest,
     ) -> mns_open_20220119_models.ListTopicResponse:
+        """
+        @summary ListTopic
+        
+        @param request: ListTopicRequest
+        @return: ListTopicResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_topic_with_options_async(request, runtime)
 
@@ -810,6 +1098,13 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.SetQueueAttributesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.SetQueueAttributesResponse:
+        """
+        @summary SetQueueAttributes
+        
+        @param request: SetQueueAttributesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetQueueAttributesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.delay_seconds):
@@ -850,6 +1145,13 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.SetQueueAttributesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.SetQueueAttributesResponse:
+        """
+        @summary SetQueueAttributes
+        
+        @param request: SetQueueAttributesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetQueueAttributesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.delay_seconds):
@@ -889,6 +1191,12 @@ class Client(OpenApiClient):
         self,
         request: mns_open_20220119_models.SetQueueAttributesRequest,
     ) -> mns_open_20220119_models.SetQueueAttributesResponse:
+        """
+        @summary SetQueueAttributes
+        
+        @param request: SetQueueAttributesRequest
+        @return: SetQueueAttributesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_queue_attributes_with_options(request, runtime)
 
@@ -896,6 +1204,12 @@ class Client(OpenApiClient):
         self,
         request: mns_open_20220119_models.SetQueueAttributesRequest,
     ) -> mns_open_20220119_models.SetQueueAttributesResponse:
+        """
+        @summary SetQueueAttributes
+        
+        @param request: SetQueueAttributesRequest
+        @return: SetQueueAttributesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_queue_attributes_with_options_async(request, runtime)
 
@@ -904,6 +1218,13 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.SetSubscriptionAttributesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.SetSubscriptionAttributesResponse:
+        """
+        @summary ModifySubscription
+        
+        @param request: SetSubscriptionAttributesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetSubscriptionAttributesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.notify_strategy):
@@ -936,6 +1257,13 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.SetSubscriptionAttributesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.SetSubscriptionAttributesResponse:
+        """
+        @summary ModifySubscription
+        
+        @param request: SetSubscriptionAttributesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetSubscriptionAttributesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.notify_strategy):
@@ -967,6 +1295,12 @@ class Client(OpenApiClient):
         self,
         request: mns_open_20220119_models.SetSubscriptionAttributesRequest,
     ) -> mns_open_20220119_models.SetSubscriptionAttributesResponse:
+        """
+        @summary ModifySubscription
+        
+        @param request: SetSubscriptionAttributesRequest
+        @return: SetSubscriptionAttributesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_subscription_attributes_with_options(request, runtime)
 
@@ -974,6 +1308,12 @@ class Client(OpenApiClient):
         self,
         request: mns_open_20220119_models.SetSubscriptionAttributesRequest,
     ) -> mns_open_20220119_models.SetSubscriptionAttributesResponse:
+        """
+        @summary ModifySubscription
+        
+        @param request: SetSubscriptionAttributesRequest
+        @return: SetSubscriptionAttributesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_subscription_attributes_with_options_async(request, runtime)
 
@@ -982,6 +1322,13 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.SetTopicAttributesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.SetTopicAttributesResponse:
+        """
+        @summary 编辑订阅主题
+        
+        @param request: SetTopicAttributesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetTopicAttributesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.enable_logging):
@@ -1014,6 +1361,13 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.SetTopicAttributesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.SetTopicAttributesResponse:
+        """
+        @summary 编辑订阅主题
+        
+        @param request: SetTopicAttributesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetTopicAttributesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.enable_logging):
@@ -1045,6 +1399,12 @@ class Client(OpenApiClient):
         self,
         request: mns_open_20220119_models.SetTopicAttributesRequest,
     ) -> mns_open_20220119_models.SetTopicAttributesResponse:
+        """
+        @summary 编辑订阅主题
+        
+        @param request: SetTopicAttributesRequest
+        @return: SetTopicAttributesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_topic_attributes_with_options(request, runtime)
 
@@ -1052,6 +1412,12 @@ class Client(OpenApiClient):
         self,
         request: mns_open_20220119_models.SetTopicAttributesRequest,
     ) -> mns_open_20220119_models.SetTopicAttributesResponse:
+        """
+        @summary 编辑订阅主题
+        
+        @param request: SetTopicAttributesRequest
+        @return: SetTopicAttributesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_topic_attributes_with_options_async(request, runtime)
 
@@ -1060,6 +1426,13 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.SubscribeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.SubscribeResponse:
+        """
+        @summary CreateSubscription
+        
+        @param request: SubscribeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubscribeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.endpoint):
@@ -1100,6 +1473,13 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.SubscribeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.SubscribeResponse:
+        """
+        @summary CreateSubscription
+        
+        @param request: SubscribeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SubscribeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.endpoint):
@@ -1139,6 +1519,12 @@ class Client(OpenApiClient):
         self,
         request: mns_open_20220119_models.SubscribeRequest,
     ) -> mns_open_20220119_models.SubscribeResponse:
+        """
+        @summary CreateSubscription
+        
+        @param request: SubscribeRequest
+        @return: SubscribeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.subscribe_with_options(request, runtime)
 
@@ -1146,6 +1532,12 @@ class Client(OpenApiClient):
         self,
         request: mns_open_20220119_models.SubscribeRequest,
     ) -> mns_open_20220119_models.SubscribeResponse:
+        """
+        @summary CreateSubscription
+        
+        @param request: SubscribeRequest
+        @return: SubscribeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.subscribe_with_options_async(request, runtime)
 
@@ -1154,6 +1546,13 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.UnsubscribeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.UnsubscribeResponse:
+        """
+        @summary DeleteSubscription
+        
+        @param request: UnsubscribeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnsubscribeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.subscription_name):
@@ -1184,6 +1583,13 @@ class Client(OpenApiClient):
         request: mns_open_20220119_models.UnsubscribeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mns_open_20220119_models.UnsubscribeResponse:
+        """
+        @summary DeleteSubscription
+        
+        @param request: UnsubscribeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnsubscribeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.subscription_name):
@@ -1213,6 +1619,12 @@ class Client(OpenApiClient):
         self,
         request: mns_open_20220119_models.UnsubscribeRequest,
     ) -> mns_open_20220119_models.UnsubscribeResponse:
+        """
+        @summary DeleteSubscription
+        
+        @param request: UnsubscribeRequest
+        @return: UnsubscribeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.unsubscribe_with_options(request, runtime)
 
@@ -1220,5 +1632,11 @@ class Client(OpenApiClient):
         self,
         request: mns_open_20220119_models.UnsubscribeRequest,
     ) -> mns_open_20220119_models.UnsubscribeResponse:
+        """
+        @summary DeleteSubscription
+        
+        @param request: UnsubscribeRequest
+        @return: UnsubscribeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.unsubscribe_with_options_async(request, runtime)

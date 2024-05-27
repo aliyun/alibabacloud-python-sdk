@@ -1,3 +1,16 @@
+2024-05-27 Version: 1.0.3
+- Update API CreateQueue: add param Tag.
+- Update API CreateTopic: add param Tag.
+- Update API GetQueueAttributes: add param Tag.
+- Update API GetQueueAttributes: update response param.
+- Update API GetTopicAttributes: add param Tag.
+- Update API GetTopicAttributes: update response param.
+- Update API ListQueue: add param Tag.
+- Update API ListQueue: update response param.
+- Update API ListTopic: add param Tag.
+- Update API ListTopic: update response param.
+
+
 2024-05-08 Version: 1.0.2
 - Update API ListTopic: update response param.
 

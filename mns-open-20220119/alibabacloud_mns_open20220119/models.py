@@ -1,7 +1,40 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import Dict, Any, List
+from typing import List, Dict, Any
+
+
+class CreateQueueRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
 
 
 class CreateQueueRequest(TeaModel):
@@ -13,6 +46,7 @@ class CreateQueueRequest(TeaModel):
         message_retention_period: int = None,
         polling_wait_seconds: int = None,
         queue_name: str = None,
+        tag: List[CreateQueueRequestTag] = None,
         visibility_timeout: int = None,
     ):
         self.delay_seconds = delay_seconds
@@ -20,11 +54,16 @@ class CreateQueueRequest(TeaModel):
         self.maximum_message_size = maximum_message_size
         self.message_retention_period = message_retention_period
         self.polling_wait_seconds = polling_wait_seconds
+        # This parameter is required.
         self.queue_name = queue_name
+        self.tag = tag
         self.visibility_timeout = visibility_timeout
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -44,6 +83,10 @@ class CreateQueueRequest(TeaModel):
             result['PollingWaitSeconds'] = self.polling_wait_seconds
         if self.queue_name is not None:
             result['QueueName'] = self.queue_name
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.visibility_timeout is not None:
             result['VisibilityTimeout'] = self.visibility_timeout
         return result
@@ -62,6 +105,11 @@ class CreateQueueRequest(TeaModel):
             self.polling_wait_seconds = m.get('PollingWaitSeconds')
         if m.get('QueueName') is not None:
             self.queue_name = m.get('QueueName')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateQueueRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('VisibilityTimeout') is not None:
             self.visibility_timeout = m.get('VisibilityTimeout')
         return self
@@ -206,19 +254,58 @@ class CreateQueueResponse(TeaModel):
         return self
 
 
+class CreateTopicRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class CreateTopicRequest(TeaModel):
     def __init__(
         self,
         enable_logging: bool = None,
         max_message_size: int = None,
+        tag: List[CreateTopicRequestTag] = None,
         topic_name: str = None,
     ):
         self.enable_logging = enable_logging
         self.max_message_size = max_message_size
+        self.tag = tag
+        # This parameter is required.
         self.topic_name = topic_name
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -230,6 +317,10 @@ class CreateTopicRequest(TeaModel):
             result['EnableLogging'] = self.enable_logging
         if self.max_message_size is not None:
             result['MaxMessageSize'] = self.max_message_size
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.topic_name is not None:
             result['TopicName'] = self.topic_name
         return result
@@ -240,6 +331,11 @@ class CreateTopicRequest(TeaModel):
             self.enable_logging = m.get('EnableLogging')
         if m.get('MaxMessageSize') is not None:
             self.max_message_size = m.get('MaxMessageSize')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = CreateTopicRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('TopicName') is not None:
             self.topic_name = m.get('TopicName')
         return self
@@ -389,6 +485,7 @@ class DeleteQueueRequest(TeaModel):
         self,
         queue_name: str = None,
     ):
+        # This parameter is required.
         self.queue_name = queue_name
 
     def validate(self):
@@ -555,6 +652,7 @@ class DeleteTopicRequest(TeaModel):
         self,
         topic_name: str = None,
     ):
+        # This parameter is required.
         self.topic_name = topic_name
 
     def validate(self):
@@ -675,12 +773,14 @@ class DeleteTopicResponse(TeaModel):
         return self
 
 
-class GetQueueAttributesRequest(TeaModel):
+class GetQueueAttributesRequestTag(TeaModel):
     def __init__(
         self,
-        queue_name: str = None,
+        key: str = None,
+        value: str = None,
     ):
-        self.queue_name = queue_name
+        self.key = key
+        self.value = value
 
     def validate(self):
         pass
@@ -691,14 +791,93 @@ class GetQueueAttributesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetQueueAttributesRequest(TeaModel):
+    def __init__(
+        self,
+        queue_name: str = None,
+        tag: List[GetQueueAttributesRequestTag] = None,
+    ):
+        # This parameter is required.
+        self.queue_name = queue_name
+        self.tag = tag
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
         if self.queue_name is not None:
             result['QueueName'] = self.queue_name
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('QueueName') is not None:
             self.queue_name = m.get('QueueName')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = GetQueueAttributesRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class GetQueueAttributesResponseBodyDataTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
         return self
 
 
@@ -716,6 +895,7 @@ class GetQueueAttributesResponseBodyData(TeaModel):
         message_retention_period: int = None,
         polling_wait_seconds: int = None,
         queue_name: str = None,
+        tags: List[GetQueueAttributesResponseBodyDataTags] = None,
         visibility_timeout: int = None,
     ):
         self.active_messages = active_messages
@@ -729,10 +909,14 @@ class GetQueueAttributesResponseBodyData(TeaModel):
         self.message_retention_period = message_retention_period
         self.polling_wait_seconds = polling_wait_seconds
         self.queue_name = queue_name
+        self.tags = tags
         self.visibility_timeout = visibility_timeout
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -762,6 +946,10 @@ class GetQueueAttributesResponseBodyData(TeaModel):
             result['PollingWaitSeconds'] = self.polling_wait_seconds
         if self.queue_name is not None:
             result['QueueName'] = self.queue_name
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.visibility_timeout is not None:
             result['VisibilityTimeout'] = self.visibility_timeout
         return result
@@ -790,6 +978,11 @@ class GetQueueAttributesResponseBodyData(TeaModel):
             self.polling_wait_seconds = m.get('PollingWaitSeconds')
         if m.get('QueueName') is not None:
             self.queue_name = m.get('QueueName')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetQueueAttributesResponseBodyDataTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('VisibilityTimeout') is not None:
             self.visibility_timeout = m.get('VisibilityTimeout')
         return self
@@ -901,7 +1094,9 @@ class GetSubscriptionAttributesRequest(TeaModel):
         subscription_name: str = None,
         topic_name: str = None,
     ):
+        # This parameter is required.
         self.subscription_name = subscription_name
+        # This parameter is required.
         self.topic_name = topic_name
 
     def validate(self):
@@ -1103,12 +1298,14 @@ class GetSubscriptionAttributesResponse(TeaModel):
         return self
 
 
-class GetTopicAttributesRequest(TeaModel):
+class GetTopicAttributesRequestTag(TeaModel):
     def __init__(
         self,
-        topic_name: str = None,
+        key: str = None,
+        value: str = None,
     ):
-        self.topic_name = topic_name
+        self.key = key
+        self.value = value
 
     def validate(self):
         pass
@@ -1119,14 +1316,93 @@ class GetTopicAttributesRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class GetTopicAttributesRequest(TeaModel):
+    def __init__(
+        self,
+        tag: List[GetTopicAttributesRequestTag] = None,
+        topic_name: str = None,
+    ):
+        self.tag = tag
+        # This parameter is required.
+        self.topic_name = topic_name
+
+    def validate(self):
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.topic_name is not None:
             result['TopicName'] = self.topic_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = GetTopicAttributesRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('TopicName') is not None:
             self.topic_name = m.get('TopicName')
+        return self
+
+
+class GetTopicAttributesResponseBodyDataTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
         return self
 
 
@@ -1139,6 +1415,7 @@ class GetTopicAttributesResponseBodyData(TeaModel):
         max_message_size: int = None,
         message_count: int = None,
         message_retention_period: int = None,
+        tags: List[GetTopicAttributesResponseBodyDataTags] = None,
         topic_name: str = None,
     ):
         self.create_time = create_time
@@ -1147,10 +1424,14 @@ class GetTopicAttributesResponseBodyData(TeaModel):
         self.max_message_size = max_message_size
         self.message_count = message_count
         self.message_retention_period = message_retention_period
+        self.tags = tags
         self.topic_name = topic_name
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1170,6 +1451,10 @@ class GetTopicAttributesResponseBodyData(TeaModel):
             result['MessageCount'] = self.message_count
         if self.message_retention_period is not None:
             result['MessageRetentionPeriod'] = self.message_retention_period
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.topic_name is not None:
             result['TopicName'] = self.topic_name
         return result
@@ -1188,6 +1473,11 @@ class GetTopicAttributesResponseBodyData(TeaModel):
             self.message_count = m.get('MessageCount')
         if m.get('MessageRetentionPeriod') is not None:
             self.message_retention_period = m.get('MessageRetentionPeriod')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = GetTopicAttributesResponseBodyDataTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('TopicName') is not None:
             self.topic_name = m.get('TopicName')
         return self
@@ -1293,19 +1583,57 @@ class GetTopicAttributesResponse(TeaModel):
         return self
 
 
+class ListQueueRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListQueueRequest(TeaModel):
     def __init__(
         self,
         page_num: int = None,
         page_size: int = None,
         queue_name: str = None,
+        tag: List[ListQueueRequestTag] = None,
     ):
         self.page_num = page_num
         self.page_size = page_size
         self.queue_name = queue_name
+        self.tag = tag
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1319,6 +1647,10 @@ class ListQueueRequest(TeaModel):
             result['PageSize'] = self.page_size
         if self.queue_name is not None:
             result['QueueName'] = self.queue_name
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -1329,6 +1661,44 @@ class ListQueueRequest(TeaModel):
             self.page_size = m.get('PageSize')
         if m.get('QueueName') is not None:
             self.queue_name = m.get('QueueName')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListQueueRequestTag()
+                self.tag.append(temp_model.from_map(k))
+        return self
+
+
+class ListQueueResponseBodyDataPageDataTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
         return self
 
 
@@ -1346,6 +1716,7 @@ class ListQueueResponseBodyDataPageData(TeaModel):
         message_retention_period: int = None,
         polling_wait_seconds: int = None,
         queue_name: str = None,
+        tags: List[ListQueueResponseBodyDataPageDataTags] = None,
         visibility_timeout: int = None,
     ):
         self.active_messages = active_messages
@@ -1359,10 +1730,14 @@ class ListQueueResponseBodyDataPageData(TeaModel):
         self.message_retention_period = message_retention_period
         self.polling_wait_seconds = polling_wait_seconds
         self.queue_name = queue_name
+        self.tags = tags
         self.visibility_timeout = visibility_timeout
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1392,6 +1767,10 @@ class ListQueueResponseBodyDataPageData(TeaModel):
             result['PollingWaitSeconds'] = self.polling_wait_seconds
         if self.queue_name is not None:
             result['QueueName'] = self.queue_name
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.visibility_timeout is not None:
             result['VisibilityTimeout'] = self.visibility_timeout
         return result
@@ -1420,6 +1799,11 @@ class ListQueueResponseBodyDataPageData(TeaModel):
             self.polling_wait_seconds = m.get('PollingWaitSeconds')
         if m.get('QueueName') is not None:
             self.queue_name = m.get('QueueName')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListQueueResponseBodyDataPageDataTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('VisibilityTimeout') is not None:
             self.visibility_timeout = m.get('VisibilityTimeout')
         return self
@@ -1601,6 +1985,7 @@ class ListSubscriptionByTopicRequest(TeaModel):
         self.page_num = page_num
         self.page_size = page_size
         self.subscription_name = subscription_name
+        # This parameter is required.
         self.topic_name = topic_name
 
     def validate(self):
@@ -1875,19 +2260,57 @@ class ListSubscriptionByTopicResponse(TeaModel):
         return self
 
 
+class ListTopicRequestTag(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
 class ListTopicRequest(TeaModel):
     def __init__(
         self,
         page_num: int = None,
         page_size: int = None,
+        tag: List[ListTopicRequestTag] = None,
         topic_name: str = None,
     ):
         self.page_num = page_num
         self.page_size = page_size
+        self.tag = tag
         self.topic_name = topic_name
 
     def validate(self):
-        pass
+        if self.tag:
+            for k in self.tag:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1899,6 +2322,10 @@ class ListTopicRequest(TeaModel):
             result['PageNum'] = self.page_num
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+        result['Tag'] = []
+        if self.tag is not None:
+            for k in self.tag:
+                result['Tag'].append(k.to_map() if k else None)
         if self.topic_name is not None:
             result['TopicName'] = self.topic_name
         return result
@@ -1909,8 +2336,46 @@ class ListTopicRequest(TeaModel):
             self.page_num = m.get('PageNum')
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+        self.tag = []
+        if m.get('Tag') is not None:
+            for k in m.get('Tag'):
+                temp_model = ListTopicRequestTag()
+                self.tag.append(temp_model.from_map(k))
         if m.get('TopicName') is not None:
             self.topic_name = m.get('TopicName')
+        return self
+
+
+class ListTopicResponseBodyDataPageDataTags(TeaModel):
+    def __init__(
+        self,
+        tag_key: str = None,
+        tag_value: str = None,
+    ):
+        self.tag_key = tag_key
+        self.tag_value = tag_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tag_key is not None:
+            result['TagKey'] = self.tag_key
+        if self.tag_value is not None:
+            result['TagValue'] = self.tag_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TagKey') is not None:
+            self.tag_key = m.get('TagKey')
+        if m.get('TagValue') is not None:
+            self.tag_value = m.get('TagValue')
         return self
 
 
@@ -1923,6 +2388,7 @@ class ListTopicResponseBodyDataPageData(TeaModel):
         max_message_size: int = None,
         message_count: int = None,
         message_retention_period: int = None,
+        tags: List[ListTopicResponseBodyDataPageDataTags] = None,
         topic_inner_url: str = None,
         topic_name: str = None,
         topic_url: str = None,
@@ -1933,12 +2399,16 @@ class ListTopicResponseBodyDataPageData(TeaModel):
         self.max_message_size = max_message_size
         self.message_count = message_count
         self.message_retention_period = message_retention_period
+        self.tags = tags
         self.topic_inner_url = topic_inner_url
         self.topic_name = topic_name
         self.topic_url = topic_url
 
     def validate(self):
-        pass
+        if self.tags:
+            for k in self.tags:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -1958,6 +2428,10 @@ class ListTopicResponseBodyDataPageData(TeaModel):
             result['MessageCount'] = self.message_count
         if self.message_retention_period is not None:
             result['MessageRetentionPeriod'] = self.message_retention_period
+        result['Tags'] = []
+        if self.tags is not None:
+            for k in self.tags:
+                result['Tags'].append(k.to_map() if k else None)
         if self.topic_inner_url is not None:
             result['TopicInnerUrl'] = self.topic_inner_url
         if self.topic_name is not None:
@@ -1980,6 +2454,11 @@ class ListTopicResponseBodyDataPageData(TeaModel):
             self.message_count = m.get('MessageCount')
         if m.get('MessageRetentionPeriod') is not None:
             self.message_retention_period = m.get('MessageRetentionPeriod')
+        self.tags = []
+        if m.get('Tags') is not None:
+            for k in m.get('Tags'):
+                temp_model = ListTopicResponseBodyDataPageDataTags()
+                self.tags.append(temp_model.from_map(k))
         if m.get('TopicInnerUrl') is not None:
             self.topic_inner_url = m.get('TopicInnerUrl')
         if m.get('TopicName') is not None:
@@ -2158,6 +2637,7 @@ class SetQueueAttributesRequest(TeaModel):
         self.maximum_message_size = maximum_message_size
         self.message_retention_period = message_retention_period
         self.polling_wait_seconds = polling_wait_seconds
+        # This parameter is required.
         self.queue_name = queue_name
         self.visibility_timeout = visibility_timeout
 
@@ -2352,7 +2832,9 @@ class SetSubscriptionAttributesRequest(TeaModel):
         topic_name: str = None,
     ):
         self.notify_strategy = notify_strategy
+        # This parameter is required.
         self.subscription_name = subscription_name
+        # This parameter is required.
         self.topic_name = topic_name
 
     def validate(self):
@@ -2531,6 +3013,7 @@ class SetTopicAttributesRequest(TeaModel):
     ):
         self.enable_logging = enable_logging
         self.max_message_size = max_message_size
+        # This parameter is required.
         self.topic_name = topic_name
 
     def validate(self):
@@ -2711,12 +3194,16 @@ class SubscribeRequest(TeaModel):
         subscription_name: str = None,
         topic_name: str = None,
     ):
+        # This parameter is required.
         self.endpoint = endpoint
         self.message_tag = message_tag
         self.notify_content_format = notify_content_format
         self.notify_strategy = notify_strategy
+        # This parameter is required.
         self.push_type = push_type
+        # This parameter is required.
         self.subscription_name = subscription_name
+        # This parameter is required.
         self.topic_name = topic_name
 
     def validate(self):
@@ -2867,7 +3354,9 @@ class UnsubscribeRequest(TeaModel):
         subscription_name: str = None,
         topic_name: str = None,
     ):
+        # This parameter is required.
         self.subscription_name = subscription_name
+        # This parameter is required.
         self.topic_name = topic_name
 
     def validate(self):
