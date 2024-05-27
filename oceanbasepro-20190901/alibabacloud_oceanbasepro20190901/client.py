@@ -47,7 +47,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.BatchKillProcessListResponse:
         """
-        @summary BatchKillProcessList
+        @summary You can call this operation to close sessions in batches. Please note that this operation is executed asynchronously. After calling this operation, you need to verify it by calling DescribeProcessStatsComposition.
         
         @param request: BatchKillProcessListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -86,7 +86,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.BatchKillProcessListResponse:
         """
-        @summary BatchKillProcessList
+        @summary You can call this operation to close sessions in batches. Please note that this operation is executed asynchronously. After calling this operation, you need to verify it by calling DescribeProcessStatsComposition.
         
         @param request: BatchKillProcessListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -124,7 +124,7 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.BatchKillProcessListRequest,
     ) -> ocean_base_pro_20190901_models.BatchKillProcessListResponse:
         """
-        @summary BatchKillProcessList
+        @summary You can call this operation to close sessions in batches. Please note that this operation is executed asynchronously. After calling this operation, you need to verify it by calling DescribeProcessStatsComposition.
         
         @param request: BatchKillProcessListRequest
         @return: BatchKillProcessListResponse
@@ -137,7 +137,7 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.BatchKillProcessListRequest,
     ) -> ocean_base_pro_20190901_models.BatchKillProcessListResponse:
         """
-        @summary BatchKillProcessList
+        @summary You can call this operation to close sessions in batches. Please note that this operation is executed asynchronously. After calling this operation, you need to verify it by calling DescribeProcessStatsComposition.
         
         @param request: BatchKillProcessListRequest
         @return: BatchKillProcessListResponse
@@ -1693,6 +1693,202 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.create_security_ip_group_with_options_async(request, runtime)
 
+    def create_tag_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.CreateTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.CreateTagResponse:
+        """
+        @summary You can call this operation to create a tag group.
+        
+        @param request: CreateTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTagResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.key):
+            body['Key'] = request.key
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTag',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_tag_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.CreateTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.CreateTagResponse:
+        """
+        @summary You can call this operation to create a tag group.
+        
+        @param request: CreateTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTagResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.key):
+            body['Key'] = request.key
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTag',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_tag(
+        self,
+        request: ocean_base_pro_20190901_models.CreateTagRequest,
+    ) -> ocean_base_pro_20190901_models.CreateTagResponse:
+        """
+        @summary You can call this operation to create a tag group.
+        
+        @param request: CreateTagRequest
+        @return: CreateTagResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_tag_with_options(request, runtime)
+
+    async def create_tag_async(
+        self,
+        request: ocean_base_pro_20190901_models.CreateTagRequest,
+    ) -> ocean_base_pro_20190901_models.CreateTagResponse:
+        """
+        @summary You can call this operation to create a tag group.
+        
+        @param request: CreateTagRequest
+        @return: CreateTagResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_tag_with_options_async(request, runtime)
+
+    def create_tag_value_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.CreateTagValueRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.CreateTagValueResponse:
+        """
+        @param request: CreateTagValueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTagValueResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.key):
+            body['Key'] = request.key
+        if not UtilClient.is_unset(request.value):
+            body['Value'] = request.value
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTagValue',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateTagValueResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_tag_value_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.CreateTagValueRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.CreateTagValueResponse:
+        """
+        @param request: CreateTagValueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTagValueResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.client_token):
+            body['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.key):
+            body['Key'] = request.key
+        if not UtilClient.is_unset(request.value):
+            body['Value'] = request.value
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateTagValue',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.CreateTagValueResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_tag_value(
+        self,
+        request: ocean_base_pro_20190901_models.CreateTagValueRequest,
+    ) -> ocean_base_pro_20190901_models.CreateTagValueResponse:
+        """
+        @param request: CreateTagValueRequest
+        @return: CreateTagValueResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_tag_value_with_options(request, runtime)
+
+    async def create_tag_value_async(
+        self,
+        request: ocean_base_pro_20190901_models.CreateTagValueRequest,
+    ) -> ocean_base_pro_20190901_models.CreateTagValueResponse:
+        """
+        @param request: CreateTagValueRequest
+        @return: CreateTagValueResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_tag_value_with_options_async(request, runtime)
+
     def create_tenant_with_options(
         self,
         tmp_req: ocean_base_pro_20190901_models.CreateTenantRequest,
@@ -2716,6 +2912,202 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_security_ip_group_with_options_async(request, runtime)
+
+    def delete_tag_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.DeleteTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DeleteTagResponse:
+        """
+        @summary You can call this operation to delete a tag group.
+        
+        @param request: DeleteTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTagResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.key):
+            body['Key'] = request.key
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteTag',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DeleteTagResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_tag_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.DeleteTagRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DeleteTagResponse:
+        """
+        @summary You can call this operation to delete a tag group.
+        
+        @param request: DeleteTagRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTagResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.key):
+            body['Key'] = request.key
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteTag',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DeleteTagResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_tag(
+        self,
+        request: ocean_base_pro_20190901_models.DeleteTagRequest,
+    ) -> ocean_base_pro_20190901_models.DeleteTagResponse:
+        """
+        @summary You can call this operation to delete a tag group.
+        
+        @param request: DeleteTagRequest
+        @return: DeleteTagResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_tag_with_options(request, runtime)
+
+    async def delete_tag_async(
+        self,
+        request: ocean_base_pro_20190901_models.DeleteTagRequest,
+    ) -> ocean_base_pro_20190901_models.DeleteTagResponse:
+        """
+        @summary You can call this operation to delete a tag group.
+        
+        @param request: DeleteTagRequest
+        @return: DeleteTagResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_tag_with_options_async(request, runtime)
+
+    def delete_tag_value_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.DeleteTagValueRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DeleteTagValueResponse:
+        """
+        @summary You can call this operation to delete a tag from a tag group.
+        
+        @param request: DeleteTagValueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTagValueResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.key):
+            body['Key'] = request.key
+        if not UtilClient.is_unset(request.value):
+            body['Value'] = request.value
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteTagValue',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DeleteTagValueResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_tag_value_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.DeleteTagValueRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DeleteTagValueResponse:
+        """
+        @summary You can call this operation to delete a tag from a tag group.
+        
+        @param request: DeleteTagValueRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTagValueResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.key):
+            body['Key'] = request.key
+        if not UtilClient.is_unset(request.value):
+            body['Value'] = request.value
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DeleteTagValue',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DeleteTagValueResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_tag_value(
+        self,
+        request: ocean_base_pro_20190901_models.DeleteTagValueRequest,
+    ) -> ocean_base_pro_20190901_models.DeleteTagValueResponse:
+        """
+        @summary You can call this operation to delete a tag from a tag group.
+        
+        @param request: DeleteTagValueRequest
+        @return: DeleteTagValueResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_tag_value_with_options(request, runtime)
+
+    async def delete_tag_value_async(
+        self,
+        request: ocean_base_pro_20190901_models.DeleteTagValueRequest,
+    ) -> ocean_base_pro_20190901_models.DeleteTagValueResponse:
+        """
+        @summary You can call this operation to delete a tag from a tag group.
+        
+        @param request: DeleteTagValueRequest
+        @return: DeleteTagValueResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_tag_value_with_options_async(request, runtime)
 
     def delete_tenant_security_ip_group_with_options(
         self,
@@ -4467,7 +4859,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeInstanceTagsResponse:
         """
-        @summary The tag of the resource.
+        @summary You can call this operation to query the tags of clusters.
         
         @param request: DescribeInstanceTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4504,7 +4896,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeInstanceTagsResponse:
         """
-        @summary The tag of the resource.
+        @summary You can call this operation to query the tags of clusters.
         
         @param request: DescribeInstanceTagsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4540,7 +4932,7 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeInstanceTagsRequest,
     ) -> ocean_base_pro_20190901_models.DescribeInstanceTagsResponse:
         """
-        @summary The tag of the resource.
+        @summary You can call this operation to query the tags of clusters.
         
         @param request: DescribeInstanceTagsRequest
         @return: DescribeInstanceTagsResponse
@@ -4553,7 +4945,7 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeInstanceTagsRequest,
     ) -> ocean_base_pro_20190901_models.DescribeInstanceTagsResponse:
         """
-        @summary The tag of the resource.
+        @summary You can call this operation to query the tags of clusters.
         
         @param request: DescribeInstanceTagsRequest
         @return: DescribeInstanceTagsResponse
@@ -6335,7 +6727,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeProcessStatsCompositionResponse:
         """
-        @summary DescribeProcessStatsComposition
+        @summary You can call this operation to query session information.
         
         @param request: DescribeProcessStatsCompositionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6384,7 +6776,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ocean_base_pro_20190901_models.DescribeProcessStatsCompositionResponse:
         """
-        @summary DescribeProcessStatsComposition
+        @summary You can call this operation to query session information.
         
         @param request: DescribeProcessStatsCompositionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6432,7 +6824,7 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeProcessStatsCompositionRequest,
     ) -> ocean_base_pro_20190901_models.DescribeProcessStatsCompositionResponse:
         """
-        @summary DescribeProcessStatsComposition
+        @summary You can call this operation to query session information.
         
         @param request: DescribeProcessStatsCompositionRequest
         @return: DescribeProcessStatsCompositionResponse
@@ -6445,7 +6837,7 @@ class Client(OpenApiClient):
         request: ocean_base_pro_20190901_models.DescribeProcessStatsCompositionRequest,
     ) -> ocean_base_pro_20190901_models.DescribeProcessStatsCompositionResponse:
         """
-        @summary DescribeProcessStatsComposition
+        @summary You can call this operation to query session information.
         
         @param request: DescribeProcessStatsCompositionRequest
         @return: DescribeProcessStatsCompositionResponse
@@ -8000,6 +8392,102 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_slow_sqllist_with_options_async(request, runtime)
+
+    def describe_tag_values_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeTagValuesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeTagValuesResponse:
+        """
+        @summary You can call this operation to query tags.
+        
+        @param request: DescribeTagValuesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTagValuesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeTagValues',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTagValuesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_tag_values_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeTagValuesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.DescribeTagValuesResponse:
+        """
+        @summary You can call this operation to query tags.
+        
+        @param request: DescribeTagValuesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTagValuesResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.resource_type):
+            body['ResourceType'] = request.resource_type
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='DescribeTagValues',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.DescribeTagValuesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_tag_values(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeTagValuesRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeTagValuesResponse:
+        """
+        @summary You can call this operation to query tags.
+        
+        @param request: DescribeTagValuesRequest
+        @return: DescribeTagValuesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_tag_values_with_options(request, runtime)
+
+    async def describe_tag_values_async(
+        self,
+        request: ocean_base_pro_20190901_models.DescribeTagValuesRequest,
+    ) -> ocean_base_pro_20190901_models.DescribeTagValuesResponse:
+        """
+        @summary You can call this operation to query tags.
+        
+        @param request: DescribeTagValuesRequest
+        @return: DescribeTagValuesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_tag_values_with_options_async(request, runtime)
 
     def describe_tenant_with_options(
         self,
@@ -11276,6 +11764,202 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_security_ips_with_options_async(request, runtime)
+
+    def modify_tag_name_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.ModifyTagNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.ModifyTagNameResponse:
+        """
+        @param request: ModifyTagNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTagNameResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.key):
+            body['Key'] = request.key
+        if not UtilClient.is_unset(request.new_key):
+            body['NewKey'] = request.new_key
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyTagName',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyTagNameResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_tag_name_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.ModifyTagNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.ModifyTagNameResponse:
+        """
+        @param request: ModifyTagNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTagNameResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.key):
+            body['Key'] = request.key
+        if not UtilClient.is_unset(request.new_key):
+            body['NewKey'] = request.new_key
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyTagName',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyTagNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_tag_name(
+        self,
+        request: ocean_base_pro_20190901_models.ModifyTagNameRequest,
+    ) -> ocean_base_pro_20190901_models.ModifyTagNameResponse:
+        """
+        @param request: ModifyTagNameRequest
+        @return: ModifyTagNameResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_tag_name_with_options(request, runtime)
+
+    async def modify_tag_name_async(
+        self,
+        request: ocean_base_pro_20190901_models.ModifyTagNameRequest,
+    ) -> ocean_base_pro_20190901_models.ModifyTagNameResponse:
+        """
+        @param request: ModifyTagNameRequest
+        @return: ModifyTagNameResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_tag_name_with_options_async(request, runtime)
+
+    def modify_tag_value_name_with_options(
+        self,
+        request: ocean_base_pro_20190901_models.ModifyTagValueNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.ModifyTagValueNameResponse:
+        """
+        @summary You can call this operation to rename a tag.
+        
+        @param request: ModifyTagValueNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTagValueNameResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.key):
+            body['Key'] = request.key
+        if not UtilClient.is_unset(request.new_value):
+            body['NewValue'] = request.new_value
+        if not UtilClient.is_unset(request.value):
+            body['Value'] = request.value
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyTagValueName',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyTagValueNameResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_tag_value_name_with_options_async(
+        self,
+        request: ocean_base_pro_20190901_models.ModifyTagValueNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ocean_base_pro_20190901_models.ModifyTagValueNameResponse:
+        """
+        @summary You can call this operation to rename a tag.
+        
+        @param request: ModifyTagValueNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyTagValueNameResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.key):
+            body['Key'] = request.key
+        if not UtilClient.is_unset(request.new_value):
+            body['NewValue'] = request.new_value
+        if not UtilClient.is_unset(request.value):
+            body['Value'] = request.value
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ModifyTagValueName',
+            version='2019-09-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ocean_base_pro_20190901_models.ModifyTagValueNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_tag_value_name(
+        self,
+        request: ocean_base_pro_20190901_models.ModifyTagValueNameRequest,
+    ) -> ocean_base_pro_20190901_models.ModifyTagValueNameResponse:
+        """
+        @summary You can call this operation to rename a tag.
+        
+        @param request: ModifyTagValueNameRequest
+        @return: ModifyTagValueNameResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_tag_value_name_with_options(request, runtime)
+
+    async def modify_tag_value_name_async(
+        self,
+        request: ocean_base_pro_20190901_models.ModifyTagValueNameRequest,
+    ) -> ocean_base_pro_20190901_models.ModifyTagValueNameResponse:
+        """
+        @summary You can call this operation to rename a tag.
+        
+        @param request: ModifyTagValueNameRequest
+        @return: ModifyTagValueNameResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_tag_value_name_with_options_async(request, runtime)
 
     def modify_tenant_encryption_with_options(
         self,

@@ -339,10 +339,16 @@ class BatchKillProcessListRequest(TeaModel):
         session_list: str = None,
         tenant_id: str = None,
     ):
+        # The ID of the OceanBase cluster.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The list of sessions to close.
+        # 
         # This parameter is required.
         self.session_list = session_list
+        # The ID of the tenant.
+        # 
         # This parameter is required.
         self.tenant_id = tenant_id
 
@@ -379,6 +385,7 @@ class BatchKillProcessListResponseBodyData(TeaModel):
         self,
         success: bool = None,
     ):
+        # Indicates whether the calling is successful.
         self.success = success
 
     def validate(self):
@@ -407,7 +414,9 @@ class BatchKillProcessListResponseBody(TeaModel):
         data: List[BatchKillProcessListResponseBodyData] = None,
         request_id: str = None,
     ):
+        # The array of the return result.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -5922,6 +5931,234 @@ class CreateSecurityIpGroupResponse(TeaModel):
         return self
 
 
+class CreateTagRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        key: str = None,
+    ):
+        # The identifier of the client.
+        self.client_token = client_token
+        # The name of the tag group.
+        # 
+        # This parameter is required.
+        self.key = key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.key is not None:
+            result['Key'] = self.key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        return self
+
+
+class CreateTagResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # The tag group creation result.
+        self.message = message
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateTagResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateTagResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateTagResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateTagValueRequest(TeaModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        key: str = None,
+        value: str = None,
+    ):
+        self.client_token = client_token
+        # This parameter is required.
+        self.key = key
+        # This parameter is required.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class CreateTagValueResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateTagValueResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateTagValueResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateTagValueResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreateTenantRequest(TeaModel):
     def __init__(
         self,
@@ -7823,6 +8060,227 @@ class DeleteSecurityIpGroupResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteSecurityIpGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteTagRequest(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+    ):
+        # The name of the tag group.
+        # 
+        # This parameter is required.
+        self.key = key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        return self
+
+
+class DeleteTagResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # The tag group deletion result.
+        self.message = message
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteTagResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteTagResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteTagResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteTagValueRequest(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The name of the tag group.
+        # 
+        # This parameter is required.
+        self.key = key
+        # The name of the tag.
+        # 
+        # This parameter is required.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class DeleteTagValueResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # The tag deletion result.
+        self.message = message
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteTagValueResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteTagValueResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteTagValueResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12785,9 +13243,9 @@ class DescribeInstanceTagsRequest(TeaModel):
         instance_ids: str = None,
         tags: str = None,
     ):
-        # The list of tags.
+        # The list of cluster IDs.
         self.instance_ids = instance_ids
-        # The returned response.
+        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -12821,9 +13279,11 @@ class DescribeInstanceTagsResponseBodyTagResources(TeaModel):
         resource_type: str = None,
         tag: str = None,
     ):
-        # You can call this operation to view the tag value of a cluster.
+        # The resource ID.
         self.resource_id = resource_id
+        # The type of the resource.
         self.resource_type = resource_type
+        # The tag of the resource.
         self.tag = tag
 
     def validate(self):
@@ -12860,9 +13320,9 @@ class DescribeInstanceTagsResponseBody(TeaModel):
         request_id: str = None,
         tag_resources: List[DescribeInstanceTagsResponseBodyTagResources] = None,
     ):
-        # The resource ID.
-        self.request_id = request_id
         # The request ID.
+        self.request_id = request_id
+        # The list of tags.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -20388,14 +20848,23 @@ class DescribeProcessStatsCompositionRequest(TeaModel):
         uid: str = None,
         users: str = None,
     ):
+        # The IP address of the client.
         self.client_ip = client_ip
+        # The ID of the OceanBase cluster.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # The IP address of the server.
         self.server_ip = server_ip
+        # The SQL statement. It supports LIKE clauses, and you may specify only part of the clauses in the SQL statement.
         self.sql_text = sql_text
+        # The state of the session.
         self.status = status
+        # The ID of the tenant.
         self.tenant_id = tenant_id
+        # The user identifier (UID) of OceanBase Database.
         self.uid = uid
+        # The username that you use to log in to the database.
         self.users = users
 
     def validate(self):
@@ -20465,21 +20934,35 @@ class DescribeProcessStatsCompositionResponseBodyDataAllProcessList(TeaModel):
         trace_id: str = None,
         user: str = None,
     ):
+        # The IP address of the client.
         self.client_ip = client_ip
+        # The type of command executed on the current session.
         self.command = command
+        # The CPU time.
         self.cpu_time = cpu_time
+        # The name of the database.
         self.database = database
+        # The execution time.
         self.execute_time = execute_time
+        # The ID of the plan.
         self.plan_id = plan_id
+        # The ID of the proxy session.
         self.proxy_sess_id = proxy_sess_id
+        # The IP address of the server.
         self.server_ip = server_ip
+        # The ID of the session.
         self.session_id = session_id
-        # SQL ID。
+        # The ID of the SQL statement.
         self.sql_id = sql_id
+        # The SQL statement.
         self.sql_text = sql_text
+        # The state of the session.
         self.status = status
+        # The ID of the tenant.
         self.tenant_id = tenant_id
+        # The ID of the trace.
         self.trace_id = trace_id
+        # The username that you use to log in to the database.
         self.user = user
 
     def validate(self):
@@ -20566,9 +21049,13 @@ class DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsDataBaseSt
         total_count: int = None,
         type: str = None,
     ):
+        # The number of active sessions.
         self.active_count = active_count
+        # The value of the database metric.
         self.metric_value = metric_value
+        # The total number of sessions.
         self.total_count = total_count
+        # The type of the database statistics.
         self.type = type
 
     def validate(self):
@@ -20611,9 +21098,13 @@ class DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsSourceStat
         total_count: int = None,
         type: str = None,
     ):
+        # The number of active sessions.
         self.active_count = active_count
+        # The value of the data source metric.
         self.metric_value = metric_value
+        # The total number of sessions.
         self.total_count = total_count
+        # The type of the data source.
         self.type = type
 
     def validate(self):
@@ -20656,9 +21147,13 @@ class DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsUserStatis
         total_count: int = None,
         type: str = None,
     ):
+        # The number of active sessions.
         self.active_count = active_count
+        # The value of the user metric.
         self.metric_value = metric_value
+        # The total number of sessions.
         self.total_count = total_count
+        # The type of the user.
         self.type = type
 
     def validate(self):
@@ -20700,8 +21195,11 @@ class DescribeProcessStatsCompositionResponseBodyDataSessionStatistics(TeaModel)
         source_statistics: List[DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsSourceStatistics] = None,
         user_statistics: List[DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsUserStatistics] = None,
     ):
+        # The database statistics.
         self.data_base_statistics = data_base_statistics
+        # The data source statistics.
         self.source_statistics = source_statistics
+        # The user statistics.
         self.user_statistics = user_statistics
 
     def validate(self):
@@ -20768,11 +21266,17 @@ class DescribeProcessStatsCompositionResponseBodyData(TeaModel):
         session_statistics: DescribeProcessStatsCompositionResponseBodyDataSessionStatistics = None,
         total_session_count: int = None,
     ):
+        # The number of active sessions.
         self.active_session_count = active_session_count
+        # The list of all processes in the system.
         self.all_process_list = all_process_list
+        # The number of idle sessions.
         self.idle_session_count = idle_session_count
+        # The version of OceanBase Database.
         self.ob_version = ob_version
+        # The session statistics.
         self.session_statistics = session_statistics
+        # The total number of sessions.
         self.total_session_count = total_session_count
 
     def validate(self):
@@ -20832,7 +21336,9 @@ class DescribeProcessStatsCompositionResponseBody(TeaModel):
         data: List[DescribeProcessStatsCompositionResponseBodyData] = None,
         request_id: str = None,
     ):
+        # The return result.
         self.data = data
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -29883,6 +30389,112 @@ class DescribeSlowSQLListResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeSlowSQLListResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeTagValuesRequest(TeaModel):
+    def __init__(
+        self,
+        resource_type: str = None,
+    ):
+        # The type of the resource.
+        # 
+        # This parameter is required.
+        self.resource_type = resource_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+        return self
+
+
+class DescribeTagValuesResponseBody(TeaModel):
+    def __init__(
+        self,
+        map: str = None,
+        request_id: str = None,
+    ):
+        # The mappings between tag groups and tags.
+        self.map = map
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.map is not None:
+            result['Map'] = self.map
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Map') is not None:
+            self.map = m.get('Map')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeTagValuesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeTagValuesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeTagValuesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -41762,6 +42374,245 @@ class ModifySecurityIpsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifySecurityIpsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyTagNameRequest(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        new_key: str = None,
+    ):
+        # The name of the tag group.
+        # 
+        # This parameter is required.
+        self.key = key
+        # The new name of the tag group.
+        # 
+        # This parameter is required.
+        self.new_key = new_key
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.new_key is not None:
+            result['NewKey'] = self.new_key
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('NewKey') is not None:
+            self.new_key = m.get('NewKey')
+        return self
+
+
+class ModifyTagNameResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # The tag group renaming result.
+        self.message = message
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyTagNameResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyTagNameResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyTagNameResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ModifyTagValueNameRequest(TeaModel):
+    def __init__(
+        self,
+        key: str = None,
+        new_value: str = None,
+        value: str = None,
+    ):
+        # The name of the tag group.
+        # 
+        # This parameter is required.
+        self.key = key
+        # The new name of the tag.
+        # 
+        # This parameter is required.
+        self.new_value = new_value
+        # The name of the tag.
+        # 
+        # This parameter is required.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.key is not None:
+            result['Key'] = self.key
+        if self.new_value is not None:
+            result['NewValue'] = self.new_value
+        if self.value is not None:
+            result['Value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+        if m.get('NewValue') is not None:
+            self.new_value = m.get('NewValue')
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+        return self
+
+
+class ModifyTagValueNameResponseBody(TeaModel):
+    def __init__(
+        self,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # The tag renaming result.
+        self.message = message
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyTagValueNameResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyTagValueNameResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyTagValueNameResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

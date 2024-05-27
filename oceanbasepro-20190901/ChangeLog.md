@@ -1,3 +1,39 @@
+2024-05-27 Version: 4.1.0
+- Support API BatchKillProcessList.
+- Support API CreateTag.
+- Support API CreateTagValue.
+- Support API DeleteTag.
+- Support API DeleteTagValue.
+- Support API DescribeProcessStatsComposition.
+- Support API DescribeTagValues.
+- Support API ModifyTagName.
+- Support API ModifyTagValueName.
+- Support API UpdateProjectConfig.
+- Update API CreateInstance: add param CpuArch.
+- Update API CreateInstance: update param InstanceClass.
+- Update API CreateTenant: add param CreateParams.
+- Update API CreateTenant: add param UserVpcOwnerId.
+- Update API CreateTenant: update param ReadOnlyZoneList.
+- Update API DescribeAvailableZone: add param CpuArch.
+- Update API DescribeAvailableZone: update response param.
+- Update API DescribeInstance: update response param.
+- Update API DescribeInstanceTopology: update response param.
+- Update API DescribeInstances: update response param.
+- Update API DescribeMetricsData: update response param.
+- Update API DescribeOasSQLPlans: add param PlanUnionHash.
+- Update API DescribeOasSQLPlans: add param ReturnBriefInfo.
+- Update API DescribeOasSlowSQLList: update response param.
+- Update API DescribeOasTopSQLList: update response param.
+- Update API DescribeOutlineBinding: update param TableName.
+- Update API DescribeSQLSamples: add param ReturnSqlText.
+- Update API DescribeSQLSamples: update response param.
+- Update API DescribeTenant: update response param.
+- Update API DescribeTenantTags: update param TenantIds.
+- Update API DescribeZones: add param CpuArch.
+- Update API ModifyTenantPrimaryZone: add param UserVpcOwnerId.
+- Update API ModifyTenantResource: update param ReadOnlyZoneList.
+
+
 2024-05-23 Version: 4.0.0
 - Support API BatchKillProcessList.
 - Support API DescribeProcessStatsComposition.
