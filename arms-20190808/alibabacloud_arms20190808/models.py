@@ -9998,6 +9998,7 @@ class CreateOrUpdateSilencePolicyRequest(TeaModel):
         matching_rules: str = None,
         name: str = None,
         region_id: str = None,
+        state: str = None,
     ):
         # The ID of the silence policy.
         # 
@@ -10024,6 +10025,7 @@ class CreateOrUpdateSilencePolicyRequest(TeaModel):
         self.name = name
         # The ID of the region.
         self.region_id = region_id
+        self.state = state
 
     def validate(self):
         pass
@@ -10042,6 +10044,8 @@ class CreateOrUpdateSilencePolicyRequest(TeaModel):
             result['Name'] = self.name
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.state is not None:
+            result['State'] = self.state
         return result
 
     def from_map(self, m: dict = None):
@@ -10054,6 +10058,8 @@ class CreateOrUpdateSilencePolicyRequest(TeaModel):
             self.name = m.get('Name')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('State') is not None:
+            self.state = m.get('State')
         return self
 
 
@@ -10148,6 +10154,7 @@ class CreateOrUpdateSilencePolicyResponseBodySilencePolicy(TeaModel):
         id: int = None,
         matching_rules: List[CreateOrUpdateSilencePolicyResponseBodySilencePolicyMatchingRules] = None,
         name: str = None,
+        state: str = None,
     ):
         # The ID of the silence policy.
         self.id = id
@@ -10155,6 +10162,7 @@ class CreateOrUpdateSilencePolicyResponseBodySilencePolicy(TeaModel):
         self.matching_rules = matching_rules
         # The name of the silence policy.
         self.name = name
+        self.state = state
 
     def validate(self):
         if self.matching_rules:
@@ -10176,6 +10184,8 @@ class CreateOrUpdateSilencePolicyResponseBodySilencePolicy(TeaModel):
                 result['MatchingRules'].append(k.to_map() if k else None)
         if self.name is not None:
             result['Name'] = self.name
+        if self.state is not None:
+            result['State'] = self.state
         return result
 
     def from_map(self, m: dict = None):
@@ -10189,6 +10199,8 @@ class CreateOrUpdateSilencePolicyResponseBodySilencePolicy(TeaModel):
                 self.matching_rules.append(temp_model.from_map(k))
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('State') is not None:
+            self.state = m.get('State')
         return self
 
 
@@ -28403,6 +28415,7 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
         payment_type: str = None,
         push_gateway_inter_url: str = None,
         push_gateway_intra_url: str = None,
+        read_only: bool = None,
         region_id: str = None,
         remote_read_inter_url: str = None,
         remote_read_intra_url: str = None,
@@ -28448,6 +28461,7 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
         self.push_gateway_inter_url = push_gateway_inter_url
         # Push gateway intranet address.
         self.push_gateway_intra_url = push_gateway_intra_url
+        self.read_only = read_only
         # The region ID.
         self.region_id = region_id
         # Remote read internet address.
@@ -28511,6 +28525,8 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
             result['PushGatewayInterUrl'] = self.push_gateway_inter_url
         if self.push_gateway_intra_url is not None:
             result['PushGatewayIntraUrl'] = self.push_gateway_intra_url
+        if self.read_only is not None:
+            result['ReadOnly'] = self.read_only
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.remote_read_inter_url is not None:
@@ -28567,6 +28583,8 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
             self.push_gateway_inter_url = m.get('PushGatewayInterUrl')
         if m.get('PushGatewayIntraUrl') is not None:
             self.push_gateway_intra_url = m.get('PushGatewayIntraUrl')
+        if m.get('ReadOnly') is not None:
+            self.read_only = m.get('ReadOnly')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('RemoteReadInterUrl') is not None:
@@ -48632,6 +48650,7 @@ class ListSilencePoliciesResponseBodyPageBeanSilencePolicies(TeaModel):
         id: int = None,
         matching_rules: List[ListSilencePoliciesResponseBodyPageBeanSilencePoliciesMatchingRules] = None,
         name: str = None,
+        state: str = None,
     ):
         # The ID of the silence policy.
         self.id = id
@@ -48639,6 +48658,7 @@ class ListSilencePoliciesResponseBodyPageBeanSilencePolicies(TeaModel):
         self.matching_rules = matching_rules
         # The name of the silence policy.
         self.name = name
+        self.state = state
 
     def validate(self):
         if self.matching_rules:
@@ -48660,6 +48680,8 @@ class ListSilencePoliciesResponseBodyPageBeanSilencePolicies(TeaModel):
                 result['MatchingRules'].append(k.to_map() if k else None)
         if self.name is not None:
             result['Name'] = self.name
+        if self.state is not None:
+            result['State'] = self.state
         return result
 
     def from_map(self, m: dict = None):
@@ -48673,6 +48695,8 @@ class ListSilencePoliciesResponseBodyPageBeanSilencePolicies(TeaModel):
                 self.matching_rules.append(temp_model.from_map(k))
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('State') is not None:
+            self.state = m.get('State')
         return self
 
 
