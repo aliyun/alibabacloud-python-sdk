@@ -20934,35 +20934,20 @@ class DescribeProcessStatsCompositionResponseBodyDataAllProcessList(TeaModel):
         trace_id: str = None,
         user: str = None,
     ):
-        # The IP address of the client.
         self.client_ip = client_ip
-        # The type of command executed on the current session.
         self.command = command
-        # The CPU time.
         self.cpu_time = cpu_time
-        # The name of the database.
         self.database = database
-        # The execution time.
         self.execute_time = execute_time
-        # The ID of the plan.
         self.plan_id = plan_id
-        # The ID of the proxy session.
         self.proxy_sess_id = proxy_sess_id
-        # The IP address of the server.
         self.server_ip = server_ip
-        # The ID of the session.
         self.session_id = session_id
-        # The ID of the SQL statement.
         self.sql_id = sql_id
-        # The SQL statement.
         self.sql_text = sql_text
-        # The state of the session.
         self.status = status
-        # The ID of the tenant.
         self.tenant_id = tenant_id
-        # The ID of the trace.
         self.trace_id = trace_id
-        # The username that you use to log in to the database.
         self.user = user
 
     def validate(self):
@@ -21049,13 +21034,9 @@ class DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsDataBaseSt
         total_count: int = None,
         type: str = None,
     ):
-        # The number of active sessions.
         self.active_count = active_count
-        # The value of the database metric.
         self.metric_value = metric_value
-        # The total number of sessions.
         self.total_count = total_count
-        # The type of the database statistics.
         self.type = type
 
     def validate(self):
@@ -21098,13 +21079,9 @@ class DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsSourceStat
         total_count: int = None,
         type: str = None,
     ):
-        # The number of active sessions.
         self.active_count = active_count
-        # The value of the data source metric.
         self.metric_value = metric_value
-        # The total number of sessions.
         self.total_count = total_count
-        # The type of the data source.
         self.type = type
 
     def validate(self):
@@ -21147,13 +21124,9 @@ class DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsUserStatis
         total_count: int = None,
         type: str = None,
     ):
-        # The number of active sessions.
         self.active_count = active_count
-        # The value of the user metric.
         self.metric_value = metric_value
-        # The total number of sessions.
         self.total_count = total_count
-        # The type of the user.
         self.type = type
 
     def validate(self):
@@ -21195,11 +21168,8 @@ class DescribeProcessStatsCompositionResponseBodyDataSessionStatistics(TeaModel)
         source_statistics: List[DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsSourceStatistics] = None,
         user_statistics: List[DescribeProcessStatsCompositionResponseBodyDataSessionStatisticsUserStatistics] = None,
     ):
-        # The database statistics.
         self.data_base_statistics = data_base_statistics
-        # The data source statistics.
         self.source_statistics = source_statistics
-        # The user statistics.
         self.user_statistics = user_statistics
 
     def validate(self):
@@ -21266,17 +21236,11 @@ class DescribeProcessStatsCompositionResponseBodyData(TeaModel):
         session_statistics: DescribeProcessStatsCompositionResponseBodyDataSessionStatistics = None,
         total_session_count: int = None,
     ):
-        # The number of active sessions.
         self.active_session_count = active_session_count
-        # The list of all processes in the system.
         self.all_process_list = all_process_list
-        # The number of idle sessions.
         self.idle_session_count = idle_session_count
-        # The version of OceanBase Database.
         self.ob_version = ob_version
-        # The session statistics.
         self.session_statistics = session_statistics
-        # The total number of sessions.
         self.total_session_count = total_session_count
 
     def validate(self):
@@ -21333,7 +21297,7 @@ class DescribeProcessStatsCompositionResponseBodyData(TeaModel):
 class DescribeProcessStatsCompositionResponseBody(TeaModel):
     def __init__(
         self,
-        data: List[DescribeProcessStatsCompositionResponseBodyData] = None,
+        data: DescribeProcessStatsCompositionResponseBodyData = None,
         request_id: str = None,
     ):
         # The return result.
@@ -21343,9 +21307,7 @@ class DescribeProcessStatsCompositionResponseBody(TeaModel):
 
     def validate(self):
         if self.data:
-            for k in self.data:
-                if k:
-                    k.validate()
+            self.data.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -21353,21 +21315,17 @@ class DescribeProcessStatsCompositionResponseBody(TeaModel):
             return _map
 
         result = dict()
-        result['Data'] = []
         if self.data is not None:
-            for k in self.data:
-                result['Data'].append(k.to_map() if k else None)
+            result['Data'] = self.data.to_map()
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.data = []
         if m.get('Data') is not None:
-            for k in m.get('Data'):
-                temp_model = DescribeProcessStatsCompositionResponseBodyData()
-                self.data.append(temp_model.from_map(k))
+            temp_model = DescribeProcessStatsCompositionResponseBodyData()
+            self.data = temp_model.from_map(m['Data'])
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         return self

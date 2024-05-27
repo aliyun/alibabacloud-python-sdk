@@ -1,3 +1,7 @@
+2024-05-27 Version: 4.1.1
+- Update API DescribeProcessStatsComposition: update response param.
+
+
 2024-05-27 Version: 4.1.0
 - Support API BatchKillProcessList.
 - Support API CreateTag.
