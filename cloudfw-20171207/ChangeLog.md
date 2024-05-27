@@ -1,3 +1,7 @@
+2024-05-27 Version: 3.6.2
+- Update API DescribeNatFirewallList: update response param.
+
+
 2024-05-16 Version: 3.6.1
 - Update API DescribeInternetTrafficTrend: update response param.
 

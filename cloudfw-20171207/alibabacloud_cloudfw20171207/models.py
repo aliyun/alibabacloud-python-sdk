@@ -9257,7 +9257,7 @@ class DescribeNatFirewallControlPolicyRequest(TeaModel):
         # The recurrence type for the access control policy to take effect. Valid values:
         # 
         # *   **Permanent** (default): The policy always takes effect.
-        # *   **None**: The policy takes effect for only once.
+        # *   **None**: The policy takes effect only once.
         # *   **Daily**: The policy takes effect on a daily basis.
         # *   **Weekly**: The policy takes effect on a weekly basis.
         # *   **Monthly**: The policy takes effect on a monthly basis.
@@ -9835,6 +9835,51 @@ class DescribeNatFirewallListRequest(TeaModel):
         return self
 
 
+class DescribeNatFirewallListResponseBodyNatFirewallListNatRouteEntryList(TeaModel):
+    def __init__(
+        self,
+        destination_cidr: str = None,
+        next_hop_id: str = None,
+        next_hop_type: str = None,
+        route_table_id: str = None,
+    ):
+        self.destination_cidr = destination_cidr
+        self.next_hop_id = next_hop_id
+        self.next_hop_type = next_hop_type
+        self.route_table_id = route_table_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.destination_cidr is not None:
+            result['DestinationCidr'] = self.destination_cidr
+        if self.next_hop_id is not None:
+            result['NextHopId'] = self.next_hop_id
+        if self.next_hop_type is not None:
+            result['NextHopType'] = self.next_hop_type
+        if self.route_table_id is not None:
+            result['RouteTableId'] = self.route_table_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DestinationCidr') is not None:
+            self.destination_cidr = m.get('DestinationCidr')
+        if m.get('NextHopId') is not None:
+            self.next_hop_id = m.get('NextHopId')
+        if m.get('NextHopType') is not None:
+            self.next_hop_type = m.get('NextHopType')
+        if m.get('RouteTableId') is not None:
+            self.route_table_id = m.get('RouteTableId')
+        return self
+
+
 class DescribeNatFirewallListResponseBodyNatFirewallList(TeaModel):
     def __init__(
         self,
@@ -9843,6 +9888,7 @@ class DescribeNatFirewallListResponseBodyNatFirewallList(TeaModel):
         member_uid: int = None,
         nat_gateway_id: str = None,
         nat_gateway_name: str = None,
+        nat_route_entry_list: List[DescribeNatFirewallListResponseBodyNatFirewallListNatRouteEntryList] = None,
         proxy_id: str = None,
         proxy_name: str = None,
         proxy_status: str = None,
@@ -9856,6 +9902,7 @@ class DescribeNatFirewallListResponseBodyNatFirewallList(TeaModel):
         self.member_uid = member_uid
         self.nat_gateway_id = nat_gateway_id
         self.nat_gateway_name = nat_gateway_name
+        self.nat_route_entry_list = nat_route_entry_list
         self.proxy_id = proxy_id
         self.proxy_name = proxy_name
         self.proxy_status = proxy_status
@@ -9865,7 +9912,10 @@ class DescribeNatFirewallListResponseBodyNatFirewallList(TeaModel):
         self.vpc_name = vpc_name
 
     def validate(self):
-        pass
+        if self.nat_route_entry_list:
+            for k in self.nat_route_entry_list:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -9883,6 +9933,10 @@ class DescribeNatFirewallListResponseBodyNatFirewallList(TeaModel):
             result['NatGatewayId'] = self.nat_gateway_id
         if self.nat_gateway_name is not None:
             result['NatGatewayName'] = self.nat_gateway_name
+        result['NatRouteEntryList'] = []
+        if self.nat_route_entry_list is not None:
+            for k in self.nat_route_entry_list:
+                result['NatRouteEntryList'].append(k.to_map() if k else None)
         if self.proxy_id is not None:
             result['ProxyId'] = self.proxy_id
         if self.proxy_name is not None:
@@ -9911,6 +9965,11 @@ class DescribeNatFirewallListResponseBodyNatFirewallList(TeaModel):
             self.nat_gateway_id = m.get('NatGatewayId')
         if m.get('NatGatewayName') is not None:
             self.nat_gateway_name = m.get('NatGatewayName')
+        self.nat_route_entry_list = []
+        if m.get('NatRouteEntryList') is not None:
+            for k in m.get('NatRouteEntryList'):
+                temp_model = DescribeNatFirewallListResponseBodyNatFirewallListNatRouteEntryList()
+                self.nat_route_entry_list.append(temp_model.from_map(k))
         if m.get('ProxyId') is not None:
             self.proxy_id = m.get('ProxyId')
         if m.get('ProxyName') is not None:
@@ -23526,9 +23585,9 @@ class PutDisableAllFwSwitchRequest(TeaModel):
     ):
         # The instance ID of your Cloud Firewall.
         self.instance_id = instance_id
-        # The natural language of the request and response. Valid values:
+        # The language of the content within the request and response. Valid values: Valid values:
         # 
-        # *   **zh**: Chinese (default)
+        # *   **zh** (default): Chinese
         # *   **en**: English
         self.lang = lang
         # The source IP address of the request.
