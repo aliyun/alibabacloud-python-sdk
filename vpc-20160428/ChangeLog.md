@@ -1,3 +1,7 @@
+2024-05-27 Version: 6.6.6
+- Update API ListPublicIpAddressPools: update response param.
+
+
 2024-05-16 Version: 6.6.5
 - Update API DescribeVSwitches: add param EnableIpv6.
 - Update API DescribeVpcs: add param EnableIpv6.

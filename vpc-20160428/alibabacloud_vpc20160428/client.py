@@ -8983,9 +8983,9 @@ class Client(OpenApiClient):
         """
         @summary Creates an IPsec server.
         
-        @description    Before you create an IPsec server, you must create a VPN gateway and enable the SSL-VPN feature for the VPN gateway. For more information, see [CreateVpnGateway](https://help.aliyun.com/document_detail/120363.html).
+        @description    Before you create an IPsec server, you must create a VPN gateway and enable the SSL-VPN feature for the VPN gateway. For more information, see [CreateVpnGateway](https://help.aliyun.com/document_detail/2794049.html).
         Before you create an IPsec server, make sure that no IPsec-VPN connection exists on the VPN gateway. For more information, see [DeleteVpnConnection](https://help.aliyun.com/document_detail/2526948.html).
-        **CreateIpsecServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the status of the task.
+        **CreateIpsecServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) to query the status of the task.
         If the VPN gateway is in the **updating** state, the IPsec server is being created.
         If the VPN gateway is in the **active** state, the IPsec server is created.
         You cannot repeatedly call **CreateIpsecServer** within the specified period of time.
@@ -9047,9 +9047,9 @@ class Client(OpenApiClient):
         """
         @summary Creates an IPsec server.
         
-        @description    Before you create an IPsec server, you must create a VPN gateway and enable the SSL-VPN feature for the VPN gateway. For more information, see [CreateVpnGateway](https://help.aliyun.com/document_detail/120363.html).
+        @description    Before you create an IPsec server, you must create a VPN gateway and enable the SSL-VPN feature for the VPN gateway. For more information, see [CreateVpnGateway](https://help.aliyun.com/document_detail/2794049.html).
         Before you create an IPsec server, make sure that no IPsec-VPN connection exists on the VPN gateway. For more information, see [DeleteVpnConnection](https://help.aliyun.com/document_detail/2526948.html).
-        **CreateIpsecServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the status of the task.
+        **CreateIpsecServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) to query the status of the task.
         If the VPN gateway is in the **updating** state, the IPsec server is being created.
         If the VPN gateway is in the **active** state, the IPsec server is created.
         You cannot repeatedly call **CreateIpsecServer** within the specified period of time.
@@ -9110,9 +9110,9 @@ class Client(OpenApiClient):
         """
         @summary Creates an IPsec server.
         
-        @description    Before you create an IPsec server, you must create a VPN gateway and enable the SSL-VPN feature for the VPN gateway. For more information, see [CreateVpnGateway](https://help.aliyun.com/document_detail/120363.html).
+        @description    Before you create an IPsec server, you must create a VPN gateway and enable the SSL-VPN feature for the VPN gateway. For more information, see [CreateVpnGateway](https://help.aliyun.com/document_detail/2794049.html).
         Before you create an IPsec server, make sure that no IPsec-VPN connection exists on the VPN gateway. For more information, see [DeleteVpnConnection](https://help.aliyun.com/document_detail/2526948.html).
-        **CreateIpsecServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the status of the task.
+        **CreateIpsecServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) to query the status of the task.
         If the VPN gateway is in the **updating** state, the IPsec server is being created.
         If the VPN gateway is in the **active** state, the IPsec server is created.
         You cannot repeatedly call **CreateIpsecServer** within the specified period of time.
@@ -9130,9 +9130,9 @@ class Client(OpenApiClient):
         """
         @summary Creates an IPsec server.
         
-        @description    Before you create an IPsec server, you must create a VPN gateway and enable the SSL-VPN feature for the VPN gateway. For more information, see [CreateVpnGateway](https://help.aliyun.com/document_detail/120363.html).
+        @description    Before you create an IPsec server, you must create a VPN gateway and enable the SSL-VPN feature for the VPN gateway. For more information, see [CreateVpnGateway](https://help.aliyun.com/document_detail/2794049.html).
         Before you create an IPsec server, make sure that no IPsec-VPN connection exists on the VPN gateway. For more information, see [DeleteVpnConnection](https://help.aliyun.com/document_detail/2526948.html).
-        **CreateIpsecServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the status of the task.
+        **CreateIpsecServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) to query the status of the task.
         If the VPN gateway is in the **updating** state, the IPsec server is being created.
         If the VPN gateway is in the **active** state, the IPsec server is created.
         You cannot repeatedly call **CreateIpsecServer** within the specified period of time.
@@ -18057,7 +18057,7 @@ class Client(OpenApiClient):
         """
         @summary Deletes an IPsec server.
         
-        @description    **DeleteIpsecServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the status of the task.
+        @description    **DeleteIpsecServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) to query the status of the task.
         If a VPN gateway is in the **updating** state, the IPsec server is being deleted.
         If a VPN gateway is in the **active** state, the IPsec server is deleted.
         You cannot repeatedly call **DeleteIpsecServer** to delete an IPsec server from a VPN gateway within the specified period of time.
@@ -18103,7 +18103,7 @@ class Client(OpenApiClient):
         """
         @summary Deletes an IPsec server.
         
-        @description    **DeleteIpsecServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the status of the task.
+        @description    **DeleteIpsecServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) to query the status of the task.
         If a VPN gateway is in the **updating** state, the IPsec server is being deleted.
         If a VPN gateway is in the **active** state, the IPsec server is deleted.
         You cannot repeatedly call **DeleteIpsecServer** to delete an IPsec server from a VPN gateway within the specified period of time.
@@ -18148,7 +18148,7 @@ class Client(OpenApiClient):
         """
         @summary Deletes an IPsec server.
         
-        @description    **DeleteIpsecServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the status of the task.
+        @description    **DeleteIpsecServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) to query the status of the task.
         If a VPN gateway is in the **updating** state, the IPsec server is being deleted.
         If a VPN gateway is in the **active** state, the IPsec server is deleted.
         You cannot repeatedly call **DeleteIpsecServer** to delete an IPsec server from a VPN gateway within the specified period of time.
@@ -18166,7 +18166,7 @@ class Client(OpenApiClient):
         """
         @summary Deletes an IPsec server.
         
-        @description    **DeleteIpsecServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the status of the task.
+        @description    **DeleteIpsecServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) to query the status of the task.
         If a VPN gateway is in the **updating** state, the IPsec server is being deleted.
         If a VPN gateway is in the **active** state, the IPsec server is deleted.
         You cannot repeatedly call **DeleteIpsecServer** to delete an IPsec server from a VPN gateway within the specified period of time.
@@ -20665,7 +20665,7 @@ class Client(OpenApiClient):
         """
         @summary Deletes an SSL server.
         
-        @description    **DeleteSslVpnServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) operation to query the status of the task.
+        @description    **DeleteSslVpnServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) operation to query the status of the task.
         If the VPN gateway is in the **updating** state, the SSL server is being deleted.
         If the VPN gateway is in the **active** state, the SSL server is deleted.
         You cannot repeatedly call the **DeleteSslVpnServer** operation to delete an SSL server from the same VPN gateway within the specified period of time.
@@ -20717,7 +20717,7 @@ class Client(OpenApiClient):
         """
         @summary Deletes an SSL server.
         
-        @description    **DeleteSslVpnServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) operation to query the status of the task.
+        @description    **DeleteSslVpnServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) operation to query the status of the task.
         If the VPN gateway is in the **updating** state, the SSL server is being deleted.
         If the VPN gateway is in the **active** state, the SSL server is deleted.
         You cannot repeatedly call the **DeleteSslVpnServer** operation to delete an SSL server from the same VPN gateway within the specified period of time.
@@ -20768,7 +20768,7 @@ class Client(OpenApiClient):
         """
         @summary Deletes an SSL server.
         
-        @description    **DeleteSslVpnServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) operation to query the status of the task.
+        @description    **DeleteSslVpnServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) operation to query the status of the task.
         If the VPN gateway is in the **updating** state, the SSL server is being deleted.
         If the VPN gateway is in the **active** state, the SSL server is deleted.
         You cannot repeatedly call the **DeleteSslVpnServer** operation to delete an SSL server from the same VPN gateway within the specified period of time.
@@ -20786,7 +20786,7 @@ class Client(OpenApiClient):
         """
         @summary Deletes an SSL server.
         
-        @description    **DeleteSslVpnServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) operation to query the status of the task.
+        @description    **DeleteSslVpnServer** is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) operation to query the status of the task.
         If the VPN gateway is in the **updating** state, the SSL server is being deleted.
         If the VPN gateway is in the **active** state, the SSL server is deleted.
         You cannot repeatedly call the **DeleteSslVpnServer** operation to delete an SSL server from the same VPN gateway within the specified period of time.
@@ -29849,7 +29849,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the clients that have connected to a VPN gateway through SSL-VPN connections.
         
-        @description If your VPN gateway was created before December 10, 2022, you must upgrade your VPN gateway to the latest version before you can view connection information about SSL clients. For more information, see [Upgrade a VPN gateway](https://help.aliyun.com/document_detail/303968.html).
+        @description If your VPN gateway was created before December 10, 2022, you must upgrade your VPN gateway to the latest version before you can view connection information about SSL clients. For more information, see [Upgrade a VPN gateway](https://help.aliyun.com/document_detail/2671058.html).
         If your VPN gateway was created after December 10, 2022, you can view connection information about SSL clients by default.
         
         @param request: DescribeSslVpnClientsRequest
@@ -29901,7 +29901,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the clients that have connected to a VPN gateway through SSL-VPN connections.
         
-        @description If your VPN gateway was created before December 10, 2022, you must upgrade your VPN gateway to the latest version before you can view connection information about SSL clients. For more information, see [Upgrade a VPN gateway](https://help.aliyun.com/document_detail/303968.html).
+        @description If your VPN gateway was created before December 10, 2022, you must upgrade your VPN gateway to the latest version before you can view connection information about SSL clients. For more information, see [Upgrade a VPN gateway](https://help.aliyun.com/document_detail/2671058.html).
         If your VPN gateway was created after December 10, 2022, you can view connection information about SSL clients by default.
         
         @param request: DescribeSslVpnClientsRequest
@@ -29952,7 +29952,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the clients that have connected to a VPN gateway through SSL-VPN connections.
         
-        @description If your VPN gateway was created before December 10, 2022, you must upgrade your VPN gateway to the latest version before you can view connection information about SSL clients. For more information, see [Upgrade a VPN gateway](https://help.aliyun.com/document_detail/303968.html).
+        @description If your VPN gateway was created before December 10, 2022, you must upgrade your VPN gateway to the latest version before you can view connection information about SSL clients. For more information, see [Upgrade a VPN gateway](https://help.aliyun.com/document_detail/2671058.html).
         If your VPN gateway was created after December 10, 2022, you can view connection information about SSL clients by default.
         
         @param request: DescribeSslVpnClientsRequest
@@ -29968,7 +29968,7 @@ class Client(OpenApiClient):
         """
         @summary Queries the clients that have connected to a VPN gateway through SSL-VPN connections.
         
-        @description If your VPN gateway was created before December 10, 2022, you must upgrade your VPN gateway to the latest version before you can view connection information about SSL clients. For more information, see [Upgrade a VPN gateway](https://help.aliyun.com/document_detail/303968.html).
+        @description If your VPN gateway was created before December 10, 2022, you must upgrade your VPN gateway to the latest version before you can view connection information about SSL clients. For more information, see [Upgrade a VPN gateway](https://help.aliyun.com/document_detail/2671058.html).
         If your VPN gateway was created after December 10, 2022, you can view connection information about SSL clients by default.
         
         @param request: DescribeSslVpnClientsRequest
@@ -53262,7 +53262,7 @@ class Client(OpenApiClient):
         @summary Modifies the configuration of an IPsec server.
         
         @description    If you modify only the **IpsecServerName** parameter, this operation is synchronous. If you modify parameters other than **IpsecServerName**, this operation is asynchronous.
-        When the **UpdateIpsecServer** operation is asynchronous, the system returns a request ID after you send a request to call this operation and the IPsec server is being modified in the backend. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the status of a VPN gateway.
+        When the **UpdateIpsecServer** operation is asynchronous, the system returns a request ID after you send a request to call this operation and the IPsec server is being modified in the backend. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) to query the status of a VPN gateway.
         If the VPN gateway is in the **updating** state, the configuration of the IPsec server is being modified.
         If the VPN gateway is in the **active** state, the configuration of the IPsec server is modified.
         You cannot repeatedly call the **UpdateIpsecServer** operation for the same VPN gateway within the specified period of time.
@@ -53325,7 +53325,7 @@ class Client(OpenApiClient):
         @summary Modifies the configuration of an IPsec server.
         
         @description    If you modify only the **IpsecServerName** parameter, this operation is synchronous. If you modify parameters other than **IpsecServerName**, this operation is asynchronous.
-        When the **UpdateIpsecServer** operation is asynchronous, the system returns a request ID after you send a request to call this operation and the IPsec server is being modified in the backend. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the status of a VPN gateway.
+        When the **UpdateIpsecServer** operation is asynchronous, the system returns a request ID after you send a request to call this operation and the IPsec server is being modified in the backend. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) to query the status of a VPN gateway.
         If the VPN gateway is in the **updating** state, the configuration of the IPsec server is being modified.
         If the VPN gateway is in the **active** state, the configuration of the IPsec server is modified.
         You cannot repeatedly call the **UpdateIpsecServer** operation for the same VPN gateway within the specified period of time.
@@ -53387,7 +53387,7 @@ class Client(OpenApiClient):
         @summary Modifies the configuration of an IPsec server.
         
         @description    If you modify only the **IpsecServerName** parameter, this operation is synchronous. If you modify parameters other than **IpsecServerName**, this operation is asynchronous.
-        When the **UpdateIpsecServer** operation is asynchronous, the system returns a request ID after you send a request to call this operation and the IPsec server is being modified in the backend. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the status of a VPN gateway.
+        When the **UpdateIpsecServer** operation is asynchronous, the system returns a request ID after you send a request to call this operation and the IPsec server is being modified in the backend. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) to query the status of a VPN gateway.
         If the VPN gateway is in the **updating** state, the configuration of the IPsec server is being modified.
         If the VPN gateway is in the **active** state, the configuration of the IPsec server is modified.
         You cannot repeatedly call the **UpdateIpsecServer** operation for the same VPN gateway within the specified period of time.
@@ -53406,7 +53406,7 @@ class Client(OpenApiClient):
         @summary Modifies the configuration of an IPsec server.
         
         @description    If you modify only the **IpsecServerName** parameter, this operation is synchronous. If you modify parameters other than **IpsecServerName**, this operation is asynchronous.
-        When the **UpdateIpsecServer** operation is asynchronous, the system returns a request ID after you send a request to call this operation and the IPsec server is being modified in the backend. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/73720.html) to query the status of a VPN gateway.
+        When the **UpdateIpsecServer** operation is asynchronous, the system returns a request ID after you send a request to call this operation and the IPsec server is being modified in the backend. You can call [DescribeVpnGateway](https://help.aliyun.com/document_detail/2794055.html) to query the status of a VPN gateway.
         If the VPN gateway is in the **updating** state, the configuration of the IPsec server is being modified.
         If the VPN gateway is in the **active** state, the configuration of the IPsec server is modified.
         You cannot repeatedly call the **UpdateIpsecServer** operation for the same VPN gateway within the specified period of time.
