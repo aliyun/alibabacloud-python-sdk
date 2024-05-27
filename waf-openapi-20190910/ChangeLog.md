@@ -1,3 +1,7 @@
+2024-05-27 Version: 1.2.1
+- Update API DescribeRules: update param RuleGroupId.
+
+
 2024-05-14 Version: 1.2.0
 - Support API DescribeRuleGroups.
 - Support API DescribeRules.

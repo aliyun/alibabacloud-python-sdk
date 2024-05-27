@@ -2681,8 +2681,16 @@ class DescribeInstanceInfoRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
+        # The ID of the WAF instance.
+        # 
+        # If you do not configure this parameter, all WAF instances in the Chinese mainland or all WAF instances outside the Chinese mainland are queried.
         self.instance_id = instance_id
+        # The region in which the WAF instance is deployed. Valid values:
+        # 
+        # *   **cn-hangzhou**: Chinese mainland.
+        # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
+        # The ID of the resource group to which the WAF instance belongs in Resource Management. If you do not configure this parameter, the WAF instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -2727,15 +2735,71 @@ class DescribeInstanceInfoResponseBodyInstanceInfo(TeaModel):
         trial: int = None,
         version: str = None,
     ):
+        # The expiration time of the WAF instance. This value is a UNIX timestamp. Unit: seconds.
+        # 
+        # >  If the value of **PayType** is **0**, this parameter is not returned. The value 0 indicates that no WAF instances are purchased.
         self.end_date = end_date
+        # Indicates whether the WAF instance has overdue payments. Valid values:
+        # 
+        # *   **0**: The instance has overdue payments.
+        # *   **1**: The instance does not have overdue payments.
+        # 
+        # >  If the value of **PayType** is **0**, this parameter is not returned. The value 0 indicates that no WAF instances are purchased.
         self.in_debt = in_debt
+        # The ID of the WAF instance.
+        # 
+        # >  If the value of **PayType** is **0**, this parameter is not returned. The value 0 indicates that no WAF instances are purchased.
         self.instance_id = instance_id
+        # The activation status of WAF. Valid values:
+        # 
+        # *   **0**: No WAF instances are purchased within the Alibaba Cloud account.
+        # *   **1**: A subscription WAF instance is purchased within the Alibaba Cloud account.
         self.pay_type = pay_type
+        # The region in which the WAF instance resides. Valid values:
+        # 
+        # *   **cn**: a region in the Chinese mainland
+        # *   **cn-hongkong**: a region outside the Chinese mainland
+        # 
+        # >  If the value of **PayType** is **0**, this parameter is not returned. The value 0 indicates that no WAF instances are purchased.
         self.region = region
+        # The number of remaining days before the trial period of the WAF instance ends.
+        # 
+        # >  This parameter is returned only if the value of **Trial** is **1**. The value 1 indicates that the free trial of a WAF instance is activated.
         self.remain_day = remain_day
+        # Indicates whether the WAF instance expires. Valid values:
+        # 
+        # *   **0**: The instance expires.
+        # *   **1**: The instance does not expire.
+        # 
+        # >  If the value of **PayType** is **0**, this parameter is not returned. The value 0 indicates that no WAF instances are purchased.
         self.status = status
+        # The billing method of the WAF instance: The value is fixed as **Subscription**.
+        # 
+        # >  If the value of **PayType** is **0**, this parameter is not returned. The value 0 indicates that no WAF instances are purchased.
         self.subscription_type = subscription_type
+        # Indicates whether a WAF instance of the free trial edition is activated within the Alibaba Cloud account. Valid values:
+        # 
+        # *   **0**: no
+        # *   **1**: yes
+        # 
+        # >  This parameter is returned only if a WAF instance of the free trial edition is activated within the Alibaba Cloud account.
         self.trial = trial
+        # The edition of the WAF instance. Valid values:
+        # 
+        # *   **version_pro_china**: a WAF Pro instance in the Chinese mainland
+        # *   **version_business_china**: a WAF Business instance in the Chinese mainland
+        # *   **version_enterprise_china**: a WAF Enterprise instance in the Chinese mainland
+        # *   **version_exclusive_china**: a WAF Exclusive instance in the Chinese mainland
+        # *   **version_hybrid_cloud_standard_china**: a Hybrid Cloud WAF instance in the Chinese mainland
+        # *   **version_pro_china**: a WAF Pro instance outside the Chinese mainland
+        # *   **version_business**: a WAF Business instance outside the Chinese mainland
+        # *   **version_enterprise**: a WAF Enterprise instance outside the Chinese mainland
+        # *   **version_exclusive**: a WAF Exclusive instance outside the Chinese mainland
+        # *   **version_hybrid_cloud_standard**: a Hybrid Cloud WAF instance outside the Chinese mainland
+        # 
+        # The preceding list contains all the editions of WAF instances within accounts that are created at the International site. If the returned version is not in the list, check whether your account is created at the International site.
+        # 
+        # >  If the value of **PayType** is **0**, this parameter is not returned. The value 0 indicates that no WAF instances are purchased.
         self.version = version
 
     def validate(self):
@@ -2800,7 +2864,9 @@ class DescribeInstanceInfoResponseBody(TeaModel):
         instance_info: DescribeInstanceInfoResponseBodyInstanceInfo = None,
         request_id: str = None,
     ):
+        # The information about the WAF instance.
         self.instance_info = instance_info
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -4126,6 +4192,7 @@ class DescribeRulesRequest(TeaModel):
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.risk_level = risk_level
+        # This parameter is required.
         self.rule_group_id = rule_group_id
         self.rule_id_key = rule_id_key
         self.source_ip = source_ip
