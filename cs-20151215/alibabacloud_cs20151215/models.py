@@ -23248,18 +23248,56 @@ class RemoveWorkflowResponse(TeaModel):
         return self
 
 
+class RepairClusterNodePoolRequestOperations(TeaModel):
+    def __init__(
+        self,
+        args: List[str] = None,
+        operation_id: str = None,
+    ):
+        self.args = args
+        self.operation_id = operation_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.args is not None:
+            result['args'] = self.args
+        if self.operation_id is not None:
+            result['operation_id'] = self.operation_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('args') is not None:
+            self.args = m.get('args')
+        if m.get('operation_id') is not None:
+            self.operation_id = m.get('operation_id')
+        return self
+
+
 class RepairClusterNodePoolRequest(TeaModel):
     def __init__(
         self,
         auto_restart: bool = None,
         nodes: List[str] = None,
+        operations: List[RepairClusterNodePoolRequestOperations] = None,
     ):
         self.auto_restart = auto_restart
         # The list of nodes. If you do not specify nodes, all nodes in the node pool are selected.
         self.nodes = nodes
+        self.operations = operations
 
     def validate(self):
-        pass
+        if self.operations:
+            for k in self.operations:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -23271,6 +23309,10 @@ class RepairClusterNodePoolRequest(TeaModel):
             result['auto_restart'] = self.auto_restart
         if self.nodes is not None:
             result['nodes'] = self.nodes
+        result['operations'] = []
+        if self.operations is not None:
+            for k in self.operations:
+                result['operations'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -23279,6 +23321,11 @@ class RepairClusterNodePoolRequest(TeaModel):
             self.auto_restart = m.get('auto_restart')
         if m.get('nodes') is not None:
             self.nodes = m.get('nodes')
+        self.operations = []
+        if m.get('operations') is not None:
+            for k in m.get('operations'):
+                temp_model = RepairClusterNodePoolRequestOperations()
+                self.operations.append(temp_model.from_map(k))
         return self
 
 

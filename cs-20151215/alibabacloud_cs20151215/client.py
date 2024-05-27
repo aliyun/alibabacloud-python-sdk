@@ -11482,6 +11482,8 @@ class Client(OpenApiClient):
             body['auto_restart'] = request.auto_restart
         if not UtilClient.is_unset(request.nodes):
             body['nodes'] = request.nodes
+        if not UtilClient.is_unset(request.operations):
+            body['operations'] = request.operations
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
@@ -11524,6 +11526,8 @@ class Client(OpenApiClient):
             body['auto_restart'] = request.auto_restart
         if not UtilClient.is_unset(request.nodes):
             body['nodes'] = request.nodes
+        if not UtilClient.is_unset(request.operations):
+            body['operations'] = request.operations
         req = open_api_models.OpenApiRequest(
             headers=headers,
             body=OpenApiUtilClient.parse_to_map(body)
