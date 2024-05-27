@@ -2254,8 +2254,12 @@ class TextModerationPlusResponseBodyDataAdvice(TeaModel):
     def __init__(
         self,
         answer: str = None,
+        hit_label: str = None,
+        hit_lib_name: str = None,
     ):
         self.answer = answer
+        self.hit_label = hit_label
+        self.hit_lib_name = hit_lib_name
 
     def validate(self):
         pass
@@ -2268,12 +2272,20 @@ class TextModerationPlusResponseBodyDataAdvice(TeaModel):
         result = dict()
         if self.answer is not None:
             result['Answer'] = self.answer
+        if self.hit_label is not None:
+            result['HitLabel'] = self.hit_label
+        if self.hit_lib_name is not None:
+            result['HitLibName'] = self.hit_lib_name
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('Answer') is not None:
             self.answer = m.get('Answer')
+        if m.get('HitLabel') is not None:
+            self.hit_label = m.get('HitLabel')
+        if m.get('HitLibName') is not None:
+            self.hit_lib_name = m.get('HitLibName')
         return self
 
 

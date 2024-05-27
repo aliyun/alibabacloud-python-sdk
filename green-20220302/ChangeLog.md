@@ -1,3 +1,7 @@
+2024-05-27 Version: 2.2.6
+- Update API TextModerationPlus: update response param.
+
+
 2024-05-11 Version: 2.2.5
 - Update API ImageModeration: update response param.
 
