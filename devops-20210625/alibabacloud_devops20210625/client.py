@@ -48,6 +48,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.AddGroupMemberResponse:
+        """
+        @summary 添加组成员
+        
+        @param request: AddGroupMemberRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddGroupMemberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -87,6 +95,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.AddGroupMemberResponse:
+        """
+        @summary 添加组成员
+        
+        @param request: AddGroupMemberRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddGroupMemberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -124,6 +140,12 @@ class Client(OpenApiClient):
         group_id: str,
         request: devops_20210625_models.AddGroupMemberRequest,
     ) -> devops_20210625_models.AddGroupMemberResponse:
+        """
+        @summary 添加组成员
+        
+        @param request: AddGroupMemberRequest
+        @return: AddGroupMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.add_group_member_with_options(group_id, request, headers, runtime)
@@ -133,6 +155,12 @@ class Client(OpenApiClient):
         group_id: str,
         request: devops_20210625_models.AddGroupMemberRequest,
     ) -> devops_20210625_models.AddGroupMemberResponse:
+        """
+        @summary 添加组成员
+        
+        @param request: AddGroupMemberRequest
+        @return: AddGroupMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.add_group_member_with_options_async(group_id, request, headers, runtime)
@@ -145,6 +173,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.AddPipelineRelationsResponse:
+        """
+        @summary 添加流水线关联
+        
+        @param request: AddPipelineRelationsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddPipelineRelationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.rel_object_ids):
@@ -179,6 +215,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.AddPipelineRelationsResponse:
+        """
+        @summary 添加流水线关联
+        
+        @param request: AddPipelineRelationsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddPipelineRelationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.rel_object_ids):
@@ -211,6 +255,12 @@ class Client(OpenApiClient):
         pipeline_id: str,
         request: devops_20210625_models.AddPipelineRelationsRequest,
     ) -> devops_20210625_models.AddPipelineRelationsResponse:
+        """
+        @summary 添加流水线关联
+        
+        @param request: AddPipelineRelationsRequest
+        @return: AddPipelineRelationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.add_pipeline_relations_with_options(organization_id, pipeline_id, request, headers, runtime)
@@ -221,6 +271,12 @@ class Client(OpenApiClient):
         pipeline_id: str,
         request: devops_20210625_models.AddPipelineRelationsRequest,
     ) -> devops_20210625_models.AddPipelineRelationsResponse:
+        """
+        @summary 添加流水线关联
+        
+        @param request: AddPipelineRelationsRequest
+        @return: AddPipelineRelationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.add_pipeline_relations_with_options_async(organization_id, pipeline_id, request, headers, runtime)
@@ -232,6 +288,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.AddRepositoryMemberResponse:
+        """
+        @summary 添加代码库成员
+        
+        @param request: AddRepositoryMemberRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddRepositoryMemberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -271,6 +335,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.AddRepositoryMemberResponse:
+        """
+        @summary 添加代码库成员
+        
+        @param request: AddRepositoryMemberRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddRepositoryMemberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -308,6 +380,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.AddRepositoryMemberRequest,
     ) -> devops_20210625_models.AddRepositoryMemberResponse:
+        """
+        @summary 添加代码库成员
+        
+        @param request: AddRepositoryMemberRequest
+        @return: AddRepositoryMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.add_repository_member_with_options(repository_id, request, headers, runtime)
@@ -317,6 +395,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.AddRepositoryMemberRequest,
     ) -> devops_20210625_models.AddRepositoryMemberResponse:
+        """
+        @summary 添加代码库成员
+        
+        @param request: AddRepositoryMemberRequest
+        @return: AddRepositoryMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.add_repository_member_with_options_async(repository_id, request, headers, runtime)
@@ -328,6 +412,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.AddWebhookResponse:
+        """
+        @summary 添加代码库Webhook
+        
+        @param request: AddWebhookRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddWebhookResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -379,6 +471,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.AddWebhookResponse:
+        """
+        @summary 添加代码库Webhook
+        
+        @param request: AddWebhookRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddWebhookResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -428,6 +528,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.AddWebhookRequest,
     ) -> devops_20210625_models.AddWebhookResponse:
+        """
+        @summary 添加代码库Webhook
+        
+        @param request: AddWebhookRequest
+        @return: AddWebhookResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.add_webhook_with_options(repository_id, request, headers, runtime)
@@ -437,6 +543,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.AddWebhookRequest,
     ) -> devops_20210625_models.AddWebhookResponse:
+        """
+        @summary 添加代码库Webhook
+        
+        @param request: AddWebhookRequest
+        @return: AddWebhookResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.add_webhook_with_options_async(repository_id, request, headers, runtime)
@@ -449,6 +561,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CloseMergeRequestResponse:
+        """
+        @summary 关闭代码评审
+        
+        @param request: CloseMergeRequestRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloseMergeRequestResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -483,6 +603,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CloseMergeRequestResponse:
+        """
+        @summary 关闭代码评审
+        
+        @param request: CloseMergeRequestRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloseMergeRequestResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -515,6 +643,12 @@ class Client(OpenApiClient):
         local_id: str,
         request: devops_20210625_models.CloseMergeRequestRequest,
     ) -> devops_20210625_models.CloseMergeRequestResponse:
+        """
+        @summary 关闭代码评审
+        
+        @param request: CloseMergeRequestRequest
+        @return: CloseMergeRequestResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.close_merge_request_with_options(repository_id, local_id, request, headers, runtime)
@@ -525,6 +659,12 @@ class Client(OpenApiClient):
         local_id: str,
         request: devops_20210625_models.CloseMergeRequestRequest,
     ) -> devops_20210625_models.CloseMergeRequestResponse:
+        """
+        @summary 关闭代码评审
+        
+        @param request: CloseMergeRequestRequest
+        @return: CloseMergeRequestResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.close_merge_request_with_options_async(repository_id, local_id, request, headers, runtime)
@@ -536,6 +676,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateAppMembersResponse:
+        """
+        @summary 添加应用成员
+        
+        @param request: CreateAppMembersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppMembersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -573,6 +721,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateAppMembersResponse:
+        """
+        @summary 添加应用成员
+        
+        @param request: CreateAppMembersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateAppMembersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -608,6 +764,12 @@ class Client(OpenApiClient):
         app_name: str,
         request: devops_20210625_models.CreateAppMembersRequest,
     ) -> devops_20210625_models.CreateAppMembersResponse:
+        """
+        @summary 添加应用成员
+        
+        @param request: CreateAppMembersRequest
+        @return: CreateAppMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_app_members_with_options(app_name, request, headers, runtime)
@@ -617,6 +779,12 @@ class Client(OpenApiClient):
         app_name: str,
         request: devops_20210625_models.CreateAppMembersRequest,
     ) -> devops_20210625_models.CreateAppMembersResponse:
+        """
+        @summary 添加应用成员
+        
+        @param request: CreateAppMembersRequest
+        @return: CreateAppMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_app_members_with_options_async(app_name, request, headers, runtime)
@@ -628,6 +796,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateBranchResponse:
+        """
+        @summary 创建分支
+        
+        @param request: CreateBranchRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBranchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -667,6 +843,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateBranchResponse:
+        """
+        @summary 创建分支
+        
+        @param request: CreateBranchRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateBranchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -704,6 +888,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.CreateBranchRequest,
     ) -> devops_20210625_models.CreateBranchResponse:
+        """
+        @summary 创建分支
+        
+        @param request: CreateBranchRequest
+        @return: CreateBranchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_branch_with_options(repository_id, request, headers, runtime)
@@ -713,6 +903,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.CreateBranchRequest,
     ) -> devops_20210625_models.CreateBranchResponse:
+        """
+        @summary 创建分支
+        
+        @param request: CreateBranchRequest
+        @return: CreateBranchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_branch_with_options_async(repository_id, request, headers, runtime)
@@ -723,6 +919,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateCheckRunResponse:
+        """
+        @summary 添加检查运行记录
+        
+        @param request: CreateCheckRunRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCheckRunResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -779,6 +983,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateCheckRunResponse:
+        """
+        @summary 添加检查运行记录
+        
+        @param request: CreateCheckRunRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCheckRunResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -833,6 +1045,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.CreateCheckRunRequest,
     ) -> devops_20210625_models.CreateCheckRunResponse:
+        """
+        @summary 添加检查运行记录
+        
+        @param request: CreateCheckRunRequest
+        @return: CreateCheckRunResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_check_run_with_options(request, headers, runtime)
@@ -841,6 +1059,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.CreateCheckRunRequest,
     ) -> devops_20210625_models.CreateCheckRunResponse:
+        """
+        @summary 添加检查运行记录
+        
+        @param request: CreateCheckRunRequest
+        @return: CreateCheckRunResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_check_run_with_options_async(request, headers, runtime)
@@ -851,6 +1075,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateCommentResponse:
+        """
+        @summary 创建评论
+        
+        @param request: CreateCommentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCommentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -905,6 +1137,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateCommentResponse:
+        """
+        @summary 创建评论
+        
+        @param request: CreateCommentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCommentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -957,6 +1197,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.CreateCommentRequest,
     ) -> devops_20210625_models.CreateCommentResponse:
+        """
+        @summary 创建评论
+        
+        @param request: CreateCommentRequest
+        @return: CreateCommentResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_comment_with_options(request, headers, runtime)
@@ -965,6 +1211,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.CreateCommentRequest,
     ) -> devops_20210625_models.CreateCommentResponse:
+        """
+        @summary 创建评论
+        
+        @param request: CreateCommentRequest
+        @return: CreateCommentResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_comment_with_options_async(request, headers, runtime)
@@ -975,6 +1227,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateCommitStatusResponse:
+        """
+        @summary 创建提交状态记录
+        
+        @param request: CreateCommitStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCommitStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -1021,6 +1281,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateCommitStatusResponse:
+        """
+        @summary 创建提交状态记录
+        
+        @param request: CreateCommitStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCommitStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -1065,6 +1333,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.CreateCommitStatusRequest,
     ) -> devops_20210625_models.CreateCommitStatusResponse:
+        """
+        @summary 创建提交状态记录
+        
+        @param request: CreateCommitStatusRequest
+        @return: CreateCommitStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_commit_status_with_options(request, headers, runtime)
@@ -1073,6 +1347,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.CreateCommitStatusRequest,
     ) -> devops_20210625_models.CreateCommitStatusResponse:
+        """
+        @summary 创建提交状态记录
+        
+        @param request: CreateCommitStatusRequest
+        @return: CreateCommitStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_commit_status_with_options_async(request, headers, runtime)
@@ -1083,6 +1363,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateCommitWithMultipleFilesResponse:
+        """
+        @summary 单提交变更多个文件
+        
+        @param request: CreateCommitWithMultipleFilesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCommitWithMultipleFilesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -1125,6 +1413,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateCommitWithMultipleFilesResponse:
+        """
+        @summary 单提交变更多个文件
+        
+        @param request: CreateCommitWithMultipleFilesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCommitWithMultipleFilesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -1165,6 +1461,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.CreateCommitWithMultipleFilesRequest,
     ) -> devops_20210625_models.CreateCommitWithMultipleFilesResponse:
+        """
+        @summary 单提交变更多个文件
+        
+        @param request: CreateCommitWithMultipleFilesRequest
+        @return: CreateCommitWithMultipleFilesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_commit_with_multiple_files_with_options(request, headers, runtime)
@@ -1173,6 +1475,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.CreateCommitWithMultipleFilesRequest,
     ) -> devops_20210625_models.CreateCommitWithMultipleFilesResponse:
+        """
+        @summary 单提交变更多个文件
+        
+        @param request: CreateCommitWithMultipleFilesRequest
+        @return: CreateCommitWithMultipleFilesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_commit_with_multiple_files_with_options_async(request, headers, runtime)
@@ -1184,6 +1492,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateDeployKeyResponse:
+        """
+        @summary 创建部署密钥
+        
+        @param request: CreateDeployKeyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDeployKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -1223,6 +1539,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateDeployKeyResponse:
+        """
+        @summary 创建部署密钥
+        
+        @param request: CreateDeployKeyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDeployKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -1260,6 +1584,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.CreateDeployKeyRequest,
     ) -> devops_20210625_models.CreateDeployKeyResponse:
+        """
+        @summary 创建部署密钥
+        
+        @param request: CreateDeployKeyRequest
+        @return: CreateDeployKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_deploy_key_with_options(repository_id, request, headers, runtime)
@@ -1269,6 +1599,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.CreateDeployKeyRequest,
     ) -> devops_20210625_models.CreateDeployKeyResponse:
+        """
+        @summary 创建部署密钥
+        
+        @param request: CreateDeployKeyRequest
+        @return: CreateDeployKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_deploy_key_with_options_async(repository_id, request, headers, runtime)
@@ -1280,6 +1616,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateFileResponse:
+        """
+        @summary 创建文件
+        
+        @param request: CreateFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -1325,6 +1669,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateFileResponse:
+        """
+        @summary 创建文件
+        
+        @param request: CreateFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -1368,6 +1720,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.CreateFileRequest,
     ) -> devops_20210625_models.CreateFileResponse:
+        """
+        @summary 创建文件
+        
+        @param request: CreateFileRequest
+        @return: CreateFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_file_with_options(repository_id, request, headers, runtime)
@@ -1377,6 +1735,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.CreateFileRequest,
     ) -> devops_20210625_models.CreateFileResponse:
+        """
+        @summary 创建文件
+        
+        @param request: CreateFileRequest
+        @return: CreateFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_file_with_options_async(repository_id, request, headers, runtime)
@@ -1388,6 +1752,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateFlowTagResponse:
+        """
+        @summary 创建标签
+        
+        @param request: CreateFlowTagRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFlowTagResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.color):
@@ -1423,6 +1795,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateFlowTagResponse:
+        """
+        @summary 创建标签
+        
+        @param request: CreateFlowTagRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFlowTagResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.color):
@@ -1456,6 +1836,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.CreateFlowTagRequest,
     ) -> devops_20210625_models.CreateFlowTagResponse:
+        """
+        @summary 创建标签
+        
+        @param request: CreateFlowTagRequest
+        @return: CreateFlowTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_flow_tag_with_options(organization_id, request, headers, runtime)
@@ -1465,6 +1851,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.CreateFlowTagRequest,
     ) -> devops_20210625_models.CreateFlowTagResponse:
+        """
+        @summary 创建标签
+        
+        @param request: CreateFlowTagRequest
+        @return: CreateFlowTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_flow_tag_with_options_async(organization_id, request, headers, runtime)
@@ -1476,6 +1868,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateFlowTagGroupResponse:
+        """
+        @summary 创建标签分类
+        
+        @param request: CreateFlowTagGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFlowTagGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -1507,6 +1907,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateFlowTagGroupResponse:
+        """
+        @summary 创建标签分类
+        
+        @param request: CreateFlowTagGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFlowTagGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -1536,6 +1944,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.CreateFlowTagGroupRequest,
     ) -> devops_20210625_models.CreateFlowTagGroupResponse:
+        """
+        @summary 创建标签分类
+        
+        @param request: CreateFlowTagGroupRequest
+        @return: CreateFlowTagGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_flow_tag_group_with_options(organization_id, request, headers, runtime)
@@ -1545,6 +1959,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.CreateFlowTagGroupRequest,
     ) -> devops_20210625_models.CreateFlowTagGroupResponse:
+        """
+        @summary 创建标签分类
+        
+        @param request: CreateFlowTagGroupRequest
+        @return: CreateFlowTagGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_flow_tag_group_with_options_async(organization_id, request, headers, runtime)
@@ -1556,6 +1976,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateHostGroupResponse:
+        """
+        @summary 创建主机组
+        
+        @param request: CreateHostGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHostGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.aliyun_region):
@@ -1605,6 +2033,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateHostGroupResponse:
+        """
+        @summary 创建主机组
+        
+        @param request: CreateHostGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateHostGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.aliyun_region):
@@ -1652,6 +2088,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.CreateHostGroupRequest,
     ) -> devops_20210625_models.CreateHostGroupResponse:
+        """
+        @summary 创建主机组
+        
+        @param request: CreateHostGroupRequest
+        @return: CreateHostGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_host_group_with_options(organization_id, request, headers, runtime)
@@ -1661,6 +2103,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.CreateHostGroupRequest,
     ) -> devops_20210625_models.CreateHostGroupResponse:
+        """
+        @summary 创建主机组
+        
+        @param request: CreateHostGroupRequest
+        @return: CreateHostGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_host_group_with_options_async(organization_id, request, headers, runtime)
@@ -1672,6 +2120,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateMergeRequestResponse:
+        """
+        @summary 创建代码评审
+        
+        @param request: CreateMergeRequestRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMergeRequestResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -1725,6 +2181,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateMergeRequestResponse:
+        """
+        @summary 创建代码评审
+        
+        @param request: CreateMergeRequestRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateMergeRequestResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -1776,6 +2240,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.CreateMergeRequestRequest,
     ) -> devops_20210625_models.CreateMergeRequestResponse:
+        """
+        @summary 创建代码评审
+        
+        @param request: CreateMergeRequestRequest
+        @return: CreateMergeRequestResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_merge_request_with_options(repository_id, request, headers, runtime)
@@ -1785,6 +2255,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.CreateMergeRequestRequest,
     ) -> devops_20210625_models.CreateMergeRequestResponse:
+        """
+        @summary 创建代码评审
+        
+        @param request: CreateMergeRequestRequest
+        @return: CreateMergeRequestResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_merge_request_with_options_async(repository_id, request, headers, runtime)
@@ -1795,6 +2271,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateOAuthTokenResponse:
+        """
+        @summary 创建OAuth令牌
+        
+        @param request: CreateOAuthTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOAuthTokenResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_id):
@@ -1835,6 +2319,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateOAuthTokenResponse:
+        """
+        @summary 创建OAuth令牌
+        
+        @param request: CreateOAuthTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOAuthTokenResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.client_id):
@@ -1873,6 +2365,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.CreateOAuthTokenRequest,
     ) -> devops_20210625_models.CreateOAuthTokenResponse:
+        """
+        @summary 创建OAuth令牌
+        
+        @param request: CreateOAuthTokenRequest
+        @return: CreateOAuthTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_oauth_token_with_options(request, headers, runtime)
@@ -1881,6 +2379,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.CreateOAuthTokenRequest,
     ) -> devops_20210625_models.CreateOAuthTokenResponse:
+        """
+        @summary 创建OAuth令牌
+        
+        @param request: CreateOAuthTokenRequest
+        @return: CreateOAuthTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_oauth_token_with_options_async(request, headers, runtime)
@@ -1892,6 +2396,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreatePipelineResponse:
+        """
+        @summary 创建流水线。
+        
+        @param request: CreatePipelineRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePipelineResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.content):
@@ -1925,6 +2437,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreatePipelineResponse:
+        """
+        @summary 创建流水线。
+        
+        @param request: CreatePipelineRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePipelineResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.content):
@@ -1956,6 +2476,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.CreatePipelineRequest,
     ) -> devops_20210625_models.CreatePipelineResponse:
+        """
+        @summary 创建流水线。
+        
+        @param request: CreatePipelineRequest
+        @return: CreatePipelineResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_pipeline_with_options(organization_id, request, headers, runtime)
@@ -1965,6 +2491,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.CreatePipelineRequest,
     ) -> devops_20210625_models.CreatePipelineResponse:
+        """
+        @summary 创建流水线。
+        
+        @param request: CreatePipelineRequest
+        @return: CreatePipelineResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_pipeline_with_options_async(organization_id, request, headers, runtime)
@@ -1976,6 +2508,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreatePipelineGroupResponse:
+        """
+        @summary 创建流水线分组
+        
+        @param request: CreatePipelineGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePipelineGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -2007,6 +2547,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreatePipelineGroupResponse:
+        """
+        @summary 创建流水线分组
+        
+        @param request: CreatePipelineGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePipelineGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -2036,6 +2584,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.CreatePipelineGroupRequest,
     ) -> devops_20210625_models.CreatePipelineGroupResponse:
+        """
+        @summary 创建流水线分组
+        
+        @param request: CreatePipelineGroupRequest
+        @return: CreatePipelineGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_pipeline_group_with_options(organization_id, request, headers, runtime)
@@ -2045,6 +2599,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.CreatePipelineGroupRequest,
     ) -> devops_20210625_models.CreatePipelineGroupResponse:
+        """
+        @summary 创建流水线分组
+        
+        @param request: CreatePipelineGroupRequest
+        @return: CreatePipelineGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_pipeline_group_with_options_async(organization_id, request, headers, runtime)
@@ -2056,6 +2616,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateProjectResponse:
+        """
+        @summary 创建项目
+        
+        @param request: CreateProjectRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProjectResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.custom_code):
@@ -2093,6 +2661,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateProjectResponse:
+        """
+        @summary 创建项目
+        
+        @param request: CreateProjectRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProjectResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.custom_code):
@@ -2128,6 +2704,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.CreateProjectRequest,
     ) -> devops_20210625_models.CreateProjectResponse:
+        """
+        @summary 创建项目
+        
+        @param request: CreateProjectRequest
+        @return: CreateProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_project_with_options(organization_id, request, headers, runtime)
@@ -2137,6 +2719,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.CreateProjectRequest,
     ) -> devops_20210625_models.CreateProjectResponse:
+        """
+        @summary 创建项目
+        
+        @param request: CreateProjectRequest
+        @return: CreateProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_project_with_options_async(organization_id, request, headers, runtime)
@@ -2147,6 +2735,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateProjectLabelResponse:
+        """
+        @summary 创建代码库Label
+        
+        @param request: CreateProjectLabelRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProjectLabelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -2189,6 +2785,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateProjectLabelResponse:
+        """
+        @summary 创建代码库Label
+        
+        @param request: CreateProjectLabelRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProjectLabelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -2229,6 +2833,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.CreateProjectLabelRequest,
     ) -> devops_20210625_models.CreateProjectLabelResponse:
+        """
+        @summary 创建代码库Label
+        
+        @param request: CreateProjectLabelRequest
+        @return: CreateProjectLabelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_project_label_with_options(request, headers, runtime)
@@ -2237,6 +2847,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.CreateProjectLabelRequest,
     ) -> devops_20210625_models.CreateProjectLabelResponse:
+        """
+        @summary 创建代码库Label
+        
+        @param request: CreateProjectLabelRequest
+        @return: CreateProjectLabelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_project_label_with_options_async(request, headers, runtime)
@@ -2248,6 +2864,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateProtectdBranchResponse:
+        """
+        @summary 创建保护分支
+        
+        @param request: CreateProtectdBranchRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProtectdBranchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -2299,6 +2923,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateProtectdBranchResponse:
+        """
+        @summary 创建保护分支
+        
+        @param request: CreateProtectdBranchRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateProtectdBranchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -2348,6 +2980,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.CreateProtectdBranchRequest,
     ) -> devops_20210625_models.CreateProtectdBranchResponse:
+        """
+        @summary 创建保护分支
+        
+        @param request: CreateProtectdBranchRequest
+        @return: CreateProtectdBranchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_protectd_branch_with_options(repository_id, request, headers, runtime)
@@ -2357,6 +2995,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.CreateProtectdBranchRequest,
     ) -> devops_20210625_models.CreateProtectdBranchResponse:
+        """
+        @summary 创建保护分支
+        
+        @param request: CreateProtectdBranchRequest
+        @return: CreateProtectdBranchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_protectd_branch_with_options_async(repository_id, request, headers, runtime)
@@ -2368,6 +3012,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreatePushRuleResponse:
+        """
+        @summary 创建推送规则
+        
+        @param request: CreatePushRuleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePushRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -2405,6 +3057,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreatePushRuleResponse:
+        """
+        @summary 创建推送规则
+        
+        @param request: CreatePushRuleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePushRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -2440,6 +3100,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.CreatePushRuleRequest,
     ) -> devops_20210625_models.CreatePushRuleResponse:
+        """
+        @summary 创建推送规则
+        
+        @param request: CreatePushRuleRequest
+        @return: CreatePushRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_push_rule_with_options(repository_id, request, headers, runtime)
@@ -2449,6 +3115,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.CreatePushRuleRequest,
     ) -> devops_20210625_models.CreatePushRuleResponse:
+        """
+        @summary 创建推送规则
+        
+        @param request: CreatePushRuleRequest
+        @return: CreatePushRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_push_rule_with_options_async(repository_id, request, headers, runtime)
@@ -2459,6 +3131,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateRepositoryResponse:
+        """
+        @summary 创建(导入)代码库
+        
+        @param request: CreateRepositoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRepositoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -2531,6 +3211,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateRepositoryResponse:
+        """
+        @summary 创建(导入)代码库
+        
+        @param request: CreateRepositoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRepositoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -2601,6 +3289,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.CreateRepositoryRequest,
     ) -> devops_20210625_models.CreateRepositoryResponse:
+        """
+        @summary 创建(导入)代码库
+        
+        @param request: CreateRepositoryRequest
+        @return: CreateRepositoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_repository_with_options(request, headers, runtime)
@@ -2609,6 +3303,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.CreateRepositoryRequest,
     ) -> devops_20210625_models.CreateRepositoryResponse:
+        """
+        @summary 创建(导入)代码库
+        
+        @param request: CreateRepositoryRequest
+        @return: CreateRepositoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_repository_with_options_async(request, headers, runtime)
@@ -2619,6 +3319,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateRepositoryGroupResponse:
+        """
+        @summary 创建代码组
+        
+        @param request: CreateRepositoryGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRepositoryGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -2665,6 +3373,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateRepositoryGroupResponse:
+        """
+        @summary 创建代码组
+        
+        @param request: CreateRepositoryGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRepositoryGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -2709,6 +3425,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.CreateRepositoryGroupRequest,
     ) -> devops_20210625_models.CreateRepositoryGroupResponse:
+        """
+        @summary 创建代码组
+        
+        @param request: CreateRepositoryGroupRequest
+        @return: CreateRepositoryGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_repository_group_with_options(request, headers, runtime)
@@ -2717,6 +3439,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.CreateRepositoryGroupRequest,
     ) -> devops_20210625_models.CreateRepositoryGroupResponse:
+        """
+        @summary 创建代码组
+        
+        @param request: CreateRepositoryGroupRequest
+        @return: CreateRepositoryGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_repository_group_with_options_async(request, headers, runtime)
@@ -2730,6 +3458,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateResourceMemberResponse:
+        """
+        @summary 插入资源成员
+        
+        @param request: CreateResourceMemberRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateResourceMemberResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account_id):
@@ -2765,6 +3501,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateResourceMemberResponse:
+        """
+        @summary 插入资源成员
+        
+        @param request: CreateResourceMemberRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateResourceMemberResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.account_id):
@@ -2798,6 +3542,12 @@ class Client(OpenApiClient):
         resource_id: str,
         request: devops_20210625_models.CreateResourceMemberRequest,
     ) -> devops_20210625_models.CreateResourceMemberResponse:
+        """
+        @summary 插入资源成员
+        
+        @param request: CreateResourceMemberRequest
+        @return: CreateResourceMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_resource_member_with_options(organization_id, resource_type, resource_id, request, headers, runtime)
@@ -2809,6 +3559,12 @@ class Client(OpenApiClient):
         resource_id: str,
         request: devops_20210625_models.CreateResourceMemberRequest,
     ) -> devops_20210625_models.CreateResourceMemberResponse:
+        """
+        @summary 插入资源成员
+        
+        @param request: CreateResourceMemberRequest
+        @return: CreateResourceMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_resource_member_with_options_async(organization_id, resource_type, resource_id, request, headers, runtime)
@@ -2820,6 +3576,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateServiceAuthResponse:
+        """
+        @summary 创建服务授权
+        
+        @param request: CreateServiceAuthRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceAuthResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.service_auth_type):
@@ -2851,6 +3615,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateServiceAuthResponse:
+        """
+        @summary 创建服务授权
+        
+        @param request: CreateServiceAuthRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceAuthResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.service_auth_type):
@@ -2880,6 +3652,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.CreateServiceAuthRequest,
     ) -> devops_20210625_models.CreateServiceAuthResponse:
+        """
+        @summary 创建服务授权
+        
+        @param request: CreateServiceAuthRequest
+        @return: CreateServiceAuthResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_service_auth_with_options(organization_id, request, headers, runtime)
@@ -2889,6 +3667,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.CreateServiceAuthRequest,
     ) -> devops_20210625_models.CreateServiceAuthResponse:
+        """
+        @summary 创建服务授权
+        
+        @param request: CreateServiceAuthRequest
+        @return: CreateServiceAuthResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_service_auth_with_options_async(organization_id, request, headers, runtime)
@@ -2900,6 +3684,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateServiceConnectionResponse:
+        """
+        @summary 创建服务连接
+        
+        @param request: CreateServiceConnectionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceConnectionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auth_type):
@@ -2939,6 +3731,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateServiceConnectionResponse:
+        """
+        @summary 创建服务连接
+        
+        @param request: CreateServiceConnectionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceConnectionResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.auth_type):
@@ -2976,6 +3776,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.CreateServiceConnectionRequest,
     ) -> devops_20210625_models.CreateServiceConnectionResponse:
+        """
+        @summary 创建服务连接
+        
+        @param request: CreateServiceConnectionRequest
+        @return: CreateServiceConnectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_service_connection_with_options(organization_id, request, headers, runtime)
@@ -2985,6 +3791,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.CreateServiceConnectionRequest,
     ) -> devops_20210625_models.CreateServiceConnectionResponse:
+        """
+        @summary 创建服务连接
+        
+        @param request: CreateServiceConnectionRequest
+        @return: CreateServiceConnectionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_service_connection_with_options_async(organization_id, request, headers, runtime)
@@ -2996,6 +3808,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateServiceCredentialResponse:
+        """
+        @summary 创建用户名密码类型的证书
+        
+        @param request: CreateServiceCredentialRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceCredentialResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.name):
@@ -3035,6 +3855,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateServiceCredentialResponse:
+        """
+        @summary 创建用户名密码类型的证书
+        
+        @param request: CreateServiceCredentialRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateServiceCredentialResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.name):
@@ -3072,6 +3900,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.CreateServiceCredentialRequest,
     ) -> devops_20210625_models.CreateServiceCredentialResponse:
+        """
+        @summary 创建用户名密码类型的证书
+        
+        @param request: CreateServiceCredentialRequest
+        @return: CreateServiceCredentialResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_service_credential_with_options(organization_id, request, headers, runtime)
@@ -3081,6 +3915,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.CreateServiceCredentialRequest,
     ) -> devops_20210625_models.CreateServiceCredentialResponse:
+        """
+        @summary 创建用户名密码类型的证书
+        
+        @param request: CreateServiceCredentialRequest
+        @return: CreateServiceCredentialResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_service_credential_with_options_async(organization_id, request, headers, runtime)
@@ -3092,6 +3932,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateSprintResponse:
+        """
+        @summary 创建迭代
+        
+        @param request: CreateSprintRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSprintResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.end_date):
@@ -3131,6 +3979,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateSprintResponse:
+        """
+        @summary 创建迭代
+        
+        @param request: CreateSprintRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSprintResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.end_date):
@@ -3168,6 +4024,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.CreateSprintRequest,
     ) -> devops_20210625_models.CreateSprintResponse:
+        """
+        @summary 创建迭代
+        
+        @param request: CreateSprintRequest
+        @return: CreateSprintResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_sprint_with_options(organization_id, request, headers, runtime)
@@ -3177,6 +4039,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.CreateSprintRequest,
     ) -> devops_20210625_models.CreateSprintResponse:
+        """
+        @summary 创建迭代
+        
+        @param request: CreateSprintRequest
+        @return: CreateSprintResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_sprint_with_options_async(organization_id, request, headers, runtime)
@@ -3187,6 +4055,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateSshKeyResponse:
+        """
+        @summary 创建企业公钥
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSshKeyResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3212,6 +4087,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateSshKeyResponse:
+        """
+        @summary 创建企业公钥
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSshKeyResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3235,6 +4117,11 @@ class Client(OpenApiClient):
         self,
         organization_id: str,
     ) -> devops_20210625_models.CreateSshKeyResponse:
+        """
+        @summary 创建企业公钥
+        
+        @return: CreateSshKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_ssh_key_with_options(organization_id, headers, runtime)
@@ -3243,6 +4130,11 @@ class Client(OpenApiClient):
         self,
         organization_id: str,
     ) -> devops_20210625_models.CreateSshKeyResponse:
+        """
+        @summary 创建企业公钥
+        
+        @return: CreateSshKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_ssh_key_with_options_async(organization_id, headers, runtime)
@@ -3254,6 +4146,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateTagResponse:
+        """
+        @summary 创建标签Tag
+        
+        @param request: CreateTagRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTagResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -3295,6 +4195,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateTagResponse:
+        """
+        @summary 创建标签Tag
+        
+        @param request: CreateTagRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTagResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -3334,6 +4242,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.CreateTagRequest,
     ) -> devops_20210625_models.CreateTagResponse:
+        """
+        @summary 创建标签Tag
+        
+        @param request: CreateTagRequest
+        @return: CreateTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_tag_with_options(repository_id, request, headers, runtime)
@@ -3343,6 +4257,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.CreateTagRequest,
     ) -> devops_20210625_models.CreateTagResponse:
+        """
+        @summary 创建标签Tag
+        
+        @param request: CreateTagRequest
+        @return: CreateTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_tag_with_options_async(repository_id, request, headers, runtime)
@@ -3354,6 +4274,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateTestCaseResponse:
+        """
+        @summary 创建测试用例
+        
+        @param request: CreateTestCaseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTestCaseResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.assigned_to):
@@ -3399,6 +4327,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateTestCaseResponse:
+        """
+        @summary 创建测试用例
+        
+        @param request: CreateTestCaseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTestCaseResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.assigned_to):
@@ -3442,6 +4378,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.CreateTestCaseRequest,
     ) -> devops_20210625_models.CreateTestCaseResponse:
+        """
+        @summary 创建测试用例
+        
+        @param request: CreateTestCaseRequest
+        @return: CreateTestCaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_test_case_with_options(organization_id, request, headers, runtime)
@@ -3451,6 +4393,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.CreateTestCaseRequest,
     ) -> devops_20210625_models.CreateTestCaseResponse:
+        """
+        @summary 创建测试用例
+        
+        @param request: CreateTestCaseRequest
+        @return: CreateTestCaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_test_case_with_options_async(organization_id, request, headers, runtime)
@@ -3461,6 +4409,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateUserKeyResponse:
+        """
+        @summary 创建SSH Key密钥
+        
+        @param request: CreateUserKeyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUserKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -3503,6 +4459,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateUserKeyResponse:
+        """
+        @summary 创建SSH Key密钥
+        
+        @param request: CreateUserKeyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateUserKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -3543,6 +4507,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.CreateUserKeyRequest,
     ) -> devops_20210625_models.CreateUserKeyResponse:
+        """
+        @summary 创建SSH Key密钥
+        
+        @param request: CreateUserKeyRequest
+        @return: CreateUserKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_user_key_with_options(request, headers, runtime)
@@ -3551,6 +4521,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.CreateUserKeyRequest,
     ) -> devops_20210625_models.CreateUserKeyResponse:
+        """
+        @summary 创建SSH Key密钥
+        
+        @param request: CreateUserKeyRequest
+        @return: CreateUserKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_user_key_with_options_async(request, headers, runtime)
@@ -3562,6 +4538,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateVariableGroupResponse:
+        """
+        @summary 创建变量组
+        
+        @param request: CreateVariableGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVariableGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -3597,6 +4581,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateVariableGroupResponse:
+        """
+        @summary 创建变量组
+        
+        @param request: CreateVariableGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateVariableGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -3630,6 +4622,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.CreateVariableGroupRequest,
     ) -> devops_20210625_models.CreateVariableGroupResponse:
+        """
+        @summary 创建变量组
+        
+        @param request: CreateVariableGroupRequest
+        @return: CreateVariableGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_variable_group_with_options(organization_id, request, headers, runtime)
@@ -3639,6 +4637,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.CreateVariableGroupRequest,
     ) -> devops_20210625_models.CreateVariableGroupResponse:
+        """
+        @summary 创建变量组
+        
+        @param request: CreateVariableGroupRequest
+        @return: CreateVariableGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_variable_group_with_options_async(organization_id, request, headers, runtime)
@@ -3650,6 +4654,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateWorkitemResponse:
+        """
+        @summary 新建工作项
+        
+        @param request: CreateWorkitemRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWorkitemResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.assigned_to):
@@ -3709,6 +4721,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateWorkitemResponse:
+        """
+        @summary 新建工作项
+        
+        @param request: CreateWorkitemRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWorkitemResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.assigned_to):
@@ -3766,6 +4786,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.CreateWorkitemRequest,
     ) -> devops_20210625_models.CreateWorkitemResponse:
+        """
+        @summary 新建工作项
+        
+        @param request: CreateWorkitemRequest
+        @return: CreateWorkitemResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_workitem_with_options(organization_id, request, headers, runtime)
@@ -3775,6 +4801,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.CreateWorkitemRequest,
     ) -> devops_20210625_models.CreateWorkitemResponse:
+        """
+        @summary 新建工作项
+        
+        @param request: CreateWorkitemRequest
+        @return: CreateWorkitemResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_workitem_with_options_async(organization_id, request, headers, runtime)
@@ -3786,6 +4818,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateWorkitemCommentResponse:
+        """
+        @summary 创建一个评论
+        
+        @param request: CreateWorkitemCommentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWorkitemCommentResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.content):
@@ -3823,6 +4863,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateWorkitemCommentResponse:
+        """
+        @summary 创建一个评论
+        
+        @param request: CreateWorkitemCommentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWorkitemCommentResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.content):
@@ -3858,6 +4906,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.CreateWorkitemCommentRequest,
     ) -> devops_20210625_models.CreateWorkitemCommentResponse:
+        """
+        @summary 创建一个评论
+        
+        @param request: CreateWorkitemCommentRequest
+        @return: CreateWorkitemCommentResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_workitem_comment_with_options(organization_id, request, headers, runtime)
@@ -3867,6 +4921,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.CreateWorkitemCommentRequest,
     ) -> devops_20210625_models.CreateWorkitemCommentResponse:
+        """
+        @summary 创建一个评论
+        
+        @param request: CreateWorkitemCommentRequest
+        @return: CreateWorkitemCommentResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_workitem_comment_with_options_async(organization_id, request, headers, runtime)
@@ -3878,6 +4938,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateWorkitemEstimateResponse:
+        """
+        @summary 登记预计工时
+        
+        @param request: CreateWorkitemEstimateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWorkitemEstimateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -3917,6 +4985,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateWorkitemEstimateResponse:
+        """
+        @summary 登记预计工时
+        
+        @param request: CreateWorkitemEstimateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWorkitemEstimateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -3954,6 +5030,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.CreateWorkitemEstimateRequest,
     ) -> devops_20210625_models.CreateWorkitemEstimateResponse:
+        """
+        @summary 登记预计工时
+        
+        @param request: CreateWorkitemEstimateRequest
+        @return: CreateWorkitemEstimateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_workitem_estimate_with_options(organization_id, request, headers, runtime)
@@ -3963,6 +5045,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.CreateWorkitemEstimateRequest,
     ) -> devops_20210625_models.CreateWorkitemEstimateResponse:
+        """
+        @summary 登记预计工时
+        
+        @param request: CreateWorkitemEstimateRequest
+        @return: CreateWorkitemEstimateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_workitem_estimate_with_options_async(organization_id, request, headers, runtime)
@@ -3974,6 +5062,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateWorkitemRecordResponse:
+        """
+        @summary 登记实际工时
+        
+        @param request: CreateWorkitemRecordRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWorkitemRecordResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.actual_time):
@@ -4017,6 +5113,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateWorkitemRecordResponse:
+        """
+        @summary 登记实际工时
+        
+        @param request: CreateWorkitemRecordRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWorkitemRecordResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.actual_time):
@@ -4058,6 +5162,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.CreateWorkitemRecordRequest,
     ) -> devops_20210625_models.CreateWorkitemRecordResponse:
+        """
+        @summary 登记实际工时
+        
+        @param request: CreateWorkitemRecordRequest
+        @return: CreateWorkitemRecordResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_workitem_record_with_options(organization_id, request, headers, runtime)
@@ -4067,6 +5177,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.CreateWorkitemRecordRequest,
     ) -> devops_20210625_models.CreateWorkitemRecordResponse:
+        """
+        @summary 登记实际工时
+        
+        @param request: CreateWorkitemRecordRequest
+        @return: CreateWorkitemRecordResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_workitem_record_with_options_async(organization_id, request, headers, runtime)
@@ -4078,6 +5194,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateWorkitemV2Response:
+        """
+        @summary 创建工作项
+        
+        @param request: CreateWorkitemV2Request
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWorkitemV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.assigned_to):
@@ -4135,6 +5259,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateWorkitemV2Response:
+        """
+        @summary 创建工作项
+        
+        @param request: CreateWorkitemV2Request
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWorkitemV2Response
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.assigned_to):
@@ -4190,6 +5322,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.CreateWorkitemV2Request,
     ) -> devops_20210625_models.CreateWorkitemV2Response:
+        """
+        @summary 创建工作项
+        
+        @param request: CreateWorkitemV2Request
+        @return: CreateWorkitemV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_workitem_v2with_options(organization_id, request, headers, runtime)
@@ -4199,6 +5337,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.CreateWorkitemV2Request,
     ) -> devops_20210625_models.CreateWorkitemV2Response:
+        """
+        @summary 创建工作项
+        
+        @param request: CreateWorkitemV2Request
+        @return: CreateWorkitemV2Response
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_workitem_v2with_options_async(organization_id, request, headers, runtime)
@@ -4209,6 +5353,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateWorkspaceResponse:
+        """
+        @summary 创建工作空间
+        
+        @param request: CreateWorkspaceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWorkspaceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code_url):
@@ -4253,6 +5405,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.CreateWorkspaceResponse:
+        """
+        @summary 创建工作空间
+        
+        @param request: CreateWorkspaceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateWorkspaceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.code_url):
@@ -4295,6 +5455,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.CreateWorkspaceRequest,
     ) -> devops_20210625_models.CreateWorkspaceResponse:
+        """
+        @summary 创建工作空间
+        
+        @param request: CreateWorkspaceRequest
+        @return: CreateWorkspaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_workspace_with_options(request, headers, runtime)
@@ -4303,6 +5469,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.CreateWorkspaceRequest,
     ) -> devops_20210625_models.CreateWorkspaceResponse:
+        """
+        @summary 创建工作空间
+        
+        @param request: CreateWorkspaceRequest
+        @return: CreateWorkspaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_workspace_with_options_async(request, headers, runtime)
@@ -4314,6 +5486,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteAppMemberResponse:
+        """
+        @summary 删除应用成员
+        
+        @param request: DeleteAppMemberRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAppMemberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -4349,6 +5529,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteAppMemberResponse:
+        """
+        @summary 删除应用成员
+        
+        @param request: DeleteAppMemberRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAppMemberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -4382,6 +5570,12 @@ class Client(OpenApiClient):
         app_name: str,
         request: devops_20210625_models.DeleteAppMemberRequest,
     ) -> devops_20210625_models.DeleteAppMemberResponse:
+        """
+        @summary 删除应用成员
+        
+        @param request: DeleteAppMemberRequest
+        @return: DeleteAppMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_app_member_with_options(app_name, request, headers, runtime)
@@ -4391,6 +5585,12 @@ class Client(OpenApiClient):
         app_name: str,
         request: devops_20210625_models.DeleteAppMemberRequest,
     ) -> devops_20210625_models.DeleteAppMemberResponse:
+        """
+        @summary 删除应用成员
+        
+        @param request: DeleteAppMemberRequest
+        @return: DeleteAppMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_app_member_with_options_async(app_name, request, headers, runtime)
@@ -4402,6 +5602,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteBranchResponse:
+        """
+        @summary 删除分支
+        
+        @param request: DeleteBranchRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBranchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -4437,6 +5645,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteBranchResponse:
+        """
+        @summary 删除分支
+        
+        @param request: DeleteBranchRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteBranchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -4470,6 +5686,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.DeleteBranchRequest,
     ) -> devops_20210625_models.DeleteBranchResponse:
+        """
+        @summary 删除分支
+        
+        @param request: DeleteBranchRequest
+        @return: DeleteBranchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_branch_with_options(repository_id, request, headers, runtime)
@@ -4479,6 +5701,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.DeleteBranchRequest,
     ) -> devops_20210625_models.DeleteBranchResponse:
+        """
+        @summary 删除分支
+        
+        @param request: DeleteBranchRequest
+        @return: DeleteBranchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_branch_with_options_async(repository_id, request, headers, runtime)
@@ -4490,6 +5718,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteFileResponse:
+        """
+        @summary 删除文件
+        
+        @param request: DeleteFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -4529,6 +5765,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteFileResponse:
+        """
+        @summary 删除文件
+        
+        @param request: DeleteFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -4566,6 +5810,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.DeleteFileRequest,
     ) -> devops_20210625_models.DeleteFileResponse:
+        """
+        @summary 删除文件
+        
+        @param request: DeleteFileRequest
+        @return: DeleteFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_file_with_options(repository_id, request, headers, runtime)
@@ -4575,6 +5825,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.DeleteFileRequest,
     ) -> devops_20210625_models.DeleteFileResponse:
+        """
+        @summary 删除文件
+        
+        @param request: DeleteFileRequest
+        @return: DeleteFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_file_with_options_async(repository_id, request, headers, runtime)
@@ -4586,6 +5842,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteFlowTagResponse:
+        """
+        @summary 删除标签
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFlowTagResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4612,6 +5875,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteFlowTagResponse:
+        """
+        @summary 删除标签
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFlowTagResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4636,6 +5906,11 @@ class Client(OpenApiClient):
         organization_id: str,
         id: str,
     ) -> devops_20210625_models.DeleteFlowTagResponse:
+        """
+        @summary 删除标签
+        
+        @return: DeleteFlowTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_flow_tag_with_options(organization_id, id, headers, runtime)
@@ -4645,6 +5920,11 @@ class Client(OpenApiClient):
         organization_id: str,
         id: str,
     ) -> devops_20210625_models.DeleteFlowTagResponse:
+        """
+        @summary 删除标签
+        
+        @return: DeleteFlowTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_flow_tag_with_options_async(organization_id, id, headers, runtime)
@@ -4656,6 +5936,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteFlowTagGroupResponse:
+        """
+        @summary 删除标签分类
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFlowTagGroupResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4682,6 +5969,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteFlowTagGroupResponse:
+        """
+        @summary 删除标签分类
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFlowTagGroupResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4706,6 +6000,11 @@ class Client(OpenApiClient):
         organization_id: str,
         id: str,
     ) -> devops_20210625_models.DeleteFlowTagGroupResponse:
+        """
+        @summary 删除标签分类
+        
+        @return: DeleteFlowTagGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_flow_tag_group_with_options(organization_id, id, headers, runtime)
@@ -4715,6 +6014,11 @@ class Client(OpenApiClient):
         organization_id: str,
         id: str,
     ) -> devops_20210625_models.DeleteFlowTagGroupResponse:
+        """
+        @summary 删除标签分类
+        
+        @return: DeleteFlowTagGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_flow_tag_group_with_options_async(organization_id, id, headers, runtime)
@@ -4726,6 +6030,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteGroupMemberResponse:
+        """
+        @summary 删除组成员
+        
+        @param request: DeleteGroupMemberRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGroupMemberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -4765,6 +6077,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteGroupMemberResponse:
+        """
+        @summary 删除组成员
+        
+        @param request: DeleteGroupMemberRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGroupMemberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -4802,6 +6122,12 @@ class Client(OpenApiClient):
         group_id: str,
         request: devops_20210625_models.DeleteGroupMemberRequest,
     ) -> devops_20210625_models.DeleteGroupMemberResponse:
+        """
+        @summary 删除组成员
+        
+        @param request: DeleteGroupMemberRequest
+        @return: DeleteGroupMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_group_member_with_options(group_id, request, headers, runtime)
@@ -4811,6 +6137,12 @@ class Client(OpenApiClient):
         group_id: str,
         request: devops_20210625_models.DeleteGroupMemberRequest,
     ) -> devops_20210625_models.DeleteGroupMemberResponse:
+        """
+        @summary 删除组成员
+        
+        @param request: DeleteGroupMemberRequest
+        @return: DeleteGroupMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_group_member_with_options_async(group_id, request, headers, runtime)
@@ -4822,6 +6154,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteHostGroupResponse:
+        """
+        @summary 删除主机组
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHostGroupResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4848,6 +6187,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteHostGroupResponse:
+        """
+        @summary 删除主机组
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteHostGroupResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4872,6 +6218,11 @@ class Client(OpenApiClient):
         organization_id: str,
         id: str,
     ) -> devops_20210625_models.DeleteHostGroupResponse:
+        """
+        @summary 删除主机组
+        
+        @return: DeleteHostGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_host_group_with_options(organization_id, id, headers, runtime)
@@ -4881,6 +6232,11 @@ class Client(OpenApiClient):
         organization_id: str,
         id: str,
     ) -> devops_20210625_models.DeleteHostGroupResponse:
+        """
+        @summary 删除主机组
+        
+        @return: DeleteHostGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_host_group_with_options_async(organization_id, id, headers, runtime)
@@ -4892,6 +6248,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeletePipelineResponse:
+        """
+        @summary 删除流水线
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePipelineResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4918,6 +6281,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeletePipelineResponse:
+        """
+        @summary 删除流水线
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePipelineResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4942,6 +6312,11 @@ class Client(OpenApiClient):
         organization_id: str,
         pipeline_id: str,
     ) -> devops_20210625_models.DeletePipelineResponse:
+        """
+        @summary 删除流水线
+        
+        @return: DeletePipelineResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_pipeline_with_options(organization_id, pipeline_id, headers, runtime)
@@ -4951,6 +6326,11 @@ class Client(OpenApiClient):
         organization_id: str,
         pipeline_id: str,
     ) -> devops_20210625_models.DeletePipelineResponse:
+        """
+        @summary 删除流水线
+        
+        @return: DeletePipelineResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_pipeline_with_options_async(organization_id, pipeline_id, headers, runtime)
@@ -4962,6 +6342,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeletePipelineGroupResponse:
+        """
+        @summary 删除流水线分组
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePipelineGroupResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4988,6 +6375,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeletePipelineGroupResponse:
+        """
+        @summary 删除流水线分组
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePipelineGroupResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5012,6 +6406,11 @@ class Client(OpenApiClient):
         organization_id: str,
         group_id: str,
     ) -> devops_20210625_models.DeletePipelineGroupResponse:
+        """
+        @summary 删除流水线分组
+        
+        @return: DeletePipelineGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_pipeline_group_with_options(organization_id, group_id, headers, runtime)
@@ -5021,6 +6420,11 @@ class Client(OpenApiClient):
         organization_id: str,
         group_id: str,
     ) -> devops_20210625_models.DeletePipelineGroupResponse:
+        """
+        @summary 删除流水线分组
+        
+        @return: DeletePipelineGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_pipeline_group_with_options_async(organization_id, group_id, headers, runtime)
@@ -5033,6 +6437,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeletePipelineRelationsResponse:
+        """
+        @summary 删除流水线关联
+        
+        @param request: DeletePipelineRelationsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePipelineRelationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.rel_object_id):
@@ -5067,6 +6479,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeletePipelineRelationsResponse:
+        """
+        @summary 删除流水线关联
+        
+        @param request: DeletePipelineRelationsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePipelineRelationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.rel_object_id):
@@ -5099,6 +6519,12 @@ class Client(OpenApiClient):
         pipeline_id: str,
         request: devops_20210625_models.DeletePipelineRelationsRequest,
     ) -> devops_20210625_models.DeletePipelineRelationsResponse:
+        """
+        @summary 删除流水线关联
+        
+        @param request: DeletePipelineRelationsRequest
+        @return: DeletePipelineRelationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_pipeline_relations_with_options(organization_id, pipeline_id, request, headers, runtime)
@@ -5109,6 +6535,12 @@ class Client(OpenApiClient):
         pipeline_id: str,
         request: devops_20210625_models.DeletePipelineRelationsRequest,
     ) -> devops_20210625_models.DeletePipelineRelationsResponse:
+        """
+        @summary 删除流水线关联
+        
+        @param request: DeletePipelineRelationsRequest
+        @return: DeletePipelineRelationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_pipeline_relations_with_options_async(organization_id, pipeline_id, request, headers, runtime)
@@ -5120,6 +6552,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteProjectResponse:
+        """
+        @summary 删除项目
+        
+        @param request: DeleteProjectRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteProjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.identifier):
@@ -5151,6 +6591,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteProjectResponse:
+        """
+        @summary 删除项目
+        
+        @param request: DeleteProjectRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteProjectResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.identifier):
@@ -5180,6 +6628,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.DeleteProjectRequest,
     ) -> devops_20210625_models.DeleteProjectResponse:
+        """
+        @summary 删除项目
+        
+        @param request: DeleteProjectRequest
+        @return: DeleteProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_project_with_options(organization_id, request, headers, runtime)
@@ -5189,6 +6643,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.DeleteProjectRequest,
     ) -> devops_20210625_models.DeleteProjectResponse:
+        """
+        @summary 删除项目
+        
+        @param request: DeleteProjectRequest
+        @return: DeleteProjectResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_project_with_options_async(organization_id, request, headers, runtime)
@@ -5200,6 +6660,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteProjectLabelResponse:
+        """
+        @summary 删除代码库Label
+        
+        @param request: DeleteProjectLabelRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteProjectLabelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -5235,6 +6703,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteProjectLabelResponse:
+        """
+        @summary 删除代码库Label
+        
+        @param request: DeleteProjectLabelRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteProjectLabelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -5268,6 +6744,12 @@ class Client(OpenApiClient):
         label_id: str,
         request: devops_20210625_models.DeleteProjectLabelRequest,
     ) -> devops_20210625_models.DeleteProjectLabelResponse:
+        """
+        @summary 删除代码库Label
+        
+        @param request: DeleteProjectLabelRequest
+        @return: DeleteProjectLabelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_project_label_with_options(label_id, request, headers, runtime)
@@ -5277,6 +6759,12 @@ class Client(OpenApiClient):
         label_id: str,
         request: devops_20210625_models.DeleteProjectLabelRequest,
     ) -> devops_20210625_models.DeleteProjectLabelResponse:
+        """
+        @summary 删除代码库Label
+        
+        @param request: DeleteProjectLabelRequest
+        @return: DeleteProjectLabelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_project_label_with_options_async(label_id, request, headers, runtime)
@@ -5289,6 +6777,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteProtectedBranchResponse:
+        """
+        @summary 删除保护分支
+        
+        @param request: DeleteProtectedBranchRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteProtectedBranchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -5323,6 +6819,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteProtectedBranchResponse:
+        """
+        @summary 删除保护分支
+        
+        @param request: DeleteProtectedBranchRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteProtectedBranchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -5355,6 +6859,12 @@ class Client(OpenApiClient):
         protected_branch_id: str,
         request: devops_20210625_models.DeleteProtectedBranchRequest,
     ) -> devops_20210625_models.DeleteProtectedBranchResponse:
+        """
+        @summary 删除保护分支
+        
+        @param request: DeleteProtectedBranchRequest
+        @return: DeleteProtectedBranchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_protected_branch_with_options(repository_id, protected_branch_id, request, headers, runtime)
@@ -5365,6 +6875,12 @@ class Client(OpenApiClient):
         protected_branch_id: str,
         request: devops_20210625_models.DeleteProtectedBranchRequest,
     ) -> devops_20210625_models.DeleteProtectedBranchResponse:
+        """
+        @summary 删除保护分支
+        
+        @param request: DeleteProtectedBranchRequest
+        @return: DeleteProtectedBranchResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_protected_branch_with_options_async(repository_id, protected_branch_id, request, headers, runtime)
@@ -5377,6 +6893,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeletePushRuleResponse:
+        """
+        @summary 删除推送规则
+        
+        @param request: DeletePushRuleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePushRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -5411,6 +6935,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeletePushRuleResponse:
+        """
+        @summary 删除推送规则
+        
+        @param request: DeletePushRuleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePushRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -5443,6 +6975,12 @@ class Client(OpenApiClient):
         push_rule_id: str,
         request: devops_20210625_models.DeletePushRuleRequest,
     ) -> devops_20210625_models.DeletePushRuleResponse:
+        """
+        @summary 删除推送规则
+        
+        @param request: DeletePushRuleRequest
+        @return: DeletePushRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_push_rule_with_options(repository_id, push_rule_id, request, headers, runtime)
@@ -5453,6 +6991,12 @@ class Client(OpenApiClient):
         push_rule_id: str,
         request: devops_20210625_models.DeletePushRuleRequest,
     ) -> devops_20210625_models.DeletePushRuleResponse:
+        """
+        @summary 删除推送规则
+        
+        @param request: DeletePushRuleRequest
+        @return: DeletePushRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_push_rule_with_options_async(repository_id, push_rule_id, request, headers, runtime)
@@ -5464,6 +7008,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteRepositoryResponse:
+        """
+        @summary 删除代码库
+        
+        @param request: DeleteRepositoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRepositoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -5501,6 +7053,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteRepositoryResponse:
+        """
+        @summary 删除代码库
+        
+        @param request: DeleteRepositoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRepositoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -5536,6 +7096,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.DeleteRepositoryRequest,
     ) -> devops_20210625_models.DeleteRepositoryResponse:
+        """
+        @summary 删除代码库
+        
+        @param request: DeleteRepositoryRequest
+        @return: DeleteRepositoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_repository_with_options(repository_id, request, headers, runtime)
@@ -5545,6 +7111,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.DeleteRepositoryRequest,
     ) -> devops_20210625_models.DeleteRepositoryResponse:
+        """
+        @summary 删除代码库
+        
+        @param request: DeleteRepositoryRequest
+        @return: DeleteRepositoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_repository_with_options_async(repository_id, request, headers, runtime)
@@ -5556,6 +7128,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteRepositoryGroupResponse:
+        """
+        @summary 删除代码组
+        
+        @param request: DeleteRepositoryGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRepositoryGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -5593,6 +7173,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteRepositoryGroupResponse:
+        """
+        @summary 删除代码组
+        
+        @param request: DeleteRepositoryGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRepositoryGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -5628,6 +7216,12 @@ class Client(OpenApiClient):
         group_id: str,
         request: devops_20210625_models.DeleteRepositoryGroupRequest,
     ) -> devops_20210625_models.DeleteRepositoryGroupResponse:
+        """
+        @summary 删除代码组
+        
+        @param request: DeleteRepositoryGroupRequest
+        @return: DeleteRepositoryGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_repository_group_with_options(group_id, request, headers, runtime)
@@ -5637,6 +7231,12 @@ class Client(OpenApiClient):
         group_id: str,
         request: devops_20210625_models.DeleteRepositoryGroupRequest,
     ) -> devops_20210625_models.DeleteRepositoryGroupResponse:
+        """
+        @summary 删除代码组
+        
+        @param request: DeleteRepositoryGroupRequest
+        @return: DeleteRepositoryGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_repository_group_with_options_async(group_id, request, headers, runtime)
@@ -5649,6 +7249,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteRepositoryMemberResponse:
+        """
+        @summary 删除代码库成员
+        
+        @param request: DeleteRepositoryMemberRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRepositoryMemberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -5687,6 +7295,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteRepositoryMemberResponse:
+        """
+        @summary 删除代码库成员
+        
+        @param request: DeleteRepositoryMemberRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRepositoryMemberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -5723,6 +7339,12 @@ class Client(OpenApiClient):
         aliyun_pk: str,
         request: devops_20210625_models.DeleteRepositoryMemberRequest,
     ) -> devops_20210625_models.DeleteRepositoryMemberResponse:
+        """
+        @summary 删除代码库成员
+        
+        @param request: DeleteRepositoryMemberRequest
+        @return: DeleteRepositoryMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_repository_member_with_options(repository_id, aliyun_pk, request, headers, runtime)
@@ -5733,6 +7355,12 @@ class Client(OpenApiClient):
         aliyun_pk: str,
         request: devops_20210625_models.DeleteRepositoryMemberRequest,
     ) -> devops_20210625_models.DeleteRepositoryMemberResponse:
+        """
+        @summary 删除代码库成员
+        
+        @param request: DeleteRepositoryMemberRequest
+        @return: DeleteRepositoryMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_repository_member_with_options_async(repository_id, aliyun_pk, request, headers, runtime)
@@ -5745,6 +7373,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteRepositoryWebhookResponse:
+        """
+        @summary 删除代码库Webhook
+        
+        @param request: DeleteRepositoryWebhookRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRepositoryWebhookResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -5779,6 +7415,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteRepositoryWebhookResponse:
+        """
+        @summary 删除代码库Webhook
+        
+        @param request: DeleteRepositoryWebhookRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRepositoryWebhookResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -5811,6 +7455,12 @@ class Client(OpenApiClient):
         hook_id: str,
         request: devops_20210625_models.DeleteRepositoryWebhookRequest,
     ) -> devops_20210625_models.DeleteRepositoryWebhookResponse:
+        """
+        @summary 删除代码库Webhook
+        
+        @param request: DeleteRepositoryWebhookRequest
+        @return: DeleteRepositoryWebhookResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_repository_webhook_with_options(repository_id, hook_id, request, headers, runtime)
@@ -5821,6 +7471,12 @@ class Client(OpenApiClient):
         hook_id: str,
         request: devops_20210625_models.DeleteRepositoryWebhookRequest,
     ) -> devops_20210625_models.DeleteRepositoryWebhookResponse:
+        """
+        @summary 删除代码库Webhook
+        
+        @param request: DeleteRepositoryWebhookRequest
+        @return: DeleteRepositoryWebhookResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_repository_webhook_with_options_async(repository_id, hook_id, request, headers, runtime)
@@ -5834,6 +7490,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteResourceMemberResponse:
+        """
+        @summary 删除资源成员
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteResourceMemberResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5862,6 +7525,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteResourceMemberResponse:
+        """
+        @summary 删除资源成员
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteResourceMemberResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5888,6 +7558,11 @@ class Client(OpenApiClient):
         resource_id: str,
         account_id: str,
     ) -> devops_20210625_models.DeleteResourceMemberResponse:
+        """
+        @summary 删除资源成员
+        
+        @return: DeleteResourceMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_resource_member_with_options(organization_id, resource_type, resource_id, account_id, headers, runtime)
@@ -5899,6 +7574,11 @@ class Client(OpenApiClient):
         resource_id: str,
         account_id: str,
     ) -> devops_20210625_models.DeleteResourceMemberResponse:
+        """
+        @summary 删除资源成员
+        
+        @return: DeleteResourceMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_resource_member_with_options_async(organization_id, resource_type, resource_id, account_id, headers, runtime)
@@ -5910,6 +7590,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteTagResponse:
+        """
+        @summary 删除标签
+        
+        @param request: DeleteTagRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTagResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -5945,6 +7633,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteTagResponse:
+        """
+        @summary 删除标签
+        
+        @param request: DeleteTagRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteTagResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -5978,6 +7674,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.DeleteTagRequest,
     ) -> devops_20210625_models.DeleteTagResponse:
+        """
+        @summary 删除标签
+        
+        @param request: DeleteTagRequest
+        @return: DeleteTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_tag_with_options(repository_id, request, headers, runtime)
@@ -5987,6 +7689,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.DeleteTagRequest,
     ) -> devops_20210625_models.DeleteTagResponse:
+        """
+        @summary 删除标签
+        
+        @param request: DeleteTagRequest
+        @return: DeleteTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_tag_with_options_async(repository_id, request, headers, runtime)
@@ -5998,6 +7706,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteUserKeyResponse:
+        """
+        @summary 删除用户的SSH Key
+        
+        @param request: DeleteUserKeyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -6031,6 +7747,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteUserKeyResponse:
+        """
+        @summary 删除用户的SSH Key
+        
+        @param request: DeleteUserKeyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteUserKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -6062,6 +7786,12 @@ class Client(OpenApiClient):
         key_id: str,
         request: devops_20210625_models.DeleteUserKeyRequest,
     ) -> devops_20210625_models.DeleteUserKeyResponse:
+        """
+        @summary 删除用户的SSH Key
+        
+        @param request: DeleteUserKeyRequest
+        @return: DeleteUserKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_user_key_with_options(key_id, request, headers, runtime)
@@ -6071,6 +7801,12 @@ class Client(OpenApiClient):
         key_id: str,
         request: devops_20210625_models.DeleteUserKeyRequest,
     ) -> devops_20210625_models.DeleteUserKeyResponse:
+        """
+        @summary 删除用户的SSH Key
+        
+        @param request: DeleteUserKeyRequest
+        @return: DeleteUserKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_user_key_with_options_async(key_id, request, headers, runtime)
@@ -6082,6 +7818,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteVariableGroupResponse:
+        """
+        @summary 删除变量组
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVariableGroupResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6108,6 +7851,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteVariableGroupResponse:
+        """
+        @summary 删除变量组
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVariableGroupResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6132,6 +7882,11 @@ class Client(OpenApiClient):
         organization_id: str,
         id: str,
     ) -> devops_20210625_models.DeleteVariableGroupResponse:
+        """
+        @summary 删除变量组
+        
+        @return: DeleteVariableGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_variable_group_with_options(organization_id, id, headers, runtime)
@@ -6141,6 +7896,11 @@ class Client(OpenApiClient):
         organization_id: str,
         id: str,
     ) -> devops_20210625_models.DeleteVariableGroupResponse:
+        """
+        @summary 删除变量组
+        
+        @return: DeleteVariableGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_variable_group_with_options_async(organization_id, id, headers, runtime)
@@ -6152,6 +7912,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteWorkitemResponse:
+        """
+        @summary 删除工作项
+        
+        @param request: DeleteWorkitemRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWorkitemResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.identifier):
@@ -6183,6 +7951,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteWorkitemResponse:
+        """
+        @summary 删除工作项
+        
+        @param request: DeleteWorkitemRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWorkitemResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.identifier):
@@ -6212,6 +7988,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.DeleteWorkitemRequest,
     ) -> devops_20210625_models.DeleteWorkitemResponse:
+        """
+        @summary 删除工作项
+        
+        @param request: DeleteWorkitemRequest
+        @return: DeleteWorkitemResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_workitem_with_options(organization_id, request, headers, runtime)
@@ -6221,6 +8003,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.DeleteWorkitemRequest,
     ) -> devops_20210625_models.DeleteWorkitemResponse:
+        """
+        @summary 删除工作项
+        
+        @param request: DeleteWorkitemRequest
+        @return: DeleteWorkitemResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_workitem_with_options_async(organization_id, request, headers, runtime)
@@ -6232,6 +8020,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteWorkitemAllCommentResponse:
+        """
+        @summary 删除所有评论
+        
+        @param request: DeleteWorkitemAllCommentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWorkitemAllCommentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.identifier):
@@ -6263,6 +8059,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteWorkitemAllCommentResponse:
+        """
+        @summary 删除所有评论
+        
+        @param request: DeleteWorkitemAllCommentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWorkitemAllCommentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.identifier):
@@ -6292,6 +8096,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.DeleteWorkitemAllCommentRequest,
     ) -> devops_20210625_models.DeleteWorkitemAllCommentResponse:
+        """
+        @summary 删除所有评论
+        
+        @param request: DeleteWorkitemAllCommentRequest
+        @return: DeleteWorkitemAllCommentResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_workitem_all_comment_with_options(organization_id, request, headers, runtime)
@@ -6301,6 +8111,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.DeleteWorkitemAllCommentRequest,
     ) -> devops_20210625_models.DeleteWorkitemAllCommentResponse:
+        """
+        @summary 删除所有评论
+        
+        @param request: DeleteWorkitemAllCommentRequest
+        @return: DeleteWorkitemAllCommentResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_workitem_all_comment_with_options_async(organization_id, request, headers, runtime)
@@ -6312,6 +8128,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteWorkitemCommentResponse:
+        """
+        @summary 删除单条评论
+        
+        @param request: DeleteWorkitemCommentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWorkitemCommentResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.comment_id):
@@ -6345,6 +8169,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.DeleteWorkitemCommentResponse:
+        """
+        @summary 删除单条评论
+        
+        @param request: DeleteWorkitemCommentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWorkitemCommentResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.comment_id):
@@ -6376,6 +8208,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.DeleteWorkitemCommentRequest,
     ) -> devops_20210625_models.DeleteWorkitemCommentResponse:
+        """
+        @summary 删除单条评论
+        
+        @param request: DeleteWorkitemCommentRequest
+        @return: DeleteWorkitemCommentResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_workitem_comment_with_options(organization_id, request, headers, runtime)
@@ -6385,6 +8223,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.DeleteWorkitemCommentRequest,
     ) -> devops_20210625_models.DeleteWorkitemCommentResponse:
+        """
+        @summary 删除单条评论
+        
+        @param request: DeleteWorkitemCommentRequest
+        @return: DeleteWorkitemCommentResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_workitem_comment_with_options_async(organization_id, request, headers, runtime)
@@ -6397,6 +8241,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.EnableDeployKeyResponse:
+        """
+        @summary 启用部署密钥
+        
+        @param request: EnableDeployKeyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableDeployKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -6431,6 +8283,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.EnableDeployKeyResponse:
+        """
+        @summary 启用部署密钥
+        
+        @param request: EnableDeployKeyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableDeployKeyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -6463,6 +8323,12 @@ class Client(OpenApiClient):
         key_id: str,
         request: devops_20210625_models.EnableDeployKeyRequest,
     ) -> devops_20210625_models.EnableDeployKeyResponse:
+        """
+        @summary 启用部署密钥
+        
+        @param request: EnableDeployKeyRequest
+        @return: EnableDeployKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.enable_deploy_key_with_options(repository_id, key_id, request, headers, runtime)
@@ -6473,9 +8339,1455 @@ class Client(OpenApiClient):
         key_id: str,
         request: devops_20210625_models.EnableDeployKeyRequest,
     ) -> devops_20210625_models.EnableDeployKeyResponse:
+        """
+        @summary 启用部署密钥
+        
+        @param request: EnableDeployKeyRequest
+        @return: EnableDeployKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.enable_deploy_key_with_options_async(repository_id, key_id, request, headers, runtime)
+
+    def export_insight_custom_value_with_options(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightCustomValueRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ExportInsightCustomValueResponse:
+        """
+        @summary 导出Insight custom_value表
+        
+        @param request: ExportInsightCustomValueRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportInsightCustomValueResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.start_time):
+            body['startTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportInsightCustomValue',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/data/customValues',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ExportInsightCustomValueResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def export_insight_custom_value_with_options_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightCustomValueRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ExportInsightCustomValueResponse:
+        """
+        @summary 导出Insight custom_value表
+        
+        @param request: ExportInsightCustomValueRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportInsightCustomValueResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.start_time):
+            body['startTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportInsightCustomValue',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/data/customValues',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ExportInsightCustomValueResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def export_insight_custom_value(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightCustomValueRequest,
+    ) -> devops_20210625_models.ExportInsightCustomValueResponse:
+        """
+        @summary 导出Insight custom_value表
+        
+        @param request: ExportInsightCustomValueRequest
+        @return: ExportInsightCustomValueResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.export_insight_custom_value_with_options(organization_id, request, headers, runtime)
+
+    async def export_insight_custom_value_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightCustomValueRequest,
+    ) -> devops_20210625_models.ExportInsightCustomValueResponse:
+        """
+        @summary 导出Insight custom_value表
+        
+        @param request: ExportInsightCustomValueRequest
+        @return: ExportInsightCustomValueResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.export_insight_custom_value_with_options_async(organization_id, request, headers, runtime)
+
+    def export_insight_expected_work_time_with_options(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightExpectedWorkTimeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ExportInsightExpectedWorkTimeResponse:
+        """
+        @summary 导出Insight expected_work_time表数据
+        
+        @param request: ExportInsightExpectedWorkTimeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportInsightExpectedWorkTimeResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.start_time):
+            body['startTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportInsightExpectedWorkTime',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/data/expectedWorkTimes',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ExportInsightExpectedWorkTimeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def export_insight_expected_work_time_with_options_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightExpectedWorkTimeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ExportInsightExpectedWorkTimeResponse:
+        """
+        @summary 导出Insight expected_work_time表数据
+        
+        @param request: ExportInsightExpectedWorkTimeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportInsightExpectedWorkTimeResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.start_time):
+            body['startTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportInsightExpectedWorkTime',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/data/expectedWorkTimes',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ExportInsightExpectedWorkTimeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def export_insight_expected_work_time(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightExpectedWorkTimeRequest,
+    ) -> devops_20210625_models.ExportInsightExpectedWorkTimeResponse:
+        """
+        @summary 导出Insight expected_work_time表数据
+        
+        @param request: ExportInsightExpectedWorkTimeRequest
+        @return: ExportInsightExpectedWorkTimeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.export_insight_expected_work_time_with_options(organization_id, request, headers, runtime)
+
+    async def export_insight_expected_work_time_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightExpectedWorkTimeRequest,
+    ) -> devops_20210625_models.ExportInsightExpectedWorkTimeResponse:
+        """
+        @summary 导出Insight expected_work_time表数据
+        
+        @param request: ExportInsightExpectedWorkTimeRequest
+        @return: ExportInsightExpectedWorkTimeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.export_insight_expected_work_time_with_options_async(organization_id, request, headers, runtime)
+
+    def export_insight_field_with_options(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightFieldRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ExportInsightFieldResponse:
+        """
+        @summary 导出Insight field表
+        
+        @param request: ExportInsightFieldRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportInsightFieldResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.start_time):
+            body['startTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportInsightField',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/data/fields',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ExportInsightFieldResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def export_insight_field_with_options_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightFieldRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ExportInsightFieldResponse:
+        """
+        @summary 导出Insight field表
+        
+        @param request: ExportInsightFieldRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportInsightFieldResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.start_time):
+            body['startTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportInsightField',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/data/fields',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ExportInsightFieldResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def export_insight_field(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightFieldRequest,
+    ) -> devops_20210625_models.ExportInsightFieldResponse:
+        """
+        @summary 导出Insight field表
+        
+        @param request: ExportInsightFieldRequest
+        @return: ExportInsightFieldResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.export_insight_field_with_options(organization_id, request, headers, runtime)
+
+    async def export_insight_field_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightFieldRequest,
+    ) -> devops_20210625_models.ExportInsightFieldResponse:
+        """
+        @summary 导出Insight field表
+        
+        @param request: ExportInsightFieldRequest
+        @return: ExportInsightFieldResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.export_insight_field_with_options_async(organization_id, request, headers, runtime)
+
+    def export_insight_space_with_options(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightSpaceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ExportInsightSpaceResponse:
+        """
+        @summary 导出Insight space表数据
+        
+        @param request: ExportInsightSpaceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportInsightSpaceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.start_time):
+            body['startTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportInsightSpace',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/data/spaces',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ExportInsightSpaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def export_insight_space_with_options_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightSpaceRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ExportInsightSpaceResponse:
+        """
+        @summary 导出Insight space表数据
+        
+        @param request: ExportInsightSpaceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportInsightSpaceResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.start_time):
+            body['startTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportInsightSpace',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/data/spaces',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ExportInsightSpaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def export_insight_space(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightSpaceRequest,
+    ) -> devops_20210625_models.ExportInsightSpaceResponse:
+        """
+        @summary 导出Insight space表数据
+        
+        @param request: ExportInsightSpaceRequest
+        @return: ExportInsightSpaceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.export_insight_space_with_options(organization_id, request, headers, runtime)
+
+    async def export_insight_space_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightSpaceRequest,
+    ) -> devops_20210625_models.ExportInsightSpaceResponse:
+        """
+        @summary 导出Insight space表数据
+        
+        @param request: ExportInsightSpaceRequest
+        @return: ExportInsightSpaceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.export_insight_space_with_options_async(organization_id, request, headers, runtime)
+
+    def export_insight_space_ref_with_options(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightSpaceRefRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ExportInsightSpaceRefResponse:
+        """
+        @summary 导出Insight space_ref表数据
+        
+        @param request: ExportInsightSpaceRefRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportInsightSpaceRefResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.start_time):
+            body['startTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportInsightSpaceRef',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/data/spaceRefs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ExportInsightSpaceRefResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def export_insight_space_ref_with_options_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightSpaceRefRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ExportInsightSpaceRefResponse:
+        """
+        @summary 导出Insight space_ref表数据
+        
+        @param request: ExportInsightSpaceRefRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportInsightSpaceRefResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.start_time):
+            body['startTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportInsightSpaceRef',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/data/spaceRefs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ExportInsightSpaceRefResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def export_insight_space_ref(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightSpaceRefRequest,
+    ) -> devops_20210625_models.ExportInsightSpaceRefResponse:
+        """
+        @summary 导出Insight space_ref表数据
+        
+        @param request: ExportInsightSpaceRefRequest
+        @return: ExportInsightSpaceRefResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.export_insight_space_ref_with_options(organization_id, request, headers, runtime)
+
+    async def export_insight_space_ref_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightSpaceRefRequest,
+    ) -> devops_20210625_models.ExportInsightSpaceRefResponse:
+        """
+        @summary 导出Insight space_ref表数据
+        
+        @param request: ExportInsightSpaceRefRequest
+        @return: ExportInsightSpaceRefResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.export_insight_space_ref_with_options_async(organization_id, request, headers, runtime)
+
+    def export_insight_sprint_with_options(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightSprintRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ExportInsightSprintResponse:
+        """
+        @summary 导出Insight sprint表数据
+        
+        @param request: ExportInsightSprintRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportInsightSprintResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.start_time):
+            body['startTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportInsightSprint',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/data/sprints',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ExportInsightSprintResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def export_insight_sprint_with_options_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightSprintRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ExportInsightSprintResponse:
+        """
+        @summary 导出Insight sprint表数据
+        
+        @param request: ExportInsightSprintRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportInsightSprintResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.start_time):
+            body['startTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportInsightSprint',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/data/sprints',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ExportInsightSprintResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def export_insight_sprint(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightSprintRequest,
+    ) -> devops_20210625_models.ExportInsightSprintResponse:
+        """
+        @summary 导出Insight sprint表数据
+        
+        @param request: ExportInsightSprintRequest
+        @return: ExportInsightSprintResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.export_insight_sprint_with_options(organization_id, request, headers, runtime)
+
+    async def export_insight_sprint_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightSprintRequest,
+    ) -> devops_20210625_models.ExportInsightSprintResponse:
+        """
+        @summary 导出Insight sprint表数据
+        
+        @param request: ExportInsightSprintRequest
+        @return: ExportInsightSprintResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.export_insight_sprint_with_options_async(organization_id, request, headers, runtime)
+
+    def export_insight_tag_ref_with_options(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightTagRefRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ExportInsightTagRefResponse:
+        """
+        @summary 导出Insight tag_ref表数据
+        
+        @param request: ExportInsightTagRefRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportInsightTagRefResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.start_time):
+            body['startTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportInsightTagRef',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/data/tagRefs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ExportInsightTagRefResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def export_insight_tag_ref_with_options_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightTagRefRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ExportInsightTagRefResponse:
+        """
+        @summary 导出Insight tag_ref表数据
+        
+        @param request: ExportInsightTagRefRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportInsightTagRefResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.start_time):
+            body['startTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportInsightTagRef',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/data/tagRefs',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ExportInsightTagRefResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def export_insight_tag_ref(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightTagRefRequest,
+    ) -> devops_20210625_models.ExportInsightTagRefResponse:
+        """
+        @summary 导出Insight tag_ref表数据
+        
+        @param request: ExportInsightTagRefRequest
+        @return: ExportInsightTagRefResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.export_insight_tag_ref_with_options(organization_id, request, headers, runtime)
+
+    async def export_insight_tag_ref_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightTagRefRequest,
+    ) -> devops_20210625_models.ExportInsightTagRefResponse:
+        """
+        @summary 导出Insight tag_ref表数据
+        
+        @param request: ExportInsightTagRefRequest
+        @return: ExportInsightTagRefResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.export_insight_tag_ref_with_options_async(organization_id, request, headers, runtime)
+
+    def export_insight_work_time_with_options(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightWorkTimeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ExportInsightWorkTimeResponse:
+        """
+        @summary 导出Insight work_time表数据
+        
+        @param request: ExportInsightWorkTimeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportInsightWorkTimeResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.start_time):
+            body['startTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportInsightWorkTime',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/data/workTimes',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ExportInsightWorkTimeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def export_insight_work_time_with_options_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightWorkTimeRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ExportInsightWorkTimeResponse:
+        """
+        @summary 导出Insight work_time表数据
+        
+        @param request: ExportInsightWorkTimeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportInsightWorkTimeResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.start_time):
+            body['startTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportInsightWorkTime',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/data/workTimes',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ExportInsightWorkTimeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def export_insight_work_time(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightWorkTimeRequest,
+    ) -> devops_20210625_models.ExportInsightWorkTimeResponse:
+        """
+        @summary 导出Insight work_time表数据
+        
+        @param request: ExportInsightWorkTimeRequest
+        @return: ExportInsightWorkTimeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.export_insight_work_time_with_options(organization_id, request, headers, runtime)
+
+    async def export_insight_work_time_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightWorkTimeRequest,
+    ) -> devops_20210625_models.ExportInsightWorkTimeResponse:
+        """
+        @summary 导出Insight work_time表数据
+        
+        @param request: ExportInsightWorkTimeRequest
+        @return: ExportInsightWorkTimeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.export_insight_work_time_with_options_async(organization_id, request, headers, runtime)
+
+    def export_insight_workitem_status_with_options(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightWorkitemStatusRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ExportInsightWorkitemStatusResponse:
+        """
+        @summary 导出Insight workitem_stauts表数据
+        
+        @param request: ExportInsightWorkitemStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportInsightWorkitemStatusResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.start_time):
+            body['startTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportInsightWorkitemStatus',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/data/workitemStatuses',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ExportInsightWorkitemStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def export_insight_workitem_status_with_options_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightWorkitemStatusRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ExportInsightWorkitemStatusResponse:
+        """
+        @summary 导出Insight workitem_stauts表数据
+        
+        @param request: ExportInsightWorkitemStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportInsightWorkitemStatusResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.start_time):
+            body['startTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportInsightWorkitemStatus',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/data/workitemStatuses',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ExportInsightWorkitemStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def export_insight_workitem_status(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightWorkitemStatusRequest,
+    ) -> devops_20210625_models.ExportInsightWorkitemStatusResponse:
+        """
+        @summary 导出Insight workitem_stauts表数据
+        
+        @param request: ExportInsightWorkitemStatusRequest
+        @return: ExportInsightWorkitemStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.export_insight_workitem_status_with_options(organization_id, request, headers, runtime)
+
+    async def export_insight_workitem_status_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightWorkitemStatusRequest,
+    ) -> devops_20210625_models.ExportInsightWorkitemStatusResponse:
+        """
+        @summary 导出Insight workitem_stauts表数据
+        
+        @param request: ExportInsightWorkitemStatusRequest
+        @return: ExportInsightWorkitemStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.export_insight_workitem_status_with_options_async(organization_id, request, headers, runtime)
+
+    def export_insight_workitem_status_join_workitem_defect_extra_with_options(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightWorkitemStatusJoinWorkitemDefectExtraRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ExportInsightWorkitemStatusJoinWorkitemDefectExtraResponse:
+        """
+        @summary 导出Insight workitem_stauts表 join workitem_defect_extra表表数据
+        
+        @param request: ExportInsightWorkitemStatusJoinWorkitemDefectExtraRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportInsightWorkitemStatusJoinWorkitemDefectExtraResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.start_time):
+            body['startTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportInsightWorkitemStatusJoinWorkitemDefectExtra',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/data/workitemStatusJoinWorkitemDefectExtras',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ExportInsightWorkitemStatusJoinWorkitemDefectExtraResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def export_insight_workitem_status_join_workitem_defect_extra_with_options_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightWorkitemStatusJoinWorkitemDefectExtraRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ExportInsightWorkitemStatusJoinWorkitemDefectExtraResponse:
+        """
+        @summary 导出Insight workitem_stauts表 join workitem_defect_extra表表数据
+        
+        @param request: ExportInsightWorkitemStatusJoinWorkitemDefectExtraRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportInsightWorkitemStatusJoinWorkitemDefectExtraResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.start_time):
+            body['startTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportInsightWorkitemStatusJoinWorkitemDefectExtra',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/data/workitemStatusJoinWorkitemDefectExtras',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ExportInsightWorkitemStatusJoinWorkitemDefectExtraResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def export_insight_workitem_status_join_workitem_defect_extra(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightWorkitemStatusJoinWorkitemDefectExtraRequest,
+    ) -> devops_20210625_models.ExportInsightWorkitemStatusJoinWorkitemDefectExtraResponse:
+        """
+        @summary 导出Insight workitem_stauts表 join workitem_defect_extra表表数据
+        
+        @param request: ExportInsightWorkitemStatusJoinWorkitemDefectExtraRequest
+        @return: ExportInsightWorkitemStatusJoinWorkitemDefectExtraResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.export_insight_workitem_status_join_workitem_defect_extra_with_options(organization_id, request, headers, runtime)
+
+    async def export_insight_workitem_status_join_workitem_defect_extra_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightWorkitemStatusJoinWorkitemDefectExtraRequest,
+    ) -> devops_20210625_models.ExportInsightWorkitemStatusJoinWorkitemDefectExtraResponse:
+        """
+        @summary 导出Insight workitem_stauts表 join workitem_defect_extra表表数据
+        
+        @param request: ExportInsightWorkitemStatusJoinWorkitemDefectExtraRequest
+        @return: ExportInsightWorkitemStatusJoinWorkitemDefectExtraResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.export_insight_workitem_status_join_workitem_defect_extra_with_options_async(organization_id, request, headers, runtime)
+
+    def export_insight_workitem_version_with_options(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightWorkitemVersionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ExportInsightWorkitemVersionResponse:
+        """
+        @summary 导出Insight workitem_version表数据
+        
+        @param request: ExportInsightWorkitemVersionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportInsightWorkitemVersionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.start_time):
+            body['startTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportInsightWorkitemVersion',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/data/workitemVersions',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ExportInsightWorkitemVersionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def export_insight_workitem_version_with_options_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightWorkitemVersionRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ExportInsightWorkitemVersionResponse:
+        """
+        @summary 导出Insight workitem_version表数据
+        
+        @param request: ExportInsightWorkitemVersionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportInsightWorkitemVersionResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.start_time):
+            body['startTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportInsightWorkitemVersion',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/data/workitemVersions',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ExportInsightWorkitemVersionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def export_insight_workitem_version(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightWorkitemVersionRequest,
+    ) -> devops_20210625_models.ExportInsightWorkitemVersionResponse:
+        """
+        @summary 导出Insight workitem_version表数据
+        
+        @param request: ExportInsightWorkitemVersionRequest
+        @return: ExportInsightWorkitemVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.export_insight_workitem_version_with_options(organization_id, request, headers, runtime)
+
+    async def export_insight_workitem_version_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportInsightWorkitemVersionRequest,
+    ) -> devops_20210625_models.ExportInsightWorkitemVersionResponse:
+        """
+        @summary 导出Insight workitem_version表数据
+        
+        @param request: ExportInsightWorkitemVersionRequest
+        @return: ExportInsightWorkitemVersionResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.export_insight_workitem_version_with_options_async(organization_id, request, headers, runtime)
+
+    def export_workitem_activity_with_options(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportWorkitemActivityRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ExportWorkitemActivityResponse:
+        """
+        @summary 导出Insight workitem_activity表数据
+        
+        @param request: ExportWorkitemActivityRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportWorkitemActivityResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.start_time):
+            body['startTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportWorkitemActivity',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/data/workitemActivities',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ExportWorkitemActivityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def export_workitem_activity_with_options_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportWorkitemActivityRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> devops_20210625_models.ExportWorkitemActivityResponse:
+        """
+        @summary 导出Insight workitem_activity表数据
+        
+        @param request: ExportWorkitemActivityRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExportWorkitemActivityResponse
+        """
+        UtilClient.validate_model(request)
+        body = {}
+        if not UtilClient.is_unset(request.end_time):
+            body['endTime'] = request.end_time
+        if not UtilClient.is_unset(request.max_results):
+            body['maxResults'] = request.max_results
+        if not UtilClient.is_unset(request.next_token):
+            body['nextToken'] = request.next_token
+        if not UtilClient.is_unset(request.start_time):
+            body['startTime'] = request.start_time
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='ExportWorkitemActivity',
+            version='2021-06-25',
+            protocol='HTTPS',
+            pathname=f'/organization/{OpenApiUtilClient.get_encode_param(organization_id)}/data/workitemActivities',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            devops_20210625_models.ExportWorkitemActivityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def export_workitem_activity(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportWorkitemActivityRequest,
+    ) -> devops_20210625_models.ExportWorkitemActivityResponse:
+        """
+        @summary 导出Insight workitem_activity表数据
+        
+        @param request: ExportWorkitemActivityRequest
+        @return: ExportWorkitemActivityResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.export_workitem_activity_with_options(organization_id, request, headers, runtime)
+
+    async def export_workitem_activity_async(
+        self,
+        organization_id: str,
+        request: devops_20210625_models.ExportWorkitemActivityRequest,
+    ) -> devops_20210625_models.ExportWorkitemActivityResponse:
+        """
+        @summary 导出Insight workitem_activity表数据
+        
+        @param request: ExportWorkitemActivityRequest
+        @return: ExportWorkitemActivityResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.export_workitem_activity_with_options_async(organization_id, request, headers, runtime)
 
     def frozen_workspace_with_options(
         self,
@@ -6483,6 +9795,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.FrozenWorkspaceResponse:
+        """
+        @summary 冻结工作空间
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FrozenWorkspaceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6508,6 +9827,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.FrozenWorkspaceResponse:
+        """
+        @summary 冻结工作空间
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: FrozenWorkspaceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6531,6 +9857,11 @@ class Client(OpenApiClient):
         self,
         workspace_id: str,
     ) -> devops_20210625_models.FrozenWorkspaceResponse:
+        """
+        @summary 冻结工作空间
+        
+        @return: FrozenWorkspaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.frozen_workspace_with_options(workspace_id, headers, runtime)
@@ -6539,6 +9870,11 @@ class Client(OpenApiClient):
         self,
         workspace_id: str,
     ) -> devops_20210625_models.FrozenWorkspaceResponse:
+        """
+        @summary 冻结工作空间
+        
+        @return: FrozenWorkspaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.frozen_workspace_with_options_async(workspace_id, headers, runtime)
@@ -6550,6 +9886,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetApplicationResponse:
+        """
+        @summary 查找应用详情
+        
+        @param request: GetApplicationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -6581,6 +9925,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetApplicationResponse:
+        """
+        @summary 查找应用详情
+        
+        @param request: GetApplicationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -6610,6 +9962,12 @@ class Client(OpenApiClient):
         app_name: str,
         request: devops_20210625_models.GetApplicationRequest,
     ) -> devops_20210625_models.GetApplicationResponse:
+        """
+        @summary 查找应用详情
+        
+        @param request: GetApplicationRequest
+        @return: GetApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_application_with_options(app_name, request, headers, runtime)
@@ -6619,6 +9977,12 @@ class Client(OpenApiClient):
         app_name: str,
         request: devops_20210625_models.GetApplicationRequest,
     ) -> devops_20210625_models.GetApplicationResponse:
+        """
+        @summary 查找应用详情
+        
+        @param request: GetApplicationRequest
+        @return: GetApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_application_with_options_async(app_name, request, headers, runtime)
@@ -6630,6 +9994,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetBranchInfoResponse:
+        """
+        @summary 查询单个分支
+        
+        @param request: GetBranchInfoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBranchInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -6665,6 +10037,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetBranchInfoResponse:
+        """
+        @summary 查询单个分支
+        
+        @param request: GetBranchInfoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBranchInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -6698,6 +10078,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.GetBranchInfoRequest,
     ) -> devops_20210625_models.GetBranchInfoResponse:
+        """
+        @summary 查询单个分支
+        
+        @param request: GetBranchInfoRequest
+        @return: GetBranchInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_branch_info_with_options(repository_id, request, headers, runtime)
@@ -6707,6 +10093,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.GetBranchInfoRequest,
     ) -> devops_20210625_models.GetBranchInfoResponse:
+        """
+        @summary 查询单个分支
+        
+        @param request: GetBranchInfoRequest
+        @return: GetBranchInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_branch_info_with_options_async(repository_id, request, headers, runtime)
@@ -6717,6 +10109,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetCheckRunResponse:
+        """
+        @summary 查询检查运行
+        
+        @param request: GetCheckRunRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCheckRunResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -6753,6 +10153,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetCheckRunResponse:
+        """
+        @summary 查询检查运行
+        
+        @param request: GetCheckRunRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCheckRunResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -6787,6 +10195,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.GetCheckRunRequest,
     ) -> devops_20210625_models.GetCheckRunResponse:
+        """
+        @summary 查询检查运行
+        
+        @param request: GetCheckRunRequest
+        @return: GetCheckRunResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_check_run_with_options(request, headers, runtime)
@@ -6795,6 +10209,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.GetCheckRunRequest,
     ) -> devops_20210625_models.GetCheckRunResponse:
+        """
+        @summary 查询检查运行
+        
+        @param request: GetCheckRunRequest
+        @return: GetCheckRunResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_check_run_with_options_async(request, headers, runtime)
@@ -6806,6 +10226,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetCodeupOrganizationResponse:
+        """
+        @summary 获取企业信息
+        
+        @param request: GetCodeupOrganizationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCodeupOrganizationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -6837,6 +10265,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetCodeupOrganizationResponse:
+        """
+        @summary 获取企业信息
+        
+        @param request: GetCodeupOrganizationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCodeupOrganizationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -6866,6 +10302,12 @@ class Client(OpenApiClient):
         identity: str,
         request: devops_20210625_models.GetCodeupOrganizationRequest,
     ) -> devops_20210625_models.GetCodeupOrganizationResponse:
+        """
+        @summary 获取企业信息
+        
+        @param request: GetCodeupOrganizationRequest
+        @return: GetCodeupOrganizationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_codeup_organization_with_options(identity, request, headers, runtime)
@@ -6875,6 +10317,12 @@ class Client(OpenApiClient):
         identity: str,
         request: devops_20210625_models.GetCodeupOrganizationRequest,
     ) -> devops_20210625_models.GetCodeupOrganizationResponse:
+        """
+        @summary 获取企业信息
+        
+        @param request: GetCodeupOrganizationRequest
+        @return: GetCodeupOrganizationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_codeup_organization_with_options_async(identity, request, headers, runtime)
@@ -6886,6 +10334,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetCompareDetailResponse:
+        """
+        @summary 获取比较详情
+        
+        @param request: GetCompareDetailRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCompareDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.from_):
@@ -6927,6 +10383,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetCompareDetailResponse:
+        """
+        @summary 获取比较详情
+        
+        @param request: GetCompareDetailRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCompareDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.from_):
@@ -6966,6 +10430,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.GetCompareDetailRequest,
     ) -> devops_20210625_models.GetCompareDetailResponse:
+        """
+        @summary 获取比较详情
+        
+        @param request: GetCompareDetailRequest
+        @return: GetCompareDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_compare_detail_with_options(repository_id, request, headers, runtime)
@@ -6975,6 +10445,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.GetCompareDetailRequest,
     ) -> devops_20210625_models.GetCompareDetailResponse:
+        """
+        @summary 获取比较详情
+        
+        @param request: GetCompareDetailRequest
+        @return: GetCompareDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_compare_detail_with_options_async(repository_id, request, headers, runtime)
@@ -6987,6 +10463,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetCustomFieldOptionResponse:
+        """
+        @summary 获取自定义字段的选项值
+        
+        @param request: GetCustomFieldOptionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCustomFieldOptionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.space_identifier):
@@ -7023,6 +10507,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetCustomFieldOptionResponse:
+        """
+        @summary 获取自定义字段的选项值
+        
+        @param request: GetCustomFieldOptionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCustomFieldOptionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.space_identifier):
@@ -7057,6 +10549,12 @@ class Client(OpenApiClient):
         field_id: str,
         request: devops_20210625_models.GetCustomFieldOptionRequest,
     ) -> devops_20210625_models.GetCustomFieldOptionResponse:
+        """
+        @summary 获取自定义字段的选项值
+        
+        @param request: GetCustomFieldOptionRequest
+        @return: GetCustomFieldOptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_custom_field_option_with_options(organization_id, field_id, request, headers, runtime)
@@ -7067,6 +10565,12 @@ class Client(OpenApiClient):
         field_id: str,
         request: devops_20210625_models.GetCustomFieldOptionRequest,
     ) -> devops_20210625_models.GetCustomFieldOptionResponse:
+        """
+        @summary 获取自定义字段的选项值
+        
+        @param request: GetCustomFieldOptionRequest
+        @return: GetCustomFieldOptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_custom_field_option_with_options_async(organization_id, field_id, request, headers, runtime)
@@ -7078,6 +10582,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetFileBlobsResponse:
+        """
+        @summary 查询文件
+        
+        @param request: GetFileBlobsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFileBlobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -7119,6 +10631,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetFileBlobsResponse:
+        """
+        @summary 查询文件
+        
+        @param request: GetFileBlobsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFileBlobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -7158,6 +10678,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.GetFileBlobsRequest,
     ) -> devops_20210625_models.GetFileBlobsResponse:
+        """
+        @summary 查询文件
+        
+        @param request: GetFileBlobsRequest
+        @return: GetFileBlobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_file_blobs_with_options(repository_id, request, headers, runtime)
@@ -7167,6 +10693,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.GetFileBlobsRequest,
     ) -> devops_20210625_models.GetFileBlobsResponse:
+        """
+        @summary 查询文件
+        
+        @param request: GetFileBlobsRequest
+        @return: GetFileBlobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_file_blobs_with_options_async(repository_id, request, headers, runtime)
@@ -7178,6 +10710,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetFileLastCommitResponse:
+        """
+        @summary 获取文件上一次提交信息
+        
+        @param request: GetFileLastCommitRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFileLastCommitResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -7217,6 +10757,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetFileLastCommitResponse:
+        """
+        @summary 获取文件上一次提交信息
+        
+        @param request: GetFileLastCommitRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFileLastCommitResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -7254,6 +10802,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.GetFileLastCommitRequest,
     ) -> devops_20210625_models.GetFileLastCommitResponse:
+        """
+        @summary 获取文件上一次提交信息
+        
+        @param request: GetFileLastCommitRequest
+        @return: GetFileLastCommitResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_file_last_commit_with_options(repository_id, request, headers, runtime)
@@ -7263,6 +10817,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.GetFileLastCommitRequest,
     ) -> devops_20210625_models.GetFileLastCommitResponse:
+        """
+        @summary 获取文件上一次提交信息
+        
+        @param request: GetFileLastCommitRequest
+        @return: GetFileLastCommitResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_file_last_commit_with_options_async(repository_id, request, headers, runtime)
@@ -7274,6 +10834,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetFlowTagGroupResponse:
+        """
+        @summary 获取标签分类
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFlowTagGroupResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7300,6 +10867,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetFlowTagGroupResponse:
+        """
+        @summary 获取标签分类
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetFlowTagGroupResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7324,6 +10898,11 @@ class Client(OpenApiClient):
         organization_id: str,
         id: str,
     ) -> devops_20210625_models.GetFlowTagGroupResponse:
+        """
+        @summary 获取标签分类
+        
+        @return: GetFlowTagGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_flow_tag_group_with_options(organization_id, id, headers, runtime)
@@ -7333,6 +10912,11 @@ class Client(OpenApiClient):
         organization_id: str,
         id: str,
     ) -> devops_20210625_models.GetFlowTagGroupResponse:
+        """
+        @summary 获取标签分类
+        
+        @return: GetFlowTagGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_flow_tag_group_with_options_async(organization_id, id, headers, runtime)
@@ -7343,6 +10927,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetGroupByPathResponse:
+        """
+        @summary 根据路径查询代码组
+        
+        @param request: GetGroupByPathRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGroupByPathResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.identity):
@@ -7375,6 +10967,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetGroupByPathResponse:
+        """
+        @summary 根据路径查询代码组
+        
+        @param request: GetGroupByPathRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGroupByPathResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.identity):
@@ -7405,6 +11005,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.GetGroupByPathRequest,
     ) -> devops_20210625_models.GetGroupByPathResponse:
+        """
+        @summary 根据路径查询代码组
+        
+        @param request: GetGroupByPathRequest
+        @return: GetGroupByPathResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_group_by_path_with_options(request, headers, runtime)
@@ -7413,6 +11019,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.GetGroupByPathRequest,
     ) -> devops_20210625_models.GetGroupByPathResponse:
+        """
+        @summary 根据路径查询代码组
+        
+        @param request: GetGroupByPathRequest
+        @return: GetGroupByPathResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_group_by_path_with_options_async(request, headers, runtime)
@@ -7423,6 +11035,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetGroupDetailResponse:
+        """
+        @summary 查询代码组信息
+        
+        @param request: GetGroupDetailRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGroupDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -7457,6 +11077,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetGroupDetailResponse:
+        """
+        @summary 查询代码组信息
+        
+        @param request: GetGroupDetailRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGroupDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -7489,6 +11117,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.GetGroupDetailRequest,
     ) -> devops_20210625_models.GetGroupDetailResponse:
+        """
+        @summary 查询代码组信息
+        
+        @param request: GetGroupDetailRequest
+        @return: GetGroupDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_group_detail_with_options(request, headers, runtime)
@@ -7497,6 +11131,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.GetGroupDetailRequest,
     ) -> devops_20210625_models.GetGroupDetailResponse:
+        """
+        @summary 查询代码组信息
+        
+        @param request: GetGroupDetailRequest
+        @return: GetGroupDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_group_detail_with_options_async(request, headers, runtime)
@@ -7508,6 +11148,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetHostGroupResponse:
+        """
+        @summary 获取主机组信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHostGroupResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7534,6 +11181,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetHostGroupResponse:
+        """
+        @summary 获取主机组信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetHostGroupResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7558,6 +11212,11 @@ class Client(OpenApiClient):
         organization_id: str,
         id: str,
     ) -> devops_20210625_models.GetHostGroupResponse:
+        """
+        @summary 获取主机组信息
+        
+        @return: GetHostGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_host_group_with_options(organization_id, id, headers, runtime)
@@ -7567,6 +11226,11 @@ class Client(OpenApiClient):
         organization_id: str,
         id: str,
     ) -> devops_20210625_models.GetHostGroupResponse:
+        """
+        @summary 获取主机组信息
+        
+        @return: GetHostGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_host_group_with_options_async(organization_id, id, headers, runtime)
@@ -7579,6 +11243,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetMergeRequestResponse:
+        """
+        @summary 查询合并请求详情
+        
+        @param request: GetMergeRequestRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMergeRequestResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -7613,6 +11285,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetMergeRequestResponse:
+        """
+        @summary 查询合并请求详情
+        
+        @param request: GetMergeRequestRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMergeRequestResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -7645,6 +11325,12 @@ class Client(OpenApiClient):
         local_id: str,
         request: devops_20210625_models.GetMergeRequestRequest,
     ) -> devops_20210625_models.GetMergeRequestResponse:
+        """
+        @summary 查询合并请求详情
+        
+        @param request: GetMergeRequestRequest
+        @return: GetMergeRequestResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_merge_request_with_options(repository_id, local_id, request, headers, runtime)
@@ -7655,6 +11341,12 @@ class Client(OpenApiClient):
         local_id: str,
         request: devops_20210625_models.GetMergeRequestRequest,
     ) -> devops_20210625_models.GetMergeRequestResponse:
+        """
+        @summary 查询合并请求详情
+        
+        @param request: GetMergeRequestRequest
+        @return: GetMergeRequestResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_merge_request_with_options_async(repository_id, local_id, request, headers, runtime)
@@ -7665,6 +11357,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetMergeRequestChangeTreeResponse:
+        """
+        @summary 查询合并请求的变更信息
+        
+        @param request: GetMergeRequestChangeTreeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMergeRequestChangeTreeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -7705,6 +11405,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetMergeRequestChangeTreeResponse:
+        """
+        @summary 查询合并请求的变更信息
+        
+        @param request: GetMergeRequestChangeTreeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMergeRequestChangeTreeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -7743,6 +11451,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.GetMergeRequestChangeTreeRequest,
     ) -> devops_20210625_models.GetMergeRequestChangeTreeResponse:
+        """
+        @summary 查询合并请求的变更信息
+        
+        @param request: GetMergeRequestChangeTreeRequest
+        @return: GetMergeRequestChangeTreeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_merge_request_change_tree_with_options(request, headers, runtime)
@@ -7751,6 +11465,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.GetMergeRequestChangeTreeRequest,
     ) -> devops_20210625_models.GetMergeRequestChangeTreeResponse:
+        """
+        @summary 查询合并请求的变更信息
+        
+        @param request: GetMergeRequestChangeTreeRequest
+        @return: GetMergeRequestChangeTreeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_merge_request_change_tree_with_options_async(request, headers, runtime)
@@ -7762,6 +11482,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetOrganizationMemberResponse:
+        """
+        @summary 获取企业成员
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOrganizationMemberResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7788,6 +11515,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetOrganizationMemberResponse:
+        """
+        @summary 获取企业成员
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOrganizationMemberResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7812,6 +11546,11 @@ class Client(OpenApiClient):
         organization_id: str,
         account_id: str,
     ) -> devops_20210625_models.GetOrganizationMemberResponse:
+        """
+        @summary 获取企业成员
+        
+        @return: GetOrganizationMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_organization_member_with_options(organization_id, account_id, headers, runtime)
@@ -7821,6 +11560,11 @@ class Client(OpenApiClient):
         organization_id: str,
         account_id: str,
     ) -> devops_20210625_models.GetOrganizationMemberResponse:
+        """
+        @summary 获取企业成员
+        
+        @return: GetOrganizationMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_organization_member_with_options_async(organization_id, account_id, headers, runtime)
@@ -7832,6 +11576,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetPipelineResponse:
+        """
+        @summary 获取流水线
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPipelineResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7858,6 +11609,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetPipelineResponse:
+        """
+        @summary 获取流水线
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPipelineResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7882,6 +11640,11 @@ class Client(OpenApiClient):
         organization_id: str,
         pipeline_id: str,
     ) -> devops_20210625_models.GetPipelineResponse:
+        """
+        @summary 获取流水线
+        
+        @return: GetPipelineResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_pipeline_with_options(organization_id, pipeline_id, headers, runtime)
@@ -7891,6 +11654,11 @@ class Client(OpenApiClient):
         organization_id: str,
         pipeline_id: str,
     ) -> devops_20210625_models.GetPipelineResponse:
+        """
+        @summary 获取流水线
+        
+        @return: GetPipelineResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_pipeline_with_options_async(organization_id, pipeline_id, headers, runtime)
@@ -7902,6 +11670,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetPipelineArtifactUrlResponse:
+        """
+        @summary 获取构建物下载链接
+        
+        @param request: GetPipelineArtifactUrlRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPipelineArtifactUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_name):
@@ -7935,6 +11711,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetPipelineArtifactUrlResponse:
+        """
+        @summary 获取构建物下载链接
+        
+        @param request: GetPipelineArtifactUrlRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPipelineArtifactUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_name):
@@ -7966,6 +11750,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.GetPipelineArtifactUrlRequest,
     ) -> devops_20210625_models.GetPipelineArtifactUrlResponse:
+        """
+        @summary 获取构建物下载链接
+        
+        @param request: GetPipelineArtifactUrlRequest
+        @return: GetPipelineArtifactUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_pipeline_artifact_url_with_options(organization_id, request, headers, runtime)
@@ -7975,6 +11765,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.GetPipelineArtifactUrlRequest,
     ) -> devops_20210625_models.GetPipelineArtifactUrlResponse:
+        """
+        @summary 获取构建物下载链接
+        
+        @param request: GetPipelineArtifactUrlRequest
+        @return: GetPipelineArtifactUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_pipeline_artifact_url_with_options_async(organization_id, request, headers, runtime)
@@ -7990,6 +11786,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetPipelineEmasArtifactUrlResponse:
+        """
+        @summary 获取emase构建物下载链接
+        
+        @param request: GetPipelineEmasArtifactUrlRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPipelineEmasArtifactUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.service_connection_id):
@@ -8025,6 +11829,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetPipelineEmasArtifactUrlResponse:
+        """
+        @summary 获取emase构建物下载链接
+        
+        @param request: GetPipelineEmasArtifactUrlRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPipelineEmasArtifactUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.service_connection_id):
@@ -8058,6 +11870,12 @@ class Client(OpenApiClient):
         pipeline_run_id: str,
         request: devops_20210625_models.GetPipelineEmasArtifactUrlRequest,
     ) -> devops_20210625_models.GetPipelineEmasArtifactUrlResponse:
+        """
+        @summary 获取emase构建物下载链接
+        
+        @param request: GetPipelineEmasArtifactUrlRequest
+        @return: GetPipelineEmasArtifactUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_pipeline_emas_artifact_url_with_options(organization_id, emas_job_instance_id, md_5, pipeline_id, pipeline_run_id, request, headers, runtime)
@@ -8071,6 +11889,12 @@ class Client(OpenApiClient):
         pipeline_run_id: str,
         request: devops_20210625_models.GetPipelineEmasArtifactUrlRequest,
     ) -> devops_20210625_models.GetPipelineEmasArtifactUrlResponse:
+        """
+        @summary 获取emase构建物下载链接
+        
+        @param request: GetPipelineEmasArtifactUrlRequest
+        @return: GetPipelineEmasArtifactUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_pipeline_emas_artifact_url_with_options_async(organization_id, emas_job_instance_id, md_5, pipeline_id, pipeline_run_id, request, headers, runtime)
@@ -8082,6 +11906,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetPipelineGroupResponse:
+        """
+        @summary 获取流水线分组
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPipelineGroupResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8108,6 +11939,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetPipelineGroupResponse:
+        """
+        @summary 获取流水线分组
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPipelineGroupResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8132,6 +11970,11 @@ class Client(OpenApiClient):
         organization_id: str,
         group_id: str,
     ) -> devops_20210625_models.GetPipelineGroupResponse:
+        """
+        @summary 获取流水线分组
+        
+        @return: GetPipelineGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_pipeline_group_with_options(organization_id, group_id, headers, runtime)
@@ -8141,6 +11984,11 @@ class Client(OpenApiClient):
         organization_id: str,
         group_id: str,
     ) -> devops_20210625_models.GetPipelineGroupResponse:
+        """
+        @summary 获取流水线分组
+        
+        @return: GetPipelineGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_pipeline_group_with_options_async(organization_id, group_id, headers, runtime)
@@ -8153,6 +12001,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetPipelineRunResponse:
+        """
+        @summary 获取流水线运行信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPipelineRunResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8180,6 +12035,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetPipelineRunResponse:
+        """
+        @summary 获取流水线运行信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPipelineRunResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8205,6 +12067,11 @@ class Client(OpenApiClient):
         pipeline_id: str,
         pipeline_run_id: str,
     ) -> devops_20210625_models.GetPipelineRunResponse:
+        """
+        @summary 获取流水线运行信息
+        
+        @return: GetPipelineRunResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_pipeline_run_with_options(organization_id, pipeline_id, pipeline_run_id, headers, runtime)
@@ -8215,6 +12082,11 @@ class Client(OpenApiClient):
         pipeline_id: str,
         pipeline_run_id: str,
     ) -> devops_20210625_models.GetPipelineRunResponse:
+        """
+        @summary 获取流水线运行信息
+        
+        @return: GetPipelineRunResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_pipeline_run_with_options_async(organization_id, pipeline_id, pipeline_run_id, headers, runtime)
@@ -8226,6 +12098,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetPipelineScanReportUrlResponse:
+        """
+        @summary 获取扫描报告下载链接
+        
+        @param request: GetPipelineScanReportUrlRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPipelineScanReportUrlResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.report_path):
@@ -8257,6 +12137,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetPipelineScanReportUrlResponse:
+        """
+        @summary 获取扫描报告下载链接
+        
+        @param request: GetPipelineScanReportUrlRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPipelineScanReportUrlResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.report_path):
@@ -8286,6 +12174,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.GetPipelineScanReportUrlRequest,
     ) -> devops_20210625_models.GetPipelineScanReportUrlResponse:
+        """
+        @summary 获取扫描报告下载链接
+        
+        @param request: GetPipelineScanReportUrlRequest
+        @return: GetPipelineScanReportUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_pipeline_scan_report_url_with_options(organization_id, request, headers, runtime)
@@ -8295,6 +12189,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.GetPipelineScanReportUrlRequest,
     ) -> devops_20210625_models.GetPipelineScanReportUrlResponse:
+        """
+        @summary 获取扫描报告下载链接
+        
+        @param request: GetPipelineScanReportUrlRequest
+        @return: GetPipelineScanReportUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_pipeline_scan_report_url_with_options_async(organization_id, request, headers, runtime)
@@ -8306,6 +12206,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetProjectInfoResponse:
+        """
+        @summary 根据id获取项目详情-Projex
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectInfoResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8332,6 +12239,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetProjectInfoResponse:
+        """
+        @summary 根据id获取项目详情-Projex
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectInfoResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8356,6 +12270,11 @@ class Client(OpenApiClient):
         organization_id: str,
         project_id: str,
     ) -> devops_20210625_models.GetProjectInfoResponse:
+        """
+        @summary 根据id获取项目详情-Projex
+        
+        @return: GetProjectInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_project_info_with_options(organization_id, project_id, headers, runtime)
@@ -8365,6 +12284,11 @@ class Client(OpenApiClient):
         organization_id: str,
         project_id: str,
     ) -> devops_20210625_models.GetProjectInfoResponse:
+        """
+        @summary 根据id获取项目详情-Projex
+        
+        @return: GetProjectInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_project_info_with_options_async(organization_id, project_id, headers, runtime)
@@ -8377,6 +12301,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetProjectMemberResponse:
+        """
+        @summary 查询代码库成员
+        
+        @param request: GetProjectMemberRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectMemberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -8411,6 +12343,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetProjectMemberResponse:
+        """
+        @summary 查询代码库成员
+        
+        @param request: GetProjectMemberRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetProjectMemberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -8443,6 +12383,12 @@ class Client(OpenApiClient):
         aliyun_pk: str,
         request: devops_20210625_models.GetProjectMemberRequest,
     ) -> devops_20210625_models.GetProjectMemberResponse:
+        """
+        @summary 查询代码库成员
+        
+        @param request: GetProjectMemberRequest
+        @return: GetProjectMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_project_member_with_options(repository_id, aliyun_pk, request, headers, runtime)
@@ -8453,6 +12399,12 @@ class Client(OpenApiClient):
         aliyun_pk: str,
         request: devops_20210625_models.GetProjectMemberRequest,
     ) -> devops_20210625_models.GetProjectMemberResponse:
+        """
+        @summary 查询代码库成员
+        
+        @param request: GetProjectMemberRequest
+        @return: GetProjectMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_project_member_with_options_async(repository_id, aliyun_pk, request, headers, runtime)
@@ -8465,6 +12417,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetPushRuleResponse:
+        """
+        @summary 查询推送规则
+        
+        @param request: GetPushRuleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPushRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -8499,6 +12459,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetPushRuleResponse:
+        """
+        @summary 查询推送规则
+        
+        @param request: GetPushRuleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPushRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -8531,6 +12499,12 @@ class Client(OpenApiClient):
         push_rule_id: str,
         request: devops_20210625_models.GetPushRuleRequest,
     ) -> devops_20210625_models.GetPushRuleResponse:
+        """
+        @summary 查询推送规则
+        
+        @param request: GetPushRuleRequest
+        @return: GetPushRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_push_rule_with_options(repository_id, push_rule_id, request, headers, runtime)
@@ -8541,6 +12515,12 @@ class Client(OpenApiClient):
         push_rule_id: str,
         request: devops_20210625_models.GetPushRuleRequest,
     ) -> devops_20210625_models.GetPushRuleResponse:
+        """
+        @summary 查询推送规则
+        
+        @param request: GetPushRuleRequest
+        @return: GetPushRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_push_rule_with_options_async(repository_id, push_rule_id, request, headers, runtime)
@@ -8551,6 +12531,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetRepositoryResponse:
+        """
+        @summary 使用代码库ID或路径查询代码库信息
+        
+        @param request: GetRepositoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRepositoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -8585,6 +12573,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetRepositoryResponse:
+        """
+        @summary 使用代码库ID或路径查询代码库信息
+        
+        @param request: GetRepositoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRepositoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -8617,6 +12613,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.GetRepositoryRequest,
     ) -> devops_20210625_models.GetRepositoryResponse:
+        """
+        @summary 使用代码库ID或路径查询代码库信息
+        
+        @param request: GetRepositoryRequest
+        @return: GetRepositoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_repository_with_options(request, headers, runtime)
@@ -8625,6 +12627,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.GetRepositoryRequest,
     ) -> devops_20210625_models.GetRepositoryResponse:
+        """
+        @summary 使用代码库ID或路径查询代码库信息
+        
+        @param request: GetRepositoryRequest
+        @return: GetRepositoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_repository_with_options_async(request, headers, runtime)
@@ -8637,6 +12645,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetRepositoryCommitResponse:
+        """
+        @summary 查询代码库提交信息
+        
+        @param request: GetRepositoryCommitRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRepositoryCommitResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -8673,6 +12689,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetRepositoryCommitResponse:
+        """
+        @summary 查询代码库提交信息
+        
+        @param request: GetRepositoryCommitRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRepositoryCommitResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -8707,6 +12731,12 @@ class Client(OpenApiClient):
         sha: str,
         request: devops_20210625_models.GetRepositoryCommitRequest,
     ) -> devops_20210625_models.GetRepositoryCommitResponse:
+        """
+        @summary 查询代码库提交信息
+        
+        @param request: GetRepositoryCommitRequest
+        @return: GetRepositoryCommitResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_repository_commit_with_options(repository_id, sha, request, headers, runtime)
@@ -8717,6 +12747,12 @@ class Client(OpenApiClient):
         sha: str,
         request: devops_20210625_models.GetRepositoryCommitRequest,
     ) -> devops_20210625_models.GetRepositoryCommitResponse:
+        """
+        @summary 查询代码库提交信息
+        
+        @param request: GetRepositoryCommitRequest
+        @return: GetRepositoryCommitResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_repository_commit_with_options_async(repository_id, sha, request, headers, runtime)
@@ -8728,6 +12764,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetRepositoryTagResponse:
+        """
+        @summary 查询单个标签
+        
+        @param request: GetRepositoryTagRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRepositoryTagResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -8763,6 +12807,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetRepositoryTagResponse:
+        """
+        @summary 查询单个标签
+        
+        @param request: GetRepositoryTagRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRepositoryTagResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -8796,6 +12848,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.GetRepositoryTagRequest,
     ) -> devops_20210625_models.GetRepositoryTagResponse:
+        """
+        @summary 查询单个标签
+        
+        @param request: GetRepositoryTagRequest
+        @return: GetRepositoryTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_repository_tag_with_options(repository_id, request, headers, runtime)
@@ -8805,6 +12863,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.GetRepositoryTagRequest,
     ) -> devops_20210625_models.GetRepositoryTagResponse:
+        """
+        @summary 查询单个标签
+        
+        @param request: GetRepositoryTagRequest
+        @return: GetRepositoryTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_repository_tag_with_options_async(repository_id, request, headers, runtime)
@@ -8815,6 +12879,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetSearchCodePreviewResponse:
+        """
+        @summary 预览代码片段
+        
+        @param request: GetSearchCodePreviewRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSearchCodePreviewResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.doc_id):
@@ -8851,6 +12923,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetSearchCodePreviewResponse:
+        """
+        @summary 预览代码片段
+        
+        @param request: GetSearchCodePreviewRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSearchCodePreviewResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.doc_id):
@@ -8885,6 +12965,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.GetSearchCodePreviewRequest,
     ) -> devops_20210625_models.GetSearchCodePreviewResponse:
+        """
+        @summary 预览代码片段
+        
+        @param request: GetSearchCodePreviewRequest
+        @return: GetSearchCodePreviewResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_search_code_preview_with_options(request, headers, runtime)
@@ -8893,6 +12979,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.GetSearchCodePreviewRequest,
     ) -> devops_20210625_models.GetSearchCodePreviewResponse:
+        """
+        @summary 预览代码片段
+        
+        @param request: GetSearchCodePreviewRequest
+        @return: GetSearchCodePreviewResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_search_code_preview_with_options_async(request, headers, runtime)
@@ -8904,6 +12996,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetSprintInfoResponse:
+        """
+        @summary 获取迭代详情
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSprintInfoResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8930,6 +13029,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetSprintInfoResponse:
+        """
+        @summary 获取迭代详情
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSprintInfoResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8954,6 +13060,11 @@ class Client(OpenApiClient):
         organization_id: str,
         sprint_id: str,
     ) -> devops_20210625_models.GetSprintInfoResponse:
+        """
+        @summary 获取迭代详情
+        
+        @return: GetSprintInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_sprint_info_with_options(organization_id, sprint_id, headers, runtime)
@@ -8963,6 +13074,11 @@ class Client(OpenApiClient):
         organization_id: str,
         sprint_id: str,
     ) -> devops_20210625_models.GetSprintInfoResponse:
+        """
+        @summary 获取迭代详情
+        
+        @return: GetSprintInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_sprint_info_with_options_async(organization_id, sprint_id, headers, runtime)
@@ -8975,6 +13091,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetTestResultListResponse:
+        """
+        @summary 获取测试计划中的测试用例列表
+        
+        @param request: GetTestResultListRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTestResultListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.conditions):
@@ -9009,6 +13133,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetTestResultListResponse:
+        """
+        @summary 获取测试计划中的测试用例列表
+        
+        @param request: GetTestResultListRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTestResultListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.conditions):
@@ -9041,6 +13173,12 @@ class Client(OpenApiClient):
         test_plan_identifier: str,
         request: devops_20210625_models.GetTestResultListRequest,
     ) -> devops_20210625_models.GetTestResultListResponse:
+        """
+        @summary 获取测试计划中的测试用例列表
+        
+        @param request: GetTestResultListRequest
+        @return: GetTestResultListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_test_result_list_with_options(organization_id, test_plan_identifier, request, headers, runtime)
@@ -9051,6 +13189,12 @@ class Client(OpenApiClient):
         test_plan_identifier: str,
         request: devops_20210625_models.GetTestResultListRequest,
     ) -> devops_20210625_models.GetTestResultListResponse:
+        """
+        @summary 获取测试计划中的测试用例列表
+        
+        @param request: GetTestResultListRequest
+        @return: GetTestResultListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_test_result_list_with_options_async(organization_id, test_plan_identifier, request, headers, runtime)
@@ -9062,6 +13206,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetTestcaseListResponse:
+        """
+        @summary 获取测试用例列表
+        
+        @param request: GetTestcaseListRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTestcaseListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.conditions):
@@ -9101,6 +13253,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetTestcaseListResponse:
+        """
+        @summary 获取测试用例列表
+        
+        @param request: GetTestcaseListRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTestcaseListResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.conditions):
@@ -9138,6 +13298,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.GetTestcaseListRequest,
     ) -> devops_20210625_models.GetTestcaseListResponse:
+        """
+        @summary 获取测试用例列表
+        
+        @param request: GetTestcaseListRequest
+        @return: GetTestcaseListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_testcase_list_with_options(organization_id, request, headers, runtime)
@@ -9147,6 +13313,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.GetTestcaseListRequest,
     ) -> devops_20210625_models.GetTestcaseListResponse:
+        """
+        @summary 获取测试用例列表
+        
+        @param request: GetTestcaseListRequest
+        @return: GetTestcaseListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_testcase_list_with_options_async(organization_id, request, headers, runtime)
@@ -9157,6 +13329,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetUserInfoResponse:
+        """
+        @summary 查询当前用户信息
+        
+        @param request: GetUserInfoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -9187,6 +13367,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetUserInfoResponse:
+        """
+        @summary 查询当前用户信息
+        
+        @param request: GetUserInfoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -9215,6 +13403,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.GetUserInfoRequest,
     ) -> devops_20210625_models.GetUserInfoResponse:
+        """
+        @summary 查询当前用户信息
+        
+        @param request: GetUserInfoRequest
+        @return: GetUserInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_user_info_with_options(request, headers, runtime)
@@ -9223,6 +13417,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.GetUserInfoRequest,
     ) -> devops_20210625_models.GetUserInfoResponse:
+        """
+        @summary 查询当前用户信息
+        
+        @param request: GetUserInfoRequest
+        @return: GetUserInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_user_info_with_options_async(request, headers, runtime)
@@ -9235,6 +13435,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetVMDeployOrderResponse:
+        """
+        @summary 获取部署单信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVMDeployOrderResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9262,6 +13469,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetVMDeployOrderResponse:
+        """
+        @summary 获取部署单信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVMDeployOrderResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9287,6 +13501,11 @@ class Client(OpenApiClient):
         pipeline_id: str,
         deploy_order_id: str,
     ) -> devops_20210625_models.GetVMDeployOrderResponse:
+        """
+        @summary 获取部署单信息
+        
+        @return: GetVMDeployOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_vmdeploy_order_with_options(organization_id, pipeline_id, deploy_order_id, headers, runtime)
@@ -9297,6 +13516,11 @@ class Client(OpenApiClient):
         pipeline_id: str,
         deploy_order_id: str,
     ) -> devops_20210625_models.GetVMDeployOrderResponse:
+        """
+        @summary 获取部署单信息
+        
+        @return: GetVMDeployOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_vmdeploy_order_with_options_async(organization_id, pipeline_id, deploy_order_id, headers, runtime)
@@ -9308,6 +13532,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetVariableGroupResponse:
+        """
+        @summary 获取变量组
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVariableGroupResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9334,6 +13565,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetVariableGroupResponse:
+        """
+        @summary 获取变量组
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetVariableGroupResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9358,6 +13596,11 @@ class Client(OpenApiClient):
         organization_id: str,
         id: str,
     ) -> devops_20210625_models.GetVariableGroupResponse:
+        """
+        @summary 获取变量组
+        
+        @return: GetVariableGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_variable_group_with_options(organization_id, id, headers, runtime)
@@ -9367,6 +13610,11 @@ class Client(OpenApiClient):
         organization_id: str,
         id: str,
     ) -> devops_20210625_models.GetVariableGroupResponse:
+        """
+        @summary 获取变量组
+        
+        @return: GetVariableGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_variable_group_with_options_async(organization_id, id, headers, runtime)
@@ -9378,6 +13626,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetWorkItemActivityResponse:
+        """
+        @summary 获取工作项动态
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWorkItemActivityResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9404,6 +13659,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetWorkItemActivityResponse:
+        """
+        @summary 获取工作项动态
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWorkItemActivityResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9428,6 +13690,11 @@ class Client(OpenApiClient):
         organization_id: str,
         workitem_id: str,
     ) -> devops_20210625_models.GetWorkItemActivityResponse:
+        """
+        @summary 获取工作项动态
+        
+        @return: GetWorkItemActivityResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_work_item_activity_with_options(organization_id, workitem_id, headers, runtime)
@@ -9437,6 +13704,11 @@ class Client(OpenApiClient):
         organization_id: str,
         workitem_id: str,
     ) -> devops_20210625_models.GetWorkItemActivityResponse:
+        """
+        @summary 获取工作项动态
+        
+        @return: GetWorkItemActivityResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_work_item_activity_with_options_async(organization_id, workitem_id, headers, runtime)
@@ -9448,6 +13720,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetWorkItemInfoResponse:
+        """
+        @summary 根据id获取工作项详情
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWorkItemInfoResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9474,6 +13753,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetWorkItemInfoResponse:
+        """
+        @summary 根据id获取工作项详情
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWorkItemInfoResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9498,6 +13784,11 @@ class Client(OpenApiClient):
         organization_id: str,
         workitem_id: str,
     ) -> devops_20210625_models.GetWorkItemInfoResponse:
+        """
+        @summary 根据id获取工作项详情
+        
+        @return: GetWorkItemInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_work_item_info_with_options(organization_id, workitem_id, headers, runtime)
@@ -9507,6 +13798,11 @@ class Client(OpenApiClient):
         organization_id: str,
         workitem_id: str,
     ) -> devops_20210625_models.GetWorkItemInfoResponse:
+        """
+        @summary 根据id获取工作项详情
+        
+        @return: GetWorkItemInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_work_item_info_with_options_async(organization_id, workitem_id, headers, runtime)
@@ -9519,6 +13815,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetWorkItemWorkFlowInfoResponse:
+        """
+        @summary 获取工作项工作流信息
+        
+        @param request: GetWorkItemWorkFlowInfoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWorkItemWorkFlowInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.configuration_id):
@@ -9551,6 +13855,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetWorkItemWorkFlowInfoResponse:
+        """
+        @summary 获取工作项工作流信息
+        
+        @param request: GetWorkItemWorkFlowInfoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWorkItemWorkFlowInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.configuration_id):
@@ -9581,6 +13893,12 @@ class Client(OpenApiClient):
         workitem_id: str,
         request: devops_20210625_models.GetWorkItemWorkFlowInfoRequest,
     ) -> devops_20210625_models.GetWorkItemWorkFlowInfoResponse:
+        """
+        @summary 获取工作项工作流信息
+        
+        @param request: GetWorkItemWorkFlowInfoRequest
+        @return: GetWorkItemWorkFlowInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_work_item_work_flow_info_with_options(organization_id, workitem_id, request, headers, runtime)
@@ -9591,6 +13909,12 @@ class Client(OpenApiClient):
         workitem_id: str,
         request: devops_20210625_models.GetWorkItemWorkFlowInfoRequest,
     ) -> devops_20210625_models.GetWorkItemWorkFlowInfoResponse:
+        """
+        @summary 获取工作项工作流信息
+        
+        @param request: GetWorkItemWorkFlowInfoRequest
+        @return: GetWorkItemWorkFlowInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_work_item_work_flow_info_with_options_async(organization_id, workitem_id, request, headers, runtime)
@@ -9603,6 +13927,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetWorkitemAttachmentCreatemetaResponse:
+        """
+        @summary 获取附件上传的元信息
+        
+        @param request: GetWorkitemAttachmentCreatemetaRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWorkitemAttachmentCreatemetaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_name):
@@ -9635,6 +13967,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetWorkitemAttachmentCreatemetaResponse:
+        """
+        @summary 获取附件上传的元信息
+        
+        @param request: GetWorkitemAttachmentCreatemetaRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWorkitemAttachmentCreatemetaResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.file_name):
@@ -9665,6 +14005,12 @@ class Client(OpenApiClient):
         workitem_identifier: str,
         request: devops_20210625_models.GetWorkitemAttachmentCreatemetaRequest,
     ) -> devops_20210625_models.GetWorkitemAttachmentCreatemetaResponse:
+        """
+        @summary 获取附件上传的元信息
+        
+        @param request: GetWorkitemAttachmentCreatemetaRequest
+        @return: GetWorkitemAttachmentCreatemetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_workitem_attachment_createmeta_with_options(organization_id, workitem_identifier, request, headers, runtime)
@@ -9675,6 +14021,12 @@ class Client(OpenApiClient):
         workitem_identifier: str,
         request: devops_20210625_models.GetWorkitemAttachmentCreatemetaRequest,
     ) -> devops_20210625_models.GetWorkitemAttachmentCreatemetaResponse:
+        """
+        @summary 获取附件上传的元信息
+        
+        @param request: GetWorkitemAttachmentCreatemetaRequest
+        @return: GetWorkitemAttachmentCreatemetaResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_workitem_attachment_createmeta_with_options_async(organization_id, workitem_identifier, request, headers, runtime)
@@ -9686,6 +14038,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetWorkitemCommentListResponse:
+        """
+        @summary 获得所有评论
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWorkitemCommentListResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9712,6 +14071,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetWorkitemCommentListResponse:
+        """
+        @summary 获得所有评论
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWorkitemCommentListResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9736,6 +14102,11 @@ class Client(OpenApiClient):
         organization_id: str,
         workitem_id: str,
     ) -> devops_20210625_models.GetWorkitemCommentListResponse:
+        """
+        @summary 获得所有评论
+        
+        @return: GetWorkitemCommentListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_workitem_comment_list_with_options(organization_id, workitem_id, headers, runtime)
@@ -9745,6 +14116,11 @@ class Client(OpenApiClient):
         organization_id: str,
         workitem_id: str,
     ) -> devops_20210625_models.GetWorkitemCommentListResponse:
+        """
+        @summary 获得所有评论
+        
+        @return: GetWorkitemCommentListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_workitem_comment_list_with_options_async(organization_id, workitem_id, headers, runtime)
@@ -9757,6 +14133,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetWorkitemFileResponse:
+        """
+        @summary 获取工作项文件信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWorkitemFileResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9784,6 +14167,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetWorkitemFileResponse:
+        """
+        @summary 获取工作项文件信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWorkitemFileResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9809,6 +14199,11 @@ class Client(OpenApiClient):
         workitem_identifier: str,
         file_identifier: str,
     ) -> devops_20210625_models.GetWorkitemFileResponse:
+        """
+        @summary 获取工作项文件信息
+        
+        @return: GetWorkitemFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_workitem_file_with_options(organization_id, workitem_identifier, file_identifier, headers, runtime)
@@ -9819,6 +14214,11 @@ class Client(OpenApiClient):
         workitem_identifier: str,
         file_identifier: str,
     ) -> devops_20210625_models.GetWorkitemFileResponse:
+        """
+        @summary 获取工作项文件信息
+        
+        @return: GetWorkitemFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_workitem_file_with_options_async(organization_id, workitem_identifier, file_identifier, headers, runtime)
@@ -9831,6 +14231,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetWorkitemRelationsResponse:
+        """
+        @summary 获得一个工作项的指定关联项
+        
+        @param request: GetWorkitemRelationsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWorkitemRelationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.relation_type):
@@ -9863,6 +14271,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetWorkitemRelationsResponse:
+        """
+        @summary 获得一个工作项的指定关联项
+        
+        @param request: GetWorkitemRelationsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWorkitemRelationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.relation_type):
@@ -9893,6 +14309,12 @@ class Client(OpenApiClient):
         workitem_id: str,
         request: devops_20210625_models.GetWorkitemRelationsRequest,
     ) -> devops_20210625_models.GetWorkitemRelationsResponse:
+        """
+        @summary 获得一个工作项的指定关联项
+        
+        @param request: GetWorkitemRelationsRequest
+        @return: GetWorkitemRelationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_workitem_relations_with_options(organization_id, workitem_id, request, headers, runtime)
@@ -9903,6 +14325,12 @@ class Client(OpenApiClient):
         workitem_id: str,
         request: devops_20210625_models.GetWorkitemRelationsRequest,
     ) -> devops_20210625_models.GetWorkitemRelationsResponse:
+        """
+        @summary 获得一个工作项的指定关联项
+        
+        @param request: GetWorkitemRelationsRequest
+        @return: GetWorkitemRelationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_workitem_relations_with_options_async(organization_id, workitem_id, request, headers, runtime)
@@ -9913,6 +14341,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetWorkitemTimeTypeListResponse:
+        """
+        @summary 获得一个企业下所有工时类型
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWorkitemTimeTypeListResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9938,6 +14373,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetWorkitemTimeTypeListResponse:
+        """
+        @summary 获得一个企业下所有工时类型
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWorkitemTimeTypeListResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9961,6 +14403,11 @@ class Client(OpenApiClient):
         self,
         organization_id: str,
     ) -> devops_20210625_models.GetWorkitemTimeTypeListResponse:
+        """
+        @summary 获得一个企业下所有工时类型
+        
+        @return: GetWorkitemTimeTypeListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_workitem_time_type_list_with_options(organization_id, headers, runtime)
@@ -9969,6 +14416,11 @@ class Client(OpenApiClient):
         self,
         organization_id: str,
     ) -> devops_20210625_models.GetWorkitemTimeTypeListResponse:
+        """
+        @summary 获得一个企业下所有工时类型
+        
+        @return: GetWorkitemTimeTypeListResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_workitem_time_type_list_with_options_async(organization_id, headers, runtime)
@@ -9979,6 +14431,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetWorkspaceResponse:
+        """
+        @summary 查询工作空间详情
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWorkspaceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -10004,6 +14463,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.GetWorkspaceResponse:
+        """
+        @summary 查询工作空间详情
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetWorkspaceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -10027,6 +14493,11 @@ class Client(OpenApiClient):
         self,
         workspace_id: str,
     ) -> devops_20210625_models.GetWorkspaceResponse:
+        """
+        @summary 查询工作空间详情
+        
+        @return: GetWorkspaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_workspace_with_options(workspace_id, headers, runtime)
@@ -10035,6 +14506,11 @@ class Client(OpenApiClient):
         self,
         workspace_id: str,
     ) -> devops_20210625_models.GetWorkspaceResponse:
+        """
+        @summary 查询工作空间详情
+        
+        @return: GetWorkspaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_workspace_with_options_async(workspace_id, headers, runtime)
@@ -10046,6 +14522,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.JoinPipelineGroupResponse:
+        """
+        @summary 加入流水线分组
+        
+        @param request: JoinPipelineGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: JoinPipelineGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -10079,6 +14563,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.JoinPipelineGroupResponse:
+        """
+        @summary 加入流水线分组
+        
+        @param request: JoinPipelineGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: JoinPipelineGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.group_id):
@@ -10110,6 +14602,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.JoinPipelineGroupRequest,
     ) -> devops_20210625_models.JoinPipelineGroupResponse:
+        """
+        @summary 加入流水线分组
+        
+        @param request: JoinPipelineGroupRequest
+        @return: JoinPipelineGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.join_pipeline_group_with_options(organization_id, request, headers, runtime)
@@ -10119,6 +14617,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.JoinPipelineGroupRequest,
     ) -> devops_20210625_models.JoinPipelineGroupResponse:
+        """
+        @summary 加入流水线分组
+        
+        @param request: JoinPipelineGroupRequest
+        @return: JoinPipelineGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.join_pipeline_group_with_options_async(organization_id, request, headers, runtime)
@@ -10129,6 +14633,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.LinkMergeRequestLabelResponse:
+        """
+        @summary 关联合并请求Label
+        
+        @param request: LinkMergeRequestLabelRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LinkMergeRequestLabelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -10169,6 +14681,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.LinkMergeRequestLabelResponse:
+        """
+        @summary 关联合并请求Label
+        
+        @param request: LinkMergeRequestLabelRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LinkMergeRequestLabelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -10207,6 +14727,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.LinkMergeRequestLabelRequest,
     ) -> devops_20210625_models.LinkMergeRequestLabelResponse:
+        """
+        @summary 关联合并请求Label
+        
+        @param request: LinkMergeRequestLabelRequest
+        @return: LinkMergeRequestLabelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.link_merge_request_label_with_options(request, headers, runtime)
@@ -10215,6 +14741,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.LinkMergeRequestLabelRequest,
     ) -> devops_20210625_models.LinkMergeRequestLabelResponse:
+        """
+        @summary 关联合并请求Label
+        
+        @param request: LinkMergeRequestLabelRequest
+        @return: LinkMergeRequestLabelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.link_merge_request_label_with_options_async(request, headers, runtime)
@@ -10226,6 +14758,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListApplicationMembersResponse:
+        """
+        @summary 查找应用成员列表
+        
+        @param request: ListApplicationMembersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationMembersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -10257,6 +14797,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListApplicationMembersResponse:
+        """
+        @summary 查找应用成员列表
+        
+        @param request: ListApplicationMembersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationMembersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -10286,6 +14834,12 @@ class Client(OpenApiClient):
         app_name: str,
         request: devops_20210625_models.ListApplicationMembersRequest,
     ) -> devops_20210625_models.ListApplicationMembersResponse:
+        """
+        @summary 查找应用成员列表
+        
+        @param request: ListApplicationMembersRequest
+        @return: ListApplicationMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_application_members_with_options(app_name, request, headers, runtime)
@@ -10295,6 +14849,12 @@ class Client(OpenApiClient):
         app_name: str,
         request: devops_20210625_models.ListApplicationMembersRequest,
     ) -> devops_20210625_models.ListApplicationMembersResponse:
+        """
+        @summary 查找应用成员列表
+        
+        @param request: ListApplicationMembersRequest
+        @return: ListApplicationMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_application_members_with_options_async(app_name, request, headers, runtime)
@@ -10305,6 +14865,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListApplicationsResponse:
+        """
+        @summary 分页查找应用详情
+        
+        @param request: ListApplicationsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_token):
@@ -10345,6 +14913,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListApplicationsResponse:
+        """
+        @summary 分页查找应用详情
+        
+        @param request: ListApplicationsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_token):
@@ -10383,6 +14959,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListApplicationsRequest,
     ) -> devops_20210625_models.ListApplicationsResponse:
+        """
+        @summary 分页查找应用详情
+        
+        @param request: ListApplicationsRequest
+        @return: ListApplicationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_applications_with_options(request, headers, runtime)
@@ -10391,6 +14973,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListApplicationsRequest,
     ) -> devops_20210625_models.ListApplicationsResponse:
+        """
+        @summary 分页查找应用详情
+        
+        @param request: ListApplicationsRequest
+        @return: ListApplicationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_applications_with_options_async(request, headers, runtime)
@@ -10401,6 +14989,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListCheckRunsResponse:
+        """
+        @summary 查询检查运行列表
+        
+        @param request: ListCheckRunsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCheckRunsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -10441,6 +15037,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListCheckRunsResponse:
+        """
+        @summary 查询检查运行列表
+        
+        @param request: ListCheckRunsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCheckRunsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -10479,6 +15083,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListCheckRunsRequest,
     ) -> devops_20210625_models.ListCheckRunsResponse:
+        """
+        @summary 查询检查运行列表
+        
+        @param request: ListCheckRunsRequest
+        @return: ListCheckRunsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_check_runs_with_options(request, headers, runtime)
@@ -10487,6 +15097,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListCheckRunsRequest,
     ) -> devops_20210625_models.ListCheckRunsResponse:
+        """
+        @summary 查询检查运行列表
+        
+        @param request: ListCheckRunsRequest
+        @return: ListCheckRunsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_check_runs_with_options_async(request, headers, runtime)
@@ -10497,6 +15113,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListCommitStatusesResponse:
+        """
+        @summary 查询提交状态列表
+        
+        @param request: ListCommitStatusesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCommitStatusesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -10537,6 +15161,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListCommitStatusesResponse:
+        """
+        @summary 查询提交状态列表
+        
+        @param request: ListCommitStatusesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCommitStatusesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -10575,6 +15207,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListCommitStatusesRequest,
     ) -> devops_20210625_models.ListCommitStatusesResponse:
+        """
+        @summary 查询提交状态列表
+        
+        @param request: ListCommitStatusesRequest
+        @return: ListCommitStatusesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_commit_statuses_with_options(request, headers, runtime)
@@ -10583,6 +15221,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListCommitStatusesRequest,
     ) -> devops_20210625_models.ListCommitStatusesResponse:
+        """
+        @summary 查询提交状态列表
+        
+        @param request: ListCommitStatusesRequest
+        @return: ListCommitStatusesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_commit_statuses_with_options_async(request, headers, runtime)
@@ -10593,6 +15237,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListFlowTagGroupsResponse:
+        """
+        @summary 获取标签分类列表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFlowTagGroupsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -10618,6 +15269,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListFlowTagGroupsResponse:
+        """
+        @summary 获取标签分类列表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFlowTagGroupsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -10641,6 +15299,11 @@ class Client(OpenApiClient):
         self,
         organization_id: str,
     ) -> devops_20210625_models.ListFlowTagGroupsResponse:
+        """
+        @summary 获取标签分类列表
+        
+        @return: ListFlowTagGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_flow_tag_groups_with_options(organization_id, headers, runtime)
@@ -10649,6 +15312,11 @@ class Client(OpenApiClient):
         self,
         organization_id: str,
     ) -> devops_20210625_models.ListFlowTagGroupsResponse:
+        """
+        @summary 获取标签分类列表
+        
+        @return: ListFlowTagGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_flow_tag_groups_with_options_async(organization_id, headers, runtime)
@@ -10660,6 +15328,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListGroupMemberResponse:
+        """
+        @summary 查询组成员列表
+        
+        @param request: ListGroupMemberRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGroupMemberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -10693,6 +15369,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListGroupMemberResponse:
+        """
+        @summary 查询组成员列表
+        
+        @param request: ListGroupMemberRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGroupMemberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -10724,6 +15408,12 @@ class Client(OpenApiClient):
         group_id: str,
         request: devops_20210625_models.ListGroupMemberRequest,
     ) -> devops_20210625_models.ListGroupMemberResponse:
+        """
+        @summary 查询组成员列表
+        
+        @param request: ListGroupMemberRequest
+        @return: ListGroupMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_group_member_with_options(group_id, request, headers, runtime)
@@ -10733,6 +15423,12 @@ class Client(OpenApiClient):
         group_id: str,
         request: devops_20210625_models.ListGroupMemberRequest,
     ) -> devops_20210625_models.ListGroupMemberResponse:
+        """
+        @summary 查询组成员列表
+        
+        @param request: ListGroupMemberRequest
+        @return: ListGroupMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_group_member_with_options_async(group_id, request, headers, runtime)
@@ -10744,6 +15440,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListGroupRepositoriesResponse:
+        """
+        @summary 查询代码组下的库列表
+        
+        @param request: ListGroupRepositoriesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGroupRepositoriesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -10783,6 +15487,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListGroupRepositoriesResponse:
+        """
+        @summary 查询代码组下的库列表
+        
+        @param request: ListGroupRepositoriesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGroupRepositoriesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -10820,6 +15532,12 @@ class Client(OpenApiClient):
         group_id: str,
         request: devops_20210625_models.ListGroupRepositoriesRequest,
     ) -> devops_20210625_models.ListGroupRepositoriesResponse:
+        """
+        @summary 查询代码组下的库列表
+        
+        @param request: ListGroupRepositoriesRequest
+        @return: ListGroupRepositoriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_group_repositories_with_options(group_id, request, headers, runtime)
@@ -10829,6 +15547,12 @@ class Client(OpenApiClient):
         group_id: str,
         request: devops_20210625_models.ListGroupRepositoriesRequest,
     ) -> devops_20210625_models.ListGroupRepositoriesResponse:
+        """
+        @summary 查询代码组下的库列表
+        
+        @param request: ListGroupRepositoriesRequest
+        @return: ListGroupRepositoriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_group_repositories_with_options_async(group_id, request, headers, runtime)
@@ -10840,6 +15564,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListHostGroupsResponse:
+        """
+        @summary 获取主机组列表
+        
+        @param request: ListHostGroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHostGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.create_end_time):
@@ -10887,6 +15619,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListHostGroupsResponse:
+        """
+        @summary 获取主机组列表
+        
+        @param request: ListHostGroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListHostGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.create_end_time):
@@ -10932,6 +15672,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.ListHostGroupsRequest,
     ) -> devops_20210625_models.ListHostGroupsResponse:
+        """
+        @summary 获取主机组列表
+        
+        @param request: ListHostGroupsRequest
+        @return: ListHostGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_host_groups_with_options(organization_id, request, headers, runtime)
@@ -10941,6 +15687,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.ListHostGroupsRequest,
     ) -> devops_20210625_models.ListHostGroupsResponse:
+        """
+        @summary 获取主机组列表
+        
+        @param request: ListHostGroupsRequest
+        @return: ListHostGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_host_groups_with_options_async(organization_id, request, headers, runtime)
@@ -10950,6 +15702,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListJoinedOrganizationsResponse:
+        """
+        @summary 当前用户加入的企业列表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJoinedOrganizationsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -10974,6 +15733,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListJoinedOrganizationsResponse:
+        """
+        @summary 当前用户加入的企业列表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListJoinedOrganizationsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -10994,11 +15760,21 @@ class Client(OpenApiClient):
         )
 
     def list_joined_organizations(self) -> devops_20210625_models.ListJoinedOrganizationsResponse:
+        """
+        @summary 当前用户加入的企业列表
+        
+        @return: ListJoinedOrganizationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_joined_organizations_with_options(headers, runtime)
 
     async def list_joined_organizations_async(self) -> devops_20210625_models.ListJoinedOrganizationsResponse:
+        """
+        @summary 当前用户加入的企业列表
+        
+        @return: ListJoinedOrganizationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_joined_organizations_with_options_async(headers, runtime)
@@ -11009,6 +15785,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListMergeRequestCommentsResponse:
+        """
+        @summary 查询合并请求评论列表
+        
+        @param request: ListMergeRequestCommentsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMergeRequestCommentsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -11057,6 +15841,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListMergeRequestCommentsResponse:
+        """
+        @summary 查询合并请求评论列表
+        
+        @param request: ListMergeRequestCommentsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMergeRequestCommentsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -11103,6 +15895,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListMergeRequestCommentsRequest,
     ) -> devops_20210625_models.ListMergeRequestCommentsResponse:
+        """
+        @summary 查询合并请求评论列表
+        
+        @param request: ListMergeRequestCommentsRequest
+        @return: ListMergeRequestCommentsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_merge_request_comments_with_options(request, headers, runtime)
@@ -11111,6 +15909,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListMergeRequestCommentsRequest,
     ) -> devops_20210625_models.ListMergeRequestCommentsResponse:
+        """
+        @summary 查询合并请求评论列表
+        
+        @param request: ListMergeRequestCommentsRequest
+        @return: ListMergeRequestCommentsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_merge_request_comments_with_options_async(request, headers, runtime)
@@ -11121,6 +15925,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListMergeRequestFilesReadsResponse:
+        """
+        @summary 查询合并请求文件已读列表
+        
+        @param request: ListMergeRequestFilesReadsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMergeRequestFilesReadsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -11161,6 +15973,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListMergeRequestFilesReadsResponse:
+        """
+        @summary 查询合并请求文件已读列表
+        
+        @param request: ListMergeRequestFilesReadsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMergeRequestFilesReadsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -11199,6 +16019,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListMergeRequestFilesReadsRequest,
     ) -> devops_20210625_models.ListMergeRequestFilesReadsResponse:
+        """
+        @summary 查询合并请求文件已读列表
+        
+        @param request: ListMergeRequestFilesReadsRequest
+        @return: ListMergeRequestFilesReadsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_merge_request_files_reads_with_options(request, headers, runtime)
@@ -11207,6 +16033,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListMergeRequestFilesReadsRequest,
     ) -> devops_20210625_models.ListMergeRequestFilesReadsResponse:
+        """
+        @summary 查询合并请求文件已读列表
+        
+        @param request: ListMergeRequestFilesReadsRequest
+        @return: ListMergeRequestFilesReadsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_merge_request_files_reads_with_options_async(request, headers, runtime)
@@ -11217,6 +16049,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListMergeRequestLabelsResponse:
+        """
+        @summary 查询合并请求Label列表
+        
+        @param request: ListMergeRequestLabelsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMergeRequestLabelsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -11253,6 +16093,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListMergeRequestLabelsResponse:
+        """
+        @summary 查询合并请求Label列表
+        
+        @param request: ListMergeRequestLabelsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMergeRequestLabelsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -11287,6 +16135,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListMergeRequestLabelsRequest,
     ) -> devops_20210625_models.ListMergeRequestLabelsResponse:
+        """
+        @summary 查询合并请求Label列表
+        
+        @param request: ListMergeRequestLabelsRequest
+        @return: ListMergeRequestLabelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_merge_request_labels_with_options(request, headers, runtime)
@@ -11295,6 +16149,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListMergeRequestLabelsRequest,
     ) -> devops_20210625_models.ListMergeRequestLabelsResponse:
+        """
+        @summary 查询合并请求Label列表
+        
+        @param request: ListMergeRequestLabelsRequest
+        @return: ListMergeRequestLabelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_merge_request_labels_with_options_async(request, headers, runtime)
@@ -11305,6 +16165,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListMergeRequestPatchSetsResponse:
+        """
+        @summary 查询合并请求的版本列表
+        
+        @param request: ListMergeRequestPatchSetsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMergeRequestPatchSetsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -11341,6 +16209,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListMergeRequestPatchSetsResponse:
+        """
+        @summary 查询合并请求的版本列表
+        
+        @param request: ListMergeRequestPatchSetsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMergeRequestPatchSetsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -11375,6 +16251,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListMergeRequestPatchSetsRequest,
     ) -> devops_20210625_models.ListMergeRequestPatchSetsResponse:
+        """
+        @summary 查询合并请求的版本列表
+        
+        @param request: ListMergeRequestPatchSetsRequest
+        @return: ListMergeRequestPatchSetsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_merge_request_patch_sets_with_options(request, headers, runtime)
@@ -11383,6 +16265,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListMergeRequestPatchSetsRequest,
     ) -> devops_20210625_models.ListMergeRequestPatchSetsResponse:
+        """
+        @summary 查询合并请求的版本列表
+        
+        @param request: ListMergeRequestPatchSetsRequest
+        @return: ListMergeRequestPatchSetsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_merge_request_patch_sets_with_options_async(request, headers, runtime)
@@ -11393,6 +16281,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListMergeRequestsResponse:
+        """
+        @summary 查询代码评审列表
+        
+        @param request: ListMergeRequestsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMergeRequestsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -11453,6 +16349,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListMergeRequestsResponse:
+        """
+        @summary 查询代码评审列表
+        
+        @param request: ListMergeRequestsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMergeRequestsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -11511,6 +16415,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListMergeRequestsRequest,
     ) -> devops_20210625_models.ListMergeRequestsResponse:
+        """
+        @summary 查询代码评审列表
+        
+        @param request: ListMergeRequestsRequest
+        @return: ListMergeRequestsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_merge_requests_with_options(request, headers, runtime)
@@ -11519,6 +16429,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListMergeRequestsRequest,
     ) -> devops_20210625_models.ListMergeRequestsResponse:
+        """
+        @summary 查询代码评审列表
+        
+        @param request: ListMergeRequestsRequest
+        @return: ListMergeRequestsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_merge_requests_with_options_async(request, headers, runtime)
@@ -11530,6 +16446,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListOrganizationMembersResponse:
+        """
+        @summary 获取企业成员列表
+        
+        @param request: ListOrganizationMembersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOrganizationMembersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contains_extern_info):
@@ -11577,6 +16501,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListOrganizationMembersResponse:
+        """
+        @summary 获取企业成员列表
+        
+        @param request: ListOrganizationMembersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOrganizationMembersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.contains_extern_info):
@@ -11622,6 +16554,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.ListOrganizationMembersRequest,
     ) -> devops_20210625_models.ListOrganizationMembersResponse:
+        """
+        @summary 获取企业成员列表
+        
+        @param request: ListOrganizationMembersRequest
+        @return: ListOrganizationMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_organization_members_with_options(organization_id, request, headers, runtime)
@@ -11631,6 +16569,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.ListOrganizationMembersRequest,
     ) -> devops_20210625_models.ListOrganizationMembersResponse:
+        """
+        @summary 获取企业成员列表
+        
+        @param request: ListOrganizationMembersRequest
+        @return: ListOrganizationMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_organization_members_with_options_async(organization_id, request, headers, runtime)
@@ -11641,6 +16585,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListOrganizationsResponse:
+        """
+        @summary 查询用户企业列表
+        
+        @param request: ListOrganizationsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOrganizationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_level):
@@ -11675,6 +16627,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListOrganizationsResponse:
+        """
+        @summary 查询用户企业列表
+        
+        @param request: ListOrganizationsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListOrganizationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_level):
@@ -11707,6 +16667,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListOrganizationsRequest,
     ) -> devops_20210625_models.ListOrganizationsResponse:
+        """
+        @summary 查询用户企业列表
+        
+        @param request: ListOrganizationsRequest
+        @return: ListOrganizationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_organizations_with_options(request, headers, runtime)
@@ -11715,6 +16681,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListOrganizationsRequest,
     ) -> devops_20210625_models.ListOrganizationsResponse:
+        """
+        @summary 查询用户企业列表
+        
+        @param request: ListOrganizationsRequest
+        @return: ListOrganizationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_organizations_with_options_async(request, headers, runtime)
@@ -11727,6 +16699,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListPipelineGroupPipelinesResponse:
+        """
+        @summary 获取流水线分组下流水线列表列表
+        
+        @param request: ListPipelineGroupPipelinesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPipelineGroupPipelinesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.create_end_time):
@@ -11773,6 +16753,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListPipelineGroupPipelinesResponse:
+        """
+        @summary 获取流水线分组下流水线列表列表
+        
+        @param request: ListPipelineGroupPipelinesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPipelineGroupPipelinesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.create_end_time):
@@ -11817,6 +16805,12 @@ class Client(OpenApiClient):
         group_id: str,
         request: devops_20210625_models.ListPipelineGroupPipelinesRequest,
     ) -> devops_20210625_models.ListPipelineGroupPipelinesResponse:
+        """
+        @summary 获取流水线分组下流水线列表列表
+        
+        @param request: ListPipelineGroupPipelinesRequest
+        @return: ListPipelineGroupPipelinesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_pipeline_group_pipelines_with_options(organization_id, group_id, request, headers, runtime)
@@ -11827,6 +16821,12 @@ class Client(OpenApiClient):
         group_id: str,
         request: devops_20210625_models.ListPipelineGroupPipelinesRequest,
     ) -> devops_20210625_models.ListPipelineGroupPipelinesResponse:
+        """
+        @summary 获取流水线分组下流水线列表列表
+        
+        @param request: ListPipelineGroupPipelinesRequest
+        @return: ListPipelineGroupPipelinesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_pipeline_group_pipelines_with_options_async(organization_id, group_id, request, headers, runtime)
@@ -11838,6 +16838,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListPipelineGroupsResponse:
+        """
+        @summary 获取流水线分组列表
+        
+        @param request: ListPipelineGroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPipelineGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -11871,6 +16879,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListPipelineGroupsResponse:
+        """
+        @summary 获取流水线分组列表
+        
+        @param request: ListPipelineGroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPipelineGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -11902,6 +16918,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.ListPipelineGroupsRequest,
     ) -> devops_20210625_models.ListPipelineGroupsResponse:
+        """
+        @summary 获取流水线分组列表
+        
+        @param request: ListPipelineGroupsRequest
+        @return: ListPipelineGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_pipeline_groups_with_options(organization_id, request, headers, runtime)
@@ -11911,6 +16933,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.ListPipelineGroupsRequest,
     ) -> devops_20210625_models.ListPipelineGroupsResponse:
+        """
+        @summary 获取流水线分组列表
+        
+        @param request: ListPipelineGroupsRequest
+        @return: ListPipelineGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_pipeline_groups_with_options_async(organization_id, request, headers, runtime)
@@ -11923,6 +16951,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListPipelineJobHistorysResponse:
+        """
+        @summary 获取流水线运行过的任务历史
+        
+        @param request: ListPipelineJobHistorysRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPipelineJobHistorysResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -11961,6 +16997,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListPipelineJobHistorysResponse:
+        """
+        @summary 获取流水线运行过的任务历史
+        
+        @param request: ListPipelineJobHistorysRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPipelineJobHistorysResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -11997,6 +17041,12 @@ class Client(OpenApiClient):
         pipeline_id: str,
         request: devops_20210625_models.ListPipelineJobHistorysRequest,
     ) -> devops_20210625_models.ListPipelineJobHistorysResponse:
+        """
+        @summary 获取流水线运行过的任务历史
+        
+        @param request: ListPipelineJobHistorysRequest
+        @return: ListPipelineJobHistorysResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_pipeline_job_historys_with_options(organization_id, pipeline_id, request, headers, runtime)
@@ -12007,6 +17057,12 @@ class Client(OpenApiClient):
         pipeline_id: str,
         request: devops_20210625_models.ListPipelineJobHistorysRequest,
     ) -> devops_20210625_models.ListPipelineJobHistorysResponse:
+        """
+        @summary 获取流水线运行过的任务历史
+        
+        @param request: ListPipelineJobHistorysRequest
+        @return: ListPipelineJobHistorysResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_pipeline_job_historys_with_options_async(organization_id, pipeline_id, request, headers, runtime)
@@ -12019,6 +17075,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListPipelineJobsResponse:
+        """
+        @summary 获取流水线运行过的任务
+        
+        @param request: ListPipelineJobsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPipelineJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -12051,6 +17115,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListPipelineJobsResponse:
+        """
+        @summary 获取流水线运行过的任务
+        
+        @param request: ListPipelineJobsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPipelineJobsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -12081,6 +17153,12 @@ class Client(OpenApiClient):
         pipeline_id: str,
         request: devops_20210625_models.ListPipelineJobsRequest,
     ) -> devops_20210625_models.ListPipelineJobsResponse:
+        """
+        @summary 获取流水线运行过的任务
+        
+        @param request: ListPipelineJobsRequest
+        @return: ListPipelineJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_pipeline_jobs_with_options(organization_id, pipeline_id, request, headers, runtime)
@@ -12091,6 +17169,12 @@ class Client(OpenApiClient):
         pipeline_id: str,
         request: devops_20210625_models.ListPipelineJobsRequest,
     ) -> devops_20210625_models.ListPipelineJobsResponse:
+        """
+        @summary 获取流水线运行过的任务
+        
+        @param request: ListPipelineJobsRequest
+        @return: ListPipelineJobsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_pipeline_jobs_with_options_async(organization_id, pipeline_id, request, headers, runtime)
@@ -12103,6 +17187,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListPipelineRelationsResponse:
+        """
+        @summary 获取流水线关联列表
+        
+        @param request: ListPipelineRelationsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPipelineRelationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.rel_object_type):
@@ -12135,6 +17227,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListPipelineRelationsResponse:
+        """
+        @summary 获取流水线关联列表
+        
+        @param request: ListPipelineRelationsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPipelineRelationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.rel_object_type):
@@ -12165,6 +17265,12 @@ class Client(OpenApiClient):
         pipeline_id: str,
         request: devops_20210625_models.ListPipelineRelationsRequest,
     ) -> devops_20210625_models.ListPipelineRelationsResponse:
+        """
+        @summary 获取流水线关联列表
+        
+        @param request: ListPipelineRelationsRequest
+        @return: ListPipelineRelationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_pipeline_relations_with_options(organization_id, pipeline_id, request, headers, runtime)
@@ -12175,6 +17281,12 @@ class Client(OpenApiClient):
         pipeline_id: str,
         request: devops_20210625_models.ListPipelineRelationsRequest,
     ) -> devops_20210625_models.ListPipelineRelationsResponse:
+        """
+        @summary 获取流水线关联列表
+        
+        @param request: ListPipelineRelationsRequest
+        @return: ListPipelineRelationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_pipeline_relations_with_options_async(organization_id, pipeline_id, request, headers, runtime)
@@ -12187,6 +17299,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListPipelineRunsResponse:
+        """
+        @summary 获取流水线运行历史
+        
+        @param request: ListPipelineRunsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPipelineRunsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -12229,6 +17349,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListPipelineRunsResponse:
+        """
+        @summary 获取流水线运行历史
+        
+        @param request: ListPipelineRunsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPipelineRunsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -12269,6 +17397,12 @@ class Client(OpenApiClient):
         pipeline_id: str,
         request: devops_20210625_models.ListPipelineRunsRequest,
     ) -> devops_20210625_models.ListPipelineRunsResponse:
+        """
+        @summary 获取流水线运行历史
+        
+        @param request: ListPipelineRunsRequest
+        @return: ListPipelineRunsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_pipeline_runs_with_options(organization_id, pipeline_id, request, headers, runtime)
@@ -12279,6 +17413,12 @@ class Client(OpenApiClient):
         pipeline_id: str,
         request: devops_20210625_models.ListPipelineRunsRequest,
     ) -> devops_20210625_models.ListPipelineRunsResponse:
+        """
+        @summary 获取流水线运行历史
+        
+        @param request: ListPipelineRunsRequest
+        @return: ListPipelineRunsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_pipeline_runs_with_options_async(organization_id, pipeline_id, request, headers, runtime)
@@ -12290,6 +17430,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListPipelinesResponse:
+        """
+        @summary 获取流水线列表
+        
+        @param request: ListPipelinesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPipelinesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.create_end_time):
@@ -12339,6 +17487,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListPipelinesResponse:
+        """
+        @summary 获取流水线列表
+        
+        @param request: ListPipelinesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPipelinesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.create_end_time):
@@ -12386,6 +17542,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.ListPipelinesRequest,
     ) -> devops_20210625_models.ListPipelinesResponse:
+        """
+        @summary 获取流水线列表
+        
+        @param request: ListPipelinesRequest
+        @return: ListPipelinesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_pipelines_with_options(organization_id, request, headers, runtime)
@@ -12395,6 +17557,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.ListPipelinesRequest,
     ) -> devops_20210625_models.ListPipelinesResponse:
+        """
+        @summary 获取流水线列表
+        
+        @param request: ListPipelinesRequest
+        @return: ListPipelinesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_pipelines_with_options_async(organization_id, request, headers, runtime)
@@ -12405,6 +17573,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListProjectLabelsResponse:
+        """
+        @summary 查询代码库Label列表
+        
+        @param request: ListProjectLabelsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectLabelsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -12451,6 +17627,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListProjectLabelsResponse:
+        """
+        @summary 查询代码库Label列表
+        
+        @param request: ListProjectLabelsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectLabelsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -12495,6 +17679,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListProjectLabelsRequest,
     ) -> devops_20210625_models.ListProjectLabelsResponse:
+        """
+        @summary 查询代码库Label列表
+        
+        @param request: ListProjectLabelsRequest
+        @return: ListProjectLabelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_project_labels_with_options(request, headers, runtime)
@@ -12503,6 +17693,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListProjectLabelsRequest,
     ) -> devops_20210625_models.ListProjectLabelsResponse:
+        """
+        @summary 查询代码库Label列表
+        
+        @param request: ListProjectLabelsRequest
+        @return: ListProjectLabelsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_project_labels_with_options_async(request, headers, runtime)
@@ -12515,6 +17711,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListProjectMembersResponse:
+        """
+        @summary 根据项目id获取项目所以成员
+        
+        @param request: ListProjectMembersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectMembersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.target_type):
@@ -12547,6 +17751,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListProjectMembersResponse:
+        """
+        @summary 根据项目id获取项目所以成员
+        
+        @param request: ListProjectMembersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectMembersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.target_type):
@@ -12577,6 +17789,12 @@ class Client(OpenApiClient):
         project_id: str,
         request: devops_20210625_models.ListProjectMembersRequest,
     ) -> devops_20210625_models.ListProjectMembersResponse:
+        """
+        @summary 根据项目id获取项目所以成员
+        
+        @param request: ListProjectMembersRequest
+        @return: ListProjectMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_project_members_with_options(organization_id, project_id, request, headers, runtime)
@@ -12587,6 +17805,12 @@ class Client(OpenApiClient):
         project_id: str,
         request: devops_20210625_models.ListProjectMembersRequest,
     ) -> devops_20210625_models.ListProjectMembersResponse:
+        """
+        @summary 根据项目id获取项目所以成员
+        
+        @param request: ListProjectMembersRequest
+        @return: ListProjectMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_project_members_with_options_async(organization_id, project_id, request, headers, runtime)
@@ -12598,6 +17822,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListProjectTemplatesResponse:
+        """
+        @summary 获取项目模板列表
+        
+        @param request: ListProjectTemplatesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -12629,6 +17861,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListProjectTemplatesResponse:
+        """
+        @summary 获取项目模板列表
+        
+        @param request: ListProjectTemplatesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -12658,6 +17898,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.ListProjectTemplatesRequest,
     ) -> devops_20210625_models.ListProjectTemplatesResponse:
+        """
+        @summary 获取项目模板列表
+        
+        @param request: ListProjectTemplatesRequest
+        @return: ListProjectTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_project_templates_with_options(organization_id, request, headers, runtime)
@@ -12667,6 +17913,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.ListProjectTemplatesRequest,
     ) -> devops_20210625_models.ListProjectTemplatesResponse:
+        """
+        @summary 获取项目模板列表
+        
+        @param request: ListProjectTemplatesRequest
+        @return: ListProjectTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_project_templates_with_options_async(organization_id, request, headers, runtime)
@@ -12679,6 +17931,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListProjectWorkitemTypesResponse:
+        """
+        @summary 获取项目下开启的工作项类型
+        
+        @param request: ListProjectWorkitemTypesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectWorkitemTypesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -12713,6 +17973,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListProjectWorkitemTypesResponse:
+        """
+        @summary 获取项目下开启的工作项类型
+        
+        @param request: ListProjectWorkitemTypesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectWorkitemTypesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -12745,6 +18013,12 @@ class Client(OpenApiClient):
         project_id: str,
         request: devops_20210625_models.ListProjectWorkitemTypesRequest,
     ) -> devops_20210625_models.ListProjectWorkitemTypesResponse:
+        """
+        @summary 获取项目下开启的工作项类型
+        
+        @param request: ListProjectWorkitemTypesRequest
+        @return: ListProjectWorkitemTypesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_project_workitem_types_with_options(organization_id, project_id, request, headers, runtime)
@@ -12755,6 +18029,12 @@ class Client(OpenApiClient):
         project_id: str,
         request: devops_20210625_models.ListProjectWorkitemTypesRequest,
     ) -> devops_20210625_models.ListProjectWorkitemTypesResponse:
+        """
+        @summary 获取项目下开启的工作项类型
+        
+        @param request: ListProjectWorkitemTypesRequest
+        @return: ListProjectWorkitemTypesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_project_workitem_types_with_options_async(organization_id, project_id, request, headers, runtime)
@@ -12766,6 +18046,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListProjectsResponse:
+        """
+        @summary 获取项目列表
+        
+        @param request: ListProjectsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -12807,6 +18095,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListProjectsResponse:
+        """
+        @summary 获取项目列表
+        
+        @param request: ListProjectsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProjectsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -12846,6 +18142,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.ListProjectsRequest,
     ) -> devops_20210625_models.ListProjectsResponse:
+        """
+        @summary 获取项目列表
+        
+        @param request: ListProjectsRequest
+        @return: ListProjectsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_projects_with_options(organization_id, request, headers, runtime)
@@ -12855,6 +18157,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.ListProjectsRequest,
     ) -> devops_20210625_models.ListProjectsResponse:
+        """
+        @summary 获取项目列表
+        
+        @param request: ListProjectsRequest
+        @return: ListProjectsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_projects_with_options_async(organization_id, request, headers, runtime)
@@ -12866,6 +18174,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListProtectedBranchesResponse:
+        """
+        @summary 查询保护分支列表
+        
+        @param request: ListProtectedBranchesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProtectedBranchesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -12899,6 +18215,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListProtectedBranchesResponse:
+        """
+        @summary 查询保护分支列表
+        
+        @param request: ListProtectedBranchesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListProtectedBranchesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -12930,6 +18254,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.ListProtectedBranchesRequest,
     ) -> devops_20210625_models.ListProtectedBranchesResponse:
+        """
+        @summary 查询保护分支列表
+        
+        @param request: ListProtectedBranchesRequest
+        @return: ListProtectedBranchesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_protected_branches_with_options(repository_id, request, headers, runtime)
@@ -12939,6 +18269,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.ListProtectedBranchesRequest,
     ) -> devops_20210625_models.ListProtectedBranchesResponse:
+        """
+        @summary 查询保护分支列表
+        
+        @param request: ListProtectedBranchesRequest
+        @return: ListProtectedBranchesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_protected_branches_with_options_async(repository_id, request, headers, runtime)
@@ -12950,6 +18286,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListPushRulesResponse:
+        """
+        @summary 查询推送规则列表
+        
+        @param request: ListPushRulesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPushRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -12983,6 +18327,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListPushRulesResponse:
+        """
+        @summary 查询推送规则列表
+        
+        @param request: ListPushRulesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPushRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -13014,6 +18366,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.ListPushRulesRequest,
     ) -> devops_20210625_models.ListPushRulesResponse:
+        """
+        @summary 查询推送规则列表
+        
+        @param request: ListPushRulesRequest
+        @return: ListPushRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_push_rules_with_options(repository_id, request, headers, runtime)
@@ -13023,6 +18381,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.ListPushRulesRequest,
     ) -> devops_20210625_models.ListPushRulesResponse:
+        """
+        @summary 查询推送规则列表
+        
+        @param request: ListPushRulesRequest
+        @return: ListPushRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_push_rules_with_options_async(repository_id, request, headers, runtime)
@@ -13033,6 +18397,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListRepositoriesResponse:
+        """
+        @summary 查询代码库列表
+        
+        @param request: ListRepositoriesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRepositoriesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -13079,6 +18451,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListRepositoriesResponse:
+        """
+        @summary 查询代码库列表
+        
+        @param request: ListRepositoriesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRepositoriesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -13123,6 +18503,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListRepositoriesRequest,
     ) -> devops_20210625_models.ListRepositoriesResponse:
+        """
+        @summary 查询代码库列表
+        
+        @param request: ListRepositoriesRequest
+        @return: ListRepositoriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_repositories_with_options(request, headers, runtime)
@@ -13131,6 +18517,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListRepositoriesRequest,
     ) -> devops_20210625_models.ListRepositoriesResponse:
+        """
+        @summary 查询代码库列表
+        
+        @param request: ListRepositoriesRequest
+        @return: ListRepositoriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_repositories_with_options_async(request, headers, runtime)
@@ -13142,6 +18534,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListRepositoryBranchesResponse:
+        """
+        @summary 查询分支列表
+        
+        @param request: ListRepositoryBranchesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRepositoryBranchesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -13183,6 +18583,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListRepositoryBranchesResponse:
+        """
+        @summary 查询分支列表
+        
+        @param request: ListRepositoryBranchesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRepositoryBranchesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -13222,6 +18630,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.ListRepositoryBranchesRequest,
     ) -> devops_20210625_models.ListRepositoryBranchesResponse:
+        """
+        @summary 查询分支列表
+        
+        @param request: ListRepositoryBranchesRequest
+        @return: ListRepositoryBranchesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_repository_branches_with_options(repository_id, request, headers, runtime)
@@ -13231,6 +18645,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.ListRepositoryBranchesRequest,
     ) -> devops_20210625_models.ListRepositoryBranchesResponse:
+        """
+        @summary 查询分支列表
+        
+        @param request: ListRepositoryBranchesRequest
+        @return: ListRepositoryBranchesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_repository_branches_with_options_async(repository_id, request, headers, runtime)
@@ -13243,6 +18663,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListRepositoryCommitDiffResponse:
+        """
+        @summary 查询代码库单个提交（Commit）的提交内容
+        
+        @param request: ListRepositoryCommitDiffRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRepositoryCommitDiffResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -13279,6 +18707,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListRepositoryCommitDiffResponse:
+        """
+        @summary 查询代码库单个提交（Commit）的提交内容
+        
+        @param request: ListRepositoryCommitDiffRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRepositoryCommitDiffResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -13313,6 +18749,12 @@ class Client(OpenApiClient):
         sha: str,
         request: devops_20210625_models.ListRepositoryCommitDiffRequest,
     ) -> devops_20210625_models.ListRepositoryCommitDiffResponse:
+        """
+        @summary 查询代码库单个提交（Commit）的提交内容
+        
+        @param request: ListRepositoryCommitDiffRequest
+        @return: ListRepositoryCommitDiffResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_repository_commit_diff_with_options(repository_id, sha, request, headers, runtime)
@@ -13323,6 +18765,12 @@ class Client(OpenApiClient):
         sha: str,
         request: devops_20210625_models.ListRepositoryCommitDiffRequest,
     ) -> devops_20210625_models.ListRepositoryCommitDiffResponse:
+        """
+        @summary 查询代码库单个提交（Commit）的提交内容
+        
+        @param request: ListRepositoryCommitDiffRequest
+        @return: ListRepositoryCommitDiffResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_repository_commit_diff_with_options_async(repository_id, sha, request, headers, runtime)
@@ -13334,6 +18782,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListRepositoryCommitsResponse:
+        """
+        @summary 查询代码库提交历史
+        
+        @param request: ListRepositoryCommitsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRepositoryCommitsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -13385,6 +18841,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListRepositoryCommitsResponse:
+        """
+        @summary 查询代码库提交历史
+        
+        @param request: ListRepositoryCommitsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRepositoryCommitsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -13434,6 +18898,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.ListRepositoryCommitsRequest,
     ) -> devops_20210625_models.ListRepositoryCommitsResponse:
+        """
+        @summary 查询代码库提交历史
+        
+        @param request: ListRepositoryCommitsRequest
+        @return: ListRepositoryCommitsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_repository_commits_with_options(repository_id, request, headers, runtime)
@@ -13443,6 +18913,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.ListRepositoryCommitsRequest,
     ) -> devops_20210625_models.ListRepositoryCommitsResponse:
+        """
+        @summary 查询代码库提交历史
+        
+        @param request: ListRepositoryCommitsRequest
+        @return: ListRepositoryCommitsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_repository_commits_with_options_async(repository_id, request, headers, runtime)
@@ -13453,6 +18929,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListRepositoryGroupsResponse:
+        """
+        @summary 查询代码组列表
+        
+        @param request: ListRepositoryGroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRepositoryGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -13499,6 +18983,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListRepositoryGroupsResponse:
+        """
+        @summary 查询代码组列表
+        
+        @param request: ListRepositoryGroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRepositoryGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -13543,6 +19035,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListRepositoryGroupsRequest,
     ) -> devops_20210625_models.ListRepositoryGroupsResponse:
+        """
+        @summary 查询代码组列表
+        
+        @param request: ListRepositoryGroupsRequest
+        @return: ListRepositoryGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_repository_groups_with_options(request, headers, runtime)
@@ -13551,6 +19049,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListRepositoryGroupsRequest,
     ) -> devops_20210625_models.ListRepositoryGroupsResponse:
+        """
+        @summary 查询代码组列表
+        
+        @param request: ListRepositoryGroupsRequest
+        @return: ListRepositoryGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_repository_groups_with_options_async(request, headers, runtime)
@@ -13562,6 +19066,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListRepositoryMemberWithInheritedResponse:
+        """
+        @summary 查询代码库成员列表
+        
+        @param request: ListRepositoryMemberWithInheritedRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRepositoryMemberWithInheritedResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -13595,6 +19107,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListRepositoryMemberWithInheritedResponse:
+        """
+        @summary 查询代码库成员列表
+        
+        @param request: ListRepositoryMemberWithInheritedRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRepositoryMemberWithInheritedResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -13626,6 +19146,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.ListRepositoryMemberWithInheritedRequest,
     ) -> devops_20210625_models.ListRepositoryMemberWithInheritedResponse:
+        """
+        @summary 查询代码库成员列表
+        
+        @param request: ListRepositoryMemberWithInheritedRequest
+        @return: ListRepositoryMemberWithInheritedResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_repository_member_with_inherited_with_options(repository_id, request, headers, runtime)
@@ -13635,6 +19161,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.ListRepositoryMemberWithInheritedRequest,
     ) -> devops_20210625_models.ListRepositoryMemberWithInheritedResponse:
+        """
+        @summary 查询代码库成员列表
+        
+        @param request: ListRepositoryMemberWithInheritedRequest
+        @return: ListRepositoryMemberWithInheritedResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_repository_member_with_inherited_with_options_async(repository_id, request, headers, runtime)
@@ -13646,6 +19178,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListRepositoryTagsResponse:
+        """
+        @summary 查询标签列表
+        
+        @param request: ListRepositoryTagsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRepositoryTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -13687,6 +19227,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListRepositoryTagsResponse:
+        """
+        @summary 查询标签列表
+        
+        @param request: ListRepositoryTagsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRepositoryTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -13726,6 +19274,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.ListRepositoryTagsRequest,
     ) -> devops_20210625_models.ListRepositoryTagsResponse:
+        """
+        @summary 查询标签列表
+        
+        @param request: ListRepositoryTagsRequest
+        @return: ListRepositoryTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_repository_tags_with_options(repository_id, request, headers, runtime)
@@ -13735,6 +19289,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.ListRepositoryTagsRequest,
     ) -> devops_20210625_models.ListRepositoryTagsResponse:
+        """
+        @summary 查询标签列表
+        
+        @param request: ListRepositoryTagsRequest
+        @return: ListRepositoryTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_repository_tags_with_options_async(repository_id, request, headers, runtime)
@@ -13746,6 +19306,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListRepositoryTreeResponse:
+        """
+        @summary 查询代码库文件树
+        
+        @param request: ListRepositoryTreeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRepositoryTreeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -13785,6 +19353,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListRepositoryTreeResponse:
+        """
+        @summary 查询代码库文件树
+        
+        @param request: ListRepositoryTreeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRepositoryTreeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -13822,6 +19398,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.ListRepositoryTreeRequest,
     ) -> devops_20210625_models.ListRepositoryTreeResponse:
+        """
+        @summary 查询代码库文件树
+        
+        @param request: ListRepositoryTreeRequest
+        @return: ListRepositoryTreeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_repository_tree_with_options(repository_id, request, headers, runtime)
@@ -13831,6 +19413,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.ListRepositoryTreeRequest,
     ) -> devops_20210625_models.ListRepositoryTreeResponse:
+        """
+        @summary 查询代码库文件树
+        
+        @param request: ListRepositoryTreeRequest
+        @return: ListRepositoryTreeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_repository_tree_with_options_async(repository_id, request, headers, runtime)
@@ -13842,6 +19430,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListRepositoryWebhookResponse:
+        """
+        @summary 查询代码库Webhook列表
+        
+        @param request: ListRepositoryWebhookRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRepositoryWebhookResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -13879,6 +19475,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListRepositoryWebhookResponse:
+        """
+        @summary 查询代码库Webhook列表
+        
+        @param request: ListRepositoryWebhookRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRepositoryWebhookResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -13914,6 +19518,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.ListRepositoryWebhookRequest,
     ) -> devops_20210625_models.ListRepositoryWebhookResponse:
+        """
+        @summary 查询代码库Webhook列表
+        
+        @param request: ListRepositoryWebhookRequest
+        @return: ListRepositoryWebhookResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_repository_webhook_with_options(repository_id, request, headers, runtime)
@@ -13923,6 +19533,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.ListRepositoryWebhookRequest,
     ) -> devops_20210625_models.ListRepositoryWebhookResponse:
+        """
+        @summary 查询代码库Webhook列表
+        
+        @param request: ListRepositoryWebhookRequest
+        @return: ListRepositoryWebhookResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_repository_webhook_with_options_async(repository_id, request, headers, runtime)
@@ -13935,6 +19551,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListResourceMembersResponse:
+        """
+        @summary 获取资源成员列表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourceMembersResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -13962,6 +19585,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListResourceMembersResponse:
+        """
+        @summary 获取资源成员列表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListResourceMembersResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -13987,6 +19617,11 @@ class Client(OpenApiClient):
         resource_type: str,
         resource_id: str,
     ) -> devops_20210625_models.ListResourceMembersResponse:
+        """
+        @summary 获取资源成员列表
+        
+        @return: ListResourceMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_resource_members_with_options(organization_id, resource_type, resource_id, headers, runtime)
@@ -13997,6 +19632,11 @@ class Client(OpenApiClient):
         resource_type: str,
         resource_id: str,
     ) -> devops_20210625_models.ListResourceMembersResponse:
+        """
+        @summary 获取资源成员列表
+        
+        @return: ListResourceMembersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_resource_members_with_options_async(organization_id, resource_type, resource_id, headers, runtime)
@@ -14007,6 +19647,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListSearchCommitResponse:
+        """
+        @summary 搜索代码提交数据
+        
+        @param request: ListSearchCommitRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSearchCommitResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -14053,6 +19701,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListSearchCommitResponse:
+        """
+        @summary 搜索代码提交数据
+        
+        @param request: ListSearchCommitRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSearchCommitResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -14097,6 +19753,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListSearchCommitRequest,
     ) -> devops_20210625_models.ListSearchCommitResponse:
+        """
+        @summary 搜索代码提交数据
+        
+        @param request: ListSearchCommitRequest
+        @return: ListSearchCommitResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_search_commit_with_options(request, headers, runtime)
@@ -14105,6 +19767,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListSearchCommitRequest,
     ) -> devops_20210625_models.ListSearchCommitResponse:
+        """
+        @summary 搜索代码提交数据
+        
+        @param request: ListSearchCommitRequest
+        @return: ListSearchCommitResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_search_commit_with_options_async(request, headers, runtime)
@@ -14115,6 +19783,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListSearchRepositoryResponse:
+        """
+        @summary 搜索代码仓库数据
+        
+        @param request: ListSearchRepositoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSearchRepositoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -14165,6 +19841,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListSearchRepositoryResponse:
+        """
+        @summary 搜索代码仓库数据
+        
+        @param request: ListSearchRepositoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSearchRepositoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -14213,6 +19897,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListSearchRepositoryRequest,
     ) -> devops_20210625_models.ListSearchRepositoryResponse:
+        """
+        @summary 搜索代码仓库数据
+        
+        @param request: ListSearchRepositoryRequest
+        @return: ListSearchRepositoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_search_repository_with_options(request, headers, runtime)
@@ -14221,6 +19911,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListSearchRepositoryRequest,
     ) -> devops_20210625_models.ListSearchRepositoryResponse:
+        """
+        @summary 搜索代码仓库数据
+        
+        @param request: ListSearchRepositoryRequest
+        @return: ListSearchRepositoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_search_repository_with_options_async(request, headers, runtime)
@@ -14231,6 +19927,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListSearchSourceCodeResponse:
+        """
+        @summary 搜索代码片段
+        
+        @param request: ListSearchSourceCodeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSearchSourceCodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -14283,6 +19987,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListSearchSourceCodeResponse:
+        """
+        @summary 搜索代码片段
+        
+        @param request: ListSearchSourceCodeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSearchSourceCodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -14333,6 +20045,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListSearchSourceCodeRequest,
     ) -> devops_20210625_models.ListSearchSourceCodeResponse:
+        """
+        @summary 搜索代码片段
+        
+        @param request: ListSearchSourceCodeRequest
+        @return: ListSearchSourceCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_search_source_code_with_options(request, headers, runtime)
@@ -14341,6 +20059,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListSearchSourceCodeRequest,
     ) -> devops_20210625_models.ListSearchSourceCodeResponse:
+        """
+        @summary 搜索代码片段
+        
+        @param request: ListSearchSourceCodeRequest
+        @return: ListSearchSourceCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_search_source_code_with_options_async(request, headers, runtime)
@@ -14352,6 +20076,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListServiceAuthsResponse:
+        """
+        @summary 获取服务授权列表
+        
+        @param request: ListServiceAuthsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceAuthsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.service_auth_type):
@@ -14383,6 +20115,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListServiceAuthsResponse:
+        """
+        @summary 获取服务授权列表
+        
+        @param request: ListServiceAuthsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceAuthsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.service_auth_type):
@@ -14412,6 +20152,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.ListServiceAuthsRequest,
     ) -> devops_20210625_models.ListServiceAuthsResponse:
+        """
+        @summary 获取服务授权列表
+        
+        @param request: ListServiceAuthsRequest
+        @return: ListServiceAuthsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_service_auths_with_options(organization_id, request, headers, runtime)
@@ -14421,6 +20167,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.ListServiceAuthsRequest,
     ) -> devops_20210625_models.ListServiceAuthsResponse:
+        """
+        @summary 获取服务授权列表
+        
+        @param request: ListServiceAuthsRequest
+        @return: ListServiceAuthsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_service_auths_with_options_async(organization_id, request, headers, runtime)
@@ -14432,6 +20184,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListServiceConnectionsResponse:
+        """
+        @summary 获取服务连接列表
+        
+        @param request: ListServiceConnectionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceConnectionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.serice_connection_type):
@@ -14463,6 +20223,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListServiceConnectionsResponse:
+        """
+        @summary 获取服务连接列表
+        
+        @param request: ListServiceConnectionsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceConnectionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.serice_connection_type):
@@ -14492,6 +20260,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.ListServiceConnectionsRequest,
     ) -> devops_20210625_models.ListServiceConnectionsResponse:
+        """
+        @summary 获取服务连接列表
+        
+        @param request: ListServiceConnectionsRequest
+        @return: ListServiceConnectionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_service_connections_with_options(organization_id, request, headers, runtime)
@@ -14501,6 +20275,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.ListServiceConnectionsRequest,
     ) -> devops_20210625_models.ListServiceConnectionsResponse:
+        """
+        @summary 获取服务连接列表
+        
+        @param request: ListServiceConnectionsRequest
+        @return: ListServiceConnectionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_service_connections_with_options_async(organization_id, request, headers, runtime)
@@ -14512,6 +20292,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListServiceCredentialsResponse:
+        """
+        @summary 获取服务证书列表
+        
+        @param request: ListServiceCredentialsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceCredentialsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.service_credential_type):
@@ -14543,6 +20331,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListServiceCredentialsResponse:
+        """
+        @summary 获取服务证书列表
+        
+        @param request: ListServiceCredentialsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceCredentialsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.service_credential_type):
@@ -14572,6 +20368,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.ListServiceCredentialsRequest,
     ) -> devops_20210625_models.ListServiceCredentialsResponse:
+        """
+        @summary 获取服务证书列表
+        
+        @param request: ListServiceCredentialsRequest
+        @return: ListServiceCredentialsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_service_credentials_with_options(organization_id, request, headers, runtime)
@@ -14581,6 +20383,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.ListServiceCredentialsRequest,
     ) -> devops_20210625_models.ListServiceCredentialsResponse:
+        """
+        @summary 获取服务证书列表
+        
+        @param request: ListServiceCredentialsRequest
+        @return: ListServiceCredentialsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_service_credentials_with_options_async(organization_id, request, headers, runtime)
@@ -14592,6 +20400,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListSprintsResponse:
+        """
+        @summary 获取迭代列表
+        
+        @param request: ListSprintsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSprintsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -14629,6 +20445,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListSprintsResponse:
+        """
+        @summary 获取迭代列表
+        
+        @param request: ListSprintsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSprintsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -14664,6 +20488,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.ListSprintsRequest,
     ) -> devops_20210625_models.ListSprintsResponse:
+        """
+        @summary 获取迭代列表
+        
+        @param request: ListSprintsRequest
+        @return: ListSprintsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_sprints_with_options(organization_id, request, headers, runtime)
@@ -14673,6 +20503,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.ListSprintsRequest,
     ) -> devops_20210625_models.ListSprintsResponse:
+        """
+        @summary 获取迭代列表
+        
+        @param request: ListSprintsRequest
+        @return: ListSprintsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_sprints_with_options_async(organization_id, request, headers, runtime)
@@ -14684,6 +20520,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListTestCaseFieldsResponse:
+        """
+        @summary 获取测试用例全部字段
+        
+        @param request: ListTestCaseFieldsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTestCaseFieldsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.space_identifier):
@@ -14715,6 +20559,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListTestCaseFieldsResponse:
+        """
+        @summary 获取测试用例全部字段
+        
+        @param request: ListTestCaseFieldsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTestCaseFieldsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.space_identifier):
@@ -14744,6 +20596,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.ListTestCaseFieldsRequest,
     ) -> devops_20210625_models.ListTestCaseFieldsResponse:
+        """
+        @summary 获取测试用例全部字段
+        
+        @param request: ListTestCaseFieldsRequest
+        @return: ListTestCaseFieldsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_test_case_fields_with_options(organization_id, request, headers, runtime)
@@ -14753,6 +20611,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.ListTestCaseFieldsRequest,
     ) -> devops_20210625_models.ListTestCaseFieldsResponse:
+        """
+        @summary 获取测试用例全部字段
+        
+        @param request: ListTestCaseFieldsRequest
+        @return: ListTestCaseFieldsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_test_case_fields_with_options_async(organization_id, request, headers, runtime)
@@ -14763,6 +20627,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListUserDrawRecordByPkResponse:
+        """
+        @summary 测试DrawService
+        
+        @param request: ListUserDrawRecordByPkRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserDrawRecordByPkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aliyun_pk):
@@ -14797,6 +20669,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListUserDrawRecordByPkResponse:
+        """
+        @summary 测试DrawService
+        
+        @param request: ListUserDrawRecordByPkRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserDrawRecordByPkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.aliyun_pk):
@@ -14829,6 +20709,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListUserDrawRecordByPkRequest,
     ) -> devops_20210625_models.ListUserDrawRecordByPkResponse:
+        """
+        @summary 测试DrawService
+        
+        @param request: ListUserDrawRecordByPkRequest
+        @return: ListUserDrawRecordByPkResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_user_draw_record_by_pk_with_options(request, headers, runtime)
@@ -14837,6 +20723,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListUserDrawRecordByPkRequest,
     ) -> devops_20210625_models.ListUserDrawRecordByPkResponse:
+        """
+        @summary 测试DrawService
+        
+        @param request: ListUserDrawRecordByPkRequest
+        @return: ListUserDrawRecordByPkResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_user_draw_record_by_pk_with_options_async(request, headers, runtime)
@@ -14847,6 +20739,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListUserKeysResponse:
+        """
+        @summary 查询当前用户的SSH Key列表
+        
+        @param request: ListUserKeysRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserKeysResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -14887,6 +20787,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListUserKeysResponse:
+        """
+        @summary 查询当前用户的SSH Key列表
+        
+        @param request: ListUserKeysRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserKeysResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -14925,6 +20833,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListUserKeysRequest,
     ) -> devops_20210625_models.ListUserKeysResponse:
+        """
+        @summary 查询当前用户的SSH Key列表
+        
+        @param request: ListUserKeysRequest
+        @return: ListUserKeysResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_user_keys_with_options(request, headers, runtime)
@@ -14933,6 +20847,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListUserKeysRequest,
     ) -> devops_20210625_models.ListUserKeysResponse:
+        """
+        @summary 查询当前用户的SSH Key列表
+        
+        @param request: ListUserKeysRequest
+        @return: ListUserKeysResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_user_keys_with_options_async(request, headers, runtime)
@@ -14943,6 +20863,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListUserResourcesResponse:
+        """
+        @summary 查询用户有权限的资源（代码库、组）
+        
+        @param request: ListUserResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -14981,6 +20909,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListUserResourcesResponse:
+        """
+        @summary 查询用户有权限的资源（代码库、组）
+        
+        @param request: ListUserResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListUserResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -15017,6 +20953,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListUserResourcesRequest,
     ) -> devops_20210625_models.ListUserResourcesResponse:
+        """
+        @summary 查询用户有权限的资源（代码库、组）
+        
+        @param request: ListUserResourcesRequest
+        @return: ListUserResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_user_resources_with_options(request, headers, runtime)
@@ -15025,6 +20967,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListUserResourcesRequest,
     ) -> devops_20210625_models.ListUserResourcesResponse:
+        """
+        @summary 查询用户有权限的资源（代码库、组）
+        
+        @param request: ListUserResourcesRequest
+        @return: ListUserResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_user_resources_with_options_async(request, headers, runtime)
@@ -15036,6 +20984,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListVariableGroupsResponse:
+        """
+        @summary 获取变量组列表
+        
+        @param request: ListVariableGroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVariableGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -15073,6 +21029,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListVariableGroupsResponse:
+        """
+        @summary 获取变量组列表
+        
+        @param request: ListVariableGroupsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVariableGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -15108,6 +21072,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.ListVariableGroupsRequest,
     ) -> devops_20210625_models.ListVariableGroupsResponse:
+        """
+        @summary 获取变量组列表
+        
+        @param request: ListVariableGroupsRequest
+        @return: ListVariableGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_variable_groups_with_options(organization_id, request, headers, runtime)
@@ -15117,6 +21087,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.ListVariableGroupsRequest,
     ) -> devops_20210625_models.ListVariableGroupsResponse:
+        """
+        @summary 获取变量组列表
+        
+        @param request: ListVariableGroupsRequest
+        @return: ListVariableGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_variable_groups_with_options_async(organization_id, request, headers, runtime)
@@ -15128,6 +21104,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListWorkItemAllFieldsResponse:
+        """
+        @summary 获取项目下工作项的所有字段
+        
+        @param request: ListWorkItemAllFieldsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkItemAllFieldsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.space_identifier):
@@ -15163,6 +21147,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListWorkItemAllFieldsResponse:
+        """
+        @summary 获取项目下工作项的所有字段
+        
+        @param request: ListWorkItemAllFieldsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkItemAllFieldsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.space_identifier):
@@ -15196,6 +21188,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.ListWorkItemAllFieldsRequest,
     ) -> devops_20210625_models.ListWorkItemAllFieldsResponse:
+        """
+        @summary 获取项目下工作项的所有字段
+        
+        @param request: ListWorkItemAllFieldsRequest
+        @return: ListWorkItemAllFieldsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_work_item_all_fields_with_options(organization_id, request, headers, runtime)
@@ -15205,6 +21203,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.ListWorkItemAllFieldsRequest,
     ) -> devops_20210625_models.ListWorkItemAllFieldsResponse:
+        """
+        @summary 获取项目下工作项的所有字段
+        
+        @param request: ListWorkItemAllFieldsRequest
+        @return: ListWorkItemAllFieldsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_work_item_all_fields_with_options_async(organization_id, request, headers, runtime)
@@ -15216,6 +21220,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListWorkItemWorkFlowStatusResponse:
+        """
+        @summary 查询工作项工作流的所有状态
+        
+        @param request: ListWorkItemWorkFlowStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkItemWorkFlowStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.space_identifier):
@@ -15253,6 +21265,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListWorkItemWorkFlowStatusResponse:
+        """
+        @summary 查询工作项工作流的所有状态
+        
+        @param request: ListWorkItemWorkFlowStatusRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkItemWorkFlowStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.space_identifier):
@@ -15288,6 +21308,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.ListWorkItemWorkFlowStatusRequest,
     ) -> devops_20210625_models.ListWorkItemWorkFlowStatusResponse:
+        """
+        @summary 查询工作项工作流的所有状态
+        
+        @param request: ListWorkItemWorkFlowStatusRequest
+        @return: ListWorkItemWorkFlowStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_work_item_work_flow_status_with_options(organization_id, request, headers, runtime)
@@ -15297,6 +21323,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.ListWorkItemWorkFlowStatusRequest,
     ) -> devops_20210625_models.ListWorkItemWorkFlowStatusResponse:
+        """
+        @summary 查询工作项工作流的所有状态
+        
+        @param request: ListWorkItemWorkFlowStatusRequest
+        @return: ListWorkItemWorkFlowStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_work_item_work_flow_status_with_options_async(organization_id, request, headers, runtime)
@@ -15308,6 +21340,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListWorkitemAttachmentsResponse:
+        """
+        @summary 获取工作项的附件列表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkitemAttachmentsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -15334,6 +21373,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListWorkitemAttachmentsResponse:
+        """
+        @summary 获取工作项的附件列表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkitemAttachmentsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -15358,6 +21404,11 @@ class Client(OpenApiClient):
         organization_id: str,
         workitem_identifier: str,
     ) -> devops_20210625_models.ListWorkitemAttachmentsResponse:
+        """
+        @summary 获取工作项的附件列表
+        
+        @return: ListWorkitemAttachmentsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_workitem_attachments_with_options(organization_id, workitem_identifier, headers, runtime)
@@ -15367,6 +21418,11 @@ class Client(OpenApiClient):
         organization_id: str,
         workitem_identifier: str,
     ) -> devops_20210625_models.ListWorkitemAttachmentsResponse:
+        """
+        @summary 获取工作项的附件列表
+        
+        @return: ListWorkitemAttachmentsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_workitem_attachments_with_options_async(organization_id, workitem_identifier, headers, runtime)
@@ -15378,6 +21434,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListWorkitemEstimateResponse:
+        """
+        @summary 获取工作项预计工时明细列表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkitemEstimateResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -15404,6 +21467,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListWorkitemEstimateResponse:
+        """
+        @summary 获取工作项预计工时明细列表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkitemEstimateResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -15428,6 +21498,11 @@ class Client(OpenApiClient):
         organization_id: str,
         workitem_id: str,
     ) -> devops_20210625_models.ListWorkitemEstimateResponse:
+        """
+        @summary 获取工作项预计工时明细列表
+        
+        @return: ListWorkitemEstimateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_workitem_estimate_with_options(organization_id, workitem_id, headers, runtime)
@@ -15437,6 +21512,11 @@ class Client(OpenApiClient):
         organization_id: str,
         workitem_id: str,
     ) -> devops_20210625_models.ListWorkitemEstimateResponse:
+        """
+        @summary 获取工作项预计工时明细列表
+        
+        @return: ListWorkitemEstimateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_workitem_estimate_with_options_async(organization_id, workitem_id, headers, runtime)
@@ -15448,6 +21528,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListWorkitemTimeResponse:
+        """
+        @summary 获取工作项工时明细列表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkitemTimeResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -15474,6 +21561,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListWorkitemTimeResponse:
+        """
+        @summary 获取工作项工时明细列表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkitemTimeResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -15498,6 +21592,11 @@ class Client(OpenApiClient):
         organization_id: str,
         workitem_id: str,
     ) -> devops_20210625_models.ListWorkitemTimeResponse:
+        """
+        @summary 获取工作项工时明细列表
+        
+        @return: ListWorkitemTimeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_workitem_time_with_options(organization_id, workitem_id, headers, runtime)
@@ -15507,6 +21606,11 @@ class Client(OpenApiClient):
         organization_id: str,
         workitem_id: str,
     ) -> devops_20210625_models.ListWorkitemTimeResponse:
+        """
+        @summary 获取工作项工时明细列表
+        
+        @return: ListWorkitemTimeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_workitem_time_with_options_async(organization_id, workitem_id, headers, runtime)
@@ -15518,6 +21622,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListWorkitemsResponse:
+        """
+        @summary 获取工作项列表
+        
+        @param request: ListWorkitemsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkitemsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -15567,6 +21679,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListWorkitemsResponse:
+        """
+        @summary 获取工作项列表
+        
+        @param request: ListWorkitemsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkitemsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -15614,6 +21734,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.ListWorkitemsRequest,
     ) -> devops_20210625_models.ListWorkitemsResponse:
+        """
+        @summary 获取工作项列表
+        
+        @param request: ListWorkitemsRequest
+        @return: ListWorkitemsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_workitems_with_options(organization_id, request, headers, runtime)
@@ -15623,6 +21749,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.ListWorkitemsRequest,
     ) -> devops_20210625_models.ListWorkitemsResponse:
+        """
+        @summary 获取工作项列表
+        
+        @param request: ListWorkitemsRequest
+        @return: ListWorkitemsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_workitems_with_options_async(organization_id, request, headers, runtime)
@@ -15633,6 +21765,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListWorkspacesResponse:
+        """
+        @summary 查询工作空间列表
+        
+        @param tmp_req: ListWorkspacesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkspacesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = devops_20210625_models.ListWorkspacesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15675,6 +21815,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ListWorkspacesResponse:
+        """
+        @summary 查询工作空间列表
+        
+        @param tmp_req: ListWorkspacesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListWorkspacesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = devops_20210625_models.ListWorkspacesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -15715,6 +21863,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListWorkspacesRequest,
     ) -> devops_20210625_models.ListWorkspacesResponse:
+        """
+        @summary 查询工作空间列表
+        
+        @param request: ListWorkspacesRequest
+        @return: ListWorkspacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_workspaces_with_options(request, headers, runtime)
@@ -15723,6 +21877,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.ListWorkspacesRequest,
     ) -> devops_20210625_models.ListWorkspacesResponse:
+        """
+        @summary 查询工作空间列表
+        
+        @param request: ListWorkspacesRequest
+        @return: ListWorkspacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_workspaces_with_options_async(request, headers, runtime)
@@ -15736,6 +21896,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.LogPipelineJobRunResponse:
+        """
+        @summary 获取流水线运行任务日志
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LogPipelineJobRunResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -15764,6 +21931,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.LogPipelineJobRunResponse:
+        """
+        @summary 获取流水线运行任务日志
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LogPipelineJobRunResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -15790,6 +21964,11 @@ class Client(OpenApiClient):
         job_id: str,
         pipeline_run_id: str,
     ) -> devops_20210625_models.LogPipelineJobRunResponse:
+        """
+        @summary 获取流水线运行任务日志
+        
+        @return: LogPipelineJobRunResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.log_pipeline_job_run_with_options(organization_id, pipeline_id, job_id, pipeline_run_id, headers, runtime)
@@ -15801,6 +21980,11 @@ class Client(OpenApiClient):
         job_id: str,
         pipeline_run_id: str,
     ) -> devops_20210625_models.LogPipelineJobRunResponse:
+        """
+        @summary 获取流水线运行任务日志
+        
+        @return: LogPipelineJobRunResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.log_pipeline_job_run_with_options_async(organization_id, pipeline_id, job_id, pipeline_run_id, headers, runtime)
@@ -15814,6 +21998,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.LogVMDeployMachineResponse:
+        """
+        @summary 获取机器部署日志
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LogVMDeployMachineResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -15842,6 +22033,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.LogVMDeployMachineResponse:
+        """
+        @summary 获取机器部署日志
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: LogVMDeployMachineResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -15868,6 +22066,11 @@ class Client(OpenApiClient):
         deploy_order_id: str,
         machine_sn: str,
     ) -> devops_20210625_models.LogVMDeployMachineResponse:
+        """
+        @summary 获取机器部署日志
+        
+        @return: LogVMDeployMachineResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.log_vmdeploy_machine_with_options(organization_id, pipeline_id, deploy_order_id, machine_sn, headers, runtime)
@@ -15879,6 +22082,11 @@ class Client(OpenApiClient):
         deploy_order_id: str,
         machine_sn: str,
     ) -> devops_20210625_models.LogVMDeployMachineResponse:
+        """
+        @summary 获取机器部署日志
+        
+        @return: LogVMDeployMachineResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.log_vmdeploy_machine_with_options_async(organization_id, pipeline_id, deploy_order_id, machine_sn, headers, runtime)
@@ -15891,6 +22099,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.MergeMergeRequestResponse:
+        """
+        @summary 合并代码评审
+        
+        @param request: MergeMergeRequestRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MergeMergeRequestResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -15933,6 +22149,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.MergeMergeRequestResponse:
+        """
+        @summary 合并代码评审
+        
+        @param request: MergeMergeRequestRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MergeMergeRequestResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -15973,6 +22197,12 @@ class Client(OpenApiClient):
         local_id: str,
         request: devops_20210625_models.MergeMergeRequestRequest,
     ) -> devops_20210625_models.MergeMergeRequestResponse:
+        """
+        @summary 合并代码评审
+        
+        @param request: MergeMergeRequestRequest
+        @return: MergeMergeRequestResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.merge_merge_request_with_options(repository_id, local_id, request, headers, runtime)
@@ -15983,6 +22213,12 @@ class Client(OpenApiClient):
         local_id: str,
         request: devops_20210625_models.MergeMergeRequestRequest,
     ) -> devops_20210625_models.MergeMergeRequestResponse:
+        """
+        @summary 合并代码评审
+        
+        @param request: MergeMergeRequestRequest
+        @return: MergeMergeRequestResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.merge_merge_request_with_options_async(repository_id, local_id, request, headers, runtime)
@@ -15996,6 +22232,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.PassPipelineValidateResponse:
+        """
+        @summary 通过人工卡点
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PassPipelineValidateResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -16024,6 +22267,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.PassPipelineValidateResponse:
+        """
+        @summary 通过人工卡点
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PassPipelineValidateResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -16050,6 +22300,11 @@ class Client(OpenApiClient):
         pipeline_run_id: str,
         job_id: str,
     ) -> devops_20210625_models.PassPipelineValidateResponse:
+        """
+        @summary 通过人工卡点
+        
+        @return: PassPipelineValidateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.pass_pipeline_validate_with_options(organization_id, pipeline_id, pipeline_run_id, job_id, headers, runtime)
@@ -16061,6 +22316,11 @@ class Client(OpenApiClient):
         pipeline_run_id: str,
         job_id: str,
     ) -> devops_20210625_models.PassPipelineValidateResponse:
+        """
+        @summary 通过人工卡点
+        
+        @return: PassPipelineValidateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.pass_pipeline_validate_with_options_async(organization_id, pipeline_id, pipeline_run_id, job_id, headers, runtime)
@@ -16074,6 +22334,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.RefusePipelineValidateResponse:
+        """
+        @summary 拒绝人工卡点
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefusePipelineValidateResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -16102,6 +22369,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.RefusePipelineValidateResponse:
+        """
+        @summary 拒绝人工卡点
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefusePipelineValidateResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -16128,6 +22402,11 @@ class Client(OpenApiClient):
         pipeline_run_id: str,
         job_id: str,
     ) -> devops_20210625_models.RefusePipelineValidateResponse:
+        """
+        @summary 拒绝人工卡点
+        
+        @return: RefusePipelineValidateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.refuse_pipeline_validate_with_options(organization_id, pipeline_id, pipeline_run_id, job_id, headers, runtime)
@@ -16139,6 +22418,11 @@ class Client(OpenApiClient):
         pipeline_run_id: str,
         job_id: str,
     ) -> devops_20210625_models.RefusePipelineValidateResponse:
+        """
+        @summary 拒绝人工卡点
+        
+        @return: RefusePipelineValidateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.refuse_pipeline_validate_with_options_async(organization_id, pipeline_id, pipeline_run_id, job_id, headers, runtime)
@@ -16149,6 +22433,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ReleaseWorkspaceResponse:
+        """
+        @summary 释放工作空间
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseWorkspaceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -16174,6 +22465,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ReleaseWorkspaceResponse:
+        """
+        @summary 释放工作空间
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReleaseWorkspaceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -16197,6 +22495,11 @@ class Client(OpenApiClient):
         self,
         workspace_id: str,
     ) -> devops_20210625_models.ReleaseWorkspaceResponse:
+        """
+        @summary 释放工作空间
+        
+        @return: ReleaseWorkspaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.release_workspace_with_options(workspace_id, headers, runtime)
@@ -16205,6 +22508,11 @@ class Client(OpenApiClient):
         self,
         workspace_id: str,
     ) -> devops_20210625_models.ReleaseWorkspaceResponse:
+        """
+        @summary 释放工作空间
+        
+        @return: ReleaseWorkspaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.release_workspace_with_options_async(workspace_id, headers, runtime)
@@ -16217,6 +22525,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ReopenMergeRequestResponse:
+        """
+        @summary 重新打开代码评审
+        
+        @param request: ReopenMergeRequestRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReopenMergeRequestResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -16251,6 +22567,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ReopenMergeRequestResponse:
+        """
+        @summary 重新打开代码评审
+        
+        @param request: ReopenMergeRequestRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReopenMergeRequestResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -16283,6 +22607,12 @@ class Client(OpenApiClient):
         local_id: str,
         request: devops_20210625_models.ReopenMergeRequestRequest,
     ) -> devops_20210625_models.ReopenMergeRequestResponse:
+        """
+        @summary 重新打开代码评审
+        
+        @param request: ReopenMergeRequestRequest
+        @return: ReopenMergeRequestResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.reopen_merge_request_with_options(repository_id, local_id, request, headers, runtime)
@@ -16293,6 +22623,12 @@ class Client(OpenApiClient):
         local_id: str,
         request: devops_20210625_models.ReopenMergeRequestRequest,
     ) -> devops_20210625_models.ReopenMergeRequestResponse:
+        """
+        @summary 重新打开代码评审
+        
+        @param request: ReopenMergeRequestRequest
+        @return: ReopenMergeRequestResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.reopen_merge_request_with_options_async(repository_id, local_id, request, headers, runtime)
@@ -16303,6 +22639,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ResetSshKeyResponse:
+        """
+        @summary 重置企业公钥
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetSshKeyResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -16328,6 +22671,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ResetSshKeyResponse:
+        """
+        @summary 重置企业公钥
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetSshKeyResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -16351,6 +22701,11 @@ class Client(OpenApiClient):
         self,
         organization_id: str,
     ) -> devops_20210625_models.ResetSshKeyResponse:
+        """
+        @summary 重置企业公钥
+        
+        @return: ResetSshKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.reset_ssh_key_with_options(organization_id, headers, runtime)
@@ -16359,6 +22714,11 @@ class Client(OpenApiClient):
         self,
         organization_id: str,
     ) -> devops_20210625_models.ResetSshKeyResponse:
+        """
+        @summary 重置企业公钥
+        
+        @return: ResetSshKeyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.reset_ssh_key_with_options_async(organization_id, headers, runtime)
@@ -16371,6 +22731,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ResumeVMDeployOrderResponse:
+        """
+        @summary 继续部署
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeVMDeployOrderResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -16398,6 +22765,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ResumeVMDeployOrderResponse:
+        """
+        @summary 继续部署
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeVMDeployOrderResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -16423,6 +22797,11 @@ class Client(OpenApiClient):
         pipeline_id: str,
         deploy_order_id: str,
     ) -> devops_20210625_models.ResumeVMDeployOrderResponse:
+        """
+        @summary 继续部署
+        
+        @return: ResumeVMDeployOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.resume_vmdeploy_order_with_options(organization_id, pipeline_id, deploy_order_id, headers, runtime)
@@ -16433,6 +22812,11 @@ class Client(OpenApiClient):
         pipeline_id: str,
         deploy_order_id: str,
     ) -> devops_20210625_models.ResumeVMDeployOrderResponse:
+        """
+        @summary 继续部署
+        
+        @return: ResumeVMDeployOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.resume_vmdeploy_order_with_options_async(organization_id, pipeline_id, deploy_order_id, headers, runtime)
@@ -16446,6 +22830,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.RetryPipelineJobRunResponse:
+        """
+        @summary 重试流水线运行
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RetryPipelineJobRunResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -16474,6 +22865,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.RetryPipelineJobRunResponse:
+        """
+        @summary 重试流水线运行
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RetryPipelineJobRunResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -16500,6 +22898,11 @@ class Client(OpenApiClient):
         pipeline_run_id: str,
         job_id: str,
     ) -> devops_20210625_models.RetryPipelineJobRunResponse:
+        """
+        @summary 重试流水线运行
+        
+        @return: RetryPipelineJobRunResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.retry_pipeline_job_run_with_options(organization_id, pipeline_id, pipeline_run_id, job_id, headers, runtime)
@@ -16511,6 +22914,11 @@ class Client(OpenApiClient):
         pipeline_run_id: str,
         job_id: str,
     ) -> devops_20210625_models.RetryPipelineJobRunResponse:
+        """
+        @summary 重试流水线运行
+        
+        @return: RetryPipelineJobRunResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.retry_pipeline_job_run_with_options_async(organization_id, pipeline_id, pipeline_run_id, job_id, headers, runtime)
@@ -16524,6 +22932,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.RetryVMDeployMachineResponse:
+        """
+        @summary 重试机器部署
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RetryVMDeployMachineResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -16552,6 +22967,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.RetryVMDeployMachineResponse:
+        """
+        @summary 重试机器部署
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RetryVMDeployMachineResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -16578,6 +23000,11 @@ class Client(OpenApiClient):
         deploy_order_id: str,
         machine_sn: str,
     ) -> devops_20210625_models.RetryVMDeployMachineResponse:
+        """
+        @summary 重试机器部署
+        
+        @return: RetryVMDeployMachineResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.retry_vmdeploy_machine_with_options(organization_id, pipeline_id, deploy_order_id, machine_sn, headers, runtime)
@@ -16589,6 +23016,11 @@ class Client(OpenApiClient):
         deploy_order_id: str,
         machine_sn: str,
     ) -> devops_20210625_models.RetryVMDeployMachineResponse:
+        """
+        @summary 重试机器部署
+        
+        @return: RetryVMDeployMachineResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.retry_vmdeploy_machine_with_options_async(organization_id, pipeline_id, deploy_order_id, machine_sn, headers, runtime)
@@ -16601,6 +23033,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ReviewMergeRequestResponse:
+        """
+        @summary 提交变更请求的评审意见
+        
+        @param request: ReviewMergeRequestRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReviewMergeRequestResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -16643,6 +23083,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.ReviewMergeRequestResponse:
+        """
+        @summary 提交变更请求的评审意见
+        
+        @param request: ReviewMergeRequestRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReviewMergeRequestResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -16683,6 +23131,12 @@ class Client(OpenApiClient):
         local_id: str,
         request: devops_20210625_models.ReviewMergeRequestRequest,
     ) -> devops_20210625_models.ReviewMergeRequestResponse:
+        """
+        @summary 提交变更请求的评审意见
+        
+        @param request: ReviewMergeRequestRequest
+        @return: ReviewMergeRequestResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.review_merge_request_with_options(repository_id, local_id, request, headers, runtime)
@@ -16693,6 +23147,12 @@ class Client(OpenApiClient):
         local_id: str,
         request: devops_20210625_models.ReviewMergeRequestRequest,
     ) -> devops_20210625_models.ReviewMergeRequestResponse:
+        """
+        @summary 提交变更请求的评审意见
+        
+        @param request: ReviewMergeRequestRequest
+        @return: ReviewMergeRequestResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.review_merge_request_with_options_async(repository_id, local_id, request, headers, runtime)
@@ -16706,6 +23166,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.SkipPipelineJobRunResponse:
+        """
+        @summary 跳过流水线任务运行
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SkipPipelineJobRunResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -16734,6 +23201,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.SkipPipelineJobRunResponse:
+        """
+        @summary 跳过流水线任务运行
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SkipPipelineJobRunResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -16760,6 +23234,11 @@ class Client(OpenApiClient):
         pipeline_run_id: str,
         job_id: str,
     ) -> devops_20210625_models.SkipPipelineJobRunResponse:
+        """
+        @summary 跳过流水线任务运行
+        
+        @return: SkipPipelineJobRunResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.skip_pipeline_job_run_with_options(organization_id, pipeline_id, pipeline_run_id, job_id, headers, runtime)
@@ -16771,6 +23250,11 @@ class Client(OpenApiClient):
         pipeline_run_id: str,
         job_id: str,
     ) -> devops_20210625_models.SkipPipelineJobRunResponse:
+        """
+        @summary 跳过流水线任务运行
+        
+        @return: SkipPipelineJobRunResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.skip_pipeline_job_run_with_options_async(organization_id, pipeline_id, pipeline_run_id, job_id, headers, runtime)
@@ -16784,6 +23268,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.SkipVMDeployMachineResponse:
+        """
+        @summary 跳过机器部署
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SkipVMDeployMachineResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -16812,6 +23303,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.SkipVMDeployMachineResponse:
+        """
+        @summary 跳过机器部署
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SkipVMDeployMachineResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -16838,6 +23336,11 @@ class Client(OpenApiClient):
         deploy_order_id: str,
         machine_sn: str,
     ) -> devops_20210625_models.SkipVMDeployMachineResponse:
+        """
+        @summary 跳过机器部署
+        
+        @return: SkipVMDeployMachineResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.skip_vmdeploy_machine_with_options(organization_id, pipeline_id, deploy_order_id, machine_sn, headers, runtime)
@@ -16849,6 +23352,11 @@ class Client(OpenApiClient):
         deploy_order_id: str,
         machine_sn: str,
     ) -> devops_20210625_models.SkipVMDeployMachineResponse:
+        """
+        @summary 跳过机器部署
+        
+        @return: SkipVMDeployMachineResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.skip_vmdeploy_machine_with_options_async(organization_id, pipeline_id, deploy_order_id, machine_sn, headers, runtime)
@@ -16861,6 +23369,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.StartPipelineRunResponse:
+        """
+        @summary 运行流水线
+        
+        @param request: StartPipelineRunRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartPipelineRunResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.params):
@@ -16893,6 +23409,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.StartPipelineRunResponse:
+        """
+        @summary 运行流水线
+        
+        @param request: StartPipelineRunRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartPipelineRunResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.params):
@@ -16923,6 +23447,12 @@ class Client(OpenApiClient):
         pipeline_id: str,
         request: devops_20210625_models.StartPipelineRunRequest,
     ) -> devops_20210625_models.StartPipelineRunResponse:
+        """
+        @summary 运行流水线
+        
+        @param request: StartPipelineRunRequest
+        @return: StartPipelineRunResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.start_pipeline_run_with_options(organization_id, pipeline_id, request, headers, runtime)
@@ -16933,6 +23463,12 @@ class Client(OpenApiClient):
         pipeline_id: str,
         request: devops_20210625_models.StartPipelineRunRequest,
     ) -> devops_20210625_models.StartPipelineRunResponse:
+        """
+        @summary 运行流水线
+        
+        @param request: StartPipelineRunRequest
+        @return: StartPipelineRunResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.start_pipeline_run_with_options_async(organization_id, pipeline_id, request, headers, runtime)
@@ -16946,6 +23482,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.StopPipelineJobRunResponse:
+        """
+        @summary 终止流水线任务运行
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopPipelineJobRunResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -16974,6 +23517,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.StopPipelineJobRunResponse:
+        """
+        @summary 终止流水线任务运行
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopPipelineJobRunResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -17000,6 +23550,11 @@ class Client(OpenApiClient):
         pipeline_run_id: str,
         job_id: str,
     ) -> devops_20210625_models.StopPipelineJobRunResponse:
+        """
+        @summary 终止流水线任务运行
+        
+        @return: StopPipelineJobRunResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.stop_pipeline_job_run_with_options(organization_id, pipeline_id, pipeline_run_id, job_id, headers, runtime)
@@ -17011,6 +23566,11 @@ class Client(OpenApiClient):
         pipeline_run_id: str,
         job_id: str,
     ) -> devops_20210625_models.StopPipelineJobRunResponse:
+        """
+        @summary 终止流水线任务运行
+        
+        @return: StopPipelineJobRunResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.stop_pipeline_job_run_with_options_async(organization_id, pipeline_id, pipeline_run_id, job_id, headers, runtime)
@@ -17023,6 +23583,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.StopPipelineRunResponse:
+        """
+        @summary 终止流水线运行
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopPipelineRunResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -17050,6 +23617,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.StopPipelineRunResponse:
+        """
+        @summary 终止流水线运行
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopPipelineRunResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -17075,6 +23649,11 @@ class Client(OpenApiClient):
         pipeline_id: str,
         pipeline_run_id: str,
     ) -> devops_20210625_models.StopPipelineRunResponse:
+        """
+        @summary 终止流水线运行
+        
+        @return: StopPipelineRunResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.stop_pipeline_run_with_options(organization_id, pipeline_id, pipeline_run_id, headers, runtime)
@@ -17085,6 +23664,11 @@ class Client(OpenApiClient):
         pipeline_id: str,
         pipeline_run_id: str,
     ) -> devops_20210625_models.StopPipelineRunResponse:
+        """
+        @summary 终止流水线运行
+        
+        @return: StopPipelineRunResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.stop_pipeline_run_with_options_async(organization_id, pipeline_id, pipeline_run_id, headers, runtime)
@@ -17097,6 +23681,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.StopVMDeployOrderResponse:
+        """
+        @summary 取消部署单
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopVMDeployOrderResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -17124,6 +23715,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.StopVMDeployOrderResponse:
+        """
+        @summary 取消部署单
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopVMDeployOrderResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -17149,6 +23747,11 @@ class Client(OpenApiClient):
         pipeline_id: str,
         deploy_order_id: str,
     ) -> devops_20210625_models.StopVMDeployOrderResponse:
+        """
+        @summary 取消部署单
+        
+        @return: StopVMDeployOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.stop_vmdeploy_order_with_options(organization_id, pipeline_id, deploy_order_id, headers, runtime)
@@ -17159,6 +23762,11 @@ class Client(OpenApiClient):
         pipeline_id: str,
         deploy_order_id: str,
     ) -> devops_20210625_models.StopVMDeployOrderResponse:
+        """
+        @summary 取消部署单
+        
+        @return: StopVMDeployOrderResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.stop_vmdeploy_order_with_options_async(organization_id, pipeline_id, deploy_order_id, headers, runtime)
@@ -17169,6 +23777,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.TransferRepositoryResponse:
+        """
+        @summary 转移代码库
+        
+        @param request: TransferRepositoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransferRepositoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -17205,6 +23821,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.TransferRepositoryResponse:
+        """
+        @summary 转移代码库
+        
+        @param request: TransferRepositoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransferRepositoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -17239,6 +23863,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.TransferRepositoryRequest,
     ) -> devops_20210625_models.TransferRepositoryResponse:
+        """
+        @summary 转移代码库
+        
+        @param request: TransferRepositoryRequest
+        @return: TransferRepositoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.transfer_repository_with_options(request, headers, runtime)
@@ -17247,6 +23877,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.TransferRepositoryRequest,
     ) -> devops_20210625_models.TransferRepositoryResponse:
+        """
+        @summary 转移代码库
+        
+        @param request: TransferRepositoryRequest
+        @return: TransferRepositoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.transfer_repository_with_options_async(request, headers, runtime)
@@ -17258,6 +23894,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.TriggerRepositoryMirrorSyncResponse:
+        """
+        @summary 触发仓库同步
+        
+        @param request: TriggerRepositoryMirrorSyncRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TriggerRepositoryMirrorSyncResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -17295,6 +23939,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.TriggerRepositoryMirrorSyncResponse:
+        """
+        @summary 触发仓库同步
+        
+        @param request: TriggerRepositoryMirrorSyncRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TriggerRepositoryMirrorSyncResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -17330,6 +23982,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.TriggerRepositoryMirrorSyncRequest,
     ) -> devops_20210625_models.TriggerRepositoryMirrorSyncResponse:
+        """
+        @summary 触发仓库同步
+        
+        @param request: TriggerRepositoryMirrorSyncRequest
+        @return: TriggerRepositoryMirrorSyncResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.trigger_repository_mirror_sync_with_options(repository_id, request, headers, runtime)
@@ -17339,6 +23997,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.TriggerRepositoryMirrorSyncRequest,
     ) -> devops_20210625_models.TriggerRepositoryMirrorSyncResponse:
+        """
+        @summary 触发仓库同步
+        
+        @param request: TriggerRepositoryMirrorSyncRequest
+        @return: TriggerRepositoryMirrorSyncResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.trigger_repository_mirror_sync_with_options_async(repository_id, request, headers, runtime)
@@ -17350,6 +24014,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateAppMemberResponse:
+        """
+        @summary 更新应用成员
+        
+        @param request: UpdateAppMemberRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAppMemberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -17387,6 +24059,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateAppMemberResponse:
+        """
+        @summary 更新应用成员
+        
+        @param request: UpdateAppMemberRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAppMemberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -17422,6 +24102,12 @@ class Client(OpenApiClient):
         app_name: str,
         request: devops_20210625_models.UpdateAppMemberRequest,
     ) -> devops_20210625_models.UpdateAppMemberResponse:
+        """
+        @summary 更新应用成员
+        
+        @param request: UpdateAppMemberRequest
+        @return: UpdateAppMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_app_member_with_options(app_name, request, headers, runtime)
@@ -17431,6 +24117,12 @@ class Client(OpenApiClient):
         app_name: str,
         request: devops_20210625_models.UpdateAppMemberRequest,
     ) -> devops_20210625_models.UpdateAppMemberResponse:
+        """
+        @summary 更新应用成员
+        
+        @param request: UpdateAppMemberRequest
+        @return: UpdateAppMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_app_member_with_options_async(app_name, request, headers, runtime)
@@ -17442,6 +24134,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateApplicationResponse:
+        """
+        @summary 更新应用
+        
+        @param request: UpdateApplicationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -17477,6 +24177,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateApplicationResponse:
+        """
+        @summary 更新应用
+        
+        @param request: UpdateApplicationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -17510,6 +24218,12 @@ class Client(OpenApiClient):
         app_name: str,
         request: devops_20210625_models.UpdateApplicationRequest,
     ) -> devops_20210625_models.UpdateApplicationResponse:
+        """
+        @summary 更新应用
+        
+        @param request: UpdateApplicationRequest
+        @return: UpdateApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_application_with_options(app_name, request, headers, runtime)
@@ -17519,6 +24233,12 @@ class Client(OpenApiClient):
         app_name: str,
         request: devops_20210625_models.UpdateApplicationRequest,
     ) -> devops_20210625_models.UpdateApplicationResponse:
+        """
+        @summary 更新应用
+        
+        @param request: UpdateApplicationRequest
+        @return: UpdateApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_application_with_options_async(app_name, request, headers, runtime)
@@ -17529,6 +24249,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateCheckRunResponse:
+        """
+        @summary 更新检查运行记录
+        
+        @param request: UpdateCheckRunRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCheckRunResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -17585,6 +24313,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateCheckRunResponse:
+        """
+        @summary 更新检查运行记录
+        
+        @param request: UpdateCheckRunRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCheckRunResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -17639,6 +24375,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.UpdateCheckRunRequest,
     ) -> devops_20210625_models.UpdateCheckRunResponse:
+        """
+        @summary 更新检查运行记录
+        
+        @param request: UpdateCheckRunRequest
+        @return: UpdateCheckRunResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_check_run_with_options(request, headers, runtime)
@@ -17647,6 +24389,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.UpdateCheckRunRequest,
     ) -> devops_20210625_models.UpdateCheckRunResponse:
+        """
+        @summary 更新检查运行记录
+        
+        @param request: UpdateCheckRunRequest
+        @return: UpdateCheckRunResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_check_run_with_options_async(request, headers, runtime)
@@ -17658,6 +24406,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateFileResponse:
+        """
+        @summary 更新代码库文件
+        
+        @param request: UpdateFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -17705,6 +24461,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateFileResponse:
+        """
+        @summary 更新代码库文件
+        
+        @param request: UpdateFileRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFileResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -17750,6 +24514,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.UpdateFileRequest,
     ) -> devops_20210625_models.UpdateFileResponse:
+        """
+        @summary 更新代码库文件
+        
+        @param request: UpdateFileRequest
+        @return: UpdateFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_file_with_options(repository_id, request, headers, runtime)
@@ -17759,6 +24529,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.UpdateFileRequest,
     ) -> devops_20210625_models.UpdateFileResponse:
+        """
+        @summary 更新代码库文件
+        
+        @param request: UpdateFileRequest
+        @return: UpdateFileResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_file_with_options_async(repository_id, request, headers, runtime)
@@ -17771,6 +24547,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateFlowTagResponse:
+        """
+        @summary 更新标签
+        
+        @param request: UpdateFlowTagRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFlowTagResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.color):
@@ -17807,6 +24591,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateFlowTagResponse:
+        """
+        @summary 更新标签
+        
+        @param request: UpdateFlowTagRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFlowTagResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.color):
@@ -17841,6 +24633,12 @@ class Client(OpenApiClient):
         id: str,
         request: devops_20210625_models.UpdateFlowTagRequest,
     ) -> devops_20210625_models.UpdateFlowTagResponse:
+        """
+        @summary 更新标签
+        
+        @param request: UpdateFlowTagRequest
+        @return: UpdateFlowTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_flow_tag_with_options(organization_id, id, request, headers, runtime)
@@ -17851,6 +24649,12 @@ class Client(OpenApiClient):
         id: str,
         request: devops_20210625_models.UpdateFlowTagRequest,
     ) -> devops_20210625_models.UpdateFlowTagResponse:
+        """
+        @summary 更新标签
+        
+        @param request: UpdateFlowTagRequest
+        @return: UpdateFlowTagResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_flow_tag_with_options_async(organization_id, id, request, headers, runtime)
@@ -17863,6 +24667,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateFlowTagGroupResponse:
+        """
+        @summary 标签分类
+        
+        @param request: UpdateFlowTagGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFlowTagGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -17895,6 +24707,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateFlowTagGroupResponse:
+        """
+        @summary 标签分类
+        
+        @param request: UpdateFlowTagGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFlowTagGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -17925,6 +24745,12 @@ class Client(OpenApiClient):
         id: str,
         request: devops_20210625_models.UpdateFlowTagGroupRequest,
     ) -> devops_20210625_models.UpdateFlowTagGroupResponse:
+        """
+        @summary 标签分类
+        
+        @param request: UpdateFlowTagGroupRequest
+        @return: UpdateFlowTagGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_flow_tag_group_with_options(organization_id, id, request, headers, runtime)
@@ -17935,6 +24761,12 @@ class Client(OpenApiClient):
         id: str,
         request: devops_20210625_models.UpdateFlowTagGroupRequest,
     ) -> devops_20210625_models.UpdateFlowTagGroupResponse:
+        """
+        @summary 标签分类
+        
+        @param request: UpdateFlowTagGroupRequest
+        @return: UpdateFlowTagGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_flow_tag_group_with_options_async(organization_id, id, request, headers, runtime)
@@ -17945,6 +24777,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateGroupResponse:
+        """
+        @summary 更新单个代码组信息
+        
+        @param request: UpdateGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -17991,6 +24831,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateGroupResponse:
+        """
+        @summary 更新单个代码组信息
+        
+        @param request: UpdateGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -18035,6 +24883,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.UpdateGroupRequest,
     ) -> devops_20210625_models.UpdateGroupResponse:
+        """
+        @summary 更新单个代码组信息
+        
+        @param request: UpdateGroupRequest
+        @return: UpdateGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_group_with_options(request, headers, runtime)
@@ -18043,6 +24897,12 @@ class Client(OpenApiClient):
         self,
         request: devops_20210625_models.UpdateGroupRequest,
     ) -> devops_20210625_models.UpdateGroupResponse:
+        """
+        @summary 更新单个代码组信息
+        
+        @param request: UpdateGroupRequest
+        @return: UpdateGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_group_with_options_async(request, headers, runtime)
@@ -18054,6 +24914,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateGroupMemberResponse:
+        """
+        @summary 修改组成员
+        
+        @param request: UpdateGroupMemberRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGroupMemberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -18095,6 +24963,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateGroupMemberResponse:
+        """
+        @summary 修改组成员
+        
+        @param request: UpdateGroupMemberRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGroupMemberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -18134,6 +25010,12 @@ class Client(OpenApiClient):
         group_id: str,
         request: devops_20210625_models.UpdateGroupMemberRequest,
     ) -> devops_20210625_models.UpdateGroupMemberResponse:
+        """
+        @summary 修改组成员
+        
+        @param request: UpdateGroupMemberRequest
+        @return: UpdateGroupMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_group_member_with_options(group_id, request, headers, runtime)
@@ -18143,6 +25025,12 @@ class Client(OpenApiClient):
         group_id: str,
         request: devops_20210625_models.UpdateGroupMemberRequest,
     ) -> devops_20210625_models.UpdateGroupMemberResponse:
+        """
+        @summary 修改组成员
+        
+        @param request: UpdateGroupMemberRequest
+        @return: UpdateGroupMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_group_member_with_options_async(group_id, request, headers, runtime)
@@ -18155,6 +25043,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateHostGroupResponse:
+        """
+        @summary 更新主机组
+        
+        @param request: UpdateHostGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateHostGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.aliyun_region):
@@ -18205,6 +25101,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateHostGroupResponse:
+        """
+        @summary 更新主机组
+        
+        @param request: UpdateHostGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateHostGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.aliyun_region):
@@ -18253,6 +25157,12 @@ class Client(OpenApiClient):
         id: str,
         request: devops_20210625_models.UpdateHostGroupRequest,
     ) -> devops_20210625_models.UpdateHostGroupResponse:
+        """
+        @summary 更新主机组
+        
+        @param request: UpdateHostGroupRequest
+        @return: UpdateHostGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_host_group_with_options(organization_id, id, request, headers, runtime)
@@ -18263,6 +25173,12 @@ class Client(OpenApiClient):
         id: str,
         request: devops_20210625_models.UpdateHostGroupRequest,
     ) -> devops_20210625_models.UpdateHostGroupResponse:
+        """
+        @summary 更新主机组
+        
+        @param request: UpdateHostGroupRequest
+        @return: UpdateHostGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_host_group_with_options_async(organization_id, id, request, headers, runtime)
@@ -18275,6 +25191,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateMergeRequestResponse:
+        """
+        @summary 更新代码评审的标题和描述
+        
+        @param request: UpdateMergeRequestRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMergeRequestResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -18315,6 +25239,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateMergeRequestResponse:
+        """
+        @summary 更新代码评审的标题和描述
+        
+        @param request: UpdateMergeRequestRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMergeRequestResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -18353,6 +25285,12 @@ class Client(OpenApiClient):
         local_id: str,
         request: devops_20210625_models.UpdateMergeRequestRequest,
     ) -> devops_20210625_models.UpdateMergeRequestResponse:
+        """
+        @summary 更新代码评审的标题和描述
+        
+        @param request: UpdateMergeRequestRequest
+        @return: UpdateMergeRequestResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_merge_request_with_options(repository_id, local_id, request, headers, runtime)
@@ -18363,6 +25301,12 @@ class Client(OpenApiClient):
         local_id: str,
         request: devops_20210625_models.UpdateMergeRequestRequest,
     ) -> devops_20210625_models.UpdateMergeRequestResponse:
+        """
+        @summary 更新代码评审的标题和描述
+        
+        @param request: UpdateMergeRequestRequest
+        @return: UpdateMergeRequestResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_merge_request_with_options_async(repository_id, local_id, request, headers, runtime)
@@ -18376,6 +25320,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateMergeRequestPersonnelResponse:
+        """
+        @summary 更新代码评审的干系人
+        
+        @param request: UpdateMergeRequestPersonnelRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMergeRequestPersonnelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -18415,6 +25367,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateMergeRequestPersonnelResponse:
+        """
+        @summary 更新代码评审的干系人
+        
+        @param request: UpdateMergeRequestPersonnelRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMergeRequestPersonnelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -18452,6 +25412,12 @@ class Client(OpenApiClient):
         person_type: str,
         request: devops_20210625_models.UpdateMergeRequestPersonnelRequest,
     ) -> devops_20210625_models.UpdateMergeRequestPersonnelResponse:
+        """
+        @summary 更新代码评审的干系人
+        
+        @param request: UpdateMergeRequestPersonnelRequest
+        @return: UpdateMergeRequestPersonnelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_merge_request_personnel_with_options(repository_id, local_id, person_type, request, headers, runtime)
@@ -18463,6 +25429,12 @@ class Client(OpenApiClient):
         person_type: str,
         request: devops_20210625_models.UpdateMergeRequestPersonnelRequest,
     ) -> devops_20210625_models.UpdateMergeRequestPersonnelResponse:
+        """
+        @summary 更新代码评审的干系人
+        
+        @param request: UpdateMergeRequestPersonnelRequest
+        @return: UpdateMergeRequestPersonnelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_merge_request_personnel_with_options_async(repository_id, local_id, person_type, request, headers, runtime)
@@ -18474,6 +25446,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdatePipelineResponse:
+        """
+        @summary 更新流水线。
+        
+        @param request: UpdatePipelineRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePipelineResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.content):
@@ -18509,6 +25489,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdatePipelineResponse:
+        """
+        @summary 更新流水线。
+        
+        @param request: UpdatePipelineRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePipelineResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.content):
@@ -18542,6 +25530,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.UpdatePipelineRequest,
     ) -> devops_20210625_models.UpdatePipelineResponse:
+        """
+        @summary 更新流水线。
+        
+        @param request: UpdatePipelineRequest
+        @return: UpdatePipelineResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_pipeline_with_options(organization_id, request, headers, runtime)
@@ -18551,6 +25545,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.UpdatePipelineRequest,
     ) -> devops_20210625_models.UpdatePipelineResponse:
+        """
+        @summary 更新流水线。
+        
+        @param request: UpdatePipelineRequest
+        @return: UpdatePipelineResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_pipeline_with_options_async(organization_id, request, headers, runtime)
@@ -18563,6 +25563,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdatePipelineBaseInfoResponse:
+        """
+        @summary 删除标签
+        
+        @param request: UpdatePipelineBaseInfoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePipelineBaseInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.env_id):
@@ -18599,6 +25607,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdatePipelineBaseInfoResponse:
+        """
+        @summary 删除标签
+        
+        @param request: UpdatePipelineBaseInfoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePipelineBaseInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.env_id):
@@ -18633,6 +25649,12 @@ class Client(OpenApiClient):
         pipeline_id: str,
         request: devops_20210625_models.UpdatePipelineBaseInfoRequest,
     ) -> devops_20210625_models.UpdatePipelineBaseInfoResponse:
+        """
+        @summary 删除标签
+        
+        @param request: UpdatePipelineBaseInfoRequest
+        @return: UpdatePipelineBaseInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_pipeline_base_info_with_options(organization_id, pipeline_id, request, headers, runtime)
@@ -18643,6 +25665,12 @@ class Client(OpenApiClient):
         pipeline_id: str,
         request: devops_20210625_models.UpdatePipelineBaseInfoRequest,
     ) -> devops_20210625_models.UpdatePipelineBaseInfoResponse:
+        """
+        @summary 删除标签
+        
+        @param request: UpdatePipelineBaseInfoRequest
+        @return: UpdatePipelineBaseInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_pipeline_base_info_with_options_async(organization_id, pipeline_id, request, headers, runtime)
@@ -18655,6 +25683,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdatePipelineGroupResponse:
+        """
+        @summary 更新流水线分组
+        
+        @param request: UpdatePipelineGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePipelineGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -18687,6 +25723,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdatePipelineGroupResponse:
+        """
+        @summary 更新流水线分组
+        
+        @param request: UpdatePipelineGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePipelineGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -18717,6 +25761,12 @@ class Client(OpenApiClient):
         group_id: str,
         request: devops_20210625_models.UpdatePipelineGroupRequest,
     ) -> devops_20210625_models.UpdatePipelineGroupResponse:
+        """
+        @summary 更新流水线分组
+        
+        @param request: UpdatePipelineGroupRequest
+        @return: UpdatePipelineGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_pipeline_group_with_options(organization_id, group_id, request, headers, runtime)
@@ -18727,6 +25777,12 @@ class Client(OpenApiClient):
         group_id: str,
         request: devops_20210625_models.UpdatePipelineGroupRequest,
     ) -> devops_20210625_models.UpdatePipelineGroupResponse:
+        """
+        @summary 更新流水线分组
+        
+        @param request: UpdatePipelineGroupRequest
+        @return: UpdatePipelineGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_pipeline_group_with_options_async(organization_id, group_id, request, headers, runtime)
@@ -18739,6 +25795,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateProjectFieldResponse:
+        """
+        @summary 更新项目属性与字段
+        
+        @param request: UpdateProjectFieldRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProjectFieldResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.status_identifier):
@@ -18775,6 +25839,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateProjectFieldResponse:
+        """
+        @summary 更新项目属性与字段
+        
+        @param request: UpdateProjectFieldRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProjectFieldResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.status_identifier):
@@ -18809,6 +25881,12 @@ class Client(OpenApiClient):
         identifier: str,
         request: devops_20210625_models.UpdateProjectFieldRequest,
     ) -> devops_20210625_models.UpdateProjectFieldResponse:
+        """
+        @summary 更新项目属性与字段
+        
+        @param request: UpdateProjectFieldRequest
+        @return: UpdateProjectFieldResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_project_field_with_options(organization_id, identifier, request, headers, runtime)
@@ -18819,6 +25897,12 @@ class Client(OpenApiClient):
         identifier: str,
         request: devops_20210625_models.UpdateProjectFieldRequest,
     ) -> devops_20210625_models.UpdateProjectFieldResponse:
+        """
+        @summary 更新项目属性与字段
+        
+        @param request: UpdateProjectFieldRequest
+        @return: UpdateProjectFieldResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_project_field_with_options_async(organization_id, identifier, request, headers, runtime)
@@ -18830,6 +25914,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateProjectLabelResponse:
+        """
+        @summary 更新代码库Label
+        
+        @param request: UpdateProjectLabelRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProjectLabelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -18873,6 +25965,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateProjectLabelResponse:
+        """
+        @summary 更新代码库Label
+        
+        @param request: UpdateProjectLabelRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProjectLabelResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -18914,6 +26014,12 @@ class Client(OpenApiClient):
         label_id: str,
         request: devops_20210625_models.UpdateProjectLabelRequest,
     ) -> devops_20210625_models.UpdateProjectLabelResponse:
+        """
+        @summary 更新代码库Label
+        
+        @param request: UpdateProjectLabelRequest
+        @return: UpdateProjectLabelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_project_label_with_options(label_id, request, headers, runtime)
@@ -18923,6 +26029,12 @@ class Client(OpenApiClient):
         label_id: str,
         request: devops_20210625_models.UpdateProjectLabelRequest,
     ) -> devops_20210625_models.UpdateProjectLabelResponse:
+        """
+        @summary 更新代码库Label
+        
+        @param request: UpdateProjectLabelRequest
+        @return: UpdateProjectLabelResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_project_label_with_options_async(label_id, request, headers, runtime)
@@ -18935,6 +26047,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateProjectMemberResponse:
+        """
+        @summary 添加项目成员
+        
+        @param request: UpdateProjectMemberRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProjectMemberResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.role_identifier):
@@ -18975,6 +26095,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateProjectMemberResponse:
+        """
+        @summary 添加项目成员
+        
+        @param request: UpdateProjectMemberRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProjectMemberResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.role_identifier):
@@ -19013,6 +26141,12 @@ class Client(OpenApiClient):
         project_id: str,
         request: devops_20210625_models.UpdateProjectMemberRequest,
     ) -> devops_20210625_models.UpdateProjectMemberResponse:
+        """
+        @summary 添加项目成员
+        
+        @param request: UpdateProjectMemberRequest
+        @return: UpdateProjectMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_project_member_with_options(organization_id, project_id, request, headers, runtime)
@@ -19023,6 +26157,12 @@ class Client(OpenApiClient):
         project_id: str,
         request: devops_20210625_models.UpdateProjectMemberRequest,
     ) -> devops_20210625_models.UpdateProjectMemberResponse:
+        """
+        @summary 添加项目成员
+        
+        @param request: UpdateProjectMemberRequest
+        @return: UpdateProjectMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_project_member_with_options_async(organization_id, project_id, request, headers, runtime)
@@ -19035,6 +26175,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateProtectedBranchesResponse:
+        """
+        @summary 更改保护分支设置
+        
+        @param request: UpdateProtectedBranchesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProtectedBranchesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -19087,6 +26235,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateProtectedBranchesResponse:
+        """
+        @summary 更改保护分支设置
+        
+        @param request: UpdateProtectedBranchesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateProtectedBranchesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -19137,6 +26293,12 @@ class Client(OpenApiClient):
         id: str,
         request: devops_20210625_models.UpdateProtectedBranchesRequest,
     ) -> devops_20210625_models.UpdateProtectedBranchesResponse:
+        """
+        @summary 更改保护分支设置
+        
+        @param request: UpdateProtectedBranchesRequest
+        @return: UpdateProtectedBranchesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_protected_branches_with_options(repository_id, id, request, headers, runtime)
@@ -19147,6 +26309,12 @@ class Client(OpenApiClient):
         id: str,
         request: devops_20210625_models.UpdateProtectedBranchesRequest,
     ) -> devops_20210625_models.UpdateProtectedBranchesResponse:
+        """
+        @summary 更改保护分支设置
+        
+        @param request: UpdateProtectedBranchesRequest
+        @return: UpdateProtectedBranchesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_protected_branches_with_options_async(repository_id, id, request, headers, runtime)
@@ -19158,6 +26326,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdatePushReviewOnOffResponse:
+        """
+        @summary 推送评审模式开关
+        
+        @param request: UpdatePushReviewOnOffRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePushReviewOnOffResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -19191,6 +26367,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdatePushReviewOnOffResponse:
+        """
+        @summary 推送评审模式开关
+        
+        @param request: UpdatePushReviewOnOffRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePushReviewOnOffResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.organization_id):
@@ -19222,6 +26406,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.UpdatePushReviewOnOffRequest,
     ) -> devops_20210625_models.UpdatePushReviewOnOffResponse:
+        """
+        @summary 推送评审模式开关
+        
+        @param request: UpdatePushReviewOnOffRequest
+        @return: UpdatePushReviewOnOffResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_push_review_on_off_with_options(repository_id, request, headers, runtime)
@@ -19231,6 +26421,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.UpdatePushReviewOnOffRequest,
     ) -> devops_20210625_models.UpdatePushReviewOnOffResponse:
+        """
+        @summary 推送评审模式开关
+        
+        @param request: UpdatePushReviewOnOffRequest
+        @return: UpdatePushReviewOnOffResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_push_review_on_off_with_options_async(repository_id, request, headers, runtime)
@@ -19243,6 +26439,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdatePushRuleResponse:
+        """
+        @summary 更新推送规则
+        
+        @param request: UpdatePushRuleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePushRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -19281,6 +26485,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdatePushRuleResponse:
+        """
+        @summary 更新推送规则
+        
+        @param request: UpdatePushRuleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePushRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -19317,6 +26529,12 @@ class Client(OpenApiClient):
         push_rule_id: str,
         request: devops_20210625_models.UpdatePushRuleRequest,
     ) -> devops_20210625_models.UpdatePushRuleResponse:
+        """
+        @summary 更新推送规则
+        
+        @param request: UpdatePushRuleRequest
+        @return: UpdatePushRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_push_rule_with_options(repository_id, push_rule_id, request, headers, runtime)
@@ -19327,6 +26545,12 @@ class Client(OpenApiClient):
         push_rule_id: str,
         request: devops_20210625_models.UpdatePushRuleRequest,
     ) -> devops_20210625_models.UpdatePushRuleResponse:
+        """
+        @summary 更新推送规则
+        
+        @param request: UpdatePushRuleRequest
+        @return: UpdatePushRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_push_rule_with_options_async(repository_id, push_rule_id, request, headers, runtime)
@@ -19338,6 +26562,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateRepositoryResponse:
+        """
+        @summary 更新代码库名称、路径、描述、默认分支等设置
+        
+        @param request: UpdateRepositoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRepositoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -19407,6 +26639,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateRepositoryResponse:
+        """
+        @summary 更新代码库名称、路径、描述、默认分支等设置
+        
+        @param request: UpdateRepositoryRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRepositoryResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -19474,6 +26714,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.UpdateRepositoryRequest,
     ) -> devops_20210625_models.UpdateRepositoryResponse:
+        """
+        @summary 更新代码库名称、路径、描述、默认分支等设置
+        
+        @param request: UpdateRepositoryRequest
+        @return: UpdateRepositoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_repository_with_options(repository_id, request, headers, runtime)
@@ -19483,6 +26729,12 @@ class Client(OpenApiClient):
         repository_id: str,
         request: devops_20210625_models.UpdateRepositoryRequest,
     ) -> devops_20210625_models.UpdateRepositoryResponse:
+        """
+        @summary 更新代码库名称、路径、描述、默认分支等设置
+        
+        @param request: UpdateRepositoryRequest
+        @return: UpdateRepositoryResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_repository_with_options_async(repository_id, request, headers, runtime)
@@ -19495,6 +26747,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateRepositoryMemberResponse:
+        """
+        @summary 修改代码库成员的权限（角色）
+        
+        @param request: UpdateRepositoryMemberRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRepositoryMemberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -19541,6 +26801,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateRepositoryMemberResponse:
+        """
+        @summary 修改代码库成员的权限（角色）
+        
+        @param request: UpdateRepositoryMemberRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateRepositoryMemberResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.access_token):
@@ -19585,6 +26853,12 @@ class Client(OpenApiClient):
         aliyun_pk: str,
         request: devops_20210625_models.UpdateRepositoryMemberRequest,
     ) -> devops_20210625_models.UpdateRepositoryMemberResponse:
+        """
+        @summary 修改代码库成员的权限（角色）
+        
+        @param request: UpdateRepositoryMemberRequest
+        @return: UpdateRepositoryMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_repository_member_with_options(repository_id, aliyun_pk, request, headers, runtime)
@@ -19595,6 +26869,12 @@ class Client(OpenApiClient):
         aliyun_pk: str,
         request: devops_20210625_models.UpdateRepositoryMemberRequest,
     ) -> devops_20210625_models.UpdateRepositoryMemberResponse:
+        """
+        @summary 修改代码库成员的权限（角色）
+        
+        @param request: UpdateRepositoryMemberRequest
+        @return: UpdateRepositoryMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_repository_member_with_options_async(repository_id, aliyun_pk, request, headers, runtime)
@@ -19609,6 +26889,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateResourceMemberResponse:
+        """
+        @summary 更新资源成员
+        
+        @param request: UpdateResourceMemberRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateResourceMemberResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.role_name):
@@ -19643,6 +26931,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateResourceMemberResponse:
+        """
+        @summary 更新资源成员
+        
+        @param request: UpdateResourceMemberRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateResourceMemberResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.role_name):
@@ -19675,6 +26971,12 @@ class Client(OpenApiClient):
         account_id: str,
         request: devops_20210625_models.UpdateResourceMemberRequest,
     ) -> devops_20210625_models.UpdateResourceMemberResponse:
+        """
+        @summary 更新资源成员
+        
+        @param request: UpdateResourceMemberRequest
+        @return: UpdateResourceMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_resource_member_with_options(organization_id, resource_type, resource_id, account_id, request, headers, runtime)
@@ -19687,6 +26989,12 @@ class Client(OpenApiClient):
         account_id: str,
         request: devops_20210625_models.UpdateResourceMemberRequest,
     ) -> devops_20210625_models.UpdateResourceMemberResponse:
+        """
+        @summary 更新资源成员
+        
+        @param request: UpdateResourceMemberRequest
+        @return: UpdateResourceMemberResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_resource_member_with_options_async(organization_id, resource_type, resource_id, account_id, request, headers, runtime)
@@ -19699,6 +27007,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateTestCaseResponse:
+        """
+        @summary 更新测试用例字段
+        
+        @param request: UpdateTestCaseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTestCaseResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.update_workitem_property_request):
@@ -19731,6 +27047,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateTestCaseResponse:
+        """
+        @summary 更新测试用例字段
+        
+        @param request: UpdateTestCaseRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTestCaseResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.update_workitem_property_request):
@@ -19761,6 +27085,12 @@ class Client(OpenApiClient):
         testcase_identifier: str,
         request: devops_20210625_models.UpdateTestCaseRequest,
     ) -> devops_20210625_models.UpdateTestCaseResponse:
+        """
+        @summary 更新测试用例字段
+        
+        @param request: UpdateTestCaseRequest
+        @return: UpdateTestCaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_test_case_with_options(organization_id, testcase_identifier, request, headers, runtime)
@@ -19771,6 +27101,12 @@ class Client(OpenApiClient):
         testcase_identifier: str,
         request: devops_20210625_models.UpdateTestCaseRequest,
     ) -> devops_20210625_models.UpdateTestCaseResponse:
+        """
+        @summary 更新测试用例字段
+        
+        @param request: UpdateTestCaseRequest
+        @return: UpdateTestCaseResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_test_case_with_options_async(organization_id, testcase_identifier, request, headers, runtime)
@@ -19784,6 +27120,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateTestResultResponse:
+        """
+        @summary 更新了测试计划中测试用例的执行人与状态
+        
+        @param request: UpdateTestResultRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTestResultResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.executor):
@@ -19819,6 +27163,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateTestResultResponse:
+        """
+        @summary 更新了测试计划中测试用例的执行人与状态
+        
+        @param request: UpdateTestResultRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTestResultResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.executor):
@@ -19852,6 +27204,12 @@ class Client(OpenApiClient):
         testcase_identifier: str,
         request: devops_20210625_models.UpdateTestResultRequest,
     ) -> devops_20210625_models.UpdateTestResultResponse:
+        """
+        @summary 更新了测试计划中测试用例的执行人与状态
+        
+        @param request: UpdateTestResultRequest
+        @return: UpdateTestResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_test_result_with_options(organization_id, test_plan_identifier, testcase_identifier, request, headers, runtime)
@@ -19863,6 +27221,12 @@ class Client(OpenApiClient):
         testcase_identifier: str,
         request: devops_20210625_models.UpdateTestResultRequest,
     ) -> devops_20210625_models.UpdateTestResultResponse:
+        """
+        @summary 更新了测试计划中测试用例的执行人与状态
+        
+        @param request: UpdateTestResultRequest
+        @return: UpdateTestResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_test_result_with_options_async(organization_id, test_plan_identifier, testcase_identifier, request, headers, runtime)
@@ -19875,6 +27239,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateVariableGroupResponse:
+        """
+        @summary 更新变量组
+        
+        @param request: UpdateVariableGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateVariableGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -19911,6 +27283,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateVariableGroupResponse:
+        """
+        @summary 更新变量组
+        
+        @param request: UpdateVariableGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateVariableGroupResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -19945,6 +27325,12 @@ class Client(OpenApiClient):
         id: str,
         request: devops_20210625_models.UpdateVariableGroupRequest,
     ) -> devops_20210625_models.UpdateVariableGroupResponse:
+        """
+        @summary 更新变量组
+        
+        @param request: UpdateVariableGroupRequest
+        @return: UpdateVariableGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_variable_group_with_options(organization_id, id, request, headers, runtime)
@@ -19955,6 +27341,12 @@ class Client(OpenApiClient):
         id: str,
         request: devops_20210625_models.UpdateVariableGroupRequest,
     ) -> devops_20210625_models.UpdateVariableGroupResponse:
+        """
+        @summary 更新变量组
+        
+        @param request: UpdateVariableGroupRequest
+        @return: UpdateVariableGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_variable_group_with_options_async(organization_id, id, request, headers, runtime)
@@ -19966,6 +27358,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateWorkItemResponse:
+        """
+        @summary 更新工作项信息
+        
+        @param request: UpdateWorkItemRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWorkItemResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.field_type):
@@ -20003,6 +27403,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateWorkItemResponse:
+        """
+        @summary 更新工作项信息
+        
+        @param request: UpdateWorkItemRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWorkItemResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.field_type):
@@ -20038,6 +27446,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.UpdateWorkItemRequest,
     ) -> devops_20210625_models.UpdateWorkItemResponse:
+        """
+        @summary 更新工作项信息
+        
+        @param request: UpdateWorkItemRequest
+        @return: UpdateWorkItemResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_work_item_with_options(organization_id, request, headers, runtime)
@@ -20047,6 +27461,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.UpdateWorkItemRequest,
     ) -> devops_20210625_models.UpdateWorkItemResponse:
+        """
+        @summary 更新工作项信息
+        
+        @param request: UpdateWorkItemRequest
+        @return: UpdateWorkItemResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_work_item_with_options_async(organization_id, request, headers, runtime)
@@ -20058,6 +27478,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateWorkitemCommentResponse:
+        """
+        @summary 更新工作项评论
+        
+        @param request: UpdateWorkitemCommentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWorkitemCommentResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.comment_id):
@@ -20095,6 +27523,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateWorkitemCommentResponse:
+        """
+        @summary 更新工作项评论
+        
+        @param request: UpdateWorkitemCommentRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWorkitemCommentResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.comment_id):
@@ -20130,6 +27566,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.UpdateWorkitemCommentRequest,
     ) -> devops_20210625_models.UpdateWorkitemCommentResponse:
+        """
+        @summary 更新工作项评论
+        
+        @param request: UpdateWorkitemCommentRequest
+        @return: UpdateWorkitemCommentResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_workitem_comment_with_options(organization_id, request, headers, runtime)
@@ -20139,6 +27581,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.UpdateWorkitemCommentRequest,
     ) -> devops_20210625_models.UpdateWorkitemCommentResponse:
+        """
+        @summary 更新工作项评论
+        
+        @param request: UpdateWorkitemCommentRequest
+        @return: UpdateWorkitemCommentResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_workitem_comment_with_options_async(organization_id, request, headers, runtime)
@@ -20150,6 +27598,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateWorkitemFieldResponse:
+        """
+        @summary 批量更新工作项字段信息
+        
+        @param request: UpdateWorkitemFieldRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWorkitemFieldResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.update_workitem_property_request):
@@ -20183,6 +27639,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.UpdateWorkitemFieldResponse:
+        """
+        @summary 批量更新工作项字段信息
+        
+        @param request: UpdateWorkitemFieldRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateWorkitemFieldResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.update_workitem_property_request):
@@ -20214,6 +27678,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.UpdateWorkitemFieldRequest,
     ) -> devops_20210625_models.UpdateWorkitemFieldResponse:
+        """
+        @summary 批量更新工作项字段信息
+        
+        @param request: UpdateWorkitemFieldRequest
+        @return: UpdateWorkitemFieldResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_workitem_field_with_options(organization_id, request, headers, runtime)
@@ -20223,6 +27693,12 @@ class Client(OpenApiClient):
         organization_id: str,
         request: devops_20210625_models.UpdateWorkitemFieldRequest,
     ) -> devops_20210625_models.UpdateWorkitemFieldResponse:
+        """
+        @summary 批量更新工作项字段信息
+        
+        @param request: UpdateWorkitemFieldRequest
+        @return: UpdateWorkitemFieldResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_workitem_field_with_options_async(organization_id, request, headers, runtime)
@@ -20235,6 +27711,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.WorkitemAttachmentCreateResponse:
+        """
+        @summary 工作项附件创建
+        
+        @param request: WorkitemAttachmentCreateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: WorkitemAttachmentCreateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.file_key):
@@ -20269,6 +27753,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> devops_20210625_models.WorkitemAttachmentCreateResponse:
+        """
+        @summary 工作项附件创建
+        
+        @param request: WorkitemAttachmentCreateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: WorkitemAttachmentCreateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.file_key):
@@ -20301,6 +27793,12 @@ class Client(OpenApiClient):
         workitem_identifier: str,
         request: devops_20210625_models.WorkitemAttachmentCreateRequest,
     ) -> devops_20210625_models.WorkitemAttachmentCreateResponse:
+        """
+        @summary 工作项附件创建
+        
+        @param request: WorkitemAttachmentCreateRequest
+        @return: WorkitemAttachmentCreateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.workitem_attachment_create_with_options(organization_id, workitem_identifier, request, headers, runtime)
@@ -20311,6 +27809,12 @@ class Client(OpenApiClient):
         workitem_identifier: str,
         request: devops_20210625_models.WorkitemAttachmentCreateRequest,
     ) -> devops_20210625_models.WorkitemAttachmentCreateResponse:
+        """
+        @summary 工作项附件创建
+        
+        @param request: WorkitemAttachmentCreateRequest
+        @return: WorkitemAttachmentCreateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.workitem_attachment_create_with_options_async(organization_id, workitem_identifier, request, headers, runtime)

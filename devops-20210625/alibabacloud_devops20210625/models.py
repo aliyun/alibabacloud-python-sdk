@@ -13,8 +13,11 @@ class AddGroupMemberRequest(TeaModel):
         organization_id: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.access_level = access_level
+        # This parameter is required.
         self.aliyun_pks = aliyun_pks
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -224,7 +227,9 @@ class AddPipelineRelationsRequest(TeaModel):
         rel_object_ids: str = None,
         rel_object_type: str = None,
     ):
+        # This parameter is required.
         self.rel_object_ids = rel_object_ids
+        # This parameter is required.
         self.rel_object_type = rel_object_type
 
     def validate(self):
@@ -346,8 +351,11 @@ class AddRepositoryMemberRequest(TeaModel):
         organization_id: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.access_level = access_level
+        # This parameter is required.
         self.aliyun_pks = aliyun_pks
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -555,7 +563,9 @@ class AddWebhookRequest(TeaModel):
         self.push_events = push_events
         self.secret_token = secret_token
         self.tag_push_events = tag_push_events
+        # This parameter is required.
         self.url = url
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -808,6 +818,7 @@ class CloseMergeRequestRequest(TeaModel):
         organization_id: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -1083,8 +1094,11 @@ class CreateBranchRequest(TeaModel):
         organization_id: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.branch_name = branch_name
+        # This parameter is required.
         self.ref = ref
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -1360,13 +1374,18 @@ class CreateCheckRunRequestAnnotations(TeaModel):
         start_line: int = None,
         title: str = None,
     ):
+        # This parameter is required.
         self.annotation_level = annotation_level
         self.end_column = end_column
+        # This parameter is required.
         self.end_line = end_line
+        # This parameter is required.
         self.message = message
+        # This parameter is required.
         self.path = path
         self.raw_details = raw_details
         self.start_column = start_column
+        # This parameter is required.
         self.start_line = start_line
         self.title = title
 
@@ -1429,8 +1448,10 @@ class CreateCheckRunRequestOutputImages(TeaModel):
         caption: str = None,
         image_url: str = None,
     ):
+        # This parameter is required.
         self.alt = alt
         self.caption = caption
+        # This parameter is required.
         self.image_url = image_url
 
     def validate(self):
@@ -1470,8 +1491,10 @@ class CreateCheckRunRequestOutput(TeaModel):
         title: str = None,
     ):
         self.images = images
+        # This parameter is required.
         self.summary = summary
         self.text = text
+        # This parameter is required.
         self.title = title
 
     def validate(self):
@@ -1537,12 +1560,16 @@ class CreateCheckRunRequest(TeaModel):
         self.conclusion = conclusion
         self.details_url = details_url
         self.external_id = external_id
+        # This parameter is required.
         self.head_sha = head_sha
+        # This parameter is required.
         self.name = name
         self.output = output
         self.started_at = started_at
         self.status = status
+        # This parameter is required.
         self.organization_id = organization_id
+        # This parameter is required.
         self.repository_identity = repository_identity
 
     def validate(self):
@@ -2114,7 +2141,9 @@ class CreateCommentRequest(TeaModel):
         repository_identity: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.comment_type = comment_type
+        # This parameter is required.
         self.content = content
         self.draft = draft
         self.file_path = file_path
@@ -2122,8 +2151,11 @@ class CreateCommentRequest(TeaModel):
         self.parent_comment_biz_id = parent_comment_biz_id
         self.patch_set_biz_id = patch_set_biz_id
         self.resolved = resolved
+        # This parameter is required.
         self.local_id = local_id
+        # This parameter is required.
         self.organization_id = organization_id
+        # This parameter is required.
         self.repository_identity = repository_identity
 
     def validate(self):
@@ -2535,10 +2567,14 @@ class CreateCommitStatusRequest(TeaModel):
         self.access_token = access_token
         self.context = context
         self.description = description
+        # This parameter is required.
         self.state = state
         self.target_url = target_url
+        # This parameter is required.
         self.organization_id = organization_id
+        # This parameter is required.
         self.repository_identity = repository_identity
+        # This parameter is required.
         self.sha = sha
 
     def validate(self):
@@ -2849,10 +2885,14 @@ class CreateCommitWithMultipleFilesRequest(TeaModel):
         repository_identity: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.actions = actions
+        # This parameter is required.
         self.branch = branch
         self.commit_message = commit_message
+        # This parameter is required.
         self.organization_id = organization_id
+        # This parameter is required.
         self.repository_identity = repository_identity
 
     def validate(self):
@@ -3254,8 +3294,11 @@ class CreateDeployKeyRequest(TeaModel):
         organization_id: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.key = key
+        # This parameter is required.
         self.title = title
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -3447,11 +3490,16 @@ class CreateFileRequest(TeaModel):
         organization_id: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.branch_name = branch_name
+        # This parameter is required.
         self.commit_message = commit_message
+        # This parameter is required.
         self.content = content
         self.encoding = encoding
+        # This parameter is required.
         self.file_path = file_path
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -3632,8 +3680,11 @@ class CreateFlowTagRequest(TeaModel):
         flow_tag_group_id: int = None,
         name: str = None,
     ):
+        # This parameter is required.
         self.color = color
+        # This parameter is required.
         self.flow_tag_group_id = flow_tag_group_id
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -3761,6 +3812,7 @@ class CreateFlowTagGroupRequest(TeaModel):
         self,
         name: str = None,
     ):
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -3895,9 +3947,12 @@ class CreateHostGroupRequest(TeaModel):
         self.ecs_type = ecs_type
         self.env_id = env_id
         self.machine_infos = machine_infos
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.service_connection_id = service_connection_id
         self.tag_ids = tag_ids
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -4064,15 +4119,22 @@ class CreateMergeRequestRequest(TeaModel):
         organization_id: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.create_from = create_from
         self.description = description
         self.reviewer_ids = reviewer_ids
+        # This parameter is required.
         self.source_branch = source_branch
+        # This parameter is required.
         self.source_project_id = source_project_id
+        # This parameter is required.
         self.target_branch = target_branch
+        # This parameter is required.
         self.target_project_id = target_project_id
+        # This parameter is required.
         self.title = title
         self.work_item_ids = work_item_ids
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -4602,12 +4664,18 @@ class CreateOAuthTokenRequest(TeaModel):
         scope: str = None,
     ):
         # clientId
+        # 
+        # This parameter is required.
         self.client_id = client_id
         # client_secret
+        # 
+        # This parameter is required.
         self.client_secret = client_secret
         self.code = code
+        # This parameter is required.
         self.grant_type = grant_type
         self.login = login
+        # This parameter is required.
         self.scope = scope
 
     def validate(self):
@@ -4796,7 +4864,9 @@ class CreatePipelineRequest(TeaModel):
         content: str = None,
         name: str = None,
     ):
+        # This parameter is required.
         self.content = content
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -4920,6 +4990,7 @@ class CreatePipelineGroupRequest(TeaModel):
         self,
         name: str = None,
     ):
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -5077,9 +5148,13 @@ class CreateProjectRequest(TeaModel):
         scope: str = None,
         template_identifier: str = None,
     ):
+        # This parameter is required.
         self.custom_code = custom_code
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.scope = scope
+        # This parameter is required.
         self.template_identifier = template_identifier
 
     def validate(self):
@@ -5336,10 +5411,14 @@ class CreateProjectLabelRequest(TeaModel):
         repository_identity: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.color = color
         self.description = description
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.organization_id = organization_id
+        # This parameter is required.
         self.repository_identity = repository_identity
 
     def validate(self):
@@ -5852,14 +5931,17 @@ class CreateProtectdBranchRequest(TeaModel):
         organization_id: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.allow_merge_roles = allow_merge_roles
         self.allow_merge_user_ids = allow_merge_user_ids
         self.allow_push_roles = allow_push_roles
         self.allow_push_user_ids = allow_push_user_ids
+        # This parameter is required.
         self.branch = branch
         self.id = id
         self.merge_request_setting = merge_request_setting
         self.test_setting_dto = test_setting_dto
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -6460,7 +6542,9 @@ class CreatePushRuleRequest(TeaModel):
         organization_id: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.rule_infos = rule_infos
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -6729,12 +6813,14 @@ class CreateRepositoryRequest(TeaModel):
         self.init_standard_service = init_standard_service
         self.is_crypto_enabled = is_crypto_enabled
         self.local_import_url = local_import_url
+        # This parameter is required.
         self.name = name
         self.namespace_id = namespace_id
         self.path = path
         self.readme_type = readme_type
         self.visibility_level = visibility_level
         self.create_parent_path = create_parent_path
+        # This parameter is required.
         self.organization_id = organization_id
         self.sync = sync
 
@@ -7168,10 +7254,15 @@ class CreateRepositoryGroupRequest(TeaModel):
         self.access_token = access_token
         self.avatar_url = avatar_url
         self.description = description
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.parent_id = parent_id
+        # This parameter is required.
         self.path = path
+        # This parameter is required.
         self.visibility_level = visibility_level
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -7415,7 +7506,9 @@ class CreateResourceMemberRequest(TeaModel):
         account_id: str = None,
         role_name: str = None,
     ):
+        # This parameter is required.
         self.account_id = account_id
+        # This parameter is required.
         self.role_name = role_name
 
     def validate(self):
@@ -7533,6 +7626,7 @@ class CreateServiceAuthRequest(TeaModel):
         self,
         service_auth_type: str = None,
     ):
+        # This parameter is required.
         self.service_auth_type = service_auth_type
 
     def validate(self):
@@ -7657,10 +7751,15 @@ class CreateServiceConnectionRequest(TeaModel):
         scope: str = None,
         service_auth_id: int = None,
     ):
+        # This parameter is required.
         self.auth_type = auth_type
+        # This parameter is required.
         self.connection_name = connection_name
+        # This parameter is required.
         self.connection_type = connection_type
+        # This parameter is required.
         self.scope = scope
+        # This parameter is required.
         self.service_auth_id = service_auth_id
 
     def validate(self):
@@ -7800,10 +7899,14 @@ class CreateServiceCredentialRequest(TeaModel):
         type: str = None,
         username: str = None,
     ):
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.password = password
         self.scope = scope
+        # This parameter is required.
         self.type = type
+        # This parameter is required.
         self.username = username
 
     def validate(self):
@@ -7944,8 +8047,11 @@ class CreateSprintRequest(TeaModel):
         start_date: str = None,
     ):
         self.end_date = end_date
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.space_identifier = space_identifier
+        # This parameter is required.
         self.staff_ids = staff_ids
         self.start_date = start_date
 
@@ -8310,8 +8416,11 @@ class CreateTagRequest(TeaModel):
     ):
         self.access_token = access_token
         self.message = message
+        # This parameter is required.
         self.ref = ref
+        # This parameter is required.
         self.tag_name = tag_name
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -8659,6 +8768,7 @@ class CreateTestCaseRequestTestcaseStepContentInfo(TeaModel):
     ):
         self.precondition = precondition
         self.step_result_list = step_result_list
+        # This parameter is required.
         self.step_type = step_type
 
     def validate(self):
@@ -8709,11 +8819,15 @@ class CreateTestCaseRequest(TeaModel):
         tags: List[str] = None,
         testcase_step_content_info: CreateTestCaseRequestTestcaseStepContentInfo = None,
     ):
+        # This parameter is required.
         self.assigned_to = assigned_to
+        # This parameter is required.
         self.directory_identifier = directory_identifier
         self.field_value_list = field_value_list
         self.priority = priority
+        # This parameter is required.
         self.space_identifier = space_identifier
+        # This parameter is required.
         self.subject = subject
         self.tags = tags
         self.testcase_step_content_info = testcase_step_content_info
@@ -9299,9 +9413,13 @@ class CreateUserKeyRequest(TeaModel):
     ):
         self.access_token = access_token
         self.expire_time = expire_time
+        # This parameter is required.
         self.key_scope = key_scope
+        # This parameter is required.
         self.public_key = public_key
+        # This parameter is required.
         self.title = title
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -9515,7 +9633,9 @@ class CreateVariableGroupRequest(TeaModel):
         variables: str = None,
     ):
         self.description = description
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.variables = variables
 
     def validate(self):
@@ -9696,20 +9816,27 @@ class CreateWorkitemRequest(TeaModel):
         verifier: List[str] = None,
         workitem_type: str = None,
     ):
+        # This parameter is required.
         self.assigned_to = assigned_to
+        # This parameter is required.
         self.category = category
         self.description = description
         self.description_format = description_format
         self.field_value_list = field_value_list
         self.parent = parent
         self.participant = participant
+        # This parameter is required.
         self.space = space
+        # This parameter is required.
         self.space_identifier = space_identifier
+        # This parameter is required.
         self.space_type = space_type
         self.sprint = sprint
+        # This parameter is required.
         self.subject = subject
         self.tracker = tracker
         self.verifier = verifier
+        # This parameter is required.
         self.workitem_type = workitem_type
 
     def validate(self):
@@ -10051,9 +10178,12 @@ class CreateWorkitemCommentRequest(TeaModel):
         parent_id: str = None,
         workitem_identifier: str = None,
     ):
+        # This parameter is required.
         self.content = content
+        # This parameter is required.
         self.format_type = format_type
         self.parent_id = parent_id
+        # This parameter is required.
         self.workitem_identifier = workitem_identifier
 
     def validate(self):
@@ -10345,9 +10475,13 @@ class CreateWorkitemEstimateRequest(TeaModel):
         workitem_identifier: str = None,
     ):
         self.description = description
+        # This parameter is required.
         self.record_user_identifier = record_user_identifier
+        # This parameter is required.
         self.spent_time = spent_time
+        # This parameter is required.
         self.type = type
+        # This parameter is required.
         self.workitem_identifier = workitem_identifier
 
     def validate(self):
@@ -10680,12 +10814,18 @@ class CreateWorkitemRecordRequest(TeaModel):
         type: str = None,
         workitem_identifier: str = None,
     ):
+        # This parameter is required.
         self.actual_time = actual_time
         self.description = description
+        # This parameter is required.
         self.gmt_end = gmt_end
+        # This parameter is required.
         self.gmt_start = gmt_start
+        # This parameter is required.
         self.record_user_identifier = record_user_identifier
+        # This parameter is required.
         self.type = type
+        # This parameter is required.
         self.workitem_identifier = workitem_identifier
 
     def validate(self):
@@ -11078,19 +11218,24 @@ class CreateWorkitemV2Request(TeaModel):
         versions: List[str] = None,
         workitem_type_identifier: str = None,
     ):
+        # This parameter is required.
         self.assigned_to = assigned_to
+        # This parameter is required.
         self.category = category
         self.description = description
         self.field_value_list = field_value_list
         self.parent_identifier = parent_identifier
         self.participants = participants
+        # This parameter is required.
         self.space_identifier = space_identifier
         self.sprint_identifier = sprint_identifier
+        # This parameter is required.
         self.subject = subject
         self.tags = tags
         self.trackers = trackers
         self.verifier = verifier
         self.versions = versions
+        # This parameter is required.
         self.workitem_type_identifier = workitem_type_identifier
 
     def validate(self):
@@ -11277,13 +11422,16 @@ class CreateWorkspaceRequest(TeaModel):
         reuse: bool = None,
         workspace_template: str = None,
     ):
+        # This parameter is required.
         self.code_url = code_url
+        # This parameter is required.
         self.code_version = code_version
         self.file_path = file_path
         self.name = name
         self.request_from = request_from
         self.resource_identifier = resource_identifier
         self.reuse = reuse
+        # This parameter is required.
         self.workspace_template = workspace_template
 
     def validate(self):
@@ -11571,7 +11719,9 @@ class DeleteBranchRequest(TeaModel):
         organization_id: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.branch_name = branch_name
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -11733,9 +11883,13 @@ class DeleteFileRequest(TeaModel):
         organization_id: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.branch_name = branch_name
+        # This parameter is required.
         self.commit_message = commit_message
+        # This parameter is required.
         self.file_path = file_path
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -12082,8 +12236,11 @@ class DeleteGroupMemberRequest(TeaModel):
         organization_id: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.aliyun_pk = aliyun_pk
+        # This parameter is required.
         self.member_type = member_type
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -12545,7 +12702,9 @@ class DeletePipelineRelationsRequest(TeaModel):
         rel_object_id: str = None,
         rel_object_type: str = None,
     ):
+        # This parameter is required.
         self.rel_object_id = rel_object_id
+        # This parameter is required.
         self.rel_object_type = rel_object_type
 
     def validate(self):
@@ -12663,6 +12822,7 @@ class DeleteProjectRequest(TeaModel):
         self,
         identifier: str = None,
     ):
+        # This parameter is required.
         self.identifier = identifier
 
     def validate(self):
@@ -12785,7 +12945,9 @@ class DeleteProjectLabelRequest(TeaModel):
         repository_identity: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.organization_id = organization_id
+        # This parameter is required.
         self.repository_identity = repository_identity
 
     def validate(self):
@@ -12944,6 +13106,7 @@ class DeleteProtectedBranchRequest(TeaModel):
         organization_id: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -13098,6 +13261,7 @@ class DeletePushRuleRequest(TeaModel):
         organization_id: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -13253,7 +13417,9 @@ class DeleteRepositoryRequest(TeaModel):
         organization_id: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.reason = reason
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -13413,7 +13579,9 @@ class DeleteRepositoryGroupRequest(TeaModel):
         organization_id: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.reason = reason
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -13574,6 +13742,7 @@ class DeleteRepositoryMemberRequest(TeaModel):
     ):
         self.access_token = access_token
         self.member_type = member_type
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -13768,6 +13937,7 @@ class DeleteRepositoryWebhookRequest(TeaModel):
         organization_id: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -14093,7 +14263,9 @@ class DeleteTagRequest(TeaModel):
         tag_name: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.organization_id = organization_id
+        # This parameter is required.
         self.tag_name = tag_name
 
     def validate(self):
@@ -14252,6 +14424,7 @@ class DeleteUserKeyRequest(TeaModel):
         organization_id: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -14550,6 +14723,7 @@ class DeleteWorkitemRequest(TeaModel):
         self,
         identifier: str = None,
     ):
+        # This parameter is required.
         self.identifier = identifier
 
     def validate(self):
@@ -14671,6 +14845,7 @@ class DeleteWorkitemAllCommentRequest(TeaModel):
         self,
         identifier: str = None,
     ):
+        # This parameter is required.
         self.identifier = identifier
 
     def validate(self):
@@ -14792,7 +14967,9 @@ class DeleteWorkitemCommentRequest(TeaModel):
         comment_id: int = None,
         identifier: str = None,
     ):
+        # This parameter is required.
         self.comment_id = comment_id
+        # This parameter is required.
         self.identifier = identifier
 
     def validate(self):
@@ -14919,6 +15096,7 @@ class EnableDeployKeyRequest(TeaModel):
         organization_id: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -15062,6 +15240,3186 @@ class EnableDeployKeyResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = EnableDeployKeyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ExportInsightCustomValueRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        start_time: str = None,
+    ):
+        # This parameter is required.
+        self.end_time = end_time
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        return self
+
+
+class ExportInsightCustomValueResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        double_value: float = None,
+        field_id: str = None,
+        gmt_create: int = None,
+        gmt_modified: int = None,
+        id: int = None,
+        identifier: str = None,
+        is_deleted: str = None,
+        long_value: int = None,
+        organization_id: str = None,
+        target_id: str = None,
+        target_type: str = None,
+        type: str = None,
+        value: str = None,
+    ):
+        self.double_value = double_value
+        self.field_id = field_id
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.id = id
+        self.identifier = identifier
+        self.is_deleted = is_deleted
+        self.long_value = long_value
+        self.organization_id = organization_id
+        self.target_id = target_id
+        self.target_type = target_type
+        self.type = type
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.double_value is not None:
+            result['doubleValue'] = self.double_value
+        if self.field_id is not None:
+            result['fieldId'] = self.field_id
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['id'] = self.id
+        if self.identifier is not None:
+            result['identifier'] = self.identifier
+        if self.is_deleted is not None:
+            result['isDeleted'] = self.is_deleted
+        if self.long_value is not None:
+            result['longValue'] = self.long_value
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        if self.target_id is not None:
+            result['targetId'] = self.target_id
+        if self.target_type is not None:
+            result['targetType'] = self.target_type
+        if self.type is not None:
+            result['type'] = self.type
+        if self.value is not None:
+            result['value'] = self.value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('doubleValue') is not None:
+            self.double_value = m.get('doubleValue')
+        if m.get('fieldId') is not None:
+            self.field_id = m.get('fieldId')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('identifier') is not None:
+            self.identifier = m.get('identifier')
+        if m.get('isDeleted') is not None:
+            self.is_deleted = m.get('isDeleted')
+        if m.get('longValue') is not None:
+            self.long_value = m.get('longValue')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        if m.get('targetId') is not None:
+            self.target_id = m.get('targetId')
+        if m.get('targetType') is not None:
+            self.target_type = m.get('targetType')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        return self
+
+
+class ExportInsightCustomValueResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        result: List[ExportInsightCustomValueResponseBodyResult] = None,
+        total_count: int = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.result = result
+        self.total_count = total_count
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        result['result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['result'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        self.result = []
+        if m.get('result') is not None:
+            for k in m.get('result'):
+                temp_model = ExportInsightCustomValueResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ExportInsightCustomValueResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExportInsightCustomValueResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExportInsightCustomValueResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ExportInsightExpectedWorkTimeRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        start_time: str = None,
+    ):
+        # This parameter is required.
+        self.end_time = end_time
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        return self
+
+
+class ExportInsightExpectedWorkTimeResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        gmt_create: int = None,
+        gmt_modified: int = None,
+        id: int = None,
+        identifier: str = None,
+        is_deleted: str = None,
+        organization_id: str = None,
+        project_id: str = None,
+        recorder_id: str = None,
+        source: str = None,
+        type: str = None,
+        value: float = None,
+        workitem_id: str = None,
+    ):
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.id = id
+        self.identifier = identifier
+        self.is_deleted = is_deleted
+        self.organization_id = organization_id
+        self.project_id = project_id
+        self.recorder_id = recorder_id
+        self.source = source
+        self.type = type
+        self.value = value
+        self.workitem_id = workitem_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['id'] = self.id
+        if self.identifier is not None:
+            result['identifier'] = self.identifier
+        if self.is_deleted is not None:
+            result['isDeleted'] = self.is_deleted
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        if self.project_id is not None:
+            result['projectId'] = self.project_id
+        if self.recorder_id is not None:
+            result['recorderId'] = self.recorder_id
+        if self.source is not None:
+            result['source'] = self.source
+        if self.type is not None:
+            result['type'] = self.type
+        if self.value is not None:
+            result['value'] = self.value
+        if self.workitem_id is not None:
+            result['workitemId'] = self.workitem_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('identifier') is not None:
+            self.identifier = m.get('identifier')
+        if m.get('isDeleted') is not None:
+            self.is_deleted = m.get('isDeleted')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        if m.get('projectId') is not None:
+            self.project_id = m.get('projectId')
+        if m.get('recorderId') is not None:
+            self.recorder_id = m.get('recorderId')
+        if m.get('source') is not None:
+            self.source = m.get('source')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        if m.get('workitemId') is not None:
+            self.workitem_id = m.get('workitemId')
+        return self
+
+
+class ExportInsightExpectedWorkTimeResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        result: List[ExportInsightExpectedWorkTimeResponseBodyResult] = None,
+        total_count: int = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.result = result
+        self.total_count = total_count
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        result['result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['result'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        self.result = []
+        if m.get('result') is not None:
+            for k in m.get('result'):
+                temp_model = ExportInsightExpectedWorkTimeResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ExportInsightExpectedWorkTimeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExportInsightExpectedWorkTimeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExportInsightExpectedWorkTimeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ExportInsightFieldRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        start_time: str = None,
+    ):
+        # This parameter is required.
+        self.end_time = end_time
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        return self
+
+
+class ExportInsightFieldResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        field_id: str = None,
+        field_name: str = None,
+        gmt_create: int = None,
+        gmt_modified: int = None,
+        id: int = None,
+        identifier: str = None,
+        is_deleted: str = None,
+        is_system: str = None,
+        option_value: str = None,
+        organization_id: str = None,
+        position: int = None,
+        scope: str = None,
+        source: str = None,
+        target_id: str = None,
+        target_type: str = None,
+        type: str = None,
+    ):
+        self.field_id = field_id
+        self.field_name = field_name
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.id = id
+        self.identifier = identifier
+        self.is_deleted = is_deleted
+        self.is_system = is_system
+        self.option_value = option_value
+        self.organization_id = organization_id
+        self.position = position
+        self.scope = scope
+        self.source = source
+        self.target_id = target_id
+        self.target_type = target_type
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.field_id is not None:
+            result['fieldId'] = self.field_id
+        if self.field_name is not None:
+            result['fieldName'] = self.field_name
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['id'] = self.id
+        if self.identifier is not None:
+            result['identifier'] = self.identifier
+        if self.is_deleted is not None:
+            result['isDeleted'] = self.is_deleted
+        if self.is_system is not None:
+            result['isSystem'] = self.is_system
+        if self.option_value is not None:
+            result['optionValue'] = self.option_value
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        if self.position is not None:
+            result['position'] = self.position
+        if self.scope is not None:
+            result['scope'] = self.scope
+        if self.source is not None:
+            result['source'] = self.source
+        if self.target_id is not None:
+            result['targetId'] = self.target_id
+        if self.target_type is not None:
+            result['targetType'] = self.target_type
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('fieldId') is not None:
+            self.field_id = m.get('fieldId')
+        if m.get('fieldName') is not None:
+            self.field_name = m.get('fieldName')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('identifier') is not None:
+            self.identifier = m.get('identifier')
+        if m.get('isDeleted') is not None:
+            self.is_deleted = m.get('isDeleted')
+        if m.get('isSystem') is not None:
+            self.is_system = m.get('isSystem')
+        if m.get('optionValue') is not None:
+            self.option_value = m.get('optionValue')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        if m.get('position') is not None:
+            self.position = m.get('position')
+        if m.get('scope') is not None:
+            self.scope = m.get('scope')
+        if m.get('source') is not None:
+            self.source = m.get('source')
+        if m.get('targetId') is not None:
+            self.target_id = m.get('targetId')
+        if m.get('targetType') is not None:
+            self.target_type = m.get('targetType')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class ExportInsightFieldResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        result: List[ExportInsightFieldResponseBodyResult] = None,
+        total_count: int = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.result = result
+        self.total_count = total_count
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        result['result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['result'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        self.result = []
+        if m.get('result') is not None:
+            for k in m.get('result'):
+                temp_model = ExportInsightFieldResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ExportInsightFieldResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExportInsightFieldResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExportInsightFieldResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ExportInsightSpaceRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        start_time: str = None,
+    ):
+        # This parameter is required.
+        self.end_time = end_time
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        return self
+
+
+class ExportInsightSpaceResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        category: str = None,
+        description: str = None,
+        gmt_create: int = None,
+        gmt_modified: int = None,
+        id: int = None,
+        identifier: str = None,
+        is_deleted: str = None,
+        name: str = None,
+        organization_id: str = None,
+        source: str = None,
+        stage: str = None,
+        status: str = None,
+        type: str = None,
+    ):
+        self.category = category
+        self.description = description
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.id = id
+        self.identifier = identifier
+        self.is_deleted = is_deleted
+        self.name = name
+        self.organization_id = organization_id
+        self.source = source
+        self.stage = stage
+        self.status = status
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.category is not None:
+            result['category'] = self.category
+        if self.description is not None:
+            result['description'] = self.description
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['id'] = self.id
+        if self.identifier is not None:
+            result['identifier'] = self.identifier
+        if self.is_deleted is not None:
+            result['isDeleted'] = self.is_deleted
+        if self.name is not None:
+            result['name'] = self.name
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        if self.source is not None:
+            result['source'] = self.source
+        if self.stage is not None:
+            result['stage'] = self.stage
+        if self.status is not None:
+            result['status'] = self.status
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('category') is not None:
+            self.category = m.get('category')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('identifier') is not None:
+            self.identifier = m.get('identifier')
+        if m.get('isDeleted') is not None:
+            self.is_deleted = m.get('isDeleted')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        if m.get('source') is not None:
+            self.source = m.get('source')
+        if m.get('stage') is not None:
+            self.stage = m.get('stage')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class ExportInsightSpaceResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        result: List[ExportInsightSpaceResponseBodyResult] = None,
+        total_count: int = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.result = result
+        self.total_count = total_count
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        result['result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['result'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        self.result = []
+        if m.get('result') is not None:
+            for k in m.get('result'):
+                temp_model = ExportInsightSpaceResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ExportInsightSpaceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExportInsightSpaceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExportInsightSpaceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ExportInsightSpaceRefRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        start_time: str = None,
+    ):
+        # This parameter is required.
+        self.end_time = end_time
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        return self
+
+
+class ExportInsightSpaceRefResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        creator_id: str = None,
+        from_id: str = None,
+        gmt_create: int = None,
+        gmt_modified: int = None,
+        id: int = None,
+        identifier: str = None,
+        is_deleted: str = None,
+        modifier_id: str = None,
+        organization_id: str = None,
+        to_id: str = None,
+        type: str = None,
+    ):
+        self.creator_id = creator_id
+        self.from_id = from_id
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.id = id
+        self.identifier = identifier
+        self.is_deleted = is_deleted
+        self.modifier_id = modifier_id
+        self.organization_id = organization_id
+        self.to_id = to_id
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.creator_id is not None:
+            result['creatorId'] = self.creator_id
+        if self.from_id is not None:
+            result['fromId'] = self.from_id
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['id'] = self.id
+        if self.identifier is not None:
+            result['identifier'] = self.identifier
+        if self.is_deleted is not None:
+            result['isDeleted'] = self.is_deleted
+        if self.modifier_id is not None:
+            result['modifierId'] = self.modifier_id
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        if self.to_id is not None:
+            result['toId'] = self.to_id
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('creatorId') is not None:
+            self.creator_id = m.get('creatorId')
+        if m.get('fromId') is not None:
+            self.from_id = m.get('fromId')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('identifier') is not None:
+            self.identifier = m.get('identifier')
+        if m.get('isDeleted') is not None:
+            self.is_deleted = m.get('isDeleted')
+        if m.get('modifierId') is not None:
+            self.modifier_id = m.get('modifierId')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        if m.get('toId') is not None:
+            self.to_id = m.get('toId')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
+class ExportInsightSpaceRefResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        result: List[ExportInsightSpaceRefResponseBodyResult] = None,
+        total_count: int = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.result = result
+        self.total_count = total_count
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        result['result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['result'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        self.result = []
+        if m.get('result') is not None:
+            for k in m.get('result'):
+                temp_model = ExportInsightSpaceRefResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ExportInsightSpaceRefResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExportInsightSpaceRefResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExportInsightSpaceRefResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ExportInsightSprintRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        start_time: str = None,
+    ):
+        # This parameter is required.
+        self.end_time = end_time
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        return self
+
+
+class ExportInsightSprintResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        actual_end: int = None,
+        actual_start: int = None,
+        gmt_create: int = None,
+        gmt_end: int = None,
+        gmt_modified: int = None,
+        gmt_start: int = None,
+        id: int = None,
+        identifier: str = None,
+        is_deleted: str = None,
+        name: str = None,
+        organization_id: str = None,
+        project_id: str = None,
+        source: str = None,
+        status: int = None,
+        work_time_capacity: float = None,
+    ):
+        self.actual_end = actual_end
+        self.actual_start = actual_start
+        self.gmt_create = gmt_create
+        self.gmt_end = gmt_end
+        self.gmt_modified = gmt_modified
+        self.gmt_start = gmt_start
+        self.id = id
+        self.identifier = identifier
+        self.is_deleted = is_deleted
+        self.name = name
+        self.organization_id = organization_id
+        self.project_id = project_id
+        self.source = source
+        self.status = status
+        self.work_time_capacity = work_time_capacity
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.actual_end is not None:
+            result['actualEnd'] = self.actual_end
+        if self.actual_start is not None:
+            result['actualStart'] = self.actual_start
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_end is not None:
+            result['gmtEnd'] = self.gmt_end
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.gmt_start is not None:
+            result['gmtStart'] = self.gmt_start
+        if self.id is not None:
+            result['id'] = self.id
+        if self.identifier is not None:
+            result['identifier'] = self.identifier
+        if self.is_deleted is not None:
+            result['isDeleted'] = self.is_deleted
+        if self.name is not None:
+            result['name'] = self.name
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        if self.project_id is not None:
+            result['projectId'] = self.project_id
+        if self.source is not None:
+            result['source'] = self.source
+        if self.status is not None:
+            result['status'] = self.status
+        if self.work_time_capacity is not None:
+            result['workTimeCapacity'] = self.work_time_capacity
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('actualEnd') is not None:
+            self.actual_end = m.get('actualEnd')
+        if m.get('actualStart') is not None:
+            self.actual_start = m.get('actualStart')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtEnd') is not None:
+            self.gmt_end = m.get('gmtEnd')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('gmtStart') is not None:
+            self.gmt_start = m.get('gmtStart')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('identifier') is not None:
+            self.identifier = m.get('identifier')
+        if m.get('isDeleted') is not None:
+            self.is_deleted = m.get('isDeleted')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        if m.get('projectId') is not None:
+            self.project_id = m.get('projectId')
+        if m.get('source') is not None:
+            self.source = m.get('source')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('workTimeCapacity') is not None:
+            self.work_time_capacity = m.get('workTimeCapacity')
+        return self
+
+
+class ExportInsightSprintResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        result: List[ExportInsightSprintResponseBodyResult] = None,
+        total_count: int = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.result = result
+        self.total_count = total_count
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        result['result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['result'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        self.result = []
+        if m.get('result') is not None:
+            for k in m.get('result'):
+                temp_model = ExportInsightSprintResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ExportInsightSprintResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExportInsightSprintResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExportInsightSprintResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ExportInsightTagRefRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        start_time: str = None,
+    ):
+        # This parameter is required.
+        self.end_time = end_time
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        return self
+
+
+class ExportInsightTagRefResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        gmt_create: int = None,
+        gmt_modified: int = None,
+        id: int = None,
+        identifier: str = None,
+        is_deleted: str = None,
+        name: str = None,
+        organization_id: str = None,
+        tag_id: str = None,
+        target_id: str = None,
+        target_type: str = None,
+    ):
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.id = id
+        self.identifier = identifier
+        self.is_deleted = is_deleted
+        self.name = name
+        self.organization_id = organization_id
+        self.tag_id = tag_id
+        self.target_id = target_id
+        self.target_type = target_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.id is not None:
+            result['id'] = self.id
+        if self.identifier is not None:
+            result['identifier'] = self.identifier
+        if self.is_deleted is not None:
+            result['isDeleted'] = self.is_deleted
+        if self.name is not None:
+            result['name'] = self.name
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        if self.tag_id is not None:
+            result['tagId'] = self.tag_id
+        if self.target_id is not None:
+            result['targetId'] = self.target_id
+        if self.target_type is not None:
+            result['targetType'] = self.target_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('identifier') is not None:
+            self.identifier = m.get('identifier')
+        if m.get('isDeleted') is not None:
+            self.is_deleted = m.get('isDeleted')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        if m.get('tagId') is not None:
+            self.tag_id = m.get('tagId')
+        if m.get('targetId') is not None:
+            self.target_id = m.get('targetId')
+        if m.get('targetType') is not None:
+            self.target_type = m.get('targetType')
+        return self
+
+
+class ExportInsightTagRefResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        result: List[ExportInsightTagRefResponseBodyResult] = None,
+        total_count: int = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.result = result
+        self.total_count = total_count
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        result['result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['result'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        self.result = []
+        if m.get('result') is not None:
+            for k in m.get('result'):
+                temp_model = ExportInsightTagRefResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ExportInsightTagRefResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExportInsightTagRefResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExportInsightTagRefResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ExportInsightWorkTimeRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        start_time: str = None,
+    ):
+        # This parameter is required.
+        self.end_time = end_time
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        return self
+
+
+class ExportInsightWorkTimeResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        actual_value: float = None,
+        description: str = None,
+        gmt_create: int = None,
+        gmt_end: int = None,
+        gmt_modified: int = None,
+        gmt_start: int = None,
+        id: int = None,
+        identifier: str = None,
+        is_deleted: str = None,
+        organization_id: str = None,
+        project_id: str = None,
+        recorder_id: str = None,
+        source: str = None,
+        type: str = None,
+        uuid: str = None,
+        value: int = None,
+        workitem_id: str = None,
+    ):
+        self.actual_value = actual_value
+        self.description = description
+        self.gmt_create = gmt_create
+        self.gmt_end = gmt_end
+        self.gmt_modified = gmt_modified
+        self.gmt_start = gmt_start
+        self.id = id
+        self.identifier = identifier
+        self.is_deleted = is_deleted
+        self.organization_id = organization_id
+        self.project_id = project_id
+        self.recorder_id = recorder_id
+        self.source = source
+        self.type = type
+        self.uuid = uuid
+        self.value = value
+        self.workitem_id = workitem_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.actual_value is not None:
+            result['actualValue'] = self.actual_value
+        if self.description is not None:
+            result['description'] = self.description
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_end is not None:
+            result['gmtEnd'] = self.gmt_end
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.gmt_start is not None:
+            result['gmtStart'] = self.gmt_start
+        if self.id is not None:
+            result['id'] = self.id
+        if self.identifier is not None:
+            result['identifier'] = self.identifier
+        if self.is_deleted is not None:
+            result['isDeleted'] = self.is_deleted
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        if self.project_id is not None:
+            result['projectId'] = self.project_id
+        if self.recorder_id is not None:
+            result['recorderId'] = self.recorder_id
+        if self.source is not None:
+            result['source'] = self.source
+        if self.type is not None:
+            result['type'] = self.type
+        if self.uuid is not None:
+            result['uuid'] = self.uuid
+        if self.value is not None:
+            result['value'] = self.value
+        if self.workitem_id is not None:
+            result['workitemId'] = self.workitem_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('actualValue') is not None:
+            self.actual_value = m.get('actualValue')
+        if m.get('description') is not None:
+            self.description = m.get('description')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtEnd') is not None:
+            self.gmt_end = m.get('gmtEnd')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('gmtStart') is not None:
+            self.gmt_start = m.get('gmtStart')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('identifier') is not None:
+            self.identifier = m.get('identifier')
+        if m.get('isDeleted') is not None:
+            self.is_deleted = m.get('isDeleted')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        if m.get('projectId') is not None:
+            self.project_id = m.get('projectId')
+        if m.get('recorderId') is not None:
+            self.recorder_id = m.get('recorderId')
+        if m.get('source') is not None:
+            self.source = m.get('source')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('uuid') is not None:
+            self.uuid = m.get('uuid')
+        if m.get('value') is not None:
+            self.value = m.get('value')
+        if m.get('workitemId') is not None:
+            self.workitem_id = m.get('workitemId')
+        return self
+
+
+class ExportInsightWorkTimeResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        result: List[ExportInsightWorkTimeResponseBodyResult] = None,
+        total_count: int = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.result = result
+        self.total_count = total_count
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        result['result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['result'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        self.result = []
+        if m.get('result') is not None:
+            for k in m.get('result'):
+                temp_model = ExportInsightWorkTimeResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ExportInsightWorkTimeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExportInsightWorkTimeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExportInsightWorkTimeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ExportInsightWorkitemStatusRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        start_time: str = None,
+    ):
+        # This parameter is required.
+        self.end_time = end_time
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        return self
+
+
+class ExportInsightWorkitemStatusResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        assigned_to_id: str = None,
+        creator_id: str = None,
+        expected_work_time: int = None,
+        gmt_closed: int = None,
+        gmt_create: int = None,
+        gmt_due: int = None,
+        gmt_modified: int = None,
+        gmt_start: int = None,
+        gmt_todo: int = None,
+        id: int = None,
+        is_archived: str = None,
+        is_deleted: str = None,
+        is_done: str = None,
+        organization_id: str = None,
+        parent_id: str = None,
+        participant_ids: str = None,
+        phase: int = None,
+        priority: int = None,
+        product_id: str = None,
+        project_id: str = None,
+        source: str = None,
+        sprint_id: str = None,
+        stage: int = None,
+        status: str = None,
+        status_id: str = None,
+        story_point: float = None,
+        sub_type: str = None,
+        subject: str = None,
+        type: int = None,
+        version_id: str = None,
+        versions: str = None,
+        work_time: int = None,
+        workitem_id: str = None,
+    ):
+        self.assigned_to_id = assigned_to_id
+        self.creator_id = creator_id
+        self.expected_work_time = expected_work_time
+        self.gmt_closed = gmt_closed
+        self.gmt_create = gmt_create
+        self.gmt_due = gmt_due
+        self.gmt_modified = gmt_modified
+        self.gmt_start = gmt_start
+        self.gmt_todo = gmt_todo
+        self.id = id
+        self.is_archived = is_archived
+        self.is_deleted = is_deleted
+        self.is_done = is_done
+        self.organization_id = organization_id
+        self.parent_id = parent_id
+        self.participant_ids = participant_ids
+        self.phase = phase
+        self.priority = priority
+        self.product_id = product_id
+        self.project_id = project_id
+        self.source = source
+        self.sprint_id = sprint_id
+        self.stage = stage
+        self.status = status
+        self.status_id = status_id
+        self.story_point = story_point
+        self.sub_type = sub_type
+        self.subject = subject
+        self.type = type
+        self.version_id = version_id
+        self.versions = versions
+        self.work_time = work_time
+        self.workitem_id = workitem_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assigned_to_id is not None:
+            result['assignedToId'] = self.assigned_to_id
+        if self.creator_id is not None:
+            result['creatorId'] = self.creator_id
+        if self.expected_work_time is not None:
+            result['expectedWorkTime'] = self.expected_work_time
+        if self.gmt_closed is not None:
+            result['gmtClosed'] = self.gmt_closed
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_due is not None:
+            result['gmtDue'] = self.gmt_due
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.gmt_start is not None:
+            result['gmtStart'] = self.gmt_start
+        if self.gmt_todo is not None:
+            result['gmtTodo'] = self.gmt_todo
+        if self.id is not None:
+            result['id'] = self.id
+        if self.is_archived is not None:
+            result['isArchived'] = self.is_archived
+        if self.is_deleted is not None:
+            result['isDeleted'] = self.is_deleted
+        if self.is_done is not None:
+            result['isDone'] = self.is_done
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        if self.parent_id is not None:
+            result['parentId'] = self.parent_id
+        if self.participant_ids is not None:
+            result['participantIds'] = self.participant_ids
+        if self.phase is not None:
+            result['phase'] = self.phase
+        if self.priority is not None:
+            result['priority'] = self.priority
+        if self.product_id is not None:
+            result['productId'] = self.product_id
+        if self.project_id is not None:
+            result['projectId'] = self.project_id
+        if self.source is not None:
+            result['source'] = self.source
+        if self.sprint_id is not None:
+            result['sprintId'] = self.sprint_id
+        if self.stage is not None:
+            result['stage'] = self.stage
+        if self.status is not None:
+            result['status'] = self.status
+        if self.status_id is not None:
+            result['statusId'] = self.status_id
+        if self.story_point is not None:
+            result['storyPoint'] = self.story_point
+        if self.sub_type is not None:
+            result['subType'] = self.sub_type
+        if self.subject is not None:
+            result['subject'] = self.subject
+        if self.type is not None:
+            result['type'] = self.type
+        if self.version_id is not None:
+            result['versionId'] = self.version_id
+        if self.versions is not None:
+            result['versions'] = self.versions
+        if self.work_time is not None:
+            result['workTime'] = self.work_time
+        if self.workitem_id is not None:
+            result['workitemId'] = self.workitem_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('assignedToId') is not None:
+            self.assigned_to_id = m.get('assignedToId')
+        if m.get('creatorId') is not None:
+            self.creator_id = m.get('creatorId')
+        if m.get('expectedWorkTime') is not None:
+            self.expected_work_time = m.get('expectedWorkTime')
+        if m.get('gmtClosed') is not None:
+            self.gmt_closed = m.get('gmtClosed')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtDue') is not None:
+            self.gmt_due = m.get('gmtDue')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('gmtStart') is not None:
+            self.gmt_start = m.get('gmtStart')
+        if m.get('gmtTodo') is not None:
+            self.gmt_todo = m.get('gmtTodo')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('isArchived') is not None:
+            self.is_archived = m.get('isArchived')
+        if m.get('isDeleted') is not None:
+            self.is_deleted = m.get('isDeleted')
+        if m.get('isDone') is not None:
+            self.is_done = m.get('isDone')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        if m.get('parentId') is not None:
+            self.parent_id = m.get('parentId')
+        if m.get('participantIds') is not None:
+            self.participant_ids = m.get('participantIds')
+        if m.get('phase') is not None:
+            self.phase = m.get('phase')
+        if m.get('priority') is not None:
+            self.priority = m.get('priority')
+        if m.get('productId') is not None:
+            self.product_id = m.get('productId')
+        if m.get('projectId') is not None:
+            self.project_id = m.get('projectId')
+        if m.get('source') is not None:
+            self.source = m.get('source')
+        if m.get('sprintId') is not None:
+            self.sprint_id = m.get('sprintId')
+        if m.get('stage') is not None:
+            self.stage = m.get('stage')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('statusId') is not None:
+            self.status_id = m.get('statusId')
+        if m.get('storyPoint') is not None:
+            self.story_point = m.get('storyPoint')
+        if m.get('subType') is not None:
+            self.sub_type = m.get('subType')
+        if m.get('subject') is not None:
+            self.subject = m.get('subject')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('versionId') is not None:
+            self.version_id = m.get('versionId')
+        if m.get('versions') is not None:
+            self.versions = m.get('versions')
+        if m.get('workTime') is not None:
+            self.work_time = m.get('workTime')
+        if m.get('workitemId') is not None:
+            self.workitem_id = m.get('workitemId')
+        return self
+
+
+class ExportInsightWorkitemStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        result: List[ExportInsightWorkitemStatusResponseBodyResult] = None,
+        total_count: int = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.result = result
+        self.total_count = total_count
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        result['result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['result'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        self.result = []
+        if m.get('result') is not None:
+            for k in m.get('result'):
+                temp_model = ExportInsightWorkitemStatusResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ExportInsightWorkitemStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExportInsightWorkitemStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExportInsightWorkitemStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ExportInsightWorkitemStatusJoinWorkitemDefectExtraRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        start_time: str = None,
+    ):
+        # This parameter is required.
+        self.end_time = end_time
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        return self
+
+
+class ExportInsightWorkitemStatusJoinWorkitemDefectExtraResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        assigned_to_id: str = None,
+        creator_id: str = None,
+        expected_work_time: int = None,
+        extra_id: int = None,
+        extra_is_deleted: str = None,
+        found_phase: int = None,
+        gmt_closed: int = None,
+        gmt_create: int = None,
+        gmt_due: int = None,
+        gmt_fixed: str = None,
+        gmt_modified: int = None,
+        gmt_start: int = None,
+        gmt_todo: int = None,
+        id: int = None,
+        is_archived: str = None,
+        is_deleted: str = None,
+        is_done: str = None,
+        is_stupid: str = None,
+        organization_id: str = None,
+        parent_id: str = None,
+        participant_ids: str = None,
+        phase: int = None,
+        priority: int = None,
+        product_id: str = None,
+        project_id: str = None,
+        reopen_num: int = None,
+        serious_level: int = None,
+        solution: str = None,
+        source: str = None,
+        sprint_id: str = None,
+        stage: int = None,
+        status: str = None,
+        status_id: str = None,
+        story_point: float = None,
+        sub_type: str = None,
+        subject: str = None,
+        type: int = None,
+        verifier_id: str = None,
+        version_id: str = None,
+        versions: str = None,
+        work_time: int = None,
+        workitem_id: str = None,
+    ):
+        self.assigned_to_id = assigned_to_id
+        self.creator_id = creator_id
+        self.expected_work_time = expected_work_time
+        self.extra_id = extra_id
+        self.extra_is_deleted = extra_is_deleted
+        self.found_phase = found_phase
+        self.gmt_closed = gmt_closed
+        self.gmt_create = gmt_create
+        self.gmt_due = gmt_due
+        self.gmt_fixed = gmt_fixed
+        self.gmt_modified = gmt_modified
+        self.gmt_start = gmt_start
+        self.gmt_todo = gmt_todo
+        self.id = id
+        self.is_archived = is_archived
+        self.is_deleted = is_deleted
+        self.is_done = is_done
+        self.is_stupid = is_stupid
+        self.organization_id = organization_id
+        self.parent_id = parent_id
+        self.participant_ids = participant_ids
+        self.phase = phase
+        self.priority = priority
+        self.product_id = product_id
+        self.project_id = project_id
+        self.reopen_num = reopen_num
+        self.serious_level = serious_level
+        self.solution = solution
+        self.source = source
+        self.sprint_id = sprint_id
+        self.stage = stage
+        self.status = status
+        self.status_id = status_id
+        self.story_point = story_point
+        self.sub_type = sub_type
+        self.subject = subject
+        self.type = type
+        self.verifier_id = verifier_id
+        self.version_id = version_id
+        self.versions = versions
+        self.work_time = work_time
+        self.workitem_id = workitem_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.assigned_to_id is not None:
+            result['assignedToId'] = self.assigned_to_id
+        if self.creator_id is not None:
+            result['creatorId'] = self.creator_id
+        if self.expected_work_time is not None:
+            result['expectedWorkTime'] = self.expected_work_time
+        if self.extra_id is not None:
+            result['extraId'] = self.extra_id
+        if self.extra_is_deleted is not None:
+            result['extraIsDeleted'] = self.extra_is_deleted
+        if self.found_phase is not None:
+            result['foundPhase'] = self.found_phase
+        if self.gmt_closed is not None:
+            result['gmtClosed'] = self.gmt_closed
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_due is not None:
+            result['gmtDue'] = self.gmt_due
+        if self.gmt_fixed is not None:
+            result['gmtFixed'] = self.gmt_fixed
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.gmt_start is not None:
+            result['gmtStart'] = self.gmt_start
+        if self.gmt_todo is not None:
+            result['gmtTodo'] = self.gmt_todo
+        if self.id is not None:
+            result['id'] = self.id
+        if self.is_archived is not None:
+            result['isArchived'] = self.is_archived
+        if self.is_deleted is not None:
+            result['isDeleted'] = self.is_deleted
+        if self.is_done is not None:
+            result['isDone'] = self.is_done
+        if self.is_stupid is not None:
+            result['isStupid'] = self.is_stupid
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        if self.parent_id is not None:
+            result['parentId'] = self.parent_id
+        if self.participant_ids is not None:
+            result['participantIds'] = self.participant_ids
+        if self.phase is not None:
+            result['phase'] = self.phase
+        if self.priority is not None:
+            result['priority'] = self.priority
+        if self.product_id is not None:
+            result['productId'] = self.product_id
+        if self.project_id is not None:
+            result['projectId'] = self.project_id
+        if self.reopen_num is not None:
+            result['reopenNum'] = self.reopen_num
+        if self.serious_level is not None:
+            result['seriousLevel'] = self.serious_level
+        if self.solution is not None:
+            result['solution'] = self.solution
+        if self.source is not None:
+            result['source'] = self.source
+        if self.sprint_id is not None:
+            result['sprintId'] = self.sprint_id
+        if self.stage is not None:
+            result['stage'] = self.stage
+        if self.status is not None:
+            result['status'] = self.status
+        if self.status_id is not None:
+            result['statusId'] = self.status_id
+        if self.story_point is not None:
+            result['storyPoint'] = self.story_point
+        if self.sub_type is not None:
+            result['subType'] = self.sub_type
+        if self.subject is not None:
+            result['subject'] = self.subject
+        if self.type is not None:
+            result['type'] = self.type
+        if self.verifier_id is not None:
+            result['verifierId'] = self.verifier_id
+        if self.version_id is not None:
+            result['versionId'] = self.version_id
+        if self.versions is not None:
+            result['versions'] = self.versions
+        if self.work_time is not None:
+            result['workTime'] = self.work_time
+        if self.workitem_id is not None:
+            result['workitemId'] = self.workitem_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('assignedToId') is not None:
+            self.assigned_to_id = m.get('assignedToId')
+        if m.get('creatorId') is not None:
+            self.creator_id = m.get('creatorId')
+        if m.get('expectedWorkTime') is not None:
+            self.expected_work_time = m.get('expectedWorkTime')
+        if m.get('extraId') is not None:
+            self.extra_id = m.get('extraId')
+        if m.get('extraIsDeleted') is not None:
+            self.extra_is_deleted = m.get('extraIsDeleted')
+        if m.get('foundPhase') is not None:
+            self.found_phase = m.get('foundPhase')
+        if m.get('gmtClosed') is not None:
+            self.gmt_closed = m.get('gmtClosed')
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtDue') is not None:
+            self.gmt_due = m.get('gmtDue')
+        if m.get('gmtFixed') is not None:
+            self.gmt_fixed = m.get('gmtFixed')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('gmtStart') is not None:
+            self.gmt_start = m.get('gmtStart')
+        if m.get('gmtTodo') is not None:
+            self.gmt_todo = m.get('gmtTodo')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('isArchived') is not None:
+            self.is_archived = m.get('isArchived')
+        if m.get('isDeleted') is not None:
+            self.is_deleted = m.get('isDeleted')
+        if m.get('isDone') is not None:
+            self.is_done = m.get('isDone')
+        if m.get('isStupid') is not None:
+            self.is_stupid = m.get('isStupid')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        if m.get('parentId') is not None:
+            self.parent_id = m.get('parentId')
+        if m.get('participantIds') is not None:
+            self.participant_ids = m.get('participantIds')
+        if m.get('phase') is not None:
+            self.phase = m.get('phase')
+        if m.get('priority') is not None:
+            self.priority = m.get('priority')
+        if m.get('productId') is not None:
+            self.product_id = m.get('productId')
+        if m.get('projectId') is not None:
+            self.project_id = m.get('projectId')
+        if m.get('reopenNum') is not None:
+            self.reopen_num = m.get('reopenNum')
+        if m.get('seriousLevel') is not None:
+            self.serious_level = m.get('seriousLevel')
+        if m.get('solution') is not None:
+            self.solution = m.get('solution')
+        if m.get('source') is not None:
+            self.source = m.get('source')
+        if m.get('sprintId') is not None:
+            self.sprint_id = m.get('sprintId')
+        if m.get('stage') is not None:
+            self.stage = m.get('stage')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('statusId') is not None:
+            self.status_id = m.get('statusId')
+        if m.get('storyPoint') is not None:
+            self.story_point = m.get('storyPoint')
+        if m.get('subType') is not None:
+            self.sub_type = m.get('subType')
+        if m.get('subject') is not None:
+            self.subject = m.get('subject')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('verifierId') is not None:
+            self.verifier_id = m.get('verifierId')
+        if m.get('versionId') is not None:
+            self.version_id = m.get('versionId')
+        if m.get('versions') is not None:
+            self.versions = m.get('versions')
+        if m.get('workTime') is not None:
+            self.work_time = m.get('workTime')
+        if m.get('workitemId') is not None:
+            self.workitem_id = m.get('workitemId')
+        return self
+
+
+class ExportInsightWorkitemStatusJoinWorkitemDefectExtraResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        result: List[ExportInsightWorkitemStatusJoinWorkitemDefectExtraResponseBodyResult] = None,
+        total_count: int = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.result = result
+        self.total_count = total_count
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        result['result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['result'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        self.result = []
+        if m.get('result') is not None:
+            for k in m.get('result'):
+                temp_model = ExportInsightWorkitemStatusJoinWorkitemDefectExtraResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ExportInsightWorkitemStatusJoinWorkitemDefectExtraResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExportInsightWorkitemStatusJoinWorkitemDefectExtraResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExportInsightWorkitemStatusJoinWorkitemDefectExtraResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ExportInsightWorkitemVersionRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        start_time: str = None,
+    ):
+        # This parameter is required.
+        self.end_time = end_time
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        return self
+
+
+class ExportInsightWorkitemVersionResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        gmt_create: int = None,
+        gmt_modified: int = None,
+        gmt_publish: int = None,
+        gmt_start: int = None,
+        id: int = None,
+        identifier: str = None,
+        is_deleted: str = None,
+        lock_status: int = None,
+        name: str = None,
+        organization_id: str = None,
+        source: str = None,
+        status: int = None,
+        target_id: str = None,
+        target_type: str = None,
+    ):
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.gmt_publish = gmt_publish
+        self.gmt_start = gmt_start
+        self.id = id
+        self.identifier = identifier
+        self.is_deleted = is_deleted
+        self.lock_status = lock_status
+        self.name = name
+        self.organization_id = organization_id
+        self.source = source
+        self.status = status
+        self.target_id = target_id
+        self.target_type = target_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gmt_create is not None:
+            result['gmtCreate'] = self.gmt_create
+        if self.gmt_modified is not None:
+            result['gmtModified'] = self.gmt_modified
+        if self.gmt_publish is not None:
+            result['gmtPublish'] = self.gmt_publish
+        if self.gmt_start is not None:
+            result['gmtStart'] = self.gmt_start
+        if self.id is not None:
+            result['id'] = self.id
+        if self.identifier is not None:
+            result['identifier'] = self.identifier
+        if self.is_deleted is not None:
+            result['isDeleted'] = self.is_deleted
+        if self.lock_status is not None:
+            result['lockStatus'] = self.lock_status
+        if self.name is not None:
+            result['name'] = self.name
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        if self.source is not None:
+            result['source'] = self.source
+        if self.status is not None:
+            result['status'] = self.status
+        if self.target_id is not None:
+            result['targetId'] = self.target_id
+        if self.target_type is not None:
+            result['targetType'] = self.target_type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('gmtCreate') is not None:
+            self.gmt_create = m.get('gmtCreate')
+        if m.get('gmtModified') is not None:
+            self.gmt_modified = m.get('gmtModified')
+        if m.get('gmtPublish') is not None:
+            self.gmt_publish = m.get('gmtPublish')
+        if m.get('gmtStart') is not None:
+            self.gmt_start = m.get('gmtStart')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('identifier') is not None:
+            self.identifier = m.get('identifier')
+        if m.get('isDeleted') is not None:
+            self.is_deleted = m.get('isDeleted')
+        if m.get('lockStatus') is not None:
+            self.lock_status = m.get('lockStatus')
+        if m.get('name') is not None:
+            self.name = m.get('name')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        if m.get('source') is not None:
+            self.source = m.get('source')
+        if m.get('status') is not None:
+            self.status = m.get('status')
+        if m.get('targetId') is not None:
+            self.target_id = m.get('targetId')
+        if m.get('targetType') is not None:
+            self.target_type = m.get('targetType')
+        return self
+
+
+class ExportInsightWorkitemVersionResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        result: List[ExportInsightWorkitemVersionResponseBodyResult] = None,
+        total_count: int = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.result = result
+        self.total_count = total_count
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        result['result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['result'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        self.result = []
+        if m.get('result') is not None:
+            for k in m.get('result'):
+                temp_model = ExportInsightWorkitemVersionResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ExportInsightWorkitemVersionResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExportInsightWorkitemVersionResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExportInsightWorkitemVersionResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ExportWorkitemActivityRequest(TeaModel):
+    def __init__(
+        self,
+        end_time: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        start_time: str = None,
+    ):
+        # This parameter is required.
+        self.end_time = end_time
+        self.max_results = max_results
+        self.next_token = next_token
+        # This parameter is required.
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.end_time is not None:
+            result['endTime'] = self.end_time
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        if self.start_time is not None:
+            result['startTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('endTime') is not None:
+            self.end_time = m.get('endTime')
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        if m.get('startTime') is not None:
+            self.start_time = m.get('startTime')
+        return self
+
+
+class ExportWorkitemActivityResponseBodyResult(TeaModel):
+    def __init__(
+        self,
+        gmt_event: int = None,
+        id: int = None,
+        identifier: str = None,
+        new_value: str = None,
+        old_value: str = None,
+        organization_id: str = None,
+        project_id: str = None,
+        source: str = None,
+        type: str = None,
+        workitem_id: str = None,
+    ):
+        self.gmt_event = gmt_event
+        self.id = id
+        self.identifier = identifier
+        self.new_value = new_value
+        self.old_value = old_value
+        self.organization_id = organization_id
+        self.project_id = project_id
+        self.source = source
+        self.type = type
+        self.workitem_id = workitem_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.gmt_event is not None:
+            result['gmtEvent'] = self.gmt_event
+        if self.id is not None:
+            result['id'] = self.id
+        if self.identifier is not None:
+            result['identifier'] = self.identifier
+        if self.new_value is not None:
+            result['newValue'] = self.new_value
+        if self.old_value is not None:
+            result['oldValue'] = self.old_value
+        if self.organization_id is not None:
+            result['organizationId'] = self.organization_id
+        if self.project_id is not None:
+            result['projectId'] = self.project_id
+        if self.source is not None:
+            result['source'] = self.source
+        if self.type is not None:
+            result['type'] = self.type
+        if self.workitem_id is not None:
+            result['workitemId'] = self.workitem_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('gmtEvent') is not None:
+            self.gmt_event = m.get('gmtEvent')
+        if m.get('id') is not None:
+            self.id = m.get('id')
+        if m.get('identifier') is not None:
+            self.identifier = m.get('identifier')
+        if m.get('newValue') is not None:
+            self.new_value = m.get('newValue')
+        if m.get('oldValue') is not None:
+            self.old_value = m.get('oldValue')
+        if m.get('organizationId') is not None:
+            self.organization_id = m.get('organizationId')
+        if m.get('projectId') is not None:
+            self.project_id = m.get('projectId')
+        if m.get('source') is not None:
+            self.source = m.get('source')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        if m.get('workitemId') is not None:
+            self.workitem_id = m.get('workitemId')
+        return self
+
+
+class ExportWorkitemActivityResponseBody(TeaModel):
+    def __init__(
+        self,
+        max_results: int = None,
+        next_token: str = None,
+        result: List[ExportWorkitemActivityResponseBodyResult] = None,
+        total_count: int = None,
+    ):
+        self.max_results = max_results
+        self.next_token = next_token
+        self.result = result
+        self.total_count = total_count
+
+    def validate(self):
+        if self.result:
+            for k in self.result:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+        result['result'] = []
+        if self.result is not None:
+            for k in self.result:
+                result['result'].append(k.to_map() if k else None)
+        if self.total_count is not None:
+            result['totalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
+        self.result = []
+        if m.get('result') is not None:
+            for k in m.get('result'):
+                temp_model = ExportWorkitemActivityResponseBodyResult()
+                self.result.append(temp_model.from_map(k))
+        if m.get('totalCount') is not None:
+            self.total_count = m.get('totalCount')
+        return self
+
+
+class ExportWorkitemActivityResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ExportWorkitemActivityResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ExportWorkitemActivityResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -15291,7 +18649,9 @@ class GetBranchInfoRequest(TeaModel):
         organization_id: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.branch_name = branch_name
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -15738,8 +19098,11 @@ class GetCheckRunRequest(TeaModel):
         repository_identity: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.check_run_id = check_run_id
+        # This parameter is required.
         self.organization_id = organization_id
+        # This parameter is required.
         self.repository_identity = repository_identity
 
     def validate(self):
@@ -16441,11 +19804,14 @@ class GetCompareDetailRequest(TeaModel):
         organization_id: str = None,
         to: str = None,
     ):
+        # This parameter is required.
         self.from_ = from_
         self.max_diff_byte = max_diff_byte
         self.max_diff_file = max_diff_file
         self.merge_base = merge_base
+        # This parameter is required.
         self.organization_id = organization_id
+        # This parameter is required.
         self.to = to
 
     def validate(self):
@@ -16974,8 +20340,11 @@ class GetCustomFieldOptionRequest(TeaModel):
         space_type: str = None,
         workitem_type_identifier: str = None,
     ):
+        # This parameter is required.
         self.space_identifier = space_identifier
+        # This parameter is required.
         self.space_type = space_type
+        # This parameter is required.
         self.workitem_type_identifier = workitem_type_identifier
 
     def validate(self):
@@ -17180,9 +20549,12 @@ class GetFileBlobsRequest(TeaModel):
         to: int = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.file_path = file_path
         self.from_ = from_
+        # This parameter is required.
         self.organization_id = organization_id
+        # This parameter is required.
         self.ref = ref
         self.to = to
 
@@ -17369,8 +20741,11 @@ class GetFileLastCommitRequest(TeaModel):
         show_signature: bool = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.file_path = file_path
+        # This parameter is required.
         self.organization_id = organization_id
+        # This parameter is required.
         self.sha = sha
         self.show_signature = show_signature
 
@@ -17849,7 +21224,9 @@ class GetGroupByPathRequest(TeaModel):
         identity: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.identity = identity
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -18065,7 +21442,9 @@ class GetGroupDetailRequest(TeaModel):
         organization_id: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.group_id = group_id
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -18578,6 +21957,7 @@ class GetMergeRequestRequest(TeaModel):
         organization_id: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -19178,10 +22558,15 @@ class GetMergeRequestChangeTreeRequest(TeaModel):
         to_patch_set_biz_id: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.from_patch_set_biz_id = from_patch_set_biz_id
+        # This parameter is required.
         self.local_id = local_id
+        # This parameter is required.
         self.organization_id = organization_id
+        # This parameter is required.
         self.repository_identity = repository_identity
+        # This parameter is required.
         self.to_patch_set_biz_id = to_patch_set_biz_id
 
     def validate(self):
@@ -20107,7 +23492,9 @@ class GetPipelineArtifactUrlRequest(TeaModel):
         file_name: str = None,
         file_path: str = None,
     ):
+        # This parameter is required.
         self.file_name = file_name
+        # This parameter is required.
         self.file_path = file_path
 
     def validate(self):
@@ -20231,6 +23618,7 @@ class GetPipelineEmasArtifactUrlRequest(TeaModel):
         self,
         service_connection_id: int = None,
     ):
+        # This parameter is required.
         self.service_connection_id = service_connection_id
 
     def validate(self):
@@ -20965,6 +24353,7 @@ class GetPipelineScanReportUrlRequest(TeaModel):
         self,
         report_path: str = None,
     ):
+        # This parameter is required.
         self.report_path = report_path
 
     def validate(self):
@@ -21345,6 +24734,7 @@ class GetProjectMemberRequest(TeaModel):
         organization_id: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -21523,6 +24913,7 @@ class GetPushRuleRequest(TeaModel):
         organization_id: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -21749,7 +25140,9 @@ class GetRepositoryRequest(TeaModel):
         organization_id: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.identity = identity
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -22089,6 +25482,7 @@ class GetRepositoryCommitRequest(TeaModel):
         show_signature: bool = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.organization_id = organization_id
         self.show_signature = show_signature
 
@@ -22506,7 +25900,9 @@ class GetRepositoryTagRequest(TeaModel):
         tag_name: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.organization_id = organization_id
+        # This parameter is required.
         self.tag_name = tag_name
 
     def validate(self):
@@ -22820,9 +26216,12 @@ class GetSearchCodePreviewRequest(TeaModel):
         keyword: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.doc_id = doc_id
         self.is_dsl = is_dsl
+        # This parameter is required.
         self.keyword = keyword
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -23297,6 +26696,7 @@ class GetTestResultListRequest(TeaModel):
         directory_identifier: str = None,
     ):
         self.conditions = conditions
+        # This parameter is required.
         self.directory_identifier = directory_identifier
 
     def validate(self):
@@ -23654,6 +27054,7 @@ class GetTestcaseListRequest(TeaModel):
         self.directory_identifier = directory_identifier
         self.max_result = max_result
         self.next_token = next_token
+        # This parameter is required.
         self.space_identifier = space_identifier
 
     def validate(self):
@@ -26059,6 +29460,7 @@ class GetWorkitemAttachmentCreatemetaRequest(TeaModel):
         self,
         file_name: str = None,
     ):
+        # This parameter is required.
         self.file_name = file_name
 
     def validate(self):
@@ -26618,6 +30020,7 @@ class GetWorkitemRelationsRequest(TeaModel):
         self,
         relation_type: str = None,
     ):
+        # This parameter is required.
         self.relation_type = relation_type
 
     def validate(self):
@@ -27137,7 +30540,9 @@ class JoinPipelineGroupRequest(TeaModel):
         group_id: int = None,
         pipeline_ids: str = None,
     ):
+        # This parameter is required.
         self.group_id = group_id
+        # This parameter is required.
         self.pipeline_ids = pipeline_ids
 
     def validate(self):
@@ -27260,9 +30665,13 @@ class LinkMergeRequestLabelRequest(TeaModel):
         repository_identity: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.label_ids = label_ids
+        # This parameter is required.
         self.local_id = local_id
+        # This parameter is required.
         self.organization_id = organization_id
+        # This parameter is required.
         self.repository_identity = repository_identity
 
     def validate(self):
@@ -27854,10 +31263,13 @@ class ListCheckRunsRequest(TeaModel):
         repository_identity: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.organization_id = organization_id
         self.page = page
         self.page_size = page_size
+        # This parameter is required.
         self.ref = ref
+        # This parameter is required.
         self.repository_identity = repository_identity
 
     def validate(self):
@@ -28390,10 +31802,13 @@ class ListCommitStatusesRequest(TeaModel):
         sha: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.organization_id = organization_id
         self.page = page
         self.page_size = page_size
+        # This parameter is required.
         self.repository_identity = repository_identity
+        # This parameter is required.
         self.sha = sha
 
     def validate(self):
@@ -28804,6 +32219,7 @@ class ListGroupMemberRequest(TeaModel):
         organization_id: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -29015,6 +32431,7 @@ class ListGroupRepositoriesRequest(TeaModel):
         search: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.organization_id = organization_id
         self.page = page
         self.page_size = page_size
@@ -29784,8 +33201,11 @@ class ListMergeRequestCommentsRequest(TeaModel):
         self.patch_set_biz_ids = patch_set_biz_ids
         self.resolved = resolved
         self.state = state
+        # This parameter is required.
         self.local_id = local_id
+        # This parameter is required.
         self.organization_id = organization_id
+        # This parameter is required.
         self.repository_identity = repository_identity
 
     def validate(self):
@@ -30689,10 +34109,15 @@ class ListMergeRequestFilesReadsRequest(TeaModel):
         to_patch_set_biz_id: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.from_patch_set_biz_id = from_patch_set_biz_id
+        # This parameter is required.
         self.local_id = local_id
+        # This parameter is required.
         self.organization_id = organization_id
+        # This parameter is required.
         self.repository_identity = repository_identity
+        # This parameter is required.
         self.to_patch_set_biz_id = to_patch_set_biz_id
 
     def validate(self):
@@ -30966,8 +34391,11 @@ class ListMergeRequestLabelsRequest(TeaModel):
         repository_identity: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.local_id = local_id
+        # This parameter is required.
         self.organization_id = organization_id
+        # This parameter is required.
         self.repository_identity = repository_identity
 
     def validate(self):
@@ -31156,8 +34584,11 @@ class ListMergeRequestPatchSetsRequest(TeaModel):
         repository_identity: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.local_id = local_id
+        # This parameter is required.
         self.organization_id = organization_id
+        # This parameter is required.
         self.repository_identity = repository_identity
 
     def validate(self):
@@ -31383,6 +34814,7 @@ class ListMergeRequestsRequest(TeaModel):
         self.group_ids = group_ids
         self.label_ids = label_ids
         self.order_by = order_by
+        # This parameter is required.
         self.organization_id = organization_id
         self.page = page
         self.page_size = page_size
@@ -33003,8 +36435,11 @@ class ListPipelineJobHistorysRequest(TeaModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # This parameter is required.
         self.category = category
+        # This parameter is required.
         self.identifier = identifier
+        # This parameter is required.
         self.max_results = max_results
         self.next_token = next_token
 
@@ -33232,6 +36667,7 @@ class ListPipelineJobsRequest(TeaModel):
         self,
         category: str = None,
     ):
+        # This parameter is required.
         self.category = category
 
     def validate(self):
@@ -33404,6 +36840,7 @@ class ListPipelineRelationsRequest(TeaModel):
         self,
         rel_object_type: str = None,
     ):
+        # This parameter is required.
         self.rel_object_type = rel_object_type
 
     def validate(self):
@@ -34044,9 +37481,11 @@ class ListProjectLabelsRequest(TeaModel):
     ):
         self.access_token = access_token
         self.order_by = order_by
+        # This parameter is required.
         self.organization_id = organization_id
         self.page = page
         self.page_size = page_size
+        # This parameter is required.
         self.repository_identity = repository_identity
         self.search = search
         self.sort = sort
@@ -34266,6 +37705,7 @@ class ListProjectMembersRequest(TeaModel):
         self,
         target_type: str = None,
     ):
+        # This parameter is required.
         self.target_type = target_type
 
     def validate(self):
@@ -34594,6 +38034,7 @@ class ListProjectTemplatesRequest(TeaModel):
         self,
         category: str = None,
     ):
+        # This parameter is required.
         self.category = category
 
     def validate(self):
@@ -34833,7 +38274,9 @@ class ListProjectWorkitemTypesRequest(TeaModel):
         category: str = None,
         space_type: str = None,
     ):
+        # This parameter is required.
         self.category = category
+        # This parameter is required.
         self.space_type = space_type
 
     def validate(self):
@@ -35063,6 +38506,7 @@ class ListProjectsRequest(TeaModel):
         next_token: str = None,
         scope: str = None,
     ):
+        # This parameter is required.
         self.category = category
         # {"conditionGroups":[[]]}
         self.conditions = conditions
@@ -35335,6 +38779,7 @@ class ListProtectedBranchesRequest(TeaModel):
         organization_id: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -36067,6 +39512,7 @@ class ListPushRulesRequest(TeaModel):
         organization_id: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -36314,6 +39760,7 @@ class ListRepositoriesRequest(TeaModel):
         self.archived = archived
         self.min_access_level = min_access_level
         self.order_by = order_by
+        # This parameter is required.
         self.organization_id = organization_id
         self.page = page
         self.per_page = per_page
@@ -36618,6 +40065,7 @@ class ListRepositoryBranchesRequest(TeaModel):
         sort: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.organization_id = organization_id
         self.page = page
         self.page_size = page_size
@@ -36914,6 +40362,7 @@ class ListRepositoryCommitDiffRequest(TeaModel):
         # accessToken
         self.access_token = access_token
         self.context_line = context_line
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -37161,10 +40610,12 @@ class ListRepositoryCommitsRequest(TeaModel):
     ):
         self.access_token = access_token
         self.end = end
+        # This parameter is required.
         self.organization_id = organization_id
         self.page = page
         self.page_size = page_size
         self.path = path
+        # This parameter is required.
         self.ref_name = ref_name
         self.search = search
         self.show_comments_count = show_comments_count
@@ -37637,9 +41088,11 @@ class ListRepositoryGroupsRequest(TeaModel):
         self.access_token = access_token
         self.include_personal = include_personal
         self.order_by = order_by
+        # This parameter is required.
         self.organization_id = organization_id
         self.page = page
         self.page_size = page_size
+        # This parameter is required.
         self.parent_id = parent_id
         self.search = search
         self.sort = sort
@@ -37932,6 +41385,7 @@ class ListRepositoryMemberWithInheritedRequest(TeaModel):
         organization_id: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -38204,6 +41658,7 @@ class ListRepositoryTagsRequest(TeaModel):
         sort: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.organization_id = organization_id
         self.page = page
         self.page_size = page_size
@@ -38547,6 +42002,7 @@ class ListRepositoryTreeRequest(TeaModel):
         type: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.organization_id = organization_id
         self.path = path
         self.ref_name = ref_name
@@ -38754,6 +42210,7 @@ class ListRepositoryWebhookRequest(TeaModel):
         page_size: int = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.organization_id = organization_id
         self.page = page
         self.page_size = page_size
@@ -39179,6 +42636,7 @@ class ListSearchCommitRequest(TeaModel):
         sort: str = None,
         organization_id: str = None,
     ):
+        # This parameter is required.
         self.keyword = keyword
         self.order = order
         self.page = page
@@ -39186,6 +42644,7 @@ class ListSearchCommitRequest(TeaModel):
         self.repo_path = repo_path
         self.scope = scope
         self.sort = sort
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -39585,6 +43044,7 @@ class ListSearchRepositoryRequest(TeaModel):
         organization_id: str = None,
     ):
         self.aliyun_pk = aliyun_pk
+        # This parameter is required.
         self.keyword = keyword
         self.order = order
         self.page = page
@@ -39593,6 +43053,7 @@ class ListSearchRepositoryRequest(TeaModel):
         self.scope = scope
         self.sort = sort
         self.visibility_level = visibility_level
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -40024,6 +43485,7 @@ class ListSearchSourceCodeRequest(TeaModel):
     ):
         self.file_path = file_path
         self.is_code_block = is_code_block
+        # This parameter is required.
         self.keyword = keyword
         self.language = language
         self.order = order
@@ -40032,6 +43494,7 @@ class ListSearchSourceCodeRequest(TeaModel):
         self.repo_path = repo_path
         self.scope = scope
         self.sort = sort
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -40362,6 +43825,7 @@ class ListServiceAuthsRequest(TeaModel):
         self,
         service_auth_type: str = None,
     ):
+        # This parameter is required.
         self.service_auth_type = service_auth_type
 
     def validate(self):
@@ -40534,6 +43998,7 @@ class ListServiceConnectionsRequest(TeaModel):
         self,
         serice_connection_type: str = None,
     ):
+        # This parameter is required.
         self.serice_connection_type = serice_connection_type
 
     def validate(self):
@@ -40718,6 +44183,7 @@ class ListServiceCredentialsRequest(TeaModel):
         self,
         service_credential_type: str = None,
     ):
+        # This parameter is required.
         self.service_credential_type = service_credential_type
 
     def validate(self):
@@ -40895,7 +44361,9 @@ class ListSprintsRequest(TeaModel):
     ):
         self.max_results = max_results
         self.next_token = next_token
+        # This parameter is required.
         self.space_identifier = space_identifier
+        # This parameter is required.
         self.space_type = space_type
 
     def validate(self):
@@ -41146,6 +44614,7 @@ class ListTestCaseFieldsRequest(TeaModel):
         self,
         space_identifier: str = None,
     ):
+        # This parameter is required.
         self.space_identifier = space_identifier
 
     def validate(self):
@@ -41676,6 +45145,7 @@ class ListUserKeysRequest(TeaModel):
     ):
         self.access_token = access_token
         self.order_by = order_by
+        # This parameter is required.
         self.organization_id = organization_id
         self.page = page
         self.page_size = page_size
@@ -41900,6 +45370,7 @@ class ListUserResourcesRequest(TeaModel):
         user_ids: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.organization_id = organization_id
         self.page = page
         self.page_size = page_size
@@ -42867,8 +46338,11 @@ class ListWorkItemAllFieldsRequest(TeaModel):
         space_type: str = None,
         workitem_type_identifier: str = None,
     ):
+        # This parameter is required.
         self.space_identifier = space_identifier
+        # This parameter is required.
         self.space_type = space_type
+        # This parameter is required.
         self.workitem_type_identifier = workitem_type_identifier
 
     def validate(self):
@@ -43201,8 +46675,11 @@ class ListWorkItemWorkFlowStatusRequest(TeaModel):
         workitem_category_identifier: str = None,
         workitem_type_identifier: str = None,
     ):
+        # This parameter is required.
         self.space_identifier = space_identifier
+        # This parameter is required.
         self.space_type = space_type
+        # This parameter is required.
         self.workitem_category_identifier = workitem_category_identifier
         self.workitem_type_identifier = workitem_type_identifier
 
@@ -44012,6 +47489,7 @@ class ListWorkitemsRequest(TeaModel):
         space_identifier: str = None,
         space_type: str = None,
     ):
+        # This parameter is required.
         self.category = category
         self.conditions = conditions
         self.extra_conditions = extra_conditions
@@ -44020,7 +47498,9 @@ class ListWorkitemsRequest(TeaModel):
         self.next_token = next_token
         self.order_by = order_by
         self.search_type = search_type
+        # This parameter is required.
         self.space_identifier = space_identifier
+        # This parameter is required.
         self.space_type = space_type
 
     def validate(self):
@@ -44530,6 +48010,7 @@ class ListWorkspacesResponseBody(TeaModel):
         self.error_code = error_code
         self.error_message = error_message
         self.max_results = max_results
+        # This parameter is required.
         self.next_token = next_token
         self.request_id = request_id
         self.success = success
@@ -44916,8 +48397,10 @@ class MergeMergeRequestRequest(TeaModel):
     ):
         self.access_token = access_token
         self.merge_message = merge_message
+        # This parameter is required.
         self.merge_type = merge_type
         self.remove_source_branch = remove_source_branch
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -45366,6 +48849,7 @@ class ReopenMergeRequestRequest(TeaModel):
         organization_id: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -45910,7 +49394,9 @@ class ReviewMergeRequestRequest(TeaModel):
         self.access_token = access_token
         self.draft_comment_ids = draft_comment_ids
         self.review_comment = review_comment
+        # This parameter is required.
         self.review_opinion = review_opinion
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -46628,8 +50114,11 @@ class TransferRepositoryRequest(TeaModel):
         repository_id: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.group_id = group_id
+        # This parameter is required.
         self.organization_id = organization_id
+        # This parameter is required.
         self.repository_id = repository_id
 
     def validate(self):
@@ -46903,6 +50392,7 @@ class TriggerRepositoryMirrorSyncRequest(TeaModel):
     ):
         self.access_token = access_token
         self.account = account
+        # This parameter is required.
         self.organization_id = organization_id
         self.token = token
 
@@ -47310,13 +50800,18 @@ class UpdateCheckRunRequestAnnotations(TeaModel):
         start_line: int = None,
         title: str = None,
     ):
+        # This parameter is required.
         self.annotation_level = annotation_level
         self.end_column = end_column
+        # This parameter is required.
         self.end_line = end_line
+        # This parameter is required.
         self.message = message
+        # This parameter is required.
         self.path = path
         self.raw_details = raw_details
         self.start_column = start_column
+        # This parameter is required.
         self.start_line = start_line
         self.title = title
 
@@ -47379,8 +50874,10 @@ class UpdateCheckRunRequestOutputImages(TeaModel):
         caption: str = None,
         image_url: str = None,
     ):
+        # This parameter is required.
         self.alt = alt
         self.caption = caption
+        # This parameter is required.
         self.image_url = image_url
 
     def validate(self):
@@ -47420,6 +50917,7 @@ class UpdateCheckRunRequestOutput(TeaModel):
         title: str = None,
     ):
         self.images = images
+        # This parameter is required.
         self.summary = summary
         self.text = text
         self.title = title
@@ -47491,8 +50989,11 @@ class UpdateCheckRunRequest(TeaModel):
         self.output = output
         self.started_at = started_at
         self.status = status
+        # This parameter is required.
         self.check_run_id = check_run_id
+        # This parameter is required.
         self.organization_id = organization_id
+        # This parameter is required.
         self.repository_identity = repository_identity
 
     def validate(self):
@@ -48060,12 +51561,18 @@ class UpdateFileRequest(TeaModel):
         organization_id: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.branch_name = branch_name
+        # This parameter is required.
         self.commit_message = commit_message
+        # This parameter is required.
         self.content = content
         self.encoding = encoding
+        # This parameter is required.
         self.new_path = new_path
+        # This parameter is required.
         self.old_path = old_path
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -48250,8 +51757,11 @@ class UpdateFlowTagRequest(TeaModel):
         flow_tag_group_id: int = None,
         name: str = None,
     ):
+        # This parameter is required.
         self.color = color
+        # This parameter is required.
         self.flow_tag_group_id = flow_tag_group_id
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -48373,6 +51883,7 @@ class UpdateFlowTagGroupRequest(TeaModel):
         self,
         name: str = None,
     ):
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -48496,10 +52007,14 @@ class UpdateGroupRequest(TeaModel):
         self.access_token = access_token
         self.avatar_url = avatar_url
         self.description = description
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.path = path
+        # This parameter is required.
         self.path_with_namespace = path_with_namespace
         self.visibility_level = visibility_level
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -48747,9 +52262,12 @@ class UpdateGroupMemberRequest(TeaModel):
         organization_id: str = None,
     ):
         self.access_token = access_token
+        # This parameter is required.
         self.aliyun_pk = aliyun_pk
+        # This parameter is required.
         self.access_level = access_level
         self.member_type = member_type
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -48977,9 +52495,12 @@ class UpdateHostGroupRequest(TeaModel):
         self.ecs_type = ecs_type
         self.env_id = env_id
         self.machine_infos = machine_infos
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.service_connection_id = service_connection_id
         self.tag_ids = tag_ids
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -49135,6 +52656,7 @@ class UpdateMergeRequestRequest(TeaModel):
         self.access_token = access_token
         self.description = description
         self.title = title
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -49299,6 +52821,7 @@ class UpdateMergeRequestPersonnelRequest(TeaModel):
     ):
         self.access_token = access_token
         self.new_user_id_list = new_user_id_list
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -49457,8 +52980,11 @@ class UpdatePipelineRequest(TeaModel):
         name: str = None,
         pipeline_id: str = None,
     ):
+        # This parameter is required.
         self.content = content
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.pipeline_id = pipeline_id
 
     def validate(self):
@@ -49583,6 +53109,7 @@ class UpdatePipelineBaseInfoRequest(TeaModel):
         tag_list: str = None,
     ):
         self.env_id = env_id
+        # This parameter is required.
         self.pipeline_name = pipeline_name
         self.tag_list = tag_list
 
@@ -49705,6 +53232,7 @@ class UpdatePipelineGroupRequest(TeaModel):
         self,
         name: str = None,
     ):
+        # This parameter is required.
         self.name = name
 
     def validate(self):
@@ -50274,7 +53802,9 @@ class UpdateProjectLabelRequest(TeaModel):
         self.color = color
         self.description = description
         self.name = name
+        # This parameter is required.
         self.organization_id = organization_id
+        # This parameter is required.
         self.repository_identity = repository_identity
 
     def validate(self):
@@ -50465,10 +53995,15 @@ class UpdateProjectMemberRequest(TeaModel):
         user_identifier: str = None,
         user_type: str = None,
     ):
+        # This parameter is required.
         self.role_identifier = role_identifier
+        # This parameter is required.
         self.target_identifier = target_identifier
+        # This parameter is required.
         self.target_type = target_type
+        # This parameter is required.
         self.user_identifier = user_identifier
+        # This parameter is required.
         self.user_type = user_type
 
     def validate(self):
@@ -51562,7 +55097,9 @@ class UpdatePushReviewOnOffRequest(TeaModel):
         organization_id: str = None,
         trunk_mode: bool = None,
     ):
+        # This parameter is required.
         self.organization_id = organization_id
+        # This parameter is required.
         self.trunk_mode = trunk_mode
 
     def validate(self):
@@ -51764,6 +55301,7 @@ class UpdatePushRuleRequest(TeaModel):
     ):
         self.access_token = access_token
         self.rule_infos = rule_infos
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -52101,6 +55639,7 @@ class UpdateRepositoryRequest(TeaModel):
         self.snippets_enabled = snippets_enabled
         self.visibility_level = visibility_level
         self.wiki_enabled = wiki_enabled
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -52592,6 +56131,7 @@ class UpdateRepositoryMemberRequest(TeaModel):
         self.member_type = member_type
         self.related_id = related_id
         self.related_infos = related_infos
+        # This parameter is required.
         self.organization_id = organization_id
 
     def validate(self):
@@ -52845,6 +56385,7 @@ class UpdateResourceMemberRequest(TeaModel):
         self,
         role_name: str = None,
     ):
+        # This parameter is required.
         self.role_name = role_name
 
     def validate(self):
@@ -52959,7 +56500,9 @@ class UpdateTestCaseRequestUpdateWorkitemPropertyRequest(TeaModel):
         field_identifier: str = None,
         field_value: str = None,
     ):
+        # This parameter is required.
         self.field_identifier = field_identifier
+        # This parameter is required.
         self.field_value = field_value
 
     def validate(self):
@@ -52991,6 +56534,7 @@ class UpdateTestCaseRequest(TeaModel):
         self,
         update_workitem_property_request: List[UpdateTestCaseRequestUpdateWorkitemPropertyRequest] = None,
     ):
+        # This parameter is required.
         self.update_workitem_property_request = update_workitem_property_request
 
     def validate(self):
@@ -53658,7 +57202,9 @@ class UpdateVariableGroupRequest(TeaModel):
         variables: str = None,
     ):
         self.description = description
+        # This parameter is required.
         self.name = name
+        # This parameter is required.
         self.variables = variables
 
     def validate(self):
@@ -53783,9 +57329,13 @@ class UpdateWorkItemRequest(TeaModel):
         property_key: str = None,
         property_value: str = None,
     ):
+        # This parameter is required.
         self.field_type = field_type
+        # This parameter is required.
         self.identifier = identifier
+        # This parameter is required.
         self.property_key = property_key
+        # This parameter is required.
         self.property_value = property_value
 
     def validate(self):
@@ -54075,9 +57625,13 @@ class UpdateWorkitemCommentRequest(TeaModel):
         format_type: str = None,
         workitem_identifier: str = None,
     ):
+        # This parameter is required.
         self.comment_id = comment_id
+        # This parameter is required.
         self.content = content
+        # This parameter is required.
         self.format_type = format_type
+        # This parameter is required.
         self.workitem_identifier = workitem_identifier
 
     def validate(self):
@@ -54359,7 +57913,9 @@ class UpdateWorkitemFieldRequestUpdateWorkitemPropertyRequest(TeaModel):
         field_identifier: str = None,
         field_value: str = None,
     ):
+        # This parameter is required.
         self.field_identifier = field_identifier
+        # This parameter is required.
         self.field_value = field_value
 
     def validate(self):
@@ -54392,7 +57948,9 @@ class UpdateWorkitemFieldRequest(TeaModel):
         update_workitem_property_request: List[UpdateWorkitemFieldRequestUpdateWorkitemPropertyRequest] = None,
         workitem_identifier: str = None,
     ):
+        # This parameter is required.
         self.update_workitem_property_request = update_workitem_property_request
+        # This parameter is required.
         self.workitem_identifier = workitem_identifier
 
     def validate(self):
@@ -54674,7 +58232,9 @@ class WorkitemAttachmentCreateRequest(TeaModel):
         file_key: str = None,
         original_filename: str = None,
     ):
+        # This parameter is required.
         self.file_key = file_key
+        # This parameter is required.
         self.original_filename = original_filename
 
     def validate(self):
