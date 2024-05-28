@@ -2093,6 +2093,518 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.copy_gtm_config_with_options_async(request, runtime)
 
+    def create_cloud_gtm_address_with_options(
+        self,
+        tmp_req: alidns_20150109_models.CreateCloudGtmAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.CreateCloudGtmAddressResponse:
+        """
+        @param tmp_req: CreateCloudGtmAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCloudGtmAddressResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = alidns_20150109_models.CreateCloudGtmAddressShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.health_tasks):
+            request.health_tasks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.health_tasks, 'HealthTasks', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address):
+            query['Address'] = request.address
+        if not UtilClient.is_unset(request.attribute_info):
+            query['AttributeInfo'] = request.attribute_info
+        if not UtilClient.is_unset(request.available_mode):
+            query['AvailableMode'] = request.available_mode
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.enable_status):
+            query['EnableStatus'] = request.enable_status
+        if not UtilClient.is_unset(request.health_judgement):
+            query['HealthJudgement'] = request.health_judgement
+        if not UtilClient.is_unset(request.health_tasks_shrink):
+            query['HealthTasks'] = request.health_tasks_shrink
+        if not UtilClient.is_unset(request.manual_available_status):
+            query['ManualAvailableStatus'] = request.manual_available_status
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCloudGtmAddress',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.CreateCloudGtmAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_cloud_gtm_address_with_options_async(
+        self,
+        tmp_req: alidns_20150109_models.CreateCloudGtmAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.CreateCloudGtmAddressResponse:
+        """
+        @param tmp_req: CreateCloudGtmAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCloudGtmAddressResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = alidns_20150109_models.CreateCloudGtmAddressShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.health_tasks):
+            request.health_tasks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.health_tasks, 'HealthTasks', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address):
+            query['Address'] = request.address
+        if not UtilClient.is_unset(request.attribute_info):
+            query['AttributeInfo'] = request.attribute_info
+        if not UtilClient.is_unset(request.available_mode):
+            query['AvailableMode'] = request.available_mode
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.enable_status):
+            query['EnableStatus'] = request.enable_status
+        if not UtilClient.is_unset(request.health_judgement):
+            query['HealthJudgement'] = request.health_judgement
+        if not UtilClient.is_unset(request.health_tasks_shrink):
+            query['HealthTasks'] = request.health_tasks_shrink
+        if not UtilClient.is_unset(request.manual_available_status):
+            query['ManualAvailableStatus'] = request.manual_available_status
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCloudGtmAddress',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.CreateCloudGtmAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_cloud_gtm_address(
+        self,
+        request: alidns_20150109_models.CreateCloudGtmAddressRequest,
+    ) -> alidns_20150109_models.CreateCloudGtmAddressResponse:
+        """
+        @param request: CreateCloudGtmAddressRequest
+        @return: CreateCloudGtmAddressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_cloud_gtm_address_with_options(request, runtime)
+
+    async def create_cloud_gtm_address_async(
+        self,
+        request: alidns_20150109_models.CreateCloudGtmAddressRequest,
+    ) -> alidns_20150109_models.CreateCloudGtmAddressResponse:
+        """
+        @param request: CreateCloudGtmAddressRequest
+        @return: CreateCloudGtmAddressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_cloud_gtm_address_with_options_async(request, runtime)
+
+    def create_cloud_gtm_address_pool_with_options(
+        self,
+        request: alidns_20150109_models.CreateCloudGtmAddressPoolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.CreateCloudGtmAddressPoolResponse:
+        """
+        @param request: CreateCloudGtmAddressPoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCloudGtmAddressPoolResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_pool_name):
+            query['AddressPoolName'] = request.address_pool_name
+        if not UtilClient.is_unset(request.address_pool_type):
+            query['AddressPoolType'] = request.address_pool_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.enable_status):
+            query['EnableStatus'] = request.enable_status
+        if not UtilClient.is_unset(request.health_judgement):
+            query['HealthJudgement'] = request.health_judgement
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCloudGtmAddressPool',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.CreateCloudGtmAddressPoolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_cloud_gtm_address_pool_with_options_async(
+        self,
+        request: alidns_20150109_models.CreateCloudGtmAddressPoolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.CreateCloudGtmAddressPoolResponse:
+        """
+        @param request: CreateCloudGtmAddressPoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCloudGtmAddressPoolResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_pool_name):
+            query['AddressPoolName'] = request.address_pool_name
+        if not UtilClient.is_unset(request.address_pool_type):
+            query['AddressPoolType'] = request.address_pool_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.enable_status):
+            query['EnableStatus'] = request.enable_status
+        if not UtilClient.is_unset(request.health_judgement):
+            query['HealthJudgement'] = request.health_judgement
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCloudGtmAddressPool',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.CreateCloudGtmAddressPoolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_cloud_gtm_address_pool(
+        self,
+        request: alidns_20150109_models.CreateCloudGtmAddressPoolRequest,
+    ) -> alidns_20150109_models.CreateCloudGtmAddressPoolResponse:
+        """
+        @param request: CreateCloudGtmAddressPoolRequest
+        @return: CreateCloudGtmAddressPoolResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_cloud_gtm_address_pool_with_options(request, runtime)
+
+    async def create_cloud_gtm_address_pool_async(
+        self,
+        request: alidns_20150109_models.CreateCloudGtmAddressPoolRequest,
+    ) -> alidns_20150109_models.CreateCloudGtmAddressPoolResponse:
+        """
+        @param request: CreateCloudGtmAddressPoolRequest
+        @return: CreateCloudGtmAddressPoolResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_cloud_gtm_address_pool_with_options_async(request, runtime)
+
+    def create_cloud_gtm_instance_config_with_options(
+        self,
+        request: alidns_20150109_models.CreateCloudGtmInstanceConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.CreateCloudGtmInstanceConfigResponse:
+        """
+        @param request: CreateCloudGtmInstanceConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCloudGtmInstanceConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.enable_status):
+            query['EnableStatus'] = request.enable_status
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.schedule_hostname):
+            query['ScheduleHostname'] = request.schedule_hostname
+        if not UtilClient.is_unset(request.schedule_rr_type):
+            query['ScheduleRrType'] = request.schedule_rr_type
+        if not UtilClient.is_unset(request.schedule_zone_mode):
+            query['ScheduleZoneMode'] = request.schedule_zone_mode
+        if not UtilClient.is_unset(request.schedule_zone_name):
+            query['ScheduleZoneName'] = request.schedule_zone_name
+        if not UtilClient.is_unset(request.ttl):
+            query['Ttl'] = request.ttl
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCloudGtmInstanceConfig',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.CreateCloudGtmInstanceConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_cloud_gtm_instance_config_with_options_async(
+        self,
+        request: alidns_20150109_models.CreateCloudGtmInstanceConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.CreateCloudGtmInstanceConfigResponse:
+        """
+        @param request: CreateCloudGtmInstanceConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCloudGtmInstanceConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.enable_status):
+            query['EnableStatus'] = request.enable_status
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.schedule_hostname):
+            query['ScheduleHostname'] = request.schedule_hostname
+        if not UtilClient.is_unset(request.schedule_rr_type):
+            query['ScheduleRrType'] = request.schedule_rr_type
+        if not UtilClient.is_unset(request.schedule_zone_mode):
+            query['ScheduleZoneMode'] = request.schedule_zone_mode
+        if not UtilClient.is_unset(request.schedule_zone_name):
+            query['ScheduleZoneName'] = request.schedule_zone_name
+        if not UtilClient.is_unset(request.ttl):
+            query['Ttl'] = request.ttl
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCloudGtmInstanceConfig',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.CreateCloudGtmInstanceConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_cloud_gtm_instance_config(
+        self,
+        request: alidns_20150109_models.CreateCloudGtmInstanceConfigRequest,
+    ) -> alidns_20150109_models.CreateCloudGtmInstanceConfigResponse:
+        """
+        @param request: CreateCloudGtmInstanceConfigRequest
+        @return: CreateCloudGtmInstanceConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_cloud_gtm_instance_config_with_options(request, runtime)
+
+    async def create_cloud_gtm_instance_config_async(
+        self,
+        request: alidns_20150109_models.CreateCloudGtmInstanceConfigRequest,
+    ) -> alidns_20150109_models.CreateCloudGtmInstanceConfigResponse:
+        """
+        @param request: CreateCloudGtmInstanceConfigRequest
+        @return: CreateCloudGtmInstanceConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_cloud_gtm_instance_config_with_options_async(request, runtime)
+
+    def create_cloud_gtm_monitor_template_with_options(
+        self,
+        tmp_req: alidns_20150109_models.CreateCloudGtmMonitorTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.CreateCloudGtmMonitorTemplateResponse:
+        """
+        @param tmp_req: CreateCloudGtmMonitorTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCloudGtmMonitorTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = alidns_20150109_models.CreateCloudGtmMonitorTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.isp_city_nodes):
+            request.isp_city_nodes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.isp_city_nodes, 'IspCityNodes', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.evaluation_count):
+            query['EvaluationCount'] = request.evaluation_count
+        if not UtilClient.is_unset(request.extend_info):
+            query['ExtendInfo'] = request.extend_info
+        if not UtilClient.is_unset(request.failure_rate):
+            query['FailureRate'] = request.failure_rate
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.ip_version):
+            query['IpVersion'] = request.ip_version
+        if not UtilClient.is_unset(request.isp_city_nodes_shrink):
+            query['IspCityNodes'] = request.isp_city_nodes_shrink
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
+        if not UtilClient.is_unset(request.timeout):
+            query['Timeout'] = request.timeout
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCloudGtmMonitorTemplate',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.CreateCloudGtmMonitorTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_cloud_gtm_monitor_template_with_options_async(
+        self,
+        tmp_req: alidns_20150109_models.CreateCloudGtmMonitorTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.CreateCloudGtmMonitorTemplateResponse:
+        """
+        @param tmp_req: CreateCloudGtmMonitorTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCloudGtmMonitorTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = alidns_20150109_models.CreateCloudGtmMonitorTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.isp_city_nodes):
+            request.isp_city_nodes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.isp_city_nodes, 'IspCityNodes', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.evaluation_count):
+            query['EvaluationCount'] = request.evaluation_count
+        if not UtilClient.is_unset(request.extend_info):
+            query['ExtendInfo'] = request.extend_info
+        if not UtilClient.is_unset(request.failure_rate):
+            query['FailureRate'] = request.failure_rate
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.ip_version):
+            query['IpVersion'] = request.ip_version
+        if not UtilClient.is_unset(request.isp_city_nodes_shrink):
+            query['IspCityNodes'] = request.isp_city_nodes_shrink
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
+        if not UtilClient.is_unset(request.timeout):
+            query['Timeout'] = request.timeout
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateCloudGtmMonitorTemplate',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.CreateCloudGtmMonitorTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_cloud_gtm_monitor_template(
+        self,
+        request: alidns_20150109_models.CreateCloudGtmMonitorTemplateRequest,
+    ) -> alidns_20150109_models.CreateCloudGtmMonitorTemplateResponse:
+        """
+        @param request: CreateCloudGtmMonitorTemplateRequest
+        @return: CreateCloudGtmMonitorTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_cloud_gtm_monitor_template_with_options(request, runtime)
+
+    async def create_cloud_gtm_monitor_template_async(
+        self,
+        request: alidns_20150109_models.CreateCloudGtmMonitorTemplateRequest,
+    ) -> alidns_20150109_models.CreateCloudGtmMonitorTemplateResponse:
+        """
+        @param request: CreateCloudGtmMonitorTemplateRequest
+        @return: CreateCloudGtmMonitorTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_cloud_gtm_monitor_template_with_options_async(request, runtime)
+
     def create_pdns_app_key_with_options(
         self,
         request: alidns_20150109_models.CreatePdnsAppKeyRequest,
@@ -2292,6 +2804,394 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_pdns_udp_ip_segment_with_options_async(request, runtime)
+
+    def delete_cloud_gtm_address_with_options(
+        self,
+        request: alidns_20150109_models.DeleteCloudGtmAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DeleteCloudGtmAddressResponse:
+        """
+        @param request: DeleteCloudGtmAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCloudGtmAddressResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_id):
+            query['AddressId'] = request.address_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCloudGtmAddress',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DeleteCloudGtmAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_cloud_gtm_address_with_options_async(
+        self,
+        request: alidns_20150109_models.DeleteCloudGtmAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DeleteCloudGtmAddressResponse:
+        """
+        @param request: DeleteCloudGtmAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCloudGtmAddressResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_id):
+            query['AddressId'] = request.address_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCloudGtmAddress',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DeleteCloudGtmAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_cloud_gtm_address(
+        self,
+        request: alidns_20150109_models.DeleteCloudGtmAddressRequest,
+    ) -> alidns_20150109_models.DeleteCloudGtmAddressResponse:
+        """
+        @param request: DeleteCloudGtmAddressRequest
+        @return: DeleteCloudGtmAddressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_cloud_gtm_address_with_options(request, runtime)
+
+    async def delete_cloud_gtm_address_async(
+        self,
+        request: alidns_20150109_models.DeleteCloudGtmAddressRequest,
+    ) -> alidns_20150109_models.DeleteCloudGtmAddressResponse:
+        """
+        @param request: DeleteCloudGtmAddressRequest
+        @return: DeleteCloudGtmAddressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_cloud_gtm_address_with_options_async(request, runtime)
+
+    def delete_cloud_gtm_address_pool_with_options(
+        self,
+        request: alidns_20150109_models.DeleteCloudGtmAddressPoolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DeleteCloudGtmAddressPoolResponse:
+        """
+        @param request: DeleteCloudGtmAddressPoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCloudGtmAddressPoolResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_pool_id):
+            query['AddressPoolId'] = request.address_pool_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCloudGtmAddressPool',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DeleteCloudGtmAddressPoolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_cloud_gtm_address_pool_with_options_async(
+        self,
+        request: alidns_20150109_models.DeleteCloudGtmAddressPoolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DeleteCloudGtmAddressPoolResponse:
+        """
+        @param request: DeleteCloudGtmAddressPoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCloudGtmAddressPoolResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_pool_id):
+            query['AddressPoolId'] = request.address_pool_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCloudGtmAddressPool',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DeleteCloudGtmAddressPoolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_cloud_gtm_address_pool(
+        self,
+        request: alidns_20150109_models.DeleteCloudGtmAddressPoolRequest,
+    ) -> alidns_20150109_models.DeleteCloudGtmAddressPoolResponse:
+        """
+        @param request: DeleteCloudGtmAddressPoolRequest
+        @return: DeleteCloudGtmAddressPoolResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_cloud_gtm_address_pool_with_options(request, runtime)
+
+    async def delete_cloud_gtm_address_pool_async(
+        self,
+        request: alidns_20150109_models.DeleteCloudGtmAddressPoolRequest,
+    ) -> alidns_20150109_models.DeleteCloudGtmAddressPoolResponse:
+        """
+        @param request: DeleteCloudGtmAddressPoolRequest
+        @return: DeleteCloudGtmAddressPoolResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_cloud_gtm_address_pool_with_options_async(request, runtime)
+
+    def delete_cloud_gtm_instance_config_with_options(
+        self,
+        request: alidns_20150109_models.DeleteCloudGtmInstanceConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DeleteCloudGtmInstanceConfigResponse:
+        """
+        @param request: DeleteCloudGtmInstanceConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCloudGtmInstanceConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCloudGtmInstanceConfig',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DeleteCloudGtmInstanceConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_cloud_gtm_instance_config_with_options_async(
+        self,
+        request: alidns_20150109_models.DeleteCloudGtmInstanceConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DeleteCloudGtmInstanceConfigResponse:
+        """
+        @param request: DeleteCloudGtmInstanceConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCloudGtmInstanceConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCloudGtmInstanceConfig',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DeleteCloudGtmInstanceConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_cloud_gtm_instance_config(
+        self,
+        request: alidns_20150109_models.DeleteCloudGtmInstanceConfigRequest,
+    ) -> alidns_20150109_models.DeleteCloudGtmInstanceConfigResponse:
+        """
+        @param request: DeleteCloudGtmInstanceConfigRequest
+        @return: DeleteCloudGtmInstanceConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_cloud_gtm_instance_config_with_options(request, runtime)
+
+    async def delete_cloud_gtm_instance_config_async(
+        self,
+        request: alidns_20150109_models.DeleteCloudGtmInstanceConfigRequest,
+    ) -> alidns_20150109_models.DeleteCloudGtmInstanceConfigResponse:
+        """
+        @param request: DeleteCloudGtmInstanceConfigRequest
+        @return: DeleteCloudGtmInstanceConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_cloud_gtm_instance_config_with_options_async(request, runtime)
+
+    def delete_cloud_gtm_monitor_template_with_options(
+        self,
+        request: alidns_20150109_models.DeleteCloudGtmMonitorTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DeleteCloudGtmMonitorTemplateResponse:
+        """
+        @param request: DeleteCloudGtmMonitorTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCloudGtmMonitorTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCloudGtmMonitorTemplate',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DeleteCloudGtmMonitorTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_cloud_gtm_monitor_template_with_options_async(
+        self,
+        request: alidns_20150109_models.DeleteCloudGtmMonitorTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DeleteCloudGtmMonitorTemplateResponse:
+        """
+        @param request: DeleteCloudGtmMonitorTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCloudGtmMonitorTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteCloudGtmMonitorTemplate',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DeleteCloudGtmMonitorTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_cloud_gtm_monitor_template(
+        self,
+        request: alidns_20150109_models.DeleteCloudGtmMonitorTemplateRequest,
+    ) -> alidns_20150109_models.DeleteCloudGtmMonitorTemplateResponse:
+        """
+        @param request: DeleteCloudGtmMonitorTemplateRequest
+        @return: DeleteCloudGtmMonitorTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_cloud_gtm_monitor_template_with_options(request, runtime)
+
+    async def delete_cloud_gtm_monitor_template_async(
+        self,
+        request: alidns_20150109_models.DeleteCloudGtmMonitorTemplateRequest,
+    ) -> alidns_20150109_models.DeleteCloudGtmMonitorTemplateResponse:
+        """
+        @param request: DeleteCloudGtmMonitorTemplateRequest
+        @return: DeleteCloudGtmMonitorTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_cloud_gtm_monitor_template_with_options_async(request, runtime)
 
     def delete_custom_lines_with_options(
         self,
@@ -3589,6 +4489,102 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_batch_result_detail_with_options_async(request, runtime)
 
+    def describe_cloud_gtm_address_with_options(
+        self,
+        request: alidns_20150109_models.DescribeCloudGtmAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeCloudGtmAddressResponse:
+        """
+        @param request: DescribeCloudGtmAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudGtmAddressResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_id):
+            query['AddressId'] = request.address_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudGtmAddress',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeCloudGtmAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cloud_gtm_address_with_options_async(
+        self,
+        request: alidns_20150109_models.DescribeCloudGtmAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeCloudGtmAddressResponse:
+        """
+        @param request: DescribeCloudGtmAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudGtmAddressResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_id):
+            query['AddressId'] = request.address_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudGtmAddress',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeCloudGtmAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cloud_gtm_address(
+        self,
+        request: alidns_20150109_models.DescribeCloudGtmAddressRequest,
+    ) -> alidns_20150109_models.DescribeCloudGtmAddressResponse:
+        """
+        @param request: DescribeCloudGtmAddressRequest
+        @return: DescribeCloudGtmAddressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cloud_gtm_address_with_options(request, runtime)
+
+    async def describe_cloud_gtm_address_async(
+        self,
+        request: alidns_20150109_models.DescribeCloudGtmAddressRequest,
+    ) -> alidns_20150109_models.DescribeCloudGtmAddressResponse:
+        """
+        @param request: DescribeCloudGtmAddressRequest
+        @return: DescribeCloudGtmAddressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cloud_gtm_address_with_options_async(request, runtime)
+
     def describe_cloud_gtm_address_pool_with_options(
         self,
         request: alidns_20150109_models.DescribeCloudGtmAddressPoolRequest,
@@ -3684,6 +4680,736 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_cloud_gtm_address_pool_with_options_async(request, runtime)
+
+    def describe_cloud_gtm_address_pool_reference_with_options(
+        self,
+        request: alidns_20150109_models.DescribeCloudGtmAddressPoolReferenceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeCloudGtmAddressPoolReferenceResponse:
+        """
+        @param request: DescribeCloudGtmAddressPoolReferenceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudGtmAddressPoolReferenceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_pool_id):
+            query['AddressPoolId'] = request.address_pool_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudGtmAddressPoolReference',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeCloudGtmAddressPoolReferenceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cloud_gtm_address_pool_reference_with_options_async(
+        self,
+        request: alidns_20150109_models.DescribeCloudGtmAddressPoolReferenceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeCloudGtmAddressPoolReferenceResponse:
+        """
+        @param request: DescribeCloudGtmAddressPoolReferenceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudGtmAddressPoolReferenceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_pool_id):
+            query['AddressPoolId'] = request.address_pool_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudGtmAddressPoolReference',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeCloudGtmAddressPoolReferenceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cloud_gtm_address_pool_reference(
+        self,
+        request: alidns_20150109_models.DescribeCloudGtmAddressPoolReferenceRequest,
+    ) -> alidns_20150109_models.DescribeCloudGtmAddressPoolReferenceResponse:
+        """
+        @param request: DescribeCloudGtmAddressPoolReferenceRequest
+        @return: DescribeCloudGtmAddressPoolReferenceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cloud_gtm_address_pool_reference_with_options(request, runtime)
+
+    async def describe_cloud_gtm_address_pool_reference_async(
+        self,
+        request: alidns_20150109_models.DescribeCloudGtmAddressPoolReferenceRequest,
+    ) -> alidns_20150109_models.DescribeCloudGtmAddressPoolReferenceResponse:
+        """
+        @param request: DescribeCloudGtmAddressPoolReferenceRequest
+        @return: DescribeCloudGtmAddressPoolReferenceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cloud_gtm_address_pool_reference_with_options_async(request, runtime)
+
+    def describe_cloud_gtm_address_reference_with_options(
+        self,
+        request: alidns_20150109_models.DescribeCloudGtmAddressReferenceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeCloudGtmAddressReferenceResponse:
+        """
+        @param request: DescribeCloudGtmAddressReferenceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudGtmAddressReferenceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_id):
+            query['AddressId'] = request.address_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudGtmAddressReference',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeCloudGtmAddressReferenceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cloud_gtm_address_reference_with_options_async(
+        self,
+        request: alidns_20150109_models.DescribeCloudGtmAddressReferenceRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeCloudGtmAddressReferenceResponse:
+        """
+        @param request: DescribeCloudGtmAddressReferenceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudGtmAddressReferenceResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_id):
+            query['AddressId'] = request.address_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudGtmAddressReference',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeCloudGtmAddressReferenceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cloud_gtm_address_reference(
+        self,
+        request: alidns_20150109_models.DescribeCloudGtmAddressReferenceRequest,
+    ) -> alidns_20150109_models.DescribeCloudGtmAddressReferenceResponse:
+        """
+        @param request: DescribeCloudGtmAddressReferenceRequest
+        @return: DescribeCloudGtmAddressReferenceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cloud_gtm_address_reference_with_options(request, runtime)
+
+    async def describe_cloud_gtm_address_reference_async(
+        self,
+        request: alidns_20150109_models.DescribeCloudGtmAddressReferenceRequest,
+    ) -> alidns_20150109_models.DescribeCloudGtmAddressReferenceResponse:
+        """
+        @param request: DescribeCloudGtmAddressReferenceRequest
+        @return: DescribeCloudGtmAddressReferenceResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cloud_gtm_address_reference_with_options_async(request, runtime)
+
+    def describe_cloud_gtm_global_alert_with_options(
+        self,
+        request: alidns_20150109_models.DescribeCloudGtmGlobalAlertRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeCloudGtmGlobalAlertResponse:
+        """
+        @param request: DescribeCloudGtmGlobalAlertRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudGtmGlobalAlertResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudGtmGlobalAlert',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeCloudGtmGlobalAlertResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cloud_gtm_global_alert_with_options_async(
+        self,
+        request: alidns_20150109_models.DescribeCloudGtmGlobalAlertRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeCloudGtmGlobalAlertResponse:
+        """
+        @param request: DescribeCloudGtmGlobalAlertRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudGtmGlobalAlertResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudGtmGlobalAlert',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeCloudGtmGlobalAlertResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cloud_gtm_global_alert(
+        self,
+        request: alidns_20150109_models.DescribeCloudGtmGlobalAlertRequest,
+    ) -> alidns_20150109_models.DescribeCloudGtmGlobalAlertResponse:
+        """
+        @param request: DescribeCloudGtmGlobalAlertRequest
+        @return: DescribeCloudGtmGlobalAlertResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cloud_gtm_global_alert_with_options(request, runtime)
+
+    async def describe_cloud_gtm_global_alert_async(
+        self,
+        request: alidns_20150109_models.DescribeCloudGtmGlobalAlertRequest,
+    ) -> alidns_20150109_models.DescribeCloudGtmGlobalAlertResponse:
+        """
+        @param request: DescribeCloudGtmGlobalAlertRequest
+        @return: DescribeCloudGtmGlobalAlertResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cloud_gtm_global_alert_with_options_async(request, runtime)
+
+    def describe_cloud_gtm_instance_config_alert_with_options(
+        self,
+        request: alidns_20150109_models.DescribeCloudGtmInstanceConfigAlertRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeCloudGtmInstanceConfigAlertResponse:
+        """
+        @param request: DescribeCloudGtmInstanceConfigAlertRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudGtmInstanceConfigAlertResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudGtmInstanceConfigAlert',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeCloudGtmInstanceConfigAlertResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cloud_gtm_instance_config_alert_with_options_async(
+        self,
+        request: alidns_20150109_models.DescribeCloudGtmInstanceConfigAlertRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeCloudGtmInstanceConfigAlertResponse:
+        """
+        @param request: DescribeCloudGtmInstanceConfigAlertRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudGtmInstanceConfigAlertResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudGtmInstanceConfigAlert',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeCloudGtmInstanceConfigAlertResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cloud_gtm_instance_config_alert(
+        self,
+        request: alidns_20150109_models.DescribeCloudGtmInstanceConfigAlertRequest,
+    ) -> alidns_20150109_models.DescribeCloudGtmInstanceConfigAlertResponse:
+        """
+        @param request: DescribeCloudGtmInstanceConfigAlertRequest
+        @return: DescribeCloudGtmInstanceConfigAlertResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cloud_gtm_instance_config_alert_with_options(request, runtime)
+
+    async def describe_cloud_gtm_instance_config_alert_async(
+        self,
+        request: alidns_20150109_models.DescribeCloudGtmInstanceConfigAlertRequest,
+    ) -> alidns_20150109_models.DescribeCloudGtmInstanceConfigAlertResponse:
+        """
+        @param request: DescribeCloudGtmInstanceConfigAlertRequest
+        @return: DescribeCloudGtmInstanceConfigAlertResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cloud_gtm_instance_config_alert_with_options_async(request, runtime)
+
+    def describe_cloud_gtm_instance_config_full_info_with_options(
+        self,
+        request: alidns_20150109_models.DescribeCloudGtmInstanceConfigFullInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeCloudGtmInstanceConfigFullInfoResponse:
+        """
+        @param request: DescribeCloudGtmInstanceConfigFullInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudGtmInstanceConfigFullInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudGtmInstanceConfigFullInfo',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeCloudGtmInstanceConfigFullInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cloud_gtm_instance_config_full_info_with_options_async(
+        self,
+        request: alidns_20150109_models.DescribeCloudGtmInstanceConfigFullInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeCloudGtmInstanceConfigFullInfoResponse:
+        """
+        @param request: DescribeCloudGtmInstanceConfigFullInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudGtmInstanceConfigFullInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudGtmInstanceConfigFullInfo',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeCloudGtmInstanceConfigFullInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cloud_gtm_instance_config_full_info(
+        self,
+        request: alidns_20150109_models.DescribeCloudGtmInstanceConfigFullInfoRequest,
+    ) -> alidns_20150109_models.DescribeCloudGtmInstanceConfigFullInfoResponse:
+        """
+        @param request: DescribeCloudGtmInstanceConfigFullInfoRequest
+        @return: DescribeCloudGtmInstanceConfigFullInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cloud_gtm_instance_config_full_info_with_options(request, runtime)
+
+    async def describe_cloud_gtm_instance_config_full_info_async(
+        self,
+        request: alidns_20150109_models.DescribeCloudGtmInstanceConfigFullInfoRequest,
+    ) -> alidns_20150109_models.DescribeCloudGtmInstanceConfigFullInfoResponse:
+        """
+        @param request: DescribeCloudGtmInstanceConfigFullInfoRequest
+        @return: DescribeCloudGtmInstanceConfigFullInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cloud_gtm_instance_config_full_info_with_options_async(request, runtime)
+
+    def describe_cloud_gtm_monitor_template_with_options(
+        self,
+        request: alidns_20150109_models.DescribeCloudGtmMonitorTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeCloudGtmMonitorTemplateResponse:
+        """
+        @param request: DescribeCloudGtmMonitorTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudGtmMonitorTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudGtmMonitorTemplate',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeCloudGtmMonitorTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cloud_gtm_monitor_template_with_options_async(
+        self,
+        request: alidns_20150109_models.DescribeCloudGtmMonitorTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeCloudGtmMonitorTemplateResponse:
+        """
+        @param request: DescribeCloudGtmMonitorTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudGtmMonitorTemplateResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudGtmMonitorTemplate',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeCloudGtmMonitorTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cloud_gtm_monitor_template(
+        self,
+        request: alidns_20150109_models.DescribeCloudGtmMonitorTemplateRequest,
+    ) -> alidns_20150109_models.DescribeCloudGtmMonitorTemplateResponse:
+        """
+        @param request: DescribeCloudGtmMonitorTemplateRequest
+        @return: DescribeCloudGtmMonitorTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cloud_gtm_monitor_template_with_options(request, runtime)
+
+    async def describe_cloud_gtm_monitor_template_async(
+        self,
+        request: alidns_20150109_models.DescribeCloudGtmMonitorTemplateRequest,
+    ) -> alidns_20150109_models.DescribeCloudGtmMonitorTemplateResponse:
+        """
+        @param request: DescribeCloudGtmMonitorTemplateRequest
+        @return: DescribeCloudGtmMonitorTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cloud_gtm_monitor_template_with_options_async(request, runtime)
+
+    def describe_cloud_gtm_summary_with_options(
+        self,
+        request: alidns_20150109_models.DescribeCloudGtmSummaryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeCloudGtmSummaryResponse:
+        """
+        @param request: DescribeCloudGtmSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudGtmSummaryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudGtmSummary',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeCloudGtmSummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cloud_gtm_summary_with_options_async(
+        self,
+        request: alidns_20150109_models.DescribeCloudGtmSummaryRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeCloudGtmSummaryResponse:
+        """
+        @param request: DescribeCloudGtmSummaryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudGtmSummaryResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeCloudGtmSummary',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeCloudGtmSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cloud_gtm_summary(
+        self,
+        request: alidns_20150109_models.DescribeCloudGtmSummaryRequest,
+    ) -> alidns_20150109_models.DescribeCloudGtmSummaryResponse:
+        """
+        @param request: DescribeCloudGtmSummaryRequest
+        @return: DescribeCloudGtmSummaryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cloud_gtm_summary_with_options(request, runtime)
+
+    async def describe_cloud_gtm_summary_async(
+        self,
+        request: alidns_20150109_models.DescribeCloudGtmSummaryRequest,
+    ) -> alidns_20150109_models.DescribeCloudGtmSummaryResponse:
+        """
+        @param request: DescribeCloudGtmSummaryRequest
+        @return: DescribeCloudGtmSummaryResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cloud_gtm_summary_with_options_async(request, runtime)
+
+    def describe_cloud_gtm_system_lines_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeCloudGtmSystemLinesResponse:
+        """
+        @param request: DescribeCloudGtmSystemLinesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudGtmSystemLinesResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeCloudGtmSystemLines',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeCloudGtmSystemLinesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cloud_gtm_system_lines_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.DescribeCloudGtmSystemLinesResponse:
+        """
+        @param request: DescribeCloudGtmSystemLinesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCloudGtmSystemLinesResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='DescribeCloudGtmSystemLines',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.DescribeCloudGtmSystemLinesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cloud_gtm_system_lines(self) -> alidns_20150109_models.DescribeCloudGtmSystemLinesResponse:
+        """
+        @return: DescribeCloudGtmSystemLinesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_cloud_gtm_system_lines_with_options(runtime)
+
+    async def describe_cloud_gtm_system_lines_async(self) -> alidns_20150109_models.DescribeCloudGtmSystemLinesResponse:
+        """
+        @return: DescribeCloudGtmSystemLinesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_cloud_gtm_system_lines_with_options_async(runtime)
 
     def describe_custom_line_with_options(
         self,
@@ -12677,6 +14403,878 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_txt_record_for_verify_with_options_async(request, runtime)
 
+    def list_cloud_gtm_address_pools_with_options(
+        self,
+        request: alidns_20150109_models.ListCloudGtmAddressPoolsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.ListCloudGtmAddressPoolsResponse:
+        """
+        @param request: ListCloudGtmAddressPoolsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCloudGtmAddressPoolsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_pool_name):
+            query['AddressPoolName'] = request.address_pool_name
+        if not UtilClient.is_unset(request.address_pool_type):
+            query['AddressPoolType'] = request.address_pool_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.enable_status):
+            query['EnableStatus'] = request.enable_status
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCloudGtmAddressPools',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.ListCloudGtmAddressPoolsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cloud_gtm_address_pools_with_options_async(
+        self,
+        request: alidns_20150109_models.ListCloudGtmAddressPoolsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.ListCloudGtmAddressPoolsResponse:
+        """
+        @param request: ListCloudGtmAddressPoolsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCloudGtmAddressPoolsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_pool_name):
+            query['AddressPoolName'] = request.address_pool_name
+        if not UtilClient.is_unset(request.address_pool_type):
+            query['AddressPoolType'] = request.address_pool_type
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.enable_status):
+            query['EnableStatus'] = request.enable_status
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCloudGtmAddressPools',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.ListCloudGtmAddressPoolsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cloud_gtm_address_pools(
+        self,
+        request: alidns_20150109_models.ListCloudGtmAddressPoolsRequest,
+    ) -> alidns_20150109_models.ListCloudGtmAddressPoolsResponse:
+        """
+        @param request: ListCloudGtmAddressPoolsRequest
+        @return: ListCloudGtmAddressPoolsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_cloud_gtm_address_pools_with_options(request, runtime)
+
+    async def list_cloud_gtm_address_pools_async(
+        self,
+        request: alidns_20150109_models.ListCloudGtmAddressPoolsRequest,
+    ) -> alidns_20150109_models.ListCloudGtmAddressPoolsResponse:
+        """
+        @param request: ListCloudGtmAddressPoolsRequest
+        @return: ListCloudGtmAddressPoolsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_cloud_gtm_address_pools_with_options_async(request, runtime)
+
+    def list_cloud_gtm_addresses_with_options(
+        self,
+        request: alidns_20150109_models.ListCloudGtmAddressesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.ListCloudGtmAddressesResponse:
+        """
+        @param request: ListCloudGtmAddressesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCloudGtmAddressesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address):
+            query['Address'] = request.address
+        if not UtilClient.is_unset(request.address_id):
+            query['AddressId'] = request.address_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.enable_status):
+            query['EnableStatus'] = request.enable_status
+        if not UtilClient.is_unset(request.health_status):
+            query['HealthStatus'] = request.health_status
+        if not UtilClient.is_unset(request.monitor_template_id):
+            query['MonitorTemplateId'] = request.monitor_template_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCloudGtmAddresses',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.ListCloudGtmAddressesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cloud_gtm_addresses_with_options_async(
+        self,
+        request: alidns_20150109_models.ListCloudGtmAddressesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.ListCloudGtmAddressesResponse:
+        """
+        @param request: ListCloudGtmAddressesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCloudGtmAddressesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address):
+            query['Address'] = request.address
+        if not UtilClient.is_unset(request.address_id):
+            query['AddressId'] = request.address_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.enable_status):
+            query['EnableStatus'] = request.enable_status
+        if not UtilClient.is_unset(request.health_status):
+            query['HealthStatus'] = request.health_status
+        if not UtilClient.is_unset(request.monitor_template_id):
+            query['MonitorTemplateId'] = request.monitor_template_id
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCloudGtmAddresses',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.ListCloudGtmAddressesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cloud_gtm_addresses(
+        self,
+        request: alidns_20150109_models.ListCloudGtmAddressesRequest,
+    ) -> alidns_20150109_models.ListCloudGtmAddressesResponse:
+        """
+        @param request: ListCloudGtmAddressesRequest
+        @return: ListCloudGtmAddressesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_cloud_gtm_addresses_with_options(request, runtime)
+
+    async def list_cloud_gtm_addresses_async(
+        self,
+        request: alidns_20150109_models.ListCloudGtmAddressesRequest,
+    ) -> alidns_20150109_models.ListCloudGtmAddressesResponse:
+        """
+        @param request: ListCloudGtmAddressesRequest
+        @return: ListCloudGtmAddressesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_cloud_gtm_addresses_with_options_async(request, runtime)
+
+    def list_cloud_gtm_alert_logs_with_options(
+        self,
+        request: alidns_20150109_models.ListCloudGtmAlertLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.ListCloudGtmAlertLogsResponse:
+        """
+        @param request: ListCloudGtmAlertLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCloudGtmAlertLogsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_type):
+            query['ActionType'] = request.action_type
+        if not UtilClient.is_unset(request.end_timestamp):
+            query['EndTimestamp'] = request.end_timestamp
+        if not UtilClient.is_unset(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_timestamp):
+            query['StartTimestamp'] = request.start_timestamp
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCloudGtmAlertLogs',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.ListCloudGtmAlertLogsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cloud_gtm_alert_logs_with_options_async(
+        self,
+        request: alidns_20150109_models.ListCloudGtmAlertLogsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.ListCloudGtmAlertLogsResponse:
+        """
+        @param request: ListCloudGtmAlertLogsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCloudGtmAlertLogsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.action_type):
+            query['ActionType'] = request.action_type
+        if not UtilClient.is_unset(request.end_timestamp):
+            query['EndTimestamp'] = request.end_timestamp
+        if not UtilClient.is_unset(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not UtilClient.is_unset(request.keyword):
+            query['Keyword'] = request.keyword
+        if not UtilClient.is_unset(request.lang):
+            query['Lang'] = request.lang
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.start_timestamp):
+            query['StartTimestamp'] = request.start_timestamp
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCloudGtmAlertLogs',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.ListCloudGtmAlertLogsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cloud_gtm_alert_logs(
+        self,
+        request: alidns_20150109_models.ListCloudGtmAlertLogsRequest,
+    ) -> alidns_20150109_models.ListCloudGtmAlertLogsResponse:
+        """
+        @param request: ListCloudGtmAlertLogsRequest
+        @return: ListCloudGtmAlertLogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_cloud_gtm_alert_logs_with_options(request, runtime)
+
+    async def list_cloud_gtm_alert_logs_async(
+        self,
+        request: alidns_20150109_models.ListCloudGtmAlertLogsRequest,
+    ) -> alidns_20150109_models.ListCloudGtmAlertLogsResponse:
+        """
+        @param request: ListCloudGtmAlertLogsRequest
+        @return: ListCloudGtmAlertLogsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_cloud_gtm_alert_logs_with_options_async(request, runtime)
+
+    def list_cloud_gtm_available_alert_groups_with_options(
+        self,
+        request: alidns_20150109_models.ListCloudGtmAvailableAlertGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.ListCloudGtmAvailableAlertGroupsResponse:
+        """
+        @param request: ListCloudGtmAvailableAlertGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCloudGtmAvailableAlertGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCloudGtmAvailableAlertGroups',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.ListCloudGtmAvailableAlertGroupsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cloud_gtm_available_alert_groups_with_options_async(
+        self,
+        request: alidns_20150109_models.ListCloudGtmAvailableAlertGroupsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.ListCloudGtmAvailableAlertGroupsResponse:
+        """
+        @param request: ListCloudGtmAvailableAlertGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCloudGtmAvailableAlertGroupsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCloudGtmAvailableAlertGroups',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.ListCloudGtmAvailableAlertGroupsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cloud_gtm_available_alert_groups(
+        self,
+        request: alidns_20150109_models.ListCloudGtmAvailableAlertGroupsRequest,
+    ) -> alidns_20150109_models.ListCloudGtmAvailableAlertGroupsResponse:
+        """
+        @param request: ListCloudGtmAvailableAlertGroupsRequest
+        @return: ListCloudGtmAvailableAlertGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_cloud_gtm_available_alert_groups_with_options(request, runtime)
+
+    async def list_cloud_gtm_available_alert_groups_async(
+        self,
+        request: alidns_20150109_models.ListCloudGtmAvailableAlertGroupsRequest,
+    ) -> alidns_20150109_models.ListCloudGtmAvailableAlertGroupsResponse:
+        """
+        @param request: ListCloudGtmAvailableAlertGroupsRequest
+        @return: ListCloudGtmAvailableAlertGroupsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_cloud_gtm_available_alert_groups_with_options_async(request, runtime)
+
+    def list_cloud_gtm_instance_configs_with_options(
+        self,
+        request: alidns_20150109_models.ListCloudGtmInstanceConfigsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.ListCloudGtmInstanceConfigsResponse:
+        """
+        @param request: ListCloudGtmInstanceConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCloudGtmInstanceConfigsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.enable_status):
+            query['EnableStatus'] = request.enable_status
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.schedule_domain_name):
+            query['ScheduleDomainName'] = request.schedule_domain_name
+        if not UtilClient.is_unset(request.schedule_zone_name):
+            query['ScheduleZoneName'] = request.schedule_zone_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCloudGtmInstanceConfigs',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.ListCloudGtmInstanceConfigsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cloud_gtm_instance_configs_with_options_async(
+        self,
+        request: alidns_20150109_models.ListCloudGtmInstanceConfigsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.ListCloudGtmInstanceConfigsResponse:
+        """
+        @param request: ListCloudGtmInstanceConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCloudGtmInstanceConfigsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.enable_status):
+            query['EnableStatus'] = request.enable_status
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.schedule_domain_name):
+            query['ScheduleDomainName'] = request.schedule_domain_name
+        if not UtilClient.is_unset(request.schedule_zone_name):
+            query['ScheduleZoneName'] = request.schedule_zone_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCloudGtmInstanceConfigs',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.ListCloudGtmInstanceConfigsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cloud_gtm_instance_configs(
+        self,
+        request: alidns_20150109_models.ListCloudGtmInstanceConfigsRequest,
+    ) -> alidns_20150109_models.ListCloudGtmInstanceConfigsResponse:
+        """
+        @param request: ListCloudGtmInstanceConfigsRequest
+        @return: ListCloudGtmInstanceConfigsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_cloud_gtm_instance_configs_with_options(request, runtime)
+
+    async def list_cloud_gtm_instance_configs_async(
+        self,
+        request: alidns_20150109_models.ListCloudGtmInstanceConfigsRequest,
+    ) -> alidns_20150109_models.ListCloudGtmInstanceConfigsResponse:
+        """
+        @param request: ListCloudGtmInstanceConfigsRequest
+        @return: ListCloudGtmInstanceConfigsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_cloud_gtm_instance_configs_with_options_async(request, runtime)
+
+    def list_cloud_gtm_instances_with_options(
+        self,
+        request: alidns_20150109_models.ListCloudGtmInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.ListCloudGtmInstancesResponse:
+        """
+        @param request: ListCloudGtmInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCloudGtmInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCloudGtmInstances',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.ListCloudGtmInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cloud_gtm_instances_with_options_async(
+        self,
+        request: alidns_20150109_models.ListCloudGtmInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.ListCloudGtmInstancesResponse:
+        """
+        @param request: ListCloudGtmInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCloudGtmInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCloudGtmInstances',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.ListCloudGtmInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cloud_gtm_instances(
+        self,
+        request: alidns_20150109_models.ListCloudGtmInstancesRequest,
+    ) -> alidns_20150109_models.ListCloudGtmInstancesResponse:
+        """
+        @param request: ListCloudGtmInstancesRequest
+        @return: ListCloudGtmInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_cloud_gtm_instances_with_options(request, runtime)
+
+    async def list_cloud_gtm_instances_async(
+        self,
+        request: alidns_20150109_models.ListCloudGtmInstancesRequest,
+    ) -> alidns_20150109_models.ListCloudGtmInstancesResponse:
+        """
+        @param request: ListCloudGtmInstancesRequest
+        @return: ListCloudGtmInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_cloud_gtm_instances_with_options_async(request, runtime)
+
+    def list_cloud_gtm_monitor_nodes_with_options(
+        self,
+        request: alidns_20150109_models.ListCloudGtmMonitorNodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.ListCloudGtmMonitorNodesResponse:
+        """
+        @param request: ListCloudGtmMonitorNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCloudGtmMonitorNodesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCloudGtmMonitorNodes',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.ListCloudGtmMonitorNodesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cloud_gtm_monitor_nodes_with_options_async(
+        self,
+        request: alidns_20150109_models.ListCloudGtmMonitorNodesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.ListCloudGtmMonitorNodesResponse:
+        """
+        @param request: ListCloudGtmMonitorNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCloudGtmMonitorNodesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCloudGtmMonitorNodes',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.ListCloudGtmMonitorNodesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cloud_gtm_monitor_nodes(
+        self,
+        request: alidns_20150109_models.ListCloudGtmMonitorNodesRequest,
+    ) -> alidns_20150109_models.ListCloudGtmMonitorNodesResponse:
+        """
+        @param request: ListCloudGtmMonitorNodesRequest
+        @return: ListCloudGtmMonitorNodesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_cloud_gtm_monitor_nodes_with_options(request, runtime)
+
+    async def list_cloud_gtm_monitor_nodes_async(
+        self,
+        request: alidns_20150109_models.ListCloudGtmMonitorNodesRequest,
+    ) -> alidns_20150109_models.ListCloudGtmMonitorNodesResponse:
+        """
+        @param request: ListCloudGtmMonitorNodesRequest
+        @return: ListCloudGtmMonitorNodesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_cloud_gtm_monitor_nodes_with_options_async(request, runtime)
+
+    def list_cloud_gtm_monitor_templates_with_options(
+        self,
+        request: alidns_20150109_models.ListCloudGtmMonitorTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.ListCloudGtmMonitorTemplatesResponse:
+        """
+        @param request: ListCloudGtmMonitorTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCloudGtmMonitorTemplatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.ip_version):
+            query['IpVersion'] = request.ip_version
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCloudGtmMonitorTemplates',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.ListCloudGtmMonitorTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cloud_gtm_monitor_templates_with_options_async(
+        self,
+        request: alidns_20150109_models.ListCloudGtmMonitorTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.ListCloudGtmMonitorTemplatesResponse:
+        """
+        @param request: ListCloudGtmMonitorTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCloudGtmMonitorTemplatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.ip_version):
+            query['IpVersion'] = request.ip_version
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListCloudGtmMonitorTemplates',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.ListCloudGtmMonitorTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cloud_gtm_monitor_templates(
+        self,
+        request: alidns_20150109_models.ListCloudGtmMonitorTemplatesRequest,
+    ) -> alidns_20150109_models.ListCloudGtmMonitorTemplatesResponse:
+        """
+        @param request: ListCloudGtmMonitorTemplatesRequest
+        @return: ListCloudGtmMonitorTemplatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.list_cloud_gtm_monitor_templates_with_options(request, runtime)
+
+    async def list_cloud_gtm_monitor_templates_async(
+        self,
+        request: alidns_20150109_models.ListCloudGtmMonitorTemplatesRequest,
+    ) -> alidns_20150109_models.ListCloudGtmMonitorTemplatesResponse:
+        """
+        @param request: ListCloudGtmMonitorTemplatesRequest
+        @return: ListCloudGtmMonitorTemplatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.list_cloud_gtm_monitor_templates_with_options_async(request, runtime)
+
     def list_tag_resources_with_options(
         self,
         request: alidns_20150109_models.ListTagResourcesRequest,
@@ -13645,6 +16243,226 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.remove_pdns_udp_ip_segment_with_options_async(request, runtime)
 
+    def replace_cloud_gtm_address_pool_address_with_options(
+        self,
+        tmp_req: alidns_20150109_models.ReplaceCloudGtmAddressPoolAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.ReplaceCloudGtmAddressPoolAddressResponse:
+        """
+        @param tmp_req: ReplaceCloudGtmAddressPoolAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReplaceCloudGtmAddressPoolAddressResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = alidns_20150109_models.ReplaceCloudGtmAddressPoolAddressShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.addresses):
+            request.addresses_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.addresses, 'Addresses', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_pool_id):
+            query['AddressPoolId'] = request.address_pool_id
+        if not UtilClient.is_unset(request.addresses_shrink):
+            query['Addresses'] = request.addresses_shrink
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReplaceCloudGtmAddressPoolAddress',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.ReplaceCloudGtmAddressPoolAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def replace_cloud_gtm_address_pool_address_with_options_async(
+        self,
+        tmp_req: alidns_20150109_models.ReplaceCloudGtmAddressPoolAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.ReplaceCloudGtmAddressPoolAddressResponse:
+        """
+        @param tmp_req: ReplaceCloudGtmAddressPoolAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReplaceCloudGtmAddressPoolAddressResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = alidns_20150109_models.ReplaceCloudGtmAddressPoolAddressShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.addresses):
+            request.addresses_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.addresses, 'Addresses', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_pool_id):
+            query['AddressPoolId'] = request.address_pool_id
+        if not UtilClient.is_unset(request.addresses_shrink):
+            query['Addresses'] = request.addresses_shrink
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReplaceCloudGtmAddressPoolAddress',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.ReplaceCloudGtmAddressPoolAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def replace_cloud_gtm_address_pool_address(
+        self,
+        request: alidns_20150109_models.ReplaceCloudGtmAddressPoolAddressRequest,
+    ) -> alidns_20150109_models.ReplaceCloudGtmAddressPoolAddressResponse:
+        """
+        @param request: ReplaceCloudGtmAddressPoolAddressRequest
+        @return: ReplaceCloudGtmAddressPoolAddressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.replace_cloud_gtm_address_pool_address_with_options(request, runtime)
+
+    async def replace_cloud_gtm_address_pool_address_async(
+        self,
+        request: alidns_20150109_models.ReplaceCloudGtmAddressPoolAddressRequest,
+    ) -> alidns_20150109_models.ReplaceCloudGtmAddressPoolAddressResponse:
+        """
+        @param request: ReplaceCloudGtmAddressPoolAddressRequest
+        @return: ReplaceCloudGtmAddressPoolAddressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.replace_cloud_gtm_address_pool_address_with_options_async(request, runtime)
+
+    def replace_cloud_gtm_instance_config_address_pool_with_options(
+        self,
+        tmp_req: alidns_20150109_models.ReplaceCloudGtmInstanceConfigAddressPoolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.ReplaceCloudGtmInstanceConfigAddressPoolResponse:
+        """
+        @param tmp_req: ReplaceCloudGtmInstanceConfigAddressPoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReplaceCloudGtmInstanceConfigAddressPoolResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = alidns_20150109_models.ReplaceCloudGtmInstanceConfigAddressPoolShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.address_pools):
+            request.address_pools_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.address_pools, 'AddressPools', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_pools_shrink):
+            query['AddressPools'] = request.address_pools_shrink
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReplaceCloudGtmInstanceConfigAddressPool',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.ReplaceCloudGtmInstanceConfigAddressPoolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def replace_cloud_gtm_instance_config_address_pool_with_options_async(
+        self,
+        tmp_req: alidns_20150109_models.ReplaceCloudGtmInstanceConfigAddressPoolRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.ReplaceCloudGtmInstanceConfigAddressPoolResponse:
+        """
+        @param tmp_req: ReplaceCloudGtmInstanceConfigAddressPoolRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReplaceCloudGtmInstanceConfigAddressPoolResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = alidns_20150109_models.ReplaceCloudGtmInstanceConfigAddressPoolShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.address_pools):
+            request.address_pools_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.address_pools, 'AddressPools', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_pools_shrink):
+            query['AddressPools'] = request.address_pools_shrink
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ReplaceCloudGtmInstanceConfigAddressPool',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.ReplaceCloudGtmInstanceConfigAddressPoolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def replace_cloud_gtm_instance_config_address_pool(
+        self,
+        request: alidns_20150109_models.ReplaceCloudGtmInstanceConfigAddressPoolRequest,
+    ) -> alidns_20150109_models.ReplaceCloudGtmInstanceConfigAddressPoolResponse:
+        """
+        @param request: ReplaceCloudGtmInstanceConfigAddressPoolRequest
+        @return: ReplaceCloudGtmInstanceConfigAddressPoolResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.replace_cloud_gtm_instance_config_address_pool_with_options(request, runtime)
+
+    async def replace_cloud_gtm_instance_config_address_pool_async(
+        self,
+        request: alidns_20150109_models.ReplaceCloudGtmInstanceConfigAddressPoolRequest,
+    ) -> alidns_20150109_models.ReplaceCloudGtmInstanceConfigAddressPoolResponse:
+        """
+        @param request: ReplaceCloudGtmInstanceConfigAddressPoolRequest
+        @return: ReplaceCloudGtmInstanceConfigAddressPoolResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.replace_cloud_gtm_instance_config_address_pool_with_options_async(request, runtime)
+
     def resume_pdns_service_with_options(
         self,
         request: alidns_20150109_models.ResumePdnsServiceRequest,
@@ -13944,6 +16762,614 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.rollback_gtm_recovery_plan_with_options_async(request, runtime)
+
+    def search_cloud_gtm_address_pools_with_options(
+        self,
+        request: alidns_20150109_models.SearchCloudGtmAddressPoolsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.SearchCloudGtmAddressPoolsResponse:
+        """
+        @param request: SearchCloudGtmAddressPoolsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchCloudGtmAddressPoolsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_pool_name):
+            query['AddressPoolName'] = request.address_pool_name
+        if not UtilClient.is_unset(request.address_pool_type):
+            query['AddressPoolType'] = request.address_pool_type
+        if not UtilClient.is_unset(request.available_status):
+            query['AvailableStatus'] = request.available_status
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.enable_status):
+            query['EnableStatus'] = request.enable_status
+        if not UtilClient.is_unset(request.health_status):
+            query['HealthStatus'] = request.health_status
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SearchCloudGtmAddressPools',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.SearchCloudGtmAddressPoolsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_cloud_gtm_address_pools_with_options_async(
+        self,
+        request: alidns_20150109_models.SearchCloudGtmAddressPoolsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.SearchCloudGtmAddressPoolsResponse:
+        """
+        @param request: SearchCloudGtmAddressPoolsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchCloudGtmAddressPoolsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_pool_name):
+            query['AddressPoolName'] = request.address_pool_name
+        if not UtilClient.is_unset(request.address_pool_type):
+            query['AddressPoolType'] = request.address_pool_type
+        if not UtilClient.is_unset(request.available_status):
+            query['AvailableStatus'] = request.available_status
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.enable_status):
+            query['EnableStatus'] = request.enable_status
+        if not UtilClient.is_unset(request.health_status):
+            query['HealthStatus'] = request.health_status
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SearchCloudGtmAddressPools',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.SearchCloudGtmAddressPoolsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_cloud_gtm_address_pools(
+        self,
+        request: alidns_20150109_models.SearchCloudGtmAddressPoolsRequest,
+    ) -> alidns_20150109_models.SearchCloudGtmAddressPoolsResponse:
+        """
+        @param request: SearchCloudGtmAddressPoolsRequest
+        @return: SearchCloudGtmAddressPoolsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.search_cloud_gtm_address_pools_with_options(request, runtime)
+
+    async def search_cloud_gtm_address_pools_async(
+        self,
+        request: alidns_20150109_models.SearchCloudGtmAddressPoolsRequest,
+    ) -> alidns_20150109_models.SearchCloudGtmAddressPoolsResponse:
+        """
+        @param request: SearchCloudGtmAddressPoolsRequest
+        @return: SearchCloudGtmAddressPoolsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.search_cloud_gtm_address_pools_with_options_async(request, runtime)
+
+    def search_cloud_gtm_addresses_with_options(
+        self,
+        request: alidns_20150109_models.SearchCloudGtmAddressesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.SearchCloudGtmAddressesResponse:
+        """
+        @param request: SearchCloudGtmAddressesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchCloudGtmAddressesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address):
+            query['Address'] = request.address
+        if not UtilClient.is_unset(request.address_id):
+            query['AddressId'] = request.address_id
+        if not UtilClient.is_unset(request.available_status):
+            query['AvailableStatus'] = request.available_status
+        if not UtilClient.is_unset(request.enable_status):
+            query['EnableStatus'] = request.enable_status
+        if not UtilClient.is_unset(request.health_status):
+            query['HealthStatus'] = request.health_status
+        if not UtilClient.is_unset(request.monitor_template_name):
+            query['MonitorTemplateName'] = request.monitor_template_name
+        if not UtilClient.is_unset(request.name_search_condition):
+            query['NameSearchCondition'] = request.name_search_condition
+        if not UtilClient.is_unset(request.names):
+            query['Names'] = request.names
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.remark_search_condition):
+            query['RemarkSearchCondition'] = request.remark_search_condition
+        if not UtilClient.is_unset(request.remarks):
+            query['Remarks'] = request.remarks
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SearchCloudGtmAddresses',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.SearchCloudGtmAddressesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_cloud_gtm_addresses_with_options_async(
+        self,
+        request: alidns_20150109_models.SearchCloudGtmAddressesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.SearchCloudGtmAddressesResponse:
+        """
+        @param request: SearchCloudGtmAddressesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchCloudGtmAddressesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address):
+            query['Address'] = request.address
+        if not UtilClient.is_unset(request.address_id):
+            query['AddressId'] = request.address_id
+        if not UtilClient.is_unset(request.available_status):
+            query['AvailableStatus'] = request.available_status
+        if not UtilClient.is_unset(request.enable_status):
+            query['EnableStatus'] = request.enable_status
+        if not UtilClient.is_unset(request.health_status):
+            query['HealthStatus'] = request.health_status
+        if not UtilClient.is_unset(request.monitor_template_name):
+            query['MonitorTemplateName'] = request.monitor_template_name
+        if not UtilClient.is_unset(request.name_search_condition):
+            query['NameSearchCondition'] = request.name_search_condition
+        if not UtilClient.is_unset(request.names):
+            query['Names'] = request.names
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.remark_search_condition):
+            query['RemarkSearchCondition'] = request.remark_search_condition
+        if not UtilClient.is_unset(request.remarks):
+            query['Remarks'] = request.remarks
+        if not UtilClient.is_unset(request.type):
+            query['Type'] = request.type
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SearchCloudGtmAddresses',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.SearchCloudGtmAddressesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_cloud_gtm_addresses(
+        self,
+        request: alidns_20150109_models.SearchCloudGtmAddressesRequest,
+    ) -> alidns_20150109_models.SearchCloudGtmAddressesResponse:
+        """
+        @param request: SearchCloudGtmAddressesRequest
+        @return: SearchCloudGtmAddressesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.search_cloud_gtm_addresses_with_options(request, runtime)
+
+    async def search_cloud_gtm_addresses_async(
+        self,
+        request: alidns_20150109_models.SearchCloudGtmAddressesRequest,
+    ) -> alidns_20150109_models.SearchCloudGtmAddressesResponse:
+        """
+        @param request: SearchCloudGtmAddressesRequest
+        @return: SearchCloudGtmAddressesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.search_cloud_gtm_addresses_with_options_async(request, runtime)
+
+    def search_cloud_gtm_instance_configs_with_options(
+        self,
+        request: alidns_20150109_models.SearchCloudGtmInstanceConfigsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.SearchCloudGtmInstanceConfigsResponse:
+        """
+        @param request: SearchCloudGtmInstanceConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchCloudGtmInstanceConfigsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.available_status):
+            query['AvailableStatus'] = request.available_status
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.enable_status):
+            query['EnableStatus'] = request.enable_status
+        if not UtilClient.is_unset(request.health_status):
+            query['HealthStatus'] = request.health_status
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.schedule_domain_name):
+            query['ScheduleDomainName'] = request.schedule_domain_name
+        if not UtilClient.is_unset(request.schedule_zone_name):
+            query['ScheduleZoneName'] = request.schedule_zone_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SearchCloudGtmInstanceConfigs',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.SearchCloudGtmInstanceConfigsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_cloud_gtm_instance_configs_with_options_async(
+        self,
+        request: alidns_20150109_models.SearchCloudGtmInstanceConfigsRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.SearchCloudGtmInstanceConfigsResponse:
+        """
+        @param request: SearchCloudGtmInstanceConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchCloudGtmInstanceConfigsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.available_status):
+            query['AvailableStatus'] = request.available_status
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.enable_status):
+            query['EnableStatus'] = request.enable_status
+        if not UtilClient.is_unset(request.health_status):
+            query['HealthStatus'] = request.health_status
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.schedule_domain_name):
+            query['ScheduleDomainName'] = request.schedule_domain_name
+        if not UtilClient.is_unset(request.schedule_zone_name):
+            query['ScheduleZoneName'] = request.schedule_zone_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SearchCloudGtmInstanceConfigs',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.SearchCloudGtmInstanceConfigsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_cloud_gtm_instance_configs(
+        self,
+        request: alidns_20150109_models.SearchCloudGtmInstanceConfigsRequest,
+    ) -> alidns_20150109_models.SearchCloudGtmInstanceConfigsResponse:
+        """
+        @param request: SearchCloudGtmInstanceConfigsRequest
+        @return: SearchCloudGtmInstanceConfigsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.search_cloud_gtm_instance_configs_with_options(request, runtime)
+
+    async def search_cloud_gtm_instance_configs_async(
+        self,
+        request: alidns_20150109_models.SearchCloudGtmInstanceConfigsRequest,
+    ) -> alidns_20150109_models.SearchCloudGtmInstanceConfigsResponse:
+        """
+        @param request: SearchCloudGtmInstanceConfigsRequest
+        @return: SearchCloudGtmInstanceConfigsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.search_cloud_gtm_instance_configs_with_options_async(request, runtime)
+
+    def search_cloud_gtm_instances_with_options(
+        self,
+        request: alidns_20150109_models.SearchCloudGtmInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.SearchCloudGtmInstancesResponse:
+        """
+        @param request: SearchCloudGtmInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchCloudGtmInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SearchCloudGtmInstances',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.SearchCloudGtmInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_cloud_gtm_instances_with_options_async(
+        self,
+        request: alidns_20150109_models.SearchCloudGtmInstancesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.SearchCloudGtmInstancesResponse:
+        """
+        @param request: SearchCloudGtmInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchCloudGtmInstancesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SearchCloudGtmInstances',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.SearchCloudGtmInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_cloud_gtm_instances(
+        self,
+        request: alidns_20150109_models.SearchCloudGtmInstancesRequest,
+    ) -> alidns_20150109_models.SearchCloudGtmInstancesResponse:
+        """
+        @param request: SearchCloudGtmInstancesRequest
+        @return: SearchCloudGtmInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.search_cloud_gtm_instances_with_options(request, runtime)
+
+    async def search_cloud_gtm_instances_async(
+        self,
+        request: alidns_20150109_models.SearchCloudGtmInstancesRequest,
+    ) -> alidns_20150109_models.SearchCloudGtmInstancesResponse:
+        """
+        @param request: SearchCloudGtmInstancesRequest
+        @return: SearchCloudGtmInstancesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.search_cloud_gtm_instances_with_options_async(request, runtime)
+
+    def search_cloud_gtm_monitor_templates_with_options(
+        self,
+        request: alidns_20150109_models.SearchCloudGtmMonitorTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.SearchCloudGtmMonitorTemplatesResponse:
+        """
+        @param request: SearchCloudGtmMonitorTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchCloudGtmMonitorTemplatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.ip_version):
+            query['IpVersion'] = request.ip_version
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SearchCloudGtmMonitorTemplates',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.SearchCloudGtmMonitorTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_cloud_gtm_monitor_templates_with_options_async(
+        self,
+        request: alidns_20150109_models.SearchCloudGtmMonitorTemplatesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.SearchCloudGtmMonitorTemplatesResponse:
+        """
+        @param request: SearchCloudGtmMonitorTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchCloudGtmMonitorTemplatesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.ip_version):
+            query['IpVersion'] = request.ip_version
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.protocol):
+            query['Protocol'] = request.protocol
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SearchCloudGtmMonitorTemplates',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.SearchCloudGtmMonitorTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_cloud_gtm_monitor_templates(
+        self,
+        request: alidns_20150109_models.SearchCloudGtmMonitorTemplatesRequest,
+    ) -> alidns_20150109_models.SearchCloudGtmMonitorTemplatesResponse:
+        """
+        @param request: SearchCloudGtmMonitorTemplatesRequest
+        @return: SearchCloudGtmMonitorTemplatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.search_cloud_gtm_monitor_templates_with_options(request, runtime)
+
+    async def search_cloud_gtm_monitor_templates_async(
+        self,
+        request: alidns_20150109_models.SearchCloudGtmMonitorTemplatesRequest,
+    ) -> alidns_20150109_models.SearchCloudGtmMonitorTemplatesResponse:
+        """
+        @param request: SearchCloudGtmMonitorTemplatesRequest
+        @return: SearchCloudGtmMonitorTemplatesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.search_cloud_gtm_monitor_templates_with_options_async(request, runtime)
 
     def set_dnsslbstatus_with_options(
         self,
@@ -15436,6 +18862,1838 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_app_key_state_with_options_async(request, runtime)
+
+    def update_cloud_gtm_address_with_options(
+        self,
+        tmp_req: alidns_20150109_models.UpdateCloudGtmAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateCloudGtmAddressResponse:
+        """
+        @param tmp_req: UpdateCloudGtmAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudGtmAddressResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = alidns_20150109_models.UpdateCloudGtmAddressShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.health_tasks):
+            request.health_tasks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.health_tasks, 'HealthTasks', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address):
+            query['Address'] = request.address
+        if not UtilClient.is_unset(request.address_id):
+            query['AddressId'] = request.address_id
+        if not UtilClient.is_unset(request.attribute_info):
+            query['AttributeInfo'] = request.attribute_info
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.health_judgement):
+            query['HealthJudgement'] = request.health_judgement
+        if not UtilClient.is_unset(request.health_tasks_shrink):
+            query['HealthTasks'] = request.health_tasks_shrink
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCloudGtmAddress',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateCloudGtmAddressResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_cloud_gtm_address_with_options_async(
+        self,
+        tmp_req: alidns_20150109_models.UpdateCloudGtmAddressRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateCloudGtmAddressResponse:
+        """
+        @param tmp_req: UpdateCloudGtmAddressRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudGtmAddressResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = alidns_20150109_models.UpdateCloudGtmAddressShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.health_tasks):
+            request.health_tasks_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.health_tasks, 'HealthTasks', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address):
+            query['Address'] = request.address
+        if not UtilClient.is_unset(request.address_id):
+            query['AddressId'] = request.address_id
+        if not UtilClient.is_unset(request.attribute_info):
+            query['AttributeInfo'] = request.attribute_info
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.health_judgement):
+            query['HealthJudgement'] = request.health_judgement
+        if not UtilClient.is_unset(request.health_tasks_shrink):
+            query['HealthTasks'] = request.health_tasks_shrink
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCloudGtmAddress',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateCloudGtmAddressResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_cloud_gtm_address(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmAddressRequest,
+    ) -> alidns_20150109_models.UpdateCloudGtmAddressResponse:
+        """
+        @param request: UpdateCloudGtmAddressRequest
+        @return: UpdateCloudGtmAddressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_cloud_gtm_address_with_options(request, runtime)
+
+    async def update_cloud_gtm_address_async(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmAddressRequest,
+    ) -> alidns_20150109_models.UpdateCloudGtmAddressResponse:
+        """
+        @param request: UpdateCloudGtmAddressRequest
+        @return: UpdateCloudGtmAddressResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_cloud_gtm_address_with_options_async(request, runtime)
+
+    def update_cloud_gtm_address_enable_status_with_options(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmAddressEnableStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateCloudGtmAddressEnableStatusResponse:
+        """
+        @param request: UpdateCloudGtmAddressEnableStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudGtmAddressEnableStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_id):
+            query['AddressId'] = request.address_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.enable_status):
+            query['EnableStatus'] = request.enable_status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCloudGtmAddressEnableStatus',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateCloudGtmAddressEnableStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_cloud_gtm_address_enable_status_with_options_async(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmAddressEnableStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateCloudGtmAddressEnableStatusResponse:
+        """
+        @param request: UpdateCloudGtmAddressEnableStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudGtmAddressEnableStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_id):
+            query['AddressId'] = request.address_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.enable_status):
+            query['EnableStatus'] = request.enable_status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCloudGtmAddressEnableStatus',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateCloudGtmAddressEnableStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_cloud_gtm_address_enable_status(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmAddressEnableStatusRequest,
+    ) -> alidns_20150109_models.UpdateCloudGtmAddressEnableStatusResponse:
+        """
+        @param request: UpdateCloudGtmAddressEnableStatusRequest
+        @return: UpdateCloudGtmAddressEnableStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_cloud_gtm_address_enable_status_with_options(request, runtime)
+
+    async def update_cloud_gtm_address_enable_status_async(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmAddressEnableStatusRequest,
+    ) -> alidns_20150109_models.UpdateCloudGtmAddressEnableStatusResponse:
+        """
+        @param request: UpdateCloudGtmAddressEnableStatusRequest
+        @return: UpdateCloudGtmAddressEnableStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_cloud_gtm_address_enable_status_with_options_async(request, runtime)
+
+    def update_cloud_gtm_address_manual_available_status_with_options(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmAddressManualAvailableStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateCloudGtmAddressManualAvailableStatusResponse:
+        """
+        @param request: UpdateCloudGtmAddressManualAvailableStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudGtmAddressManualAvailableStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_id):
+            query['AddressId'] = request.address_id
+        if not UtilClient.is_unset(request.available_mode):
+            query['AvailableMode'] = request.available_mode
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.manual_available_status):
+            query['ManualAvailableStatus'] = request.manual_available_status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCloudGtmAddressManualAvailableStatus',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateCloudGtmAddressManualAvailableStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_cloud_gtm_address_manual_available_status_with_options_async(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmAddressManualAvailableStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateCloudGtmAddressManualAvailableStatusResponse:
+        """
+        @param request: UpdateCloudGtmAddressManualAvailableStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudGtmAddressManualAvailableStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_id):
+            query['AddressId'] = request.address_id
+        if not UtilClient.is_unset(request.available_mode):
+            query['AvailableMode'] = request.available_mode
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.manual_available_status):
+            query['ManualAvailableStatus'] = request.manual_available_status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCloudGtmAddressManualAvailableStatus',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateCloudGtmAddressManualAvailableStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_cloud_gtm_address_manual_available_status(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmAddressManualAvailableStatusRequest,
+    ) -> alidns_20150109_models.UpdateCloudGtmAddressManualAvailableStatusResponse:
+        """
+        @param request: UpdateCloudGtmAddressManualAvailableStatusRequest
+        @return: UpdateCloudGtmAddressManualAvailableStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_cloud_gtm_address_manual_available_status_with_options(request, runtime)
+
+    async def update_cloud_gtm_address_manual_available_status_async(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmAddressManualAvailableStatusRequest,
+    ) -> alidns_20150109_models.UpdateCloudGtmAddressManualAvailableStatusResponse:
+        """
+        @param request: UpdateCloudGtmAddressManualAvailableStatusRequest
+        @return: UpdateCloudGtmAddressManualAvailableStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_cloud_gtm_address_manual_available_status_with_options_async(request, runtime)
+
+    def update_cloud_gtm_address_pool_basic_config_with_options(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmAddressPoolBasicConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateCloudGtmAddressPoolBasicConfigResponse:
+        """
+        @param request: UpdateCloudGtmAddressPoolBasicConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudGtmAddressPoolBasicConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_pool_id):
+            query['AddressPoolId'] = request.address_pool_id
+        if not UtilClient.is_unset(request.address_pool_name):
+            query['AddressPoolName'] = request.address_pool_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.health_judgement):
+            query['HealthJudgement'] = request.health_judgement
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCloudGtmAddressPoolBasicConfig',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateCloudGtmAddressPoolBasicConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_cloud_gtm_address_pool_basic_config_with_options_async(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmAddressPoolBasicConfigRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateCloudGtmAddressPoolBasicConfigResponse:
+        """
+        @param request: UpdateCloudGtmAddressPoolBasicConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudGtmAddressPoolBasicConfigResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_pool_id):
+            query['AddressPoolId'] = request.address_pool_id
+        if not UtilClient.is_unset(request.address_pool_name):
+            query['AddressPoolName'] = request.address_pool_name
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.health_judgement):
+            query['HealthJudgement'] = request.health_judgement
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCloudGtmAddressPoolBasicConfig',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateCloudGtmAddressPoolBasicConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_cloud_gtm_address_pool_basic_config(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmAddressPoolBasicConfigRequest,
+    ) -> alidns_20150109_models.UpdateCloudGtmAddressPoolBasicConfigResponse:
+        """
+        @param request: UpdateCloudGtmAddressPoolBasicConfigRequest
+        @return: UpdateCloudGtmAddressPoolBasicConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_cloud_gtm_address_pool_basic_config_with_options(request, runtime)
+
+    async def update_cloud_gtm_address_pool_basic_config_async(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmAddressPoolBasicConfigRequest,
+    ) -> alidns_20150109_models.UpdateCloudGtmAddressPoolBasicConfigResponse:
+        """
+        @param request: UpdateCloudGtmAddressPoolBasicConfigRequest
+        @return: UpdateCloudGtmAddressPoolBasicConfigResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_cloud_gtm_address_pool_basic_config_with_options_async(request, runtime)
+
+    def update_cloud_gtm_address_pool_enable_status_with_options(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmAddressPoolEnableStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateCloudGtmAddressPoolEnableStatusResponse:
+        """
+        @param request: UpdateCloudGtmAddressPoolEnableStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudGtmAddressPoolEnableStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_pool_id):
+            query['AddressPoolId'] = request.address_pool_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.enable_status):
+            query['EnableStatus'] = request.enable_status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCloudGtmAddressPoolEnableStatus',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateCloudGtmAddressPoolEnableStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_cloud_gtm_address_pool_enable_status_with_options_async(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmAddressPoolEnableStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateCloudGtmAddressPoolEnableStatusResponse:
+        """
+        @param request: UpdateCloudGtmAddressPoolEnableStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudGtmAddressPoolEnableStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_pool_id):
+            query['AddressPoolId'] = request.address_pool_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.enable_status):
+            query['EnableStatus'] = request.enable_status
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCloudGtmAddressPoolEnableStatus',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateCloudGtmAddressPoolEnableStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_cloud_gtm_address_pool_enable_status(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmAddressPoolEnableStatusRequest,
+    ) -> alidns_20150109_models.UpdateCloudGtmAddressPoolEnableStatusResponse:
+        """
+        @param request: UpdateCloudGtmAddressPoolEnableStatusRequest
+        @return: UpdateCloudGtmAddressPoolEnableStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_cloud_gtm_address_pool_enable_status_with_options(request, runtime)
+
+    async def update_cloud_gtm_address_pool_enable_status_async(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmAddressPoolEnableStatusRequest,
+    ) -> alidns_20150109_models.UpdateCloudGtmAddressPoolEnableStatusResponse:
+        """
+        @param request: UpdateCloudGtmAddressPoolEnableStatusRequest
+        @return: UpdateCloudGtmAddressPoolEnableStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_cloud_gtm_address_pool_enable_status_with_options_async(request, runtime)
+
+    def update_cloud_gtm_address_pool_lb_strategy_with_options(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmAddressPoolLbStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateCloudGtmAddressPoolLbStrategyResponse:
+        """
+        @param request: UpdateCloudGtmAddressPoolLbStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudGtmAddressPoolLbStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_lb_strategy):
+            query['AddressLbStrategy'] = request.address_lb_strategy
+        if not UtilClient.is_unset(request.address_pool_id):
+            query['AddressPoolId'] = request.address_pool_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.sequence_lb_strategy_mode):
+            query['SequenceLbStrategyMode'] = request.sequence_lb_strategy_mode
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCloudGtmAddressPoolLbStrategy',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateCloudGtmAddressPoolLbStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_cloud_gtm_address_pool_lb_strategy_with_options_async(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmAddressPoolLbStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateCloudGtmAddressPoolLbStrategyResponse:
+        """
+        @param request: UpdateCloudGtmAddressPoolLbStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudGtmAddressPoolLbStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_lb_strategy):
+            query['AddressLbStrategy'] = request.address_lb_strategy
+        if not UtilClient.is_unset(request.address_pool_id):
+            query['AddressPoolId'] = request.address_pool_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.sequence_lb_strategy_mode):
+            query['SequenceLbStrategyMode'] = request.sequence_lb_strategy_mode
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCloudGtmAddressPoolLbStrategy',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateCloudGtmAddressPoolLbStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_cloud_gtm_address_pool_lb_strategy(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmAddressPoolLbStrategyRequest,
+    ) -> alidns_20150109_models.UpdateCloudGtmAddressPoolLbStrategyResponse:
+        """
+        @param request: UpdateCloudGtmAddressPoolLbStrategyRequest
+        @return: UpdateCloudGtmAddressPoolLbStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_cloud_gtm_address_pool_lb_strategy_with_options(request, runtime)
+
+    async def update_cloud_gtm_address_pool_lb_strategy_async(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmAddressPoolLbStrategyRequest,
+    ) -> alidns_20150109_models.UpdateCloudGtmAddressPoolLbStrategyResponse:
+        """
+        @param request: UpdateCloudGtmAddressPoolLbStrategyRequest
+        @return: UpdateCloudGtmAddressPoolLbStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_cloud_gtm_address_pool_lb_strategy_with_options_async(request, runtime)
+
+    def update_cloud_gtm_address_pool_remark_with_options(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmAddressPoolRemarkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateCloudGtmAddressPoolRemarkResponse:
+        """
+        @param request: UpdateCloudGtmAddressPoolRemarkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudGtmAddressPoolRemarkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_pool_id):
+            query['AddressPoolId'] = request.address_pool_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCloudGtmAddressPoolRemark',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateCloudGtmAddressPoolRemarkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_cloud_gtm_address_pool_remark_with_options_async(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmAddressPoolRemarkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateCloudGtmAddressPoolRemarkResponse:
+        """
+        @param request: UpdateCloudGtmAddressPoolRemarkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudGtmAddressPoolRemarkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_pool_id):
+            query['AddressPoolId'] = request.address_pool_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCloudGtmAddressPoolRemark',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateCloudGtmAddressPoolRemarkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_cloud_gtm_address_pool_remark(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmAddressPoolRemarkRequest,
+    ) -> alidns_20150109_models.UpdateCloudGtmAddressPoolRemarkResponse:
+        """
+        @param request: UpdateCloudGtmAddressPoolRemarkRequest
+        @return: UpdateCloudGtmAddressPoolRemarkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_cloud_gtm_address_pool_remark_with_options(request, runtime)
+
+    async def update_cloud_gtm_address_pool_remark_async(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmAddressPoolRemarkRequest,
+    ) -> alidns_20150109_models.UpdateCloudGtmAddressPoolRemarkResponse:
+        """
+        @param request: UpdateCloudGtmAddressPoolRemarkRequest
+        @return: UpdateCloudGtmAddressPoolRemarkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_cloud_gtm_address_pool_remark_with_options_async(request, runtime)
+
+    def update_cloud_gtm_address_remark_with_options(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmAddressRemarkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateCloudGtmAddressRemarkResponse:
+        """
+        @param request: UpdateCloudGtmAddressRemarkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudGtmAddressRemarkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_id):
+            query['AddressId'] = request.address_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCloudGtmAddressRemark',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateCloudGtmAddressRemarkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_cloud_gtm_address_remark_with_options_async(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmAddressRemarkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateCloudGtmAddressRemarkResponse:
+        """
+        @param request: UpdateCloudGtmAddressRemarkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudGtmAddressRemarkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_id):
+            query['AddressId'] = request.address_id
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCloudGtmAddressRemark',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateCloudGtmAddressRemarkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_cloud_gtm_address_remark(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmAddressRemarkRequest,
+    ) -> alidns_20150109_models.UpdateCloudGtmAddressRemarkResponse:
+        """
+        @param request: UpdateCloudGtmAddressRemarkRequest
+        @return: UpdateCloudGtmAddressRemarkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_cloud_gtm_address_remark_with_options(request, runtime)
+
+    async def update_cloud_gtm_address_remark_async(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmAddressRemarkRequest,
+    ) -> alidns_20150109_models.UpdateCloudGtmAddressRemarkResponse:
+        """
+        @param request: UpdateCloudGtmAddressRemarkRequest
+        @return: UpdateCloudGtmAddressRemarkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_cloud_gtm_address_remark_with_options_async(request, runtime)
+
+    def update_cloud_gtm_global_alert_with_options(
+        self,
+        tmp_req: alidns_20150109_models.UpdateCloudGtmGlobalAlertRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateCloudGtmGlobalAlertResponse:
+        """
+        @param tmp_req: UpdateCloudGtmGlobalAlertRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudGtmGlobalAlertResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = alidns_20150109_models.UpdateCloudGtmGlobalAlertShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.alert_config):
+            request.alert_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.alert_config, 'AlertConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.alert_group):
+            request.alert_group_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.alert_group, 'AlertGroup', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.alert_config_shrink):
+            query['AlertConfig'] = request.alert_config_shrink
+        if not UtilClient.is_unset(request.alert_group_shrink):
+            query['AlertGroup'] = request.alert_group_shrink
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCloudGtmGlobalAlert',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateCloudGtmGlobalAlertResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_cloud_gtm_global_alert_with_options_async(
+        self,
+        tmp_req: alidns_20150109_models.UpdateCloudGtmGlobalAlertRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateCloudGtmGlobalAlertResponse:
+        """
+        @param tmp_req: UpdateCloudGtmGlobalAlertRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudGtmGlobalAlertResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = alidns_20150109_models.UpdateCloudGtmGlobalAlertShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.alert_config):
+            request.alert_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.alert_config, 'AlertConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.alert_group):
+            request.alert_group_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.alert_group, 'AlertGroup', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.alert_config_shrink):
+            query['AlertConfig'] = request.alert_config_shrink
+        if not UtilClient.is_unset(request.alert_group_shrink):
+            query['AlertGroup'] = request.alert_group_shrink
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCloudGtmGlobalAlert',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateCloudGtmGlobalAlertResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_cloud_gtm_global_alert(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmGlobalAlertRequest,
+    ) -> alidns_20150109_models.UpdateCloudGtmGlobalAlertResponse:
+        """
+        @param request: UpdateCloudGtmGlobalAlertRequest
+        @return: UpdateCloudGtmGlobalAlertResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_cloud_gtm_global_alert_with_options(request, runtime)
+
+    async def update_cloud_gtm_global_alert_async(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmGlobalAlertRequest,
+    ) -> alidns_20150109_models.UpdateCloudGtmGlobalAlertResponse:
+        """
+        @param request: UpdateCloudGtmGlobalAlertRequest
+        @return: UpdateCloudGtmGlobalAlertResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_cloud_gtm_global_alert_with_options_async(request, runtime)
+
+    def update_cloud_gtm_instance_config_alert_with_options(
+        self,
+        tmp_req: alidns_20150109_models.UpdateCloudGtmInstanceConfigAlertRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateCloudGtmInstanceConfigAlertResponse:
+        """
+        @param tmp_req: UpdateCloudGtmInstanceConfigAlertRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudGtmInstanceConfigAlertResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = alidns_20150109_models.UpdateCloudGtmInstanceConfigAlertShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.alert_config):
+            request.alert_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.alert_config, 'AlertConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.alert_group):
+            request.alert_group_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.alert_group, 'AlertGroup', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.alert_config_shrink):
+            query['AlertConfig'] = request.alert_config_shrink
+        if not UtilClient.is_unset(request.alert_group_shrink):
+            query['AlertGroup'] = request.alert_group_shrink
+        if not UtilClient.is_unset(request.alert_mode):
+            query['AlertMode'] = request.alert_mode
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCloudGtmInstanceConfigAlert',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateCloudGtmInstanceConfigAlertResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_cloud_gtm_instance_config_alert_with_options_async(
+        self,
+        tmp_req: alidns_20150109_models.UpdateCloudGtmInstanceConfigAlertRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateCloudGtmInstanceConfigAlertResponse:
+        """
+        @param tmp_req: UpdateCloudGtmInstanceConfigAlertRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudGtmInstanceConfigAlertResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = alidns_20150109_models.UpdateCloudGtmInstanceConfigAlertShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.alert_config):
+            request.alert_config_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.alert_config, 'AlertConfig', 'json')
+        if not UtilClient.is_unset(tmp_req.alert_group):
+            request.alert_group_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.alert_group, 'AlertGroup', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.alert_config_shrink):
+            query['AlertConfig'] = request.alert_config_shrink
+        if not UtilClient.is_unset(request.alert_group_shrink):
+            query['AlertGroup'] = request.alert_group_shrink
+        if not UtilClient.is_unset(request.alert_mode):
+            query['AlertMode'] = request.alert_mode
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCloudGtmInstanceConfigAlert',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateCloudGtmInstanceConfigAlertResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_cloud_gtm_instance_config_alert(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmInstanceConfigAlertRequest,
+    ) -> alidns_20150109_models.UpdateCloudGtmInstanceConfigAlertResponse:
+        """
+        @param request: UpdateCloudGtmInstanceConfigAlertRequest
+        @return: UpdateCloudGtmInstanceConfigAlertResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_cloud_gtm_instance_config_alert_with_options(request, runtime)
+
+    async def update_cloud_gtm_instance_config_alert_async(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmInstanceConfigAlertRequest,
+    ) -> alidns_20150109_models.UpdateCloudGtmInstanceConfigAlertResponse:
+        """
+        @param request: UpdateCloudGtmInstanceConfigAlertRequest
+        @return: UpdateCloudGtmInstanceConfigAlertResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_cloud_gtm_instance_config_alert_with_options_async(request, runtime)
+
+    def update_cloud_gtm_instance_config_basic_with_options(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmInstanceConfigBasicRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateCloudGtmInstanceConfigBasicResponse:
+        """
+        @param request: UpdateCloudGtmInstanceConfigBasicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudGtmInstanceConfigBasicResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.schedule_hostname):
+            query['ScheduleHostname'] = request.schedule_hostname
+        if not UtilClient.is_unset(request.schedule_zone_name):
+            query['ScheduleZoneName'] = request.schedule_zone_name
+        if not UtilClient.is_unset(request.ttl):
+            query['Ttl'] = request.ttl
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCloudGtmInstanceConfigBasic',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateCloudGtmInstanceConfigBasicResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_cloud_gtm_instance_config_basic_with_options_async(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmInstanceConfigBasicRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateCloudGtmInstanceConfigBasicResponse:
+        """
+        @param request: UpdateCloudGtmInstanceConfigBasicRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudGtmInstanceConfigBasicResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.schedule_hostname):
+            query['ScheduleHostname'] = request.schedule_hostname
+        if not UtilClient.is_unset(request.schedule_zone_name):
+            query['ScheduleZoneName'] = request.schedule_zone_name
+        if not UtilClient.is_unset(request.ttl):
+            query['Ttl'] = request.ttl
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCloudGtmInstanceConfigBasic',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateCloudGtmInstanceConfigBasicResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_cloud_gtm_instance_config_basic(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmInstanceConfigBasicRequest,
+    ) -> alidns_20150109_models.UpdateCloudGtmInstanceConfigBasicResponse:
+        """
+        @param request: UpdateCloudGtmInstanceConfigBasicRequest
+        @return: UpdateCloudGtmInstanceConfigBasicResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_cloud_gtm_instance_config_basic_with_options(request, runtime)
+
+    async def update_cloud_gtm_instance_config_basic_async(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmInstanceConfigBasicRequest,
+    ) -> alidns_20150109_models.UpdateCloudGtmInstanceConfigBasicResponse:
+        """
+        @param request: UpdateCloudGtmInstanceConfigBasicRequest
+        @return: UpdateCloudGtmInstanceConfigBasicResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_cloud_gtm_instance_config_basic_with_options_async(request, runtime)
+
+    def update_cloud_gtm_instance_config_enable_status_with_options(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmInstanceConfigEnableStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateCloudGtmInstanceConfigEnableStatusResponse:
+        """
+        @param request: UpdateCloudGtmInstanceConfigEnableStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudGtmInstanceConfigEnableStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.enable_status):
+            query['EnableStatus'] = request.enable_status
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCloudGtmInstanceConfigEnableStatus',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateCloudGtmInstanceConfigEnableStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_cloud_gtm_instance_config_enable_status_with_options_async(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmInstanceConfigEnableStatusRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateCloudGtmInstanceConfigEnableStatusResponse:
+        """
+        @param request: UpdateCloudGtmInstanceConfigEnableStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudGtmInstanceConfigEnableStatusResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.enable_status):
+            query['EnableStatus'] = request.enable_status
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCloudGtmInstanceConfigEnableStatus',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateCloudGtmInstanceConfigEnableStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_cloud_gtm_instance_config_enable_status(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmInstanceConfigEnableStatusRequest,
+    ) -> alidns_20150109_models.UpdateCloudGtmInstanceConfigEnableStatusResponse:
+        """
+        @param request: UpdateCloudGtmInstanceConfigEnableStatusRequest
+        @return: UpdateCloudGtmInstanceConfigEnableStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_cloud_gtm_instance_config_enable_status_with_options(request, runtime)
+
+    async def update_cloud_gtm_instance_config_enable_status_async(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmInstanceConfigEnableStatusRequest,
+    ) -> alidns_20150109_models.UpdateCloudGtmInstanceConfigEnableStatusResponse:
+        """
+        @param request: UpdateCloudGtmInstanceConfigEnableStatusRequest
+        @return: UpdateCloudGtmInstanceConfigEnableStatusResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_cloud_gtm_instance_config_enable_status_with_options_async(request, runtime)
+
+    def update_cloud_gtm_instance_config_lb_strategy_with_options(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmInstanceConfigLbStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateCloudGtmInstanceConfigLbStrategyResponse:
+        """
+        @param request: UpdateCloudGtmInstanceConfigLbStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudGtmInstanceConfigLbStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_pool_lb_strategy):
+            query['AddressPoolLbStrategy'] = request.address_pool_lb_strategy
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.sequence_lb_strategy_mode):
+            query['SequenceLbStrategyMode'] = request.sequence_lb_strategy_mode
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCloudGtmInstanceConfigLbStrategy',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateCloudGtmInstanceConfigLbStrategyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_cloud_gtm_instance_config_lb_strategy_with_options_async(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmInstanceConfigLbStrategyRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateCloudGtmInstanceConfigLbStrategyResponse:
+        """
+        @param request: UpdateCloudGtmInstanceConfigLbStrategyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudGtmInstanceConfigLbStrategyResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.address_pool_lb_strategy):
+            query['AddressPoolLbStrategy'] = request.address_pool_lb_strategy
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.sequence_lb_strategy_mode):
+            query['SequenceLbStrategyMode'] = request.sequence_lb_strategy_mode
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCloudGtmInstanceConfigLbStrategy',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateCloudGtmInstanceConfigLbStrategyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_cloud_gtm_instance_config_lb_strategy(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmInstanceConfigLbStrategyRequest,
+    ) -> alidns_20150109_models.UpdateCloudGtmInstanceConfigLbStrategyResponse:
+        """
+        @param request: UpdateCloudGtmInstanceConfigLbStrategyRequest
+        @return: UpdateCloudGtmInstanceConfigLbStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_cloud_gtm_instance_config_lb_strategy_with_options(request, runtime)
+
+    async def update_cloud_gtm_instance_config_lb_strategy_async(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmInstanceConfigLbStrategyRequest,
+    ) -> alidns_20150109_models.UpdateCloudGtmInstanceConfigLbStrategyResponse:
+        """
+        @param request: UpdateCloudGtmInstanceConfigLbStrategyRequest
+        @return: UpdateCloudGtmInstanceConfigLbStrategyResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_cloud_gtm_instance_config_lb_strategy_with_options_async(request, runtime)
+
+    def update_cloud_gtm_instance_config_remark_with_options(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmInstanceConfigRemarkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateCloudGtmInstanceConfigRemarkResponse:
+        """
+        @param request: UpdateCloudGtmInstanceConfigRemarkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudGtmInstanceConfigRemarkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCloudGtmInstanceConfigRemark',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateCloudGtmInstanceConfigRemarkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_cloud_gtm_instance_config_remark_with_options_async(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmInstanceConfigRemarkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateCloudGtmInstanceConfigRemarkResponse:
+        """
+        @param request: UpdateCloudGtmInstanceConfigRemarkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudGtmInstanceConfigRemarkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCloudGtmInstanceConfigRemark',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateCloudGtmInstanceConfigRemarkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_cloud_gtm_instance_config_remark(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmInstanceConfigRemarkRequest,
+    ) -> alidns_20150109_models.UpdateCloudGtmInstanceConfigRemarkResponse:
+        """
+        @param request: UpdateCloudGtmInstanceConfigRemarkRequest
+        @return: UpdateCloudGtmInstanceConfigRemarkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_cloud_gtm_instance_config_remark_with_options(request, runtime)
+
+    async def update_cloud_gtm_instance_config_remark_async(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmInstanceConfigRemarkRequest,
+    ) -> alidns_20150109_models.UpdateCloudGtmInstanceConfigRemarkResponse:
+        """
+        @param request: UpdateCloudGtmInstanceConfigRemarkRequest
+        @return: UpdateCloudGtmInstanceConfigRemarkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_cloud_gtm_instance_config_remark_with_options_async(request, runtime)
+
+    def update_cloud_gtm_instance_name_with_options(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmInstanceNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateCloudGtmInstanceNameResponse:
+        """
+        @param request: UpdateCloudGtmInstanceNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudGtmInstanceNameResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCloudGtmInstanceName',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateCloudGtmInstanceNameResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_cloud_gtm_instance_name_with_options_async(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmInstanceNameRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateCloudGtmInstanceNameResponse:
+        """
+        @param request: UpdateCloudGtmInstanceNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudGtmInstanceNameResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not UtilClient.is_unset(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCloudGtmInstanceName',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateCloudGtmInstanceNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_cloud_gtm_instance_name(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmInstanceNameRequest,
+    ) -> alidns_20150109_models.UpdateCloudGtmInstanceNameResponse:
+        """
+        @param request: UpdateCloudGtmInstanceNameRequest
+        @return: UpdateCloudGtmInstanceNameResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_cloud_gtm_instance_name_with_options(request, runtime)
+
+    async def update_cloud_gtm_instance_name_async(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmInstanceNameRequest,
+    ) -> alidns_20150109_models.UpdateCloudGtmInstanceNameResponse:
+        """
+        @param request: UpdateCloudGtmInstanceNameRequest
+        @return: UpdateCloudGtmInstanceNameResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_cloud_gtm_instance_name_with_options_async(request, runtime)
+
+    def update_cloud_gtm_monitor_template_with_options(
+        self,
+        tmp_req: alidns_20150109_models.UpdateCloudGtmMonitorTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateCloudGtmMonitorTemplateResponse:
+        """
+        @param tmp_req: UpdateCloudGtmMonitorTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudGtmMonitorTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = alidns_20150109_models.UpdateCloudGtmMonitorTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.isp_city_nodes):
+            request.isp_city_nodes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.isp_city_nodes, 'IspCityNodes', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.evaluation_count):
+            query['EvaluationCount'] = request.evaluation_count
+        if not UtilClient.is_unset(request.extend_info):
+            query['ExtendInfo'] = request.extend_info
+        if not UtilClient.is_unset(request.failure_rate):
+            query['FailureRate'] = request.failure_rate
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.isp_city_nodes_shrink):
+            query['IspCityNodes'] = request.isp_city_nodes_shrink
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.timeout):
+            query['Timeout'] = request.timeout
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCloudGtmMonitorTemplate',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateCloudGtmMonitorTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_cloud_gtm_monitor_template_with_options_async(
+        self,
+        tmp_req: alidns_20150109_models.UpdateCloudGtmMonitorTemplateRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateCloudGtmMonitorTemplateResponse:
+        """
+        @param tmp_req: UpdateCloudGtmMonitorTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudGtmMonitorTemplateResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = alidns_20150109_models.UpdateCloudGtmMonitorTemplateShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.isp_city_nodes):
+            request.isp_city_nodes_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.isp_city_nodes, 'IspCityNodes', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.evaluation_count):
+            query['EvaluationCount'] = request.evaluation_count
+        if not UtilClient.is_unset(request.extend_info):
+            query['ExtendInfo'] = request.extend_info
+        if not UtilClient.is_unset(request.failure_rate):
+            query['FailureRate'] = request.failure_rate
+        if not UtilClient.is_unset(request.interval):
+            query['Interval'] = request.interval
+        if not UtilClient.is_unset(request.isp_city_nodes_shrink):
+            query['IspCityNodes'] = request.isp_city_nodes_shrink
+        if not UtilClient.is_unset(request.name):
+            query['Name'] = request.name
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        if not UtilClient.is_unset(request.timeout):
+            query['Timeout'] = request.timeout
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCloudGtmMonitorTemplate',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateCloudGtmMonitorTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_cloud_gtm_monitor_template(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmMonitorTemplateRequest,
+    ) -> alidns_20150109_models.UpdateCloudGtmMonitorTemplateResponse:
+        """
+        @param request: UpdateCloudGtmMonitorTemplateRequest
+        @return: UpdateCloudGtmMonitorTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_cloud_gtm_monitor_template_with_options(request, runtime)
+
+    async def update_cloud_gtm_monitor_template_async(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmMonitorTemplateRequest,
+    ) -> alidns_20150109_models.UpdateCloudGtmMonitorTemplateResponse:
+        """
+        @param request: UpdateCloudGtmMonitorTemplateRequest
+        @return: UpdateCloudGtmMonitorTemplateResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_cloud_gtm_monitor_template_with_options_async(request, runtime)
+
+    def update_cloud_gtm_monitor_template_remark_with_options(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmMonitorTemplateRemarkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateCloudGtmMonitorTemplateRemarkResponse:
+        """
+        @param request: UpdateCloudGtmMonitorTemplateRemarkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudGtmMonitorTemplateRemarkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCloudGtmMonitorTemplateRemark',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateCloudGtmMonitorTemplateRemarkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_cloud_gtm_monitor_template_remark_with_options_async(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmMonitorTemplateRemarkRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> alidns_20150109_models.UpdateCloudGtmMonitorTemplateRemarkResponse:
+        """
+        @param request: UpdateCloudGtmMonitorTemplateRemarkRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCloudGtmMonitorTemplateRemarkResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.accept_language):
+            query['AcceptLanguage'] = request.accept_language
+        if not UtilClient.is_unset(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not UtilClient.is_unset(request.remark):
+            query['Remark'] = request.remark
+        if not UtilClient.is_unset(request.template_id):
+            query['TemplateId'] = request.template_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UpdateCloudGtmMonitorTemplateRemark',
+            version='2015-01-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            alidns_20150109_models.UpdateCloudGtmMonitorTemplateRemarkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_cloud_gtm_monitor_template_remark(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmMonitorTemplateRemarkRequest,
+    ) -> alidns_20150109_models.UpdateCloudGtmMonitorTemplateRemarkResponse:
+        """
+        @param request: UpdateCloudGtmMonitorTemplateRemarkRequest
+        @return: UpdateCloudGtmMonitorTemplateRemarkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_cloud_gtm_monitor_template_remark_with_options(request, runtime)
+
+    async def update_cloud_gtm_monitor_template_remark_async(
+        self,
+        request: alidns_20150109_models.UpdateCloudGtmMonitorTemplateRemarkRequest,
+    ) -> alidns_20150109_models.UpdateCloudGtmMonitorTemplateRemarkResponse:
+        """
+        @param request: UpdateCloudGtmMonitorTemplateRemarkRequest
+        @return: UpdateCloudGtmMonitorTemplateRemarkResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_cloud_gtm_monitor_template_remark_with_options_async(request, runtime)
 
     def update_custom_line_with_options(
         self,

@@ -3390,6 +3390,940 @@ class CopyGtmConfigResponse(TeaModel):
         return self
 
 
+class CreateCloudGtmAddressRequestHealthTasks(TeaModel):
+    def __init__(
+        self,
+        port: int = None,
+        template_id: str = None,
+    ):
+        self.port = port
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class CreateCloudGtmAddressRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        address: str = None,
+        attribute_info: str = None,
+        available_mode: str = None,
+        client_token: str = None,
+        enable_status: str = None,
+        health_judgement: str = None,
+        health_tasks: List[CreateCloudGtmAddressRequestHealthTasks] = None,
+        manual_available_status: str = None,
+        name: str = None,
+        remark: str = None,
+        type: str = None,
+    ):
+        self.accept_language = accept_language
+        # This parameter is required.
+        self.address = address
+        self.attribute_info = attribute_info
+        # This parameter is required.
+        self.available_mode = available_mode
+        self.client_token = client_token
+        # This parameter is required.
+        self.enable_status = enable_status
+        # This parameter is required.
+        self.health_judgement = health_judgement
+        self.health_tasks = health_tasks
+        self.manual_available_status = manual_available_status
+        # This parameter is required.
+        self.name = name
+        self.remark = remark
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        if self.health_tasks:
+            for k in self.health_tasks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.attribute_info is not None:
+            result['AttributeInfo'] = self.attribute_info
+        if self.available_mode is not None:
+            result['AvailableMode'] = self.available_mode
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
+        if self.health_judgement is not None:
+            result['HealthJudgement'] = self.health_judgement
+        result['HealthTasks'] = []
+        if self.health_tasks is not None:
+            for k in self.health_tasks:
+                result['HealthTasks'].append(k.to_map() if k else None)
+        if self.manual_available_status is not None:
+            result['ManualAvailableStatus'] = self.manual_available_status
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('AttributeInfo') is not None:
+            self.attribute_info = m.get('AttributeInfo')
+        if m.get('AvailableMode') is not None:
+            self.available_mode = m.get('AvailableMode')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
+        if m.get('HealthJudgement') is not None:
+            self.health_judgement = m.get('HealthJudgement')
+        self.health_tasks = []
+        if m.get('HealthTasks') is not None:
+            for k in m.get('HealthTasks'):
+                temp_model = CreateCloudGtmAddressRequestHealthTasks()
+                self.health_tasks.append(temp_model.from_map(k))
+        if m.get('ManualAvailableStatus') is not None:
+            self.manual_available_status = m.get('ManualAvailableStatus')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CreateCloudGtmAddressShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        address: str = None,
+        attribute_info: str = None,
+        available_mode: str = None,
+        client_token: str = None,
+        enable_status: str = None,
+        health_judgement: str = None,
+        health_tasks_shrink: str = None,
+        manual_available_status: str = None,
+        name: str = None,
+        remark: str = None,
+        type: str = None,
+    ):
+        self.accept_language = accept_language
+        # This parameter is required.
+        self.address = address
+        self.attribute_info = attribute_info
+        # This parameter is required.
+        self.available_mode = available_mode
+        self.client_token = client_token
+        # This parameter is required.
+        self.enable_status = enable_status
+        # This parameter is required.
+        self.health_judgement = health_judgement
+        self.health_tasks_shrink = health_tasks_shrink
+        self.manual_available_status = manual_available_status
+        # This parameter is required.
+        self.name = name
+        self.remark = remark
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.attribute_info is not None:
+            result['AttributeInfo'] = self.attribute_info
+        if self.available_mode is not None:
+            result['AvailableMode'] = self.available_mode
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
+        if self.health_judgement is not None:
+            result['HealthJudgement'] = self.health_judgement
+        if self.health_tasks_shrink is not None:
+            result['HealthTasks'] = self.health_tasks_shrink
+        if self.manual_available_status is not None:
+            result['ManualAvailableStatus'] = self.manual_available_status
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('AttributeInfo') is not None:
+            self.attribute_info = m.get('AttributeInfo')
+        if m.get('AvailableMode') is not None:
+            self.available_mode = m.get('AvailableMode')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
+        if m.get('HealthJudgement') is not None:
+            self.health_judgement = m.get('HealthJudgement')
+        if m.get('HealthTasks') is not None:
+            self.health_tasks_shrink = m.get('HealthTasks')
+        if m.get('ManualAvailableStatus') is not None:
+            self.manual_available_status = m.get('ManualAvailableStatus')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class CreateCloudGtmAddressResponseBody(TeaModel):
+    def __init__(
+        self,
+        address_id: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.address_id = address_id
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_id is not None:
+            result['AddressId'] = self.address_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressId') is not None:
+            self.address_id = m.get('AddressId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateCloudGtmAddressResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateCloudGtmAddressResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateCloudGtmAddressResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateCloudGtmAddressPoolRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        address_pool_name: str = None,
+        address_pool_type: str = None,
+        client_token: str = None,
+        enable_status: str = None,
+        health_judgement: str = None,
+        remark: str = None,
+    ):
+        self.accept_language = accept_language
+        self.address_pool_name = address_pool_name
+        self.address_pool_type = address_pool_type
+        self.client_token = client_token
+        self.enable_status = enable_status
+        self.health_judgement = health_judgement
+        self.remark = remark
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.address_pool_name is not None:
+            result['AddressPoolName'] = self.address_pool_name
+        if self.address_pool_type is not None:
+            result['AddressPoolType'] = self.address_pool_type
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
+        if self.health_judgement is not None:
+            result['HealthJudgement'] = self.health_judgement
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AddressPoolName') is not None:
+            self.address_pool_name = m.get('AddressPoolName')
+        if m.get('AddressPoolType') is not None:
+            self.address_pool_type = m.get('AddressPoolType')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
+        if m.get('HealthJudgement') is not None:
+            self.health_judgement = m.get('HealthJudgement')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        return self
+
+
+class CreateCloudGtmAddressPoolResponseBody(TeaModel):
+    def __init__(
+        self,
+        address_pool_id: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.address_pool_id = address_pool_id
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_pool_id is not None:
+            result['AddressPoolId'] = self.address_pool_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressPoolId') is not None:
+            self.address_pool_id = m.get('AddressPoolId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateCloudGtmAddressPoolResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateCloudGtmAddressPoolResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateCloudGtmAddressPoolResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateCloudGtmInstanceConfigRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        client_token: str = None,
+        enable_status: str = None,
+        instance_id: str = None,
+        remark: str = None,
+        schedule_hostname: str = None,
+        schedule_rr_type: str = None,
+        schedule_zone_mode: str = None,
+        schedule_zone_name: str = None,
+        ttl: int = None,
+    ):
+        self.accept_language = accept_language
+        self.client_token = client_token
+        self.enable_status = enable_status
+        self.instance_id = instance_id
+        self.remark = remark
+        self.schedule_hostname = schedule_hostname
+        self.schedule_rr_type = schedule_rr_type
+        self.schedule_zone_mode = schedule_zone_mode
+        self.schedule_zone_name = schedule_zone_name
+        self.ttl = ttl
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.schedule_hostname is not None:
+            result['ScheduleHostname'] = self.schedule_hostname
+        if self.schedule_rr_type is not None:
+            result['ScheduleRrType'] = self.schedule_rr_type
+        if self.schedule_zone_mode is not None:
+            result['ScheduleZoneMode'] = self.schedule_zone_mode
+        if self.schedule_zone_name is not None:
+            result['ScheduleZoneName'] = self.schedule_zone_name
+        if self.ttl is not None:
+            result['Ttl'] = self.ttl
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ScheduleHostname') is not None:
+            self.schedule_hostname = m.get('ScheduleHostname')
+        if m.get('ScheduleRrType') is not None:
+            self.schedule_rr_type = m.get('ScheduleRrType')
+        if m.get('ScheduleZoneMode') is not None:
+            self.schedule_zone_mode = m.get('ScheduleZoneMode')
+        if m.get('ScheduleZoneName') is not None:
+            self.schedule_zone_name = m.get('ScheduleZoneName')
+        if m.get('Ttl') is not None:
+            self.ttl = m.get('Ttl')
+        return self
+
+
+class CreateCloudGtmInstanceConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        config_id: bool = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.config_id = config_id
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class CreateCloudGtmInstanceConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateCloudGtmInstanceConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateCloudGtmInstanceConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateCloudGtmMonitorTemplateRequestIspCityNodes(TeaModel):
+    def __init__(
+        self,
+        city_code: str = None,
+        isp_code: str = None,
+    ):
+        self.city_code = city_code
+        self.isp_code = isp_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.city_code is not None:
+            result['CityCode'] = self.city_code
+        if self.isp_code is not None:
+            result['IspCode'] = self.isp_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CityCode') is not None:
+            self.city_code = m.get('CityCode')
+        if m.get('IspCode') is not None:
+            self.isp_code = m.get('IspCode')
+        return self
+
+
+class CreateCloudGtmMonitorTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        client_token: str = None,
+        evaluation_count: int = None,
+        extend_info: str = None,
+        failure_rate: int = None,
+        interval: int = None,
+        ip_version: str = None,
+        isp_city_nodes: List[CreateCloudGtmMonitorTemplateRequestIspCityNodes] = None,
+        name: str = None,
+        protocol: str = None,
+        timeout: int = None,
+    ):
+        self.accept_language = accept_language
+        self.client_token = client_token
+        # This parameter is required.
+        self.evaluation_count = evaluation_count
+        self.extend_info = extend_info
+        # This parameter is required.
+        self.failure_rate = failure_rate
+        # This parameter is required.
+        self.interval = interval
+        # This parameter is required.
+        self.ip_version = ip_version
+        # This parameter is required.
+        self.isp_city_nodes = isp_city_nodes
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.protocol = protocol
+        # This parameter is required.
+        self.timeout = timeout
+
+    def validate(self):
+        if self.isp_city_nodes:
+            for k in self.isp_city_nodes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.evaluation_count is not None:
+            result['EvaluationCount'] = self.evaluation_count
+        if self.extend_info is not None:
+            result['ExtendInfo'] = self.extend_info
+        if self.failure_rate is not None:
+            result['FailureRate'] = self.failure_rate
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.ip_version is not None:
+            result['IpVersion'] = self.ip_version
+        result['IspCityNodes'] = []
+        if self.isp_city_nodes is not None:
+            for k in self.isp_city_nodes:
+                result['IspCityNodes'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('EvaluationCount') is not None:
+            self.evaluation_count = m.get('EvaluationCount')
+        if m.get('ExtendInfo') is not None:
+            self.extend_info = m.get('ExtendInfo')
+        if m.get('FailureRate') is not None:
+            self.failure_rate = m.get('FailureRate')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('IpVersion') is not None:
+            self.ip_version = m.get('IpVersion')
+        self.isp_city_nodes = []
+        if m.get('IspCityNodes') is not None:
+            for k in m.get('IspCityNodes'):
+                temp_model = CreateCloudGtmMonitorTemplateRequestIspCityNodes()
+                self.isp_city_nodes.append(temp_model.from_map(k))
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        return self
+
+
+class CreateCloudGtmMonitorTemplateShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        client_token: str = None,
+        evaluation_count: int = None,
+        extend_info: str = None,
+        failure_rate: int = None,
+        interval: int = None,
+        ip_version: str = None,
+        isp_city_nodes_shrink: str = None,
+        name: str = None,
+        protocol: str = None,
+        timeout: int = None,
+    ):
+        self.accept_language = accept_language
+        self.client_token = client_token
+        # This parameter is required.
+        self.evaluation_count = evaluation_count
+        self.extend_info = extend_info
+        # This parameter is required.
+        self.failure_rate = failure_rate
+        # This parameter is required.
+        self.interval = interval
+        # This parameter is required.
+        self.ip_version = ip_version
+        # This parameter is required.
+        self.isp_city_nodes_shrink = isp_city_nodes_shrink
+        # This parameter is required.
+        self.name = name
+        # This parameter is required.
+        self.protocol = protocol
+        # This parameter is required.
+        self.timeout = timeout
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.evaluation_count is not None:
+            result['EvaluationCount'] = self.evaluation_count
+        if self.extend_info is not None:
+            result['ExtendInfo'] = self.extend_info
+        if self.failure_rate is not None:
+            result['FailureRate'] = self.failure_rate
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.ip_version is not None:
+            result['IpVersion'] = self.ip_version
+        if self.isp_city_nodes_shrink is not None:
+            result['IspCityNodes'] = self.isp_city_nodes_shrink
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('EvaluationCount') is not None:
+            self.evaluation_count = m.get('EvaluationCount')
+        if m.get('ExtendInfo') is not None:
+            self.extend_info = m.get('ExtendInfo')
+        if m.get('FailureRate') is not None:
+            self.failure_rate = m.get('FailureRate')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('IpVersion') is not None:
+            self.ip_version = m.get('IpVersion')
+        if m.get('IspCityNodes') is not None:
+            self.isp_city_nodes_shrink = m.get('IspCityNodes')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        return self
+
+
+class CreateCloudGtmMonitorTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+        template_id: str = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class CreateCloudGtmMonitorTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateCloudGtmMonitorTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateCloudGtmMonitorTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CreatePdnsAppKeyRequest(TeaModel):
     def __init__(
         self,
@@ -3594,6 +4528,472 @@ class CreatePdnsUdpIpSegmentResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreatePdnsUdpIpSegmentResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteCloudGtmAddressRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        address_id: str = None,
+        client_token: str = None,
+    ):
+        self.accept_language = accept_language
+        # This parameter is required.
+        self.address_id = address_id
+        self.client_token = client_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.address_id is not None:
+            result['AddressId'] = self.address_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AddressId') is not None:
+            self.address_id = m.get('AddressId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        return self
+
+
+class DeleteCloudGtmAddressResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteCloudGtmAddressResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteCloudGtmAddressResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteCloudGtmAddressResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteCloudGtmAddressPoolRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        address_pool_id: str = None,
+        client_token: str = None,
+    ):
+        self.accept_language = accept_language
+        self.address_pool_id = address_pool_id
+        self.client_token = client_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.address_pool_id is not None:
+            result['AddressPoolId'] = self.address_pool_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AddressPoolId') is not None:
+            self.address_pool_id = m.get('AddressPoolId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        return self
+
+
+class DeleteCloudGtmAddressPoolResponseBody(TeaModel):
+    def __init__(
+        self,
+        address_pool_id: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.address_pool_id = address_pool_id
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_pool_id is not None:
+            result['AddressPoolId'] = self.address_pool_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressPoolId') is not None:
+            self.address_pool_id = m.get('AddressPoolId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteCloudGtmAddressPoolResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteCloudGtmAddressPoolResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteCloudGtmAddressPoolResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteCloudGtmInstanceConfigRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        client_token: str = None,
+        config_id: str = None,
+        instance_id: str = None,
+    ):
+        self.accept_language = accept_language
+        self.client_token = client_token
+        self.config_id = config_id
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DeleteCloudGtmInstanceConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteCloudGtmInstanceConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteCloudGtmInstanceConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteCloudGtmInstanceConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteCloudGtmMonitorTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        client_token: str = None,
+        template_id: str = None,
+    ):
+        self.accept_language = accept_language
+        self.client_token = client_token
+        # This parameter is required.
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class DeleteCloudGtmMonitorTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class DeleteCloudGtmMonitorTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteCloudGtmMonitorTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteCloudGtmMonitorTemplateResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -5340,6 +6740,298 @@ class DescribeBatchResultDetailResponse(TeaModel):
         return self
 
 
+class DescribeCloudGtmAddressRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        address_id: str = None,
+        client_token: str = None,
+    ):
+        self.accept_language = accept_language
+        # This parameter is required.
+        self.address_id = address_id
+        self.client_token = client_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.address_id is not None:
+            result['AddressId'] = self.address_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AddressId') is not None:
+            self.address_id = m.get('AddressId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        return self
+
+
+class DescribeCloudGtmAddressResponseBodyHealthTasksHealthTask(TeaModel):
+    def __init__(
+        self,
+        monitor_status: str = None,
+        port: int = None,
+        template_id: str = None,
+        template_name: str = None,
+    ):
+        self.monitor_status = monitor_status
+        self.port = port
+        self.template_id = template_id
+        self.template_name = template_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.monitor_status is not None:
+            result['MonitorStatus'] = self.monitor_status
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MonitorStatus') is not None:
+            self.monitor_status = m.get('MonitorStatus')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        return self
+
+
+class DescribeCloudGtmAddressResponseBodyHealthTasks(TeaModel):
+    def __init__(
+        self,
+        health_task: List[DescribeCloudGtmAddressResponseBodyHealthTasksHealthTask] = None,
+    ):
+        self.health_task = health_task
+
+    def validate(self):
+        if self.health_task:
+            for k in self.health_task:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['HealthTask'] = []
+        if self.health_task is not None:
+            for k in self.health_task:
+                result['HealthTask'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.health_task = []
+        if m.get('HealthTask') is not None:
+            for k in m.get('HealthTask'):
+                temp_model = DescribeCloudGtmAddressResponseBodyHealthTasksHealthTask()
+                self.health_task.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeCloudGtmAddressResponseBody(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        address_id: str = None,
+        attribute_info: str = None,
+        available_mode: str = None,
+        available_status: str = None,
+        create_time: str = None,
+        create_timestamp: int = None,
+        enable_status: str = None,
+        health_judgement: str = None,
+        health_status: str = None,
+        health_tasks: DescribeCloudGtmAddressResponseBodyHealthTasks = None,
+        manual_available_status: str = None,
+        name: str = None,
+        remark: str = None,
+        request_id: str = None,
+        type: str = None,
+        update_time: str = None,
+        update_timestamp: int = None,
+    ):
+        self.address = address
+        self.address_id = address_id
+        self.attribute_info = attribute_info
+        self.available_mode = available_mode
+        self.available_status = available_status
+        self.create_time = create_time
+        self.create_timestamp = create_timestamp
+        self.enable_status = enable_status
+        self.health_judgement = health_judgement
+        self.health_status = health_status
+        self.health_tasks = health_tasks
+        self.manual_available_status = manual_available_status
+        self.name = name
+        self.remark = remark
+        self.request_id = request_id
+        self.type = type
+        self.update_time = update_time
+        self.update_timestamp = update_timestamp
+
+    def validate(self):
+        if self.health_tasks:
+            self.health_tasks.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.address_id is not None:
+            result['AddressId'] = self.address_id
+        if self.attribute_info is not None:
+            result['AttributeInfo'] = self.attribute_info
+        if self.available_mode is not None:
+            result['AvailableMode'] = self.available_mode
+        if self.available_status is not None:
+            result['AvailableStatus'] = self.available_status
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
+        if self.health_judgement is not None:
+            result['HealthJudgement'] = self.health_judgement
+        if self.health_status is not None:
+            result['HealthStatus'] = self.health_status
+        if self.health_tasks is not None:
+            result['HealthTasks'] = self.health_tasks.to_map()
+        if self.manual_available_status is not None:
+            result['ManualAvailableStatus'] = self.manual_available_status
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.update_timestamp is not None:
+            result['UpdateTimestamp'] = self.update_timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('AddressId') is not None:
+            self.address_id = m.get('AddressId')
+        if m.get('AttributeInfo') is not None:
+            self.attribute_info = m.get('AttributeInfo')
+        if m.get('AvailableMode') is not None:
+            self.available_mode = m.get('AvailableMode')
+        if m.get('AvailableStatus') is not None:
+            self.available_status = m.get('AvailableStatus')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
+        if m.get('HealthJudgement') is not None:
+            self.health_judgement = m.get('HealthJudgement')
+        if m.get('HealthStatus') is not None:
+            self.health_status = m.get('HealthStatus')
+        if m.get('HealthTasks') is not None:
+            temp_model = DescribeCloudGtmAddressResponseBodyHealthTasks()
+            self.health_tasks = temp_model.from_map(m['HealthTasks'])
+        if m.get('ManualAvailableStatus') is not None:
+            self.manual_available_status = m.get('ManualAvailableStatus')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UpdateTimestamp') is not None:
+            self.update_timestamp = m.get('UpdateTimestamp')
+        return self
+
+
+class DescribeCloudGtmAddressResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCloudGtmAddressResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCloudGtmAddressResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeCloudGtmAddressPoolRequest(TeaModel):
     def __init__(
         self,
@@ -5823,6 +7515,2401 @@ class DescribeCloudGtmAddressPoolResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeCloudGtmAddressPoolResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeCloudGtmAddressPoolReferenceRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        address_pool_id: str = None,
+        client_token: str = None,
+    ):
+        self.accept_language = accept_language
+        self.address_pool_id = address_pool_id
+        self.client_token = client_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.address_pool_id is not None:
+            result['AddressPoolId'] = self.address_pool_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AddressPoolId') is not None:
+            self.address_pool_id = m.get('AddressPoolId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        return self
+
+
+class DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig(TeaModel):
+    def __init__(
+        self,
+        address_pool_lb_strategy: str = None,
+        available_status: str = None,
+        config_id: str = None,
+        enable_status: str = None,
+        health_status: str = None,
+        instance_id: str = None,
+        instance_name: str = None,
+        remark: str = None,
+        schedule_domain_name: str = None,
+        schedule_hostname: str = None,
+        schedule_rr_type: str = None,
+        schedule_zone_name: str = None,
+        sequence_lb_strategy_mode: str = None,
+        ttl: int = None,
+        version_code: str = None,
+    ):
+        self.address_pool_lb_strategy = address_pool_lb_strategy
+        self.available_status = available_status
+        self.config_id = config_id
+        self.enable_status = enable_status
+        self.health_status = health_status
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.remark = remark
+        self.schedule_domain_name = schedule_domain_name
+        self.schedule_hostname = schedule_hostname
+        self.schedule_rr_type = schedule_rr_type
+        self.schedule_zone_name = schedule_zone_name
+        self.sequence_lb_strategy_mode = sequence_lb_strategy_mode
+        self.ttl = ttl
+        self.version_code = version_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_pool_lb_strategy is not None:
+            result['AddressPoolLbStrategy'] = self.address_pool_lb_strategy
+        if self.available_status is not None:
+            result['AvailableStatus'] = self.available_status
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
+        if self.health_status is not None:
+            result['HealthStatus'] = self.health_status
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.schedule_domain_name is not None:
+            result['ScheduleDomainName'] = self.schedule_domain_name
+        if self.schedule_hostname is not None:
+            result['ScheduleHostname'] = self.schedule_hostname
+        if self.schedule_rr_type is not None:
+            result['ScheduleRrType'] = self.schedule_rr_type
+        if self.schedule_zone_name is not None:
+            result['ScheduleZoneName'] = self.schedule_zone_name
+        if self.sequence_lb_strategy_mode is not None:
+            result['SequenceLbStrategyMode'] = self.sequence_lb_strategy_mode
+        if self.ttl is not None:
+            result['Ttl'] = self.ttl
+        if self.version_code is not None:
+            result['VersionCode'] = self.version_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressPoolLbStrategy') is not None:
+            self.address_pool_lb_strategy = m.get('AddressPoolLbStrategy')
+        if m.get('AvailableStatus') is not None:
+            self.available_status = m.get('AvailableStatus')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
+        if m.get('HealthStatus') is not None:
+            self.health_status = m.get('HealthStatus')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ScheduleDomainName') is not None:
+            self.schedule_domain_name = m.get('ScheduleDomainName')
+        if m.get('ScheduleHostname') is not None:
+            self.schedule_hostname = m.get('ScheduleHostname')
+        if m.get('ScheduleRrType') is not None:
+            self.schedule_rr_type = m.get('ScheduleRrType')
+        if m.get('ScheduleZoneName') is not None:
+            self.schedule_zone_name = m.get('ScheduleZoneName')
+        if m.get('SequenceLbStrategyMode') is not None:
+            self.sequence_lb_strategy_mode = m.get('SequenceLbStrategyMode')
+        if m.get('Ttl') is not None:
+            self.ttl = m.get('Ttl')
+        if m.get('VersionCode') is not None:
+            self.version_code = m.get('VersionCode')
+        return self
+
+
+class DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigs(TeaModel):
+    def __init__(
+        self,
+        instance_config: List[DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig] = None,
+    ):
+        self.instance_config = instance_config
+
+    def validate(self):
+        if self.instance_config:
+            for k in self.instance_config:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['InstanceConfig'] = []
+        if self.instance_config is not None:
+            for k in self.instance_config:
+                result['InstanceConfig'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.instance_config = []
+        if m.get('InstanceConfig') is not None:
+            for k in m.get('InstanceConfig'):
+                temp_model = DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigsInstanceConfig()
+                self.instance_config.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeCloudGtmAddressPoolReferenceResponseBody(TeaModel):
+    def __init__(
+        self,
+        address_pool_id: str = None,
+        address_pool_name: str = None,
+        instance_configs: DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigs = None,
+        request_id: str = None,
+    ):
+        self.address_pool_id = address_pool_id
+        self.address_pool_name = address_pool_name
+        self.instance_configs = instance_configs
+        self.request_id = request_id
+
+    def validate(self):
+        if self.instance_configs:
+            self.instance_configs.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_pool_id is not None:
+            result['AddressPoolId'] = self.address_pool_id
+        if self.address_pool_name is not None:
+            result['AddressPoolName'] = self.address_pool_name
+        if self.instance_configs is not None:
+            result['InstanceConfigs'] = self.instance_configs.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressPoolId') is not None:
+            self.address_pool_id = m.get('AddressPoolId')
+        if m.get('AddressPoolName') is not None:
+            self.address_pool_name = m.get('AddressPoolName')
+        if m.get('InstanceConfigs') is not None:
+            temp_model = DescribeCloudGtmAddressPoolReferenceResponseBodyInstanceConfigs()
+            self.instance_configs = temp_model.from_map(m['InstanceConfigs'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeCloudGtmAddressPoolReferenceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCloudGtmAddressPoolReferenceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCloudGtmAddressPoolReferenceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeCloudGtmAddressReferenceRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        address_id: str = None,
+        client_token: str = None,
+    ):
+        self.accept_language = accept_language
+        self.address_id = address_id
+        self.client_token = client_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.address_id is not None:
+            result['AddressId'] = self.address_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AddressId') is not None:
+            self.address_id = m.get('AddressId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        return self
+
+
+class DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig(TeaModel):
+    def __init__(
+        self,
+        address_pool_lb_strategy: str = None,
+        available_status: str = None,
+        config_id: str = None,
+        enable_status: str = None,
+        health_status: str = None,
+        instance_id: str = None,
+        instance_name: str = None,
+        remark: str = None,
+        schedule_domain_name: str = None,
+        schedule_hostname: str = None,
+        schedule_rr_type: str = None,
+        schedule_zone_name: str = None,
+        sequence_lb_strategy_mode: str = None,
+        ttl: int = None,
+        version_code: str = None,
+    ):
+        self.address_pool_lb_strategy = address_pool_lb_strategy
+        self.available_status = available_status
+        self.config_id = config_id
+        self.enable_status = enable_status
+        self.health_status = health_status
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.remark = remark
+        self.schedule_domain_name = schedule_domain_name
+        self.schedule_hostname = schedule_hostname
+        self.schedule_rr_type = schedule_rr_type
+        self.schedule_zone_name = schedule_zone_name
+        self.sequence_lb_strategy_mode = sequence_lb_strategy_mode
+        self.ttl = ttl
+        self.version_code = version_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_pool_lb_strategy is not None:
+            result['AddressPoolLbStrategy'] = self.address_pool_lb_strategy
+        if self.available_status is not None:
+            result['AvailableStatus'] = self.available_status
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
+        if self.health_status is not None:
+            result['HealthStatus'] = self.health_status
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.schedule_domain_name is not None:
+            result['ScheduleDomainName'] = self.schedule_domain_name
+        if self.schedule_hostname is not None:
+            result['ScheduleHostname'] = self.schedule_hostname
+        if self.schedule_rr_type is not None:
+            result['ScheduleRrType'] = self.schedule_rr_type
+        if self.schedule_zone_name is not None:
+            result['ScheduleZoneName'] = self.schedule_zone_name
+        if self.sequence_lb_strategy_mode is not None:
+            result['SequenceLbStrategyMode'] = self.sequence_lb_strategy_mode
+        if self.ttl is not None:
+            result['Ttl'] = self.ttl
+        if self.version_code is not None:
+            result['VersionCode'] = self.version_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressPoolLbStrategy') is not None:
+            self.address_pool_lb_strategy = m.get('AddressPoolLbStrategy')
+        if m.get('AvailableStatus') is not None:
+            self.available_status = m.get('AvailableStatus')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
+        if m.get('HealthStatus') is not None:
+            self.health_status = m.get('HealthStatus')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ScheduleDomainName') is not None:
+            self.schedule_domain_name = m.get('ScheduleDomainName')
+        if m.get('ScheduleHostname') is not None:
+            self.schedule_hostname = m.get('ScheduleHostname')
+        if m.get('ScheduleRrType') is not None:
+            self.schedule_rr_type = m.get('ScheduleRrType')
+        if m.get('ScheduleZoneName') is not None:
+            self.schedule_zone_name = m.get('ScheduleZoneName')
+        if m.get('SequenceLbStrategyMode') is not None:
+            self.sequence_lb_strategy_mode = m.get('SequenceLbStrategyMode')
+        if m.get('Ttl') is not None:
+            self.ttl = m.get('Ttl')
+        if m.get('VersionCode') is not None:
+            self.version_code = m.get('VersionCode')
+        return self
+
+
+class DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigs(TeaModel):
+    def __init__(
+        self,
+        instance_config: List[DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig] = None,
+    ):
+        self.instance_config = instance_config
+
+    def validate(self):
+        if self.instance_config:
+            for k in self.instance_config:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['InstanceConfig'] = []
+        if self.instance_config is not None:
+            for k in self.instance_config:
+                result['InstanceConfig'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.instance_config = []
+        if m.get('InstanceConfig') is not None:
+            for k in m.get('InstanceConfig'):
+                temp_model = DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigsInstanceConfig()
+                self.instance_config.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPool(TeaModel):
+    def __init__(
+        self,
+        address_lb_strategy: str = None,
+        address_pool_id: str = None,
+        address_pool_name: str = None,
+        address_pool_type: str = None,
+        available_status: str = None,
+        enable_status: str = None,
+        health_judgement: str = None,
+        health_status: str = None,
+        instance_configs: DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigs = None,
+        remark: str = None,
+        sequence_lb_strategy_mode: str = None,
+    ):
+        self.address_lb_strategy = address_lb_strategy
+        self.address_pool_id = address_pool_id
+        self.address_pool_name = address_pool_name
+        self.address_pool_type = address_pool_type
+        self.available_status = available_status
+        self.enable_status = enable_status
+        self.health_judgement = health_judgement
+        self.health_status = health_status
+        self.instance_configs = instance_configs
+        self.remark = remark
+        self.sequence_lb_strategy_mode = sequence_lb_strategy_mode
+
+    def validate(self):
+        if self.instance_configs:
+            self.instance_configs.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_lb_strategy is not None:
+            result['AddressLbStrategy'] = self.address_lb_strategy
+        if self.address_pool_id is not None:
+            result['AddressPoolId'] = self.address_pool_id
+        if self.address_pool_name is not None:
+            result['AddressPoolName'] = self.address_pool_name
+        if self.address_pool_type is not None:
+            result['AddressPoolType'] = self.address_pool_type
+        if self.available_status is not None:
+            result['AvailableStatus'] = self.available_status
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
+        if self.health_judgement is not None:
+            result['HealthJudgement'] = self.health_judgement
+        if self.health_status is not None:
+            result['HealthStatus'] = self.health_status
+        if self.instance_configs is not None:
+            result['InstanceConfigs'] = self.instance_configs.to_map()
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.sequence_lb_strategy_mode is not None:
+            result['SequenceLbStrategyMode'] = self.sequence_lb_strategy_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressLbStrategy') is not None:
+            self.address_lb_strategy = m.get('AddressLbStrategy')
+        if m.get('AddressPoolId') is not None:
+            self.address_pool_id = m.get('AddressPoolId')
+        if m.get('AddressPoolName') is not None:
+            self.address_pool_name = m.get('AddressPoolName')
+        if m.get('AddressPoolType') is not None:
+            self.address_pool_type = m.get('AddressPoolType')
+        if m.get('AvailableStatus') is not None:
+            self.available_status = m.get('AvailableStatus')
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
+        if m.get('HealthJudgement') is not None:
+            self.health_judgement = m.get('HealthJudgement')
+        if m.get('HealthStatus') is not None:
+            self.health_status = m.get('HealthStatus')
+        if m.get('InstanceConfigs') is not None:
+            temp_model = DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPoolInstanceConfigs()
+            self.instance_configs = temp_model.from_map(m['InstanceConfigs'])
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('SequenceLbStrategyMode') is not None:
+            self.sequence_lb_strategy_mode = m.get('SequenceLbStrategyMode')
+        return self
+
+
+class DescribeCloudGtmAddressReferenceResponseBodyAddressPools(TeaModel):
+    def __init__(
+        self,
+        address_pool: List[DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPool] = None,
+    ):
+        self.address_pool = address_pool
+
+    def validate(self):
+        if self.address_pool:
+            for k in self.address_pool:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AddressPool'] = []
+        if self.address_pool is not None:
+            for k in self.address_pool:
+                result['AddressPool'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.address_pool = []
+        if m.get('AddressPool') is not None:
+            for k in m.get('AddressPool'):
+                temp_model = DescribeCloudGtmAddressReferenceResponseBodyAddressPoolsAddressPool()
+                self.address_pool.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeCloudGtmAddressReferenceResponseBody(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        address_id: str = None,
+        address_pools: DescribeCloudGtmAddressReferenceResponseBodyAddressPools = None,
+        name: str = None,
+        request_id: str = None,
+    ):
+        self.address = address
+        self.address_id = address_id
+        self.address_pools = address_pools
+        self.name = name
+        self.request_id = request_id
+
+    def validate(self):
+        if self.address_pools:
+            self.address_pools.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.address_id is not None:
+            result['AddressId'] = self.address_id
+        if self.address_pools is not None:
+            result['AddressPools'] = self.address_pools.to_map()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('AddressId') is not None:
+            self.address_id = m.get('AddressId')
+        if m.get('AddressPools') is not None:
+            temp_model = DescribeCloudGtmAddressReferenceResponseBodyAddressPools()
+            self.address_pools = temp_model.from_map(m['AddressPools'])
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeCloudGtmAddressReferenceResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCloudGtmAddressReferenceResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCloudGtmAddressReferenceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeCloudGtmGlobalAlertRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        client_token: str = None,
+    ):
+        self.accept_language = accept_language
+        self.client_token = client_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        return self
+
+
+class DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig(TeaModel):
+    def __init__(
+        self,
+        dingtalk_notice: bool = None,
+        email_notice: bool = None,
+        notice_type: str = None,
+        sms_notice: bool = None,
+    ):
+        self.dingtalk_notice = dingtalk_notice
+        self.email_notice = email_notice
+        self.notice_type = notice_type
+        self.sms_notice = sms_notice
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dingtalk_notice is not None:
+            result['DingtalkNotice'] = self.dingtalk_notice
+        if self.email_notice is not None:
+            result['EmailNotice'] = self.email_notice
+        if self.notice_type is not None:
+            result['NoticeType'] = self.notice_type
+        if self.sms_notice is not None:
+            result['SmsNotice'] = self.sms_notice
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DingtalkNotice') is not None:
+            self.dingtalk_notice = m.get('DingtalkNotice')
+        if m.get('EmailNotice') is not None:
+            self.email_notice = m.get('EmailNotice')
+        if m.get('NoticeType') is not None:
+            self.notice_type = m.get('NoticeType')
+        if m.get('SmsNotice') is not None:
+            self.sms_notice = m.get('SmsNotice')
+        return self
+
+
+class DescribeCloudGtmGlobalAlertResponseBodyAlertConfig(TeaModel):
+    def __init__(
+        self,
+        alert_config: List[DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig] = None,
+    ):
+        self.alert_config = alert_config
+
+    def validate(self):
+        if self.alert_config:
+            for k in self.alert_config:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AlertConfig'] = []
+        if self.alert_config is not None:
+            for k in self.alert_config:
+                result['AlertConfig'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.alert_config = []
+        if m.get('AlertConfig') is not None:
+            for k in m.get('AlertConfig'):
+                temp_model = DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig()
+                self.alert_config.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeCloudGtmGlobalAlertResponseBodyAlertGroup(TeaModel):
+    def __init__(
+        self,
+        alert_group: List[str] = None,
+    ):
+        self.alert_group = alert_group
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alert_group is not None:
+            result['AlertGroup'] = self.alert_group
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlertGroup') is not None:
+            self.alert_group = m.get('AlertGroup')
+        return self
+
+
+class DescribeCloudGtmGlobalAlertResponseBody(TeaModel):
+    def __init__(
+        self,
+        alert_config: DescribeCloudGtmGlobalAlertResponseBodyAlertConfig = None,
+        alert_group: DescribeCloudGtmGlobalAlertResponseBodyAlertGroup = None,
+        request_id: str = None,
+    ):
+        self.alert_config = alert_config
+        self.alert_group = alert_group
+        self.request_id = request_id
+
+    def validate(self):
+        if self.alert_config:
+            self.alert_config.validate()
+        if self.alert_group:
+            self.alert_group.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alert_config is not None:
+            result['AlertConfig'] = self.alert_config.to_map()
+        if self.alert_group is not None:
+            result['AlertGroup'] = self.alert_group.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlertConfig') is not None:
+            temp_model = DescribeCloudGtmGlobalAlertResponseBodyAlertConfig()
+            self.alert_config = temp_model.from_map(m['AlertConfig'])
+        if m.get('AlertGroup') is not None:
+            temp_model = DescribeCloudGtmGlobalAlertResponseBodyAlertGroup()
+            self.alert_group = temp_model.from_map(m['AlertGroup'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeCloudGtmGlobalAlertResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCloudGtmGlobalAlertResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCloudGtmGlobalAlertResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeCloudGtmInstanceConfigAlertRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        client_token: str = None,
+        config_id: str = None,
+        instance_id: str = None,
+    ):
+        self.accept_language = accept_language
+        self.client_token = client_token
+        self.config_id = config_id
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfigAlertConfig(TeaModel):
+    def __init__(
+        self,
+        dingtalk_notice: bool = None,
+        email_notice: bool = None,
+        notice_type: str = None,
+        sms_notice: bool = None,
+    ):
+        self.dingtalk_notice = dingtalk_notice
+        self.email_notice = email_notice
+        self.notice_type = notice_type
+        self.sms_notice = sms_notice
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dingtalk_notice is not None:
+            result['DingtalkNotice'] = self.dingtalk_notice
+        if self.email_notice is not None:
+            result['EmailNotice'] = self.email_notice
+        if self.notice_type is not None:
+            result['NoticeType'] = self.notice_type
+        if self.sms_notice is not None:
+            result['SmsNotice'] = self.sms_notice
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DingtalkNotice') is not None:
+            self.dingtalk_notice = m.get('DingtalkNotice')
+        if m.get('EmailNotice') is not None:
+            self.email_notice = m.get('EmailNotice')
+        if m.get('NoticeType') is not None:
+            self.notice_type = m.get('NoticeType')
+        if m.get('SmsNotice') is not None:
+            self.sms_notice = m.get('SmsNotice')
+        return self
+
+
+class DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfig(TeaModel):
+    def __init__(
+        self,
+        alert_config: List[DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfigAlertConfig] = None,
+    ):
+        self.alert_config = alert_config
+
+    def validate(self):
+        if self.alert_config:
+            for k in self.alert_config:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AlertConfig'] = []
+        if self.alert_config is not None:
+            for k in self.alert_config:
+                result['AlertConfig'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.alert_config = []
+        if m.get('AlertConfig') is not None:
+            for k in m.get('AlertConfig'):
+                temp_model = DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfigAlertConfig()
+                self.alert_config.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeCloudGtmInstanceConfigAlertResponseBodyAlertGroup(TeaModel):
+    def __init__(
+        self,
+        alert_group: List[str] = None,
+    ):
+        self.alert_group = alert_group
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alert_group is not None:
+            result['AlertGroup'] = self.alert_group
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlertGroup') is not None:
+            self.alert_group = m.get('AlertGroup')
+        return self
+
+
+class DescribeCloudGtmInstanceConfigAlertResponseBody(TeaModel):
+    def __init__(
+        self,
+        alert_config: DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfig = None,
+        alert_group: DescribeCloudGtmInstanceConfigAlertResponseBodyAlertGroup = None,
+        alert_mode: str = None,
+        config_id: str = None,
+        instance_id: str = None,
+        request_id: str = None,
+    ):
+        self.alert_config = alert_config
+        self.alert_group = alert_group
+        self.alert_mode = alert_mode
+        self.config_id = config_id
+        self.instance_id = instance_id
+        self.request_id = request_id
+
+    def validate(self):
+        if self.alert_config:
+            self.alert_config.validate()
+        if self.alert_group:
+            self.alert_group.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alert_config is not None:
+            result['AlertConfig'] = self.alert_config.to_map()
+        if self.alert_group is not None:
+            result['AlertGroup'] = self.alert_group.to_map()
+        if self.alert_mode is not None:
+            result['AlertMode'] = self.alert_mode
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlertConfig') is not None:
+            temp_model = DescribeCloudGtmInstanceConfigAlertResponseBodyAlertConfig()
+            self.alert_config = temp_model.from_map(m['AlertConfig'])
+        if m.get('AlertGroup') is not None:
+            temp_model = DescribeCloudGtmInstanceConfigAlertResponseBodyAlertGroup()
+            self.alert_group = temp_model.from_map(m['AlertGroup'])
+        if m.get('AlertMode') is not None:
+            self.alert_mode = m.get('AlertMode')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeCloudGtmInstanceConfigAlertResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCloudGtmInstanceConfigAlertResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCloudGtmInstanceConfigAlertResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeCloudGtmInstanceConfigFullInfoRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        client_token: str = None,
+        config_id: str = None,
+        instance_id: str = None,
+    ):
+        self.accept_language = accept_language
+        self.client_token = client_token
+        self.config_id = config_id
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddressRequestSource(TeaModel):
+    def __init__(
+        self,
+        request_source: List[str] = None,
+    ):
+        self.request_source = request_source
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_source is not None:
+            result['RequestSource'] = self.request_source
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestSource') is not None:
+            self.request_source = m.get('RequestSource')
+        return self
+
+
+class DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        address_id: str = None,
+        attribute_info: str = None,
+        available_mode: str = None,
+        available_status: str = None,
+        create_time: str = None,
+        create_timestamp: int = None,
+        enable_status: str = None,
+        health_judgement: str = None,
+        health_status: str = None,
+        manual_available_status: str = None,
+        name: str = None,
+        remark: str = None,
+        request_source: DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddressRequestSource = None,
+        seq_non_preemptive_schedule: bool = None,
+        serial_number: int = None,
+        type: str = None,
+        update_time: str = None,
+        update_timestamp: int = None,
+        weight_value: int = None,
+    ):
+        self.address = address
+        self.address_id = address_id
+        self.attribute_info = attribute_info
+        self.available_mode = available_mode
+        self.available_status = available_status
+        self.create_time = create_time
+        self.create_timestamp = create_timestamp
+        self.enable_status = enable_status
+        self.health_judgement = health_judgement
+        self.health_status = health_status
+        self.manual_available_status = manual_available_status
+        self.name = name
+        self.remark = remark
+        self.request_source = request_source
+        self.seq_non_preemptive_schedule = seq_non_preemptive_schedule
+        self.serial_number = serial_number
+        self.type = type
+        self.update_time = update_time
+        self.update_timestamp = update_timestamp
+        self.weight_value = weight_value
+
+    def validate(self):
+        if self.request_source:
+            self.request_source.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.address_id is not None:
+            result['AddressId'] = self.address_id
+        if self.attribute_info is not None:
+            result['AttributeInfo'] = self.attribute_info
+        if self.available_mode is not None:
+            result['AvailableMode'] = self.available_mode
+        if self.available_status is not None:
+            result['AvailableStatus'] = self.available_status
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
+        if self.health_judgement is not None:
+            result['HealthJudgement'] = self.health_judgement
+        if self.health_status is not None:
+            result['HealthStatus'] = self.health_status
+        if self.manual_available_status is not None:
+            result['ManualAvailableStatus'] = self.manual_available_status
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.request_source is not None:
+            result['RequestSource'] = self.request_source.to_map()
+        if self.seq_non_preemptive_schedule is not None:
+            result['SeqNonPreemptiveSchedule'] = self.seq_non_preemptive_schedule
+        if self.serial_number is not None:
+            result['SerialNumber'] = self.serial_number
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.update_timestamp is not None:
+            result['UpdateTimestamp'] = self.update_timestamp
+        if self.weight_value is not None:
+            result['WeightValue'] = self.weight_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('AddressId') is not None:
+            self.address_id = m.get('AddressId')
+        if m.get('AttributeInfo') is not None:
+            self.attribute_info = m.get('AttributeInfo')
+        if m.get('AvailableMode') is not None:
+            self.available_mode = m.get('AvailableMode')
+        if m.get('AvailableStatus') is not None:
+            self.available_status = m.get('AvailableStatus')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
+        if m.get('HealthJudgement') is not None:
+            self.health_judgement = m.get('HealthJudgement')
+        if m.get('HealthStatus') is not None:
+            self.health_status = m.get('HealthStatus')
+        if m.get('ManualAvailableStatus') is not None:
+            self.manual_available_status = m.get('ManualAvailableStatus')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('RequestSource') is not None:
+            temp_model = DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddressRequestSource()
+            self.request_source = temp_model.from_map(m['RequestSource'])
+        if m.get('SeqNonPreemptiveSchedule') is not None:
+            self.seq_non_preemptive_schedule = m.get('SeqNonPreemptiveSchedule')
+        if m.get('SerialNumber') is not None:
+            self.serial_number = m.get('SerialNumber')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UpdateTimestamp') is not None:
+            self.update_timestamp = m.get('UpdateTimestamp')
+        if m.get('WeightValue') is not None:
+            self.weight_value = m.get('WeightValue')
+        return self
+
+
+class DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddresses(TeaModel):
+    def __init__(
+        self,
+        address: List[DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress] = None,
+    ):
+        self.address = address
+
+    def validate(self):
+        if self.address:
+            for k in self.address:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Address'] = []
+        if self.address is not None:
+            for k in self.address:
+                result['Address'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.address = []
+        if m.get('Address') is not None:
+            for k in m.get('Address'):
+                temp_model = DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddressesAddress()
+                self.address.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolRequestSource(TeaModel):
+    def __init__(
+        self,
+        request_source: List[str] = None,
+    ):
+        self.request_source = request_source
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_source is not None:
+            result['RequestSource'] = self.request_source
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestSource') is not None:
+            self.request_source = m.get('RequestSource')
+        return self
+
+
+class DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool(TeaModel):
+    def __init__(
+        self,
+        address_lb_strategy: str = None,
+        address_pool_id: str = None,
+        address_pool_name: str = None,
+        address_pool_type: str = None,
+        addresses: DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddresses = None,
+        available_status: str = None,
+        create_time: str = None,
+        create_timestamp: int = None,
+        enable_status: str = None,
+        health_judgement: str = None,
+        health_status: str = None,
+        request_source: DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolRequestSource = None,
+        seq_non_preemptive_schedule: bool = None,
+        sequence_lb_strategy_mode: str = None,
+        serial_number: int = None,
+        update_time: str = None,
+        update_timestamp: int = None,
+        weight_value: int = None,
+    ):
+        self.address_lb_strategy = address_lb_strategy
+        self.address_pool_id = address_pool_id
+        self.address_pool_name = address_pool_name
+        self.address_pool_type = address_pool_type
+        self.addresses = addresses
+        self.available_status = available_status
+        self.create_time = create_time
+        self.create_timestamp = create_timestamp
+        self.enable_status = enable_status
+        self.health_judgement = health_judgement
+        self.health_status = health_status
+        self.request_source = request_source
+        self.seq_non_preemptive_schedule = seq_non_preemptive_schedule
+        self.sequence_lb_strategy_mode = sequence_lb_strategy_mode
+        self.serial_number = serial_number
+        self.update_time = update_time
+        self.update_timestamp = update_timestamp
+        self.weight_value = weight_value
+
+    def validate(self):
+        if self.addresses:
+            self.addresses.validate()
+        if self.request_source:
+            self.request_source.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_lb_strategy is not None:
+            result['AddressLbStrategy'] = self.address_lb_strategy
+        if self.address_pool_id is not None:
+            result['AddressPoolId'] = self.address_pool_id
+        if self.address_pool_name is not None:
+            result['AddressPoolName'] = self.address_pool_name
+        if self.address_pool_type is not None:
+            result['AddressPoolType'] = self.address_pool_type
+        if self.addresses is not None:
+            result['Addresses'] = self.addresses.to_map()
+        if self.available_status is not None:
+            result['AvailableStatus'] = self.available_status
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
+        if self.health_judgement is not None:
+            result['HealthJudgement'] = self.health_judgement
+        if self.health_status is not None:
+            result['HealthStatus'] = self.health_status
+        if self.request_source is not None:
+            result['RequestSource'] = self.request_source.to_map()
+        if self.seq_non_preemptive_schedule is not None:
+            result['SeqNonPreemptiveSchedule'] = self.seq_non_preemptive_schedule
+        if self.sequence_lb_strategy_mode is not None:
+            result['SequenceLbStrategyMode'] = self.sequence_lb_strategy_mode
+        if self.serial_number is not None:
+            result['SerialNumber'] = self.serial_number
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.update_timestamp is not None:
+            result['UpdateTimestamp'] = self.update_timestamp
+        if self.weight_value is not None:
+            result['WeightValue'] = self.weight_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressLbStrategy') is not None:
+            self.address_lb_strategy = m.get('AddressLbStrategy')
+        if m.get('AddressPoolId') is not None:
+            self.address_pool_id = m.get('AddressPoolId')
+        if m.get('AddressPoolName') is not None:
+            self.address_pool_name = m.get('AddressPoolName')
+        if m.get('AddressPoolType') is not None:
+            self.address_pool_type = m.get('AddressPoolType')
+        if m.get('Addresses') is not None:
+            temp_model = DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolAddresses()
+            self.addresses = temp_model.from_map(m['Addresses'])
+        if m.get('AvailableStatus') is not None:
+            self.available_status = m.get('AvailableStatus')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
+        if m.get('HealthJudgement') is not None:
+            self.health_judgement = m.get('HealthJudgement')
+        if m.get('HealthStatus') is not None:
+            self.health_status = m.get('HealthStatus')
+        if m.get('RequestSource') is not None:
+            temp_model = DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPoolRequestSource()
+            self.request_source = temp_model.from_map(m['RequestSource'])
+        if m.get('SeqNonPreemptiveSchedule') is not None:
+            self.seq_non_preemptive_schedule = m.get('SeqNonPreemptiveSchedule')
+        if m.get('SequenceLbStrategyMode') is not None:
+            self.sequence_lb_strategy_mode = m.get('SequenceLbStrategyMode')
+        if m.get('SerialNumber') is not None:
+            self.serial_number = m.get('SerialNumber')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UpdateTimestamp') is not None:
+            self.update_timestamp = m.get('UpdateTimestamp')
+        if m.get('WeightValue') is not None:
+            self.weight_value = m.get('WeightValue')
+        return self
+
+
+class DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPools(TeaModel):
+    def __init__(
+        self,
+        address_pool: List[DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool] = None,
+    ):
+        self.address_pool = address_pool
+
+    def validate(self):
+        if self.address_pool:
+            for k in self.address_pool:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AddressPool'] = []
+        if self.address_pool is not None:
+            for k in self.address_pool:
+                result['AddressPool'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.address_pool = []
+        if m.get('AddressPool') is not None:
+            for k in m.get('AddressPool'):
+                temp_model = DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPoolsAddressPool()
+                self.address_pool.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeCloudGtmInstanceConfigFullInfoResponseBody(TeaModel):
+    def __init__(
+        self,
+        address_pool_lb_strategy: str = None,
+        address_pools: DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPools = None,
+        alert_config: str = None,
+        alert_group: str = None,
+        available_status: str = None,
+        commodity_code: str = None,
+        config_id: str = None,
+        create_time: str = None,
+        create_timestamp: int = None,
+        enable_status: str = None,
+        health_status: str = None,
+        instance_id: str = None,
+        instance_name: str = None,
+        remark: str = None,
+        request_id: str = None,
+        schedule_domain_name: str = None,
+        schedule_hostname: str = None,
+        schedule_rr_type: str = None,
+        schedule_zone_mode: str = None,
+        schedule_zone_name: str = None,
+        sequence_lb_strategy_mode: str = None,
+        ttl: int = None,
+        update_time: str = None,
+        update_timestamp: int = None,
+        version_code: str = None,
+    ):
+        self.address_pool_lb_strategy = address_pool_lb_strategy
+        self.address_pools = address_pools
+        self.alert_config = alert_config
+        self.alert_group = alert_group
+        self.available_status = available_status
+        self.commodity_code = commodity_code
+        self.config_id = config_id
+        self.create_time = create_time
+        self.create_timestamp = create_timestamp
+        self.enable_status = enable_status
+        self.health_status = health_status
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.remark = remark
+        self.request_id = request_id
+        self.schedule_domain_name = schedule_domain_name
+        self.schedule_hostname = schedule_hostname
+        self.schedule_rr_type = schedule_rr_type
+        self.schedule_zone_mode = schedule_zone_mode
+        self.schedule_zone_name = schedule_zone_name
+        self.sequence_lb_strategy_mode = sequence_lb_strategy_mode
+        self.ttl = ttl
+        self.update_time = update_time
+        self.update_timestamp = update_timestamp
+        self.version_code = version_code
+
+    def validate(self):
+        if self.address_pools:
+            self.address_pools.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_pool_lb_strategy is not None:
+            result['AddressPoolLbStrategy'] = self.address_pool_lb_strategy
+        if self.address_pools is not None:
+            result['AddressPools'] = self.address_pools.to_map()
+        if self.alert_config is not None:
+            result['AlertConfig'] = self.alert_config
+        if self.alert_group is not None:
+            result['AlertGroup'] = self.alert_group
+        if self.available_status is not None:
+            result['AvailableStatus'] = self.available_status
+        if self.commodity_code is not None:
+            result['CommodityCode'] = self.commodity_code
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
+        if self.health_status is not None:
+            result['HealthStatus'] = self.health_status
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.schedule_domain_name is not None:
+            result['ScheduleDomainName'] = self.schedule_domain_name
+        if self.schedule_hostname is not None:
+            result['ScheduleHostname'] = self.schedule_hostname
+        if self.schedule_rr_type is not None:
+            result['ScheduleRrType'] = self.schedule_rr_type
+        if self.schedule_zone_mode is not None:
+            result['ScheduleZoneMode'] = self.schedule_zone_mode
+        if self.schedule_zone_name is not None:
+            result['ScheduleZoneName'] = self.schedule_zone_name
+        if self.sequence_lb_strategy_mode is not None:
+            result['SequenceLbStrategyMode'] = self.sequence_lb_strategy_mode
+        if self.ttl is not None:
+            result['Ttl'] = self.ttl
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.update_timestamp is not None:
+            result['UpdateTimestamp'] = self.update_timestamp
+        if self.version_code is not None:
+            result['VersionCode'] = self.version_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressPoolLbStrategy') is not None:
+            self.address_pool_lb_strategy = m.get('AddressPoolLbStrategy')
+        if m.get('AddressPools') is not None:
+            temp_model = DescribeCloudGtmInstanceConfigFullInfoResponseBodyAddressPools()
+            self.address_pools = temp_model.from_map(m['AddressPools'])
+        if m.get('AlertConfig') is not None:
+            self.alert_config = m.get('AlertConfig')
+        if m.get('AlertGroup') is not None:
+            self.alert_group = m.get('AlertGroup')
+        if m.get('AvailableStatus') is not None:
+            self.available_status = m.get('AvailableStatus')
+        if m.get('CommodityCode') is not None:
+            self.commodity_code = m.get('CommodityCode')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
+        if m.get('HealthStatus') is not None:
+            self.health_status = m.get('HealthStatus')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ScheduleDomainName') is not None:
+            self.schedule_domain_name = m.get('ScheduleDomainName')
+        if m.get('ScheduleHostname') is not None:
+            self.schedule_hostname = m.get('ScheduleHostname')
+        if m.get('ScheduleRrType') is not None:
+            self.schedule_rr_type = m.get('ScheduleRrType')
+        if m.get('ScheduleZoneMode') is not None:
+            self.schedule_zone_mode = m.get('ScheduleZoneMode')
+        if m.get('ScheduleZoneName') is not None:
+            self.schedule_zone_name = m.get('ScheduleZoneName')
+        if m.get('SequenceLbStrategyMode') is not None:
+            self.sequence_lb_strategy_mode = m.get('SequenceLbStrategyMode')
+        if m.get('Ttl') is not None:
+            self.ttl = m.get('Ttl')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UpdateTimestamp') is not None:
+            self.update_timestamp = m.get('UpdateTimestamp')
+        if m.get('VersionCode') is not None:
+            self.version_code = m.get('VersionCode')
+        return self
+
+
+class DescribeCloudGtmInstanceConfigFullInfoResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCloudGtmInstanceConfigFullInfoResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCloudGtmInstanceConfigFullInfoResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeCloudGtmMonitorTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        template_id: str = None,
+    ):
+        self.accept_language = accept_language
+        # This parameter is required.
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodesIspCityNode(TeaModel):
+    def __init__(
+        self,
+        city_code: str = None,
+        city_name: str = None,
+        country_code: str = None,
+        country_name: str = None,
+        group_name: str = None,
+        group_type: str = None,
+        isp_code: str = None,
+        isp_name: str = None,
+    ):
+        self.city_code = city_code
+        self.city_name = city_name
+        self.country_code = country_code
+        self.country_name = country_name
+        self.group_name = group_name
+        self.group_type = group_type
+        self.isp_code = isp_code
+        self.isp_name = isp_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.city_code is not None:
+            result['CityCode'] = self.city_code
+        if self.city_name is not None:
+            result['CityName'] = self.city_name
+        if self.country_code is not None:
+            result['CountryCode'] = self.country_code
+        if self.country_name is not None:
+            result['CountryName'] = self.country_name
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.group_type is not None:
+            result['GroupType'] = self.group_type
+        if self.isp_code is not None:
+            result['IspCode'] = self.isp_code
+        if self.isp_name is not None:
+            result['IspName'] = self.isp_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CityCode') is not None:
+            self.city_code = m.get('CityCode')
+        if m.get('CityName') is not None:
+            self.city_name = m.get('CityName')
+        if m.get('CountryCode') is not None:
+            self.country_code = m.get('CountryCode')
+        if m.get('CountryName') is not None:
+            self.country_name = m.get('CountryName')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('GroupType') is not None:
+            self.group_type = m.get('GroupType')
+        if m.get('IspCode') is not None:
+            self.isp_code = m.get('IspCode')
+        if m.get('IspName') is not None:
+            self.isp_name = m.get('IspName')
+        return self
+
+
+class DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodes(TeaModel):
+    def __init__(
+        self,
+        isp_city_node: List[DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodesIspCityNode] = None,
+    ):
+        self.isp_city_node = isp_city_node
+
+    def validate(self):
+        if self.isp_city_node:
+            for k in self.isp_city_node:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['IspCityNode'] = []
+        if self.isp_city_node is not None:
+            for k in self.isp_city_node:
+                result['IspCityNode'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.isp_city_node = []
+        if m.get('IspCityNode') is not None:
+            for k in m.get('IspCityNode'):
+                temp_model = DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodesIspCityNode()
+                self.isp_city_node.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeCloudGtmMonitorTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        create_timestamp: int = None,
+        evaluation_count: int = None,
+        extend_info: str = None,
+        failure_rate: int = None,
+        interval: int = None,
+        ip_version: str = None,
+        isp_city_nodes: DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodes = None,
+        name: str = None,
+        protocol: str = None,
+        remark: str = None,
+        request_id: str = None,
+        template_id: str = None,
+        timeout: int = None,
+        update_time: str = None,
+        update_timestamp: int = None,
+    ):
+        self.create_time = create_time
+        self.create_timestamp = create_timestamp
+        self.evaluation_count = evaluation_count
+        self.extend_info = extend_info
+        self.failure_rate = failure_rate
+        self.interval = interval
+        self.ip_version = ip_version
+        self.isp_city_nodes = isp_city_nodes
+        self.name = name
+        self.protocol = protocol
+        self.remark = remark
+        self.request_id = request_id
+        self.template_id = template_id
+        self.timeout = timeout
+        self.update_time = update_time
+        self.update_timestamp = update_timestamp
+
+    def validate(self):
+        if self.isp_city_nodes:
+            self.isp_city_nodes.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        if self.evaluation_count is not None:
+            result['EvaluationCount'] = self.evaluation_count
+        if self.extend_info is not None:
+            result['ExtendInfo'] = self.extend_info
+        if self.failure_rate is not None:
+            result['FailureRate'] = self.failure_rate
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.ip_version is not None:
+            result['IpVersion'] = self.ip_version
+        if self.isp_city_nodes is not None:
+            result['IspCityNodes'] = self.isp_city_nodes.to_map()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.update_timestamp is not None:
+            result['UpdateTimestamp'] = self.update_timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('EvaluationCount') is not None:
+            self.evaluation_count = m.get('EvaluationCount')
+        if m.get('ExtendInfo') is not None:
+            self.extend_info = m.get('ExtendInfo')
+        if m.get('FailureRate') is not None:
+            self.failure_rate = m.get('FailureRate')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('IpVersion') is not None:
+            self.ip_version = m.get('IpVersion')
+        if m.get('IspCityNodes') is not None:
+            temp_model = DescribeCloudGtmMonitorTemplateResponseBodyIspCityNodes()
+            self.isp_city_nodes = temp_model.from_map(m['IspCityNodes'])
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UpdateTimestamp') is not None:
+            self.update_timestamp = m.get('UpdateTimestamp')
+        return self
+
+
+class DescribeCloudGtmMonitorTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCloudGtmMonitorTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCloudGtmMonitorTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeCloudGtmSummaryRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+    ):
+        self.accept_language = accept_language
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        return self
+
+
+class DescribeCloudGtmSummaryResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_total_count: int = None,
+        monitor_task_total_count: int = None,
+        monitor_task_total_quota: int = None,
+        request_id: str = None,
+    ):
+        self.instance_total_count = instance_total_count
+        self.monitor_task_total_count = monitor_task_total_count
+        self.monitor_task_total_quota = monitor_task_total_quota
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_total_count is not None:
+            result['InstanceTotalCount'] = self.instance_total_count
+        if self.monitor_task_total_count is not None:
+            result['MonitorTaskTotalCount'] = self.monitor_task_total_count
+        if self.monitor_task_total_quota is not None:
+            result['MonitorTaskTotalQuota'] = self.monitor_task_total_quota
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceTotalCount') is not None:
+            self.instance_total_count = m.get('InstanceTotalCount')
+        if m.get('MonitorTaskTotalCount') is not None:
+            self.monitor_task_total_count = m.get('MonitorTaskTotalCount')
+        if m.get('MonitorTaskTotalQuota') is not None:
+            self.monitor_task_total_quota = m.get('MonitorTaskTotalQuota')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeCloudGtmSummaryResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCloudGtmSummaryResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCloudGtmSummaryResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeCloudGtmSystemLinesResponseBodySystemLinesSystemLine(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        display_name: str = None,
+        is_available: bool = None,
+        name: str = None,
+        parent_code: str = None,
+    ):
+        self.code = code
+        self.display_name = display_name
+        self.is_available = is_available
+        self.name = name
+        self.parent_code = parent_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+        if self.is_available is not None:
+            result['IsAvailable'] = self.is_available
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.parent_code is not None:
+            result['ParentCode'] = self.parent_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+        if m.get('IsAvailable') is not None:
+            self.is_available = m.get('IsAvailable')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('ParentCode') is not None:
+            self.parent_code = m.get('ParentCode')
+        return self
+
+
+class DescribeCloudGtmSystemLinesResponseBodySystemLines(TeaModel):
+    def __init__(
+        self,
+        system_line: List[DescribeCloudGtmSystemLinesResponseBodySystemLinesSystemLine] = None,
+    ):
+        self.system_line = system_line
+
+    def validate(self):
+        if self.system_line:
+            for k in self.system_line:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['SystemLine'] = []
+        if self.system_line is not None:
+            for k in self.system_line:
+                result['SystemLine'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.system_line = []
+        if m.get('SystemLine') is not None:
+            for k in m.get('SystemLine'):
+                temp_model = DescribeCloudGtmSystemLinesResponseBodySystemLinesSystemLine()
+                self.system_line.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeCloudGtmSystemLinesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        system_lines: DescribeCloudGtmSystemLinesResponseBodySystemLines = None,
+        system_lines_tree: str = None,
+    ):
+        self.request_id = request_id
+        self.system_lines = system_lines
+        self.system_lines_tree = system_lines_tree
+
+    def validate(self):
+        if self.system_lines:
+            self.system_lines.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.system_lines is not None:
+            result['SystemLines'] = self.system_lines.to_map()
+        if self.system_lines_tree is not None:
+            result['SystemLinesTree'] = self.system_lines_tree
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('SystemLines') is not None:
+            temp_model = DescribeCloudGtmSystemLinesResponseBodySystemLines()
+            self.system_lines = temp_model.from_map(m['SystemLines'])
+        if m.get('SystemLinesTree') is not None:
+            self.system_lines_tree = m.get('SystemLinesTree')
+        return self
+
+
+class DescribeCloudGtmSystemLinesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeCloudGtmSystemLinesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeCloudGtmSystemLinesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -28160,6 +32247,3138 @@ class GetTxtRecordForVerifyResponse(TeaModel):
         return self
 
 
+class ListCloudGtmAddressPoolsRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        address_pool_name: str = None,
+        address_pool_type: str = None,
+        client_token: str = None,
+        enable_status: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        remark: str = None,
+    ):
+        self.accept_language = accept_language
+        self.address_pool_name = address_pool_name
+        self.address_pool_type = address_pool_type
+        self.client_token = client_token
+        self.enable_status = enable_status
+        self.page_number = page_number
+        self.page_size = page_size
+        self.remark = remark
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.address_pool_name is not None:
+            result['AddressPoolName'] = self.address_pool_name
+        if self.address_pool_type is not None:
+            result['AddressPoolType'] = self.address_pool_type
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AddressPoolName') is not None:
+            self.address_pool_name = m.get('AddressPoolName')
+        if m.get('AddressPoolType') is not None:
+            self.address_pool_type = m.get('AddressPoolType')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        return self
+
+
+class ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasksHealthTask(TeaModel):
+    def __init__(
+        self,
+        port: int = None,
+        template_id: str = None,
+        template_name: str = None,
+    ):
+        self.port = port
+        self.template_id = template_id
+        self.template_name = template_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        return self
+
+
+class ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasks(TeaModel):
+    def __init__(
+        self,
+        health_task: List[ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasksHealthTask] = None,
+    ):
+        self.health_task = health_task
+
+    def validate(self):
+        if self.health_task:
+            for k in self.health_task:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['HealthTask'] = []
+        if self.health_task is not None:
+            for k in self.health_task:
+                result['HealthTask'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.health_task = []
+        if m.get('HealthTask') is not None:
+            for k in m.get('HealthTask'):
+                temp_model = ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasksHealthTask()
+                self.health_task.append(temp_model.from_map(k))
+        return self
+
+
+class ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressRequestSource(TeaModel):
+    def __init__(
+        self,
+        request_source: List[str] = None,
+    ):
+        self.request_source = request_source
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_source is not None:
+            result['RequestSource'] = self.request_source
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestSource') is not None:
+            self.request_source = m.get('RequestSource')
+        return self
+
+
+class ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        address_id: str = None,
+        attribute_info: str = None,
+        available_mode: str = None,
+        available_status: str = None,
+        create_time: str = None,
+        create_timestamp: int = None,
+        enable_status: str = None,
+        health_judgement: str = None,
+        health_status: str = None,
+        health_tasks: ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasks = None,
+        manual_available_status: str = None,
+        name: str = None,
+        remark: str = None,
+        request_source: ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressRequestSource = None,
+        seq_non_preemptive_schedule: bool = None,
+        serial_number: int = None,
+        type: str = None,
+        update_time: str = None,
+        update_timestamp: int = None,
+        weight_value: int = None,
+    ):
+        self.address = address
+        self.address_id = address_id
+        self.attribute_info = attribute_info
+        self.available_mode = available_mode
+        self.available_status = available_status
+        self.create_time = create_time
+        self.create_timestamp = create_timestamp
+        self.enable_status = enable_status
+        self.health_judgement = health_judgement
+        self.health_status = health_status
+        self.health_tasks = health_tasks
+        self.manual_available_status = manual_available_status
+        self.name = name
+        self.remark = remark
+        self.request_source = request_source
+        self.seq_non_preemptive_schedule = seq_non_preemptive_schedule
+        self.serial_number = serial_number
+        self.type = type
+        self.update_time = update_time
+        self.update_timestamp = update_timestamp
+        self.weight_value = weight_value
+
+    def validate(self):
+        if self.health_tasks:
+            self.health_tasks.validate()
+        if self.request_source:
+            self.request_source.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.address_id is not None:
+            result['AddressId'] = self.address_id
+        if self.attribute_info is not None:
+            result['AttributeInfo'] = self.attribute_info
+        if self.available_mode is not None:
+            result['AvailableMode'] = self.available_mode
+        if self.available_status is not None:
+            result['AvailableStatus'] = self.available_status
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
+        if self.health_judgement is not None:
+            result['HealthJudgement'] = self.health_judgement
+        if self.health_status is not None:
+            result['HealthStatus'] = self.health_status
+        if self.health_tasks is not None:
+            result['HealthTasks'] = self.health_tasks.to_map()
+        if self.manual_available_status is not None:
+            result['ManualAvailableStatus'] = self.manual_available_status
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.request_source is not None:
+            result['RequestSource'] = self.request_source.to_map()
+        if self.seq_non_preemptive_schedule is not None:
+            result['SeqNonPreemptiveSchedule'] = self.seq_non_preemptive_schedule
+        if self.serial_number is not None:
+            result['SerialNumber'] = self.serial_number
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.update_timestamp is not None:
+            result['UpdateTimestamp'] = self.update_timestamp
+        if self.weight_value is not None:
+            result['WeightValue'] = self.weight_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('AddressId') is not None:
+            self.address_id = m.get('AddressId')
+        if m.get('AttributeInfo') is not None:
+            self.attribute_info = m.get('AttributeInfo')
+        if m.get('AvailableMode') is not None:
+            self.available_mode = m.get('AvailableMode')
+        if m.get('AvailableStatus') is not None:
+            self.available_status = m.get('AvailableStatus')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
+        if m.get('HealthJudgement') is not None:
+            self.health_judgement = m.get('HealthJudgement')
+        if m.get('HealthStatus') is not None:
+            self.health_status = m.get('HealthStatus')
+        if m.get('HealthTasks') is not None:
+            temp_model = ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasks()
+            self.health_tasks = temp_model.from_map(m['HealthTasks'])
+        if m.get('ManualAvailableStatus') is not None:
+            self.manual_available_status = m.get('ManualAvailableStatus')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('RequestSource') is not None:
+            temp_model = ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressRequestSource()
+            self.request_source = temp_model.from_map(m['RequestSource'])
+        if m.get('SeqNonPreemptiveSchedule') is not None:
+            self.seq_non_preemptive_schedule = m.get('SeqNonPreemptiveSchedule')
+        if m.get('SerialNumber') is not None:
+            self.serial_number = m.get('SerialNumber')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UpdateTimestamp') is not None:
+            self.update_timestamp = m.get('UpdateTimestamp')
+        if m.get('WeightValue') is not None:
+            self.weight_value = m.get('WeightValue')
+        return self
+
+
+class ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddresses(TeaModel):
+    def __init__(
+        self,
+        address: List[ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress] = None,
+    ):
+        self.address = address
+
+    def validate(self):
+        if self.address:
+            for k in self.address:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Address'] = []
+        if self.address is not None:
+            for k in self.address:
+                result['Address'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.address = []
+        if m.get('Address') is not None:
+            for k in m.get('Address'):
+                temp_model = ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress()
+                self.address.append(temp_model.from_map(k))
+        return self
+
+
+class ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool(TeaModel):
+    def __init__(
+        self,
+        address_lb_strategy: str = None,
+        address_pool_id: str = None,
+        address_pool_name: str = None,
+        address_pool_type: str = None,
+        addresses: ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddresses = None,
+        available_status: str = None,
+        create_time: str = None,
+        create_timestamp: int = None,
+        enable_status: str = None,
+        health_judgement: str = None,
+        health_status: str = None,
+        remark: str = None,
+        sequence_lb_strategy_mode: str = None,
+        update_time: str = None,
+        update_timestamp: int = None,
+    ):
+        self.address_lb_strategy = address_lb_strategy
+        self.address_pool_id = address_pool_id
+        self.address_pool_name = address_pool_name
+        self.address_pool_type = address_pool_type
+        self.addresses = addresses
+        self.available_status = available_status
+        self.create_time = create_time
+        self.create_timestamp = create_timestamp
+        self.enable_status = enable_status
+        self.health_judgement = health_judgement
+        self.health_status = health_status
+        self.remark = remark
+        self.sequence_lb_strategy_mode = sequence_lb_strategy_mode
+        self.update_time = update_time
+        self.update_timestamp = update_timestamp
+
+    def validate(self):
+        if self.addresses:
+            self.addresses.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_lb_strategy is not None:
+            result['AddressLbStrategy'] = self.address_lb_strategy
+        if self.address_pool_id is not None:
+            result['AddressPoolId'] = self.address_pool_id
+        if self.address_pool_name is not None:
+            result['AddressPoolName'] = self.address_pool_name
+        if self.address_pool_type is not None:
+            result['AddressPoolType'] = self.address_pool_type
+        if self.addresses is not None:
+            result['Addresses'] = self.addresses.to_map()
+        if self.available_status is not None:
+            result['AvailableStatus'] = self.available_status
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
+        if self.health_judgement is not None:
+            result['HealthJudgement'] = self.health_judgement
+        if self.health_status is not None:
+            result['HealthStatus'] = self.health_status
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.sequence_lb_strategy_mode is not None:
+            result['SequenceLbStrategyMode'] = self.sequence_lb_strategy_mode
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.update_timestamp is not None:
+            result['UpdateTimestamp'] = self.update_timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressLbStrategy') is not None:
+            self.address_lb_strategy = m.get('AddressLbStrategy')
+        if m.get('AddressPoolId') is not None:
+            self.address_pool_id = m.get('AddressPoolId')
+        if m.get('AddressPoolName') is not None:
+            self.address_pool_name = m.get('AddressPoolName')
+        if m.get('AddressPoolType') is not None:
+            self.address_pool_type = m.get('AddressPoolType')
+        if m.get('Addresses') is not None:
+            temp_model = ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddresses()
+            self.addresses = temp_model.from_map(m['Addresses'])
+        if m.get('AvailableStatus') is not None:
+            self.available_status = m.get('AvailableStatus')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
+        if m.get('HealthJudgement') is not None:
+            self.health_judgement = m.get('HealthJudgement')
+        if m.get('HealthStatus') is not None:
+            self.health_status = m.get('HealthStatus')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('SequenceLbStrategyMode') is not None:
+            self.sequence_lb_strategy_mode = m.get('SequenceLbStrategyMode')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UpdateTimestamp') is not None:
+            self.update_timestamp = m.get('UpdateTimestamp')
+        return self
+
+
+class ListCloudGtmAddressPoolsResponseBodyAddressPools(TeaModel):
+    def __init__(
+        self,
+        address_pool: List[ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool] = None,
+    ):
+        self.address_pool = address_pool
+
+    def validate(self):
+        if self.address_pool:
+            for k in self.address_pool:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AddressPool'] = []
+        if self.address_pool is not None:
+            for k in self.address_pool:
+                result['AddressPool'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.address_pool = []
+        if m.get('AddressPool') is not None:
+            for k in m.get('AddressPool'):
+                temp_model = ListCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool()
+                self.address_pool.append(temp_model.from_map(k))
+        return self
+
+
+class ListCloudGtmAddressPoolsResponseBody(TeaModel):
+    def __init__(
+        self,
+        address_pools: ListCloudGtmAddressPoolsResponseBodyAddressPools = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_items: int = None,
+        total_pages: int = None,
+    ):
+        self.address_pools = address_pools
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_items = total_items
+        self.total_pages = total_pages
+
+    def validate(self):
+        if self.address_pools:
+            self.address_pools.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_pools is not None:
+            result['AddressPools'] = self.address_pools.to_map()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_items is not None:
+            result['TotalItems'] = self.total_items
+        if self.total_pages is not None:
+            result['TotalPages'] = self.total_pages
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressPools') is not None:
+            temp_model = ListCloudGtmAddressPoolsResponseBodyAddressPools()
+            self.address_pools = temp_model.from_map(m['AddressPools'])
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalItems') is not None:
+            self.total_items = m.get('TotalItems')
+        if m.get('TotalPages') is not None:
+            self.total_pages = m.get('TotalPages')
+        return self
+
+
+class ListCloudGtmAddressPoolsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListCloudGtmAddressPoolsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListCloudGtmAddressPoolsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListCloudGtmAddressesRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        address: str = None,
+        address_id: str = None,
+        client_token: str = None,
+        enable_status: str = None,
+        health_status: str = None,
+        monitor_template_id: str = None,
+        name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        type: str = None,
+    ):
+        self.accept_language = accept_language
+        self.address = address
+        self.address_id = address_id
+        self.client_token = client_token
+        self.enable_status = enable_status
+        self.health_status = health_status
+        self.monitor_template_id = monitor_template_id
+        self.name = name
+        # This parameter is required.
+        self.page_number = page_number
+        # This parameter is required.
+        self.page_size = page_size
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.address_id is not None:
+            result['AddressId'] = self.address_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
+        if self.health_status is not None:
+            result['HealthStatus'] = self.health_status
+        if self.monitor_template_id is not None:
+            result['MonitorTemplateId'] = self.monitor_template_id
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('AddressId') is not None:
+            self.address_id = m.get('AddressId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
+        if m.get('HealthStatus') is not None:
+            self.health_status = m.get('HealthStatus')
+        if m.get('MonitorTemplateId') is not None:
+            self.monitor_template_id = m.get('MonitorTemplateId')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask(TeaModel):
+    def __init__(
+        self,
+        monitor_status: str = None,
+        port: int = None,
+        template_id: str = None,
+        template_name: str = None,
+    ):
+        self.monitor_status = monitor_status
+        self.port = port
+        self.template_id = template_id
+        self.template_name = template_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.monitor_status is not None:
+            result['MonitorStatus'] = self.monitor_status
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MonitorStatus') is not None:
+            self.monitor_status = m.get('MonitorStatus')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        return self
+
+
+class ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasks(TeaModel):
+    def __init__(
+        self,
+        health_task: List[ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask] = None,
+    ):
+        self.health_task = health_task
+
+    def validate(self):
+        if self.health_task:
+            for k in self.health_task:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['HealthTask'] = []
+        if self.health_task is not None:
+            for k in self.health_task:
+                result['HealthTask'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.health_task = []
+        if m.get('HealthTask') is not None:
+            for k in m.get('HealthTask'):
+                temp_model = ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask()
+                self.health_task.append(temp_model.from_map(k))
+        return self
+
+
+class ListCloudGtmAddressesResponseBodyAddressesAddress(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        address_id: str = None,
+        attribute_info: str = None,
+        available_mode: str = None,
+        available_status: str = None,
+        create_time: str = None,
+        create_timestamp: int = None,
+        enable_status: str = None,
+        health_judgement: str = None,
+        health_status: str = None,
+        health_tasks: ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasks = None,
+        manual_available_status: str = None,
+        name: str = None,
+        remark: str = None,
+        type: str = None,
+        update_time: str = None,
+        update_timestamp: int = None,
+    ):
+        self.address = address
+        self.address_id = address_id
+        self.attribute_info = attribute_info
+        self.available_mode = available_mode
+        self.available_status = available_status
+        self.create_time = create_time
+        self.create_timestamp = create_timestamp
+        self.enable_status = enable_status
+        self.health_judgement = health_judgement
+        self.health_status = health_status
+        self.health_tasks = health_tasks
+        self.manual_available_status = manual_available_status
+        self.name = name
+        self.remark = remark
+        self.type = type
+        self.update_time = update_time
+        self.update_timestamp = update_timestamp
+
+    def validate(self):
+        if self.health_tasks:
+            self.health_tasks.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.address_id is not None:
+            result['AddressId'] = self.address_id
+        if self.attribute_info is not None:
+            result['AttributeInfo'] = self.attribute_info
+        if self.available_mode is not None:
+            result['AvailableMode'] = self.available_mode
+        if self.available_status is not None:
+            result['AvailableStatus'] = self.available_status
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
+        if self.health_judgement is not None:
+            result['HealthJudgement'] = self.health_judgement
+        if self.health_status is not None:
+            result['HealthStatus'] = self.health_status
+        if self.health_tasks is not None:
+            result['HealthTasks'] = self.health_tasks.to_map()
+        if self.manual_available_status is not None:
+            result['ManualAvailableStatus'] = self.manual_available_status
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.update_timestamp is not None:
+            result['UpdateTimestamp'] = self.update_timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('AddressId') is not None:
+            self.address_id = m.get('AddressId')
+        if m.get('AttributeInfo') is not None:
+            self.attribute_info = m.get('AttributeInfo')
+        if m.get('AvailableMode') is not None:
+            self.available_mode = m.get('AvailableMode')
+        if m.get('AvailableStatus') is not None:
+            self.available_status = m.get('AvailableStatus')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
+        if m.get('HealthJudgement') is not None:
+            self.health_judgement = m.get('HealthJudgement')
+        if m.get('HealthStatus') is not None:
+            self.health_status = m.get('HealthStatus')
+        if m.get('HealthTasks') is not None:
+            temp_model = ListCloudGtmAddressesResponseBodyAddressesAddressHealthTasks()
+            self.health_tasks = temp_model.from_map(m['HealthTasks'])
+        if m.get('ManualAvailableStatus') is not None:
+            self.manual_available_status = m.get('ManualAvailableStatus')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UpdateTimestamp') is not None:
+            self.update_timestamp = m.get('UpdateTimestamp')
+        return self
+
+
+class ListCloudGtmAddressesResponseBodyAddresses(TeaModel):
+    def __init__(
+        self,
+        address: List[ListCloudGtmAddressesResponseBodyAddressesAddress] = None,
+    ):
+        self.address = address
+
+    def validate(self):
+        if self.address:
+            for k in self.address:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Address'] = []
+        if self.address is not None:
+            for k in self.address:
+                result['Address'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.address = []
+        if m.get('Address') is not None:
+            for k in m.get('Address'):
+                temp_model = ListCloudGtmAddressesResponseBodyAddressesAddress()
+                self.address.append(temp_model.from_map(k))
+        return self
+
+
+class ListCloudGtmAddressesResponseBody(TeaModel):
+    def __init__(
+        self,
+        addresses: ListCloudGtmAddressesResponseBodyAddresses = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_items: int = None,
+        total_pages: int = None,
+    ):
+        self.addresses = addresses
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_items = total_items
+        self.total_pages = total_pages
+
+    def validate(self):
+        if self.addresses:
+            self.addresses.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.addresses is not None:
+            result['Addresses'] = self.addresses.to_map()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_items is not None:
+            result['TotalItems'] = self.total_items
+        if self.total_pages is not None:
+            result['TotalPages'] = self.total_pages
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Addresses') is not None:
+            temp_model = ListCloudGtmAddressesResponseBodyAddresses()
+            self.addresses = temp_model.from_map(m['Addresses'])
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalItems') is not None:
+            self.total_items = m.get('TotalItems')
+        if m.get('TotalPages') is not None:
+            self.total_pages = m.get('TotalPages')
+        return self
+
+
+class ListCloudGtmAddressesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListCloudGtmAddressesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListCloudGtmAddressesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListCloudGtmAlertLogsRequest(TeaModel):
+    def __init__(
+        self,
+        action_type: str = None,
+        end_timestamp: int = None,
+        entity_type: str = None,
+        keyword: str = None,
+        lang: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        start_timestamp: int = None,
+    ):
+        self.action_type = action_type
+        # This parameter is required.
+        self.end_timestamp = end_timestamp
+        self.entity_type = entity_type
+        self.keyword = keyword
+        self.lang = lang
+        # This parameter is required.
+        self.page_number = page_number
+        # This parameter is required.
+        self.page_size = page_size
+        # This parameter is required.
+        self.start_timestamp = start_timestamp
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_type is not None:
+            result['ActionType'] = self.action_type
+        if self.end_timestamp is not None:
+            result['EndTimestamp'] = self.end_timestamp
+        if self.entity_type is not None:
+            result['EntityType'] = self.entity_type
+        if self.keyword is not None:
+            result['Keyword'] = self.keyword
+        if self.lang is not None:
+            result['Lang'] = self.lang
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.start_timestamp is not None:
+            result['StartTimestamp'] = self.start_timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionType') is not None:
+            self.action_type = m.get('ActionType')
+        if m.get('EndTimestamp') is not None:
+            self.end_timestamp = m.get('EndTimestamp')
+        if m.get('EntityType') is not None:
+            self.entity_type = m.get('EntityType')
+        if m.get('Keyword') is not None:
+            self.keyword = m.get('Keyword')
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('StartTimestamp') is not None:
+            self.start_timestamp = m.get('StartTimestamp')
+        return self
+
+
+class ListCloudGtmAlertLogsResponseBodyLogsLog(TeaModel):
+    def __init__(
+        self,
+        action_type: str = None,
+        content: str = None,
+        entity_type: str = None,
+        timestamp: int = None,
+    ):
+        self.action_type = action_type
+        self.content = content
+        self.entity_type = entity_type
+        self.timestamp = timestamp
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action_type is not None:
+            result['ActionType'] = self.action_type
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.entity_type is not None:
+            result['EntityType'] = self.entity_type
+        if self.timestamp is not None:
+            result['Timestamp'] = self.timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionType') is not None:
+            self.action_type = m.get('ActionType')
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('EntityType') is not None:
+            self.entity_type = m.get('EntityType')
+        if m.get('Timestamp') is not None:
+            self.timestamp = m.get('Timestamp')
+        return self
+
+
+class ListCloudGtmAlertLogsResponseBodyLogs(TeaModel):
+    def __init__(
+        self,
+        log: List[ListCloudGtmAlertLogsResponseBodyLogsLog] = None,
+    ):
+        self.log = log
+
+    def validate(self):
+        if self.log:
+            for k in self.log:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Log'] = []
+        if self.log is not None:
+            for k in self.log:
+                result['Log'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.log = []
+        if m.get('Log') is not None:
+            for k in m.get('Log'):
+                temp_model = ListCloudGtmAlertLogsResponseBodyLogsLog()
+                self.log.append(temp_model.from_map(k))
+        return self
+
+
+class ListCloudGtmAlertLogsResponseBody(TeaModel):
+    def __init__(
+        self,
+        logs: ListCloudGtmAlertLogsResponseBodyLogs = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_items: int = None,
+        total_pages: int = None,
+    ):
+        self.logs = logs
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_items = total_items
+        self.total_pages = total_pages
+
+    def validate(self):
+        if self.logs:
+            self.logs.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.logs is not None:
+            result['Logs'] = self.logs.to_map()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_items is not None:
+            result['TotalItems'] = self.total_items
+        if self.total_pages is not None:
+            result['TotalPages'] = self.total_pages
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Logs') is not None:
+            temp_model = ListCloudGtmAlertLogsResponseBodyLogs()
+            self.logs = temp_model.from_map(m['Logs'])
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalItems') is not None:
+            self.total_items = m.get('TotalItems')
+        if m.get('TotalPages') is not None:
+            self.total_pages = m.get('TotalPages')
+        return self
+
+
+class ListCloudGtmAlertLogsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListCloudGtmAlertLogsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListCloudGtmAlertLogsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListCloudGtmAvailableAlertGroupsRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+    ):
+        self.accept_language = accept_language
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        return self
+
+
+class ListCloudGtmAvailableAlertGroupsResponseBodyAlertGroupsAlertGroup(TeaModel):
+    def __init__(
+        self,
+        group_name: str = None,
+    ):
+        self.group_name = group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        return self
+
+
+class ListCloudGtmAvailableAlertGroupsResponseBodyAlertGroups(TeaModel):
+    def __init__(
+        self,
+        alert_group: List[ListCloudGtmAvailableAlertGroupsResponseBodyAlertGroupsAlertGroup] = None,
+    ):
+        self.alert_group = alert_group
+
+    def validate(self):
+        if self.alert_group:
+            for k in self.alert_group:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AlertGroup'] = []
+        if self.alert_group is not None:
+            for k in self.alert_group:
+                result['AlertGroup'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.alert_group = []
+        if m.get('AlertGroup') is not None:
+            for k in m.get('AlertGroup'):
+                temp_model = ListCloudGtmAvailableAlertGroupsResponseBodyAlertGroupsAlertGroup()
+                self.alert_group.append(temp_model.from_map(k))
+        return self
+
+
+class ListCloudGtmAvailableAlertGroupsResponseBody(TeaModel):
+    def __init__(
+        self,
+        alert_groups: ListCloudGtmAvailableAlertGroupsResponseBodyAlertGroups = None,
+        request_id: str = None,
+    ):
+        self.alert_groups = alert_groups
+        self.request_id = request_id
+
+    def validate(self):
+        if self.alert_groups:
+            self.alert_groups.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.alert_groups is not None:
+            result['AlertGroups'] = self.alert_groups.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AlertGroups') is not None:
+            temp_model = ListCloudGtmAvailableAlertGroupsResponseBodyAlertGroups()
+            self.alert_groups = temp_model.from_map(m['AlertGroups'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListCloudGtmAvailableAlertGroupsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListCloudGtmAvailableAlertGroupsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListCloudGtmAvailableAlertGroupsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListCloudGtmInstanceConfigsRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        client_token: str = None,
+        enable_status: str = None,
+        instance_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        remark: str = None,
+        schedule_domain_name: str = None,
+        schedule_zone_name: str = None,
+    ):
+        self.accept_language = accept_language
+        self.client_token = client_token
+        self.enable_status = enable_status
+        self.instance_id = instance_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.remark = remark
+        self.schedule_domain_name = schedule_domain_name
+        self.schedule_zone_name = schedule_zone_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.schedule_domain_name is not None:
+            result['ScheduleDomainName'] = self.schedule_domain_name
+        if self.schedule_zone_name is not None:
+            result['ScheduleZoneName'] = self.schedule_zone_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ScheduleDomainName') is not None:
+            self.schedule_domain_name = m.get('ScheduleDomainName')
+        if m.get('ScheduleZoneName') is not None:
+            self.schedule_zone_name = m.get('ScheduleZoneName')
+        return self
+
+
+class ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPoolRequestSource(TeaModel):
+    def __init__(
+        self,
+        request_source: List[str] = None,
+    ):
+        self.request_source = request_source
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_source is not None:
+            result['RequestSource'] = self.request_source
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestSource') is not None:
+            self.request_source = m.get('RequestSource')
+        return self
+
+
+class ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool(TeaModel):
+    def __init__(
+        self,
+        address_lb_strategy: str = None,
+        address_pool_id: str = None,
+        address_pool_name: str = None,
+        address_pool_type: str = None,
+        available_status: str = None,
+        create_time: str = None,
+        create_timestamp: int = None,
+        enable_status: str = None,
+        health_judgement: str = None,
+        health_status: str = None,
+        request_source: ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPoolRequestSource = None,
+        seq_non_preemptive_schedule: bool = None,
+        sequence_lb_strategy_mode: str = None,
+        serial_number: int = None,
+        update_time: str = None,
+        update_timestamp: int = None,
+        weight_value: int = None,
+    ):
+        self.address_lb_strategy = address_lb_strategy
+        self.address_pool_id = address_pool_id
+        self.address_pool_name = address_pool_name
+        self.address_pool_type = address_pool_type
+        self.available_status = available_status
+        self.create_time = create_time
+        self.create_timestamp = create_timestamp
+        self.enable_status = enable_status
+        self.health_judgement = health_judgement
+        self.health_status = health_status
+        self.request_source = request_source
+        self.seq_non_preemptive_schedule = seq_non_preemptive_schedule
+        self.sequence_lb_strategy_mode = sequence_lb_strategy_mode
+        self.serial_number = serial_number
+        self.update_time = update_time
+        self.update_timestamp = update_timestamp
+        self.weight_value = weight_value
+
+    def validate(self):
+        if self.request_source:
+            self.request_source.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_lb_strategy is not None:
+            result['AddressLbStrategy'] = self.address_lb_strategy
+        if self.address_pool_id is not None:
+            result['AddressPoolId'] = self.address_pool_id
+        if self.address_pool_name is not None:
+            result['AddressPoolName'] = self.address_pool_name
+        if self.address_pool_type is not None:
+            result['AddressPoolType'] = self.address_pool_type
+        if self.available_status is not None:
+            result['AvailableStatus'] = self.available_status
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
+        if self.health_judgement is not None:
+            result['HealthJudgement'] = self.health_judgement
+        if self.health_status is not None:
+            result['HealthStatus'] = self.health_status
+        if self.request_source is not None:
+            result['RequestSource'] = self.request_source.to_map()
+        if self.seq_non_preemptive_schedule is not None:
+            result['SeqNonPreemptiveSchedule'] = self.seq_non_preemptive_schedule
+        if self.sequence_lb_strategy_mode is not None:
+            result['SequenceLbStrategyMode'] = self.sequence_lb_strategy_mode
+        if self.serial_number is not None:
+            result['SerialNumber'] = self.serial_number
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.update_timestamp is not None:
+            result['UpdateTimestamp'] = self.update_timestamp
+        if self.weight_value is not None:
+            result['WeightValue'] = self.weight_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressLbStrategy') is not None:
+            self.address_lb_strategy = m.get('AddressLbStrategy')
+        if m.get('AddressPoolId') is not None:
+            self.address_pool_id = m.get('AddressPoolId')
+        if m.get('AddressPoolName') is not None:
+            self.address_pool_name = m.get('AddressPoolName')
+        if m.get('AddressPoolType') is not None:
+            self.address_pool_type = m.get('AddressPoolType')
+        if m.get('AvailableStatus') is not None:
+            self.available_status = m.get('AvailableStatus')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
+        if m.get('HealthJudgement') is not None:
+            self.health_judgement = m.get('HealthJudgement')
+        if m.get('HealthStatus') is not None:
+            self.health_status = m.get('HealthStatus')
+        if m.get('RequestSource') is not None:
+            temp_model = ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPoolRequestSource()
+            self.request_source = temp_model.from_map(m['RequestSource'])
+        if m.get('SeqNonPreemptiveSchedule') is not None:
+            self.seq_non_preemptive_schedule = m.get('SeqNonPreemptiveSchedule')
+        if m.get('SequenceLbStrategyMode') is not None:
+            self.sequence_lb_strategy_mode = m.get('SequenceLbStrategyMode')
+        if m.get('SerialNumber') is not None:
+            self.serial_number = m.get('SerialNumber')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UpdateTimestamp') is not None:
+            self.update_timestamp = m.get('UpdateTimestamp')
+        if m.get('WeightValue') is not None:
+            self.weight_value = m.get('WeightValue')
+        return self
+
+
+class ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPools(TeaModel):
+    def __init__(
+        self,
+        address_pool: List[ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool] = None,
+    ):
+        self.address_pool = address_pool
+
+    def validate(self):
+        if self.address_pool:
+            for k in self.address_pool:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AddressPool'] = []
+        if self.address_pool is not None:
+            for k in self.address_pool:
+                result['AddressPool'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.address_pool = []
+        if m.get('AddressPool') is not None:
+            for k in m.get('AddressPool'):
+                temp_model = ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool()
+                self.address_pool.append(temp_model.from_map(k))
+        return self
+
+
+class ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig(TeaModel):
+    def __init__(
+        self,
+        address_pool_lb_strategy: str = None,
+        address_pools: ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPools = None,
+        available_status: str = None,
+        commodity_code: str = None,
+        config_id: str = None,
+        create_time: str = None,
+        create_timestamp: int = None,
+        enable_status: str = None,
+        health_status: str = None,
+        instance_id: str = None,
+        remark: str = None,
+        schedule_domain_name: str = None,
+        schedule_hostname: str = None,
+        schedule_rr_type: str = None,
+        schedule_zone_mode: str = None,
+        schedule_zone_name: str = None,
+        sequence_lb_strategy_mode: str = None,
+        ttl: int = None,
+        update_time: str = None,
+        update_timestamp: int = None,
+        version_code: str = None,
+    ):
+        self.address_pool_lb_strategy = address_pool_lb_strategy
+        self.address_pools = address_pools
+        self.available_status = available_status
+        self.commodity_code = commodity_code
+        self.config_id = config_id
+        self.create_time = create_time
+        self.create_timestamp = create_timestamp
+        self.enable_status = enable_status
+        self.health_status = health_status
+        self.instance_id = instance_id
+        self.remark = remark
+        self.schedule_domain_name = schedule_domain_name
+        self.schedule_hostname = schedule_hostname
+        self.schedule_rr_type = schedule_rr_type
+        self.schedule_zone_mode = schedule_zone_mode
+        self.schedule_zone_name = schedule_zone_name
+        self.sequence_lb_strategy_mode = sequence_lb_strategy_mode
+        self.ttl = ttl
+        self.update_time = update_time
+        self.update_timestamp = update_timestamp
+        self.version_code = version_code
+
+    def validate(self):
+        if self.address_pools:
+            self.address_pools.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_pool_lb_strategy is not None:
+            result['AddressPoolLbStrategy'] = self.address_pool_lb_strategy
+        if self.address_pools is not None:
+            result['AddressPools'] = self.address_pools.to_map()
+        if self.available_status is not None:
+            result['AvailableStatus'] = self.available_status
+        if self.commodity_code is not None:
+            result['CommodityCode'] = self.commodity_code
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
+        if self.health_status is not None:
+            result['HealthStatus'] = self.health_status
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.schedule_domain_name is not None:
+            result['ScheduleDomainName'] = self.schedule_domain_name
+        if self.schedule_hostname is not None:
+            result['ScheduleHostname'] = self.schedule_hostname
+        if self.schedule_rr_type is not None:
+            result['ScheduleRrType'] = self.schedule_rr_type
+        if self.schedule_zone_mode is not None:
+            result['ScheduleZoneMode'] = self.schedule_zone_mode
+        if self.schedule_zone_name is not None:
+            result['ScheduleZoneName'] = self.schedule_zone_name
+        if self.sequence_lb_strategy_mode is not None:
+            result['SequenceLbStrategyMode'] = self.sequence_lb_strategy_mode
+        if self.ttl is not None:
+            result['Ttl'] = self.ttl
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.update_timestamp is not None:
+            result['UpdateTimestamp'] = self.update_timestamp
+        if self.version_code is not None:
+            result['VersionCode'] = self.version_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressPoolLbStrategy') is not None:
+            self.address_pool_lb_strategy = m.get('AddressPoolLbStrategy')
+        if m.get('AddressPools') is not None:
+            temp_model = ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPools()
+            self.address_pools = temp_model.from_map(m['AddressPools'])
+        if m.get('AvailableStatus') is not None:
+            self.available_status = m.get('AvailableStatus')
+        if m.get('CommodityCode') is not None:
+            self.commodity_code = m.get('CommodityCode')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
+        if m.get('HealthStatus') is not None:
+            self.health_status = m.get('HealthStatus')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ScheduleDomainName') is not None:
+            self.schedule_domain_name = m.get('ScheduleDomainName')
+        if m.get('ScheduleHostname') is not None:
+            self.schedule_hostname = m.get('ScheduleHostname')
+        if m.get('ScheduleRrType') is not None:
+            self.schedule_rr_type = m.get('ScheduleRrType')
+        if m.get('ScheduleZoneMode') is not None:
+            self.schedule_zone_mode = m.get('ScheduleZoneMode')
+        if m.get('ScheduleZoneName') is not None:
+            self.schedule_zone_name = m.get('ScheduleZoneName')
+        if m.get('SequenceLbStrategyMode') is not None:
+            self.sequence_lb_strategy_mode = m.get('SequenceLbStrategyMode')
+        if m.get('Ttl') is not None:
+            self.ttl = m.get('Ttl')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UpdateTimestamp') is not None:
+            self.update_timestamp = m.get('UpdateTimestamp')
+        if m.get('VersionCode') is not None:
+            self.version_code = m.get('VersionCode')
+        return self
+
+
+class ListCloudGtmInstanceConfigsResponseBodyInstanceConfigs(TeaModel):
+    def __init__(
+        self,
+        instance_config: List[ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig] = None,
+    ):
+        self.instance_config = instance_config
+
+    def validate(self):
+        if self.instance_config:
+            for k in self.instance_config:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['InstanceConfig'] = []
+        if self.instance_config is not None:
+            for k in self.instance_config:
+                result['InstanceConfig'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.instance_config = []
+        if m.get('InstanceConfig') is not None:
+            for k in m.get('InstanceConfig'):
+                temp_model = ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig()
+                self.instance_config.append(temp_model.from_map(k))
+        return self
+
+
+class ListCloudGtmInstanceConfigsResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_configs: ListCloudGtmInstanceConfigsResponseBodyInstanceConfigs = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_items: int = None,
+        total_pages: int = None,
+    ):
+        self.instance_configs = instance_configs
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_items = total_items
+        self.total_pages = total_pages
+
+    def validate(self):
+        if self.instance_configs:
+            self.instance_configs.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_configs is not None:
+            result['InstanceConfigs'] = self.instance_configs.to_map()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_items is not None:
+            result['TotalItems'] = self.total_items
+        if self.total_pages is not None:
+            result['TotalPages'] = self.total_pages
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceConfigs') is not None:
+            temp_model = ListCloudGtmInstanceConfigsResponseBodyInstanceConfigs()
+            self.instance_configs = temp_model.from_map(m['InstanceConfigs'])
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalItems') is not None:
+            self.total_items = m.get('TotalItems')
+        if m.get('TotalPages') is not None:
+            self.total_pages = m.get('TotalPages')
+        return self
+
+
+class ListCloudGtmInstanceConfigsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListCloudGtmInstanceConfigsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListCloudGtmInstanceConfigsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListCloudGtmInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        client_token: str = None,
+        instance_id: str = None,
+        instance_name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.accept_language = accept_language
+        self.client_token = client_token
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class ListCloudGtmInstancesResponseBodyInstancesInstance(TeaModel):
+    def __init__(
+        self,
+        commodity_code: str = None,
+        create_time: str = None,
+        create_timestamp: int = None,
+        expire_time: str = None,
+        expire_timestamp: int = None,
+        instance_id: str = None,
+        instance_name: str = None,
+        monitor_task_quota: int = None,
+        monthly_email_used: int = None,
+        monthly_sms_quota: int = None,
+        monthly_sms_used: int = None,
+        monthly_webhook_used: int = None,
+        schedule_domain_name: str = None,
+        update_time: str = None,
+        update_timestamp: int = None,
+        version_code: str = None,
+    ):
+        self.commodity_code = commodity_code
+        self.create_time = create_time
+        self.create_timestamp = create_timestamp
+        self.expire_time = expire_time
+        self.expire_timestamp = expire_timestamp
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.monitor_task_quota = monitor_task_quota
+        self.monthly_email_used = monthly_email_used
+        self.monthly_sms_quota = monthly_sms_quota
+        self.monthly_sms_used = monthly_sms_used
+        self.monthly_webhook_used = monthly_webhook_used
+        self.schedule_domain_name = schedule_domain_name
+        self.update_time = update_time
+        self.update_timestamp = update_timestamp
+        self.version_code = version_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.commodity_code is not None:
+            result['CommodityCode'] = self.commodity_code
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.expire_timestamp is not None:
+            result['ExpireTimestamp'] = self.expire_timestamp
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.monitor_task_quota is not None:
+            result['MonitorTaskQuota'] = self.monitor_task_quota
+        if self.monthly_email_used is not None:
+            result['MonthlyEmailUsed'] = self.monthly_email_used
+        if self.monthly_sms_quota is not None:
+            result['MonthlySmsQuota'] = self.monthly_sms_quota
+        if self.monthly_sms_used is not None:
+            result['MonthlySmsUsed'] = self.monthly_sms_used
+        if self.monthly_webhook_used is not None:
+            result['MonthlyWebhookUsed'] = self.monthly_webhook_used
+        if self.schedule_domain_name is not None:
+            result['ScheduleDomainName'] = self.schedule_domain_name
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.update_timestamp is not None:
+            result['UpdateTimestamp'] = self.update_timestamp
+        if self.version_code is not None:
+            result['VersionCode'] = self.version_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommodityCode') is not None:
+            self.commodity_code = m.get('CommodityCode')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('ExpireTimestamp') is not None:
+            self.expire_timestamp = m.get('ExpireTimestamp')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('MonitorTaskQuota') is not None:
+            self.monitor_task_quota = m.get('MonitorTaskQuota')
+        if m.get('MonthlyEmailUsed') is not None:
+            self.monthly_email_used = m.get('MonthlyEmailUsed')
+        if m.get('MonthlySmsQuota') is not None:
+            self.monthly_sms_quota = m.get('MonthlySmsQuota')
+        if m.get('MonthlySmsUsed') is not None:
+            self.monthly_sms_used = m.get('MonthlySmsUsed')
+        if m.get('MonthlyWebhookUsed') is not None:
+            self.monthly_webhook_used = m.get('MonthlyWebhookUsed')
+        if m.get('ScheduleDomainName') is not None:
+            self.schedule_domain_name = m.get('ScheduleDomainName')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UpdateTimestamp') is not None:
+            self.update_timestamp = m.get('UpdateTimestamp')
+        if m.get('VersionCode') is not None:
+            self.version_code = m.get('VersionCode')
+        return self
+
+
+class ListCloudGtmInstancesResponseBodyInstances(TeaModel):
+    def __init__(
+        self,
+        instance: List[ListCloudGtmInstancesResponseBodyInstancesInstance] = None,
+    ):
+        self.instance = instance
+
+    def validate(self):
+        if self.instance:
+            for k in self.instance:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Instance'] = []
+        if self.instance is not None:
+            for k in self.instance:
+                result['Instance'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.instance = []
+        if m.get('Instance') is not None:
+            for k in m.get('Instance'):
+                temp_model = ListCloudGtmInstancesResponseBodyInstancesInstance()
+                self.instance.append(temp_model.from_map(k))
+        return self
+
+
+class ListCloudGtmInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        instances: ListCloudGtmInstancesResponseBodyInstances = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_items: int = None,
+        total_pages: int = None,
+    ):
+        self.instances = instances
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_items = total_items
+        self.total_pages = total_pages
+
+    def validate(self):
+        if self.instances:
+            self.instances.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instances is not None:
+            result['Instances'] = self.instances.to_map()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_items is not None:
+            result['TotalItems'] = self.total_items
+        if self.total_pages is not None:
+            result['TotalPages'] = self.total_pages
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Instances') is not None:
+            temp_model = ListCloudGtmInstancesResponseBodyInstances()
+            self.instances = temp_model.from_map(m['Instances'])
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalItems') is not None:
+            self.total_items = m.get('TotalItems')
+        if m.get('TotalPages') is not None:
+            self.total_pages = m.get('TotalPages')
+        return self
+
+
+class ListCloudGtmInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListCloudGtmInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListCloudGtmInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListCloudGtmMonitorNodesRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+    ):
+        self.accept_language = accept_language
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        return self
+
+
+class ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNodeIps(TeaModel):
+    def __init__(
+        self,
+        ip: List[str] = None,
+    ):
+        self.ip = ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        return self
+
+
+class ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode(TeaModel):
+    def __init__(
+        self,
+        city_code: str = None,
+        city_name: str = None,
+        country_code: str = None,
+        country_name: str = None,
+        default_selected: bool = None,
+        group_name: str = None,
+        group_type: str = None,
+        ips: ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNodeIps = None,
+        isp_code: str = None,
+        isp_name: str = None,
+        node_id: str = None,
+    ):
+        self.city_code = city_code
+        self.city_name = city_name
+        self.country_code = country_code
+        self.country_name = country_name
+        self.default_selected = default_selected
+        self.group_name = group_name
+        self.group_type = group_type
+        self.ips = ips
+        self.isp_code = isp_code
+        self.isp_name = isp_name
+        self.node_id = node_id
+
+    def validate(self):
+        if self.ips:
+            self.ips.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.city_code is not None:
+            result['CityCode'] = self.city_code
+        if self.city_name is not None:
+            result['CityName'] = self.city_name
+        if self.country_code is not None:
+            result['CountryCode'] = self.country_code
+        if self.country_name is not None:
+            result['CountryName'] = self.country_name
+        if self.default_selected is not None:
+            result['DefaultSelected'] = self.default_selected
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.group_type is not None:
+            result['GroupType'] = self.group_type
+        if self.ips is not None:
+            result['Ips'] = self.ips.to_map()
+        if self.isp_code is not None:
+            result['IspCode'] = self.isp_code
+        if self.isp_name is not None:
+            result['IspName'] = self.isp_name
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CityCode') is not None:
+            self.city_code = m.get('CityCode')
+        if m.get('CityName') is not None:
+            self.city_name = m.get('CityName')
+        if m.get('CountryCode') is not None:
+            self.country_code = m.get('CountryCode')
+        if m.get('CountryName') is not None:
+            self.country_name = m.get('CountryName')
+        if m.get('DefaultSelected') is not None:
+            self.default_selected = m.get('DefaultSelected')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('GroupType') is not None:
+            self.group_type = m.get('GroupType')
+        if m.get('Ips') is not None:
+            temp_model = ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNodeIps()
+            self.ips = temp_model.from_map(m['Ips'])
+        if m.get('IspCode') is not None:
+            self.isp_code = m.get('IspCode')
+        if m.get('IspName') is not None:
+            self.isp_name = m.get('IspName')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        return self
+
+
+class ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodes(TeaModel):
+    def __init__(
+        self,
+        ipv_4isp_city_node: List[ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode] = None,
+    ):
+        self.ipv_4isp_city_node = ipv_4isp_city_node
+
+    def validate(self):
+        if self.ipv_4isp_city_node:
+            for k in self.ipv_4isp_city_node:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Ipv4IspCityNode'] = []
+        if self.ipv_4isp_city_node is not None:
+            for k in self.ipv_4isp_city_node:
+                result['Ipv4IspCityNode'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ipv_4isp_city_node = []
+        if m.get('Ipv4IspCityNode') is not None:
+            for k in m.get('Ipv4IspCityNode'):
+                temp_model = ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodesIpv4IspCityNode()
+                self.ipv_4isp_city_node.append(temp_model.from_map(k))
+        return self
+
+
+class ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNodeIps(TeaModel):
+    def __init__(
+        self,
+        ip: List[str] = None,
+    ):
+        self.ip = ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ip is not None:
+            result['Ip'] = self.ip
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ip') is not None:
+            self.ip = m.get('Ip')
+        return self
+
+
+class ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode(TeaModel):
+    def __init__(
+        self,
+        city_code: str = None,
+        city_name: str = None,
+        country_code: str = None,
+        country_name: str = None,
+        default_selected: bool = None,
+        group_name: str = None,
+        group_type: str = None,
+        ips: ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNodeIps = None,
+        isp_code: str = None,
+        isp_name: str = None,
+        node_id: str = None,
+    ):
+        self.city_code = city_code
+        self.city_name = city_name
+        self.country_code = country_code
+        self.country_name = country_name
+        self.default_selected = default_selected
+        self.group_name = group_name
+        self.group_type = group_type
+        self.ips = ips
+        self.isp_code = isp_code
+        self.isp_name = isp_name
+        self.node_id = node_id
+
+    def validate(self):
+        if self.ips:
+            self.ips.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.city_code is not None:
+            result['CityCode'] = self.city_code
+        if self.city_name is not None:
+            result['CityName'] = self.city_name
+        if self.country_code is not None:
+            result['CountryCode'] = self.country_code
+        if self.country_name is not None:
+            result['CountryName'] = self.country_name
+        if self.default_selected is not None:
+            result['DefaultSelected'] = self.default_selected
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.group_type is not None:
+            result['GroupType'] = self.group_type
+        if self.ips is not None:
+            result['Ips'] = self.ips.to_map()
+        if self.isp_code is not None:
+            result['IspCode'] = self.isp_code
+        if self.isp_name is not None:
+            result['IspName'] = self.isp_name
+        if self.node_id is not None:
+            result['NodeId'] = self.node_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CityCode') is not None:
+            self.city_code = m.get('CityCode')
+        if m.get('CityName') is not None:
+            self.city_name = m.get('CityName')
+        if m.get('CountryCode') is not None:
+            self.country_code = m.get('CountryCode')
+        if m.get('CountryName') is not None:
+            self.country_name = m.get('CountryName')
+        if m.get('DefaultSelected') is not None:
+            self.default_selected = m.get('DefaultSelected')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('GroupType') is not None:
+            self.group_type = m.get('GroupType')
+        if m.get('Ips') is not None:
+            temp_model = ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNodeIps()
+            self.ips = temp_model.from_map(m['Ips'])
+        if m.get('IspCode') is not None:
+            self.isp_code = m.get('IspCode')
+        if m.get('IspName') is not None:
+            self.isp_name = m.get('IspName')
+        if m.get('NodeId') is not None:
+            self.node_id = m.get('NodeId')
+        return self
+
+
+class ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodes(TeaModel):
+    def __init__(
+        self,
+        ipv_6isp_city_node: List[ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode] = None,
+    ):
+        self.ipv_6isp_city_node = ipv_6isp_city_node
+
+    def validate(self):
+        if self.ipv_6isp_city_node:
+            for k in self.ipv_6isp_city_node:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Ipv6IspCityNode'] = []
+        if self.ipv_6isp_city_node is not None:
+            for k in self.ipv_6isp_city_node:
+                result['Ipv6IspCityNode'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.ipv_6isp_city_node = []
+        if m.get('Ipv6IspCityNode') is not None:
+            for k in m.get('Ipv6IspCityNode'):
+                temp_model = ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodesIpv6IspCityNode()
+                self.ipv_6isp_city_node.append(temp_model.from_map(k))
+        return self
+
+
+class ListCloudGtmMonitorNodesResponseBody(TeaModel):
+    def __init__(
+        self,
+        ipv_4isp_city_nodes: ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodes = None,
+        ipv_6isp_city_nodes: ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodes = None,
+        request_id: str = None,
+    ):
+        self.ipv_4isp_city_nodes = ipv_4isp_city_nodes
+        self.ipv_6isp_city_nodes = ipv_6isp_city_nodes
+        self.request_id = request_id
+
+    def validate(self):
+        if self.ipv_4isp_city_nodes:
+            self.ipv_4isp_city_nodes.validate()
+        if self.ipv_6isp_city_nodes:
+            self.ipv_6isp_city_nodes.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.ipv_4isp_city_nodes is not None:
+            result['Ipv4IspCityNodes'] = self.ipv_4isp_city_nodes.to_map()
+        if self.ipv_6isp_city_nodes is not None:
+            result['Ipv6IspCityNodes'] = self.ipv_6isp_city_nodes.to_map()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Ipv4IspCityNodes') is not None:
+            temp_model = ListCloudGtmMonitorNodesResponseBodyIpv4IspCityNodes()
+            self.ipv_4isp_city_nodes = temp_model.from_map(m['Ipv4IspCityNodes'])
+        if m.get('Ipv6IspCityNodes') is not None:
+            temp_model = ListCloudGtmMonitorNodesResponseBodyIpv6IspCityNodes()
+            self.ipv_6isp_city_nodes = temp_model.from_map(m['Ipv6IspCityNodes'])
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ListCloudGtmMonitorNodesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListCloudGtmMonitorNodesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListCloudGtmMonitorNodesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListCloudGtmMonitorTemplatesRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        ip_version: str = None,
+        name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        protocol: str = None,
+    ):
+        self.accept_language = accept_language
+        self.ip_version = ip_version
+        self.name = name
+        # This parameter is required.
+        self.page_number = page_number
+        # This parameter is required.
+        self.page_size = page_size
+        self.protocol = protocol
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.ip_version is not None:
+            result['IpVersion'] = self.ip_version
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('IpVersion') is not None:
+            self.ip_version = m.get('IpVersion')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        return self
+
+
+class ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode(TeaModel):
+    def __init__(
+        self,
+        city_code: str = None,
+        city_name: str = None,
+        country_code: str = None,
+        country_name: str = None,
+        group_name: str = None,
+        group_type: str = None,
+        isp_code: str = None,
+        isp_name: str = None,
+    ):
+        self.city_code = city_code
+        self.city_name = city_name
+        self.country_code = country_code
+        self.country_name = country_name
+        self.group_name = group_name
+        self.group_type = group_type
+        self.isp_code = isp_code
+        self.isp_name = isp_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.city_code is not None:
+            result['CityCode'] = self.city_code
+        if self.city_name is not None:
+            result['CityName'] = self.city_name
+        if self.country_code is not None:
+            result['CountryCode'] = self.country_code
+        if self.country_name is not None:
+            result['CountryName'] = self.country_name
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.group_type is not None:
+            result['GroupType'] = self.group_type
+        if self.isp_code is not None:
+            result['IspCode'] = self.isp_code
+        if self.isp_name is not None:
+            result['IspName'] = self.isp_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CityCode') is not None:
+            self.city_code = m.get('CityCode')
+        if m.get('CityName') is not None:
+            self.city_name = m.get('CityName')
+        if m.get('CountryCode') is not None:
+            self.country_code = m.get('CountryCode')
+        if m.get('CountryName') is not None:
+            self.country_name = m.get('CountryName')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('GroupType') is not None:
+            self.group_type = m.get('GroupType')
+        if m.get('IspCode') is not None:
+            self.isp_code = m.get('IspCode')
+        if m.get('IspName') is not None:
+            self.isp_name = m.get('IspName')
+        return self
+
+
+class ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodes(TeaModel):
+    def __init__(
+        self,
+        isp_city_node: List[ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode] = None,
+    ):
+        self.isp_city_node = isp_city_node
+
+    def validate(self):
+        if self.isp_city_node:
+            for k in self.isp_city_node:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['IspCityNode'] = []
+        if self.isp_city_node is not None:
+            for k in self.isp_city_node:
+                result['IspCityNode'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.isp_city_node = []
+        if m.get('IspCityNode') is not None:
+            for k in m.get('IspCityNode'):
+                temp_model = ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode()
+                self.isp_city_node.append(temp_model.from_map(k))
+        return self
+
+
+class ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        create_timestamp: int = None,
+        evaluation_count: int = None,
+        extend_info: str = None,
+        failure_rate: int = None,
+        interval: int = None,
+        ip_version: str = None,
+        isp_city_nodes: ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodes = None,
+        name: str = None,
+        protocol: str = None,
+        remark: str = None,
+        template_id: str = None,
+        timeout: int = None,
+        update_time: str = None,
+        update_timestamp: int = None,
+    ):
+        self.create_time = create_time
+        self.create_timestamp = create_timestamp
+        self.evaluation_count = evaluation_count
+        self.extend_info = extend_info
+        self.failure_rate = failure_rate
+        self.interval = interval
+        self.ip_version = ip_version
+        self.isp_city_nodes = isp_city_nodes
+        self.name = name
+        self.protocol = protocol
+        self.remark = remark
+        self.template_id = template_id
+        self.timeout = timeout
+        self.update_time = update_time
+        self.update_timestamp = update_timestamp
+
+    def validate(self):
+        if self.isp_city_nodes:
+            self.isp_city_nodes.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        if self.evaluation_count is not None:
+            result['EvaluationCount'] = self.evaluation_count
+        if self.extend_info is not None:
+            result['ExtendInfo'] = self.extend_info
+        if self.failure_rate is not None:
+            result['FailureRate'] = self.failure_rate
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.ip_version is not None:
+            result['IpVersion'] = self.ip_version
+        if self.isp_city_nodes is not None:
+            result['IspCityNodes'] = self.isp_city_nodes.to_map()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.update_timestamp is not None:
+            result['UpdateTimestamp'] = self.update_timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('EvaluationCount') is not None:
+            self.evaluation_count = m.get('EvaluationCount')
+        if m.get('ExtendInfo') is not None:
+            self.extend_info = m.get('ExtendInfo')
+        if m.get('FailureRate') is not None:
+            self.failure_rate = m.get('FailureRate')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('IpVersion') is not None:
+            self.ip_version = m.get('IpVersion')
+        if m.get('IspCityNodes') is not None:
+            temp_model = ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodes()
+            self.isp_city_nodes = temp_model.from_map(m['IspCityNodes'])
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UpdateTimestamp') is not None:
+            self.update_timestamp = m.get('UpdateTimestamp')
+        return self
+
+
+class ListCloudGtmMonitorTemplatesResponseBodyTemplates(TeaModel):
+    def __init__(
+        self,
+        template: List[ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate] = None,
+    ):
+        self.template = template
+
+    def validate(self):
+        if self.template:
+            for k in self.template:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Template'] = []
+        if self.template is not None:
+            for k in self.template:
+                result['Template'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.template = []
+        if m.get('Template') is not None:
+            for k in m.get('Template'):
+                temp_model = ListCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate()
+                self.template.append(temp_model.from_map(k))
+        return self
+
+
+class ListCloudGtmMonitorTemplatesResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        templates: ListCloudGtmMonitorTemplatesResponseBodyTemplates = None,
+        total_items: int = None,
+        total_pages: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.templates = templates
+        self.total_items = total_items
+        self.total_pages = total_pages
+
+    def validate(self):
+        if self.templates:
+            self.templates.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.templates is not None:
+            result['Templates'] = self.templates.to_map()
+        if self.total_items is not None:
+            result['TotalItems'] = self.total_items
+        if self.total_pages is not None:
+            result['TotalPages'] = self.total_pages
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Templates') is not None:
+            temp_model = ListCloudGtmMonitorTemplatesResponseBodyTemplates()
+            self.templates = temp_model.from_map(m['Templates'])
+        if m.get('TotalItems') is not None:
+            self.total_items = m.get('TotalItems')
+        if m.get('TotalPages') is not None:
+            self.total_pages = m.get('TotalPages')
+        return self
+
+
+class ListCloudGtmMonitorTemplatesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ListCloudGtmMonitorTemplatesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ListCloudGtmMonitorTemplatesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ListTagResourcesRequestTag(TeaModel):
     def __init__(
         self,
@@ -29662,6 +36881,458 @@ class RemovePdnsUdpIpSegmentResponse(TeaModel):
         return self
 
 
+class ReplaceCloudGtmAddressPoolAddressRequestAddresses(TeaModel):
+    def __init__(
+        self,
+        address_id: str = None,
+        request_source: List[str] = None,
+        serial_number: int = None,
+        weight_value: int = None,
+    ):
+        self.address_id = address_id
+        self.request_source = request_source
+        self.serial_number = serial_number
+        self.weight_value = weight_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_id is not None:
+            result['AddressId'] = self.address_id
+        if self.request_source is not None:
+            result['RequestSource'] = self.request_source
+        if self.serial_number is not None:
+            result['SerialNumber'] = self.serial_number
+        if self.weight_value is not None:
+            result['WeightValue'] = self.weight_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressId') is not None:
+            self.address_id = m.get('AddressId')
+        if m.get('RequestSource') is not None:
+            self.request_source = m.get('RequestSource')
+        if m.get('SerialNumber') is not None:
+            self.serial_number = m.get('SerialNumber')
+        if m.get('WeightValue') is not None:
+            self.weight_value = m.get('WeightValue')
+        return self
+
+
+class ReplaceCloudGtmAddressPoolAddressRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        address_pool_id: str = None,
+        addresses: List[ReplaceCloudGtmAddressPoolAddressRequestAddresses] = None,
+        client_token: str = None,
+    ):
+        self.accept_language = accept_language
+        self.address_pool_id = address_pool_id
+        self.addresses = addresses
+        self.client_token = client_token
+
+    def validate(self):
+        if self.addresses:
+            for k in self.addresses:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.address_pool_id is not None:
+            result['AddressPoolId'] = self.address_pool_id
+        result['Addresses'] = []
+        if self.addresses is not None:
+            for k in self.addresses:
+                result['Addresses'].append(k.to_map() if k else None)
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AddressPoolId') is not None:
+            self.address_pool_id = m.get('AddressPoolId')
+        self.addresses = []
+        if m.get('Addresses') is not None:
+            for k in m.get('Addresses'):
+                temp_model = ReplaceCloudGtmAddressPoolAddressRequestAddresses()
+                self.addresses.append(temp_model.from_map(k))
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        return self
+
+
+class ReplaceCloudGtmAddressPoolAddressShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        address_pool_id: str = None,
+        addresses_shrink: str = None,
+        client_token: str = None,
+    ):
+        self.accept_language = accept_language
+        self.address_pool_id = address_pool_id
+        self.addresses_shrink = addresses_shrink
+        self.client_token = client_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.address_pool_id is not None:
+            result['AddressPoolId'] = self.address_pool_id
+        if self.addresses_shrink is not None:
+            result['Addresses'] = self.addresses_shrink
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AddressPoolId') is not None:
+            self.address_pool_id = m.get('AddressPoolId')
+        if m.get('Addresses') is not None:
+            self.addresses_shrink = m.get('Addresses')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        return self
+
+
+class ReplaceCloudGtmAddressPoolAddressResponseBody(TeaModel):
+    def __init__(
+        self,
+        address_pool_id: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.address_pool_id = address_pool_id
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_pool_id is not None:
+            result['AddressPoolId'] = self.address_pool_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressPoolId') is not None:
+            self.address_pool_id = m.get('AddressPoolId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ReplaceCloudGtmAddressPoolAddressResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ReplaceCloudGtmAddressPoolAddressResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ReplaceCloudGtmAddressPoolAddressResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ReplaceCloudGtmInstanceConfigAddressPoolRequestAddressPools(TeaModel):
+    def __init__(
+        self,
+        address_pool_id: str = None,
+        request_source: List[str] = None,
+        serial_number: int = None,
+        weight_value: int = None,
+    ):
+        self.address_pool_id = address_pool_id
+        self.request_source = request_source
+        self.serial_number = serial_number
+        self.weight_value = weight_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_pool_id is not None:
+            result['AddressPoolId'] = self.address_pool_id
+        if self.request_source is not None:
+            result['RequestSource'] = self.request_source
+        if self.serial_number is not None:
+            result['SerialNumber'] = self.serial_number
+        if self.weight_value is not None:
+            result['WeightValue'] = self.weight_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressPoolId') is not None:
+            self.address_pool_id = m.get('AddressPoolId')
+        if m.get('RequestSource') is not None:
+            self.request_source = m.get('RequestSource')
+        if m.get('SerialNumber') is not None:
+            self.serial_number = m.get('SerialNumber')
+        if m.get('WeightValue') is not None:
+            self.weight_value = m.get('WeightValue')
+        return self
+
+
+class ReplaceCloudGtmInstanceConfigAddressPoolRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        address_pools: List[ReplaceCloudGtmInstanceConfigAddressPoolRequestAddressPools] = None,
+        client_token: str = None,
+        config_id: str = None,
+        instance_id: str = None,
+    ):
+        self.accept_language = accept_language
+        self.address_pools = address_pools
+        self.client_token = client_token
+        self.config_id = config_id
+        self.instance_id = instance_id
+
+    def validate(self):
+        if self.address_pools:
+            for k in self.address_pools:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        result['AddressPools'] = []
+        if self.address_pools is not None:
+            for k in self.address_pools:
+                result['AddressPools'].append(k.to_map() if k else None)
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        self.address_pools = []
+        if m.get('AddressPools') is not None:
+            for k in m.get('AddressPools'):
+                temp_model = ReplaceCloudGtmInstanceConfigAddressPoolRequestAddressPools()
+                self.address_pools.append(temp_model.from_map(k))
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class ReplaceCloudGtmInstanceConfigAddressPoolShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        address_pools_shrink: str = None,
+        client_token: str = None,
+        config_id: str = None,
+        instance_id: str = None,
+    ):
+        self.accept_language = accept_language
+        self.address_pools_shrink = address_pools_shrink
+        self.client_token = client_token
+        self.config_id = config_id
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.address_pools_shrink is not None:
+            result['AddressPools'] = self.address_pools_shrink
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AddressPools') is not None:
+            self.address_pools_shrink = m.get('AddressPools')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class ReplaceCloudGtmInstanceConfigAddressPoolResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class ReplaceCloudGtmInstanceConfigAddressPoolResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ReplaceCloudGtmInstanceConfigAddressPoolResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ReplaceCloudGtmInstanceConfigAddressPoolResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ResumePdnsServiceRequest(TeaModel):
     def __init__(
         self,
@@ -29971,6 +37642,2312 @@ class RollbackGtmRecoveryPlanResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = RollbackGtmRecoveryPlanResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SearchCloudGtmAddressPoolsRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        address_pool_name: str = None,
+        address_pool_type: str = None,
+        available_status: str = None,
+        client_token: str = None,
+        enable_status: str = None,
+        health_status: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        remark: str = None,
+    ):
+        self.accept_language = accept_language
+        self.address_pool_name = address_pool_name
+        self.address_pool_type = address_pool_type
+        self.available_status = available_status
+        self.client_token = client_token
+        self.enable_status = enable_status
+        self.health_status = health_status
+        self.page_number = page_number
+        self.page_size = page_size
+        self.remark = remark
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.address_pool_name is not None:
+            result['AddressPoolName'] = self.address_pool_name
+        if self.address_pool_type is not None:
+            result['AddressPoolType'] = self.address_pool_type
+        if self.available_status is not None:
+            result['AvailableStatus'] = self.available_status
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
+        if self.health_status is not None:
+            result['HealthStatus'] = self.health_status
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AddressPoolName') is not None:
+            self.address_pool_name = m.get('AddressPoolName')
+        if m.get('AddressPoolType') is not None:
+            self.address_pool_type = m.get('AddressPoolType')
+        if m.get('AvailableStatus') is not None:
+            self.available_status = m.get('AvailableStatus')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
+        if m.get('HealthStatus') is not None:
+            self.health_status = m.get('HealthStatus')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        return self
+
+
+class SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasksHealthTask(TeaModel):
+    def __init__(
+        self,
+        port: int = None,
+        template_id: str = None,
+        template_name: str = None,
+    ):
+        self.port = port
+        self.template_id = template_id
+        self.template_name = template_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        return self
+
+
+class SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasks(TeaModel):
+    def __init__(
+        self,
+        health_task: List[SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasksHealthTask] = None,
+    ):
+        self.health_task = health_task
+
+    def validate(self):
+        if self.health_task:
+            for k in self.health_task:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['HealthTask'] = []
+        if self.health_task is not None:
+            for k in self.health_task:
+                result['HealthTask'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.health_task = []
+        if m.get('HealthTask') is not None:
+            for k in m.get('HealthTask'):
+                temp_model = SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasksHealthTask()
+                self.health_task.append(temp_model.from_map(k))
+        return self
+
+
+class SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        address_id: str = None,
+        attribute_info: str = None,
+        available_mode: str = None,
+        available_status: str = None,
+        create_time: str = None,
+        create_timestamp: int = None,
+        enable_status: str = None,
+        health_judgement: str = None,
+        health_status: str = None,
+        health_tasks: SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasks = None,
+        manual_available_status: str = None,
+        name: str = None,
+        remark: str = None,
+        request_source: str = None,
+        serial_number: int = None,
+        type: str = None,
+        update_time: str = None,
+        update_timestamp: int = None,
+        weight_value: int = None,
+    ):
+        self.address = address
+        self.address_id = address_id
+        self.attribute_info = attribute_info
+        self.available_mode = available_mode
+        self.available_status = available_status
+        self.create_time = create_time
+        self.create_timestamp = create_timestamp
+        self.enable_status = enable_status
+        self.health_judgement = health_judgement
+        self.health_status = health_status
+        self.health_tasks = health_tasks
+        self.manual_available_status = manual_available_status
+        self.name = name
+        self.remark = remark
+        self.request_source = request_source
+        self.serial_number = serial_number
+        self.type = type
+        self.update_time = update_time
+        self.update_timestamp = update_timestamp
+        self.weight_value = weight_value
+
+    def validate(self):
+        if self.health_tasks:
+            self.health_tasks.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.address_id is not None:
+            result['AddressId'] = self.address_id
+        if self.attribute_info is not None:
+            result['AttributeInfo'] = self.attribute_info
+        if self.available_mode is not None:
+            result['AvailableMode'] = self.available_mode
+        if self.available_status is not None:
+            result['AvailableStatus'] = self.available_status
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
+        if self.health_judgement is not None:
+            result['HealthJudgement'] = self.health_judgement
+        if self.health_status is not None:
+            result['HealthStatus'] = self.health_status
+        if self.health_tasks is not None:
+            result['HealthTasks'] = self.health_tasks.to_map()
+        if self.manual_available_status is not None:
+            result['ManualAvailableStatus'] = self.manual_available_status
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.request_source is not None:
+            result['RequestSource'] = self.request_source
+        if self.serial_number is not None:
+            result['SerialNumber'] = self.serial_number
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.update_timestamp is not None:
+            result['UpdateTimestamp'] = self.update_timestamp
+        if self.weight_value is not None:
+            result['WeightValue'] = self.weight_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('AddressId') is not None:
+            self.address_id = m.get('AddressId')
+        if m.get('AttributeInfo') is not None:
+            self.attribute_info = m.get('AttributeInfo')
+        if m.get('AvailableMode') is not None:
+            self.available_mode = m.get('AvailableMode')
+        if m.get('AvailableStatus') is not None:
+            self.available_status = m.get('AvailableStatus')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
+        if m.get('HealthJudgement') is not None:
+            self.health_judgement = m.get('HealthJudgement')
+        if m.get('HealthStatus') is not None:
+            self.health_status = m.get('HealthStatus')
+        if m.get('HealthTasks') is not None:
+            temp_model = SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddressHealthTasks()
+            self.health_tasks = temp_model.from_map(m['HealthTasks'])
+        if m.get('ManualAvailableStatus') is not None:
+            self.manual_available_status = m.get('ManualAvailableStatus')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('RequestSource') is not None:
+            self.request_source = m.get('RequestSource')
+        if m.get('SerialNumber') is not None:
+            self.serial_number = m.get('SerialNumber')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UpdateTimestamp') is not None:
+            self.update_timestamp = m.get('UpdateTimestamp')
+        if m.get('WeightValue') is not None:
+            self.weight_value = m.get('WeightValue')
+        return self
+
+
+class SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddresses(TeaModel):
+    def __init__(
+        self,
+        address: List[SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress] = None,
+    ):
+        self.address = address
+
+    def validate(self):
+        if self.address:
+            for k in self.address:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Address'] = []
+        if self.address is not None:
+            for k in self.address:
+                result['Address'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.address = []
+        if m.get('Address') is not None:
+            for k in m.get('Address'):
+                temp_model = SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddressesAddress()
+                self.address.append(temp_model.from_map(k))
+        return self
+
+
+class SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool(TeaModel):
+    def __init__(
+        self,
+        address_lb_strategy: str = None,
+        address_pool_id: str = None,
+        address_pool_name: str = None,
+        address_pool_type: str = None,
+        addresses: SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddresses = None,
+        available_status: str = None,
+        create_time: str = None,
+        create_timestamp: int = None,
+        enable_status: str = None,
+        health_judgement: str = None,
+        health_status: str = None,
+        remark: str = None,
+        sequence_lb_strategy_mode: str = None,
+        update_time: str = None,
+        update_timestamp: int = None,
+    ):
+        self.address_lb_strategy = address_lb_strategy
+        self.address_pool_id = address_pool_id
+        self.address_pool_name = address_pool_name
+        self.address_pool_type = address_pool_type
+        self.addresses = addresses
+        self.available_status = available_status
+        self.create_time = create_time
+        self.create_timestamp = create_timestamp
+        self.enable_status = enable_status
+        self.health_judgement = health_judgement
+        self.health_status = health_status
+        self.remark = remark
+        self.sequence_lb_strategy_mode = sequence_lb_strategy_mode
+        self.update_time = update_time
+        self.update_timestamp = update_timestamp
+
+    def validate(self):
+        if self.addresses:
+            self.addresses.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_lb_strategy is not None:
+            result['AddressLbStrategy'] = self.address_lb_strategy
+        if self.address_pool_id is not None:
+            result['AddressPoolId'] = self.address_pool_id
+        if self.address_pool_name is not None:
+            result['AddressPoolName'] = self.address_pool_name
+        if self.address_pool_type is not None:
+            result['AddressPoolType'] = self.address_pool_type
+        if self.addresses is not None:
+            result['Addresses'] = self.addresses.to_map()
+        if self.available_status is not None:
+            result['AvailableStatus'] = self.available_status
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
+        if self.health_judgement is not None:
+            result['HealthJudgement'] = self.health_judgement
+        if self.health_status is not None:
+            result['HealthStatus'] = self.health_status
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.sequence_lb_strategy_mode is not None:
+            result['SequenceLbStrategyMode'] = self.sequence_lb_strategy_mode
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.update_timestamp is not None:
+            result['UpdateTimestamp'] = self.update_timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressLbStrategy') is not None:
+            self.address_lb_strategy = m.get('AddressLbStrategy')
+        if m.get('AddressPoolId') is not None:
+            self.address_pool_id = m.get('AddressPoolId')
+        if m.get('AddressPoolName') is not None:
+            self.address_pool_name = m.get('AddressPoolName')
+        if m.get('AddressPoolType') is not None:
+            self.address_pool_type = m.get('AddressPoolType')
+        if m.get('Addresses') is not None:
+            temp_model = SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPoolAddresses()
+            self.addresses = temp_model.from_map(m['Addresses'])
+        if m.get('AvailableStatus') is not None:
+            self.available_status = m.get('AvailableStatus')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
+        if m.get('HealthJudgement') is not None:
+            self.health_judgement = m.get('HealthJudgement')
+        if m.get('HealthStatus') is not None:
+            self.health_status = m.get('HealthStatus')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('SequenceLbStrategyMode') is not None:
+            self.sequence_lb_strategy_mode = m.get('SequenceLbStrategyMode')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UpdateTimestamp') is not None:
+            self.update_timestamp = m.get('UpdateTimestamp')
+        return self
+
+
+class SearchCloudGtmAddressPoolsResponseBodyAddressPools(TeaModel):
+    def __init__(
+        self,
+        address_pool: List[SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool] = None,
+    ):
+        self.address_pool = address_pool
+
+    def validate(self):
+        if self.address_pool:
+            for k in self.address_pool:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AddressPool'] = []
+        if self.address_pool is not None:
+            for k in self.address_pool:
+                result['AddressPool'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.address_pool = []
+        if m.get('AddressPool') is not None:
+            for k in m.get('AddressPool'):
+                temp_model = SearchCloudGtmAddressPoolsResponseBodyAddressPoolsAddressPool()
+                self.address_pool.append(temp_model.from_map(k))
+        return self
+
+
+class SearchCloudGtmAddressPoolsResponseBody(TeaModel):
+    def __init__(
+        self,
+        address_pools: SearchCloudGtmAddressPoolsResponseBodyAddressPools = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_items: int = None,
+        total_pages: int = None,
+    ):
+        self.address_pools = address_pools
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_items = total_items
+        self.total_pages = total_pages
+
+    def validate(self):
+        if self.address_pools:
+            self.address_pools.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_pools is not None:
+            result['AddressPools'] = self.address_pools.to_map()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_items is not None:
+            result['TotalItems'] = self.total_items
+        if self.total_pages is not None:
+            result['TotalPages'] = self.total_pages
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressPools') is not None:
+            temp_model = SearchCloudGtmAddressPoolsResponseBodyAddressPools()
+            self.address_pools = temp_model.from_map(m['AddressPools'])
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalItems') is not None:
+            self.total_items = m.get('TotalItems')
+        if m.get('TotalPages') is not None:
+            self.total_pages = m.get('TotalPages')
+        return self
+
+
+class SearchCloudGtmAddressPoolsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SearchCloudGtmAddressPoolsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SearchCloudGtmAddressPoolsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SearchCloudGtmAddressesRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        address: str = None,
+        address_id: str = None,
+        available_status: str = None,
+        enable_status: str = None,
+        health_status: str = None,
+        monitor_template_name: str = None,
+        name_search_condition: str = None,
+        names: List[str] = None,
+        page_number: int = None,
+        page_size: int = None,
+        remark_search_condition: str = None,
+        remarks: List[str] = None,
+        type: str = None,
+    ):
+        self.accept_language = accept_language
+        self.address = address
+        self.address_id = address_id
+        self.available_status = available_status
+        self.enable_status = enable_status
+        self.health_status = health_status
+        self.monitor_template_name = monitor_template_name
+        self.name_search_condition = name_search_condition
+        self.names = names
+        # This parameter is required.
+        self.page_number = page_number
+        # This parameter is required.
+        self.page_size = page_size
+        self.remark_search_condition = remark_search_condition
+        self.remarks = remarks
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.address_id is not None:
+            result['AddressId'] = self.address_id
+        if self.available_status is not None:
+            result['AvailableStatus'] = self.available_status
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
+        if self.health_status is not None:
+            result['HealthStatus'] = self.health_status
+        if self.monitor_template_name is not None:
+            result['MonitorTemplateName'] = self.monitor_template_name
+        if self.name_search_condition is not None:
+            result['NameSearchCondition'] = self.name_search_condition
+        if self.names is not None:
+            result['Names'] = self.names
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.remark_search_condition is not None:
+            result['RemarkSearchCondition'] = self.remark_search_condition
+        if self.remarks is not None:
+            result['Remarks'] = self.remarks
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('AddressId') is not None:
+            self.address_id = m.get('AddressId')
+        if m.get('AvailableStatus') is not None:
+            self.available_status = m.get('AvailableStatus')
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
+        if m.get('HealthStatus') is not None:
+            self.health_status = m.get('HealthStatus')
+        if m.get('MonitorTemplateName') is not None:
+            self.monitor_template_name = m.get('MonitorTemplateName')
+        if m.get('NameSearchCondition') is not None:
+            self.name_search_condition = m.get('NameSearchCondition')
+        if m.get('Names') is not None:
+            self.names = m.get('Names')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RemarkSearchCondition') is not None:
+            self.remark_search_condition = m.get('RemarkSearchCondition')
+        if m.get('Remarks') is not None:
+            self.remarks = m.get('Remarks')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class SearchCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask(TeaModel):
+    def __init__(
+        self,
+        monitor_status: str = None,
+        port: int = None,
+        template_id: str = None,
+        template_name: str = None,
+    ):
+        self.monitor_status = monitor_status
+        self.port = port
+        self.template_id = template_id
+        self.template_name = template_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.monitor_status is not None:
+            result['MonitorStatus'] = self.monitor_status
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MonitorStatus') is not None:
+            self.monitor_status = m.get('MonitorStatus')
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
+        return self
+
+
+class SearchCloudGtmAddressesResponseBodyAddressesAddressHealthTasks(TeaModel):
+    def __init__(
+        self,
+        health_task: List[SearchCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask] = None,
+    ):
+        self.health_task = health_task
+
+    def validate(self):
+        if self.health_task:
+            for k in self.health_task:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['HealthTask'] = []
+        if self.health_task is not None:
+            for k in self.health_task:
+                result['HealthTask'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.health_task = []
+        if m.get('HealthTask') is not None:
+            for k in m.get('HealthTask'):
+                temp_model = SearchCloudGtmAddressesResponseBodyAddressesAddressHealthTasksHealthTask()
+                self.health_task.append(temp_model.from_map(k))
+        return self
+
+
+class SearchCloudGtmAddressesResponseBodyAddressesAddress(TeaModel):
+    def __init__(
+        self,
+        address: str = None,
+        address_id: str = None,
+        attribute_info: str = None,
+        available_mode: str = None,
+        available_status: str = None,
+        create_time: str = None,
+        create_timestamp: int = None,
+        enable_status: str = None,
+        health_judgement: str = None,
+        health_status: str = None,
+        health_tasks: SearchCloudGtmAddressesResponseBodyAddressesAddressHealthTasks = None,
+        manual_available_status: str = None,
+        name: str = None,
+        remark: str = None,
+        type: str = None,
+        update_time: str = None,
+        update_timestamp: int = None,
+    ):
+        self.address = address
+        self.address_id = address_id
+        self.attribute_info = attribute_info
+        self.available_mode = available_mode
+        self.available_status = available_status
+        self.create_time = create_time
+        self.create_timestamp = create_timestamp
+        self.enable_status = enable_status
+        self.health_judgement = health_judgement
+        self.health_status = health_status
+        self.health_tasks = health_tasks
+        self.manual_available_status = manual_available_status
+        self.name = name
+        self.remark = remark
+        self.type = type
+        self.update_time = update_time
+        self.update_timestamp = update_timestamp
+
+    def validate(self):
+        if self.health_tasks:
+            self.health_tasks.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.address_id is not None:
+            result['AddressId'] = self.address_id
+        if self.attribute_info is not None:
+            result['AttributeInfo'] = self.attribute_info
+        if self.available_mode is not None:
+            result['AvailableMode'] = self.available_mode
+        if self.available_status is not None:
+            result['AvailableStatus'] = self.available_status
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
+        if self.health_judgement is not None:
+            result['HealthJudgement'] = self.health_judgement
+        if self.health_status is not None:
+            result['HealthStatus'] = self.health_status
+        if self.health_tasks is not None:
+            result['HealthTasks'] = self.health_tasks.to_map()
+        if self.manual_available_status is not None:
+            result['ManualAvailableStatus'] = self.manual_available_status
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.type is not None:
+            result['Type'] = self.type
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.update_timestamp is not None:
+            result['UpdateTimestamp'] = self.update_timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('AddressId') is not None:
+            self.address_id = m.get('AddressId')
+        if m.get('AttributeInfo') is not None:
+            self.attribute_info = m.get('AttributeInfo')
+        if m.get('AvailableMode') is not None:
+            self.available_mode = m.get('AvailableMode')
+        if m.get('AvailableStatus') is not None:
+            self.available_status = m.get('AvailableStatus')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
+        if m.get('HealthJudgement') is not None:
+            self.health_judgement = m.get('HealthJudgement')
+        if m.get('HealthStatus') is not None:
+            self.health_status = m.get('HealthStatus')
+        if m.get('HealthTasks') is not None:
+            temp_model = SearchCloudGtmAddressesResponseBodyAddressesAddressHealthTasks()
+            self.health_tasks = temp_model.from_map(m['HealthTasks'])
+        if m.get('ManualAvailableStatus') is not None:
+            self.manual_available_status = m.get('ManualAvailableStatus')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UpdateTimestamp') is not None:
+            self.update_timestamp = m.get('UpdateTimestamp')
+        return self
+
+
+class SearchCloudGtmAddressesResponseBodyAddresses(TeaModel):
+    def __init__(
+        self,
+        address: List[SearchCloudGtmAddressesResponseBodyAddressesAddress] = None,
+    ):
+        self.address = address
+
+    def validate(self):
+        if self.address:
+            for k in self.address:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Address'] = []
+        if self.address is not None:
+            for k in self.address:
+                result['Address'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.address = []
+        if m.get('Address') is not None:
+            for k in m.get('Address'):
+                temp_model = SearchCloudGtmAddressesResponseBodyAddressesAddress()
+                self.address.append(temp_model.from_map(k))
+        return self
+
+
+class SearchCloudGtmAddressesResponseBody(TeaModel):
+    def __init__(
+        self,
+        addresses: SearchCloudGtmAddressesResponseBodyAddresses = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_items: int = None,
+        total_pages: int = None,
+    ):
+        self.addresses = addresses
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_items = total_items
+        self.total_pages = total_pages
+
+    def validate(self):
+        if self.addresses:
+            self.addresses.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.addresses is not None:
+            result['Addresses'] = self.addresses.to_map()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_items is not None:
+            result['TotalItems'] = self.total_items
+        if self.total_pages is not None:
+            result['TotalPages'] = self.total_pages
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Addresses') is not None:
+            temp_model = SearchCloudGtmAddressesResponseBodyAddresses()
+            self.addresses = temp_model.from_map(m['Addresses'])
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalItems') is not None:
+            self.total_items = m.get('TotalItems')
+        if m.get('TotalPages') is not None:
+            self.total_pages = m.get('TotalPages')
+        return self
+
+
+class SearchCloudGtmAddressesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SearchCloudGtmAddressesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SearchCloudGtmAddressesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SearchCloudGtmInstanceConfigsRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        available_status: str = None,
+        client_token: str = None,
+        enable_status: str = None,
+        health_status: str = None,
+        instance_id: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        remark: str = None,
+        schedule_domain_name: str = None,
+        schedule_zone_name: str = None,
+    ):
+        self.accept_language = accept_language
+        self.available_status = available_status
+        self.client_token = client_token
+        self.enable_status = enable_status
+        self.health_status = health_status
+        self.instance_id = instance_id
+        self.page_number = page_number
+        self.page_size = page_size
+        self.remark = remark
+        self.schedule_domain_name = schedule_domain_name
+        self.schedule_zone_name = schedule_zone_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.available_status is not None:
+            result['AvailableStatus'] = self.available_status
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
+        if self.health_status is not None:
+            result['HealthStatus'] = self.health_status
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.schedule_domain_name is not None:
+            result['ScheduleDomainName'] = self.schedule_domain_name
+        if self.schedule_zone_name is not None:
+            result['ScheduleZoneName'] = self.schedule_zone_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AvailableStatus') is not None:
+            self.available_status = m.get('AvailableStatus')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
+        if m.get('HealthStatus') is not None:
+            self.health_status = m.get('HealthStatus')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ScheduleDomainName') is not None:
+            self.schedule_domain_name = m.get('ScheduleDomainName')
+        if m.get('ScheduleZoneName') is not None:
+            self.schedule_zone_name = m.get('ScheduleZoneName')
+        return self
+
+
+class SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPoolRequestSource(TeaModel):
+    def __init__(
+        self,
+        request_source: List[str] = None,
+    ):
+        self.request_source = request_source
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_source is not None:
+            result['RequestSource'] = self.request_source
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestSource') is not None:
+            self.request_source = m.get('RequestSource')
+        return self
+
+
+class SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool(TeaModel):
+    def __init__(
+        self,
+        address_lb_strategy: str = None,
+        address_pool_id: str = None,
+        address_pool_name: str = None,
+        address_pool_type: str = None,
+        available_status: str = None,
+        create_time: str = None,
+        create_timestamp: int = None,
+        enable_status: str = None,
+        health_judgement: str = None,
+        health_status: str = None,
+        request_source: SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPoolRequestSource = None,
+        seq_non_preemptive_schedule: bool = None,
+        sequence_lb_strategy_mode: str = None,
+        serial_number: int = None,
+        update_time: str = None,
+        update_timestamp: int = None,
+        weight_value: int = None,
+    ):
+        self.address_lb_strategy = address_lb_strategy
+        self.address_pool_id = address_pool_id
+        self.address_pool_name = address_pool_name
+        self.address_pool_type = address_pool_type
+        self.available_status = available_status
+        self.create_time = create_time
+        self.create_timestamp = create_timestamp
+        self.enable_status = enable_status
+        self.health_judgement = health_judgement
+        self.health_status = health_status
+        self.request_source = request_source
+        self.seq_non_preemptive_schedule = seq_non_preemptive_schedule
+        self.sequence_lb_strategy_mode = sequence_lb_strategy_mode
+        self.serial_number = serial_number
+        self.update_time = update_time
+        self.update_timestamp = update_timestamp
+        self.weight_value = weight_value
+
+    def validate(self):
+        if self.request_source:
+            self.request_source.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_lb_strategy is not None:
+            result['AddressLbStrategy'] = self.address_lb_strategy
+        if self.address_pool_id is not None:
+            result['AddressPoolId'] = self.address_pool_id
+        if self.address_pool_name is not None:
+            result['AddressPoolName'] = self.address_pool_name
+        if self.address_pool_type is not None:
+            result['AddressPoolType'] = self.address_pool_type
+        if self.available_status is not None:
+            result['AvailableStatus'] = self.available_status
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
+        if self.health_judgement is not None:
+            result['HealthJudgement'] = self.health_judgement
+        if self.health_status is not None:
+            result['HealthStatus'] = self.health_status
+        if self.request_source is not None:
+            result['RequestSource'] = self.request_source.to_map()
+        if self.seq_non_preemptive_schedule is not None:
+            result['SeqNonPreemptiveSchedule'] = self.seq_non_preemptive_schedule
+        if self.sequence_lb_strategy_mode is not None:
+            result['SequenceLbStrategyMode'] = self.sequence_lb_strategy_mode
+        if self.serial_number is not None:
+            result['SerialNumber'] = self.serial_number
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.update_timestamp is not None:
+            result['UpdateTimestamp'] = self.update_timestamp
+        if self.weight_value is not None:
+            result['WeightValue'] = self.weight_value
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressLbStrategy') is not None:
+            self.address_lb_strategy = m.get('AddressLbStrategy')
+        if m.get('AddressPoolId') is not None:
+            self.address_pool_id = m.get('AddressPoolId')
+        if m.get('AddressPoolName') is not None:
+            self.address_pool_name = m.get('AddressPoolName')
+        if m.get('AddressPoolType') is not None:
+            self.address_pool_type = m.get('AddressPoolType')
+        if m.get('AvailableStatus') is not None:
+            self.available_status = m.get('AvailableStatus')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
+        if m.get('HealthJudgement') is not None:
+            self.health_judgement = m.get('HealthJudgement')
+        if m.get('HealthStatus') is not None:
+            self.health_status = m.get('HealthStatus')
+        if m.get('RequestSource') is not None:
+            temp_model = SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPoolRequestSource()
+            self.request_source = temp_model.from_map(m['RequestSource'])
+        if m.get('SeqNonPreemptiveSchedule') is not None:
+            self.seq_non_preemptive_schedule = m.get('SeqNonPreemptiveSchedule')
+        if m.get('SequenceLbStrategyMode') is not None:
+            self.sequence_lb_strategy_mode = m.get('SequenceLbStrategyMode')
+        if m.get('SerialNumber') is not None:
+            self.serial_number = m.get('SerialNumber')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UpdateTimestamp') is not None:
+            self.update_timestamp = m.get('UpdateTimestamp')
+        if m.get('WeightValue') is not None:
+            self.weight_value = m.get('WeightValue')
+        return self
+
+
+class SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPools(TeaModel):
+    def __init__(
+        self,
+        address_pool: List[SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool] = None,
+    ):
+        self.address_pool = address_pool
+
+    def validate(self):
+        if self.address_pool:
+            for k in self.address_pool:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['AddressPool'] = []
+        if self.address_pool is not None:
+            for k in self.address_pool:
+                result['AddressPool'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.address_pool = []
+        if m.get('AddressPool') is not None:
+            for k in m.get('AddressPool'):
+                temp_model = SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPoolsAddressPool()
+                self.address_pool.append(temp_model.from_map(k))
+        return self
+
+
+class SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig(TeaModel):
+    def __init__(
+        self,
+        address_pool_lb_strategy: str = None,
+        address_pools: SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPools = None,
+        available_status: str = None,
+        commodity_code: str = None,
+        config_id: str = None,
+        create_time: str = None,
+        create_timestamp: int = None,
+        enable_status: str = None,
+        health_status: str = None,
+        instance_id: str = None,
+        remark: str = None,
+        schedule_domain_name: str = None,
+        schedule_hostname: str = None,
+        schedule_rr_type: str = None,
+        schedule_zone_mode: str = None,
+        schedule_zone_name: str = None,
+        sequence_lb_strategy_mode: str = None,
+        ttl: int = None,
+        update_time: str = None,
+        update_timestamp: int = None,
+        version_code: str = None,
+    ):
+        self.address_pool_lb_strategy = address_pool_lb_strategy
+        self.address_pools = address_pools
+        self.available_status = available_status
+        self.commodity_code = commodity_code
+        self.config_id = config_id
+        self.create_time = create_time
+        self.create_timestamp = create_timestamp
+        self.enable_status = enable_status
+        self.health_status = health_status
+        self.instance_id = instance_id
+        self.remark = remark
+        self.schedule_domain_name = schedule_domain_name
+        self.schedule_hostname = schedule_hostname
+        self.schedule_rr_type = schedule_rr_type
+        self.schedule_zone_mode = schedule_zone_mode
+        self.schedule_zone_name = schedule_zone_name
+        self.sequence_lb_strategy_mode = sequence_lb_strategy_mode
+        self.ttl = ttl
+        self.update_time = update_time
+        self.update_timestamp = update_timestamp
+        self.version_code = version_code
+
+    def validate(self):
+        if self.address_pools:
+            self.address_pools.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_pool_lb_strategy is not None:
+            result['AddressPoolLbStrategy'] = self.address_pool_lb_strategy
+        if self.address_pools is not None:
+            result['AddressPools'] = self.address_pools.to_map()
+        if self.available_status is not None:
+            result['AvailableStatus'] = self.available_status
+        if self.commodity_code is not None:
+            result['CommodityCode'] = self.commodity_code
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
+        if self.health_status is not None:
+            result['HealthStatus'] = self.health_status
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.schedule_domain_name is not None:
+            result['ScheduleDomainName'] = self.schedule_domain_name
+        if self.schedule_hostname is not None:
+            result['ScheduleHostname'] = self.schedule_hostname
+        if self.schedule_rr_type is not None:
+            result['ScheduleRrType'] = self.schedule_rr_type
+        if self.schedule_zone_mode is not None:
+            result['ScheduleZoneMode'] = self.schedule_zone_mode
+        if self.schedule_zone_name is not None:
+            result['ScheduleZoneName'] = self.schedule_zone_name
+        if self.sequence_lb_strategy_mode is not None:
+            result['SequenceLbStrategyMode'] = self.sequence_lb_strategy_mode
+        if self.ttl is not None:
+            result['Ttl'] = self.ttl
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.update_timestamp is not None:
+            result['UpdateTimestamp'] = self.update_timestamp
+        if self.version_code is not None:
+            result['VersionCode'] = self.version_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressPoolLbStrategy') is not None:
+            self.address_pool_lb_strategy = m.get('AddressPoolLbStrategy')
+        if m.get('AddressPools') is not None:
+            temp_model = SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfigAddressPools()
+            self.address_pools = temp_model.from_map(m['AddressPools'])
+        if m.get('AvailableStatus') is not None:
+            self.available_status = m.get('AvailableStatus')
+        if m.get('CommodityCode') is not None:
+            self.commodity_code = m.get('CommodityCode')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
+        if m.get('HealthStatus') is not None:
+            self.health_status = m.get('HealthStatus')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('ScheduleDomainName') is not None:
+            self.schedule_domain_name = m.get('ScheduleDomainName')
+        if m.get('ScheduleHostname') is not None:
+            self.schedule_hostname = m.get('ScheduleHostname')
+        if m.get('ScheduleRrType') is not None:
+            self.schedule_rr_type = m.get('ScheduleRrType')
+        if m.get('ScheduleZoneMode') is not None:
+            self.schedule_zone_mode = m.get('ScheduleZoneMode')
+        if m.get('ScheduleZoneName') is not None:
+            self.schedule_zone_name = m.get('ScheduleZoneName')
+        if m.get('SequenceLbStrategyMode') is not None:
+            self.sequence_lb_strategy_mode = m.get('SequenceLbStrategyMode')
+        if m.get('Ttl') is not None:
+            self.ttl = m.get('Ttl')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UpdateTimestamp') is not None:
+            self.update_timestamp = m.get('UpdateTimestamp')
+        if m.get('VersionCode') is not None:
+            self.version_code = m.get('VersionCode')
+        return self
+
+
+class SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigs(TeaModel):
+    def __init__(
+        self,
+        instance_config: List[SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig] = None,
+    ):
+        self.instance_config = instance_config
+
+    def validate(self):
+        if self.instance_config:
+            for k in self.instance_config:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['InstanceConfig'] = []
+        if self.instance_config is not None:
+            for k in self.instance_config:
+                result['InstanceConfig'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.instance_config = []
+        if m.get('InstanceConfig') is not None:
+            for k in m.get('InstanceConfig'):
+                temp_model = SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig()
+                self.instance_config.append(temp_model.from_map(k))
+        return self
+
+
+class SearchCloudGtmInstanceConfigsResponseBody(TeaModel):
+    def __init__(
+        self,
+        instance_configs: SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigs = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_items: int = None,
+        total_pages: int = None,
+    ):
+        self.instance_configs = instance_configs
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_items = total_items
+        self.total_pages = total_pages
+
+    def validate(self):
+        if self.instance_configs:
+            self.instance_configs.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instance_configs is not None:
+            result['InstanceConfigs'] = self.instance_configs.to_map()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_items is not None:
+            result['TotalItems'] = self.total_items
+        if self.total_pages is not None:
+            result['TotalPages'] = self.total_pages
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InstanceConfigs') is not None:
+            temp_model = SearchCloudGtmInstanceConfigsResponseBodyInstanceConfigs()
+            self.instance_configs = temp_model.from_map(m['InstanceConfigs'])
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalItems') is not None:
+            self.total_items = m.get('TotalItems')
+        if m.get('TotalPages') is not None:
+            self.total_pages = m.get('TotalPages')
+        return self
+
+
+class SearchCloudGtmInstanceConfigsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SearchCloudGtmInstanceConfigsResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SearchCloudGtmInstanceConfigsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SearchCloudGtmInstancesRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        client_token: str = None,
+        instance_id: str = None,
+        instance_name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+    ):
+        self.accept_language = accept_language
+        self.client_token = client_token
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.page_number = page_number
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class SearchCloudGtmInstancesResponseBodyInstancesInstance(TeaModel):
+    def __init__(
+        self,
+        commodity_code: str = None,
+        create_time: str = None,
+        create_timestamp: int = None,
+        expire_time: int = None,
+        expire_timestamp: str = None,
+        instance_id: str = None,
+        instance_name: str = None,
+        monitor_task_quota: int = None,
+        monthly_email_used: int = None,
+        monthly_sms_quota: int = None,
+        monthly_sms_used: int = None,
+        monthly_webhook_used: int = None,
+        schedule_domain_name: str = None,
+        update_time: str = None,
+        update_timestamp: int = None,
+        version_code: str = None,
+    ):
+        self.commodity_code = commodity_code
+        self.create_time = create_time
+        self.create_timestamp = create_timestamp
+        self.expire_time = expire_time
+        self.expire_timestamp = expire_timestamp
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.monitor_task_quota = monitor_task_quota
+        self.monthly_email_used = monthly_email_used
+        self.monthly_sms_quota = monthly_sms_quota
+        self.monthly_sms_used = monthly_sms_used
+        self.monthly_webhook_used = monthly_webhook_used
+        self.schedule_domain_name = schedule_domain_name
+        self.update_time = update_time
+        self.update_timestamp = update_timestamp
+        self.version_code = version_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.commodity_code is not None:
+            result['CommodityCode'] = self.commodity_code
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+        if self.expire_timestamp is not None:
+            result['ExpireTimestamp'] = self.expire_timestamp
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.monitor_task_quota is not None:
+            result['MonitorTaskQuota'] = self.monitor_task_quota
+        if self.monthly_email_used is not None:
+            result['MonthlyEmailUsed'] = self.monthly_email_used
+        if self.monthly_sms_quota is not None:
+            result['MonthlySmsQuota'] = self.monthly_sms_quota
+        if self.monthly_sms_used is not None:
+            result['MonthlySmsUsed'] = self.monthly_sms_used
+        if self.monthly_webhook_used is not None:
+            result['MonthlyWebhookUsed'] = self.monthly_webhook_used
+        if self.schedule_domain_name is not None:
+            result['ScheduleDomainName'] = self.schedule_domain_name
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.update_timestamp is not None:
+            result['UpdateTimestamp'] = self.update_timestamp
+        if self.version_code is not None:
+            result['VersionCode'] = self.version_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CommodityCode') is not None:
+            self.commodity_code = m.get('CommodityCode')
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+        if m.get('ExpireTimestamp') is not None:
+            self.expire_timestamp = m.get('ExpireTimestamp')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('MonitorTaskQuota') is not None:
+            self.monitor_task_quota = m.get('MonitorTaskQuota')
+        if m.get('MonthlyEmailUsed') is not None:
+            self.monthly_email_used = m.get('MonthlyEmailUsed')
+        if m.get('MonthlySmsQuota') is not None:
+            self.monthly_sms_quota = m.get('MonthlySmsQuota')
+        if m.get('MonthlySmsUsed') is not None:
+            self.monthly_sms_used = m.get('MonthlySmsUsed')
+        if m.get('MonthlyWebhookUsed') is not None:
+            self.monthly_webhook_used = m.get('MonthlyWebhookUsed')
+        if m.get('ScheduleDomainName') is not None:
+            self.schedule_domain_name = m.get('ScheduleDomainName')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UpdateTimestamp') is not None:
+            self.update_timestamp = m.get('UpdateTimestamp')
+        if m.get('VersionCode') is not None:
+            self.version_code = m.get('VersionCode')
+        return self
+
+
+class SearchCloudGtmInstancesResponseBodyInstances(TeaModel):
+    def __init__(
+        self,
+        instance: List[SearchCloudGtmInstancesResponseBodyInstancesInstance] = None,
+    ):
+        self.instance = instance
+
+    def validate(self):
+        if self.instance:
+            for k in self.instance:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Instance'] = []
+        if self.instance is not None:
+            for k in self.instance:
+                result['Instance'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.instance = []
+        if m.get('Instance') is not None:
+            for k in m.get('Instance'):
+                temp_model = SearchCloudGtmInstancesResponseBodyInstancesInstance()
+                self.instance.append(temp_model.from_map(k))
+        return self
+
+
+class SearchCloudGtmInstancesResponseBody(TeaModel):
+    def __init__(
+        self,
+        instances: SearchCloudGtmInstancesResponseBodyInstances = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_items: int = None,
+        total_pages: int = None,
+    ):
+        self.instances = instances
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.total_items = total_items
+        self.total_pages = total_pages
+
+    def validate(self):
+        if self.instances:
+            self.instances.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.instances is not None:
+            result['Instances'] = self.instances.to_map()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_items is not None:
+            result['TotalItems'] = self.total_items
+        if self.total_pages is not None:
+            result['TotalPages'] = self.total_pages
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Instances') is not None:
+            temp_model = SearchCloudGtmInstancesResponseBodyInstances()
+            self.instances = temp_model.from_map(m['Instances'])
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalItems') is not None:
+            self.total_items = m.get('TotalItems')
+        if m.get('TotalPages') is not None:
+            self.total_pages = m.get('TotalPages')
+        return self
+
+
+class SearchCloudGtmInstancesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SearchCloudGtmInstancesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SearchCloudGtmInstancesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class SearchCloudGtmMonitorTemplatesRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        ip_version: str = None,
+        name: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        protocol: str = None,
+    ):
+        self.accept_language = accept_language
+        self.ip_version = ip_version
+        self.name = name
+        # This parameter is required.
+        self.page_number = page_number
+        # This parameter is required.
+        self.page_size = page_size
+        self.protocol = protocol
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.ip_version is not None:
+            result['IpVersion'] = self.ip_version
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('IpVersion') is not None:
+            self.ip_version = m.get('IpVersion')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        return self
+
+
+class SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode(TeaModel):
+    def __init__(
+        self,
+        city_code: str = None,
+        city_name: str = None,
+        country_code: str = None,
+        country_name: str = None,
+        group_name: str = None,
+        group_type: str = None,
+        isp_code: str = None,
+        isp_name: str = None,
+    ):
+        self.city_code = city_code
+        self.city_name = city_name
+        self.country_code = country_code
+        self.country_name = country_name
+        self.group_name = group_name
+        self.group_type = group_type
+        self.isp_code = isp_code
+        self.isp_name = isp_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.city_code is not None:
+            result['CityCode'] = self.city_code
+        if self.city_name is not None:
+            result['CityName'] = self.city_name
+        if self.country_code is not None:
+            result['CountryCode'] = self.country_code
+        if self.country_name is not None:
+            result['CountryName'] = self.country_name
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+        if self.group_type is not None:
+            result['GroupType'] = self.group_type
+        if self.isp_code is not None:
+            result['IspCode'] = self.isp_code
+        if self.isp_name is not None:
+            result['IspName'] = self.isp_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CityCode') is not None:
+            self.city_code = m.get('CityCode')
+        if m.get('CityName') is not None:
+            self.city_name = m.get('CityName')
+        if m.get('CountryCode') is not None:
+            self.country_code = m.get('CountryCode')
+        if m.get('CountryName') is not None:
+            self.country_name = m.get('CountryName')
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+        if m.get('GroupType') is not None:
+            self.group_type = m.get('GroupType')
+        if m.get('IspCode') is not None:
+            self.isp_code = m.get('IspCode')
+        if m.get('IspName') is not None:
+            self.isp_name = m.get('IspName')
+        return self
+
+
+class SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodes(TeaModel):
+    def __init__(
+        self,
+        isp_city_node: List[SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode] = None,
+    ):
+        self.isp_city_node = isp_city_node
+
+    def validate(self):
+        if self.isp_city_node:
+            for k in self.isp_city_node:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['IspCityNode'] = []
+        if self.isp_city_node is not None:
+            for k in self.isp_city_node:
+                result['IspCityNode'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.isp_city_node = []
+        if m.get('IspCityNode') is not None:
+            for k in m.get('IspCityNode'):
+                temp_model = SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodesIspCityNode()
+                self.isp_city_node.append(temp_model.from_map(k))
+        return self
+
+
+class SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate(TeaModel):
+    def __init__(
+        self,
+        create_time: str = None,
+        create_timestamp: int = None,
+        evaluation_count: int = None,
+        extend_info: str = None,
+        failure_rate: int = None,
+        interval: int = None,
+        ip_version: str = None,
+        isp_city_nodes: SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodes = None,
+        name: str = None,
+        protocol: str = None,
+        remark: str = None,
+        template_id: str = None,
+        timeout: int = None,
+        update_time: str = None,
+        update_timestamp: int = None,
+    ):
+        self.create_time = create_time
+        self.create_timestamp = create_timestamp
+        self.evaluation_count = evaluation_count
+        self.extend_info = extend_info
+        self.failure_rate = failure_rate
+        self.interval = interval
+        self.ip_version = ip_version
+        self.isp_city_nodes = isp_city_nodes
+        self.name = name
+        self.protocol = protocol
+        self.remark = remark
+        self.template_id = template_id
+        self.timeout = timeout
+        self.update_time = update_time
+        self.update_timestamp = update_timestamp
+
+    def validate(self):
+        if self.isp_city_nodes:
+            self.isp_city_nodes.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+        if self.create_timestamp is not None:
+            result['CreateTimestamp'] = self.create_timestamp
+        if self.evaluation_count is not None:
+            result['EvaluationCount'] = self.evaluation_count
+        if self.extend_info is not None:
+            result['ExtendInfo'] = self.extend_info
+        if self.failure_rate is not None:
+            result['FailureRate'] = self.failure_rate
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.ip_version is not None:
+            result['IpVersion'] = self.ip_version
+        if self.isp_city_nodes is not None:
+            result['IspCityNodes'] = self.isp_city_nodes.to_map()
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.protocol is not None:
+            result['Protocol'] = self.protocol
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        if self.update_time is not None:
+            result['UpdateTime'] = self.update_time
+        if self.update_timestamp is not None:
+            result['UpdateTimestamp'] = self.update_timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+        if m.get('CreateTimestamp') is not None:
+            self.create_timestamp = m.get('CreateTimestamp')
+        if m.get('EvaluationCount') is not None:
+            self.evaluation_count = m.get('EvaluationCount')
+        if m.get('ExtendInfo') is not None:
+            self.extend_info = m.get('ExtendInfo')
+        if m.get('FailureRate') is not None:
+            self.failure_rate = m.get('FailureRate')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('IpVersion') is not None:
+            self.ip_version = m.get('IpVersion')
+        if m.get('IspCityNodes') is not None:
+            temp_model = SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplateIspCityNodes()
+            self.isp_city_nodes = temp_model.from_map(m['IspCityNodes'])
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Protocol') is not None:
+            self.protocol = m.get('Protocol')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        if m.get('UpdateTime') is not None:
+            self.update_time = m.get('UpdateTime')
+        if m.get('UpdateTimestamp') is not None:
+            self.update_timestamp = m.get('UpdateTimestamp')
+        return self
+
+
+class SearchCloudGtmMonitorTemplatesResponseBodyTemplates(TeaModel):
+    def __init__(
+        self,
+        template: List[SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate] = None,
+    ):
+        self.template = template
+
+    def validate(self):
+        if self.template:
+            for k in self.template:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Template'] = []
+        if self.template is not None:
+            for k in self.template:
+                result['Template'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.template = []
+        if m.get('Template') is not None:
+            for k in m.get('Template'):
+                temp_model = SearchCloudGtmMonitorTemplatesResponseBodyTemplatesTemplate()
+                self.template.append(temp_model.from_map(k))
+        return self
+
+
+class SearchCloudGtmMonitorTemplatesResponseBody(TeaModel):
+    def __init__(
+        self,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        templates: SearchCloudGtmMonitorTemplatesResponseBodyTemplates = None,
+        total_items: int = None,
+        total_pages: int = None,
+    ):
+        self.page_number = page_number
+        self.page_size = page_size
+        self.request_id = request_id
+        self.templates = templates
+        self.total_items = total_items
+        self.total_pages = total_pages
+
+    def validate(self):
+        if self.templates:
+            self.templates.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.templates is not None:
+            result['Templates'] = self.templates.to_map()
+        if self.total_items is not None:
+            result['TotalItems'] = self.total_items
+        if self.total_pages is not None:
+            result['TotalPages'] = self.total_pages
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Templates') is not None:
+            temp_model = SearchCloudGtmMonitorTemplatesResponseBodyTemplates()
+            self.templates = temp_model.from_map(m['Templates'])
+        if m.get('TotalItems') is not None:
+            self.total_items = m.get('TotalItems')
+        if m.get('TotalPages') is not None:
+            self.total_pages = m.get('TotalPages')
+        return self
+
+
+class SearchCloudGtmMonitorTemplatesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SearchCloudGtmMonitorTemplatesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SearchCloudGtmMonitorTemplatesResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -31760,6 +41737,2646 @@ class UpdateAppKeyStateResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = UpdateAppKeyStateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateCloudGtmAddressRequestHealthTasks(TeaModel):
+    def __init__(
+        self,
+        port: int = None,
+        template_id: str = None,
+    ):
+        self.port = port
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.port is not None:
+            result['Port'] = self.port
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class UpdateCloudGtmAddressRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        address: str = None,
+        address_id: str = None,
+        attribute_info: str = None,
+        client_token: str = None,
+        health_judgement: str = None,
+        health_tasks: List[UpdateCloudGtmAddressRequestHealthTasks] = None,
+        name: str = None,
+    ):
+        self.accept_language = accept_language
+        self.address = address
+        # This parameter is required.
+        self.address_id = address_id
+        self.attribute_info = attribute_info
+        self.client_token = client_token
+        self.health_judgement = health_judgement
+        self.health_tasks = health_tasks
+        self.name = name
+
+    def validate(self):
+        if self.health_tasks:
+            for k in self.health_tasks:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.address_id is not None:
+            result['AddressId'] = self.address_id
+        if self.attribute_info is not None:
+            result['AttributeInfo'] = self.attribute_info
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.health_judgement is not None:
+            result['HealthJudgement'] = self.health_judgement
+        result['HealthTasks'] = []
+        if self.health_tasks is not None:
+            for k in self.health_tasks:
+                result['HealthTasks'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('AddressId') is not None:
+            self.address_id = m.get('AddressId')
+        if m.get('AttributeInfo') is not None:
+            self.attribute_info = m.get('AttributeInfo')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('HealthJudgement') is not None:
+            self.health_judgement = m.get('HealthJudgement')
+        self.health_tasks = []
+        if m.get('HealthTasks') is not None:
+            for k in m.get('HealthTasks'):
+                temp_model = UpdateCloudGtmAddressRequestHealthTasks()
+                self.health_tasks.append(temp_model.from_map(k))
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class UpdateCloudGtmAddressShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        address: str = None,
+        address_id: str = None,
+        attribute_info: str = None,
+        client_token: str = None,
+        health_judgement: str = None,
+        health_tasks_shrink: str = None,
+        name: str = None,
+    ):
+        self.accept_language = accept_language
+        self.address = address
+        # This parameter is required.
+        self.address_id = address_id
+        self.attribute_info = attribute_info
+        self.client_token = client_token
+        self.health_judgement = health_judgement
+        self.health_tasks_shrink = health_tasks_shrink
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.address is not None:
+            result['Address'] = self.address
+        if self.address_id is not None:
+            result['AddressId'] = self.address_id
+        if self.attribute_info is not None:
+            result['AttributeInfo'] = self.attribute_info
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.health_judgement is not None:
+            result['HealthJudgement'] = self.health_judgement
+        if self.health_tasks_shrink is not None:
+            result['HealthTasks'] = self.health_tasks_shrink
+        if self.name is not None:
+            result['Name'] = self.name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+        if m.get('AddressId') is not None:
+            self.address_id = m.get('AddressId')
+        if m.get('AttributeInfo') is not None:
+            self.attribute_info = m.get('AttributeInfo')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('HealthJudgement') is not None:
+            self.health_judgement = m.get('HealthJudgement')
+        if m.get('HealthTasks') is not None:
+            self.health_tasks_shrink = m.get('HealthTasks')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        return self
+
+
+class UpdateCloudGtmAddressResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateCloudGtmAddressResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateCloudGtmAddressResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateCloudGtmAddressResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateCloudGtmAddressEnableStatusRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        address_id: str = None,
+        client_token: str = None,
+        enable_status: str = None,
+    ):
+        self.accept_language = accept_language
+        # This parameter is required.
+        self.address_id = address_id
+        self.client_token = client_token
+        # This parameter is required.
+        self.enable_status = enable_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.address_id is not None:
+            result['AddressId'] = self.address_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AddressId') is not None:
+            self.address_id = m.get('AddressId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
+        return self
+
+
+class UpdateCloudGtmAddressEnableStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateCloudGtmAddressEnableStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateCloudGtmAddressEnableStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateCloudGtmAddressEnableStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateCloudGtmAddressManualAvailableStatusRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        address_id: str = None,
+        available_mode: str = None,
+        client_token: str = None,
+        manual_available_status: str = None,
+    ):
+        self.accept_language = accept_language
+        # This parameter is required.
+        self.address_id = address_id
+        self.available_mode = available_mode
+        self.client_token = client_token
+        self.manual_available_status = manual_available_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.address_id is not None:
+            result['AddressId'] = self.address_id
+        if self.available_mode is not None:
+            result['AvailableMode'] = self.available_mode
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.manual_available_status is not None:
+            result['ManualAvailableStatus'] = self.manual_available_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AddressId') is not None:
+            self.address_id = m.get('AddressId')
+        if m.get('AvailableMode') is not None:
+            self.available_mode = m.get('AvailableMode')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ManualAvailableStatus') is not None:
+            self.manual_available_status = m.get('ManualAvailableStatus')
+        return self
+
+
+class UpdateCloudGtmAddressManualAvailableStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateCloudGtmAddressManualAvailableStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateCloudGtmAddressManualAvailableStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateCloudGtmAddressManualAvailableStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateCloudGtmAddressPoolBasicConfigRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        address_pool_id: str = None,
+        address_pool_name: str = None,
+        client_token: str = None,
+        health_judgement: str = None,
+    ):
+        self.accept_language = accept_language
+        self.address_pool_id = address_pool_id
+        self.address_pool_name = address_pool_name
+        self.client_token = client_token
+        self.health_judgement = health_judgement
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.address_pool_id is not None:
+            result['AddressPoolId'] = self.address_pool_id
+        if self.address_pool_name is not None:
+            result['AddressPoolName'] = self.address_pool_name
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.health_judgement is not None:
+            result['HealthJudgement'] = self.health_judgement
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AddressPoolId') is not None:
+            self.address_pool_id = m.get('AddressPoolId')
+        if m.get('AddressPoolName') is not None:
+            self.address_pool_name = m.get('AddressPoolName')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('HealthJudgement') is not None:
+            self.health_judgement = m.get('HealthJudgement')
+        return self
+
+
+class UpdateCloudGtmAddressPoolBasicConfigResponseBody(TeaModel):
+    def __init__(
+        self,
+        address_pool_id: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.address_pool_id = address_pool_id
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_pool_id is not None:
+            result['AddressPoolId'] = self.address_pool_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressPoolId') is not None:
+            self.address_pool_id = m.get('AddressPoolId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateCloudGtmAddressPoolBasicConfigResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateCloudGtmAddressPoolBasicConfigResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateCloudGtmAddressPoolBasicConfigResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateCloudGtmAddressPoolEnableStatusRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        address_pool_id: str = None,
+        client_token: str = None,
+        enable_status: str = None,
+    ):
+        self.accept_language = accept_language
+        self.address_pool_id = address_pool_id
+        self.client_token = client_token
+        self.enable_status = enable_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.address_pool_id is not None:
+            result['AddressPoolId'] = self.address_pool_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AddressPoolId') is not None:
+            self.address_pool_id = m.get('AddressPoolId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
+        return self
+
+
+class UpdateCloudGtmAddressPoolEnableStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        address_pool_id: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.address_pool_id = address_pool_id
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_pool_id is not None:
+            result['AddressPoolId'] = self.address_pool_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressPoolId') is not None:
+            self.address_pool_id = m.get('AddressPoolId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateCloudGtmAddressPoolEnableStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateCloudGtmAddressPoolEnableStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateCloudGtmAddressPoolEnableStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateCloudGtmAddressPoolLbStrategyRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        address_lb_strategy: str = None,
+        address_pool_id: str = None,
+        client_token: str = None,
+        sequence_lb_strategy_mode: str = None,
+    ):
+        self.accept_language = accept_language
+        self.address_lb_strategy = address_lb_strategy
+        self.address_pool_id = address_pool_id
+        self.client_token = client_token
+        self.sequence_lb_strategy_mode = sequence_lb_strategy_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.address_lb_strategy is not None:
+            result['AddressLbStrategy'] = self.address_lb_strategy
+        if self.address_pool_id is not None:
+            result['AddressPoolId'] = self.address_pool_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.sequence_lb_strategy_mode is not None:
+            result['SequenceLbStrategyMode'] = self.sequence_lb_strategy_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AddressLbStrategy') is not None:
+            self.address_lb_strategy = m.get('AddressLbStrategy')
+        if m.get('AddressPoolId') is not None:
+            self.address_pool_id = m.get('AddressPoolId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('SequenceLbStrategyMode') is not None:
+            self.sequence_lb_strategy_mode = m.get('SequenceLbStrategyMode')
+        return self
+
+
+class UpdateCloudGtmAddressPoolLbStrategyResponseBody(TeaModel):
+    def __init__(
+        self,
+        address_pool_id: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.address_pool_id = address_pool_id
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_pool_id is not None:
+            result['AddressPoolId'] = self.address_pool_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressPoolId') is not None:
+            self.address_pool_id = m.get('AddressPoolId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateCloudGtmAddressPoolLbStrategyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateCloudGtmAddressPoolLbStrategyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateCloudGtmAddressPoolLbStrategyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateCloudGtmAddressPoolRemarkRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        address_pool_id: str = None,
+        client_token: str = None,
+        remark: str = None,
+    ):
+        self.accept_language = accept_language
+        self.address_pool_id = address_pool_id
+        self.client_token = client_token
+        self.remark = remark
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.address_pool_id is not None:
+            result['AddressPoolId'] = self.address_pool_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AddressPoolId') is not None:
+            self.address_pool_id = m.get('AddressPoolId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        return self
+
+
+class UpdateCloudGtmAddressPoolRemarkResponseBody(TeaModel):
+    def __init__(
+        self,
+        address_pool_id: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.address_pool_id = address_pool_id
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.address_pool_id is not None:
+            result['AddressPoolId'] = self.address_pool_id
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AddressPoolId') is not None:
+            self.address_pool_id = m.get('AddressPoolId')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateCloudGtmAddressPoolRemarkResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateCloudGtmAddressPoolRemarkResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateCloudGtmAddressPoolRemarkResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateCloudGtmAddressRemarkRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        address_id: str = None,
+        client_token: str = None,
+        remark: str = None,
+    ):
+        self.accept_language = accept_language
+        # This parameter is required.
+        self.address_id = address_id
+        self.client_token = client_token
+        self.remark = remark
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.address_id is not None:
+            result['AddressId'] = self.address_id
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AddressId') is not None:
+            self.address_id = m.get('AddressId')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        return self
+
+
+class UpdateCloudGtmAddressRemarkResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateCloudGtmAddressRemarkResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateCloudGtmAddressRemarkResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateCloudGtmAddressRemarkResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateCloudGtmGlobalAlertRequestAlertConfig(TeaModel):
+    def __init__(
+        self,
+        dingtalk_notice: bool = None,
+        email_notice: bool = None,
+        notice_type: str = None,
+        sms_notice: bool = None,
+    ):
+        self.dingtalk_notice = dingtalk_notice
+        self.email_notice = email_notice
+        self.notice_type = notice_type
+        self.sms_notice = sms_notice
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dingtalk_notice is not None:
+            result['DingtalkNotice'] = self.dingtalk_notice
+        if self.email_notice is not None:
+            result['EmailNotice'] = self.email_notice
+        if self.notice_type is not None:
+            result['NoticeType'] = self.notice_type
+        if self.sms_notice is not None:
+            result['SmsNotice'] = self.sms_notice
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DingtalkNotice') is not None:
+            self.dingtalk_notice = m.get('DingtalkNotice')
+        if m.get('EmailNotice') is not None:
+            self.email_notice = m.get('EmailNotice')
+        if m.get('NoticeType') is not None:
+            self.notice_type = m.get('NoticeType')
+        if m.get('SmsNotice') is not None:
+            self.sms_notice = m.get('SmsNotice')
+        return self
+
+
+class UpdateCloudGtmGlobalAlertRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        alert_config: List[UpdateCloudGtmGlobalAlertRequestAlertConfig] = None,
+        alert_group: List[str] = None,
+        client_token: str = None,
+    ):
+        self.accept_language = accept_language
+        self.alert_config = alert_config
+        self.alert_group = alert_group
+        self.client_token = client_token
+
+    def validate(self):
+        if self.alert_config:
+            for k in self.alert_config:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        result['AlertConfig'] = []
+        if self.alert_config is not None:
+            for k in self.alert_config:
+                result['AlertConfig'].append(k.to_map() if k else None)
+        if self.alert_group is not None:
+            result['AlertGroup'] = self.alert_group
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        self.alert_config = []
+        if m.get('AlertConfig') is not None:
+            for k in m.get('AlertConfig'):
+                temp_model = UpdateCloudGtmGlobalAlertRequestAlertConfig()
+                self.alert_config.append(temp_model.from_map(k))
+        if m.get('AlertGroup') is not None:
+            self.alert_group = m.get('AlertGroup')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        return self
+
+
+class UpdateCloudGtmGlobalAlertShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        alert_config_shrink: str = None,
+        alert_group_shrink: str = None,
+        client_token: str = None,
+    ):
+        self.accept_language = accept_language
+        self.alert_config_shrink = alert_config_shrink
+        self.alert_group_shrink = alert_group_shrink
+        self.client_token = client_token
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.alert_config_shrink is not None:
+            result['AlertConfig'] = self.alert_config_shrink
+        if self.alert_group_shrink is not None:
+            result['AlertGroup'] = self.alert_group_shrink
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AlertConfig') is not None:
+            self.alert_config_shrink = m.get('AlertConfig')
+        if m.get('AlertGroup') is not None:
+            self.alert_group_shrink = m.get('AlertGroup')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        return self
+
+
+class UpdateCloudGtmGlobalAlertResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateCloudGtmGlobalAlertResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateCloudGtmGlobalAlertResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateCloudGtmGlobalAlertResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateCloudGtmInstanceConfigAlertRequestAlertConfig(TeaModel):
+    def __init__(
+        self,
+        dingtalk_notice: bool = None,
+        email_notice: bool = None,
+        notice_type: str = None,
+        sms_notice: bool = None,
+    ):
+        self.dingtalk_notice = dingtalk_notice
+        self.email_notice = email_notice
+        self.notice_type = notice_type
+        self.sms_notice = sms_notice
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dingtalk_notice is not None:
+            result['DingtalkNotice'] = self.dingtalk_notice
+        if self.email_notice is not None:
+            result['EmailNotice'] = self.email_notice
+        if self.notice_type is not None:
+            result['NoticeType'] = self.notice_type
+        if self.sms_notice is not None:
+            result['SmsNotice'] = self.sms_notice
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DingtalkNotice') is not None:
+            self.dingtalk_notice = m.get('DingtalkNotice')
+        if m.get('EmailNotice') is not None:
+            self.email_notice = m.get('EmailNotice')
+        if m.get('NoticeType') is not None:
+            self.notice_type = m.get('NoticeType')
+        if m.get('SmsNotice') is not None:
+            self.sms_notice = m.get('SmsNotice')
+        return self
+
+
+class UpdateCloudGtmInstanceConfigAlertRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        alert_config: List[UpdateCloudGtmInstanceConfigAlertRequestAlertConfig] = None,
+        alert_group: List[str] = None,
+        alert_mode: str = None,
+        client_token: str = None,
+        config_id: str = None,
+        instance_id: str = None,
+    ):
+        self.accept_language = accept_language
+        self.alert_config = alert_config
+        self.alert_group = alert_group
+        self.alert_mode = alert_mode
+        self.client_token = client_token
+        self.config_id = config_id
+        self.instance_id = instance_id
+
+    def validate(self):
+        if self.alert_config:
+            for k in self.alert_config:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        result['AlertConfig'] = []
+        if self.alert_config is not None:
+            for k in self.alert_config:
+                result['AlertConfig'].append(k.to_map() if k else None)
+        if self.alert_group is not None:
+            result['AlertGroup'] = self.alert_group
+        if self.alert_mode is not None:
+            result['AlertMode'] = self.alert_mode
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        self.alert_config = []
+        if m.get('AlertConfig') is not None:
+            for k in m.get('AlertConfig'):
+                temp_model = UpdateCloudGtmInstanceConfigAlertRequestAlertConfig()
+                self.alert_config.append(temp_model.from_map(k))
+        if m.get('AlertGroup') is not None:
+            self.alert_group = m.get('AlertGroup')
+        if m.get('AlertMode') is not None:
+            self.alert_mode = m.get('AlertMode')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class UpdateCloudGtmInstanceConfigAlertShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        alert_config_shrink: str = None,
+        alert_group_shrink: str = None,
+        alert_mode: str = None,
+        client_token: str = None,
+        config_id: str = None,
+        instance_id: str = None,
+    ):
+        self.accept_language = accept_language
+        self.alert_config_shrink = alert_config_shrink
+        self.alert_group_shrink = alert_group_shrink
+        self.alert_mode = alert_mode
+        self.client_token = client_token
+        self.config_id = config_id
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.alert_config_shrink is not None:
+            result['AlertConfig'] = self.alert_config_shrink
+        if self.alert_group_shrink is not None:
+            result['AlertGroup'] = self.alert_group_shrink
+        if self.alert_mode is not None:
+            result['AlertMode'] = self.alert_mode
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AlertConfig') is not None:
+            self.alert_config_shrink = m.get('AlertConfig')
+        if m.get('AlertGroup') is not None:
+            self.alert_group_shrink = m.get('AlertGroup')
+        if m.get('AlertMode') is not None:
+            self.alert_mode = m.get('AlertMode')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class UpdateCloudGtmInstanceConfigAlertResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateCloudGtmInstanceConfigAlertResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateCloudGtmInstanceConfigAlertResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateCloudGtmInstanceConfigAlertResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateCloudGtmInstanceConfigBasicRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        client_token: str = None,
+        config_id: str = None,
+        instance_id: str = None,
+        schedule_hostname: str = None,
+        schedule_zone_name: str = None,
+        ttl: int = None,
+    ):
+        self.accept_language = accept_language
+        self.client_token = client_token
+        self.config_id = config_id
+        self.instance_id = instance_id
+        self.schedule_hostname = schedule_hostname
+        self.schedule_zone_name = schedule_zone_name
+        self.ttl = ttl
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.schedule_hostname is not None:
+            result['ScheduleHostname'] = self.schedule_hostname
+        if self.schedule_zone_name is not None:
+            result['ScheduleZoneName'] = self.schedule_zone_name
+        if self.ttl is not None:
+            result['Ttl'] = self.ttl
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('ScheduleHostname') is not None:
+            self.schedule_hostname = m.get('ScheduleHostname')
+        if m.get('ScheduleZoneName') is not None:
+            self.schedule_zone_name = m.get('ScheduleZoneName')
+        if m.get('Ttl') is not None:
+            self.ttl = m.get('Ttl')
+        return self
+
+
+class UpdateCloudGtmInstanceConfigBasicResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateCloudGtmInstanceConfigBasicResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateCloudGtmInstanceConfigBasicResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateCloudGtmInstanceConfigBasicResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateCloudGtmInstanceConfigEnableStatusRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        client_token: str = None,
+        config_id: str = None,
+        enable_status: str = None,
+        instance_id: str = None,
+    ):
+        self.accept_language = accept_language
+        self.client_token = client_token
+        self.config_id = config_id
+        self.enable_status = enable_status
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.enable_status is not None:
+            result['EnableStatus'] = self.enable_status
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('EnableStatus') is not None:
+            self.enable_status = m.get('EnableStatus')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        return self
+
+
+class UpdateCloudGtmInstanceConfigEnableStatusResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateCloudGtmInstanceConfigEnableStatusResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateCloudGtmInstanceConfigEnableStatusResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateCloudGtmInstanceConfigEnableStatusResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateCloudGtmInstanceConfigLbStrategyRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        address_pool_lb_strategy: str = None,
+        client_token: str = None,
+        config_id: str = None,
+        instance_id: str = None,
+        sequence_lb_strategy_mode: str = None,
+    ):
+        self.accept_language = accept_language
+        self.address_pool_lb_strategy = address_pool_lb_strategy
+        self.client_token = client_token
+        self.config_id = config_id
+        self.instance_id = instance_id
+        self.sequence_lb_strategy_mode = sequence_lb_strategy_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.address_pool_lb_strategy is not None:
+            result['AddressPoolLbStrategy'] = self.address_pool_lb_strategy
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.sequence_lb_strategy_mode is not None:
+            result['SequenceLbStrategyMode'] = self.sequence_lb_strategy_mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('AddressPoolLbStrategy') is not None:
+            self.address_pool_lb_strategy = m.get('AddressPoolLbStrategy')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('SequenceLbStrategyMode') is not None:
+            self.sequence_lb_strategy_mode = m.get('SequenceLbStrategyMode')
+        return self
+
+
+class UpdateCloudGtmInstanceConfigLbStrategyResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateCloudGtmInstanceConfigLbStrategyResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateCloudGtmInstanceConfigLbStrategyResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateCloudGtmInstanceConfigLbStrategyResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateCloudGtmInstanceConfigRemarkRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        client_token: str = None,
+        config_id: str = None,
+        instance_id: str = None,
+        remark: str = None,
+    ):
+        self.accept_language = accept_language
+        self.client_token = client_token
+        self.config_id = config_id
+        self.instance_id = instance_id
+        self.remark = remark
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.config_id is not None:
+            result['ConfigId'] = self.config_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('ConfigId') is not None:
+            self.config_id = m.get('ConfigId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        return self
+
+
+class UpdateCloudGtmInstanceConfigRemarkResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateCloudGtmInstanceConfigRemarkResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateCloudGtmInstanceConfigRemarkResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateCloudGtmInstanceConfigRemarkResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateCloudGtmInstanceNameRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        client_token: str = None,
+        instance_id: str = None,
+        instance_name: str = None,
+    ):
+        self.accept_language = accept_language
+        self.client_token = client_token
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        return self
+
+
+class UpdateCloudGtmInstanceNameResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateCloudGtmInstanceNameResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateCloudGtmInstanceNameResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateCloudGtmInstanceNameResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateCloudGtmMonitorTemplateRequestIspCityNodes(TeaModel):
+    def __init__(
+        self,
+        city_code: str = None,
+        isp_code: str = None,
+    ):
+        self.city_code = city_code
+        self.isp_code = isp_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.city_code is not None:
+            result['CityCode'] = self.city_code
+        if self.isp_code is not None:
+            result['IspCode'] = self.isp_code
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CityCode') is not None:
+            self.city_code = m.get('CityCode')
+        if m.get('IspCode') is not None:
+            self.isp_code = m.get('IspCode')
+        return self
+
+
+class UpdateCloudGtmMonitorTemplateRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        client_token: str = None,
+        evaluation_count: int = None,
+        extend_info: str = None,
+        failure_rate: int = None,
+        interval: int = None,
+        isp_city_nodes: List[UpdateCloudGtmMonitorTemplateRequestIspCityNodes] = None,
+        name: str = None,
+        template_id: str = None,
+        timeout: int = None,
+    ):
+        self.accept_language = accept_language
+        self.client_token = client_token
+        self.evaluation_count = evaluation_count
+        self.extend_info = extend_info
+        self.failure_rate = failure_rate
+        self.interval = interval
+        self.isp_city_nodes = isp_city_nodes
+        self.name = name
+        # This parameter is required.
+        self.template_id = template_id
+        self.timeout = timeout
+
+    def validate(self):
+        if self.isp_city_nodes:
+            for k in self.isp_city_nodes:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.evaluation_count is not None:
+            result['EvaluationCount'] = self.evaluation_count
+        if self.extend_info is not None:
+            result['ExtendInfo'] = self.extend_info
+        if self.failure_rate is not None:
+            result['FailureRate'] = self.failure_rate
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        result['IspCityNodes'] = []
+        if self.isp_city_nodes is not None:
+            for k in self.isp_city_nodes:
+                result['IspCityNodes'].append(k.to_map() if k else None)
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('EvaluationCount') is not None:
+            self.evaluation_count = m.get('EvaluationCount')
+        if m.get('ExtendInfo') is not None:
+            self.extend_info = m.get('ExtendInfo')
+        if m.get('FailureRate') is not None:
+            self.failure_rate = m.get('FailureRate')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        self.isp_city_nodes = []
+        if m.get('IspCityNodes') is not None:
+            for k in m.get('IspCityNodes'):
+                temp_model = UpdateCloudGtmMonitorTemplateRequestIspCityNodes()
+                self.isp_city_nodes.append(temp_model.from_map(k))
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        return self
+
+
+class UpdateCloudGtmMonitorTemplateShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        client_token: str = None,
+        evaluation_count: int = None,
+        extend_info: str = None,
+        failure_rate: int = None,
+        interval: int = None,
+        isp_city_nodes_shrink: str = None,
+        name: str = None,
+        template_id: str = None,
+        timeout: int = None,
+    ):
+        self.accept_language = accept_language
+        self.client_token = client_token
+        self.evaluation_count = evaluation_count
+        self.extend_info = extend_info
+        self.failure_rate = failure_rate
+        self.interval = interval
+        self.isp_city_nodes_shrink = isp_city_nodes_shrink
+        self.name = name
+        # This parameter is required.
+        self.template_id = template_id
+        self.timeout = timeout
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.evaluation_count is not None:
+            result['EvaluationCount'] = self.evaluation_count
+        if self.extend_info is not None:
+            result['ExtendInfo'] = self.extend_info
+        if self.failure_rate is not None:
+            result['FailureRate'] = self.failure_rate
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.isp_city_nodes_shrink is not None:
+            result['IspCityNodes'] = self.isp_city_nodes_shrink
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        if self.timeout is not None:
+            result['Timeout'] = self.timeout
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('EvaluationCount') is not None:
+            self.evaluation_count = m.get('EvaluationCount')
+        if m.get('ExtendInfo') is not None:
+            self.extend_info = m.get('ExtendInfo')
+        if m.get('FailureRate') is not None:
+            self.failure_rate = m.get('FailureRate')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('IspCityNodes') is not None:
+            self.isp_city_nodes_shrink = m.get('IspCityNodes')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        if m.get('Timeout') is not None:
+            self.timeout = m.get('Timeout')
+        return self
+
+
+class UpdateCloudGtmMonitorTemplateResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateCloudGtmMonitorTemplateResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateCloudGtmMonitorTemplateResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateCloudGtmMonitorTemplateResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UpdateCloudGtmMonitorTemplateRemarkRequest(TeaModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        client_token: str = None,
+        remark: str = None,
+        template_id: str = None,
+    ):
+        self.accept_language = accept_language
+        self.client_token = client_token
+        self.remark = remark
+        # This parameter is required.
+        self.template_id = template_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+        if self.remark is not None:
+            result['Remark'] = self.remark
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+        return self
+
+
+class UpdateCloudGtmMonitorTemplateRemarkResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        return self
+
+
+class UpdateCloudGtmMonitorTemplateRemarkResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UpdateCloudGtmMonitorTemplateRemarkResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UpdateCloudGtmMonitorTemplateRemarkResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
