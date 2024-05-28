@@ -1,3 +1,17 @@
+2024-05-28 Version: 3.8.0
+- Support API BindDBResourceGroupWithRole.
+- Support API CreateDBResourceGroup.
+- Support API DeleteDBResourceGroup.
+- Support API DescribeDBResourceGroup.
+- Support API DescribeRoles.
+- Support API DisableDBResourceGroup.
+- Support API EnableDBResourceGroup.
+- Support API ModifyDBResourceGroup.
+- Support API PauseDataRedistribute.
+- Support API ResumeDataRedistribute.
+- Support API UnbindDBResourceGroupWithRole.
+
+
 2024-05-17 Version: 3.7.0
 - Support API CheckHadoopDataSource.
 - Support API CheckHadoopNetConnection.

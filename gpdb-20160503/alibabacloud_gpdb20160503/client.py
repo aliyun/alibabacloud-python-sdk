@@ -13,9 +13,9 @@ from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 from alibabacloud_openplatform20191219.client import Client as OpenPlatformClient
 from alibabacloud_openplatform20191219 import models as open_platform_models
 from alibabacloud_oss_sdk import models as oss_models
+from alibabacloud_oss_sdk.client import Client as OSSClient
 from alibabacloud_tea_fileform import models as file_form_models
 from alibabacloud_oss_util import models as ossutil_models
-from alibabacloud_oss_sdk.client import Client as OSSClient
 
 
 class Client(OpenApiClient):
@@ -197,6 +197,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.allocate_instance_public_connection_with_options_async(request, runtime)
+
+    def bind_dbresource_group_with_role_with_options(
+        self,
+        tmp_req: gpdb_20160503_models.BindDBResourceGroupWithRoleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.BindDBResourceGroupWithRoleResponse:
+        """
+        @summary 将资源组与数据库角色进行绑定
+        
+        @param tmp_req: BindDBResourceGroupWithRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindDBResourceGroupWithRoleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = gpdb_20160503_models.BindDBResourceGroupWithRoleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.role_list):
+            request.role_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.role_list, 'RoleList', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
+        if not UtilClient.is_unset(request.role_list_shrink):
+            query['RoleList'] = request.role_list_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindDBResourceGroupWithRole',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.BindDBResourceGroupWithRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def bind_dbresource_group_with_role_with_options_async(
+        self,
+        tmp_req: gpdb_20160503_models.BindDBResourceGroupWithRoleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.BindDBResourceGroupWithRoleResponse:
+        """
+        @summary 将资源组与数据库角色进行绑定
+        
+        @param tmp_req: BindDBResourceGroupWithRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindDBResourceGroupWithRoleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = gpdb_20160503_models.BindDBResourceGroupWithRoleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.role_list):
+            request.role_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.role_list, 'RoleList', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
+        if not UtilClient.is_unset(request.role_list_shrink):
+            query['RoleList'] = request.role_list_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='BindDBResourceGroupWithRole',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.BindDBResourceGroupWithRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def bind_dbresource_group_with_role(
+        self,
+        request: gpdb_20160503_models.BindDBResourceGroupWithRoleRequest,
+    ) -> gpdb_20160503_models.BindDBResourceGroupWithRoleResponse:
+        """
+        @summary 将资源组与数据库角色进行绑定
+        
+        @param request: BindDBResourceGroupWithRoleRequest
+        @return: BindDBResourceGroupWithRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.bind_dbresource_group_with_role_with_options(request, runtime)
+
+    async def bind_dbresource_group_with_role_async(
+        self,
+        request: gpdb_20160503_models.BindDBResourceGroupWithRoleRequest,
+    ) -> gpdb_20160503_models.BindDBResourceGroupWithRoleResponse:
+        """
+        @summary 将资源组与数据库角色进行绑定
+        
+        @param request: BindDBResourceGroupWithRoleRequest
+        @return: BindDBResourceGroupWithRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.bind_dbresource_group_with_role_with_options_async(request, runtime)
 
     def cancel_upload_document_job_with_options(
         self,
@@ -1565,6 +1681,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.create_dbinstance_plan_with_options_async(request, runtime)
+
+    def create_dbresource_group_with_options(
+        self,
+        request: gpdb_20160503_models.CreateDBResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CreateDBResourceGroupResponse:
+        """
+        @summary 创建资源组
+        
+        @param request: CreateDBResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDBResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_config):
+            query['ResourceGroupConfig'] = request.resource_group_config
+        if not UtilClient.is_unset(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDBResourceGroup',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.CreateDBResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_dbresource_group_with_options_async(
+        self,
+        request: gpdb_20160503_models.CreateDBResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.CreateDBResourceGroupResponse:
+        """
+        @summary 创建资源组
+        
+        @param request: CreateDBResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDBResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_config):
+            query['ResourceGroupConfig'] = request.resource_group_config
+        if not UtilClient.is_unset(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='CreateDBResourceGroup',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.CreateDBResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_dbresource_group(
+        self,
+        request: gpdb_20160503_models.CreateDBResourceGroupRequest,
+    ) -> gpdb_20160503_models.CreateDBResourceGroupResponse:
+        """
+        @summary 创建资源组
+        
+        @param request: CreateDBResourceGroupRequest
+        @return: CreateDBResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.create_dbresource_group_with_options(request, runtime)
+
+    async def create_dbresource_group_async(
+        self,
+        request: gpdb_20160503_models.CreateDBResourceGroupRequest,
+    ) -> gpdb_20160503_models.CreateDBResourceGroupResponse:
+        """
+        @summary 创建资源组
+        
+        @param request: CreateDBResourceGroupRequest
+        @return: CreateDBResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.create_dbresource_group_with_options_async(request, runtime)
 
     def create_document_collection_with_options(
         self,
@@ -3621,6 +3845,110 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.delete_dbinstance_plan_with_options_async(request, runtime)
+
+    def delete_dbresource_group_with_options(
+        self,
+        request: gpdb_20160503_models.DeleteDBResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DeleteDBResourceGroupResponse:
+        """
+        @summary 删除资源组
+        
+        @param request: DeleteDBResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDBResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDBResourceGroup',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DeleteDBResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_dbresource_group_with_options_async(
+        self,
+        request: gpdb_20160503_models.DeleteDBResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DeleteDBResourceGroupResponse:
+        """
+        @summary 删除资源组
+        
+        @param request: DeleteDBResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDBResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteDBResourceGroup',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DeleteDBResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_dbresource_group(
+        self,
+        request: gpdb_20160503_models.DeleteDBResourceGroupRequest,
+    ) -> gpdb_20160503_models.DeleteDBResourceGroupResponse:
+        """
+        @summary 删除资源组
+        
+        @param request: DeleteDBResourceGroupRequest
+        @return: DeleteDBResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_dbresource_group_with_options(request, runtime)
+
+    async def delete_dbresource_group_async(
+        self,
+        request: gpdb_20160503_models.DeleteDBResourceGroupRequest,
+    ) -> gpdb_20160503_models.DeleteDBResourceGroupResponse:
+        """
+        @summary 删除资源组
+        
+        @param request: DeleteDBResourceGroupRequest
+        @return: DeleteDBResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_dbresource_group_with_options_async(request, runtime)
 
     def delete_document_with_options(
         self,
@@ -7262,6 +7590,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_dbinstances_with_options_async(request, runtime)
 
+    def describe_dbresource_group_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeDBResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeDBResourceGroupResponse:
+        """
+        @summary 获取资源组信息
+        
+        @param request: DescribeDBResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBResourceGroup',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeDBResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbresource_group_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeDBResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeDBResourceGroupResponse:
+        """
+        @summary 获取资源组信息
+        
+        @param request: DescribeDBResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDBResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeDBResourceGroup',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeDBResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbresource_group(
+        self,
+        request: gpdb_20160503_models.DescribeDBResourceGroupRequest,
+    ) -> gpdb_20160503_models.DescribeDBResourceGroupResponse:
+        """
+        @summary 获取资源组信息
+        
+        @param request: DescribeDBResourceGroupRequest
+        @return: DescribeDBResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_dbresource_group_with_options(request, runtime)
+
+    async def describe_dbresource_group_async(
+        self,
+        request: gpdb_20160503_models.DescribeDBResourceGroupRequest,
+    ) -> gpdb_20160503_models.DescribeDBResourceGroupResponse:
+        """
+        @summary 获取资源组信息
+        
+        @param request: DescribeDBResourceGroupRequest
+        @return: DescribeDBResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_dbresource_group_with_options_async(request, runtime)
+
     def describe_dbresource_management_mode_with_options(
         self,
         request: gpdb_20160503_models.DescribeDBResourceManagementModeRequest,
@@ -10370,6 +10802,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
 
+    def describe_roles_with_options(
+        self,
+        request: gpdb_20160503_models.DescribeRolesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeRolesResponse:
+        """
+        @summary 获取角色列表
+        
+        @param request: DescribeRolesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRolesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRoles',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeRolesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_roles_with_options_async(
+        self,
+        request: gpdb_20160503_models.DescribeRolesRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DescribeRolesResponse:
+        """
+        @summary 获取角色列表
+        
+        @param request: DescribeRolesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRolesResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeRoles',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DescribeRolesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_roles(
+        self,
+        request: gpdb_20160503_models.DescribeRolesRequest,
+    ) -> gpdb_20160503_models.DescribeRolesResponse:
+        """
+        @summary 获取角色列表
+        
+        @param request: DescribeRolesRequest
+        @return: DescribeRolesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_roles_with_options(request, runtime)
+
+    async def describe_roles_async(
+        self,
+        request: gpdb_20160503_models.DescribeRolesRequest,
+    ) -> gpdb_20160503_models.DescribeRolesResponse:
+        """
+        @summary 获取角色列表
+        
+        @param request: DescribeRolesRequest
+        @return: DescribeRolesResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_roles_with_options_async(request, runtime)
+
     def describe_sqllog_count_with_options(
         self,
         request: gpdb_20160503_models.DescribeSQLLogCountRequest,
@@ -11870,6 +12402,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_waiting_sqlrecords_with_options_async(request, runtime)
 
+    def disable_dbresource_group_with_options(
+        self,
+        request: gpdb_20160503_models.DisableDBResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DisableDBResourceGroupResponse:
+        """
+        @summary 关闭资源组
+        
+        @param request: DisableDBResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableDBResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableDBResourceGroup',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DisableDBResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_dbresource_group_with_options_async(
+        self,
+        request: gpdb_20160503_models.DisableDBResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.DisableDBResourceGroupResponse:
+        """
+        @summary 关闭资源组
+        
+        @param request: DisableDBResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableDBResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DisableDBResourceGroup',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.DisableDBResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_dbresource_group(
+        self,
+        request: gpdb_20160503_models.DisableDBResourceGroupRequest,
+    ) -> gpdb_20160503_models.DisableDBResourceGroupResponse:
+        """
+        @summary 关闭资源组
+        
+        @param request: DisableDBResourceGroupRequest
+        @return: DisableDBResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.disable_dbresource_group_with_options(request, runtime)
+
+    async def disable_dbresource_group_async(
+        self,
+        request: gpdb_20160503_models.DisableDBResourceGroupRequest,
+    ) -> gpdb_20160503_models.DisableDBResourceGroupResponse:
+        """
+        @summary 关闭资源组
+        
+        @param request: DisableDBResourceGroupRequest
+        @return: DisableDBResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.disable_dbresource_group_with_options_async(request, runtime)
+
     def download_diagnosis_records_with_options(
         self,
         request: gpdb_20160503_models.DownloadDiagnosisRecordsRequest,
@@ -12169,6 +12801,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.download_sqllogs_records_with_options_async(request, runtime)
+
+    def enable_dbresource_group_with_options(
+        self,
+        request: gpdb_20160503_models.EnableDBResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.EnableDBResourceGroupResponse:
+        """
+        @summary 开启资源组
+        
+        @param request: EnableDBResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableDBResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableDBResourceGroup',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.EnableDBResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_dbresource_group_with_options_async(
+        self,
+        request: gpdb_20160503_models.EnableDBResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.EnableDBResourceGroupResponse:
+        """
+        @summary 开启资源组
+        
+        @param request: EnableDBResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableDBResourceGroupResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='EnableDBResourceGroup',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.EnableDBResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_dbresource_group(
+        self,
+        request: gpdb_20160503_models.EnableDBResourceGroupRequest,
+    ) -> gpdb_20160503_models.EnableDBResourceGroupResponse:
+        """
+        @summary 开启资源组
+        
+        @param request: EnableDBResourceGroupRequest
+        @return: EnableDBResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.enable_dbresource_group_with_options(request, runtime)
+
+    async def enable_dbresource_group_async(
+        self,
+        request: gpdb_20160503_models.EnableDBResourceGroupRequest,
+    ) -> gpdb_20160503_models.EnableDBResourceGroupResponse:
+        """
+        @summary 开启资源组
+        
+        @param request: EnableDBResourceGroupRequest
+        @return: EnableDBResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.enable_dbresource_group_with_options_async(request, runtime)
 
     def get_upload_document_job_with_options(
         self,
@@ -14914,6 +15646,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_dbinstance_sslwith_options_async(request, runtime)
 
+    def modify_dbresource_group_with_options(
+        self,
+        tmp_req: gpdb_20160503_models.ModifyDBResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ModifyDBResourceGroupResponse:
+        """
+        @summary 修改资源组
+        
+        @param tmp_req: ModifyDBResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBResourceGroupResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = gpdb_20160503_models.ModifyDBResourceGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_group_items):
+            request.resource_group_items_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_group_items, 'ResourceGroupItems', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_items_shrink):
+            query['ResourceGroupItems'] = request.resource_group_items_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBResourceGroup',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ModifyDBResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dbresource_group_with_options_async(
+        self,
+        tmp_req: gpdb_20160503_models.ModifyDBResourceGroupRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ModifyDBResourceGroupResponse:
+        """
+        @summary 修改资源组
+        
+        @param tmp_req: ModifyDBResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDBResourceGroupResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = gpdb_20160503_models.ModifyDBResourceGroupShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.resource_group_items):
+            request.resource_group_items_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_group_items, 'ResourceGroupItems', 'json')
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_items_shrink):
+            query['ResourceGroupItems'] = request.resource_group_items_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyDBResourceGroup',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ModifyDBResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dbresource_group(
+        self,
+        request: gpdb_20160503_models.ModifyDBResourceGroupRequest,
+    ) -> gpdb_20160503_models.ModifyDBResourceGroupResponse:
+        """
+        @summary 修改资源组
+        
+        @param request: ModifyDBResourceGroupRequest
+        @return: ModifyDBResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_dbresource_group_with_options(request, runtime)
+
+    async def modify_dbresource_group_async(
+        self,
+        request: gpdb_20160503_models.ModifyDBResourceGroupRequest,
+    ) -> gpdb_20160503_models.ModifyDBResourceGroupResponse:
+        """
+        @summary 修改资源组
+        
+        @param request: ModifyDBResourceGroupRequest
+        @return: ModifyDBResourceGroupResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_dbresource_group_with_options_async(request, runtime)
+
     def modify_external_data_service_with_options(
         self,
         request: gpdb_20160503_models.ModifyExternalDataServiceRequest,
@@ -16274,6 +17118,106 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.modify_vector_configuration_with_options_async(request, runtime)
 
+    def pause_data_redistribute_with_options(
+        self,
+        request: gpdb_20160503_models.PauseDataRedistributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.PauseDataRedistributeResponse:
+        """
+        @summary 暂停数据重分布
+        
+        @param request: PauseDataRedistributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PauseDataRedistributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PauseDataRedistribute',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.PauseDataRedistributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def pause_data_redistribute_with_options_async(
+        self,
+        request: gpdb_20160503_models.PauseDataRedistributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.PauseDataRedistributeResponse:
+        """
+        @summary 暂停数据重分布
+        
+        @param request: PauseDataRedistributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PauseDataRedistributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='PauseDataRedistribute',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.PauseDataRedistributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def pause_data_redistribute(
+        self,
+        request: gpdb_20160503_models.PauseDataRedistributeRequest,
+    ) -> gpdb_20160503_models.PauseDataRedistributeResponse:
+        """
+        @summary 暂停数据重分布
+        
+        @param request: PauseDataRedistributeRequest
+        @return: PauseDataRedistributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.pause_data_redistribute_with_options(request, runtime)
+
+    async def pause_data_redistribute_async(
+        self,
+        request: gpdb_20160503_models.PauseDataRedistributeRequest,
+    ) -> gpdb_20160503_models.PauseDataRedistributeResponse:
+        """
+        @summary 暂停数据重分布
+        
+        @param request: PauseDataRedistributeRequest
+        @return: PauseDataRedistributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.pause_data_redistribute_with_options_async(request, runtime)
+
     def pause_instance_with_options(
         self,
         request: gpdb_20160503_models.PauseInstanceRequest,
@@ -16761,7 +17705,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -16781,12 +17725,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -16832,7 +17777,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -16852,12 +17797,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -17415,6 +18361,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.restart_dbinstance_with_options_async(request, runtime)
+
+    def resume_data_redistribute_with_options(
+        self,
+        request: gpdb_20160503_models.ResumeDataRedistributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ResumeDataRedistributeResponse:
+        """
+        @summary 恢复数据重分布
+        
+        @param request: ResumeDataRedistributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeDataRedistributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResumeDataRedistribute',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ResumeDataRedistributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def resume_data_redistribute_with_options_async(
+        self,
+        request: gpdb_20160503_models.ResumeDataRedistributeRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.ResumeDataRedistributeResponse:
+        """
+        @summary 恢复数据重分布
+        
+        @param request: ResumeDataRedistributeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeDataRedistributeResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ResumeDataRedistribute',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.ResumeDataRedistributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def resume_data_redistribute(
+        self,
+        request: gpdb_20160503_models.ResumeDataRedistributeRequest,
+    ) -> gpdb_20160503_models.ResumeDataRedistributeResponse:
+        """
+        @summary 恢复数据重分布
+        
+        @param request: ResumeDataRedistributeRequest
+        @return: ResumeDataRedistributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.resume_data_redistribute_with_options(request, runtime)
+
+    async def resume_data_redistribute_async(
+        self,
+        request: gpdb_20160503_models.ResumeDataRedistributeRequest,
+    ) -> gpdb_20160503_models.ResumeDataRedistributeResponse:
+        """
+        @summary 恢复数据重分布
+        
+        @param request: ResumeDataRedistributeRequest
+        @return: ResumeDataRedistributeResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.resume_data_redistribute_with_options_async(request, runtime)
 
     def resume_instance_with_options(
         self,
@@ -18023,6 +19069,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
+
+    def unbind_dbresource_group_with_role_with_options(
+        self,
+        tmp_req: gpdb_20160503_models.UnbindDBResourceGroupWithRoleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.UnbindDBResourceGroupWithRoleResponse:
+        """
+        @summary 将资源组与数据库角色进行解绑
+        
+        @param tmp_req: UnbindDBResourceGroupWithRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindDBResourceGroupWithRoleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = gpdb_20160503_models.UnbindDBResourceGroupWithRoleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.role_list):
+            request.role_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.role_list, 'RoleList', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
+        if not UtilClient.is_unset(request.role_list_shrink):
+            query['RoleList'] = request.role_list_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnbindDBResourceGroupWithRole',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.UnbindDBResourceGroupWithRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def unbind_dbresource_group_with_role_with_options_async(
+        self,
+        tmp_req: gpdb_20160503_models.UnbindDBResourceGroupWithRoleRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> gpdb_20160503_models.UnbindDBResourceGroupWithRoleResponse:
+        """
+        @summary 将资源组与数据库角色进行解绑
+        
+        @param tmp_req: UnbindDBResourceGroupWithRoleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindDBResourceGroupWithRoleResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = gpdb_20160503_models.UnbindDBResourceGroupWithRoleShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.role_list):
+            request.role_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.role_list, 'RoleList', 'simple')
+        query = {}
+        if not UtilClient.is_unset(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not UtilClient.is_unset(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not UtilClient.is_unset(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
+        if not UtilClient.is_unset(request.role_list_shrink):
+            query['RoleList'] = request.role_list_shrink
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='UnbindDBResourceGroupWithRole',
+            version='2016-05-03',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            gpdb_20160503_models.UnbindDBResourceGroupWithRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def unbind_dbresource_group_with_role(
+        self,
+        request: gpdb_20160503_models.UnbindDBResourceGroupWithRoleRequest,
+    ) -> gpdb_20160503_models.UnbindDBResourceGroupWithRoleResponse:
+        """
+        @summary 将资源组与数据库角色进行解绑
+        
+        @param request: UnbindDBResourceGroupWithRoleRequest
+        @return: UnbindDBResourceGroupWithRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.unbind_dbresource_group_with_role_with_options(request, runtime)
+
+    async def unbind_dbresource_group_with_role_async(
+        self,
+        request: gpdb_20160503_models.UnbindDBResourceGroupWithRoleRequest,
+    ) -> gpdb_20160503_models.UnbindDBResourceGroupWithRoleResponse:
+        """
+        @summary 将资源组与数据库角色进行解绑
+        
+        @param request: UnbindDBResourceGroupWithRoleRequest
+        @return: UnbindDBResourceGroupWithRoleResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.unbind_dbresource_group_with_role_with_options_async(request, runtime)
 
     def unload_sample_data_with_options(
         self,
@@ -19115,7 +20277,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -19135,12 +20297,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -19186,7 +20349,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -19206,12 +20369,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -19649,7 +20813,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -19669,12 +20833,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -19720,7 +20885,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -19740,12 +20905,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()

@@ -155,6 +155,170 @@ class AllocateInstancePublicConnectionResponse(TeaModel):
         return self
 
 
+class BindDBResourceGroupWithRoleRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        owner_id: int = None,
+        resource_group_name: str = None,
+        role_list: List[str] = None,
+    ):
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.resource_group_name = resource_group_name
+        # This parameter is required.
+        self.role_list = role_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_group_name is not None:
+            result['ResourceGroupName'] = self.resource_group_name
+        if self.role_list is not None:
+            result['RoleList'] = self.role_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceGroupName') is not None:
+            self.resource_group_name = m.get('ResourceGroupName')
+        if m.get('RoleList') is not None:
+            self.role_list = m.get('RoleList')
+        return self
+
+
+class BindDBResourceGroupWithRoleShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        owner_id: int = None,
+        resource_group_name: str = None,
+        role_list_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.resource_group_name = resource_group_name
+        # This parameter is required.
+        self.role_list_shrink = role_list_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_group_name is not None:
+            result['ResourceGroupName'] = self.resource_group_name
+        if self.role_list_shrink is not None:
+            result['RoleList'] = self.role_list_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceGroupName') is not None:
+            self.resource_group_name = m.get('ResourceGroupName')
+        if m.get('RoleList') is not None:
+            self.role_list_shrink = m.get('RoleList')
+        return self
+
+
+class BindDBResourceGroupWithRoleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class BindDBResourceGroupWithRoleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: BindDBResourceGroupWithRoleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = BindDBResourceGroupWithRoleResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class CancelUploadDocumentJobRequest(TeaModel):
     def __init__(
         self,
@@ -2098,6 +2262,122 @@ class CreateDBInstancePlanResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = CreateDBInstancePlanResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class CreateDBResourceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        owner_id: int = None,
+        resource_group_config: str = None,
+        resource_group_name: str = None,
+    ):
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.resource_group_config = resource_group_config
+        # This parameter is required.
+        self.resource_group_name = resource_group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_group_config is not None:
+            result['ResourceGroupConfig'] = self.resource_group_config
+        if self.resource_group_name is not None:
+            result['ResourceGroupName'] = self.resource_group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceGroupConfig') is not None:
+            self.resource_group_config = m.get('ResourceGroupConfig')
+        if m.get('ResourceGroupName') is not None:
+            self.resource_group_name = m.get('ResourceGroupName')
+        return self
+
+
+class CreateDBResourceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class CreateDBResourceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateDBResourceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateDBResourceGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4715,6 +4995,115 @@ class DeleteDBInstancePlanResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DeleteDBInstancePlanResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteDBResourceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        owner_id: int = None,
+        resource_group_name: str = None,
+    ):
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.resource_group_name = resource_group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_group_name is not None:
+            result['ResourceGroupName'] = self.resource_group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceGroupName') is not None:
+            self.resource_group_name = m.get('ResourceGroupName')
+        return self
+
+
+class DeleteDBResourceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DeleteDBResourceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteDBResourceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteDBResourceGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -12201,6 +12590,225 @@ class DescribeDBInstancesResponse(TeaModel):
         return self
 
 
+class DescribeDBResourceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        owner_id: int = None,
+        resource_group_name: str = None,
+    ):
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        self.owner_id = owner_id
+        self.resource_group_name = resource_group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_group_name is not None:
+            result['ResourceGroupName'] = self.resource_group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceGroupName') is not None:
+            self.resource_group_name = m.get('ResourceGroupName')
+        return self
+
+
+class DescribeDBResourceGroupResponseBodyResourceGroupItemsResourceGroupItemRoleList(TeaModel):
+    def __init__(
+        self,
+        role: List[str] = None,
+    ):
+        self.role = role
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.role is not None:
+            result['Role'] = self.role
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
+        return self
+
+
+class DescribeDBResourceGroupResponseBodyResourceGroupItemsResourceGroupItem(TeaModel):
+    def __init__(
+        self,
+        resource_group_config: str = None,
+        resource_group_name: str = None,
+        role_list: DescribeDBResourceGroupResponseBodyResourceGroupItemsResourceGroupItemRoleList = None,
+    ):
+        self.resource_group_config = resource_group_config
+        self.resource_group_name = resource_group_name
+        self.role_list = role_list
+
+    def validate(self):
+        if self.role_list:
+            self.role_list.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_group_config is not None:
+            result['ResourceGroupConfig'] = self.resource_group_config
+        if self.resource_group_name is not None:
+            result['ResourceGroupName'] = self.resource_group_name
+        if self.role_list is not None:
+            result['RoleList'] = self.role_list.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceGroupConfig') is not None:
+            self.resource_group_config = m.get('ResourceGroupConfig')
+        if m.get('ResourceGroupName') is not None:
+            self.resource_group_name = m.get('ResourceGroupName')
+        if m.get('RoleList') is not None:
+            temp_model = DescribeDBResourceGroupResponseBodyResourceGroupItemsResourceGroupItemRoleList()
+            self.role_list = temp_model.from_map(m['RoleList'])
+        return self
+
+
+class DescribeDBResourceGroupResponseBodyResourceGroupItems(TeaModel):
+    def __init__(
+        self,
+        resource_group_item: List[DescribeDBResourceGroupResponseBodyResourceGroupItemsResourceGroupItem] = None,
+    ):
+        self.resource_group_item = resource_group_item
+
+    def validate(self):
+        if self.resource_group_item:
+            for k in self.resource_group_item:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ResourceGroupItem'] = []
+        if self.resource_group_item is not None:
+            for k in self.resource_group_item:
+                result['ResourceGroupItem'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.resource_group_item = []
+        if m.get('ResourceGroupItem') is not None:
+            for k in m.get('ResourceGroupItem'):
+                temp_model = DescribeDBResourceGroupResponseBodyResourceGroupItemsResourceGroupItem()
+                self.resource_group_item.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeDBResourceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        resource_group_items: DescribeDBResourceGroupResponseBodyResourceGroupItems = None,
+    ):
+        self.request_id = request_id
+        self.resource_group_items = resource_group_items
+
+    def validate(self):
+        if self.resource_group_items:
+            self.resource_group_items.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.resource_group_items is not None:
+            result['ResourceGroupItems'] = self.resource_group_items.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('ResourceGroupItems') is not None:
+            temp_model = DescribeDBResourceGroupResponseBodyResourceGroupItems()
+            self.resource_group_items = temp_model.from_map(m['ResourceGroupItems'])
+        return self
+
+
+class DescribeDBResourceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeDBResourceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeDBResourceGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeDBResourceManagementModeRequest(TeaModel):
     def __init__(
         self,
@@ -18587,6 +19195,143 @@ class DescribeRegionsResponse(TeaModel):
         return self
 
 
+class DescribeRolesRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        self.owner_id = owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        return self
+
+
+class DescribeRolesResponseBodyRoleList(TeaModel):
+    def __init__(
+        self,
+        role: List[str] = None,
+    ):
+        self.role = role
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.role is not None:
+            result['Role'] = self.role
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Role') is not None:
+            self.role = m.get('Role')
+        return self
+
+
+class DescribeRolesResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        role_list: DescribeRolesResponseBodyRoleList = None,
+    ):
+        self.request_id = request_id
+        self.role_list = role_list
+
+    def validate(self):
+        if self.role_list:
+            self.role_list.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.role_list is not None:
+            result['RoleList'] = self.role_list.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('RoleList') is not None:
+            temp_model = DescribeRolesResponseBodyRoleList()
+            self.role_list = temp_model.from_map(m['RoleList'])
+        return self
+
+
+class DescribeRolesResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeRolesResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeRolesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeSQLLogCountRequest(TeaModel):
     def __init__(
         self,
@@ -21413,6 +22158,108 @@ class DescribeWaitingSQLRecordsResponse(TeaModel):
         return self
 
 
+class DisableDBResourceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        self.owner_id = owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        return self
+
+
+class DisableDBResourceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DisableDBResourceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisableDBResourceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisableDBResourceGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DownloadDiagnosisRecordsRequest(TeaModel):
     def __init__(
         self,
@@ -21819,6 +22666,108 @@ class DownloadSQLLogsRecordsResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DownloadSQLLogsRecordsResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EnableDBResourceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        self.owner_id = owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        return self
+
+
+class EnableDBResourceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class EnableDBResourceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EnableDBResourceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EnableDBResourceGroupResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -26514,6 +27463,199 @@ class ModifyDBInstanceSSLResponse(TeaModel):
         return self
 
 
+class ModifyDBResourceGroupRequestResourceGroupItems(TeaModel):
+    def __init__(
+        self,
+        resource_group_config: str = None,
+        resource_group_name: str = None,
+    ):
+        # This parameter is required.
+        self.resource_group_config = resource_group_config
+        # This parameter is required.
+        self.resource_group_name = resource_group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.resource_group_config is not None:
+            result['ResourceGroupConfig'] = self.resource_group_config
+        if self.resource_group_name is not None:
+            result['ResourceGroupName'] = self.resource_group_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ResourceGroupConfig') is not None:
+            self.resource_group_config = m.get('ResourceGroupConfig')
+        if m.get('ResourceGroupName') is not None:
+            self.resource_group_name = m.get('ResourceGroupName')
+        return self
+
+
+class ModifyDBResourceGroupRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        owner_id: int = None,
+        resource_group_items: List[ModifyDBResourceGroupRequestResourceGroupItems] = None,
+    ):
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.resource_group_items = resource_group_items
+
+    def validate(self):
+        if self.resource_group_items:
+            for k in self.resource_group_items:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        result['ResourceGroupItems'] = []
+        if self.resource_group_items is not None:
+            for k in self.resource_group_items:
+                result['ResourceGroupItems'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        self.resource_group_items = []
+        if m.get('ResourceGroupItems') is not None:
+            for k in m.get('ResourceGroupItems'):
+                temp_model = ModifyDBResourceGroupRequestResourceGroupItems()
+                self.resource_group_items.append(temp_model.from_map(k))
+        return self
+
+
+class ModifyDBResourceGroupShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        owner_id: int = None,
+        resource_group_items_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.resource_group_items_shrink = resource_group_items_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_group_items_shrink is not None:
+            result['ResourceGroupItems'] = self.resource_group_items_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceGroupItems') is not None:
+            self.resource_group_items_shrink = m.get('ResourceGroupItems')
+        return self
+
+
+class ModifyDBResourceGroupResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ModifyDBResourceGroupResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ModifyDBResourceGroupResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ModifyDBResourceGroupResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ModifyExternalDataServiceRequest(TeaModel):
     def __init__(
         self,
@@ -28193,6 +29335,108 @@ class ModifyVectorConfigurationResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = ModifyVectorConfigurationResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class PauseDataRedistributeRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        self.owner_id = owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        return self
+
+
+class PauseDataRedistributeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class PauseDataRedistributeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: PauseDataRedistributeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = PauseDataRedistributeResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -30215,6 +31459,108 @@ class RestartDBInstanceResponse(TeaModel):
         return self
 
 
+class ResumeDataRedistributeRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        owner_id: int = None,
+    ):
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        self.owner_id = owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        return self
+
+
+class ResumeDataRedistributeResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ResumeDataRedistributeResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ResumeDataRedistributeResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ResumeDataRedistributeResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ResumeInstanceRequest(TeaModel):
     def __init__(
         self,
@@ -31029,6 +32375,170 @@ class TagResourcesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = TagResourcesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class UnbindDBResourceGroupWithRoleRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        owner_id: int = None,
+        resource_group_name: str = None,
+        role_list: List[str] = None,
+    ):
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.resource_group_name = resource_group_name
+        # This parameter is required.
+        self.role_list = role_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_group_name is not None:
+            result['ResourceGroupName'] = self.resource_group_name
+        if self.role_list is not None:
+            result['RoleList'] = self.role_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceGroupName') is not None:
+            self.resource_group_name = m.get('ResourceGroupName')
+        if m.get('RoleList') is not None:
+            self.role_list = m.get('RoleList')
+        return self
+
+
+class UnbindDBResourceGroupWithRoleShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        dbinstance_id: str = None,
+        owner_id: int = None,
+        resource_group_name: str = None,
+        role_list_shrink: str = None,
+    ):
+        # This parameter is required.
+        self.dbinstance_id = dbinstance_id
+        self.owner_id = owner_id
+        # This parameter is required.
+        self.resource_group_name = resource_group_name
+        # This parameter is required.
+        self.role_list_shrink = role_list_shrink
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.dbinstance_id is not None:
+            result['DBInstanceId'] = self.dbinstance_id
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_group_name is not None:
+            result['ResourceGroupName'] = self.resource_group_name
+        if self.role_list_shrink is not None:
+            result['RoleList'] = self.role_list_shrink
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBInstanceId') is not None:
+            self.dbinstance_id = m.get('DBInstanceId')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceGroupName') is not None:
+            self.resource_group_name = m.get('ResourceGroupName')
+        if m.get('RoleList') is not None:
+            self.role_list_shrink = m.get('RoleList')
+        return self
+
+
+class UnbindDBResourceGroupWithRoleResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class UnbindDBResourceGroupWithRoleResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: UnbindDBResourceGroupWithRoleResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = UnbindDBResourceGroupWithRoleResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
