@@ -2392,6 +2392,7 @@ class GetDomainResponseBody(TeaModel):
     def __init__(
         self,
         bucket_type: str = None,
+        buckets: str = None,
         condition: str = None,
         crowd_ids: str = None,
         debug_users: str = None,
@@ -2410,6 +2411,7 @@ class GetDomainResponseBody(TeaModel):
         workspace_id: str = None,
     ):
         self.bucket_type = bucket_type
+        self.buckets = buckets
         self.condition = condition
         self.crowd_ids = crowd_ids
         self.debug_users = debug_users
@@ -2438,6 +2440,8 @@ class GetDomainResponseBody(TeaModel):
         result = dict()
         if self.bucket_type is not None:
             result['BucketType'] = self.bucket_type
+        if self.buckets is not None:
+            result['Buckets'] = self.buckets
         if self.condition is not None:
             result['Condition'] = self.condition
         if self.crowd_ids is not None:
@@ -2476,6 +2480,8 @@ class GetDomainResponseBody(TeaModel):
         m = m or dict()
         if m.get('BucketType') is not None:
             self.bucket_type = m.get('BucketType')
+        if m.get('Buckets') is not None:
+            self.buckets = m.get('Buckets')
         if m.get('Condition') is not None:
             self.condition = m.get('Condition')
         if m.get('CrowdIds') is not None:
@@ -4137,6 +4143,7 @@ class ListDomainsResponseBodyDomains(TeaModel):
     def __init__(
         self,
         bucket_type: str = None,
+        buckets: str = None,
         condition: str = None,
         crowd_ids: str = None,
         debug_users: str = None,
@@ -4154,6 +4161,7 @@ class ListDomainsResponseBodyDomains(TeaModel):
         workspace_id: str = None,
     ):
         self.bucket_type = bucket_type
+        self.buckets = buckets
         self.condition = condition
         self.crowd_ids = crowd_ids
         self.debug_users = debug_users
@@ -4181,6 +4189,8 @@ class ListDomainsResponseBodyDomains(TeaModel):
         result = dict()
         if self.bucket_type is not None:
             result['BucketType'] = self.bucket_type
+        if self.buckets is not None:
+            result['Buckets'] = self.buckets
         if self.condition is not None:
             result['Condition'] = self.condition
         if self.crowd_ids is not None:
@@ -4217,6 +4227,8 @@ class ListDomainsResponseBodyDomains(TeaModel):
         m = m or dict()
         if m.get('BucketType') is not None:
             self.bucket_type = m.get('BucketType')
+        if m.get('Buckets') is not None:
+            self.buckets = m.get('Buckets')
         if m.get('Condition') is not None:
             self.condition = m.get('Condition')
         if m.get('CrowdIds') is not None:
