@@ -47,6 +47,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ChangeResourceGroupResponse:
+        """
+        @summary Changes the resource group to which a ApsaraMQ for RocketMQ instance belongs.
+        
+        @param request: ChangeResourceGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -83,6 +91,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ChangeResourceGroupResponse:
+        """
+        @summary Changes the resource group to which a ApsaraMQ for RocketMQ instance belongs.
+        
+        @param request: ChangeResourceGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -117,6 +133,12 @@ class Client(OpenApiClient):
         self,
         request: rocket_mq20220801_models.ChangeResourceGroupRequest,
     ) -> rocket_mq20220801_models.ChangeResourceGroupResponse:
+        """
+        @summary Changes the resource group to which a ApsaraMQ for RocketMQ instance belongs.
+        
+        @param request: ChangeResourceGroupRequest
+        @return: ChangeResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.change_resource_group_with_options(request, headers, runtime)
@@ -125,6 +147,12 @@ class Client(OpenApiClient):
         self,
         request: rocket_mq20220801_models.ChangeResourceGroupRequest,
     ) -> rocket_mq20220801_models.ChangeResourceGroupResponse:
+        """
+        @summary Changes the resource group to which a ApsaraMQ for RocketMQ instance belongs.
+        
+        @param request: ChangeResourceGroupRequest
+        @return: ChangeResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.change_resource_group_with_options_async(request, headers, runtime)
@@ -138,7 +166,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.CreateConsumerGroupResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @summary Creates a consumer group.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
         @param request: CreateConsumerGroupRequest
         @param headers: map
@@ -182,7 +212,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.CreateConsumerGroupResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @summary Creates a consumer group.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
         @param request: CreateConsumerGroupRequest
         @param headers: map
@@ -224,7 +256,9 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.CreateConsumerGroupRequest,
     ) -> rocket_mq20220801_models.CreateConsumerGroupResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @summary Creates a consumer group.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
         @param request: CreateConsumerGroupRequest
         @return: CreateConsumerGroupResponse
@@ -240,7 +274,9 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.CreateConsumerGroupRequest,
     ) -> rocket_mq20220801_models.CreateConsumerGroupResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @summary Creates a consumer group.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
         @param request: CreateConsumerGroupRequest
         @return: CreateConsumerGroupResponse
@@ -256,7 +292,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.CreateInstanceResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @summary Creates an ApsaraMQ for RocketMQ 5.x instance.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
         @param request: CreateInstanceRequest
         @param headers: map
@@ -324,7 +362,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.CreateInstanceResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @summary Creates an ApsaraMQ for RocketMQ 5.x instance.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
         @param request: CreateInstanceRequest
         @param headers: map
@@ -390,7 +430,9 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.CreateInstanceRequest,
     ) -> rocket_mq20220801_models.CreateInstanceResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @summary Creates an ApsaraMQ for RocketMQ 5.x instance.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
         @param request: CreateInstanceRequest
         @return: CreateInstanceResponse
@@ -404,7 +446,9 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.CreateInstanceRequest,
     ) -> rocket_mq20220801_models.CreateInstanceResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @summary Creates an ApsaraMQ for RocketMQ 5.x instance.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
         @param request: CreateInstanceRequest
         @return: CreateInstanceResponse
@@ -421,6 +465,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.CreateTopicResponse:
+        """
+        @summary Creates a topic.
+        
+        @param request: CreateTopicRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTopicResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.message_type):
@@ -455,6 +507,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.CreateTopicResponse:
+        """
+        @summary Creates a topic.
+        
+        @param request: CreateTopicRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateTopicResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.message_type):
@@ -487,6 +547,12 @@ class Client(OpenApiClient):
         topic_name: str,
         request: rocket_mq20220801_models.CreateTopicRequest,
     ) -> rocket_mq20220801_models.CreateTopicResponse:
+        """
+        @summary Creates a topic.
+        
+        @param request: CreateTopicRequest
+        @return: CreateTopicResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_topic_with_options(instance_id, topic_name, request, headers, runtime)
@@ -497,6 +563,12 @@ class Client(OpenApiClient):
         topic_name: str,
         request: rocket_mq20220801_models.CreateTopicRequest,
     ) -> rocket_mq20220801_models.CreateTopicResponse:
+        """
+        @summary Creates a topic.
+        
+        @param request: CreateTopicRequest
+        @return: CreateTopicResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_topic_with_options_async(instance_id, topic_name, request, headers, runtime)
@@ -509,7 +581,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.DeleteConsumerGroupResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @summary Deletes a specified consumer group.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         After you delete a consumer group, the consumer client associated with the consumer group cannot consume messages. Exercise caution when you call this operation.
         
         @param headers: map
@@ -543,7 +617,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.DeleteConsumerGroupResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @summary Deletes a specified consumer group.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         After you delete a consumer group, the consumer client associated with the consumer group cannot consume messages. Exercise caution when you call this operation.
         
         @param headers: map
@@ -575,7 +651,9 @@ class Client(OpenApiClient):
         consumer_group_id: str,
     ) -> rocket_mq20220801_models.DeleteConsumerGroupResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @summary Deletes a specified consumer group.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         After you delete a consumer group, the consumer client associated with the consumer group cannot consume messages. Exercise caution when you call this operation.
         
         @return: DeleteConsumerGroupResponse
@@ -590,7 +668,9 @@ class Client(OpenApiClient):
         consumer_group_id: str,
     ) -> rocket_mq20220801_models.DeleteConsumerGroupResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @summary Deletes a specified consumer group.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         After you delete a consumer group, the consumer client associated with the consumer group cannot consume messages. Exercise caution when you call this operation.
         
         @return: DeleteConsumerGroupResponse
@@ -606,9 +686,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.DeleteInstanceResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
-        *   After an instance is deleted, the instance cannot be restored. Exercise caution when you call this operation.
-        *   This operation is used to delete a pay-as-you-go instance. A subscription instance is automatically released after it expires. You do not need to manually delete a subscription instance.
+        @summary Deletes a ApsaraMQ for RocketMQ instance.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        After an instance is deleted, the instance cannot be restored. Exercise caution when you call this operation.
+        This operation is used to delete a pay-as-you-go instance. A subscription instance is automatically released after it expires. You do not need to manually delete a subscription instance.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -640,9 +722,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.DeleteInstanceResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
-        *   After an instance is deleted, the instance cannot be restored. Exercise caution when you call this operation.
-        *   This operation is used to delete a pay-as-you-go instance. A subscription instance is automatically released after it expires. You do not need to manually delete a subscription instance.
+        @summary Deletes a ApsaraMQ for RocketMQ instance.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        After an instance is deleted, the instance cannot be restored. Exercise caution when you call this operation.
+        This operation is used to delete a pay-as-you-go instance. A subscription instance is automatically released after it expires. You do not need to manually delete a subscription instance.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -672,9 +756,11 @@ class Client(OpenApiClient):
         instance_id: str,
     ) -> rocket_mq20220801_models.DeleteInstanceResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
-        *   After an instance is deleted, the instance cannot be restored. Exercise caution when you call this operation.
-        *   This operation is used to delete a pay-as-you-go instance. A subscription instance is automatically released after it expires. You do not need to manually delete a subscription instance.
+        @summary Deletes a ApsaraMQ for RocketMQ instance.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        After an instance is deleted, the instance cannot be restored. Exercise caution when you call this operation.
+        This operation is used to delete a pay-as-you-go instance. A subscription instance is automatically released after it expires. You do not need to manually delete a subscription instance.
         
         @return: DeleteInstanceResponse
         """
@@ -687,9 +773,11 @@ class Client(OpenApiClient):
         instance_id: str,
     ) -> rocket_mq20220801_models.DeleteInstanceResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
-        *   After an instance is deleted, the instance cannot be restored. Exercise caution when you call this operation.
-        *   This operation is used to delete a pay-as-you-go instance. A subscription instance is automatically released after it expires. You do not need to manually delete a subscription instance.
+        @summary Deletes a ApsaraMQ for RocketMQ instance.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        After an instance is deleted, the instance cannot be restored. Exercise caution when you call this operation.
+        This operation is used to delete a pay-as-you-go instance. A subscription instance is automatically released after it expires. You do not need to manually delete a subscription instance.
         
         @return: DeleteInstanceResponse
         """
@@ -705,7 +793,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.DeleteTopicResponse:
         """
-        If you delete the topic, the publishing and subscription relationships that are established based on the topic are cleared. Exercise caution when you call this operation.
+        @summary Deletes a specified topic.
+        
+        @description If you delete the topic, the publishing and subscription relationships that are established based on the topic are cleared. Exercise caution when you call this operation.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -738,7 +828,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.DeleteTopicResponse:
         """
-        If you delete the topic, the publishing and subscription relationships that are established based on the topic are cleared. Exercise caution when you call this operation.
+        @summary Deletes a specified topic.
+        
+        @description If you delete the topic, the publishing and subscription relationships that are established based on the topic are cleared. Exercise caution when you call this operation.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -769,7 +861,9 @@ class Client(OpenApiClient):
         topic_name: str,
     ) -> rocket_mq20220801_models.DeleteTopicResponse:
         """
-        If you delete the topic, the publishing and subscription relationships that are established based on the topic are cleared. Exercise caution when you call this operation.
+        @summary Deletes a specified topic.
+        
+        @description If you delete the topic, the publishing and subscription relationships that are established based on the topic are cleared. Exercise caution when you call this operation.
         
         @return: DeleteTopicResponse
         """
@@ -783,7 +877,9 @@ class Client(OpenApiClient):
         topic_name: str,
     ) -> rocket_mq20220801_models.DeleteTopicResponse:
         """
-        If you delete the topic, the publishing and subscription relationships that are established based on the topic are cleared. Exercise caution when you call this operation.
+        @summary Deletes a specified topic.
+        
+        @description If you delete the topic, the publishing and subscription relationships that are established based on the topic are cleared. Exercise caution when you call this operation.
         
         @return: DeleteTopicResponse
         """
@@ -799,7 +895,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.GetConsumerGroupResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @summary Queries the details of a specified consumer group.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -832,7 +930,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.GetConsumerGroupResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @summary Queries the details of a specified consumer group.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -863,7 +963,9 @@ class Client(OpenApiClient):
         consumer_group_id: str,
     ) -> rocket_mq20220801_models.GetConsumerGroupResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @summary Queries the details of a specified consumer group.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
         @return: GetConsumerGroupResponse
         """
@@ -877,7 +979,9 @@ class Client(OpenApiClient):
         consumer_group_id: str,
     ) -> rocket_mq20220801_models.GetConsumerGroupResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @summary Queries the details of a specified consumer group.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
         @return: GetConsumerGroupResponse
         """
@@ -892,7 +996,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.GetInstanceResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @summary Queries the detailed information about an instance.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -924,7 +1030,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.GetInstanceResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @summary Queries the detailed information about an instance.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -954,7 +1062,9 @@ class Client(OpenApiClient):
         instance_id: str,
     ) -> rocket_mq20220801_models.GetInstanceResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @summary Queries the detailed information about an instance.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
         @return: GetInstanceResponse
         """
@@ -967,7 +1077,9 @@ class Client(OpenApiClient):
         instance_id: str,
     ) -> rocket_mq20220801_models.GetInstanceResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @summary Queries the detailed information about an instance.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
         @return: GetInstanceResponse
         """
@@ -982,6 +1094,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.GetTopicResponse:
+        """
+        @summary Queries the details of a specified topic.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTopicResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1008,6 +1127,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.GetTopicResponse:
+        """
+        @summary Queries the details of a specified topic.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTopicResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1032,6 +1158,11 @@ class Client(OpenApiClient):
         instance_id: str,
         topic_name: str,
     ) -> rocket_mq20220801_models.GetTopicResponse:
+        """
+        @summary Queries the details of a specified topic.
+        
+        @return: GetTopicResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_topic_with_options(instance_id, topic_name, headers, runtime)
@@ -1041,6 +1172,11 @@ class Client(OpenApiClient):
         instance_id: str,
         topic_name: str,
     ) -> rocket_mq20220801_models.GetTopicResponse:
+        """
+        @summary Queries the details of a specified topic.
+        
+        @return: GetTopicResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_topic_with_options_async(instance_id, topic_name, headers, runtime)
@@ -1050,6 +1186,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListAvailableZonesResponse:
+        """
+        @summary 查询支持的可用区
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAvailableZonesResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1074,6 +1217,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListAvailableZonesResponse:
+        """
+        @summary 查询支持的可用区
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAvailableZonesResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1094,11 +1244,21 @@ class Client(OpenApiClient):
         )
 
     def list_available_zones(self) -> rocket_mq20220801_models.ListAvailableZonesResponse:
+        """
+        @summary 查询支持的可用区
+        
+        @return: ListAvailableZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_available_zones_with_options(headers, runtime)
 
     async def list_available_zones_async(self) -> rocket_mq20220801_models.ListAvailableZonesResponse:
+        """
+        @summary 查询支持的可用区
+        
+        @return: ListAvailableZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_available_zones_with_options_async(headers, runtime)
@@ -1110,6 +1270,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListConsumerConnectionsResponse:
+        """
+        @summary 查询消费者客户端连接信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConsumerConnectionsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1136,6 +1303,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListConsumerConnectionsResponse:
+        """
+        @summary 查询消费者客户端连接信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConsumerConnectionsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1160,6 +1334,11 @@ class Client(OpenApiClient):
         instance_id: str,
         consumer_group_id: str,
     ) -> rocket_mq20220801_models.ListConsumerConnectionsResponse:
+        """
+        @summary 查询消费者客户端连接信息
+        
+        @return: ListConsumerConnectionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_consumer_connections_with_options(instance_id, consumer_group_id, headers, runtime)
@@ -1169,6 +1348,11 @@ class Client(OpenApiClient):
         instance_id: str,
         consumer_group_id: str,
     ) -> rocket_mq20220801_models.ListConsumerConnectionsResponse:
+        """
+        @summary 查询消费者客户端连接信息
+        
+        @return: ListConsumerConnectionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_consumer_connections_with_options_async(instance_id, consumer_group_id, headers, runtime)
@@ -1180,6 +1364,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListConsumerGroupSubscriptionsResponse:
+        """
+        @summary Queries the subscriptions of a consumer group.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConsumerGroupSubscriptionsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1206,6 +1397,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListConsumerGroupSubscriptionsResponse:
+        """
+        @summary Queries the subscriptions of a consumer group.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConsumerGroupSubscriptionsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1230,6 +1428,11 @@ class Client(OpenApiClient):
         instance_id: str,
         consumer_group_id: str,
     ) -> rocket_mq20220801_models.ListConsumerGroupSubscriptionsResponse:
+        """
+        @summary Queries the subscriptions of a consumer group.
+        
+        @return: ListConsumerGroupSubscriptionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_consumer_group_subscriptions_with_options(instance_id, consumer_group_id, headers, runtime)
@@ -1239,6 +1442,11 @@ class Client(OpenApiClient):
         instance_id: str,
         consumer_group_id: str,
     ) -> rocket_mq20220801_models.ListConsumerGroupSubscriptionsResponse:
+        """
+        @summary Queries the subscriptions of a consumer group.
+        
+        @return: ListConsumerGroupSubscriptionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_consumer_group_subscriptions_with_options_async(instance_id, consumer_group_id, headers, runtime)
@@ -1251,7 +1459,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListConsumerGroupsResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @summary Queries the consumer groups in a specified instance.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
         @param request: ListConsumerGroupsRequest
         @param headers: map
@@ -1294,7 +1504,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListConsumerGroupsResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @summary Queries the consumer groups in a specified instance.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
         @param request: ListConsumerGroupsRequest
         @param headers: map
@@ -1335,7 +1547,9 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.ListConsumerGroupsRequest,
     ) -> rocket_mq20220801_models.ListConsumerGroupsResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @summary Queries the consumer groups in a specified instance.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
         @param request: ListConsumerGroupsRequest
         @return: ListConsumerGroupsResponse
@@ -1350,7 +1564,9 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.ListConsumerGroupsRequest,
     ) -> rocket_mq20220801_models.ListConsumerGroupsResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @summary Queries the consumer groups in a specified instance.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
         @param request: ListConsumerGroupsRequest
         @return: ListConsumerGroupsResponse
@@ -1366,7 +1582,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListInstancesResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @summary Queries instances.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
         @param request: ListInstancesRequest
         @param headers: map
@@ -1412,7 +1630,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListInstancesResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @summary Queries instances.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
         @param request: ListInstancesRequest
         @param headers: map
@@ -1456,7 +1676,9 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.ListInstancesRequest,
     ) -> rocket_mq20220801_models.ListInstancesResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @summary Queries instances.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
         @param request: ListInstancesRequest
         @return: ListInstancesResponse
@@ -1470,7 +1692,9 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.ListInstancesRequest,
     ) -> rocket_mq20220801_models.ListInstancesResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @summary Queries instances.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
         @param request: ListInstancesRequest
         @return: ListInstancesResponse
@@ -1484,6 +1708,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListRegionsResponse:
+        """
+        @summary 查询region列表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRegionsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1508,6 +1739,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListRegionsResponse:
+        """
+        @summary 查询region列表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListRegionsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1528,11 +1766,21 @@ class Client(OpenApiClient):
         )
 
     def list_regions(self) -> rocket_mq20220801_models.ListRegionsResponse:
+        """
+        @summary 查询region列表
+        
+        @return: ListRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_regions_with_options(headers, runtime)
 
     async def list_regions_async(self) -> rocket_mq20220801_models.ListRegionsResponse:
+        """
+        @summary 查询region列表
+        
+        @return: ListRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_regions_with_options_async(headers, runtime)
@@ -1544,6 +1792,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListTopicSubscriptionsResponse:
+        """
+        @summary 查询主题订阅关系列表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTopicSubscriptionsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1570,6 +1825,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListTopicSubscriptionsResponse:
+        """
+        @summary 查询主题订阅关系列表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTopicSubscriptionsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1594,6 +1856,11 @@ class Client(OpenApiClient):
         instance_id: str,
         topic_name: str,
     ) -> rocket_mq20220801_models.ListTopicSubscriptionsResponse:
+        """
+        @summary 查询主题订阅关系列表
+        
+        @return: ListTopicSubscriptionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_topic_subscriptions_with_options(instance_id, topic_name, headers, runtime)
@@ -1603,6 +1870,11 @@ class Client(OpenApiClient):
         instance_id: str,
         topic_name: str,
     ) -> rocket_mq20220801_models.ListTopicSubscriptionsResponse:
+        """
+        @summary 查询主题订阅关系列表
+        
+        @return: ListTopicSubscriptionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_topic_subscriptions_with_options_async(instance_id, topic_name, headers, runtime)
@@ -1614,6 +1886,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListTopicsResponse:
+        """
+        @summary Queries the topics in a specified instance.
+        
+        @param tmp_req: ListTopicsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTopicsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = rocket_mq20220801_models.ListTopicsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1655,6 +1935,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ListTopicsResponse:
+        """
+        @summary Queries the topics in a specified instance.
+        
+        @param tmp_req: ListTopicsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTopicsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = rocket_mq20220801_models.ListTopicsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1694,6 +1982,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: rocket_mq20220801_models.ListTopicsRequest,
     ) -> rocket_mq20220801_models.ListTopicsResponse:
+        """
+        @summary Queries the topics in a specified instance.
+        
+        @param request: ListTopicsRequest
+        @return: ListTopicsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_topics_with_options(instance_id, request, headers, runtime)
@@ -1703,6 +1997,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: rocket_mq20220801_models.ListTopicsRequest,
     ) -> rocket_mq20220801_models.ListTopicsResponse:
+        """
+        @summary Queries the topics in a specified instance.
+        
+        @param request: ListTopicsRequest
+        @return: ListTopicsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_topics_with_options_async(instance_id, request, headers, runtime)
@@ -1716,6 +2016,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ResetConsumeOffsetResponse:
+        """
+        @summary Resets the consumer offset of a consumer group.
+        
+        @param request: ResetConsumeOffsetRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetConsumeOffsetResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.reset_time):
@@ -1751,6 +2059,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.ResetConsumeOffsetResponse:
+        """
+        @summary Resets the consumer offset of a consumer group.
+        
+        @param request: ResetConsumeOffsetRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetConsumeOffsetResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.reset_time):
@@ -1784,6 +2100,12 @@ class Client(OpenApiClient):
         topic_name: str,
         request: rocket_mq20220801_models.ResetConsumeOffsetRequest,
     ) -> rocket_mq20220801_models.ResetConsumeOffsetResponse:
+        """
+        @summary Resets the consumer offset of a consumer group.
+        
+        @param request: ResetConsumeOffsetRequest
+        @return: ResetConsumeOffsetResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.reset_consume_offset_with_options(instance_id, consumer_group_id, topic_name, request, headers, runtime)
@@ -1795,6 +2117,12 @@ class Client(OpenApiClient):
         topic_name: str,
         request: rocket_mq20220801_models.ResetConsumeOffsetRequest,
     ) -> rocket_mq20220801_models.ResetConsumeOffsetResponse:
+        """
+        @summary Resets the consumer offset of a consumer group.
+        
+        @param request: ResetConsumeOffsetRequest
+        @return: ResetConsumeOffsetResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.reset_consume_offset_with_options_async(instance_id, consumer_group_id, topic_name, request, headers, runtime)
@@ -1808,7 +2136,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.UpdateConsumerGroupResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @summary Updates the basic information about and the consumption retry policy of a consumer group.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
         @param request: UpdateConsumerGroupRequest
         @param headers: map
@@ -1852,7 +2182,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.UpdateConsumerGroupResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @summary Updates the basic information about and the consumption retry policy of a consumer group.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
         @param request: UpdateConsumerGroupRequest
         @param headers: map
@@ -1894,7 +2226,9 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.UpdateConsumerGroupRequest,
     ) -> rocket_mq20220801_models.UpdateConsumerGroupResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @summary Updates the basic information about and the consumption retry policy of a consumer group.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
         @param request: UpdateConsumerGroupRequest
         @return: UpdateConsumerGroupResponse
@@ -1910,7 +2244,9 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.UpdateConsumerGroupRequest,
     ) -> rocket_mq20220801_models.UpdateConsumerGroupResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @summary Updates the basic information about and the consumption retry policy of a consumer group.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
         @param request: UpdateConsumerGroupRequest
         @return: UpdateConsumerGroupResponse
@@ -1927,7 +2263,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.UpdateInstanceResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @summary Updates the basic information and specifications of an ApsaraMQ for RocketMQ instance.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
         @param request: UpdateInstanceRequest
         @param headers: map
@@ -1974,7 +2312,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.UpdateInstanceResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @summary Updates the basic information and specifications of an ApsaraMQ for RocketMQ instance.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
         @param request: UpdateInstanceRequest
         @param headers: map
@@ -2019,7 +2359,9 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.UpdateInstanceRequest,
     ) -> rocket_mq20220801_models.UpdateInstanceResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @summary Updates the basic information and specifications of an ApsaraMQ for RocketMQ instance.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
         @param request: UpdateInstanceRequest
         @return: UpdateInstanceResponse
@@ -2034,7 +2376,9 @@ class Client(OpenApiClient):
         request: rocket_mq20220801_models.UpdateInstanceRequest,
     ) -> rocket_mq20220801_models.UpdateInstanceResponse:
         """
-        > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+        @summary Updates the basic information and specifications of an ApsaraMQ for RocketMQ instance.
+        
+        @description > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
         
         @param request: UpdateInstanceRequest
         @return: UpdateInstanceResponse
@@ -2051,6 +2395,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.UpdateTopicResponse:
+        """
+        @summary Updates the basic information about a topic.
+        
+        @param request: UpdateTopicRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTopicResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.remark):
@@ -2083,6 +2435,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> rocket_mq20220801_models.UpdateTopicResponse:
+        """
+        @summary Updates the basic information about a topic.
+        
+        @param request: UpdateTopicRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTopicResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.remark):
@@ -2113,6 +2473,12 @@ class Client(OpenApiClient):
         topic_name: str,
         request: rocket_mq20220801_models.UpdateTopicRequest,
     ) -> rocket_mq20220801_models.UpdateTopicResponse:
+        """
+        @summary Updates the basic information about a topic.
+        
+        @param request: UpdateTopicRequest
+        @return: UpdateTopicResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_topic_with_options(instance_id, topic_name, request, headers, runtime)
@@ -2123,6 +2489,12 @@ class Client(OpenApiClient):
         topic_name: str,
         request: rocket_mq20220801_models.UpdateTopicRequest,
     ) -> rocket_mq20220801_models.UpdateTopicResponse:
+        """
+        @summary Updates the basic information about a topic.
+        
+        @param request: UpdateTopicRequest
+        @return: UpdateTopicResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_topic_with_options_async(instance_id, topic_name, request, headers, runtime)

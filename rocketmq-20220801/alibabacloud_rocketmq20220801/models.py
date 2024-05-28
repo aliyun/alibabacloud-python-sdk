@@ -13,16 +13,24 @@ class ChangeResourceGroupRequest(TeaModel):
         resource_type: str = None,
     ):
         # The ID of the region in which the instance resides.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the instance is changed.
         # 
         # You can call the [ListResourceGroups](https://www.alibabacloud.com/help/resource-management/latest/listresourcegroups) operation to query existing resource groups.
+        # 
+        # This parameter is required.
         self.resource_group_id = resource_group_id
         # The ID of the resource. Set this parameter to the ID of the ApsaraMQ for RocketMQ instance whose resource group you want to change.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of resource.
         # 
         # Set this parameter to **instance**. The value of this parameter cannot be changed.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -184,16 +192,18 @@ class CreateConsumerGroupRequestConsumeRetryPolicy(TeaModel):
     ):
         # The dead-letter topic.
         # 
-        # If a consumer still fails to consume a message after the message is retried for a specified number of times, the message is delivered to a dead-letter topic for subsequent business recovery or troubleshooting. For more information, see [Consumption retry and dead-letter messages](~~440356~~).
+        # If a consumer still fails to consume a message after the message is retried for a specified number of times, the message is delivered to a dead-letter topic for subsequent business recovery or troubleshooting. For more information, see [Consumption retry and dead-letter messages](https://help.aliyun.com/document_detail/440356.html).
         self.dead_letter_target_topic = dead_letter_target_topic
         # The maximum number of retries.
         self.max_retry_times = max_retry_times
-        # The retry policy. For more information, see [Message retry](~~440356~~).
+        # The retry policy. For more information, see [Message retry](https://help.aliyun.com/document_detail/440356.html).
         # 
         # Valid values:
         # 
         # *   FixedRetryPolicy: Failed messages are retried at a fixed interval.
         # *   DefaultRetryPolicy: Failed messages are retried at incremental intervals as the number of retries increases.
+        # 
+        # This parameter is required.
         self.retry_policy = retry_policy
 
     def validate(self):
@@ -231,7 +241,9 @@ class CreateConsumerGroupRequest(TeaModel):
         delivery_order_type: str = None,
         remark: str = None,
     ):
-        # The consumption retry policy that you want to configure for the consumer group. For more information, see [Consumption retry](~~440356~~).
+        # The consumption retry policy that you want to configure for the consumer group. For more information, see [Consumption retry](https://help.aliyun.com/document_detail/440356.html).
+        # 
+        # This parameter is required.
         self.consume_retry_policy = consume_retry_policy
         # The message delivery order of the consumer group.
         # 
@@ -239,6 +251,8 @@ class CreateConsumerGroupRequest(TeaModel):
         # 
         # *   Concurrently: concurrent delivery
         # *   Orderly: ordered delivery
+        # 
+        # This parameter is required.
         self.delivery_order_type = delivery_order_type
         # The remarks on the consumer group.
         self.remark = remark
@@ -410,7 +424,10 @@ class CreateInstanceRequestNetworkInfoInternetInfo(TeaModel):
         # Valid values:
         # 
         # *   payByBandwidth: pay-by-bandwidth. If Internet access is enabled for an instance, specify this value for the parameter.
+        # *   payByTraffic: pay-by-traffic. If Internet access is enabled for an instance, specify this value for the parameter.
         # *   uninvolved: No billing method is involved. If Internet access is disabled for an instance, specify this value for the parameter.
+        # 
+        # This parameter is required.
         self.flow_out_type = flow_out_type
         # Specifies whether to enable the Internet access feature.
         # 
@@ -419,7 +436,9 @@ class CreateInstanceRequestNetworkInfoInternetInfo(TeaModel):
         # *   enable
         # *   disable
         # 
-        # By default, ApsaraMQ for RocketMQ allows you to access instances in VPCs. If you enable Internet access for an instance, you can access the instance over the Internet. After you enable this feature, you are charged for outbound Internet traffic. For more information, see [Internet access fee](~~427240~~).
+        # By default, ApsaraMQ for RocketMQ allows you to access instances in VPCs. If you enable Internet access for an instance, you can access the instance over the Internet. After you enable this feature, you are charged for outbound Internet traffic. For more information, see [Internet access fee](https://help.aliyun.com/document_detail/427240.html).
+        # 
+        # This parameter is required.
         self.internet_spec = internet_spec
         # The whitelist that includes the IP addresses that are allowed to access the ApsaraMQ for RocketMQ broker over the Internet. This parameter can be configured only if you use a public endpoint to access the instance.
         # 
@@ -468,13 +487,17 @@ class CreateInstanceRequestNetworkInfoVpcInfo(TeaModel):
     ):
         # The ID of the security group to which the instance belongs.
         self.security_group_ids = security_group_ids
-        # The ID of the vSwitch with which you want to associate the instance.
+        # The ID of the vSwitch with which you want to associate the instance, If there are multiple vSwitchs, please concatenate them using the "|" character.
         # 
         # >  After an ApsaraMQ for RocketMQ instance is created, you cannot change the vSwitch with which the instance is associated. If you want to change the vSwitch with which the instance is associated, you must release the instance and purchase a new instance.
+        # 
+        # This parameter is required.
         self.v_switch_id = v_switch_id
         # The ID of the VPC in which you want to deploy the instance.
         # 
         # >  After an ApsaraMQ for RocketMQ instance is created, you cannot change the VPC in which the instance is deployed. If you want to change the VPC in which the instance is deployed, you must release the instance and create a new instance.
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -512,8 +535,12 @@ class CreateInstanceRequestNetworkInfo(TeaModel):
         vpc_info: CreateInstanceRequestNetworkInfoVpcInfo = None,
     ):
         # The Internet-related configurations.
+        # 
+        # This parameter is required.
         self.internet_info = internet_info
         # The virtual private cloud (VPC)-related configurations.
+        # 
+        # This parameter is required.
         self.vpc_info = vpc_info
 
     def validate(self):
@@ -562,9 +589,9 @@ class CreateInstanceRequestProductInfo(TeaModel):
         # *   true: enable
         # *   false: disable
         # 
-        # After you enable the elastic TPS feature for an ApsaraMQ for RocketMQ instance, you can use a specific number of TPS that exceeds the specification limit. You are charged for using the elastic TPS feature. For more information, see [Computing fees](~~427237~~).
+        # After you enable the elastic TPS feature for an ApsaraMQ for RocketMQ instance, you can use a specific number of TPS that exceeds the specification limit. You are charged for using the elastic TPS feature. For more information, see [Computing fees](https://help.aliyun.com/document_detail/427237.html).
         # 
-        # >  The elastic TPS feature is supported only by instances of specific editions. For more information, see [Instance editions](~~444715~~).
+        # >  The elastic TPS feature is supported only by instances of specific editions. For more information, see [Instance editions](https://help.aliyun.com/document_detail/444715.html).
         self.auto_scaling = auto_scaling
         # The billing method.
         # 
@@ -577,11 +604,13 @@ class CreateInstanceRequestProductInfo(TeaModel):
         self.intranet_spec = intranet_spec
         # The retention period of messages. Unit: hours.
         # 
-        # For information about the valid values of this parameter, see the "Limits on resource quotas" section of the [Limits](~~440347~~) topic.
+        # For information about the valid values of this parameter, see the "Limits on resource quotas" section of the [Limits](https://help.aliyun.com/document_detail/440347.html) topic.
         # 
-        # ApsaraMQ for RocketMQ supports serverless scaling of message storage. You are charged storage fees based on your actual storage usage. You can change the retention period of messages to manage storage capacity. For more information, see [Storage fees](~~427238~~).
+        # ApsaraMQ for RocketMQ supports serverless scaling of message storage. You are charged storage fees based on your actual storage usage. You can change the retention period of messages to manage storage capacity. For more information, see [Storage fees](https://help.aliyun.com/document_detail/427238.html).
         self.message_retention_time = message_retention_time
-        # The computing specification that specifies the messaging transactions per second (TPS) of the instance. For information about computing specification limits, see [Instance specifications](~~444715~~).
+        # The computing specification that specifies the messaging transactions per second (TPS) of the instance. For information about computing specification limits, see [Instance specifications](https://help.aliyun.com/document_detail/444715.html).
+        # 
+        # This parameter is required.
         self.msg_process_spec = msg_process_spec
         # The proportion of message sending TPS to the messaging TPS on the instance.
         # 
@@ -670,6 +699,8 @@ class CreateInstanceRequest(TeaModel):
         # If you do not configure this parameter, the instance ID is used as the instance name.
         self.instance_name = instance_name
         # The network configurations.
+        # 
+        # This parameter is required.
         self.network_info = network_info
         # The billing method of the instance. ApsaraMQ for RocketMQ supports the subscription and pay-as-you-go billing methods.
         # 
@@ -678,7 +709,9 @@ class CreateInstanceRequest(TeaModel):
         # *   PayAsYouGo: This billing method allows you to use resources before you pay for the resources.
         # *   Subscription: This billing method allows you to use resources after you pay for the resources.
         # 
-        # For more information, see [Billing methods](~~427234~~).
+        # For more information, see [Billing methods](https://help.aliyun.com/document_detail/427234.html).
+        # 
+        # This parameter is required.
         self.payment_type = payment_type
         # The subscription duration of the instance. This parameter takes effect only if you set PaymentType to Subscription.
         # 
@@ -700,7 +733,7 @@ class CreateInstanceRequest(TeaModel):
         self.remark = remark
         # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The primary edition of the instance. For information about the differences between primary edition instances, see [Instance selection](~~444722~~).
+        # The primary edition of the instance. For information about the differences between primary edition instances, see [Instance selection](https://help.aliyun.com/document_detail/444722.html).
         # 
         # Valid values:
         # 
@@ -709,19 +742,26 @@ class CreateInstanceRequest(TeaModel):
         # *   professional: Professional Edition
         # 
         # >  After an instance is created, you can only upgrade the primary edition of the instance. The following editions are sorted in ascending order: Standard Edition, Professional Edition, Enterprise Platinum Edition. For example, you can upgrade an instance of Standard Edition to Professional Edition, but cannot downgrade an instance of Professional Edition to Standard Edition.
+        # 
+        # This parameter is required.
         self.series_code = series_code
         # The code of the service to which the instance belongs. The service code of ApsaraMQ for RocketMQ is rmq.
+        # 
+        # This parameter is required.
         self.service_code = service_code
-        # The sub-category edition of the instance. For information about the differences between sub-category edition instances, see [Instance selection](~~444722~~).
+        # The sub-category edition of the instance. For information about the differences between sub-category edition instances, see [Instance selection](https://help.aliyun.com/document_detail/444722.html).
         # 
         # Valid values:
         # 
         # *   cluster_ha: High-availability Cluster Edition
         # *   single_node: Standalone Edition
+        # *   serverless: Serverless Edition
         # 
         # If you set seriesCode to ultimate, you can set this parameter to only cluster_ha.
         # 
         # >  After an instance is created, you cannot change the sub-category edition of the instance.
+        # 
+        # This parameter is required.
         self.sub_series_code = sub_series_code
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value of this parameter, but you must ensure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
@@ -1450,7 +1490,7 @@ class GetConsumerGroupResponseBodyDataConsumeRetryPolicy(TeaModel):
     ):
         # The dead-letter topic.
         # 
-        # If a consumer still fails to consume a message after the message is retried for a specified number of times, the message is delivered to a dead-letter topic for subsequent business recovery or troubleshooting. For more information, see [Consumption retry and dead-letter messages](~~440356~~).
+        # If a consumer still fails to consume a message after the message is retried for a specified number of times, the message is delivered to a dead-letter topic for subsequent business recovery or troubleshooting. For more information, see [Consumption retry and dead-letter messages](https://help.aliyun.com/document_detail/440356.html).
         self.dead_letter_target_topic = dead_letter_target_topic
         # The maximum number of retries.
         self.max_retry_times = max_retry_times
@@ -1528,7 +1568,7 @@ class GetConsumerGroupResponseBodyData(TeaModel):
         status: str = None,
         update_time: str = None,
     ):
-        # The consumption retry policy that you want to configure for the consumer group. For more information, see [Consumption retry](~~440356~~).
+        # The consumption retry policy that you want to configure for the consumer group. For more information, see [Consumption retry](https://help.aliyun.com/document_detail/440356.html).
         self.consume_retry_policy = consume_retry_policy
         # The ID of the consumer group.
         self.consumer_group_id = consumer_group_id
@@ -1812,23 +1852,35 @@ class GetInstanceResponseBodyDataAclInfo(TeaModel):
         acl_types: List[str] = None,
         default_vpc_auth_free: bool = None,
     ):
-        # The authentication types of the instance. Deprecated, it is recommended to use the aclTypes field.
+        # The authentication type of the instance. This parameter is no longer in use. We recommend that you configure aclTypes.
         # 
         # Valid values:
         # 
-        # default: intelligent authentication
+        # - default: intelligent identity authentication
         # 
-        # apache_acl: apache acl authentication
+        # - apache_acl:access control list (ACL) identity authentication**\
         self.acl_type = acl_type
         # The authentication types of the instance.
+        self.acl_types = acl_types
+        # Indicates whether the authentication-free in VPCs feature is enabled.
         # 
         # Valid values:
         # 
-        # default: intelligent authentication
+        # *   true
         # 
-        # apache_acl: apache acl authentication
-        self.acl_types = acl_types
-        # No need for authentication in intranet.
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   false
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.default_vpc_auth_free = default_vpc_auth_free
 
     def validate(self):
@@ -1904,15 +1956,15 @@ class GetInstanceResponseBodyDataExtConfig(TeaModel):
         # *   enable
         # *   disable
         # 
-        # By default, ApsaraMQ for RocketMQ instances are accessed in virtual private clouds (VPCs). If you enable the Internet access feature, you are charged for Internet outbound bandwidth. For more information, see [Internet access fee](~~427240~~).
+        # By default, ApsaraMQ for RocketMQ instances are accessed in virtual private clouds (VPCs). If you enable the Internet access feature, you are charged for Internet outbound bandwidth. For more information, see [Internet access fee](https://help.aliyun.com/document_detail/427240.html).
         self.internet_spec = internet_spec
         # The retention period of messages. Unit: hours.
         # 
-        # For information about the valid values of this parameter, see the "Limits on resource quotas" section in [Usage limits](~~440347~~).
+        # For information about the valid values of this parameter, see the "Limits on resource quotas" section in [Usage limits](https://help.aliyun.com/document_detail/440347.html).
         # 
-        # The storage of messages in ApsaraMQ for RocketMQ is serverless and scalable. You are charged for message storage based on your actual usage. You can change the retention period of messages to adjust storage capacity. For more information, see [Storage fee](~~427238~~).
+        # The storage of messages in ApsaraMQ for RocketMQ is serverless and scalable. You are charged for message storage based on your actual usage. You can change the retention period of messages to adjust storage capacity. For more information, see [Storage fee](https://help.aliyun.com/document_detail/427238.html).
         self.message_retention_time = message_retention_time
-        # The computing specification that is used to send and receive messages. For information about the upper limit of TPS, see [Instance specifications](~~444715~~).
+        # The computing specification that is used to send and receive messages. For information about the upper limit of TPS, see [Instance specifications](https://help.aliyun.com/document_detail/444715.html).
         self.msg_process_spec = msg_process_spec
         # The ratio between sent messages and received messages in the instance.
         self.send_receive_ratio = send_receive_ratio
@@ -1923,9 +1975,9 @@ class GetInstanceResponseBodyDataExtConfig(TeaModel):
         # *   true: enable
         # *   false: disable
         # 
-        # After you enable the elastic TPS feature for a ApsaraMQ for RocketMQ instance, you can use a specific amount of TPS that exceeds the specification limit. You are charged for the elastic TPS feature. For more information, see [Computing fee](~~427237~~).
+        # After you enable the elastic TPS feature for a ApsaraMQ for RocketMQ instance, you can use a specific amount of TPS that exceeds the specification limit. You are charged for the elastic TPS feature. For more information, see [Computing fee](https://help.aliyun.com/document_detail/427237.html).
         # 
-        # > The elastic TPS feature is supported only by specific instance editions. For more information, see [Instance specifications](~~444715~~).
+        # > The elastic TPS feature is supported only by specific instance editions. For more information, see [Instance specifications](https://help.aliyun.com/document_detail/444715.html).
         self.support_auto_scaling = support_auto_scaling
 
     def validate(self):
@@ -2044,36 +2096,15 @@ class GetInstanceResponseBodyDataNetworkInfoEndpoints(TeaModel):
         # 
         # Valid values:
         # 
-        # *   TCP_VPC
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     VPC endpoint
-        # 
-        #     <!-- -->
-        # 
-        # *   TCP_INTERNET
-        # 
-        #     <!-- -->
-        # 
-        #     :
-        # 
-        #     <!-- -->
-        # 
-        #     public endpoint
-        # 
-        #     <!-- -->
+        # - TCP_VPC: VPC endpoint
+        # - TCP_INTERNET:public endpoint
         self.endpoint_type = endpoint_type
         # The endpoint that is used to access the instance.
         self.endpoint_url = endpoint_url
-        # The whitelist that includes the IP addresses that are allowed to access the ApsaraMQ for RocketMQ broker over the Internet. This parameter can be configured only if you use a public endpoint to access the ApsaraMQ for RocketMQ broker.
+        # The whitelist that includes the IP addresses that are allowed to access the ApsaraMQ for RocketMQ broker over the Internet. This parameter can be configured only if you use the public endpoint to access the instance.
         # 
-        # *   If this parameter is not configured, all IP addresses are allowed to access the ApsaraMQ for RocketMQ broker over the Internet.
-        # *   If this parameter is configured, only the IP addresses that are included in the whitelist can access the ApsaraMQ for RocketMQ broker over the Internet.
+        # *   If you do not configure an IP address whitelist, all CIDR blocks are allowed to access the ApsaraMQ for RocketMQ broker over the Internet.
+        # *   If you configure an IP address whitelist, only the IP addresses in the whitelist are allowed to access the ApsaraMQ for RocketMQ broker over the Internet.
         # 
         # We recommend that you configure internetInfo.ipWhitelist instead of this parameter.
         self.ip_whitelist = ip_whitelist
@@ -2130,7 +2161,7 @@ class GetInstanceResponseBodyDataNetworkInfoInternetInfo(TeaModel):
         # *   enable
         # *   disable
         # 
-        # By default, ApsaraMQ for RocketMQ instances are accessed in virtual private clouds (VPCs). If you enable the Internet access feature, you are charged for Internet outbound bandwidth. For more information, see [Internet access fee](~~427240~~).
+        # By default, ApsaraMQ for RocketMQ instances are accessed in virtual private clouds (VPCs). If you enable the Internet access feature, you are charged for Internet outbound bandwidth. For more information, see [Internet access fee](https://help.aliyun.com/document_detail/427240.html).
         self.internet_spec = internet_spec
         # The whitelist that includes the IP addresses that are allowed to access the ApsaraMQ for RocketMQ broker.
         # 
@@ -2170,22 +2201,60 @@ class GetInstanceResponseBodyDataNetworkInfoInternetInfo(TeaModel):
         return self
 
 
+class GetInstanceResponseBodyDataNetworkInfoVpcInfoVSwitches(TeaModel):
+    def __init__(
+        self,
+        v_switch_id: str = None,
+        zone_id: str = None,
+    ):
+        self.v_switch_id = v_switch_id
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.v_switch_id is not None:
+            result['vSwitchId'] = self.v_switch_id
+        if self.zone_id is not None:
+            result['zoneId'] = self.zone_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('vSwitchId') is not None:
+            self.v_switch_id = m.get('vSwitchId')
+        if m.get('zoneId') is not None:
+            self.zone_id = m.get('zoneId')
+        return self
+
+
 class GetInstanceResponseBodyDataNetworkInfoVpcInfo(TeaModel):
     def __init__(
         self,
         security_group_ids: str = None,
         v_switch_id: str = None,
+        v_switches: List[GetInstanceResponseBodyDataNetworkInfoVpcInfoVSwitches] = None,
         vpc_id: str = None,
     ):
-        # The ID of the security group with which the instance is associated.
+        # The security group ID.
         self.security_group_ids = security_group_ids
         # The ID of the vSwitch with which the instance is associated.
         self.v_switch_id = v_switch_id
+        self.v_switches = v_switches
         # The ID of the VPC with which the instance is associated.
         self.vpc_id = vpc_id
 
     def validate(self):
-        pass
+        if self.v_switches:
+            for k in self.v_switches:
+                if k:
+                    k.validate()
 
     def to_map(self):
         _map = super().to_map()
@@ -2197,6 +2266,10 @@ class GetInstanceResponseBodyDataNetworkInfoVpcInfo(TeaModel):
             result['securityGroupIds'] = self.security_group_ids
         if self.v_switch_id is not None:
             result['vSwitchId'] = self.v_switch_id
+        result['vSwitches'] = []
+        if self.v_switches is not None:
+            for k in self.v_switches:
+                result['vSwitches'].append(k.to_map() if k else None)
         if self.vpc_id is not None:
             result['vpcId'] = self.vpc_id
         return result
@@ -2207,6 +2280,11 @@ class GetInstanceResponseBodyDataNetworkInfoVpcInfo(TeaModel):
             self.security_group_ids = m.get('securityGroupIds')
         if m.get('vSwitchId') is not None:
             self.v_switch_id = m.get('vSwitchId')
+        self.v_switches = []
+        if m.get('vSwitches') is not None:
+            for k in m.get('vSwitches'):
+                temp_model = GetInstanceResponseBodyDataNetworkInfoVpcInfoVSwitches()
+                self.v_switches.append(temp_model.from_map(k))
         if m.get('vpcId') is not None:
             self.vpc_id = m.get('vpcId')
         return self
@@ -2223,7 +2301,7 @@ class GetInstanceResponseBodyDataNetworkInfo(TeaModel):
         self.endpoints = endpoints
         # The information about the Internet.
         self.internet_info = internet_info
-        # The information about the VPC.
+        # The virtual private cloud (VPC) information.
         self.vpc_info = vpc_info
 
     def validate(self):
@@ -2289,11 +2367,11 @@ class GetInstanceResponseBodyDataProductInfo(TeaModel):
         self.auto_scaling = auto_scaling
         # The retention period of messages. Unit: hours.
         # 
-        # For information about the valid values of this parameter, see the "Limits on resource quotas" section in [Usage limits](~~440347~~).
+        # For information about the valid values of this parameter, see the "Limits on resource quotas" section in [Usage limits](https://help.aliyun.com/document_detail/440347.html).
         # 
-        # The storage of messages in ApsaraMQ for RocketMQ is serverless and scalable. You are charged for message storage based on your actual usage. You can change the retention period of messages to adjust storage capacity. For more information, see [Storage fee](~~427238~~).
+        # The storage of messages in ApsaraMQ for RocketMQ is serverless and scalable. You are charged for message storage based on your actual usage. You can change the retention period of messages to adjust storage capacity. For more information, see [Storage fee](https://help.aliyun.com/document_detail/427238.html).
         self.message_retention_time = message_retention_time
-        # The computing specification that is used to send and receive messages. For information about the upper limit of TPS, see [Instance specifications](~~444715~~).
+        # The computing specification that is used to send and receive messages. For information about the upper limit of TPS, see [Instance specifications](https://help.aliyun.com/document_detail/444715.html).
         self.msg_process_spec = msg_process_spec
         # The ratio between sent messages and received messages in the instance.
         self.send_receive_ratio = send_receive_ratio
@@ -2304,11 +2382,16 @@ class GetInstanceResponseBodyDataProductInfo(TeaModel):
         # *   true: enable
         # *   false: disable
         # 
-        # After you enable the elastic TPS feature for a ApsaraMQ for RocketMQ instance, you can use a specific amount of TPS that exceeds the specification limit. You are charged for the elastic TPS feature. For more information, see [Computing fee](~~427237~~).
+        # After you enable the elastic TPS feature for a ApsaraMQ for RocketMQ instance, you can use a specific amount of TPS that exceeds the specification limit. You are charged for the elastic TPS feature. For more information, see [Computing fee](https://help.aliyun.com/document_detail/427237.html).
         # 
-        # > The elastic TPS feature is supported by only specific instance editions. For more information, see [Instance specifications](~~444715~~).
+        # > The elastic TPS feature is supported by only specific instance editions. For more information, see [Instance specifications](https://help.aliyun.com/document_detail/444715.html).
         self.support_auto_scaling = support_auto_scaling
-        # Whether to enable tracking capability. Non-serverless instances are enabled by default, and serverless instances are optional for users.
+        # Indicates whether the message trace feature is enabled. Valid values:
+        # 
+        # *   true
+        # *   false
+        # 
+        # This parameter is not in use. By default, the message trace feature is enabled for ApsaraMQ for RocketMQ instances, regardless of whether this parameter is configured.
         self.trace_on = trace_on
 
     def validate(self):
@@ -2478,7 +2561,7 @@ class GetInstanceResponseBodyData(TeaModel):
         self.create_time = create_time
         # The time when the instance expires.
         self.expire_time = expire_time
-        # The extended configurations. We recommend you configure the productInfo, internetInfo, or aclInfo parameter instead of this parameter.
+        # The extended configurations. We recommend you configure productInfo, internetInfo, or aclInfo instead of this parameter.
         self.ext_config = ext_config
         # The number of groups.
         self.group_count = group_count
@@ -2486,7 +2569,7 @@ class GetInstanceResponseBodyData(TeaModel):
         self.instance_id = instance_id
         # The name of the instance.
         self.instance_name = instance_name
-        # The quotas in the instance.
+        # The instance quotas.
         self.instance_quotas = instance_quotas
         # The network information.
         self.network_info = network_info
@@ -2507,7 +2590,7 @@ class GetInstanceResponseBodyData(TeaModel):
         self.remark = remark
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The primary edition of the instance. For information about the differences between primary edition instances, see [Instance selection](~~444722~~).
+        # The primary edition of the instance. For information about the differences between primary edition instances, see [Instance selection](https://help.aliyun.com/document_detail/444722.html).
         # 
         # Valid values:
         # 
@@ -2531,7 +2614,7 @@ class GetInstanceResponseBodyData(TeaModel):
         # *   CHANGING
         # *   CREATING
         self.status = status
-        # The sub-category edition of the instance. For information about the differences between sub-category edition instances, see [Instance selection](~~444722~~).
+        # The sub-category edition of the instance. For information about the differences between sub-category edition instances, see [Instance selection](https://help.aliyun.com/document_detail/444722.html).
         # 
         # Valid values:
         # 
@@ -3427,6 +3510,7 @@ class ListConsumerConnectionsResponse(TeaModel):
 class ListConsumerGroupSubscriptionsResponseBodyData(TeaModel):
     def __init__(
         self,
+        consistency: bool = None,
         consumer_group_id: str = None,
         filter_expression: str = None,
         filter_expression_type: str = None,
@@ -3435,6 +3519,7 @@ class ListConsumerGroupSubscriptionsResponseBodyData(TeaModel):
         topic_created: bool = None,
         topic_name: str = None,
     ):
+        self.consistency = consistency
         # The consumer group ID.
         self.consumer_group_id = consumer_group_id
         # The filter expression.
@@ -3459,6 +3544,8 @@ class ListConsumerGroupSubscriptionsResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.consistency is not None:
+            result['consistency'] = self.consistency
         if self.consumer_group_id is not None:
             result['consumerGroupId'] = self.consumer_group_id
         if self.filter_expression is not None:
@@ -3477,6 +3564,8 @@ class ListConsumerGroupSubscriptionsResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('consistency') is not None:
+            self.consistency = m.get('consistency')
         if m.get('consumerGroupId') is not None:
             self.consumer_group_id = m.get('consumerGroupId')
         if m.get('filterExpression') is not None:
@@ -3630,8 +3719,12 @@ class ListConsumerGroupsRequest(TeaModel):
         # The condition that you want to use to filter consumer groups in the instance. If you leave this parameter empty, all consumer groups in the instance are queried.
         self.filter = filter
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page_number = page_number
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -3955,12 +4048,16 @@ class ListInstancesRequest(TeaModel):
         # Valid values: 1 to 100000000.
         # 
         # If the value that you specify for this parameter is less than 1, the system uses 1 as the value. If the value that you specify for this parameter is greater than 100000000, the system uses 100000000 as the value.
+        # 
+        # This parameter is required.
         self.page_number = page_number
         # The number of entries returned on each page.
         # 
         # Valid values: 10 to 200.
         # 
         # If the value that you specify for this parameter is less than 10, the system uses 10 as the value. If the value that you specify for this parameter is greater than 200, the system uses 200 as the value.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
@@ -4671,6 +4768,7 @@ class ListRegionsResponse(TeaModel):
 class ListTopicSubscriptionsResponseBodyData(TeaModel):
     def __init__(
         self,
+        consistency: str = None,
         consumer_group_id: str = None,
         filter_expression: str = None,
         filter_expression_type: str = None,
@@ -4678,6 +4776,7 @@ class ListTopicSubscriptionsResponseBodyData(TeaModel):
         subscription_status: str = None,
         topic_name: str = None,
     ):
+        self.consistency = consistency
         self.consumer_group_id = consumer_group_id
         self.filter_expression = filter_expression
         self.filter_expression_type = filter_expression_type
@@ -4694,6 +4793,8 @@ class ListTopicSubscriptionsResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.consistency is not None:
+            result['consistency'] = self.consistency
         if self.consumer_group_id is not None:
             result['consumerGroupId'] = self.consumer_group_id
         if self.filter_expression is not None:
@@ -4710,6 +4811,8 @@ class ListTopicSubscriptionsResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('consistency') is not None:
+            self.consistency = m.get('consistency')
         if m.get('consumerGroupId') is not None:
             self.consumer_group_id = m.get('consumerGroupId')
         if m.get('filterExpression') is not None:
@@ -5430,16 +5533,18 @@ class UpdateConsumerGroupRequestConsumeRetryPolicy(TeaModel):
     ):
         # The dead-letter topic.
         # 
-        # If a consumer still fails to consume a message after the message is retried for a specified number of times, the message is delivered to a dead-letter topic for subsequent business recovery or troubleshooting. For more information, see [Consumption retry and dead-letter messages](~~440356~~).
+        # If a consumer still fails to consume a message after the message is retried for a specified number of times, the message is delivered to a dead-letter topic for subsequent business recovery or troubleshooting. For more information, see [Consumption retry and dead-letter messages](https://help.aliyun.com/document_detail/440356.html).
         self.dead_letter_target_topic = dead_letter_target_topic
         # The maximum number of retries.
         self.max_retry_times = max_retry_times
-        # The retry policy. For more information, see [Message retry](~~440356~~).
+        # The retry policy. For more information, see [Message retry](https://help.aliyun.com/document_detail/440356.html).
         # 
         # Valid values:
         # 
         # *   FixedRetryPolicy: Failed messages are retried at a fixed interval.
         # *   DefaultRetryPolicy: Failed messages are retried at incremental intervals as the number of retries increases.
+        # 
+        # This parameter is required.
         self.retry_policy = retry_policy
 
     def validate(self):
@@ -5477,7 +5582,9 @@ class UpdateConsumerGroupRequest(TeaModel):
         delivery_order_type: str = None,
         remark: str = None,
     ):
-        # The new consumption retry policy that you want to configure for the consumer group. For more information, see [Consumption retry](~~440356~~).
+        # The new consumption retry policy that you want to configure for the consumer group. For more information, see [Consumption retry](https://help.aliyun.com/document_detail/440356.html).
+        # 
+        # This parameter is required.
         self.consume_retry_policy = consume_retry_policy
         # The new message delivery order of the consumer group.
         # 
@@ -5485,6 +5592,8 @@ class UpdateConsumerGroupRequest(TeaModel):
         # 
         # *   Concurrently: concurrent delivery
         # *   Orderly: ordered delivery
+        # 
+        # This parameter is required.
         self.delivery_order_type = delivery_order_type
         # The new remarks on the consumer group.
         self.remark = remark
@@ -5643,7 +5752,13 @@ class UpdateInstanceRequestAclInfo(TeaModel):
         acl_types: List[str] = None,
         default_vpc_auth_free: bool = None,
     ):
+        # The authentication type of the instance.
         self.acl_types = acl_types
+        # Indicates whether the authentication-free in VPCs feature is enabled.
+        # Indicates whether the authentication-free in VPCs feature is enabled.
+        # Valid values:
+        # - true
+        # - false
         self.default_vpc_auth_free = default_vpc_auth_free
 
     def validate(self):
@@ -5746,15 +5861,15 @@ class UpdateInstanceRequestProductInfo(TeaModel):
         # *   true
         # *   false
         # 
-        # After you enable the elastic TPS feature for an ApsaraMQ for RocketMQ instance, you can use a specific number of TPS that exceeds the specification limit. You are charged for using the elastic TPS feature. For more information, see [Computing fees](~~427237~~).
+        # After you enable the elastic TPS feature for an ApsaraMQ for RocketMQ instance, you can use a specific number of TPS that exceeds the specification limit. You are charged for using the elastic TPS feature. For more information, see [Computing fees](https://help.aliyun.com/document_detail/427237.html).
         # 
-        # >  The elastic TPS feature is supported only by specific instance editions. For more information, see [Instance editions](~~444715~~).
+        # >  The elastic TPS feature is supported only by specific instance editions. For more information, see [Instance editions](https://help.aliyun.com/document_detail/444715.html).
         self.auto_scaling = auto_scaling
         # The retention period of messages. Unit: hours.
         # 
-        # For information about the valid values of this parameter, see the "Limits on resource quotas" section of the [Limits](~~440347~~) topic.
+        # For information about the valid values of this parameter, see the "Limits on resource quotas" section of the [Limits](https://help.aliyun.com/document_detail/440347.html) topic.
         # 
-        # ApsaraMQ for RocketMQ supports serverless scaling of message storage. You are charged storage fees based on your actual storage usage. You can change the retention period of messages to manage storage capacity. For more information, see [Storage fees](~~427238~~).
+        # ApsaraMQ for RocketMQ supports serverless scaling of message storage. You are charged storage fees based on your actual storage usage. You can change the retention period of messages to manage storage capacity. For more information, see [Storage fees](https://help.aliyun.com/document_detail/427238.html).
         self.message_retention_time = message_retention_time
         # The ratio of the number of messages that you can send to the number of messages that you can receive on the instance.
         # 
@@ -5809,6 +5924,7 @@ class UpdateInstanceRequest(TeaModel):
         product_info: UpdateInstanceRequestProductInfo = None,
         remark: str = None,
     ):
+        # The access control list for the instance.
         self.acl_info = acl_info
         # The updated name of the instance.
         self.instance_name = instance_name
