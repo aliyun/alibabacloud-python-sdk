@@ -1,3 +1,7 @@
+2024-05-28 Version: 2.19.1
+- Update API ListSkillGroupSummaryReportsSinceMidnight: update response param.
+
+
 2024-05-28 Version: 2.19.0
 - Support API ImportCorpNumbers.
 

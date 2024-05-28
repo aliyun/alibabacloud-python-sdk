@@ -40639,6 +40639,9 @@ class ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummar
         calls_blind_transfer_out: int = None,
         calls_handled: int = None,
         calls_offered: int = None,
+        calls_queuing_canceled: str = None,
+        calls_queuing_failure: str = None,
+        calls_queuing_rerouted: str = None,
         calls_queuing_timeout: int = None,
         calls_service_level_10: int = None,
         calls_service_level_20: int = None,
@@ -40672,6 +40675,9 @@ class ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummar
         self.calls_blind_transfer_out = calls_blind_transfer_out
         self.calls_handled = calls_handled
         self.calls_offered = calls_offered
+        self.calls_queuing_canceled = calls_queuing_canceled
+        self.calls_queuing_failure = calls_queuing_failure
+        self.calls_queuing_rerouted = calls_queuing_rerouted
         self.calls_queuing_timeout = calls_queuing_timeout
         self.calls_service_level_10 = calls_service_level_10
         self.calls_service_level_20 = calls_service_level_20
@@ -40725,6 +40731,12 @@ class ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummar
             result['CallsHandled'] = self.calls_handled
         if self.calls_offered is not None:
             result['CallsOffered'] = self.calls_offered
+        if self.calls_queuing_canceled is not None:
+            result['CallsQueuingCanceled'] = self.calls_queuing_canceled
+        if self.calls_queuing_failure is not None:
+            result['CallsQueuingFailure'] = self.calls_queuing_failure
+        if self.calls_queuing_rerouted is not None:
+            result['CallsQueuingRerouted'] = self.calls_queuing_rerouted
         if self.calls_queuing_timeout is not None:
             result['CallsQueuingTimeout'] = self.calls_queuing_timeout
         if self.calls_service_level_10 is not None:
@@ -40793,6 +40805,12 @@ class ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummar
             self.calls_handled = m.get('CallsHandled')
         if m.get('CallsOffered') is not None:
             self.calls_offered = m.get('CallsOffered')
+        if m.get('CallsQueuingCanceled') is not None:
+            self.calls_queuing_canceled = m.get('CallsQueuingCanceled')
+        if m.get('CallsQueuingFailure') is not None:
+            self.calls_queuing_failure = m.get('CallsQueuingFailure')
+        if m.get('CallsQueuingRerouted') is not None:
+            self.calls_queuing_rerouted = m.get('CallsQueuingRerouted')
         if m.get('CallsQueuingTimeout') is not None:
             self.calls_queuing_timeout = m.get('CallsQueuingTimeout')
         if m.get('CallsServiceLevel10') is not None:
