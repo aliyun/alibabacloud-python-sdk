@@ -10198,6 +10198,33 @@ class DescribeLoadBalancerHTTPListenerAttributeRequest(TeaModel):
         return self
 
 
+class DescribeLoadBalancerHTTPListenerAttributeResponseBodyAclIds(TeaModel):
+    def __init__(
+        self,
+        acl_id: List[str] = None,
+    ):
+        self.acl_id = acl_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl_id is not None:
+            result['AclId'] = self.acl_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AclId') is not None:
+            self.acl_id = m.get('AclId')
+        return self
+
+
 class DescribeLoadBalancerHTTPListenerAttributeResponseBodyRulesRule(TeaModel):
     def __init__(
         self,
@@ -10363,6 +10390,7 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBody(TeaModel):
     def __init__(
         self,
         acl_id: str = None,
+        acl_ids: DescribeLoadBalancerHTTPListenerAttributeResponseBodyAclIds = None,
         acl_status: str = None,
         acl_type: str = None,
         backend_server_port: int = None,
@@ -10407,6 +10435,7 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBody(TeaModel):
         # 
         # > This parameter is returned when **AclStatus** is set to **on**.
         self.acl_id = acl_id
+        self.acl_ids = acl_ids
         # Indicates whether access control is enabled. Valid values:
         # 
         # *   **on**\
@@ -10570,6 +10599,8 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBody(TeaModel):
         self.xforwarded_for_proto = xforwarded_for_proto
 
     def validate(self):
+        if self.acl_ids:
+            self.acl_ids.validate()
         if self.rules:
             self.rules.validate()
         if self.tags:
@@ -10583,6 +10614,8 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBody(TeaModel):
         result = dict()
         if self.acl_id is not None:
             result['AclId'] = self.acl_id
+        if self.acl_ids is not None:
+            result['AclIds'] = self.acl_ids.to_map()
         if self.acl_status is not None:
             result['AclStatus'] = self.acl_status
         if self.acl_type is not None:
@@ -10667,6 +10700,9 @@ class DescribeLoadBalancerHTTPListenerAttributeResponseBody(TeaModel):
         m = m or dict()
         if m.get('AclId') is not None:
             self.acl_id = m.get('AclId')
+        if m.get('AclIds') is not None:
+            temp_model = DescribeLoadBalancerHTTPListenerAttributeResponseBodyAclIds()
+            self.acl_ids = temp_model.from_map(m['AclIds'])
         if m.get('AclStatus') is not None:
             self.acl_status = m.get('AclStatus')
         if m.get('AclType') is not None:
@@ -10860,6 +10896,33 @@ class DescribeLoadBalancerHTTPSListenerAttributeRequest(TeaModel):
             self.resource_owner_account = m.get('ResourceOwnerAccount')
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+        return self
+
+
+class DescribeLoadBalancerHTTPSListenerAttributeResponseBodyAclIds(TeaModel):
+    def __init__(
+        self,
+        acl_id: List[str] = None,
+    ):
+        self.acl_id = acl_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl_id is not None:
+            result['AclId'] = self.acl_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AclId') is not None:
+            self.acl_id = m.get('AclId')
         return self
 
 
@@ -11105,6 +11168,7 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponseBody(TeaModel):
     def __init__(
         self,
         acl_id: str = None,
+        acl_ids: DescribeLoadBalancerHTTPSListenerAttributeResponseBodyAclIds = None,
         acl_status: str = None,
         acl_type: str = None,
         backend_server_port: int = None,
@@ -11156,6 +11220,7 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponseBody(TeaModel):
         # 
         # > This parameter is required when **AclStatus** is set to **on**.
         self.acl_id = acl_id
+        self.acl_ids = acl_ids
         # Indicates whether access control is enabled. Valid values:
         # 
         # *   **on**\
@@ -11364,6 +11429,8 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponseBody(TeaModel):
         self.xforwarded_for_proto = xforwarded_for_proto
 
     def validate(self):
+        if self.acl_ids:
+            self.acl_ids.validate()
         if self.domain_extensions:
             self.domain_extensions.validate()
         if self.rules:
@@ -11379,6 +11446,8 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponseBody(TeaModel):
         result = dict()
         if self.acl_id is not None:
             result['AclId'] = self.acl_id
+        if self.acl_ids is not None:
+            result['AclIds'] = self.acl_ids.to_map()
         if self.acl_status is not None:
             result['AclStatus'] = self.acl_status
         if self.acl_type is not None:
@@ -11477,6 +11546,9 @@ class DescribeLoadBalancerHTTPSListenerAttributeResponseBody(TeaModel):
         m = m or dict()
         if m.get('AclId') is not None:
             self.acl_id = m.get('AclId')
+        if m.get('AclIds') is not None:
+            temp_model = DescribeLoadBalancerHTTPSListenerAttributeResponseBodyAclIds()
+            self.acl_ids = temp_model.from_map(m['AclIds'])
         if m.get('AclStatus') is not None:
             self.acl_status = m.get('AclStatus')
         if m.get('AclType') is not None:
@@ -12690,6 +12762,7 @@ class DescribeLoadBalancerListenersResponseBodyListeners(TeaModel):
     def __init__(
         self,
         acl_id: str = None,
+        acl_ids: List[str] = None,
         acl_status: str = None,
         acl_type: str = None,
         backend_server_port: int = None,
@@ -12709,6 +12782,7 @@ class DescribeLoadBalancerListenersResponseBodyListeners(TeaModel):
     ):
         # The ID of the network ACL.
         self.acl_id = acl_id
+        self.acl_ids = acl_ids
         # Indicates whether access control is enabled. Valid values:
         # 
         # *   **on**: yes
@@ -12786,6 +12860,8 @@ class DescribeLoadBalancerListenersResponseBodyListeners(TeaModel):
         result = dict()
         if self.acl_id is not None:
             result['AclId'] = self.acl_id
+        if self.acl_ids is not None:
+            result['AclIds'] = self.acl_ids
         if self.acl_status is not None:
             result['AclStatus'] = self.acl_status
         if self.acl_type is not None:
@@ -12826,6 +12902,8 @@ class DescribeLoadBalancerListenersResponseBodyListeners(TeaModel):
         m = m or dict()
         if m.get('AclId') is not None:
             self.acl_id = m.get('AclId')
+        if m.get('AclIds') is not None:
+            self.acl_ids = m.get('AclIds')
         if m.get('AclStatus') is not None:
             self.acl_status = m.get('AclStatus')
         if m.get('AclType') is not None:
@@ -13052,6 +13130,33 @@ class DescribeLoadBalancerTCPListenerAttributeRequest(TeaModel):
         return self
 
 
+class DescribeLoadBalancerTCPListenerAttributeResponseBodyAclIds(TeaModel):
+    def __init__(
+        self,
+        acl_id: List[str] = None,
+    ):
+        self.acl_id = acl_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl_id is not None:
+            result['AclId'] = self.acl_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AclId') is not None:
+            self.acl_id = m.get('AclId')
+        return self
+
+
 class DescribeLoadBalancerTCPListenerAttributeResponseBodyTagsTag(TeaModel):
     def __init__(
         self,
@@ -13126,6 +13231,7 @@ class DescribeLoadBalancerTCPListenerAttributeResponseBody(TeaModel):
     def __init__(
         self,
         acl_id: str = None,
+        acl_ids: DescribeLoadBalancerTCPListenerAttributeResponseBodyAclIds = None,
         acl_status: str = None,
         acl_type: str = None,
         backend_server_port: int = None,
@@ -13161,6 +13267,7 @@ class DescribeLoadBalancerTCPListenerAttributeResponseBody(TeaModel):
         # 
         # If **AclStatus** is set to **on**, this parameter is returned.
         self.acl_id = acl_id
+        self.acl_ids = acl_ids
         # Indicates whether access control is enabled. Valid values:
         # 
         # *   **on**: yes
@@ -13272,6 +13379,8 @@ class DescribeLoadBalancerTCPListenerAttributeResponseBody(TeaModel):
         self.vserver_group_id = vserver_group_id
 
     def validate(self):
+        if self.acl_ids:
+            self.acl_ids.validate()
         if self.tags:
             self.tags.validate()
 
@@ -13283,6 +13392,8 @@ class DescribeLoadBalancerTCPListenerAttributeResponseBody(TeaModel):
         result = dict()
         if self.acl_id is not None:
             result['AclId'] = self.acl_id
+        if self.acl_ids is not None:
+            result['AclIds'] = self.acl_ids.to_map()
         if self.acl_status is not None:
             result['AclStatus'] = self.acl_status
         if self.acl_type is not None:
@@ -13349,6 +13460,9 @@ class DescribeLoadBalancerTCPListenerAttributeResponseBody(TeaModel):
         m = m or dict()
         if m.get('AclId') is not None:
             self.acl_id = m.get('AclId')
+        if m.get('AclIds') is not None:
+            temp_model = DescribeLoadBalancerTCPListenerAttributeResponseBodyAclIds()
+            self.acl_ids = temp_model.from_map(m['AclIds'])
         if m.get('AclStatus') is not None:
             self.acl_status = m.get('AclStatus')
         if m.get('AclType') is not None:
@@ -13526,6 +13640,33 @@ class DescribeLoadBalancerUDPListenerAttributeRequest(TeaModel):
         return self
 
 
+class DescribeLoadBalancerUDPListenerAttributeResponseBodyAclIds(TeaModel):
+    def __init__(
+        self,
+        acl_id: List[str] = None,
+    ):
+        self.acl_id = acl_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.acl_id is not None:
+            result['AclId'] = self.acl_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AclId') is not None:
+            self.acl_id = m.get('AclId')
+        return self
+
+
 class DescribeLoadBalancerUDPListenerAttributeResponseBodyTagsTag(TeaModel):
     def __init__(
         self,
@@ -13600,6 +13741,7 @@ class DescribeLoadBalancerUDPListenerAttributeResponseBody(TeaModel):
     def __init__(
         self,
         acl_id: str = None,
+        acl_ids: DescribeLoadBalancerUDPListenerAttributeResponseBodyAclIds = None,
         acl_status: str = None,
         acl_type: str = None,
         backend_server_port: int = None,
@@ -13625,6 +13767,7 @@ class DescribeLoadBalancerUDPListenerAttributeResponseBody(TeaModel):
     ):
         # The ID of the network ACL.
         self.acl_id = acl_id
+        self.acl_ids = acl_ids
         # Indicates whether access control is enabled. Valid values: **on** and **off**. Default value: off.
         self.acl_status = acl_status
         # The type of the ACL. Valid values:
@@ -13698,6 +13841,8 @@ class DescribeLoadBalancerUDPListenerAttributeResponseBody(TeaModel):
         self.vserver_group_id = vserver_group_id
 
     def validate(self):
+        if self.acl_ids:
+            self.acl_ids.validate()
         if self.tags:
             self.tags.validate()
 
@@ -13709,6 +13854,8 @@ class DescribeLoadBalancerUDPListenerAttributeResponseBody(TeaModel):
         result = dict()
         if self.acl_id is not None:
             result['AclId'] = self.acl_id
+        if self.acl_ids is not None:
+            result['AclIds'] = self.acl_ids.to_map()
         if self.acl_status is not None:
             result['AclStatus'] = self.acl_status
         if self.acl_type is not None:
@@ -13759,6 +13906,9 @@ class DescribeLoadBalancerUDPListenerAttributeResponseBody(TeaModel):
         m = m or dict()
         if m.get('AclId') is not None:
             self.acl_id = m.get('AclId')
+        if m.get('AclIds') is not None:
+            temp_model = DescribeLoadBalancerUDPListenerAttributeResponseBodyAclIds()
+            self.acl_ids = temp_model.from_map(m['AclIds'])
         if m.get('AclStatus') is not None:
             self.acl_status = m.get('AclStatus')
         if m.get('AclType') is not None:
