@@ -18564,6 +18564,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.target_dbrevision_version_code):
             query['TargetDBRevisionVersionCode'] = request.target_dbrevision_version_code
+        if not UtilClient.is_unset(request.target_proxy_revision_version_code):
+            query['TargetProxyRevisionVersionCode'] = request.target_proxy_revision_version_code
         if not UtilClient.is_unset(request.upgrade_label):
             query['UpgradeLabel'] = request.upgrade_label
         if not UtilClient.is_unset(request.upgrade_policy):
@@ -18624,6 +18626,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerId'] = request.resource_owner_id
         if not UtilClient.is_unset(request.target_dbrevision_version_code):
             query['TargetDBRevisionVersionCode'] = request.target_dbrevision_version_code
+        if not UtilClient.is_unset(request.target_proxy_revision_version_code):
+            query['TargetProxyRevisionVersionCode'] = request.target_proxy_revision_version_code
         if not UtilClient.is_unset(request.upgrade_label):
             query['UpgradeLabel'] = request.upgrade_label
         if not UtilClient.is_unset(request.upgrade_policy):

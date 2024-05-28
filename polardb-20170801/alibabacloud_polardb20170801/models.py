@@ -12867,6 +12867,51 @@ class DescribeDBClusterVersionResponseBodyDBRevisionVersionList(TeaModel):
         return self
 
 
+class DescribeDBClusterVersionResponseBodyProxyRevisionVersionList(TeaModel):
+    def __init__(
+        self,
+        release_note: str = None,
+        release_type: str = None,
+        revision_version_code: str = None,
+        revision_version_name: str = None,
+    ):
+        self.release_note = release_note
+        self.release_type = release_type
+        self.revision_version_code = revision_version_code
+        self.revision_version_name = revision_version_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.release_note is not None:
+            result['ReleaseNote'] = self.release_note
+        if self.release_type is not None:
+            result['ReleaseType'] = self.release_type
+        if self.revision_version_code is not None:
+            result['RevisionVersionCode'] = self.revision_version_code
+        if self.revision_version_name is not None:
+            result['RevisionVersionName'] = self.revision_version_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ReleaseNote') is not None:
+            self.release_note = m.get('ReleaseNote')
+        if m.get('ReleaseType') is not None:
+            self.release_type = m.get('ReleaseType')
+        if m.get('RevisionVersionCode') is not None:
+            self.revision_version_code = m.get('RevisionVersionCode')
+        if m.get('RevisionVersionName') is not None:
+            self.revision_version_name = m.get('RevisionVersionName')
+        return self
+
+
 class DescribeDBClusterVersionResponseBody(TeaModel):
     def __init__(
         self,
@@ -12881,6 +12926,7 @@ class DescribeDBClusterVersionResponseBody(TeaModel):
         is_proxy_latest_version: str = None,
         proxy_latest_version: str = None,
         proxy_revision_version: str = None,
+        proxy_revision_version_list: List[DescribeDBClusterVersionResponseBodyProxyRevisionVersionList] = None,
         proxy_version_status: str = None,
         request_id: str = None,
     ):
@@ -12928,6 +12974,7 @@ class DescribeDBClusterVersionResponseBody(TeaModel):
         self.proxy_latest_version = proxy_latest_version
         # The revision version of the database engine.
         self.proxy_revision_version = proxy_revision_version
+        self.proxy_revision_version_list = proxy_revision_version_list
         # The status of PolarProxy. Valid values:
         # 
         # - Stable: The minor version is stable.
@@ -12941,6 +12988,10 @@ class DescribeDBClusterVersionResponseBody(TeaModel):
     def validate(self):
         if self.dbrevision_version_list:
             for k in self.dbrevision_version_list:
+                if k:
+                    k.validate()
+        if self.proxy_revision_version_list:
+            for k in self.proxy_revision_version_list:
                 if k:
                     k.validate()
 
@@ -12974,6 +13025,10 @@ class DescribeDBClusterVersionResponseBody(TeaModel):
             result['ProxyLatestVersion'] = self.proxy_latest_version
         if self.proxy_revision_version is not None:
             result['ProxyRevisionVersion'] = self.proxy_revision_version
+        result['ProxyRevisionVersionList'] = []
+        if self.proxy_revision_version_list is not None:
+            for k in self.proxy_revision_version_list:
+                result['ProxyRevisionVersionList'].append(k.to_map() if k else None)
         if self.proxy_version_status is not None:
             result['ProxyVersionStatus'] = self.proxy_version_status
         if self.request_id is not None:
@@ -13007,6 +13062,11 @@ class DescribeDBClusterVersionResponseBody(TeaModel):
             self.proxy_latest_version = m.get('ProxyLatestVersion')
         if m.get('ProxyRevisionVersion') is not None:
             self.proxy_revision_version = m.get('ProxyRevisionVersion')
+        self.proxy_revision_version_list = []
+        if m.get('ProxyRevisionVersionList') is not None:
+            for k in m.get('ProxyRevisionVersionList'):
+                temp_model = DescribeDBClusterVersionResponseBodyProxyRevisionVersionList()
+                self.proxy_revision_version_list.append(temp_model.from_map(k))
         if m.get('ProxyVersionStatus') is not None:
             self.proxy_version_status = m.get('ProxyVersionStatus')
         if m.get('RequestId') is not None:
@@ -32447,6 +32507,7 @@ class UpgradeDBClusterVersionRequest(TeaModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         target_dbrevision_version_code: str = None,
+        target_proxy_revision_version_code: str = None,
         upgrade_label: str = None,
         upgrade_policy: str = None,
         upgrade_type: str = None,
@@ -32478,6 +32539,7 @@ class UpgradeDBClusterVersionRequest(TeaModel):
         self.resource_owner_id = resource_owner_id
         # The code of the version to which you want to upgrade the cluster. You can call the [DescribeDBClusterVersion](https://help.aliyun.com/document_detail/2319145.html) operation to query the version code.
         self.target_dbrevision_version_code = target_dbrevision_version_code
+        self.target_proxy_revision_version_code = target_proxy_revision_version_code
         # The upgrade tag. The value is fixed as **INNOVATE**.
         # 
         # > *   This parameter is applicable only when you upgrade PolarDB for MySQL 8.0.1 to PolarDB for MySQL 8.0.2.
@@ -32522,6 +32584,8 @@ class UpgradeDBClusterVersionRequest(TeaModel):
             result['ResourceOwnerId'] = self.resource_owner_id
         if self.target_dbrevision_version_code is not None:
             result['TargetDBRevisionVersionCode'] = self.target_dbrevision_version_code
+        if self.target_proxy_revision_version_code is not None:
+            result['TargetProxyRevisionVersionCode'] = self.target_proxy_revision_version_code
         if self.upgrade_label is not None:
             result['UpgradeLabel'] = self.upgrade_label
         if self.upgrade_policy is not None:
@@ -32550,6 +32614,8 @@ class UpgradeDBClusterVersionRequest(TeaModel):
             self.resource_owner_id = m.get('ResourceOwnerId')
         if m.get('TargetDBRevisionVersionCode') is not None:
             self.target_dbrevision_version_code = m.get('TargetDBRevisionVersionCode')
+        if m.get('TargetProxyRevisionVersionCode') is not None:
+            self.target_proxy_revision_version_code = m.get('TargetProxyRevisionVersionCode')
         if m.get('UpgradeLabel') is not None:
             self.upgrade_label = m.get('UpgradeLabel')
         if m.get('UpgradePolicy') is not None:

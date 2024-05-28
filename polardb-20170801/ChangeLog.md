@@ -1,3 +1,9 @@
+2024-05-28 Version: 5.1.2
+- Update API DescribeDBClusterAvailableResources: update response param.
+- Update API DescribeDBClusterVersion: update response param.
+- Update API UpgradeDBClusterVersion: add param TargetProxyRevisionVersionCode.
+
+
 2024-05-17 Version: 5.1.1
 - Update API DescribeDBClusterServerlessConf: update response param.
 - Update API DescribeDBClusters: update response param.
