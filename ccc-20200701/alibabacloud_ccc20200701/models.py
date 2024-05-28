@@ -18690,6 +18690,151 @@ class ImportAdminsResponse(TeaModel):
         return self
 
 
+class ImportCorpNumbersRequest(TeaModel):
+    def __init__(
+        self,
+        city: str = None,
+        corp_name: str = None,
+        number_list: str = None,
+        provider: str = None,
+        province: str = None,
+        tag_list: str = None,
+    ):
+        self.city = city
+        self.corp_name = corp_name
+        # This parameter is required.
+        self.number_list = number_list
+        # This parameter is required.
+        self.provider = provider
+        self.province = province
+        self.tag_list = tag_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.city is not None:
+            result['City'] = self.city
+        if self.corp_name is not None:
+            result['CorpName'] = self.corp_name
+        if self.number_list is not None:
+            result['NumberList'] = self.number_list
+        if self.provider is not None:
+            result['Provider'] = self.provider
+        if self.province is not None:
+            result['Province'] = self.province
+        if self.tag_list is not None:
+            result['TagList'] = self.tag_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('City') is not None:
+            self.city = m.get('City')
+        if m.get('CorpName') is not None:
+            self.corp_name = m.get('CorpName')
+        if m.get('NumberList') is not None:
+            self.number_list = m.get('NumberList')
+        if m.get('Provider') is not None:
+            self.provider = m.get('Provider')
+        if m.get('Province') is not None:
+            self.province = m.get('Province')
+        if m.get('TagList') is not None:
+            self.tag_list = m.get('TagList')
+        return self
+
+
+class ImportCorpNumbersResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+        if self.message is not None:
+            result['Message'] = self.message
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ImportCorpNumbersResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ImportCorpNumbersResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ImportCorpNumbersResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ImportCustomCallTaggingRequest(TeaModel):
     def __init__(
         self,

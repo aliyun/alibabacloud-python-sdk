@@ -8245,6 +8245,114 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.import_admins_with_options_async(request, runtime)
 
+    def import_corp_numbers_with_options(
+        self,
+        request: ccc20200701_models.ImportCorpNumbersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ImportCorpNumbersResponse:
+        """
+        @param request: ImportCorpNumbersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportCorpNumbersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.city):
+            query['City'] = request.city
+        if not UtilClient.is_unset(request.corp_name):
+            query['CorpName'] = request.corp_name
+        if not UtilClient.is_unset(request.number_list):
+            query['NumberList'] = request.number_list
+        if not UtilClient.is_unset(request.provider):
+            query['Provider'] = request.provider
+        if not UtilClient.is_unset(request.province):
+            query['Province'] = request.province
+        if not UtilClient.is_unset(request.tag_list):
+            query['TagList'] = request.tag_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ImportCorpNumbers',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ImportCorpNumbersResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def import_corp_numbers_with_options_async(
+        self,
+        request: ccc20200701_models.ImportCorpNumbersRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ccc20200701_models.ImportCorpNumbersResponse:
+        """
+        @param request: ImportCorpNumbersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportCorpNumbersResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.city):
+            query['City'] = request.city
+        if not UtilClient.is_unset(request.corp_name):
+            query['CorpName'] = request.corp_name
+        if not UtilClient.is_unset(request.number_list):
+            query['NumberList'] = request.number_list
+        if not UtilClient.is_unset(request.provider):
+            query['Provider'] = request.provider
+        if not UtilClient.is_unset(request.province):
+            query['Province'] = request.province
+        if not UtilClient.is_unset(request.tag_list):
+            query['TagList'] = request.tag_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ImportCorpNumbers',
+            version='2020-07-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ccc20200701_models.ImportCorpNumbersResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def import_corp_numbers(
+        self,
+        request: ccc20200701_models.ImportCorpNumbersRequest,
+    ) -> ccc20200701_models.ImportCorpNumbersResponse:
+        """
+        @param request: ImportCorpNumbersRequest
+        @return: ImportCorpNumbersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.import_corp_numbers_with_options(request, runtime)
+
+    async def import_corp_numbers_async(
+        self,
+        request: ccc20200701_models.ImportCorpNumbersRequest,
+    ) -> ccc20200701_models.ImportCorpNumbersResponse:
+        """
+        @param request: ImportCorpNumbersRequest
+        @return: ImportCorpNumbersResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.import_corp_numbers_with_options_async(request, runtime)
+
     def import_custom_call_tagging_with_options(
         self,
         request: ccc20200701_models.ImportCustomCallTaggingRequest,

@@ -1,3 +1,7 @@
+2024-05-28 Version: 2.19.0
+- Support API ImportCorpNumbers.
+
+
 2024-05-17 Version: 2.18.0
 - Support API AddSchemaProperty.
 - Support API CreateSchema.
