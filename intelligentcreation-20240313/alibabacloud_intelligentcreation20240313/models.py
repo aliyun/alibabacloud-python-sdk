@@ -365,12 +365,15 @@ class Text(TeaModel):
         gmt_create: str = None,
         gmt_modified: str = None,
         illustration_task_id_list: List[int] = None,
+        publish_status: str = None,
         text_content: str = None,
         text_id: int = None,
         text_illustration_tag: bool = None,
         text_mode_type: str = None,
         text_status: str = None,
+        text_style_type: str = None,
         text_task_id: int = None,
+        text_themes: List[str] = None,
         title: str = None,
         user_name_create: str = None,
         user_name_modified: str = None,
@@ -380,6 +383,7 @@ class Text(TeaModel):
         self.gmt_create = gmt_create
         self.gmt_modified = gmt_modified
         self.illustration_task_id_list = illustration_task_id_list
+        self.publish_status = publish_status
         self.text_content = text_content
         # This parameter is required.
         self.text_id = text_id
@@ -387,8 +391,10 @@ class Text(TeaModel):
         self.text_mode_type = text_mode_type
         # This parameter is required.
         self.text_status = text_status
+        self.text_style_type = text_style_type
         # This parameter is required.
         self.text_task_id = text_task_id
+        self.text_themes = text_themes
         self.title = title
         # This parameter is required.
         self.user_name_create = user_name_create
@@ -412,6 +418,8 @@ class Text(TeaModel):
             result['gmtModified'] = self.gmt_modified
         if self.illustration_task_id_list is not None:
             result['illustrationTaskIdList'] = self.illustration_task_id_list
+        if self.publish_status is not None:
+            result['publishStatus'] = self.publish_status
         if self.text_content is not None:
             result['textContent'] = self.text_content
         if self.text_id is not None:
@@ -422,8 +430,12 @@ class Text(TeaModel):
             result['textModeType'] = self.text_mode_type
         if self.text_status is not None:
             result['textStatus'] = self.text_status
+        if self.text_style_type is not None:
+            result['textStyleType'] = self.text_style_type
         if self.text_task_id is not None:
             result['textTaskId'] = self.text_task_id
+        if self.text_themes is not None:
+            result['textThemes'] = self.text_themes
         if self.title is not None:
             result['title'] = self.title
         if self.user_name_create is not None:
@@ -442,6 +454,8 @@ class Text(TeaModel):
             self.gmt_modified = m.get('gmtModified')
         if m.get('illustrationTaskIdList') is not None:
             self.illustration_task_id_list = m.get('illustrationTaskIdList')
+        if m.get('publishStatus') is not None:
+            self.publish_status = m.get('publishStatus')
         if m.get('textContent') is not None:
             self.text_content = m.get('textContent')
         if m.get('textId') is not None:
@@ -452,14 +466,65 @@ class Text(TeaModel):
             self.text_mode_type = m.get('textModeType')
         if m.get('textStatus') is not None:
             self.text_status = m.get('textStatus')
+        if m.get('textStyleType') is not None:
+            self.text_style_type = m.get('textStyleType')
         if m.get('textTaskId') is not None:
             self.text_task_id = m.get('textTaskId')
+        if m.get('textThemes') is not None:
+            self.text_themes = m.get('textThemes')
         if m.get('title') is not None:
             self.title = m.get('title')
         if m.get('userNameCreate') is not None:
             self.user_name_create = m.get('userNameCreate')
         if m.get('userNameModified') is not None:
             self.user_name_modified = m.get('userNameModified')
+        return self
+
+
+class TextQueryResult(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        texts: List[Text] = None,
+        total: int = None,
+    ):
+        self.request_id = request_id
+        self.texts = texts
+        self.total = total
+
+    def validate(self):
+        if self.texts:
+            for k in self.texts:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        result['texts'] = []
+        if self.texts is not None:
+            for k in self.texts:
+                result['texts'].append(k.to_map() if k else None)
+        if self.total is not None:
+            result['total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        self.texts = []
+        if m.get('texts') is not None:
+            for k in m.get('texts'):
+                temp_model = Text()
+                self.texts.append(temp_model.from_map(k))
+        if m.get('total') is not None:
+            self.total = m.get('total')
         return self
 
 
@@ -626,6 +691,7 @@ class TextTaskCreateCmd(TeaModel):
         self,
         content_requirement: str = None,
         idempotent_id: str = None,
+        industry: str = None,
         introduction: str = None,
         number: int = None,
         point: str = None,
@@ -635,9 +701,11 @@ class TextTaskCreateCmd(TeaModel):
         target: str = None,
         text_mode_type: str = None,
         theme: str = None,
+        themes: List[str] = None,
     ):
         self.content_requirement = content_requirement
         self.idempotent_id = idempotent_id
+        self.industry = industry
         self.introduction = introduction
         # This parameter is required.
         self.number = number
@@ -650,6 +718,7 @@ class TextTaskCreateCmd(TeaModel):
         # This parameter is required.
         self.text_mode_type = text_mode_type
         self.theme = theme
+        self.themes = themes
 
     def validate(self):
         if self.reference_tag:
@@ -665,6 +734,8 @@ class TextTaskCreateCmd(TeaModel):
             result['contentRequirement'] = self.content_requirement
         if self.idempotent_id is not None:
             result['idempotentId'] = self.idempotent_id
+        if self.industry is not None:
+            result['industry'] = self.industry
         if self.introduction is not None:
             result['introduction'] = self.introduction
         if self.number is not None:
@@ -683,6 +754,8 @@ class TextTaskCreateCmd(TeaModel):
             result['textModeType'] = self.text_mode_type
         if self.theme is not None:
             result['theme'] = self.theme
+        if self.themes is not None:
+            result['themes'] = self.themes
         return result
 
     def from_map(self, m: dict = None):
@@ -691,6 +764,8 @@ class TextTaskCreateCmd(TeaModel):
             self.content_requirement = m.get('contentRequirement')
         if m.get('idempotentId') is not None:
             self.idempotent_id = m.get('idempotentId')
+        if m.get('industry') is not None:
+            self.industry = m.get('industry')
         if m.get('introduction') is not None:
             self.introduction = m.get('introduction')
         if m.get('number') is not None:
@@ -710,6 +785,8 @@ class TextTaskCreateCmd(TeaModel):
             self.text_mode_type = m.get('textModeType')
         if m.get('theme') is not None:
             self.theme = m.get('theme')
+        if m.get('themes') is not None:
+            self.themes = m.get('themes')
         return self
 
 
@@ -1197,6 +1274,33 @@ class GetTextTaskResponse(TeaModel):
         return self
 
 
+class ListTextThemesRequest(TeaModel):
+    def __init__(
+        self,
+        industry: str = None,
+    ):
+        self.industry = industry
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.industry is not None:
+            result['industry'] = self.industry
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('industry') is not None:
+            self.industry = m.get('industry')
+        return self
+
+
 class ListTextThemesResponse(TeaModel):
     def __init__(
         self,
@@ -1234,6 +1338,110 @@ class ListTextThemesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = TextThemeListResult()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class ListTextsRequest(TeaModel):
+    def __init__(
+        self,
+        generation_source: str = None,
+        industry: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        publish_status: str = None,
+        text_style_type: str = None,
+        text_theme: str = None,
+    ):
+        self.generation_source = generation_source
+        self.industry = industry
+        self.page_number = page_number
+        self.page_size = page_size
+        self.publish_status = publish_status
+        self.text_style_type = text_style_type
+        self.text_theme = text_theme
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.generation_source is not None:
+            result['generationSource'] = self.generation_source
+        if self.industry is not None:
+            result['industry'] = self.industry
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+        if self.publish_status is not None:
+            result['publishStatus'] = self.publish_status
+        if self.text_style_type is not None:
+            result['textStyleType'] = self.text_style_type
+        if self.text_theme is not None:
+            result['textTheme'] = self.text_theme
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('generationSource') is not None:
+            self.generation_source = m.get('generationSource')
+        if m.get('industry') is not None:
+            self.industry = m.get('industry')
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+        if m.get('publishStatus') is not None:
+            self.publish_status = m.get('publishStatus')
+        if m.get('textStyleType') is not None:
+            self.text_style_type = m.get('textStyleType')
+        if m.get('textTheme') is not None:
+            self.text_theme = m.get('textTheme')
+        return self
+
+
+class ListTextsResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TextQueryResult = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TextQueryResult()
             self.body = temp_model.from_map(m['body'])
         return self
 

@@ -719,18 +719,25 @@ class Client(OpenApiClient):
 
     def list_text_themes_with_options(
         self,
+        request: intelligent_creation_20240313_models.ListTextThemesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> intelligent_creation_20240313_models.ListTextThemesResponse:
         """
         @summary 查询文案主题列表
         
+        @param request: ListTextThemesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListTextThemesResponse
         """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.industry):
+            query['industry'] = request.industry
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListTextThemes',
@@ -750,18 +757,25 @@ class Client(OpenApiClient):
 
     async def list_text_themes_with_options_async(
         self,
+        request: intelligent_creation_20240313_models.ListTextThemesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> intelligent_creation_20240313_models.ListTextThemesResponse:
         """
         @summary 查询文案主题列表
         
+        @param request: ListTextThemesRequest
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
         @return: ListTextThemesResponse
         """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.industry):
+            query['industry'] = request.industry
         req = open_api_models.OpenApiRequest(
-            headers=headers
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
         )
         params = open_api_models.Params(
             action='ListTextThemes',
@@ -779,22 +793,158 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_text_themes(self) -> intelligent_creation_20240313_models.ListTextThemesResponse:
+    def list_text_themes(
+        self,
+        request: intelligent_creation_20240313_models.ListTextThemesRequest,
+    ) -> intelligent_creation_20240313_models.ListTextThemesResponse:
         """
         @summary 查询文案主题列表
         
+        @param request: ListTextThemesRequest
         @return: ListTextThemesResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return self.list_text_themes_with_options(headers, runtime)
+        return self.list_text_themes_with_options(request, headers, runtime)
 
-    async def list_text_themes_async(self) -> intelligent_creation_20240313_models.ListTextThemesResponse:
+    async def list_text_themes_async(
+        self,
+        request: intelligent_creation_20240313_models.ListTextThemesRequest,
+    ) -> intelligent_creation_20240313_models.ListTextThemesResponse:
         """
         @summary 查询文案主题列表
         
+        @param request: ListTextThemesRequest
         @return: ListTextThemesResponse
         """
         runtime = util_models.RuntimeOptions()
         headers = {}
-        return await self.list_text_themes_with_options_async(headers, runtime)
+        return await self.list_text_themes_with_options_async(request, headers, runtime)
+
+    def list_texts_with_options(
+        self,
+        request: intelligent_creation_20240313_models.ListTextsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.ListTextsResponse:
+        """
+        @summary 列举文案
+        
+        @param request: ListTextsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTextsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.generation_source):
+            query['generationSource'] = request.generation_source
+        if not UtilClient.is_unset(request.industry):
+            query['industry'] = request.industry
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.publish_status):
+            query['publishStatus'] = request.publish_status
+        if not UtilClient.is_unset(request.text_style_type):
+            query['textStyleType'] = request.text_style_type
+        if not UtilClient.is_unset(request.text_theme):
+            query['textTheme'] = request.text_theme
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTexts',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/texts',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.ListTextsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_texts_with_options_async(
+        self,
+        request: intelligent_creation_20240313_models.ListTextsRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> intelligent_creation_20240313_models.ListTextsResponse:
+        """
+        @summary 列举文案
+        
+        @param request: ListTextsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTextsResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.generation_source):
+            query['generationSource'] = request.generation_source
+        if not UtilClient.is_unset(request.industry):
+            query['industry'] = request.industry
+        if not UtilClient.is_unset(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['pageSize'] = request.page_size
+        if not UtilClient.is_unset(request.publish_status):
+            query['publishStatus'] = request.publish_status
+        if not UtilClient.is_unset(request.text_style_type):
+            query['textStyleType'] = request.text_style_type
+        if not UtilClient.is_unset(request.text_theme):
+            query['textTheme'] = request.text_theme
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ListTexts',
+            version='2024-03-13',
+            protocol='HTTPS',
+            pathname=f'/yic/yic-console/openService/v1/texts',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            intelligent_creation_20240313_models.ListTextsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_texts(
+        self,
+        request: intelligent_creation_20240313_models.ListTextsRequest,
+    ) -> intelligent_creation_20240313_models.ListTextsResponse:
+        """
+        @summary 列举文案
+        
+        @param request: ListTextsRequest
+        @return: ListTextsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.list_texts_with_options(request, headers, runtime)
+
+    async def list_texts_async(
+        self,
+        request: intelligent_creation_20240313_models.ListTextsRequest,
+    ) -> intelligent_creation_20240313_models.ListTextsResponse:
+        """
+        @summary 列举文案
+        
+        @param request: ListTextsRequest
+        @return: ListTextsResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.list_texts_with_options_async(request, headers, runtime)
