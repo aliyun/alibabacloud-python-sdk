@@ -1,3 +1,13 @@
+2024-05-29 Version: 2.0.2
+- Update API AssociateWebCert: update param Cert.
+- Update API AssociateWebCert: update param CertId.
+- Update API AssociateWebCert: update param CertIdentifier.
+- Update API AssociateWebCert: update param CertName.
+- Update API AssociateWebCert: update param CertRegion.
+- Update API AssociateWebCert: update param Domain.
+- Update API AssociateWebCert: update param Key.
+
+
 2024-05-09 Version: 2.0.1
 - Update API ConfigL7RsPolicy: add param UpstreamRetry.
 - Update API DescribeL7RsPolicy: update response param.

@@ -11,8 +11,11 @@ class AddAutoCcBlacklistRequest(TeaModel):
         expire_time: int = None,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.blacklist = blacklist
+        # This parameter is required.
         self.expire_time = expire_time
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -124,11 +127,15 @@ class AddAutoCcWhitelistRequest(TeaModel):
         self.expire_time = expire_time
         # The ID of the instance.
         # 
-        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The configuration of the IP addresses that you want to add to the whitelist. The value is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields:
         # 
         # *   **src**: the IP address that you want to add. This parameter is required. Data type: string.
+        # 
+        # This parameter is required.
         self.whitelist = whitelist
 
     def validate(self):
@@ -240,27 +247,13 @@ class AssociateWebCertRequest(TeaModel):
         key: str = None,
         resource_group_id: str = None,
     ):
-        # The public key of the certificate that you want to associate. This parameter must be used together with **CertName** and **Key**.
-        # 
-        # > If you specify **CertName**, **Cert**, and **Key**, you do not need to specify **CertId**.
         self.cert = cert
-        # The ID of the certificate that you want to associate. If the certificate that you want to associate has been issued in Certificate Management Service, you can specify the certificate ID to associate the certificate.
-        # 
-        # > If you specify the certificate ID, you do not need to specify a value for the **CertName**, **Cert**, and **Key** parameters.
         self.cert_id = cert_id
         self.cert_identifier = cert_identifier
-        # The name of the certificate that you want to associate. This parameter must be used together with the **Cert** and **Key** parameters.
-        # 
-        # > If you specify a value for the **CertName**, **Cert**, and **Key** parameters, you do not need to specify a value for the **CertId** parameter.
         self.cert_name = cert_name
         self.cert_region = cert_region
-        # The domain name of the website.
-        # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # This parameter is required.
         self.domain = domain
-        # The private key of the certificate that you want to associate. This parameter must be used together with **CertName** and **Cert**.
-        # 
-        # > If you specify **CertName**, **Cert**, and **Key**, you do not need to specify **CertId**.
         self.key = key
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
@@ -390,12 +383,18 @@ class AttachSceneDefenseObjectRequest(TeaModel):
         policy_id: str = None,
     ):
         # The type of the object. Set the value to **Domain**, which indicates a domain name.
+        # 
+        # This parameter is required.
         self.object_type = object_type
         # The object that you want to add to the policy. Separate multiple objects with commas (,).
+        # 
+        # This parameter is required.
         self.objects = objects
         # The ID of the policy.
         # 
-        # > You can call the [DescribeSceneDefensePolicies](~~159382~~) operation to query the IDs of all policies.
+        # > You can call the [DescribeSceneDefensePolicies](https://help.aliyun.com/document_detail/159382.html) operation to query the IDs of all policies.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
 
     def validate(self):
@@ -515,7 +514,9 @@ class ConfigL7RsPolicyRequest(TeaModel):
     ):
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query the domain names for which forwarding rules are configured.
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query the domain names for which forwarding rules are configured.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The back-to-origin policy. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
         # 
@@ -532,10 +533,12 @@ class ConfigL7RsPolicyRequest(TeaModel):
         #     *   **Attribute**: the parameter for back-to-origin. This field is optional and must be a JSON object. The value contains the following field:
         # 
         #         *   **Weight**: the weight of the server. This field is optional and must be an integer. This field takes effect only when **ProxyMode** is set to **rr**. Valid values: **1** to **100**. Default value: **100**. An origin server with a higher weight receives more requests.
+        # 
+        # This parameter is required.
         self.policy = policy
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         # 
-        # For more information about resource groups, see [Create a resource group](~~94485~~).
+        # For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
         self.resource_group_id = resource_group_id
         self.upstream_retry = upstream_retry
 
@@ -648,9 +651,13 @@ class ConfigLayer4RealLimitRequest(TeaModel):
     ):
         # The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance.
         # 
-        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # Specifies the threshold of the clean bandwidth. Valid values: 0 to 15360. The value 0 indicates that rate limiting is never triggered. Unit: Mbit/s
+        # 
+        # This parameter is required.
         self.limit_value = limit_value
 
     def validate(self):
@@ -755,7 +762,7 @@ class ConfigLayer4RemarkRequest(TeaModel):
         # 
         # This parameter is a string that consists of JSON arrays. Each element in a JSON array indicates a port forwarding rule. You can perform this operation only on one port forwarding rule at a time.
         # 
-        # > You can call the [DescribeNetworkRules](~~157484~~) to query existing port forwarding rules.
+        # > You can call the [DescribeNetworkRules](https://help.aliyun.com/document_detail/157484.html) to query existing port forwarding rules.
         # 
         # Each port forwarding rule contains the following fields:
         # 
@@ -763,6 +770,8 @@ class ConfigLayer4RemarkRequest(TeaModel):
         # *   **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp** and **udp**.
         # *   **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
         # *   **Remark**: the remarks of the port forwarding rule. This field is required and must be of the STRING type. The value can contain letters, digits, and some special characters, such as `, . + - * / _`. The value can be up to 200 characters in length.
+        # 
+        # This parameter is required.
         self.listeners = listeners
 
     def validate(self):
@@ -862,20 +871,24 @@ class ConfigLayer4RuleBakModeRequest(TeaModel):
     ):
         # The mode that you want to use to forward service traffic. Valid values:
         # 
-        # *   **0**: the default mode. In this mode, Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the origin IP address that you specified when you created the port forwarding rule. You can call the [CreateNetworkRules](~~157482~~) operation to create a port forwarding rule.
-        # *   **1**: the origin redundancy mode. In this mode, Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the primary or secondary origin servers. You can call the [ConfigLayer4RulePolicy](~~312684~~) operation to configure IP addresses.
+        # *   **0**: the default mode. In this mode, Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the origin IP address that you specified when you created the port forwarding rule. You can call the [CreateNetworkRules](https://help.aliyun.com/document_detail/157482.html) operation to create a port forwarding rule.
+        # *   **1**: the origin redundancy mode. In this mode, Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the primary or secondary origin servers. You can call the [ConfigLayer4RulePolicy](https://help.aliyun.com/document_detail/312684.html) operation to configure IP addresses.
+        # 
+        # This parameter is required.
         self.bak_mode = bak_mode
         # The port forwarding rule that you want to manage.
         # 
         # This parameter is a string that consists of JSON arrays. Each element in a JSON array indicates a port forwarding rule. You can perform this operation only on one port forwarding rule at a time.
         # 
-        # > You can call the [DescribeNetworkRules](~~157484~~) to query existing port forwarding rules.
+        # > You can call the [DescribeNetworkRules](https://help.aliyun.com/document_detail/157484.html) to query existing port forwarding rules.
         # 
         # Each port forwarding rule contains the following fields:
         # 
         # *   **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
         # *   **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp** and **udp**.
         # *   **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
+        # 
+        # This parameter is required.
         self.listeners = listeners
 
     def validate(self):
@@ -980,7 +993,7 @@ class ConfigLayer4RulePolicyRequest(TeaModel):
         # 
         # This parameter is a string that consists of JSON arrays. Each element in a JSON array indicates a port forwarding rule. You can perform this operation only on one port forwarding rule at a time.
         # 
-        # > You can call the [DescribeNetworkRules](~~157484~~) to query existing port forwarding rules.
+        # > You can call the [DescribeNetworkRules](https://help.aliyun.com/document_detail/157484.html) to query existing port forwarding rules.
         # 
         # Each port forwarding rule contains the following fields:
         # 
@@ -1008,6 +1021,8 @@ class ConfigLayer4RulePolicyRequest(TeaModel):
         # 
         #     *   **1**: the primary origin server, which indicates that Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the primary origin server.
         #     *   **2**: the secondary origin server, which indicates that Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the secondary origin server.
+        # 
+        # This parameter is required.
         self.listeners = listeners
 
     def validate(self):
@@ -1116,20 +1131,24 @@ class ConfigNetworkRegionBlockRequest(TeaModel):
         # 
         #     **\
         # 
-        #     **Note**For more information, see the **Codes of countries and areas** section of the [Codes of administrative regions in China and codes of countries and areas](~~167926~~) topic.
+        #     **Note**For more information, see the **Codes of countries and areas** section of the [Codes of administrative regions in China and codes of countries and areas](https://help.aliyun.com/document_detail/167926.html) topic.
         # 
         # 
         # *   **Provinces**: the codes of the administrative regions in China from which you want to block requests. This field is optional and must be of the array type.
         # 
         #     **\
         # 
-        #     **Note**For more information, see the **Codes of administrative regions in China** section of the [Codes of administrative regions in China and codes of countries and areas](~~167926~~) topic.
+        #     **Note**For more information, see the **Codes of administrative regions in China** section of the [Codes of administrative regions in China and codes of countries and areas](https://help.aliyun.com/document_detail/167926.html) topic.
         # 
         #     For example, `[11,12]` specifies Beijing and Tianjin.
+        # 
+        # This parameter is required.
         self.config = config
         # The ID of the instance.
         # 
-        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -1239,6 +1258,8 @@ class ConfigNetworkRulesRequest(TeaModel):
         # *   **RealServers**: the IP addresses of the origin server. This field is required and must be a JSON array. You can specify up to 20 IP addresses.
         # 
         # > You can modify only the value of **RealServers** when you modify a port forwarding rule.
+        # 
+        # This parameter is required.
         self.network_rules = network_rules
 
     def validate(self):
@@ -1357,10 +1378,14 @@ class ConfigUdpReflectRequest(TeaModel):
         #     *   UDP 1900: SSDP reflection attacks
         #     *   UDP 3389: RDP reflection attacks
         #     *   UDP 11211: memcached reflection attacks
+        # 
+        # This parameter is required.
         self.config = config
         # The ID of the instance.
         # 
-        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the instance. Valid values:
         # 
@@ -1474,7 +1499,9 @@ class ConfigWebCCTemplateRequest(TeaModel):
     ):
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
@@ -1484,6 +1511,8 @@ class ConfigWebCCTemplateRequest(TeaModel):
         # *   **gf_under_attack**: Emergency
         # *   **gf_sos_verify**: Strict
         # *   **gf_sos_enhance**: Super Strict
+        # 
+        # This parameter is required.
         self.template = template
 
     def validate(self):
@@ -1595,7 +1624,9 @@ class ConfigWebIpSetRequest(TeaModel):
         self.black_list = black_list
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
@@ -1721,6 +1752,8 @@ class CreateAsyncTaskRequest(TeaModel):
         # If **TaskType** is set to **2**, the following field is returned:
         # 
         # *   **domain**: the domain name of the website, which must be of the STRING type. If you do not specify this field, the forwarding rules of all websites are exported.
+        # 
+        # This parameter is required.
         self.task_params = task_params
         # The type of the asynchronous export task that you want to create. Valid values:
         # 
@@ -1730,6 +1763,8 @@ class CreateAsyncTaskRequest(TeaModel):
         # *   **4**: the task to export the anti-DDoS mitigation policies of an instance
         # *   **5**: the task to download the blacklist for destination IP addresses of an instance
         # *   **6**: the task to download the whitelist for destination IP addresses of an instance
+        # 
+        # This parameter is required.
         self.task_type = task_type
 
     def validate(self):
@@ -1836,6 +1871,8 @@ class CreateDomainResourceRequestProxyTypes(TeaModel):
         proxy_type: str = None,
     ):
         # An array that consists of port numbers.
+        # 
+        # This parameter is required.
         self.proxy_ports = proxy_ports
         # The type of the protocol. Valid values:
         # 
@@ -1880,6 +1917,8 @@ class CreateDomainResourceRequest(TeaModel):
         rs_type: int = None,
     ):
         # The domain name of the website that you want to add to the Anti-DDoS Pro or Anti-DDoS Premium instance.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The advanced HTTPS settings. This parameter takes effect only when the value of the **ProxyType** parameter includes **https**. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
         # 
@@ -1896,10 +1935,16 @@ class CreateDomainResourceRequest(TeaModel):
         #     After you turn on the switch, HTTP/2 is used.
         self.https_ext = https_ext
         # An array consisting of the IDs of instances that you want to associate.
+        # 
+        # This parameter is required.
         self.instance_ids = instance_ids
         # An array that consists of the details of the protocol type and port number.
+        # 
+        # This parameter is required.
         self.proxy_types = proxy_types
         # An array that consists of the addresses of origin servers.
+        # 
+        # This parameter is required.
         self.real_servers = real_servers
         # The address type of the origin server. Valid values:
         # 
@@ -1908,6 +1953,8 @@ class CreateDomainResourceRequest(TeaModel):
         # *   **1**: domain name
         # 
         #     If you deploy proxies, such as a Web Application Firewall (WAF) instance, between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance, set the value to 1. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF.
+        # 
+        # This parameter is required.
         self.rs_type = rs_type
 
     def validate(self):
@@ -2039,6 +2086,8 @@ class CreateNetworkRulesRequest(TeaModel):
         # *   **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
         # *   **BackendPort**: the port of the origin server. This field is required and must be of the INTEGER type.
         # *   **RealServers**: the IP addresses of the origin server. This field is required and must be a JSON array. You can specify up to 20 IP addresses.
+        # 
+        # This parameter is required.
         self.network_rules = network_rules
 
     def validate(self):
@@ -2142,17 +2191,25 @@ class CreatePortRequest(TeaModel):
         # The port of the origin server. Valid values: **0** to **65535**.
         self.backend_port = backend_port
         # The forwarding port. Valid values: **0** to **65535**.
+        # 
+        # This parameter is required.
         self.frontend_port = frontend_port
         # The type of the protocol. Valid values:
         # 
         # *   **tcp**\
         # *   **udp**\
+        # 
+        # This parameter is required.
         self.frontend_protocol = frontend_protocol
         # The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
         # 
-        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # An array that consists of the IP addresses of origin servers.
+        # 
+        # This parameter is required.
         self.real_servers = real_servers
 
     def validate(self):
@@ -2269,15 +2326,23 @@ class CreateSceneDefensePolicyRequest(TeaModel):
         template: str = None,
     ):
         # The end time of the policy. This value is a UNIX timestamp. Units: milliseconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The name of the policy.
+        # 
+        # This parameter is required.
         self.name = name
         # The start time of the policy. This value is a UNIX timestamp. Units: milliseconds.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The template of the policy. Valid values:
         # 
         # *   **promotion**: important activity
         # *   **bypass**: all traffic forwarded
+        # 
+        # This parameter is required.
         self.template = template
 
     def validate(self):
@@ -2414,6 +2479,8 @@ class CreateSchedulerRuleRequest(TeaModel):
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
         # The name of the rule.
+        # 
+        # This parameter is required.
         self.rule_name = rule_name
         # The type of the custom defense rule. Valid values:
         # 
@@ -2421,6 +2488,8 @@ class CreateSchedulerRuleRequest(TeaModel):
         # *   **3**: network acceleration
         # *   **5**: CDN interaction
         # *   **6**: cloud service interaction
+        # 
+        # This parameter is required.
         self.rule_type = rule_type
         # The details of the scheduling rule. This parameter is a JSON string. The following list describes the fields in the value of the parameter:
         # 
@@ -2442,6 +2511,8 @@ class CreateSchedulerRuleRequest(TeaModel):
         #     *   **6** the IP address of the interaction resource in the cloud service interaction scenario
         # 
         # *   **RegionId**: the region where the interaction resource is deployed. This parameter must be specified when **ValueType** is set to **2**. The value must be of the string type.
+        # 
+        # This parameter is required.
         self.rules = rules
 
     def validate(self):
@@ -2610,14 +2681,20 @@ class CreateTagResourcesRequest(TeaModel):
         tags: List[CreateTagResourcesRequestTags] = None,
     ):
         # The region ID of the instance. Set the value to **cn-hangzhou**, which indicates an Anti-DDoS Pro instance in the Chinese mainland.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the instance belongs in Resource Management.
         # 
         # If you do not specify this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
         # An array consisting of the IDs of the Anti-DDoS Pro instances to which you want to add the tag.
+        # 
+        # This parameter is required.
         self.resource_ids = resource_ids
         # The type of the resource to which the tag belongs. Set the value to **INSTANCE**, which indicates an Anti-DDoS Pro instance.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # An array that consists of the tags to add.
         self.tags = tags
@@ -2748,14 +2825,22 @@ class CreateWebCCRuleRequest(TeaModel):
         ttl: int = None,
         uri: str = None,
     ):
+        # This parameter is required.
         self.act = act
+        # This parameter is required.
         self.count = count
+        # This parameter is required.
         self.domain = domain
+        # This parameter is required.
         self.interval = interval
+        # This parameter is required.
         self.mode = mode
+        # This parameter is required.
         self.name = name
         self.resource_group_id = resource_group_id
+        # This parameter is required.
         self.ttl = ttl
+        # This parameter is required.
         self.uri = uri
 
     def validate(self):
@@ -2898,6 +2983,8 @@ class CreateWebRuleRequest(TeaModel):
         # > You can specify only one of the following parameters: **InstanceIds** and **DefenseId**.
         self.defense_id = defense_id
         # The domain name of the website that you want to add to the instance.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The advanced HTTPS settings. This parameter takes effect only when the value of the **ProxyType** parameter includes **https**. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
         # 
@@ -2917,12 +3004,14 @@ class CreateWebRuleRequest(TeaModel):
         self.instance_ids = instance_ids
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         # 
-        # For more information about resource groups, see [Create a resource group](~~94485~~).
+        # For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
         self.resource_group_id = resource_group_id
         # The address type of the origin server. Valid values:
         # 
         # *   **0**: IP address
         # *   **1**: domain name The domain name of the origin server is returned if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the instance. In this case, the address of the proxy, such as the CNAME provided by WAF, is returned.
+        # 
+        # This parameter is required.
         self.rs_type = rs_type
         # The details of the forwarding rule. The value is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields:
         # 
@@ -2932,6 +3021,8 @@ class CreateWebRuleRequest(TeaModel):
         #     *   **RealServers**: the IP address. This field is required and must be a string array.
         # 
         # *   **ProxyType**: the protocol type. This field is required and must be a string. Valid values: **http**, **https**, **websocket**, and **websockets**.
+        # 
+        # This parameter is required.
         self.rules = rules
 
     def validate(self):
@@ -3057,7 +3148,9 @@ class DeleteAsyncTaskRequest(TeaModel):
         self.resource_group_id = resource_group_id
         # The ID of the task that you want to delete.
         # 
-        # > You can call the [DescribeAsyncTasks](~~159405~~) operation to query the IDs of all asynchronous export tasks.
+        # > You can call the [DescribeAsyncTasks](https://help.aliyun.com/document_detail/159405.html) operation to query the IDs of all asynchronous export tasks.
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -3162,10 +3255,14 @@ class DeleteAutoCcBlacklistRequest(TeaModel):
         # The IP addresses that you want to manage. This parameter is a JSON string. The string contains the following fields:
         # 
         # *   **src**: the IP address. This field is required and must be of the STRING type.
+        # 
+        # This parameter is required.
         self.blacklist = blacklist
         # The ID of the instance.
         # 
-        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -3269,11 +3366,15 @@ class DeleteAutoCcWhitelistRequest(TeaModel):
     ):
         # The ID of the instance.
         # 
-        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The IP addresses that you want to manage. This parameter is a JSON string. This parameter is a JSON string. The string contains the following field:
         # 
         # *   **src**: the IP address. This field is required and must be of the string type.
+        # 
+        # This parameter is required.
         self.whitelist = whitelist
 
     def validate(self):
@@ -3375,6 +3476,8 @@ class DeleteDomainResourceRequest(TeaModel):
         domain: str = None,
     ):
         # The domain name for which the forwarding rule is configured.
+        # 
+        # This parameter is required.
         self.domain = domain
 
     def validate(self):
@@ -3476,6 +3579,8 @@ class DeleteNetworkRuleRequest(TeaModel):
         # *   **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
         # *   **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp** and **udp**.
         # *   **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
+        # 
+        # This parameter is required.
         self.network_rule = network_rule
 
     def validate(self):
@@ -3579,15 +3684,21 @@ class DeletePortRequest(TeaModel):
         # The port of the origin server. Valid values: **0** to **65535**.
         self.backend_port = backend_port
         # The forwarding port. Valid values: **0** to **65535**.
+        # 
+        # This parameter is required.
         self.frontend_port = frontend_port
         # The type of the protocol. Valid values:
         # 
         # *   **tcp**\
         # *   **udp**\
+        # 
+        # This parameter is required.
         self.frontend_protocol = frontend_protocol
         # The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
         # 
-        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # An array that consists of the IP addresses of origin servers.
         self.real_servers = real_servers
@@ -3704,7 +3815,9 @@ class DeleteSceneDefensePolicyRequest(TeaModel):
     ):
         # The ID of the policy that you want to delete.
         # 
-        # > You can call the [DescribeSceneDefensePolicies](~~159382~~) operation to query the IDs of all policies.
+        # > You can call the [DescribeSceneDefensePolicies](https://help.aliyun.com/document_detail/159382.html) operation to query the IDs of all policies.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
 
     def validate(self):
@@ -3815,6 +3928,8 @@ class DeleteSchedulerRuleRequest(TeaModel):
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
         # The name of the scheduling rule that you want to delete.
+        # 
+        # This parameter is required.
         self.rule_name = rule_name
 
     def validate(self):
@@ -3926,14 +4041,20 @@ class DeleteTagResourcesRequest(TeaModel):
         # *   **false** no. This is the default value.
         self.all = all
         # The region ID of the instance. Set the value to **cn-hangzhou**, which indicates an Anti-DDoS Pro instance in the Chinese mainland.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the instance belongs in Resource Management.
         # 
         # If you do not configure this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
         # An array consisting of the IDs of instances from which you want to remove tags.
+        # 
+        # This parameter is required.
         self.resource_ids = resource_ids
         # The type of the resource to which the tag belongs. Set the value to **INSTANCE**, which indicates an Anti-DDoS Pro instance.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # An array consisting of the keys of the tags that you want to remove.
         self.tag_key = tag_key
@@ -4056,9 +4177,13 @@ class DeleteWebCCRuleRequest(TeaModel):
     ):
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The name of the custom frequency control rule that you want to delete.
+        # 
+        # This parameter is required.
         self.name = name
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
@@ -4169,13 +4294,17 @@ class DeleteWebCacheCustomRuleRequest(TeaModel):
     ):
         # The domain name for which you want to delete the custom rules of the Static Page Caching policy.
         # 
-        # > You can call the [DescribeDomains](~~91724~~) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
+        # > You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The ID of the resource group to which the instance belongs in Resource Management.
         # 
         # If you do not configure this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
         # An array consisting of the names of the rules that you want to delete.
+        # 
+        # This parameter is required.
         self.rule_names = rule_names
 
     def validate(self):
@@ -4284,11 +4413,15 @@ class DeleteWebPreciseAccessRuleRequest(TeaModel):
     ):
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
         # An array that consists of the names of rules to delete.
+        # 
+        # This parameter is required.
         self.rule_names = rule_names
 
     def validate(self):
@@ -4396,11 +4529,13 @@ class DeleteWebRuleRequest(TeaModel):
     ):
         # The domain name of the website from which you want to delete the forwarding rule.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query the domain names for which forwarding rules are configured.
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query the domain names for which forwarding rules are configured.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         # 
-        # For more information about resource groups, see [Create a resource group](~~94485~~).
+        # For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -4504,8 +4639,12 @@ class DescribeAsyncTasksRequest(TeaModel):
         resource_group_id: str = None,
     ):
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page_number = page_number
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The ID of the resource group to which the instance belongs in Resource Management.
         # 
@@ -4738,8 +4877,12 @@ class DescribeAttackAnalysisMaxQpsRequest(TeaModel):
         start_time: int = None,
     ):
         # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -4852,15 +4995,21 @@ class DescribeAutoCcBlacklistRequest(TeaModel):
     ):
         # The ID of the instance.
         # 
-        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The keyword for the query. This keyword is used to specify the prefix of the source IP address that you want to query.
         # 
         # > The keyword must be greater than three characters in length.
         self.key_word = key_word
         # The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
+        # 
+        # This parameter is required.
         self.page_number = page_number
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -5047,6 +5196,8 @@ class DescribeAutoCcListCountRequest(TeaModel):
         # The ID of the instance.
         # 
         # > You can call the **DescribeInstanceIds** operation to query the IDs of all instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The mode of how an IP address is added to the whitelist or blacklist. Valid values:
         # 
@@ -5171,15 +5322,21 @@ class DescribeAutoCcWhitelistRequest(TeaModel):
     ):
         # The ID of the instance.
         # 
-        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The keyword for the query. This keyword is used to specify the prefix of the source IP address that you want to query.
         # 
         # > The keyword must be greater than three characters in length.
         self.key_word = key_word
         # The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
+        # 
+        # This parameter is required.
         self.page_number = page_number
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -5485,7 +5642,9 @@ class DescribeBlackholeStatusRequest(TeaModel):
     ):
         # The ID of the instance.
         # 
-        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # 
+        # This parameter is required.
         self.instance_ids = instance_ids
 
     def validate(self):
@@ -5652,7 +5811,9 @@ class DescribeBlockStatusRequest(TeaModel):
     ):
         # An array consisting of information about the IDs of the instances that you want to query.
         # 
-        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # 
+        # This parameter is required.
         self.instance_ids = instance_ids
         # The ID of the resource group to which the instance belongs in Resource Management.
         # 
@@ -5873,7 +6034,7 @@ class DescribeCertsRequest(TeaModel):
     ):
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
         self.domain = domain
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
@@ -6071,6 +6232,7 @@ class DescribeCnameReusesRequest(TeaModel):
         domains: List[str] = None,
         resource_group_id: str = None,
     ):
+        # This parameter is required.
         self.domains = domains
         self.resource_group_id = resource_group_id
 
@@ -6235,17 +6397,25 @@ class DescribeDDoSEventsRequest(TeaModel):
         self.end_time = end_time
         # The ID of the instance.
         # 
-        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # 
+        # This parameter is required.
         self.instance_ids = instance_ids
         # The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
+        # 
+        # This parameter is required.
         self.page_number = page_number
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -6478,6 +6648,8 @@ class DescribeDDosAllEventListRequest(TeaModel):
         start_time: int = None,
     ):
         # The end of the time range to query. The DDoS attack events occur before **EndTime** are queried. This value is a UNIX timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The type of the DDoS attack events you want to query. Valid values:
         # 
@@ -6491,10 +6663,16 @@ class DescribeDDosAllEventListRequest(TeaModel):
         # If you do not configure this parameter, DDoS attack events of all types are queried.
         self.event_type = event_type
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page_number = page_number
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The beginning of the time range to query. The DDoS attack events occur after **StartTime** are queried. This value is a UNIX timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -6733,12 +6911,18 @@ class DescribeDDosEventAreaRequest(TeaModel):
         # 
         # *   **defense**: attack events that trigger traffic scrubbing
         # *   **blackhole**: attack events that trigger blackhole filtering
+        # 
+        # This parameter is required.
         self.event_type = event_type
         # The IP address of the attacked Anti-DDoS Pro or Anti-DDoS Premium instance.
+        # 
+        # This parameter is required.
         self.ip = ip
         # The UNIX timestamp when the query starts. Unit: seconds.
         # 
-        # > You can call the [DescribeDDosAllEventList](~~188604~~) operation to query the beginning time of all attack events.
+        # > You can call the [DescribeDDosAllEventList](https://help.aliyun.com/document_detail/188604.html) operation to query the beginning time of all attack events.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -6775,7 +6959,7 @@ class DescribeDDosEventAreaResponseBodyAreas(TeaModel):
         area: str = None,
         in_pkts: int = None,
     ):
-        # The code or ID of the source region. For more information, see [Codes of administrative regions in China and codes of countries and areas](~~167926~~). For example, **110000** indicates Beijing, China, and **us** indicates the United States.
+        # The code or ID of the source region. For more information, see [Codes of administrative regions in China and codes of countries and areas](https://help.aliyun.com/document_detail/167926.html). For example, **110000** indicates Beijing, China, and **us** indicates the United States.
         self.area = area
         # The number of request packets that were sent from the source region.
         self.in_pkts = in_pkts
@@ -6899,12 +7083,18 @@ class DescribeDDosEventAttackTypeRequest(TeaModel):
         # 
         # *   **defense**: attack events that trigger traffic scrubbing
         # *   **blackhole**: attack events that trigger blackhole filtering
+        # 
+        # This parameter is required.
         self.event_type = event_type
         # The IP address of the attacked Anti-DDoS Pro or Anti-DDoS Premium instance.
+        # 
+        # This parameter is required.
         self.ip = ip
         # The UNIX timestamp when the query starts. Unit: seconds.
         # 
-        # > You can call the [DescribeDDosAllEventList](~~188604~~) operation to query the beginning time of all attack events.
+        # > You can call the [DescribeDDosAllEventList](https://help.aliyun.com/document_detail/188604.html) operation to query the beginning time of all attack events.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -7107,12 +7297,18 @@ class DescribeDDosEventIspRequest(TeaModel):
         # 
         # *   **defense**: attack events that trigger traffic scrubbing
         # *   **blackhole**: attack events that trigger blackhole filtering
+        # 
+        # This parameter is required.
         self.event_type = event_type
         # The IP address of the attacked Anti-DDoS Pro or Anti-DDoS Premium instance.
+        # 
+        # This parameter is required.
         self.ip = ip
         # The UNIX timestamp when the query starts. Unit: seconds.
         # 
-        # > You can call the [DescribeDDosAllEventList](~~188604~~) operation to query the beginning time of all attack events.
+        # > You can call the [DescribeDDosAllEventList](https://help.aliyun.com/document_detail/188604.html) operation to query the beginning time of all attack events.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -7288,8 +7484,12 @@ class DescribeDDosEventMaxRequest(TeaModel):
         start_time: int = None,
     ):
         # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -7418,14 +7618,22 @@ class DescribeDDosEventSrcIpRequest(TeaModel):
         # 
         # *   **defense**: attack events that trigger traffic scrubbing
         # *   **blackhole**: attack events that trigger blackhole filtering
+        # 
+        # This parameter is required.
         self.event_type = event_type
         # The IP address of the attacked Anti-DDoS Pro or Anti-DDoS Premium instance.
+        # 
+        # This parameter is required.
         self.ip = ip
         # The number of source IP addresses that you want to return. The source IP addresses are returned in descending order of attack traffic. By default, the top **five** source IP addresses are returned.
+        # 
+        # This parameter is required.
         self.range = range
         # The UNIX timestamp when the query starts. Unit: seconds.
         # 
-        # > You can call the [DescribeDDosAllEventList](~~188604~~) operation to query the beginning time of all attack events.
+        # > You can call the [DescribeDDosAllEventList](https://help.aliyun.com/document_detail/188604.html) operation to query the beginning time of all attack events.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -7467,7 +7675,7 @@ class DescribeDDosEventSrcIpResponseBodyIps(TeaModel):
         isp: str = None,
         src_ip: str = None,
     ):
-        # The code or ID of the source region. For more information, see [Codes of administrative regions in China and codes of countries and areas](~~167926~~). For example, **110000** indicates Beijing, China, and **us** indicates the United States.
+        # The code or ID of the source region. For more information, see [Codes of administrative regions in China and codes of countries and areas](https://help.aliyun.com/document_detail/167926.html). For example, **110000** indicates Beijing, China, and **us** indicates the United States.
         self.area_id = area_id
         # The Internet service provider (ISP) for the volumetric attack. Valid values:
         # 
@@ -7775,20 +7983,28 @@ class DescribeDefenseRecordsRequest(TeaModel):
         # The end of the time range to query. This value is a UNIX timestamp. Units: miliseconds.
         # 
         # > The time must be in the latest 90 days.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The ID of the instance.
         # 
-        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
         self.instance_id = instance_id
         # The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
+        # 
+        # This parameter is required.
         self.page_number = page_number
         # The number of entries to return on each page. Maximum value: **50**.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
         # The beginning of the time range to query. This value is a UNIX timestamp. Units: miliseconds.
         # 
         # > The time must be in the latest 90 days.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -8000,21 +8216,29 @@ class DescribeDomainAttackEventsRequest(TeaModel):
     ):
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
         self.domain = domain
         # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
+        # 
+        # This parameter is required.
         self.page_number = page_number
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -8207,7 +8431,7 @@ class DescribeDomainOverviewRequest(TeaModel):
     ):
         # The domain name of the website that you want to query. If you leave this parameter unspecified, the statistics on all domain names are queried.
         # 
-        # > The domain name must be added to Anti-DDoS Pro or Anti-DDoS Premium. You can call the [DescribeDomains](~~91724~~) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
+        # > The domain name must be added to Anti-DDoS Pro or Anti-DDoS Premium. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
         self.domain = domain
         # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds. If you leave this parameter unspecified, the current system time is used as the end time.
         # 
@@ -8215,11 +8439,13 @@ class DescribeDomainOverviewRequest(TeaModel):
         self.end_time = end_time
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         # 
-        # For more information about resource groups, see [Create a resource group](~~94485~~).
+        # For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
         self.resource_group_id = resource_group_id
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -8348,19 +8574,25 @@ class DescribeDomainQPSListRequest(TeaModel):
     ):
         # The domain name of the website. If you do not specify this parameter, the statistics on the QPS of all domain names are queried.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
         self.domain = domain
         # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The interval for returning data. Unit: seconds.
+        # 
+        # This parameter is required.
         self.interval = interval
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -8583,6 +8815,8 @@ class DescribeDomainResourceRequest(TeaModel):
         # The number of the page to return. Default value: **1**.
         self.page_number = page_number
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The match mode. Valid values:
         # 
@@ -9023,7 +9257,9 @@ class DescribeDomainSecurityProfileRequest(TeaModel):
     ):
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # 
+        # This parameter is required.
         self.domain = domain
 
     def validate(self):
@@ -9182,17 +9418,21 @@ class DescribeDomainStatusCodeCountRequest(TeaModel):
     ):
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
         self.domain = domain
         # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -9392,24 +9632,30 @@ class DescribeDomainStatusCodeListRequest(TeaModel):
     ):
         # The domain name of the website. If you do not specify this parameter, the statistics on response status codes of all domain names are queried.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
         self.domain = domain
         # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.end_time = end_time
         # The interval for returning data. Unit: seconds.
+        # 
+        # This parameter is required.
         self.interval = interval
         # The source of the statistics. Valid values:
         # 
         # *   **gf**: Anti-DDoS Pro or Anti-DDoS Premium
         # *   **upstrem**: origin server
+        # 
+        # This parameter is required.
         self.query_type = query_type
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
         # The start time of the event. The value is a UNIX timestamp. Unit: seconds.
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -9665,12 +9911,16 @@ class DescribeDomainTopAttackListRequest(TeaModel):
         # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -9837,17 +10087,21 @@ class DescribeDomainViewSourceCountriesRequest(TeaModel):
     ):
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
         self.domain = domain
         # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -9890,7 +10144,7 @@ class DescribeDomainViewSourceCountriesResponseBodySourceCountrys(TeaModel):
     ):
         # The total number of requests.
         self.count = count
-        # The abbreviation of the country or area. For more information, see the **Codes of countries and areas** section of the [Codes of administrative regions in China and codes of countries and areas](~~167926~~) topic. For example, **cn** indicates China, and **us** indicates the United States.
+        # The abbreviation of the country or area. For more information, see the **Codes of countries and areas** section of the [Codes of administrative regions in China and codes of countries and areas](https://help.aliyun.com/document_detail/167926.html) topic. For example, **cn** indicates China, and **us** indicates the United States.
         self.country_id = country_id
 
     def validate(self):
@@ -10011,17 +10265,21 @@ class DescribeDomainViewSourceProvincesRequest(TeaModel):
     ):
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
         self.domain = domain
         # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -10064,7 +10322,7 @@ class DescribeDomainViewSourceProvincesResponseBodySourceProvinces(TeaModel):
     ):
         # The total number of requests.
         self.count = count
-        # The ID of the region inside China. For more information, see the **Codes of administrative regions in China** section of the [Codes of administrative regions in China and codes of countries and areas](~~167926~~) topic. For example, **110000** indicates Beijing, and **120000** indicates Tianjin.
+        # The ID of the region inside China. For more information, see the **Codes of administrative regions in China** section of the [Codes of administrative regions in China and codes of countries and areas](https://help.aliyun.com/document_detail/167926.html) topic. For example, **110000** indicates Beijing, and **120000** indicates Tianjin.
         self.province_id = province_id
 
     def validate(self):
@@ -10186,19 +10444,25 @@ class DescribeDomainViewTopCostTimeRequest(TeaModel):
     ):
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
         self.domain = domain
         # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The number of URLs to query. Valid values: **1** to **100**.
+        # 
+        # This parameter is required.
         self.top = top
 
     def validate(self):
@@ -10374,19 +10638,25 @@ class DescribeDomainViewTopUrlRequest(TeaModel):
     ):
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
         self.domain = domain
         # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The number of URLs to query. Valid values: **1** to **100**.
+        # 
+        # This parameter is required.
         self.top = top
 
     def validate(self):
@@ -10559,11 +10829,11 @@ class DescribeDomainsRequest(TeaModel):
     ):
         # The ID of the instance that you want to query.
         # 
-        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
         self.instance_ids = instance_ids
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         # 
-        # For more information about resource groups, see [Create a resource group](~~94485~~).
+        # For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -10673,7 +10943,9 @@ class DescribeElasticBandwidthSpecRequest(TeaModel):
     ):
         # The ID of the instance.
         # 
-        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -10781,10 +11053,13 @@ class DescribeElasticQpsRequest(TeaModel):
         region: str = None,
         start_time: int = None,
     ):
+        # This parameter is required.
         self.end_time = end_time
         self.interval = interval
         self.ip = ip
+        # This parameter is required.
         self.region = region
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -10987,8 +11262,11 @@ class DescribeElasticQpsRecordRequest(TeaModel):
         ip: str = None,
         start_time: int = None,
     ):
+        # This parameter is required.
         self.end_time = end_time
+        # This parameter is required.
         self.ip = ip
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -11184,7 +11462,9 @@ class DescribeHeadersRequest(TeaModel):
     ):
         # The domain name that you want to query.
         # 
-        # > You can call the [DescribeDomains](~~91724~~) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
+        # > You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
@@ -11336,6 +11616,8 @@ class DescribeHealthCheckListRequest(TeaModel):
         # *   **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
         # *   **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp** and **udp**.
         # *   **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
+        # 
+        # This parameter is required.
         self.network_rules = network_rules
 
     def validate(self):
@@ -11590,6 +11872,8 @@ class DescribeHealthCheckStatusRequest(TeaModel):
         # *   **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
         # *   **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp** and **udp**.
         # *   **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
+        # 
+        # This parameter is required.
         self.network_rules = network_rules
 
     def validate(self):
@@ -11810,6 +12094,8 @@ class DescribeInstanceDetailsRequest(TeaModel):
         instance_ids: List[str] = None,
     ):
         # An array that consists of the IDs of instances to query.
+        # 
+        # This parameter is required.
         self.instance_ids = instance_ids
 
     def validate(self):
@@ -12036,7 +12322,7 @@ class DescribeInstanceExtRequest(TeaModel):
     ):
         # The ID of the instance.
         # 
-        # >  You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # >  You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
         self.instance_id = instance_id
         # The number of the page. For example, to query the returned results on the first page, set the value to **1**.
         self.page_number = page_number
@@ -12405,6 +12691,8 @@ class DescribeInstanceSpecsRequest(TeaModel):
         instance_ids: List[str] = None,
     ):
         # An array that consists of the IDs of instances to query.
+        # 
+        # This parameter is required.
         self.instance_ids = instance_ids
 
     def validate(self):
@@ -12667,7 +12955,9 @@ class DescribeInstanceStatisticsRequest(TeaModel):
     ):
         # The ID of the instance that you want to query.
         # 
-        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # 
+        # This parameter is required.
         self.instance_ids = instance_ids
 
     def validate(self):
@@ -12840,12 +13130,16 @@ class DescribeInstanceStatusRequest(TeaModel):
     ):
         # The ID of the instance to query.
         # 
-        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all Anti-DDoS Pro or Anti-DDoS Premium instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all Anti-DDoS Pro or Anti-DDoS Premium instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The type of the instance to query. Valid values:
         # 
         # *   **1**: an Anti-DDoS Pro instance
         # *   **2**: an Anti-DDoS Premium instance
+        # 
+        # This parameter is required.
         self.product_type = product_type
 
     def validate(self):
@@ -13041,8 +13335,12 @@ class DescribeInstancesRequest(TeaModel):
         # The IP address of the instance to query.
         self.ip = ip
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page_number = page_number
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The remarks of the instance to query. Fuzzy match is supported.
         self.remark = remark
@@ -13360,13 +13658,15 @@ class DescribeL7RsPolicyRequest(TeaModel):
     ):
         # The domain name of the website to query.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query the domain names for which forwarding rules are configured.
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query the domain names for which forwarding rules are configured.
+        # 
+        # This parameter is required.
         self.domain = domain
         # An array that consists of N addresses of origin servers to query. The maximum value of N is 200. You can specify up to 200 addresses.
         self.real_servers = real_servers
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         # 
-        # For more information about resource groups, see [Create a resource group](~~94485~~).
+        # For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -13620,13 +13920,15 @@ class DescribeLayer4RulePolicyRequest(TeaModel):
         # 
         # This parameter is a string that consists of JSON arrays. Each element in a JSON array indicates a port forwarding rule. You can query only one port forwarding rule at a time.
         # 
-        # > You can call the [DescribeNetworkRules](~~157484~~) to query existing port forwarding rules.
+        # > You can call the [DescribeNetworkRules](https://help.aliyun.com/document_detail/157484.html) to query existing port forwarding rules.
         # 
         # Each port forwarding rule contains the following fields:
         # 
         # *   **InstanceId**: the ID of the instance. This field is required and must be of the string type.
         # *   **Protocol**: the forwarding protocol. This field is required and must be of the string type. Valid values: **tcp** and **udp**.
         # *   **FrontendPort**: the forwarding port. This field is required and must be of the integer type.
+        # 
+        # This parameter is required.
         self.listeners = listeners
 
     def validate(self):
@@ -13798,8 +14100,8 @@ class DescribeLayer4RulePolicyResponseBody(TeaModel):
         self.backend_port = backend_port
         # The mode that is used to forward service traffic. Valid values:
         # 
-        # *   0: the default mode. In this mode, Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the origin IP address that you specified when you created the port forwarding rule. You can call the [CreateNetworkRules](~~157482~~) operation to create a port forwarding rule.
-        # *   1: the origin redundancy mode. In this mode, Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the primary or secondary origin servers. You can call the [ConfigLayer4RulePolicy](~~312684~~) operation to configure IP addresses.
+        # *   0: the default mode. In this mode, Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the origin IP address that you specified when you created the port forwarding rule. You can call the [CreateNetworkRules](https://help.aliyun.com/document_detail/157482.html) operation to create a port forwarding rule.
+        # *   1: the origin redundancy mode. In this mode, Anti-DDoS Pro or Anti-DDoS Premium forwards service traffic to the IP addresses of the primary or secondary origin servers. You can call the [ConfigLayer4RulePolicy](https://help.aliyun.com/document_detail/312684.html) operation to configure IP addresses.
         self.bak_mode = bak_mode
         # The origin server that is used to receive service traffic. Valid values:
         # 
@@ -14043,7 +14345,9 @@ class DescribeNetworkRegionBlockRequest(TeaModel):
     ):
         # The ID of the instance.
         # 
-        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -14199,6 +14503,8 @@ class DescribeNetworkRuleAttributesRequest(TeaModel):
         # *   **InstanceId**: the ID of the instance. This field is required and must be of the STRING type.
         # *   **Protocol**: the forwarding protocol. This field is required and must be of the STRING type. Valid values: **tcp** and **udp**.
         # *   **FrontendPort**: the forwarding port. This field is required and must be of the INTEGER type.
+        # 
+        # This parameter is required.
         self.network_rules = network_rules
 
     def validate(self):
@@ -14723,11 +15029,17 @@ class DescribeNetworkRulesRequest(TeaModel):
         self.frontend_port = frontend_port
         # The ID of the instance.
         # 
-        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
+        # 
+        # This parameter is required.
         self.page_number = page_number
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -14946,6 +15258,8 @@ class DescribeOpEntitiesRequest(TeaModel):
         # The end of the time range to query. The value is a UNIX timestamp. Unit: milliseconds.
         # 
         # > The time must be in the latest 30 days.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The operation object that you want to query.
         self.entity_object = entity_object
@@ -14957,14 +15271,20 @@ class DescribeOpEntitiesRequest(TeaModel):
         # *   **4**: all logs
         self.entity_type = entity_type
         # The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
+        # 
+        # This parameter is required.
         self.page_number = page_number
         # The number of entries to return on each page. Maximum value: **50**.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: milliseconds.
         # 
         # > The time must be in the latest 30 days.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -15252,11 +15572,17 @@ class DescribePortRequest(TeaModel):
         self.frontend_protocol = frontend_protocol
         # The ID of the instance to query.
         # 
-        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The number of the page to return. For example, if you want to obtain results on the first page, set the value to **1**.
+        # 
+        # This parameter is required.
         self.page_number = page_number
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -15466,8 +15792,12 @@ class DescribePortAttackMaxFlowRequest(TeaModel):
         # The end of the time range to query. This value is a UNIX timestamp. Unit: seconds.
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # An array that consists of the IDs of instances to query.
+        # 
+        # This parameter is required.
         self.instance_ids = instance_ids
         # The ID of the resource group to which the instance belongs in Resource Management.
         # 
@@ -15476,6 +15806,8 @@ class DescribePortAttackMaxFlowRequest(TeaModel):
         # The beginning of the time range to query. This value is a UNIX timestamp. Unit: seconds.
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -15600,7 +15932,9 @@ class DescribePortAutoCcStatusRequest(TeaModel):
     ):
         # The ID of the instance.
         # 
-        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # 
+        # This parameter is required.
         self.instance_ids = instance_ids
 
     def validate(self):
@@ -15778,9 +16112,12 @@ class DescribePortCcAttackTopIPRequest(TeaModel):
         port: str = None,
         start_timestamp: int = None,
     ):
+        # This parameter is required.
         self.ip = ip
         self.limit = limit
+        # This parameter is required.
         self.port = port
+        # This parameter is required.
         self.start_timestamp = start_timestamp
 
     def validate(self):
@@ -15948,10 +16285,14 @@ class DescribePortConnsCountRequest(TeaModel):
         # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # An array that consists of the IDs of instances.
         # 
-        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # 
+        # This parameter is required.
         self.instance_ids = instance_ids
         # The number of port that you want to query. If you do not specify this parameter, all ports are queried.
         self.port = port
@@ -15960,6 +16301,8 @@ class DescribePortConnsCountRequest(TeaModel):
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -16108,12 +16451,18 @@ class DescribePortConnsListRequest(TeaModel):
         # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The ID of the instance.
         # 
-        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # 
+        # This parameter is required.
         self.instance_ids = instance_ids
         # The interval for returning data. Unit: seconds.
+        # 
+        # This parameter is required.
         self.interval = interval
         # The number of port that you want to query. If you do not specify this parameter, all ports are queried.
         self.port = port
@@ -16122,6 +16471,8 @@ class DescribePortConnsListRequest(TeaModel):
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -16318,8 +16669,12 @@ class DescribePortFlowListRequest(TeaModel):
         # **\
         # 
         # **This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # An array that consists of the IDs of instances.
+        # 
+        # This parameter is required.
         self.instance_ids = instance_ids
         # The interval for returning data. Unit: seconds. The interval that you can specify varies based on the time range to query. The time range to query is determined by the values of **StartTime** and **EndTime**.
         # 
@@ -16329,16 +16684,20 @@ class DescribePortFlowListRequest(TeaModel):
         # *   If the time range to query is greater than 24 hours but no greater than 7 days, we recommend that you specify the interval from 3,600 seconds to the time range to query.
         # *   If the time range to query is greater than 7 days but no greater than 15 days, we recommend that you specify the interval from 14,400 seconds to the time range to query.
         # *   If the time range to query is greater than 15 days, we recommend that you specify the interval from 43,200 seconds to the time range to query.
+        # 
+        # This parameter is required.
         self.interval = interval
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         # 
-        # For more information about resource groups, see [Create a resource group](~~94485~~).
+        # For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
         self.resource_group_id = resource_group_id
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # **\
         # 
         # **This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -16613,16 +16972,22 @@ class DescribePortMaxConnsRequest(TeaModel):
         # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The ID of the instance.
         # 
-        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # 
+        # This parameter is required.
         self.instance_ids = instance_ids
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -16794,16 +17159,22 @@ class DescribePortViewSourceCountriesRequest(TeaModel):
         # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # An array that consists of the IDs of instances to query.
+        # 
+        # This parameter is required.
         self.instance_ids = instance_ids
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         # 
-        # For more information about resource groups, see [Create a resource group](~~94485~~).
+        # For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
         self.resource_group_id = resource_group_id
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -16848,7 +17219,7 @@ class DescribePortViewSourceCountriesResponseBodySourceCountrys(TeaModel):
         self.count = count
         # The abbreviation of the country or area. For example, **cn** indicates China and **us** indicates the United States.
         # 
-        # > For more information, see [Location parameters](~~167926~~).
+        # > For more information, see [Location parameters](https://help.aliyun.com/document_detail/167926.html).
         self.country_id = country_id
 
     def validate(self):
@@ -16970,8 +17341,12 @@ class DescribePortViewSourceIspsRequest(TeaModel):
         # The end of the time range to query. This value is a UNIX timestamp. Unit: seconds.
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # An array that consists of the IDs of instances to query.
+        # 
+        # This parameter is required.
         self.instance_ids = instance_ids
         # The ID of the resource group to which the instance belongs in Resource Management.
         # 
@@ -16980,6 +17355,8 @@ class DescribePortViewSourceIspsRequest(TeaModel):
         # The beginning of the time range to query. This value is a UNIX timestamp. Unit: seconds.
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -17148,14 +17525,18 @@ class DescribePortViewSourceProvincesRequest(TeaModel):
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
         self.end_time = end_time
         # The IDs of instances to query.
+        # 
+        # This parameter is required.
         self.instance_ids = instance_ids
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         # 
-        # For more information about resource groups, see [Create a resource group](~~94485~~).
+        # For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
         self.resource_group_id = resource_group_id
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -17202,7 +17583,7 @@ class DescribePortViewSourceProvincesResponseBodySourceProvinces(TeaModel):
         self.count = count
         # The ID of the administrative region in China from which the requests are sent. For example, **110000** indicates Beijing, and **120000** indicates Tianjin.
         # 
-        # > For more information, see [Location parameters](~~167926~~).
+        # > For more information, see [Location parameters](https://help.aliyun.com/document_detail/167926.html).
         self.province_id = province_id
 
     def validate(self):
@@ -17321,7 +17702,9 @@ class DescribeSceneDefenseObjectsRequest(TeaModel):
     ):
         # The ID of the policy that you want to query.
         # 
-        # > You can call the [DescribeSceneDefensePolicies](~~159382~~) operation to query the IDs of all policies.
+        # > You can call the [DescribeSceneDefensePolicies](https://help.aliyun.com/document_detail/159382.html) operation to query the IDs of all policies.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
         # The ID of the resource group to which the instance belongs in Resource Management.
         # 
@@ -17815,6 +18198,7 @@ class DescribeSchedulerRulesRequest(TeaModel):
         rule_name: str = None,
     ):
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.resource_group_id = resource_group_id
         self.rule_name = rule_name
@@ -18145,6 +18529,8 @@ class DescribeSlaEventListRequest(TeaModel):
         # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance.
         self.ip = ip
@@ -18156,10 +18542,14 @@ class DescribeSlaEventListRequest(TeaModel):
         # 
         # *   **cn**: Anti-DDoS Pro
         # *   **cn-hongkong**: Anti-DDoS Premium
+        # 
+        # This parameter is required.
         self.region = region
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -18706,6 +19096,8 @@ class DescribeStsGrantStatusRequest(TeaModel):
         # The name of the RAM role to query. Set the value to **AliyunDDoSCOODefaultRole**, which indicates the default role of Anti-DDoS Pro or Anti-DDoS Premium.
         # 
         # > Anti-DDoS Pro or Anti-DDoS Premium uses the default role to access other cloud services.
+        # 
+        # This parameter is required.
         self.role = role
 
     def validate(self):
@@ -18852,20 +19244,28 @@ class DescribeSystemLogRequest(TeaModel):
         start_time: int = None,
     ):
         # The end of the time range to query. The bills of the burstable clean bandwidth that are issued before this point in time are queried. The value is a UNIX timestamp. Unit: milliseconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The IP address of the instance.
         # 
-        # > You can call the [DescribeInstanceDetails](~~91490~~) operation to query the IP addresses of all instances.
+        # > You can call the [DescribeInstanceDetails](https://help.aliyun.com/document_detail/91490.html) operation to query the IP addresses of all instances.
         self.entity_object = entity_object
         # The type of the system log. Set the value to **20**, which indicates the billing logs for the burstable clean bandwidth.
         # 
         # > You must specify this parameter. Otherwise, the call fails.
         self.entity_type = entity_type
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page_number = page_number
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The beginning of the time range to query. The bills of the burstable clean bandwidth that are issued after this point in time are queried. The value is a UNIX timestamp. Unit: milliseconds.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -19105,12 +19505,16 @@ class DescribeTagKeysRequest(TeaModel):
         # The number of entries to return on each page. Default value: **10**.
         self.page_size = page_size
         # The region ID of the instance. Set the value to **cn-hangzhou**, which indicates an Anti-DDoS Pro instance in the Chinese mainland.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the instance belongs in Resource Management.
         # 
         # If you do not configure this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
         # The type of the resource to which the tag belongs. Set the value to **INSTANCE**, which indicates an Anti-DDoS Pro instance.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -19301,7 +19705,7 @@ class DescribeTagResourcesRequestTags(TeaModel):
         # 
         # *   You must specify at least one of the **ResourceIds.N** and **Tags.N.Key** parameters.
         # 
-        # *   You can call the [DescribeTagKeys](~~159785~~) operation to query all tag keys.
+        # *   You can call the [DescribeTagKeys](https://help.aliyun.com/document_detail/159785.html) operation to query all tag keys.
         self.key = key
         # The value of the tag that you want to query.
         self.value = value
@@ -19345,6 +19749,8 @@ class DescribeTagResourcesRequest(TeaModel):
         # > You do not need to configure this parameter if you call this operation for the first time.
         self.next_token = next_token
         # The region ID of the instance. Set the value to **cn-hangzhou**, which indicates an Anti-DDoS Pro instance in the Chinese mainland.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group to which the instance belongs in Resource Management.
         # 
@@ -19353,6 +19759,8 @@ class DescribeTagResourcesRequest(TeaModel):
         # An array consisting of IDs of the Anti-DDoS Pro instances that you want to query.
         self.resource_ids = resource_ids
         # The type of the resource to which the tag belongs. Set the value to **INSTANCE**, which indicates an Anti-DDoS Pro instance.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # An array consisting of tags that you want to query. Each tag consists of a tag **key** and a tag **value**.
         self.tags = tags
@@ -19585,14 +19993,20 @@ class DescribeTotalAttackMaxFlowRequest(TeaModel):
         # The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The IDs of the instances. Separate multiple instance IDs with commas (,). Example: InstanceIds.1, InstanceIds.2, InstanceIds.3.
+        # 
+        # This parameter is required.
         self.instance_ids = instance_ids
         # The ID of the resource group to which the instance belongs in Resource Management. If you do not configure this parameter, the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
         # The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
         # 
         # > This UNIX timestamp must indicate a point in time that is accurate to the minute.
+        # 
+        # This parameter is required.
         self.start_time = start_time
 
     def validate(self):
@@ -19718,7 +20132,9 @@ class DescribeUdpReflectRequest(TeaModel):
     ):
         # The ID of the instance to query.
         # 
-        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region ID of the instance. Valid values:
         # 
@@ -20333,7 +20749,9 @@ class DescribeWebAccessLogStatusRequest(TeaModel):
     ):
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
@@ -20462,7 +20880,9 @@ class DescribeWebAccessModeRequest(TeaModel):
     ):
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # 
+        # This parameter is required.
         self.domains = domains
 
     def validate(self):
@@ -20616,7 +21036,9 @@ class DescribeWebAreaBlockConfigsRequest(TeaModel):
     ):
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # 
+        # This parameter is required.
         self.domains = domains
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
@@ -20820,11 +21242,15 @@ class DescribeWebCCRulesRequest(TeaModel):
     ):
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The number of the page to return. For example, to query the returned results on the first page, set the value to **1**.
         self.page_number = page_number
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
@@ -21035,6 +21461,8 @@ class DescribeWebCacheConfigsRequest(TeaModel):
         resource_group_id: str = None,
     ):
         # An array consisting of domain names for which you want to query the Static Page Caching configurations.
+        # 
+        # This parameter is required.
         self.domains = domains
         # The ID of the resource group to which the instance belongs in Resource Management.
         # 
@@ -21274,7 +21702,9 @@ class DescribeWebCcProtectSwitchRequest(TeaModel):
     ):
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # 
+        # This parameter is required.
         self.domains = domains
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
@@ -21672,7 +22102,9 @@ class DescribeWebInstanceRelationsRequest(TeaModel):
     ):
         # The domain names of the website. list
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # 
+        # This parameter is required.
         self.domains = domains
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
@@ -21881,7 +22313,9 @@ class DescribeWebPreciseAccessRuleRequest(TeaModel):
     ):
         # An array that consists of the domain names of websites.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # 
+        # This parameter is required.
         self.domains = domains
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
@@ -22176,9 +22610,13 @@ class DescribeWebReportTopIpRequest(TeaModel):
         top: int = None,
     ):
         self.domain = domain
+        # This parameter is required.
         self.end_time = end_time
+        # This parameter is required.
         self.interval = interval
+        # This parameter is required.
         self.query_type = query_type
+        # This parameter is required.
         self.start_time = start_time
         self.top = top
 
@@ -22364,6 +22802,7 @@ class DescribeWebRulesRequest(TeaModel):
         self.domain = domain
         self.instance_ids = instance_ids
         self.page_number = page_number
+        # This parameter is required.
         self.page_size = page_size
         self.query_domain_pattern = query_domain_pattern
         self.resource_group_id = resource_group_id
@@ -22800,10 +23239,14 @@ class DetachSceneDefenseObjectRequest(TeaModel):
         # The type of the object. Set the value to **Domain**, which indicates a domain name.
         self.object_type = object_type
         # The protection asset that you want to remove from a policy. Separate multiple protection assets with commas (,).
+        # 
+        # This parameter is required.
         self.objects = objects
         # The ID of the policy.
         # 
-        # > You can call the [DescribeSceneDefensePolicies](~~159382~~) operation to query the IDs of all policies.
+        # > You can call the [DescribeSceneDefensePolicies](https://help.aliyun.com/document_detail/159382.html) operation to query the IDs of all policies.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
 
     def validate(self):
@@ -22920,7 +23363,9 @@ class DisableSceneDefensePolicyRequest(TeaModel):
     ):
         # The ID of the policy that you want to disable.
         # 
-        # > You can call the [DescribeSceneDefensePolicies](~~159382~~) operation to query the IDs of all policies.
+        # > You can call the [DescribeSceneDefensePolicies](https://help.aliyun.com/document_detail/159382.html) operation to query the IDs of all policies.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
 
     def validate(self):
@@ -23030,7 +23475,9 @@ class DisableWebAccessLogConfigRequest(TeaModel):
     ):
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
@@ -23136,7 +23583,9 @@ class DisableWebCCRequest(TeaModel):
     ):
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
@@ -23242,7 +23691,9 @@ class DisableWebCCRuleRequest(TeaModel):
     ):
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
@@ -23347,7 +23798,9 @@ class EmptyAutoCcBlacklistRequest(TeaModel):
     ):
         # The ID of the instance.
         # 
-        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -23446,7 +23899,9 @@ class EmptyAutoCcWhitelistRequest(TeaModel):
     ):
         # The ID of the instance.
         # 
-        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -23642,7 +24097,9 @@ class EnableSceneDefensePolicyRequest(TeaModel):
     ):
         # The ID of the policy that you want to enable.
         # 
-        # > You can call the [DescribeSceneDefensePolicies](~~159382~~) operation to query the IDs of all policies.
+        # > You can call the [DescribeSceneDefensePolicies](https://help.aliyun.com/document_detail/159382.html) operation to query the IDs of all policies.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
 
     def validate(self):
@@ -23752,7 +24209,9 @@ class EnableWebAccessLogConfigRequest(TeaModel):
     ):
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
@@ -23858,7 +24317,9 @@ class EnableWebCCRequest(TeaModel):
     ):
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
@@ -23964,7 +24425,9 @@ class EnableWebCCRuleRequest(TeaModel):
     ):
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
@@ -24070,12 +24533,16 @@ class ModifyBizBandWidthModeRequest(TeaModel):
     ):
         # The ID of the instance.
         # 
-        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The metering method of the burstable clean bandwidth feature. Valid values:
         # 
         # *   **month**: the metering method of monthly 95th percentile
         # *   **day**: the metering method of daily 95th percentile
+        # 
+        # This parameter is required.
         self.mode = mode
 
     def validate(self):
@@ -24178,10 +24645,14 @@ class ModifyBlackholeStatusRequest(TeaModel):
         instance_id: str = None,
     ):
         # The action that you want to perform on the instance. Set the value to **undo**, which indicates that you want to deactivate blackhole filtering.
+        # 
+        # This parameter is required.
         self.blackhole_status = blackhole_status
         # The ID of the instance.
         # 
-        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -24291,14 +24762,20 @@ class ModifyBlockStatusRequest(TeaModel):
         self.duration = duration
         # The ID of the Anti-DDoS Pro instance to manage.
         # 
-        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # An array consisting of the Internet service provider (ISP) lines from which traffic is blocked.
+        # 
+        # This parameter is required.
         self.lines = lines
         # Specifies the status of the Diversion from Origin Server policy. Valid values:
         # 
         # *   **do**: enables the policy.
         # *   **undo**: disables the policy.
+        # 
+        # This parameter is required.
         self.status = status
 
     def validate(self):
@@ -24414,12 +24891,16 @@ class ModifyCnameReuseRequest(TeaModel):
         self.cname = cname
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # 
+        # This parameter is required.
         self.domain = domain
         # Specifies whether to enable CNAME reuse. Valid values:
         # 
         # *   **1**: enables CNAME reuse.
         # *   **2**: disables CNAME reuse.
+        # 
+        # This parameter is required.
         self.enable = enable
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
@@ -24532,6 +25013,8 @@ class ModifyDomainResourceRequestProxyTypes(TeaModel):
         proxy_type: str = None,
     ):
         # An array that consists of port numbers.
+        # 
+        # This parameter is required.
         self.proxy_ports = proxy_ports
         # The type of the protocol. Valid values:
         # 
@@ -24576,6 +25059,8 @@ class ModifyDomainResourceRequest(TeaModel):
         rs_type: int = None,
     ):
         # The domain name that is added to the Anti-DDoS Pro or Anti-DDoS Premium instance.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The advanced HTTPS settings. This parameter takes effect only when the value of the **ProxyType** parameter includes **https**. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
         # 
@@ -24592,10 +25077,16 @@ class ModifyDomainResourceRequest(TeaModel):
         #     After you turn on the switch, HTTP/2 is used.
         self.https_ext = https_ext
         # An array consisting of the IDs of instances that you want to associate.
+        # 
+        # This parameter is required.
         self.instance_ids = instance_ids
         # An array that consists of the details of the protocol type and port number.
+        # 
+        # This parameter is required.
         self.proxy_types = proxy_types
         # An array that consists of the addresses of origin servers.
+        # 
+        # This parameter is required.
         self.real_servers = real_servers
         # The address type of the origin server. Valid values:
         # 
@@ -24604,6 +25095,8 @@ class ModifyDomainResourceRequest(TeaModel):
         # *   **1**: domain name
         # 
         #     If you deploy proxies, such as a Web Application Firewall (WAF) instance, between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance, set the value to 1. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF.
+        # 
+        # This parameter is required.
         self.rs_type = rs_type
 
     def validate(self):
@@ -24731,11 +25224,15 @@ class ModifyElasticBandWidthRequest(TeaModel):
     ):
         # The new burstable protection bandwidth that you want to use. Unit: Gbit/s.
         # 
-        # > You can call the [DescribeElasticBandwidthSpec](~~91502~~) operation to query the available burstable protection bandwidth of the instance.
+        # > You can call the [DescribeElasticBandwidthSpec](https://help.aliyun.com/document_detail/91502.html) operation to query the available burstable protection bandwidth of the instance.
+        # 
+        # This parameter is required.
         self.elastic_bandwidth = elastic_bandwidth
         # The ID of the instance.
         # 
-        # >  The instance must be in a normal state. You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # >  The instance must be in a normal state. You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -24839,10 +25336,14 @@ class ModifyElasticBizBandWidthRequest(TeaModel):
         mode: str = None,
     ):
         # The burstable clean bandwidth. Unit: Mbit/s. The burstable clean bandwidth cannot exceed nine times the clean bandwidth of your Anti-DDoS Pro or Anti-DDoS Premium instance, and the sum of the clean bandwidth and the burstable clean bandwidth cannot exceed the maximum clean bandwidth that is supported by your instance. The value 0 indicates that the burstable clean bandwidth feature is disabled. You can disable the burstable clean bandwidth feature once a month.
+        # 
+        # This parameter is required.
         self.elastic_biz_bandwidth = elastic_biz_bandwidth
         # The ID of the instance.
         # 
-        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The metering method of the burstable clean bandwidth feature. Valid values:
         # 
@@ -24954,7 +25455,9 @@ class ModifyElasticBizQpsRequest(TeaModel):
         mode: str = None,
         ops_elastic_qps: int = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.mode = mode
         self.ops_elastic_qps = ops_elastic_qps
 
@@ -25063,6 +25566,8 @@ class ModifyFullLogTtlRequest(TeaModel):
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
         # The log storage duration of a website. Valid values: **30** to **180**. Unit: days.
+        # 
+        # This parameter is required.
         self.ttl = ttl
 
     def validate(self):
@@ -25173,18 +25678,22 @@ class ModifyHeadersRequest(TeaModel):
         # *   Do not use a standard HTTP header such as User-Agent. If you use a standard HTTP header, the original header may be overwritten.
         # 
         # > If you set Key to X-Forwarded-ClientSrcPort, the actual source port of the client that accesses Anti-DDoS Pro or Anti-DDoS Premium (a Layer 7 proxy) is obtained. In this case, the Value is "".
+        # 
+        # This parameter is required.
         self.custom_headers = custom_headers
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The ID of the resource group to which the instance belongs.
         # 
         # > 
         # 
-        # *   You can query resource group IDs in the Anti-DDoS Pro or Anti-DDoS Premium console or by calling the [ListResourceGroups](~~158855~~) operation. For more information, see [View basic information of a resource group](~~151181~~).
+        # *   You can query resource group IDs in the Anti-DDoS Pro or Anti-DDoS Premium console or by calling the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation. For more information, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
         # 
-        # *   Before you modify the resource group to which an instance belongs, you can call the [ListResources](~~158866~~) operation to view the current resource group of the instance.
+        # *   Before you modify the resource group to which an instance belongs, you can call the [ListResources](https://help.aliyun.com/document_detail/158866.html) operation to view the current resource group of the instance.
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -25296,8 +25805,12 @@ class ModifyHealthCheckConfigRequest(TeaModel):
         # 
         # *   **tcp**\
         # *   **udp**\
+        # 
+        # This parameter is required.
         self.forward_protocol = forward_protocol
         # The forwarding port.
+        # 
+        # This parameter is required.
         self.frontend_port = frontend_port
         # The details of the health check configuration. This parameter is a JSON string. The string contains the following fields:
         # 
@@ -25324,10 +25837,14 @@ class ModifyHealthCheckConfigRequest(TeaModel):
         # *   **Up**: the number of consecutive successful health checks that must occur before declaring a port healthy, which must be of the INTEGER type. Valid values: **1** to **10**.
         # 
         # *   **Down**: the number of consecutive failed health checks that must occur before declaring a port unhealthy, which must be of the INTEGER type. Valid values: **1** to **10**.
+        # 
+        # This parameter is required.
         self.health_check = health_check
         # The ID of the instance.
         # 
-        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -25440,12 +25957,16 @@ class ModifyHttp2EnableRequest(TeaModel):
     ):
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for the domain name, and the domain name must be associated with an instance that uses the Enhanced function plan. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for the domain name, and the domain name must be associated with an instance that uses the Enhanced function plan. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # 
+        # This parameter is required.
         self.domain = domain
         # Specifies whether to enable HTTP/2. Valid values:
         # 
         # *   **0**: disables HTTP/2.
         # *   **1**: enables HTTP/2.
+        # 
+        # This parameter is required.
         self.enable = enable
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
@@ -25555,11 +26076,15 @@ class ModifyInstanceRemarkRequest(TeaModel):
     ):
         # The ID of the instance.
         # 
-        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The description of the instance.
         # 
         # The value can contain letters, digits, and some special characters, such as`, . + - * / _` The value can be up to 500 characters in length.
+        # 
+        # This parameter is required.
         self.remark = remark
 
     def validate(self):
@@ -25666,17 +26191,25 @@ class ModifyNetworkRuleAttributeRequest(TeaModel):
         # The session persistence settings of the port forwarding rule. This parameter is a JSON string. The string contains the following fields:
         # 
         # *   **PersistenceTimeout**: The timeout period of session persistence. This field is required and must be of the integer type. Valid values: **30** to **3600**. Unit: seconds. Default value: **0**. A value of 0 indicates that session persistence is disabled.
+        # 
+        # This parameter is required.
         self.config = config
         # The forwarding protocol. Valid values:
         # 
         # *   **tcp**\
         # *   **udp**\
+        # 
+        # This parameter is required.
         self.forward_protocol = forward_protocol
         # The forwarding port.
+        # 
+        # This parameter is required.
         self.frontend_port = frontend_port
         # The ID of the instance.
         # 
-        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -25788,12 +26321,16 @@ class ModifyOcspStatusRequest(TeaModel):
     ):
         # The domain name for which you want to configure the Static Page Caching policy.
         # 
-        # > You can call the [DescribeDomains](~~91724~~) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
+        # > You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
+        # 
+        # This parameter is required.
         self.domain = domain
         # Specifies whether to enable the OCSP feature. Valid values:
         # 
         # *   **1**: yes
         # *   **0**: no
+        # 
+        # This parameter is required.
         self.enable = enable
 
     def validate(self):
@@ -25899,19 +26436,29 @@ class ModifyPortRequest(TeaModel):
         real_servers: List[str] = None,
     ):
         # The port of the origin server. Valid values: **0** to **65535**.
+        # 
+        # This parameter is required.
         self.backend_port = backend_port
         # The forwarding port. Valid values: **0** to **65535**.
+        # 
+        # This parameter is required.
         self.frontend_port = frontend_port
         # The type of the protocol. Valid values:
         # 
         # *   **tcp**\
         # *   **udp**\
+        # 
+        # This parameter is required.
         self.frontend_protocol = frontend_protocol
         # The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
         # 
-        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # An array that consists of the IP addresses of origin servers.
+        # 
+        # This parameter is required.
         self.real_servers = real_servers
 
     def validate(self):
@@ -26028,18 +26575,24 @@ class ModifyPortAutoCcStatusRequest(TeaModel):
     ):
         # The ID of the instance.
         # 
-        # > You can call the [DescribeInstanceIds](~~157459~~) operation to query the IDs of all instances.
+        # > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The mode of the Intelligent Protection policy. Valid values:
         # 
         # *   **normal**\
         # *   **loose**\
         # *   **strict**\
+        # 
+        # This parameter is required.
         self.mode = mode
         # Specifies the status of the Intelligent Protection policy. Valid values:
         # 
         # *   **on**: enables the policy.
         # *   **off**: disables the policy.
+        # 
+        # This parameter is required.
         self.switch = switch
 
     def validate(self):
@@ -26145,7 +26698,9 @@ class ModifyQpsModeRequest(TeaModel):
         instance_id: str = None,
         mode: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.mode = mode
 
     def validate(self):
@@ -26250,19 +26805,29 @@ class ModifySceneDefensePolicyRequest(TeaModel):
         template: str = None,
     ):
         # The end time of the policy. The value is a UNIX timestamp. Unit: milliseconds.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The name of the policy.
+        # 
+        # This parameter is required.
         self.name = name
         # The ID of the policy that you want to modify.
         # 
-        # > You can call the [DescribeSceneDefensePolicies](~~159382~~) operation to query the IDs of all policies.
+        # > You can call the [DescribeSceneDefensePolicies](https://help.aliyun.com/document_detail/159382.html) operation to query the IDs of all policies.
+        # 
+        # This parameter is required.
         self.policy_id = policy_id
         # The start time of the policy. The value is a UNIX timestamp. Unit: milliseconds.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The template of the policy. Valid values:
         # 
         # *   **promotion**: important activity
         # *   **bypass**: all traffic forwarded
+        # 
+        # This parameter is required.
         self.template = template
 
     def validate(self):
@@ -26403,6 +26968,8 @@ class ModifySchedulerRuleRequest(TeaModel):
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
         # The name of the rule that you want to modify.
+        # 
+        # This parameter is required.
         self.rule_name = rule_name
         # The type of the rule. Valid values:
         # 
@@ -26410,6 +26977,8 @@ class ModifySchedulerRuleRequest(TeaModel):
         # *   **3**: network acceleration
         # *   **5**: Alibaba Cloud CDN (CDN) interaction
         # *   **6**: cloud service interaction
+        # 
+        # This parameter is required.
         self.rule_type = rule_type
         # The details of the scheduling rule. This parameter is a JSON string. The string contains the following fields:
         # 
@@ -26431,6 +27000,8 @@ class ModifySchedulerRuleRequest(TeaModel):
         #     *   **6** the IP address of the interaction resource in the cloud service interaction scenario
         # 
         # *   **RegionId**: the region where the interaction resource is deployed. This parameter must be specified when **ValueType** is set to **2**. The value must be of the string type.
+        # 
+        # This parameter is required.
         self.rules = rules
 
     def validate(self):
@@ -26575,10 +27146,14 @@ class ModifyTlsConfigRequest(TeaModel):
         #     *   **improved**: enhanced cipher suites
         #     *   **strong**: strong cipher suites
         #     *   **default**: default cipher suites, which include only strong cipher suites
+        # 
+        # This parameter is required.
         self.config = config
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
@@ -26699,10 +27274,14 @@ class ModifyWebAIProtectModeRequest(TeaModel):
         # 
         #     *   **watch**: the Warning mode
         #     *   **defense**: the Defense mode
+        # 
+        # This parameter is required.
         self.config = config
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
@@ -26817,10 +27396,14 @@ class ModifyWebAIProtectSwitchRequest(TeaModel):
         # 
         #     *   **0**: disabled
         #     *   **1**: enabled
+        # 
+        # This parameter is required.
         self.config = config
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
@@ -26933,10 +27516,14 @@ class ModifyWebAccessModeRequest(TeaModel):
         # *   **0**: A record mode
         # *   **1**: anti-DDoS mode
         # *   **2**: origin redundancy mode
+        # 
+        # This parameter is required.
         self.access_mode = access_mode
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # 
+        # This parameter is required.
         self.domain = domain
 
     def validate(self):
@@ -27041,7 +27628,9 @@ class ModifyWebAreaBlockRequest(TeaModel):
     ):
         # The domain name whose configurations you want to modify.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The regions from which you block requests.
         # 
@@ -27049,7 +27638,7 @@ class ModifyWebAreaBlockRequest(TeaModel):
         self.regions = regions
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         # 
-        # For more information about resource groups, see [Create a resource group](~~94485~~).
+        # For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
         self.resource_group_id = resource_group_id
 
     def validate(self):
@@ -27162,10 +27751,14 @@ class ModifyWebAreaBlockSwitchRequest(TeaModel):
         # 
         #     *   **1**: enables the policy.
         #     *   **0**: disables the policy.
+        # 
+        # This parameter is required.
         self.config = config
         # The domain name for which you want to enable or disable the Location Blacklist policy.
         # 
-        # > You can call the [DescribeDomains](~~91724~~) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
+        # > You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The ID of the resource group to which the instance belongs in Resource Management.
         # 
@@ -27282,14 +27875,22 @@ class ModifyWebCCRuleRequest(TeaModel):
         ttl: int = None,
         uri: str = None,
     ):
+        # This parameter is required.
         self.act = act
+        # This parameter is required.
         self.count = count
+        # This parameter is required.
         self.domain = domain
+        # This parameter is required.
         self.interval = interval
+        # This parameter is required.
         self.mode = mode
+        # This parameter is required.
         self.name = name
         self.resource_group_id = resource_group_id
+        # This parameter is required.
         self.ttl = ttl
+        # This parameter is required.
         self.uri = uri
 
     def validate(self):
@@ -27421,7 +28022,9 @@ class ModifyWebCacheCustomRuleRequest(TeaModel):
     ):
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for the domain name, and the domain name must be associated with an instance that uses the Enhanced function plan. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for the domain name, and the domain name must be associated with an instance that uses the Enhanced function plan. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
@@ -27438,6 +28041,8 @@ class ModifyWebCacheCustomRuleRequest(TeaModel):
         #     *   **bypass**: No data is cached.
         # 
         # *   **CacheTtl**: the expiration time of the page cache. This field is required and must be of the INTEGER type. Unit: seconds.
+        # 
+        # This parameter is required.
         self.rules = rules
 
     def validate(self):
@@ -27546,13 +28151,17 @@ class ModifyWebCacheModeRequest(TeaModel):
     ):
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for the domain name, and the domain name must be associated with an instance that uses the Enhanced function plan. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for the domain name, and the domain name must be associated with an instance that uses the Enhanced function plan. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The cache mode of the Static Page Caching policy. Valid values:
         # 
         # *   **standard**: uses the standard cache mode.
         # *   **aggressive**: uses the enhanced cache mode.
         # *   **bypass**: caches no data.
+        # 
+        # This parameter is required.
         self.mode = mode
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
@@ -27663,12 +28272,16 @@ class ModifyWebCacheSwitchRequest(TeaModel):
     ):
         # The domain name for which you want to configure the Static Page Caching policy.
         # 
-        # > You can call the [DescribeDomains](~~91724~~) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
+        # > You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
+        # 
+        # This parameter is required.
         self.domain = domain
         # Specifies whether to enable or disable the Static Page Caching policy for a website. Valid values:
         # 
         # *   **1**: enables the policy.
         # *   **0**: disables the policy.
+        # 
+        # This parameter is required.
         self.enable = enable
         # The ID of the resource group to which the instance belongs in Resource Management.
         # 
@@ -27785,10 +28398,14 @@ class ModifyWebIpSetSwitchRequest(TeaModel):
         # 
         #     *   **0**: disabled
         #     *   **1**: enabled
+        # 
+        # This parameter is required.
         self.config = config
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
@@ -27900,7 +28517,9 @@ class ModifyWebPreciseAccessRuleRequest(TeaModel):
     ):
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The validity period of the rule. Unit: seconds. This parameter takes effect only when **action** of a rule is **block**. Access requests that match the rule are blocked within the specified validity period of the rule. If you do not specify this parameter, this rule takes effect all the time.
         self.expires = expires
@@ -27933,6 +28552,8 @@ class ModifyWebPreciseAccessRuleRequest(TeaModel):
         #     *   **content**: the match content. This parameter is required and must be of the string type.
         # 
         # *   **header_name**: the HTTP header. This parameter is optional and must be of the string type. This parameter takes effect only when **field** is **header**.
+        # 
+        # This parameter is required.
         self.rules = rules
 
     def validate(self):
@@ -28049,10 +28670,14 @@ class ModifyWebPreciseAccessSwitchRequest(TeaModel):
         # 
         #     *   **0**: disables the policy.
         #     *   **1**: enables the policy.
+        # 
+        # This parameter is required.
         self.config = config
         # The domain name of the website.
         # 
-        # > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](~~91724~~) operation to query all domain names.
+        # > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
@@ -28165,12 +28790,16 @@ class ModifyWebRuleRequest(TeaModel):
         resource_group_id: str = None,
         rs_type: int = None,
     ):
+        # This parameter is required.
         self.domain = domain
         self.https_ext = https_ext
         self.instance_ids = instance_ids
+        # This parameter is required.
         self.proxy_types = proxy_types
+        # This parameter is required.
         self.real_servers = real_servers
         self.resource_group_id = resource_group_id
+        # This parameter is required.
         self.rs_type = rs_type
 
     def validate(self):
@@ -28290,6 +28919,7 @@ class ReleaseInstanceRequest(TeaModel):
         self,
         instance_id: str = None,
     ):
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -28389,7 +29019,9 @@ class SwitchSchedulerRuleRequest(TeaModel):
     ):
         # The name of the scheduling rule to manage.
         # 
-        # > You can call the [DescribeSchedulerRules](~~157481~~) operation to query the names of all scheduling rules.
+        # > You can call the [DescribeSchedulerRules](https://help.aliyun.com/document_detail/157481.html) operation to query the names of all scheduling rules.
+        # 
+        # This parameter is required.
         self.rule_name = rule_name
         # The type of the scheduling rule. Valid values:
         # 
@@ -28397,6 +29029,8 @@ class SwitchSchedulerRuleRequest(TeaModel):
         # *   **3**: network acceleration rule
         # *   **5**: Alibaba Cloud CDN (CDN) interaction rule
         # *   **6**: cloud service interaction rule
+        # 
+        # This parameter is required.
         self.rule_type = rule_type
         # The configuration that is used to switch service traffic. This parameter is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that includes the following parameters:
         # 
@@ -28409,8 +29043,10 @@ class SwitchSchedulerRuleRequest(TeaModel):
         # 
         # *   **Interval**: optional. The waiting time that is required before the service traffic is switched back. Unit: minutes. Data type: integer. Usage notes:
         # 
-        #     *   If the **State** parameter is set to **0**, you must set this parameter to \*\*-1\*\*. Otherwise, the call fails.
+        #     *   If the **State** parameter is set to **0**, you must set this parameter to \\*\\*-1\\*\\*. Otherwise, the call fails.
         #     *   If the **State** parameter is set to **1**, you do not need to set this parameter.
+        # 
+        # This parameter is required.
         self.switch_data = switch_data
 
     def validate(self):
