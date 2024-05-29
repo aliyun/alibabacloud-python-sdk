@@ -3609,6 +3609,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.delete_web_ccrule_with_options_async(request, runtime)
 
+    def delete_web_ccrule_v2with_options(
+        self,
+        request: ddoscoo_20200101_models.DeleteWebCCRuleV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DeleteWebCCRuleV2Response:
+        """
+        @summary 删除新版cc规则
+        
+        @param request: DeleteWebCCRuleV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWebCCRuleV2Response
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.owner):
+            query['Owner'] = request.owner
+        if not UtilClient.is_unset(request.rule_names):
+            query['RuleNames'] = request.rule_names
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteWebCCRuleV2',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DeleteWebCCRuleV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_web_ccrule_v2with_options_async(
+        self,
+        request: ddoscoo_20200101_models.DeleteWebCCRuleV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DeleteWebCCRuleV2Response:
+        """
+        @summary 删除新版cc规则
+        
+        @param request: DeleteWebCCRuleV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteWebCCRuleV2Response
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.owner):
+            query['Owner'] = request.owner
+        if not UtilClient.is_unset(request.rule_names):
+            query['RuleNames'] = request.rule_names
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DeleteWebCCRuleV2',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DeleteWebCCRuleV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_web_ccrule_v2(
+        self,
+        request: ddoscoo_20200101_models.DeleteWebCCRuleV2Request,
+    ) -> ddoscoo_20200101_models.DeleteWebCCRuleV2Response:
+        """
+        @summary 删除新版cc规则
+        
+        @param request: DeleteWebCCRuleV2Request
+        @return: DeleteWebCCRuleV2Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.delete_web_ccrule_v2with_options(request, runtime)
+
+    async def delete_web_ccrule_v2_async(
+        self,
+        request: ddoscoo_20200101_models.DeleteWebCCRuleV2Request,
+    ) -> ddoscoo_20200101_models.DeleteWebCCRuleV2Response:
+        """
+        @summary 删除新版cc规则
+        
+        @param request: DeleteWebCCRuleV2Request
+        @return: DeleteWebCCRuleV2Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.delete_web_ccrule_v2with_options_async(request, runtime)
+
     def delete_web_cache_custom_rule_with_options(
         self,
         request: ddoscoo_20200101_models.DeleteWebCacheCustomRuleRequest,
@@ -17820,6 +17924,106 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.modify_web_area_block_switch_with_options_async(request, runtime)
+
+    def modify_web_ccglobal_switch_with_options(
+        self,
+        request: ddoscoo_20200101_models.ModifyWebCCGlobalSwitchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.ModifyWebCCGlobalSwitchResponse:
+        """
+        @summary 统一全局CC开关
+        
+        @param request: ModifyWebCCGlobalSwitchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyWebCCGlobalSwitchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cc_global_switch):
+            query['CcGlobalSwitch'] = request.cc_global_switch
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyWebCCGlobalSwitch',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.ModifyWebCCGlobalSwitchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_web_ccglobal_switch_with_options_async(
+        self,
+        request: ddoscoo_20200101_models.ModifyWebCCGlobalSwitchRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.ModifyWebCCGlobalSwitchResponse:
+        """
+        @summary 统一全局CC开关
+        
+        @param request: ModifyWebCCGlobalSwitchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyWebCCGlobalSwitchResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.cc_global_switch):
+            query['CcGlobalSwitch'] = request.cc_global_switch
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ModifyWebCCGlobalSwitch',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.ModifyWebCCGlobalSwitchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_web_ccglobal_switch(
+        self,
+        request: ddoscoo_20200101_models.ModifyWebCCGlobalSwitchRequest,
+    ) -> ddoscoo_20200101_models.ModifyWebCCGlobalSwitchResponse:
+        """
+        @summary 统一全局CC开关
+        
+        @param request: ModifyWebCCGlobalSwitchRequest
+        @return: ModifyWebCCGlobalSwitchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.modify_web_ccglobal_switch_with_options(request, runtime)
+
+    async def modify_web_ccglobal_switch_async(
+        self,
+        request: ddoscoo_20200101_models.ModifyWebCCGlobalSwitchRequest,
+    ) -> ddoscoo_20200101_models.ModifyWebCCGlobalSwitchResponse:
+        """
+        @summary 统一全局CC开关
+        
+        @param request: ModifyWebCCGlobalSwitchRequest
+        @return: ModifyWebCCGlobalSwitchResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.modify_web_ccglobal_switch_with_options_async(request, runtime)
 
     def modify_web_ccrule_with_options(
         self,

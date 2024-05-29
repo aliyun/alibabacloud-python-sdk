@@ -1,3 +1,8 @@
+2024-05-29 Version: 2.1.0
+- Support API DeleteWebCCRuleV2.
+- Support API ModifyWebCCGlobalSwitch.
+
+
 2024-05-29 Version: 2.0.2
 - Update API AssociateWebCert: update param Cert.
 - Update API AssociateWebCert: update param CertId.
