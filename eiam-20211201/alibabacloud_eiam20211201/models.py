@@ -12,10 +12,16 @@ class AddUserToOrganizationalUnitsRequest(TeaModel):
         user_id: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The organization IDs. You can add an account to a maximum of 100 organizations.
+        # 
+        # This parameter is required.
         self.organizational_unit_ids = organizational_unit_ids
         # The account ID.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -123,10 +129,16 @@ class AddUsersToGroupRequest(TeaModel):
         user_ids: List[str] = None,
     ):
         # The group ID.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The account IDs.
+        # 
+        # This parameter is required.
         self.user_ids = user_ids
 
     def validate(self):
@@ -234,10 +246,16 @@ class AuthorizeApplicationToGroupsRequest(TeaModel):
         instance_id: str = None,
     ):
         # The application ID.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # The group IDs. You can specify up to 100 group IDs at a time.
+        # 
+        # This parameter is required.
         self.group_ids = group_ids
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -345,10 +363,16 @@ class AuthorizeApplicationToOrganizationalUnitsRequest(TeaModel):
         organizational_unit_ids: List[str] = None,
     ):
         # The ID of the application on which you want to grant permissions.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The IDs of the organizations to which you want to grant permissions. You can grant permissions to a maximum of 100 organizations at a time.
+        # 
+        # This parameter is required.
         self.organizational_unit_ids = organizational_unit_ids
 
     def validate(self):
@@ -456,10 +480,16 @@ class AuthorizeApplicationToUsersRequest(TeaModel):
         user_ids: List[str] = None,
     ):
         # The ID of the application on which you want to grant permissions.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The IDs of the accounts to which you want to grant permissions. You can grant permissions to a maximum of 100 accounts at a time.
+        # 
+        # This parameter is required.
         self.user_ids = user_ids
 
     def validate(self):
@@ -571,17 +601,23 @@ class CreateApplicationRequest(TeaModel):
         sso_type: str = None,
     ):
         # The name of the application.
+        # 
+        # This parameter is required.
         self.application_name = application_name
         # The type of the application source. Valid values:
         # 
         # *   urn:alibaba:idaas:app:source:template: application template
         # *   urn:alibaba:idaas:app:source:standard: standard protocol
+        # 
+        # This parameter is required.
         self.application_source_type = application_source_type
         # The ID of the application template. This parameter is required if you set the ApplicationSourceType parameter to urn:alibaba:idaas:app:source:template.
         self.application_template_id = application_template_id
         # The description of the application.
         self.description = description
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The URL of the application logo.
         self.logo_url = logo_url
@@ -589,6 +625,8 @@ class CreateApplicationRequest(TeaModel):
         # 
         # *   saml2: the SAML 2.0 protocol.
         # *   oidc: the OpenID Connect protocol.
+        # 
+        # This parameter is required.
         self.sso_type = sso_type
 
     def validate(self):
@@ -718,8 +756,12 @@ class CreateApplicationClientSecretRequest(TeaModel):
         instance_id: str = None,
     ):
         # The ID of the application for which you want to create a client key.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -902,10 +944,14 @@ class CreateDomainRequest(TeaModel):
         instance_id: str = None,
     ):
         # 域名。最大长度限制255，格式由数字、字母、横线（-）点（.）组成;
+        # 
+        # This parameter is required.
         self.domain = domain
         # 备案信息参数。
         self.filing = filing
         # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -1019,8 +1065,12 @@ class CreateDomainProxyTokenRequest(TeaModel):
         instance_id: str = None,
     ):
         # 域名ID。
+        # 
+        # This parameter is required.
         self.domain_id = domain_id
         # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -1134,8 +1184,12 @@ class CreateGroupRequest(TeaModel):
         # The external ID of the group, which can be used to associate the group with an external system. By default, the external ID is the group ID. The value can be up to 64 characters in length.
         self.group_external_id = group_external_id
         # The name of the group. The name can be up to 64 characters in length.
+        # 
+        # This parameter is required.
         self.group_name = group_name
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -1363,14 +1417,22 @@ class CreateNetworkAccessEndpointRequest(TeaModel):
         # 保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。
         self.client_token = client_token
         # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # 专属网络端点名称。
+        # 
+        # This parameter is required.
         self.network_access_endpoint_name = network_access_endpoint_name
         # 专属网络端点连接的指定vSwitch。
         self.v_switch_ids = v_switch_ids
         # 专属网络端点连接的VpcID。
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
         # 专属网络端点连接的VpcID所属地域，该地域取值必须在ListNetworkAccessEndpointAvailableRegions接口中返回。
+        # 
+        # This parameter is required.
         self.vpc_region_id = vpc_region_id
 
     def validate(self):
@@ -1499,12 +1561,18 @@ class CreateOrganizationalUnitRequest(TeaModel):
         # The description of the organization. The value can be up to 256 characters in length.
         self.description = description
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The external ID of the organization, which can be used to associate the organization with an external system. By default, the external ID is the organization ID. The value can be up to 64 characters in length.
         self.organizational_unit_external_id = organizational_unit_external_id
         # The name of the organization. The name can be up to 64 characters in length.
+        # 
+        # This parameter is required.
         self.organizational_unit_name = organizational_unit_name
         # The parent organization ID.
+        # 
+        # This parameter is required.
         self.parent_id = parent_id
 
     def validate(self):
@@ -1736,11 +1804,13 @@ class CreateUserRequest(TeaModel):
         self.description = description
         # The display name of the account. The display name can be up to 64 characters in length.
         self.display_name = display_name
-        # The email address of the user who owns the account. The email address prefix can contain letters, digits, underscores (\_), periods (.), and hyphens (-).
+        # The email address of the user who owns the account. The email address prefix can contain letters, digits, underscores (_), periods (.), and hyphens (-).
         self.email = email
         # Specifies whether the email address is a trusted email address. This parameter is required if the Email parameter is specified. If you have no special business requirements, set this parameter to true.
         self.email_verified = email_verified
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The IDs of organizational units to which the account belongs. An account can belong to multiple organizational units.
         self.organizational_unit_ids = organizational_unit_ids
@@ -1755,10 +1825,14 @@ class CreateUserRequest(TeaModel):
         # The country code of the mobile phone number. The country code contains only digits and does not contain a plus sign (+).
         self.phone_region = phone_region
         # The ID of the primary organizational unit to which the account belongs.
+        # 
+        # This parameter is required.
         self.primary_organizational_unit_id = primary_organizational_unit_id
         # The external ID of the account. The external ID can be used to associate the account with an external system. The external ID can be up to 64 characters in length. If you do not specify an external ID for the account, the ID of the account is used as the external ID by default.
         self.user_external_id = user_external_id
-        # The name of the account. The name can be up to 64 characters in length and can contain letters, digits, underscores (\_), periods (.), at signs (@), and hyphens (-).
+        # The name of the account. The name can be up to 64 characters in length and can contain letters, digits, underscores (_), periods (.), at signs (@), and hyphens (-).
+        # 
+        # This parameter is required.
         self.username = username
 
     def validate(self):
@@ -1931,8 +2005,12 @@ class DeleteApplicationRequest(TeaModel):
         instance_id: str = None,
     ):
         # The ID of the application that you want to delete.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -2036,10 +2114,16 @@ class DeleteApplicationClientSecretRequest(TeaModel):
         secret_id: str = None,
     ):
         # The ID of the application for which you want to delete a client key.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the client key that you want to delete for the application.
+        # 
+        # This parameter is required.
         self.secret_id = secret_id
 
     def validate(self):
@@ -2146,8 +2230,12 @@ class DeleteDomainRequest(TeaModel):
         instance_id: str = None,
     ):
         # 域名ID。
+        # 
+        # This parameter is required.
         self.domain_id = domain_id
         # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -2250,10 +2338,16 @@ class DeleteDomainProxyTokenRequest(TeaModel):
         instance_id: str = None,
     ):
         # 域名ID。
+        # 
+        # This parameter is required.
         self.domain_id = domain_id
         # 域名代理Token ID。
+        # 
+        # This parameter is required.
         self.domain_proxy_token_id = domain_proxy_token_id
         # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -2359,8 +2453,12 @@ class DeleteGroupRequest(TeaModel):
         instance_id: str = None,
     ):
         # The group ID.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -2462,6 +2560,8 @@ class DeleteInstanceRequest(TeaModel):
         instance_id: str = None,
     ):
         # The ID of the instance to be deleted.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -2560,8 +2660,12 @@ class DeleteNetworkAccessEndpointRequest(TeaModel):
         network_access_endpoint_id: str = None,
     ):
         # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # 专属网络端点ID。
+        # 
+        # This parameter is required.
         self.network_access_endpoint_id = network_access_endpoint_id
 
     def validate(self):
@@ -2663,8 +2767,12 @@ class DeleteOrganizationalUnitRequest(TeaModel):
         organizational_unit_id: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The organization ID.
+        # 
+        # This parameter is required.
         self.organizational_unit_id = organizational_unit_id
 
     def validate(self):
@@ -2767,8 +2875,12 @@ class DeleteUserRequest(TeaModel):
         user_id: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The account ID.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -2871,8 +2983,12 @@ class DisableApplicationRequest(TeaModel):
         instance_id: str = None,
     ):
         # The ID of the application that you want to disable.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -2975,8 +3091,12 @@ class DisableApplicationApiInvokeRequest(TeaModel):
         instance_id: str = None,
     ):
         # The ID of the application.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -3080,10 +3200,16 @@ class DisableApplicationClientSecretRequest(TeaModel):
         secret_id: str = None,
     ):
         # The ID of the application for which you want to disable a client key.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The client key ID of the application.
+        # 
+        # This parameter is required.
         self.secret_id = secret_id
 
     def validate(self):
@@ -3190,8 +3316,12 @@ class DisableApplicationProvisioningRequest(TeaModel):
         instance_id: str = None,
     ):
         # The ID of the application.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -3294,8 +3424,12 @@ class DisableApplicationSsoRequest(TeaModel):
         instance_id: str = None,
     ):
         # IDaaS的应用主键id
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # IDaaS EIAM的实例id
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -3398,10 +3532,16 @@ class DisableDomainProxyTokenRequest(TeaModel):
         instance_id: str = None,
     ):
         # 域名ID。
+        # 
+        # This parameter is required.
         self.domain_id = domain_id
         # 域名代理Token ID。
+        # 
+        # This parameter is required.
         self.domain_proxy_token_id = domain_proxy_token_id
         # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -3506,6 +3646,8 @@ class DisableInitDomainAutoRedirectRequest(TeaModel):
         instance_id: str = None,
     ):
         # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -3603,8 +3745,12 @@ class DisableUserRequest(TeaModel):
         user_id: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the account.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -3707,8 +3853,12 @@ class EnableApplicationRequest(TeaModel):
         instance_id: str = None,
     ):
         # The ID of the application that you want to enable.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -3811,8 +3961,12 @@ class EnableApplicationApiInvokeRequest(TeaModel):
         instance_id: str = None,
     ):
         # The ID of the application.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -3916,10 +4070,16 @@ class EnableApplicationClientSecretRequest(TeaModel):
         secret_id: str = None,
     ):
         # The ID of the application.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The client key ID of the application.
+        # 
+        # This parameter is required.
         self.secret_id = secret_id
 
     def validate(self):
@@ -4026,8 +4186,12 @@ class EnableApplicationProvisioningRequest(TeaModel):
         instance_id: str = None,
     ):
         # The ID of the application.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -4130,8 +4294,12 @@ class EnableApplicationSsoRequest(TeaModel):
         instance_id: str = None,
     ):
         # IDaaS的应用主键id
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # IDaaS EIAM的实例id
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -4234,10 +4402,16 @@ class EnableDomainProxyTokenRequest(TeaModel):
         instance_id: str = None,
     ):
         # 域名ID。
+        # 
+        # This parameter is required.
         self.domain_id = domain_id
         # 域名代理Token ID。
+        # 
+        # This parameter is required.
         self.domain_proxy_token_id = domain_proxy_token_id
         # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -4342,6 +4516,8 @@ class EnableInitDomainAutoRedirectRequest(TeaModel):
         instance_id: str = None,
     ):
         # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -4439,8 +4615,12 @@ class EnableUserRequest(TeaModel):
         user_id: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The account ID.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -4543,8 +4723,12 @@ class GetApplicationRequest(TeaModel):
         instance_id: str = None,
     ):
         # The ID of the application that you want to query.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -4815,8 +4999,12 @@ class GetApplicationGrantScopeRequest(TeaModel):
         instance_id: str = None,
     ):
         # The ID of the application.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -4956,8 +5144,12 @@ class GetApplicationProvisioningConfigRequest(TeaModel):
         instance_id: str = None,
     ):
         # The ID of the application.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -5389,8 +5581,12 @@ class GetApplicationProvisioningScopeRequest(TeaModel):
         instance_id: str = None,
     ):
         # The ID of the application.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -5420,10 +5616,19 @@ class GetApplicationProvisioningScopeRequest(TeaModel):
 class GetApplicationProvisioningScopeResponseBodyApplicationProvisioningScope(TeaModel):
     def __init__(
         self,
+        group_ids: List[str] = None,
+        max_quota: int = None,
         organizational_unit_ids: List[str] = None,
+        used_quota: int = None,
     ):
+        # 同步授权的组列表
+        self.group_ids = group_ids
+        # 租户最大授权主体quota数量
+        self.max_quota = max_quota
         # The list of organizational units that are authorized for account synchronization.
         self.organizational_unit_ids = organizational_unit_ids
+        # 已使用授权主体quota数量
+        self.used_quota = used_quota
 
     def validate(self):
         pass
@@ -5434,14 +5639,26 @@ class GetApplicationProvisioningScopeResponseBodyApplicationProvisioningScope(Te
             return _map
 
         result = dict()
+        if self.group_ids is not None:
+            result['GroupIds'] = self.group_ids
+        if self.max_quota is not None:
+            result['MaxQuota'] = self.max_quota
         if self.organizational_unit_ids is not None:
             result['OrganizationalUnitIds'] = self.organizational_unit_ids
+        if self.used_quota is not None:
+            result['UsedQuota'] = self.used_quota
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('GroupIds') is not None:
+            self.group_ids = m.get('GroupIds')
+        if m.get('MaxQuota') is not None:
+            self.max_quota = m.get('MaxQuota')
         if m.get('OrganizationalUnitIds') is not None:
             self.organizational_unit_ids = m.get('OrganizationalUnitIds')
+        if m.get('UsedQuota') is not None:
+            self.used_quota = m.get('UsedQuota')
         return self
 
 
@@ -5530,8 +5747,12 @@ class GetApplicationSsoConfigRequest(TeaModel):
         instance_id: str = None,
     ):
         # The ID of the application.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -6112,8 +6333,12 @@ class GetDomainRequest(TeaModel):
         instance_id: str = None,
     ):
         # 域名ID。
+        # 
+        # This parameter is required.
         self.domain_id = domain_id
         # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -6337,8 +6562,12 @@ class GetDomainDnsChallengeRequest(TeaModel):
         instance_id: str = None,
     ):
         # 域名。
+        # 
+        # This parameter is required.
         self.domain = domain
         # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -6489,6 +6718,8 @@ class GetForgetPasswordConfigurationRequest(TeaModel):
         instance_id: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -6652,8 +6883,12 @@ class GetGroupRequest(TeaModel):
         instance_id: str = None,
     ):
         # The group ID.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -6850,6 +7085,8 @@ class GetInstanceRequest(TeaModel):
         instance_id: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -7118,8 +7355,12 @@ class GetNetworkAccessEndpointRequest(TeaModel):
         network_access_endpoint_id: str = None,
     ):
         # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # 专属网络端点ID。
+        # 
+        # This parameter is required.
         self.network_access_endpoint_id = network_access_endpoint_id
 
     def validate(self):
@@ -7341,8 +7582,12 @@ class GetOrganizationalUnitRequest(TeaModel):
         organizational_unit_id: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the organizational unit.
+        # 
+        # This parameter is required.
         self.organizational_unit_id = organizational_unit_id
 
     def validate(self):
@@ -7560,6 +7805,8 @@ class GetPasswordComplexityConfigurationRequest(TeaModel):
         instance_id: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -7591,7 +7838,7 @@ class GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfigurat
         # 
         # *   inclusion_upper_case: The password must contain uppercase letters.
         # *   inclusion_lower_case: The password must contain lowercase letters.
-        # *   inclusion_special_case: The password must contain one or more of the following special characters: @ % + \ / \" ! # $ ^ ? : , ( ) { } \[ ] ~ - \_ .
+        # *   inclusion_special_case: The password must contain one or more of the following special characters: @ % + \\ / \\" ! # $ ^ ? : , ( ) { } [ ] ~ - _ .
         # *   inclusion_number: The password must contain digits.
         # *   exclusion_username: The password cannot contain a username.
         # *   exclusion_email: The password cannot contain an email prefix.
@@ -7746,6 +7993,8 @@ class GetPasswordExpirationConfigurationRequest(TeaModel):
         instance_id: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -7932,6 +8181,8 @@ class GetPasswordHistoryConfigurationRequest(TeaModel):
         instance_id: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -8076,6 +8327,8 @@ class GetPasswordInitializationConfigurationRequest(TeaModel):
         instance_id: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -8239,6 +8492,8 @@ class GetRootOrganizationalUnitRequest(TeaModel):
         instance_id: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -8409,8 +8664,12 @@ class GetUserRequest(TeaModel):
         user_id: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the account.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -8885,8 +9144,12 @@ class ListApplicationClientSecretsRequest(TeaModel):
         instance_id: str = None,
     ):
         # The ID of the application that you want to query.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -9098,6 +9361,8 @@ class ListApplicationsRequest(TeaModel):
         # *   default_all: By default, all users can access the application.
         self.authorization_type = authorization_type
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The number of the page to return.
         self.page_number = page_number
@@ -9395,8 +9660,12 @@ class ListApplicationsForOrganizationalUnitRequest(TeaModel):
         # The IDs of the applications that the EIAM organization can access. You can query a maximum of 100 application IDs at a time.
         self.application_ids = application_ids
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the EIAM organization.
+        # 
+        # This parameter is required.
         self.organizational_unit_id = organizational_unit_id
         # The number of the page to return.
         self.page_number = page_number
@@ -9571,6 +9840,8 @@ class ListApplicationsForUserRequest(TeaModel):
         # The IDs of the applications that the EIAM account can access. You can query a maximum of 100 application IDs at a time.
         self.application_ids = application_ids
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The number of the page to return.
         self.page_number = page_number
@@ -9582,6 +9853,8 @@ class ListApplicationsForUserRequest(TeaModel):
         # *   IncludeInherit: Both the permissions that are directly granted to the account and the inherited permissions are queried. Inherited permissions are the permissions that an account inherits from the parent organization or the group to which the account belongs.
         self.query_mode = query_mode
         # The ID of the EIAM account.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -9770,8 +10043,12 @@ class ListDomainProxyTokensRequest(TeaModel):
         instance_id: str = None,
     ):
         # 域名ID。
+        # 
+        # This parameter is required.
         self.domain_id = domain_id
         # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -9963,6 +10240,8 @@ class ListDomainsRequest(TeaModel):
         instance_id: str = None,
     ):
         # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -10526,6 +10805,8 @@ class ListGroupsRequest(TeaModel):
         # The prefix of the group name. If you specify this parameter, the query follows the leftmost matching principle.
         self.group_name_starts_with = group_name_starts_with
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The number of the page to return.
         self.page_number = page_number
@@ -10763,10 +11044,14 @@ class ListGroupsForApplicationRequest(TeaModel):
         page_size: int = None,
     ):
         # The application ID.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # The group IDs. You can specify up to 100 group IDs at a time.
         self.group_ids = group_ids
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The page number.
         self.page_number = page_number
@@ -10937,12 +11222,16 @@ class ListGroupsForUserRequest(TeaModel):
         user_id: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The number of the page to return.
         self.page_number = page_number
         # The number of entries to return on each page.
         self.page_size = page_size
         # The account ID.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -10981,9 +11270,13 @@ class ListGroupsForUserResponseBodyGroups(TeaModel):
     def __init__(
         self,
         group_id: str = None,
+        group_member_relation_source_id: str = None,
+        group_member_relation_source_type: str = None,
     ):
         # The group ID.
         self.group_id = group_id
+        self.group_member_relation_source_id = group_member_relation_source_id
+        self.group_member_relation_source_type = group_member_relation_source_type
 
     def validate(self):
         pass
@@ -10996,12 +11289,20 @@ class ListGroupsForUserResponseBodyGroups(TeaModel):
         result = dict()
         if self.group_id is not None:
             result['GroupId'] = self.group_id
+        if self.group_member_relation_source_id is not None:
+            result['GroupMemberRelationSourceId'] = self.group_member_relation_source_id
+        if self.group_member_relation_source_type is not None:
+            result['GroupMemberRelationSourceType'] = self.group_member_relation_source_type
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
+        if m.get('GroupMemberRelationSourceId') is not None:
+            self.group_member_relation_source_id = m.get('GroupMemberRelationSourceId')
+        if m.get('GroupMemberRelationSourceType') is not None:
+            self.group_member_relation_source_type = m.get('GroupMemberRelationSourceType')
         return self
 
 
@@ -11461,6 +11762,8 @@ class ListNetworkAccessEndpointAvailableZonesRequest(TeaModel):
         nae_region_id: str = None,
     ):
         # 专属网络端点支持的地域
+        # 
+        # This parameter is required.
         self.nae_region_id = nae_region_id
 
     def validate(self):
@@ -11612,6 +11915,8 @@ class ListNetworkAccessEndpointsRequest(TeaModel):
         vpc_region_id: str = None,
     ):
         # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # 分页查询时每页行数。默认值为20，最大值为100。
         self.max_results = max_results
@@ -11870,8 +12175,12 @@ class ListNetworkAccessPathsRequest(TeaModel):
         network_access_endpoint_id: str = None,
     ):
         # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # 专属网络端点ID。
+        # 
+        # This parameter is required.
         self.network_access_endpoint_id = network_access_endpoint_id
 
     def validate(self):
@@ -12071,8 +12380,12 @@ class ListOrganizationalUnitParentsRequest(TeaModel):
         organizational_unit_id: str = None,
     ):
         # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # 组织ID。
+        # 
+        # This parameter is required.
         self.organizational_unit_id = organizational_unit_id
 
     def validate(self):
@@ -12228,6 +12541,8 @@ class ListOrganizationalUnitsRequest(TeaModel):
         parent_id: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # 组织ID列表。size限制最大100。
         self.organizational_unit_ids = organizational_unit_ids
@@ -12492,8 +12807,12 @@ class ListOrganizationalUnitsForApplicationRequest(TeaModel):
         page_size: int = None,
     ):
         # The ID of the application that you want to query.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The IDs of the organizations that are allowed to access the application. You can query a maximum of 100 organization IDs at a time.
         self.organizational_unit_ids = organizational_unit_ids
@@ -12806,6 +13125,8 @@ class ListUsersRequest(TeaModel):
         # The email address of the user who owns the account.
         self.email = email
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the organizational unit.
         self.organizational_unit_id = organizational_unit_id
@@ -13195,8 +13516,12 @@ class ListUsersForApplicationRequest(TeaModel):
         user_ids: List[str] = None,
     ):
         # The ID of the application.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The number of the page to return
         self.page_number = page_number
@@ -13370,8 +13695,12 @@ class ListUsersForGroupRequest(TeaModel):
         user_ids: List[str] = None,
     ):
         # The group ID.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The number of the page to return. Default value: 1.
         self.page_number = page_number
@@ -13419,8 +13748,12 @@ class ListUsersForGroupRequest(TeaModel):
 class ListUsersForGroupResponseBodyUsers(TeaModel):
     def __init__(
         self,
+        group_member_relation_source_id: str = None,
+        group_member_relation_source_type: str = None,
         user_id: str = None,
     ):
+        self.group_member_relation_source_id = group_member_relation_source_id
+        self.group_member_relation_source_type = group_member_relation_source_type
         # The account ID.
         self.user_id = user_id
 
@@ -13433,12 +13766,20 @@ class ListUsersForGroupResponseBodyUsers(TeaModel):
             return _map
 
         result = dict()
+        if self.group_member_relation_source_id is not None:
+            result['GroupMemberRelationSourceId'] = self.group_member_relation_source_id
+        if self.group_member_relation_source_type is not None:
+            result['GroupMemberRelationSourceType'] = self.group_member_relation_source_type
         if self.user_id is not None:
             result['UserId'] = self.user_id
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('GroupMemberRelationSourceId') is not None:
+            self.group_member_relation_source_id = m.get('GroupMemberRelationSourceId')
+        if m.get('GroupMemberRelationSourceType') is not None:
+            self.group_member_relation_source_type = m.get('GroupMemberRelationSourceType')
         if m.get('UserId') is not None:
             self.user_id = m.get('UserId')
         return self
@@ -13543,10 +13884,16 @@ class ObtainApplicationClientSecretRequest(TeaModel):
         secret_id: str = None,
     ):
         # The ID of the application whose client key you want to query.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The client key ID of the application.
+        # 
+        # This parameter is required.
         self.secret_id = secret_id
 
     def validate(self):
@@ -13736,10 +14083,16 @@ class ObtainDomainProxyTokenRequest(TeaModel):
         instance_id: str = None,
     ):
         # 域名ID。
+        # 
+        # This parameter is required.
         self.domain_id = domain_id
         # 域名代理Token ID。
+        # 
+        # This parameter is required.
         self.domain_proxy_token_id = domain_proxy_token_id
         # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -13931,10 +14284,16 @@ class RemoveUserFromOrganizationalUnitsRequest(TeaModel):
         user_id: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The organization IDs. You can remove an account from a maximum of 100 organizations.
+        # 
+        # This parameter is required.
         self.organizational_unit_ids = organizational_unit_ids
         # The account ID.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -14042,10 +14401,16 @@ class RemoveUsersFromGroupRequest(TeaModel):
         user_ids: List[str] = None,
     ):
         # The group ID.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The account IDs. A maximum of 100 accounts can be removed from a group.
+        # 
+        # This parameter is required.
         self.user_ids = user_ids
 
     def validate(self):
@@ -14153,10 +14518,16 @@ class RevokeApplicationFromGroupsRequest(TeaModel):
         instance_id: str = None,
     ):
         # The application ID.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # The group IDs. You can specify up to 100 group IDs at a time.
+        # 
+        # This parameter is required.
         self.group_ids = group_ids
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -14264,10 +14635,16 @@ class RevokeApplicationFromOrganizationalUnitsRequest(TeaModel):
         organizational_unit_ids: List[str] = None,
     ):
         # The ID of the application.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The IDs of the organizations. You can revoke the access permissions from a maximum of 100 organizations at a time.
+        # 
+        # This parameter is required.
         self.organizational_unit_ids = organizational_unit_ids
 
     def validate(self):
@@ -14375,10 +14752,16 @@ class RevokeApplicationFromUsersRequest(TeaModel):
         user_ids: List[str] = None,
     ):
         # The ID of the application.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The IDs of the accounts. You can revoke the access permissions from a maximum of 100 accounts at a time.
+        # 
+        # This parameter is required.
         self.user_ids = user_ids
 
     def validate(self):
@@ -14486,10 +14869,14 @@ class SetApplicationGrantScopeRequest(TeaModel):
         instance_id: str = None,
     ):
         # The ID of the application that you want to configure.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # The permissions of the Developer API feature.
         self.grant_scopes = grant_scopes
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -14820,10 +15207,14 @@ class SetApplicationProvisioningConfigRequest(TeaModel):
         scim_provisioning_config: SetApplicationProvisioningConfigRequestScimProvisioningConfig = None,
     ):
         # The ID of the application.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # The configuration of event callback synchronization. This parameter is required when the ProvisionProtocolType parameter is set to idaas_callback.
         self.callback_provisioning_config = callback_provisioning_config
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # Specifies whether to synchronize the password in IDaaS user event callbacks. Valid values:
         # 
@@ -14834,6 +15225,8 @@ class SetApplicationProvisioningConfigRequest(TeaModel):
         # 
         # *   idaas_callback: custom event callback protocol of IDaaS.
         # *   scim2: System for Cross-domain Identity Management (SCIM) protocol.
+        # 
+        # This parameter is required.
         self.provision_protocol_type = provision_protocol_type
         # The configuration of SCIM-based IDaaS synchronization. This parameter is required when the ProvisionProtocolType parameter is set to scim2.
         self.scim_provisioning_config = scim_provisioning_config
@@ -14956,12 +15349,19 @@ class SetApplicationProvisioningScopeRequest(TeaModel):
     def __init__(
         self,
         application_id: str = None,
+        group_ids: List[str] = None,
         instance_id: str = None,
         organizational_unit_ids: List[str] = None,
     ):
         # The ID of the application.
+        # 
+        # This parameter is required.
         self.application_id = application_id
+        # 授权同步出的组列表
+        self.group_ids = group_ids
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The list of organizational units that are authorized for account synchronization.
         self.organizational_unit_ids = organizational_unit_ids
@@ -14977,6 +15377,8 @@ class SetApplicationProvisioningScopeRequest(TeaModel):
         result = dict()
         if self.application_id is not None:
             result['ApplicationId'] = self.application_id
+        if self.group_ids is not None:
+            result['GroupIds'] = self.group_ids
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
         if self.organizational_unit_ids is not None:
@@ -14987,6 +15389,8 @@ class SetApplicationProvisioningScopeRequest(TeaModel):
         m = m or dict()
         if m.get('ApplicationId') is not None:
             self.application_id = m.get('ApplicationId')
+        if m.get('GroupIds') is not None:
+            self.group_ids = m.get('GroupIds')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
         if m.get('OrganizationalUnitIds') is not None:
@@ -15375,6 +15779,8 @@ class SetApplicationSsoConfigRequest(TeaModel):
         saml_sso_config: SetApplicationSsoConfigRequestSamlSsoConfig = None,
     ):
         # The ID of the application.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # The initial SSO method. Valid values:
         # 
@@ -15384,6 +15790,8 @@ class SetApplicationSsoConfigRequest(TeaModel):
         # The initial webhook URL of SSO. This parameter is required when the SSO protocol of the application is an OIDC protocol and the InitLoginType parameters is set to idaas_or_app_init_sso or when the SSO protocol of the application is SAML and the InitLoginType parameter is set to only_app_init_sso.
         self.init_login_url = init_login_url
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The Open ID Connect (OIDC)-based SSO configuration attributes of the application.
         self.oidc_sso_config = oidc_sso_config
@@ -15511,8 +15919,12 @@ class SetDefaultDomainRequest(TeaModel):
         instance_id: str = None,
     ):
         # 域名ID。
+        # 
+        # This parameter is required.
         self.domain_id = domain_id
         # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -15617,8 +16029,12 @@ class SetForgetPasswordConfigurationRequest(TeaModel):
         # 身份认证渠道。枚举取值:email(邮件)、sms(短信)
         self.authentication_channels = authentication_channels
         # 忘记密码配置状态。枚举取值:enabled(开启)、disabled(禁用)
+        # 
+        # This parameter is required.
         self.forget_password_status = forget_password_status
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -15727,7 +16143,7 @@ class SetPasswordComplexityConfigurationRequestPasswordComplexityRules(TeaModel)
         # 
         # *   inclusion_upper_case: The password must contain uppercase letters.
         # *   inclusion_lower_case: The password must contain lowercase letters.
-        # *   inclusion_special_case: The password must contain one or more of the following special characters: @ % + \ / \" ! # $ ^ ? : , ( ) { } \[ ] ~ - \_ .
+        # *   inclusion_special_case: The password must contain one or more of the following special characters: @ % + \\ / \\" ! # $ ^ ? : , ( ) { } [ ] ~ - _ .
         # *   inclusion_number: The password must contain digits.
         # *   exclusion_username: The password cannot contain a username.
         # *   exclusion_email: The password cannot contain an email prefix.
@@ -15763,10 +16179,14 @@ class SetPasswordComplexityConfigurationRequest(TeaModel):
         password_min_length: int = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The password complexity rules.
         self.password_complexity_rules = password_complexity_rules
         # The minimum number of characters in a password.
+        # 
+        # This parameter is required.
         self.password_min_length = password_min_length
 
     def validate(self):
@@ -15887,6 +16307,8 @@ class SetPasswordExpirationConfigurationRequest(TeaModel):
         password_valid_max_day: int = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The action to take upon password expiration. This parameter must be specified when PasswordExpirationStatus is set to enabled. Valid values:
         # 
@@ -15907,6 +16329,8 @@ class SetPasswordExpirationConfigurationRequest(TeaModel):
         # 
         # *   enabled
         # *   disabled
+        # 
+        # This parameter is required.
         self.password_expiration_status = password_expiration_status
         # The number of days before which users must change the password to prevent password expiration. Unit: day. You must set this parameter to a value greater than the value of PasswordExpirationNotificationDuration.
         self.password_forced_update_duration = password_forced_update_duration
@@ -16038,6 +16462,8 @@ class SetPasswordHistoryConfigurationRequest(TeaModel):
         password_history_status: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The maximum number of recent passwords that can be retained. This parameter must be specified when PasswordHistoryStatus is set to enabled.
         self.password_history_max_retention = password_history_max_retention
@@ -16045,6 +16471,8 @@ class SetPasswordHistoryConfigurationRequest(TeaModel):
         # 
         # *   enabled
         # *   disabled
+        # 
+        # This parameter is required.
         self.password_history_status = password_history_status
 
     def validate(self):
@@ -16154,6 +16582,8 @@ class SetPasswordInitializationConfigurationRequest(TeaModel):
         password_initialization_type: str = None,
     ):
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # Specifies whether to enable forcible password change upon first logon. Valid values:
         # 
@@ -16166,6 +16596,8 @@ class SetPasswordInitializationConfigurationRequest(TeaModel):
         # 
         # *   enabled
         # *   disabled
+        # 
+        # This parameter is required.
         self.password_initialization_status = password_initialization_status
         # The password initialization method. This parameter is required when PasswordInitializationStatus is set to enabled. Set the value to random.
         # 
@@ -16285,10 +16717,16 @@ class SetUserPrimaryOrganizationalUnitRequest(TeaModel):
         user_id: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the new primary organizational unit.
+        # 
+        # This parameter is required.
         self.organizational_unit_id = organizational_unit_id
         # The ID of the account.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -16395,8 +16833,12 @@ class UnlockUserRequest(TeaModel):
         user_id: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The account ID.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -16500,13 +16942,19 @@ class UpdateApplicationAuthorizationTypeRequest(TeaModel):
         instance_id: str = None,
     ):
         # The ID of the application that you want to modify.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # The authorization type of the application. Valid values:
         # 
         # *   authorize_required: Only the user with explicit authorization can access the application.
         # *   default_all: By default, all users can access the application.
+        # 
+        # This parameter is required.
         self.authorization_type = authorization_type
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -16614,10 +17062,14 @@ class UpdateApplicationDescriptionRequest(TeaModel):
         instance_id: str = None,
     ):
         # The ID of the application that you want to modify.
+        # 
+        # This parameter is required.
         self.application_id = application_id
         # The description of the application.
         self.description = description
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -16728,10 +17180,14 @@ class UpdateGroupRequest(TeaModel):
         # The external ID of the group.
         self.group_external_id = group_external_id
         # The group ID.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The name of the group.
         self.group_name = group_name
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -16845,8 +17301,12 @@ class UpdateGroupDescriptionRequest(TeaModel):
         # The description of the account group. The value can be up to 256 characters in length.
         self.description = description
         # The ID of the account group.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -16955,6 +17415,8 @@ class UpdateInstanceDescriptionRequest(TeaModel):
         # The new description of the instance.
         self.description = description
         # The ID of the instance whose description you want to modify.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -17058,10 +17520,16 @@ class UpdateNetworkAccessEndpointNameRequest(TeaModel):
         network_access_endpoint_name: str = None,
     ):
         # IDaaS EIAM实例的ID。
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # 专属网络端点ID。
+        # 
+        # This parameter is required.
         self.network_access_endpoint_id = network_access_endpoint_id
         # 专属网络端点名称。
+        # 
+        # This parameter is required.
         self.network_access_endpoint_name = network_access_endpoint_name
 
     def validate(self):
@@ -17168,8 +17636,12 @@ class UpdateOrganizationalUnitRequest(TeaModel):
         organizational_unit_name: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The organization ID.
+        # 
+        # This parameter is required.
         self.organizational_unit_id = organizational_unit_id
         # The name of the organization. The name can be up to 64 characters in length and must be unique in the same parent organization.
         self.organizational_unit_name = organizational_unit_name
@@ -17281,8 +17753,12 @@ class UpdateOrganizationalUnitDescriptionRequest(TeaModel):
         # The description of the organization. The value can be up to 256 characters in length.
         self.description = description
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The organization ID.
+        # 
+        # This parameter is required.
         self.organizational_unit_id = organizational_unit_id
 
     def validate(self):
@@ -17390,10 +17866,16 @@ class UpdateOrganizationalUnitParentIdRequest(TeaModel):
         parent_id: str = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The organization ID.
+        # 
+        # This parameter is required.
         self.organizational_unit_id = organizational_unit_id
         # The parent organization ID.
+        # 
+        # This parameter is required.
         self.parent_id = parent_id
 
     def validate(self):
@@ -17557,11 +18039,13 @@ class UpdateUserRequest(TeaModel):
         self.custom_fields = custom_fields
         # The display name of the account. The display name can be up to 64 characters in length.
         self.display_name = display_name
-        # The email address. The prefix of the email address can contain letters, digits, periods (.), underscores (\_), and hyphens (-).
+        # The email address. The prefix of the email address can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         self.email = email
         # Specifies whether the email address is verified. This parameter must be specified if you specify Email. You can set this parameter to true if you have no special business requirements.
         self.email_verified = email_verified
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The mobile number. The mobile number must be 6 to 15 digits in length.
         self.phone_number = phone_number
@@ -17570,8 +18054,10 @@ class UpdateUserRequest(TeaModel):
         # The area code of the mobile number. For example, the area code of a mobile number in the Chinese mainland is 86 without 00 or the plus sign (+). This parameter must be specified if you specify PhoneNumber.
         self.phone_region = phone_region
         # The account ID.
+        # 
+        # This parameter is required.
         self.user_id = user_id
-        # The name of the account. The name can be up to 64 characters in length. It can contain letters, digits, and the following special characters: \_ . @ -\
+        # The name of the account. The name can be up to 64 characters in length. It can contain letters, digits, and the following special characters: _ . @ -\
         self.username = username
 
     def validate(self):
@@ -17717,8 +18203,12 @@ class UpdateUserDescriptionRequest(TeaModel):
         # The description of the account. The value can be up to 256 characters in length.
         self.description = description
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the account.
+        # 
+        # This parameter is required.
         self.user_id = user_id
 
     def validate(self):
@@ -17828,8 +18318,12 @@ class UpdateUserPasswordRequest(TeaModel):
         user_notification_channels: List[str] = None,
     ):
         # The instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The new password of the account. For more information about the password format, see the "Password Policies" topic.
+        # 
+        # This parameter is required.
         self.password = password
         # Specifies whether to enable forcible password change upon first logon. Default value: disabled. Valid values:
         # 
@@ -17837,6 +18331,8 @@ class UpdateUserPasswordRequest(TeaModel):
         # *   disabled
         self.password_forced_update_status = password_forced_update_status
         # The account ID.
+        # 
+        # This parameter is required.
         self.user_id = user_id
         # The methods for receiving password notifications.
         self.user_notification_channels = user_notification_channels

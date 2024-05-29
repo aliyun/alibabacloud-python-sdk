@@ -1,3 +1,16 @@
+2024-05-29 Version: 1.3.3
+- Update API GetApplicationProvisioningScope: update param ApplicationId.
+- Update API GetApplicationProvisioningScope: update param InstanceId.
+- Update API GetApplicationProvisioningScope: update response param.
+- Update API GetDomain: update param DomainId.
+- Update API ListGroupsForUser: update response param.
+- Update API ListUsersForGroup: update response param.
+- Update API SetApplicationProvisioningScope: add param GroupIds.
+- Update API SetApplicationProvisioningScope: update param ApplicationId.
+- Update API SetApplicationProvisioningScope: update param InstanceId.
+- Update API SetApplicationProvisioningScope: update response param.
+
+
 2024-03-12 Version: 1.3.2
 - Update API GetUser: update response param.
 - Update API ListApplications: update response param.
