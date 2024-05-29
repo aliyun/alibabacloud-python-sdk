@@ -47,6 +47,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.AddAuthPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddAuthPolicyResponse:
+        """
+        @summary 新增服务鉴权规则
+        
+        @param request: AddAuthPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddAuthPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -95,6 +102,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.AddAuthPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddAuthPolicyResponse:
+        """
+        @summary 新增服务鉴权规则
+        
+        @param request: AddAuthPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddAuthPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -142,6 +156,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.AddAuthPolicyRequest,
     ) -> mse_20190531_models.AddAuthPolicyResponse:
+        """
+        @summary 新增服务鉴权规则
+        
+        @param request: AddAuthPolicyRequest
+        @return: AddAuthPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_auth_policy_with_options(request, runtime)
 
@@ -149,6 +169,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.AddAuthPolicyRequest,
     ) -> mse_20190531_models.AddAuthPolicyResponse:
+        """
+        @summary 新增服务鉴权规则
+        
+        @param request: AddAuthPolicyRequest
+        @return: AddAuthPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_auth_policy_with_options_async(request, runtime)
 
@@ -157,6 +183,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.AddAuthResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddAuthResourceResponse:
+        """
+        @summary Creates authorization information for a gateway.
+        
+        @param tmp_req: AddAuthResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddAuthResourceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.AddAuthResourceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -203,6 +236,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.AddAuthResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddAuthResourceResponse:
+        """
+        @summary Creates authorization information for a gateway.
+        
+        @param tmp_req: AddAuthResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddAuthResourceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.AddAuthResourceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -248,6 +288,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.AddAuthResourceRequest,
     ) -> mse_20190531_models.AddAuthResourceResponse:
+        """
+        @summary Creates authorization information for a gateway.
+        
+        @param request: AddAuthResourceRequest
+        @return: AddAuthResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_auth_resource_with_options(request, runtime)
 
@@ -255,6 +301,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.AddAuthResourceRequest,
     ) -> mse_20190531_models.AddAuthResourceResponse:
+        """
+        @summary Creates authorization information for a gateway.
+        
+        @param request: AddAuthResourceRequest
+        @return: AddAuthResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_auth_resource_with_options_async(request, runtime)
 
@@ -263,6 +315,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.AddBlackWhiteListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddBlackWhiteListResponse:
+        """
+        @summary Creates a blacklist or a whitelist.
+        
+        @param request: AddBlackWhiteListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddBlackWhiteListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -309,6 +368,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.AddBlackWhiteListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddBlackWhiteListResponse:
+        """
+        @summary Creates a blacklist or a whitelist.
+        
+        @param request: AddBlackWhiteListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddBlackWhiteListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -354,6 +420,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.AddBlackWhiteListRequest,
     ) -> mse_20190531_models.AddBlackWhiteListResponse:
+        """
+        @summary Creates a blacklist or a whitelist.
+        
+        @param request: AddBlackWhiteListRequest
+        @return: AddBlackWhiteListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_black_white_list_with_options(request, runtime)
 
@@ -361,6 +433,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.AddBlackWhiteListRequest,
     ) -> mse_20190531_models.AddBlackWhiteListResponse:
+        """
+        @summary Creates a blacklist or a whitelist.
+        
+        @param request: AddBlackWhiteListRequest
+        @return: AddBlackWhiteListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_black_white_list_with_options_async(request, runtime)
 
@@ -369,6 +447,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.AddGatewayRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddGatewayResponse:
+        """
+        @summary Adds a gateway.
+        
+        @param tmp_req: AddGatewayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddGatewayResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.AddGatewayShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -443,6 +528,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.AddGatewayRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddGatewayResponse:
+        """
+        @summary Adds a gateway.
+        
+        @param tmp_req: AddGatewayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddGatewayResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.AddGatewayShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -516,6 +608,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.AddGatewayRequest,
     ) -> mse_20190531_models.AddGatewayResponse:
+        """
+        @summary Adds a gateway.
+        
+        @param request: AddGatewayRequest
+        @return: AddGatewayResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_gateway_with_options(request, runtime)
 
@@ -523,6 +621,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.AddGatewayRequest,
     ) -> mse_20190531_models.AddGatewayResponse:
+        """
+        @summary Adds a gateway.
+        
+        @param request: AddGatewayRequest
+        @return: AddGatewayResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_gateway_with_options_async(request, runtime)
 
@@ -531,6 +635,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.AddGatewayAuthRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddGatewayAuthResponse:
+        """
+        @summary Adds an authentication configuration for a gateway.
+        
+        @param tmp_req: AddGatewayAuthRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddGatewayAuthResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.AddGatewayAuthShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -611,6 +722,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.AddGatewayAuthRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddGatewayAuthResponse:
+        """
+        @summary Adds an authentication configuration for a gateway.
+        
+        @param tmp_req: AddGatewayAuthRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddGatewayAuthResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.AddGatewayAuthShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -690,6 +808,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.AddGatewayAuthRequest,
     ) -> mse_20190531_models.AddGatewayAuthResponse:
+        """
+        @summary Adds an authentication configuration for a gateway.
+        
+        @param request: AddGatewayAuthRequest
+        @return: AddGatewayAuthResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_gateway_auth_with_options(request, runtime)
 
@@ -697,6 +821,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.AddGatewayAuthRequest,
     ) -> mse_20190531_models.AddGatewayAuthResponse:
+        """
+        @summary Adds an authentication configuration for a gateway.
+        
+        @param request: AddGatewayAuthRequest
+        @return: AddGatewayAuthResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_gateway_auth_with_options_async(request, runtime)
 
@@ -705,6 +835,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.AddGatewayAuthConsumerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddGatewayAuthConsumerResponse:
+        """
+        @summary Adds a consumer on which a gateway performs authentication operations.
+        
+        @param request: AddGatewayAuthConsumerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddGatewayAuthConsumerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -757,6 +894,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.AddGatewayAuthConsumerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddGatewayAuthConsumerResponse:
+        """
+        @summary Adds a consumer on which a gateway performs authentication operations.
+        
+        @param request: AddGatewayAuthConsumerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddGatewayAuthConsumerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -808,6 +952,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.AddGatewayAuthConsumerRequest,
     ) -> mse_20190531_models.AddGatewayAuthConsumerResponse:
+        """
+        @summary Adds a consumer on which a gateway performs authentication operations.
+        
+        @param request: AddGatewayAuthConsumerRequest
+        @return: AddGatewayAuthConsumerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_gateway_auth_consumer_with_options(request, runtime)
 
@@ -815,6 +965,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.AddGatewayAuthConsumerRequest,
     ) -> mse_20190531_models.AddGatewayAuthConsumerResponse:
+        """
+        @summary Adds a consumer on which a gateway performs authentication operations.
+        
+        @param request: AddGatewayAuthConsumerRequest
+        @return: AddGatewayAuthConsumerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_gateway_auth_consumer_with_options_async(request, runtime)
 
@@ -823,6 +979,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.AddGatewayDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddGatewayDomainResponse:
+        """
+        @summary Associates a domain name with a gateway.
+        
+        @param request: AddGatewayDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddGatewayDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -867,6 +1030,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.AddGatewayDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddGatewayDomainResponse:
+        """
+        @summary Associates a domain name with a gateway.
+        
+        @param request: AddGatewayDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddGatewayDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -910,6 +1080,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.AddGatewayDomainRequest,
     ) -> mse_20190531_models.AddGatewayDomainResponse:
+        """
+        @summary Associates a domain name with a gateway.
+        
+        @param request: AddGatewayDomainRequest
+        @return: AddGatewayDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_gateway_domain_with_options(request, runtime)
 
@@ -917,6 +1093,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.AddGatewayDomainRequest,
     ) -> mse_20190531_models.AddGatewayDomainResponse:
+        """
+        @summary Associates a domain name with a gateway.
+        
+        @param request: AddGatewayDomainRequest
+        @return: AddGatewayDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_gateway_domain_with_options_async(request, runtime)
 
@@ -925,6 +1107,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.AddGatewayRouteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddGatewayRouteResponse:
+        """
+        @summary Adds a gateway route.
+        
+        @param tmp_req: AddGatewayRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddGatewayRouteResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.AddGatewayRouteShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -999,6 +1188,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.AddGatewayRouteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddGatewayRouteResponse:
+        """
+        @summary Adds a gateway route.
+        
+        @param tmp_req: AddGatewayRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddGatewayRouteResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.AddGatewayRouteShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1072,6 +1268,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.AddGatewayRouteRequest,
     ) -> mse_20190531_models.AddGatewayRouteResponse:
+        """
+        @summary Adds a gateway route.
+        
+        @param request: AddGatewayRouteRequest
+        @return: AddGatewayRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_gateway_route_with_options(request, runtime)
 
@@ -1079,6 +1281,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.AddGatewayRouteRequest,
     ) -> mse_20190531_models.AddGatewayRouteResponse:
+        """
+        @summary Adds a gateway route.
+        
+        @param request: AddGatewayRouteRequest
+        @return: AddGatewayRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_gateway_route_with_options_async(request, runtime)
 
@@ -1087,6 +1295,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.AddGatewayServiceVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddGatewayServiceVersionResponse:
+        """
+        @summary Adds a service version.
+        
+        @param request: AddGatewayServiceVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddGatewayServiceVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -1121,6 +1336,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.AddGatewayServiceVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddGatewayServiceVersionResponse:
+        """
+        @summary Adds a service version.
+        
+        @param request: AddGatewayServiceVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddGatewayServiceVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -1154,6 +1376,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.AddGatewayServiceVersionRequest,
     ) -> mse_20190531_models.AddGatewayServiceVersionResponse:
+        """
+        @summary Adds a service version.
+        
+        @param request: AddGatewayServiceVersionRequest
+        @return: AddGatewayServiceVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_gateway_service_version_with_options(request, runtime)
 
@@ -1161,6 +1389,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.AddGatewayServiceVersionRequest,
     ) -> mse_20190531_models.AddGatewayServiceVersionResponse:
+        """
+        @summary Adds a service version.
+        
+        @param request: AddGatewayServiceVersionRequest
+        @return: AddGatewayServiceVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_gateway_service_version_with_options_async(request, runtime)
 
@@ -1169,6 +1403,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.AddGatewaySlbRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddGatewaySlbResponse:
+        """
+        @summary Associates a Server Load Balancer (SLB) instance with a gateway.
+        
+        @param tmp_req: AddGatewaySlbRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddGatewaySlbResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.AddGatewaySlbShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1219,6 +1460,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.AddGatewaySlbRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddGatewaySlbResponse:
+        """
+        @summary Associates a Server Load Balancer (SLB) instance with a gateway.
+        
+        @param tmp_req: AddGatewaySlbRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddGatewaySlbResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.AddGatewaySlbShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1268,6 +1516,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.AddGatewaySlbRequest,
     ) -> mse_20190531_models.AddGatewaySlbResponse:
+        """
+        @summary Associates a Server Load Balancer (SLB) instance with a gateway.
+        
+        @param request: AddGatewaySlbRequest
+        @return: AddGatewaySlbResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_gateway_slb_with_options(request, runtime)
 
@@ -1275,6 +1529,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.AddGatewaySlbRequest,
     ) -> mse_20190531_models.AddGatewaySlbResponse:
+        """
+        @summary Associates a Server Load Balancer (SLB) instance with a gateway.
+        
+        @param request: AddGatewaySlbRequest
+        @return: AddGatewaySlbResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_gateway_slb_with_options_async(request, runtime)
 
@@ -1283,6 +1543,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.AddMigrationTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddMigrationTaskResponse:
+        """
+        @summary Adds a migration task.
+        
+        @param request: AddMigrationTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddMigrationTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -1329,6 +1596,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.AddMigrationTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddMigrationTaskResponse:
+        """
+        @summary Adds a migration task.
+        
+        @param request: AddMigrationTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddMigrationTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -1374,6 +1648,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.AddMigrationTaskRequest,
     ) -> mse_20190531_models.AddMigrationTaskResponse:
+        """
+        @summary Adds a migration task.
+        
+        @param request: AddMigrationTaskRequest
+        @return: AddMigrationTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_migration_task_with_options(request, runtime)
 
@@ -1381,6 +1661,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.AddMigrationTaskRequest,
     ) -> mse_20190531_models.AddMigrationTaskResponse:
+        """
+        @summary Adds a migration task.
+        
+        @param request: AddMigrationTaskRequest
+        @return: AddMigrationTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_migration_task_with_options_async(request, runtime)
 
@@ -1389,6 +1675,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.AddMockRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddMockRuleResponse:
+        """
+        @summary Creates a mock rule.
+        
+        @param request: AddMockRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddMockRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -1439,6 +1732,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.AddMockRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddMockRuleResponse:
+        """
+        @summary Creates a mock rule.
+        
+        @param request: AddMockRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddMockRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -1488,6 +1788,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.AddMockRuleRequest,
     ) -> mse_20190531_models.AddMockRuleResponse:
+        """
+        @summary Creates a mock rule.
+        
+        @param request: AddMockRuleRequest
+        @return: AddMockRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_mock_rule_with_options(request, runtime)
 
@@ -1495,6 +1801,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.AddMockRuleRequest,
     ) -> mse_20190531_models.AddMockRuleResponse:
+        """
+        @summary Creates a mock rule.
+        
+        @param request: AddMockRuleRequest
+        @return: AddMockRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_mock_rule_with_options_async(request, runtime)
 
@@ -1503,6 +1815,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.AddSSLCertRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddSSLCertResponse:
+        """
+        @summary Associates a certificate with a domain name of a gateway. You can specify a certificate that is hosted in Alibaba Cloud Security.
+        
+        @param request: AddSSLCertRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddSSLCertResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -1537,6 +1856,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.AddSSLCertRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddSSLCertResponse:
+        """
+        @summary Associates a certificate with a domain name of a gateway. You can specify a certificate that is hosted in Alibaba Cloud Security.
+        
+        @param request: AddSSLCertRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddSSLCertResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -1570,6 +1896,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.AddSSLCertRequest,
     ) -> mse_20190531_models.AddSSLCertResponse:
+        """
+        @summary Associates a certificate with a domain name of a gateway. You can specify a certificate that is hosted in Alibaba Cloud Security.
+        
+        @param request: AddSSLCertRequest
+        @return: AddSSLCertResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_sslcert_with_options(request, runtime)
 
@@ -1577,6 +1909,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.AddSSLCertRequest,
     ) -> mse_20190531_models.AddSSLCertResponse:
+        """
+        @summary Associates a certificate with a domain name of a gateway. You can specify a certificate that is hosted in Alibaba Cloud Security.
+        
+        @param request: AddSSLCertRequest
+        @return: AddSSLCertResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_sslcert_with_options_async(request, runtime)
 
@@ -1585,6 +1923,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.AddSecurityGroupRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddSecurityGroupRuleResponse:
+        """
+        @summary Creates a security group rule for a gateway.
+        
+        @param request: AddSecurityGroupRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddSecurityGroupRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -1621,6 +1966,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.AddSecurityGroupRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddSecurityGroupRuleResponse:
+        """
+        @summary Creates a security group rule for a gateway.
+        
+        @param request: AddSecurityGroupRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddSecurityGroupRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -1656,6 +2008,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.AddSecurityGroupRuleRequest,
     ) -> mse_20190531_models.AddSecurityGroupRuleResponse:
+        """
+        @summary Creates a security group rule for a gateway.
+        
+        @param request: AddSecurityGroupRuleRequest
+        @return: AddSecurityGroupRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_security_group_rule_with_options(request, runtime)
 
@@ -1663,6 +2021,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.AddSecurityGroupRuleRequest,
     ) -> mse_20190531_models.AddSecurityGroupRuleResponse:
+        """
+        @summary Creates a security group rule for a gateway.
+        
+        @param request: AddSecurityGroupRuleRequest
+        @return: AddSecurityGroupRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_security_group_rule_with_options_async(request, runtime)
 
@@ -1671,6 +2035,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.AddServiceSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddServiceSourceResponse:
+        """
+        @summary Adds a Nacos service source.
+        
+        @param tmp_req: AddServiceSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddServiceSourceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.AddServiceSourceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1727,6 +2098,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.AddServiceSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.AddServiceSourceResponse:
+        """
+        @summary Adds a Nacos service source.
+        
+        @param tmp_req: AddServiceSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddServiceSourceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.AddServiceSourceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1782,6 +2160,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.AddServiceSourceRequest,
     ) -> mse_20190531_models.AddServiceSourceResponse:
+        """
+        @summary Adds a Nacos service source.
+        
+        @param request: AddServiceSourceRequest
+        @return: AddServiceSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_service_source_with_options(request, runtime)
 
@@ -1789,6 +2173,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.AddServiceSourceRequest,
     ) -> mse_20190531_models.AddServiceSourceResponse:
+        """
+        @summary Adds a Nacos service source.
+        
+        @param request: AddServiceSourceRequest
+        @return: AddServiceSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_service_source_with_options_async(request, runtime)
 
@@ -1797,6 +2187,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ApplyGatewayRouteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ApplyGatewayRouteResponse:
+        """
+        @summary Publishes a route for a gateway.
+        
+        @param request: ApplyGatewayRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyGatewayRouteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -1829,6 +2226,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ApplyGatewayRouteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ApplyGatewayRouteResponse:
+        """
+        @summary Publishes a route for a gateway.
+        
+        @param request: ApplyGatewayRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyGatewayRouteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -1860,6 +2264,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ApplyGatewayRouteRequest,
     ) -> mse_20190531_models.ApplyGatewayRouteResponse:
+        """
+        @summary Publishes a route for a gateway.
+        
+        @param request: ApplyGatewayRouteRequest
+        @return: ApplyGatewayRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.apply_gateway_route_with_options(request, runtime)
 
@@ -1867,6 +2277,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ApplyGatewayRouteRequest,
     ) -> mse_20190531_models.ApplyGatewayRouteResponse:
+        """
+        @summary Publishes a route for a gateway.
+        
+        @param request: ApplyGatewayRouteRequest
+        @return: ApplyGatewayRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.apply_gateway_route_with_options_async(request, runtime)
 
@@ -1875,6 +2291,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.ApplyTagPoliciesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ApplyTagPoliciesResponse:
+        """
+        @summary Modifies a tag-based routing rule.
+        
+        @param tmp_req: ApplyTagPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyTagPoliciesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.ApplyTagPoliciesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1921,6 +2344,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.ApplyTagPoliciesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ApplyTagPoliciesResponse:
+        """
+        @summary Modifies a tag-based routing rule.
+        
+        @param tmp_req: ApplyTagPoliciesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApplyTagPoliciesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.ApplyTagPoliciesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -1966,6 +2396,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ApplyTagPoliciesRequest,
     ) -> mse_20190531_models.ApplyTagPoliciesResponse:
+        """
+        @summary Modifies a tag-based routing rule.
+        
+        @param request: ApplyTagPoliciesRequest
+        @return: ApplyTagPoliciesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.apply_tag_policies_with_options(request, runtime)
 
@@ -1973,6 +2409,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ApplyTagPoliciesRequest,
     ) -> mse_20190531_models.ApplyTagPoliciesResponse:
+        """
+        @summary Modifies a tag-based routing rule.
+        
+        @param request: ApplyTagPoliciesRequest
+        @return: ApplyTagPoliciesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.apply_tag_policies_with_options_async(request, runtime)
 
@@ -1981,6 +2423,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.BindSentinelBlockFallbackDefinitionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.BindSentinelBlockFallbackDefinitionResponse:
+        """
+        @summary 绑定流量防护行为
+        
+        @param request: BindSentinelBlockFallbackDefinitionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindSentinelBlockFallbackDefinitionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -2019,6 +2468,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.BindSentinelBlockFallbackDefinitionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.BindSentinelBlockFallbackDefinitionResponse:
+        """
+        @summary 绑定流量防护行为
+        
+        @param request: BindSentinelBlockFallbackDefinitionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: BindSentinelBlockFallbackDefinitionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -2056,6 +2512,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.BindSentinelBlockFallbackDefinitionRequest,
     ) -> mse_20190531_models.BindSentinelBlockFallbackDefinitionResponse:
+        """
+        @summary 绑定流量防护行为
+        
+        @param request: BindSentinelBlockFallbackDefinitionRequest
+        @return: BindSentinelBlockFallbackDefinitionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.bind_sentinel_block_fallback_definition_with_options(request, runtime)
 
@@ -2063,6 +2525,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.BindSentinelBlockFallbackDefinitionRequest,
     ) -> mse_20190531_models.BindSentinelBlockFallbackDefinitionResponse:
+        """
+        @summary 绑定流量防护行为
+        
+        @param request: BindSentinelBlockFallbackDefinitionRequest
+        @return: BindSentinelBlockFallbackDefinitionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.bind_sentinel_block_fallback_definition_with_options_async(request, runtime)
 
@@ -2072,7 +2540,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CloneNacosConfigResponse:
         """
-        mse-200-105
+        @summary Clones an existing Nacos configuration from a namespace to another namespace.
+        
+        @description mse-200-105
         
         @param request: CloneNacosConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2117,7 +2587,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CloneNacosConfigResponse:
         """
-        mse-200-105
+        @summary Clones an existing Nacos configuration from a namespace to another namespace.
+        
+        @description mse-200-105
         
         @param request: CloneNacosConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2161,7 +2633,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CloneNacosConfigRequest,
     ) -> mse_20190531_models.CloneNacosConfigResponse:
         """
-        mse-200-105
+        @summary Clones an existing Nacos configuration from a namespace to another namespace.
+        
+        @description mse-200-105
         
         @param request: CloneNacosConfigRequest
         @return: CloneNacosConfigResponse
@@ -2174,7 +2648,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CloneNacosConfigRequest,
     ) -> mse_20190531_models.CloneNacosConfigResponse:
         """
-        mse-200-105
+        @summary Clones an existing Nacos configuration from a namespace to another namespace.
+        
+        @description mse-200-105
         
         @param request: CloneNacosConfigRequest
         @return: CloneNacosConfigResponse
@@ -2187,6 +2663,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CloneSentinelRuleFromAhasRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CloneSentinelRuleFromAhasResponse:
+        """
+        @summary 从AHAS侧复制规则
+        
+        @param request: CloneSentinelRuleFromAhasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloneSentinelRuleFromAhasResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -2223,6 +2706,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CloneSentinelRuleFromAhasRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CloneSentinelRuleFromAhasResponse:
+        """
+        @summary 从AHAS侧复制规则
+        
+        @param request: CloneSentinelRuleFromAhasRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloneSentinelRuleFromAhasResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -2258,6 +2748,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.CloneSentinelRuleFromAhasRequest,
     ) -> mse_20190531_models.CloneSentinelRuleFromAhasResponse:
+        """
+        @summary 从AHAS侧复制规则
+        
+        @param request: CloneSentinelRuleFromAhasRequest
+        @return: CloneSentinelRuleFromAhasResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.clone_sentinel_rule_from_ahas_with_options(request, runtime)
 
@@ -2265,6 +2761,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.CloneSentinelRuleFromAhasRequest,
     ) -> mse_20190531_models.CloneSentinelRuleFromAhasResponse:
+        """
+        @summary 从AHAS侧复制规则
+        
+        @param request: CloneSentinelRuleFromAhasRequest
+        @return: CloneSentinelRuleFromAhasResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.clone_sentinel_rule_from_ahas_with_options_async(request, runtime)
 
@@ -2273,6 +2775,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateApplicationResponse:
+        """
+        @summary Creates an application.
+        
+        @param request: CreateApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -2315,6 +2824,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateApplicationResponse:
+        """
+        @summary Creates an application.
+        
+        @param request: CreateApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -2356,6 +2872,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.CreateApplicationRequest,
     ) -> mse_20190531_models.CreateApplicationResponse:
+        """
+        @summary Creates an application.
+        
+        @param request: CreateApplicationRequest
+        @return: CreateApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_application_with_options(request, runtime)
 
@@ -2363,6 +2885,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.CreateApplicationRequest,
     ) -> mse_20190531_models.CreateApplicationResponse:
+        """
+        @summary Creates an application.
+        
+        @param request: CreateApplicationRequest
+        @return: CreateApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_application_with_options_async(request, runtime)
 
@@ -2371,6 +2899,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateCircuitBreakerRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateCircuitBreakerRuleResponse:
+        """
+        @summary Creates a circuit breaking rule.
+        
+        @param request: CreateCircuitBreakerRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCircuitBreakerRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -2429,6 +2964,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateCircuitBreakerRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateCircuitBreakerRuleResponse:
+        """
+        @summary Creates a circuit breaking rule.
+        
+        @param request: CreateCircuitBreakerRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCircuitBreakerRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -2486,6 +3028,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.CreateCircuitBreakerRuleRequest,
     ) -> mse_20190531_models.CreateCircuitBreakerRuleResponse:
+        """
+        @summary Creates a circuit breaking rule.
+        
+        @param request: CreateCircuitBreakerRuleRequest
+        @return: CreateCircuitBreakerRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_circuit_breaker_rule_with_options(request, runtime)
 
@@ -2493,6 +3041,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.CreateCircuitBreakerRuleRequest,
     ) -> mse_20190531_models.CreateCircuitBreakerRuleResponse:
+        """
+        @summary Creates a circuit breaking rule.
+        
+        @param request: CreateCircuitBreakerRuleRequest
+        @return: CreateCircuitBreakerRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_circuit_breaker_rule_with_options_async(request, runtime)
 
@@ -2502,7 +3056,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateClusterResponse:
         """
-        Before you call this API operation, you must make sure that you fully understand the billing methods and pricing of MSE.
+        @summary Creates a Microservices Engine (MSE) instance, such as an MSE ZooKeeper instance or an MSE Nacos instance.
+        
+        @description Before you call this API operation, you must make sure that you fully understand the billing methods and pricing of MSE.
         
         @param request: CreateClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2579,7 +3135,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateClusterResponse:
         """
-        Before you call this API operation, you must make sure that you fully understand the billing methods and pricing of MSE.
+        @summary Creates a Microservices Engine (MSE) instance, such as an MSE ZooKeeper instance or an MSE Nacos instance.
+        
+        @description Before you call this API operation, you must make sure that you fully understand the billing methods and pricing of MSE.
         
         @param request: CreateClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2655,7 +3213,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateClusterRequest,
     ) -> mse_20190531_models.CreateClusterResponse:
         """
-        Before you call this API operation, you must make sure that you fully understand the billing methods and pricing of MSE.
+        @summary Creates a Microservices Engine (MSE) instance, such as an MSE ZooKeeper instance or an MSE Nacos instance.
+        
+        @description Before you call this API operation, you must make sure that you fully understand the billing methods and pricing of MSE.
         
         @param request: CreateClusterRequest
         @return: CreateClusterResponse
@@ -2668,7 +3228,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateClusterRequest,
     ) -> mse_20190531_models.CreateClusterResponse:
         """
-        Before you call this API operation, you must make sure that you fully understand the billing methods and pricing of MSE.
+        @summary Creates a Microservices Engine (MSE) instance, such as an MSE ZooKeeper instance or an MSE Nacos instance.
+        
+        @description Before you call this API operation, you must make sure that you fully understand the billing methods and pricing of MSE.
         
         @param request: CreateClusterRequest
         @return: CreateClusterResponse
@@ -2681,6 +3243,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateEngineNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateEngineNamespaceResponse:
+        """
+        @summary Creates a namespace in a Nacos instance.
+        
+        @param request: CreateEngineNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEngineNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -2721,6 +3290,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateEngineNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateEngineNamespaceResponse:
+        """
+        @summary Creates a namespace in a Nacos instance.
+        
+        @param request: CreateEngineNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateEngineNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -2760,6 +3336,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.CreateEngineNamespaceRequest,
     ) -> mse_20190531_models.CreateEngineNamespaceResponse:
+        """
+        @summary Creates a namespace in a Nacos instance.
+        
+        @param request: CreateEngineNamespaceRequest
+        @return: CreateEngineNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_engine_namespace_with_options(request, runtime)
 
@@ -2767,6 +3349,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.CreateEngineNamespaceRequest,
     ) -> mse_20190531_models.CreateEngineNamespaceResponse:
+        """
+        @summary Creates a namespace in a Nacos instance.
+        
+        @param request: CreateEngineNamespaceRequest
+        @return: CreateEngineNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_engine_namespace_with_options_async(request, runtime)
 
@@ -2775,6 +3363,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateFlowRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateFlowRuleResponse:
+        """
+        @summary Creates a throttling rule.
+        
+        @param request: CreateFlowRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFlowRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -2823,6 +3418,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateFlowRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateFlowRuleResponse:
+        """
+        @summary Creates a throttling rule.
+        
+        @param request: CreateFlowRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateFlowRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -2870,6 +3472,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.CreateFlowRuleRequest,
     ) -> mse_20190531_models.CreateFlowRuleResponse:
+        """
+        @summary Creates a throttling rule.
+        
+        @param request: CreateFlowRuleRequest
+        @return: CreateFlowRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_flow_rule_with_options(request, runtime)
 
@@ -2877,6 +3485,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.CreateFlowRuleRequest,
     ) -> mse_20190531_models.CreateFlowRuleResponse:
+        """
+        @summary Creates a throttling rule.
+        
+        @param request: CreateFlowRuleRequest
+        @return: CreateFlowRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_flow_rule_with_options_async(request, runtime)
 
@@ -2885,6 +3499,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateGatewayCircuitBreakerRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateGatewayCircuitBreakerRuleResponse:
+        """
+        @summary 创建网关路由熔断规则
+        
+        @param request: CreateGatewayCircuitBreakerRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGatewayCircuitBreakerRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -2945,6 +3566,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateGatewayCircuitBreakerRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateGatewayCircuitBreakerRuleResponse:
+        """
+        @summary 创建网关路由熔断规则
+        
+        @param request: CreateGatewayCircuitBreakerRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGatewayCircuitBreakerRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -3004,6 +3632,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.CreateGatewayCircuitBreakerRuleRequest,
     ) -> mse_20190531_models.CreateGatewayCircuitBreakerRuleResponse:
+        """
+        @summary 创建网关路由熔断规则
+        
+        @param request: CreateGatewayCircuitBreakerRuleRequest
+        @return: CreateGatewayCircuitBreakerRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_gateway_circuit_breaker_rule_with_options(request, runtime)
 
@@ -3011,6 +3645,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.CreateGatewayCircuitBreakerRuleRequest,
     ) -> mse_20190531_models.CreateGatewayCircuitBreakerRuleResponse:
+        """
+        @summary 创建网关路由熔断规则
+        
+        @param request: CreateGatewayCircuitBreakerRuleRequest
+        @return: CreateGatewayCircuitBreakerRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_gateway_circuit_breaker_rule_with_options_async(request, runtime)
 
@@ -3019,6 +3659,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateGatewayFlowRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateGatewayFlowRuleResponse:
+        """
+        @summary 创建网关路由流控规则
+        
+        @param request: CreateGatewayFlowRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGatewayFlowRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -3069,6 +3716,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateGatewayFlowRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateGatewayFlowRuleResponse:
+        """
+        @summary 创建网关路由流控规则
+        
+        @param request: CreateGatewayFlowRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGatewayFlowRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -3118,6 +3772,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.CreateGatewayFlowRuleRequest,
     ) -> mse_20190531_models.CreateGatewayFlowRuleResponse:
+        """
+        @summary 创建网关路由流控规则
+        
+        @param request: CreateGatewayFlowRuleRequest
+        @return: CreateGatewayFlowRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_gateway_flow_rule_with_options(request, runtime)
 
@@ -3125,6 +3785,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.CreateGatewayFlowRuleRequest,
     ) -> mse_20190531_models.CreateGatewayFlowRuleResponse:
+        """
+        @summary 创建网关路由流控规则
+        
+        @param request: CreateGatewayFlowRuleRequest
+        @return: CreateGatewayFlowRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_gateway_flow_rule_with_options_async(request, runtime)
 
@@ -3133,6 +3799,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateGatewayIsolationRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateGatewayIsolationRuleResponse:
+        """
+        @summary 创建网关路由隔离规则
+        
+        @param request: CreateGatewayIsolationRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGatewayIsolationRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -3183,6 +3856,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateGatewayIsolationRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateGatewayIsolationRuleResponse:
+        """
+        @summary 创建网关路由隔离规则
+        
+        @param request: CreateGatewayIsolationRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateGatewayIsolationRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -3232,6 +3912,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.CreateGatewayIsolationRuleRequest,
     ) -> mse_20190531_models.CreateGatewayIsolationRuleResponse:
+        """
+        @summary 创建网关路由隔离规则
+        
+        @param request: CreateGatewayIsolationRuleRequest
+        @return: CreateGatewayIsolationRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_gateway_isolation_rule_with_options(request, runtime)
 
@@ -3239,6 +3925,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.CreateGatewayIsolationRuleRequest,
     ) -> mse_20190531_models.CreateGatewayIsolationRuleResponse:
+        """
+        @summary 创建网关路由隔离规则
+        
+        @param request: CreateGatewayIsolationRuleRequest
+        @return: CreateGatewayIsolationRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_gateway_isolation_rule_with_options_async(request, runtime)
 
@@ -3247,6 +3939,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateIsolationRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateIsolationRuleResponse:
+        """
+        @summary 创建隔离规则
+        
+        @param request: CreateIsolationRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIsolationRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -3289,6 +3988,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateIsolationRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateIsolationRuleResponse:
+        """
+        @summary 创建隔离规则
+        
+        @param request: CreateIsolationRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIsolationRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -3330,6 +4036,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.CreateIsolationRuleRequest,
     ) -> mse_20190531_models.CreateIsolationRuleResponse:
+        """
+        @summary 创建隔离规则
+        
+        @param request: CreateIsolationRuleRequest
+        @return: CreateIsolationRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_isolation_rule_with_options(request, runtime)
 
@@ -3337,6 +4049,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.CreateIsolationRuleRequest,
     ) -> mse_20190531_models.CreateIsolationRuleResponse:
+        """
+        @summary 创建隔离规则
+        
+        @param request: CreateIsolationRuleRequest
+        @return: CreateIsolationRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_isolation_rule_with_options_async(request, runtime)
 
@@ -3346,7 +4064,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateMseServiceApplicationResponse:
         """
-        @deprecated : CreateMseServiceApplication is deprecated, please use mse::2019-05-31::CreateApplication instead.
+        @deprecated OpenAPI CreateMseServiceApplication is deprecated, please use mse::2019-05-31::CreateApplication instead.
+        
+        @summary Creates an application.
         
         @param request: CreateMseServiceApplicationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3398,7 +4118,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateMseServiceApplicationResponse:
         """
-        @deprecated : CreateMseServiceApplication is deprecated, please use mse::2019-05-31::CreateApplication instead.
+        @deprecated OpenAPI CreateMseServiceApplication is deprecated, please use mse::2019-05-31::CreateApplication instead.
+        
+        @summary Creates an application.
         
         @param request: CreateMseServiceApplicationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3449,7 +4171,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateMseServiceApplicationRequest,
     ) -> mse_20190531_models.CreateMseServiceApplicationResponse:
         """
-        @deprecated : CreateMseServiceApplication is deprecated, please use mse::2019-05-31::CreateApplication instead.
+        @deprecated OpenAPI CreateMseServiceApplication is deprecated, please use mse::2019-05-31::CreateApplication instead.
+        
+        @summary Creates an application.
         
         @param request: CreateMseServiceApplicationRequest
         @return: CreateMseServiceApplicationResponse
@@ -3463,7 +4187,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateMseServiceApplicationRequest,
     ) -> mse_20190531_models.CreateMseServiceApplicationResponse:
         """
-        @deprecated : CreateMseServiceApplication is deprecated, please use mse::2019-05-31::CreateApplication instead.
+        @deprecated OpenAPI CreateMseServiceApplication is deprecated, please use mse::2019-05-31::CreateApplication instead.
+        
+        @summary Creates an application.
         
         @param request: CreateMseServiceApplicationRequest
         @return: CreateMseServiceApplicationResponse
@@ -3478,7 +4204,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateNacosConfigResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Creates a Nacos configuration.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: CreateNacosConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3533,7 +4261,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateNacosConfigResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Creates a Nacos configuration.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: CreateNacosConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3587,7 +4317,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateNacosConfigRequest,
     ) -> mse_20190531_models.CreateNacosConfigResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Creates a Nacos configuration.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: CreateNacosConfigRequest
         @return: CreateNacosConfigResponse
@@ -3600,7 +4332,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateNacosConfigRequest,
     ) -> mse_20190531_models.CreateNacosConfigResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Creates a Nacos configuration.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: CreateNacosConfigRequest
         @return: CreateNacosConfigResponse
@@ -3614,7 +4348,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateNacosInstanceResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Creates a Nacos instance.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: CreateNacosInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3673,7 +4409,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateNacosInstanceResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Creates a Nacos instance.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: CreateNacosInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3731,7 +4469,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateNacosInstanceRequest,
     ) -> mse_20190531_models.CreateNacosInstanceResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Creates a Nacos instance.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: CreateNacosInstanceRequest
         @return: CreateNacosInstanceResponse
@@ -3744,7 +4484,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateNacosInstanceRequest,
     ) -> mse_20190531_models.CreateNacosInstanceResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Creates a Nacos instance.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: CreateNacosInstanceRequest
         @return: CreateNacosInstanceResponse
@@ -3758,7 +4500,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateNacosServiceResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Creates a Nacos service.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: CreateNacosServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3807,7 +4551,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateNacosServiceResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Creates a Nacos service.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: CreateNacosServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3855,7 +4601,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateNacosServiceRequest,
     ) -> mse_20190531_models.CreateNacosServiceResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Creates a Nacos service.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: CreateNacosServiceRequest
         @return: CreateNacosServiceResponse
@@ -3868,7 +4616,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateNacosServiceRequest,
     ) -> mse_20190531_models.CreateNacosServiceResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Creates a Nacos service.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: CreateNacosServiceRequest
         @return: CreateNacosServiceResponse
@@ -3881,6 +4631,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.CreateOrUpdateSwimmingLaneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateOrUpdateSwimmingLaneResponse:
+        """
+        @summary Creates or updates a lane for end-to-end canary release.
+        
+        @param tmp_req: CreateOrUpdateSwimmingLaneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOrUpdateSwimmingLaneResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.CreateOrUpdateSwimmingLaneShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3905,6 +4662,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.namespace):
             query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.path_independent_percentage_enable):
+            query['PathIndependentPercentageEnable'] = request.path_independent_percentage_enable
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.tag):
@@ -3937,6 +4696,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.CreateOrUpdateSwimmingLaneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateOrUpdateSwimmingLaneResponse:
+        """
+        @summary Creates or updates a lane for end-to-end canary release.
+        
+        @param tmp_req: CreateOrUpdateSwimmingLaneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOrUpdateSwimmingLaneResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.CreateOrUpdateSwimmingLaneShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -3961,6 +4727,8 @@ class Client(OpenApiClient):
             query['Name'] = request.name
         if not UtilClient.is_unset(request.namespace):
             query['Namespace'] = request.namespace
+        if not UtilClient.is_unset(request.path_independent_percentage_enable):
+            query['PathIndependentPercentageEnable'] = request.path_independent_percentage_enable
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
         if not UtilClient.is_unset(request.tag):
@@ -3992,6 +4760,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.CreateOrUpdateSwimmingLaneRequest,
     ) -> mse_20190531_models.CreateOrUpdateSwimmingLaneResponse:
+        """
+        @summary Creates or updates a lane for end-to-end canary release.
+        
+        @param request: CreateOrUpdateSwimmingLaneRequest
+        @return: CreateOrUpdateSwimmingLaneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_or_update_swimming_lane_with_options(request, runtime)
 
@@ -3999,6 +4773,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.CreateOrUpdateSwimmingLaneRequest,
     ) -> mse_20190531_models.CreateOrUpdateSwimmingLaneResponse:
+        """
+        @summary Creates or updates a lane for end-to-end canary release.
+        
+        @param request: CreateOrUpdateSwimmingLaneRequest
+        @return: CreateOrUpdateSwimmingLaneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_or_update_swimming_lane_with_options_async(request, runtime)
 
@@ -4007,6 +4787,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.CreateOrUpdateSwimmingLaneGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateOrUpdateSwimmingLaneGroupResponse:
+        """
+        @summary Creates or updates a lane group for end-to-end canary release.
+        
+        @param tmp_req: CreateOrUpdateSwimmingLaneGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOrUpdateSwimmingLaneGroupResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.CreateOrUpdateSwimmingLaneGroupShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4069,6 +4856,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.CreateOrUpdateSwimmingLaneGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateOrUpdateSwimmingLaneGroupResponse:
+        """
+        @summary Creates or updates a lane group for end-to-end canary release.
+        
+        @param tmp_req: CreateOrUpdateSwimmingLaneGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateOrUpdateSwimmingLaneGroupResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.CreateOrUpdateSwimmingLaneGroupShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4130,6 +4924,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.CreateOrUpdateSwimmingLaneGroupRequest,
     ) -> mse_20190531_models.CreateOrUpdateSwimmingLaneGroupResponse:
+        """
+        @summary Creates or updates a lane group for end-to-end canary release.
+        
+        @param request: CreateOrUpdateSwimmingLaneGroupRequest
+        @return: CreateOrUpdateSwimmingLaneGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_or_update_swimming_lane_group_with_options(request, runtime)
 
@@ -4137,6 +4937,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.CreateOrUpdateSwimmingLaneGroupRequest,
     ) -> mse_20190531_models.CreateOrUpdateSwimmingLaneGroupResponse:
+        """
+        @summary Creates or updates a lane group for end-to-end canary release.
+        
+        @param request: CreateOrUpdateSwimmingLaneGroupRequest
+        @return: CreateOrUpdateSwimmingLaneGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_or_update_swimming_lane_group_with_options_async(request, runtime)
 
@@ -4145,6 +4951,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateZnodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateZnodeResponse:
+        """
+        @summary Creates a znode.
+        
+        @param request: CreateZnodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateZnodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -4179,6 +4992,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.CreateZnodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.CreateZnodeResponse:
+        """
+        @summary Creates a znode.
+        
+        @param request: CreateZnodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateZnodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -4212,6 +5032,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.CreateZnodeRequest,
     ) -> mse_20190531_models.CreateZnodeResponse:
+        """
+        @summary Creates a znode.
+        
+        @param request: CreateZnodeRequest
+        @return: CreateZnodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_znode_with_options(request, runtime)
 
@@ -4219,6 +5045,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.CreateZnodeRequest,
     ) -> mse_20190531_models.CreateZnodeResponse:
+        """
+        @summary Creates a znode.
+        
+        @param request: CreateZnodeRequest
+        @return: CreateZnodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_znode_with_options_async(request, runtime)
 
@@ -4227,6 +5059,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteAuthResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteAuthResourceResponse:
+        """
+        @summary Deletes an authorized resource.
+        
+        @param request: DeleteAuthResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAuthResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -4259,6 +5098,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteAuthResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteAuthResourceResponse:
+        """
+        @summary Deletes an authorized resource.
+        
+        @param request: DeleteAuthResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteAuthResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -4290,6 +5136,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteAuthResourceRequest,
     ) -> mse_20190531_models.DeleteAuthResourceResponse:
+        """
+        @summary Deletes an authorized resource.
+        
+        @param request: DeleteAuthResourceRequest
+        @return: DeleteAuthResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_auth_resource_with_options(request, runtime)
 
@@ -4297,6 +5149,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteAuthResourceRequest,
     ) -> mse_20190531_models.DeleteAuthResourceResponse:
+        """
+        @summary Deletes an authorized resource.
+        
+        @param request: DeleteAuthResourceRequest
+        @return: DeleteAuthResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_auth_resource_with_options_async(request, runtime)
 
@@ -4305,6 +5163,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.DeleteCircuitBreakerRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteCircuitBreakerRulesResponse:
+        """
+        @summary Deletes circuit breaking rules.
+        
+        @param tmp_req: DeleteCircuitBreakerRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCircuitBreakerRulesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.DeleteCircuitBreakerRulesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4343,6 +5208,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.DeleteCircuitBreakerRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteCircuitBreakerRulesResponse:
+        """
+        @summary Deletes circuit breaking rules.
+        
+        @param tmp_req: DeleteCircuitBreakerRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCircuitBreakerRulesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.DeleteCircuitBreakerRulesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4380,6 +5252,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteCircuitBreakerRulesRequest,
     ) -> mse_20190531_models.DeleteCircuitBreakerRulesResponse:
+        """
+        @summary Deletes circuit breaking rules.
+        
+        @param request: DeleteCircuitBreakerRulesRequest
+        @return: DeleteCircuitBreakerRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_circuit_breaker_rules_with_options(request, runtime)
 
@@ -4387,6 +5265,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteCircuitBreakerRulesRequest,
     ) -> mse_20190531_models.DeleteCircuitBreakerRulesResponse:
+        """
+        @summary Deletes circuit breaking rules.
+        
+        @param request: DeleteCircuitBreakerRulesRequest
+        @return: DeleteCircuitBreakerRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_circuit_breaker_rules_with_options_async(request, runtime)
 
@@ -4395,6 +5279,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteClusterResponse:
+        """
+        @summary Deletes a Microservices Engine (MSE) instance.
+        
+        @param request: DeleteClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -4425,6 +5316,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteClusterResponse:
+        """
+        @summary Deletes a Microservices Engine (MSE) instance.
+        
+        @param request: DeleteClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -4454,6 +5352,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteClusterRequest,
     ) -> mse_20190531_models.DeleteClusterResponse:
+        """
+        @summary Deletes a Microservices Engine (MSE) instance.
+        
+        @param request: DeleteClusterRequest
+        @return: DeleteClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_cluster_with_options(request, runtime)
 
@@ -4461,6 +5365,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteClusterRequest,
     ) -> mse_20190531_models.DeleteClusterResponse:
+        """
+        @summary Deletes a Microservices Engine (MSE) instance.
+        
+        @param request: DeleteClusterRequest
+        @return: DeleteClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_cluster_with_options_async(request, runtime)
 
@@ -4469,6 +5379,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteEngineNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteEngineNamespaceResponse:
+        """
+        @summary Deletes a namespace from a Nacos instance.
+        
+        @param request: DeleteEngineNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEngineNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -4503,6 +5420,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteEngineNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteEngineNamespaceResponse:
+        """
+        @summary Deletes a namespace from a Nacos instance.
+        
+        @param request: DeleteEngineNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteEngineNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -4536,6 +5460,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteEngineNamespaceRequest,
     ) -> mse_20190531_models.DeleteEngineNamespaceResponse:
+        """
+        @summary Deletes a namespace from a Nacos instance.
+        
+        @param request: DeleteEngineNamespaceRequest
+        @return: DeleteEngineNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_engine_namespace_with_options(request, runtime)
 
@@ -4543,6 +5473,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteEngineNamespaceRequest,
     ) -> mse_20190531_models.DeleteEngineNamespaceResponse:
+        """
+        @summary Deletes a namespace from a Nacos instance.
+        
+        @param request: DeleteEngineNamespaceRequest
+        @return: DeleteEngineNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_engine_namespace_with_options_async(request, runtime)
 
@@ -4551,6 +5487,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.DeleteFlowRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteFlowRulesResponse:
+        """
+        @summary Deletes throttling rules.
+        
+        @param tmp_req: DeleteFlowRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFlowRulesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.DeleteFlowRulesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4589,6 +5532,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.DeleteFlowRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteFlowRulesResponse:
+        """
+        @summary Deletes throttling rules.
+        
+        @param tmp_req: DeleteFlowRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFlowRulesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.DeleteFlowRulesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -4626,6 +5576,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteFlowRulesRequest,
     ) -> mse_20190531_models.DeleteFlowRulesResponse:
+        """
+        @summary Deletes throttling rules.
+        
+        @param request: DeleteFlowRulesRequest
+        @return: DeleteFlowRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_flow_rules_with_options(request, runtime)
 
@@ -4633,6 +5589,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteFlowRulesRequest,
     ) -> mse_20190531_models.DeleteFlowRulesResponse:
+        """
+        @summary Deletes throttling rules.
+        
+        @param request: DeleteFlowRulesRequest
+        @return: DeleteFlowRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_flow_rules_with_options_async(request, runtime)
 
@@ -4641,6 +5603,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteGatewayRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteGatewayResponse:
+        """
+        @summary Deletes a gateway.
+        
+        @param request: DeleteGatewayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGatewayResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -4673,6 +5642,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteGatewayRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteGatewayResponse:
+        """
+        @summary Deletes a gateway.
+        
+        @param request: DeleteGatewayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGatewayResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -4704,6 +5680,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteGatewayRequest,
     ) -> mse_20190531_models.DeleteGatewayResponse:
+        """
+        @summary Deletes a gateway.
+        
+        @param request: DeleteGatewayRequest
+        @return: DeleteGatewayResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_gateway_with_options(request, runtime)
 
@@ -4711,6 +5693,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteGatewayRequest,
     ) -> mse_20190531_models.DeleteGatewayResponse:
+        """
+        @summary Deletes a gateway.
+        
+        @param request: DeleteGatewayRequest
+        @return: DeleteGatewayResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_gateway_with_options_async(request, runtime)
 
@@ -4719,6 +5707,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteGatewayAuthConsumerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteGatewayAuthConsumerResponse:
+        """
+        @summary Deletes a consumer on which a gateway performs authentication operations.
+        
+        @param request: DeleteGatewayAuthConsumerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGatewayAuthConsumerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -4751,6 +5746,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteGatewayAuthConsumerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteGatewayAuthConsumerResponse:
+        """
+        @summary Deletes a consumer on which a gateway performs authentication operations.
+        
+        @param request: DeleteGatewayAuthConsumerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGatewayAuthConsumerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -4782,6 +5784,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteGatewayAuthConsumerRequest,
     ) -> mse_20190531_models.DeleteGatewayAuthConsumerResponse:
+        """
+        @summary Deletes a consumer on which a gateway performs authentication operations.
+        
+        @param request: DeleteGatewayAuthConsumerRequest
+        @return: DeleteGatewayAuthConsumerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_gateway_auth_consumer_with_options(request, runtime)
 
@@ -4789,6 +5797,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteGatewayAuthConsumerRequest,
     ) -> mse_20190531_models.DeleteGatewayAuthConsumerResponse:
+        """
+        @summary Deletes a consumer on which a gateway performs authentication operations.
+        
+        @param request: DeleteGatewayAuthConsumerRequest
+        @return: DeleteGatewayAuthConsumerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_gateway_auth_consumer_with_options_async(request, runtime)
 
@@ -4797,6 +5811,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteGatewayAuthConsumerResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteGatewayAuthConsumerResourceResponse:
+        """
+        @summary Deletes resource permissions from the consumer on which a gateway performs authentication operations.
+        
+        @param request: DeleteGatewayAuthConsumerResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGatewayAuthConsumerResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -4831,6 +5852,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteGatewayAuthConsumerResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteGatewayAuthConsumerResourceResponse:
+        """
+        @summary Deletes resource permissions from the consumer on which a gateway performs authentication operations.
+        
+        @param request: DeleteGatewayAuthConsumerResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGatewayAuthConsumerResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -4864,6 +5892,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteGatewayAuthConsumerResourceRequest,
     ) -> mse_20190531_models.DeleteGatewayAuthConsumerResourceResponse:
+        """
+        @summary Deletes resource permissions from the consumer on which a gateway performs authentication operations.
+        
+        @param request: DeleteGatewayAuthConsumerResourceRequest
+        @return: DeleteGatewayAuthConsumerResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_gateway_auth_consumer_resource_with_options(request, runtime)
 
@@ -4871,6 +5905,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteGatewayAuthConsumerResourceRequest,
     ) -> mse_20190531_models.DeleteGatewayAuthConsumerResourceResponse:
+        """
+        @summary Deletes resource permissions from the consumer on which a gateway performs authentication operations.
+        
+        @param request: DeleteGatewayAuthConsumerResourceRequest
+        @return: DeleteGatewayAuthConsumerResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_gateway_auth_consumer_resource_with_options_async(request, runtime)
 
@@ -4879,6 +5919,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteGatewayCircuitBreakerRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteGatewayCircuitBreakerRuleResponse:
+        """
+        @summary 删除网关路由熔断规则
+        
+        @param request: DeleteGatewayCircuitBreakerRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGatewayCircuitBreakerRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -4913,6 +5960,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteGatewayCircuitBreakerRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteGatewayCircuitBreakerRuleResponse:
+        """
+        @summary 删除网关路由熔断规则
+        
+        @param request: DeleteGatewayCircuitBreakerRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGatewayCircuitBreakerRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -4946,6 +6000,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteGatewayCircuitBreakerRuleRequest,
     ) -> mse_20190531_models.DeleteGatewayCircuitBreakerRuleResponse:
+        """
+        @summary 删除网关路由熔断规则
+        
+        @param request: DeleteGatewayCircuitBreakerRuleRequest
+        @return: DeleteGatewayCircuitBreakerRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_gateway_circuit_breaker_rule_with_options(request, runtime)
 
@@ -4953,6 +6013,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteGatewayCircuitBreakerRuleRequest,
     ) -> mse_20190531_models.DeleteGatewayCircuitBreakerRuleResponse:
+        """
+        @summary 删除网关路由熔断规则
+        
+        @param request: DeleteGatewayCircuitBreakerRuleRequest
+        @return: DeleteGatewayCircuitBreakerRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_gateway_circuit_breaker_rule_with_options_async(request, runtime)
 
@@ -4961,6 +6027,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteGatewayDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteGatewayDomainResponse:
+        """
+        @summary Disassociates a domain name from a gateway.
+        
+        @param request: DeleteGatewayDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGatewayDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -4993,6 +6066,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteGatewayDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteGatewayDomainResponse:
+        """
+        @summary Disassociates a domain name from a gateway.
+        
+        @param request: DeleteGatewayDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGatewayDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -5024,6 +6104,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteGatewayDomainRequest,
     ) -> mse_20190531_models.DeleteGatewayDomainResponse:
+        """
+        @summary Disassociates a domain name from a gateway.
+        
+        @param request: DeleteGatewayDomainRequest
+        @return: DeleteGatewayDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_gateway_domain_with_options(request, runtime)
 
@@ -5031,6 +6117,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteGatewayDomainRequest,
     ) -> mse_20190531_models.DeleteGatewayDomainResponse:
+        """
+        @summary Disassociates a domain name from a gateway.
+        
+        @param request: DeleteGatewayDomainRequest
+        @return: DeleteGatewayDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_gateway_domain_with_options_async(request, runtime)
 
@@ -5039,6 +6131,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteGatewayFlowRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteGatewayFlowRuleResponse:
+        """
+        @summary 删除网关路由流控规则
+        
+        @param request: DeleteGatewayFlowRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGatewayFlowRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -5073,6 +6172,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteGatewayFlowRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteGatewayFlowRuleResponse:
+        """
+        @summary 删除网关路由流控规则
+        
+        @param request: DeleteGatewayFlowRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGatewayFlowRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -5106,6 +6212,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteGatewayFlowRuleRequest,
     ) -> mse_20190531_models.DeleteGatewayFlowRuleResponse:
+        """
+        @summary 删除网关路由流控规则
+        
+        @param request: DeleteGatewayFlowRuleRequest
+        @return: DeleteGatewayFlowRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_gateway_flow_rule_with_options(request, runtime)
 
@@ -5113,6 +6225,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteGatewayFlowRuleRequest,
     ) -> mse_20190531_models.DeleteGatewayFlowRuleResponse:
+        """
+        @summary 删除网关路由流控规则
+        
+        @param request: DeleteGatewayFlowRuleRequest
+        @return: DeleteGatewayFlowRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_gateway_flow_rule_with_options_async(request, runtime)
 
@@ -5121,6 +6239,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteGatewayIsolationRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteGatewayIsolationRuleResponse:
+        """
+        @summary 删除网关路由隔离规则
+        
+        @param request: DeleteGatewayIsolationRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGatewayIsolationRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -5155,6 +6280,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteGatewayIsolationRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteGatewayIsolationRuleResponse:
+        """
+        @summary 删除网关路由隔离规则
+        
+        @param request: DeleteGatewayIsolationRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGatewayIsolationRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -5188,6 +6320,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteGatewayIsolationRuleRequest,
     ) -> mse_20190531_models.DeleteGatewayIsolationRuleResponse:
+        """
+        @summary 删除网关路由隔离规则
+        
+        @param request: DeleteGatewayIsolationRuleRequest
+        @return: DeleteGatewayIsolationRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_gateway_isolation_rule_with_options(request, runtime)
 
@@ -5195,6 +6333,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteGatewayIsolationRuleRequest,
     ) -> mse_20190531_models.DeleteGatewayIsolationRuleResponse:
+        """
+        @summary 删除网关路由隔离规则
+        
+        @param request: DeleteGatewayIsolationRuleRequest
+        @return: DeleteGatewayIsolationRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_gateway_isolation_rule_with_options_async(request, runtime)
 
@@ -5203,6 +6347,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteGatewayRouteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteGatewayRouteResponse:
+        """
+        @summary Deletes a route from a gateway.
+        
+        @param request: DeleteGatewayRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGatewayRouteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -5235,6 +6386,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteGatewayRouteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteGatewayRouteResponse:
+        """
+        @summary Deletes a route from a gateway.
+        
+        @param request: DeleteGatewayRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGatewayRouteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -5266,6 +6424,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteGatewayRouteRequest,
     ) -> mse_20190531_models.DeleteGatewayRouteResponse:
+        """
+        @summary Deletes a route from a gateway.
+        
+        @param request: DeleteGatewayRouteRequest
+        @return: DeleteGatewayRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_gateway_route_with_options(request, runtime)
 
@@ -5273,6 +6437,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteGatewayRouteRequest,
     ) -> mse_20190531_models.DeleteGatewayRouteResponse:
+        """
+        @summary Deletes a route from a gateway.
+        
+        @param request: DeleteGatewayRouteRequest
+        @return: DeleteGatewayRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_gateway_route_with_options_async(request, runtime)
 
@@ -5281,6 +6451,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteGatewayServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteGatewayServiceResponse:
+        """
+        @summary Deletes a service from a gateway.
+        
+        @param request: DeleteGatewayServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGatewayServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -5315,6 +6492,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteGatewayServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteGatewayServiceResponse:
+        """
+        @summary Deletes a service from a gateway.
+        
+        @param request: DeleteGatewayServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGatewayServiceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -5348,6 +6532,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteGatewayServiceRequest,
     ) -> mse_20190531_models.DeleteGatewayServiceResponse:
+        """
+        @summary Deletes a service from a gateway.
+        
+        @param request: DeleteGatewayServiceRequest
+        @return: DeleteGatewayServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_gateway_service_with_options(request, runtime)
 
@@ -5355,6 +6545,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteGatewayServiceRequest,
     ) -> mse_20190531_models.DeleteGatewayServiceResponse:
+        """
+        @summary Deletes a service from a gateway.
+        
+        @param request: DeleteGatewayServiceRequest
+        @return: DeleteGatewayServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_gateway_service_with_options_async(request, runtime)
 
@@ -5363,6 +6559,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteGatewayServiceVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteGatewayServiceVersionResponse:
+        """
+        @summary Deletes a service version from a gateway.
+        
+        @param request: DeleteGatewayServiceVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGatewayServiceVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -5397,6 +6600,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteGatewayServiceVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteGatewayServiceVersionResponse:
+        """
+        @summary Deletes a service version from a gateway.
+        
+        @param request: DeleteGatewayServiceVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGatewayServiceVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -5430,6 +6640,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteGatewayServiceVersionRequest,
     ) -> mse_20190531_models.DeleteGatewayServiceVersionResponse:
+        """
+        @summary Deletes a service version from a gateway.
+        
+        @param request: DeleteGatewayServiceVersionRequest
+        @return: DeleteGatewayServiceVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_gateway_service_version_with_options(request, runtime)
 
@@ -5437,6 +6653,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteGatewayServiceVersionRequest,
     ) -> mse_20190531_models.DeleteGatewayServiceVersionResponse:
+        """
+        @summary Deletes a service version from a gateway.
+        
+        @param request: DeleteGatewayServiceVersionRequest
+        @return: DeleteGatewayServiceVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_gateway_service_version_with_options_async(request, runtime)
 
@@ -5445,6 +6667,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteGatewaySlbRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteGatewaySlbResponse:
+        """
+        @summary Deletes the Server Load Balancer (SLB) instance that is associated with a gateway.
+        
+        @param request: DeleteGatewaySlbRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGatewaySlbResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -5481,6 +6710,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteGatewaySlbRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteGatewaySlbResponse:
+        """
+        @summary Deletes the Server Load Balancer (SLB) instance that is associated with a gateway.
+        
+        @param request: DeleteGatewaySlbRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteGatewaySlbResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -5516,6 +6752,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteGatewaySlbRequest,
     ) -> mse_20190531_models.DeleteGatewaySlbResponse:
+        """
+        @summary Deletes the Server Load Balancer (SLB) instance that is associated with a gateway.
+        
+        @param request: DeleteGatewaySlbRequest
+        @return: DeleteGatewaySlbResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_gateway_slb_with_options(request, runtime)
 
@@ -5523,6 +6765,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteGatewaySlbRequest,
     ) -> mse_20190531_models.DeleteGatewaySlbResponse:
+        """
+        @summary Deletes the Server Load Balancer (SLB) instance that is associated with a gateway.
+        
+        @param request: DeleteGatewaySlbRequest
+        @return: DeleteGatewaySlbResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_gateway_slb_with_options_async(request, runtime)
 
@@ -5531,6 +6779,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.DeleteIsolationRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteIsolationRulesResponse:
+        """
+        @summary 删除隔离规则
+        
+        @param tmp_req: DeleteIsolationRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIsolationRulesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.DeleteIsolationRulesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5569,6 +6824,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.DeleteIsolationRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteIsolationRulesResponse:
+        """
+        @summary 删除隔离规则
+        
+        @param tmp_req: DeleteIsolationRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIsolationRulesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.DeleteIsolationRulesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -5606,6 +6868,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteIsolationRulesRequest,
     ) -> mse_20190531_models.DeleteIsolationRulesResponse:
+        """
+        @summary 删除隔离规则
+        
+        @param request: DeleteIsolationRulesRequest
+        @return: DeleteIsolationRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_isolation_rules_with_options(request, runtime)
 
@@ -5613,6 +6881,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteIsolationRulesRequest,
     ) -> mse_20190531_models.DeleteIsolationRulesResponse:
+        """
+        @summary 删除隔离规则
+        
+        @param request: DeleteIsolationRulesRequest
+        @return: DeleteIsolationRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_isolation_rules_with_options_async(request, runtime)
 
@@ -5621,6 +6895,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteMigrationTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteMigrationTaskResponse:
+        """
+        @summary Deletes a migration task.
+        
+        @param request: DeleteMigrationTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMigrationTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -5653,6 +6934,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteMigrationTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteMigrationTaskResponse:
+        """
+        @summary Deletes a migration task.
+        
+        @param request: DeleteMigrationTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteMigrationTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -5684,6 +6972,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteMigrationTaskRequest,
     ) -> mse_20190531_models.DeleteMigrationTaskResponse:
+        """
+        @summary Deletes a migration task.
+        
+        @param request: DeleteMigrationTaskRequest
+        @return: DeleteMigrationTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_migration_task_with_options(request, runtime)
 
@@ -5691,6 +6985,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteMigrationTaskRequest,
     ) -> mse_20190531_models.DeleteMigrationTaskResponse:
+        """
+        @summary Deletes a migration task.
+        
+        @param request: DeleteMigrationTaskRequest
+        @return: DeleteMigrationTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_migration_task_with_options_async(request, runtime)
 
@@ -5699,6 +6999,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteNacosConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteNacosConfigResponse:
+        """
+        @summary 删除nacos指定配置
+        
+        @param request: DeleteNacosConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNacosConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -5737,6 +7044,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteNacosConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteNacosConfigResponse:
+        """
+        @summary 删除nacos指定配置
+        
+        @param request: DeleteNacosConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNacosConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -5774,6 +7088,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteNacosConfigRequest,
     ) -> mse_20190531_models.DeleteNacosConfigResponse:
+        """
+        @summary 删除nacos指定配置
+        
+        @param request: DeleteNacosConfigRequest
+        @return: DeleteNacosConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_nacos_config_with_options(request, runtime)
 
@@ -5781,6 +7101,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteNacosConfigRequest,
     ) -> mse_20190531_models.DeleteNacosConfigResponse:
+        """
+        @summary 删除nacos指定配置
+        
+        @param request: DeleteNacosConfigRequest
+        @return: DeleteNacosConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_nacos_config_with_options_async(request, runtime)
 
@@ -5790,7 +7116,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteNacosConfigsResponse:
         """
-        >  The current API operation is not provided in Nacos SDK. For more information about the Nacos-SDK API, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Deletes multiple Nacos configurations at a time.
+        
+        @description >  The current API operation is not provided in Nacos SDK. For more information about the Nacos-SDK API, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: DeleteNacosConfigsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5831,7 +7159,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteNacosConfigsResponse:
         """
-        >  The current API operation is not provided in Nacos SDK. For more information about the Nacos-SDK API, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Deletes multiple Nacos configurations at a time.
+        
+        @description >  The current API operation is not provided in Nacos SDK. For more information about the Nacos-SDK API, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: DeleteNacosConfigsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5871,7 +7201,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteNacosConfigsRequest,
     ) -> mse_20190531_models.DeleteNacosConfigsResponse:
         """
-        >  The current API operation is not provided in Nacos SDK. For more information about the Nacos-SDK API, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Deletes multiple Nacos configurations at a time.
+        
+        @description >  The current API operation is not provided in Nacos SDK. For more information about the Nacos-SDK API, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: DeleteNacosConfigsRequest
         @return: DeleteNacosConfigsResponse
@@ -5884,7 +7216,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteNacosConfigsRequest,
     ) -> mse_20190531_models.DeleteNacosConfigsResponse:
         """
-        >  The current API operation is not provided in Nacos SDK. For more information about the Nacos-SDK API, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Deletes multiple Nacos configurations at a time.
+        
+        @description >  The current API operation is not provided in Nacos SDK. For more information about the Nacos-SDK API, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: DeleteNacosConfigsRequest
         @return: DeleteNacosConfigsResponse
@@ -5898,7 +7232,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteNacosInstanceResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Deletes a persistent application instance from a Microservices Engine (MSE) Nacos instance.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: DeleteNacosInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5949,7 +7285,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteNacosInstanceResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Deletes a persistent application instance from a Microservices Engine (MSE) Nacos instance.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: DeleteNacosInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5999,7 +7337,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteNacosInstanceRequest,
     ) -> mse_20190531_models.DeleteNacosInstanceResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Deletes a persistent application instance from a Microservices Engine (MSE) Nacos instance.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: DeleteNacosInstanceRequest
         @return: DeleteNacosInstanceResponse
@@ -6012,7 +7352,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteNacosInstanceRequest,
     ) -> mse_20190531_models.DeleteNacosInstanceResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Deletes a persistent application instance from a Microservices Engine (MSE) Nacos instance.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: DeleteNacosInstanceRequest
         @return: DeleteNacosInstanceResponse
@@ -6026,7 +7368,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteNacosServiceResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Deletes a Nacos service.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: DeleteNacosServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6069,7 +7413,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteNacosServiceResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Deletes a Nacos service.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: DeleteNacosServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6111,7 +7457,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteNacosServiceRequest,
     ) -> mse_20190531_models.DeleteNacosServiceResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Deletes a Nacos service.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: DeleteNacosServiceRequest
         @return: DeleteNacosServiceResponse
@@ -6124,7 +7472,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteNacosServiceRequest,
     ) -> mse_20190531_models.DeleteNacosServiceResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Deletes a Nacos service.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: DeleteNacosServiceRequest
         @return: DeleteNacosServiceResponse
@@ -6137,6 +7487,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteNamespaceResponse:
+        """
+        @summary 删除MSE命名空间
+        
+        @param request: DeleteNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -6169,6 +7526,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteNamespaceResponse:
+        """
+        @summary 删除MSE命名空间
+        
+        @param request: DeleteNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -6200,6 +7564,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteNamespaceRequest,
     ) -> mse_20190531_models.DeleteNamespaceResponse:
+        """
+        @summary 删除MSE命名空间
+        
+        @param request: DeleteNamespaceRequest
+        @return: DeleteNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_namespace_with_options(request, runtime)
 
@@ -6207,6 +7577,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteNamespaceRequest,
     ) -> mse_20190531_models.DeleteNamespaceResponse:
+        """
+        @summary 删除MSE命名空间
+        
+        @param request: DeleteNamespaceRequest
+        @return: DeleteNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_namespace_with_options_async(request, runtime)
 
@@ -6215,6 +7591,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteSecurityGroupRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteSecurityGroupRuleResponse:
+        """
+        @summary Deletes a security group rule from a gateway.
+        
+        @param request: DeleteSecurityGroupRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSecurityGroupRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -6249,6 +7632,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteSecurityGroupRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteSecurityGroupRuleResponse:
+        """
+        @summary Deletes a security group rule from a gateway.
+        
+        @param request: DeleteSecurityGroupRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSecurityGroupRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -6282,6 +7672,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteSecurityGroupRuleRequest,
     ) -> mse_20190531_models.DeleteSecurityGroupRuleResponse:
+        """
+        @summary Deletes a security group rule from a gateway.
+        
+        @param request: DeleteSecurityGroupRuleRequest
+        @return: DeleteSecurityGroupRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_security_group_rule_with_options(request, runtime)
 
@@ -6289,6 +7685,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteSecurityGroupRuleRequest,
     ) -> mse_20190531_models.DeleteSecurityGroupRuleResponse:
+        """
+        @summary Deletes a security group rule from a gateway.
+        
+        @param request: DeleteSecurityGroupRuleRequest
+        @return: DeleteSecurityGroupRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_security_group_rule_with_options_async(request, runtime)
 
@@ -6297,6 +7699,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteServiceSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteServiceSourceResponse:
+        """
+        @summary Deletes a gateway service source.
+        
+        @param request: DeleteServiceSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteServiceSourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -6329,6 +7738,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteServiceSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteServiceSourceResponse:
+        """
+        @summary Deletes a gateway service source.
+        
+        @param request: DeleteServiceSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteServiceSourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -6360,6 +7776,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteServiceSourceRequest,
     ) -> mse_20190531_models.DeleteServiceSourceResponse:
+        """
+        @summary Deletes a gateway service source.
+        
+        @param request: DeleteServiceSourceRequest
+        @return: DeleteServiceSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_service_source_with_options(request, runtime)
 
@@ -6367,6 +7789,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteServiceSourceRequest,
     ) -> mse_20190531_models.DeleteServiceSourceResponse:
+        """
+        @summary Deletes a gateway service source.
+        
+        @param request: DeleteServiceSourceRequest
+        @return: DeleteServiceSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_service_source_with_options_async(request, runtime)
 
@@ -6375,6 +7803,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteSwimmingLaneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteSwimmingLaneResponse:
+        """
+        @summary Deletes a lane.
+        
+        @param request: DeleteSwimmingLaneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSwimmingLaneResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -6407,6 +7842,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteSwimmingLaneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteSwimmingLaneResponse:
+        """
+        @summary Deletes a lane.
+        
+        @param request: DeleteSwimmingLaneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSwimmingLaneResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -6438,6 +7880,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteSwimmingLaneRequest,
     ) -> mse_20190531_models.DeleteSwimmingLaneResponse:
+        """
+        @summary Deletes a lane.
+        
+        @param request: DeleteSwimmingLaneRequest
+        @return: DeleteSwimmingLaneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_swimming_lane_with_options(request, runtime)
 
@@ -6445,6 +7893,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteSwimmingLaneRequest,
     ) -> mse_20190531_models.DeleteSwimmingLaneResponse:
+        """
+        @summary Deletes a lane.
+        
+        @param request: DeleteSwimmingLaneRequest
+        @return: DeleteSwimmingLaneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_swimming_lane_with_options_async(request, runtime)
 
@@ -6453,6 +7907,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteSwimmingLaneGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteSwimmingLaneGroupResponse:
+        """
+        @summary Deletes a lane group.
+        
+        @param request: DeleteSwimmingLaneGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSwimmingLaneGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -6487,6 +7948,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteSwimmingLaneGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteSwimmingLaneGroupResponse:
+        """
+        @summary Deletes a lane group.
+        
+        @param request: DeleteSwimmingLaneGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSwimmingLaneGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -6520,6 +7988,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteSwimmingLaneGroupRequest,
     ) -> mse_20190531_models.DeleteSwimmingLaneGroupResponse:
+        """
+        @summary Deletes a lane group.
+        
+        @param request: DeleteSwimmingLaneGroupRequest
+        @return: DeleteSwimmingLaneGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_swimming_lane_group_with_options(request, runtime)
 
@@ -6527,6 +8001,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteSwimmingLaneGroupRequest,
     ) -> mse_20190531_models.DeleteSwimmingLaneGroupResponse:
+        """
+        @summary Deletes a lane group.
+        
+        @param request: DeleteSwimmingLaneGroupRequest
+        @return: DeleteSwimmingLaneGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_swimming_lane_group_with_options_async(request, runtime)
 
@@ -6535,6 +8015,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteZnodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteZnodeResponse:
+        """
+        @summary Deletes a ZooKeeper node.
+        
+        @param request: DeleteZnodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteZnodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -6569,6 +8056,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.DeleteZnodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.DeleteZnodeResponse:
+        """
+        @summary Deletes a ZooKeeper node.
+        
+        @param request: DeleteZnodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteZnodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -6602,6 +8096,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteZnodeRequest,
     ) -> mse_20190531_models.DeleteZnodeResponse:
+        """
+        @summary Deletes a ZooKeeper node.
+        
+        @param request: DeleteZnodeRequest
+        @return: DeleteZnodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_znode_with_options(request, runtime)
 
@@ -6609,6 +8109,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.DeleteZnodeRequest,
     ) -> mse_20190531_models.DeleteZnodeResponse:
+        """
+        @summary Deletes a ZooKeeper node.
+        
+        @param request: DeleteZnodeRequest
+        @return: DeleteZnodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_znode_with_options_async(request, runtime)
 
@@ -6618,7 +8124,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ExportNacosConfigResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Exports specified Nacos configurations.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: ExportNacosConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6667,7 +8175,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ExportNacosConfigResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Exports specified Nacos configurations.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: ExportNacosConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6715,7 +8225,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ExportNacosConfigRequest,
     ) -> mse_20190531_models.ExportNacosConfigResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Exports specified Nacos configurations.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: ExportNacosConfigRequest
         @return: ExportNacosConfigResponse
@@ -6728,7 +8240,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ExportNacosConfigRequest,
     ) -> mse_20190531_models.ExportNacosConfigResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Exports specified Nacos configurations.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: ExportNacosConfigRequest
         @return: ExportNacosConfigResponse
@@ -6742,7 +8256,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ExportZookeeperDataResponse:
         """
-        Only one task can run at a time.
+        @summary Initiates a task to export ZooKeeper data.
+        
+        @description Only one task can run at a time.
         
         @param request: ExportZookeeperDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6785,7 +8301,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ExportZookeeperDataResponse:
         """
-        Only one task can run at a time.
+        @summary Initiates a task to export ZooKeeper data.
+        
+        @description Only one task can run at a time.
         
         @param request: ExportZookeeperDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6827,7 +8345,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ExportZookeeperDataRequest,
     ) -> mse_20190531_models.ExportZookeeperDataResponse:
         """
-        Only one task can run at a time.
+        @summary Initiates a task to export ZooKeeper data.
+        
+        @description Only one task can run at a time.
         
         @param request: ExportZookeeperDataRequest
         @return: ExportZookeeperDataResponse
@@ -6840,7 +8360,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ExportZookeeperDataRequest,
     ) -> mse_20190531_models.ExportZookeeperDataResponse:
         """
-        Only one task can run at a time.
+        @summary Initiates a task to export ZooKeeper data.
+        
+        @description Only one task can run at a time.
         
         @param request: ExportZookeeperDataRequest
         @return: ExportZookeeperDataResponse
@@ -6854,7 +8376,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.FetchLosslessRuleListResponse:
         """
-        You can call this operation to query the rules for graceful start and shutdown.
+        @summary Obtains the rules for graceful start and shutdown.
+        
+        @description You can call this operation to query the rules for graceful start and shutdown.
         
         @param request: FetchLosslessRuleListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6901,7 +8425,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.FetchLosslessRuleListResponse:
         """
-        You can call this operation to query the rules for graceful start and shutdown.
+        @summary Obtains the rules for graceful start and shutdown.
+        
+        @description You can call this operation to query the rules for graceful start and shutdown.
         
         @param request: FetchLosslessRuleListRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6947,7 +8473,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.FetchLosslessRuleListRequest,
     ) -> mse_20190531_models.FetchLosslessRuleListResponse:
         """
-        You can call this operation to query the rules for graceful start and shutdown.
+        @summary Obtains the rules for graceful start and shutdown.
+        
+        @description You can call this operation to query the rules for graceful start and shutdown.
         
         @param request: FetchLosslessRuleListRequest
         @return: FetchLosslessRuleListResponse
@@ -6960,7 +8488,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.FetchLosslessRuleListRequest,
     ) -> mse_20190531_models.FetchLosslessRuleListResponse:
         """
-        You can call this operation to query the rules for graceful start and shutdown.
+        @summary Obtains the rules for graceful start and shutdown.
+        
+        @description You can call this operation to query the rules for graceful start and shutdown.
         
         @param request: FetchLosslessRuleListRequest
         @return: FetchLosslessRuleListResponse
@@ -6973,6 +8503,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetAppMessageQueueRouteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetAppMessageQueueRouteResponse:
+        """
+        @summary Queries information about canary release for messaging of an application.
+        
+        @param request: GetAppMessageQueueRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAppMessageQueueRouteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7009,6 +8546,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetAppMessageQueueRouteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetAppMessageQueueRouteResponse:
+        """
+        @summary Queries information about canary release for messaging of an application.
+        
+        @param request: GetAppMessageQueueRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAppMessageQueueRouteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7044,6 +8588,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetAppMessageQueueRouteRequest,
     ) -> mse_20190531_models.GetAppMessageQueueRouteResponse:
+        """
+        @summary Queries information about canary release for messaging of an application.
+        
+        @param request: GetAppMessageQueueRouteRequest
+        @return: GetAppMessageQueueRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_app_message_queue_route_with_options(request, runtime)
 
@@ -7051,6 +8601,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetAppMessageQueueRouteRequest,
     ) -> mse_20190531_models.GetAppMessageQueueRouteResponse:
+        """
+        @summary Queries information about canary release for messaging of an application.
+        
+        @param request: GetAppMessageQueueRouteRequest
+        @return: GetAppMessageQueueRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_app_message_queue_route_with_options_async(request, runtime)
 
@@ -7059,6 +8615,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetApplicationInstanceListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetApplicationInstanceListResponse:
+        """
+        @summary Queries the list of microservice application instances.
+        
+        @param request: GetApplicationInstanceListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApplicationInstanceListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7101,6 +8664,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetApplicationInstanceListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetApplicationInstanceListResponse:
+        """
+        @summary Queries the list of microservice application instances.
+        
+        @param request: GetApplicationInstanceListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApplicationInstanceListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7142,6 +8712,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetApplicationInstanceListRequest,
     ) -> mse_20190531_models.GetApplicationInstanceListResponse:
+        """
+        @summary Queries the list of microservice application instances.
+        
+        @param request: GetApplicationInstanceListRequest
+        @return: GetApplicationInstanceListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_application_instance_list_with_options(request, runtime)
 
@@ -7149,6 +8725,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetApplicationInstanceListRequest,
     ) -> mse_20190531_models.GetApplicationInstanceListResponse:
+        """
+        @summary Queries the list of microservice application instances.
+        
+        @param request: GetApplicationInstanceListRequest
+        @return: GetApplicationInstanceListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_application_instance_list_with_options_async(request, runtime)
 
@@ -7157,6 +8739,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetApplicationListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetApplicationListResponse:
+        """
+        @summary Obtains the list of applications.
+        
+        @param request: GetApplicationListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApplicationListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7205,6 +8794,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetApplicationListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetApplicationListResponse:
+        """
+        @summary Obtains the list of applications.
+        
+        @param request: GetApplicationListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApplicationListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7252,6 +8848,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetApplicationListRequest,
     ) -> mse_20190531_models.GetApplicationListResponse:
+        """
+        @summary Obtains the list of applications.
+        
+        @param request: GetApplicationListRequest
+        @return: GetApplicationListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_application_list_with_options(request, runtime)
 
@@ -7259,6 +8861,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetApplicationListRequest,
     ) -> mse_20190531_models.GetApplicationListResponse:
+        """
+        @summary Obtains the list of applications.
+        
+        @param request: GetApplicationListRequest
+        @return: GetApplicationListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_application_list_with_options_async(request, runtime)
 
@@ -7267,6 +8875,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetBlackWhiteListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetBlackWhiteListResponse:
+        """
+        @summary Queries the blacklist or whitelist of a gateway.
+        
+        @param request: GetBlackWhiteListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBlackWhiteListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7303,6 +8918,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetBlackWhiteListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetBlackWhiteListResponse:
+        """
+        @summary Queries the blacklist or whitelist of a gateway.
+        
+        @param request: GetBlackWhiteListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetBlackWhiteListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7338,6 +8960,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetBlackWhiteListRequest,
     ) -> mse_20190531_models.GetBlackWhiteListResponse:
+        """
+        @summary Queries the blacklist or whitelist of a gateway.
+        
+        @param request: GetBlackWhiteListRequest
+        @return: GetBlackWhiteListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_black_white_list_with_options(request, runtime)
 
@@ -7345,6 +8973,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetBlackWhiteListRequest,
     ) -> mse_20190531_models.GetBlackWhiteListResponse:
+        """
+        @summary Queries the blacklist or whitelist of a gateway.
+        
+        @param request: GetBlackWhiteListRequest
+        @return: GetBlackWhiteListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_black_white_list_with_options_async(request, runtime)
 
@@ -7353,6 +8987,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetEngineNamepaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetEngineNamepaceResponse:
+        """
+        @summary Queries the namespaces of a Nacos instance.
+        
+        @param request: GetEngineNamepaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEngineNamepaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7387,6 +9028,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetEngineNamepaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetEngineNamepaceResponse:
+        """
+        @summary Queries the namespaces of a Nacos instance.
+        
+        @param request: GetEngineNamepaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEngineNamepaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7420,6 +9068,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetEngineNamepaceRequest,
     ) -> mse_20190531_models.GetEngineNamepaceResponse:
+        """
+        @summary Queries the namespaces of a Nacos instance.
+        
+        @param request: GetEngineNamepaceRequest
+        @return: GetEngineNamepaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_engine_namepace_with_options(request, runtime)
 
@@ -7427,6 +9081,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetEngineNamepaceRequest,
     ) -> mse_20190531_models.GetEngineNamepaceResponse:
+        """
+        @summary Queries the namespaces of a Nacos instance.
+        
+        @param request: GetEngineNamepaceRequest
+        @return: GetEngineNamepaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_engine_namepace_with_options_async(request, runtime)
 
@@ -7435,6 +9095,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetGatewayRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetGatewayResponse:
+        """
+        @summary Obtains the basic information about a gateway, such as the virtual private cloud (VPC) and vSwitch to which the gateway belongs.
+        
+        @param request: GetGatewayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGatewayResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7465,6 +9132,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetGatewayRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetGatewayResponse:
+        """
+        @summary Obtains the basic information about a gateway, such as the virtual private cloud (VPC) and vSwitch to which the gateway belongs.
+        
+        @param request: GetGatewayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGatewayResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7494,6 +9168,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetGatewayRequest,
     ) -> mse_20190531_models.GetGatewayResponse:
+        """
+        @summary Obtains the basic information about a gateway, such as the virtual private cloud (VPC) and vSwitch to which the gateway belongs.
+        
+        @param request: GetGatewayRequest
+        @return: GetGatewayResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_gateway_with_options(request, runtime)
 
@@ -7501,6 +9181,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetGatewayRequest,
     ) -> mse_20190531_models.GetGatewayResponse:
+        """
+        @summary Obtains the basic information about a gateway, such as the virtual private cloud (VPC) and vSwitch to which the gateway belongs.
+        
+        @param request: GetGatewayRequest
+        @return: GetGatewayResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_gateway_with_options_async(request, runtime)
 
@@ -7509,6 +9195,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetGatewayAuthConsumerDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetGatewayAuthConsumerDetailResponse:
+        """
+        @summary Queries the details of the consumer on which a gateway performs authentication operations.
+        
+        @param request: GetGatewayAuthConsumerDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGatewayAuthConsumerDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7541,6 +9234,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetGatewayAuthConsumerDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetGatewayAuthConsumerDetailResponse:
+        """
+        @summary Queries the details of the consumer on which a gateway performs authentication operations.
+        
+        @param request: GetGatewayAuthConsumerDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGatewayAuthConsumerDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7572,6 +9272,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetGatewayAuthConsumerDetailRequest,
     ) -> mse_20190531_models.GetGatewayAuthConsumerDetailResponse:
+        """
+        @summary Queries the details of the consumer on which a gateway performs authentication operations.
+        
+        @param request: GetGatewayAuthConsumerDetailRequest
+        @return: GetGatewayAuthConsumerDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_gateway_auth_consumer_detail_with_options(request, runtime)
 
@@ -7579,6 +9285,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetGatewayAuthConsumerDetailRequest,
     ) -> mse_20190531_models.GetGatewayAuthConsumerDetailResponse:
+        """
+        @summary Queries the details of the consumer on which a gateway performs authentication operations.
+        
+        @param request: GetGatewayAuthConsumerDetailRequest
+        @return: GetGatewayAuthConsumerDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_gateway_auth_consumer_detail_with_options_async(request, runtime)
 
@@ -7587,6 +9299,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetGatewayAuthDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetGatewayAuthDetailResponse:
+        """
+        @summary 查询网关认证详情
+        
+        @param request: GetGatewayAuthDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGatewayAuthDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7621,6 +9340,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetGatewayAuthDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetGatewayAuthDetailResponse:
+        """
+        @summary 查询网关认证详情
+        
+        @param request: GetGatewayAuthDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGatewayAuthDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7654,6 +9380,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetGatewayAuthDetailRequest,
     ) -> mse_20190531_models.GetGatewayAuthDetailResponse:
+        """
+        @summary 查询网关认证详情
+        
+        @param request: GetGatewayAuthDetailRequest
+        @return: GetGatewayAuthDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_gateway_auth_detail_with_options(request, runtime)
 
@@ -7661,6 +9393,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetGatewayAuthDetailRequest,
     ) -> mse_20190531_models.GetGatewayAuthDetailResponse:
+        """
+        @summary 查询网关认证详情
+        
+        @param request: GetGatewayAuthDetailRequest
+        @return: GetGatewayAuthDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_gateway_auth_detail_with_options_async(request, runtime)
 
@@ -7669,6 +9407,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetGatewayDomainDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetGatewayDomainDetailResponse:
+        """
+        @summary Queries the details of a domain name associated with a gateway.
+        
+        @param request: GetGatewayDomainDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGatewayDomainDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7701,6 +9446,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetGatewayDomainDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetGatewayDomainDetailResponse:
+        """
+        @summary Queries the details of a domain name associated with a gateway.
+        
+        @param request: GetGatewayDomainDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGatewayDomainDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7732,6 +9484,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetGatewayDomainDetailRequest,
     ) -> mse_20190531_models.GetGatewayDomainDetailResponse:
+        """
+        @summary Queries the details of a domain name associated with a gateway.
+        
+        @param request: GetGatewayDomainDetailRequest
+        @return: GetGatewayDomainDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_gateway_domain_detail_with_options(request, runtime)
 
@@ -7739,6 +9497,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetGatewayDomainDetailRequest,
     ) -> mse_20190531_models.GetGatewayDomainDetailResponse:
+        """
+        @summary Queries the details of a domain name associated with a gateway.
+        
+        @param request: GetGatewayDomainDetailRequest
+        @return: GetGatewayDomainDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_gateway_domain_detail_with_options_async(request, runtime)
 
@@ -7747,6 +9511,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetGatewayOptionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetGatewayOptionResponse:
+        """
+        @summary Obtains the global parameters of a gateway.
+        
+        @param request: GetGatewayOptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGatewayOptionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7779,6 +9550,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetGatewayOptionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetGatewayOptionResponse:
+        """
+        @summary Obtains the global parameters of a gateway.
+        
+        @param request: GetGatewayOptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGatewayOptionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7810,6 +9588,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetGatewayOptionRequest,
     ) -> mse_20190531_models.GetGatewayOptionResponse:
+        """
+        @summary Obtains the global parameters of a gateway.
+        
+        @param request: GetGatewayOptionRequest
+        @return: GetGatewayOptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_gateway_option_with_options(request, runtime)
 
@@ -7817,6 +9601,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetGatewayOptionRequest,
     ) -> mse_20190531_models.GetGatewayOptionResponse:
+        """
+        @summary Obtains the global parameters of a gateway.
+        
+        @param request: GetGatewayOptionRequest
+        @return: GetGatewayOptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_gateway_option_with_options_async(request, runtime)
 
@@ -7825,6 +9615,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetGatewayRouteDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetGatewayRouteDetailResponse:
+        """
+        @summary Queries the details of a route for a gateway.
+        
+        @param request: GetGatewayRouteDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGatewayRouteDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7857,6 +9654,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetGatewayRouteDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetGatewayRouteDetailResponse:
+        """
+        @summary Queries the details of a route for a gateway.
+        
+        @param request: GetGatewayRouteDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGatewayRouteDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7888,6 +9692,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetGatewayRouteDetailRequest,
     ) -> mse_20190531_models.GetGatewayRouteDetailResponse:
+        """
+        @summary Queries the details of a route for a gateway.
+        
+        @param request: GetGatewayRouteDetailRequest
+        @return: GetGatewayRouteDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_gateway_route_detail_with_options(request, runtime)
 
@@ -7895,6 +9705,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetGatewayRouteDetailRequest,
     ) -> mse_20190531_models.GetGatewayRouteDetailResponse:
+        """
+        @summary Queries the details of a route for a gateway.
+        
+        @param request: GetGatewayRouteDetailRequest
+        @return: GetGatewayRouteDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_gateway_route_detail_with_options_async(request, runtime)
 
@@ -7903,6 +9719,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetGatewayServiceDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetGatewayServiceDetailResponse:
+        """
+        @summary Queries the details of a service.
+        
+        @param request: GetGatewayServiceDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGatewayServiceDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7935,6 +9758,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetGatewayServiceDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetGatewayServiceDetailResponse:
+        """
+        @summary Queries the details of a service.
+        
+        @param request: GetGatewayServiceDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGatewayServiceDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -7966,6 +9796,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetGatewayServiceDetailRequest,
     ) -> mse_20190531_models.GetGatewayServiceDetailResponse:
+        """
+        @summary Queries the details of a service.
+        
+        @param request: GetGatewayServiceDetailRequest
+        @return: GetGatewayServiceDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_gateway_service_detail_with_options(request, runtime)
 
@@ -7973,6 +9809,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetGatewayServiceDetailRequest,
     ) -> mse_20190531_models.GetGatewayServiceDetailResponse:
+        """
+        @summary Queries the details of a service.
+        
+        @param request: GetGatewayServiceDetailRequest
+        @return: GetGatewayServiceDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_gateway_service_detail_with_options_async(request, runtime)
 
@@ -7981,6 +9823,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetGovernanceKubernetesClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetGovernanceKubernetesClusterResponse:
+        """
+        @summary Queries the information about a Container Service for Kubernetes (ACK) cluster for which Microservices Governance is enabled.
+        
+        @param request: GetGovernanceKubernetesClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGovernanceKubernetesClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -8013,6 +9862,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetGovernanceKubernetesClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetGovernanceKubernetesClusterResponse:
+        """
+        @summary Queries the information about a Container Service for Kubernetes (ACK) cluster for which Microservices Governance is enabled.
+        
+        @param request: GetGovernanceKubernetesClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetGovernanceKubernetesClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -8044,6 +9900,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetGovernanceKubernetesClusterRequest,
     ) -> mse_20190531_models.GetGovernanceKubernetesClusterResponse:
+        """
+        @summary Queries the information about a Container Service for Kubernetes (ACK) cluster for which Microservices Governance is enabled.
+        
+        @param request: GetGovernanceKubernetesClusterRequest
+        @return: GetGovernanceKubernetesClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_governance_kubernetes_cluster_with_options(request, runtime)
 
@@ -8051,6 +9913,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetGovernanceKubernetesClusterRequest,
     ) -> mse_20190531_models.GetGovernanceKubernetesClusterResponse:
+        """
+        @summary Queries the information about a Container Service for Kubernetes (ACK) cluster for which Microservices Governance is enabled.
+        
+        @param request: GetGovernanceKubernetesClusterRequest
+        @return: GetGovernanceKubernetesClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_governance_kubernetes_cluster_with_options_async(request, runtime)
 
@@ -8059,6 +9927,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetImageResponse:
+        """
+        @summary Queries the maximum version number to which the current version can be upgraded.
+        
+        @param request: GetImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -8089,6 +9964,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetImageResponse:
+        """
+        @summary Queries the maximum version number to which the current version can be upgraded.
+        
+        @param request: GetImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -8118,6 +10000,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetImageRequest,
     ) -> mse_20190531_models.GetImageResponse:
+        """
+        @summary Queries the maximum version number to which the current version can be upgraded.
+        
+        @param request: GetImageRequest
+        @return: GetImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_image_with_options(request, runtime)
 
@@ -8125,6 +10013,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetImageRequest,
     ) -> mse_20190531_models.GetImageResponse:
+        """
+        @summary Queries the maximum version number to which the current version can be upgraded.
+        
+        @param request: GetImageRequest
+        @return: GetImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_image_with_options_async(request, runtime)
 
@@ -8134,7 +10028,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetImportFileUrlResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).\\n
+        @summary Obtains the URL that is used to upload a configuration file when you import the configuration file into a Microservices Engine (MSE) Nacos instance.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).\\n
         
         @param request: GetImportFileUrlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8175,7 +10071,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetImportFileUrlResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).\\n
+        @summary Obtains the URL that is used to upload a configuration file when you import the configuration file into a Microservices Engine (MSE) Nacos instance.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).\\n
         
         @param request: GetImportFileUrlRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8215,7 +10113,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetImportFileUrlRequest,
     ) -> mse_20190531_models.GetImportFileUrlResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).\\n
+        @summary Obtains the URL that is used to upload a configuration file when you import the configuration file into a Microservices Engine (MSE) Nacos instance.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).\\n
         
         @param request: GetImportFileUrlRequest
         @return: GetImportFileUrlResponse
@@ -8228,7 +10128,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetImportFileUrlRequest,
     ) -> mse_20190531_models.GetImportFileUrlResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).\\n
+        @summary Obtains the URL that is used to upload a configuration file when you import the configuration file into a Microservices Engine (MSE) Nacos instance.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).\\n
         
         @param request: GetImportFileUrlRequest
         @return: GetImportFileUrlResponse
@@ -8241,6 +10143,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetKubernetesSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetKubernetesSourceResponse:
+        """
+        @summary Obtains sources of all Container Service for Kubernetes (ACK) services in a gateway.
+        
+        @param request: GetKubernetesSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetKubernetesSourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -8275,6 +10184,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetKubernetesSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetKubernetesSourceResponse:
+        """
+        @summary Obtains sources of all Container Service for Kubernetes (ACK) services in a gateway.
+        
+        @param request: GetKubernetesSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetKubernetesSourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -8308,6 +10224,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetKubernetesSourceRequest,
     ) -> mse_20190531_models.GetKubernetesSourceResponse:
+        """
+        @summary Obtains sources of all Container Service for Kubernetes (ACK) services in a gateway.
+        
+        @param request: GetKubernetesSourceRequest
+        @return: GetKubernetesSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_kubernetes_source_with_options(request, runtime)
 
@@ -8315,6 +10237,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetKubernetesSourceRequest,
     ) -> mse_20190531_models.GetKubernetesSourceResponse:
+        """
+        @summary Obtains sources of all Container Service for Kubernetes (ACK) services in a gateway.
+        
+        @param request: GetKubernetesSourceRequest
+        @return: GetKubernetesSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_kubernetes_source_with_options_async(request, runtime)
 
@@ -8324,7 +10252,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetLosslessRuleByAppResponse:
         """
-        You can call this operation to query the rules for graceful start and shutdown of an application.
+        @summary Queries the rules for graceful start and shutdown of an application.
+        
+        @description You can call this operation to query the rules for graceful start and shutdown of an application.
         You can query the rules for graceful start and shutdown of an application preferentially by using the AppId parameter.
         If the AppId parameter is left empty, you can use the RegionId, Namespace, and AppName parameters to query the rules for graceful start and shutdown of an application.
         
@@ -8369,7 +10299,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetLosslessRuleByAppResponse:
         """
-        You can call this operation to query the rules for graceful start and shutdown of an application.
+        @summary Queries the rules for graceful start and shutdown of an application.
+        
+        @description You can call this operation to query the rules for graceful start and shutdown of an application.
         You can query the rules for graceful start and shutdown of an application preferentially by using the AppId parameter.
         If the AppId parameter is left empty, you can use the RegionId, Namespace, and AppName parameters to query the rules for graceful start and shutdown of an application.
         
@@ -8413,7 +10345,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetLosslessRuleByAppRequest,
     ) -> mse_20190531_models.GetLosslessRuleByAppResponse:
         """
-        You can call this operation to query the rules for graceful start and shutdown of an application.
+        @summary Queries the rules for graceful start and shutdown of an application.
+        
+        @description You can call this operation to query the rules for graceful start and shutdown of an application.
         You can query the rules for graceful start and shutdown of an application preferentially by using the AppId parameter.
         If the AppId parameter is left empty, you can use the RegionId, Namespace, and AppName parameters to query the rules for graceful start and shutdown of an application.
         
@@ -8428,7 +10362,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetLosslessRuleByAppRequest,
     ) -> mse_20190531_models.GetLosslessRuleByAppResponse:
         """
-        You can call this operation to query the rules for graceful start and shutdown of an application.
+        @summary Queries the rules for graceful start and shutdown of an application.
+        
+        @description You can call this operation to query the rules for graceful start and shutdown of an application.
         You can query the rules for graceful start and shutdown of an application preferentially by using the AppId parameter.
         If the AppId parameter is left empty, you can use the RegionId, Namespace, and AppName parameters to query the rules for graceful start and shutdown of an application.
         
@@ -8443,6 +10379,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetMseFeatureSwitchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetMseFeatureSwitchResponse:
+        """
+        @summary Queries the information about the MSE feature switch.
+        
+        @param request: GetMseFeatureSwitchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMseFeatureSwitchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -8471,6 +10414,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetMseFeatureSwitchRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetMseFeatureSwitchResponse:
+        """
+        @summary Queries the information about the MSE feature switch.
+        
+        @param request: GetMseFeatureSwitchRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMseFeatureSwitchResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -8498,6 +10448,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetMseFeatureSwitchRequest,
     ) -> mse_20190531_models.GetMseFeatureSwitchResponse:
+        """
+        @summary Queries the information about the MSE feature switch.
+        
+        @param request: GetMseFeatureSwitchRequest
+        @return: GetMseFeatureSwitchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_mse_feature_switch_with_options(request, runtime)
 
@@ -8505,6 +10461,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetMseFeatureSwitchRequest,
     ) -> mse_20190531_models.GetMseFeatureSwitchResponse:
+        """
+        @summary Queries the information about the MSE feature switch.
+        
+        @param request: GetMseFeatureSwitchRequest
+        @return: GetMseFeatureSwitchResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_mse_feature_switch_with_options_async(request, runtime)
 
@@ -8513,6 +10475,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetMseSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetMseSourceResponse:
+        """
+        @summary Queries the existing Microservices Engine (MSE) Nacos instances that are service sources of a gateway.
+        
+        @param request: GetMseSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMseSourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -8547,6 +10516,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetMseSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetMseSourceResponse:
+        """
+        @summary Queries the existing Microservices Engine (MSE) Nacos instances that are service sources of a gateway.
+        
+        @param request: GetMseSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetMseSourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -8580,6 +10556,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetMseSourceRequest,
     ) -> mse_20190531_models.GetMseSourceResponse:
+        """
+        @summary Queries the existing Microservices Engine (MSE) Nacos instances that are service sources of a gateway.
+        
+        @param request: GetMseSourceRequest
+        @return: GetMseSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_mse_source_with_options(request, runtime)
 
@@ -8587,6 +10569,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetMseSourceRequest,
     ) -> mse_20190531_models.GetMseSourceResponse:
+        """
+        @summary Queries the existing Microservices Engine (MSE) Nacos instances that are service sources of a gateway.
+        
+        @param request: GetMseSourceRequest
+        @return: GetMseSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_mse_source_with_options_async(request, runtime)
 
@@ -8596,7 +10584,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetNacosConfigResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Queries Nacos configurations.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: GetNacosConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8641,7 +10631,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetNacosConfigResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Queries Nacos configurations.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: GetNacosConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8685,7 +10677,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetNacosConfigRequest,
     ) -> mse_20190531_models.GetNacosConfigResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Queries Nacos configurations.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: GetNacosConfigRequest
         @return: GetNacosConfigResponse
@@ -8698,7 +10692,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetNacosConfigRequest,
     ) -> mse_20190531_models.GetNacosConfigResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Queries Nacos configurations.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: GetNacosConfigRequest
         @return: GetNacosConfigResponse
@@ -8712,7 +10708,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetNacosHistoryConfigResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Queries the historical details of Nacos configuration changes.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: GetNacosHistoryConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8757,7 +10755,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetNacosHistoryConfigResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Queries the historical details of Nacos configuration changes.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: GetNacosHistoryConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8801,7 +10801,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetNacosHistoryConfigRequest,
     ) -> mse_20190531_models.GetNacosHistoryConfigResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Queries the historical details of Nacos configuration changes.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: GetNacosHistoryConfigRequest
         @return: GetNacosHistoryConfigResponse
@@ -8814,7 +10816,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetNacosHistoryConfigRequest,
     ) -> mse_20190531_models.GetNacosHistoryConfigResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Queries the historical details of Nacos configuration changes.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: GetNacosHistoryConfigRequest
         @return: GetNacosHistoryConfigResponse
@@ -8828,7 +10832,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetOverviewResponse:
         """
-        You can call this operation to query overview information about service governance.
+        @summary Queries information about service governance.
+        
+        @description You can call this operation to query overview information about service governance.
         
         @param request: GetOverviewRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8867,7 +10873,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetOverviewResponse:
         """
-        You can call this operation to query overview information about service governance.
+        @summary Queries information about service governance.
+        
+        @description You can call this operation to query overview information about service governance.
         
         @param request: GetOverviewRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -8905,7 +10913,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetOverviewRequest,
     ) -> mse_20190531_models.GetOverviewResponse:
         """
-        You can call this operation to query overview information about service governance.
+        @summary Queries information about service governance.
+        
+        @description You can call this operation to query overview information about service governance.
         
         @param request: GetOverviewRequest
         @return: GetOverviewResponse
@@ -8918,7 +10928,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetOverviewRequest,
     ) -> mse_20190531_models.GetOverviewResponse:
         """
-        You can call this operation to query overview information about service governance.
+        @summary Queries information about service governance.
+        
+        @description You can call this operation to query overview information about service governance.
         
         @param request: GetOverviewRequest
         @return: GetOverviewResponse
@@ -8931,6 +10943,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetPluginConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetPluginConfigResponse:
+        """
+        @summary Obtains plug-in configurations.
+        
+        @param request: GetPluginConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPluginConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -8963,6 +10982,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetPluginConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetPluginConfigResponse:
+        """
+        @summary Obtains plug-in configurations.
+        
+        @param request: GetPluginConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPluginConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -8994,6 +11020,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetPluginConfigRequest,
     ) -> mse_20190531_models.GetPluginConfigResponse:
+        """
+        @summary Obtains plug-in configurations.
+        
+        @param request: GetPluginConfigRequest
+        @return: GetPluginConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_plugin_config_with_options(request, runtime)
 
@@ -9001,6 +11033,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetPluginConfigRequest,
     ) -> mse_20190531_models.GetPluginConfigResponse:
+        """
+        @summary Obtains plug-in configurations.
+        
+        @param request: GetPluginConfigRequest
+        @return: GetPluginConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_plugin_config_with_options_async(request, runtime)
 
@@ -9009,6 +11047,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetPluginsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetPluginsResponse:
+        """
+        @summary Obtains plug-ins.
+        
+        @param request: GetPluginsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPluginsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -9045,6 +11090,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetPluginsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetPluginsResponse:
+        """
+        @summary Obtains plug-ins.
+        
+        @param request: GetPluginsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetPluginsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -9080,6 +11132,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetPluginsRequest,
     ) -> mse_20190531_models.GetPluginsResponse:
+        """
+        @summary Obtains plug-ins.
+        
+        @param request: GetPluginsRequest
+        @return: GetPluginsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_plugins_with_options(request, runtime)
 
@@ -9087,6 +11145,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetPluginsRequest,
     ) -> mse_20190531_models.GetPluginsResponse:
+        """
+        @summary Obtains plug-ins.
+        
+        @param request: GetPluginsRequest
+        @return: GetPluginsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_plugins_with_options_async(request, runtime)
 
@@ -9095,6 +11159,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetServiceListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetServiceListResponse:
+        """
+        @summary Queries the services of an application.
+        
+        @param request: GetServiceListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetServiceListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -9133,6 +11204,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetServiceListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetServiceListResponse:
+        """
+        @summary Queries the services of an application.
+        
+        @param request: GetServiceListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetServiceListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -9170,6 +11248,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetServiceListRequest,
     ) -> mse_20190531_models.GetServiceListResponse:
+        """
+        @summary Queries the services of an application.
+        
+        @param request: GetServiceListRequest
+        @return: GetServiceListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_service_list_with_options(request, runtime)
 
@@ -9177,6 +11261,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetServiceListRequest,
     ) -> mse_20190531_models.GetServiceListResponse:
+        """
+        @summary Queries the services of an application.
+        
+        @param request: GetServiceListRequest
+        @return: GetServiceListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_service_list_with_options_async(request, runtime)
 
@@ -9185,6 +11275,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetServiceListPageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetServiceListPageResponse:
+        """
+        @summary Queries the version of a microservices application.
+        
+        @param request: GetServiceListPageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetServiceListPageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -9231,6 +11328,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetServiceListPageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetServiceListPageResponse:
+        """
+        @summary Queries the version of a microservices application.
+        
+        @param request: GetServiceListPageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetServiceListPageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -9276,6 +11380,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetServiceListPageRequest,
     ) -> mse_20190531_models.GetServiceListPageResponse:
+        """
+        @summary Queries the version of a microservices application.
+        
+        @param request: GetServiceListPageRequest
+        @return: GetServiceListPageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_service_list_page_with_options(request, runtime)
 
@@ -9283,6 +11393,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetServiceListPageRequest,
     ) -> mse_20190531_models.GetServiceListPageResponse:
+        """
+        @summary Queries the version of a microservices application.
+        
+        @param request: GetServiceListPageRequest
+        @return: GetServiceListPageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_service_list_page_with_options_async(request, runtime)
 
@@ -9291,6 +11407,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetServiceListenersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetServiceListenersResponse:
+        """
+        @summary Queries the list of listeners for the destination service.
+        
+        @param request: GetServiceListenersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetServiceListenersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -9341,6 +11464,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetServiceListenersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetServiceListenersResponse:
+        """
+        @summary Queries the list of listeners for the destination service.
+        
+        @param request: GetServiceListenersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetServiceListenersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -9390,6 +11520,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetServiceListenersRequest,
     ) -> mse_20190531_models.GetServiceListenersResponse:
+        """
+        @summary Queries the list of listeners for the destination service.
+        
+        @param request: GetServiceListenersRequest
+        @return: GetServiceListenersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_service_listeners_with_options(request, runtime)
 
@@ -9397,6 +11533,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetServiceListenersRequest,
     ) -> mse_20190531_models.GetServiceListenersResponse:
+        """
+        @summary Queries the list of listeners for the destination service.
+        
+        @param request: GetServiceListenersRequest
+        @return: GetServiceListenersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_service_listeners_with_options_async(request, runtime)
 
@@ -9405,6 +11547,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetServiceMethodPageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetServiceMethodPageResponse:
+        """
+        @summary 获取服务接口列表
+        
+        @param request: GetServiceMethodPageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetServiceMethodPageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -9461,6 +11610,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetServiceMethodPageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetServiceMethodPageResponse:
+        """
+        @summary 获取服务接口列表
+        
+        @param request: GetServiceMethodPageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetServiceMethodPageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -9516,6 +11672,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetServiceMethodPageRequest,
     ) -> mse_20190531_models.GetServiceMethodPageResponse:
+        """
+        @summary 获取服务接口列表
+        
+        @param request: GetServiceMethodPageRequest
+        @return: GetServiceMethodPageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_service_method_page_with_options(request, runtime)
 
@@ -9523,6 +11685,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetServiceMethodPageRequest,
     ) -> mse_20190531_models.GetServiceMethodPageResponse:
+        """
+        @summary 获取服务接口列表
+        
+        @param request: GetServiceMethodPageRequest
+        @return: GetServiceMethodPageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_service_method_page_with_options_async(request, runtime)
 
@@ -9531,6 +11699,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetTagsBySwimmingLaneGroupIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetTagsBySwimmingLaneGroupIdResponse:
+        """
+        @summary Obtains all tags in the current lane group.
+        
+        @param request: GetTagsBySwimmingLaneGroupIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTagsBySwimmingLaneGroupIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -9563,6 +11738,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetTagsBySwimmingLaneGroupIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetTagsBySwimmingLaneGroupIdResponse:
+        """
+        @summary Obtains all tags in the current lane group.
+        
+        @param request: GetTagsBySwimmingLaneGroupIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTagsBySwimmingLaneGroupIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -9594,6 +11776,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetTagsBySwimmingLaneGroupIdRequest,
     ) -> mse_20190531_models.GetTagsBySwimmingLaneGroupIdResponse:
+        """
+        @summary Obtains all tags in the current lane group.
+        
+        @param request: GetTagsBySwimmingLaneGroupIdRequest
+        @return: GetTagsBySwimmingLaneGroupIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_tags_by_swimming_lane_group_id_with_options(request, runtime)
 
@@ -9601,6 +11789,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetTagsBySwimmingLaneGroupIdRequest,
     ) -> mse_20190531_models.GetTagsBySwimmingLaneGroupIdResponse:
+        """
+        @summary Obtains all tags in the current lane group.
+        
+        @param request: GetTagsBySwimmingLaneGroupIdRequest
+        @return: GetTagsBySwimmingLaneGroupIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_tags_by_swimming_lane_group_id_with_options_async(request, runtime)
 
@@ -9609,6 +11803,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetZookeeperDataImportUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetZookeeperDataImportUrlResponse:
+        """
+        @summary mse-200-105
+        
+        @param request: GetZookeeperDataImportUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetZookeeperDataImportUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -9641,6 +11842,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.GetZookeeperDataImportUrlRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.GetZookeeperDataImportUrlResponse:
+        """
+        @summary mse-200-105
+        
+        @param request: GetZookeeperDataImportUrlRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetZookeeperDataImportUrlResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -9672,6 +11880,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetZookeeperDataImportUrlRequest,
     ) -> mse_20190531_models.GetZookeeperDataImportUrlResponse:
+        """
+        @summary mse-200-105
+        
+        @param request: GetZookeeperDataImportUrlRequest
+        @return: GetZookeeperDataImportUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_zookeeper_data_import_url_with_options(request, runtime)
 
@@ -9679,6 +11893,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.GetZookeeperDataImportUrlRequest,
     ) -> mse_20190531_models.GetZookeeperDataImportUrlResponse:
+        """
+        @summary mse-200-105
+        
+        @param request: GetZookeeperDataImportUrlRequest
+        @return: GetZookeeperDataImportUrlResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_zookeeper_data_import_url_with_options_async(request, runtime)
 
@@ -9688,7 +11908,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ImportNacosConfigResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Imports Nacos configurations as a file.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: ImportNacosConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9731,7 +11953,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ImportNacosConfigResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Imports Nacos configurations as a file.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: ImportNacosConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9773,7 +11997,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ImportNacosConfigRequest,
     ) -> mse_20190531_models.ImportNacosConfigResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Imports Nacos configurations as a file.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: ImportNacosConfigRequest
         @return: ImportNacosConfigResponse
@@ -9786,7 +12012,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ImportNacosConfigRequest,
     ) -> mse_20190531_models.ImportNacosConfigResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Imports Nacos configurations as a file.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: ImportNacosConfigRequest
         @return: ImportNacosConfigResponse
@@ -9799,6 +12027,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.ImportServicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ImportServicesResponse:
+        """
+        @summary Imports services to a gateway.
+        
+        @param tmp_req: ImportServicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportServicesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.ImportServicesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9845,6 +12080,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.ImportServicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ImportServicesResponse:
+        """
+        @summary Imports services to a gateway.
+        
+        @param tmp_req: ImportServicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ImportServicesResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.ImportServicesShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -9890,6 +12132,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ImportServicesRequest,
     ) -> mse_20190531_models.ImportServicesResponse:
+        """
+        @summary Imports services to a gateway.
+        
+        @param request: ImportServicesRequest
+        @return: ImportServicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.import_services_with_options(request, runtime)
 
@@ -9897,6 +12145,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ImportServicesRequest,
     ) -> mse_20190531_models.ImportServicesResponse:
+        """
+        @summary Imports services to a gateway.
+        
+        @param request: ImportServicesRequest
+        @return: ImportServicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.import_services_with_options_async(request, runtime)
 
@@ -9906,7 +12160,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ImportZookeeperDataResponse:
         """
-        *Danger** This operation clears existing data. Exercise caution when you call this API operation.
+        @summary Initiates a task to import data from a destination URL to a Microservices Engine (MSE) ZooKeeper instance.
+        
+        @description *Danger** This operation clears existing data. Exercise caution when you call this API operation.
         
         @param request: ImportZookeeperDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9951,7 +12207,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ImportZookeeperDataResponse:
         """
-        *Danger** This operation clears existing data. Exercise caution when you call this API operation.
+        @summary Initiates a task to import data from a destination URL to a Microservices Engine (MSE) ZooKeeper instance.
+        
+        @description *Danger** This operation clears existing data. Exercise caution when you call this API operation.
         
         @param request: ImportZookeeperDataRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -9995,7 +12253,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ImportZookeeperDataRequest,
     ) -> mse_20190531_models.ImportZookeeperDataResponse:
         """
-        *Danger** This operation clears existing data. Exercise caution when you call this API operation.
+        @summary Initiates a task to import data from a destination URL to a Microservices Engine (MSE) ZooKeeper instance.
+        
+        @description *Danger** This operation clears existing data. Exercise caution when you call this API operation.
         
         @param request: ImportZookeeperDataRequest
         @return: ImportZookeeperDataResponse
@@ -10008,7 +12268,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ImportZookeeperDataRequest,
     ) -> mse_20190531_models.ImportZookeeperDataResponse:
         """
-        *Danger** This operation clears existing data. Exercise caution when you call this API operation.
+        @summary Initiates a task to import data from a destination URL to a Microservices Engine (MSE) ZooKeeper instance.
+        
+        @description *Danger** This operation clears existing data. Exercise caution when you call this API operation.
         
         @param request: ImportZookeeperDataRequest
         @return: ImportZookeeperDataResponse
@@ -10022,7 +12284,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListAnsInstancesResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Queries application instances that are registered with a Microservices Engine (MSE) Nacos instance.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: ListAnsInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10055,7 +12319,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListAnsInstancesResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Queries application instances that are registered with a Microservices Engine (MSE) Nacos instance.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: ListAnsInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10087,7 +12353,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListAnsInstancesRequest,
     ) -> mse_20190531_models.ListAnsInstancesResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Queries application instances that are registered with a Microservices Engine (MSE) Nacos instance.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: ListAnsInstancesRequest
         @return: ListAnsInstancesResponse
@@ -10100,7 +12368,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListAnsInstancesRequest,
     ) -> mse_20190531_models.ListAnsInstancesResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Queries application instances that are registered with a Microservices Engine (MSE) Nacos instance.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: ListAnsInstancesRequest
         @return: ListAnsInstancesResponse
@@ -10114,7 +12384,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListAnsServiceClustersResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Queries the clusters of a Nacos service.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: ListAnsServiceClustersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10165,7 +12437,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListAnsServiceClustersResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Queries the clusters of a Nacos service.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: ListAnsServiceClustersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10215,7 +12489,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListAnsServiceClustersRequest,
     ) -> mse_20190531_models.ListAnsServiceClustersResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Queries the clusters of a Nacos service.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: ListAnsServiceClustersRequest
         @return: ListAnsServiceClustersResponse
@@ -10228,7 +12504,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListAnsServiceClustersRequest,
     ) -> mse_20190531_models.ListAnsServiceClustersResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Queries the clusters of a Nacos service.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: ListAnsServiceClustersRequest
         @return: ListAnsServiceClustersResponse
@@ -10242,7 +12520,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListAnsServicesResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Queries Nacos services.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: ListAnsServicesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10299,7 +12579,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListAnsServicesResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Queries Nacos services.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: ListAnsServicesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10355,7 +12637,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListAnsServicesRequest,
     ) -> mse_20190531_models.ListAnsServicesResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Queries Nacos services.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: ListAnsServicesRequest
         @return: ListAnsServicesResponse
@@ -10368,7 +12652,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListAnsServicesRequest,
     ) -> mse_20190531_models.ListAnsServicesResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Queries Nacos services.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: ListAnsServicesRequest
         @return: ListAnsServicesResponse
@@ -10382,7 +12668,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListAppBySwimmingLaneGroupTagResponse:
         """
-        @deprecated : ListAppBySwimmingLaneGroupTag is deprecated, please use mse::2019-05-31::ListAppBySwimmingLaneGroupTags instead.
+        @deprecated OpenAPI ListAppBySwimmingLaneGroupTag is deprecated, please use mse::2019-05-31::ListAppBySwimmingLaneGroupTags instead.
+        
+        @summary Queries the applications in a lane group by tag.
         
         @param request: ListAppBySwimmingLaneGroupTagRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10424,7 +12712,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListAppBySwimmingLaneGroupTagResponse:
         """
-        @deprecated : ListAppBySwimmingLaneGroupTag is deprecated, please use mse::2019-05-31::ListAppBySwimmingLaneGroupTags instead.
+        @deprecated OpenAPI ListAppBySwimmingLaneGroupTag is deprecated, please use mse::2019-05-31::ListAppBySwimmingLaneGroupTags instead.
+        
+        @summary Queries the applications in a lane group by tag.
         
         @param request: ListAppBySwimmingLaneGroupTagRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -10465,7 +12755,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListAppBySwimmingLaneGroupTagRequest,
     ) -> mse_20190531_models.ListAppBySwimmingLaneGroupTagResponse:
         """
-        @deprecated : ListAppBySwimmingLaneGroupTag is deprecated, please use mse::2019-05-31::ListAppBySwimmingLaneGroupTags instead.
+        @deprecated OpenAPI ListAppBySwimmingLaneGroupTag is deprecated, please use mse::2019-05-31::ListAppBySwimmingLaneGroupTags instead.
+        
+        @summary Queries the applications in a lane group by tag.
         
         @param request: ListAppBySwimmingLaneGroupTagRequest
         @return: ListAppBySwimmingLaneGroupTagResponse
@@ -10479,7 +12771,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListAppBySwimmingLaneGroupTagRequest,
     ) -> mse_20190531_models.ListAppBySwimmingLaneGroupTagResponse:
         """
-        @deprecated : ListAppBySwimmingLaneGroupTag is deprecated, please use mse::2019-05-31::ListAppBySwimmingLaneGroupTags instead.
+        @deprecated OpenAPI ListAppBySwimmingLaneGroupTag is deprecated, please use mse::2019-05-31::ListAppBySwimmingLaneGroupTags instead.
+        
+        @summary Queries the applications in a lane group by tag.
         
         @param request: ListAppBySwimmingLaneGroupTagRequest
         @return: ListAppBySwimmingLaneGroupTagResponse
@@ -10493,6 +12787,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.ListAppBySwimmingLaneGroupTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListAppBySwimmingLaneGroupTagsResponse:
+        """
+        @summary Lists applications by tag in a specified lane group.
+        
+        @param tmp_req: ListAppBySwimmingLaneGroupTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAppBySwimmingLaneGroupTagsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.ListAppBySwimmingLaneGroupTagsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -10531,6 +12832,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.ListAppBySwimmingLaneGroupTagsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListAppBySwimmingLaneGroupTagsResponse:
+        """
+        @summary Lists applications by tag in a specified lane group.
+        
+        @param tmp_req: ListAppBySwimmingLaneGroupTagsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAppBySwimmingLaneGroupTagsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.ListAppBySwimmingLaneGroupTagsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -10568,6 +12876,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListAppBySwimmingLaneGroupTagsRequest,
     ) -> mse_20190531_models.ListAppBySwimmingLaneGroupTagsResponse:
+        """
+        @summary Lists applications by tag in a specified lane group.
+        
+        @param request: ListAppBySwimmingLaneGroupTagsRequest
+        @return: ListAppBySwimmingLaneGroupTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_app_by_swimming_lane_group_tags_with_options(request, runtime)
 
@@ -10575,6 +12889,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListAppBySwimmingLaneGroupTagsRequest,
     ) -> mse_20190531_models.ListAppBySwimmingLaneGroupTagsResponse:
+        """
+        @summary Lists applications by tag in a specified lane group.
+        
+        @param request: ListAppBySwimmingLaneGroupTagsRequest
+        @return: ListAppBySwimmingLaneGroupTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_app_by_swimming_lane_group_tags_with_options_async(request, runtime)
 
@@ -10583,6 +12903,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListApplicationsWithTagRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListApplicationsWithTagRulesResponse:
+        """
+        @summary Queries the routing rules of an application.
+        
+        @param request: ListApplicationsWithTagRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationsWithTagRulesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -10609,6 +12936,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListApplicationsWithTagRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListApplicationsWithTagRulesResponse:
+        """
+        @summary Queries the routing rules of an application.
+        
+        @param request: ListApplicationsWithTagRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApplicationsWithTagRulesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -10634,6 +12968,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListApplicationsWithTagRulesRequest,
     ) -> mse_20190531_models.ListApplicationsWithTagRulesResponse:
+        """
+        @summary Queries the routing rules of an application.
+        
+        @param request: ListApplicationsWithTagRulesRequest
+        @return: ListApplicationsWithTagRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_applications_with_tag_rules_with_options(request, runtime)
 
@@ -10641,6 +12981,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListApplicationsWithTagRulesRequest,
     ) -> mse_20190531_models.ListApplicationsWithTagRulesResponse:
+        """
+        @summary Queries the routing rules of an application.
+        
+        @param request: ListApplicationsWithTagRulesRequest
+        @return: ListApplicationsWithTagRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_applications_with_tag_rules_with_options_async(request, runtime)
 
@@ -10649,6 +12995,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListAuthPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListAuthPolicyResponse:
+        """
+        @summary Queries a list of service authentication rules.
+        
+        @param request: ListAuthPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAuthPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -10693,6 +13046,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListAuthPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListAuthPolicyResponse:
+        """
+        @summary Queries a list of service authentication rules.
+        
+        @param request: ListAuthPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAuthPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -10736,6 +13096,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListAuthPolicyRequest,
     ) -> mse_20190531_models.ListAuthPolicyResponse:
+        """
+        @summary Queries a list of service authentication rules.
+        
+        @param request: ListAuthPolicyRequest
+        @return: ListAuthPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_auth_policy_with_options(request, runtime)
 
@@ -10743,6 +13109,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListAuthPolicyRequest,
     ) -> mse_20190531_models.ListAuthPolicyResponse:
+        """
+        @summary Queries a list of service authentication rules.
+        
+        @param request: ListAuthPolicyRequest
+        @return: ListAuthPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_auth_policy_with_options_async(request, runtime)
 
@@ -10751,6 +13123,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListCircuitBreakerRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListCircuitBreakerRulesResponse:
+        """
+        @summary Queries a list of circuit breaking rules.
+        
+        @param request: ListCircuitBreakerRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCircuitBreakerRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -10793,6 +13172,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListCircuitBreakerRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListCircuitBreakerRulesResponse:
+        """
+        @summary Queries a list of circuit breaking rules.
+        
+        @param request: ListCircuitBreakerRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCircuitBreakerRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -10834,6 +13220,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListCircuitBreakerRulesRequest,
     ) -> mse_20190531_models.ListCircuitBreakerRulesResponse:
+        """
+        @summary Queries a list of circuit breaking rules.
+        
+        @param request: ListCircuitBreakerRulesRequest
+        @return: ListCircuitBreakerRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_circuit_breaker_rules_with_options(request, runtime)
 
@@ -10841,6 +13233,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListCircuitBreakerRulesRequest,
     ) -> mse_20190531_models.ListCircuitBreakerRulesResponse:
+        """
+        @summary Queries a list of circuit breaking rules.
+        
+        @param request: ListCircuitBreakerRulesRequest
+        @return: ListCircuitBreakerRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_circuit_breaker_rules_with_options_async(request, runtime)
 
@@ -10849,6 +13247,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListClusterConnectionTypesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListClusterConnectionTypesResponse:
+        """
+        @summary Queries available cluster connection types.
+        
+        @param request: ListClusterConnectionTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClusterConnectionTypesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -10877,6 +13282,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListClusterConnectionTypesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListClusterConnectionTypesResponse:
+        """
+        @summary Queries available cluster connection types.
+        
+        @param request: ListClusterConnectionTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClusterConnectionTypesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -10904,6 +13316,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListClusterConnectionTypesRequest,
     ) -> mse_20190531_models.ListClusterConnectionTypesResponse:
+        """
+        @summary Queries available cluster connection types.
+        
+        @param request: ListClusterConnectionTypesRequest
+        @return: ListClusterConnectionTypesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_cluster_connection_types_with_options(request, runtime)
 
@@ -10911,6 +13329,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListClusterConnectionTypesRequest,
     ) -> mse_20190531_models.ListClusterConnectionTypesResponse:
+        """
+        @summary Queries available cluster connection types.
+        
+        @param request: ListClusterConnectionTypesRequest
+        @return: ListClusterConnectionTypesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_cluster_connection_types_with_options_async(request, runtime)
 
@@ -10919,6 +13343,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListClusterHealthCheckTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListClusterHealthCheckTaskResponse:
+        """
+        @summary Obtains information about historical health check tasks.
+        
+        @param request: ListClusterHealthCheckTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClusterHealthCheckTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -10957,6 +13388,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListClusterHealthCheckTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListClusterHealthCheckTaskResponse:
+        """
+        @summary Obtains information about historical health check tasks.
+        
+        @param request: ListClusterHealthCheckTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClusterHealthCheckTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -10994,6 +13432,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListClusterHealthCheckTaskRequest,
     ) -> mse_20190531_models.ListClusterHealthCheckTaskResponse:
+        """
+        @summary Obtains information about historical health check tasks.
+        
+        @param request: ListClusterHealthCheckTaskRequest
+        @return: ListClusterHealthCheckTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_cluster_health_check_task_with_options(request, runtime)
 
@@ -11001,6 +13445,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListClusterHealthCheckTaskRequest,
     ) -> mse_20190531_models.ListClusterHealthCheckTaskResponse:
+        """
+        @summary Obtains information about historical health check tasks.
+        
+        @param request: ListClusterHealthCheckTaskRequest
+        @return: ListClusterHealthCheckTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_cluster_health_check_task_with_options_async(request, runtime)
 
@@ -11009,6 +13459,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListClusterTypesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListClusterTypesResponse:
+        """
+        @summary Queries the engine types that can be activated.
+        
+        @param request: ListClusterTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClusterTypesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -11043,6 +13500,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListClusterTypesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListClusterTypesResponse:
+        """
+        @summary Queries the engine types that can be activated.
+        
+        @param request: ListClusterTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClusterTypesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -11076,6 +13540,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListClusterTypesRequest,
     ) -> mse_20190531_models.ListClusterTypesResponse:
+        """
+        @summary Queries the engine types that can be activated.
+        
+        @param request: ListClusterTypesRequest
+        @return: ListClusterTypesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_cluster_types_with_options(request, runtime)
 
@@ -11083,6 +13553,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListClusterTypesRequest,
     ) -> mse_20190531_models.ListClusterTypesResponse:
+        """
+        @summary Queries the engine types that can be activated.
+        
+        @param request: ListClusterTypesRequest
+        @return: ListClusterTypesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_cluster_types_with_options_async(request, runtime)
 
@@ -11091,6 +13567,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListClusterVersionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListClusterVersionsResponse:
+        """
+        @summary Queries the information about supported instance versions.
+        
+        @param request: ListClusterVersionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClusterVersionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -11123,6 +13606,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListClusterVersionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListClusterVersionsResponse:
+        """
+        @summary Queries the information about supported instance versions.
+        
+        @param request: ListClusterVersionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClusterVersionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -11154,6 +13644,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListClusterVersionsRequest,
     ) -> mse_20190531_models.ListClusterVersionsResponse:
+        """
+        @summary Queries the information about supported instance versions.
+        
+        @param request: ListClusterVersionsRequest
+        @return: ListClusterVersionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_cluster_versions_with_options(request, runtime)
 
@@ -11161,6 +13657,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListClusterVersionsRequest,
     ) -> mse_20190531_models.ListClusterVersionsResponse:
+        """
+        @summary Queries the information about supported instance versions.
+        
+        @param request: ListClusterVersionsRequest
+        @return: ListClusterVersionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_cluster_versions_with_options_async(request, runtime)
 
@@ -11169,6 +13671,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListClustersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListClustersResponse:
+        """
+        @summary Queries Microservices Engine (MSE) instances.
+        
+        @param request: ListClustersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClustersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -11213,6 +13722,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListClustersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListClustersResponse:
+        """
+        @summary Queries Microservices Engine (MSE) instances.
+        
+        @param request: ListClustersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClustersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -11256,6 +13772,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListClustersRequest,
     ) -> mse_20190531_models.ListClustersResponse:
+        """
+        @summary Queries Microservices Engine (MSE) instances.
+        
+        @param request: ListClustersRequest
+        @return: ListClustersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_clusters_with_options(request, runtime)
 
@@ -11263,6 +13785,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListClustersRequest,
     ) -> mse_20190531_models.ListClustersResponse:
+        """
+        @summary Queries Microservices Engine (MSE) instances.
+        
+        @param request: ListClustersRequest
+        @return: ListClustersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_clusters_with_options_async(request, runtime)
 
@@ -11271,6 +13799,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListConfigTrackRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListConfigTrackResponse:
+        """
+        @summary Obtains the track data of a Nacos configuration center.
+        
+        @param request: ListConfigTrackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConfigTrackResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -11321,6 +13856,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListConfigTrackRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListConfigTrackResponse:
+        """
+        @summary Obtains the track data of a Nacos configuration center.
+        
+        @param request: ListConfigTrackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConfigTrackResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -11370,6 +13912,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListConfigTrackRequest,
     ) -> mse_20190531_models.ListConfigTrackResponse:
+        """
+        @summary Obtains the track data of a Nacos configuration center.
+        
+        @param request: ListConfigTrackRequest
+        @return: ListConfigTrackResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_config_track_with_options(request, runtime)
 
@@ -11377,6 +13925,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListConfigTrackRequest,
     ) -> mse_20190531_models.ListConfigTrackResponse:
+        """
+        @summary Obtains the track data of a Nacos configuration center.
+        
+        @param request: ListConfigTrackRequest
+        @return: ListConfigTrackResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_config_track_with_options_async(request, runtime)
 
@@ -11385,6 +13939,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListEngineNamespacesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListEngineNamespacesResponse:
+        """
+        @summary Queries the namespaces of a Nacos instance.
+        
+        @param request: ListEngineNamespacesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEngineNamespacesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -11415,6 +13976,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListEngineNamespacesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListEngineNamespacesResponse:
+        """
+        @summary Queries the namespaces of a Nacos instance.
+        
+        @param request: ListEngineNamespacesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEngineNamespacesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -11444,6 +14012,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListEngineNamespacesRequest,
     ) -> mse_20190531_models.ListEngineNamespacesResponse:
+        """
+        @summary Queries the namespaces of a Nacos instance.
+        
+        @param request: ListEngineNamespacesRequest
+        @return: ListEngineNamespacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_engine_namespaces_with_options(request, runtime)
 
@@ -11451,6 +14025,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListEngineNamespacesRequest,
     ) -> mse_20190531_models.ListEngineNamespacesResponse:
+        """
+        @summary Queries the namespaces of a Nacos instance.
+        
+        @param request: ListEngineNamespacesRequest
+        @return: ListEngineNamespacesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_engine_namespaces_with_options_async(request, runtime)
 
@@ -11459,6 +14039,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListEurekaInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListEurekaInstancesResponse:
+        """
+        @summary Queries Eureka instances.
+        
+        @param request: ListEurekaInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEurekaInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -11485,6 +14072,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListEurekaInstancesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListEurekaInstancesResponse:
+        """
+        @summary Queries Eureka instances.
+        
+        @param request: ListEurekaInstancesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEurekaInstancesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -11510,6 +14104,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListEurekaInstancesRequest,
     ) -> mse_20190531_models.ListEurekaInstancesResponse:
+        """
+        @summary Queries Eureka instances.
+        
+        @param request: ListEurekaInstancesRequest
+        @return: ListEurekaInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_eureka_instances_with_options(request, runtime)
 
@@ -11517,6 +14117,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListEurekaInstancesRequest,
     ) -> mse_20190531_models.ListEurekaInstancesResponse:
+        """
+        @summary Queries Eureka instances.
+        
+        @param request: ListEurekaInstancesRequest
+        @return: ListEurekaInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_eureka_instances_with_options_async(request, runtime)
 
@@ -11525,6 +14131,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListEurekaServicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListEurekaServicesResponse:
+        """
+        @summary Queries Eureka services.
+        
+        @param request: ListEurekaServicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEurekaServicesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -11551,6 +14164,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListEurekaServicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListEurekaServicesResponse:
+        """
+        @summary Queries Eureka services.
+        
+        @param request: ListEurekaServicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEurekaServicesResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -11576,6 +14196,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListEurekaServicesRequest,
     ) -> mse_20190531_models.ListEurekaServicesResponse:
+        """
+        @summary Queries Eureka services.
+        
+        @param request: ListEurekaServicesRequest
+        @return: ListEurekaServicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_eureka_services_with_options(request, runtime)
 
@@ -11583,6 +14209,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListEurekaServicesRequest,
     ) -> mse_20190531_models.ListEurekaServicesResponse:
+        """
+        @summary Queries Eureka services.
+        
+        @param request: ListEurekaServicesRequest
+        @return: ListEurekaServicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_eureka_services_with_options_async(request, runtime)
 
@@ -11591,6 +14223,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListExportZookeeperDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListExportZookeeperDataResponse:
+        """
+        @summary Lists historical data export tasks of a Microservices Engine (MSE) Zookeeper instance.
+        
+        @param request: ListExportZookeeperDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExportZookeeperDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -11625,6 +14264,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListExportZookeeperDataRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListExportZookeeperDataResponse:
+        """
+        @summary Lists historical data export tasks of a Microservices Engine (MSE) Zookeeper instance.
+        
+        @param request: ListExportZookeeperDataRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExportZookeeperDataResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -11658,6 +14304,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListExportZookeeperDataRequest,
     ) -> mse_20190531_models.ListExportZookeeperDataResponse:
+        """
+        @summary Lists historical data export tasks of a Microservices Engine (MSE) Zookeeper instance.
+        
+        @param request: ListExportZookeeperDataRequest
+        @return: ListExportZookeeperDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_export_zookeeper_data_with_options(request, runtime)
 
@@ -11665,6 +14317,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListExportZookeeperDataRequest,
     ) -> mse_20190531_models.ListExportZookeeperDataResponse:
+        """
+        @summary Lists historical data export tasks of a Microservices Engine (MSE) Zookeeper instance.
+        
+        @param request: ListExportZookeeperDataRequest
+        @return: ListExportZookeeperDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_export_zookeeper_data_with_options_async(request, runtime)
 
@@ -11673,6 +14331,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListFlowRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListFlowRulesResponse:
+        """
+        @summary Obtains a list of throttling rules.
+        
+        @param request: ListFlowRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFlowRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -11715,6 +14380,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListFlowRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListFlowRulesResponse:
+        """
+        @summary Obtains a list of throttling rules.
+        
+        @param request: ListFlowRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListFlowRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -11756,6 +14428,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListFlowRulesRequest,
     ) -> mse_20190531_models.ListFlowRulesResponse:
+        """
+        @summary Obtains a list of throttling rules.
+        
+        @param request: ListFlowRulesRequest
+        @return: ListFlowRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_flow_rules_with_options(request, runtime)
 
@@ -11763,6 +14441,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListFlowRulesRequest,
     ) -> mse_20190531_models.ListFlowRulesResponse:
+        """
+        @summary Obtains a list of throttling rules.
+        
+        @param request: ListFlowRulesRequest
+        @return: ListFlowRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_flow_rules_with_options_async(request, runtime)
 
@@ -11771,6 +14455,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.ListGatewayRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListGatewayResponse:
+        """
+        @summary Queries a list of gateways.
+        
+        @param tmp_req: ListGatewayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGatewayResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.ListGatewayShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -11813,6 +14504,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.ListGatewayRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListGatewayResponse:
+        """
+        @summary Queries a list of gateways.
+        
+        @param tmp_req: ListGatewayRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGatewayResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.ListGatewayShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -11854,6 +14552,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListGatewayRequest,
     ) -> mse_20190531_models.ListGatewayResponse:
+        """
+        @summary Queries a list of gateways.
+        
+        @param request: ListGatewayRequest
+        @return: ListGatewayResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_gateway_with_options(request, runtime)
 
@@ -11861,6 +14565,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListGatewayRequest,
     ) -> mse_20190531_models.ListGatewayResponse:
+        """
+        @summary Queries a list of gateways.
+        
+        @param request: ListGatewayRequest
+        @return: ListGatewayResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_gateway_with_options_async(request, runtime)
 
@@ -11869,6 +14579,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListGatewayAuthConsumerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListGatewayAuthConsumerResponse:
+        """
+        @summary Queries the list of consumers on which a gateway performs authentication operations.
+        
+        @param request: ListGatewayAuthConsumerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGatewayAuthConsumerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -11909,6 +14626,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListGatewayAuthConsumerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListGatewayAuthConsumerResponse:
+        """
+        @summary Queries the list of consumers on which a gateway performs authentication operations.
+        
+        @param request: ListGatewayAuthConsumerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGatewayAuthConsumerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -11948,6 +14672,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListGatewayAuthConsumerRequest,
     ) -> mse_20190531_models.ListGatewayAuthConsumerResponse:
+        """
+        @summary Queries the list of consumers on which a gateway performs authentication operations.
+        
+        @param request: ListGatewayAuthConsumerRequest
+        @return: ListGatewayAuthConsumerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_gateway_auth_consumer_with_options(request, runtime)
 
@@ -11955,6 +14685,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListGatewayAuthConsumerRequest,
     ) -> mse_20190531_models.ListGatewayAuthConsumerResponse:
+        """
+        @summary Queries the list of consumers on which a gateway performs authentication operations.
+        
+        @param request: ListGatewayAuthConsumerRequest
+        @return: ListGatewayAuthConsumerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_gateway_auth_consumer_with_options_async(request, runtime)
 
@@ -11963,6 +14699,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListGatewayAuthConsumerResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListGatewayAuthConsumerResourceResponse:
+        """
+        @summary Queries the list of authorized resources for the consumer on which a gateway performs authentication operations.
+        
+        @param request: ListGatewayAuthConsumerResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGatewayAuthConsumerResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -12003,6 +14746,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListGatewayAuthConsumerResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListGatewayAuthConsumerResourceResponse:
+        """
+        @summary Queries the list of authorized resources for the consumer on which a gateway performs authentication operations.
+        
+        @param request: ListGatewayAuthConsumerResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGatewayAuthConsumerResourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -12042,6 +14792,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListGatewayAuthConsumerResourceRequest,
     ) -> mse_20190531_models.ListGatewayAuthConsumerResourceResponse:
+        """
+        @summary Queries the list of authorized resources for the consumer on which a gateway performs authentication operations.
+        
+        @param request: ListGatewayAuthConsumerResourceRequest
+        @return: ListGatewayAuthConsumerResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_gateway_auth_consumer_resource_with_options(request, runtime)
 
@@ -12049,6 +14805,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListGatewayAuthConsumerResourceRequest,
     ) -> mse_20190531_models.ListGatewayAuthConsumerResourceResponse:
+        """
+        @summary Queries the list of authorized resources for the consumer on which a gateway performs authentication operations.
+        
+        @param request: ListGatewayAuthConsumerResourceRequest
+        @return: ListGatewayAuthConsumerResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_gateway_auth_consumer_resource_with_options_async(request, runtime)
 
@@ -12057,6 +14819,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListGatewayCircuitBreakerRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListGatewayCircuitBreakerRuleResponse:
+        """
+        @summary 查看网关路由熔断规则
+        
+        @param request: ListGatewayCircuitBreakerRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGatewayCircuitBreakerRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -12087,6 +14856,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListGatewayCircuitBreakerRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListGatewayCircuitBreakerRuleResponse:
+        """
+        @summary 查看网关路由熔断规则
+        
+        @param request: ListGatewayCircuitBreakerRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGatewayCircuitBreakerRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -12116,6 +14892,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListGatewayCircuitBreakerRuleRequest,
     ) -> mse_20190531_models.ListGatewayCircuitBreakerRuleResponse:
+        """
+        @summary 查看网关路由熔断规则
+        
+        @param request: ListGatewayCircuitBreakerRuleRequest
+        @return: ListGatewayCircuitBreakerRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_gateway_circuit_breaker_rule_with_options(request, runtime)
 
@@ -12123,6 +14905,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListGatewayCircuitBreakerRuleRequest,
     ) -> mse_20190531_models.ListGatewayCircuitBreakerRuleResponse:
+        """
+        @summary 查看网关路由熔断规则
+        
+        @param request: ListGatewayCircuitBreakerRuleRequest
+        @return: ListGatewayCircuitBreakerRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_gateway_circuit_breaker_rule_with_options_async(request, runtime)
 
@@ -12131,6 +14919,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListGatewayDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListGatewayDomainResponse:
+        """
+        @summary Queries the domain names that are associated with a gateway.
+        
+        @param request: ListGatewayDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGatewayDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -12165,6 +14960,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListGatewayDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListGatewayDomainResponse:
+        """
+        @summary Queries the domain names that are associated with a gateway.
+        
+        @param request: ListGatewayDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGatewayDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -12198,6 +15000,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListGatewayDomainRequest,
     ) -> mse_20190531_models.ListGatewayDomainResponse:
+        """
+        @summary Queries the domain names that are associated with a gateway.
+        
+        @param request: ListGatewayDomainRequest
+        @return: ListGatewayDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_gateway_domain_with_options(request, runtime)
 
@@ -12205,6 +15013,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListGatewayDomainRequest,
     ) -> mse_20190531_models.ListGatewayDomainResponse:
+        """
+        @summary Queries the domain names that are associated with a gateway.
+        
+        @param request: ListGatewayDomainRequest
+        @return: ListGatewayDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_gateway_domain_with_options_async(request, runtime)
 
@@ -12213,6 +15027,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListGatewayFlowRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListGatewayFlowRuleResponse:
+        """
+        @summary 查看网关路由流控规则
+        
+        @param request: ListGatewayFlowRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGatewayFlowRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -12243,6 +15064,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListGatewayFlowRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListGatewayFlowRuleResponse:
+        """
+        @summary 查看网关路由流控规则
+        
+        @param request: ListGatewayFlowRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGatewayFlowRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -12272,6 +15100,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListGatewayFlowRuleRequest,
     ) -> mse_20190531_models.ListGatewayFlowRuleResponse:
+        """
+        @summary 查看网关路由流控规则
+        
+        @param request: ListGatewayFlowRuleRequest
+        @return: ListGatewayFlowRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_gateway_flow_rule_with_options(request, runtime)
 
@@ -12279,6 +15113,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListGatewayFlowRuleRequest,
     ) -> mse_20190531_models.ListGatewayFlowRuleResponse:
+        """
+        @summary 查看网关路由流控规则
+        
+        @param request: ListGatewayFlowRuleRequest
+        @return: ListGatewayFlowRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_gateway_flow_rule_with_options_async(request, runtime)
 
@@ -12287,6 +15127,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListGatewayIsolationRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListGatewayIsolationRuleResponse:
+        """
+        @summary 查看网关路由隔离规则
+        
+        @param request: ListGatewayIsolationRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGatewayIsolationRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -12317,6 +15164,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListGatewayIsolationRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListGatewayIsolationRuleResponse:
+        """
+        @summary 查看网关路由隔离规则
+        
+        @param request: ListGatewayIsolationRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGatewayIsolationRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -12346,6 +15200,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListGatewayIsolationRuleRequest,
     ) -> mse_20190531_models.ListGatewayIsolationRuleResponse:
+        """
+        @summary 查看网关路由隔离规则
+        
+        @param request: ListGatewayIsolationRuleRequest
+        @return: ListGatewayIsolationRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_gateway_isolation_rule_with_options(request, runtime)
 
@@ -12353,6 +15213,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListGatewayIsolationRuleRequest,
     ) -> mse_20190531_models.ListGatewayIsolationRuleResponse:
+        """
+        @summary 查看网关路由隔离规则
+        
+        @param request: ListGatewayIsolationRuleRequest
+        @return: ListGatewayIsolationRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_gateway_isolation_rule_with_options_async(request, runtime)
 
@@ -12361,6 +15227,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.ListGatewayRouteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListGatewayRouteResponse:
+        """
+        @summary Queries the routes of a gateway.
+        
+        @param tmp_req: ListGatewayRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGatewayRouteResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.ListGatewayRouteShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -12403,6 +15276,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.ListGatewayRouteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListGatewayRouteResponse:
+        """
+        @summary Queries the routes of a gateway.
+        
+        @param tmp_req: ListGatewayRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGatewayRouteResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.ListGatewayRouteShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -12444,6 +15324,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListGatewayRouteRequest,
     ) -> mse_20190531_models.ListGatewayRouteResponse:
+        """
+        @summary Queries the routes of a gateway.
+        
+        @param request: ListGatewayRouteRequest
+        @return: ListGatewayRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_gateway_route_with_options(request, runtime)
 
@@ -12451,6 +15337,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListGatewayRouteRequest,
     ) -> mse_20190531_models.ListGatewayRouteResponse:
+        """
+        @summary Queries the routes of a gateway.
+        
+        @param request: ListGatewayRouteRequest
+        @return: ListGatewayRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_gateway_route_with_options_async(request, runtime)
 
@@ -12459,6 +15351,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListGatewayRouteOnAuthRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListGatewayRouteOnAuthResponse:
+        """
+        @summary Queries a list of routes for which authentication is enabled.
+        
+        @param request: ListGatewayRouteOnAuthRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGatewayRouteOnAuthResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -12491,6 +15390,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListGatewayRouteOnAuthRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListGatewayRouteOnAuthResponse:
+        """
+        @summary Queries a list of routes for which authentication is enabled.
+        
+        @param request: ListGatewayRouteOnAuthRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGatewayRouteOnAuthResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -12522,6 +15428,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListGatewayRouteOnAuthRequest,
     ) -> mse_20190531_models.ListGatewayRouteOnAuthResponse:
+        """
+        @summary Queries a list of routes for which authentication is enabled.
+        
+        @param request: ListGatewayRouteOnAuthRequest
+        @return: ListGatewayRouteOnAuthResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_gateway_route_on_auth_with_options(request, runtime)
 
@@ -12529,6 +15441,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListGatewayRouteOnAuthRequest,
     ) -> mse_20190531_models.ListGatewayRouteOnAuthResponse:
+        """
+        @summary Queries a list of routes for which authentication is enabled.
+        
+        @param request: ListGatewayRouteOnAuthRequest
+        @return: ListGatewayRouteOnAuthResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_gateway_route_on_auth_with_options_async(request, runtime)
 
@@ -12537,6 +15455,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.ListGatewayServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListGatewayServiceResponse:
+        """
+        @summary Queries a list of services that are subscribed with a gateway.
+        
+        @param tmp_req: ListGatewayServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGatewayServiceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.ListGatewayServiceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -12579,6 +15504,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.ListGatewayServiceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListGatewayServiceResponse:
+        """
+        @summary Queries a list of services that are subscribed with a gateway.
+        
+        @param tmp_req: ListGatewayServiceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGatewayServiceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.ListGatewayServiceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -12620,6 +15552,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListGatewayServiceRequest,
     ) -> mse_20190531_models.ListGatewayServiceResponse:
+        """
+        @summary Queries a list of services that are subscribed with a gateway.
+        
+        @param request: ListGatewayServiceRequest
+        @return: ListGatewayServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_gateway_service_with_options(request, runtime)
 
@@ -12627,6 +15565,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListGatewayServiceRequest,
     ) -> mse_20190531_models.ListGatewayServiceResponse:
+        """
+        @summary Queries a list of services that are subscribed with a gateway.
+        
+        @param request: ListGatewayServiceRequest
+        @return: ListGatewayServiceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_gateway_service_with_options_async(request, runtime)
 
@@ -12635,6 +15579,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListGatewaySlbRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListGatewaySlbResponse:
+        """
+        @summary Queries the Server Load Balancer (SLB) instances that are associated with a gateway.
+        
+        @param request: ListGatewaySlbRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGatewaySlbResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -12665,6 +15616,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListGatewaySlbRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListGatewaySlbResponse:
+        """
+        @summary Queries the Server Load Balancer (SLB) instances that are associated with a gateway.
+        
+        @param request: ListGatewaySlbRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListGatewaySlbResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -12694,6 +15652,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListGatewaySlbRequest,
     ) -> mse_20190531_models.ListGatewaySlbResponse:
+        """
+        @summary Queries the Server Load Balancer (SLB) instances that are associated with a gateway.
+        
+        @param request: ListGatewaySlbRequest
+        @return: ListGatewaySlbResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_gateway_slb_with_options(request, runtime)
 
@@ -12701,6 +15665,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListGatewaySlbRequest,
     ) -> mse_20190531_models.ListGatewaySlbResponse:
+        """
+        @summary Queries the Server Load Balancer (SLB) instances that are associated with a gateway.
+        
+        @param request: ListGatewaySlbRequest
+        @return: ListGatewaySlbResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_gateway_slb_with_options_async(request, runtime)
 
@@ -12709,6 +15679,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListInstanceCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListInstanceCountResponse:
+        """
+        @summary Displays the number of nodes that can be deployed for an instance.
+        
+        @param request: ListInstanceCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceCountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -12745,6 +15722,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListInstanceCountRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListInstanceCountResponse:
+        """
+        @summary Displays the number of nodes that can be deployed for an instance.
+        
+        @param request: ListInstanceCountRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceCountResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -12780,6 +15764,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListInstanceCountRequest,
     ) -> mse_20190531_models.ListInstanceCountResponse:
+        """
+        @summary Displays the number of nodes that can be deployed for an instance.
+        
+        @param request: ListInstanceCountRequest
+        @return: ListInstanceCountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_instance_count_with_options(request, runtime)
 
@@ -12787,6 +15777,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListInstanceCountRequest,
     ) -> mse_20190531_models.ListInstanceCountResponse:
+        """
+        @summary Displays the number of nodes that can be deployed for an instance.
+        
+        @param request: ListInstanceCountRequest
+        @return: ListInstanceCountResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_instance_count_with_options_async(request, runtime)
 
@@ -12795,6 +15791,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListIsolationRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListIsolationRulesResponse:
+        """
+        @summary 查询隔离规则
+        
+        @param request: ListIsolationRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIsolationRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -12837,6 +15840,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListIsolationRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListIsolationRulesResponse:
+        """
+        @summary 查询隔离规则
+        
+        @param request: ListIsolationRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIsolationRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -12878,6 +15888,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListIsolationRulesRequest,
     ) -> mse_20190531_models.ListIsolationRulesResponse:
+        """
+        @summary 查询隔离规则
+        
+        @param request: ListIsolationRulesRequest
+        @return: ListIsolationRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_isolation_rules_with_options(request, runtime)
 
@@ -12885,6 +15901,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListIsolationRulesRequest,
     ) -> mse_20190531_models.ListIsolationRulesResponse:
+        """
+        @summary 查询隔离规则
+        
+        @param request: ListIsolationRulesRequest
+        @return: ListIsolationRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_isolation_rules_with_options_async(request, runtime)
 
@@ -12894,7 +15916,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListListenersByConfigResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Queries listeners based on configuration information.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: ListListenersByConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12939,7 +15963,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListListenersByConfigResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Queries listeners based on configuration information.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: ListListenersByConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -12983,7 +16009,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListListenersByConfigRequest,
     ) -> mse_20190531_models.ListListenersByConfigResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Queries listeners based on configuration information.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: ListListenersByConfigRequest
         @return: ListListenersByConfigResponse
@@ -12996,7 +16024,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListListenersByConfigRequest,
     ) -> mse_20190531_models.ListListenersByConfigResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Queries listeners based on configuration information.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: ListListenersByConfigRequest
         @return: ListListenersByConfigResponse
@@ -13010,7 +16040,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListListenersByIpResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Queries the information about listeners based on IP addresses.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: ListListenersByIpRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13053,7 +16085,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListListenersByIpResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Queries the information about listeners based on IP addresses.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: ListListenersByIpRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13095,7 +16129,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListListenersByIpRequest,
     ) -> mse_20190531_models.ListListenersByIpResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Queries the information about listeners based on IP addresses.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: ListListenersByIpRequest
         @return: ListListenersByIpResponse
@@ -13108,7 +16144,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListListenersByIpRequest,
     ) -> mse_20190531_models.ListListenersByIpResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Queries the information about listeners based on IP addresses.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: ListListenersByIpRequest
         @return: ListListenersByIpResponse
@@ -13121,6 +16159,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListMigrationTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListMigrationTaskResponse:
+        """
+        @summary Queries information about a migration task.
+        
+        @param request: ListMigrationTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMigrationTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -13157,6 +16202,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListMigrationTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListMigrationTaskResponse:
+        """
+        @summary Queries information about a migration task.
+        
+        @param request: ListMigrationTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListMigrationTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -13192,6 +16244,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListMigrationTaskRequest,
     ) -> mse_20190531_models.ListMigrationTaskResponse:
+        """
+        @summary Queries information about a migration task.
+        
+        @param request: ListMigrationTaskRequest
+        @return: ListMigrationTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_migration_task_with_options(request, runtime)
 
@@ -13199,6 +16257,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListMigrationTaskRequest,
     ) -> mse_20190531_models.ListMigrationTaskResponse:
+        """
+        @summary Queries information about a migration task.
+        
+        @param request: ListMigrationTaskRequest
+        @return: ListMigrationTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_migration_task_with_options_async(request, runtime)
 
@@ -13208,7 +16272,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListNacosConfigsResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Queries Nacos configurations.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: ListNacosConfigsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13263,7 +16329,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListNacosConfigsResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Queries Nacos configurations.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: ListNacosConfigsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13317,7 +16385,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListNacosConfigsRequest,
     ) -> mse_20190531_models.ListNacosConfigsResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Queries Nacos configurations.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: ListNacosConfigsRequest
         @return: ListNacosConfigsResponse
@@ -13330,7 +16400,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListNacosConfigsRequest,
     ) -> mse_20190531_models.ListNacosConfigsResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Queries Nacos configurations.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: ListNacosConfigsRequest
         @return: ListNacosConfigsResponse
@@ -13344,7 +16416,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListNacosHistoryConfigsResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Queries the configuration history of a Microservices Engine (MSE) Nacos instance.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: ListNacosHistoryConfigsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13395,7 +16469,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListNacosHistoryConfigsResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Queries the configuration history of a Microservices Engine (MSE) Nacos instance.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: ListNacosHistoryConfigsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -13445,7 +16521,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListNacosHistoryConfigsRequest,
     ) -> mse_20190531_models.ListNacosHistoryConfigsResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Queries the configuration history of a Microservices Engine (MSE) Nacos instance.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: ListNacosHistoryConfigsRequest
         @return: ListNacosHistoryConfigsResponse
@@ -13458,7 +16536,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListNacosHistoryConfigsRequest,
     ) -> mse_20190531_models.ListNacosHistoryConfigsResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Queries the configuration history of a Microservices Engine (MSE) Nacos instance.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: ListNacosHistoryConfigsRequest
         @return: ListNacosHistoryConfigsResponse
@@ -13471,6 +16551,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListNamingTrackRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListNamingTrackResponse:
+        """
+        @summary Obtains the trajectory data of a Nacos registry.
+        
+        @param request: ListNamingTrackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNamingTrackResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -13497,6 +16584,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListNamingTrackRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListNamingTrackResponse:
+        """
+        @summary Obtains the trajectory data of a Nacos registry.
+        
+        @param request: ListNamingTrackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNamingTrackResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -13522,6 +16616,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListNamingTrackRequest,
     ) -> mse_20190531_models.ListNamingTrackResponse:
+        """
+        @summary Obtains the trajectory data of a Nacos registry.
+        
+        @param request: ListNamingTrackRequest
+        @return: ListNamingTrackResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_naming_track_with_options(request, runtime)
 
@@ -13529,6 +16629,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListNamingTrackRequest,
     ) -> mse_20190531_models.ListNamingTrackResponse:
+        """
+        @summary Obtains the trajectory data of a Nacos registry.
+        
+        @param request: ListNamingTrackRequest
+        @return: ListNamingTrackResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_naming_track_with_options_async(request, runtime)
 
@@ -13537,6 +16643,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListSSLCertRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListSSLCertResponse:
+        """
+        @summary Obtains a list of gateway certificates.
+        
+        @param request: ListSSLCertRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSSLCertResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -13569,6 +16682,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListSSLCertRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListSSLCertResponse:
+        """
+        @summary Obtains a list of gateway certificates.
+        
+        @param request: ListSSLCertRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSSLCertResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -13600,6 +16720,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListSSLCertRequest,
     ) -> mse_20190531_models.ListSSLCertResponse:
+        """
+        @summary Obtains a list of gateway certificates.
+        
+        @param request: ListSSLCertRequest
+        @return: ListSSLCertResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_sslcert_with_options(request, runtime)
 
@@ -13607,6 +16733,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListSSLCertRequest,
     ) -> mse_20190531_models.ListSSLCertResponse:
+        """
+        @summary Obtains a list of gateway certificates.
+        
+        @param request: ListSSLCertRequest
+        @return: ListSSLCertResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_sslcert_with_options_async(request, runtime)
 
@@ -13615,6 +16747,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListSecurityGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListSecurityGroupResponse:
+        """
+        @summary Obtains the information about security groups.
+        
+        @param request: ListSecurityGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSecurityGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -13645,6 +16784,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListSecurityGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListSecurityGroupResponse:
+        """
+        @summary Obtains the information about security groups.
+        
+        @param request: ListSecurityGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSecurityGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -13674,6 +16820,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListSecurityGroupRequest,
     ) -> mse_20190531_models.ListSecurityGroupResponse:
+        """
+        @summary Obtains the information about security groups.
+        
+        @param request: ListSecurityGroupRequest
+        @return: ListSecurityGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_security_group_with_options(request, runtime)
 
@@ -13681,6 +16833,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListSecurityGroupRequest,
     ) -> mse_20190531_models.ListSecurityGroupResponse:
+        """
+        @summary Obtains the information about security groups.
+        
+        @param request: ListSecurityGroupRequest
+        @return: ListSecurityGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_security_group_with_options_async(request, runtime)
 
@@ -13689,6 +16847,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListSecurityGroupRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListSecurityGroupRuleResponse:
+        """
+        @summary Queries the security group rules of a gateway.
+        
+        @param request: ListSecurityGroupRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSecurityGroupRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -13719,6 +16884,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListSecurityGroupRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListSecurityGroupRuleResponse:
+        """
+        @summary Queries the security group rules of a gateway.
+        
+        @param request: ListSecurityGroupRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSecurityGroupRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -13748,6 +16920,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListSecurityGroupRuleRequest,
     ) -> mse_20190531_models.ListSecurityGroupRuleResponse:
+        """
+        @summary Queries the security group rules of a gateway.
+        
+        @param request: ListSecurityGroupRuleRequest
+        @return: ListSecurityGroupRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_security_group_rule_with_options(request, runtime)
 
@@ -13755,6 +16933,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListSecurityGroupRuleRequest,
     ) -> mse_20190531_models.ListSecurityGroupRuleResponse:
+        """
+        @summary Queries the security group rules of a gateway.
+        
+        @param request: ListSecurityGroupRuleRequest
+        @return: ListSecurityGroupRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_security_group_rule_with_options_async(request, runtime)
 
@@ -13763,6 +16947,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.ListSentinelBlockFallbackDefinitionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListSentinelBlockFallbackDefinitionsResponse:
+        """
+        @summary 查询流量防护行为
+        
+        @param tmp_req: ListSentinelBlockFallbackDefinitionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSentinelBlockFallbackDefinitionsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.ListSentinelBlockFallbackDefinitionsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13801,6 +16992,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.ListSentinelBlockFallbackDefinitionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListSentinelBlockFallbackDefinitionsResponse:
+        """
+        @summary 查询流量防护行为
+        
+        @param tmp_req: ListSentinelBlockFallbackDefinitionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSentinelBlockFallbackDefinitionsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.ListSentinelBlockFallbackDefinitionsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -13838,6 +17036,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListSentinelBlockFallbackDefinitionsRequest,
     ) -> mse_20190531_models.ListSentinelBlockFallbackDefinitionsResponse:
+        """
+        @summary 查询流量防护行为
+        
+        @param request: ListSentinelBlockFallbackDefinitionsRequest
+        @return: ListSentinelBlockFallbackDefinitionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_sentinel_block_fallback_definitions_with_options(request, runtime)
 
@@ -13845,6 +17049,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListSentinelBlockFallbackDefinitionsRequest,
     ) -> mse_20190531_models.ListSentinelBlockFallbackDefinitionsResponse:
+        """
+        @summary 查询流量防护行为
+        
+        @param request: ListSentinelBlockFallbackDefinitionsRequest
+        @return: ListSentinelBlockFallbackDefinitionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_sentinel_block_fallback_definitions_with_options_async(request, runtime)
 
@@ -13853,6 +17063,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListServiceSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListServiceSourceResponse:
+        """
+        @summary Queries a list of associated sources.
+        
+        @param request: ListServiceSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceSourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -13885,6 +17102,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListServiceSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListServiceSourceResponse:
+        """
+        @summary Queries a list of associated sources.
+        
+        @param request: ListServiceSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListServiceSourceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -13916,6 +17140,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListServiceSourceRequest,
     ) -> mse_20190531_models.ListServiceSourceResponse:
+        """
+        @summary Queries a list of associated sources.
+        
+        @param request: ListServiceSourceRequest
+        @return: ListServiceSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_service_source_with_options(request, runtime)
 
@@ -13923,6 +17153,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListServiceSourceRequest,
     ) -> mse_20190531_models.ListServiceSourceResponse:
+        """
+        @summary Queries a list of associated sources.
+        
+        @param request: ListServiceSourceRequest
+        @return: ListServiceSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_service_source_with_options_async(request, runtime)
 
@@ -13931,6 +17167,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListTagResourcesResponse:
+        """
+        @summary Queries tagged resources.
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -13969,6 +17212,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListTagResourcesResponse:
+        """
+        @summary Queries tagged resources.
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -14006,6 +17256,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListTagResourcesRequest,
     ) -> mse_20190531_models.ListTagResourcesResponse:
+        """
+        @summary Queries tagged resources.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_resources_with_options(request, runtime)
 
@@ -14013,6 +17269,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListTagResourcesRequest,
     ) -> mse_20190531_models.ListTagResourcesResponse:
+        """
+        @summary Queries tagged resources.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
@@ -14021,6 +17283,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListZkTrackRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListZkTrackResponse:
+        """
+        @summary Obtains the track data of a ZooKeeper instance.
+        
+        @param request: ListZkTrackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListZkTrackResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -14067,6 +17336,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListZkTrackRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListZkTrackResponse:
+        """
+        @summary Obtains the track data of a ZooKeeper instance.
+        
+        @param request: ListZkTrackRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListZkTrackResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -14112,6 +17388,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListZkTrackRequest,
     ) -> mse_20190531_models.ListZkTrackResponse:
+        """
+        @summary Obtains the track data of a ZooKeeper instance.
+        
+        @param request: ListZkTrackRequest
+        @return: ListZkTrackResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_zk_track_with_options(request, runtime)
 
@@ -14119,6 +17401,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListZkTrackRequest,
     ) -> mse_20190531_models.ListZkTrackResponse:
+        """
+        @summary Obtains the track data of a ZooKeeper instance.
+        
+        @param request: ListZkTrackRequest
+        @return: ListZkTrackResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_zk_track_with_options_async(request, runtime)
 
@@ -14127,6 +17415,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListZnodeChildrenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListZnodeChildrenResponse:
+        """
+        @summary Queries the child nodes of a ZooKeeper node.
+        
+        @param request: ListZnodeChildrenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListZnodeChildrenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -14159,6 +17454,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ListZnodeChildrenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ListZnodeChildrenResponse:
+        """
+        @summary Queries the child nodes of a ZooKeeper node.
+        
+        @param request: ListZnodeChildrenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListZnodeChildrenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -14190,6 +17492,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListZnodeChildrenRequest,
     ) -> mse_20190531_models.ListZnodeChildrenResponse:
+        """
+        @summary Queries the child nodes of a ZooKeeper node.
+        
+        @param request: ListZnodeChildrenRequest
+        @return: ListZnodeChildrenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_znode_children_with_options(request, runtime)
 
@@ -14197,6 +17505,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ListZnodeChildrenRequest,
     ) -> mse_20190531_models.ListZnodeChildrenResponse:
+        """
+        @summary Queries the child nodes of a ZooKeeper node.
+        
+        @param request: ListZnodeChildrenRequest
+        @return: ListZnodeChildrenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_znode_children_with_options_async(request, runtime)
 
@@ -14205,6 +17519,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.ModifyGovernanceKubernetesClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ModifyGovernanceKubernetesClusterResponse:
+        """
+        @summary Modifies the information about a cluster for which Microservice Governance is enabled.
+        
+        @param tmp_req: ModifyGovernanceKubernetesClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyGovernanceKubernetesClusterResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.ModifyGovernanceKubernetesClusterShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -14245,6 +17566,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.ModifyGovernanceKubernetesClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ModifyGovernanceKubernetesClusterResponse:
+        """
+        @summary Modifies the information about a cluster for which Microservice Governance is enabled.
+        
+        @param tmp_req: ModifyGovernanceKubernetesClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyGovernanceKubernetesClusterResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.ModifyGovernanceKubernetesClusterShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -14284,6 +17612,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ModifyGovernanceKubernetesClusterRequest,
     ) -> mse_20190531_models.ModifyGovernanceKubernetesClusterResponse:
+        """
+        @summary Modifies the information about a cluster for which Microservice Governance is enabled.
+        
+        @param request: ModifyGovernanceKubernetesClusterRequest
+        @return: ModifyGovernanceKubernetesClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_governance_kubernetes_cluster_with_options(request, runtime)
 
@@ -14291,6 +17625,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ModifyGovernanceKubernetesClusterRequest,
     ) -> mse_20190531_models.ModifyGovernanceKubernetesClusterResponse:
+        """
+        @summary Modifies the information about a cluster for which Microservice Governance is enabled.
+        
+        @param request: ModifyGovernanceKubernetesClusterRequest
+        @return: ModifyGovernanceKubernetesClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_governance_kubernetes_cluster_with_options_async(request, runtime)
 
@@ -14299,6 +17639,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ModifyLosslessRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ModifyLosslessRuleResponse:
+        """
+        @summary Modifies configurations of the lossless online and offline feature.
+        
+        @param request: ModifyLosslessRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyLosslessRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -14351,6 +17698,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.ModifyLosslessRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.ModifyLosslessRuleResponse:
+        """
+        @summary Modifies configurations of the lossless online and offline feature.
+        
+        @param request: ModifyLosslessRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyLosslessRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -14402,6 +17756,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ModifyLosslessRuleRequest,
     ) -> mse_20190531_models.ModifyLosslessRuleResponse:
+        """
+        @summary Modifies configurations of the lossless online and offline feature.
+        
+        @param request: ModifyLosslessRuleRequest
+        @return: ModifyLosslessRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_lossless_rule_with_options(request, runtime)
 
@@ -14409,6 +17769,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.ModifyLosslessRuleRequest,
     ) -> mse_20190531_models.ModifyLosslessRuleResponse:
+        """
+        @summary Modifies configurations of the lossless online and offline feature.
+        
+        @param request: ModifyLosslessRuleRequest
+        @return: ModifyLosslessRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_lossless_rule_with_options_async(request, runtime)
 
@@ -14417,6 +17783,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.OfflineGatewayRouteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.OfflineGatewayRouteResponse:
+        """
+        @summary Unpublishes a route for a gateway.
+        
+        @param request: OfflineGatewayRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OfflineGatewayRouteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -14449,6 +17822,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.OfflineGatewayRouteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.OfflineGatewayRouteResponse:
+        """
+        @summary Unpublishes a route for a gateway.
+        
+        @param request: OfflineGatewayRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OfflineGatewayRouteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -14480,6 +17860,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.OfflineGatewayRouteRequest,
     ) -> mse_20190531_models.OfflineGatewayRouteResponse:
+        """
+        @summary Unpublishes a route for a gateway.
+        
+        @param request: OfflineGatewayRouteRequest
+        @return: OfflineGatewayRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.offline_gateway_route_with_options(request, runtime)
 
@@ -14487,6 +17873,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.OfflineGatewayRouteRequest,
     ) -> mse_20190531_models.OfflineGatewayRouteResponse:
+        """
+        @summary Unpublishes a route for a gateway.
+        
+        @param request: OfflineGatewayRouteRequest
+        @return: OfflineGatewayRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.offline_gateway_route_with_options_async(request, runtime)
 
@@ -14495,6 +17887,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.OrderClusterHealthCheckRiskNoticeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.OrderClusterHealthCheckRiskNoticeResponse:
+        """
+        @summary Subscribes to the notification feature if a risk is detected during a health check.
+        
+        @param request: OrderClusterHealthCheckRiskNoticeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OrderClusterHealthCheckRiskNoticeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -14535,6 +17934,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.OrderClusterHealthCheckRiskNoticeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.OrderClusterHealthCheckRiskNoticeResponse:
+        """
+        @summary Subscribes to the notification feature if a risk is detected during a health check.
+        
+        @param request: OrderClusterHealthCheckRiskNoticeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OrderClusterHealthCheckRiskNoticeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -14574,6 +17980,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.OrderClusterHealthCheckRiskNoticeRequest,
     ) -> mse_20190531_models.OrderClusterHealthCheckRiskNoticeResponse:
+        """
+        @summary Subscribes to the notification feature if a risk is detected during a health check.
+        
+        @param request: OrderClusterHealthCheckRiskNoticeRequest
+        @return: OrderClusterHealthCheckRiskNoticeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.order_cluster_health_check_risk_notice_with_options(request, runtime)
 
@@ -14581,6 +17993,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.OrderClusterHealthCheckRiskNoticeRequest,
     ) -> mse_20190531_models.OrderClusterHealthCheckRiskNoticeResponse:
+        """
+        @summary Subscribes to the notification feature if a risk is detected during a health check.
+        
+        @param request: OrderClusterHealthCheckRiskNoticeRequest
+        @return: OrderClusterHealthCheckRiskNoticeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.order_cluster_health_check_risk_notice_with_options_async(request, runtime)
 
@@ -14589,6 +18007,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.PullServicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.PullServicesResponse:
+        """
+        @summary Queries all the microservices of a service source.
+        
+        @param request: PullServicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PullServicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -14623,6 +18048,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.PullServicesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.PullServicesResponse:
+        """
+        @summary Queries all the microservices of a service source.
+        
+        @param request: PullServicesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PullServicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -14656,6 +18088,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.PullServicesRequest,
     ) -> mse_20190531_models.PullServicesResponse:
+        """
+        @summary Queries all the microservices of a service source.
+        
+        @param request: PullServicesRequest
+        @return: PullServicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.pull_services_with_options(request, runtime)
 
@@ -14663,6 +18101,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.PullServicesRequest,
     ) -> mse_20190531_models.PullServicesResponse:
+        """
+        @summary Queries all the microservices of a service source.
+        
+        @param request: PullServicesRequest
+        @return: PullServicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.pull_services_with_options_async(request, runtime)
 
@@ -14671,6 +18115,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.PutClusterHealthCheckTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.PutClusterHealthCheckTaskResponse:
+        """
+        @summary Initiates a task to check risk evaluation for an instance.
+        
+        @param request: PutClusterHealthCheckTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutClusterHealthCheckTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -14701,6 +18152,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.PutClusterHealthCheckTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.PutClusterHealthCheckTaskResponse:
+        """
+        @summary Initiates a task to check risk evaluation for an instance.
+        
+        @param request: PutClusterHealthCheckTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PutClusterHealthCheckTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -14730,6 +18188,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.PutClusterHealthCheckTaskRequest,
     ) -> mse_20190531_models.PutClusterHealthCheckTaskResponse:
+        """
+        @summary Initiates a task to check risk evaluation for an instance.
+        
+        @param request: PutClusterHealthCheckTaskRequest
+        @return: PutClusterHealthCheckTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.put_cluster_health_check_task_with_options(request, runtime)
 
@@ -14737,6 +18201,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.PutClusterHealthCheckTaskRequest,
     ) -> mse_20190531_models.PutClusterHealthCheckTaskResponse:
+        """
+        @summary Initiates a task to check risk evaluation for an instance.
+        
+        @param request: PutClusterHealthCheckTaskRequest
+        @return: PutClusterHealthCheckTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.put_cluster_health_check_task_with_options_async(request, runtime)
 
@@ -14745,6 +18215,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.QueryAllSwimmingLaneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QueryAllSwimmingLaneResponse:
+        """
+        @summary Queries all the lanes in a lane group.
+        
+        @param request: QueryAllSwimmingLaneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAllSwimmingLaneResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -14777,6 +18254,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.QueryAllSwimmingLaneRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QueryAllSwimmingLaneResponse:
+        """
+        @summary Queries all the lanes in a lane group.
+        
+        @param request: QueryAllSwimmingLaneRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAllSwimmingLaneResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -14808,6 +18292,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.QueryAllSwimmingLaneRequest,
     ) -> mse_20190531_models.QueryAllSwimmingLaneResponse:
+        """
+        @summary Queries all the lanes in a lane group.
+        
+        @param request: QueryAllSwimmingLaneRequest
+        @return: QueryAllSwimmingLaneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_all_swimming_lane_with_options(request, runtime)
 
@@ -14815,6 +18305,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.QueryAllSwimmingLaneRequest,
     ) -> mse_20190531_models.QueryAllSwimmingLaneResponse:
+        """
+        @summary Queries all the lanes in a lane group.
+        
+        @param request: QueryAllSwimmingLaneRequest
+        @return: QueryAllSwimmingLaneResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_all_swimming_lane_with_options_async(request, runtime)
 
@@ -14823,6 +18319,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.QueryAllSwimmingLaneGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QueryAllSwimmingLaneGroupResponse:
+        """
+        @summary Queries all lane groups.
+        
+        @param request: QueryAllSwimmingLaneGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAllSwimmingLaneGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -14853,6 +18356,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.QueryAllSwimmingLaneGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QueryAllSwimmingLaneGroupResponse:
+        """
+        @summary Queries all lane groups.
+        
+        @param request: QueryAllSwimmingLaneGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryAllSwimmingLaneGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -14882,6 +18392,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.QueryAllSwimmingLaneGroupRequest,
     ) -> mse_20190531_models.QueryAllSwimmingLaneGroupResponse:
+        """
+        @summary Queries all lane groups.
+        
+        @param request: QueryAllSwimmingLaneGroupRequest
+        @return: QueryAllSwimmingLaneGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_all_swimming_lane_group_with_options(request, runtime)
 
@@ -14889,6 +18405,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.QueryAllSwimmingLaneGroupRequest,
     ) -> mse_20190531_models.QueryAllSwimmingLaneGroupResponse:
+        """
+        @summary Queries all lane groups.
+        
+        @param request: QueryAllSwimmingLaneGroupRequest
+        @return: QueryAllSwimmingLaneGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_all_swimming_lane_group_with_options_async(request, runtime)
 
@@ -14897,6 +18419,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.QueryBusinessLocationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QueryBusinessLocationsResponse:
+        """
+        @summary Queries information about regions.
+        
+        @param request: QueryBusinessLocationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryBusinessLocationsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -14923,6 +18452,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.QueryBusinessLocationsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QueryBusinessLocationsResponse:
+        """
+        @summary Queries information about regions.
+        
+        @param request: QueryBusinessLocationsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryBusinessLocationsResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -14948,6 +18484,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.QueryBusinessLocationsRequest,
     ) -> mse_20190531_models.QueryBusinessLocationsResponse:
+        """
+        @summary Queries information about regions.
+        
+        @param request: QueryBusinessLocationsRequest
+        @return: QueryBusinessLocationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_business_locations_with_options(request, runtime)
 
@@ -14955,6 +18497,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.QueryBusinessLocationsRequest,
     ) -> mse_20190531_models.QueryBusinessLocationsResponse:
+        """
+        @summary Queries information about regions.
+        
+        @param request: QueryBusinessLocationsRequest
+        @return: QueryBusinessLocationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_business_locations_with_options_async(request, runtime)
 
@@ -14963,6 +18511,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.QueryClusterDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QueryClusterDetailResponse:
+        """
+        @summary Queries the details of an instance.
+        
+        @param request: QueryClusterDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryClusterDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -14997,6 +18552,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.QueryClusterDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QueryClusterDetailResponse:
+        """
+        @summary Queries the details of an instance.
+        
+        @param request: QueryClusterDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryClusterDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -15030,6 +18592,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.QueryClusterDetailRequest,
     ) -> mse_20190531_models.QueryClusterDetailResponse:
+        """
+        @summary Queries the details of an instance.
+        
+        @param request: QueryClusterDetailRequest
+        @return: QueryClusterDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_cluster_detail_with_options(request, runtime)
 
@@ -15037,6 +18605,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.QueryClusterDetailRequest,
     ) -> mse_20190531_models.QueryClusterDetailResponse:
+        """
+        @summary Queries the details of an instance.
+        
+        @param request: QueryClusterDetailRequest
+        @return: QueryClusterDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_cluster_detail_with_options_async(request, runtime)
 
@@ -15045,6 +18619,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.QueryClusterDiskSpecificationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QueryClusterDiskSpecificationResponse:
+        """
+        @summary Queries disk specifications that are supported by an instance.
+        
+        @param request: QueryClusterDiskSpecificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryClusterDiskSpecificationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -15075,6 +18656,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.QueryClusterDiskSpecificationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QueryClusterDiskSpecificationResponse:
+        """
+        @summary Queries disk specifications that are supported by an instance.
+        
+        @param request: QueryClusterDiskSpecificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryClusterDiskSpecificationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -15104,6 +18692,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.QueryClusterDiskSpecificationRequest,
     ) -> mse_20190531_models.QueryClusterDiskSpecificationResponse:
+        """
+        @summary Queries disk specifications that are supported by an instance.
+        
+        @param request: QueryClusterDiskSpecificationRequest
+        @return: QueryClusterDiskSpecificationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_cluster_disk_specification_with_options(request, runtime)
 
@@ -15111,6 +18705,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.QueryClusterDiskSpecificationRequest,
     ) -> mse_20190531_models.QueryClusterDiskSpecificationResponse:
+        """
+        @summary Queries disk specifications that are supported by an instance.
+        
+        @param request: QueryClusterDiskSpecificationRequest
+        @return: QueryClusterDiskSpecificationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_cluster_disk_specification_with_options_async(request, runtime)
 
@@ -15119,6 +18719,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.QueryClusterInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QueryClusterInfoResponse:
+        """
+        @summary Queries the static information of an instance.
+        
+        @param request: QueryClusterInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryClusterInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -15159,6 +18766,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.QueryClusterInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QueryClusterInfoResponse:
+        """
+        @summary Queries the static information of an instance.
+        
+        @param request: QueryClusterInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryClusterInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -15198,6 +18812,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.QueryClusterInfoRequest,
     ) -> mse_20190531_models.QueryClusterInfoResponse:
+        """
+        @summary Queries the static information of an instance.
+        
+        @param request: QueryClusterInfoRequest
+        @return: QueryClusterInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_cluster_info_with_options(request, runtime)
 
@@ -15205,6 +18825,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.QueryClusterInfoRequest,
     ) -> mse_20190531_models.QueryClusterInfoResponse:
+        """
+        @summary Queries the static information of an instance.
+        
+        @param request: QueryClusterInfoRequest
+        @return: QueryClusterInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_cluster_info_with_options_async(request, runtime)
 
@@ -15213,6 +18839,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.QueryClusterSpecificationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QueryClusterSpecificationResponse:
+        """
+        @summary Queries the information of supported instance specifications.
+        
+        @param request: QueryClusterSpecificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryClusterSpecificationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -15245,6 +18878,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.QueryClusterSpecificationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QueryClusterSpecificationResponse:
+        """
+        @summary Queries the information of supported instance specifications.
+        
+        @param request: QueryClusterSpecificationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryClusterSpecificationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -15276,6 +18916,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.QueryClusterSpecificationRequest,
     ) -> mse_20190531_models.QueryClusterSpecificationResponse:
+        """
+        @summary Queries the information of supported instance specifications.
+        
+        @param request: QueryClusterSpecificationRequest
+        @return: QueryClusterSpecificationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_cluster_specification_with_options(request, runtime)
 
@@ -15283,6 +18929,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.QueryClusterSpecificationRequest,
     ) -> mse_20190531_models.QueryClusterSpecificationResponse:
+        """
+        @summary Queries the information of supported instance specifications.
+        
+        @param request: QueryClusterSpecificationRequest
+        @return: QueryClusterSpecificationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_cluster_specification_with_options_async(request, runtime)
 
@@ -15291,6 +18943,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.QueryConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QueryConfigResponse:
+        """
+        @summary Queries configuration information of an instance.
+        
+        @param request: QueryConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -15329,6 +18988,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.QueryConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QueryConfigResponse:
+        """
+        @summary Queries configuration information of an instance.
+        
+        @param request: QueryConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -15366,6 +19032,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.QueryConfigRequest,
     ) -> mse_20190531_models.QueryConfigResponse:
+        """
+        @summary Queries configuration information of an instance.
+        
+        @param request: QueryConfigRequest
+        @return: QueryConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_config_with_options(request, runtime)
 
@@ -15373,6 +19045,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.QueryConfigRequest,
     ) -> mse_20190531_models.QueryConfigResponse:
+        """
+        @summary Queries configuration information of an instance.
+        
+        @param request: QueryConfigRequest
+        @return: QueryConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_config_with_options_async(request, runtime)
 
@@ -15381,6 +19059,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.QueryGatewayRegionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QueryGatewayRegionResponse:
+        """
+        @summary Queries the regions supported by a gateway.
+        
+        @param request: QueryGatewayRegionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryGatewayRegionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -15409,6 +19094,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.QueryGatewayRegionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QueryGatewayRegionResponse:
+        """
+        @summary Queries the regions supported by a gateway.
+        
+        @param request: QueryGatewayRegionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryGatewayRegionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -15436,6 +19128,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.QueryGatewayRegionRequest,
     ) -> mse_20190531_models.QueryGatewayRegionResponse:
+        """
+        @summary Queries the regions supported by a gateway.
+        
+        @param request: QueryGatewayRegionRequest
+        @return: QueryGatewayRegionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_gateway_region_with_options(request, runtime)
 
@@ -15443,6 +19141,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.QueryGatewayRegionRequest,
     ) -> mse_20190531_models.QueryGatewayRegionResponse:
+        """
+        @summary Queries the regions supported by a gateway.
+        
+        @param request: QueryGatewayRegionRequest
+        @return: QueryGatewayRegionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_gateway_region_with_options_async(request, runtime)
 
@@ -15451,6 +19155,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.QueryGatewayTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QueryGatewayTypeResponse:
+        """
+        @summary Queries available gateway types.
+        
+        @param request: QueryGatewayTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryGatewayTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -15479,6 +19190,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.QueryGatewayTypeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QueryGatewayTypeResponse:
+        """
+        @summary Queries available gateway types.
+        
+        @param request: QueryGatewayTypeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryGatewayTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -15506,6 +19224,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.QueryGatewayTypeRequest,
     ) -> mse_20190531_models.QueryGatewayTypeResponse:
+        """
+        @summary Queries available gateway types.
+        
+        @param request: QueryGatewayTypeRequest
+        @return: QueryGatewayTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_gateway_type_with_options(request, runtime)
 
@@ -15513,6 +19237,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.QueryGatewayTypeRequest,
     ) -> mse_20190531_models.QueryGatewayTypeResponse:
+        """
+        @summary Queries available gateway types.
+        
+        @param request: QueryGatewayTypeRequest
+        @return: QueryGatewayTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_gateway_type_with_options_async(request, runtime)
 
@@ -15521,6 +19251,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.QueryGovernanceKubernetesClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QueryGovernanceKubernetesClusterResponse:
+        """
+        @summary Queries the Kubernetes clusters for which Microservices Governance is activated.
+        
+        @param request: QueryGovernanceKubernetesClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryGovernanceKubernetesClusterResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -15547,6 +19284,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.QueryGovernanceKubernetesClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QueryGovernanceKubernetesClusterResponse:
+        """
+        @summary Queries the Kubernetes clusters for which Microservices Governance is activated.
+        
+        @param request: QueryGovernanceKubernetesClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryGovernanceKubernetesClusterResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -15572,6 +19316,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.QueryGovernanceKubernetesClusterRequest,
     ) -> mse_20190531_models.QueryGovernanceKubernetesClusterResponse:
+        """
+        @summary Queries the Kubernetes clusters for which Microservices Governance is activated.
+        
+        @param request: QueryGovernanceKubernetesClusterRequest
+        @return: QueryGovernanceKubernetesClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_governance_kubernetes_cluster_with_options(request, runtime)
 
@@ -15579,6 +19329,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.QueryGovernanceKubernetesClusterRequest,
     ) -> mse_20190531_models.QueryGovernanceKubernetesClusterResponse:
+        """
+        @summary Queries the Kubernetes clusters for which Microservices Governance is activated.
+        
+        @param request: QueryGovernanceKubernetesClusterRequest
+        @return: QueryGovernanceKubernetesClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_governance_kubernetes_cluster_with_options_async(request, runtime)
 
@@ -15587,6 +19343,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.QueryInstancesInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QueryInstancesInfoResponse:
+        """
+        @summary Queries the runtime data of a specified cluster.
+        
+        @param request: QueryInstancesInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryInstancesInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -15625,6 +19388,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.QueryInstancesInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QueryInstancesInfoResponse:
+        """
+        @summary Queries the runtime data of a specified cluster.
+        
+        @param request: QueryInstancesInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryInstancesInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -15662,6 +19432,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.QueryInstancesInfoRequest,
     ) -> mse_20190531_models.QueryInstancesInfoResponse:
+        """
+        @summary Queries the runtime data of a specified cluster.
+        
+        @param request: QueryInstancesInfoRequest
+        @return: QueryInstancesInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_instances_info_with_options(request, runtime)
 
@@ -15669,6 +19445,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.QueryInstancesInfoRequest,
     ) -> mse_20190531_models.QueryInstancesInfoResponse:
+        """
+        @summary Queries the runtime data of a specified cluster.
+        
+        @param request: QueryInstancesInfoRequest
+        @return: QueryInstancesInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_instances_info_with_options_async(request, runtime)
 
@@ -15677,6 +19459,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.QueryMonitorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QueryMonitorResponse:
+        """
+        @summary Queries monitoring information.
+        
+        @param request: QueryMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMonitorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -15717,6 +19506,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.QueryMonitorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QueryMonitorResponse:
+        """
+        @summary Queries monitoring information.
+        
+        @param request: QueryMonitorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryMonitorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -15756,6 +19552,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.QueryMonitorRequest,
     ) -> mse_20190531_models.QueryMonitorResponse:
+        """
+        @summary Queries monitoring information.
+        
+        @param request: QueryMonitorRequest
+        @return: QueryMonitorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_monitor_with_options(request, runtime)
 
@@ -15763,6 +19565,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.QueryMonitorRequest,
     ) -> mse_20190531_models.QueryMonitorResponse:
+        """
+        @summary Queries monitoring information.
+        
+        @param request: QueryMonitorRequest
+        @return: QueryMonitorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_monitor_with_options_async(request, runtime)
 
@@ -15771,6 +19579,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.QueryNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QueryNamespaceResponse:
+        """
+        @summary 查询MSE命名空间
+        
+        @param request: QueryNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -15803,6 +19618,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.QueryNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QueryNamespaceResponse:
+        """
+        @summary 查询MSE命名空间
+        
+        @param request: QueryNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -15834,6 +19656,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.QueryNamespaceRequest,
     ) -> mse_20190531_models.QueryNamespaceResponse:
+        """
+        @summary 查询MSE命名空间
+        
+        @param request: QueryNamespaceRequest
+        @return: QueryNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_namespace_with_options(request, runtime)
 
@@ -15841,6 +19669,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.QueryNamespaceRequest,
     ) -> mse_20190531_models.QueryNamespaceResponse:
+        """
+        @summary 查询MSE命名空间
+        
+        @param request: QueryNamespaceRequest
+        @return: QueryNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_namespace_with_options_async(request, runtime)
 
@@ -15849,6 +19683,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.QuerySlbSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QuerySlbSpecResponse:
+        """
+        @summary Queries the type of a Server Load Balancer (SLB) instance.
+        
+        @param request: QuerySlbSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySlbSpecResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -15875,6 +19716,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.QuerySlbSpecRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QuerySlbSpecResponse:
+        """
+        @summary Queries the type of a Server Load Balancer (SLB) instance.
+        
+        @param request: QuerySlbSpecRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySlbSpecResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -15900,6 +19748,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.QuerySlbSpecRequest,
     ) -> mse_20190531_models.QuerySlbSpecResponse:
+        """
+        @summary Queries the type of a Server Load Balancer (SLB) instance.
+        
+        @param request: QuerySlbSpecRequest
+        @return: QuerySlbSpecResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_slb_spec_with_options(request, runtime)
 
@@ -15907,6 +19761,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.QuerySlbSpecRequest,
     ) -> mse_20190531_models.QuerySlbSpecResponse:
+        """
+        @summary Queries the type of a Server Load Balancer (SLB) instance.
+        
+        @param request: QuerySlbSpecRequest
+        @return: QuerySlbSpecResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_slb_spec_with_options_async(request, runtime)
 
@@ -15915,6 +19775,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.QuerySwimmingLaneByIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QuerySwimmingLaneByIdResponse:
+        """
+        @summary Queries the information about a lane based on the lane ID.
+        
+        @param request: QuerySwimmingLaneByIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySwimmingLaneByIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -15947,6 +19814,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.QuerySwimmingLaneByIdRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QuerySwimmingLaneByIdResponse:
+        """
+        @summary Queries the information about a lane based on the lane ID.
+        
+        @param request: QuerySwimmingLaneByIdRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QuerySwimmingLaneByIdResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -15978,6 +19852,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.QuerySwimmingLaneByIdRequest,
     ) -> mse_20190531_models.QuerySwimmingLaneByIdResponse:
+        """
+        @summary Queries the information about a lane based on the lane ID.
+        
+        @param request: QuerySwimmingLaneByIdRequest
+        @return: QuerySwimmingLaneByIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_swimming_lane_by_id_with_options(request, runtime)
 
@@ -15985,6 +19865,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.QuerySwimmingLaneByIdRequest,
     ) -> mse_20190531_models.QuerySwimmingLaneByIdResponse:
+        """
+        @summary Queries the information about a lane based on the lane ID.
+        
+        @param request: QuerySwimmingLaneByIdRequest
+        @return: QuerySwimmingLaneByIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_swimming_lane_by_id_with_options_async(request, runtime)
 
@@ -15993,6 +19879,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.QueryZnodeDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QueryZnodeDetailResponse:
+        """
+        @summary Queries the information about a ZooKeeper node.
+        
+        @param request: QueryZnodeDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryZnodeDetailResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -16019,6 +19912,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.QueryZnodeDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.QueryZnodeDetailResponse:
+        """
+        @summary Queries the information about a ZooKeeper node.
+        
+        @param request: QueryZnodeDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryZnodeDetailResponse
+        """
         UtilClient.validate_model(request)
         query = OpenApiUtilClient.query(UtilClient.to_map(request))
         req = open_api_models.OpenApiRequest(
@@ -16044,6 +19944,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.QueryZnodeDetailRequest,
     ) -> mse_20190531_models.QueryZnodeDetailResponse:
+        """
+        @summary Queries the information about a ZooKeeper node.
+        
+        @param request: QueryZnodeDetailRequest
+        @return: QueryZnodeDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_znode_detail_with_options(request, runtime)
 
@@ -16051,6 +19957,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.QueryZnodeDetailRequest,
     ) -> mse_20190531_models.QueryZnodeDetailResponse:
+        """
+        @summary Queries the information about a ZooKeeper node.
+        
+        @param request: QueryZnodeDetailRequest
+        @return: QueryZnodeDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_znode_detail_with_options_async(request, runtime)
 
@@ -16059,6 +19971,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.RemoveApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.RemoveApplicationResponse:
+        """
+        @summary 删除单个应用
+        
+        @param request: RemoveApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -16095,6 +20014,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.RemoveApplicationRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.RemoveApplicationResponse:
+        """
+        @summary 删除单个应用
+        
+        @param request: RemoveApplicationRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveApplicationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -16130,6 +20056,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.RemoveApplicationRequest,
     ) -> mse_20190531_models.RemoveApplicationResponse:
+        """
+        @summary 删除单个应用
+        
+        @param request: RemoveApplicationRequest
+        @return: RemoveApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_application_with_options(request, runtime)
 
@@ -16137,6 +20069,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.RemoveApplicationRequest,
     ) -> mse_20190531_models.RemoveApplicationResponse:
+        """
+        @summary 删除单个应用
+        
+        @param request: RemoveApplicationRequest
+        @return: RemoveApplicationResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_application_with_options_async(request, runtime)
 
@@ -16145,6 +20083,11 @@ class Client(OpenApiClient):
         request: mse_20190531_models.RemoveAuthPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.RemoveAuthPolicyResponse:
+        """
+        @param request: RemoveAuthPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveAuthPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -16175,6 +20118,11 @@ class Client(OpenApiClient):
         request: mse_20190531_models.RemoveAuthPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.RemoveAuthPolicyResponse:
+        """
+        @param request: RemoveAuthPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveAuthPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -16204,6 +20152,10 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.RemoveAuthPolicyRequest,
     ) -> mse_20190531_models.RemoveAuthPolicyResponse:
+        """
+        @param request: RemoveAuthPolicyRequest
+        @return: RemoveAuthPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_auth_policy_with_options(request, runtime)
 
@@ -16211,6 +20163,10 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.RemoveAuthPolicyRequest,
     ) -> mse_20190531_models.RemoveAuthPolicyResponse:
+        """
+        @param request: RemoveAuthPolicyRequest
+        @return: RemoveAuthPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_auth_policy_with_options_async(request, runtime)
 
@@ -16219,6 +20175,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.RestartClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.RestartClusterResponse:
+        """
+        @summary Restarts a registry.
+        
+        @param request: RestartClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -16255,6 +20218,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.RestartClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.RestartClusterResponse:
+        """
+        @summary Restarts a registry.
+        
+        @param request: RestartClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -16290,6 +20260,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.RestartClusterRequest,
     ) -> mse_20190531_models.RestartClusterResponse:
+        """
+        @summary Restarts a registry.
+        
+        @param request: RestartClusterRequest
+        @return: RestartClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.restart_cluster_with_options(request, runtime)
 
@@ -16297,6 +20273,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.RestartClusterRequest,
     ) -> mse_20190531_models.RestartClusterResponse:
+        """
+        @summary Restarts a registry.
+        
+        @param request: RestartClusterRequest
+        @return: RestartClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.restart_cluster_with_options_async(request, runtime)
 
@@ -16305,6 +20287,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.RetryClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.RetryClusterResponse:
+        """
+        @summary Retries a cluster.
+        
+        @param request: RetryClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RetryClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -16337,6 +20326,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.RetryClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.RetryClusterResponse:
+        """
+        @summary Retries a cluster.
+        
+        @param request: RetryClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RetryClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -16368,6 +20364,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.RetryClusterRequest,
     ) -> mse_20190531_models.RetryClusterResponse:
+        """
+        @summary Retries a cluster.
+        
+        @param request: RetryClusterRequest
+        @return: RetryClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.retry_cluster_with_options(request, runtime)
 
@@ -16375,6 +20377,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.RetryClusterRequest,
     ) -> mse_20190531_models.RetryClusterResponse:
+        """
+        @summary Retries a cluster.
+        
+        @param request: RetryClusterRequest
+        @return: RetryClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.retry_cluster_with_options_async(request, runtime)
 
@@ -16383,6 +20391,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.SelectGatewaySlbRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.SelectGatewaySlbResponse:
+        """
+        @summary Queries an idle Server Load Balancer (SLB) instance that is associated with a gateway.
+        
+        @param request: SelectGatewaySlbRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SelectGatewaySlbResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -16417,6 +20432,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.SelectGatewaySlbRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.SelectGatewaySlbResponse:
+        """
+        @summary Queries an idle Server Load Balancer (SLB) instance that is associated with a gateway.
+        
+        @param request: SelectGatewaySlbRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SelectGatewaySlbResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -16450,6 +20472,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.SelectGatewaySlbRequest,
     ) -> mse_20190531_models.SelectGatewaySlbResponse:
+        """
+        @summary Queries an idle Server Load Balancer (SLB) instance that is associated with a gateway.
+        
+        @param request: SelectGatewaySlbRequest
+        @return: SelectGatewaySlbResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.select_gateway_slb_with_options(request, runtime)
 
@@ -16457,6 +20485,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.SelectGatewaySlbRequest,
     ) -> mse_20190531_models.SelectGatewaySlbResponse:
+        """
+        @summary Queries an idle Server Load Balancer (SLB) instance that is associated with a gateway.
+        
+        @param request: SelectGatewaySlbRequest
+        @return: SelectGatewaySlbResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.select_gateway_slb_with_options_async(request, runtime)
 
@@ -16465,6 +20499,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.TagResourcesResponse:
+        """
+        @summary Tags a specified resource.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -16501,6 +20542,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.TagResourcesResponse:
+        """
+        @summary Tags a specified resource.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -16536,6 +20584,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.TagResourcesRequest,
     ) -> mse_20190531_models.TagResourcesResponse:
+        """
+        @summary Tags a specified resource.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.tag_resources_with_options(request, runtime)
 
@@ -16543,6 +20597,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.TagResourcesRequest,
     ) -> mse_20190531_models.TagResourcesResponse:
+        """
+        @summary Tags a specified resource.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
@@ -16551,6 +20611,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UntagResourcesResponse:
+        """
+        @summary Untags resources.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -16589,6 +20656,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UntagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UntagResourcesResponse:
+        """
+        @summary Untags resources.
+        
+        @param request: UntagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UntagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -16626,6 +20700,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UntagResourcesRequest,
     ) -> mse_20190531_models.UntagResourcesResponse:
+        """
+        @summary Untags resources.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.untag_resources_with_options(request, runtime)
 
@@ -16633,6 +20713,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UntagResourcesRequest,
     ) -> mse_20190531_models.UntagResourcesResponse:
+        """
+        @summary Untags resources.
+        
+        @param request: UntagResourcesRequest
+        @return: UntagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
 
@@ -16641,6 +20727,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateAclRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateAclResponse:
+        """
+        @summary Modifies an IP address whitelist.
+        
+        @param request: UpdateAclRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAclResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -16673,6 +20766,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateAclRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateAclResponse:
+        """
+        @summary Modifies an IP address whitelist.
+        
+        @param request: UpdateAclRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAclResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -16704,6 +20804,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateAclRequest,
     ) -> mse_20190531_models.UpdateAclResponse:
+        """
+        @summary Modifies an IP address whitelist.
+        
+        @param request: UpdateAclRequest
+        @return: UpdateAclResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_acl_with_options(request, runtime)
 
@@ -16711,6 +20817,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateAclRequest,
     ) -> mse_20190531_models.UpdateAclResponse:
+        """
+        @summary Modifies an IP address whitelist.
+        
+        @param request: UpdateAclRequest
+        @return: UpdateAclResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_acl_with_options_async(request, runtime)
 
@@ -16719,6 +20831,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateAuthPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateAuthPolicyResponse:
+        """
+        @summary Updates a service authentication rule.
+        
+        @param request: UpdateAuthPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAuthPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -16765,6 +20884,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateAuthPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateAuthPolicyResponse:
+        """
+        @summary Updates a service authentication rule.
+        
+        @param request: UpdateAuthPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAuthPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -16810,6 +20936,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateAuthPolicyRequest,
     ) -> mse_20190531_models.UpdateAuthPolicyResponse:
+        """
+        @summary Updates a service authentication rule.
+        
+        @param request: UpdateAuthPolicyRequest
+        @return: UpdateAuthPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_auth_policy_with_options(request, runtime)
 
@@ -16817,6 +20949,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateAuthPolicyRequest,
     ) -> mse_20190531_models.UpdateAuthPolicyResponse:
+        """
+        @summary Updates a service authentication rule.
+        
+        @param request: UpdateAuthPolicyRequest
+        @return: UpdateAuthPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_auth_policy_with_options_async(request, runtime)
 
@@ -16825,6 +20963,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateBlackWhiteListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateBlackWhiteListResponse:
+        """
+        @summary Modifies the blacklist or whitelist of a gateway.
+        
+        @param request: UpdateBlackWhiteListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateBlackWhiteListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -16873,6 +21018,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateBlackWhiteListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateBlackWhiteListResponse:
+        """
+        @summary Modifies the blacklist or whitelist of a gateway.
+        
+        @param request: UpdateBlackWhiteListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateBlackWhiteListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -16920,6 +21072,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateBlackWhiteListRequest,
     ) -> mse_20190531_models.UpdateBlackWhiteListResponse:
+        """
+        @summary Modifies the blacklist or whitelist of a gateway.
+        
+        @param request: UpdateBlackWhiteListRequest
+        @return: UpdateBlackWhiteListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_black_white_list_with_options(request, runtime)
 
@@ -16927,6 +21085,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateBlackWhiteListRequest,
     ) -> mse_20190531_models.UpdateBlackWhiteListResponse:
+        """
+        @summary Modifies the blacklist or whitelist of a gateway.
+        
+        @param request: UpdateBlackWhiteListRequest
+        @return: UpdateBlackWhiteListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_black_white_list_with_options_async(request, runtime)
 
@@ -16935,6 +21099,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateCircuitBreakerRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateCircuitBreakerRuleResponse:
+        """
+        @summary Updates a circuit breaking rule.
+        
+        @param request: UpdateCircuitBreakerRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCircuitBreakerRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -16989,6 +21160,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateCircuitBreakerRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateCircuitBreakerRuleResponse:
+        """
+        @summary Updates a circuit breaking rule.
+        
+        @param request: UpdateCircuitBreakerRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCircuitBreakerRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -17042,6 +21220,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateCircuitBreakerRuleRequest,
     ) -> mse_20190531_models.UpdateCircuitBreakerRuleResponse:
+        """
+        @summary Updates a circuit breaking rule.
+        
+        @param request: UpdateCircuitBreakerRuleRequest
+        @return: UpdateCircuitBreakerRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_circuit_breaker_rule_with_options(request, runtime)
 
@@ -17049,6 +21233,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateCircuitBreakerRuleRequest,
     ) -> mse_20190531_models.UpdateCircuitBreakerRuleResponse:
+        """
+        @summary Updates a circuit breaking rule.
+        
+        @param request: UpdateCircuitBreakerRuleRequest
+        @return: UpdateCircuitBreakerRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_circuit_breaker_rule_with_options_async(request, runtime)
 
@@ -17057,6 +21247,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateClusterResponse:
+        """
+        @summary Modifies the information about an instance.
+        
+        @param request: UpdateClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -17095,6 +21292,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateClusterResponse:
+        """
+        @summary Modifies the information about an instance.
+        
+        @param request: UpdateClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -17132,6 +21336,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateClusterRequest,
     ) -> mse_20190531_models.UpdateClusterResponse:
+        """
+        @summary Modifies the information about an instance.
+        
+        @param request: UpdateClusterRequest
+        @return: UpdateClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_cluster_with_options(request, runtime)
 
@@ -17139,6 +21349,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateClusterRequest,
     ) -> mse_20190531_models.UpdateClusterResponse:
+        """
+        @summary Modifies the information about an instance.
+        
+        @param request: UpdateClusterRequest
+        @return: UpdateClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_cluster_with_options_async(request, runtime)
 
@@ -17148,7 +21364,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateClusterSpecResponse:
         """
-        You can call this operation to update the number or specifications of nodes in a pay-as-you-go MSE instance. You are charged when you add nodes or upgrade node specifications. For more information, see \\[Pricing] (`~~1806469~~`).
+        @summary Updates the number or specifications of nodes in a pay-as-you-go Microservices Engine (MSE) instance.
+        
+        @description You can call this operation to update the number or specifications of nodes in a pay-as-you-go MSE instance. You are charged when you add nodes or upgrade node specifications. For more information, see [Pricing] (`~~1806469~~`).
         
         @param request: UpdateClusterSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17197,7 +21415,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateClusterSpecResponse:
         """
-        You can call this operation to update the number or specifications of nodes in a pay-as-you-go MSE instance. You are charged when you add nodes or upgrade node specifications. For more information, see \\[Pricing] (`~~1806469~~`).
+        @summary Updates the number or specifications of nodes in a pay-as-you-go Microservices Engine (MSE) instance.
+        
+        @description You can call this operation to update the number or specifications of nodes in a pay-as-you-go MSE instance. You are charged when you add nodes or upgrade node specifications. For more information, see [Pricing] (`~~1806469~~`).
         
         @param request: UpdateClusterSpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -17245,7 +21465,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateClusterSpecRequest,
     ) -> mse_20190531_models.UpdateClusterSpecResponse:
         """
-        You can call this operation to update the number or specifications of nodes in a pay-as-you-go MSE instance. You are charged when you add nodes or upgrade node specifications. For more information, see \\[Pricing] (`~~1806469~~`).
+        @summary Updates the number or specifications of nodes in a pay-as-you-go Microservices Engine (MSE) instance.
+        
+        @description You can call this operation to update the number or specifications of nodes in a pay-as-you-go MSE instance. You are charged when you add nodes or upgrade node specifications. For more information, see [Pricing] (`~~1806469~~`).
         
         @param request: UpdateClusterSpecRequest
         @return: UpdateClusterSpecResponse
@@ -17258,7 +21480,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateClusterSpecRequest,
     ) -> mse_20190531_models.UpdateClusterSpecResponse:
         """
-        You can call this operation to update the number or specifications of nodes in a pay-as-you-go MSE instance. You are charged when you add nodes or upgrade node specifications. For more information, see \\[Pricing] (`~~1806469~~`).
+        @summary Updates the number or specifications of nodes in a pay-as-you-go Microservices Engine (MSE) instance.
+        
+        @description You can call this operation to update the number or specifications of nodes in a pay-as-you-go MSE instance. You are charged when you add nodes or upgrade node specifications. For more information, see [Pricing] (`~~1806469~~`).
         
         @param request: UpdateClusterSpecRequest
         @return: UpdateClusterSpecResponse
@@ -17271,6 +21495,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateConfigResponse:
+        """
+        @summary Updates the configurations of an instance.
+        
+        @param request: UpdateConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -17351,6 +21582,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateConfigResponse:
+        """
+        @summary Updates the configurations of an instance.
+        
+        @param request: UpdateConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -17430,6 +21668,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateConfigRequest,
     ) -> mse_20190531_models.UpdateConfigResponse:
+        """
+        @summary Updates the configurations of an instance.
+        
+        @param request: UpdateConfigRequest
+        @return: UpdateConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_config_with_options(request, runtime)
 
@@ -17437,6 +21681,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateConfigRequest,
     ) -> mse_20190531_models.UpdateConfigResponse:
+        """
+        @summary Updates the configurations of an instance.
+        
+        @param request: UpdateConfigRequest
+        @return: UpdateConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_config_with_options_async(request, runtime)
 
@@ -17445,6 +21695,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateEngineNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateEngineNamespaceResponse:
+        """
+        @summary Updates a namespace for the Nacos engine.
+        
+        @param request: UpdateEngineNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateEngineNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -17485,6 +21742,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateEngineNamespaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateEngineNamespaceResponse:
+        """
+        @summary Updates a namespace for the Nacos engine.
+        
+        @param request: UpdateEngineNamespaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateEngineNamespaceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -17524,6 +21788,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateEngineNamespaceRequest,
     ) -> mse_20190531_models.UpdateEngineNamespaceResponse:
+        """
+        @summary Updates a namespace for the Nacos engine.
+        
+        @param request: UpdateEngineNamespaceRequest
+        @return: UpdateEngineNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_engine_namespace_with_options(request, runtime)
 
@@ -17531,6 +21801,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateEngineNamespaceRequest,
     ) -> mse_20190531_models.UpdateEngineNamespaceResponse:
+        """
+        @summary Updates a namespace for the Nacos engine.
+        
+        @param request: UpdateEngineNamespaceRequest
+        @return: UpdateEngineNamespaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_engine_namespace_with_options_async(request, runtime)
 
@@ -17539,6 +21815,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateFlowRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateFlowRuleResponse:
+        """
+        @summary Updates a throttling rule.
+        
+        @param request: UpdateFlowRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFlowRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -17583,6 +21866,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateFlowRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateFlowRuleResponse:
+        """
+        @summary Updates a throttling rule.
+        
+        @param request: UpdateFlowRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateFlowRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -17626,6 +21916,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateFlowRuleRequest,
     ) -> mse_20190531_models.UpdateFlowRuleResponse:
+        """
+        @summary Updates a throttling rule.
+        
+        @param request: UpdateFlowRuleRequest
+        @return: UpdateFlowRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_flow_rule_with_options(request, runtime)
 
@@ -17633,6 +21929,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateFlowRuleRequest,
     ) -> mse_20190531_models.UpdateFlowRuleResponse:
+        """
+        @summary Updates a throttling rule.
+        
+        @param request: UpdateFlowRuleRequest
+        @return: UpdateFlowRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_flow_rule_with_options_async(request, runtime)
 
@@ -17641,6 +21943,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateGatewayAuthConsumerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayAuthConsumerResponse:
+        """
+        @summary Updates the consumer on which a gateway performs authentication operations.
+        
+        @param request: UpdateGatewayAuthConsumerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayAuthConsumerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -17691,6 +22000,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateGatewayAuthConsumerRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayAuthConsumerResponse:
+        """
+        @summary Updates the consumer on which a gateway performs authentication operations.
+        
+        @param request: UpdateGatewayAuthConsumerRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayAuthConsumerResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -17740,6 +22056,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayAuthConsumerRequest,
     ) -> mse_20190531_models.UpdateGatewayAuthConsumerResponse:
+        """
+        @summary Updates the consumer on which a gateway performs authentication operations.
+        
+        @param request: UpdateGatewayAuthConsumerRequest
+        @return: UpdateGatewayAuthConsumerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_gateway_auth_consumer_with_options(request, runtime)
 
@@ -17747,6 +22069,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayAuthConsumerRequest,
     ) -> mse_20190531_models.UpdateGatewayAuthConsumerResponse:
+        """
+        @summary Updates the consumer on which a gateway performs authentication operations.
+        
+        @param request: UpdateGatewayAuthConsumerRequest
+        @return: UpdateGatewayAuthConsumerResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_gateway_auth_consumer_with_options_async(request, runtime)
 
@@ -17755,6 +22083,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.UpdateGatewayAuthConsumerResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayAuthConsumerResourceResponse:
+        """
+        @summary Updates a list of resources on which permissions are granted to a gateway authentication consumer.
+        
+        @param tmp_req: UpdateGatewayAuthConsumerResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayAuthConsumerResourceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.UpdateGatewayAuthConsumerResourceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -17793,6 +22128,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.UpdateGatewayAuthConsumerResourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayAuthConsumerResourceResponse:
+        """
+        @summary Updates a list of resources on which permissions are granted to a gateway authentication consumer.
+        
+        @param tmp_req: UpdateGatewayAuthConsumerResourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayAuthConsumerResourceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.UpdateGatewayAuthConsumerResourceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -17830,6 +22172,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayAuthConsumerResourceRequest,
     ) -> mse_20190531_models.UpdateGatewayAuthConsumerResourceResponse:
+        """
+        @summary Updates a list of resources on which permissions are granted to a gateway authentication consumer.
+        
+        @param request: UpdateGatewayAuthConsumerResourceRequest
+        @return: UpdateGatewayAuthConsumerResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_gateway_auth_consumer_resource_with_options(request, runtime)
 
@@ -17837,6 +22185,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayAuthConsumerResourceRequest,
     ) -> mse_20190531_models.UpdateGatewayAuthConsumerResourceResponse:
+        """
+        @summary Updates a list of resources on which permissions are granted to a gateway authentication consumer.
+        
+        @param request: UpdateGatewayAuthConsumerResourceRequest
+        @return: UpdateGatewayAuthConsumerResourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_gateway_auth_consumer_resource_with_options_async(request, runtime)
 
@@ -17845,6 +22199,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateGatewayAuthConsumerResourceStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayAuthConsumerResourceStatusResponse:
+        """
+        @summary Updates the resource authorization status for the consumer on which a gateway performs authentication operations.
+        
+        @param request: UpdateGatewayAuthConsumerResourceStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayAuthConsumerResourceStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -17881,6 +22242,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateGatewayAuthConsumerResourceStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayAuthConsumerResourceStatusResponse:
+        """
+        @summary Updates the resource authorization status for the consumer on which a gateway performs authentication operations.
+        
+        @param request: UpdateGatewayAuthConsumerResourceStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayAuthConsumerResourceStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -17916,6 +22284,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayAuthConsumerResourceStatusRequest,
     ) -> mse_20190531_models.UpdateGatewayAuthConsumerResourceStatusResponse:
+        """
+        @summary Updates the resource authorization status for the consumer on which a gateway performs authentication operations.
+        
+        @param request: UpdateGatewayAuthConsumerResourceStatusRequest
+        @return: UpdateGatewayAuthConsumerResourceStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_gateway_auth_consumer_resource_status_with_options(request, runtime)
 
@@ -17923,6 +22297,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayAuthConsumerResourceStatusRequest,
     ) -> mse_20190531_models.UpdateGatewayAuthConsumerResourceStatusResponse:
+        """
+        @summary Updates the resource authorization status for the consumer on which a gateway performs authentication operations.
+        
+        @param request: UpdateGatewayAuthConsumerResourceStatusRequest
+        @return: UpdateGatewayAuthConsumerResourceStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_gateway_auth_consumer_resource_status_with_options_async(request, runtime)
 
@@ -17931,6 +22311,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateGatewayAuthConsumerStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayAuthConsumerStatusResponse:
+        """
+        @summary Updates the status of the consumer on which a gateway performs authentication operations.
+        
+        @param request: UpdateGatewayAuthConsumerStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayAuthConsumerStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -17965,6 +22352,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateGatewayAuthConsumerStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayAuthConsumerStatusResponse:
+        """
+        @summary Updates the status of the consumer on which a gateway performs authentication operations.
+        
+        @param request: UpdateGatewayAuthConsumerStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayAuthConsumerStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -17998,6 +22392,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayAuthConsumerStatusRequest,
     ) -> mse_20190531_models.UpdateGatewayAuthConsumerStatusResponse:
+        """
+        @summary Updates the status of the consumer on which a gateway performs authentication operations.
+        
+        @param request: UpdateGatewayAuthConsumerStatusRequest
+        @return: UpdateGatewayAuthConsumerStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_gateway_auth_consumer_status_with_options(request, runtime)
 
@@ -18005,6 +22405,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayAuthConsumerStatusRequest,
     ) -> mse_20190531_models.UpdateGatewayAuthConsumerStatusResponse:
+        """
+        @summary Updates the status of the consumer on which a gateway performs authentication operations.
+        
+        @param request: UpdateGatewayAuthConsumerStatusRequest
+        @return: UpdateGatewayAuthConsumerStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_gateway_auth_consumer_status_with_options_async(request, runtime)
 
@@ -18013,6 +22419,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateGatewayCircuitBreakerRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayCircuitBreakerRuleResponse:
+        """
+        @summary 更新网关路由熔断规则
+        
+        @param request: UpdateGatewayCircuitBreakerRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayCircuitBreakerRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -18075,6 +22488,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateGatewayCircuitBreakerRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayCircuitBreakerRuleResponse:
+        """
+        @summary 更新网关路由熔断规则
+        
+        @param request: UpdateGatewayCircuitBreakerRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayCircuitBreakerRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -18136,6 +22556,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayCircuitBreakerRuleRequest,
     ) -> mse_20190531_models.UpdateGatewayCircuitBreakerRuleResponse:
+        """
+        @summary 更新网关路由熔断规则
+        
+        @param request: UpdateGatewayCircuitBreakerRuleRequest
+        @return: UpdateGatewayCircuitBreakerRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_gateway_circuit_breaker_rule_with_options(request, runtime)
 
@@ -18143,6 +22569,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayCircuitBreakerRuleRequest,
     ) -> mse_20190531_models.UpdateGatewayCircuitBreakerRuleResponse:
+        """
+        @summary 更新网关路由熔断规则
+        
+        @param request: UpdateGatewayCircuitBreakerRuleRequest
+        @return: UpdateGatewayCircuitBreakerRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_gateway_circuit_breaker_rule_with_options_async(request, runtime)
 
@@ -18151,6 +22583,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateGatewayDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayDomainResponse:
+        """
+        @summary Modifies the information about the domain name associated with a gateway.
+        
+        @param request: UpdateGatewayDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -18195,6 +22634,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateGatewayDomainRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayDomainResponse:
+        """
+        @summary Modifies the information about the domain name associated with a gateway.
+        
+        @param request: UpdateGatewayDomainRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayDomainResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -18238,6 +22684,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayDomainRequest,
     ) -> mse_20190531_models.UpdateGatewayDomainResponse:
+        """
+        @summary Modifies the information about the domain name associated with a gateway.
+        
+        @param request: UpdateGatewayDomainRequest
+        @return: UpdateGatewayDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_gateway_domain_with_options(request, runtime)
 
@@ -18245,6 +22697,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayDomainRequest,
     ) -> mse_20190531_models.UpdateGatewayDomainResponse:
+        """
+        @summary Modifies the information about the domain name associated with a gateway.
+        
+        @param request: UpdateGatewayDomainRequest
+        @return: UpdateGatewayDomainResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_gateway_domain_with_options_async(request, runtime)
 
@@ -18253,6 +22711,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateGatewayFlowRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayFlowRuleResponse:
+        """
+        @summary 更新网关路由流控规则
+        
+        @param request: UpdateGatewayFlowRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayFlowRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -18305,6 +22770,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateGatewayFlowRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayFlowRuleResponse:
+        """
+        @summary 更新网关路由流控规则
+        
+        @param request: UpdateGatewayFlowRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayFlowRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -18356,6 +22828,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayFlowRuleRequest,
     ) -> mse_20190531_models.UpdateGatewayFlowRuleResponse:
+        """
+        @summary 更新网关路由流控规则
+        
+        @param request: UpdateGatewayFlowRuleRequest
+        @return: UpdateGatewayFlowRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_gateway_flow_rule_with_options(request, runtime)
 
@@ -18363,6 +22841,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayFlowRuleRequest,
     ) -> mse_20190531_models.UpdateGatewayFlowRuleResponse:
+        """
+        @summary 更新网关路由流控规则
+        
+        @param request: UpdateGatewayFlowRuleRequest
+        @return: UpdateGatewayFlowRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_gateway_flow_rule_with_options_async(request, runtime)
 
@@ -18371,6 +22855,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateGatewayIsolationRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayIsolationRuleResponse:
+        """
+        @summary 更新网关路由隔离规则
+        
+        @param request: UpdateGatewayIsolationRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayIsolationRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -18423,6 +22914,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateGatewayIsolationRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayIsolationRuleResponse:
+        """
+        @summary 更新网关路由隔离规则
+        
+        @param request: UpdateGatewayIsolationRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayIsolationRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -18474,6 +22972,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayIsolationRuleRequest,
     ) -> mse_20190531_models.UpdateGatewayIsolationRuleResponse:
+        """
+        @summary 更新网关路由隔离规则
+        
+        @param request: UpdateGatewayIsolationRuleRequest
+        @return: UpdateGatewayIsolationRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_gateway_isolation_rule_with_options(request, runtime)
 
@@ -18481,6 +22985,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayIsolationRuleRequest,
     ) -> mse_20190531_models.UpdateGatewayIsolationRuleResponse:
+        """
+        @summary 更新网关路由隔离规则
+        
+        @param request: UpdateGatewayIsolationRuleRequest
+        @return: UpdateGatewayIsolationRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_gateway_isolation_rule_with_options_async(request, runtime)
 
@@ -18489,6 +22999,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateGatewayNameRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayNameResponse:
+        """
+        @summary Renames a gateway.
+        
+        @param request: UpdateGatewayNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayNameResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -18521,6 +23038,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateGatewayNameRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayNameResponse:
+        """
+        @summary Renames a gateway.
+        
+        @param request: UpdateGatewayNameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayNameResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -18552,6 +23076,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayNameRequest,
     ) -> mse_20190531_models.UpdateGatewayNameResponse:
+        """
+        @summary Renames a gateway.
+        
+        @param request: UpdateGatewayNameRequest
+        @return: UpdateGatewayNameResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_gateway_name_with_options(request, runtime)
 
@@ -18559,6 +23089,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayNameRequest,
     ) -> mse_20190531_models.UpdateGatewayNameResponse:
+        """
+        @summary Renames a gateway.
+        
+        @param request: UpdateGatewayNameRequest
+        @return: UpdateGatewayNameResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_gateway_name_with_options_async(request, runtime)
 
@@ -18567,6 +23103,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.UpdateGatewayOptionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayOptionResponse:
+        """
+        @summary Updates the configurations of a gateway.
+        
+        @param tmp_req: UpdateGatewayOptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayOptionResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.UpdateGatewayOptionShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -18605,6 +23148,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.UpdateGatewayOptionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayOptionResponse:
+        """
+        @summary Updates the configurations of a gateway.
+        
+        @param tmp_req: UpdateGatewayOptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayOptionResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.UpdateGatewayOptionShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -18642,6 +23192,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayOptionRequest,
     ) -> mse_20190531_models.UpdateGatewayOptionResponse:
+        """
+        @summary Updates the configurations of a gateway.
+        
+        @param request: UpdateGatewayOptionRequest
+        @return: UpdateGatewayOptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_gateway_option_with_options(request, runtime)
 
@@ -18649,6 +23205,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayOptionRequest,
     ) -> mse_20190531_models.UpdateGatewayOptionResponse:
+        """
+        @summary Updates the configurations of a gateway.
+        
+        @param request: UpdateGatewayOptionRequest
+        @return: UpdateGatewayOptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_gateway_option_with_options_async(request, runtime)
 
@@ -18657,6 +23219,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.UpdateGatewayRouteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayRouteResponse:
+        """
+        @summary Updates a route for a gateway.
+        
+        @param tmp_req: UpdateGatewayRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayRouteResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.UpdateGatewayRouteShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -18727,6 +23296,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.UpdateGatewayRouteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayRouteResponse:
+        """
+        @summary Updates a route for a gateway.
+        
+        @param tmp_req: UpdateGatewayRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayRouteResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.UpdateGatewayRouteShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -18796,6 +23372,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayRouteRequest,
     ) -> mse_20190531_models.UpdateGatewayRouteResponse:
+        """
+        @summary Updates a route for a gateway.
+        
+        @param request: UpdateGatewayRouteRequest
+        @return: UpdateGatewayRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_gateway_route_with_options(request, runtime)
 
@@ -18803,6 +23385,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayRouteRequest,
     ) -> mse_20190531_models.UpdateGatewayRouteResponse:
+        """
+        @summary Updates a route for a gateway.
+        
+        @param request: UpdateGatewayRouteRequest
+        @return: UpdateGatewayRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_gateway_route_with_options_async(request, runtime)
 
@@ -18811,6 +23399,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.UpdateGatewayRouteAuthRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayRouteAuthResponse:
+        """
+        @summary Updates the authentication configurations of a route.
+        
+        @param tmp_req: UpdateGatewayRouteAuthRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayRouteAuthResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.UpdateGatewayRouteAuthShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -18851,6 +23446,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.UpdateGatewayRouteAuthRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayRouteAuthResponse:
+        """
+        @summary Updates the authentication configurations of a route.
+        
+        @param tmp_req: UpdateGatewayRouteAuthRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayRouteAuthResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.UpdateGatewayRouteAuthShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -18890,6 +23492,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayRouteAuthRequest,
     ) -> mse_20190531_models.UpdateGatewayRouteAuthResponse:
+        """
+        @summary Updates the authentication configurations of a route.
+        
+        @param request: UpdateGatewayRouteAuthRequest
+        @return: UpdateGatewayRouteAuthResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_gateway_route_auth_with_options(request, runtime)
 
@@ -18897,6 +23505,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayRouteAuthRequest,
     ) -> mse_20190531_models.UpdateGatewayRouteAuthResponse:
+        """
+        @summary Updates the authentication configurations of a route.
+        
+        @param request: UpdateGatewayRouteAuthRequest
+        @return: UpdateGatewayRouteAuthResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_gateway_route_auth_with_options_async(request, runtime)
 
@@ -18905,6 +23519,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.UpdateGatewayRouteCORSRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayRouteCORSResponse:
+        """
+        @summary Modifies the cross-origin resource sharing (CORS) policy of a route.
+        
+        @param tmp_req: UpdateGatewayRouteCORSRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayRouteCORSResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.UpdateGatewayRouteCORSShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -18945,6 +23566,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.UpdateGatewayRouteCORSRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayRouteCORSResponse:
+        """
+        @summary Modifies the cross-origin resource sharing (CORS) policy of a route.
+        
+        @param tmp_req: UpdateGatewayRouteCORSRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayRouteCORSResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.UpdateGatewayRouteCORSShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -18984,6 +23612,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayRouteCORSRequest,
     ) -> mse_20190531_models.UpdateGatewayRouteCORSResponse:
+        """
+        @summary Modifies the cross-origin resource sharing (CORS) policy of a route.
+        
+        @param request: UpdateGatewayRouteCORSRequest
+        @return: UpdateGatewayRouteCORSResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_gateway_route_corswith_options(request, runtime)
 
@@ -18991,6 +23625,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayRouteCORSRequest,
     ) -> mse_20190531_models.UpdateGatewayRouteCORSResponse:
+        """
+        @summary Modifies the cross-origin resource sharing (CORS) policy of a route.
+        
+        @param request: UpdateGatewayRouteCORSRequest
+        @return: UpdateGatewayRouteCORSResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_gateway_route_corswith_options_async(request, runtime)
 
@@ -18999,6 +23639,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateGatewayRouteHTTPRewriteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayRouteHTTPRewriteResponse:
+        """
+        @summary Updates the rewrite policy of a route for a gateway.
+        
+        @param request: UpdateGatewayRouteHTTPRewriteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayRouteHTTPRewriteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -19035,6 +23682,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateGatewayRouteHTTPRewriteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayRouteHTTPRewriteResponse:
+        """
+        @summary Updates the rewrite policy of a route for a gateway.
+        
+        @param request: UpdateGatewayRouteHTTPRewriteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayRouteHTTPRewriteResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -19070,6 +23724,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayRouteHTTPRewriteRequest,
     ) -> mse_20190531_models.UpdateGatewayRouteHTTPRewriteResponse:
+        """
+        @summary Updates the rewrite policy of a route for a gateway.
+        
+        @param request: UpdateGatewayRouteHTTPRewriteRequest
+        @return: UpdateGatewayRouteHTTPRewriteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_gateway_route_httprewrite_with_options(request, runtime)
 
@@ -19077,6 +23737,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayRouteHTTPRewriteRequest,
     ) -> mse_20190531_models.UpdateGatewayRouteHTTPRewriteResponse:
+        """
+        @summary Updates the rewrite policy of a route for a gateway.
+        
+        @param request: UpdateGatewayRouteHTTPRewriteRequest
+        @return: UpdateGatewayRouteHTTPRewriteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_gateway_route_httprewrite_with_options_async(request, runtime)
 
@@ -19085,6 +23751,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateGatewayRouteHeaderOpRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayRouteHeaderOpResponse:
+        """
+        @summary Modifies the header configuration policy of a route.
+        
+        @param request: UpdateGatewayRouteHeaderOpRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayRouteHeaderOpResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -19121,6 +23794,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateGatewayRouteHeaderOpRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayRouteHeaderOpResponse:
+        """
+        @summary Modifies the header configuration policy of a route.
+        
+        @param request: UpdateGatewayRouteHeaderOpRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayRouteHeaderOpResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -19156,6 +23836,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayRouteHeaderOpRequest,
     ) -> mse_20190531_models.UpdateGatewayRouteHeaderOpResponse:
+        """
+        @summary Modifies the header configuration policy of a route.
+        
+        @param request: UpdateGatewayRouteHeaderOpRequest
+        @return: UpdateGatewayRouteHeaderOpResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_gateway_route_header_op_with_options(request, runtime)
 
@@ -19163,6 +23849,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayRouteHeaderOpRequest,
     ) -> mse_20190531_models.UpdateGatewayRouteHeaderOpResponse:
+        """
+        @summary Modifies the header configuration policy of a route.
+        
+        @param request: UpdateGatewayRouteHeaderOpRequest
+        @return: UpdateGatewayRouteHeaderOpResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_gateway_route_header_op_with_options_async(request, runtime)
 
@@ -19171,6 +23863,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.UpdateGatewayRouteRetryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayRouteRetryResponse:
+        """
+        @summary Modifies the retry policy of a route.
+        
+        @param tmp_req: UpdateGatewayRouteRetryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayRouteRetryResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.UpdateGatewayRouteRetryShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -19211,6 +23910,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.UpdateGatewayRouteRetryRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayRouteRetryResponse:
+        """
+        @summary Modifies the retry policy of a route.
+        
+        @param tmp_req: UpdateGatewayRouteRetryRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayRouteRetryResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.UpdateGatewayRouteRetryShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -19250,6 +23956,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayRouteRetryRequest,
     ) -> mse_20190531_models.UpdateGatewayRouteRetryResponse:
+        """
+        @summary Modifies the retry policy of a route.
+        
+        @param request: UpdateGatewayRouteRetryRequest
+        @return: UpdateGatewayRouteRetryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_gateway_route_retry_with_options(request, runtime)
 
@@ -19257,6 +23969,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayRouteRetryRequest,
     ) -> mse_20190531_models.UpdateGatewayRouteRetryResponse:
+        """
+        @summary Modifies the retry policy of a route.
+        
+        @param request: UpdateGatewayRouteRetryRequest
+        @return: UpdateGatewayRouteRetryResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_gateway_route_retry_with_options_async(request, runtime)
 
@@ -19265,6 +23983,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.UpdateGatewayRouteTimeoutRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayRouteTimeoutResponse:
+        """
+        @summary Modifies the timeout policy of a route.
+        
+        @param tmp_req: UpdateGatewayRouteTimeoutRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayRouteTimeoutResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.UpdateGatewayRouteTimeoutShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -19305,6 +24030,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.UpdateGatewayRouteTimeoutRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayRouteTimeoutResponse:
+        """
+        @summary Modifies the timeout policy of a route.
+        
+        @param tmp_req: UpdateGatewayRouteTimeoutRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayRouteTimeoutResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.UpdateGatewayRouteTimeoutShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -19344,6 +24076,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayRouteTimeoutRequest,
     ) -> mse_20190531_models.UpdateGatewayRouteTimeoutResponse:
+        """
+        @summary Modifies the timeout policy of a route.
+        
+        @param request: UpdateGatewayRouteTimeoutRequest
+        @return: UpdateGatewayRouteTimeoutResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_gateway_route_timeout_with_options(request, runtime)
 
@@ -19351,6 +24089,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayRouteTimeoutRequest,
     ) -> mse_20190531_models.UpdateGatewayRouteTimeoutResponse:
+        """
+        @summary Modifies the timeout policy of a route.
+        
+        @param request: UpdateGatewayRouteTimeoutRequest
+        @return: UpdateGatewayRouteTimeoutResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_gateway_route_timeout_with_options_async(request, runtime)
 
@@ -19359,6 +24103,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateGatewayRouteWafStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayRouteWafStatusResponse:
+        """
+        @summary 更新路由waf状态
+        
+        @param request: UpdateGatewayRouteWafStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayRouteWafStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -19393,6 +24144,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateGatewayRouteWafStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayRouteWafStatusResponse:
+        """
+        @summary 更新路由waf状态
+        
+        @param request: UpdateGatewayRouteWafStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayRouteWafStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -19426,6 +24184,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayRouteWafStatusRequest,
     ) -> mse_20190531_models.UpdateGatewayRouteWafStatusResponse:
+        """
+        @summary 更新路由waf状态
+        
+        @param request: UpdateGatewayRouteWafStatusRequest
+        @return: UpdateGatewayRouteWafStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_gateway_route_waf_status_with_options(request, runtime)
 
@@ -19433,6 +24197,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayRouteWafStatusRequest,
     ) -> mse_20190531_models.UpdateGatewayRouteWafStatusResponse:
+        """
+        @summary 更新路由waf状态
+        
+        @param request: UpdateGatewayRouteWafStatusRequest
+        @return: UpdateGatewayRouteWafStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_gateway_route_waf_status_with_options_async(request, runtime)
 
@@ -19441,6 +24211,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.UpdateGatewayServiceCheckRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayServiceCheckResponse:
+        """
+        @summary Updates the health check policy of a specified service in a cloud-native gateway.
+        
+        @param tmp_req: UpdateGatewayServiceCheckRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayServiceCheckResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.UpdateGatewayServiceCheckShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -19495,6 +24272,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.UpdateGatewayServiceCheckRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayServiceCheckResponse:
+        """
+        @summary Updates the health check policy of a specified service in a cloud-native gateway.
+        
+        @param tmp_req: UpdateGatewayServiceCheckRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayServiceCheckResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.UpdateGatewayServiceCheckShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -19548,6 +24332,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayServiceCheckRequest,
     ) -> mse_20190531_models.UpdateGatewayServiceCheckResponse:
+        """
+        @summary Updates the health check policy of a specified service in a cloud-native gateway.
+        
+        @param request: UpdateGatewayServiceCheckRequest
+        @return: UpdateGatewayServiceCheckResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_gateway_service_check_with_options(request, runtime)
 
@@ -19555,6 +24345,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayServiceCheckRequest,
     ) -> mse_20190531_models.UpdateGatewayServiceCheckResponse:
+        """
+        @summary Updates the health check policy of a specified service in a cloud-native gateway.
+        
+        @param request: UpdateGatewayServiceCheckRequest
+        @return: UpdateGatewayServiceCheckResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_gateway_service_check_with_options_async(request, runtime)
 
@@ -19563,6 +24359,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.UpdateGatewayServiceTrafficPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayServiceTrafficPolicyResponse:
+        """
+        @summary Updates the traffic policy of a service.
+        
+        @param tmp_req: UpdateGatewayServiceTrafficPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayServiceTrafficPolicyResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.UpdateGatewayServiceTrafficPolicyShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -19603,6 +24406,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.UpdateGatewayServiceTrafficPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayServiceTrafficPolicyResponse:
+        """
+        @summary Updates the traffic policy of a service.
+        
+        @param tmp_req: UpdateGatewayServiceTrafficPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayServiceTrafficPolicyResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.UpdateGatewayServiceTrafficPolicyShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -19642,6 +24452,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayServiceTrafficPolicyRequest,
     ) -> mse_20190531_models.UpdateGatewayServiceTrafficPolicyResponse:
+        """
+        @summary Updates the traffic policy of a service.
+        
+        @param request: UpdateGatewayServiceTrafficPolicyRequest
+        @return: UpdateGatewayServiceTrafficPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_gateway_service_traffic_policy_with_options(request, runtime)
 
@@ -19649,6 +24465,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayServiceTrafficPolicyRequest,
     ) -> mse_20190531_models.UpdateGatewayServiceTrafficPolicyResponse:
+        """
+        @summary Updates the traffic policy of a service.
+        
+        @param request: UpdateGatewayServiceTrafficPolicyRequest
+        @return: UpdateGatewayServiceTrafficPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_gateway_service_traffic_policy_with_options_async(request, runtime)
 
@@ -19657,6 +24479,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateGatewayServiceVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayServiceVersionResponse:
+        """
+        @summary Modifies the version of a service.
+        
+        @param request: UpdateGatewayServiceVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayServiceVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -19691,6 +24520,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateGatewayServiceVersionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewayServiceVersionResponse:
+        """
+        @summary Modifies the version of a service.
+        
+        @param request: UpdateGatewayServiceVersionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateGatewayServiceVersionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -19724,6 +24560,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayServiceVersionRequest,
     ) -> mse_20190531_models.UpdateGatewayServiceVersionResponse:
+        """
+        @summary Modifies the version of a service.
+        
+        @param request: UpdateGatewayServiceVersionRequest
+        @return: UpdateGatewayServiceVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_gateway_service_version_with_options(request, runtime)
 
@@ -19731,6 +24573,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateGatewayServiceVersionRequest,
     ) -> mse_20190531_models.UpdateGatewayServiceVersionResponse:
+        """
+        @summary Modifies the version of a service.
+        
+        @param request: UpdateGatewayServiceVersionRequest
+        @return: UpdateGatewayServiceVersionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_gateway_service_version_with_options_async(request, runtime)
 
@@ -19740,7 +24588,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewaySpecResponse:
         """
-        You can call this operation to update the number of nodes or the specifications of nodes in a pay-as-you-go or subscription cloud-native gateway. If you add nodes or increase the specifications, you will incur fees. For more information, see [Pricing](~~250950~~).
+        @summary Updates the number of nodes or the specifications of nodes in a pay-as-you-go or subscription cloud-native gateway.
+        
+        @description You can call this operation to update the number of nodes or the specifications of nodes in a pay-as-you-go or subscription cloud-native gateway. If you add nodes or increase the specifications, you will incur fees. For more information, see [Pricing](https://help.aliyun.com/document_detail/250950.html).
         
         @param request: UpdateGatewaySpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19781,7 +24631,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateGatewaySpecResponse:
         """
-        You can call this operation to update the number of nodes or the specifications of nodes in a pay-as-you-go or subscription cloud-native gateway. If you add nodes or increase the specifications, you will incur fees. For more information, see [Pricing](~~250950~~).
+        @summary Updates the number of nodes or the specifications of nodes in a pay-as-you-go or subscription cloud-native gateway.
+        
+        @description You can call this operation to update the number of nodes or the specifications of nodes in a pay-as-you-go or subscription cloud-native gateway. If you add nodes or increase the specifications, you will incur fees. For more information, see [Pricing](https://help.aliyun.com/document_detail/250950.html).
         
         @param request: UpdateGatewaySpecRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -19821,7 +24673,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateGatewaySpecRequest,
     ) -> mse_20190531_models.UpdateGatewaySpecResponse:
         """
-        You can call this operation to update the number of nodes or the specifications of nodes in a pay-as-you-go or subscription cloud-native gateway. If you add nodes or increase the specifications, you will incur fees. For more information, see [Pricing](~~250950~~).
+        @summary Updates the number of nodes or the specifications of nodes in a pay-as-you-go or subscription cloud-native gateway.
+        
+        @description You can call this operation to update the number of nodes or the specifications of nodes in a pay-as-you-go or subscription cloud-native gateway. If you add nodes or increase the specifications, you will incur fees. For more information, see [Pricing](https://help.aliyun.com/document_detail/250950.html).
         
         @param request: UpdateGatewaySpecRequest
         @return: UpdateGatewaySpecResponse
@@ -19834,7 +24688,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateGatewaySpecRequest,
     ) -> mse_20190531_models.UpdateGatewaySpecResponse:
         """
-        You can call this operation to update the number of nodes or the specifications of nodes in a pay-as-you-go or subscription cloud-native gateway. If you add nodes or increase the specifications, you will incur fees. For more information, see [Pricing](~~250950~~).
+        @summary Updates the number of nodes or the specifications of nodes in a pay-as-you-go or subscription cloud-native gateway.
+        
+        @description You can call this operation to update the number of nodes or the specifications of nodes in a pay-as-you-go or subscription cloud-native gateway. If you add nodes or increase the specifications, you will incur fees. For more information, see [Pricing](https://help.aliyun.com/document_detail/250950.html).
         
         @param request: UpdateGatewaySpecRequest
         @return: UpdateGatewaySpecResponse
@@ -19847,6 +24703,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateImageResponse:
+        """
+        @summary Updates the version number of the destination cluster.
+        
+        @param request: UpdateImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -19879,6 +24742,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateImageRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateImageResponse:
+        """
+        @summary Updates the version number of the destination cluster.
+        
+        @param request: UpdateImageRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateImageResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -19910,6 +24780,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateImageRequest,
     ) -> mse_20190531_models.UpdateImageResponse:
+        """
+        @summary Updates the version number of the destination cluster.
+        
+        @param request: UpdateImageRequest
+        @return: UpdateImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_image_with_options(request, runtime)
 
@@ -19917,6 +24793,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateImageRequest,
     ) -> mse_20190531_models.UpdateImageResponse:
+        """
+        @summary Updates the version number of the destination cluster.
+        
+        @param request: UpdateImageRequest
+        @return: UpdateImageResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_image_with_options_async(request, runtime)
 
@@ -19925,6 +24807,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateIsolationRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateIsolationRuleResponse:
+        """
+        @summary 更新隔离规则
+        
+        @param request: UpdateIsolationRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateIsolationRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -19965,6 +24854,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateIsolationRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateIsolationRuleResponse:
+        """
+        @summary 更新隔离规则
+        
+        @param request: UpdateIsolationRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateIsolationRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -20004,6 +24900,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateIsolationRuleRequest,
     ) -> mse_20190531_models.UpdateIsolationRuleResponse:
+        """
+        @summary 更新隔离规则
+        
+        @param request: UpdateIsolationRuleRequest
+        @return: UpdateIsolationRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_isolation_rule_with_options(request, runtime)
 
@@ -20011,6 +24913,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateIsolationRuleRequest,
     ) -> mse_20190531_models.UpdateIsolationRuleResponse:
+        """
+        @summary 更新隔离规则
+        
+        @param request: UpdateIsolationRuleRequest
+        @return: UpdateIsolationRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_isolation_rule_with_options_async(request, runtime)
 
@@ -20019,6 +24927,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.UpdateMessageQueueRouteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateMessageQueueRouteResponse:
+        """
+        @summary Updates the configuration of a canary release for messaging of an application.
+        
+        @param tmp_req: UpdateMessageQueueRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMessageQueueRouteResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.UpdateMessageQueueRouteShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -20065,6 +24980,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.UpdateMessageQueueRouteRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateMessageQueueRouteResponse:
+        """
+        @summary Updates the configuration of a canary release for messaging of an application.
+        
+        @param tmp_req: UpdateMessageQueueRouteRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMessageQueueRouteResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.UpdateMessageQueueRouteShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -20110,6 +25032,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateMessageQueueRouteRequest,
     ) -> mse_20190531_models.UpdateMessageQueueRouteResponse:
+        """
+        @summary Updates the configuration of a canary release for messaging of an application.
+        
+        @param request: UpdateMessageQueueRouteRequest
+        @return: UpdateMessageQueueRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_message_queue_route_with_options(request, runtime)
 
@@ -20117,6 +25045,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateMessageQueueRouteRequest,
     ) -> mse_20190531_models.UpdateMessageQueueRouteResponse:
+        """
+        @summary Updates the configuration of a canary release for messaging of an application.
+        
+        @param request: UpdateMessageQueueRouteRequest
+        @return: UpdateMessageQueueRouteResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_message_queue_route_with_options_async(request, runtime)
 
@@ -20125,6 +25059,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateMigrationTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateMigrationTaskResponse:
+        """
+        @summary Updates a migration task.
+        
+        @param request: UpdateMigrationTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMigrationTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -20173,6 +25114,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateMigrationTaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateMigrationTaskResponse:
+        """
+        @summary Updates a migration task.
+        
+        @param request: UpdateMigrationTaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateMigrationTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -20220,6 +25168,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateMigrationTaskRequest,
     ) -> mse_20190531_models.UpdateMigrationTaskResponse:
+        """
+        @summary Updates a migration task.
+        
+        @param request: UpdateMigrationTaskRequest
+        @return: UpdateMigrationTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_migration_task_with_options(request, runtime)
 
@@ -20227,6 +25181,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateMigrationTaskRequest,
     ) -> mse_20190531_models.UpdateMigrationTaskResponse:
+        """
+        @summary Updates a migration task.
+        
+        @param request: UpdateMigrationTaskRequest
+        @return: UpdateMigrationTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_migration_task_with_options_async(request, runtime)
 
@@ -20235,6 +25195,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateNacosClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateNacosClusterResponse:
+        """
+        @summary Updates the information about a Nacos cluster.
+        
+        @param request: UpdateNacosClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNacosClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -20279,6 +25246,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateNacosClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateNacosClusterResponse:
+        """
+        @summary Updates the information about a Nacos cluster.
+        
+        @param request: UpdateNacosClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateNacosClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -20322,6 +25296,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateNacosClusterRequest,
     ) -> mse_20190531_models.UpdateNacosClusterResponse:
+        """
+        @summary Updates the information about a Nacos cluster.
+        
+        @param request: UpdateNacosClusterRequest
+        @return: UpdateNacosClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_nacos_cluster_with_options(request, runtime)
 
@@ -20329,6 +25309,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateNacosClusterRequest,
     ) -> mse_20190531_models.UpdateNacosClusterResponse:
+        """
+        @summary Updates the information about a Nacos cluster.
+        
+        @param request: UpdateNacosClusterRequest
+        @return: UpdateNacosClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_nacos_cluster_with_options_async(request, runtime)
 
@@ -20338,7 +25324,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateNacosConfigResponse:
         """
-        >  The current API operation is not provided in Nacos SDK. For more information about Nacos SDK, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Updates a Nacos configuration.
+        
+        @description >  The current API operation is not provided in Nacos SDK. For more information about Nacos SDK, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: UpdateNacosConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20397,7 +25385,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateNacosConfigResponse:
         """
-        >  The current API operation is not provided in Nacos SDK. For more information about Nacos SDK, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Updates a Nacos configuration.
+        
+        @description >  The current API operation is not provided in Nacos SDK. For more information about Nacos SDK, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: UpdateNacosConfigRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20455,7 +25445,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateNacosConfigRequest,
     ) -> mse_20190531_models.UpdateNacosConfigResponse:
         """
-        >  The current API operation is not provided in Nacos SDK. For more information about Nacos SDK, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Updates a Nacos configuration.
+        
+        @description >  The current API operation is not provided in Nacos SDK. For more information about Nacos SDK, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: UpdateNacosConfigRequest
         @return: UpdateNacosConfigResponse
@@ -20468,7 +25460,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateNacosConfigRequest,
     ) -> mse_20190531_models.UpdateNacosConfigResponse:
         """
-        >  The current API operation is not provided in Nacos SDK. For more information about Nacos SDK, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Updates a Nacos configuration.
+        
+        @description >  The current API operation is not provided in Nacos SDK. For more information about Nacos SDK, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: UpdateNacosConfigRequest
         @return: UpdateNacosConfigResponse
@@ -20482,7 +25476,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateNacosInstanceResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Updates the information about application instances that are registered with a Nacos instance.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: UpdateNacosInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20541,7 +25537,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateNacosInstanceResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Updates the information about application instances that are registered with a Nacos instance.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: UpdateNacosInstanceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20599,7 +25597,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateNacosInstanceRequest,
     ) -> mse_20190531_models.UpdateNacosInstanceResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Updates the information about application instances that are registered with a Nacos instance.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: UpdateNacosInstanceRequest
         @return: UpdateNacosInstanceResponse
@@ -20612,7 +25612,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateNacosInstanceRequest,
     ) -> mse_20190531_models.UpdateNacosInstanceResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Updates the information about application instances that are registered with a Nacos instance.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: UpdateNacosInstanceRequest
         @return: UpdateNacosInstanceResponse
@@ -20626,7 +25628,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateNacosServiceResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Updates the information about a Nacos service.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: UpdateNacosServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20673,7 +25677,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateNacosServiceResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Updates the information about a Nacos service.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: UpdateNacosServiceRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -20719,7 +25725,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateNacosServiceRequest,
     ) -> mse_20190531_models.UpdateNacosServiceResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Updates the information about a Nacos service.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: UpdateNacosServiceRequest
         @return: UpdateNacosServiceResponse
@@ -20732,7 +25740,9 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateNacosServiceRequest,
     ) -> mse_20190531_models.UpdateNacosServiceResponse:
         """
-        > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
+        @summary Updates the information about a Nacos service.
+        
+        @description > The operation is not provided in Nacos SDKs. For information about Nacos SDKs, see the [official documentation](https://nacos.io/zh-cn/docs/sdk.html).
         
         @param request: UpdateNacosServiceRequest
         @return: UpdateNacosServiceResponse
@@ -20745,6 +25755,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdatePluginConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdatePluginConfigResponse:
+        """
+        @summary Updates the configuration of a plug-in.
+        
+        @param request: UpdatePluginConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePluginConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -20791,6 +25808,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdatePluginConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdatePluginConfigResponse:
+        """
+        @summary Updates the configuration of a plug-in.
+        
+        @param request: UpdatePluginConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePluginConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -20836,6 +25860,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdatePluginConfigRequest,
     ) -> mse_20190531_models.UpdatePluginConfigResponse:
+        """
+        @summary Updates the configuration of a plug-in.
+        
+        @param request: UpdatePluginConfigRequest
+        @return: UpdatePluginConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_plugin_config_with_options(request, runtime)
 
@@ -20843,6 +25873,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdatePluginConfigRequest,
     ) -> mse_20190531_models.UpdatePluginConfigResponse:
+        """
+        @summary Updates the configuration of a plug-in.
+        
+        @param request: UpdatePluginConfigRequest
+        @return: UpdatePluginConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_plugin_config_with_options_async(request, runtime)
 
@@ -20851,6 +25887,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateSSLCertRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateSSLCertResponse:
+        """
+        @summary Updates a certificate.
+        
+        @param request: UpdateSSLCertRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSSLCertResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -20885,6 +25928,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateSSLCertRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateSSLCertResponse:
+        """
+        @summary Updates a certificate.
+        
+        @param request: UpdateSSLCertRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSSLCertResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -20918,6 +25968,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateSSLCertRequest,
     ) -> mse_20190531_models.UpdateSSLCertResponse:
+        """
+        @summary Updates a certificate.
+        
+        @param request: UpdateSSLCertRequest
+        @return: UpdateSSLCertResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_sslcert_with_options(request, runtime)
 
@@ -20925,6 +25981,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateSSLCertRequest,
     ) -> mse_20190531_models.UpdateSSLCertResponse:
+        """
+        @summary Updates a certificate.
+        
+        @param request: UpdateSSLCertRequest
+        @return: UpdateSSLCertResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_sslcert_with_options_async(request, runtime)
 
@@ -20933,6 +25995,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.UpdateServiceSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateServiceSourceResponse:
+        """
+        @summary Modifies service sources of a cloud-native gateway. You can modify only Container Service for Kubernetes (ACK) service sources that contain configurations related to Ingress resource monitoring.
+        
+        @param tmp_req: UpdateServiceSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateServiceSourceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.UpdateServiceSourceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -20985,6 +26054,13 @@ class Client(OpenApiClient):
         tmp_req: mse_20190531_models.UpdateServiceSourceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateServiceSourceResponse:
+        """
+        @summary Modifies service sources of a cloud-native gateway. You can modify only Container Service for Kubernetes (ACK) service sources that contain configurations related to Ingress resource monitoring.
+        
+        @param tmp_req: UpdateServiceSourceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateServiceSourceResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = mse_20190531_models.UpdateServiceSourceShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -21036,6 +26112,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateServiceSourceRequest,
     ) -> mse_20190531_models.UpdateServiceSourceResponse:
+        """
+        @summary Modifies service sources of a cloud-native gateway. You can modify only Container Service for Kubernetes (ACK) service sources that contain configurations related to Ingress resource monitoring.
+        
+        @param request: UpdateServiceSourceRequest
+        @return: UpdateServiceSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_service_source_with_options(request, runtime)
 
@@ -21043,6 +26125,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateServiceSourceRequest,
     ) -> mse_20190531_models.UpdateServiceSourceResponse:
+        """
+        @summary Modifies service sources of a cloud-native gateway. You can modify only Container Service for Kubernetes (ACK) service sources that contain configurations related to Ingress resource monitoring.
+        
+        @param request: UpdateServiceSourceRequest
+        @return: UpdateServiceSourceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_service_source_with_options_async(request, runtime)
 
@@ -21051,6 +26139,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateZnodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateZnodeResponse:
+        """
+        @summary Updates the information about a ZooKeeper node.
+        
+        @param request: UpdateZnodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateZnodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -21087,6 +26182,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpdateZnodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpdateZnodeResponse:
+        """
+        @summary Updates the information about a ZooKeeper node.
+        
+        @param request: UpdateZnodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateZnodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -21122,6 +26224,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateZnodeRequest,
     ) -> mse_20190531_models.UpdateZnodeResponse:
+        """
+        @summary Updates the information about a ZooKeeper node.
+        
+        @param request: UpdateZnodeRequest
+        @return: UpdateZnodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_znode_with_options(request, runtime)
 
@@ -21129,6 +26237,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpdateZnodeRequest,
     ) -> mse_20190531_models.UpdateZnodeResponse:
+        """
+        @summary Updates the information about a ZooKeeper node.
+        
+        @param request: UpdateZnodeRequest
+        @return: UpdateZnodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_znode_with_options_async(request, runtime)
 
@@ -21137,6 +26251,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpgradeClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpgradeClusterResponse:
+        """
+        @summary Upgrades the version of a cluster.
+        
+        @param request: UpgradeClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -21171,6 +26292,13 @@ class Client(OpenApiClient):
         request: mse_20190531_models.UpgradeClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> mse_20190531_models.UpgradeClusterResponse:
+        """
+        @summary Upgrades the version of a cluster.
+        
+        @param request: UpgradeClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpgradeClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accept_language):
@@ -21204,6 +26332,12 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpgradeClusterRequest,
     ) -> mse_20190531_models.UpgradeClusterResponse:
+        """
+        @summary Upgrades the version of a cluster.
+        
+        @param request: UpgradeClusterRequest
+        @return: UpgradeClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.upgrade_cluster_with_options(request, runtime)
 
@@ -21211,5 +26345,11 @@ class Client(OpenApiClient):
         self,
         request: mse_20190531_models.UpgradeClusterRequest,
     ) -> mse_20190531_models.UpgradeClusterResponse:
+        """
+        @summary Upgrades the version of a cluster.
+        
+        @param request: UpgradeClusterRequest
+        @return: UpgradeClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.upgrade_cluster_with_options_async(request, runtime)

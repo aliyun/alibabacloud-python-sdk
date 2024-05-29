@@ -92,6 +92,7 @@ class GatewayOptionLogConfigDetails(TeaModel):
         log_store_name: str = None,
         project_name: str = None,
     ):
+        # This parameter is required.
         self.log_enabled = log_enabled
         self.log_store_name = log_store_name
         self.project_name = project_name
@@ -136,6 +137,7 @@ class GatewayOptionTraceDetails(TeaModel):
         self.sample = sample
         self.service_id = service_id
         self.service_port = service_port
+        # This parameter is required.
         self.trace_enabled = trace_enabled
         self.trace_type = trace_type
 
@@ -363,6 +365,7 @@ class TrafficPolicyTlsSetting(TeaModel):
         self.ca_cert_content = ca_cert_content
         self.cert_id = cert_id
         self.sni = sni
+        # This parameter is required.
         self.tls_mode = tls_mode
 
     def validate(self):
@@ -1034,14 +1037,20 @@ class AddAuthPolicyRequest(TeaModel):
     ):
         self.accept_language = accept_language
         self.app_id = app_id
+        # This parameter is required.
         self.auth_rule = auth_rule
         self.auth_type = auth_type
+        # This parameter is required.
         self.enable = enable
         self.k_8s_namespace = k_8s_namespace
+        # This parameter is required.
         self.name = name
         self.namespace = namespace
+        # This parameter is required.
         self.protocol = protocol
+        # This parameter is required.
         self.region = region
+        # This parameter is required.
         self.source = source
 
     def validate(self):
@@ -1942,7 +1951,7 @@ class AddGatewayRequest(TeaModel):
         self.enable_hardware_acceleration = enable_hardware_acceleration
         # The tag of the gateway.
         self.enable_sls = enable_sls
-        # The sampling rate of Tracing Analysis. Valid values: \[1,100].
+        # The sampling rate of Tracing Analysis. Valid values: [1,100].
         self.enable_xtrace = enable_xtrace
         # Specifies whether to enable hardware acceleration.
         self.enterprise_security_group = enterprise_security_group
@@ -1969,6 +1978,8 @@ class AddGatewayRequest(TeaModel):
         # *   slb.s3.small
         # *   slb.s3.medium
         # *   slb.s3.large
+        # 
+        # This parameter is required.
         self.region = region
         # The number of nodes.
         self.replica = replica
@@ -1990,10 +2001,10 @@ class AddGatewayRequest(TeaModel):
         self.slb_spec = slb_spec
         # The node specifications. Valid values:
         # 
-        # *   MSE_GTW\_16\_32\_200\_c(16C32G)
-        # *   MSE_GTW\_2\_4\_200\_c(2C4G)
-        # *   MSE_GTW\_4\_8\_200\_c(4C8G)
-        # *   MSE_GTW\_8\_16\_200\_c(8C16G)
+        # *   MSE_GTW_16_32_200_c(16C32G)
+        # *   MSE_GTW_2_4_200_c(2C4G)
+        # *   MSE_GTW_4_8_200_c(4C8G)
+        # *   MSE_GTW_8_16_200_c(8C16G)
         self.spec = spec
         # The tag object.
         self.tag = tag
@@ -2002,6 +2013,8 @@ class AddGatewayRequest(TeaModel):
         # Specifies whether to use an advanced security group.
         self.v_switch_id_2 = v_switch_id_2
         # The ID of the primary vSwitch.
+        # 
+        # This parameter is required.
         self.vpc = vpc
         # Specifies whether to activate Log Service.
         self.xtrace_ratio = xtrace_ratio
@@ -2227,7 +2240,7 @@ class AddGatewayShrinkRequest(TeaModel):
         self.enable_hardware_acceleration = enable_hardware_acceleration
         # The tag of the gateway.
         self.enable_sls = enable_sls
-        # The sampling rate of Tracing Analysis. Valid values: \[1,100].
+        # The sampling rate of Tracing Analysis. Valid values: [1,100].
         self.enable_xtrace = enable_xtrace
         # Specifies whether to enable hardware acceleration.
         self.enterprise_security_group = enterprise_security_group
@@ -2254,6 +2267,8 @@ class AddGatewayShrinkRequest(TeaModel):
         # *   slb.s3.small
         # *   slb.s3.medium
         # *   slb.s3.large
+        # 
+        # This parameter is required.
         self.region = region
         # The number of nodes.
         self.replica = replica
@@ -2275,10 +2290,10 @@ class AddGatewayShrinkRequest(TeaModel):
         self.slb_spec = slb_spec
         # The node specifications. Valid values:
         # 
-        # *   MSE_GTW\_16\_32\_200\_c(16C32G)
-        # *   MSE_GTW\_2\_4\_200\_c(2C4G)
-        # *   MSE_GTW\_4\_8\_200\_c(4C8G)
-        # *   MSE_GTW\_8\_16\_200\_c(8C16G)
+        # *   MSE_GTW_16_32_200_c(16C32G)
+        # *   MSE_GTW_2_4_200_c(2C4G)
+        # *   MSE_GTW_4_8_200_c(4C8G)
+        # *   MSE_GTW_8_16_200_c(8C16G)
         self.spec = spec
         # The tag object.
         self.tag = tag
@@ -2287,6 +2302,8 @@ class AddGatewayShrinkRequest(TeaModel):
         # Specifies whether to use an advanced security group.
         self.v_switch_id_2 = v_switch_id_2
         # The ID of the primary vSwitch.
+        # 
+        # This parameter is required.
         self.vpc = vpc
         # Specifies whether to activate Log Service.
         self.xtrace_ratio = xtrace_ratio
@@ -3233,6 +3250,8 @@ class AddGatewayAuthConsumerRequest(TeaModel):
         # *   OCT
         self.encode_type = encode_type
         # The unique ID of the gateway.
+        # 
+        # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
         # The JWT public key. The JSON format is supported.
         self.jwks = jwks
@@ -3241,6 +3260,8 @@ class AddGatewayAuthConsumerRequest(TeaModel):
         # The value of the key used for JWT-based identity authentication.
         self.key_value = key_value
         # The name of the consumer.
+        # 
+        # This parameter is required.
         self.name = name
         # The names of the parameters that are required to verify each token. By default, each token is prefixed with Bearer and stored in the Authorization header, such as `Authorization: Bearer <Content of a token>`.
         self.token_name = token_name
@@ -3253,6 +3274,8 @@ class AddGatewayAuthConsumerRequest(TeaModel):
         # The authentication type. Valid values:
         # 
         # *   JWT
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -4996,6 +5019,8 @@ class AddGatewaySlbRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The unique ID of the gateway.
+        # 
+        # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
         # The HTTP port number (virtual service group).
         self.http_port = http_port
@@ -5006,6 +5031,8 @@ class AddGatewaySlbRequest(TeaModel):
         # The service weight.
         self.service_weight = service_weight
         # The ID of the SLB instance.
+        # 
+        # This parameter is required.
         self.slb_id = slb_id
         # The type of the service source. Valid values:
         # 
@@ -5101,6 +5128,8 @@ class AddGatewaySlbShrinkRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The unique ID of the gateway.
+        # 
+        # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
         # The HTTP port number (virtual service group).
         self.http_port = http_port
@@ -5111,6 +5140,8 @@ class AddGatewaySlbShrinkRequest(TeaModel):
         # The service weight.
         self.service_weight = service_weight
         # The ID of the SLB instance.
+        # 
+        # This parameter is required.
         self.slb_id = slb_id
         # The type of the service source. Valid values:
         # 
@@ -5605,8 +5636,12 @@ class AddMockRuleRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The ID of the custom application.
+        # 
+        # This parameter is required.
         self.consumer_app_ids = consumer_app_ids
         # The items in the recycle bin.
+        # 
+        # This parameter is required.
         self.dubbo_mock_items = dubbo_mock_items
         # Specifies whether to enable the alert rule. Valid values:
         # 
@@ -5614,25 +5649,35 @@ class AddMockRuleRequest(TeaModel):
         # *   `false`: disables the alert rule.
         self.enable = enable
         # The description.
+        # 
+        # This parameter is required.
         self.extra_json = extra_json
         # The response time (RT) threshold of slow calls. Valid values:
         # 
-        # *   \- 15: 15 ms
-        # *   \- 30: 30 ms
-        # *   \- 60: 60 ms
-        # *   \- 120: 120 ms
+        # *   \\- 15: 15 ms
+        # *   \\- 30: 30 ms
+        # *   \\- 60: 60 ms
+        # *   \\- 120: 120 ms
         self.mock_type = mock_type
         # The name of the rule.
+        # 
+        # This parameter is required.
         self.name = name
         # The ID of the service provider application.
         self.provider_app_id = provider_app_id
         # The name of the service provider application.
         self.provider_app_name = provider_app_name
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region = region
         # The input parameters. The JSON format is supported.
+        # 
+        # This parameter is required.
         self.sc_mock_items = sc_mock_items
         # The rule source.
+        # 
+        # This parameter is required.
         self.source = source
 
     def validate(self):
@@ -5734,8 +5779,8 @@ class AddMockRuleResponseBodyData(TeaModel):
         self.id = id
         # The mock type. Valid values:
         # 
-        # *   \- `[unk]0[unk]`: desktop client
-        # *   \- `[unk]1[unk]`: mobile client
+        # *   \\- `[unk]0[unk]`: desktop client
+        # *   \\- `[unk]1[unk]`: mobile client
         self.mock_type = mock_type
         # The name.
         self.name = name
@@ -6109,10 +6154,16 @@ class AddSecurityGroupRuleRequest(TeaModel):
         # The description.
         self.description = description
         # The ID of the gateway.
+        # 
+        # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
         # The range of port numbers.
+        # 
+        # This parameter is required.
         self.port_range = port_range
         # The ID of the security group.
+        # 
+        # This parameter is required.
         self.security_group_id = security_group_id
 
     def validate(self):
@@ -6840,6 +6891,8 @@ class ApplyTagPoliciesRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The ID of the application.
+        # 
+        # This parameter is required.
         self.app_id = app_id
         # The name of the application.
         self.app_name = app_name
@@ -6928,6 +6981,8 @@ class ApplyTagPoliciesShrinkRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The ID of the application.
+        # 
+        # This parameter is required.
         self.app_id = app_id
         # The name of the application.
         self.app_name = app_name
@@ -7193,10 +7248,15 @@ class BindSentinelBlockFallbackDefinitionRequest(TeaModel):
         target_type: str = None,
     ):
         self.accept_language = accept_language
+        # This parameter is required.
         self.app_name = app_name
+        # This parameter is required.
         self.fallback_id = fallback_id
+        # This parameter is required.
         self.namespace = namespace
+        # This parameter is required.
         self.resource = resource
+        # This parameter is required.
         self.target_type = target_type
 
     def validate(self):
@@ -7353,8 +7413,12 @@ class CloneNacosConfigRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The data structure.
+        # 
+        # This parameter is required.
         self.ids = ids
         # The ID of the destination namespace.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The policy used when a write conflict occurs.
         # 
@@ -7366,6 +7430,8 @@ class CloneNacosConfigRequest(TeaModel):
         # 
         # *   zh: Chinese
         # *   en: English
+        # 
+        # This parameter is required.
         self.policy = policy
         # The IDs of configurations.
         self.target_namespace_id = target_namespace_id
@@ -7558,7 +7624,7 @@ class CloneNacosConfigResponseBody(TeaModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # The dynamic part in the error message. This parameter is used to replace the \*\*%s\*\* variable in the **ErrMessage** parameter.
+        # The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\* variable in the **ErrMessage** parameter.
         # 
         # >  If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
         self.code = code
@@ -7680,10 +7746,19 @@ class CloneSentinelRuleFromAhasRequest(TeaModel):
         is_ahaspublic_region: bool = None,
         namespace: str = None,
     ):
+        # The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
         self.accept_language = accept_language
+        # The namespace (environment) of Application High Availability Service (AHAS).
+        # 
+        # This parameter is required.
         self.ahas_namespace = ahas_namespace
+        # The application name.
         self.app_name = app_name
+        # Specifies whether AHAS is deployed in the Internet region.
         self.is_ahaspublic_region = is_ahaspublic_region
+        # The namespace.
+        # 
+        # This parameter is required.
         self.namespace = namespace
 
     def validate(self):
@@ -7728,7 +7803,9 @@ class CloneSentinelRuleFromAhasResponseBody(TeaModel):
         data: Dict[str, List[str]] = None,
         request_id: str = None,
     ):
+        # The returned data.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -7814,12 +7891,16 @@ class CreateApplicationRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The name of the application.
+        # 
+        # This parameter is required.
         self.app_name = app_name
         # The programming language of the application.
         self.language = language
         # MSE命名空间名字。
         self.namespace = namespace
         # The region to which the application belongs.
+        # 
+        # This parameter is required.
         self.region = region
         # Specifies whether to start the switch.
         self.sentinel_enable = sentinel_enable
@@ -7911,8 +7992,8 @@ class CreateApplicationResponseBodyData(TeaModel):
         self.region_id = region_id
         # The service where the application is deployed. Valid values:
         # 
-        # *   \- ACK: Container Service for Kubernetes
-        # *   \- Normal: another service
+        # *   \\- ACK: Container Service for Kubernetes
+        # *   \\- Normal: another service
         self.source = source
         # The status of the application. A value of 1 indicates that the application is in a normal state.
         self.status = status
@@ -8128,6 +8209,8 @@ class CreateCircuitBreakerRuleRequest(TeaModel):
         # The ID of the application.
         self.app_id = app_id
         # The application name.
+        # 
+        # This parameter is required.
         self.app_name = app_name
         # Specifies whether to enable the rule.
         # 
@@ -8148,6 +8231,8 @@ class CreateCircuitBreakerRuleRequest(TeaModel):
         #     <!-- -->
         # 
         #     <!-- -->
+        # 
+        # This parameter is required.
         self.enable = enable
         # The minimum number of requests that can be passed in each step after circuit breaking recovers. Default value: 1.
         self.half_open_base_amount_per_step = half_open_base_amount_per_step
@@ -8158,10 +8243,14 @@ class CreateCircuitBreakerRuleRequest(TeaModel):
         # The minimum number of requests to trigger circuit breaking. If the number of requests in the current time window is less than the value of this parameter, circuit breaking is not triggered even if the circuit breaking rule is met. Default value: 10.
         self.min_request_amount = min_request_amount
         # The microservice namespace to which the application belongs.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The region in which the instance resides.
         self.region_id = region_id
         # The name of the interface to which the rule applies. The interface name must be the same as the name on the interface details page in the console.
+        # 
+        # This parameter is required.
         self.resource = resource
         self.resource_type = resource_type
         # The period in which circuit breaking is implemented. Unit: milliseconds. If circuit breaking is implemented on the requests for the route, the calls to all the requests for the route fail in the configured circuit breaking period. The value must be an integral multiple of 1,000. Default value: 10000. This value indicates 10 seconds.
@@ -8195,8 +8284,12 @@ class CreateCircuitBreakerRuleRequest(TeaModel):
         #     abnormal proportion
         # 
         #     <!-- -->
+        # 
+        # This parameter is required.
         self.strategy = strategy
         # A percentage threshold for triggering circuit breaking. Valid values: 0-1. These values represent 0% to 100%.
+        # 
+        # This parameter is required.
         self.threshold = threshold
 
     def validate(self):
@@ -8620,7 +8713,7 @@ class CreateClusterRequest(TeaModel):
         self.charge_type = charge_type
         # The engine specifications. Valid values:
         # 
-        # \[Professional Edition]
+        # [Professional Edition]
         # 
         # *   `MSE_SC_2_4_60_c`: 2 vCPUs and 4 GB of memory
         # *   `MSE_SC_1_2_60_c`: 1 vCPU and 2 GB of memory
@@ -8628,33 +8721,39 @@ class CreateClusterRequest(TeaModel):
         # *   `MSE_SC_8_16_60_c`: 8 vCPUs and 16 GB of memory
         # *   `MSE_SC_16_32_60_c`: 16 vCPUs and 32 GB of memory
         # 
-        # \[Developer Edition]
+        # [Developer Edition]
         # 
         # *   `MSE_SC_1_2_60_c`: 1 vCPU and 2 GB of memory
         # *   `MSE_SC_2_4_60_c`: 2 vCPUs and 4 GB of memory
         # 
-        # \[Serverless Edition]
+        # [Serverless Edition]
         # 
         # Ignore this parameter or set this parameter to `MSE_SC_SERVERLESS`.
+        # 
+        # This parameter is required.
         self.cluster_specification = cluster_specification
         # The type of the instance. Valid values: ZooKeeper and Nacos-Ans.
+        # 
+        # This parameter is required.
         self.cluster_type = cluster_type
         # The engine version of the instance. Valid values:
         # 
-        # \[Professional Edition]
+        # [Professional Edition]
         # 
         # *   `NACOS_2_0_0`
         # *   `ZooKeeper_3_8_0`
         # 
-        # \[Developer Edition]
+        # [Developer Edition]
         # 
         # *   `NACOS_2_0_0`
         # *   `ZooKeeper_3_8_0`
         # 
-        # \[Serverless Edition]
+        # [Serverless Edition]
         # 
         # *   `NACOS_2_0_0`
         # *   `ZooKeeper_3_8_0`
+        # 
+        # This parameter is required.
         self.cluster_version = cluster_version
         # The network connection type. Valid values: `slb` or `single_eni`. For instances of the Developer Edition in some regions, only the value `single_eni` is supported.
         self.connection_type = connection_type
@@ -8682,17 +8781,19 @@ class CreateClusterRequest(TeaModel):
         self.eip_enabled = eip_enabled
         # The number of nodes in the instance. Valid values: 1 to 9.
         # 
-        # \[Professional Edition]
+        # [Professional Edition]
         # 
         # *   The value must be greater than or equal to 3 and must be an odd number.
         # 
-        # \[Developer Edition]
+        # [Developer Edition]
         # 
         # *   The value must be 1.
         # 
-        # \[Serverless Edition]
+        # [Serverless Edition]
         # 
         # Ignore this parameter.
+        # 
+        # This parameter is required.
         self.instance_count = instance_count
         # The custom name of the instance.
         self.instance_name = instance_name
@@ -8706,6 +8807,8 @@ class CreateClusterRequest(TeaModel):
         # 
         # *   `privatenet`: VPC
         # *   `pubnet`: Internet
+        # 
+        # This parameter is required.
         self.net_type = net_type
         # This parameter is obsolete.
         self.private_slb_specification = private_slb_specification
@@ -8725,7 +8828,7 @@ class CreateClusterRequest(TeaModel):
         self.region = region
         # The extended request parameters in the JSON format.
         self.request_pars = request_pars
-        # The ID of the resource group. For the details of resource groups, see [View basic information of a resource group](~~457230~~).
+        # The ID of the resource group. For the details of resource groups, see [View basic information of a resource group](https://help.aliyun.com/document_detail/457230.html).
         self.resource_group_id = resource_group_id
         # The type of the security group to which the instance belongs. This parameter is valid only if the ConnectionType parameter is set to `single_eni`.
         # 
@@ -8985,6 +9088,8 @@ class CreateEngineNamespaceRequest(TeaModel):
         # The ID of the instance.
         self.instance_id = instance_id
         # The display name of the namespace.
+        # 
+        # This parameter is required.
         self.name = name
         # The maximum number of services that can run in the namespace.
         self.service_count = service_count
@@ -9239,6 +9344,8 @@ class CreateFlowRuleRequest(TeaModel):
         # The application ID.
         self.app_id = app_id
         # The application name.
+        # 
+        # This parameter is required.
         self.app_name = app_name
         # The throttling effect.
         # 
@@ -9287,17 +9394,25 @@ class CreateFlowRuleRequest(TeaModel):
         #     <!-- -->
         # 
         #     <!-- -->
+        # 
+        # This parameter is required.
         self.enable = enable
         # The timeout period. Unit: milliseconds. This value is required if the ControlBehavior parameter is set to 2.
         self.max_queueing_time_ms = max_queueing_time_ms
         # The namespace.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The region in which the instance resides.
         self.region_id = region_id
         # The name of the API resource.
+        # 
+        # This parameter is required.
         self.resource = resource
         self.resource_type = resource_type
         # The throttling threshold.
+        # 
+        # This parameter is required.
         self.threshold = threshold
 
     def validate(self):
@@ -9634,21 +9749,31 @@ class CreateGatewayCircuitBreakerRuleRequest(TeaModel):
         trigger_ratio: int = None,
     ):
         self.accept_language = accept_language
+        # This parameter is required.
         self.behavior_type = behavior_type
         self.body_encoding = body_encoding
+        # This parameter is required.
         self.enable = enable
         self.gateway_id = gateway_id
+        # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
         self.max_allowed_ms = max_allowed_ms
+        # This parameter is required.
         self.min_request_amount = min_request_amount
+        # This parameter is required.
         self.recovery_timeout_sec = recovery_timeout_sec
         self.response_content_body = response_content_body
         self.response_redirect_url = response_redirect_url
         self.response_status_code = response_status_code
+        # This parameter is required.
         self.route_id = route_id
+        # This parameter is required.
         self.route_name = route_name
+        # This parameter is required.
         self.stat_duration_sec = stat_duration_sec
+        # This parameter is required.
         self.strategy = strategy
+        # This parameter is required.
         self.trigger_ratio = trigger_ratio
 
     def validate(self):
@@ -9826,16 +9951,22 @@ class CreateGatewayFlowRuleRequest(TeaModel):
         threshold: int = None,
     ):
         self.accept_language = accept_language
+        # This parameter is required.
         self.behavior_type = behavior_type
         self.body_encoding = body_encoding
+        # This parameter is required.
         self.enable = enable
         self.gateway_id = gateway_id
+        # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
         self.response_content_body = response_content_body
         self.response_redirect_url = response_redirect_url
         self.response_status_code = response_status_code
+        # This parameter is required.
         self.route_id = route_id
+        # This parameter is required.
         self.route_name = route_name
+        # This parameter is required.
         self.threshold = threshold
 
     def validate(self):
@@ -9993,16 +10124,22 @@ class CreateGatewayIsolationRuleRequest(TeaModel):
         route_name: str = None,
     ):
         self.accept_language = accept_language
+        # This parameter is required.
         self.behavior_type = behavior_type
         self.body_encoding = body_encoding
+        # This parameter is required.
         self.enable = enable
         self.gateway_id = gateway_id
+        # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
+        # This parameter is required.
         self.max_concurrency = max_concurrency
         self.response_content_body = response_content_body
         self.response_redirect_url = response_redirect_url
         self.response_status_code = response_status_code
+        # This parameter is required.
         self.route_id = route_id
+        # This parameter is required.
         self.route_name = route_name
 
     def validate(self):
@@ -10157,11 +10294,16 @@ class CreateIsolationRuleRequest(TeaModel):
     ):
         self.accept_language = accept_language
         self.app_id = app_id
+        # This parameter is required.
         self.app_name = app_name
+        # This parameter is required.
         self.enable = enable
+        # This parameter is required.
         self.namespace = namespace
         self.region_id = region_id
+        # This parameter is required.
         self.resource = resource
+        # This parameter is required.
         self.threshold = threshold
 
     def validate(self):
@@ -10394,6 +10536,8 @@ class CreateMseServiceApplicationRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The name of the application.
+        # 
+        # This parameter is required.
         self.app_name = app_name
         # The additional information.
         self.extra_info = extra_info
@@ -10411,6 +10555,8 @@ class CreateMseServiceApplicationRequest(TeaModel):
         # *   cn-shanghai: China (Shanghai)
         # *   cn-zhangjiakou: China (Zhangjiakou)
         # *   cn-shenzhen: China (Shenzhen)
+        # 
+        # This parameter is required.
         self.region = region
         # Specifies whether to enable the Sentinel-compatible mode.
         self.sentinel_enable = sentinel_enable
@@ -10698,12 +10844,18 @@ class CreateNacosConfigRequest(TeaModel):
         # The content of the configuration.
         self.content = content
         # The ID of the data.
+        # 
+        # This parameter is required.
         self.data_id = data_id
         # The description of the configuration.
         self.desc = desc
         # The ID of the group.
+        # 
+        # This parameter is required.
         self.group = group
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the namespace.
         self.namespace_id = namespace_id
@@ -10903,24 +11055,40 @@ class CreateNacosInstanceRequest(TeaModel):
         # The name of the Nacos instance.
         self.cluster_name = cluster_name
         # Specifies whether to enable the service for the instance.
+        # 
+        # This parameter is required.
         self.enabled = enabled
         # Specifies whether to mark the instance as a temporary node.
+        # 
+        # This parameter is required.
         self.ephemeral = ephemeral
         # The name of the group.
+        # 
+        # This parameter is required.
         self.group_name = group_name
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The IP address of the Nacos instance.
+        # 
+        # This parameter is required.
         self.ip = ip
         # The node metadata of the instance.
         self.metadata = metadata
         # The ID of the namespace.
         self.namespace_id = namespace_id
         # The port number of the Nacos instance.
+        # 
+        # This parameter is required.
         self.port = port
         # The name of the service.
+        # 
+        # This parameter is required.
         self.service_name = service_name
         # The weight. Valid values: 0 to 10000. The value must be an integer. A larger value indicates a higher frequency at which the instance is accessed.
+        # 
+        # This parameter is required.
         self.weight = weight
 
     def validate(self):
@@ -11128,6 +11296,8 @@ class CreateNacosServiceRequest(TeaModel):
         # The protection threshold.
         self.protect_threshold = protect_threshold
         # The name of the service.
+        # 
+        # This parameter is required.
         self.service_name = service_name
 
     def validate(self):
@@ -11475,6 +11645,39 @@ class CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonConditions(Te
         return self
 
 
+class CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonRouteIndependentPercentageList(TeaModel):
+    def __init__(
+        self,
+        percentage: int = None,
+        route_id: int = None,
+    ):
+        self.percentage = percentage
+        self.route_id = route_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.percentage is not None:
+            result['Percentage'] = self.percentage
+        if self.route_id is not None:
+            result['RouteId'] = self.route_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Percentage') is not None:
+            self.percentage = m.get('Percentage')
+        if m.get('RouteId') is not None:
+            self.route_id = m.get('RouteId')
+        return self
+
+
 class CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson(TeaModel):
     def __init__(
         self,
@@ -11484,6 +11687,8 @@ class CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson(TeaModel):
         gateway_unique_id: str = None,
         percentage: int = None,
         route_id_list: List[int] = None,
+        route_independent_percentage_enable: bool = None,
+        route_independent_percentage_list: List[CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonRouteIndependentPercentageList] = None,
     ):
         self.canary_model = canary_model
         # The matching conditions.
@@ -11495,10 +11700,16 @@ class CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson(TeaModel):
         self.percentage = percentage
         # The route IDs.
         self.route_id_list = route_id_list
+        self.route_independent_percentage_enable = route_independent_percentage_enable
+        self.route_independent_percentage_list = route_independent_percentage_list
 
     def validate(self):
         if self.conditions:
             for k in self.conditions:
+                if k:
+                    k.validate()
+        if self.route_independent_percentage_list:
+            for k in self.route_independent_percentage_list:
                 if k:
                     k.validate()
 
@@ -11522,6 +11733,12 @@ class CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson(TeaModel):
             result['Percentage'] = self.percentage
         if self.route_id_list is not None:
             result['RouteIdList'] = self.route_id_list
+        if self.route_independent_percentage_enable is not None:
+            result['RouteIndependentPercentageEnable'] = self.route_independent_percentage_enable
+        result['RouteIndependentPercentageList'] = []
+        if self.route_independent_percentage_list is not None:
+            for k in self.route_independent_percentage_list:
+                result['RouteIndependentPercentageList'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -11541,6 +11758,13 @@ class CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJson(TeaModel):
             self.percentage = m.get('Percentage')
         if m.get('RouteIdList') is not None:
             self.route_id_list = m.get('RouteIdList')
+        if m.get('RouteIndependentPercentageEnable') is not None:
+            self.route_independent_percentage_enable = m.get('RouteIndependentPercentageEnable')
+        self.route_independent_percentage_list = []
+        if m.get('RouteIndependentPercentageList') is not None:
+            for k in m.get('RouteIndependentPercentageList'):
+                temp_model = CreateOrUpdateSwimmingLaneRequestGatewaySwimmingLaneRouteJsonRouteIndependentPercentageList()
+                self.route_independent_percentage_list.append(temp_model.from_map(k))
         return self
 
 
@@ -11557,6 +11781,7 @@ class CreateOrUpdateSwimmingLaneRequest(TeaModel):
         id: int = None,
         name: str = None,
         namespace: str = None,
+        path_independent_percentage_enable: bool = None,
         region_id: str = None,
         tag: str = None,
     ):
@@ -11581,8 +11806,11 @@ class CreateOrUpdateSwimmingLaneRequest(TeaModel):
         # The ID of the primary key. The value -1 indicates a request that is used to create a lane. A value greater than 0 indicates a request that is used to modify a lane.
         self.id = id
         # The name of the lane.
+        # 
+        # This parameter is required.
         self.name = name
         self.namespace = namespace
+        self.path_independent_percentage_enable = path_independent_percentage_enable
         # The ID of the region.
         self.region_id = region_id
         # The tag.
@@ -11624,6 +11852,8 @@ class CreateOrUpdateSwimmingLaneRequest(TeaModel):
             result['Name'] = self.name
         if self.namespace is not None:
             result['Namespace'] = self.namespace
+        if self.path_independent_percentage_enable is not None:
+            result['PathIndependentPercentageEnable'] = self.path_independent_percentage_enable
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.tag is not None:
@@ -11656,6 +11886,8 @@ class CreateOrUpdateSwimmingLaneRequest(TeaModel):
             self.name = m.get('Name')
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
+        if m.get('PathIndependentPercentageEnable') is not None:
+            self.path_independent_percentage_enable = m.get('PathIndependentPercentageEnable')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('Tag') is not None:
@@ -11810,6 +12042,7 @@ class CreateOrUpdateSwimmingLaneShrinkRequest(TeaModel):
         id: int = None,
         name: str = None,
         namespace: str = None,
+        path_independent_percentage_enable: bool = None,
         region_id: str = None,
         tag: str = None,
     ):
@@ -11834,8 +12067,11 @@ class CreateOrUpdateSwimmingLaneShrinkRequest(TeaModel):
         # The ID of the primary key. The value -1 indicates a request that is used to create a lane. A value greater than 0 indicates a request that is used to modify a lane.
         self.id = id
         # The name of the lane.
+        # 
+        # This parameter is required.
         self.name = name
         self.namespace = namespace
+        self.path_independent_percentage_enable = path_independent_percentage_enable
         # The ID of the region.
         self.region_id = region_id
         # The tag.
@@ -11875,6 +12111,8 @@ class CreateOrUpdateSwimmingLaneShrinkRequest(TeaModel):
             result['Name'] = self.name
         if self.namespace is not None:
             result['Namespace'] = self.namespace
+        if self.path_independent_percentage_enable is not None:
+            result['PathIndependentPercentageEnable'] = self.path_independent_percentage_enable
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.tag is not None:
@@ -11906,6 +12144,8 @@ class CreateOrUpdateSwimmingLaneShrinkRequest(TeaModel):
             self.name = m.get('Name')
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
+        if m.get('PathIndependentPercentageEnable') is not None:
+            self.path_independent_percentage_enable = m.get('PathIndependentPercentageEnable')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('Tag') is not None:
@@ -12060,6 +12300,7 @@ class CreateOrUpdateSwimmingLaneResponseBodyData(TeaModel):
         group_id: int = None,
         id: int = None,
         name: str = None,
+        path_independent_percentage_enable: bool = None,
         region_id: str = None,
         status: int = None,
         tag: str = None,
@@ -12074,6 +12315,7 @@ class CreateOrUpdateSwimmingLaneResponseBodyData(TeaModel):
         self.group_id = group_id
         self.id = id
         self.name = name
+        self.path_independent_percentage_enable = path_independent_percentage_enable
         self.region_id = region_id
         self.status = status
         self.tag = tag
@@ -12112,6 +12354,8 @@ class CreateOrUpdateSwimmingLaneResponseBodyData(TeaModel):
             result['id'] = self.id
         if self.name is not None:
             result['name'] = self.name
+        if self.path_independent_percentage_enable is not None:
+            result['pathIndependentPercentageEnable'] = self.path_independent_percentage_enable
         if self.region_id is not None:
             result['regionId'] = self.region_id
         if self.status is not None:
@@ -12145,6 +12389,8 @@ class CreateOrUpdateSwimmingLaneResponseBodyData(TeaModel):
             self.id = m.get('id')
         if m.get('name') is not None:
             self.name = m.get('name')
+        if m.get('pathIndependentPercentageEnable') is not None:
+            self.path_independent_percentage_enable = m.get('pathIndependentPercentageEnable')
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')
         if m.get('status') is not None:
@@ -12308,6 +12554,8 @@ class CreateOrUpdateSwimmingLaneGroupRequest(TeaModel):
         # Specifies whether to enable canary release for messaging.
         self.message_queue_gray_enable = message_queue_gray_enable
         # The name.
+        # 
+        # This parameter is required.
         self.name = name
         # The name of the Microservices Engine (MSE) namespace.
         self.namespace = namespace
@@ -12434,6 +12682,8 @@ class CreateOrUpdateSwimmingLaneGroupShrinkRequest(TeaModel):
         # Specifies whether to enable canary release for messaging.
         self.message_queue_gray_enable = message_queue_gray_enable
         # The name.
+        # 
+        # This parameter is required.
         self.name = name
         # The name of the Microservices Engine (MSE) namespace.
         self.namespace = namespace
@@ -13191,10 +13441,14 @@ class DeleteCircuitBreakerRulesRequest(TeaModel):
         # The language of the response. Valid values: zh and en. Default value: zh. The value zh indicates Chinese, and the value en indicates English.
         self.accept_language = accept_language
         # The name of the application.
+        # 
+        # This parameter is required.
         self.app_name = app_name
         # The IDs of the rules that you want to delete.
         self.ids = ids
         # The microservice namespace to which the application belongs.
+        # 
+        # This parameter is required.
         self.namespace = namespace
 
     def validate(self):
@@ -13240,10 +13494,14 @@ class DeleteCircuitBreakerRulesShrinkRequest(TeaModel):
         # The language of the response. Valid values: zh and en. Default value: zh. The value zh indicates Chinese, and the value en indicates English.
         self.accept_language = accept_language
         # The name of the application.
+        # 
+        # This parameter is required.
         self.app_name = app_name
         # The IDs of the rules that you want to delete.
         self.ids_shrink = ids_shrink
         # The microservice namespace to which the application belongs.
+        # 
+        # This parameter is required.
         self.namespace = namespace
 
     def validate(self):
@@ -13689,10 +13947,14 @@ class DeleteFlowRulesRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The application name.
+        # 
+        # This parameter is required.
         self.app_name = app_name
         # The IDs of the rules to be deleted.
         self.ids = ids
         # The microservice namespace to which the application belongs.
+        # 
+        # This parameter is required.
         self.namespace = namespace
 
     def validate(self):
@@ -13741,10 +14003,14 @@ class DeleteFlowRulesShrinkRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The application name.
+        # 
+        # This parameter is required.
         self.app_name = app_name
         # The IDs of the rules to be deleted.
         self.ids_shrink = ids_shrink
         # The microservice namespace to which the application belongs.
+        # 
+        # This parameter is required.
         self.namespace = namespace
 
     def validate(self):
@@ -14168,8 +14434,12 @@ class DeleteGatewayAuthConsumerRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The unique ID of the gateway.
+        # 
+        # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
         # The ID of the consumer on which the gateway performs authentication operations.
+        # 
+        # This parameter is required.
         self.id = id
 
     def validate(self):
@@ -14222,7 +14492,7 @@ class DeleteGatewayAuthConsumerResponseBody(TeaModel):
         self.data = data
         # The dynamic part in the error message.
         self.dynamic_code = dynamic_code
-        # The dynamic part in the error message. This parameter is used to replace the \*\*%s\*\* variable in the **ErrMessage** parameter.
+        # The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\* variable in the **ErrMessage** parameter.
         # 
         # > If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
         self.dynamic_message = dynamic_message
@@ -14347,10 +14617,16 @@ class DeleteGatewayAuthConsumerResourceRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The consumer ID.
+        # 
+        # This parameter is required.
         self.consumer_id = consumer_id
         # The unique ID of the gateway.
+        # 
+        # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
         # The IDs of the authorized resources that you want to delete.
+        # 
+        # This parameter is required.
         self.id_list = id_list
 
     def validate(self):
@@ -14407,7 +14683,7 @@ class DeleteGatewayAuthConsumerResourceResponseBody(TeaModel):
         self.data = data
         # The dynamic part in the error message.
         self.dynamic_code = dynamic_code
-        # The dynamic part in the error message. This parameter is used to replace the \*\*%s\*\* variable in the **ErrMessage** parameter.
+        # The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\* variable in the **ErrMessage** parameter.
         # 
         # > If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
         self.dynamic_message = dynamic_message
@@ -14527,8 +14803,11 @@ class DeleteGatewayCircuitBreakerRuleRequest(TeaModel):
         rule_id: int = None,
     ):
         self.accept_language = accept_language
+        # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
+        # This parameter is required.
         self.route_id = route_id
+        # This parameter is required.
         self.rule_id = rule_id
 
     def validate(self):
@@ -14884,8 +15163,11 @@ class DeleteGatewayFlowRuleRequest(TeaModel):
         rule_id: int = None,
     ):
         self.accept_language = accept_language
+        # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
+        # This parameter is required.
         self.route_id = route_id
+        # This parameter is required.
         self.rule_id = rule_id
 
     def validate(self):
@@ -15003,8 +15285,11 @@ class DeleteGatewayIsolationRuleRequest(TeaModel):
         rule_id: int = None,
     ):
         self.accept_language = accept_language
+        # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
+        # This parameter is required.
         self.route_id = route_id
+        # This parameter is required.
         self.rule_id = rule_id
 
     def validate(self):
@@ -15978,8 +16263,10 @@ class DeleteIsolationRulesRequest(TeaModel):
         namespace: str = None,
     ):
         self.accept_language = accept_language
+        # This parameter is required.
         self.app_name = app_name
         self.ids = ids
+        # This parameter is required.
         self.namespace = namespace
 
     def validate(self):
@@ -16023,8 +16310,10 @@ class DeleteIsolationRulesShrinkRequest(TeaModel):
         namespace: str = None,
     ):
         self.accept_language = accept_language
+        # This parameter is required.
         self.app_name = app_name
         self.ids_shrink = ids_shrink
+        # This parameter is required.
         self.namespace = namespace
 
     def validate(self):
@@ -16327,10 +16616,16 @@ class DeleteNacosConfigRequest(TeaModel):
         # The error code returned if the request failed.
         self.beta = beta
         # The ID of the request.
+        # 
+        # This parameter is required.
         self.data_id = data_id
         # The message returned.
+        # 
+        # This parameter is required.
         self.group = group
         # The HTTP status code.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The request is successfully processed.
         self.namespace_id = namespace_id
@@ -16489,10 +16784,16 @@ class DeleteNacosConfigsRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The IDs of configurations.
+        # 
+        # This parameter is required.
         self.ids = ids
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the namespace.
+        # 
+        # This parameter is required.
         self.namespace_id = namespace_id
 
     def validate(self):
@@ -16658,18 +16959,30 @@ class DeleteNacosInstanceRequest(TeaModel):
         # 
         # *   `true`: yes
         # *   `false`: no
+        # 
+        # This parameter is required.
         self.ephemeral = ephemeral
         # The name of the group.
+        # 
+        # This parameter is required.
         self.group_name = group_name
         # The ID of the Nacos instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The IP address of the Nacos instance.
+        # 
+        # This parameter is required.
         self.ip = ip
         # The ID of the namespace.
         self.namespace_id = namespace_id
         # The port of the Nacos instance.
+        # 
+        # This parameter is required.
         self.port = port
         # The name of the service.
+        # 
+        # This parameter is required.
         self.service_name = service_name
 
     def validate(self):
@@ -16860,12 +17173,18 @@ class DeleteNacosServiceRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The name of the group.
+        # 
+        # This parameter is required.
         self.group_name = group_name
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the namespace.
         self.namespace_id = namespace_id
         # The name of the service.
+        # 
+        # This parameter is required.
         self.service_name = service_name
 
     def validate(self):
@@ -17557,6 +17876,8 @@ class DeleteSwimmingLaneRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The ID of the lane.
+        # 
+        # This parameter is required.
         self.lane_id = lane_id
         # The name of the Microservices Engine (MSE) namespace.
         self.namespace = namespace
@@ -17848,8 +18169,12 @@ class DeleteZnodeRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The path of the node.
+        # 
+        # This parameter is required.
         self.path = path
         # The extended request parameters in the JSON format.
         self.request_pars = request_pars
@@ -18083,6 +18408,8 @@ class ExportNacosConfigRequest(TeaModel):
         # >  - Multiple export methods are supported. You must specify this parameter if you want to export multiple configurations. - You can obtain the value of this parameter by calling the ListNacosConfigs operation. - If you specify this parameter, multiple configurations are exported. The DataId and Group parameters are invalid.
         self.ids = ids
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the namespace.
         self.namespace_id = namespace_id
@@ -18456,7 +18783,7 @@ class ExportZookeeperDataResponseBody(TeaModel):
     ):
         # The details of the data.
         self.data = data
-        # The dynamic part in the error message. This parameter is used to replace the \*\*%s\*\* variable in the **ErrMessage** parameter.
+        # The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\* variable in the **ErrMessage** parameter.
         # 
         # > If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
         self.dynamic_message = dynamic_message
@@ -18587,10 +18914,16 @@ class FetchLosslessRuleListRequest(TeaModel):
         # The namespace.
         self.namespace = namespace
         # The page number.
+        # 
+        # This parameter is required.
         self.page_number = page_number
         # The number of entries per page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -18924,6 +19257,8 @@ class GetAppMessageQueueRouteRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The ID of the application.
+        # 
+        # This parameter is required.
         self.app_id = app_id
         # The name of the application.
         self.app_name = app_name
@@ -18936,6 +19271,8 @@ class GetAppMessageQueueRouteRequest(TeaModel):
         # *   `cn-shanghai`: China (Shanghai)
         # *   `cn-zhangjiakou`: China (Zhangjiakou)
         # *   `cn-shenzhen`: China (Shenzhen)
+        # 
+        # This parameter is required.
         self.region = region
 
     def validate(self):
@@ -19454,10 +19791,16 @@ class GetApplicationListRequest(TeaModel):
         # The microservice namespace to which the application belongs.
         self.namespace = namespace
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page_number = page_number
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region = region
         # Specifies whether to enable the Sentinel-compatible mode.
         self.sentinel_enable = sentinel_enable
@@ -20796,8 +21139,12 @@ class GetGatewayAuthConsumerDetailRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The unique ID of the gateway.
+        # 
+        # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
         # The ID of the consumer.
+        # 
+        # This parameter is required.
         self.id = id
 
     def validate(self):
@@ -21090,7 +21437,7 @@ class GetGatewayAuthConsumerDetailResponseBody(TeaModel):
         self.data = data
         # The dynamic part in the error message.
         self.dynamic_code = dynamic_code
-        # The dynamic part in the error message. This parameter is used to replace the \*\*%s\*\* variable in the **ErrMessage** parameter.
+        # The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\* variable in the **ErrMessage** parameter.
         # 
         # >  If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
         self.dynamic_message = dynamic_message
@@ -23821,7 +24168,7 @@ class GetGatewayServiceDetailResponseBodyDataLabelDetails(TeaModel):
     ):
         # The tag.
         self.key = key
-        # The tag values.
+        # The tag value.
         self.values = values
 
     def validate(self):
@@ -23861,11 +24208,11 @@ class GetGatewayServiceDetailResponseBodyDataPortTrafficPolicyList(TeaModel):
     ):
         # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
-        # The time when the service was created.
+        # The creation time.
         self.gmt_create = gmt_create
-        # The time when the service was modified.
+        # The modification time.
         self.gmt_modified = gmt_modified
-        # The ID of the port configuration.
+        # The port ID.
         self.id = id
         # The service ID.
         self.service_id = service_id
@@ -23961,7 +24308,7 @@ class GetGatewayServiceDetailResponseBodyDataVersionDetailsServiceVersion(TeaMod
         labels: List[GetGatewayServiceDetailResponseBodyDataVersionDetailsServiceVersionLabels] = None,
         name: str = None,
     ):
-        # The tags.
+        # The tag.
         self.labels = labels
         # The version number.
         self.name = name
@@ -24009,7 +24356,7 @@ class GetGatewayServiceDetailResponseBodyDataVersionDetails(TeaModel):
         self.endpoint_num = endpoint_num
         # The percentage of instances.
         self.endpoint_num_percent = endpoint_num_percent
-        # The version of the service.
+        # The service version.
         self.service_version = service_version
 
     def validate(self):
@@ -24051,7 +24398,7 @@ class GetGatewayServiceDetailResponseBodyDataVersions(TeaModel):
     ):
         # The tag.
         self.label = label
-        # The type of the service.
+        # The type.
         self.type = type
         # The tag value.
         self.value = value
@@ -24154,7 +24501,7 @@ class GetGatewayServiceDetailResponseBodyData(TeaModel):
         self.source_type = source_type
         # The details of versions.
         self.version_details = version_details
-        # The version of the service.
+        # The service version. This parameter is deprecated.
         self.versions = versions
 
     def validate(self):
@@ -24315,7 +24662,7 @@ class GetGatewayServiceDetailResponseBody(TeaModel):
     ):
         # The response code returned.
         self.code = code
-        # The details of the data.
+        # The data returned.
         self.data = data
         # The HTTP status code returned.
         self.http_status_code = http_status_code
@@ -24425,8 +24772,12 @@ class GetGovernanceKubernetesClusterRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The ID of the region in which the instance resides. The region is supported by MSE.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -24684,6 +25035,8 @@ class GetImageRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The version number of the current instance.
+        # 
+        # This parameter is required.
         self.version_code = version_code
 
     def validate(self):
@@ -24884,6 +25237,8 @@ class GetImportFileUrlRequest(TeaModel):
         # The file type.
         self.content_type = content_type
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the namespace.
         self.namespace_id = namespace_id
@@ -24964,7 +25319,7 @@ class GetImportFileUrlResponseBody(TeaModel):
         self.code = code
         # The details of the data.
         self.data = data
-        # The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\* variable in the **ErrMessage** parameter.\n\n>  If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
+        # The dynamic part in the error message. This parameter is used to replace the \\\\*\\\\*%s\\\\*\\\\* variable in the **ErrMessage** parameter.\\n\\n>  If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
         self.dynamic_message = dynamic_message
         # The error code returned if the request failed.
         self.error_code = error_code
@@ -25084,6 +25439,8 @@ class GetKubernetesSourceRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The unique ID of the gateway.
+        # 
+        # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
         # Specifies whether to obtain the information about all Kubernetes clusters. If you set the value to false, only the information about unassociated clusters is obtained.
         self.is_all = is_all
@@ -25699,6 +26056,7 @@ class GetMseSourceRequest(TeaModel):
         # *   NACOS
         # *   ZOOKEEPER
         self.type = type
+        # VPC ID
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -25928,10 +26286,16 @@ class GetNacosConfigRequest(TeaModel):
         # *   `false`: no
         self.beta = beta
         # The ID of the data.
+        # 
+        # This parameter is required.
         self.data_id = data_id
         # The name of the configuration group.
+        # 
+        # This parameter is required.
         self.group = group
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the namespace.
         self.namespace_id = namespace_id
@@ -26185,14 +26549,22 @@ class GetNacosHistoryConfigRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The ID of the data.
+        # 
+        # This parameter is required.
         self.data_id = data_id
         # The name of the group.
+        # 
+        # This parameter is required.
         self.group = group
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the namespace.
         self.namespace_id = namespace_id
         # The version ID of the configuration.
+        # 
+        # This parameter is required.
         self.nid = nid
 
     def validate(self):
@@ -26571,8 +26943,12 @@ class GetPluginConfigRequest(TeaModel):
         # zh: Chinese en: English
         self.accept_language = accept_language
         # The unique ID of the gateway.
+        # 
+        # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
         # The ID of the gateway plug-in.
+        # 
+        # This parameter is required.
         self.plugin_id = plugin_id
 
     def validate(self):
@@ -27040,6 +27416,8 @@ class GetPluginsRequest(TeaModel):
         # Specifies whether to enable the plug-in.
         self.enable_only = enable_only
         # The ID of the gateway.
+        # 
+        # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
         # The name of the plug-in.
         self.name = name
@@ -27382,6 +27760,8 @@ class GetServiceListRequest(TeaModel):
         # The language of the response.
         self.accept_language = accept_language
         # The ID of the application.
+        # 
+        # This parameter is required.
         self.app_id = app_id
         # The IP address.
         self.ip = ip
@@ -28739,6 +29119,8 @@ class GetTagsBySwimmingLaneGroupIdRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The ID of the lane group.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The name of the Microservices Engine (MSE) namespace that you want to query.
         self.namespace = namespace
@@ -28968,7 +29350,7 @@ class GetZookeeperDataImportUrlResponseBody(TeaModel):
         self.code = code
         # The URL that is used to upload the configuration file.
         self.data = data
-        # The dynamic part in the error message. This parameter is used to replace the \*\*%s\*\* variable in the **ErrMessage** parameter.
+        # The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\* variable in the **ErrMessage** parameter.
         # 
         # >  If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
         self.dynamic_code = dynamic_code
@@ -29101,8 +29483,12 @@ class ImportNacosConfigRequest(TeaModel):
         # 
         # *   zh: Chinese
         # *   en: English
+        # 
+        # This parameter is required.
         self.file_url = file_url
         # The ID of the namespace.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The policy.
         self.namespace_id = namespace_id
@@ -29992,12 +30378,18 @@ class ListAnsInstancesRequest(TeaModel):
         # The ID of the namespace.
         self.namespace_id = namespace_id
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page_num = page_num
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The extended request parameters in the JSON format.
         self.request_pars = request_pars
         # The name of the service.
+        # 
+        # This parameter is required.
         self.service_name = service_name
 
     def validate(self):
@@ -30396,8 +30788,12 @@ class ListAnsServiceClustersRequest(TeaModel):
         # The ID of the namespace.
         self.namespace_id = namespace_id
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page_num = page_num
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The name of the service.
         self.service_name = service_name
@@ -30861,8 +31257,12 @@ class ListAnsServicesRequest(TeaModel):
         # The ID of the namespace.
         self.namespace_id = namespace_id
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page_num = page_num
         # The number of entries returned per page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         self.region_id = region_id
         # The extended request parameters in the JSON format.
@@ -31146,10 +31546,14 @@ class ListAppBySwimmingLaneGroupTagRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The ID of the lane group.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The name of the Microservices Engine (MSE) namespace that you want to query.
         self.namespace = namespace
         # The tag.
+        # 
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -31295,8 +31699,12 @@ class ListAppBySwimmingLaneGroupTagsRequest(TeaModel):
         # The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
         self.accept_language = accept_language
         # The ID of the lane group.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The name of the MSE namespace that you want to query.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The tag based on which you want to list applications.
         self.tags = tags
@@ -31344,8 +31752,12 @@ class ListAppBySwimmingLaneGroupTagsShrinkRequest(TeaModel):
         # The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
         self.accept_language = accept_language
         # The ID of the lane group.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The name of the MSE namespace that you want to query.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The tag based on which you want to list applications.
         self.tags_shrink = tags_shrink
@@ -31518,8 +31930,12 @@ class ListApplicationsWithTagRulesRequest(TeaModel):
         # The MSE namespace to which the application belongs.
         self.namespace = namespace
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page_number = page_number
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The ID of the region.
         self.region = region
@@ -32291,8 +32707,12 @@ class ListAuthPolicyRequest(TeaModel):
         # The name of the Microservices Engine (MSE) namespace.
         self.namespace = namespace
         # The page number.
+        # 
+        # This parameter is required.
         self.page_number = page_number
         # The number of entries per page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The protocol type. Valid values:
         # 
@@ -32301,8 +32721,12 @@ class ListAuthPolicyRequest(TeaModel):
         # *   **istio**\
         self.protocol = protocol
         # The region ID.
+        # 
+        # This parameter is required.
         self.region = region
         # The service source.
+        # 
+        # This parameter is required.
         self.source = source
 
     def validate(self):
@@ -32808,8 +33232,12 @@ class ListCircuitBreakerRulesRequest(TeaModel):
         # The ID of the application.
         self.app_id = app_id
         # The name of the application.
+        # 
+        # This parameter is required.
         self.app_name = app_name
         # The microservice namespace to which the application belongs.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The start page of the returned pages. Default value: 1.
         self.page_index = page_index
@@ -33816,7 +34244,7 @@ class ListClusterHealthCheckTaskResponseBody(TeaModel):
         self.data = data
         # The dynamic part in the error message.
         self.dynamic_code = dynamic_code
-        # The dynamic part in the error message. This parameter is used to replace the \*\*%s\*\* variable in the **ErrMessage** parameter.
+        # The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\* variable in the **ErrMessage** parameter.
         # 
         # > If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
         self.dynamic_message = dynamic_message
@@ -34040,7 +34468,7 @@ class ListClusterTypesResponseBody(TeaModel):
         self.code = code
         # The data entries returned.
         self.data = data
-        # The dynamic part in the error message. This parameter is used to replace the \*\*%s\*\* variable in the **ErrMessage** parameter.
+        # The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\* variable in the **ErrMessage** parameter.
         # 
         # > If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
         self.dynamic_message = dynamic_message
@@ -34431,10 +34859,16 @@ class ListClustersRequest(TeaModel):
         self.cluster_alias_name = cluster_alias_name
         self.key_id = key_id
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page_num = page_num
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The ID of the region in which the instance resides. The region is supported by MSE.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The extended request parameters in the JSON format.
         self.request_pars = request_pars
@@ -34864,18 +35298,26 @@ class ListConfigTrackRequest(TeaModel):
         # The ID of the configuration.
         self.data_id = data_id
         # The end timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
         self.end_ts = end_ts
         # The name of the configuration group.
         self.group = group
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The IP address of the listener.
         self.ip = ip
         # The ID of the namespace.
         self.namespace_id = namespace_id
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page_num = page_num
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The extended request parameters in the JSON format.
         self.request_pars = request_pars
@@ -34885,6 +35327,8 @@ class ListConfigTrackRequest(TeaModel):
         # *   false
         self.reverse = reverse
         # The start timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
         self.start_ts = start_ts
 
     def validate(self):
@@ -35487,12 +35931,18 @@ class ListEurekaInstancesRequest(TeaModel):
         # The ID of the instance.
         self.cluster_id = cluster_id
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page_num = page_num
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The extended request parameters in the JSON format.
         self.request_pars = request_pars
         # The name of the service.
+        # 
+        # This parameter is required.
         self.service_name = service_name
 
     def validate(self):
@@ -35555,7 +36005,7 @@ class ListEurekaInstancesResponseBodyData(TeaModel):
     ):
         # The name of the application.
         self.app = app
-        # The timeout period of the instance.\
+        # The timeout period of the instance.\\
         # After the specified timeout period expires, the service is unavailable by default and is deleted.
         self.duration_in_secs = duration_in_secs
         # The URL of the homepage.
@@ -35574,7 +36024,7 @@ class ListEurekaInstancesResponseBodyData(TeaModel):
         self.metadata = metadata
         # The service port number.
         self.port = port
-        # The maximum interval between two heartbeat checks after a heartbeat check times out.\
+        # The maximum interval between two heartbeat checks after a heartbeat check times out.\\
         # Default value: 10.
         self.renewal_interval_in_secs = renewal_interval_in_secs
         # The security port.
@@ -35808,10 +36258,16 @@ class ListEurekaServicesRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page_num = page_num
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The region ID.
         self.region_id = region_id
@@ -36194,7 +36650,7 @@ class ListExportZookeeperDataResponseBody(TeaModel):
     ):
         # The details of the data.
         self.data = data
-        # The dynamic part in the error message. This parameter is used to replace the \*\*%s\*\* variable in the **ErrMessage** parameter.
+        # The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\* variable in the **ErrMessage** parameter.
         # 
         # > If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
         self.dynamic_message = dynamic_message
@@ -36325,8 +36781,12 @@ class ListFlowRulesRequest(TeaModel):
         # The ID of the application.
         self.app_id = app_id
         # The name of the application.
+        # 
+        # This parameter is required.
         self.app_name = app_name
         # The namespace.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The page number. Default value: 1.
         self.page_index = page_index
@@ -37814,12 +38274,18 @@ class ListGatewayAuthConsumerRequest(TeaModel):
         # *   false: disabled
         self.consumer_status = consumer_status
         # The unique ID of the gateway.
+        # 
+        # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
         # The name of the consumer.
         self.name = name
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page_num = page_num
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The authentication type. Valid values:
         # 
@@ -38165,12 +38631,20 @@ class ListGatewayAuthConsumerResourceRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The ID of the consumer.
+        # 
+        # This parameter is required.
         self.consumer_id = consumer_id
         # The unique ID of the gateway.
+        # 
+        # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page_num = page_num
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The resource authorization status. Valid values:
         # 
@@ -38380,7 +38854,7 @@ class ListGatewayAuthConsumerResourceResponseBody(TeaModel):
         self.data = data
         # The dynamic part in the error message.
         self.dynamic_code = dynamic_code
-        # The dynamic part in the error message. This parameter is used to replace the \*\*%s\*\* variable in the **ErrMessage** parameter.
+        # The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\* variable in the **ErrMessage** parameter.
         # 
         # >  If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
         self.dynamic_message = dynamic_message
@@ -38501,6 +38975,8 @@ class ListGatewayCircuitBreakerRuleRequest(TeaModel):
     ):
         self.accept_language = accept_language
         # just for POP
+        # 
+        # This parameter is required.
         self.filter_params = filter_params
 
     def validate(self):
@@ -39297,6 +39773,8 @@ class ListGatewayFlowRuleRequest(TeaModel):
     ):
         self.accept_language = accept_language
         # just for POP
+        # 
+        # This parameter is required.
         self.filter_params = filter_params
 
     def validate(self):
@@ -39685,6 +40163,8 @@ class ListGatewayIsolationRuleRequest(TeaModel):
     ):
         self.accept_language = accept_language
         # just for POP
+        # 
+        # This parameter is required.
         self.filter_params = filter_params
 
     def validate(self):
@@ -40099,6 +40579,8 @@ class ListGatewayRouteRequestFilterParams(TeaModel):
         # The ID of the gateway.
         self.gateway_id = gateway_id
         # The unique ID of the gateway.
+        # 
+        # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
         # The name of the gateway.
         self.name = name
@@ -41408,10 +41890,14 @@ class ListGatewayRouteOnAuthRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The unique ID of the gateway.
+        # 
+        # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
         # The authentication method. Valid values:
         # 
         # *   JWT
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -42185,7 +42671,7 @@ class ListGatewayServiceResponseBodyDataResultHealthCheckInfo(TeaModel):
         self.expected_statuses = expected_statuses
         # The threshold for healthy instances.
         self.healthy_threshold = healthy_threshold
-        # The URL of the HTTP request for the health check.
+        # The endpoint of the HTTP request for the health check.
         self.http_host = http_host
         # The path to which the HTTP request for the health check is sent.
         self.http_path = http_path
@@ -42306,7 +42792,7 @@ class ListGatewayServiceResponseBodyDataResult(TeaModel):
         unhealthy_endpoints: List[str] = None,
         versions: List[ListGatewayServiceResponseBodyDataResultVersions] = None,
     ):
-        # The ID of the gateway.
+        # The gateway ID.
         self.gateway_id = gateway_id
         # The traffic management policy.
         self.gateway_traffic_policy = gateway_traffic_policy
@@ -42316,7 +42802,7 @@ class ListGatewayServiceResponseBodyDataResult(TeaModel):
         self.gmt_create = gmt_create
         # The modification time.
         self.gmt_modified = gmt_modified
-        # The name of the group.
+        # The group.
         self.group_name = group_name
         # The health status.
         # 
@@ -42336,7 +42822,7 @@ class ListGatewayServiceResponseBodyDataResult(TeaModel):
         self.health_status = health_status
         # The ID.
         self.id = id
-        # The IP addresses.
+        # The list of IP addresses.
         self.ips = ips
         # The metadata or IP addresses of the service.
         self.meta_info = meta_info
@@ -42349,17 +42835,17 @@ class ListGatewayServiceResponseBodyDataResult(TeaModel):
         self.service_fqdn = service_fqdn
         # The name of the service that is registered with the service registry.
         self.service_name_in_registry = service_name_in_registry
-        # The service port.
+        # The service port number.
         self.service_port = service_port
         # The protocol of the service.
         self.service_protocol = service_protocol
         # The ID of the service source.
         self.source_id = source_id
-        # The type of the service source.
+        # The source type.
         self.source_type = source_type
-        # The array of unhealthy endpoints.
+        # The array of endpoints of unhealthy instances.
         self.unhealthy_endpoints = unhealthy_endpoints
-        # The version of the service.
+        # The service version.
         self.versions = versions
 
     def validate(self):
@@ -42500,7 +42986,7 @@ class ListGatewayServiceResponseBodyData(TeaModel):
         self.page_number = page_number
         # The number of entries returned per page. Default value: 10.
         self.page_size = page_size
-        # The returned information.
+        # The data returned.
         self.result = result
         # The total number of entries returned.
         self.total_size = total_size
@@ -42557,7 +43043,7 @@ class ListGatewayServiceResponseBody(TeaModel):
     ):
         # The return value.
         self.code = code
-        # The response parameters.
+        # The returned data.
         self.data = data
         # The HTTP status code returned.
         self.http_status_code = http_status_code
@@ -43102,7 +43588,7 @@ class ListInstanceCountResponseBody(TeaModel):
         # 
         # >  If the return value of the `ErrMessage` parameter is `The Value of Input Parameter %s is not valid` and the return value of the `DynamicMessage` parameter is `DtsJobId`, the specified `DtsJobId` parameter is invalid.
         self.dynamic_message = dynamic_message
-        # The error code returned if the request failed. If the request failed, the ErrorCode parameter is returned. For more information, see the [Error codes](~~456441~~) section of this topic.
+        # The error code returned if the request failed. If the request failed, the ErrorCode parameter is returned. For more information, see the [Error codes](https://help.aliyun.com/document_detail/456441.html) section of this topic.
         self.error_code = error_code
         # The HTTP status code returned.
         self.http_status_code = http_status_code
@@ -43223,7 +43709,9 @@ class ListIsolationRulesRequest(TeaModel):
     ):
         self.accept_language = accept_language
         self.app_id = app_id
+        # This parameter is required.
         self.app_name = app_name
+        # This parameter is required.
         self.namespace = namespace
         self.page_index = page_index
         self.page_size = page_size
@@ -43522,10 +44010,16 @@ class ListListenersByConfigRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The ID of the data.
+        # 
+        # This parameter is required.
         self.data_id = data_id
         # The name of the group.
+        # 
+        # This parameter is required.
         self.group = group
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the namespace.
         self.namespace_id = namespace_id
@@ -43777,8 +44271,12 @@ class ListListenersByIpRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The IP address of the listener.
+        # 
+        # This parameter is required.
         self.ip = ip
         # The ID of the namespace.
         self.namespace_id = namespace_id
@@ -44336,12 +44834,18 @@ class ListNacosConfigsRequest(TeaModel):
         # The name of the group. Default value: `default`
         self.group = group
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the namespace.
         self.namespace_id = namespace_id
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page_num = page_num
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The ID of the region in which the instance resides. The region is supported by Microservices Engine (MSE).
         self.region_id = region_id
@@ -44625,12 +45129,18 @@ class ListNacosHistoryConfigsRequest(TeaModel):
         # The name of the configuration group.
         self.group = group
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the namespace.
         self.namespace_id = namespace_id
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page_num = page_num
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The ID of the region in which the instance resides. The region is supported by MSE.
         self.region_id = region_id
@@ -44916,18 +45426,26 @@ class ListNamingTrackRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The end timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
         self.end_ts = end_ts
         # The group.
         self.group = group
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The IP address of the client.
         self.ip = ip
         # The ID of the namespace.
         self.namespace_id = namespace_id
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page_num = page_num
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The extended request parameters in the JSON format.
         self.request_pars = request_pars
@@ -44939,6 +45457,8 @@ class ListNamingTrackRequest(TeaModel):
         # The name of the service.
         self.service_name = service_name
         # The start timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
         self.start_ts = start_ts
 
     def validate(self):
@@ -45487,6 +46007,8 @@ class ListSecurityGroupRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The ID of the gateway.
+        # 
+        # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
 
     def validate(self):
@@ -45528,7 +46050,7 @@ class ListSecurityGroupResponseBodyData(TeaModel):
         # The type of the security group. Valid values:
         # 
         # *   normal: basic security group
-        # *   enterprise: advanced security group For more information, see [Advanced security groups](~~120621~~).
+        # *   enterprise: advanced security group For more information, see [Advanced security groups](https://help.aliyun.com/document_detail/120621.html).
         self.security_group_type = security_group_type
         # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
@@ -45692,6 +46214,8 @@ class ListSecurityGroupRuleRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The unique ID of the gateway.
+        # 
+        # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
 
     def validate(self):
@@ -45932,8 +46456,10 @@ class ListSentinelBlockFallbackDefinitionsRequest(TeaModel):
         namespace: str = None,
     ):
         self.accept_language = accept_language
+        # This parameter is required.
         self.app_name = app_name
         self.classification_set = classification_set
+        # This parameter is required.
         self.namespace = namespace
 
     def validate(self):
@@ -45977,8 +46503,10 @@ class ListSentinelBlockFallbackDefinitionsShrinkRequest(TeaModel):
         namespace: str = None,
     ):
         self.accept_language = accept_language
+        # This parameter is required.
         self.app_name = app_name
         self.classification_set_shrink = classification_set_shrink
+        # This parameter is required.
         self.namespace = namespace
 
     def validate(self):
@@ -46565,6 +47093,8 @@ class ListTagResourcesRequest(TeaModel):
         # The token used to start the next query.
         self.next_token = next_token
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource IDs. You can specify a maximum of 50 resource IDs.
         self.resource_id = resource_id
@@ -46572,6 +47102,8 @@ class ListTagResourcesRequest(TeaModel):
         # 
         # *   CLUSTER: MSE instance
         # *   GATEWAY: cloud-native gateway
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The list of tags. A maximum number of 20 tags are supported.
         self.tag = tag
@@ -46837,12 +47369,20 @@ class ListZkTrackRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The end timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
         self.end_ts = end_ts
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page_num = page_num
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
         # The path.
         self.path = path
@@ -46853,6 +47393,8 @@ class ListZkTrackRequest(TeaModel):
         # The session ID.
         self.session_id = session_id
         # The start timestamp. Unit: seconds.
+        # 
+        # This parameter is required.
         self.start_ts = start_ts
 
     def validate(self):
@@ -47203,8 +47745,12 @@ class ListZnodeChildrenRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The path of the node.
+        # 
+        # This parameter is required.
         self.path = path
 
     def validate(self):
@@ -47444,10 +47990,14 @@ class ModifyGovernanceKubernetesClusterRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The information about the namespace for which Microservices Engine(MSE) Microservices Governance is enabled.
         self.namespace_infos = namespace_infos
         # The ID of the region in which the instance resides. The region is supported by MSE.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -47504,10 +48054,14 @@ class ModifyGovernanceKubernetesClusterShrinkRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The information about the namespace for which Microservices Engine(MSE) Microservices Governance is enabled.
         self.namespace_infos_shrink = namespace_infos_shrink
         # The ID of the region in which the instance resides. The region is supported by MSE.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -47672,19 +48226,29 @@ class ModifyLosslessRuleRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # Specifies whether to align the lifecycle of the application in the Kubernetes cluster with that of the microservice.
+        # 
+        # This parameter is required.
         self.aligned = aligned
         # The ID of the application.
+        # 
+        # This parameter is required.
         self.app_id = app_id
         # The name of the application.
         self.app_name = app_name
         # The registration latency.
+        # 
+        # This parameter is required.
         self.delay_time = delay_time
         # Specifies whether to enable the alert rule. Valid values:
         # 
         # *   `true`: enables the rule.
         # *   `false`: disables the rule.
+        # 
+        # This parameter is required.
         self.enable = enable
         # The slope of the prefetching curve.
+        # 
+        # This parameter is required.
         self.func_type = func_type
         # Specifies whether to display online and offline processing details.
         self.loss_less_detail = loss_less_detail
@@ -47693,10 +48257,16 @@ class ModifyLosslessRuleRequest(TeaModel):
         # Specifies whether to enable notification.
         self.notice = notice
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # Specifies whether to associate with service prefetching.
+        # 
+        # This parameter is required.
         self.related = related
         # The prefetching duration.
+        # 
+        # This parameter is required.
         self.warmup_time = warmup_time
 
     def validate(self):
@@ -48128,7 +48698,7 @@ class OrderClusterHealthCheckRiskNoticeResponseBody(TeaModel):
         self.data = data
         # The dynamic part in the error message.
         self.dynamic_code = dynamic_code
-        # The dynamic part in the error message. This parameter is used to replace the \*\*%s\*\* variable in the **ErrMessage** parameter.
+        # The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\* variable in the **ErrMessage** parameter.
         # 
         # > If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
         self.dynamic_message = dynamic_message
@@ -48579,7 +49149,7 @@ class PutClusterHealthCheckTaskResponseBody(TeaModel):
         self.data = data
         # The dynamic part in the error message.
         self.dynamic_code = dynamic_code
-        # The dynamic part in the error message. This parameter is used to replace the \*\*%s\*\* variable in the **ErrMessage** parameter.
+        # The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\* variable in the **ErrMessage** parameter.
         # 
         # > If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
         self.dynamic_message = dynamic_message
@@ -48706,6 +49276,8 @@ class QueryAllSwimmingLaneRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The ID of the lane group.
+        # 
+        # This parameter is required.
         self.group_id = group_id
         # The name of the MSE namespace.
         self.namespace = namespace
@@ -48917,6 +49489,39 @@ class QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteConditions(Tea
         return self
 
 
+class QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteRouteIndependentPercentageList(TeaModel):
+    def __init__(
+        self,
+        percentage: str = None,
+        route_id: str = None,
+    ):
+        self.percentage = percentage
+        self.route_id = route_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.percentage is not None:
+            result['Percentage'] = self.percentage
+        if self.route_id is not None:
+            result['RouteId'] = self.route_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Percentage') is not None:
+            self.percentage = m.get('Percentage')
+        if m.get('RouteId') is not None:
+            self.route_id = m.get('RouteId')
+        return self
+
+
 class QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute(TeaModel):
     def __init__(
         self,
@@ -48926,6 +49531,8 @@ class QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute(TeaModel):
         gateway_unique_id: str = None,
         percentage: int = None,
         route_id_list: List[int] = None,
+        route_independent_percentage_enable: str = None,
+        route_independent_percentage_list: List[QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteRouteIndependentPercentageList] = None,
     ):
         self.canary_model = canary_model
         self.conditions = conditions
@@ -48933,10 +49540,16 @@ class QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute(TeaModel):
         self.gateway_unique_id = gateway_unique_id
         self.percentage = percentage
         self.route_id_list = route_id_list
+        self.route_independent_percentage_enable = route_independent_percentage_enable
+        self.route_independent_percentage_list = route_independent_percentage_list
 
     def validate(self):
         if self.conditions:
             for k in self.conditions:
+                if k:
+                    k.validate()
+        if self.route_independent_percentage_list:
+            for k in self.route_independent_percentage_list:
                 if k:
                     k.validate()
 
@@ -48960,6 +49573,12 @@ class QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute(TeaModel):
             result['Percentage'] = self.percentage
         if self.route_id_list is not None:
             result['RouteIdList'] = self.route_id_list
+        if self.route_independent_percentage_enable is not None:
+            result['RouteIndependentPercentageEnable'] = self.route_independent_percentage_enable
+        result['RouteIndependentPercentageList'] = []
+        if self.route_independent_percentage_list is not None:
+            for k in self.route_independent_percentage_list:
+                result['RouteIndependentPercentageList'].append(k.to_map() if k else None)
         return result
 
     def from_map(self, m: dict = None):
@@ -48979,6 +49598,13 @@ class QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRoute(TeaModel):
             self.percentage = m.get('Percentage')
         if m.get('RouteIdList') is not None:
             self.route_id_list = m.get('RouteIdList')
+        if m.get('RouteIndependentPercentageEnable') is not None:
+            self.route_independent_percentage_enable = m.get('RouteIndependentPercentageEnable')
+        self.route_independent_percentage_list = []
+        if m.get('RouteIndependentPercentageList') is not None:
+            for k in m.get('RouteIndependentPercentageList'):
+                temp_model = QueryAllSwimmingLaneResponseBodyDataGatewaySwimmingLaneRouteRouteIndependentPercentageList()
+                self.route_independent_percentage_list.append(temp_model.from_map(k))
         return self
 
 
@@ -48993,6 +49619,7 @@ class QueryAllSwimmingLaneResponseBodyData(TeaModel):
         message_queue_gray_enable: bool = None,
         name: str = None,
         namespace: str = None,
+        path_independent_percentage_enable: bool = None,
         record_canary_detail: bool = None,
         region_id: str = None,
         tag: str = None,
@@ -49009,6 +49636,7 @@ class QueryAllSwimmingLaneResponseBodyData(TeaModel):
         self.message_queue_gray_enable = message_queue_gray_enable
         self.name = name
         self.namespace = namespace
+        self.path_independent_percentage_enable = path_independent_percentage_enable
         self.record_canary_detail = record_canary_detail
         self.region_id = region_id
         self.tag = tag
@@ -49049,6 +49677,8 @@ class QueryAllSwimmingLaneResponseBodyData(TeaModel):
             result['Name'] = self.name
         if self.namespace is not None:
             result['Namespace'] = self.namespace
+        if self.path_independent_percentage_enable is not None:
+            result['PathIndependentPercentageEnable'] = self.path_independent_percentage_enable
         if self.record_canary_detail is not None:
             result['RecordCanaryDetail'] = self.record_canary_detail
         if self.region_id is not None:
@@ -49087,6 +49717,8 @@ class QueryAllSwimmingLaneResponseBodyData(TeaModel):
             self.name = m.get('Name')
         if m.get('Namespace') is not None:
             self.namespace = m.get('Namespace')
+        if m.get('PathIndependentPercentageEnable') is not None:
+            self.path_independent_percentage_enable = m.get('PathIndependentPercentageEnable')
         if m.get('RecordCanaryDetail') is not None:
             self.record_canary_detail = m.get('RecordCanaryDetail')
         if m.get('RegionId') is not None:
@@ -49961,7 +50593,7 @@ class QueryClusterDetailResponseBodyData(TeaModel):
         self.order_cluster_version = order_cluster_version
         # The billing method, such as subscription or pay-as-you-go.
         self.pay_info = pay_info
-        # The public bandwidth. Unit: Mbit/s.\
+        # The public bandwidth. Unit: Mbit/s.\\
         # Valid values: 0 to 5000. The value 0 indicates no access to the Internet.
         self.pub_network_flow = pub_network_flow
         # The region ID.
@@ -50345,7 +50977,7 @@ class QueryClusterDiskSpecificationResponseBody(TeaModel):
         self.code = code
         # The details of the data.
         self.data = data
-        # The dynamic part in the error message. This parameter is used to replace the \*\*%s\*\* variable in the **ErrMessage** parameter.
+        # The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\* variable in the **ErrMessage** parameter.
         # 
         # >  If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
         self.dynamic_message = dynamic_message
@@ -50610,9 +51242,9 @@ class QueryClusterInfoResponseBodyDataMaintenancePeriod(TeaModel):
         end_time: str = None,
         start_time: str = None,
     ):
-        # The start time of the O\&M time window.
+        # The start time of the O\\&M time window.
         self.end_time = end_time
-        # The end time of the O\&M time window.
+        # The end time of the O\\&M time window.
         self.start_time = start_time
 
     def validate(self):
@@ -50745,7 +51377,7 @@ class QueryClusterInfoResponseBodyData(TeaModel):
         self.intranet_domain = intranet_domain
         # The instance ports that are accessible over an internal network.
         self.intranet_port = intranet_port
-        # The O\&M time window.
+        # The O\\&M time window.
         self.maintenance_period = maintenance_period
         # A deprecated parameter.
         self.memory_capacity = memory_capacity
@@ -50755,7 +51387,7 @@ class QueryClusterInfoResponseBodyData(TeaModel):
         self.net_type = net_type
         # The billing method.
         self.pay_info = pay_info
-        # The public bandwidth. Unit: Mbit/s.\
+        # The public bandwidth. Unit: Mbit/s.\\
         # Valid values: 0 to 5000. The value 0 indicates no access to the Internet.
         self.pub_network_flow = pub_network_flow
         # The ID of the region.
@@ -51470,7 +52102,7 @@ class QueryConfigResponseBodyData(TeaModel):
         # *   `true`: supported.
         # *   `false`: not supported.
         self.mcpsupported = mcpsupported
-        # The number of connections between a client and a server. This parameter is valid for ZooKeeper instances.\
+        # The number of connections between a client and a server. This parameter is valid for ZooKeeper instances.\\
         # If this parameter is set to 0, no limits are imposed on the number of connections.
         self.max_client_cnxns = max_client_cnxns
         # The maximum timeout period. This parameter is valid for ZooKeeper instances.
@@ -52063,8 +52695,12 @@ class QueryGovernanceKubernetesClusterRequest(TeaModel):
         # The name of the Kubernetes cluster.
         self.cluster_name = cluster_name
         # The number of the page to return.
+        # 
+        # This parameter is required.
         self.page_number = page_number
         # The number of entries to return on each page.
+        # 
+        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -52607,12 +53243,14 @@ class QueryMonitorRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The timestamp when the monitoring ends.
+        # 
+        # This parameter is required.
         self.end_time = end_time
         # The ID of the instance.
         self.instance_id = instance_id
         # The metric type. The following metric types are supported:
         # 
-        # \[Basic system metrics]
+        # [Basic system metrics]
         # 
         # *   cpuUsage
         # *   memoryUsage
@@ -52620,7 +53258,7 @@ class QueryMonitorRequest(TeaModel):
         # *   gcCount
         # *   gcTime
         # 
-        # \[Nacos registry]
+        # [Nacos registry]
         # 
         # *   serviceCount
         # *   writeCostTime
@@ -52628,20 +53266,24 @@ class QueryMonitorRequest(TeaModel):
         # *   TPS regCenterTps
         # *   QPS regCenterQps
         # 
-        # \[Nacos configuration center]
+        # [Nacos configuration center]
         # 
         # *   publish
         # *   getConfig
         # 
-        # \[zookeeper]
+        # [zookeeper]
         # 
         # *   TPS zk_TpsCount
         # *   QPS zk_QpsCount
         # *   zookeeper_AvgRequestLatency
+        # 
+        # This parameter is required.
         self.monitor_type = monitor_type
         # The extended request parameters in the JSON format.
         self.request_pars = request_pars
         # The timestamp when the monitoring starts.
+        # 
+        # This parameter is required.
         self.start_time = start_time
         # The interval between data points. Unit: seconds.
         self.step = step
@@ -52850,6 +53492,7 @@ class QueryNamespaceRequest(TeaModel):
         # The language of the response. Valid values: zh and en. Default value: zh. The value zh which indicates Chinese, and the value en indicates English.
         self.accept_language = accept_language
         self.name = name
+        # This parameter is required.
         self.region = region
 
     def validate(self):
@@ -53239,6 +53882,8 @@ class QuerySwimmingLaneByIdRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The ID of the lane.
+        # 
+        # This parameter is required.
         self.lane_id = lane_id
         # The name of the Microservices Engine (MSE) namespace.
         self.namespace = namespace
@@ -53408,6 +54053,7 @@ class QuerySwimmingLaneByIdResponseBodyDataEntryRules(TeaModel):
 class QuerySwimmingLaneByIdResponseBodyData(TeaModel):
     def __init__(
         self,
+        path_independent_percentage_enable: bool = None,
         enable: bool = None,
         enable_rules: bool = None,
         entry_rule: str = None,
@@ -53422,6 +54068,7 @@ class QuerySwimmingLaneByIdResponseBodyData(TeaModel):
         status: int = None,
         tag: str = None,
     ):
+        self.path_independent_percentage_enable = path_independent_percentage_enable
         self.enable = enable
         self.enable_rules = enable_rules
         self.entry_rule = entry_rule
@@ -53448,6 +54095,8 @@ class QuerySwimmingLaneByIdResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.path_independent_percentage_enable is not None:
+            result['PathIndependentPercentageEnable'] = self.path_independent_percentage_enable
         if self.enable is not None:
             result['enable'] = self.enable
         if self.enable_rules is not None:
@@ -53480,6 +54129,8 @@ class QuerySwimmingLaneByIdResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('PathIndependentPercentageEnable') is not None:
+            self.path_independent_percentage_enable = m.get('PathIndependentPercentageEnable')
         if m.get('enable') is not None:
             self.enable = m.get('enable')
         if m.get('enableRules') is not None:
@@ -53633,6 +54284,8 @@ class QueryZnodeDetailRequest(TeaModel):
         # The ID of the instance.
         self.instance_id = instance_id
         # The path of the node.
+        # 
+        # This parameter is required.
         self.path = path
         # The extended request parameters in the JSON format.
         self.request_pars = request_pars
@@ -53977,6 +54630,7 @@ class RemoveAuthPolicyRequest(TeaModel):
         policy_id: str = None,
     ):
         self.accept_language = accept_language
+        # This parameter is required.
         self.policy_id = policy_id
 
     def validate(self):
@@ -54645,6 +55299,8 @@ class TagResourcesRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The instance ID.
         # 
@@ -54657,8 +55313,12 @@ class TagResourcesRequest(TeaModel):
         # 
         # *   CLUSTER: Microservices Engine (MSE) instance
         # *   GATEWAY: cloud-native gateway
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The list of tags. You can specify a maximum of 20 tags.
+        # 
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -54821,13 +55481,19 @@ class UntagResourcesRequest(TeaModel):
         # Default value: false.
         self.all = all
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource IDs. A maximum of 50 resource IDs can be specified.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource. Valid values:
         # 
         # *   CLUSTER: MSE instance
         # *   GATEWAY: cloud-native gateway
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tag keys. A maximum of 20 tag keys are supported.
         self.tag_key = tag_key
@@ -55126,6 +55792,8 @@ class UpdateAuthPolicyRequest(TeaModel):
         # Specifies whether to enable the rule.
         self.enable = enable
         # The rule ID.
+        # 
+        # This parameter is required.
         self.id = id
         # The ID of the ACK cluster namespace.
         self.k_8s_namespace = k_8s_namespace
@@ -55533,6 +56201,8 @@ class UpdateCircuitBreakerRuleRequest(TeaModel):
         # The ID of the application.
         self.app_id = app_id
         # The name of the application.
+        # 
+        # This parameter is required.
         self.app_name = app_name
         # Specifies whether to enable the rule.
         # 
@@ -55563,10 +56233,14 @@ class UpdateCircuitBreakerRuleRequest(TeaModel):
         # The minimum number of requests to trigger circuit breaking. If the number of requests in the current time window is less than the value of this parameter, circuit breaking is not triggered even if the circuit breaking rule is met. Default value: 10.
         self.min_request_amount = min_request_amount
         # The microservice namespace to which the application belongs.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The period in which circuit breaking is implemented. Unit: milliseconds. If circuit breaking is implemented on the requests for the route, the calls to all the requests for the route fail in the configured circuit breaking period. The value must be an integral multiple of 1,000. Default value: 10000. This value indicates 10 seconds.
         self.retry_timeout_ms = retry_timeout_ms
         # The rule ID.
+        # 
+        # This parameter is required.
         self.rule_id = rule_id
         # The length of the time window. Unit: milliseconds. The valid range is from 1 second to 120 minutes. The default value is 20000. This value indicates 20 seconds.
         self.stat_interval_ms = stat_interval_ms
@@ -55962,9 +56636,9 @@ class UpdateClusterRequest(TeaModel):
         self.cluster_alias_name = cluster_alias_name
         # The ID of the instance.
         self.instance_id = instance_id
-        # The end time of the O\&M window.
+        # The end time of the O\\&M window.
         self.maintenance_end_time = maintenance_end_time
-        # The start time of the O\&M window.
+        # The start time of the O\\&M window.
         self.maintenance_start_time = maintenance_start_time
         # The extended request parameters in the JSON format.
         self.request_pars = request_pars
@@ -56134,6 +56808,8 @@ class UpdateClusterSpecRequest(TeaModel):
         # The number of destination nodes.
         self.instance_count = instance_count
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The MSE version.
         self.mse_version = mse_version
@@ -56378,7 +57054,7 @@ class UpdateConfigRequest(TeaModel):
         # 
         # > Before you configure this parameter, you must call the QueryConfig operation to obtain the MCPSupported parameter value to check whether the instance supports MCP.
         self.mcpenabled = mcpenabled
-        # The number of connections between a client and a server. This parameter is valid for ZooKeeper instances.\
+        # The number of connections between a client and a server. This parameter is valid for ZooKeeper instances.\\
         # If this parameter is set to 0, no limits are imposed on the number of connections.
         self.max_client_cnxns = max_client_cnxns
         # The maximum timeout period. This parameter is valid for ZooKeeper instances. Unit: seconds.
@@ -56656,10 +57332,14 @@ class UpdateEngineNamespaceRequest(TeaModel):
         # The description of the cluster.
         self.desc = desc
         # The ID of the namespace.
+        # 
+        # This parameter is required.
         self.id = id
         # The ID of the instance.
         self.instance_id = instance_id
         # The name of the cluster.
+        # 
+        # This parameter is required.
         self.name = name
         # The number of active services.
         self.service_count = service_count
@@ -56898,6 +57578,8 @@ class UpdateFlowRuleRequest(TeaModel):
         # The application ID.
         self.app_id = app_id
         # The application name.
+        # 
+        # This parameter is required.
         self.app_name = app_name
         # The throttling effect.
         # 
@@ -56950,8 +57632,12 @@ class UpdateFlowRuleRequest(TeaModel):
         # The timeout period. Unit: milliseconds. This parameter is required when the value of ControlBehavior is set to 2.
         self.max_queueing_time_ms = max_queueing_time_ms
         # The namespace.
+        # 
+        # This parameter is required.
         self.namespace = namespace
         # The rule ID.
+        # 
+        # This parameter is required.
         self.rule_id = rule_id
         # The throttling threshold.
         self.threshold = threshold
@@ -57290,8 +57976,12 @@ class UpdateGatewayAuthConsumerRequest(TeaModel):
         # *   OCT
         self.encode_type = encode_type
         # The unique ID of the gateway.
+        # 
+        # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
         # The ID of the consumer.
+        # 
+        # This parameter is required.
         self.id = id
         # The JWT public key. The JSON format is supported.
         self.jwks = jwks
@@ -57391,7 +58081,7 @@ class UpdateGatewayAuthConsumerResponseBody(TeaModel):
         self.data = data
         # The dynamic part in the error message.
         self.dynamic_code = dynamic_code
-        # The dynamic part in the error message. This parameter is used to replace the \*\*%s\*\* variable in the **ErrMessage** parameter.
+        # The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\* variable in the **ErrMessage** parameter.
         # 
         # >  If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
         self.dynamic_message = dynamic_message
@@ -57551,8 +58241,12 @@ class UpdateGatewayAuthConsumerResourceRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The gateway authentication consumer ID.
+        # 
+        # This parameter is required.
         self.consumer_id = consumer_id
         # The unique ID of the gateway.
+        # 
+        # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
         # The gateway authentication consumer ID.
         self.resource_list = resource_list
@@ -57611,8 +58305,12 @@ class UpdateGatewayAuthConsumerResourceShrinkRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The gateway authentication consumer ID.
+        # 
+        # This parameter is required.
         self.consumer_id = consumer_id
         # The unique ID of the gateway.
+        # 
+        # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
         # The gateway authentication consumer ID.
         self.resource_list_shrink = resource_list_shrink
@@ -57797,15 +58495,23 @@ class UpdateGatewayAuthConsumerResourceStatusRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The ID of the consumer.
+        # 
+        # This parameter is required.
         self.consumer_id = consumer_id
         # The unique ID of the gateway.
+        # 
+        # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
         # The list of IDs of the authorized resources that a user wants to update.
+        # 
+        # This parameter is required.
         self.id_list = id_list
         # The resource authorization status. Valid values:
         # 
         # *   true: enabled
         # *   false: disabled
+        # 
+        # This parameter is required.
         self.resource_status = resource_status
 
     def validate(self):
@@ -57994,10 +58700,16 @@ class UpdateGatewayAuthConsumerStatusRequest(TeaModel):
         # 
         # *   true: The consumer is enabled.
         # *   false: The consumer is disabled.
+        # 
+        # This parameter is required.
         self.consumer_status = consumer_status
         # The unique ID of the gateway.
+        # 
+        # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
         # The consumer ID.
+        # 
+        # This parameter is required.
         self.id = id
 
     def validate(self):
@@ -58054,7 +58766,7 @@ class UpdateGatewayAuthConsumerStatusResponseBody(TeaModel):
         self.data = data
         # The dynamic part in the error message.
         self.dynamic_code = dynamic_code
-        # The dynamic part in the error message. This parameter is used to replace the \*\*%s\*\* variable in the **ErrMessage** parameter.
+        # The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\* variable in the **ErrMessage** parameter.
         # 
         # > If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
         self.dynamic_message = dynamic_message
@@ -58188,22 +58900,33 @@ class UpdateGatewayCircuitBreakerRuleRequest(TeaModel):
         trigger_ratio: int = None,
     ):
         self.accept_language = accept_language
+        # This parameter is required.
         self.behavior_type = behavior_type
         self.body_encoding = body_encoding
+        # This parameter is required.
         self.enable = enable
         self.gateway_id = gateway_id
+        # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
+        # This parameter is required.
         self.id = id
         self.max_allowed_ms = max_allowed_ms
+        # This parameter is required.
         self.min_request_amount = min_request_amount
+        # This parameter is required.
         self.recovery_timeout_sec = recovery_timeout_sec
         self.response_content_body = response_content_body
         self.response_redirect_url = response_redirect_url
         self.response_status_code = response_status_code
+        # This parameter is required.
         self.route_id = route_id
+        # This parameter is required.
         self.route_name = route_name
+        # This parameter is required.
         self.stat_duration_sec = stat_duration_sec
+        # This parameter is required.
         self.strategy = strategy
+        # This parameter is required.
         self.trigger_ratio = trigger_ratio
 
     def validate(self):
@@ -58730,17 +59453,24 @@ class UpdateGatewayFlowRuleRequest(TeaModel):
         threshold: int = None,
     ):
         self.accept_language = accept_language
+        # This parameter is required.
         self.behavior_type = behavior_type
         self.body_encoding = body_encoding
+        # This parameter is required.
         self.enable = enable
         self.gateway_id = gateway_id
+        # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
+        # This parameter is required.
         self.id = id
         self.response_content_body = response_content_body
         self.response_redirect_url = response_redirect_url
         self.response_status_code = response_status_code
+        # This parameter is required.
         self.route_id = route_id
+        # This parameter is required.
         self.route_name = route_name
+        # This parameter is required.
         self.threshold = threshold
 
     def validate(self):
@@ -59022,17 +59752,24 @@ class UpdateGatewayIsolationRuleRequest(TeaModel):
         route_name: str = None,
     ):
         self.accept_language = accept_language
+        # This parameter is required.
         self.behavior_type = behavior_type
         self.body_encoding = body_encoding
+        # This parameter is required.
         self.enable = enable
         self.gateway_id = gateway_id
+        # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
+        # This parameter is required.
         self.id = id
+        # This parameter is required.
         self.max_concurrency = max_concurrency
         self.response_content_body = response_content_body
         self.response_redirect_url = response_redirect_url
         self.response_status_code = response_status_code
+        # This parameter is required.
         self.route_id = route_id
+        # This parameter is required.
         self.route_name = route_name
 
     def validate(self):
@@ -60779,12 +61516,18 @@ class UpdateGatewayRouteAuthRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The authentication configurations.
+        # 
+        # This parameter is required.
         self.auth_json = auth_json
         # The gateway ID.
         self.gateway_id = gateway_id
         # The unique ID of the gateway.
+        # 
+        # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
         # The route ID.
+        # 
+        # This parameter is required.
         self.id = id
 
     def validate(self):
@@ -60840,12 +61583,18 @@ class UpdateGatewayRouteAuthShrinkRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The authentication configurations.
+        # 
+        # This parameter is required.
         self.auth_jsonshrink = auth_jsonshrink
         # The gateway ID.
         self.gateway_id = gateway_id
         # The unique ID of the gateway.
+        # 
+        # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
         # The route ID.
+        # 
+        # This parameter is required.
         self.id = id
 
     def validate(self):
@@ -60903,7 +61652,7 @@ class UpdateGatewayRouteAuthResponseBody(TeaModel):
         self.data = data
         # The dynamic part in the error message.
         self.dynamic_code = dynamic_code
-        # The dynamic part in the error message. This parameter is used to replace the \*\*%s\*\* variable in the **ErrMessage** parameter.
+        # The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\* variable in the **ErrMessage** parameter.
         # 
         # > If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
         self.dynamic_message = dynamic_message
@@ -63606,6 +64355,8 @@ class UpdateGatewayServiceTrafficPolicyRequest(TeaModel):
         # The ID of the gateway.
         self.gateway_id = gateway_id
         # The traffic policy of the gateway.
+        # 
+        # This parameter is required.
         self.gateway_traffic_policy = gateway_traffic_policy
         # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
@@ -63667,6 +64418,8 @@ class UpdateGatewayServiceTrafficPolicyShrinkRequest(TeaModel):
         # The ID of the gateway.
         self.gateway_id = gateway_id
         # The traffic policy of the gateway.
+        # 
+        # This parameter is required.
         self.gateway_traffic_policy_shrink = gateway_traffic_policy_shrink
         # The unique ID of the gateway.
         self.gateway_unique_id = gateway_unique_id
@@ -63991,10 +64744,16 @@ class UpdateGatewaySpecRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The ID of the gateway.
+        # 
+        # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
         # The number of nodes.
+        # 
+        # This parameter is required.
         self.replica = replica
         # The node specifications of the gateway.
+        # 
+        # This parameter is required.
         self.spec = spec
 
     def validate(self):
@@ -64149,10 +64908,14 @@ class UpdateImageRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The ID of the destination cluster.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The destination version number.
         # 
         # > You must call the GetImage operation to obtain the maximum destination version number that corresponds to MaxVersionCode.
+        # 
+        # This parameter is required.
         self.version_code = version_code
 
     def validate(self):
@@ -64289,9 +65052,12 @@ class UpdateIsolationRuleRequest(TeaModel):
     ):
         self.accept_language = accept_language
         self.app_id = app_id
+        # This parameter is required.
         self.app_name = app_name
         self.enable = enable
+        # This parameter is required.
         self.namespace = namespace
+        # This parameter is required.
         self.rule_id = rule_id
         self.threshold = threshold
 
@@ -64514,6 +65280,8 @@ class UpdateMessageQueueRouteRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The ID of the application.
+        # 
+        # This parameter is required.
         self.app_id = app_id
         self.app_name = app_name
         # Specifies whether the canary release for messaging feature is enabled for the application. Valid values:
@@ -64525,6 +65293,8 @@ class UpdateMessageQueueRouteRequest(TeaModel):
         self.filter_side = filter_side
         self.namespace = namespace
         # The region ID.
+        # 
+        # This parameter is required.
         self.region = region
         # The tag that is negligible for the untagged environment of the application.
         self.tags = tags
@@ -64595,6 +65365,8 @@ class UpdateMessageQueueRouteShrinkRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The ID of the application.
+        # 
+        # This parameter is required.
         self.app_id = app_id
         self.app_name = app_name
         # Specifies whether the canary release for messaging feature is enabled for the application. Valid values:
@@ -64606,6 +65378,8 @@ class UpdateMessageQueueRouteShrinkRequest(TeaModel):
         self.filter_side = filter_side
         self.namespace = namespace
         # The region ID.
+        # 
+        # This parameter is required.
         self.region = region
         # The tag that is negligible for the untagged environment of the application.
         self.tags_shrink = tags_shrink
@@ -65109,16 +65883,24 @@ class UpdateNacosClusterRequest(TeaModel):
         # The port used for health checks.
         self.check_port = check_port
         # The name of the Nacos cluster.
+        # 
+        # This parameter is required.
         self.cluster_name = cluster_name
         # The name of the group.
+        # 
+        # This parameter is required.
         self.group_name = group_name
         # The type of the health check.
         self.health_checker = health_checker
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the namespace.
         self.namespace_id = namespace_id
         # The name of the service.
+        # 
+        # This parameter is required.
         self.service_name = service_name
         # Specifies whether to use the port of the instance for a health check.
         self.use_instance_port_for_check = use_instance_port_for_check
@@ -65308,14 +66090,20 @@ class UpdateNacosConfigRequest(TeaModel):
         # The content of the configuration.
         self.content = content
         # The ID of the configuration.
+        # 
+        # This parameter is required.
         self.data_id = data_id
         # The description of the configuration.
         self.desc = desc
         # The encryption key.
         self.encrypted_data_key = encrypted_data_key
         # The name of the group.
+        # 
+        # This parameter is required.
         self.group = group
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The MD5 value of the configuration.
         self.md_5 = md_5
@@ -65521,27 +66309,43 @@ class UpdateNacosInstanceRequest(TeaModel):
         # 
         # *   `true`: yes.
         # *   `false`: no.
+        # 
+        # This parameter is required.
         self.enabled = enabled
         # Specifies whether the node is a non-persistent node. Valid values:
         # 
         # *   `true`: yes.
         # *   `false`: no.
+        # 
+        # This parameter is required.
         self.ephemeral = ephemeral
         # The name of the group.
+        # 
+        # This parameter is required.
         self.group_name = group_name
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The IP address of the Nacos instance.
+        # 
+        # This parameter is required.
         self.ip = ip
         # The metadata of the instance.
         self.metadata = metadata
         # The ID of the namespace.
         self.namespace_id = namespace_id
         # The port number of the Nacos instance.
+        # 
+        # This parameter is required.
         self.port = port
         # The name of the service.
+        # 
+        # This parameter is required.
         self.service_name = service_name
         # The weight. Valid values: 0 to 10000. The value must be an integer. A larger value indicates a higher frequency at which the instance is accessed.
+        # 
+        # This parameter is required.
         self.weight = weight
 
     def validate(self):
@@ -65746,6 +66550,8 @@ class UpdateNacosServiceRequest(TeaModel):
         # The protection threshold.
         self.protect_threshold = protect_threshold
         # The name of the service.
+        # 
+        # This parameter is required.
         self.service_name = service_name
 
     def validate(self):
@@ -65930,6 +66736,8 @@ class UpdatePluginConfigRequest(TeaModel):
         # The ID of the gateway.
         self.gateway_id = gateway_id
         # The unique ID of the gateway.
+        # 
+        # This parameter is required.
         self.gateway_unique_id = gateway_unique_id
         # The creation time.
         self.gmt_create = gmt_create
@@ -65938,6 +66746,8 @@ class UpdatePluginConfigRequest(TeaModel):
         # The ID of the plug-in configuration.
         self.id = id
         # The ID of the gateway plug-in.
+        # 
+        # This parameter is required.
         self.plugin_id = plugin_id
 
     def validate(self):
@@ -66646,10 +67456,16 @@ class UpdateZnodeRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The data of the node.
+        # 
+        # This parameter is required.
         self.data = data
         # The path of the node.
+        # 
+        # This parameter is required.
         self.path = path
         # The extended request parameters in the JSON format.
         self.request_pars = request_pars
@@ -66797,10 +67613,14 @@ class UpgradeClusterRequest(TeaModel):
         # *   en: English
         self.accept_language = accept_language
         # The ID of the instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The extended request parameters in the JSON format.
         self.request_pars = request_pars
         # The destination version.
+        # 
+        # This parameter is required.
         self.upgrade_version = upgrade_version
 
     def validate(self):

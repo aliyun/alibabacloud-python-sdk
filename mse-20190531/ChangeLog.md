@@ -1,3 +1,13 @@
+2024-05-29 Version: 6.6.3
+- Update API CreateCircuitBreakerRule: update param ResourceType.
+- Update API CreateFlowRule: update param ResourceType.
+- Update API CreateOrUpdateSwimmingLane: add param PathIndependentPercentageEnable.
+- Update API CreateOrUpdateSwimmingLane: update param GatewaySwimmingLaneRouteJson.
+- Update API CreateOrUpdateSwimmingLane: update response param.
+- Update API QueryAllSwimmingLane: update response param.
+- Update API QuerySwimmingLaneById: update response param.
+
+
 2024-05-08 Version: 6.6.2
 - Generated python 2019-05-31 for mse.
 
