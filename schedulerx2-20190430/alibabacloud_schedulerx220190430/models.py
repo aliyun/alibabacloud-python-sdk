@@ -622,6 +622,7 @@ class CreateAppGroupRequest(TeaModel):
         namespace_source: str = None,
         region_id: str = None,
         schedule_busy_workers: bool = None,
+        version: int = None,
     ):
         # The AppKey for the application.
         self.app_key = app_key
@@ -664,6 +665,7 @@ class CreateAppGroupRequest(TeaModel):
         self.region_id = region_id
         # Specifies whether to schedule a busy worker.
         self.schedule_busy_workers = schedule_busy_workers
+        self.version = version
 
     def validate(self):
         pass
@@ -702,6 +704,8 @@ class CreateAppGroupRequest(TeaModel):
             result['RegionId'] = self.region_id
         if self.schedule_busy_workers is not None:
             result['ScheduleBusyWorkers'] = self.schedule_busy_workers
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -734,6 +738,8 @@ class CreateAppGroupRequest(TeaModel):
             self.region_id = m.get('RegionId')
         if m.get('ScheduleBusyWorkers') is not None:
             self.schedule_busy_workers = m.get('ScheduleBusyWorkers')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -7317,6 +7323,7 @@ class ListGroupsResponseBodyDataAppGroups(TeaModel):
         app_name: str = None,
         description: str = None,
         group_id: str = None,
+        version: int = None,
     ):
         # The application group ID.
         self.app_group_id = app_group_id
@@ -7328,6 +7335,7 @@ class ListGroupsResponseBodyDataAppGroups(TeaModel):
         self.description = description
         # The application ID.
         self.group_id = group_id
+        self.version = version
 
     def validate(self):
         pass
@@ -7348,6 +7356,8 @@ class ListGroupsResponseBodyDataAppGroups(TeaModel):
             result['Description'] = self.description
         if self.group_id is not None:
             result['GroupId'] = self.group_id
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -7362,6 +7372,8 @@ class ListGroupsResponseBodyDataAppGroups(TeaModel):
             self.description = m.get('Description')
         if m.get('GroupId') is not None:
             self.group_id = m.get('GroupId')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 
@@ -9673,6 +9685,7 @@ class UpdateAppGroupRequest(TeaModel):
         max_concurrency: int = None,
         namespace: str = None,
         region_id: str = None,
+        version: int = None,
     ):
         self.description = description
         # This parameter is required.
@@ -9682,6 +9695,7 @@ class UpdateAppGroupRequest(TeaModel):
         self.namespace = namespace
         # This parameter is required.
         self.region_id = region_id
+        self.version = version
 
     def validate(self):
         pass
@@ -9702,6 +9716,8 @@ class UpdateAppGroupRequest(TeaModel):
             result['Namespace'] = self.namespace
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+        if self.version is not None:
+            result['Version'] = self.version
         return result
 
     def from_map(self, m: dict = None):
@@ -9716,6 +9732,8 @@ class UpdateAppGroupRequest(TeaModel):
             self.namespace = m.get('Namespace')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+        if m.get('Version') is not None:
+            self.version = m.get('Version')
         return self
 
 

@@ -4617,6 +4617,8 @@ class Client(OpenApiClient):
             query['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
@@ -4660,6 +4662,8 @@ class Client(OpenApiClient):
             query['Namespace'] = request.namespace
         if not UtilClient.is_unset(request.region_id):
             query['RegionId'] = request.region_id
+        if not UtilClient.is_unset(request.version):
+            query['Version'] = request.version
         req = open_api_models.OpenApiRequest(
             query=OpenApiUtilClient.query(query)
         )
