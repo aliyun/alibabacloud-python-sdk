@@ -12117,6 +12117,218 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.describe_import_oastask_with_options_async(request, runtime)
 
+    def describe_instance_cluster_info_with_options(
+        self,
+        request: cloud_api20160714_models.DescribeInstanceClusterInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DescribeInstanceClusterInfoResponse:
+        """
+        @summary 查询专享实例集群的详情
+        
+        @param request: DescribeInstanceClusterInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceClusterInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_cluster_name):
+            query['InstanceClusterName'] = request.instance_cluster_name
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceClusterInfo',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.DescribeInstanceClusterInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_instance_cluster_info_with_options_async(
+        self,
+        request: cloud_api20160714_models.DescribeInstanceClusterInfoRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DescribeInstanceClusterInfoResponse:
+        """
+        @summary 查询专享实例集群的详情
+        
+        @param request: DescribeInstanceClusterInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceClusterInfoResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_cluster_name):
+            query['InstanceClusterName'] = request.instance_cluster_name
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceClusterInfo',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.DescribeInstanceClusterInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_instance_cluster_info(
+        self,
+        request: cloud_api20160714_models.DescribeInstanceClusterInfoRequest,
+    ) -> cloud_api20160714_models.DescribeInstanceClusterInfoResponse:
+        """
+        @summary 查询专享实例集群的详情
+        
+        @param request: DescribeInstanceClusterInfoRequest
+        @return: DescribeInstanceClusterInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_instance_cluster_info_with_options(request, runtime)
+
+    async def describe_instance_cluster_info_async(
+        self,
+        request: cloud_api20160714_models.DescribeInstanceClusterInfoRequest,
+    ) -> cloud_api20160714_models.DescribeInstanceClusterInfoResponse:
+        """
+        @summary 查询专享实例集群的详情
+        
+        @param request: DescribeInstanceClusterInfoRequest
+        @return: DescribeInstanceClusterInfoResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_instance_cluster_info_with_options_async(request, runtime)
+
+    def describe_instance_cluster_list_with_options(
+        self,
+        request: cloud_api20160714_models.DescribeInstanceClusterListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DescribeInstanceClusterListResponse:
+        """
+        @summary 查询专享实例集群列表
+        
+        @param request: DescribeInstanceClusterListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceClusterListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_cluster_id):
+            query['InstanceClusterId'] = request.instance_cluster_id
+        if not UtilClient.is_unset(request.instance_cluster_name):
+            query['InstanceClusterName'] = request.instance_cluster_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceClusterList',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.DescribeInstanceClusterListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_instance_cluster_list_with_options_async(
+        self,
+        request: cloud_api20160714_models.DescribeInstanceClusterListRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> cloud_api20160714_models.DescribeInstanceClusterListResponse:
+        """
+        @summary 查询专享实例集群列表
+        
+        @param request: DescribeInstanceClusterListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceClusterListResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.instance_cluster_id):
+            query['InstanceClusterId'] = request.instance_cluster_id
+        if not UtilClient.is_unset(request.instance_cluster_name):
+            query['InstanceClusterName'] = request.instance_cluster_name
+        if not UtilClient.is_unset(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeInstanceClusterList',
+            version='2016-07-14',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            cloud_api20160714_models.DescribeInstanceClusterListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_instance_cluster_list(
+        self,
+        request: cloud_api20160714_models.DescribeInstanceClusterListRequest,
+    ) -> cloud_api20160714_models.DescribeInstanceClusterListResponse:
+        """
+        @summary 查询专享实例集群列表
+        
+        @param request: DescribeInstanceClusterListRequest
+        @return: DescribeInstanceClusterListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_instance_cluster_list_with_options(request, runtime)
+
+    async def describe_instance_cluster_list_async(
+        self,
+        request: cloud_api20160714_models.DescribeInstanceClusterListRequest,
+    ) -> cloud_api20160714_models.DescribeInstanceClusterListResponse:
+        """
+        @summary 查询专享实例集群列表
+        
+        @param request: DescribeInstanceClusterListRequest
+        @return: DescribeInstanceClusterListResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_instance_cluster_list_with_options_async(request, runtime)
+
     def describe_instance_drop_connections_with_options(
         self,
         request: cloud_api20160714_models.DescribeInstanceDropConnectionsRequest,
