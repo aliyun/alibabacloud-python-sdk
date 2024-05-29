@@ -4,6 +4,12 @@
 - Update API UpdateAppGroup: add param Version.
 
 
+2024-05-29 Version: 1.1.14
+- Update API CreateAppGroup: add param Version.
+- Update API ListGroups: update response param.
+- Update API UpdateAppGroup: add param Version.
+
+
 2024-05-17 Version: 1.1.13
 - Update API CreateWorkflow: update response param.
 - Update API GetJobInstanceList: add param PageNum.
