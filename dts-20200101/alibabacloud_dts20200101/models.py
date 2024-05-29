@@ -70,13 +70,17 @@ class ConfigureDtsJobRequest(TeaModel):
         self.checkpoint = checkpoint
         # The HTTP status code.
         self.data_check_configure = data_check_configure
-        # The objects that you want to migrate or synchronize. The value is a JSON string. For more information, see [Objects of DTS tasks](~~209545~~).
+        # The objects that you want to migrate or synchronize. The value is a JSON string. For more information, see [Objects of DTS tasks](https://help.aliyun.com/document_detail/209545.html).
+        # 
+        # This parameter is required.
         self.data_initialization = data_initialization
-        # The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to add more configurations of the source or destination instance to the DTS task. For example, you can specify the data storage format of the destination Kafka database and the ID of the CEN instance. For more information, see [Reserve](~~273111~~).
+        # The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to add more configurations of the source or destination instance to the DTS task. For example, you can specify the data storage format of the destination Kafka database and the ID of the CEN instance. For more information, see [Reserve](https://help.aliyun.com/document_detail/273111.html).
+        # 
+        # This parameter is required.
         self.data_synchronization = data_synchronization
         # The start offset of incremental data migration or synchronization. The value is a UNIX timestamp. Unit: seconds.
         self.db_list = db_list
-        # The data verification task for a data migration or synchronization instance. The value is a JSON string that indicates parameter limits or alert configurations. For more information, see [DataCheckConfigure](~~459023~~).
+        # The data verification task for a data migration or synchronization instance. The value is a JSON string that indicates parameter limits or alert configurations. For more information, see [DataCheckConfigure](https://help.aliyun.com/document_detail/459023.html).
         self.dedicated_cluster_id = dedicated_cluster_id
         # Specifies whether to monitor the task status. Valid values:
         # 
@@ -92,13 +96,13 @@ class ConfigureDtsJobRequest(TeaModel):
         # 
         # > 
         # *   This parameter is available only for China site (aliyun.com) users. Only mobile numbers in the Chinese mainland are supported. Up to 10 mobile numbers can be specified.
-        # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the CloudMonitor console](~~175876~~).
+        # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the CloudMonitor console](https://help.aliyun.com/document_detail/175876.html).
         self.delay_rule_time = delay_rule_time
         self.dest_ca_certificate_oss_url = dest_ca_certificate_oss_url
         self.dest_ca_certificate_password = dest_ca_certificate_password
         # The password of the destination database account.
         # 
-        # >  If the destination database is a MaxCompute project, you must specify the AccessKey secret of your Alibaba Cloud account. For information about how to obtain your AccessKey pair, see [Create an AccessKey pair](~~116401~~).
+        # >  If the destination database is a MaxCompute project, you must specify the AccessKey secret of your Alibaba Cloud account. For information about how to obtain your AccessKey pair, see [Create an AccessKey pair](https://help.aliyun.com/document_detail/116401.html).
         self.destination_endpoint_data_base_name = destination_endpoint_data_base_name
         # The IP address of the destination instance.
         # 
@@ -110,7 +114,7 @@ class ConfigureDtsJobRequest(TeaModel):
         # *   If the destination instance is a PolarDB for Oracle cluster, an AnalyticDB for PostgreSQL instance, a PostgreSQL database, a MaxCompute project, or a MongoDB database, this parameter is available and required.
         # *   If the destination instance is a MaxCompute project, you must specify the ID of the MaxCompute project.
         self.destination_endpoint_ip = destination_endpoint_ip
-        # The ID of the region in which the destination instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region in which the destination instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         # 
         # >  If the destination instance is an Alibaba Cloud database instance, this parameter is required.
         self.destination_endpoint_instance_id = destination_endpoint_instance_id
@@ -140,11 +144,13 @@ class ConfigureDtsJobRequest(TeaModel):
         # 
         # > 
         # *   Default value: **MYSQL**.
-        # *   If the DestinationEndpointEngineName parameter is set to **KAFKA**, **MONGODB**, or **PolarDB**, you must also specify the database information in the Reserve parameter. For more information, see [Reserve](~~273111~~).
+        # *   If the DestinationEndpointEngineName parameter is set to **KAFKA**, **MONGODB**, or **PolarDB**, you must also specify the database information in the Reserve parameter. For more information, see [Reserve](https://help.aliyun.com/document_detail/273111.html).
+        # 
+        # This parameter is required.
         self.destination_endpoint_instance_type = destination_endpoint_instance_type
         # The ID of the data migration or synchronization task.
         # 
-        # >  You must specify at least one of the DtsJobId and **DtsInstanceId** parameters. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+        # >  You must specify at least one of the DtsJobId and **DtsInstanceId** parameters. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
         self.destination_endpoint_oracle_sid = destination_endpoint_oracle_sid
         self.destination_endpoint_owner_id = destination_endpoint_owner_id
         # Specifies whether to perform full data migration or synchronization. Default value: true. Valid values:
@@ -156,8 +162,8 @@ class ConfigureDtsJobRequest(TeaModel):
         # 
         # > 
         # *   In most cases, this parameter is required.
-        # *   The permissions that are required for the database account vary with the migration or synchronization scenario. For more information, see [Prepare the database accounts for data migration](~~175878~~) or [Prepare the database accounts for data synchronization](~~213152~~).
-        # *   If the destination database is a MaxCompute project, you must specify the AccessKey ID of your Alibaba Cloud account. For information about how to obtain your AccessKey pair, see [Create an AccessKey pair](~~116401~~).
+        # *   The permissions that are required for the database account vary with the migration or synchronization scenario. For more information, see [Prepare the database accounts for data migration](https://help.aliyun.com/document_detail/175878.html) or [Prepare the database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.html).
+        # *   If the destination database is a MaxCompute project, you must specify the AccessKey ID of your Alibaba Cloud account. For information about how to obtain your AccessKey pair, see [Create an AccessKey pair](https://help.aliyun.com/document_detail/116401.html).
         self.destination_endpoint_port = destination_endpoint_port
         # The database service port of the destination instance.
         # 
@@ -180,7 +186,7 @@ class ConfigureDtsJobRequest(TeaModel):
         # 
         # > 
         # *   This parameter is available only for China site (aliyun.com) users. Only mobile numbers in the Chinese mainland are supported. Up to 10 mobile numbers can be specified.
-        # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the CloudMonitor console](~~175876~~).
+        # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the CloudMonitor console](https://help.aliyun.com/document_detail/175876.html).
         self.dts_job_id = dts_job_id
         # The ID of the source instance.
         # 
@@ -192,9 +198,11 @@ class ConfigureDtsJobRequest(TeaModel):
         # *   If the SourceEndpointInstanceType parameter is set to **DG**, you must specify the ID of the database gateway.
         # *   If the SourceEndpointInstanceType parameter is set to **EXPRESS** or **CEN**, you must specify the ID of the VPC that is connected to the source instance.
         # 
-        # >  If the SourceEndpointInstanceType parameter is set to **CEN**, you must also specify the ID of the CEN instance in the Reserve parameter. For more information, see [Reserve](~~273111~~).
+        # >  If the SourceEndpointInstanceType parameter is set to **CEN**, you must also specify the ID of the CEN instance in the Reserve parameter. For more information, see [Reserve](https://help.aliyun.com/document_detail/273111.html).
+        # 
+        # This parameter is required.
         self.dts_job_name = dts_job_name
-        # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.error_notice = error_notice
         # The synchronization direction. Valid values:
         # 
@@ -212,7 +220,9 @@ class ConfigureDtsJobRequest(TeaModel):
         self.file_oss_url = file_oss_url
         # The ID of the data migration or synchronization instance.
         # 
-        # >  You must specify at least one of the **DtsJobId** and DtsInstanceId parameters. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
+        # >  You must specify at least one of the **DtsJobId** and DtsInstanceId parameters. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.job_type = job_type
         self.max_du = max_du
         self.min_du = min_du
@@ -234,7 +244,7 @@ class ConfigureDtsJobRequest(TeaModel):
         # 
         # >  If the **SourceEndpointEngineName** parameter is set to **ORACLE** and the **Oracle** database is deployed in an architecture that is not a Real Application Cluster (RAC), this parameter is available and required.
         self.source_endpoint_ip = source_endpoint_ip
-        # The ID of the region in which the source instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region in which the source instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         # 
         # >  If the source instance is an Alibaba Cloud database instance, this parameter is required.
         self.source_endpoint_instance_id = source_endpoint_instance_id
@@ -260,13 +270,15 @@ class ConfigureDtsJobRequest(TeaModel):
         # 
         # > 
         # *   Default value: **MYSQL**.
-        # *   If the SourceEndpointEngineName parameter is set to **MONGODB**, you must also specify the architecture type of the MongoDB database in the Reserve parameter. For more information, see [Reserve](~~273111~~).
+        # *   If the SourceEndpointEngineName parameter is set to **MONGODB**, you must also specify the architecture type of the MongoDB database in the Reserve parameter. For more information, see [Reserve](https://help.aliyun.com/document_detail/273111.html).
+        # 
+        # This parameter is required.
         self.source_endpoint_instance_type = source_endpoint_instance_type
         # The database account of the source database.
         # 
         # > 
         # *   In most cases, this parameter is required.
-        # *   The permissions that are required for the database account vary with the migration or synchronization scenario. For more information, see [Prepare the database accounts for data migration](~~175878~~) or [Prepare the database accounts for data synchronization](~~213152~~).
+        # *   The permissions that are required for the database account vary with the migration or synchronization scenario. For more information, see [Prepare the database accounts for data migration](https://help.aliyun.com/document_detail/175878.html) or [Prepare the database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.html).
         self.source_endpoint_oracle_sid = source_endpoint_oracle_sid
         # The type of the destination instance. Valid values:
         # 
@@ -296,12 +308,12 @@ class ConfigureDtsJobRequest(TeaModel):
         # > 
         # *   If the destination instance is a PolarDB for Oracle cluster, you must set this parameter to **OTHER** or **EXPRESS** because you can use a PolarDB for Oracle cluster only as a self-managed database connected over the Internet or Express Connect.
         # *   If the destination instance is a Message Queue for Apache Kafka instance, you must set this parameter to **ECS** or **EXPRESS** because you can use a Message Queue for Apache Kafka instance only as a self-managed database connected over ECS or Express Connect.
-        # *   For more information, see [Supported databases](~~176064~~).
-        # *   If the destination instance is a self-managed database, you must deploy the network environment for the database. For more information, see [Preparation overview](~~146958~~).
+        # *   For more information, see [Supported databases](https://help.aliyun.com/document_detail/176064.html).
+        # *   If the destination instance is a self-managed database, you must deploy the network environment for the database. For more information, see [Preparation overview](https://help.aliyun.com/document_detail/146958.html).
         self.source_endpoint_owner_id = source_endpoint_owner_id
         # The name of the RAM role configured for the Alibaba Cloud account that owns the source instance.
         # 
-        # >  This parameter is required when you migrate or synchronize data across different Alibaba Cloud accounts. For information about the permissions and authorization methods of the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](~~48468~~).
+        # >  This parameter is required when you migrate or synchronize data across different Alibaba Cloud accounts. For information about the permissions and authorization methods of the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](https://help.aliyun.com/document_detail/48468.html).
         self.source_endpoint_password = source_endpoint_password
         # The name of the database to which the objects to be migrated in the source instance belong.
         # 
@@ -321,7 +333,7 @@ class ConfigureDtsJobRequest(TeaModel):
         # *   If the DestinationEndpointInstanceType parameter is set to **DG**, you must specify the ID of the database gateway.
         # *   If the DestinationEndpointInstanceType parameter is set to **EXPRESS** or **CEN**, you must specify the ID of the VPC that is connected to the source instance.
         # 
-        # >  If the DestinationEndpointInstanceType parameter is set to **CEN**, you must also specify the ID of the CEN instance in the Reserve parameter. For more information, see [Reserve](~~273111~~).
+        # >  If the DestinationEndpointInstanceType parameter is set to **CEN**, you must also specify the ID of the CEN instance in the Reserve parameter. For more information, see [Reserve](https://help.aliyun.com/document_detail/273111.html).
         self.source_endpoint_role = source_endpoint_role
         # The ID of the Alibaba Cloud account to which the source instance belongs.
         # 
@@ -335,6 +347,8 @@ class ConfigureDtsJobRequest(TeaModel):
         # 
         # *   **false**: does not perform incremental data migration or synchronization.
         # *   **true**: performs incremental data migration or synchronization.
+        # 
+        # This parameter is required.
         self.structure_initialization = structure_initialization
         # The ID of the DTS dedicated cluster on which the task runs.
         # 
@@ -643,13 +657,17 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
         self.checkpoint = checkpoint
         # The HTTP status code.
         self.data_check_configure = data_check_configure
-        # The objects that you want to migrate or synchronize. The value is a JSON string. For more information, see [Objects of DTS tasks](~~209545~~).
+        # The objects that you want to migrate or synchronize. The value is a JSON string. For more information, see [Objects of DTS tasks](https://help.aliyun.com/document_detail/209545.html).
+        # 
+        # This parameter is required.
         self.data_initialization = data_initialization
-        # The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to add more configurations of the source or destination instance to the DTS task. For example, you can specify the data storage format of the destination Kafka database and the ID of the CEN instance. For more information, see [Reserve](~~273111~~).
+        # The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to add more configurations of the source or destination instance to the DTS task. For example, you can specify the data storage format of the destination Kafka database and the ID of the CEN instance. For more information, see [Reserve](https://help.aliyun.com/document_detail/273111.html).
+        # 
+        # This parameter is required.
         self.data_synchronization = data_synchronization
         # The start offset of incremental data migration or synchronization. The value is a UNIX timestamp. Unit: seconds.
         self.db_list = db_list
-        # The data verification task for a data migration or synchronization instance. The value is a JSON string that indicates parameter limits or alert configurations. For more information, see [DataCheckConfigure](~~459023~~).
+        # The data verification task for a data migration or synchronization instance. The value is a JSON string that indicates parameter limits or alert configurations. For more information, see [DataCheckConfigure](https://help.aliyun.com/document_detail/459023.html).
         self.dedicated_cluster_id = dedicated_cluster_id
         # Specifies whether to monitor the task status. Valid values:
         # 
@@ -665,13 +683,13 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
         # 
         # > 
         # *   This parameter is available only for China site (aliyun.com) users. Only mobile numbers in the Chinese mainland are supported. Up to 10 mobile numbers can be specified.
-        # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the CloudMonitor console](~~175876~~).
+        # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the CloudMonitor console](https://help.aliyun.com/document_detail/175876.html).
         self.delay_rule_time = delay_rule_time
         self.dest_ca_certificate_oss_url = dest_ca_certificate_oss_url
         self.dest_ca_certificate_password = dest_ca_certificate_password
         # The password of the destination database account.
         # 
-        # >  If the destination database is a MaxCompute project, you must specify the AccessKey secret of your Alibaba Cloud account. For information about how to obtain your AccessKey pair, see [Create an AccessKey pair](~~116401~~).
+        # >  If the destination database is a MaxCompute project, you must specify the AccessKey secret of your Alibaba Cloud account. For information about how to obtain your AccessKey pair, see [Create an AccessKey pair](https://help.aliyun.com/document_detail/116401.html).
         self.destination_endpoint_data_base_name = destination_endpoint_data_base_name
         # The IP address of the destination instance.
         # 
@@ -683,7 +701,7 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
         # *   If the destination instance is a PolarDB for Oracle cluster, an AnalyticDB for PostgreSQL instance, a PostgreSQL database, a MaxCompute project, or a MongoDB database, this parameter is available and required.
         # *   If the destination instance is a MaxCompute project, you must specify the ID of the MaxCompute project.
         self.destination_endpoint_ip = destination_endpoint_ip
-        # The ID of the region in which the destination instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region in which the destination instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         # 
         # >  If the destination instance is an Alibaba Cloud database instance, this parameter is required.
         self.destination_endpoint_instance_id = destination_endpoint_instance_id
@@ -713,11 +731,13 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
         # 
         # > 
         # *   Default value: **MYSQL**.
-        # *   If the DestinationEndpointEngineName parameter is set to **KAFKA**, **MONGODB**, or **PolarDB**, you must also specify the database information in the Reserve parameter. For more information, see [Reserve](~~273111~~).
+        # *   If the DestinationEndpointEngineName parameter is set to **KAFKA**, **MONGODB**, or **PolarDB**, you must also specify the database information in the Reserve parameter. For more information, see [Reserve](https://help.aliyun.com/document_detail/273111.html).
+        # 
+        # This parameter is required.
         self.destination_endpoint_instance_type = destination_endpoint_instance_type
         # The ID of the data migration or synchronization task.
         # 
-        # >  You must specify at least one of the DtsJobId and **DtsInstanceId** parameters. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+        # >  You must specify at least one of the DtsJobId and **DtsInstanceId** parameters. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
         self.destination_endpoint_oracle_sid = destination_endpoint_oracle_sid
         self.destination_endpoint_owner_id = destination_endpoint_owner_id
         # Specifies whether to perform full data migration or synchronization. Default value: true. Valid values:
@@ -729,8 +749,8 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
         # 
         # > 
         # *   In most cases, this parameter is required.
-        # *   The permissions that are required for the database account vary with the migration or synchronization scenario. For more information, see [Prepare the database accounts for data migration](~~175878~~) or [Prepare the database accounts for data synchronization](~~213152~~).
-        # *   If the destination database is a MaxCompute project, you must specify the AccessKey ID of your Alibaba Cloud account. For information about how to obtain your AccessKey pair, see [Create an AccessKey pair](~~116401~~).
+        # *   The permissions that are required for the database account vary with the migration or synchronization scenario. For more information, see [Prepare the database accounts for data migration](https://help.aliyun.com/document_detail/175878.html) or [Prepare the database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.html).
+        # *   If the destination database is a MaxCompute project, you must specify the AccessKey ID of your Alibaba Cloud account. For information about how to obtain your AccessKey pair, see [Create an AccessKey pair](https://help.aliyun.com/document_detail/116401.html).
         self.destination_endpoint_port = destination_endpoint_port
         # The database service port of the destination instance.
         # 
@@ -753,7 +773,7 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
         # 
         # > 
         # *   This parameter is available only for China site (aliyun.com) users. Only mobile numbers in the Chinese mainland are supported. Up to 10 mobile numbers can be specified.
-        # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the CloudMonitor console](~~175876~~).
+        # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the CloudMonitor console](https://help.aliyun.com/document_detail/175876.html).
         self.dts_job_id = dts_job_id
         # The ID of the source instance.
         # 
@@ -765,9 +785,11 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
         # *   If the SourceEndpointInstanceType parameter is set to **DG**, you must specify the ID of the database gateway.
         # *   If the SourceEndpointInstanceType parameter is set to **EXPRESS** or **CEN**, you must specify the ID of the VPC that is connected to the source instance.
         # 
-        # >  If the SourceEndpointInstanceType parameter is set to **CEN**, you must also specify the ID of the CEN instance in the Reserve parameter. For more information, see [Reserve](~~273111~~).
+        # >  If the SourceEndpointInstanceType parameter is set to **CEN**, you must also specify the ID of the CEN instance in the Reserve parameter. For more information, see [Reserve](https://help.aliyun.com/document_detail/273111.html).
+        # 
+        # This parameter is required.
         self.dts_job_name = dts_job_name
-        # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.error_notice = error_notice
         # The synchronization direction. Valid values:
         # 
@@ -785,7 +807,9 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
         self.file_oss_url_object = file_oss_url_object
         # The ID of the data migration or synchronization instance.
         # 
-        # >  You must specify at least one of the **DtsJobId** and DtsInstanceId parameters. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
+        # >  You must specify at least one of the **DtsJobId** and DtsInstanceId parameters. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.job_type = job_type
         self.max_du = max_du
         self.min_du = min_du
@@ -807,7 +831,7 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
         # 
         # >  If the **SourceEndpointEngineName** parameter is set to **ORACLE** and the **Oracle** database is deployed in an architecture that is not a Real Application Cluster (RAC), this parameter is available and required.
         self.source_endpoint_ip = source_endpoint_ip
-        # The ID of the region in which the source instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region in which the source instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         # 
         # >  If the source instance is an Alibaba Cloud database instance, this parameter is required.
         self.source_endpoint_instance_id = source_endpoint_instance_id
@@ -833,13 +857,15 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
         # 
         # > 
         # *   Default value: **MYSQL**.
-        # *   If the SourceEndpointEngineName parameter is set to **MONGODB**, you must also specify the architecture type of the MongoDB database in the Reserve parameter. For more information, see [Reserve](~~273111~~).
+        # *   If the SourceEndpointEngineName parameter is set to **MONGODB**, you must also specify the architecture type of the MongoDB database in the Reserve parameter. For more information, see [Reserve](https://help.aliyun.com/document_detail/273111.html).
+        # 
+        # This parameter is required.
         self.source_endpoint_instance_type = source_endpoint_instance_type
         # The database account of the source database.
         # 
         # > 
         # *   In most cases, this parameter is required.
-        # *   The permissions that are required for the database account vary with the migration or synchronization scenario. For more information, see [Prepare the database accounts for data migration](~~175878~~) or [Prepare the database accounts for data synchronization](~~213152~~).
+        # *   The permissions that are required for the database account vary with the migration or synchronization scenario. For more information, see [Prepare the database accounts for data migration](https://help.aliyun.com/document_detail/175878.html) or [Prepare the database accounts for data synchronization](https://help.aliyun.com/document_detail/213152.html).
         self.source_endpoint_oracle_sid = source_endpoint_oracle_sid
         # The type of the destination instance. Valid values:
         # 
@@ -869,12 +895,12 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
         # > 
         # *   If the destination instance is a PolarDB for Oracle cluster, you must set this parameter to **OTHER** or **EXPRESS** because you can use a PolarDB for Oracle cluster only as a self-managed database connected over the Internet or Express Connect.
         # *   If the destination instance is a Message Queue for Apache Kafka instance, you must set this parameter to **ECS** or **EXPRESS** because you can use a Message Queue for Apache Kafka instance only as a self-managed database connected over ECS or Express Connect.
-        # *   For more information, see [Supported databases](~~176064~~).
-        # *   If the destination instance is a self-managed database, you must deploy the network environment for the database. For more information, see [Preparation overview](~~146958~~).
+        # *   For more information, see [Supported databases](https://help.aliyun.com/document_detail/176064.html).
+        # *   If the destination instance is a self-managed database, you must deploy the network environment for the database. For more information, see [Preparation overview](https://help.aliyun.com/document_detail/146958.html).
         self.source_endpoint_owner_id = source_endpoint_owner_id
         # The name of the RAM role configured for the Alibaba Cloud account that owns the source instance.
         # 
-        # >  This parameter is required when you migrate or synchronize data across different Alibaba Cloud accounts. For information about the permissions and authorization methods of the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](~~48468~~).
+        # >  This parameter is required when you migrate or synchronize data across different Alibaba Cloud accounts. For information about the permissions and authorization methods of the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](https://help.aliyun.com/document_detail/48468.html).
         self.source_endpoint_password = source_endpoint_password
         # The name of the database to which the objects to be migrated in the source instance belong.
         # 
@@ -894,7 +920,7 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
         # *   If the DestinationEndpointInstanceType parameter is set to **DG**, you must specify the ID of the database gateway.
         # *   If the DestinationEndpointInstanceType parameter is set to **EXPRESS** or **CEN**, you must specify the ID of the VPC that is connected to the source instance.
         # 
-        # >  If the DestinationEndpointInstanceType parameter is set to **CEN**, you must also specify the ID of the CEN instance in the Reserve parameter. For more information, see [Reserve](~~273111~~).
+        # >  If the DestinationEndpointInstanceType parameter is set to **CEN**, you must also specify the ID of the CEN instance in the Reserve parameter. For more information, see [Reserve](https://help.aliyun.com/document_detail/273111.html).
         self.source_endpoint_role = source_endpoint_role
         # The ID of the Alibaba Cloud account to which the source instance belongs.
         # 
@@ -908,6 +934,8 @@ class ConfigureDtsJobAdvanceRequest(TeaModel):
         # 
         # *   **false**: does not perform incremental data migration or synchronization.
         # *   **true**: performs incremental data migration or synchronization.
+        # 
+        # This parameter is required.
         self.structure_initialization = structure_initialization
         # The ID of the DTS dedicated cluster on which the task runs.
         # 
@@ -1304,6 +1332,8 @@ class ConfigureMigrationJobRequestDestinationEndpoint(TeaModel):
         # *   **PolarDB_o**: PolarDB O Edition cluster
         # *   **AnalyticDB**: AnalyticDB for MySQL cluster V3.0 or V2.0
         # *   **Greenplum**: AnalyticDB for PostgreSQL instance
+        # 
+        # This parameter is required.
         self.instance_type = instance_type
         # The SID of the Oracle database.
         # 
@@ -1317,11 +1347,11 @@ class ConfigureMigrationJobRequestDestinationEndpoint(TeaModel):
         self.port = port
         # The region ID of the destination database.
         # 
-        # >  If the **DestinationEndpoint.InstanceType** parameter is set to **LocalInstance**, you can enter **cn-hangzhou** or the ID of the region closest to the self-managed database. For more information, see [List of supported regions](~~141033~~).
+        # >  If the **DestinationEndpoint.InstanceType** parameter is set to **LocalInstance**, you can enter **cn-hangzhou** or the ID of the region closest to the self-managed database. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region = region
         # The database account of the destination database.
         # 
-        # >  The permissions that are required for database accounts vary with the migration scenario. For more information, see [Overview of data migration scenarios](~~26618~~).
+        # >  The permissions that are required for database accounts vary with the migration scenario. For more information, see [Overview of data migration scenarios](https://help.aliyun.com/document_detail/26618.html).
         self.user_name = user_name
 
     def validate(self):
@@ -1392,21 +1422,27 @@ class ConfigureMigrationJobRequestMigrationMode(TeaModel):
         # *   **true**: yes
         # *   **false**: no
         # 
-        # >  For more information about databases that support full data migration, see [Supported databases and migration types](~~26618~~).
+        # >  For more information about databases that support full data migration, see [Supported databases and migration types](https://help.aliyun.com/document_detail/26618.html).
+        # 
+        # This parameter is required.
         self.data_intialization = data_intialization
         # Specifies whether to perform incremental data migration. Valid values:
         # 
         # *   **true**: yes
         # *   **false**: no
         # 
-        # >  For more information about databases that support incremental data migration, see [Supported databases and migration types](~~26618~~).
+        # >  For more information about databases that support incremental data migration, see [Supported databases and migration types](https://help.aliyun.com/document_detail/26618.html).
+        # 
+        # This parameter is required.
         self.data_synchronization = data_synchronization
         # Specifies whether to perform schema migration. Valid values:
         # 
         # *   **true**: yes
         # *   **false**: no
         # 
-        # >  For more information about databases that support schema migration, see [Supported databases and migration types](~~26618~~).
+        # >  For more information about databases that support schema migration, see [Supported databases and migration types](https://help.aliyun.com/document_detail/26618.html).
+        # 
+        # This parameter is required.
         self.structure_intialization = structure_intialization
 
     def validate(self):
@@ -1484,6 +1520,8 @@ class ConfigureMigrationJobRequestSourceEndpoint(TeaModel):
         # *   **MongoDB**: ApsaraDB for MongoDB instance
         # *   **POLARDB**: PolarDB for MySQL cluster or PolarDB for PostgreSQL cluster
         # *   **PolarDB_o**: PolarDB O Edition cluster
+        # 
+        # This parameter is required.
         self.instance_type = instance_type
         # The system ID (SID) of the Oracle database.
         # 
@@ -1501,15 +1539,15 @@ class ConfigureMigrationJobRequestSourceEndpoint(TeaModel):
         self.port = port
         # The region ID of the source database.
         # 
-        # >  If the **SourceEndpoint.InstanceType** parameter is set to **LocalInstance**, you can enter **cn-hangzhou** or the ID of the region closest to the self-managed database. For more information, see [List of supported regions](~~141033~~).
+        # >  If the **SourceEndpoint.InstanceType** parameter is set to **LocalInstance**, you can enter **cn-hangzhou** or the ID of the region closest to the self-managed database. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region = region
         # The authorized RAM role of the source instance. You must specify the RAM role only if the source instance and the destination instance belong to different Alibaba Cloud accounts. You can use the RAM role to allow the Alibaba Cloud account that owns the destination instance to access the source instance.
         # 
-        # >  For information about the permissions and authorization methods of the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](~~48468~~).
+        # >  For information about the permissions and authorization methods of the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](https://help.aliyun.com/document_detail/48468.html).
         self.role = role
         # The database account of the source database.
         # 
-        # >  The permissions that are required for database accounts vary with the migration scenario. For more information, see [Overview of data migration scenarios](~~26618~~).
+        # >  The permissions that are required for database accounts vary with the migration scenario. For more information, see [Overview of data migration scenarios](https://help.aliyun.com/document_detail/26618.html).
         self.user_name = user_name
 
     def validate(self):
@@ -1600,17 +1638,23 @@ class ConfigureMigrationJobRequest(TeaModel):
         # The start offset of incremental data migration. The value is a UNIX timestamp. Unit: seconds.
         self.checkpoint = checkpoint
         # The ID of the data migration instance. You can call the **DescribeMigrationJobs** operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.migration_job_id = migration_job_id
         # The name of the data migration task. The name can be up to 32 characters in length. We recommend that you specify an informative name to identify the task. You do not need to use a unique task name.
+        # 
+        # This parameter is required.
         self.migration_job_name = migration_job_name
         # The objects that you want to migrate. The value is a JSON string and can contain regular expressions.
         # 
-        # For more information, see [MigrationObject](~~141227~~).
+        # For more information, see [MigrationObject](https://help.aliyun.com/document_detail/141227.html).
+        # 
+        # This parameter is required.
         self.migration_object = migration_object
-        # The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet special requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](~~176470~~).
+        # The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet special requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](https://help.aliyun.com/document_detail/176470.html).
         self.migration_reserved = migration_reserved
         self.owner_id = owner_id
-        # The ID of the region where the data migration instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region where the data migration instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         # 
         # >  The region ID of the data migration instance is the same as that of the destination database.
         self.region_id = region_id
@@ -1798,7 +1842,7 @@ class ConfigureMigrationJobAlertRequest(TeaModel):
         # 
         # > 
         # *   This parameter is available only for China site (aliyun.com) users. Only mobile phone numbers in the Chinese mainland are supported. Up to 10 mobile phone numbers can be specified.
-        # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the Cloud Monitor console](~~175876~~).
+        # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the Cloud Monitor console](https://help.aliyun.com/document_detail/175876.html).
         self.delay_alert_phone = delay_alert_phone
         # Specifies whether to monitor task latency. Valid values:
         # 
@@ -1817,7 +1861,7 @@ class ConfigureMigrationJobAlertRequest(TeaModel):
         # 
         # > 
         # *   This parameter is available only for China site (aliyun.com) users. Only mobile phone numbers in the Chinese mainland are supported. Up to 10 mobile phone numbers can be specified.
-        # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the Cloud Monitor console](~~175876~~).
+        # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the Cloud Monitor console](https://help.aliyun.com/document_detail/175876.html).
         self.error_alert_phone = error_alert_phone
         # Specifies whether to monitor task status. Valid values:
         # 
@@ -1830,6 +1874,8 @@ class ConfigureMigrationJobAlertRequest(TeaModel):
         # *   If the task that you monitor enters an abnormal state, an alert is triggered.
         self.error_alert_status = error_alert_status
         # The ID of the data migration instance. You can call the **DescribeMigrationJobs** operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.migration_job_id = migration_job_id
         self.owner_id = owner_id
         self.region_id = region_id
@@ -2023,7 +2069,9 @@ class ConfigureSubscriptionRequest(TeaModel):
         # 
         # >  You can use a search engine to obtain a UNIX timestamp converter.
         self.checkpoint = checkpoint
-        # The objects for which you want to track data changes. The value must be a JSON string. For more information, see [Objects of DTS tasks](~~209545~~).
+        # The objects for which you want to track data changes. The value must be a JSON string. For more information, see [Objects of DTS tasks](https://help.aliyun.com/document_detail/209545.html).
+        # 
+        # This parameter is required.
         self.db_list = db_list
         # The ID of the DTS dedicated cluster on which the change tracking task is scheduled to run.
         self.dedicated_cluster_id = dedicated_cluster_id
@@ -2036,20 +2084,22 @@ class ConfigureSubscriptionRequest(TeaModel):
         # 
         # > 
         # *   This parameter is available only for users of the China site (aliyun.com). Only mobile numbers in the Chinese mainland are supported. You can specify up to 10 mobile numbers.
-        # *   Users of the international site (alibabacloud.com) cannot receive alerts by using mobile phones, but can [configure alert rules for DTS tasks in the CloudMonitor console](~~175876~~).
+        # *   Users of the international site (alibabacloud.com) cannot receive alerts by using mobile phones, but can [configure alert rules for DTS tasks in the CloudMonitor console](https://help.aliyun.com/document_detail/175876.html).
         self.delay_phone = delay_phone
         # The threshold for triggering latency-related alerts. Unit: seconds. The value must be an integer. You can set the threshold based on your business needs. To prevent jitters caused by network and database overloads, we recommend that you set the threshold to more than 10 seconds.
         # 
         # >  If the **DelayNotice** parameter is set to **true**, this parameter is required.
         self.delay_rule_time = delay_rule_time
         self.dts_bis_label = dts_bis_label
-        # The ID of the change tracking instance. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
+        # The ID of the change tracking instance. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
         self.dts_instance_id = dts_instance_id
-        # The ID of the change tracking task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+        # The ID of the change tracking task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
         self.dts_job_id = dts_job_id
         # The name of the change tracking task.
         # 
         # >  We recommend that you specify a descriptive name for easy identification. You do not need to use a unique name.
+        # 
+        # This parameter is required.
         self.dts_job_name = dts_job_name
         # Specifies whether to monitor the task status. Valid values:
         # 
@@ -2060,13 +2110,15 @@ class ConfigureSubscriptionRequest(TeaModel):
         # 
         # > 
         # *   This parameter is available only for users of the China site (aliyun.com). Only mobile numbers in the Chinese mainland are supported. You can specify up to 10 mobile numbers.
-        # *   Users of the international site (alibabacloud.com) cannot receive alerts by using mobile phones, but can [configure alert rules for DTS tasks in the CloudMonitor console](~~175876~~).
+        # *   Users of the international site (alibabacloud.com) cannot receive alerts by using mobile phones, but can [configure alert rules for DTS tasks in the CloudMonitor console](https://help.aliyun.com/document_detail/175876.html).
         self.error_phone = error_phone
         self.max_du = max_du
         self.min_du = min_du
-        # The ID of the region in which the Data Transmission Service (DTS) instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region in which the Data Transmission Service (DTS) instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # 
+        # This parameter is required.
         self.region_id = region_id
-        # The reserved parameter of DTS. The value must be a JSON string. You can specify this parameter to add more configurations of the source or destination database to the DTS task. For example, you can specify the data storage format of the destination Kafka database and the ID of the CEN instance. For more information, see [MigrationReserved](~~176470~~).
+        # The reserved parameter of DTS. The value must be a JSON string. You can specify this parameter to add more configurations of the source or destination database to the DTS task. For example, you can specify the data storage format of the destination Kafka database and the ID of the CEN instance. For more information, see [MigrationReserved](https://help.aliyun.com/document_detail/176470.html).
         self.reserve = reserve
         self.resource_group_id = resource_group_id
         # The name of the source database.
@@ -2108,17 +2160,17 @@ class ConfigureSubscriptionRequest(TeaModel):
         # 
         # >  This parameter is required only when the source database is a self-managed database.
         self.source_endpoint_port = source_endpoint_port
-        # The ID of the region in which the source database resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region in which the source database resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         # 
         # >  If the source database is a self-managed database with a public IP address, you can set the value of this parameter to **cn-hangzhou** or the ID of the region that is closest to the region in which the self-managed database resides.
         self.source_endpoint_region = source_endpoint_region
         # The RAM role that is authorized to access the source database. This parameter is required if the source database does not belong to the Alibaba Cloud account that you use to configure the change tracking task. In this case, you must authorize the Alibaba Cloud account to access the source database by using a RAM role.
         # 
-        # >  For more information about the permissions that are required for the RAM role and how to grant the permissions to the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](~~48468~~).
+        # >  For more information about the permissions that are required for the RAM role and how to grant the permissions to the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](https://help.aliyun.com/document_detail/48468.html).
         self.source_endpoint_role = source_endpoint_role
         # The username of the account that is used to connect to the source database.
         # 
-        # >  The permissions that are required for the database account vary with the change tracking scenario. For more information, see [Prepare the source database account for change tracking](~~212653~~).
+        # >  The permissions that are required for the database account vary with the change tracking scenario. For more information, see [Prepare the source database account for change tracking](https://help.aliyun.com/document_detail/212653.html).
         self.source_endpoint_user_name = source_endpoint_user_name
         # Specifies whether to track DDL statements. Default value: true. Valid values:
         # 
@@ -2135,6 +2187,8 @@ class ConfigureSubscriptionRequest(TeaModel):
         # > 
         # *   To use the new version of the change tracking feature, you must specify the SubscriptionInstanceNetworkType parameter. You must also specify the **SubscriptionInstanceVPCId** and **SubscriptionInstanceVSwitchID** parameters. If you do not specify the SubscriptionInstanceNetworkType parameter, the previous version of the change tracking feature is used.
         # *   The previous version of the change tracking feature supports self-managed MySQL databases, ApsaraDB RDS for MySQL instances, and PolarDB-X 1.0 instances. The new version of the change tracking feature supports self-managed MySQL databases, ApsaraDB RDS for MySQL instances, PolarDB for MySQL clusters, and Oracle databases.
+        # 
+        # This parameter is required.
         self.subscription_instance_network_type = subscription_instance_network_type
         # The ID of the VPC in which the change tracking instance is deployed.
         # 
@@ -2442,7 +2496,7 @@ class ConfigureSubscriptionInstanceRequestSourceEndpoint(TeaModel):
         # *   **CEN**: self-managed database connected over Cloud Enterprise Network (CEN)
         # *   **dg**: self-managed database connected over Database Gateway
         # 
-        # >  The engine of a self-managed database can be MySQL or Oracle. You must specify the engine type when you call the [CreateSubscriptionInstance](~~49436~~) operation.
+        # >  The engine of a self-managed database can be MySQL or Oracle. You must specify the engine type when you call the [CreateSubscriptionInstance](https://help.aliyun.com/document_detail/49436.html) operation.
         self.instance_type = instance_type
         # The system ID (SID) of the Oracle database.
         # 
@@ -2460,11 +2514,11 @@ class ConfigureSubscriptionInstanceRequestSourceEndpoint(TeaModel):
         self.port = port
         # The RAM role that is authorized to access the source database. This parameter is required if the source database does not belong to the Alibaba Cloud account that you use to configure the change tracking instance. In this case, you must authorize the Alibaba Cloud account to access the source database by using a RAM role.
         # 
-        # >  For more information about the permissions that are required for the RAM role and how to grant permissions to the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](~~48468~~).
+        # >  For more information about the permissions that are required for the RAM role and how to grant permissions to the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](https://help.aliyun.com/document_detail/48468.html).
         self.role = role
         # The username of the account that is used to connect to the source database.
         # 
-        # >  The permissions that are required for the database account vary with the change tracking scenario. For more information, see [Overview of change tracking scenarios](~~145715~~).
+        # >  The permissions that are required for the database account vary with the change tracking scenario. For more information, see [Overview of change tracking scenarios](https://help.aliyun.com/document_detail/145715.html).
         self.user_name = user_name
 
     def validate(self):
@@ -2533,11 +2587,15 @@ class ConfigureSubscriptionInstanceRequestSubscriptionDataType(TeaModel):
         # 
         # *   **true**: tracks DDL statements.
         # *   **false**: does not track DDL statements.
+        # 
+        # This parameter is required.
         self.ddl = ddl
         # Specifies whether to track DML statements. Default value: true. Valid values:
         # 
         # *   **true**: tracks DML statements.
         # *   **false**: does not tack DML statements.
+        # 
+        # This parameter is required.
         self.dml = dml
 
     def validate(self):
@@ -2626,9 +2684,11 @@ class ConfigureSubscriptionInstanceRequest(TeaModel):
         self.owner_id = owner_id
         self.region_id = region_id
         self.resource_group_id = resource_group_id
-        # The ID of the region in which the change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region in which the change tracking instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # 
+        # This parameter is required.
         self.subscription_instance_id = subscription_instance_id
-        # The ID of the change tracking instance. You can call the [DescribeSubscriptionInstances](~~49442~~) operation to query the instance ID.
+        # The ID of the change tracking instance. You can call the [DescribeSubscriptionInstances](https://help.aliyun.com/document_detail/49442.html) operation to query the instance ID.
         self.subscription_instance_name = subscription_instance_name
         # The network type of the change tracking instance. Set the value to **vpc**. A value of vpc indicates the Virtual Private Cloud (VPC) network type.
         # 
@@ -2636,7 +2696,9 @@ class ConfigureSubscriptionInstanceRequest(TeaModel):
         # *   To use the new version of the change tracking feature, you must specify the SubscriptionInstanceNetworkType parameter. You must also specify the **SubscriptionInstance.VPCId** and **SubscriptionInstance.VSwitchID** parameters. If you do not specify the SubscriptionInstanceNetworkType parameter, the previous version of the change tracking feature is used.
         # *   The previous version of the change tracking feature supports self-managed MySQL databases, ApsaraDB RDS for MySQL instances, and PolarDB-X 1.0 instances. The new version of the change tracking feature supports self-managed MySQL databases, ApsaraDB RDS for MySQL instances, PolarDB for MySQL clusters, and Oracle databases.
         self.subscription_instance_network_type = subscription_instance_network_type
-        # The objects for which you want to track data changes. The value is a JSON string and can contain regular expressions. For more information, see [SubscriptionObjects](~~141902~~).
+        # The objects for which you want to track data changes. The value is a JSON string and can contain regular expressions. For more information, see [SubscriptionObjects](https://help.aliyun.com/document_detail/141902.html).
+        # 
+        # This parameter is required.
         self.subscription_object = subscription_object
 
     def validate(self):
@@ -2817,7 +2879,7 @@ class ConfigureSubscriptionInstanceAlertRequest(TeaModel):
         # 
         # > 
         # *   This parameter is available only for China site (aliyun.com) users. Only mobile phone numbers in the Chinese mainland are supported. Up to 10 mobile phone numbers can be specified.
-        # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the Cloud Monitor console](~~175876~~).
+        # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the Cloud Monitor console](https://help.aliyun.com/document_detail/175876.html).
         self.delay_alert_phone = delay_alert_phone
         # Specifies whether to monitor task latency. Valid values:
         # 
@@ -2836,7 +2898,7 @@ class ConfigureSubscriptionInstanceAlertRequest(TeaModel):
         # 
         # > 
         # *   This parameter is available only for China site (aliyun.com) users. Only mobile phone numbers in the Chinese mainland are supported. Up to 10 mobile phone numbers can be specified.
-        # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the Cloud Monitor console](~~175876~~).
+        # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the Cloud Monitor console](https://help.aliyun.com/document_detail/175876.html).
         self.error_alert_phone = error_alert_phone
         # Specifies whether to monitor task status. Valid values:
         # 
@@ -2852,6 +2914,8 @@ class ConfigureSubscriptionInstanceAlertRequest(TeaModel):
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         # The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.subscription_instance_id = subscription_instance_id
 
     def validate(self):
@@ -3049,7 +3113,7 @@ class ConfigureSynchronizationJobRequestDestinationEndpoint(TeaModel):
         # The database account of the destination database.
         # 
         # > 
-        # *   The permissions that are required for database accounts vary with the synchronization scenario. For more information, see [Overview of data synchronization scenarios](~~140954~~).
+        # *   The permissions that are required for database accounts vary with the synchronization scenario. For more information, see [Overview of data synchronization scenarios](https://help.aliyun.com/document_detail/140954.html).
         # *   If the **DestinationEndpoint.InstanceType** parameter is set to **ECS**, **Express**, **dg**, or **cen**, you must specify the DestinationEndpoint.UserName parameter.
         # *   If the **DestinationEndpoint.InstanceType** parameter is set to RDS and the database version is MySQL 5.5 or MySQL 5.6, you do not need to specify the DestinationEndpoint.UserName and **DestinationEndpoint.Password** parameters.
         # *   If the **DestinationEndpoint.InstanceType** parameter is set to **Redis**, you do not need to specify the DestinationEndpoint.UserName parameter.
@@ -3212,14 +3276,14 @@ class ConfigureSynchronizationJobRequestSourceEndpoint(TeaModel):
         self.port = port
         # The name of the RAM role configured for the Alibaba Cloud account that owns the source instance.
         # 
-        # >  You must specify this parameter when you synchronize data across different Alibaba Cloud accounts. For information about the permissions and authorization methods of the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](~~48468~~).
+        # >  You must specify this parameter when you synchronize data across different Alibaba Cloud accounts. For information about the permissions and authorization methods of the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](https://help.aliyun.com/document_detail/48468.html).
         self.role = role
         # The database account of the source database.
         # 
         # > 
         # *   You must specify this parameter only if the **SourceEndpoint.InstanceType** parameter is set to **ECS**, **Express**, **dg**, or **cen**.
         # *   If the **SourceEndpoint.InstanceType** parameter is set to **Redis**, you do not need to specify the database account.
-        # *   The permissions that are required for database accounts vary with the synchronization scenario. For more information, see [Overview of data synchronization scenarios](~~140954~~).
+        # *   The permissions that are required for database accounts vary with the synchronization scenario. For more information, see [Overview of data synchronization scenarios](https://help.aliyun.com/document_detail/140954.html).
         self.user_name = user_name
 
     def validate(self):
@@ -3306,10 +3370,12 @@ class ConfigureSynchronizationJobRequest(TeaModel):
         # *   **false**: no
         # 
         # >  Default value: **true**.
-        self.data_initialization = data_initialization
-        # The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet special requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](~~176470~~).
         # 
-        # >  This parameter can be used for data synchronization between ApsaraDB for Redis Enterprise Edition instances. For more information, see [Use OpenAPI Explorer to configure one-way or two-way data synchronization between ApsaraDB for Redis Enterprise Edition instances](~~155967~~).
+        # This parameter is required.
+        self.data_initialization = data_initialization
+        # The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet special requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](https://help.aliyun.com/document_detail/176470.html).
+        # 
+        # >  This parameter can be used for data synchronization between ApsaraDB for Redis Enterprise Edition instances. For more information, see [Use OpenAPI Explorer to configure one-way or two-way data synchronization between ApsaraDB for Redis Enterprise Edition instances](https://help.aliyun.com/document_detail/155967.html).
         self.migration_reserved = migration_reserved
         self.owner_id = owner_id
         self.region_id = region_id
@@ -3320,6 +3386,8 @@ class ConfigureSynchronizationJobRequest(TeaModel):
         # *   **false**: no
         # 
         # >  Default value: **true**.
+        # 
+        # This parameter is required.
         self.structure_initialization = structure_initialization
         # The synchronization direction. Valid values:
         # 
@@ -3330,13 +3398,17 @@ class ConfigureSynchronizationJobRequest(TeaModel):
         # *   Default value: **Forward**.
         # *   The value **Reverse** takes effect only if the topology of the data synchronization instance is two-way synchronization.
         self.synchronization_direction = synchronization_direction
-        # The ID of the data synchronization instance. You can call the [DescribeSynchronizationJobs](~~49454~~) operation to query the instance ID.
+        # The ID of the data synchronization instance. You can call the [DescribeSynchronizationJobs](https://help.aliyun.com/document_detail/49454.html) operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.synchronization_job_id = synchronization_job_id
         # The name of the data synchronization task.
         # 
         # >  We recommend that you specify an informative name for easy identification. You do not need to use a unique task name.
         self.synchronization_job_name = synchronization_job_name
-        # The objects that you want to synchronize. The value is a JSON string and can contain regular expressions. For more information, see [SynchronizationObjects](~~141901~~).
+        # The objects that you want to synchronize. The value is a JSON string and can contain regular expressions. For more information, see [SynchronizationObjects](https://help.aliyun.com/document_detail/141901.html).
+        # 
+        # This parameter is required.
         self.synchronization_objects = synchronization_objects
 
     def validate(self):
@@ -3534,7 +3606,7 @@ class ConfigureSynchronizationJobAlertRequest(TeaModel):
         # 
         # > 
         # *   This parameter is available only for China site (aliyun.com) users. Only mobile phone numbers in the Chinese mainland are supported. Up to 10 mobile phone numbers can be specified.
-        # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the Cloud Monitor console](~~175876~~).
+        # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the Cloud Monitor console](https://help.aliyun.com/document_detail/175876.html).
         self.delay_alert_phone = delay_alert_phone
         # Specifies whether to monitor task latency. Valid values:
         # 
@@ -3553,7 +3625,7 @@ class ConfigureSynchronizationJobAlertRequest(TeaModel):
         # 
         # > 
         # *   This parameter is available only for China site (aliyun.com) users. Only mobile phone numbers in the Chinese mainland are supported. Up to 10 mobile phone numbers can be specified.
-        # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the Cloud Monitor console](~~175876~~).
+        # *   International site (alibabacloud.com) users cannot receive alerts by using mobile phones, but can [set alert rules for DTS tasks in the Cloud Monitor console](https://help.aliyun.com/document_detail/175876.html).
         self.error_alert_phone = error_alert_phone
         # Specifies whether to monitor task status. Valid values:
         # 
@@ -3576,6 +3648,8 @@ class ConfigureSynchronizationJobAlertRequest(TeaModel):
         # >  Default value: **Forward**.
         self.synchronization_direction = synchronization_direction
         # The ID of the data synchronization instance. You can call the DescribeSynchronizationJobs operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.synchronization_job_id = synchronization_job_id
 
     def validate(self):
@@ -3756,7 +3830,9 @@ class ConfigureSynchronizationJobReplicatorCompareRequest(TeaModel):
         # *   Default value: **Forward**.
         # *   This parameter is required only when the topology of the data synchronization instance is two-way synchronization.
         self.synchronization_direction = synchronization_direction
-        # The ID of the data synchronization instance. You can call the [DescribeSynchronizationJobs](~~49454~~) operation to query the instance ID.
+        # The ID of the data synchronization instance. You can call the [DescribeSynchronizationJobs](https://help.aliyun.com/document_detail/49454.html) operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.synchronization_job_id = synchronization_job_id
         # Specifies whether to enable image matching. Valid values:
         # 
@@ -3928,9 +4004,13 @@ class CountJobByConditionRequest(TeaModel):
         self.job_type = job_type
         # The content of the query condition, which corresponds to the value of the JobType parameter.
         self.params = params
-        # One of the query conditions. The ID of the region. For more information, see [Supported regions](~~141033~~).
+        # One of the query conditions. The ID of the region. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # 
+        # This parameter is required.
         self.region = region
-        # The ID of the region in which the DTS instance resides. For more information, see [Supported regions](~~141033~~).
+        # The ID of the region in which the DTS instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         # The type of the source database.
@@ -4185,26 +4265,34 @@ class CreateConsumerChannelRequest(TeaModel):
         resource_group_id: str = None,
     ):
         # The name of the consumer group. The name can be up to 128 characters in length. We recommend that you use an informative name for easy identification.
+        # 
+        # This parameter is required.
         self.consumer_group_name = consumer_group_name
         # The password of the consumer group.
         # 
         # *   A password must contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
         # *   A password must be 8 to 32 characters in length.
+        # 
+        # This parameter is required.
         self.consumer_group_password = consumer_group_password
         # The username of the consumer group.
         # 
-        # *   A username must contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (\_).
+        # *   A username must contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
         # *   A username cannot exceed 16 characters in length.
+        # 
+        # This parameter is required.
         self.consumer_group_user_name = consumer_group_user_name
-        # The ID of the change tracking instance. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
+        # The ID of the change tracking instance. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
         # 
         # >  You must specify at least one of the **DtsInstanceId** and **DtsJobId**. parameters.
         self.dts_instance_id = dts_instance_id
-        # The ID of the change tracking task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+        # The ID of the change tracking task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
         # 
         # >  You must specify at least one of the **DtsInstanceId** and **DtsJobId**. parameters.
         self.dts_job_id = dts_job_id
-        # The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
 
@@ -4371,21 +4459,29 @@ class CreateConsumerGroupRequest(TeaModel):
         # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
         # The name of the consumer group. The name cannot exceed 128 characters in length. We recommend that you use an informative name for easy identification.
+        # 
+        # This parameter is required.
         self.consumer_group_name = consumer_group_name
         # The password that corresponds to the username of the consumer group.
         # 
         # *   A password must contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
         # *   A password must be 8 to 32 characters in length.
+        # 
+        # This parameter is required.
         self.consumer_group_password = consumer_group_password
         # The username of the consumer group.
         # 
-        # *   A username must contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (\_).
+        # *   A username must contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
         # *   A username cannot exceed 16 characters in length.
+        # 
+        # This parameter is required.
         self.consumer_group_user_name = consumer_group_user_name
         self.owner_id = owner_id
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         # The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.subscription_instance_id = subscription_instance_id
 
     def validate(self):
@@ -4551,6 +4647,8 @@ class CreateDedicatedClusterMonitorRuleRequest(TeaModel):
         # The alert threshold for CPU utilization. Unit: percentage.
         self.cpu_alarm_threshold = cpu_alarm_threshold
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dedicated_cluster_id = dedicated_cluster_id
         # The alert threshold for disk usage. Unit: percentage.
         self.disk_alarm_threshold = disk_alarm_threshold
@@ -4567,6 +4665,8 @@ class CreateDedicatedClusterMonitorRuleRequest(TeaModel):
         self.notice_switch = notice_switch
         self.owner_id = owner_id
         # The mobile phone number to which alerts are sent. Separate multiple mobile phone numbers with commas (,).
+        # 
+        # This parameter is required.
         self.phones = phones
         # The ID of the region in which the Data Transmission Service (DTS) instance resides.
         self.region_id = region_id
@@ -4796,10 +4896,10 @@ class CreateDtsInstanceRequest(TeaModel):
         # 
         # > 
         # *   The default value is **MySQL**.
-        # *   For more information about the supported source and destination databases, see [Overview of data synchronization scenarios](~~130744~~) and [Overview of data migration scenarios](~~26618~~).
+        # *   For more information about the supported source and destination databases, see [Overview of data synchronization scenarios](https://help.aliyun.com/document_detail/130744.html) and [Overview of data migration scenarios](https://help.aliyun.com/document_detail/26618.html).
         # *   You must specify one of this parameter and the **JobId** parameter.
         self.destination_endpoint_engine_name = destination_endpoint_engine_name
-        # The ID of the region in which the destination instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region in which the destination instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         # 
         # >  You must specify one of this parameter and the **JobId** parameter.
         self.destination_region = destination_region
@@ -4815,7 +4915,7 @@ class CreateDtsInstanceRequest(TeaModel):
         # *   DTS supports the following instance classes for a data migration instance: **xxlarge**, **xlarge**, **large**, **medium**, and **small**.
         # *   DTS supports the following instance classes for a data synchronization instance: **large**, **medium**, **small**, and **micro**.
         # 
-        # >  For more information about the test performance of each instance class, see [Specifications of data migration instances](~~26606~~) and [Specifications of data synchronization instances](~~26605~~).
+        # >  For more information about the test performance of each instance class, see [Specifications of data migration instances](https://help.aliyun.com/document_detail/26606.html) and [Specifications of data synchronization instances](https://help.aliyun.com/document_detail/26605.html).
         self.instance_class = instance_class
         # The ID of the task. You can call the **ConfigureDtsJob** operation to obtain the task ID from the **DtsJobId** parameter.
         # 
@@ -4838,7 +4938,7 @@ class CreateDtsInstanceRequest(TeaModel):
         # 
         # >  Only a single instance can be purchased each time.
         self.quantity = quantity
-        # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -4867,10 +4967,10 @@ class CreateDtsInstanceRequest(TeaModel):
         # 
         # > 
         # *   The default value is **MySQL**.
-        # *   For more information about the supported source and destination databases, see [Overview of data synchronization scenarios](~~130744~~) and [Overview of data migration scenarios](~~26618~~).
+        # *   For more information about the supported source and destination databases, see [Overview of data synchronization scenarios](https://help.aliyun.com/document_detail/130744.html) and [Overview of data migration scenarios](https://help.aliyun.com/document_detail/26618.html).
         # *   You must specify one of this parameter and the **JobId** parameter.
         self.source_endpoint_engine_name = source_endpoint_engine_name
-        # The ID of the region in which the source instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region in which the source instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         # 
         # >  You must specify one of this parameter and the **JobId** parameter.
         self.source_region = source_region
@@ -5128,7 +5228,9 @@ class CreateJobMonitorRuleRequest(TeaModel):
         # 
         # >  This parameter is required if the **Type** parameter is set to **delay** or **full_timeout** and the **State** parameter is set to **Y**.
         self.delay_rule_time = delay_rule_time
-        # The ID of the data migration, data synchronization, or change tracking task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+        # The ID of the data migration, data synchronization, or change tracking task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
+        # 
+        # This parameter is required.
         self.dts_job_id = dts_job_id
         # The alert threshold.
         self.notice_value = notice_value
@@ -5140,9 +5242,9 @@ class CreateJobMonitorRuleRequest(TeaModel):
         # 
         # > 
         # *   This parameter is available only for users of the China site (aliyun.com). Only mobile numbers in the Chinese mainland are supported. You can specify up to 10 mobile numbers.
-        # *   Users of the international site (alibabacloud.com) cannot receive alerts by using mobile phones, but can [configure alert rules for DTS tasks in the CloudMonitor console](~~175876~~).
+        # *   Users of the international site (alibabacloud.com) cannot receive alerts by using mobile phones, but can [configure alert rules for DTS tasks in the CloudMonitor console](https://help.aliyun.com/document_detail/175876.html).
         self.phone = phone
-        # The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
+        # The region ID of the DTS instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         # Specifies whether to enable the alert rule. Valid values:
@@ -5360,11 +5462,15 @@ class CreateMigrationJobRequest(TeaModel):
         # The specification of the data migration instance. Valid values: **small**, **medium**, **large**, **xlarge**, and **2xlarge**.
         # 
         # > 
-        # *   For more information about the test performance of each specification, see [Specifications of data migration instances](~~26606~~).
-        # *   For more information about the pricing of data migration instances, see [Pricing](~~117780~~).
+        # *   For more information about the test performance of each specification, see [Specifications of data migration instances](https://help.aliyun.com/document_detail/26606.html).
+        # *   For more information about the pricing of data migration instances, see [Pricing](https://help.aliyun.com/document_detail/117780.html).
+        # 
+        # This parameter is required.
         self.migration_job_class = migration_job_class
         self.owner_id = owner_id
-        # The ID of the region where the data migration instance resides. The region ID of the data migration instance is the same as that of the destination database. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region where the data migration instance resides. The region ID of the data migration instance is the same as that of the destination database. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # 
+        # This parameter is required.
         self.region = region
         # The ID of the region where the data migration instance resides. You do not need to specify this parameter because this parameter will be removed in the future.
         self.region_id = region_id
@@ -5519,6 +5625,7 @@ class CreateReverseDtsJobRequest(TeaModel):
         shard_password: str = None,
         shard_username: str = None,
     ):
+        # This parameter is required.
         self.dts_job_id = dts_job_id
         self.resource_group_id = resource_group_id
         self.shard_password = shard_password
@@ -5722,7 +5829,9 @@ class CreateSubscriptionInstanceRequest(TeaModel):
         # 
         # >  You must specify this parameter only if you set the PayType parameter to **Prepaid**.
         self.period = period
-        # The region ID of the change tracking instance. The region ID is the same as that of the source instance. For more information, see [List of supported regions](~~141033~~).
+        # The region ID of the change tracking instance. The region ID is the same as that of the source instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # 
+        # This parameter is required.
         self.region = region
         self.region_id = region_id
         self.resource_group_id = resource_group_id
@@ -5903,7 +6012,7 @@ class CreateSynchronizationJobRequestDestinationEndpoint(TeaModel):
         # 
         # > 
         # *   Default value: **MySQL**.
-        # *   For more information about the supported source and destination databases, see [Database types, initial synchronization types, and synchronization topologies](~~130744~~).
+        # *   For more information about the supported source and destination databases, see [Database types, initial synchronization types, and synchronization topologies](https://help.aliyun.com/document_detail/130744.html).
         self.instance_type = instance_type
 
     def validate(self):
@@ -5940,7 +6049,7 @@ class CreateSynchronizationJobRequestSourceEndpoint(TeaModel):
         # 
         # > 
         # *   Default value: **MySQL**.
-        # *   For more information about the supported source and destination databases, see [Database types, initial synchronization types, and synchronization topologies](~~130744~~).
+        # *   For more information about the supported source and destination databases, see [Database types, initial synchronization types, and synchronization topologies](https://help.aliyun.com/document_detail/130744.html).
         self.instance_type = instance_type
 
     def validate(self):
@@ -5991,15 +6100,19 @@ class CreateSynchronizationJobRequest(TeaModel):
         self.client_token = client_token
         # If you set the **SourceEndpoint.InstanceType** parameter to **DRDS**, you must specify the DBInstanceCount parameter. This parameter specifies the number of private RDS instances attached to the source PolarDB-X instance. Default value: **1**.
         self.dbinstance_count = dbinstance_count
-        # The ID of the region where the destination database resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region where the destination database resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         # 
         # >  If the **SourceRegion** parameter is set to the China (Hong Kong) region or a region outside the Chinese mainland, you must set the DestRegion parameter to the same region ID.
+        # 
+        # This parameter is required.
         self.dest_region = dest_region
         self.owner_id = owner_id
         # The billing method of the data synchronization instance.
         # 
         # *   **PrePaid**: subscription
         # *   **PostPaid** (default value): pay-as-you-go
+        # 
+        # This parameter is required.
         self.pay_type = pay_type
         # The billing cycle of the subscription instance. Valid values:
         # 
@@ -6010,11 +6123,15 @@ class CreateSynchronizationJobRequest(TeaModel):
         self.period = period
         self.region_id = region_id
         self.resource_group_id = resource_group_id
-        # The ID of the region where the source database resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region where the source database resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # 
+        # This parameter is required.
         self.source_region = source_region
         # The specification of the data synchronization instance. Valid values: **micro**, **small**, **medium**, and **large**.
         # 
-        # >  For more information about the test performance of each specification, see [Specifications of data synchronization instances](~~26605~~).
+        # >  For more information about the test performance of each specification, see [Specifications of data synchronization instances](https://help.aliyun.com/document_detail/26605.html).
+        # 
+        # This parameter is required.
         self.synchronization_job_class = synchronization_job_class
         # The synchronization topology. Valid values:
         # 
@@ -6226,17 +6343,21 @@ class DeleteConsumerChannelRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the consumer group. You can call the [DescribeConsumerChannel](~~264169~~) operation to query the consumer group ID.
+        # The ID of the consumer group. You can call the [DescribeConsumerChannel](https://help.aliyun.com/document_detail/264169.html) operation to query the consumer group ID.
+        # 
+        # This parameter is required.
         self.consumer_group_id = consumer_group_id
-        # The ID of the change tracking instance. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
+        # The ID of the change tracking instance. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
         # 
         # >  You must specify at least one of the **DtsInstanceId** and **DtsJobId** parameters.
         self.dts_instance_id = dts_instance_id
-        # The ID of the change tracking task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+        # The ID of the change tracking task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
         # 
         # >  You must specify at least one of the **DtsInstanceId** and **DtsJobId** parameters.
         self.dts_job_id = dts_job_id
-        # The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
 
@@ -6385,12 +6506,16 @@ class DeleteConsumerGroupRequest(TeaModel):
     ):
         # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
-        # The ID of the consumer group. You can call the [DescribeConsumerGroup](~~122886~~) operation to query the consumer group ID.
+        # The ID of the consumer group. You can call the [DescribeConsumerGroup](https://help.aliyun.com/document_detail/122886.html) operation to query the consumer group ID.
+        # 
+        # This parameter is required.
         self.consumer_group_id = consumer_group_id
         self.owner_id = owner_id
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         # The ID of the change tracking instance. You can call the **DescribeSubscriptionInstances** operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.subscription_instance_id = subscription_instance_id
 
     def validate(self):
@@ -6623,7 +6748,7 @@ class DeleteDtsJobResponseBody(TeaModel):
         # *   Default value: **Forward**.
         # *   You can set this parameter to **Reverse** to delete the reverse synchronization task only if the topology is two-way synchronization.
         self.request_id = request_id
-        # The ID of the region in which the data migration or synchronization task resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region in which the data migration or synchronization task resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.success = success
 
     def validate(self):
@@ -6722,9 +6847,11 @@ class DeleteDtsJobsRequest(TeaModel):
         # The ID of the data migration, data synchronization, or change tracking task.
         # 
         # > *   Separate multiple task IDs with commas (,).
-        # > *   You can call the [DescribeDtsJobs](~~209702~~) operation to query task IDs.
+        # > *   You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query task IDs.
+        # 
+        # This parameter is required.
         self.dts_job_ids = dts_job_ids
-        # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.zero_etl_job = zero_etl_job
@@ -6774,7 +6901,7 @@ class DeleteDtsJobsResponseBody(TeaModel):
     ):
         # The dynamic error code. This parameter will be removed soon.
         self.dynamic_code = dynamic_code
-        # The dynamic part in the error message. This parameter is used to replace the \*\*%s\*\* variable in the **ErrMessage** parameter.
+        # The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\* variable in the **ErrMessage** parameter.
         # 
         # > If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
         self.dynamic_message = dynamic_message
@@ -6886,6 +7013,8 @@ class DeleteMigrationJobRequest(TeaModel):
         # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
         # The ID of the data migration instance. You can call the **DescribeMigrationJobs** operation to query all data migration instances.
+        # 
+        # This parameter is required.
         self.migration_job_id = migration_job_id
         self.owner_id = owner_id
         self.region_id = region_id
@@ -7032,6 +7161,8 @@ class DeleteSubscriptionInstanceRequest(TeaModel):
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         # The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.subscription_instance_id = subscription_instance_id
 
     def validate(self):
@@ -7175,6 +7306,8 @@ class DeleteSynchronizationJobRequest(TeaModel):
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         # The ID of the data synchronization instance. You can call the DescribeSynchronizationJobs operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.synchronization_job_id = synchronization_job_id
 
     def validate(self):
@@ -7314,6 +7447,7 @@ class DescribeChannelAccountRequest(TeaModel):
         tags: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.dts_job_id = dts_job_id
         self.owner_id = owner_id
         self.region = region
@@ -7811,6 +7945,8 @@ class DescribeClusterOperateLogsRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. **The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The ID of the DTS dedicated cluster on which a DTS task runs.
+        # 
+        # This parameter is required.
         self.dedicated_cluster_id = dedicated_cluster_id
         # The ID of the data migration or synchronization task.
         self.dts_job_id = dts_job_id
@@ -8124,6 +8260,8 @@ class DescribeClusterUsedUtilizationRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. **The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The ID of the cluster. If the **MetricType** parameter is set to **CLUSTER**, enter the ID of the exclusive cluster. Otherwise, set this parameter to a node ID.
+        # 
+        # This parameter is required.
         self.dedicated_cluster_id = dedicated_cluster_id
         # The ID of the data migration or synchronization task.
         self.dts_job_id = dts_job_id
@@ -8443,6 +8581,8 @@ class DescribeConnectionStatusRequest(TeaModel):
         # *   **PolarDB_o**: PolarDB for Oracle cluster
         # *   **AnalyticDB**: AnalyticDB for MySQL cluster V3.0 or V2.0
         # *   **Greenplum**: AnalyticDB for PostgreSQL instance
+        # 
+        # This parameter is required.
         self.destination_endpoint_instance_type = destination_endpoint_instance_type
         # You must specify this parameter only if the **DestinationEndpointEngineName** parameter is set to **Oracle**. Valid values:
         # 
@@ -8457,13 +8597,13 @@ class DescribeConnectionStatusRequest(TeaModel):
         # 
         # >  You must specify this parameter only if the **SourceEndpointInstanceType** parameter is set to **ECS**, **LocalInstance**, or **Express**.
         self.destination_endpoint_port = destination_endpoint_port
-        # The ID of the region where the destination instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region where the destination instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.destination_endpoint_region = destination_endpoint_region
         # The database account of the destination database.
         # 
-        # >  The permissions that are required for database accounts vary with the migration or synchronization scenario. For more information, see [Overview of data migration scenarios](~~26618~~) and [Overview of data synchronization scenarios](~~130744~~).
+        # >  The permissions that are required for database accounts vary with the migration or synchronization scenario. For more information, see [Overview of data migration scenarios](https://help.aliyun.com/document_detail/26618.html) and [Overview of data synchronization scenarios](https://help.aliyun.com/document_detail/130744.html).
         self.destination_endpoint_user_name = destination_endpoint_user_name
-        # The ID of the region where the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region where the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         # You must specify this parameter only if the **SourceEndpointEngineName** parameter is set to **Oracle**. Valid values:
@@ -8500,6 +8640,8 @@ class DescribeConnectionStatusRequest(TeaModel):
         # *   **MongoDB**: ApsaraDB for MongoDB instance
         # *   **POLARDB**: PolarDB for MySQL cluster
         # *   **PolarDB_o**: PolarDB for Oracle cluster
+        # 
+        # This parameter is required.
         self.source_endpoint_instance_type = source_endpoint_instance_type
         # The SID of the Oracle database.
         # 
@@ -8511,11 +8653,11 @@ class DescribeConnectionStatusRequest(TeaModel):
         # 
         # >  You must specify this parameter only if the **SourceEndpointInstanceType** parameter is set to **ECS**, **LocalInstance**, or **Express**.
         self.source_endpoint_port = source_endpoint_port
-        # The ID of the region where the source instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region where the source instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.source_endpoint_region = source_endpoint_region
         # The database account of the source database.
         # 
-        # >  The permissions that are required for database accounts vary with the migration or synchronization scenario. For more information, see [Overview of data migration scenarios](~~26618~~) and [Overview of data synchronization scenarios](~~130744~~).
+        # >  The permissions that are required for database accounts vary with the migration or synchronization scenario. For more information, see [Overview of data migration scenarios](https://help.aliyun.com/document_detail/26618.html) and [Overview of data synchronization scenarios](https://help.aliyun.com/document_detail/130744.html).
         self.source_endpoint_user_name = source_endpoint_user_name
 
     def validate(self):
@@ -8745,11 +8887,11 @@ class DescribeConsumerChannelRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the change tracking instance. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
+        # The ID of the change tracking instance. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
         # 
         # >  You must specify at least one of the **DtsInstanceId** and **DtsJobId** parameters.
         self.dts_instance_id = dts_instance_id
-        # The ID of the change tracking task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+        # The ID of the change tracking task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
         # 
         # >  You must specify at least one of the **DtsInstanceId** and **DtsJobId** parameters.
         self.dts_job_id = dts_job_id
@@ -8759,7 +8901,9 @@ class DescribeConsumerChannelRequest(TeaModel):
         self.page_size = page_size
         # The parent task ID of the distributed task.
         self.parent_channel_id = parent_channel_id
-        # The ID of the region in which the change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region in which the change tracking instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
 
@@ -9030,6 +9174,8 @@ class DescribeConsumerGroupRequest(TeaModel):
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         # The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.subscription_instance_id = subscription_instance_id
 
     def validate(self):
@@ -9306,15 +9452,17 @@ class DescribeDTSIPRequest(TeaModel):
         resource_group_id: str = None,
         source_endpoint_region: str = None,
     ):
-        # The ID of the region where the destination instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region where the destination instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         # 
         # >  If the destination instance is a self-managed database with a public IP address, you can set the parameter to **cn-hangzhou** or the ID of the closest region.
         self.destination_endpoint_region = destination_endpoint_region
         self.region_id = region_id
         self.resource_group_id = resource_group_id
-        # The ID of the region where the source instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region where the source instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         # 
         # >  If the source instance is a self-managed database with a public IP address, you can set the parameter to **cn-hangzhou** or the ID of the closest region.
+        # 
+        # This parameter is required.
         self.source_endpoint_region = source_endpoint_region
 
     def validate(self):
@@ -9466,13 +9614,21 @@ class DescribeDataCheckReportUrlRequest(TeaModel):
         # 
         # *   **1**: full data verification.
         # *   **2**: incremental data verification.
+        # 
+        # This parameter is required.
         self.check_type = check_type
         # The name of the verified source database.
+        # 
+        # This parameter is required.
         self.db_name = db_name
-        # The ID of the Data Transmission Service (DTS) task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+        # The ID of the Data Transmission Service (DTS) task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
+        # 
+        # This parameter is required.
         self.dts_job_id = dts_job_id
         self.resource_group_id = resource_group_id
         # The name of the table verified in the source database.
+        # 
+        # This parameter is required.
         self.tb_name = tb_name
 
     def validate(self):
@@ -9631,8 +9787,12 @@ class DescribeDataCheckTableDetailsRequest(TeaModel):
         # 
         # *   **1**: full data verification.
         # *   **2**: incremental data verification.
+        # 
+        # This parameter is required.
         self.check_type = check_type
-        # The ID of the data migration or data synchronization task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+        # The ID of the data migration or data synchronization task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
+        # 
+        # This parameter is required.
         self.dts_job_id = dts_job_id
         # The number of the page to return. The value must be an integer that is greater than **0**. Default value: **1**.
         self.page_number = page_number
@@ -9825,7 +9985,7 @@ class DescribeDataCheckTableDetailsResponseBody(TeaModel):
         self.diff_table_count = diff_table_count
         # The dynamic error code. This parameter will be discontinued in the future.
         self.dynamic_code = dynamic_code
-        # The dynamic part in the error message. This parameter is used to replace the \*\*%s\*\* variable in the **ErrMessage** parameter.
+        # The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\* variable in the **ErrMessage** parameter.
         # 
         # > For example, if the returned value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **Type**, the specified **Type** parameter is invalid.
         self.dynamic_message = dynamic_message
@@ -9972,12 +10132,16 @@ class DescribeDataCheckTableDiffDetailsRequest(TeaModel):
         resource_group_id: str = None,
         tb_name: str = None,
     ):
+        # This parameter is required.
         self.check_type = check_type
+        # This parameter is required.
         self.db_name = db_name
+        # This parameter is required.
         self.dts_job_id = dts_job_id
         self.page_number = page_number
         self.page_size = page_size
         self.resource_group_id = resource_group_id
+        # This parameter is required.
         self.tb_name = tb_name
 
     def validate(self):
@@ -10208,6 +10372,8 @@ class DescribeDedicatedClusterRequest(TeaModel):
         resource_group_id: str = None,
     ):
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.dedicated_cluster_id = dedicated_cluster_id
         self.owner_id = owner_id
         # The ID of the region in which the instance resides.
@@ -10688,15 +10854,17 @@ class DescribeDtsEtlJobVersionInfoRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the Data Transmission Service (DTS) instance. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
+        # The ID of the Data Transmission Service (DTS) instance. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dts_instance_id = dts_instance_id
-        # The ID of the ETL task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+        # The ID of the ETL task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
         self.dts_job_id = dts_job_id
         # The number of the page to return. Default value: 1.
         self.page_number = page_number
         # The number of entries to return on each page. Default value: 20.
         self.page_size = page_size
-        # The ID of the region in which the DTS instance resides. You can call the [DescribeRegions](~~25609~~) operation to query the available Alibaba Cloud regions.
+        # The ID of the region in which the DTS instance resides. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the available Alibaba Cloud regions.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
 
@@ -11197,14 +11365,14 @@ class DescribeDtsJobDetailResponseBodyDestinationEndpoint(TeaModel):
         self.ip = ip
         # The username of the account that is used to connect to the source database.
         self.oracle_sid = oracle_sid
-        # The ID of the region in which the destination instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region in which the destination instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.port = port
         # Indicates whether SSL encryption is enabled. Valid values:
         # 
         # *   **DISABLE**: SSL encryption is disabled.
         # *   **ENABLE_WITH_CERTIFICATE**: SSL encryption is enabled, and the CA certificate is uploaded.
-        # *   **ENABLE_ONLY\_4\_MONGODB_ALTAS**: SSL encryption is enabled for the connection to an AWS MongoDB Altas database.
-        # *   **ENABLE_ONLY\_4\_KAFKA_SCRAM_SHA\_256**: SCRAM-SHA-256 is used to encrypt the connection to a Kafka cluster.
+        # *   **ENABLE_ONLY_4_MONGODB_ALTAS**: SSL encryption is enabled for the connection to an AWS MongoDB Altas database.
+        # *   **ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256**: SCRAM-SHA-256 is used to encrypt the connection to a Kafka cluster.
         self.region = region
         # The ID of the Alibaba Cloud account to which the source ApsaraDB RDS instance belongs.
         self.ssl_solution_enum = ssl_solution_enum
@@ -11437,8 +11605,8 @@ class DescribeDtsJobDetailResponseBodySourceEndpoint(TeaModel):
         # 
         # *   **DISABLE**: SSL encryption is disabled.
         # *   **ENABLE_WITH_CERTIFICATE**: SSL encryption is enabled, and the CA certificate is uploaded.
-        # *   **ENABLE_ONLY\_4\_MONGODB_ALTAS**: SSL encryption is enabled for the connection to an AWS MongoDB Altas database.
-        # *   **ENABLE_ONLY\_4\_KAFKA_SCRAM_SHA\_256**: SCRAM-SHA-256 is used to encrypt the connection to a Kafka cluster.
+        # *   **ENABLE_ONLY_4_MONGODB_ALTAS**: SSL encryption is enabled for the connection to an AWS MongoDB Altas database.
+        # *   **ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256**: SCRAM-SHA-256 is used to encrypt the connection to a Kafka cluster.
         self.role_name = role_name
         # The synchronization direction. Valid values:
         # 
@@ -11447,7 +11615,7 @@ class DescribeDtsJobDetailResponseBodySourceEndpoint(TeaModel):
         # 
         # >  This parameter is returned only if the topology of the data synchronization instance is two-way synchronization.
         self.ssl_solution_enum = ssl_solution_enum
-        # The ID of the region in which the source instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region in which the source instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.user_name = user_name
 
     def validate(self):
@@ -16304,9 +16472,9 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
         self.checkpoint = checkpoint
         # The topic of the change tracking instance.
         # 
-        # >  This parameter is returned only if your change tracking instances are of the new version and you have called the [CreateConsumerGroup](~~122863~~) operation to create a consumer group.
+        # >  This parameter is returned only if your change tracking instances are of the new version and you have called the [CreateConsumerGroup](https://help.aliyun.com/document_detail/122863.html) operation to create a consumer group.
         self.code = code
-        # The downstream client information in the following format: \<IP address of the downstream client>:\<Random ID generated by DTS>.
+        # The downstream client information in the following format: \\<IP address of the downstream client>:\\<Random ID generated by DTS>.
         self.consumption_checkpoint = consumption_checkpoint
         # The error code returned if the request failed.
         self.consumption_client = consumption_client
@@ -16324,7 +16492,7 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
         self.demo_job = demo_job
         # The instance class.
         # 
-        # >  For more information about the test performance of each instance class, see [Specifications of data migration instances](~~26606~~) and [Specifications of data synchronization instances](~~26605~~).
+        # >  For more information about the test performance of each instance class, see [Specifications of data migration instances](https://help.aliyun.com/document_detail/26606.html) and [Specifications of data synchronization instances](https://help.aliyun.com/document_detail/26605.html).
         self.dest_net_type = dest_net_type
         # The name of the database that contains the objects to be migrated from the source instance.
         self.destination_endpoint = destination_endpoint
@@ -16353,7 +16521,7 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
         self.dts_job_name = dts_job_name
         # The error message returned if the request failed.
         self.dynamic_message = dynamic_message
-        # The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet specific requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](~~176470~~).
+        # The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet specific requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](https://help.aliyun.com/document_detail/176470.html).
         self.end_timestamp = end_timestamp
         # The start offset of incremental data migration or synchronization. The value is a UNIX timestamp. Unit: seconds.
         self.err_code = err_code
@@ -16363,7 +16531,7 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
         self.err_message = err_message
         # The name of the data migration, data synchronization, or change tracking task.
         self.error_message = error_message
-        # The objects of the data migration, data synchronization, or change tracking task. For more information, see [Objects of DTS tasks](~~209545~~).
+        # The objects of the data migration, data synchronization, or change tracking task. For more information, see [Objects of DTS tasks](https://help.aliyun.com/document_detail/209545.html).
         self.etl_calculator = etl_calculator
         # The error code. This parameter will be removed in the future.
         self.expire_time = expire_time
@@ -16393,7 +16561,7 @@ class DescribeDtsJobDetailResponseBody(TeaModel):
         # 
         # >  This parameter is returned only if you query the details of an ETL task.
         self.group_id = group_id
-        # The dynamic part in the error message. This parameter is used to replace the \*\*%s\*\* variable in the **ErrMessage** parameter.
+        # The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\* variable in the **ErrMessage** parameter.
         # 
         # >  If the return value of the **ErrMessage** parameter is **The Value of Input Parameter %s is not valid** and the return value of the **DynamicMessage** parameter is **DtsJobId**, the specified **DtsJobId** parameter is invalid.
         self.http_status_code = http_status_code
@@ -16835,7 +17003,7 @@ class DescribeDtsJobsRequest(TeaModel):
         # 
         # >  You must set the **Type** parameter to specify the type of the query condition.
         self.params = params
-        # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region = region
         # This parameter is discontinued.
         self.region_id = region_id
@@ -17201,7 +17369,7 @@ class DescribeDtsJobsResponseBodyDtsJobListDataSynchronizationStatus(TeaModel):
         # *   **true**: yes
         # *   **false**: no
         # 
-        # >  To upgrade a DTS instance, call the [TransferInstanceClass](~~281093~~) operation.
+        # >  To upgrade a DTS instance, call the [TransferInstanceClass](https://help.aliyun.com/document_detail/281093.html) operation.
         self.need_upgrade = need_upgrade
         # The progress of incremental data migration or synchronization.
         self.percent = percent
@@ -17282,14 +17450,14 @@ class DescribeDtsJobsResponseBodyDtsJobListDestinationEndpoint(TeaModel):
         self.oracle_sid = oracle_sid
         # The database service port of the destination instance.
         self.port = port
-        # The ID of the region in which the destination instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region in which the destination instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region = region
         # Indicates whether SSL encryption is enabled. Valid values:
         # 
         # *   **DISABLE**: SSL encryption is disabled.
         # *   **ENABLE_WITH_CERTIFICATE**: SSL encryption is enabled, and the CA certificate is uploaded.
-        # *   **ENABLE_ONLY\_4\_MONGODB_ALTAS**: SSL encryption is enabled for the connection to an AWS MongoDB Altas database.
-        # *   **ENABLE_ONLY\_4\_KAFKA_SCRAM_SHA\_256**: SCRAM-SHA-256 is used to encrypt the connection to a Kafka cluster.
+        # *   **ENABLE_ONLY_4_MONGODB_ALTAS**: SSL encryption is enabled for the connection to an AWS MongoDB Altas database.
+        # *   **ENABLE_ONLY_4_KAFKA_SCRAM_SHA_256**: SCRAM-SHA-256 is used to encrypt the connection to a Kafka cluster.
         self.ssl_solution_enum = ssl_solution_enum
         # The database account of the destination instance.
         self.user_name = user_name
@@ -17919,7 +18087,7 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJobDataSynchronizationStatus(T
         # - **true**\
         # - **false**\
         # 
-        # > To upgrade a DTS instance, call the [TransferInstanceClass](~~281093~~) operation.
+        # > To upgrade a DTS instance, call the [TransferInstanceClass](https://help.aliyun.com/document_detail/281093.html) operation.
         self.need_upgrade = need_upgrade
         # The progress of incremental data synchronization. Unit: percentage.
         self.percent = percent
@@ -17994,7 +18162,7 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJobDestinationEndpoint(TeaMode
         self.oracle_sid = oracle_sid
         # The port number of the destination instance.
         self.port = port
-        # The ID of the region in which the destination instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region in which the destination instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region = region
         # Indicates whether SSL encryption is enabled. Valid values:
         # 
@@ -18459,7 +18627,7 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJobSourceEndpoint(TeaModel):
         self.oracle_sid = oracle_sid
         # The port number of the source instance.
         self.port = port
-        # The ID of the region in which the source instance resides. For more information, see [Supported regions](~~141033~~).
+        # The ID of the region in which the source instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region = region
         # Indicates whether SSL encryption is enabled. Valid values:
         # 
@@ -18639,7 +18807,7 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJob(TeaModel):
         self.dts_instance_id = dts_instance_id
         # The instance class. 
         # 
-        # > For more information about the test performance of each instance class, see [Specifications of data synchronization instances](~~26605~~).
+        # > For more information about the test performance of each instance class, see [Specifications of data synchronization instances](https://help.aliyun.com/document_detail/26605.html).
         self.dts_job_class = dts_job_class
         # The synchronization direction. **Reverse** is returned.
         self.dts_job_direction = dts_job_direction
@@ -18678,7 +18846,7 @@ class DescribeDtsJobsResponseBodyDtsJobListReverseJob(TeaModel):
         self.performance = performance
         # The precheck state.
         self.precheck_status = precheck_status
-        # The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet specific requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](~~176470~~).
+        # The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet specific requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](https://help.aliyun.com/document_detail/176470.html).
         self.reserved = reserved
         # The connection settings of the source instance.
         self.source_endpoint = source_endpoint
@@ -18899,7 +19067,7 @@ class DescribeDtsJobsResponseBodyDtsJobListSourceEndpoint(TeaModel):
         self.oracle_sid = oracle_sid
         # The port number of the source instance.
         self.port = port
-        # The ID of the region in which the source instance resides. For more information, see [Supported regions](~~141033~~).
+        # The ID of the region in which the source instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region = region
         # Indicates whether SSL encryption is enabled. Valid values:
         # 
@@ -19123,7 +19291,7 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
         self.checkpoint = checkpoint
         # The consumption checkpoint of the change tracking instance. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.consumption_checkpoint = consumption_checkpoint
-        # The downstream client information, in the following format: \<IP address of the downstream client>:\<Random ID generated by DTS>.
+        # The downstream client information, in the following format: \\<IP address of the downstream client>:\\<Random ID generated by DTS>.
         self.consumption_client = consumption_client
         # The CPU utilization of the instance. Unit: percentage.
         self.cpu_usage = cpu_usage
@@ -19156,7 +19324,7 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
         self.dts_instance_id = dts_instance_id
         # The instance class.
         # 
-        # >  For more information about the test performance of each instance class, see [Specifications of data synchronization instances](~~26605~~).
+        # >  For more information about the test performance of each instance class, see [Specifications of data synchronization instances](https://help.aliyun.com/document_detail/26605.html).
         self.dts_job_class = dts_job_class
         # The synchronization direction. The value is **Reverse**.
         self.dts_job_direction = dts_job_direction
@@ -19221,7 +19389,7 @@ class DescribeDtsJobsResponseBodyDtsJobList(TeaModel):
         self.performance = performance
         # The precheck state.
         self.precheck_status = precheck_status
-        # The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet specific requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](~~176470~~).
+        # The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet specific requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](https://help.aliyun.com/document_detail/176470.html).
         self.reserved = reserved
         # The name of the resource group.
         self.resource_group_display_name = resource_group_display_name
@@ -19654,7 +19822,7 @@ class DescribeDtsJobsResponseBodyEtlDemoListDataSynchronizationStatus(TeaModel):
         # - **true**\
         # - **false**\
         # 
-        # > To upgrade a DTS instance, call the [TransferInstanceClass](~~281093~~) operation.
+        # > To upgrade a DTS instance, call the [TransferInstanceClass](https://help.aliyun.com/document_detail/281093.html) operation.
         self.need_upgrade = need_upgrade
         # The progress of incremental data migration or synchronization. Unit: percentage.
         self.percent = percent
@@ -19735,7 +19903,7 @@ class DescribeDtsJobsResponseBodyEtlDemoListDestinationEndpoint(TeaModel):
         self.oracle_sid = oracle_sid
         # The port number of the destination instance.
         self.port = port
-        # The ID of the region in which the destination instance resides. For more information, see [Supported regions](~~141033~~).
+        # The ID of the region in which the destination instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region = region
         # Indicates whether SSL encryption is enabled. Valid values:
         # 
@@ -20169,7 +20337,7 @@ class DescribeDtsJobsResponseBodyEtlDemoListReverseJobDataSynchronizationStatus(
         # - **true**\
         # - **false**\
         # 
-        # > To upgrade a DTS instance, call the [TransferInstanceClass](~~281093~~) operation.
+        # > To upgrade a DTS instance, call the [TransferInstanceClass](https://help.aliyun.com/document_detail/281093.html) operation.
         self.need_upgrade = need_upgrade
         # The progress of incremental data synchronization. Unit: percentage.
         self.percent = percent
@@ -20244,7 +20412,7 @@ class DescribeDtsJobsResponseBodyEtlDemoListReverseJobDestinationEndpoint(TeaMod
         self.oracle_sid = oracle_sid
         # The port number of the destination instance.
         self.port = port
-        # The ID of the region in which the destination instance resides. For more information, see [Supported regions](~~141033~~).
+        # The ID of the region in which the destination instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region = region
         # Indicates whether SSL encryption is enabled. Valid values:
         # 
@@ -20554,7 +20722,7 @@ class DescribeDtsJobsResponseBodyEtlDemoListReverseJobSourceEndpoint(TeaModel):
         self.oracle_sid = oracle_sid
         # The port number of the source instance.
         self.port = port
-        # The ID of the region in which the source instance resides. For more information, see [Supported regions](~~141033~~).
+        # The ID of the region in which the source instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region = region
         # Indicates whether SSL encryption is enabled. Valid values:
         # 
@@ -20721,7 +20889,7 @@ class DescribeDtsJobsResponseBodyEtlDemoListReverseJob(TeaModel):
         self.dts_instance_id = dts_instance_id
         # The instance class. 
         # 
-        # > For more information about the test performance of each instance class, see [Specifications of data synchronization instances](~~26605~~).
+        # > For more information about the test performance of each instance class, see [Specifications of data synchronization instances](https://help.aliyun.com/document_detail/26605.html).
         self.dts_job_class = dts_job_class
         # The synchronization direction. **Reverse** is returned.
         self.dts_job_direction = dts_job_direction
@@ -20748,7 +20916,7 @@ class DescribeDtsJobsResponseBodyEtlDemoListReverseJob(TeaModel):
         self.performance = performance
         # The precheck state.
         self.precheck_status = precheck_status
-        # The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet specific requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](~~176470~~).
+        # The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet specific requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](https://help.aliyun.com/document_detail/176470.html).
         self.reserved = reserved
         # The connection settings of the source instance.
         self.source_endpoint = source_endpoint
@@ -20918,7 +21086,7 @@ class DescribeDtsJobsResponseBodyEtlDemoListSourceEndpoint(TeaModel):
         self.oracle_sid = oracle_sid
         # The port number of the source instance.
         self.port = port
-        # The ID of the region in which the source instance resides. For more information, see [Supported regions](~~141033~~).
+        # The ID of the region in which the source instance resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region = region
         # Indicates whether SSL encryption is enabled. Valid values:
         # 
@@ -21137,7 +21305,7 @@ class DescribeDtsJobsResponseBodyEtlDemoList(TeaModel):
         self.data_initialization_status = data_initialization_status
         # The state of incremental data migration or synchronization.
         self.data_synchronization_status = data_synchronization_status
-        # The objects of the data migration, data synchronization, or change tracking task. For more information, see [Objects of DTS tasks](~~209545~~).
+        # The objects of the data migration, data synchronization, or change tracking task. For more information, see [Objects of DTS tasks](https://help.aliyun.com/document_detail/209545.html).
         self.db_object = db_object
         # The latency of incremental data migration or synchronization. 
         # 
@@ -21149,7 +21317,7 @@ class DescribeDtsJobsResponseBodyEtlDemoList(TeaModel):
         self.dts_instance_id = dts_instance_id
         # The instance class. 
         # 
-        # > For more information about the test performance of each instance class, see [Specifications of data migration instances](~~26606~~) and [Specifications of data synchronization instances](~~26605~~).
+        # > For more information about the test performance of each instance class, see [Specifications of data migration instances](https://help.aliyun.com/document_detail/26606.html) and [Specifications of data synchronization instances](https://help.aliyun.com/document_detail/26605.html).
         self.dts_job_class = dts_job_class
         # The synchronization direction. Valid values:
         # 
@@ -21194,7 +21362,7 @@ class DescribeDtsJobsResponseBodyEtlDemoList(TeaModel):
         self.performance = performance
         # The precheck state.
         self.precheck_status = precheck_status
-        # The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet specific requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](~~176470~~).
+        # The reserved parameter of DTS. The value is a JSON string. You can specify this parameter to meet specific requirements, for example, whether to automatically start a precheck. For more information, see [MigrationReserved](https://help.aliyun.com/document_detail/176470.html).
         self.reserved = reserved
         # The name of the resource group.
         self.resource_group_display_name = resource_group_display_name
@@ -21598,9 +21766,9 @@ class DescribeDtsServiceLogRequest(TeaModel):
     ):
         # The ID of the data migration or synchronization task.
         self.dts_job_id = dts_job_id
-        # The end of the time range to query. You can call the [DescribePreCheckStatus](~~209718~~) operation to query the execution time of the subtasks.
+        # The end of the time range to query. You can call the [DescribePreCheckStatus](https://help.aliyun.com/document_detail/209718.html) operation to query the execution time of the subtasks.
         # 
-        # > *   To obtain the logs that are generated for DTS subtasks within a specific period of time, you can call the [DescribePreCheckStatus](~~209718~~) operation to query the execution time of the subtasks.
+        # > *   To obtain the logs that are generated for DTS subtasks within a specific period of time, you can call the [DescribePreCheckStatus](https://help.aliyun.com/document_detail/209718.html) operation to query the execution time of the subtasks.
         # >*   Specify the time in the 13-digit UNIX timestamp format. Unit: milliseconds. You can use a search engine to obtain a UNIX timestamp converter.
         self.end_time = end_time
         # The keyword that is passed to specify the query content.
@@ -21611,12 +21779,12 @@ class DescribeDtsServiceLogRequest(TeaModel):
         self.page_number = page_number
         # The number of log entries to return on each page. Valid values: **20**, **50**, **100**, **500**, and **1000**. Default value: **20**.
         self.page_size = page_size
-        # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         # The beginning of the time range to query.
         # 
-        # > *   To obtain the logs that are generated for Data Transmission Service (DTS) subtasks within a specific period of time, you can call the [DescribePreCheckStatus](~~209718~~) operation to query the execution time of the subtasks.
+        # > *   To obtain the logs that are generated for Data Transmission Service (DTS) subtasks within a specific period of time, you can call the [DescribePreCheckStatus](https://help.aliyun.com/document_detail/209718.html) operation to query the execution time of the subtasks.
         # >*   Specify the time in the 13-digit UNIX timestamp format. Unit: milliseconds. You can use a search engine to obtain a UNIX timestamp converter.
         self.start_time = start_time
         # The log level. Separate multiple log levels with commas (,). Valid values:
@@ -21752,7 +21920,7 @@ class DescribeDtsServiceLogResponseBody(TeaModel):
     ):
         # The dynamic error code. This parameter will be removed soon.
         self.dynamic_code = dynamic_code
-        # The dynamic part in the error message. This parameter is used to replace the \*\*%s\*\* variable in the **ErrMessage** parameter.
+        # The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\* variable in the **ErrMessage** parameter.
         self.dynamic_message = dynamic_message
         # The error code returned if the request fails.
         self.err_code = err_code
@@ -21899,7 +22067,9 @@ class DescribeEndpointSwitchStatusRequest(TeaModel):
         self.owner_id = owner_id
         self.region_id = region_id
         self.resource_group_id = resource_group_id
-        # The task ID, which is returned after you call the [SwitchSynchronizationEndpoint](~~201858~~) operation.
+        # The task ID, which is returned after you call the [SwitchSynchronizationEndpoint](https://help.aliyun.com/document_detail/201858.html) operation.
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -22059,9 +22229,11 @@ class DescribeEtlJobLogsRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the ETL task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+        # The ID of the ETL task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
+        # 
+        # This parameter is required.
         self.dts_job_id = dts_job_id
-        # The ID of the region in which the Data Transmission Service (DTS) instance resides. You can call the [DescribeRegions](~~25609~~) operation to query the available Alibaba Cloud regions.
+        # The ID of the region in which the Data Transmission Service (DTS) instance resides. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the available Alibaba Cloud regions.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
 
@@ -22302,7 +22474,9 @@ class DescribeInitializationStatusRequest(TeaModel):
         self.page_size = page_size
         self.region_id = region_id
         self.resource_group_id = resource_group_id
-        # The ID of the data synchronization instance. You can call the [DescribeSynchronizationJobs](~~49454~~) operation to query the instance ID.
+        # The ID of the data synchronization instance. You can call the [DescribeSynchronizationJobs](https://help.aliyun.com/document_detail/49454.html) operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.synchronization_job_id = synchronization_job_id
 
     def validate(self):
@@ -22811,9 +22985,11 @@ class DescribeJobMonitorRuleRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the data migration, data synchronization, or change tracking task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+        # The ID of the data migration, data synchronization, or change tracking task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
+        # 
+        # This parameter is required.
         self.dts_job_id = dts_job_id
-        # The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
+        # The region ID of the DTS instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         self.resource_group_id = resource_group_id
 
@@ -22860,8 +23036,8 @@ class DescribeJobMonitorRuleResponseBodyMonitorRules(TeaModel):
     ):
         # The threshold that triggers the alert.
         # 
-        # *   If the request parameter **Type** of the [CreateJobMonitorRule](~~212332~~) operation is set to **delay**, the unit of DelayRuleTime is seconds.
-        # *   If the request parameter **Type** of the [CreateJobMonitorRule](~~212332~~) operation is set to **full_timeout**, the unit of DelayRuleTime is hours.
+        # *   If the request parameter **Type** of the [CreateJobMonitorRule](https://help.aliyun.com/document_detail/212332.html) operation is set to **delay**, the unit of DelayRuleTime is seconds.
+        # *   If the request parameter **Type** of the [CreateJobMonitorRule](https://help.aliyun.com/document_detail/212332.html) operation is set to **full_timeout**, the unit of DelayRuleTime is hours.
         self.delay_rule_time = delay_rule_time
         self.job_id = job_id
         self.job_type = job_type
@@ -23111,6 +23287,8 @@ class DescribeMetricListRequest(TeaModel):
         # *   **cpu_total**: the CPU utilization.
         # *   **memory_usedutilization**: the memory usage.
         # *   **IntranetOutRate**: the outbound traffic over the internal network. Unit: byte.
+        # 
+        # This parameter is required.
         self.metric_name = metric_name
         # Specifies whether to query the metrics of the cluster or a node. Valid values:
         # 
@@ -23119,6 +23297,8 @@ class DescribeMetricListRequest(TeaModel):
         self.metric_type = metric_type
         self.owner_id = owner_id
         # The monitored object. If the **MetricType** parameter is set to **NODE**, set this parameter to the ID of the node that is monitored.
+        # 
+        # This parameter is required.
         self.param = param
         # The monitoring interval. Unit: seconds. Minimum value: 15.
         self.period = period
@@ -23406,6 +23586,8 @@ class DescribeMigrationJobAlertRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The ID of the data migration instance. You can call the **DescribeMigrationJobs** operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.migration_job_id = migration_job_id
         self.owner_id = owner_id
         self.region_id = region_id
@@ -23675,13 +23857,15 @@ class DescribeMigrationJobDetailRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The ID of the data migration instance. You can call the **DescribeMigrationJobs** operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.migration_job_id = migration_job_id
         self.owner_id = owner_id
         # The number of the page to return. The value must be an integer that is greater than **0** and does not exceed the maximum value of the Integer data type. Default value: **1**.
         self.page_num = page_num
         # The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: **30**.
         self.page_size = page_size
-        # The ID of the region where the data migration instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region where the data migration instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         self.resource_group_id = resource_group_id
 
@@ -24338,6 +24522,8 @@ class DescribeMigrationJobStatusRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The ID of the data migration instance. You can call the **DescribeMigrationJobs** operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.migration_job_id = migration_job_id
         self.owner_id = owner_id
         self.region_id = region_id
@@ -24942,7 +25128,7 @@ class DescribeMigrationJobStatusResponseBody(TeaModel):
         self.err_code = err_code
         # The error message returned if the call failed.
         self.err_message = err_message
-        # The specification of the data migration instance. Valid values: **small**, **medium**, **large**, **xlarge**, and **2xlarge**. For more information, see [Specifications of data migration instances](~~26606~~).
+        # The specification of the data migration instance. Valid values: **small**, **medium**, **large**, **xlarge**, and **2xlarge**. For more information, see [Specifications of data migration instances](https://help.aliyun.com/document_detail/26606.html).
         self.migration_job_class = migration_job_class
         # The ID of the data migration instance.
         self.migration_job_id = migration_job_id
@@ -25131,13 +25317,15 @@ class DescribeMigrationJobsRequestTag(TeaModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key. You can call the [ListTagResources](~~191187~~) operation to query the tag key.
+        # The tag key. You can call the [ListTagResources](https://help.aliyun.com/document_detail/191187.html) operation to query the tag key.
         # 
         # > 
         # *   N specifies the serial number of the tag. For example, Tag.1.Key specifies the key of the first tag and Tag.2.Key specifies the key of the second tag. You can specify 1 to 20 tag keys at a time.
         # *   This parameter cannot be an empty string.
+        # 
+        # This parameter is required.
         self.key = key
-        # The tag value. You can call the [ListTagResources](~~191187~~) operation to query the tag value.
+        # The tag value. You can call the [ListTagResources](https://help.aliyun.com/document_detail/191187.html) operation to query the tag value.
         # 
         # > 
         # *   N specifies the serial number of the tag. For example, Tag.1.Value specifies the value of the first tag and Tag.2.Value specifies the value of the second tag. You can specify 1 to 20 tag values at a time.
@@ -25191,7 +25379,7 @@ class DescribeMigrationJobsRequest(TeaModel):
         self.page_num = page_num
         # The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: **30**.
         self.page_size = page_size
-        # The ID of the region where the data migration instances reside. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region where the data migration instances reside. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.tag = tag
@@ -25867,7 +26055,7 @@ class DescribeMigrationJobsResponseBodyMigrationJobsMigrationJob(TeaModel):
         self.instance_create_time = instance_create_time
         # The time when the data migration task was created. The time is displayed in the *yyyy-MM-dd*T*HH:mm:ss*Z format in UTC.
         self.job_create_time = job_create_time
-        # The specification of the data migration instance. Valid values: **small**, **medium**, **large**, **xlarge**, and **2xlarge**. For more information, see [Specifications of data migration instances](~~26606~~).
+        # The specification of the data migration instance. Valid values: **small**, **medium**, **large**, **xlarge**, and **2xlarge**. For more information, see [Specifications of data migration instances](https://help.aliyun.com/document_detail/26606.html).
         self.migration_job_class = migration_job_class
         # The ID of the data migration instance.
         self.migration_job_id = migration_job_id
@@ -26174,6 +26362,8 @@ class DescribePreCheckStatusRequest(TeaModel):
         zero_etl_job: bool = None,
     ):
         # The ID of the data migration, data synchronization, or change tracking task.
+        # 
+        # This parameter is required.
         self.dts_job_id = dts_job_id
         # The task code that specifies the type of the DTS subtask. Valid values:
         # 
@@ -26181,6 +26371,8 @@ class DescribePreCheckStatusRequest(TeaModel):
         # *   **02**: schema migration or initial schema synchronization
         # *   **03**: full data migration or initial full data synchronization
         # *   **04**: incremental data migration or synchronization
+        # 
+        # This parameter is required.
         self.job_code = job_code
         # The filter item used to filter tables in fuzzy match.
         self.name = name
@@ -26188,7 +26380,7 @@ class DescribePreCheckStatusRequest(TeaModel):
         self.page_no = page_no
         # The number of entries to return on each page. Default value: **20**.
         self.page_size = page_size
-        # The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
+        # The region ID of the DTS instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         # The filter item used to filter tables, views, and functions during schema migration.
@@ -26956,7 +27148,7 @@ class DescribePreCheckStatusResponseBodyJobProgress(TeaModel):
         self.state = state
         # The sub-item progress of the subtask.
         # 
-        # >  If **\[]** is returned, the subtask has no sub-items.
+        # >  If **[]** is returned, the subtask has no sub-items.
         self.sub = sub
         # The names of the objects that are migrated or synchronized.
         self.target_names = target_names
@@ -27320,7 +27512,7 @@ class DescribePreCheckStatusResponseBodySubDistributedJobStatusJobProgress(TeaMo
         self.state = state
         # The sub-item progress of the subtask.
         # 
-        # >  If **\[]** is returned, the subtask has no sub-items.
+        # >  If **[]** is returned, the subtask has no sub-items.
         self.sub = sub
         # The names of the objects that are migrated or synchronized.
         self.target_names = target_names
@@ -27795,6 +27987,8 @@ class DescribeSubscriptionInstanceAlertRequest(TeaModel):
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         # The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.subscription_instance_id = subscription_instance_id
 
     def validate(self):
@@ -27996,7 +28190,9 @@ class DescribeSubscriptionInstanceStatusRequest(TeaModel):
         self.owner_id = owner_id
         self.region_id = region_id
         self.resource_group_id = resource_group_id
-        # The ID of the change tracking instance. You can call the [DescribeSubscriptionInstances](~~49442~~) operation to query the instance ID.
+        # The ID of the change tracking instance. You can call the [DescribeSubscriptionInstances](https://help.aliyun.com/document_detail/49442.html) operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.subscription_instance_id = subscription_instance_id
 
     def validate(self):
@@ -28291,7 +28487,7 @@ class DescribeSubscriptionInstanceStatusResponseBody(TeaModel):
         self.begin_timestamp = begin_timestamp
         # The consumption checkpoint of the change tracking instance. The time is displayed in the *yyyy-MM-dd*T*HH:mm:ss*Z format in UTC.
         self.consumption_checkpoint = consumption_checkpoint
-        # The downstream client information, in the following format: \<IP address of the downstream client>:\<Random ID generated by DTS>.
+        # The downstream client information, in the following format: \\<IP address of the downstream client>:\\<Random ID generated by DTS>.
         self.consumption_client = consumption_client
         # The end of the time range for change tracking. The time is displayed in the *yyyy-MM-dd*T*HH:mm:ss*Z format in UTC.
         self.end_timestamp = end_timestamp
@@ -28321,7 +28517,7 @@ class DescribeSubscriptionInstanceStatusResponseBody(TeaModel):
         self.status = status
         # The topic of the change tracking instance.
         # 
-        # >  This parameter is returned only if your change tracking instance is of the new version and you have called the [CreateConsumerGroup](~~122863~~) operation to create a consumer group.
+        # >  This parameter is returned only if your change tracking instance is of the new version and you have called the [CreateConsumerGroup](https://help.aliyun.com/document_detail/122863.html) operation to create a consumer group.
         self.subscribe_topic = subscribe_topic
         # The types of operations that are tracked by the task.
         self.subscription_data_type = subscription_data_type
@@ -28493,6 +28689,8 @@ class DescribeSubscriptionInstancesRequestTag(TeaModel):
         # > 
         # *   N specifies the serial number of the tag. For example, Tag.1.Key specifies the key of the first tag and Tag.2.Key specifies the key of the second tag. You can specify 1 to 20 tag keys at a time.
         # *   This parameter cannot be an empty string.
+        # 
+        # This parameter is required.
         self.key = key
         # The tag value.
         # 
@@ -28547,7 +28745,7 @@ class DescribeSubscriptionInstancesRequest(TeaModel):
         self.page_num = page_num
         # The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: **30**.
         self.page_size = page_size
-        # The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](~~49442~~).
+        # The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/49442.html).
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         # The name of the change tracking instance.
@@ -28940,7 +29138,7 @@ class DescribeSubscriptionInstancesResponseBodySubscriptionInstancesSubscription
         self.begin_timestamp = begin_timestamp
         # The consumption checkpoint of the change tracking instance. The time is displayed in the *yyyy-MM-dd*T*HH:mm:ss*Z format in UTC.
         self.consumption_checkpoint = consumption_checkpoint
-        # The downstream client information, in the following format: \<IP address of the downstream client>:\<Random ID generated by DTS>.
+        # The downstream client information, in the following format: \\<IP address of the downstream client>:\\<Random ID generated by DTS>.
         self.consumption_client = consumption_client
         # The end of the time range for change tracking. The time is displayed in the *yyyy-MM-dd*T*HH:mm:ss*Z format in UTC.
         self.end_timestamp = end_timestamp
@@ -28968,7 +29166,7 @@ class DescribeSubscriptionInstancesResponseBodySubscriptionInstancesSubscription
         self.status = status
         # The topic of the change tracking instance.
         # 
-        # >  This parameter is returned only if your change tracking instances are of the new version and you have called the [CreateConsumerGroup](~~122863~~) operation to create a consumer group.
+        # >  This parameter is returned only if your change tracking instances are of the new version and you have called the [CreateConsumerGroup](https://help.aliyun.com/document_detail/122863.html) operation to create a consumer group.
         self.subscribe_topic = subscribe_topic
         # The types of operations that are tracked by the task.
         self.subscription_data_type = subscription_data_type
@@ -29252,6 +29450,8 @@ class DescribeSubscriptionMetaRequest(TeaModel):
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         # The ID of the consumer group.
+        # 
+        # This parameter is required.
         self.sid = sid
         # The IDs of all subtasks in the distributed change tracking task. Separate multiple subtask IDs with commas (,).
         # 
@@ -29318,6 +29518,8 @@ class DescribeSubscriptionMetaShrinkRequest(TeaModel):
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         # The ID of the consumer group.
+        # 
+        # This parameter is required.
         self.sid = sid
         # The IDs of all subtasks in the distributed change tracking task. Separate multiple subtask IDs with commas (,).
         # 
@@ -29381,7 +29583,7 @@ class DescribeSubscriptionMetaResponseBodySubscriptionMetaList(TeaModel):
         # 
         # >  You can use a search engine to obtain a UNIX timestamp converter.
         self.checkpoint = checkpoint
-        # The objects of the subtask. For more information, see [Objects of DTS tasks](~~209545~~).
+        # The objects of the subtask. For more information, see [Objects of DTS tasks](https://help.aliyun.com/document_detail/209545.html).
         self.dblist = dblist
         # The endpoint and port number of the change tracking instance.
         self.dproxy_url = dproxy_url
@@ -29796,6 +29998,8 @@ class DescribeSynchronizationJobAlertRequest(TeaModel):
         # >  Default value: **Forward**.
         self.synchronization_direction = synchronization_direction
         # The ID of the data synchronization instance. You can call the **DescribeSynchronizationJobs** operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.synchronization_job_id = synchronization_job_id
 
     def validate(self):
@@ -30027,7 +30231,9 @@ class DescribeSynchronizationJobReplicatorCompareRequest(TeaModel):
         # *   Default value: **Forward**.
         # *   This parameter is required only when the topology of the data synchronization instance is two-way synchronization.
         self.synchronization_direction = synchronization_direction
-        # The ID of the data synchronization instance. You can call the [DescribeSynchronizationJobs](~~49454~~) operation to query the instance ID.
+        # The ID of the data synchronization instance. You can call the [DescribeSynchronizationJobs](https://help.aliyun.com/document_detail/49454.html) operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.synchronization_job_id = synchronization_job_id
 
     def validate(self):
@@ -30190,7 +30396,7 @@ class DescribeSynchronizationJobStatusRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.owner_id = owner_id
-        # The ID of the region where the data synchronization instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region where the data synchronization instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         # The synchronization direction. Valid values:
@@ -30202,7 +30408,9 @@ class DescribeSynchronizationJobStatusRequest(TeaModel):
         # 
         # The value **Reverse** takes effect only if the topology of the data synchronization instance is two-way synchronization.
         self.synchronization_direction = synchronization_direction
-        # The ID of the data synchronization instance. You can call the [DescribeSynchronizationJobs](~~49454~~) operation to query the instance ID.
+        # The ID of the data synchronization instance. You can call the [DescribeSynchronizationJobs](https://help.aliyun.com/document_detail/49454.html) operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.synchronization_job_id = synchronization_job_id
 
     def validate(self):
@@ -31133,7 +31341,9 @@ class DescribeSynchronizationJobStatusListRequest(TeaModel):
         self.owner_id = owner_id
         self.region_id = region_id
         self.resource_group_id = resource_group_id
-        # The IDs of the data synchronization instances. The value is a JSON array. You can call the [DescribeSynchronizationJobs](~~49454~~) operation to query the instance IDs.
+        # The IDs of the data synchronization instances. The value is a JSON array. You can call the [DescribeSynchronizationJobs](https://help.aliyun.com/document_detail/49454.html) operation to query the instance IDs.
+        # 
+        # This parameter is required.
         self.synchronization_job_id_list_json_str = synchronization_job_id_list_json_str
 
     def validate(self):
@@ -31410,6 +31620,8 @@ class DescribeSynchronizationJobsRequestTag(TeaModel):
         value: str = None,
     ):
         # The ID of the request.
+        # 
+        # This parameter is required.
         self.key = key
         # The maximum number of entries that can be displayed on the current page.
         self.value = value
@@ -31453,7 +31665,7 @@ class DescribeSynchronizationJobsRequest(TeaModel):
     ):
         # The page number of the returned page.
         self.account_id = account_id
-        # The tag value. You can call the [ListTagResources](~~191187~~) operation to query the tag value.
+        # The tag value. You can call the [ListTagResources](https://help.aliyun.com/document_detail/191187.html) operation to query the tag value.
         # 
         # > 
         # *   N specifies the serial number of the tag. For example, Tag.1.Value specifies the value of the first tag and Tag.2.Value specifies the value of the second tag. You can specify 1 to 20 tag values at a time.
@@ -31469,7 +31681,7 @@ class DescribeSynchronizationJobsRequest(TeaModel):
         # >  Fuzzy matching is supported.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
-        # The tag key. You can call the [ListTagResources](~~191187~~) operation to query the tag key.
+        # The tag key. You can call the [ListTagResources](https://help.aliyun.com/document_detail/191187.html) operation to query the tag key.
         # 
         # > 
         # *   N specifies the serial number of the tag. For example, Tag.1.Key specifies the key of the first tag and Tag.2.Key specifies the key of the second tag. You can specify 1 to 20 tag keys at a time.
@@ -32493,10 +32705,12 @@ class DescribeSynchronizationObjectModifyStatusRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the value is unique among different requests. The **ClientToken** value can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         self.owner_id = owner_id
-        # The ID of the region where the data synchronization instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region where the data synchronization instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         self.resource_group_id = resource_group_id
-        # The task ID, which is returned after you call the [ModifySynchronizationObject](~~49451~~) operation to modify the objects to be synchronized.
+        # The task ID, which is returned after you call the [ModifySynchronizationObject](https://help.aliyun.com/document_detail/49451.html) operation to modify the objects to be synchronized.
+        # 
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -32981,10 +33195,10 @@ class DescribeTagKeysRequest(TeaModel):
         self.page_number = page_number
         # The number of tags to return on each page if the DTS instance has multiple tags. Default value: 20.
         self.page_size = page_size
-        # The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
+        # The region ID of the DTS instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         self.resource_group_id = resource_group_id
-        # The ID of the data migration, data synchronization, or change tracking instance. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
+        # The ID of the data migration, data synchronization, or change tracking instance. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
         self.resource_id = resource_id
         # The resource type. Set the value to **ALIYUN::DTS::INSTANCE**.
         self.resource_type = resource_type
@@ -33164,10 +33378,10 @@ class DescribeTagValuesRequest(TeaModel):
         self.page_number = page_number
         # The number of tag values to return each time for a tag key that has multiple values. Default value: 20.
         self.page_size = page_size
-        # The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
+        # The region ID of the DTS instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         self.resource_group_id = resource_group_id
-        # The ID of the data migration, data synchronization, or change tracking instance. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
+        # The ID of the data migration, data synchronization, or change tracking instance. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
         # 
         # >  If this parameter is left empty, the values of all tag keys of the current user are returned.
         self.resource_id = resource_id
@@ -34018,11 +34232,15 @@ class ListTagResourcesRequest(TeaModel):
         # 
         # >  If a query does not return all results, you can specify the returned **NextToken** parameter in the next query to obtain more results.
         self.next_token = next_token
-        # The ID of the region where the data migration, data synchronization, or change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region where the data migration, data synchronization, or change tracking instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.resource_id = resource_id
         # The resource type. Valid value: **ALIYUN::DTS::INSTANCE**.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         self.tag = tag
 
@@ -34278,7 +34496,9 @@ class ModifyConsumerChannelRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the consumer group. You can call the [DescribeConsumerChannel](~~264169~~) operation to query the consumer group ID.
+        # The ID of the consumer group. You can call the [DescribeConsumerChannel](https://help.aliyun.com/document_detail/264169.html) operation to query the consumer group ID.
+        # 
+        # This parameter is required.
         self.consumer_group_id = consumer_group_id
         # The name of the consumer group. The name cannot exceed 128 characters in length. We recommend that you use an informative name for easy identification.
         self.consumer_group_name = consumer_group_name
@@ -34289,18 +34509,20 @@ class ModifyConsumerChannelRequest(TeaModel):
         self.consumer_group_password = consumer_group_password
         # The new username of the consumer group.
         # 
-        # *   A username can contain one or more of the following character types: uppercase letters, lowercase letters, digits, and underscores (\_).
+        # *   A username can contain one or more of the following character types: uppercase letters, lowercase letters, digits, and underscores (_).
         # *   A username cannot exceed 16 characters in length.
         self.consumer_group_user_name = consumer_group_user_name
-        # The ID of the change tracking instance. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
+        # The ID of the change tracking instance. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
         # 
         # >  You must specify at least one of the **DtsInstanceId** and **DtsJobId** parameters.
         self.dts_instance_id = dts_instance_id
-        # The ID of the change tracking task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+        # The ID of the change tracking task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
         # 
         # >  You must specify at least one of the **DtsInstanceId** and **DtsJobId** parameters.
         self.dts_job_id = dts_job_id
-        # The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
 
@@ -34467,23 +34689,31 @@ class ModifyConsumerGroupPasswordRequest(TeaModel):
         self.account_id = account_id
         # The ID of the consumer group.
         # 
-        # You can call the [DescribeConsumerGroup](~~122886~~) operation to query the consumer group ID.
+        # You can call the [DescribeConsumerGroup](https://help.aliyun.com/document_detail/122886.html) operation to query the consumer group ID.
+        # 
+        # This parameter is required.
         self.consumer_group_id = consumer_group_id
-        # The name of the consumer group. You can call the [DescribeConsumerGroup](~~122886~~) operation to query the consumer group name.
+        # The name of the consumer group. You can call the [DescribeConsumerGroup](https://help.aliyun.com/document_detail/122886.html) operation to query the consumer group name.
         self.consumer_group_name = consumer_group_name
         # The current password of the consumer group.
+        # 
+        # This parameter is required.
         self.consumer_group_password = consumer_group_password
-        # The username of the consumer group. You can call the [DescribeConsumerGroup](~~122886~~) operation to query the username.
+        # The username of the consumer group. You can call the [DescribeConsumerGroup](https://help.aliyun.com/document_detail/122886.html) operation to query the username.
         self.consumer_group_user_name = consumer_group_user_name
         self.owner_id = owner_id
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         # The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.subscription_instance_id = subscription_instance_id
         # The new password of the consumer group.
         # 
         # *   A password must contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
         # *   A password must be 8 to 32 characters in length.
+        # 
+        # This parameter is required.
         self.consumer_group_new_password = consumer_group_new_password
 
     def validate(self):
@@ -34645,11 +34875,15 @@ class ModifyConsumptionTimestampRequest(TeaModel):
         # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
         # The consumption checkpoint. The format is *yyyy-MM-dd*T*HH:mm:ss*Z. The time is displayed in UTC.
+        # 
+        # This parameter is required.
         self.consumption_timestamp = consumption_timestamp
         self.owner_id = owner_id
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         # The ID of the change tracking instance. You can call the **DescribeSubscriptionInstances** operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.subscription_instance_id = subscription_instance_id
 
     def validate(self):
@@ -34990,17 +35224,19 @@ class ModifyDtsJobRequest(TeaModel):
         # *   **false**\
         # *   **true**\
         self.data_synchronization = data_synchronization
-        # The objects of the data synchronization task after modification. The value must be a JSON string. For more information, see [Objects of DTS tasks](~~209545~~).
+        # The objects of the data synchronization task after modification. The value must be a JSON string. For more information, see [Objects of DTS tasks](https://help.aliyun.com/document_detail/209545.html).
         # 
         # > 
         # 
         # *   The new value of DbList overwrites the original value. Make sure that all the objects that you want to synchronize are specified. Otherwise, some objects may be lost. Specify this parameter with caution.
         # 
-        # *   Before you call the ModifyDtsJob operation, we recommend that you call the [DescribeDtsJobDetail](~~208925~~) operation to query the current objects of the data synchronization task. Then, you can specify the new objects based on your business requirements. For example, if the current objects are Table A and Table B and you need to add Table C, you must specify Table A, Table B, and Table C for this parameter.
+        # *   Before you call the ModifyDtsJob operation, we recommend that you call the [DescribeDtsJobDetail](https://help.aliyun.com/document_detail/208925.html) operation to query the current objects of the data synchronization task. Then, you can specify the new objects based on your business requirements. For example, if the current objects are Table A and Table B and you need to add Table C, you must specify Table A, Table B, and Table C for this parameter.
         self.db_list = db_list
         # The ID of the data synchronization instance.
+        # 
+        # This parameter is required.
         self.dts_instance_id = dts_instance_id
-        # The synchronization task ID. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+        # The synchronization task ID. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
         self.dts_job_id = dts_job_id
         # The operator that is related to the extract, transform, and load (ETL) feature and dedicated to T+1 business.
         self.etl_operator_column_reference = etl_operator_column_reference
@@ -35010,9 +35246,9 @@ class ModifyDtsJobRequest(TeaModel):
         self.filter_table_name = filter_table_name
         # The method that is used to modify the data synchronization task. If you do not specify the parameter, the objects of the data synchronization task are modified by default. If you specify UPDATE_RESERVED for the parameter, the reserved parameters are modified.
         self.modify_type_enum = modify_type_enum
-        # The ID of the region in which the data synchronization instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region in which the data synchronization instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # The reserved parameters of the data synchronization task. You can add reserved parameters instead of overwriting the existing reserved parameters. The value of the parameter is a MAP JSON string. You can specify this parameter to meet special requirements, such as specifying whether to automatically start the precheck of the data synchronization task. For more information, see [MigrationReserved](~~176470~~).
+        # The reserved parameters of the data synchronization task. You can add reserved parameters instead of overwriting the existing reserved parameters. The value of the parameter is a MAP JSON string. You can specify this parameter to meet special requirements, such as specifying whether to automatically start the precheck of the data synchronization task. For more information, see [MigrationReserved](https://help.aliyun.com/document_detail/176470.html).
         self.reserved = reserved
         self.resource_group_id = resource_group_id
         # Specifies whether to perform schema migration or synchronization. Valid values:
@@ -35143,17 +35379,19 @@ class ModifyDtsJobAdvanceRequest(TeaModel):
         # *   **false**\
         # *   **true**\
         self.data_synchronization = data_synchronization
-        # The objects of the data synchronization task after modification. The value must be a JSON string. For more information, see [Objects of DTS tasks](~~209545~~).
+        # The objects of the data synchronization task after modification. The value must be a JSON string. For more information, see [Objects of DTS tasks](https://help.aliyun.com/document_detail/209545.html).
         # 
         # > 
         # 
         # *   The new value of DbList overwrites the original value. Make sure that all the objects that you want to synchronize are specified. Otherwise, some objects may be lost. Specify this parameter with caution.
         # 
-        # *   Before you call the ModifyDtsJob operation, we recommend that you call the [DescribeDtsJobDetail](~~208925~~) operation to query the current objects of the data synchronization task. Then, you can specify the new objects based on your business requirements. For example, if the current objects are Table A and Table B and you need to add Table C, you must specify Table A, Table B, and Table C for this parameter.
+        # *   Before you call the ModifyDtsJob operation, we recommend that you call the [DescribeDtsJobDetail](https://help.aliyun.com/document_detail/208925.html) operation to query the current objects of the data synchronization task. Then, you can specify the new objects based on your business requirements. For example, if the current objects are Table A and Table B and you need to add Table C, you must specify Table A, Table B, and Table C for this parameter.
         self.db_list = db_list
         # The ID of the data synchronization instance.
+        # 
+        # This parameter is required.
         self.dts_instance_id = dts_instance_id
-        # The synchronization task ID. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+        # The synchronization task ID. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
         self.dts_job_id = dts_job_id
         # The operator that is related to the extract, transform, and load (ETL) feature and dedicated to T+1 business.
         self.etl_operator_column_reference = etl_operator_column_reference
@@ -35163,9 +35401,9 @@ class ModifyDtsJobAdvanceRequest(TeaModel):
         self.filter_table_name = filter_table_name
         # The method that is used to modify the data synchronization task. If you do not specify the parameter, the objects of the data synchronization task are modified by default. If you specify UPDATE_RESERVED for the parameter, the reserved parameters are modified.
         self.modify_type_enum = modify_type_enum
-        # The ID of the region in which the data synchronization instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region in which the data synchronization instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # The reserved parameters of the data synchronization task. You can add reserved parameters instead of overwriting the existing reserved parameters. The value of the parameter is a MAP JSON string. You can specify this parameter to meet special requirements, such as specifying whether to automatically start the precheck of the data synchronization task. For more information, see [MigrationReserved](~~176470~~).
+        # The reserved parameters of the data synchronization task. You can add reserved parameters instead of overwriting the existing reserved parameters. The value of the parameter is a MAP JSON string. You can specify this parameter to meet special requirements, such as specifying whether to automatically start the precheck of the data synchronization task. For more information, see [MigrationReserved](https://help.aliyun.com/document_detail/176470.html).
         self.reserved = reserved
         self.resource_group_id = resource_group_id
         # Specifies whether to perform schema migration or synchronization. Valid values:
@@ -35296,17 +35534,19 @@ class ModifyDtsJobShrinkRequest(TeaModel):
         # *   **false**\
         # *   **true**\
         self.data_synchronization = data_synchronization
-        # The objects of the data synchronization task after modification. The value must be a JSON string. For more information, see [Objects of DTS tasks](~~209545~~).
+        # The objects of the data synchronization task after modification. The value must be a JSON string. For more information, see [Objects of DTS tasks](https://help.aliyun.com/document_detail/209545.html).
         # 
         # > 
         # 
         # *   The new value of DbList overwrites the original value. Make sure that all the objects that you want to synchronize are specified. Otherwise, some objects may be lost. Specify this parameter with caution.
         # 
-        # *   Before you call the ModifyDtsJob operation, we recommend that you call the [DescribeDtsJobDetail](~~208925~~) operation to query the current objects of the data synchronization task. Then, you can specify the new objects based on your business requirements. For example, if the current objects are Table A and Table B and you need to add Table C, you must specify Table A, Table B, and Table C for this parameter.
+        # *   Before you call the ModifyDtsJob operation, we recommend that you call the [DescribeDtsJobDetail](https://help.aliyun.com/document_detail/208925.html) operation to query the current objects of the data synchronization task. Then, you can specify the new objects based on your business requirements. For example, if the current objects are Table A and Table B and you need to add Table C, you must specify Table A, Table B, and Table C for this parameter.
         self.db_list_shrink = db_list_shrink
         # The ID of the data synchronization instance.
+        # 
+        # This parameter is required.
         self.dts_instance_id = dts_instance_id
-        # The synchronization task ID. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+        # The synchronization task ID. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
         self.dts_job_id = dts_job_id
         # The operator that is related to the extract, transform, and load (ETL) feature and dedicated to T+1 business.
         self.etl_operator_column_reference = etl_operator_column_reference
@@ -35316,9 +35556,9 @@ class ModifyDtsJobShrinkRequest(TeaModel):
         self.filter_table_name = filter_table_name
         # The method that is used to modify the data synchronization task. If you do not specify the parameter, the objects of the data synchronization task are modified by default. If you specify UPDATE_RESERVED for the parameter, the reserved parameters are modified.
         self.modify_type_enum = modify_type_enum
-        # The ID of the region in which the data synchronization instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region in which the data synchronization instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
-        # The reserved parameters of the data synchronization task. You can add reserved parameters instead of overwriting the existing reserved parameters. The value of the parameter is a MAP JSON string. You can specify this parameter to meet special requirements, such as specifying whether to automatically start the precheck of the data synchronization task. For more information, see [MigrationReserved](~~176470~~).
+        # The reserved parameters of the data synchronization task. You can add reserved parameters instead of overwriting the existing reserved parameters. The value of the parameter is a MAP JSON string. You can specify this parameter to meet special requirements, such as specifying whether to automatically start the precheck of the data synchronization task. For more information, see [MigrationReserved](https://help.aliyun.com/document_detail/176470.html).
         self.reserved = reserved
         self.resource_group_id = resource_group_id
         # Specifies whether to perform schema migration or synchronization. Valid values:
@@ -35807,10 +36047,14 @@ class ModifyDtsJobDuLimitRequest(TeaModel):
         resource_group_id: str = None,
     ):
         # The ID of the data migration, data synchronization, or change tracking task.
+        # 
+        # This parameter is required.
         self.dts_job_id = dts_job_id
         # The upper limit of DUs for the DTS task.
         # 
         # >  Minimum value: **1**.
+        # 
+        # This parameter is required.
         self.du_limit = du_limit
         self.owner_id = owner_id
         # The ID of the region in which the DTS instance resides.
@@ -35993,8 +36237,10 @@ class ModifyDtsJobEndpointRequest(TeaModel):
         self.dry_run = dry_run
         self.dts_instance_id = dts_instance_id
         self.dts_job_id = dts_job_id
+        # This parameter is required.
         self.endpoint = endpoint
         self.endpoint_instance_id = endpoint_instance_id
+        # This parameter is required.
         self.endpoint_instance_type = endpoint_instance_type
         self.endpoint_ip = endpoint_ip
         self.endpoint_port = endpoint_port
@@ -36207,12 +36453,16 @@ class ModifyDtsJobNameRequest(TeaModel):
         zero_etl_job: bool = None,
     ):
         # The ID of the data migration, data synchronization, or change tracking task.
+        # 
+        # This parameter is required.
         self.dts_job_id = dts_job_id
         # The new name of the DTS task.
         # 
         # >  We recommend that you specify a descriptive name for easy identification. You do not need to use a unique name.
+        # 
+        # This parameter is required.
         self.dts_job_name = dts_job_name
-        # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.zero_etl_job = zero_etl_job
@@ -36378,6 +36628,8 @@ class ModifyDtsJobPasswordRequest(TeaModel):
         zero_etl_job: bool = None,
     ):
         # The ID of the data migration, data synchronization, or change tracking task.
+        # 
+        # This parameter is required.
         self.dts_job_id = dts_job_id
         # Specifies the database to which the password belongs. Valid values:
         # 
@@ -36390,7 +36642,7 @@ class ModifyDtsJobPasswordRequest(TeaModel):
         # 
         # >  This parameter must be specified and cannot be the same as the current password.
         self.password = password
-        # The ID of the region where the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region where the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         # The account of the source or destination database.
@@ -36567,8 +36819,10 @@ class ModifyDynamicConfigRequest(TeaModel):
         resource_group_id: str = None,
     ):
         self.config_list = config_list
+        # This parameter is required.
         self.dts_job_id = dts_job_id
         self.enable_limit = enable_limit
+        # This parameter is required.
         self.job_code = job_code
         self.region_id = region_id
         self.resource_group_id = resource_group_id
@@ -36728,26 +36982,32 @@ class ModifySubscriptionRequest(TeaModel):
         subscription_data_type_ddl: bool = None,
         subscription_data_type_dml: bool = None,
     ):
-        # The objects of the change tracking task. The value is a JSON string. For more information, see [Objects of DTS tasks](~~209545~~).
+        # The objects of the change tracking task. The value is a JSON string. For more information, see [Objects of DTS tasks](https://help.aliyun.com/document_detail/209545.html).
         # 
-        # >  You can call the [DescribeDtsJobDetail](~~208925~~) operation to query the original objects of the task.
+        # >  You can call the [DescribeDtsJobDetail](https://help.aliyun.com/document_detail/208925.html) operation to query the original objects of the task.
+        # 
+        # This parameter is required.
         self.db_list = db_list
-        # The ID of the change tracking instance. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
+        # The ID of the change tracking instance. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
         self.dts_instance_id = dts_instance_id
-        # The ID of the change tracking task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+        # The ID of the change tracking task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
         self.dts_job_id = dts_job_id
-        # The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region where the change tracking instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         # Specifies whether to retrieve data definition language (DDL) statements. Valid values:
         # 
         # *   **true**: yes
         # *   **false**: no
+        # 
+        # This parameter is required.
         self.subscription_data_type_ddl = subscription_data_type_ddl
         # Specifies whether to retrieve data manipulation language (DML) statements. Valid values:
         # 
         # *   **true**: yes
         # *   **false**: no
+        # 
+        # This parameter is required.
         self.subscription_data_type_dml = subscription_data_type_dml
 
     def validate(self):
@@ -36906,9 +37166,13 @@ class ModifySubscriptionObjectRequest(TeaModel):
         self.owner_id = owner_id
         self.region_id = region_id
         self.resource_group_id = resource_group_id
-        # The ID of the change tracking instance. You can call the [DescribeSubscriptionInstances](~~49442~~) operation to query the instance ID.
+        # The ID of the change tracking instance. You can call the [DescribeSubscriptionInstances](https://help.aliyun.com/document_detail/49442.html) operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.subscription_instance_id = subscription_instance_id
-        # The objects from which you want to track data changes. The value is a JSON string and can contain regular expressions. For more information, see [SubscriptionObjects](~~141902~~).
+        # The objects from which you want to track data changes. The value is a JSON string and can contain regular expressions. For more information, see [SubscriptionObjects](https://help.aliyun.com/document_detail/141902.html).
+        # 
+        # This parameter is required.
         self.subscription_object = subscription_object
 
     def validate(self):
@@ -37067,7 +37331,10 @@ class ModifySynchronizationObjectRequest(TeaModel):
         # *   This parameter is required only when the topology of the data synchronization instance is two-way synchronization.
         self.synchronization_direction = synchronization_direction
         # The ID of the data synchronization instance. You can call the DescribeSynchronizationJobs operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.synchronization_job_id = synchronization_job_id
+        # This parameter is required.
         self.synchronization_objects = synchronization_objects
 
     def validate(self):
@@ -37227,15 +37494,19 @@ class RenewInstanceRequest(TeaModel):
         # *   If the **Period** parameter is set to **Month**, the valid values are **1 to 60**.
         self.buy_count = buy_count
         # The billing method of the DTS instance. Set the value to **PREPAY**, which indicates the subscription billing method.
+        # 
+        # This parameter is required.
         self.charge_type = charge_type
-        # The ID of the data synchronization or change tracking task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+        # The ID of the data synchronization or change tracking task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
+        # 
+        # This parameter is required.
         self.dts_job_id = dts_job_id
         # The billing cycle of the DTS instance after renewal. Valid values:
         # 
         # *   **Year**: annual subscription.
         # *   **Month**: monthly subscription. This is the default value.
         self.period = period
-        # The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
+        # The region ID of the DTS instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         self.resource_group_id = resource_group_id
 
@@ -37626,6 +37897,8 @@ class ResetSynchronizationJobRequest(TeaModel):
         # *   You can set this parameter to **Reverse** to stop reverse synchronization only when the topology is two-way synchronization.
         self.synchronization_direction = synchronization_direction
         # The ID of the data synchronization instance. You can call the **DescribeSynchronizationJobs** operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.synchronization_job_id = synchronization_job_id
 
     def validate(self):
@@ -37768,6 +38041,7 @@ class ReverseTwoWayDirectionRequest(TeaModel):
     ):
         self.dts_instance_id = dts_instance_id
         self.ignore_error_sub_job = ignore_error_sub_job
+        # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
 
@@ -37916,6 +38190,8 @@ class ShieldPrecheckRequest(TeaModel):
         resource_group_id: str = None,
     ):
         # The ID of the data migration or data synchronization instance. You can call the **DescribeMigrationJobs** or DescribeSynchronizationJobs operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.dts_instance_id = dts_instance_id
         # The precheck items that you want to ignore. Separate multiple items with commas (,). Valid values:
         # 
@@ -37927,9 +38203,11 @@ class ShieldPrecheckRequest(TeaModel):
         # 
         # *   **CHECK_TOPOLOGY**: topology
         # 
-        # > For more information about the topologies supported by DTS, see [Synchronization topologies](~~124115~~).
+        # > For more information about the topologies supported by DTS, see [Synchronization topologies](https://help.aliyun.com/document_detail/124115.html).
         # 
         # *   **CHECK_SERVER_ID**: value of server_id in the source database
+        # 
+        # This parameter is required.
         self.precheck_items = precheck_items
         self.region_id = region_id
         self.resource_group_id = resource_group_id
@@ -38068,10 +38346,12 @@ class SkipPreCheckRequest(TeaModel):
         skip_pre_check_names: str = None,
     ):
         # The ID of the data migration, data synchronization, or change tracking task.
+        # 
+        # This parameter is required.
         self.dts_job_id = dts_job_id
         # The ID of the precheck task. You can call the **DescribePreCheckStatus** operation to query the task ID.
         self.job_id = job_id
-        # The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
+        # The region ID of the DTS instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         # Specifies whether to skip the precheck item. Valid values:
@@ -38080,6 +38360,8 @@ class SkipPreCheckRequest(TeaModel):
         # *   **false**: does not skip the precheck item.
         # 
         # >  This parameter is required.
+        # 
+        # This parameter is required.
         self.skip = skip
         # The shortened name of the precheck item. Valid values:
         # 
@@ -38091,7 +38373,7 @@ class SkipPreCheckRequest(TeaModel):
         # 
         # *   **CHECK_TOPOLOGY**: topology type
         # 
-        # > For more information about the topologies supported by DTS, see [Synchronization topologies](~~124115~~).
+        # > For more information about the topologies supported by DTS, see [Synchronization topologies](https://help.aliyun.com/document_detail/124115.html).
         # 
         # *   **CHECK_SERVER_ID**: the server ID of the source database
         # 
@@ -38107,7 +38389,7 @@ class SkipPreCheckRequest(TeaModel):
         # 
         # *   **CHECK_TOPOLOGY_DETAIL**: topology type
         # 
-        # > For more information about the topologies supported by DTS, see [Synchronization topologies](~~124115~~).
+        # > For more information about the topologies supported by DTS, see [Synchronization topologies](https://help.aliyun.com/document_detail/124115.html).
         # 
         # *   **CHECK_SERVER_ID_DETAIL**: the server ID of the source database
         # 
@@ -38311,11 +38593,11 @@ class StartDtsJobRequest(TeaModel):
     ):
         # The ID of the data migration, data synchronization, or change tracking instance.
         # 
-        # >  You can call the [DescribeMigrationJobs](~~208139~~), [DescribeSubscriptionInstances](~~49442~~), or [DescribeSynchronizationJobs](~~49454~~) operation to query the instance ID
+        # >  You can call the [DescribeMigrationJobs](https://help.aliyun.com/document_detail/208139.html), [DescribeSubscriptionInstances](https://help.aliyun.com/document_detail/49442.html), or [DescribeSynchronizationJobs](https://help.aliyun.com/document_detail/49454.html) operation to query the instance ID
         self.dts_instance_id = dts_instance_id
         # The ID of the data migration, data synchronization, or change tracking task.
         self.dts_job_id = dts_job_id
-        # The region ID of the Data Transmission Service (DTS) instance. For more information, see [List of supported regions](~~141033~~).
+        # The region ID of the Data Transmission Service (DTS) instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         # The synchronization direction. Default value: Forward. Valid values:
@@ -38493,9 +38775,11 @@ class StartDtsJobsRequest(TeaModel):
         # 
         # > 
         # *   For multiple tasks, separate them with commas (**,**).
-        # *   You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+        # *   You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
+        # 
+        # This parameter is required.
         self.dts_job_ids = dts_job_ids
-        # The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
+        # The region ID of the DTS instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.zero_etl_job = zero_etl_job
@@ -38657,6 +38941,8 @@ class StartMigrationJobRequest(TeaModel):
         # The ID of the Alibaba Cloud account. You do not need to specify this parameter because this parameter will be removed in the future.
         self.account_id = account_id
         # The ID of the data migration instance. You can call the **DescribeMigrationJobs** operation to query all data migration instances.
+        # 
+        # This parameter is required.
         self.migration_job_id = migration_job_id
         self.owner_id = owner_id
         self.region_id = region_id
@@ -38800,6 +39086,8 @@ class StartReverseWriterRequest(TeaModel):
         # > The default value is the offset that is automatically saved by DTS when the task is paused.
         self.check_point = check_point
         # The ID of the reverse task that was created by calling the CreateReverseDtsJob operation.
+        # 
+        # This parameter is required.
         self.dts_job_id = dts_job_id
         self.resource_group_id = resource_group_id
 
@@ -38936,6 +39224,8 @@ class StartSubscriptionInstanceRequest(TeaModel):
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         # The ID of the change tracking instance. You can call the DescribeSubscriptionInstances operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.subscription_instance_id = subscription_instance_id
 
     def validate(self):
@@ -39096,6 +39386,8 @@ class StartSynchronizationJobRequest(TeaModel):
         # *   You can set this parameter to **Reverse** to start the reverse synchronization task only when the topology is two-way synchronization.
         self.synchronization_direction = synchronization_direction
         # The ID of the data synchronization instance. You can call the **DescribeSynchronizationJobs** operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.synchronization_job_id = synchronization_job_id
 
     def validate(self):
@@ -39582,9 +39874,11 @@ class StopDtsJobsRequest(TeaModel):
         # 
         # > 
         # *   Separate multiple task IDs by **,** (commas).
-        # *   You can call the [DescribeDtsJobs](~~209702~~) operation to query task IDs.
+        # *   You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query task IDs.
+        # 
+        # This parameter is required.
         self.dts_job_ids = dts_job_ids
-        # The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
+        # The region ID of the DTS instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.zero_etl_job = zero_etl_job
@@ -39749,6 +40043,8 @@ class StopMigrationJobRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** parameter can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The ID of the data migration instance. You can call the **DescribeMigrationJobs** operation to query all data migration instances.
+        # 
+        # This parameter is required.
         self.migration_job_id = migration_job_id
         self.owner_id = owner_id
         self.region_id = region_id
@@ -39903,13 +40199,17 @@ class SummaryJobDetailRequest(TeaModel):
         # The ID of the data migration or data synchronization task.
         # 
         # >  You must specify at least one of the DtsJobId and DtsInstanceId parameters.
+        # 
+        # This parameter is required.
         self.dts_job_id = dts_job_id
         # The phase of the data migration task. Valid values:
         # 
         # *   **02**: The task is in the schema migration phase.
         # *   **03**: The task is in the incremental migration phase.
+        # 
+        # This parameter is required.
         self.job_code = job_code
-        # The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
+        # The region ID of the DTS instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         # The type of schema definition. Valid values:
@@ -40043,7 +40343,7 @@ class SummaryJobDetailResponseBody(TeaModel):
         self.job_id = job_id
         # The returned information about the migrated or synchronized objects in arrays.
         # 
-        # >  The arrays are in the following format: \[{"key":"Function","state":5,"totalCount":22},{"key":"Procedure","state":5,"totalCount":26},{"key":"Table","state":0,"totalCount":68},{"key":"View","state":5,"totalCount":100}].
+        # >  The arrays are in the following format: [{"key":"Function","state":5,"totalCount":22},{"key":"Procedure","state":5,"totalCount":26},{"key":"Table","state":0,"totalCount":68},{"key":"View","state":5,"totalCount":100}].
         self.progress_summary_details = progress_summary_details
         # The ID of the request.
         self.request_id = request_id
@@ -40156,9 +40456,9 @@ class SuspendDtsJobRequest(TeaModel):
         self.dts_instance_id = dts_instance_id
         # The ID of the data migration, data synchronization, or change tracking task.
         # 
-        # >  You can call the [DescribeDtsJobs](~~209702~~) operation to obtain the task ID.
+        # >  You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to obtain the task ID.
         self.dts_job_id = dts_job_id
-        # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         # The synchronization direction. Valid values:
@@ -40337,9 +40637,11 @@ class SuspendDtsJobsRequest(TeaModel):
         # 
         # > 
         # *   For multiple tasks, separate them with commas (,).
-        # *   You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+        # *   You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
+        # 
+        # This parameter is required.
         self.dts_job_ids = dts_job_ids
-        # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region in which the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         self.zero_etl_job = zero_etl_job
@@ -40504,6 +40806,8 @@ class SuspendMigrationJobRequest(TeaModel):
         # The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken** parameter can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The ID of the data migration instance. You can call the **DescribeMigrationJobs** operation to query all data migration instances.
+        # 
+        # This parameter is required.
         self.migration_job_id = migration_job_id
         self.owner_id = owner_id
         self.region_id = region_id
@@ -40664,6 +40968,8 @@ class SuspendSynchronizationJobRequest(TeaModel):
         # *   You can set this parameter to **Reverse** to pause reverse synchronization only when the topology is two-way synchronization.
         self.synchronization_direction = synchronization_direction
         # The ID of the data synchronization instance. You can call the **DescribeSynchronizationJobs** operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.synchronization_job_id = synchronization_job_id
 
     def validate(self):
@@ -40969,19 +41275,27 @@ class SwitchSynchronizationEndpointRequestEndpoint(TeaModel):
         # > 
         # *   If the **Endpoint.InstanceType** parameter is set to **ECS**, you must specify the ID of the ECS instance.
         # *   If the **Endpoint.InstanceType** parameter is set to **Express**, you must specify the ID of the VPC.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The instance type of the database. Valid values:
         # 
         # *   **LocalInstance**: self-managed database with a public IP address
         # *   **ECS**: self-managed database that is hosted on ECS
         # *   **Express**: self-managed database that is connected over Express Connect
+        # 
+        # This parameter is required.
         self.instance_type = instance_type
         # The service port number of the database.
+        # 
+        # This parameter is required.
         self.port = port
         # Specifies whether to update the connection settings of the source instance or the destination instance. Valid values:
         # 
         # *   **Source**\
         # *   **Destination**\
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -41030,7 +41344,7 @@ class SwitchSynchronizationEndpointRequestSourceEndpoint(TeaModel):
         self.owner_id = owner_id
         # The authorized Resource Access Management (RAM) role of the source instance. You must specify the RAM role only if the source instance and the destination instance belong to different Alibaba Cloud accounts. You can use the RAM role to allow the Alibaba Cloud account that owns the destination instance to access the source instance.
         # 
-        # >  For information about the permissions and authorization methods of the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](~~48468~~).
+        # >  For information about the permissions and authorization methods of the RAM role, see [Configure RAM authorization for cross-account data migration and synchronization](https://help.aliyun.com/document_detail/48468.html).
         self.role = role
 
     def validate(self):
@@ -41086,6 +41400,8 @@ class SwitchSynchronizationEndpointRequest(TeaModel):
         # The value **Reverse** takes effect only if the topology of the data synchronization instance is two-way synchronization.
         self.synchronization_direction = synchronization_direction
         # The ID of the data synchronization instance. You can call the DescribeSynchronizationJobs operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.synchronization_job_id = synchronization_job_id
 
     def validate(self):
@@ -41158,7 +41474,7 @@ class SwitchSynchronizationEndpointResponseBody(TeaModel):
         self.request_id = request_id
         # Indicates whether the call was successful.
         self.success = success
-        # The task ID. You must specify the task ID when you call the [DescribeEndpointSwitchStatus](~~135598~~) operation to query the execution status of the task.
+        # The task ID. You must specify the task ID when you call the [DescribeEndpointSwitchStatus](https://help.aliyun.com/document_detail/135598.html) operation to query the execution status of the task.
         self.task_id = task_id
 
     def validate(self):
@@ -41249,12 +41565,16 @@ class TagResourcesRequestTag(TeaModel):
         # > 
         # *   N specifies the serial number of the tag. For example, Tag.1.Key specifies the key of the first tag and Tag.2.Key specifies the key of the second tag.
         # *   This parameter cannot be an empty string.
+        # 
+        # This parameter is required.
         self.key = key
         # The tag value.
         # 
         # > 
         # *   N specifies the serial number of the tag. For example, Tag.1.Value specifies the value of the first tag and Tag.2.Value specifies the value of the second tag.
         # *   This parameter can be an empty string.
+        # 
+        # This parameter is required.
         self.value = value
 
     def validate(self):
@@ -41290,12 +41610,16 @@ class TagResourcesRequest(TeaModel):
         resource_type: str = None,
         tag: List[TagResourcesRequestTag] = None,
     ):
-        # The ID of the region where the data migration, data synchronization, or change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region where the data migration, data synchronization, or change tracking instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
+        # This parameter is required.
         self.resource_id = resource_id
         # The resource type. Valid value: **ALIYUN::DTS::INSTANCE**.
         self.resource_type = resource_type
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -41441,21 +41765,27 @@ class TransferInstanceClassRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
-        # The ID of the data migration or data synchronization task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+        # The ID of the data migration or data synchronization task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
+        # 
+        # This parameter is required.
         self.dts_job_id = dts_job_id
-        # The new instance class of the DTS instance. You can call the [DescribeDtsJobDetail](~~208925~~) operation to query the original instance class of the DTS instance.
+        # The new instance class of the DTS instance. You can call the [DescribeDtsJobDetail](https://help.aliyun.com/document_detail/208925.html) operation to query the original instance class of the DTS instance.
         # 
         # *   DTS supports the following instance classes for a data migration instance: **xxlarge**, **xlarge**, **large**, **medium**, and **small**.
         # *   DTS supports the following instance classes for a data synchronization instance: **large**, **medium**, **small**, and **micro**.
         # 
-        # >  For more information about the test performance of each instance class, see [Specifications of data migration instances](~~26606~~) and [Specifications of data synchronization instances](~~26605~~).
+        # >  For more information about the test performance of each instance class, see [Specifications of data migration instances](https://help.aliyun.com/document_detail/26606.html) and [Specifications of data synchronization instances](https://help.aliyun.com/document_detail/26605.html).
+        # 
+        # This parameter is required.
         self.instance_class = instance_class
         # Specifies whether to upgrade or downgrade the DTS instance. Valid values:
         # 
         # *   **UPGRADE**\
         # *   **DOWNGRADE**\
+        # 
+        # This parameter is required.
         self.order_type = order_type
-        # The ID of the region where the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region where the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         self.resource_group_id = resource_group_id
 
@@ -41647,6 +41977,7 @@ class TransferInstanceClassResponse(TeaModel):
 class TransferPayTypeRequest(TeaModel):
     def __init__(
         self,
+        auto_pay: bool = None,
         buy_count: str = None,
         charge_type: str = None,
         dts_job_id: str = None,
@@ -41656,6 +41987,7 @@ class TransferPayTypeRequest(TeaModel):
         region_id: str = None,
         resource_group_id: str = None,
     ):
+        self.auto_pay = auto_pay
         # The subscription length.
         # 
         # *   If the **Period** parameter is set to **Year**, the value range is **1** to **5**.
@@ -41671,8 +42003,12 @@ class TransferPayTypeRequest(TeaModel):
         # > 
         # *   The billing method of subscription instances cannot be changed to pay-as-you-go. To prevent resource waste, determine whether you need to change the billing method of your resources.
         # *   If you do not need to change the billing method, specify the current billing method.
+        # 
+        # This parameter is required.
         self.charge_type = charge_type
-        # The ID of the data synchronization or change tracking task. You can call the [DescribeDtsJobs](~~209702~~) operation to query the task ID.
+        # The ID of the data synchronization or change tracking task. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the task ID.
+        # 
+        # This parameter is required.
         self.dts_job_id = dts_job_id
         self.max_du = max_du
         self.min_du = min_du
@@ -41683,7 +42019,7 @@ class TransferPayTypeRequest(TeaModel):
         # 
         # >  You must specify this parameter only if you set the **ChargeType** parameter to **PrePaid**.
         self.period = period
-        # The ID of the region where the DTS instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region where the DTS instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         self.resource_group_id = resource_group_id
 
@@ -41696,6 +42032,8 @@ class TransferPayTypeRequest(TeaModel):
             return _map
 
         result = dict()
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
         if self.buy_count is not None:
             result['BuyCount'] = self.buy_count
         if self.charge_type is not None:
@@ -41716,6 +42054,8 @@ class TransferPayTypeRequest(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
         if m.get('BuyCount') is not None:
             self.buy_count = m.get('BuyCount')
         if m.get('ChargeType') is not None:
@@ -41905,9 +42245,12 @@ class UntagResourcesRequest(TeaModel):
         # *   You must specify at least one of the All and **TagKey.N** parameters.
         # *   If you specify both the All parameter and the **TagKey.N** parameter, the All parameter does not take effect.
         self.all = all
-        # The ID of the region where the data migration, data synchronization, or change tracking instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region where the data migration, data synchronization, or change tracking instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
+        # 
+        # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
+        # This parameter is required.
         self.resource_id = resource_id
         # The resource type. Valid value: **ALIYUN::DTS::INSTANCE**.
         self.resource_type = resource_type
@@ -42053,11 +42396,15 @@ class UpgradeTwoWayRequest(TeaModel):
     ):
         # The instance class of the two-way synchronization task. Valid values: **large**, **medium**, **micro**, and **small**.
         # 
-        # >  For more information, see [Specifications of data synchronization instances](~~26605~~).
+        # >  For more information, see [Specifications of data synchronization instances](https://help.aliyun.com/document_detail/26605.html).
+        # 
+        # This parameter is required.
         self.instance_class = instance_class
-        # The ID of the data synchronization instance. You can call the [DescribeDtsJobs](~~209702~~) operation to query the instance ID.
+        # The ID of the data synchronization instance. You can call the [DescribeDtsJobs](https://help.aliyun.com/document_detail/209702.html) operation to query the instance ID.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The region ID of the DTS instance. For more information, see [List of supported regions](~~141033~~).
+        # The region ID of the DTS instance. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         self.region_id = region_id
         self.resource_group_id = resource_group_id
 
@@ -42221,17 +42568,21 @@ class WhiteIpListRequest(TeaModel):
     ):
         # The HTTP status code.
         self.destination_region = destination_region
-        # The ID of the region where the destination instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region where the destination instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         # 
         # > 
         # *   If the destination instance is a self-managed database with a public IP address or a third-party cloud database, you can set the parameter to **cn-hangzhou** or the ID of the closest region.
         # *   If the DTS task is a data migration or data synchronization task, you must specify this parameter.
+        # 
+        # This parameter is required.
         self.region = region
         self.region_id = region_id
         self.resource_group_id = resource_group_id
-        # The ID of the region where the source instance resides. For more information, see [List of supported regions](~~141033~~).
+        # The ID of the region where the source instance resides. For more information, see [List of supported regions](https://help.aliyun.com/document_detail/141033.html).
         # 
         # >  If the source instance is a self-managed database with a public IP address or a third-party cloud database, you can set the parameter to **cn-hangzhou** or the ID of the closest region.
+        # 
+        # This parameter is required.
         self.type = type
         self.zero_etl_job = zero_etl_job
 
