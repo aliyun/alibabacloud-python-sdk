@@ -1,3 +1,8 @@
+2024-05-29 Version: 2.18.0
+- Support API QueryReportDetail.
+- Update API UpdateScheduleConfSettings: update param ScheduleConfSettingModel.
+
+
 2024-05-20 Version: 2.17.1
 - Update API CreateSubscribedCalendar: update param SubscribeScope.
 
