@@ -1317,6 +1317,110 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.config_udp_reflect_with_options_async(request, runtime)
 
+    def config_web_ccrule_v2with_options(
+        self,
+        request: ddoscoo_20200101_models.ConfigWebCCRuleV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.ConfigWebCCRuleV2Response:
+        """
+        @summary 配置新版基于匹配条件的cc规则
+        
+        @param request: ConfigWebCCRuleV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigWebCCRuleV2Response
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.expires):
+            query['Expires'] = request.expires
+        if not UtilClient.is_unset(request.rule_list):
+            query['RuleList'] = request.rule_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigWebCCRuleV2',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.ConfigWebCCRuleV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def config_web_ccrule_v2with_options_async(
+        self,
+        request: ddoscoo_20200101_models.ConfigWebCCRuleV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.ConfigWebCCRuleV2Response:
+        """
+        @summary 配置新版基于匹配条件的cc规则
+        
+        @param request: ConfigWebCCRuleV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConfigWebCCRuleV2Response
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.expires):
+            query['Expires'] = request.expires
+        if not UtilClient.is_unset(request.rule_list):
+            query['RuleList'] = request.rule_list
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='ConfigWebCCRuleV2',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.ConfigWebCCRuleV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def config_web_ccrule_v2(
+        self,
+        request: ddoscoo_20200101_models.ConfigWebCCRuleV2Request,
+    ) -> ddoscoo_20200101_models.ConfigWebCCRuleV2Response:
+        """
+        @summary 配置新版基于匹配条件的cc规则
+        
+        @param request: ConfigWebCCRuleV2Request
+        @return: ConfigWebCCRuleV2Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.config_web_ccrule_v2with_options(request, runtime)
+
+    async def config_web_ccrule_v2_async(
+        self,
+        request: ddoscoo_20200101_models.ConfigWebCCRuleV2Request,
+    ) -> ddoscoo_20200101_models.ConfigWebCCRuleV2Response:
+        """
+        @summary 配置新版基于匹配条件的cc规则
+        
+        @param request: ConfigWebCCRuleV2Request
+        @return: ConfigWebCCRuleV2Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.config_web_ccrule_v2with_options_async(request, runtime)
+
     def config_web_cctemplate_with_options(
         self,
         request: ddoscoo_20200101_models.ConfigWebCCTemplateRequest,
@@ -13188,6 +13292,114 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.describe_web_ccrules_with_options_async(request, runtime)
+
+    def describe_web_ccrules_v2with_options(
+        self,
+        request: ddoscoo_20200101_models.DescribeWebCCRulesV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeWebCCRulesV2Response:
+        """
+        @summary 查询新版cc规则
+        
+        @param request: DescribeWebCCRulesV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWebCCRulesV2Response
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.offset):
+            query['Offset'] = request.offset
+        if not UtilClient.is_unset(request.owner):
+            query['Owner'] = request.owner
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWebCCRulesV2',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeWebCCRulesV2Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_web_ccrules_v2with_options_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeWebCCRulesV2Request,
+        runtime: util_models.RuntimeOptions,
+    ) -> ddoscoo_20200101_models.DescribeWebCCRulesV2Response:
+        """
+        @summary 查询新版cc规则
+        
+        @param request: DescribeWebCCRulesV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeWebCCRulesV2Response
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.domain):
+            query['Domain'] = request.domain
+        if not UtilClient.is_unset(request.offset):
+            query['Offset'] = request.offset
+        if not UtilClient.is_unset(request.owner):
+            query['Owner'] = request.owner
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='DescribeWebCCRulesV2',
+            version='2020-01-01',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ddoscoo_20200101_models.DescribeWebCCRulesV2Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_web_ccrules_v2(
+        self,
+        request: ddoscoo_20200101_models.DescribeWebCCRulesV2Request,
+    ) -> ddoscoo_20200101_models.DescribeWebCCRulesV2Response:
+        """
+        @summary 查询新版cc规则
+        
+        @param request: DescribeWebCCRulesV2Request
+        @return: DescribeWebCCRulesV2Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.describe_web_ccrules_v2with_options(request, runtime)
+
+    async def describe_web_ccrules_v2_async(
+        self,
+        request: ddoscoo_20200101_models.DescribeWebCCRulesV2Request,
+    ) -> ddoscoo_20200101_models.DescribeWebCCRulesV2Response:
+        """
+        @summary 查询新版cc规则
+        
+        @param request: DescribeWebCCRulesV2Request
+        @return: DescribeWebCCRulesV2Response
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.describe_web_ccrules_v2with_options_async(request, runtime)
 
     def describe_web_cache_configs_with_options(
         self,

@@ -1490,6 +1490,115 @@ class ConfigUdpReflectResponse(TeaModel):
         return self
 
 
+class ConfigWebCCRuleV2Request(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        expires: int = None,
+        rule_list: str = None,
+    ):
+        # This parameter is required.
+        self.domain = domain
+        self.expires = expires
+        # This parameter is required.
+        self.rule_list = rule_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.expires is not None:
+            result['Expires'] = self.expires
+        if self.rule_list is not None:
+            result['RuleList'] = self.rule_list
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Expires') is not None:
+            self.expires = m.get('Expires')
+        if m.get('RuleList') is not None:
+            self.rule_list = m.get('RuleList')
+        return self
+
+
+class ConfigWebCCRuleV2ResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class ConfigWebCCRuleV2Response(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: ConfigWebCCRuleV2ResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = ConfigWebCCRuleV2ResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class ConfigWebCCTemplateRequest(TeaModel):
     def __init__(
         self,
@@ -21558,6 +21667,482 @@ class DescribeWebCCRulesResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DescribeWebCCRulesResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeWebCCRulesV2Request(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        offset: str = None,
+        owner: str = None,
+        page_size: str = None,
+    ):
+        self.domain = domain
+        self.offset = offset
+        self.owner = owner
+        self.page_size = page_size
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.offset is not None:
+            result['Offset'] = self.offset
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('Offset') is not None:
+            self.offset = m.get('Offset')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        return self
+
+
+class DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition(TeaModel):
+    def __init__(
+        self,
+        content: str = None,
+        field: str = None,
+        header_name: str = None,
+        match_method: str = None,
+    ):
+        self.content = content
+        self.field = field
+        self.header_name = header_name
+        self.match_method = match_method
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.content is not None:
+            result['Content'] = self.content
+        if self.field is not None:
+            result['Field'] = self.field
+        if self.header_name is not None:
+            result['HeaderName'] = self.header_name
+        if self.match_method is not None:
+            result['MatchMethod'] = self.match_method
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Content') is not None:
+            self.content = m.get('Content')
+        if m.get('Field') is not None:
+            self.field = m.get('Field')
+        if m.get('HeaderName') is not None:
+            self.header_name = m.get('HeaderName')
+        if m.get('MatchMethod') is not None:
+            self.match_method = m.get('MatchMethod')
+        return self
+
+
+class DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailRateLimit(TeaModel):
+    def __init__(
+        self,
+        interval: int = None,
+        sub_key: str = None,
+        target: str = None,
+        threshold: int = None,
+        ttl: int = None,
+    ):
+        self.interval = interval
+        self.sub_key = sub_key
+        self.target = target
+        self.threshold = threshold
+        self.ttl = ttl
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.sub_key is not None:
+            result['SubKey'] = self.sub_key
+        if self.target is not None:
+            result['Target'] = self.target
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+        if self.ttl is not None:
+            result['Ttl'] = self.ttl
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('SubKey') is not None:
+            self.sub_key = m.get('SubKey')
+        if m.get('Target') is not None:
+            self.target = m.get('Target')
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
+        if m.get('Ttl') is not None:
+            self.ttl = m.get('Ttl')
+        return self
+
+
+class DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatistics(TeaModel):
+    def __init__(
+        self,
+        field: str = None,
+        header_name: str = None,
+        mode: str = None,
+    ):
+        self.field = field
+        self.header_name = header_name
+        self.mode = mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.field is not None:
+            result['Field'] = self.field
+        if self.header_name is not None:
+            result['HeaderName'] = self.header_name
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Field') is not None:
+            self.field = m.get('Field')
+        if m.get('HeaderName') is not None:
+            self.header_name = m.get('HeaderName')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        return self
+
+
+class DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatusCode(TeaModel):
+    def __init__(
+        self,
+        code: int = None,
+        count_threshold: int = None,
+        enabled: bool = None,
+        ratio_threshold: int = None,
+        use_ratio: bool = None,
+    ):
+        self.code = code
+        self.count_threshold = count_threshold
+        self.enabled = enabled
+        self.ratio_threshold = ratio_threshold
+        self.use_ratio = use_ratio
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        if self.count_threshold is not None:
+            result['CountThreshold'] = self.count_threshold
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+        if self.ratio_threshold is not None:
+            result['RatioThreshold'] = self.ratio_threshold
+        if self.use_ratio is not None:
+            result['UseRatio'] = self.use_ratio
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        if m.get('CountThreshold') is not None:
+            self.count_threshold = m.get('CountThreshold')
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+        if m.get('RatioThreshold') is not None:
+            self.ratio_threshold = m.get('RatioThreshold')
+        if m.get('UseRatio') is not None:
+            self.use_ratio = m.get('UseRatio')
+        return self
+
+
+class DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail(TeaModel):
+    def __init__(
+        self,
+        action: str = None,
+        condition: List[DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition] = None,
+        count: int = None,
+        interval: int = None,
+        mode: str = None,
+        name: str = None,
+        rate_limit: DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailRateLimit = None,
+        statistics: DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatistics = None,
+        status_code: DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatusCode = None,
+        ttl: int = None,
+        uri: str = None,
+    ):
+        self.action = action
+        self.condition = condition
+        self.count = count
+        self.interval = interval
+        self.mode = mode
+        self.name = name
+        self.rate_limit = rate_limit
+        self.statistics = statistics
+        self.status_code = status_code
+        self.ttl = ttl
+        self.uri = uri
+
+    def validate(self):
+        if self.condition:
+            for k in self.condition:
+                if k:
+                    k.validate()
+        if self.rate_limit:
+            self.rate_limit.validate()
+        if self.statistics:
+            self.statistics.validate()
+        if self.status_code:
+            self.status_code.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.action is not None:
+            result['Action'] = self.action
+        result['Condition'] = []
+        if self.condition is not None:
+            for k in self.condition:
+                result['Condition'].append(k.to_map() if k else None)
+        if self.count is not None:
+            result['Count'] = self.count
+        if self.interval is not None:
+            result['Interval'] = self.interval
+        if self.mode is not None:
+            result['Mode'] = self.mode
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.rate_limit is not None:
+            result['RateLimit'] = self.rate_limit.to_map()
+        if self.statistics is not None:
+            result['Statistics'] = self.statistics.to_map()
+        if self.status_code is not None:
+            result['StatusCode'] = self.status_code.to_map()
+        if self.ttl is not None:
+            result['Ttl'] = self.ttl
+        if self.uri is not None:
+            result['Uri'] = self.uri
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Action') is not None:
+            self.action = m.get('Action')
+        self.condition = []
+        if m.get('Condition') is not None:
+            for k in m.get('Condition'):
+                temp_model = DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition()
+                self.condition.append(temp_model.from_map(k))
+        if m.get('Count') is not None:
+            self.count = m.get('Count')
+        if m.get('Interval') is not None:
+            self.interval = m.get('Interval')
+        if m.get('Mode') is not None:
+            self.mode = m.get('Mode')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('RateLimit') is not None:
+            temp_model = DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailRateLimit()
+            self.rate_limit = temp_model.from_map(m['RateLimit'])
+        if m.get('Statistics') is not None:
+            temp_model = DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatistics()
+            self.statistics = temp_model.from_map(m['Statistics'])
+        if m.get('StatusCode') is not None:
+            temp_model = DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatusCode()
+            self.status_code = temp_model.from_map(m['StatusCode'])
+        if m.get('Ttl') is not None:
+            self.ttl = m.get('Ttl')
+        if m.get('Uri') is not None:
+            self.uri = m.get('Uri')
+        return self
+
+
+class DescribeWebCCRulesV2ResponseBodyWebCCRules(TeaModel):
+    def __init__(
+        self,
+        expires: int = None,
+        name: str = None,
+        owner: str = None,
+        rule_detail: DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail = None,
+    ):
+        self.expires = expires
+        self.name = name
+        self.owner = owner
+        self.rule_detail = rule_detail
+
+    def validate(self):
+        if self.rule_detail:
+            self.rule_detail.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.expires is not None:
+            result['Expires'] = self.expires
+        if self.name is not None:
+            result['Name'] = self.name
+        if self.owner is not None:
+            result['Owner'] = self.owner
+        if self.rule_detail is not None:
+            result['RuleDetail'] = self.rule_detail.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Expires') is not None:
+            self.expires = m.get('Expires')
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+        if m.get('RuleDetail') is not None:
+            temp_model = DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail()
+            self.rule_detail = temp_model.from_map(m['RuleDetail'])
+        return self
+
+
+class DescribeWebCCRulesV2ResponseBody(TeaModel):
+    def __init__(
+        self,
+        domain: str = None,
+        request_id: str = None,
+        total_count: str = None,
+        web_ccrules: List[DescribeWebCCRulesV2ResponseBodyWebCCRules] = None,
+    ):
+        self.domain = domain
+        self.request_id = request_id
+        self.total_count = total_count
+        self.web_ccrules = web_ccrules
+
+    def validate(self):
+        if self.web_ccrules:
+            for k in self.web_ccrules:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        result['WebCCRules'] = []
+        if self.web_ccrules is not None:
+            for k in self.web_ccrules:
+                result['WebCCRules'].append(k.to_map() if k else None)
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        self.web_ccrules = []
+        if m.get('WebCCRules') is not None:
+            for k in m.get('WebCCRules'):
+                temp_model = DescribeWebCCRulesV2ResponseBodyWebCCRules()
+                self.web_ccrules.append(temp_model.from_map(k))
+        return self
+
+
+class DescribeWebCCRulesV2Response(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeWebCCRulesV2ResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeWebCCRulesV2ResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

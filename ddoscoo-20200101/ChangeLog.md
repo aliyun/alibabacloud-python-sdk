@@ -1,3 +1,8 @@
+2024-05-30 Version: 2.2.0
+- Support API ConfigWebCCRuleV2.
+- Support API DescribeWebCCRulesV2.
+
+
 2024-05-29 Version: 2.1.0
 - Support API DeleteWebCCRuleV2.
 - Support API ModifyWebCCGlobalSwitch.
