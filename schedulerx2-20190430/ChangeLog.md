@@ -1,3 +1,6 @@
+2024-05-30 Version: 1.1.15
+- Generated python 2019-04-30 for schedulerx2.
+
 2024-05-29 Version: 1.1.14
 - Update API CreateAppGroup: add param Version.
 - Update API ListGroups: update response param.
