@@ -28,7 +28,7 @@ pip install alibabacloud_computenestsupplier20210521
 
 ## Changelog
 
-Detailed changes for each release are documented in the [release notes](./ChangeLog.md).
+Detailed changes for each release are documented in the [release notes](https://github.com/aliyun/alibabacloud-python-sdk/blob/master/computenestsupplier-20210521/ChangeLog.md).
 
 ## References
 
