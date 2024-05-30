@@ -13,9 +13,9 @@ from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
 from alibabacloud_openplatform20191219.client import Client as OpenPlatformClient
 from alibabacloud_openplatform20191219 import models as open_platform_models
 from alibabacloud_oss_sdk import models as oss_models
+from alibabacloud_oss_sdk.client import Client as OSSClient
 from alibabacloud_tea_fileform import models as file_form_models
 from alibabacloud_oss_util import models as ossutil_models
-from alibabacloud_oss_sdk.client import Client as OSSClient
 from alibabacloud_darabonba_number.client import Client as NumberClient
 
 
@@ -53,6 +53,11 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.AbstractEcommerceVideoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.AbstractEcommerceVideoResponse:
+        """
+        @param request: AbstractEcommerceVideoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AbstractEcommerceVideoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.duration):
@@ -87,6 +92,11 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.AbstractEcommerceVideoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.AbstractEcommerceVideoResponse:
+        """
+        @param request: AbstractEcommerceVideoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AbstractEcommerceVideoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.duration):
@@ -120,6 +130,10 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.AbstractEcommerceVideoRequest,
     ) -> videoenhan_20200320_models.AbstractEcommerceVideoResponse:
+        """
+        @param request: AbstractEcommerceVideoRequest
+        @return: AbstractEcommerceVideoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.abstract_ecommerce_video_with_options(request, runtime)
 
@@ -127,6 +141,10 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.AbstractEcommerceVideoRequest,
     ) -> videoenhan_20200320_models.AbstractEcommerceVideoResponse:
+        """
+        @param request: AbstractEcommerceVideoRequest
+        @return: AbstractEcommerceVideoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.abstract_ecommerce_video_with_options_async(request, runtime)
 
@@ -141,7 +159,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -161,12 +179,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -212,7 +231,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -232,12 +251,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -277,6 +297,11 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.AbstractFilmVideoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.AbstractFilmVideoResponse:
+        """
+        @param request: AbstractFilmVideoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AbstractFilmVideoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.length):
@@ -307,6 +332,11 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.AbstractFilmVideoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.AbstractFilmVideoResponse:
+        """
+        @param request: AbstractFilmVideoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AbstractFilmVideoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.length):
@@ -336,6 +366,10 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.AbstractFilmVideoRequest,
     ) -> videoenhan_20200320_models.AbstractFilmVideoResponse:
+        """
+        @param request: AbstractFilmVideoRequest
+        @return: AbstractFilmVideoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.abstract_film_video_with_options(request, runtime)
 
@@ -343,6 +377,10 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.AbstractFilmVideoRequest,
     ) -> videoenhan_20200320_models.AbstractFilmVideoResponse:
+        """
+        @param request: AbstractFilmVideoRequest
+        @return: AbstractFilmVideoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.abstract_film_video_with_options_async(request, runtime)
 
@@ -357,7 +395,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -377,12 +415,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -428,7 +467,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -448,12 +487,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -493,6 +533,13 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.AddFaceVideoTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.AddFaceVideoTemplateResponse:
+        """
+        @summary 视频人脸融合模板增加
+        
+        @param request: AddFaceVideoTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddFaceVideoTemplateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.video_scene):
@@ -523,6 +570,13 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.AddFaceVideoTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.AddFaceVideoTemplateResponse:
+        """
+        @summary 视频人脸融合模板增加
+        
+        @param request: AddFaceVideoTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddFaceVideoTemplateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.video_scene):
@@ -552,6 +606,12 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.AddFaceVideoTemplateRequest,
     ) -> videoenhan_20200320_models.AddFaceVideoTemplateResponse:
+        """
+        @summary 视频人脸融合模板增加
+        
+        @param request: AddFaceVideoTemplateRequest
+        @return: AddFaceVideoTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.add_face_video_template_with_options(request, runtime)
 
@@ -559,6 +619,12 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.AddFaceVideoTemplateRequest,
     ) -> videoenhan_20200320_models.AddFaceVideoTemplateResponse:
+        """
+        @summary 视频人脸融合模板增加
+        
+        @param request: AddFaceVideoTemplateRequest
+        @return: AddFaceVideoTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.add_face_video_template_with_options_async(request, runtime)
 
@@ -573,7 +639,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -593,12 +659,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -644,7 +711,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -664,12 +731,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -709,6 +777,11 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.AdjustVideoColorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.AdjustVideoColorResponse:
+        """
+        @param request: AdjustVideoColorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AdjustVideoColorResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.mode):
@@ -745,6 +818,11 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.AdjustVideoColorRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.AdjustVideoColorResponse:
+        """
+        @param request: AdjustVideoColorRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AdjustVideoColorResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.mode):
@@ -780,6 +858,10 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.AdjustVideoColorRequest,
     ) -> videoenhan_20200320_models.AdjustVideoColorResponse:
+        """
+        @param request: AdjustVideoColorRequest
+        @return: AdjustVideoColorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.adjust_video_color_with_options(request, runtime)
 
@@ -787,6 +869,10 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.AdjustVideoColorRequest,
     ) -> videoenhan_20200320_models.AdjustVideoColorResponse:
+        """
+        @param request: AdjustVideoColorRequest
+        @return: AdjustVideoColorResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.adjust_video_color_with_options_async(request, runtime)
 
@@ -801,7 +887,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -821,12 +907,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -872,7 +959,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -892,12 +979,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -937,6 +1025,11 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.ChangeVideoSizeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.ChangeVideoSizeResponse:
+        """
+        @param request: ChangeVideoSizeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeVideoSizeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.b):
@@ -981,6 +1074,11 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.ChangeVideoSizeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.ChangeVideoSizeResponse:
+        """
+        @param request: ChangeVideoSizeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangeVideoSizeResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.b):
@@ -1024,6 +1122,10 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.ChangeVideoSizeRequest,
     ) -> videoenhan_20200320_models.ChangeVideoSizeResponse:
+        """
+        @param request: ChangeVideoSizeRequest
+        @return: ChangeVideoSizeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.change_video_size_with_options(request, runtime)
 
@@ -1031,6 +1133,10 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.ChangeVideoSizeRequest,
     ) -> videoenhan_20200320_models.ChangeVideoSizeResponse:
+        """
+        @param request: ChangeVideoSizeRequest
+        @return: ChangeVideoSizeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.change_video_size_with_options_async(request, runtime)
 
@@ -1045,7 +1151,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -1065,12 +1171,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -1116,7 +1223,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -1136,12 +1243,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -1181,6 +1289,11 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.ConvertHdrVideoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.ConvertHdrVideoResponse:
+        """
+        @param request: ConvertHdrVideoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConvertHdrVideoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.bitrate):
@@ -1215,6 +1328,11 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.ConvertHdrVideoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.ConvertHdrVideoResponse:
+        """
+        @param request: ConvertHdrVideoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ConvertHdrVideoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.bitrate):
@@ -1248,6 +1366,10 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.ConvertHdrVideoRequest,
     ) -> videoenhan_20200320_models.ConvertHdrVideoResponse:
+        """
+        @param request: ConvertHdrVideoRequest
+        @return: ConvertHdrVideoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.convert_hdr_video_with_options(request, runtime)
 
@@ -1255,6 +1377,10 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.ConvertHdrVideoRequest,
     ) -> videoenhan_20200320_models.ConvertHdrVideoResponse:
+        """
+        @param request: ConvertHdrVideoRequest
+        @return: ConvertHdrVideoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.convert_hdr_video_with_options_async(request, runtime)
 
@@ -1269,7 +1395,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -1289,12 +1415,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -1340,7 +1467,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -1360,12 +1487,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -1405,6 +1533,13 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.DeleteFaceVideoTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.DeleteFaceVideoTemplateResponse:
+        """
+        @summary 视频人脸融合模板删除
+        
+        @param request: DeleteFaceVideoTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFaceVideoTemplateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.template_id):
@@ -1433,6 +1568,13 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.DeleteFaceVideoTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.DeleteFaceVideoTemplateResponse:
+        """
+        @summary 视频人脸融合模板删除
+        
+        @param request: DeleteFaceVideoTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFaceVideoTemplateResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.template_id):
@@ -1460,6 +1602,12 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.DeleteFaceVideoTemplateRequest,
     ) -> videoenhan_20200320_models.DeleteFaceVideoTemplateResponse:
+        """
+        @summary 视频人脸融合模板删除
+        
+        @param request: DeleteFaceVideoTemplateRequest
+        @return: DeleteFaceVideoTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_face_video_template_with_options(request, runtime)
 
@@ -1467,6 +1615,12 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.DeleteFaceVideoTemplateRequest,
     ) -> videoenhan_20200320_models.DeleteFaceVideoTemplateResponse:
+        """
+        @summary 视频人脸融合模板删除
+        
+        @param request: DeleteFaceVideoTemplateRequest
+        @return: DeleteFaceVideoTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_face_video_template_with_options_async(request, runtime)
 
@@ -1475,6 +1629,13 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.EnhancePortraitVideoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.EnhancePortraitVideoResponse:
+        """
+        @summary 视频人像增强
+        
+        @param request: EnhancePortraitVideoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnhancePortraitVideoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.video_url):
@@ -1503,6 +1664,13 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.EnhancePortraitVideoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.EnhancePortraitVideoResponse:
+        """
+        @summary 视频人像增强
+        
+        @param request: EnhancePortraitVideoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnhancePortraitVideoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.video_url):
@@ -1530,6 +1698,12 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.EnhancePortraitVideoRequest,
     ) -> videoenhan_20200320_models.EnhancePortraitVideoResponse:
+        """
+        @summary 视频人像增强
+        
+        @param request: EnhancePortraitVideoRequest
+        @return: EnhancePortraitVideoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.enhance_portrait_video_with_options(request, runtime)
 
@@ -1537,6 +1711,12 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.EnhancePortraitVideoRequest,
     ) -> videoenhan_20200320_models.EnhancePortraitVideoResponse:
+        """
+        @summary 视频人像增强
+        
+        @param request: EnhancePortraitVideoRequest
+        @return: EnhancePortraitVideoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.enhance_portrait_video_with_options_async(request, runtime)
 
@@ -1551,7 +1731,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -1571,12 +1751,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -1622,7 +1803,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -1642,12 +1823,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -1687,6 +1869,11 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.EnhanceVideoQualityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.EnhanceVideoQualityResponse:
+        """
+        @param request: EnhanceVideoQualityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnhanceVideoQualityResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.bitrate):
@@ -1727,6 +1914,11 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.EnhanceVideoQualityRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.EnhanceVideoQualityResponse:
+        """
+        @param request: EnhanceVideoQualityRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnhanceVideoQualityResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.bitrate):
@@ -1766,6 +1958,10 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.EnhanceVideoQualityRequest,
     ) -> videoenhan_20200320_models.EnhanceVideoQualityResponse:
+        """
+        @param request: EnhanceVideoQualityRequest
+        @return: EnhanceVideoQualityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.enhance_video_quality_with_options(request, runtime)
 
@@ -1773,6 +1969,10 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.EnhanceVideoQualityRequest,
     ) -> videoenhan_20200320_models.EnhanceVideoQualityResponse:
+        """
+        @param request: EnhanceVideoQualityRequest
+        @return: EnhanceVideoQualityResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.enhance_video_quality_with_options_async(request, runtime)
 
@@ -1787,7 +1987,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -1807,12 +2007,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -1858,7 +2059,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -1878,12 +2079,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -1923,6 +2125,11 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.EraseVideoLogoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.EraseVideoLogoResponse:
+        """
+        @param request: EraseVideoLogoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EraseVideoLogoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.boxes):
@@ -1953,6 +2160,11 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.EraseVideoLogoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.EraseVideoLogoResponse:
+        """
+        @param request: EraseVideoLogoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EraseVideoLogoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.boxes):
@@ -1982,6 +2194,10 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.EraseVideoLogoRequest,
     ) -> videoenhan_20200320_models.EraseVideoLogoResponse:
+        """
+        @param request: EraseVideoLogoRequest
+        @return: EraseVideoLogoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.erase_video_logo_with_options(request, runtime)
 
@@ -1989,6 +2205,10 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.EraseVideoLogoRequest,
     ) -> videoenhan_20200320_models.EraseVideoLogoResponse:
+        """
+        @param request: EraseVideoLogoRequest
+        @return: EraseVideoLogoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.erase_video_logo_with_options_async(request, runtime)
 
@@ -2003,7 +2223,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -2023,12 +2243,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -2074,7 +2295,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -2094,12 +2315,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -2139,6 +2361,11 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.EraseVideoSubtitlesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.EraseVideoSubtitlesResponse:
+        """
+        @param request: EraseVideoSubtitlesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EraseVideoSubtitlesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.bh):
@@ -2175,6 +2402,11 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.EraseVideoSubtitlesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.EraseVideoSubtitlesResponse:
+        """
+        @param request: EraseVideoSubtitlesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EraseVideoSubtitlesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.bh):
@@ -2210,6 +2442,10 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.EraseVideoSubtitlesRequest,
     ) -> videoenhan_20200320_models.EraseVideoSubtitlesResponse:
+        """
+        @param request: EraseVideoSubtitlesRequest
+        @return: EraseVideoSubtitlesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.erase_video_subtitles_with_options(request, runtime)
 
@@ -2217,6 +2453,10 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.EraseVideoSubtitlesRequest,
     ) -> videoenhan_20200320_models.EraseVideoSubtitlesResponse:
+        """
+        @param request: EraseVideoSubtitlesRequest
+        @return: EraseVideoSubtitlesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.erase_video_subtitles_with_options_async(request, runtime)
 
@@ -2231,7 +2471,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -2251,12 +2491,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -2302,7 +2543,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -2322,12 +2563,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -2367,6 +2609,13 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.GenerateHumanAnimeStyleVideoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.GenerateHumanAnimeStyleVideoResponse:
+        """
+        @summary 视频人像卡通化
+        
+        @param request: GenerateHumanAnimeStyleVideoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateHumanAnimeStyleVideoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cartoon_style):
@@ -2397,6 +2646,13 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.GenerateHumanAnimeStyleVideoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.GenerateHumanAnimeStyleVideoResponse:
+        """
+        @summary 视频人像卡通化
+        
+        @param request: GenerateHumanAnimeStyleVideoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateHumanAnimeStyleVideoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cartoon_style):
@@ -2426,6 +2682,12 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.GenerateHumanAnimeStyleVideoRequest,
     ) -> videoenhan_20200320_models.GenerateHumanAnimeStyleVideoResponse:
+        """
+        @summary 视频人像卡通化
+        
+        @param request: GenerateHumanAnimeStyleVideoRequest
+        @return: GenerateHumanAnimeStyleVideoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.generate_human_anime_style_video_with_options(request, runtime)
 
@@ -2433,6 +2695,12 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.GenerateHumanAnimeStyleVideoRequest,
     ) -> videoenhan_20200320_models.GenerateHumanAnimeStyleVideoResponse:
+        """
+        @summary 视频人像卡通化
+        
+        @param request: GenerateHumanAnimeStyleVideoRequest
+        @return: GenerateHumanAnimeStyleVideoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.generate_human_anime_style_video_with_options_async(request, runtime)
 
@@ -2447,7 +2715,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -2467,12 +2735,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -2518,7 +2787,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -2538,12 +2807,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -2583,6 +2853,11 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.GenerateVideoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.GenerateVideoResponse:
+        """
+        @param request: GenerateVideoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateVideoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.duration):
@@ -2631,6 +2906,11 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.GenerateVideoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.GenerateVideoResponse:
+        """
+        @param request: GenerateVideoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GenerateVideoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.duration):
@@ -2678,6 +2958,10 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.GenerateVideoRequest,
     ) -> videoenhan_20200320_models.GenerateVideoResponse:
+        """
+        @param request: GenerateVideoRequest
+        @return: GenerateVideoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.generate_video_with_options(request, runtime)
 
@@ -2685,6 +2969,10 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.GenerateVideoRequest,
     ) -> videoenhan_20200320_models.GenerateVideoResponse:
+        """
+        @param request: GenerateVideoRequest
+        @return: GenerateVideoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.generate_video_with_options_async(request, runtime)
 
@@ -2699,7 +2987,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -2719,12 +3007,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -2775,7 +3064,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -2795,12 +3084,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -2845,6 +3135,11 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.GetAsyncJobResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.GetAsyncJobResultResponse:
+        """
+        @param request: GetAsyncJobResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAsyncJobResultResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.job_id):
@@ -2873,6 +3168,11 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.GetAsyncJobResultRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.GetAsyncJobResultResponse:
+        """
+        @param request: GetAsyncJobResultRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAsyncJobResultResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.job_id):
@@ -2900,6 +3200,10 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.GetAsyncJobResultRequest,
     ) -> videoenhan_20200320_models.GetAsyncJobResultResponse:
+        """
+        @param request: GetAsyncJobResultRequest
+        @return: GetAsyncJobResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_async_job_result_with_options(request, runtime)
 
@@ -2907,6 +3211,10 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.GetAsyncJobResultRequest,
     ) -> videoenhan_20200320_models.GetAsyncJobResultResponse:
+        """
+        @param request: GetAsyncJobResultRequest
+        @return: GetAsyncJobResultResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_async_job_result_with_options_async(request, runtime)
 
@@ -2915,6 +3223,11 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.InterpolateVideoFrameRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.InterpolateVideoFrameResponse:
+        """
+        @param request: InterpolateVideoFrameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InterpolateVideoFrameResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.bitrate):
@@ -2947,6 +3260,11 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.InterpolateVideoFrameRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.InterpolateVideoFrameResponse:
+        """
+        @param request: InterpolateVideoFrameRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InterpolateVideoFrameResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.bitrate):
@@ -2978,6 +3296,10 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.InterpolateVideoFrameRequest,
     ) -> videoenhan_20200320_models.InterpolateVideoFrameResponse:
+        """
+        @param request: InterpolateVideoFrameRequest
+        @return: InterpolateVideoFrameResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.interpolate_video_frame_with_options(request, runtime)
 
@@ -2985,6 +3307,10 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.InterpolateVideoFrameRequest,
     ) -> videoenhan_20200320_models.InterpolateVideoFrameResponse:
+        """
+        @param request: InterpolateVideoFrameRequest
+        @return: InterpolateVideoFrameResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.interpolate_video_frame_with_options_async(request, runtime)
 
@@ -2999,7 +3325,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -3019,12 +3345,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -3070,7 +3397,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -3090,12 +3417,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -3135,6 +3463,11 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.MergeVideoFaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.MergeVideoFaceResponse:
+        """
+        @param request: MergeVideoFaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MergeVideoFaceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.add_watermark):
@@ -3171,6 +3504,11 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.MergeVideoFaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.MergeVideoFaceResponse:
+        """
+        @param request: MergeVideoFaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MergeVideoFaceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.add_watermark):
@@ -3206,6 +3544,10 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.MergeVideoFaceRequest,
     ) -> videoenhan_20200320_models.MergeVideoFaceResponse:
+        """
+        @param request: MergeVideoFaceRequest
+        @return: MergeVideoFaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.merge_video_face_with_options(request, runtime)
 
@@ -3213,6 +3555,10 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.MergeVideoFaceRequest,
     ) -> videoenhan_20200320_models.MergeVideoFaceResponse:
+        """
+        @param request: MergeVideoFaceRequest
+        @return: MergeVideoFaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.merge_video_face_with_options_async(request, runtime)
 
@@ -3227,7 +3573,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -3247,12 +3593,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -3322,7 +3669,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -3342,12 +3689,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -3411,6 +3759,13 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.MergeVideoModelFaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.MergeVideoModelFaceResponse:
+        """
+        @summary 视频模板融合换脸
+        
+        @param request: MergeVideoModelFaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MergeVideoModelFaceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.add_watermark):
@@ -3449,6 +3804,13 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.MergeVideoModelFaceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.MergeVideoModelFaceResponse:
+        """
+        @summary 视频模板融合换脸
+        
+        @param request: MergeVideoModelFaceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MergeVideoModelFaceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.add_watermark):
@@ -3486,6 +3848,12 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.MergeVideoModelFaceRequest,
     ) -> videoenhan_20200320_models.MergeVideoModelFaceResponse:
+        """
+        @summary 视频模板融合换脸
+        
+        @param request: MergeVideoModelFaceRequest
+        @return: MergeVideoModelFaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.merge_video_model_face_with_options(request, runtime)
 
@@ -3493,6 +3861,12 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.MergeVideoModelFaceRequest,
     ) -> videoenhan_20200320_models.MergeVideoModelFaceResponse:
+        """
+        @summary 视频模板融合换脸
+        
+        @param request: MergeVideoModelFaceRequest
+        @return: MergeVideoModelFaceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.merge_video_model_face_with_options_async(request, runtime)
 
@@ -3507,7 +3881,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -3527,12 +3901,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -3578,7 +3953,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -3598,12 +3973,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -3643,6 +4019,13 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.QueryFaceVideoTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.QueryFaceVideoTemplateResponse:
+        """
+        @summary 视频人脸融合模板查询
+        
+        @param request: QueryFaceVideoTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryFaceVideoTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_no):
@@ -3675,6 +4058,13 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.QueryFaceVideoTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.QueryFaceVideoTemplateResponse:
+        """
+        @summary 视频人脸融合模板查询
+        
+        @param request: QueryFaceVideoTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryFaceVideoTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_no):
@@ -3706,6 +4096,12 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.QueryFaceVideoTemplateRequest,
     ) -> videoenhan_20200320_models.QueryFaceVideoTemplateResponse:
+        """
+        @summary 视频人脸融合模板查询
+        
+        @param request: QueryFaceVideoTemplateRequest
+        @return: QueryFaceVideoTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_face_video_template_with_options(request, runtime)
 
@@ -3713,6 +4109,12 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.QueryFaceVideoTemplateRequest,
     ) -> videoenhan_20200320_models.QueryFaceVideoTemplateResponse:
+        """
+        @summary 视频人脸融合模板查询
+        
+        @param request: QueryFaceVideoTemplateRequest
+        @return: QueryFaceVideoTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_face_video_template_with_options_async(request, runtime)
 
@@ -3721,6 +4123,13 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.ReduceVideoNoiseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.ReduceVideoNoiseResponse:
+        """
+        @summary 视频降噪
+        
+        @param request: ReduceVideoNoiseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReduceVideoNoiseResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.video_url):
@@ -3749,6 +4158,13 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.ReduceVideoNoiseRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.ReduceVideoNoiseResponse:
+        """
+        @summary 视频降噪
+        
+        @param request: ReduceVideoNoiseRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReduceVideoNoiseResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.video_url):
@@ -3776,6 +4192,12 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.ReduceVideoNoiseRequest,
     ) -> videoenhan_20200320_models.ReduceVideoNoiseResponse:
+        """
+        @summary 视频降噪
+        
+        @param request: ReduceVideoNoiseRequest
+        @return: ReduceVideoNoiseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reduce_video_noise_with_options(request, runtime)
 
@@ -3783,6 +4205,12 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.ReduceVideoNoiseRequest,
     ) -> videoenhan_20200320_models.ReduceVideoNoiseResponse:
+        """
+        @summary 视频降噪
+        
+        @param request: ReduceVideoNoiseRequest
+        @return: ReduceVideoNoiseResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reduce_video_noise_with_options_async(request, runtime)
 
@@ -3797,7 +4225,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -3817,12 +4245,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -3868,7 +4297,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -3888,12 +4317,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -3933,6 +4363,11 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.SuperResolveVideoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.SuperResolveVideoResponse:
+        """
+        @param request: SuperResolveVideoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SuperResolveVideoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.bit_rate):
@@ -3963,6 +4398,11 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.SuperResolveVideoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.SuperResolveVideoResponse:
+        """
+        @param request: SuperResolveVideoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SuperResolveVideoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.bit_rate):
@@ -3992,6 +4432,10 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.SuperResolveVideoRequest,
     ) -> videoenhan_20200320_models.SuperResolveVideoResponse:
+        """
+        @param request: SuperResolveVideoRequest
+        @return: SuperResolveVideoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.super_resolve_video_with_options(request, runtime)
 
@@ -3999,6 +4443,10 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.SuperResolveVideoRequest,
     ) -> videoenhan_20200320_models.SuperResolveVideoResponse:
+        """
+        @param request: SuperResolveVideoRequest
+        @return: SuperResolveVideoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.super_resolve_video_with_options_async(request, runtime)
 
@@ -4013,7 +4461,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -4033,12 +4481,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -4084,7 +4533,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -4104,12 +4553,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -4149,6 +4599,11 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.ToneSdrVideoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.ToneSdrVideoResponse:
+        """
+        @param request: ToneSdrVideoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ToneSdrVideoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.bitrate):
@@ -4181,6 +4636,11 @@ class Client(OpenApiClient):
         request: videoenhan_20200320_models.ToneSdrVideoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> videoenhan_20200320_models.ToneSdrVideoResponse:
+        """
+        @param request: ToneSdrVideoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ToneSdrVideoResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.bitrate):
@@ -4212,6 +4672,10 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.ToneSdrVideoRequest,
     ) -> videoenhan_20200320_models.ToneSdrVideoResponse:
+        """
+        @param request: ToneSdrVideoRequest
+        @return: ToneSdrVideoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.tone_sdr_video_with_options(request, runtime)
 
@@ -4219,6 +4683,10 @@ class Client(OpenApiClient):
         self,
         request: videoenhan_20200320_models.ToneSdrVideoRequest,
     ) -> videoenhan_20200320_models.ToneSdrVideoResponse:
+        """
+        @param request: ToneSdrVideoRequest
+        @return: ToneSdrVideoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.tone_sdr_video_with_options_async(request, runtime)
 
@@ -4233,7 +4701,7 @@ class Client(OpenApiClient):
         security_token = self._credential.get_security_token()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -4253,12 +4721,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()
@@ -4304,7 +4773,7 @@ class Client(OpenApiClient):
         security_token = await self._credential.get_security_token_async()
         credential_type = self._credential.get_type()
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.is_unset(open_platform_endpoint):
+        if UtilClient.empty(open_platform_endpoint):
             open_platform_endpoint = 'openplatform.aliyuncs.com'
         if UtilClient.is_unset(credential_type):
             credential_type = 'access_key'
@@ -4324,12 +4793,13 @@ class Client(OpenApiClient):
         )
         auth_response = open_platform_models.AuthorizeFileUploadResponse()
         oss_config = oss_models.Config(
+            access_key_id=access_key_id,
             access_key_secret=access_key_secret,
             type='access_key',
             protocol=self._protocol,
             region_id=self._region_id
         )
-        oss_client = None
+        oss_client = OSSClient(oss_config)
         file_obj = file_form_models.FileField()
         oss_header = oss_models.PostObjectRequestHeader()
         upload_request = oss_models.PostObjectRequest()

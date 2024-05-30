@@ -12,8 +12,10 @@ class AbstractEcommerceVideoRequest(TeaModel):
         video_url: str = None,
         width: int = None,
     ):
+        # This parameter is required.
         self.duration = duration
         self.height = height
+        # This parameter is required.
         self.video_url = video_url
         self.width = width
 
@@ -57,8 +59,10 @@ class AbstractEcommerceVideoAdvanceRequest(TeaModel):
         video_url_object: BinaryIO = None,
         width: int = None,
     ):
+        # This parameter is required.
         self.duration = duration
         self.height = height
+        # This parameter is required.
         self.video_url_object = video_url_object
         self.width = width
 
@@ -215,7 +219,9 @@ class AbstractFilmVideoRequest(TeaModel):
         length: int = None,
         video_url: str = None,
     ):
+        # This parameter is required.
         self.length = length
+        # This parameter is required.
         self.video_url = video_url
 
     def validate(self):
@@ -248,7 +254,9 @@ class AbstractFilmVideoAdvanceRequest(TeaModel):
         length: int = None,
         video_url_object: BinaryIO = None,
     ):
+        # This parameter is required.
         self.length = length
+        # This parameter is required.
         self.video_url_object = video_url_object
 
     def validate(self):
@@ -391,6 +399,7 @@ class AddFaceVideoTemplateRequest(TeaModel):
         video_url: str = None,
     ):
         self.video_scene = video_scene
+        # This parameter is required.
         self.video_url = video_url
 
     def validate(self):
@@ -424,6 +433,7 @@ class AddFaceVideoTemplateAdvanceRequest(TeaModel):
         video_urlobject: BinaryIO = None,
     ):
         self.video_scene = video_scene
+        # This parameter is required.
         self.video_urlobject = video_urlobject
 
     def validate(self):
@@ -488,9 +498,11 @@ class AddFaceVideoTemplateResponseBodyDate(TeaModel):
         self,
         face_infos: List[AddFaceVideoTemplateResponseBodyDateFaceInfos] = None,
         template_id: str = None,
+        trans_result: str = None,
     ):
         self.face_infos = face_infos
         self.template_id = template_id
+        self.trans_result = trans_result
 
     def validate(self):
         if self.face_infos:
@@ -510,6 +522,8 @@ class AddFaceVideoTemplateResponseBodyDate(TeaModel):
                 result['FaceInfos'].append(k.to_map() if k else None)
         if self.template_id is not None:
             result['TemplateId'] = self.template_id
+        if self.trans_result is not None:
+            result['TransResult'] = self.trans_result
         return result
 
     def from_map(self, m: dict = None):
@@ -521,6 +535,8 @@ class AddFaceVideoTemplateResponseBodyDate(TeaModel):
                 self.face_infos.append(temp_model.from_map(k))
         if m.get('TemplateId') is not None:
             self.template_id = m.get('TemplateId')
+        if m.get('TransResult') is not None:
+            self.trans_result = m.get('TransResult')
         return self
 
 
@@ -619,6 +635,7 @@ class AdjustVideoColorRequest(TeaModel):
         self.video_bitrate = video_bitrate
         self.video_codec = video_codec
         self.video_format = video_format
+        # This parameter is required.
         self.video_url = video_url
 
     def validate(self):
@@ -670,6 +687,7 @@ class AdjustVideoColorAdvanceRequest(TeaModel):
         self.video_bitrate = video_bitrate
         self.video_codec = video_codec
         self.video_format = video_format
+        # This parameter is required.
         self.video_url_object = video_url_object
 
     def validate(self):
@@ -834,10 +852,13 @@ class ChangeVideoSizeRequest(TeaModel):
         self.crop_type = crop_type
         self.fill_type = fill_type
         self.g = g
+        # This parameter is required.
         self.height = height
         self.r = r
         self.tightness = tightness
+        # This parameter is required.
         self.video_url = video_url
+        # This parameter is required.
         self.width = width
 
     def validate(self):
@@ -909,10 +930,13 @@ class ChangeVideoSizeAdvanceRequest(TeaModel):
         self.crop_type = crop_type
         self.fill_type = fill_type
         self.g = g
+        # This parameter is required.
         self.height = height
         self.r = r
         self.tightness = tightness
+        # This parameter is required.
         self.video_url_object = video_url_object
+        # This parameter is required.
         self.width = width
 
     def validate(self):
@@ -1093,6 +1117,7 @@ class ConvertHdrVideoRequest(TeaModel):
         self.bitrate = bitrate
         self.hdrformat = hdrformat
         self.max_illuminance = max_illuminance
+        # This parameter is required.
         self.video_url = video_url
 
     def validate(self):
@@ -1138,6 +1163,7 @@ class ConvertHdrVideoAdvanceRequest(TeaModel):
         self.bitrate = bitrate
         self.hdrformat = hdrformat
         self.max_illuminance = max_illuminance
+        # This parameter is required.
         self.video_urlobject = video_urlobject
 
     def validate(self):
@@ -1286,6 +1312,7 @@ class DeleteFaceVideoTemplateRequest(TeaModel):
         self,
         template_id: str = None,
     ):
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -1381,6 +1408,7 @@ class EnhancePortraitVideoRequest(TeaModel):
         self,
         video_url: str = None,
     ):
+        # This parameter is required.
         self.video_url = video_url
 
     def validate(self):
@@ -1408,6 +1436,7 @@ class EnhancePortraitVideoAdvanceRequest(TeaModel):
         self,
         video_url_object: BinaryIO = None,
     ):
+        # This parameter is required.
         self.video_url_object = video_url_object
 
     def validate(self):
@@ -1556,6 +1585,7 @@ class EnhanceVideoQualityRequest(TeaModel):
         self.max_illuminance = max_illuminance
         self.out_put_height = out_put_height
         self.out_put_width = out_put_width
+        # This parameter is required.
         self.video_url = video_url
 
     def validate(self):
@@ -1619,6 +1649,7 @@ class EnhanceVideoQualityAdvanceRequest(TeaModel):
         self.max_illuminance = max_illuminance
         self.out_put_height = out_put_height
         self.out_put_width = out_put_width
+        # This parameter is required.
         self.video_urlobject = video_urlobject
 
     def validate(self):
@@ -1826,6 +1857,7 @@ class EraseVideoLogoRequest(TeaModel):
         video_url: str = None,
     ):
         self.boxes = boxes
+        # This parameter is required.
         self.video_url = video_url
 
     def validate(self):
@@ -1912,6 +1944,7 @@ class EraseVideoLogoAdvanceRequest(TeaModel):
         video_url_object: BinaryIO = None,
     ):
         self.boxes = boxes
+        # This parameter is required.
         self.video_url_object = video_url_object
 
     def validate(self):
@@ -2068,6 +2101,7 @@ class EraseVideoSubtitlesRequest(TeaModel):
         self.bw = bw
         self.bx = bx
         self.by = by
+        # This parameter is required.
         self.video_url = video_url
 
     def validate(self):
@@ -2119,6 +2153,7 @@ class EraseVideoSubtitlesAdvanceRequest(TeaModel):
         self.bw = bw
         self.bx = bx
         self.by = by
+        # This parameter is required.
         self.video_url_object = video_url_object
 
     def validate(self):
@@ -2272,7 +2307,9 @@ class GenerateHumanAnimeStyleVideoRequest(TeaModel):
         cartoon_style: str = None,
         video_url: str = None,
     ):
+        # This parameter is required.
         self.cartoon_style = cartoon_style
+        # This parameter is required.
         self.video_url = video_url
 
     def validate(self):
@@ -2305,7 +2342,9 @@ class GenerateHumanAnimeStyleVideoAdvanceRequest(TeaModel):
         cartoon_style: str = None,
         video_url_object: BinaryIO = None,
     ):
+        # This parameter is required.
         self.cartoon_style = cartoon_style
+        # This parameter is required.
         self.video_url_object = video_url_object
 
     def validate(self):
@@ -2448,8 +2487,11 @@ class GenerateVideoRequestFileList(TeaModel):
         file_url: str = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.file_name = file_name
+        # This parameter is required.
         self.file_url = file_url
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -2498,6 +2540,8 @@ class GenerateVideoRequest(TeaModel):
         self.duration = duration
         self.duration_adaption = duration_adaption
         # 1
+        # 
+        # This parameter is required.
         self.file_list = file_list
         self.height = height
         self.mute = mute
@@ -2583,8 +2627,11 @@ class GenerateVideoAdvanceRequestFileList(TeaModel):
         file_url_object: BinaryIO = None,
         type: str = None,
     ):
+        # This parameter is required.
         self.file_name = file_name
+        # This parameter is required.
         self.file_url_object = file_url_object
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -2633,6 +2680,8 @@ class GenerateVideoAdvanceRequest(TeaModel):
         self.duration = duration
         self.duration_adaption = duration_adaption
         # 1
+        # 
+        # This parameter is required.
         self.file_list = file_list
         self.height = height
         self.mute = mute
@@ -2831,6 +2880,7 @@ class GetAsyncJobResultRequest(TeaModel):
         self,
         job_id: str = None,
     ):
+        # This parameter is required.
         self.job_id = job_id
 
     def validate(self):
@@ -2989,6 +3039,7 @@ class InterpolateVideoFrameRequest(TeaModel):
     ):
         self.bitrate = bitrate
         self.frame_rate = frame_rate
+        # This parameter is required.
         self.video_url = video_url
 
     def validate(self):
@@ -3028,6 +3079,7 @@ class InterpolateVideoFrameAdvanceRequest(TeaModel):
     ):
         self.bitrate = bitrate
         self.frame_rate = frame_rate
+        # This parameter is required.
         self.video_urlobject = video_urlobject
 
     def validate(self):
@@ -3178,7 +3230,9 @@ class MergeVideoFaceRequest(TeaModel):
     ):
         self.add_watermark = add_watermark
         self.enhance = enhance
+        # This parameter is required.
         self.reference_url = reference_url
+        # This parameter is required.
         self.video_url = video_url
         self.watermark_type = watermark_type
 
@@ -3229,7 +3283,9 @@ class MergeVideoFaceAdvanceRequest(TeaModel):
     ):
         self.add_watermark = add_watermark
         self.enhance = enhance
+        # This parameter is required.
         self.reference_urlobject = reference_urlobject
+        # This parameter is required.
         self.video_urlobject = video_urlobject
         self.watermark_type = watermark_type
 
@@ -3431,6 +3487,7 @@ class MergeVideoModelFaceRequest(TeaModel):
         self.enhance = enhance
         self.face_image_url = face_image_url
         self.merge_infos = merge_infos
+        # This parameter is required.
         self.template_id = template_id
         self.watermark_type = watermark_type
 
@@ -3535,6 +3592,7 @@ class MergeVideoModelFaceAdvanceRequest(TeaModel):
         self.enhance = enhance
         self.face_image_urlobject = face_image_urlobject
         self.merge_infos = merge_infos
+        # This parameter is required.
         self.template_id = template_id
         self.watermark_type = watermark_type
 
@@ -3954,6 +4012,7 @@ class ReduceVideoNoiseRequest(TeaModel):
         self,
         video_url: str = None,
     ):
+        # This parameter is required.
         self.video_url = video_url
 
     def validate(self):
@@ -3981,6 +4040,7 @@ class ReduceVideoNoiseAdvanceRequest(TeaModel):
         self,
         video_url_object: BinaryIO = None,
     ):
+        # This parameter is required.
         self.video_url_object = video_url_object
 
     def validate(self):
@@ -4119,6 +4179,7 @@ class SuperResolveVideoRequest(TeaModel):
         video_url: str = None,
     ):
         self.bit_rate = bit_rate
+        # This parameter is required.
         self.video_url = video_url
 
     def validate(self):
@@ -4152,6 +4213,7 @@ class SuperResolveVideoAdvanceRequest(TeaModel):
         video_url_object: BinaryIO = None,
     ):
         self.bit_rate = bit_rate
+        # This parameter is required.
         self.video_url_object = video_url_object
 
     def validate(self):
@@ -4296,6 +4358,7 @@ class ToneSdrVideoRequest(TeaModel):
     ):
         self.bitrate = bitrate
         self.recolor_model = recolor_model
+        # This parameter is required.
         self.video_url = video_url
 
     def validate(self):
@@ -4335,6 +4398,7 @@ class ToneSdrVideoAdvanceRequest(TeaModel):
     ):
         self.bitrate = bitrate
         self.recolor_model = recolor_model
+        # This parameter is required.
         self.video_urlobject = video_urlobject
 
     def validate(self):
