@@ -14,14 +14,22 @@ class AddChatappPhoneNumberRequest(TeaModel):
         verified_name: str = None,
     ):
         # The country code.
+        # 
+        # This parameter is required.
         self.cc = cc
         # The space ID of the user within the independent software vendor (ISV) account.
+        # 
+        # This parameter is required.
         self.cust_space_id = cust_space_id
         # The phone number without a country code.
+        # 
+        # This parameter is required.
         self.phone_number = phone_number
         # The ID of the pre-registered phone number.
         self.pre_validate_id = pre_validate_id
         # The display name of the phone number.
+        # 
+        # This parameter is required.
         self.verified_name = verified_name
 
     def validate(self):
@@ -73,7 +81,7 @@ class AddChatappPhoneNumberResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   Other values indicate that the request failed. For more information, see [Error codes](~~196974~~).
+        # *   Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The error message.
         self.message = message
@@ -165,6 +173,8 @@ class BeeBotAssociateRequest(TeaModel):
         utterance: str = None,
     ):
         # The ID of a bot instance.
+        # 
+        # This parameter is required.
         self.chat_bot_instance_id = chat_bot_instance_id
         self.cust_space_id = cust_space_id
         # The ISV verification code, which is used to verify whether the user is authorized by ISV.
@@ -234,6 +244,8 @@ class BeeBotAssociateShrinkRequest(TeaModel):
         utterance: str = None,
     ):
         # The ID of a bot instance.
+        # 
+        # This parameter is required.
         self.chat_bot_instance_id = chat_bot_instance_id
         self.cust_space_id = cust_space_id
         # The ISV verification code, which is used to verify whether the user is authorized by ISV.
@@ -490,9 +502,11 @@ class BeeBotChatRequest(TeaModel):
         vendor_param: Dict[str, Any] = None,
     ):
         # The ID of the bot instance.
+        # 
+        # This parameter is required.
         self.chat_bot_instance_id = chat_bot_instance_id
         self.cust_space_id = cust_space_id
-        # The name of the intent in the dialog flow. When this parameter is specified, the bot conducts a Q\&A based on the intent.
+        # The name of the intent in the dialog flow. When this parameter is specified, the bot conducts a Q\\&A based on the intent.
         self.intent_name = intent_name
         # The ISV verification code, which is used to verify whether the user is authorized by the ISV account.
         self.isv_code = isv_code
@@ -507,6 +521,8 @@ class BeeBotChatRequest(TeaModel):
         # The ID of the session, which is used to identify the session and store context information of the session.
         self.session_id = session_id
         # The input of the visitor.
+        # 
+        # This parameter is required.
         self.utterance = utterance
         # The user-defined parameter set in JSON format. You can specify user-defined parameters for conversation engines.
         self.vendor_param = vendor_param
@@ -587,9 +603,11 @@ class BeeBotChatShrinkRequest(TeaModel):
         vendor_param_shrink: str = None,
     ):
         # The ID of the bot instance.
+        # 
+        # This parameter is required.
         self.chat_bot_instance_id = chat_bot_instance_id
         self.cust_space_id = cust_space_id
-        # The name of the intent in the dialog flow. When this parameter is specified, the bot conducts a Q\&A based on the intent.
+        # The name of the intent in the dialog flow. When this parameter is specified, the bot conducts a Q\\&A based on the intent.
         self.intent_name = intent_name
         # The ISV verification code, which is used to verify whether the user is authorized by the ISV account.
         self.isv_code = isv_code
@@ -604,6 +622,8 @@ class BeeBotChatShrinkRequest(TeaModel):
         # The ID of the session, which is used to identify the session and store context information of the session.
         self.session_id = session_id
         # The input of the visitor.
+        # 
+        # This parameter is required.
         self.utterance = utterance
         # The user-defined parameter set in JSON format. You can specify user-defined parameters for conversation engines.
         self.vendor_param_shrink = vendor_param_shrink
@@ -1230,6 +1250,8 @@ class ChatappBindWabaRequest(TeaModel):
         waba_id: str = None,
     ):
         # The ID of the WhatsApp Business account.
+        # 
+        # This parameter is required.
         self.waba_id = waba_id
 
     def validate(self):
@@ -1300,7 +1322,7 @@ class ChatappBindWabaResponseBody(TeaModel):
         # The HTTP status code returned.
         # 
         # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](~~196974~~).
+        # *   Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The data returned.
         self.data = data
@@ -1394,6 +1416,8 @@ class ChatappEmbedSignUpRequest(TeaModel):
         input_token: str = None,
     ):
         # The InputToken returned after the embedded signup flow is complete.
+        # 
+        # This parameter is required.
         self.input_token = input_token
 
     def validate(self):
@@ -1486,7 +1510,7 @@ class ChatappEmbedSignUpResponseBody(TeaModel):
         # The HTTP status code returned.
         # 
         # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](~~196974~~).
+        # *   Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The error message returned.
         self.message = message
@@ -1587,8 +1611,12 @@ class ChatappMigrationRegisterRequest(TeaModel):
         phone_number: str = None,
     ):
         # The space ID of the user under the independent software vendor (ISV) account.
+        # 
+        # This parameter is required.
         self.cust_space_id = cust_space_id
         # The phone number.
+        # 
+        # This parameter is required.
         self.phone_number = phone_number
 
     def validate(self):
@@ -1627,7 +1655,7 @@ class ChatappMigrationRegisterResponseBody(TeaModel):
         # The HTTP status code returned.
         # 
         # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](~~196974~~).
+        # *   Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The error message returned.
         self.message = message
@@ -1715,10 +1743,16 @@ class ChatappMigrationVerifiedRequest(TeaModel):
         verify_code: str = None,
     ):
         # The space ID of the user under the independent software vendor (ISV) account.
+        # 
+        # This parameter is required.
         self.cust_space_id = cust_space_id
         # The phone number.
+        # 
+        # This parameter is required.
         self.phone_number = phone_number
         # The verification code.
+        # 
+        # This parameter is required.
         self.verify_code = verify_code
 
     def validate(self):
@@ -1797,7 +1831,7 @@ class ChatappMigrationVerifiedResponseBody(TeaModel):
         # The HTTP status code returned.
         # 
         # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](~~196974~~).
+        # *   Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The data returned.
         self.data = data
@@ -1892,8 +1926,12 @@ class ChatappPhoneNumberDeregisterRequest(TeaModel):
         phone_number: str = None,
     ):
         # The space ID of the user within the independent software vendor (ISV) account.
+        # 
+        # This parameter is required.
         self.cust_space_id = cust_space_id
         # The phone number.
+        # 
+        # This parameter is required.
         self.phone_number = phone_number
 
     def validate(self):
@@ -1933,7 +1971,7 @@ class ChatappPhoneNumberDeregisterResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   Other values indicate that the request failed. For more information, see [Error codes](~~196974~~).
+        # *   Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The error message.
         self.message = message
@@ -2020,8 +2058,12 @@ class ChatappPhoneNumberRegisterRequest(TeaModel):
         phone_number: str = None,
     ):
         # The space ID of the user under the independent software vendor (ISV) account.
+        # 
+        # This parameter is required.
         self.cust_space_id = cust_space_id
         # The phone number.
+        # 
+        # This parameter is required.
         self.phone_number = phone_number
 
     def validate(self):
@@ -2060,7 +2102,7 @@ class ChatappPhoneNumberRegisterResponseBody(TeaModel):
         # The HTTP status code returned.
         # 
         # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](~~196974~~).
+        # *   Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The error message returned.
         self.message = message
@@ -2146,6 +2188,8 @@ class ChatappSyncPhoneNumberRequest(TeaModel):
         cust_space_id: str = None,
     ):
         # The space ID of the user under the independent software vendor (ISV) account.
+        # 
+        # This parameter is required.
         self.cust_space_id = cust_space_id
 
     def validate(self):
@@ -2286,7 +2330,7 @@ class ChatappSyncPhoneNumberResponseBody(TeaModel):
         # The HTTP status code returned.
         # 
         # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](~~196974~~).
+        # *   Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The error message returned.
         self.message = message
@@ -2388,10 +2432,16 @@ class ChatappVerifyAndRegisterRequest(TeaModel):
         verify_code: str = None,
     ):
         # The space ID of the user under the independent software vendor (ISV) account.
+        # 
+        # This parameter is required.
         self.cust_space_id = cust_space_id
         # The phone number.
+        # 
+        # This parameter is required.
         self.phone_number = phone_number
         # The verification code.
+        # 
+        # This parameter is required.
         self.verify_code = verify_code
 
     def validate(self):
@@ -2434,7 +2484,7 @@ class ChatappVerifyAndRegisterResponseBody(TeaModel):
         # The HTTP status code returned.
         # 
         # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](~~196974~~).
+        # *   Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The error message returned.
         self.message = message
@@ -2521,8 +2571,11 @@ class CreateChatappMigrationInitiateRequest(TeaModel):
         cust_space_id: str = None,
         mobile_number: str = None,
     ):
+        # This parameter is required.
         self.country_code = country_code
+        # This parameter is required.
         self.cust_space_id = cust_space_id
+        # This parameter is required.
         self.mobile_number = mobile_number
 
     def validate(self):
@@ -2736,6 +2789,8 @@ class CreateChatappTemplateRequestComponentsButtons(TeaModel):
         # *   If Category is set to AUTHENTICATION for a WhatsApp message template, you can add only one button to the WhatsApp message template and you must set the Type sub-parameter of the Buttons parameter to COPY_CODE or ONE_TAP. If the Type sub-parameter of the Buttons parameter is set to COPY_CODE, the Text sub-parameter of the Buttons parameter is required. If the Type sub-parameter of the Buttons parameter is set to ONE_TAP, the Text, SignatureHash, PackageName, and AutofillText sub-parameters of the Buttons parameter are required. The value of Text is displayed if the desired app is not installed on the device. The value of Text indicates that you must manually copy the verification code.
         # 
         # *   You can add only one button to a Viber message template, and you must set the Type sub-parameter of the Buttons parameter to URL.
+        # 
+        # This parameter is required.
         self.type = type
         # The URL to which you are redirected when you click the URL button.
         self.url = url
@@ -2824,6 +2879,7 @@ class CreateChatappTemplateRequestComponentsCardsCardComponentsButtons(TeaModel)
     ):
         self.phone_number = phone_number
         self.text = text
+        # This parameter is required.
         self.type = type
         self.url = url
         self.url_type = url_type
@@ -2876,6 +2932,7 @@ class CreateChatappTemplateRequestComponentsCardsCardComponents(TeaModel):
         self.buttons = buttons
         self.format = format
         self.text = text
+        # This parameter is required.
         self.type = type
         self.url = url
 
@@ -2928,6 +2985,7 @@ class CreateChatappTemplateRequestComponentsCards(TeaModel):
         self,
         card_components: List[CreateChatappTemplateRequestComponentsCardsCardComponents] = None,
     ):
+        # This parameter is required.
         self.card_components = card_components
 
     def validate(self):
@@ -3029,6 +3087,8 @@ class CreateChatappTemplateRequestComponents(TeaModel):
         # *   **FOOTER** components are not supported in Viber message templates.
         # 
         # *   In Viber message templates, media resources such as images, videos, and documents are placed in the **HEADER** component. If a Viber message contains both text and an image, the image is placed below the text in the message received on a device.
+        # 
+        # This parameter is required.
         self.type = type
         # The URL of the media resource.
         # 
@@ -3158,10 +3218,14 @@ class CreateChatappTemplateRequest(TeaModel):
         # *   **text_video**: the template that contains text and videos
         # *   **text_video_button**: the template that contains text, videos, and buttons
         # *   **text_image**: the template that contains text and images
+        # 
+        # This parameter is required.
         self.category = category
         # The components of the message template.
         # 
         # >  If Category is set to AUTHENTICATION, the Type sub-parameter of the Components parameter cannot be set to HEADER. If the Type sub-parameter is set to BODY or FOOTER, the Text sub-parameter of the Components parameter must be empty.
+        # 
+        # This parameter is required.
         self.components = components
         # The space ID of the user within the ISV account.
         self.cust_space_id = cust_space_id
@@ -3173,19 +3237,25 @@ class CreateChatappTemplateRequest(TeaModel):
         self.example = example
         # The independent software vendor (ISV) verification code, which is used to verify whether the user is authorized by the ISV account.
         self.isv_code = isv_code
-        # The language that is used in the message template. For more information, see [Language codes](~~463420~~).
+        # The language that is used in the message template. For more information, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
+        # 
+        # This parameter is required.
         self.language = language
         # Validity period of authentication template message sending in WhatsApp
         # 
         # > This attribute requires providing waba in advance to Alibaba operators to open the whitelist, otherwise it will result in template submission failure
         self.message_send_ttl_seconds = message_send_ttl_seconds
         # The name of the message template.
+        # 
+        # This parameter is required.
         self.name = name
         # The type of the message template.
         # 
         # *   **WHATSAPP**\
         # *   **VIBER**\
         # *   LINE: the Line message template. This type of message template will be released later.
+        # 
+        # This parameter is required.
         self.template_type = template_type
 
     def validate(self):
@@ -3290,10 +3360,14 @@ class CreateChatappTemplateShrinkRequest(TeaModel):
         # *   **text_video**: the template that contains text and videos
         # *   **text_video_button**: the template that contains text, videos, and buttons
         # *   **text_image**: the template that contains text and images
+        # 
+        # This parameter is required.
         self.category = category
         # The components of the message template.
         # 
         # >  If Category is set to AUTHENTICATION, the Type sub-parameter of the Components parameter cannot be set to HEADER. If the Type sub-parameter is set to BODY or FOOTER, the Text sub-parameter of the Components parameter must be empty.
+        # 
+        # This parameter is required.
         self.components_shrink = components_shrink
         # The space ID of the user within the ISV account.
         self.cust_space_id = cust_space_id
@@ -3305,19 +3379,25 @@ class CreateChatappTemplateShrinkRequest(TeaModel):
         self.example_shrink = example_shrink
         # The independent software vendor (ISV) verification code, which is used to verify whether the user is authorized by the ISV account.
         self.isv_code = isv_code
-        # The language that is used in the message template. For more information, see [Language codes](~~463420~~).
+        # The language that is used in the message template. For more information, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
+        # 
+        # This parameter is required.
         self.language = language
         # Validity period of authentication template message sending in WhatsApp
         # 
         # > This attribute requires providing waba in advance to Alibaba operators to open the whitelist, otherwise it will result in template submission failure
         self.message_send_ttl_seconds = message_send_ttl_seconds
         # The name of the message template.
+        # 
+        # This parameter is required.
         self.name = name
         # The type of the message template.
         # 
         # *   **WHATSAPP**\
         # *   **VIBER**\
         # *   LINE: the Line message template. This type of message template will be released later.
+        # 
+        # This parameter is required.
         self.template_type = template_type
 
     def validate(self):
@@ -3428,7 +3508,7 @@ class CreateChatappTemplateResponseBody(TeaModel):
         # The HTTP status code returned.
         # 
         # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](~~196974~~).
+        # *   Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The data returned.
         self.data = data
@@ -3524,10 +3604,14 @@ class CreateFlowRequest(TeaModel):
         flow_name: str = None,
     ):
         # The categories of the Flow.
+        # 
+        # This parameter is required.
         self.categories = categories
         # The space ID of the user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
         # The name of the Flow.
+        # 
+        # This parameter is required.
         self.flow_name = flow_name
 
     def validate(self):
@@ -3566,10 +3650,14 @@ class CreateFlowShrinkRequest(TeaModel):
         flow_name: str = None,
     ):
         # The categories of the Flow.
+        # 
+        # This parameter is required.
         self.categories_shrink = categories_shrink
         # The space ID of the user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
         # The name of the Flow.
+        # 
+        # This parameter is required.
         self.flow_name = flow_name
 
     def validate(self):
@@ -3743,8 +3831,11 @@ class CreatePhoneMessageQrdlRequest(TeaModel):
         prefilled_message: str = None,
     ):
         self.cust_space_id = cust_space_id
+        # This parameter is required.
         self.generate_qr_image = generate_qr_image
+        # This parameter is required.
         self.phone_number = phone_number
+        # This parameter is required.
         self.prefilled_message = prefilled_message
 
     def validate(self):
@@ -4006,7 +4097,7 @@ class DeleteChatappTemplateResponseBody(TeaModel):
         # The HTTP status code returned.
         # 
         # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](~~196974~~).
+        # *   Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The error message returned.
         self.message = message
@@ -4095,6 +4186,8 @@ class DeleteFlowRequest(TeaModel):
         # The space ID of the user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
         # The Flow ID.
+        # 
+        # This parameter is required.
         self.flow_id = flow_id
 
     def validate(self):
@@ -4212,7 +4305,9 @@ class DeletePhoneMessageQrdlRequest(TeaModel):
         qrdl_code: str = None,
     ):
         self.cust_space_id = cust_space_id
+        # This parameter is required.
         self.phone_number = phone_number
+        # This parameter is required.
         self.qrdl_code = qrdl_code
 
     def validate(self):
@@ -4332,6 +4427,8 @@ class DeprecateFlowRequest(TeaModel):
     ):
         self.cust_space_id = cust_space_id
         # Flow ID。
+        # 
+        # This parameter is required.
         self.flow_id = flow_id
 
     def validate(self):
@@ -4577,6 +4674,8 @@ class GetChatappPhoneNumberMetricRequest(TeaModel):
         # The space ID of the user within the ISV account.
         self.cust_space_id = cust_space_id
         # The end of the time range to query.
+        # 
+        # This parameter is required.
         self.end = end
         # The metric granularity.
         self.granularity = granularity
@@ -4585,6 +4684,8 @@ class GetChatappPhoneNumberMetricRequest(TeaModel):
         # The business phone number.
         self.phone_number = phone_number
         # The beginning of the time range to query.
+        # 
+        # This parameter is required.
         self.start = start
 
     def validate(self):
@@ -4820,7 +4921,9 @@ class GetChatappTemplateDetailRequest(TeaModel):
         self.cust_waba_id = cust_waba_id
         # The independent software vendor (ISV) verification code. This parameter is used to verify whether the user is authorized by the ISV account.
         self.isv_code = isv_code
-        # The language that is used in the message template. For more information, see [Language codes](~~463420~~).
+        # The language that is used in the message template. For more information, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
+        # 
+        # This parameter is required.
         self.language = language
         # The code of the message template.
         self.template_code = template_code
@@ -5456,7 +5559,7 @@ class GetChatappTemplateDetailResponseBodyData(TeaModel):
         self.components = components
         # The examples of variables.
         self.example = example
-        # The language that is used in the message template. For more information, see [Language codes](~~463420~~).
+        # The language that is used in the message template. For more information, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
         self.language = language
         # The validity period of the WhatsApp authentication message.
         self.message_send_ttl_seconds = message_send_ttl_seconds
@@ -5556,7 +5659,7 @@ class GetChatappTemplateDetailResponseBody(TeaModel):
         # The HTTP status code.
         # 
         # *   Example: OK. This value indicates that the request is successful.
-        # *   Other codes indicate that the request fails. For more information, see [Error codes](~~196974~~).
+        # *   Other codes indicate that the request fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The returned data.
         self.data = data
@@ -5659,6 +5762,8 @@ class GetChatappTemplateMetricRequest(TeaModel):
         # The space ID of the user within the ISV account.
         self.cust_space_id = cust_space_id
         # The end of the time range to query.
+        # 
+        # This parameter is required.
         self.end = end
         # The metric granularity.
         # 
@@ -5671,8 +5776,12 @@ class GetChatappTemplateMetricRequest(TeaModel):
         # The template language.
         self.language = language
         # The beginning of the time range to query.
+        # 
+        # This parameter is required.
         self.start = start
         # The template code.
+        # 
+        # This parameter is required.
         self.template_code = template_code
         # The template type. Valid values: WHATSAPP and VIBER. If you do not specify this parameter, WHATSAPP is used by default.
         self.template_type = template_type
@@ -5971,6 +6080,8 @@ class GetChatappUploadAuthorizationRequest(TeaModel):
         cust_space_id: str = None,
     ):
         # The space ID of the user under the independent software vendor (ISV) account.
+        # 
+        # This parameter is required.
         self.cust_space_id = cust_space_id
 
     def validate(self):
@@ -6076,7 +6187,7 @@ class GetChatappUploadAuthorizationResponseBody(TeaModel):
         # The HTTP status code returned.
         # 
         # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](~~196974~~).
+        # *   Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The data returned.
         self.data = data
@@ -6173,12 +6284,20 @@ class GetChatappVerifyCodeRequest(TeaModel):
         phone_number: str = None,
     ):
         # The space ID of the user under the independent software vendor (ISV) account.
+        # 
+        # This parameter is required.
         self.cust_space_id = cust_space_id
         # The language.
+        # 
+        # This parameter is required.
         self.locale = locale
         # The method to obtain the verification code. Valid values: SMS and VOICE.
+        # 
+        # This parameter is required.
         self.method = method
         # The phone number.
+        # 
+        # This parameter is required.
         self.phone_number = phone_number
 
     def validate(self):
@@ -6225,7 +6344,7 @@ class GetChatappVerifyCodeResponseBody(TeaModel):
         # The HTTP status code returned.
         # 
         # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](~~196974~~).
+        # *   Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The error message returned.
         self.message = message
@@ -6312,8 +6431,12 @@ class GetCommerceSettingRequest(TeaModel):
         phone_number: str = None,
     ):
         # The space ID of the user within the independent software vendor (ISV) account.
+        # 
+        # This parameter is required.
         self.cust_space_id = cust_space_id
         # The phone number.
+        # 
+        # This parameter is required.
         self.phone_number = phone_number
 
     def validate(self):
@@ -6386,7 +6509,7 @@ class GetCommerceSettingResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   Other values indicate that the request failed. For more information, see [Error codes](~~196974~~).
+        # *   Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The returned data.
         self.data = data
@@ -6479,6 +6602,8 @@ class GetFlowRequest(TeaModel):
         # The space ID of the user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
         # The Flow ID.
+        # 
+        # This parameter is required.
         self.flow_id = flow_id
 
     def validate(self):
@@ -6708,6 +6833,8 @@ class GetFlowJSONAssestRequest(TeaModel):
     ):
         self.cust_space_id = cust_space_id
         # Flow ID。
+        # 
+        # This parameter is required.
         self.flow_id = flow_id
 
     def validate(self):
@@ -6866,6 +6993,8 @@ class GetFlowPreviewUrlRequest(TeaModel):
         # The space ID of the user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
         # The Flow ID.
+        # 
+        # This parameter is required.
         self.flow_id = flow_id
 
     def validate(self):
@@ -7034,9 +7163,13 @@ class GetMigrationVerifyCodeRequest(TeaModel):
         method: str = None,
         phone_number: str = None,
     ):
+        # This parameter is required.
         self.cust_space_id = cust_space_id
+        # This parameter is required.
         self.locale = locale
+        # This parameter is required.
         self.method = method
+        # This parameter is required.
         self.phone_number = phone_number
 
     def validate(self):
@@ -7205,6 +7338,7 @@ class GetPermissionByCodeRequest(TeaModel):
         cust_space_id: str = None,
         permissions: List[str] = None,
     ):
+        # This parameter is required.
         self.code = code
         self.cust_space_id = cust_space_id
         self.permissions = permissions
@@ -7244,6 +7378,7 @@ class GetPermissionByCodeShrinkRequest(TeaModel):
         cust_space_id: str = None,
         permissions_shrink: str = None,
     ):
+        # This parameter is required.
         self.code = code
         self.cust_space_id = cust_space_id
         self.permissions_shrink = permissions_shrink
@@ -7364,6 +7499,7 @@ class GetPhoneEncryptionPublicKeyRequest(TeaModel):
         phone_number: str = None,
     ):
         self.cust_space_id = cust_space_id
+        # This parameter is required.
         self.phone_number = phone_number
 
     def validate(self):
@@ -7525,8 +7661,12 @@ class GetPhoneNumberVerificationStatusRequest(TeaModel):
         phone_number: str = None,
     ):
         # The space ID of the user under the ISV account.
+        # 
+        # This parameter is required.
         self.cust_space_id = cust_space_id
         # The phone number.
+        # 
+        # This parameter is required.
         self.phone_number = phone_number
 
     def validate(self):
@@ -7606,7 +7746,7 @@ class GetPhoneNumberVerificationStatusResponseBody(TeaModel):
         # The HTTP status code returned.
         # 
         # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](~~196974~~).
+        # *   Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The data returned.
         self.data = data
@@ -7697,8 +7837,12 @@ class GetPreValidatePhoneIdRequest(TeaModel):
         verify_code: str = None,
     ):
         # The phone number.
+        # 
+        # This parameter is required.
         self.phone_number = phone_number
         # The verification code provided when you purchased the pre-registered phone number.
+        # 
+        # This parameter is required.
         self.verify_code = verify_code
 
     def validate(self):
@@ -7867,6 +8011,8 @@ class GetWhatsappConnectionCatalogRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The WABA ID.
+        # 
+        # This parameter is required.
         self.waba_id = waba_id
 
     def validate(self):
@@ -7920,7 +8066,7 @@ class GetWhatsappConnectionCatalogResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   Other values indicate that the request failed. For more information, see [Error codes](~~196974~~).
+        # *   Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The error message.
         self.message = message
@@ -8024,6 +8170,8 @@ class IsvGetAppIdRequest(TeaModel):
         # 权限
         self.permissions = permissions
         # The type of the application. Set the value to WHATSAPP.
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -8066,7 +8214,7 @@ class IsvGetAppIdResponseBody(TeaModel):
         # The HTTP status code returned.
         # 
         # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](~~196974~~).
+        # *   Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         self.config_id = config_id
         # The error message returned.
@@ -8162,8 +8310,12 @@ class ListChatappTemplateRequestPage(TeaModel):
         size: int = None,
     ):
         # The page number. Default value: 1.
+        # 
+        # This parameter is required.
         self.index = index
         # The number of entries per page. Default value: 10.
+        # 
+        # This parameter is required.
         self.size = size
 
     def validate(self):
@@ -8194,6 +8346,7 @@ class ListChatappTemplateRequest(TeaModel):
     def __init__(
         self,
         audit_status: str = None,
+        code: str = None,
         cust_space_id: str = None,
         cust_waba_id: str = None,
         isv_code: str = None,
@@ -8209,6 +8362,7 @@ class ListChatappTemplateRequest(TeaModel):
         # *   **auditing**: The message template is being reviewed.
         # *   **unaudit**: The review is suspended.
         self.audit_status = audit_status
+        self.code = code
         # The space ID of the user under the ISV account.
         self.cust_space_id = cust_space_id
         # The WhatsApp Business account (WABA) ID of the user within the independent software vendor (ISV) account.
@@ -8217,7 +8371,7 @@ class ListChatappTemplateRequest(TeaModel):
         self.cust_waba_id = cust_waba_id
         # The independent software vendor (ISV) verification code, which is used to verify whether the user is authorized by the ISV account.
         self.isv_code = isv_code
-        # The language that is used in the message template. For more information, see [Language codes](~~463420~~).
+        # The language that is used in the message template. For more information, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
         self.language = language
         # The name of the message template.
         self.name = name
@@ -8242,6 +8396,8 @@ class ListChatappTemplateRequest(TeaModel):
         result = dict()
         if self.audit_status is not None:
             result['AuditStatus'] = self.audit_status
+        if self.code is not None:
+            result['Code'] = self.code
         if self.cust_space_id is not None:
             result['CustSpaceId'] = self.cust_space_id
         if self.cust_waba_id is not None:
@@ -8262,6 +8418,8 @@ class ListChatappTemplateRequest(TeaModel):
         m = m or dict()
         if m.get('AuditStatus') is not None:
             self.audit_status = m.get('AuditStatus')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         if m.get('CustSpaceId') is not None:
             self.cust_space_id = m.get('CustSpaceId')
         if m.get('CustWabaId') is not None:
@@ -8284,6 +8442,7 @@ class ListChatappTemplateShrinkRequest(TeaModel):
     def __init__(
         self,
         audit_status: str = None,
+        code: str = None,
         cust_space_id: str = None,
         cust_waba_id: str = None,
         isv_code: str = None,
@@ -8299,6 +8458,7 @@ class ListChatappTemplateShrinkRequest(TeaModel):
         # *   **auditing**: The message template is being reviewed.
         # *   **unaudit**: The review is suspended.
         self.audit_status = audit_status
+        self.code = code
         # The space ID of the user under the ISV account.
         self.cust_space_id = cust_space_id
         # The WhatsApp Business account (WABA) ID of the user within the independent software vendor (ISV) account.
@@ -8307,7 +8467,7 @@ class ListChatappTemplateShrinkRequest(TeaModel):
         self.cust_waba_id = cust_waba_id
         # The independent software vendor (ISV) verification code, which is used to verify whether the user is authorized by the ISV account.
         self.isv_code = isv_code
-        # The language that is used in the message template. For more information, see [Language codes](~~463420~~).
+        # The language that is used in the message template. For more information, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
         self.language = language
         # The name of the message template.
         self.name = name
@@ -8331,6 +8491,8 @@ class ListChatappTemplateShrinkRequest(TeaModel):
         result = dict()
         if self.audit_status is not None:
             result['AuditStatus'] = self.audit_status
+        if self.code is not None:
+            result['Code'] = self.code
         if self.cust_space_id is not None:
             result['CustSpaceId'] = self.cust_space_id
         if self.cust_waba_id is not None:
@@ -8351,6 +8513,8 @@ class ListChatappTemplateShrinkRequest(TeaModel):
         m = m or dict()
         if m.get('AuditStatus') is not None:
             self.audit_status = m.get('AuditStatus')
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
         if m.get('CustSpaceId') is not None:
             self.cust_space_id = m.get('CustSpaceId')
         if m.get('CustWabaId') is not None:
@@ -8404,7 +8568,7 @@ class ListChatappTemplateResponseBodyListTemplate(TeaModel):
         # *   **text_video_button**: template that contains text, a video, and a button
         # *   **text_image**: template that contains text and an image
         self.category = category
-        # The language that is used in the message template. For more information, see [Language codes](~~463420~~).
+        # The language that is used in the message template. For more information, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
         self.language = language
         # The reason for the review failure.
         self.reason = reason
@@ -8473,7 +8637,7 @@ class ListChatappTemplateResponseBody(TeaModel):
         # The HTTP status code returned.
         # 
         # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](~~196974~~).
+        # *   Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The message templates.
         self.list_template = list_template
@@ -8841,6 +9005,7 @@ class ListPhoneMessageQrdlRequest(TeaModel):
         phone_number: str = None,
     ):
         self.cust_space_id = cust_space_id
+        # This parameter is required.
         self.phone_number = phone_number
 
     def validate(self):
@@ -9038,12 +9203,14 @@ class ListProductRequest(TeaModel):
         # The cursor that points to the beginning of the page of the returned data.
         self.before = before
         # The catalog ID.
+        # 
+        # This parameter is required.
         self.catalog_id = catalog_id
         # The space ID of the user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
         # The fields. Separate multiple fields with commas (,).
         # 
-        #  see [product fields](~~2579419~~)
+        #  see [product fields](https://help.aliyun.com/document_detail/2579419.html)
         self.fields = fields
         # The number of products to be queried. Valid values: 1 to 1000.
         self.limit = limit
@@ -9051,6 +9218,8 @@ class ListProductRequest(TeaModel):
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # The ID of the WhatsApp Business account (WABA).
+        # 
+        # This parameter is required.
         self.waba_id = waba_id
 
     def validate(self):
@@ -9226,7 +9395,7 @@ class ListProductResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   Other values indicate that the request failed. For more information, see [Error codes](~~196974~~).
+        # *   Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The error message.
         self.message = message
@@ -9341,11 +9510,13 @@ class ListProductCatalogRequest(TeaModel):
         # The cursor that points to the beginning of the page of the returned data.
         self.before = before
         # The Business Manager ID.
+        # 
+        # This parameter is required.
         self.business_id = business_id
         # The space ID of the user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
         # The fields. Separate multiple fields with commas (,).
-        # see  [catalog fields](~~2579419~~)
+        # see  [catalog fields](https://help.aliyun.com/document_detail/2579419.html)
         self.fields = fields
         # The number of catalogs to be queried. Valid values: 1 to 1000.
         self.limit = limit
@@ -9522,7 +9693,7 @@ class ListProductCatalogResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   Other values indicate that the request failed. For more information, see [Error codes](~~196974~~).
+        # *   Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The error message.
         self.message = message
@@ -9669,6 +9840,8 @@ class ModifyChatappTemplateRequestComponentsButtons(TeaModel):
         # *   If Category is set to AUTHENTICATION for a WhatsApp message template, you can add only one button to the WhatsApp message template and you must set the Type sub-parameter of the Buttons parameter to COPY_CODE or ONE_TAP. If the Type sub-parameter of the Buttons parameter is set to COPY_CODE, the Text sub-parameter of the Buttons parameter is required. If the Type sub-parameter of the Buttons parameter is set to ONE_TAP, the Text, SignatureHash, PackageName, and AutofillText sub-parameters of the Buttons parameter are required. The value of Text is displayed if the desired app is not installed on the device. The value of Text indicates that you must manually copy the verification code.
         # 
         # *   You can add only one button to a Viber message template, and you must set the Type sub-parameter of the Buttons parameter to URL.
+        # 
+        # This parameter is required.
         self.type = type
         # The URL to which you are redirected when you click the URL button.
         self.url = url
@@ -9757,6 +9930,7 @@ class ModifyChatappTemplateRequestComponentsCardsCardComponentsButtons(TeaModel)
     ):
         self.phone_number = phone_number
         self.text = text
+        # This parameter is required.
         self.type = type
         self.url = url
         self.url_type = url_type
@@ -9809,6 +9983,7 @@ class ModifyChatappTemplateRequestComponentsCardsCardComponents(TeaModel):
         self.buttons = buttons
         self.format = format
         self.text = text
+        # This parameter is required.
         self.type = type
         self.url = url
 
@@ -9861,6 +10036,7 @@ class ModifyChatappTemplateRequestComponentsCards(TeaModel):
         self,
         card_components: List[ModifyChatappTemplateRequestComponentsCardsCardComponents] = None,
     ):
+        # This parameter is required.
         self.card_components = card_components
 
     def validate(self):
@@ -9966,6 +10142,8 @@ class ModifyChatappTemplateRequestComponents(TeaModel):
         # *   **FOOTER** components are not supported in Viber message templates.
         # 
         # *   In a Viber message template, media resources such as images, videos, and documents are placed in the **HEADER** component. If a Viber message contains text and images, the images are placed under the text in the message received on a device.
+        # 
+        # This parameter is required.
         self.type = type
         # The URL of the media resource.
         self.url = url
@@ -10091,6 +10269,8 @@ class ModifyChatappTemplateRequest(TeaModel):
         # The components of the message template.
         # 
         # >  If Category is set to AUTHENTICATION, the Type sub-parameter of the Components parameter cannot be set to HEADER. If the Type sub-parameter is set to BODY or FOOTER, the Text sub-parameter of the Components parameter is empty and text in the body or footer is automatically generated.
+        # 
+        # This parameter is required.
         self.components = components
         # The space ID of the user within the ISV account.
         self.cust_space_id = cust_space_id
@@ -10102,7 +10282,9 @@ class ModifyChatappTemplateRequest(TeaModel):
         self.example = example
         # The ISV verification code, which is used to verify whether the user is authorized by the ISV account.
         self.isv_code = isv_code
-        # The language that is used in the message template. For more information, see [Language codes](~~463420~~).
+        # The language that is used in the message template. For more information, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
+        # 
+        # This parameter is required.
         self.language = language
         # Validity period of authentication template message sending in WhatsApp
         # 
@@ -10218,6 +10400,8 @@ class ModifyChatappTemplateShrinkRequest(TeaModel):
         # The components of the message template.
         # 
         # >  If Category is set to AUTHENTICATION, the Type sub-parameter of the Components parameter cannot be set to HEADER. If the Type sub-parameter is set to BODY or FOOTER, the Text sub-parameter of the Components parameter is empty and text in the body or footer is automatically generated.
+        # 
+        # This parameter is required.
         self.components_shrink = components_shrink
         # The space ID of the user within the ISV account.
         self.cust_space_id = cust_space_id
@@ -10229,7 +10413,9 @@ class ModifyChatappTemplateShrinkRequest(TeaModel):
         self.example_shrink = example_shrink
         # The ISV verification code, which is used to verify whether the user is authorized by the ISV account.
         self.isv_code = isv_code
-        # The language that is used in the message template. For more information, see [Language codes](~~463420~~).
+        # The language that is used in the message template. For more information, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
+        # 
+        # This parameter is required.
         self.language = language
         # Validity period of authentication template message sending in WhatsApp
         # 
@@ -10354,7 +10540,7 @@ class ModifyChatappTemplateResponseBody(TeaModel):
         # The HTTP status code returned.
         # 
         # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](~~196974~~).
+        # *   Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The data returned.
         self.data = data
@@ -10451,12 +10637,16 @@ class ModifyFlowRequest(TeaModel):
         flow_name: str = None,
     ):
         # The categories of the Flow.
+        # 
+        # This parameter is required.
         self.categories = categories
         # The space ID of the user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
         # The Flow ID.
         self.flow_id = flow_id
         # The name of the Flow.
+        # 
+        # This parameter is required.
         self.flow_name = flow_name
 
     def validate(self):
@@ -10500,12 +10690,16 @@ class ModifyFlowShrinkRequest(TeaModel):
         flow_name: str = None,
     ):
         # The categories of the Flow.
+        # 
+        # This parameter is required.
         self.categories_shrink = categories_shrink
         # The space ID of the user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
         # The Flow ID.
         self.flow_id = flow_id
         # The name of the Flow.
+        # 
+        # This parameter is required.
         self.flow_name = flow_name
 
     def validate(self):
@@ -10691,12 +10885,16 @@ class ModifyPhoneBusinessProfileRequest(TeaModel):
         # The space ID of the user under the independent software vendor (ISV) account.
         self.address = address
         # Modifies the business information of the account to which a specified phone number is bound.
+        # 
+        # This parameter is required.
         self.cust_space_id = cust_space_id
         # The address.
         self.description = description
         # The description.
         self.email = email
         # You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        # 
+        # This parameter is required.
         self.phone_number = phone_number
         # The industry.
         # 
@@ -10776,12 +10974,16 @@ class ModifyPhoneBusinessProfileShrinkRequest(TeaModel):
         # The space ID of the user under the independent software vendor (ISV) account.
         self.address = address
         # Modifies the business information of the account to which a specified phone number is bound.
+        # 
+        # This parameter is required.
         self.cust_space_id = cust_space_id
         # The address.
         self.description = description
         # The description.
         self.email = email
         # You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+        # 
+        # This parameter is required.
         self.phone_number = phone_number
         # The industry.
         # 
@@ -10942,6 +11144,8 @@ class PublishFlowRequest(TeaModel):
         # The space ID of the user within the independent software vendor (ISV) account.
         self.cust_space_id = cust_space_id
         # The Flow ID.
+        # 
+        # This parameter is required.
         self.flow_id = flow_id
 
     def validate(self):
@@ -11056,11 +11260,17 @@ class QueryChatappBindWabaRequest(TeaModel):
         self,
         cust_space_id: str = None,
         isv_code: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
     ):
         # The space ID of the user under the ISV account.
         self.cust_space_id = cust_space_id
         # The ISV verification code, which is used to verify whether the user is authorized by the ISV account.
         self.isv_code = isv_code
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
 
     def validate(self):
         pass
@@ -11075,6 +11285,12 @@ class QueryChatappBindWabaRequest(TeaModel):
             result['CustSpaceId'] = self.cust_space_id
         if self.isv_code is not None:
             result['IsvCode'] = self.isv_code
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
         return result
 
     def from_map(self, m: dict = None):
@@ -11083,6 +11299,12 @@ class QueryChatappBindWabaRequest(TeaModel):
             self.cust_space_id = m.get('CustSpaceId')
         if m.get('IsvCode') is not None:
             self.isv_code = m.get('IsvCode')
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
         return self
 
 
@@ -11090,10 +11312,12 @@ class QueryChatappBindWabaResponseBodyData(TeaModel):
     def __init__(
         self,
         account_review_status: str = None,
+        auth_international_rate_eligibility: Dict[str, Any] = None,
         currency: str = None,
         id: str = None,
         message_template_namespace: str = None,
         name: str = None,
+        primary_business_location: str = None,
     ):
         # The review state of the WhatsApp Business account (WABA).
         # 
@@ -11107,6 +11331,7 @@ class QueryChatappBindWabaResponseBodyData(TeaModel):
         # 
         # *   DISABLED: The WABA was forbidden.
         self.account_review_status = account_review_status
+        self.auth_international_rate_eligibility = auth_international_rate_eligibility
         # The currency.
         self.currency = currency
         # The ID of the WhatsApp Business account.
@@ -11115,6 +11340,7 @@ class QueryChatappBindWabaResponseBodyData(TeaModel):
         self.message_template_namespace = message_template_namespace
         # The name of the WhatsApp Business account.
         self.name = name
+        self.primary_business_location = primary_business_location
 
     def validate(self):
         pass
@@ -11127,6 +11353,8 @@ class QueryChatappBindWabaResponseBodyData(TeaModel):
         result = dict()
         if self.account_review_status is not None:
             result['AccountReviewStatus'] = self.account_review_status
+        if self.auth_international_rate_eligibility is not None:
+            result['AuthInternationalRateEligibility'] = self.auth_international_rate_eligibility
         if self.currency is not None:
             result['Currency'] = self.currency
         if self.id is not None:
@@ -11135,12 +11363,16 @@ class QueryChatappBindWabaResponseBodyData(TeaModel):
             result['MessageTemplateNamespace'] = self.message_template_namespace
         if self.name is not None:
             result['Name'] = self.name
+        if self.primary_business_location is not None:
+            result['PrimaryBusinessLocation'] = self.primary_business_location
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AccountReviewStatus') is not None:
             self.account_review_status = m.get('AccountReviewStatus')
+        if m.get('AuthInternationalRateEligibility') is not None:
+            self.auth_international_rate_eligibility = m.get('AuthInternationalRateEligibility')
         if m.get('Currency') is not None:
             self.currency = m.get('Currency')
         if m.get('Id') is not None:
@@ -11149,6 +11381,8 @@ class QueryChatappBindWabaResponseBodyData(TeaModel):
             self.message_template_namespace = m.get('MessageTemplateNamespace')
         if m.get('Name') is not None:
             self.name = m.get('Name')
+        if m.get('PrimaryBusinessLocation') is not None:
+            self.primary_business_location = m.get('PrimaryBusinessLocation')
         return self
 
 
@@ -11160,13 +11394,14 @@ class QueryChatappBindWabaResponseBody(TeaModel):
         data: QueryChatappBindWabaResponseBodyData = None,
         message: str = None,
         request_id: str = None,
+        success: bool = None,
     ):
         # The details about the access denial.
         self.access_denied_detail = access_denied_detail
         # The HTTP status code returned.
         # 
         # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](~~196974~~).
+        # *   Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The returned data.
         self.data = data
@@ -11174,6 +11409,7 @@ class QueryChatappBindWabaResponseBody(TeaModel):
         self.message = message
         # The ID of the request.
         self.request_id = request_id
+        self.success = success
 
     def validate(self):
         if self.data:
@@ -11195,6 +11431,8 @@ class QueryChatappBindWabaResponseBody(TeaModel):
             result['Message'] = self.message
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
         return result
 
     def from_map(self, m: dict = None):
@@ -11210,6 +11448,8 @@ class QueryChatappBindWabaResponseBody(TeaModel):
             self.message = m.get('Message')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
         return self
 
 
@@ -11430,7 +11670,7 @@ class QueryChatappPhoneNumbersResponseBody(TeaModel):
         # The HTTP status code returned.
         # 
         # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](~~196974~~).
+        # *   Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The message returned.
         self.message = message
@@ -11531,8 +11771,12 @@ class QueryPhoneBusinessProfileRequest(TeaModel):
         phone_number: str = None,
     ):
         # The space ID of the user under the independent software vendor (ISV) account.
+        # 
+        # This parameter is required.
         self.cust_space_id = cust_space_id
         # The phone number.
+        # 
+        # This parameter is required.
         self.phone_number = phone_number
 
     def validate(self):
@@ -11641,7 +11885,7 @@ class QueryPhoneBusinessProfileResponseBody(TeaModel):
         # The HTTP status code returned.
         # 
         # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](~~196974~~).
+        # *   Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The data returned.
         self.data = data
@@ -11736,8 +11980,12 @@ class QueryWabaBusinessInfoRequest(TeaModel):
         waba_id: str = None,
     ):
         # The space ID of the user under the independent software vendor (ISV) account.
+        # 
+        # This parameter is required.
         self.cust_space_id = cust_space_id
         # The ID of the WABA.
+        # 
+        # This parameter is required.
         self.waba_id = waba_id
 
     def validate(self):
@@ -11826,7 +12074,7 @@ class QueryWabaBusinessInfoResponseBody(TeaModel):
         # The HTTP status code returned.
         # 
         # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](~~196974~~).
+        # *   Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The business information about the WABA.
         self.data = data
@@ -12078,6 +12326,8 @@ class SendChatappMassMessageRequestSenderList(TeaModel):
         # The parameters of the template.
         self.template_params = template_params
         # The phone number to which the message is sent.
+        # 
+        # This parameter is required.
         self.to = to
 
     def validate(self):
@@ -12143,6 +12393,8 @@ class SendChatappMassMessageRequest(TeaModel):
         ttl: int = None,
     ):
         # The channel type. Valid values: whatsapp, viber, and line.
+        # 
+        # This parameter is required.
         self.channel_type = channel_type
         # The space ID of the user.
         self.cust_space_id = cust_space_id
@@ -12162,14 +12414,20 @@ class SendChatappMassMessageRequest(TeaModel):
         # *   sentfailed: A fallback is triggered even if the template parameters including variables fail to pass the verification. If the channelType, type, messageType, to, and from parameters fail to pass the verification, a fallback is not triggered.
         self.fall_back_rule = fall_back_rule
         # The phone number of the message sender.
+        # 
+        # This parameter is required.
         self.from_ = from_
         # The ISV verification code, which is used to verify whether the user is authorized by the ISV account.
         self.isv_code = isv_code
         # The message type when the ChannelType parameter is set to viber. Valid values: promotion and transaction.
         self.label = label
-        # The language. For more information about language codes, see [Language codes](~~463420~~).
+        # The language. For more information about language codes, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
+        # 
+        # This parameter is required.
         self.language = language
         # The phone numbers to which the message is sent.
+        # 
+        # This parameter is required.
         self.sender_list = sender_list
         # The tag information when the ChannelType parameter is set to viber.
         self.tag = tag
@@ -12295,6 +12553,8 @@ class SendChatappMassMessageShrinkRequest(TeaModel):
         ttl: int = None,
     ):
         # The channel type. Valid values: whatsapp, viber, and line.
+        # 
+        # This parameter is required.
         self.channel_type = channel_type
         # The space ID of the user.
         self.cust_space_id = cust_space_id
@@ -12314,14 +12574,20 @@ class SendChatappMassMessageShrinkRequest(TeaModel):
         # *   sentfailed: A fallback is triggered even if the template parameters including variables fail to pass the verification. If the channelType, type, messageType, to, and from parameters fail to pass the verification, a fallback is not triggered.
         self.fall_back_rule = fall_back_rule
         # The phone number of the message sender.
+        # 
+        # This parameter is required.
         self.from_ = from_
         # The ISV verification code, which is used to verify whether the user is authorized by the ISV account.
         self.isv_code = isv_code
         # The message type when the ChannelType parameter is set to viber. Valid values: promotion and transaction.
         self.label = label
-        # The language. For more information about language codes, see [Language codes](~~463420~~).
+        # The language. For more information about language codes, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
+        # 
+        # This parameter is required.
         self.language = language
         # The phone numbers to which the message is sent.
+        # 
+        # This parameter is required.
         self.sender_list_shrink = sender_list_shrink
         # The tag information when the ChannelType parameter is set to viber.
         self.tag = tag
@@ -12430,7 +12696,7 @@ class SendChatappMassMessageResponseBody(TeaModel):
         # The HTTP status code returned.
         # 
         # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](~~196974~~).
+        # *   Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The ID of the group of messages.
         self.group_message_id = group_message_id
@@ -12700,6 +12966,8 @@ class SendChatappMessageRequest(TeaModel):
         # *   **whatsapp**\
         # *   **viber**\
         # *   line. The feature that ChatAPP sends messages by using Line is under development.
+        # 
+        # This parameter is required.
         self.channel_type = channel_type
         # The content of the message.
         # 
@@ -12748,19 +13016,20 @@ class SendChatappMessageRequest(TeaModel):
         # <props="china">
         # 
         # > 中国站此字段无效
-        # </props>
         self.fall_back_rule = fall_back_rule
         # Flow发送数据
         self.flow_action = flow_action
         # The phone number of the message sender.
         # 
         # > You can specify a mobile phone number that is registered for a WhatsApp account and is approved in the ChatAPP console.
+        # 
+        # This parameter is required.
         self.from_ = from_
         # The independent software vendor (ISV) verification code, which is used to verify whether the user is authorized by the ISV account.
         self.isv_code = isv_code
         # The type of the Viber message. This parameter is required if you set the ChannelType parameter to viber. Valid values: promotion and transaction.
         self.label = label
-        # The language that is used in the message template. This parameter is required only if you set the Type parameter to **template**. For more information about language codes, see [Language codes](~~463420~~).
+        # The language that is used in the message template. This parameter is required only if you set the Type parameter to **template**. For more information about language codes, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
         self.language = language
         # The specific type of the message. This parameter is required only if you set the Type parameter to **message**.
         # 
@@ -12789,7 +13058,7 @@ class SendChatappMessageRequest(TeaModel):
         # *   **text_video_button**: a message that contains multiple media objects, including text, video, and button.
         # *   **text_image**: a message that contains the text and image media objects.
         # 
-        # > For more information, see [Parameters of a message template](~~454530~~).
+        # > For more information, see [Parameters of a message template](https://help.aliyun.com/document_detail/454530.html).
         self.message_type = message_type
         # The payload of the button.
         self.payload = payload
@@ -12805,6 +13074,8 @@ class SendChatappMessageRequest(TeaModel):
         # The variables of the message template.
         self.template_params = template_params
         # The phone number that receives the message.
+        # 
+        # This parameter is required.
         self.to = to
         # The tracking ID of the Viber message.
         self.tracking_data = tracking_data
@@ -12814,6 +13085,8 @@ class SendChatappMessageRequest(TeaModel):
         # 
         # *   **template**: a template message. A template message is sent based on a template that is created in the ChatAPP console and is approved. You can send template messages at any time based on your business requirements.
         # *   **message**: a custom message. You can send a custom message to a user only within 24 hours after you receive the last message from the user.
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -12976,6 +13249,8 @@ class SendChatappMessageShrinkRequest(TeaModel):
         # *   **whatsapp**\
         # *   **viber**\
         # *   line. The feature that ChatAPP sends messages by using Line is under development.
+        # 
+        # This parameter is required.
         self.channel_type = channel_type
         # The content of the message.
         # 
@@ -13024,19 +13299,20 @@ class SendChatappMessageShrinkRequest(TeaModel):
         # <props="china">
         # 
         # > 中国站此字段无效
-        # </props>
         self.fall_back_rule = fall_back_rule
         # Flow发送数据
         self.flow_action_shrink = flow_action_shrink
         # The phone number of the message sender.
         # 
         # > You can specify a mobile phone number that is registered for a WhatsApp account and is approved in the ChatAPP console.
+        # 
+        # This parameter is required.
         self.from_ = from_
         # The independent software vendor (ISV) verification code, which is used to verify whether the user is authorized by the ISV account.
         self.isv_code = isv_code
         # The type of the Viber message. This parameter is required if you set the ChannelType parameter to viber. Valid values: promotion and transaction.
         self.label = label
-        # The language that is used in the message template. This parameter is required only if you set the Type parameter to **template**. For more information about language codes, see [Language codes](~~463420~~).
+        # The language that is used in the message template. This parameter is required only if you set the Type parameter to **template**. For more information about language codes, see [Language codes](https://help.aliyun.com/document_detail/463420.html).
         self.language = language
         # The specific type of the message. This parameter is required only if you set the Type parameter to **message**.
         # 
@@ -13065,7 +13341,7 @@ class SendChatappMessageShrinkRequest(TeaModel):
         # *   **text_video_button**: a message that contains multiple media objects, including text, video, and button.
         # *   **text_image**: a message that contains the text and image media objects.
         # 
-        # > For more information, see [Parameters of a message template](~~454530~~).
+        # > For more information, see [Parameters of a message template](https://help.aliyun.com/document_detail/454530.html).
         self.message_type = message_type
         # The payload of the button.
         self.payload_shrink = payload_shrink
@@ -13081,6 +13357,8 @@ class SendChatappMessageShrinkRequest(TeaModel):
         # The variables of the message template.
         self.template_params_shrink = template_params_shrink
         # The phone number that receives the message.
+        # 
+        # This parameter is required.
         self.to = to
         # The tracking ID of the Viber message.
         self.tracking_data = tracking_data
@@ -13090,6 +13368,8 @@ class SendChatappMessageShrinkRequest(TeaModel):
         # 
         # *   **template**: a template message. A template message is sent based on a template that is created in the ChatAPP console and is approved. You can send template messages at any time based on your business requirements.
         # *   **message**: a custom message. You can send a custom message to a user only within 24 hours after you receive the last message from the user.
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -13223,7 +13503,7 @@ class SendChatappMessageResponseBody(TeaModel):
         # The HTTP status code returned.
         # 
         # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](~~196974~~).
+        # *   Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The error message returned.
         self.message = message
@@ -13317,22 +13597,36 @@ class SubmitIsvCustomerTermsRequest(TeaModel):
         office_address: str = None,
     ):
         # The use scenario.
+        # 
+        # This parameter is required.
         self.business_desc = business_desc
         # The email address of your business.
+        # 
+        # This parameter is required.
         self.contact_mail = contact_mail
         # The country code.
+        # 
+        # This parameter is required.
         self.country_id = country_id
         # The display name of your business.
+        # 
+        # This parameter is required.
         self.cust_name = cust_name
         # The space ID of the user under the ISV account.
+        # 
+        # This parameter is required.
         self.cust_space_id = cust_space_id
         # The ISV or Client Agreement.
         # 
         # > Before you upload files to Object Storage Service (OSS) servers, you must call the GetChatappUploadAuthorization operation to obtain the authentication information required to upload files. You can use the SDK provided by OSS to upload files. When you upload a file, you must set the key parameter value. To set the value for the key parameter, concatenate the value of the Dir parameter and the file name by using a forward slash (/). You can obtain the value of the Dir parameter by calling the GetChatappUploadAuthorization operation.
         # 
         # > The value of this parameter is the name of the uploaded file.
+        # 
+        # This parameter is required.
         self.isv_terms = isv_terms
         # The address of your business.
+        # 
+        # This parameter is required.
         self.office_address = office_address
 
     def validate(self):
@@ -13391,7 +13685,7 @@ class SubmitIsvCustomerTermsResponseBody(TeaModel):
         # The HTTP status code returned.
         # 
         # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](~~196974~~).
+        # *   Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The error message returned.
         self.message = message
@@ -13480,6 +13774,8 @@ class UpdateAccountWebhookRequest(TeaModel):
         status_callback_url: str = None,
     ):
         # The space ID of the user under the ISV account.
+        # 
+        # This parameter is required.
         self.cust_space_id = cust_space_id
         # Specifies whether to use HTTP callbacks to receive message receipts. Valid values:
         # 
@@ -13538,7 +13834,7 @@ class UpdateAccountWebhookResponseBody(TeaModel):
         # The HTTP status code returned.
         # 
         # *   A value of OK indicates that the call is successful.
-        # *   Other values indicate that the call fails. For more information, see [Error codes](~~196974~~).
+        # *   Other values indicate that the call fails. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The error message returned.
         self.message = message
@@ -13627,12 +13923,20 @@ class UpdateCommerceSettingRequest(TeaModel):
         phone_number: str = None,
     ):
         # Specifies whether to display the shopping cart button.
+        # 
+        # This parameter is required.
         self.cart_enable = cart_enable
         # Specifies whether to display the catalog button.
+        # 
+        # This parameter is required.
         self.catalog_visible = catalog_visible
         # The space ID of the user within the independent software vendor (ISV) account.
+        # 
+        # This parameter is required.
         self.cust_space_id = cust_space_id
         # The phone number.
+        # 
+        # This parameter is required.
         self.phone_number = phone_number
 
     def validate(self):
@@ -13677,7 +13981,7 @@ class UpdateCommerceSettingResponseBody(TeaModel):
         # The response code.
         # 
         # *   The value OK indicates that the request was successful.
-        # *   Other values indicate that the request failed. For more information, see [Error codes](~~196974~~).
+        # *   Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/196974.html).
         self.code = code
         # The error message.
         self.message = message
@@ -13761,8 +14065,11 @@ class UpdateFlowJSONAssetRequest(TeaModel):
         flow_id: str = None,
     ):
         self.cust_space_id = cust_space_id
+        # This parameter is required.
         self.file_path = file_path
         # Flow ID。
+        # 
+        # This parameter is required.
         self.flow_id = flow_id
 
     def validate(self):
@@ -13918,7 +14225,9 @@ class UpdatePhoneEncryptionPublicKeyRequest(TeaModel):
         phone_number: str = None,
     ):
         self.cust_space_id = cust_space_id
+        # This parameter is required.
         self.encryption_public_key = encryption_public_key
+        # This parameter is required.
         self.phone_number = phone_number
 
     def validate(self):
@@ -14040,9 +14349,13 @@ class UpdatePhoneMessageQrdlRequest(TeaModel):
         qrdl_code: str = None,
     ):
         self.cust_space_id = cust_space_id
+        # This parameter is required.
         self.generate_qr_image = generate_qr_image
+        # This parameter is required.
         self.phone_number = phone_number
+        # This parameter is required.
         self.prefilled_message = prefilled_message
+        # This parameter is required.
         self.qrdl_code = qrdl_code
 
     def validate(self):
@@ -14237,8 +14550,10 @@ class UpdatePhoneWebhookRequest(TeaModel):
         status_callback_url: str = None,
         up_callback_url: str = None,
     ):
+        # This parameter is required.
         self.cust_space_id = cust_space_id
         self.http_flag = http_flag
+        # This parameter is required.
         self.phone_number = phone_number
         self.queue_flag = queue_flag
         self.status_callback_url = status_callback_url

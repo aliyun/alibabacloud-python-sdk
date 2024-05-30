@@ -1,3 +1,14 @@
+2024-05-30 Version: 1.4.3
+- Update API ListChatappTemplate: add param Code.
+- Update API QueryChatappBindWaba: add param AccessKeyId.
+- Update API QueryChatappBindWaba: add param OwnerId.
+- Update API QueryChatappBindWaba: add param ResourceOwnerAccount.
+- Update API QueryChatappBindWaba: add param ResourceOwnerId.
+- Update API QueryChatappBindWaba: update param CustSpaceId.
+- Update API QueryChatappBindWaba: update param IsvCode.
+- Update API QueryChatappBindWaba: update response param.
+
+
 2024-04-26 Version: 1.4.2
 - Generated python 2020-06-06 for cams.
 
