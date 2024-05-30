@@ -6471,6 +6471,7 @@ class CreateEnvironmentRequest(TeaModel):
         environment_sub_type: str = None,
         environment_type: str = None,
         fee_package: str = None,
+        grafana_workspace_id: str = None,
         managed_type: str = None,
         prometheus_instance_id: str = None,
         region_id: str = None,
@@ -6538,6 +6539,7 @@ class CreateEnvironmentRequest(TeaModel):
         # *   If the EnvironmentType parameter is set to CS, set the value to CS_Basic or CS_Pro. Default value: CS_Basic.
         # *   Otherwise, leave the parameter empty.
         self.fee_package = fee_package
+        self.grafana_workspace_id = grafana_workspace_id
         # Specifies whether agents or exporters are managed. Valid values:
         # 
         # *   none: No. By default, no managed agents or exporters are provided for ACK clusters.
@@ -6579,6 +6581,8 @@ class CreateEnvironmentRequest(TeaModel):
             result['EnvironmentType'] = self.environment_type
         if self.fee_package is not None:
             result['FeePackage'] = self.fee_package
+        if self.grafana_workspace_id is not None:
+            result['GrafanaWorkspaceId'] = self.grafana_workspace_id
         if self.managed_type is not None:
             result['ManagedType'] = self.managed_type
         if self.prometheus_instance_id is not None:
@@ -6607,6 +6611,8 @@ class CreateEnvironmentRequest(TeaModel):
             self.environment_type = m.get('EnvironmentType')
         if m.get('FeePackage') is not None:
             self.fee_package = m.get('FeePackage')
+        if m.get('GrafanaWorkspaceId') is not None:
+            self.grafana_workspace_id = m.get('GrafanaWorkspaceId')
         if m.get('ManagedType') is not None:
             self.managed_type = m.get('ManagedType')
         if m.get('PrometheusInstanceId') is not None:
@@ -22270,7 +22276,7 @@ class DescribeEnvironmentResponseBodyDataTags(TeaModel):
     ):
         # The key of the tag.
         self.key = key
-        # The value of the tag.
+        # The value of the tag
         self.value = value
 
     def validate(self):
@@ -22317,6 +22323,7 @@ class DescribeEnvironmentResponseBodyData(TeaModel):
         grafana_folder_title: str = None,
         grafana_folder_uid: str = None,
         grafana_folder_url: str = None,
+        grafana_workspace_id: str = None,
         managed_type: str = None,
         prometheus_instance_id: str = None,
         prometheus_instance_name: str = None,
@@ -22338,6 +22345,49 @@ class DescribeEnvironmentResponseBodyData(TeaModel):
         self.bind_resource_type = bind_resource_type
         # The VPC CIDR block.
         self.bind_vpc_cidr = bind_vpc_cidr
+        # The status of the database that is bound to the Prometheus instance.
+        # 
+        # Valid values:
+        # 
+        # *   UNINSTALLING
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   INSTALLING
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   UNINSTALLED
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   RUNNING
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        # *   MODIFYING
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
+        # 
+        #     <!-- -->
         self.db_instance_status = db_instance_status
         # The ID of the environment instance.
         self.environment_id = environment_id
@@ -22354,6 +22404,10 @@ class DescribeEnvironmentResponseBodyData(TeaModel):
         # *   ECS: Elastic Compute Service
         # *   Cloud: cloud service
         self.environment_type = environment_type
+        # The payable resource plan. Valid values:
+        # 
+        # *   If the EnvironmentType parameter is set to CS, set the value to CS_Basic or CS_Pro.
+        # *   Otherwise, leave the parameter empty.
         self.fee_package = fee_package
         # The name of the Grafana data source.
         self.grafa_data_source_name = grafa_data_source_name
@@ -22365,6 +22419,8 @@ class DescribeEnvironmentResponseBodyData(TeaModel):
         self.grafana_folder_uid = grafana_folder_uid
         # The URL of the Grafana directory.
         self.grafana_folder_url = grafana_folder_url
+        # grafana工作区id
+        self.grafana_workspace_id = grafana_workspace_id
         # managed type:
         # - none: unmanaged. The default value for ACK clusters.
         # - agent: managed agent (including KSM). The default values for ASK, ACS, and AckOne clusters.
@@ -22431,6 +22487,8 @@ class DescribeEnvironmentResponseBodyData(TeaModel):
             result['GrafanaFolderUid'] = self.grafana_folder_uid
         if self.grafana_folder_url is not None:
             result['GrafanaFolderUrl'] = self.grafana_folder_url
+        if self.grafana_workspace_id is not None:
+            result['GrafanaWorkspaceId'] = self.grafana_workspace_id
         if self.managed_type is not None:
             result['ManagedType'] = self.managed_type
         if self.prometheus_instance_id is not None:
@@ -22487,6 +22545,8 @@ class DescribeEnvironmentResponseBodyData(TeaModel):
             self.grafana_folder_uid = m.get('GrafanaFolderUid')
         if m.get('GrafanaFolderUrl') is not None:
             self.grafana_folder_url = m.get('GrafanaFolderUrl')
+        if m.get('GrafanaWorkspaceId') is not None:
+            self.grafana_workspace_id = m.get('GrafanaWorkspaceId')
         if m.get('ManagedType') is not None:
             self.managed_type = m.get('ManagedType')
         if m.get('PrometheusInstanceId') is not None:
@@ -24505,7 +24565,7 @@ class GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContentAlertRuleItems(
         self,
         aggregate: str = None,
         metric_key: str = None,
-        n: float = None,
+        n: int = None,
         operator: str = None,
         value: str = None,
     ):
@@ -24893,7 +24953,7 @@ class GetAlertRulesResponseBodyPageBeanAlertRules(TeaModel):
         self,
         alert_check_type: str = None,
         alert_group: int = None,
-        alert_id: float = None,
+        alert_id: int = None,
         alert_name: str = None,
         alert_rule_content: GetAlertRulesResponseBodyPageBeanAlertRulesAlertRuleContent = None,
         alert_status: str = None,
@@ -28404,6 +28464,7 @@ class GetPrometheusInstanceResponseBodyDataTags(TeaModel):
 class GetPrometheusInstanceResponseBodyData(TeaModel):
     def __init__(
         self,
+        access_type: str = None,
         archive_duration: int = None,
         auth_token: str = None,
         cluster_id: str = None,
@@ -28415,7 +28476,6 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
         payment_type: str = None,
         push_gateway_inter_url: str = None,
         push_gateway_intra_url: str = None,
-        read_only: bool = None,
         region_id: str = None,
         remote_read_inter_url: str = None,
         remote_read_intra_url: str = None,
@@ -28431,7 +28491,10 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The number of days for automatic archiving after storage expiration (optional values: 60, 90, 180, 365). 0 means not archive.
+        # 权限类型：
+        # readWrite、readOnly、httpReadOnly
+        self.access_type = access_type
+        # The number of days for which data is automatically archived after the storage expires. Valid values: 60, 90, 180, and 365. 0 indicates that the data is not archived.
         self.archive_duration = archive_duration
         # Authorization token.
         self.auth_token = auth_token
@@ -28439,11 +28502,11 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
         self.cluster_id = cluster_id
         # The name of the monitoring object.
         self.cluster_name = cluster_name
-        # *   remote-write: Prometheus instance for Remote Write
+        # *   remote-write: general-purpose Prometheus instance
         # *   ecs: Prometheus instances for ECS
-        # *   cloud-monitor: Prometheus instance for cloud services (Chinese mainland)
-        # *   cloud-monitor: Prometheus instance for cloud services (regions outside the Chinese mainland)
-        # *   global-view: Prometheus instance for GlobalView
+        # *   cloud-monitor: Prometheus instance for Alibaba Cloud services in the Chinese mainland
+        # *   cloud-product: Prometheus instance for Alibaba Cloud services outside the Chinese mainland
+        # *   global-view: global aggregation instance
         # *   aliyun-cs: Prometheus instance for Container Service
         self.cluster_type = cluster_type
         # The ID of the Grafana workspace.
@@ -28461,7 +28524,6 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
         self.push_gateway_inter_url = push_gateway_inter_url
         # Push gateway intranet address.
         self.push_gateway_intra_url = push_gateway_intra_url
-        self.read_only = read_only
         # The region ID.
         self.region_id = region_id
         # Remote read internet address.
@@ -28478,7 +28540,7 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
         self.resource_type = resource_type
         # The ID of the security group. This parameter is returned only for Prometheus instances for ECS.
         self.security_group_id = security_group_id
-        # Storage duration (days).
+        # The data storage duration. Unit: days.
         self.storage_duration = storage_duration
         # The child instances of the Prometheus instance for GlobalView. The value is a JSON string.
         self.sub_clusters_json = sub_clusters_json
@@ -28503,6 +28565,8 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
             return _map
 
         result = dict()
+        if self.access_type is not None:
+            result['AccessType'] = self.access_type
         if self.archive_duration is not None:
             result['ArchiveDuration'] = self.archive_duration
         if self.auth_token is not None:
@@ -28525,8 +28589,6 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
             result['PushGatewayInterUrl'] = self.push_gateway_inter_url
         if self.push_gateway_intra_url is not None:
             result['PushGatewayIntraUrl'] = self.push_gateway_intra_url
-        if self.read_only is not None:
-            result['ReadOnly'] = self.read_only
         if self.region_id is not None:
             result['RegionId'] = self.region_id
         if self.remote_read_inter_url is not None:
@@ -28561,6 +28623,8 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessType') is not None:
+            self.access_type = m.get('AccessType')
         if m.get('ArchiveDuration') is not None:
             self.archive_duration = m.get('ArchiveDuration')
         if m.get('AuthToken') is not None:
@@ -28583,8 +28647,6 @@ class GetPrometheusInstanceResponseBodyData(TeaModel):
             self.push_gateway_inter_url = m.get('PushGatewayInterUrl')
         if m.get('PushGatewayIntraUrl') is not None:
             self.push_gateway_intra_url = m.get('PushGatewayIntraUrl')
-        if m.get('ReadOnly') is not None:
-            self.read_only = m.get('ReadOnly')
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
         if m.get('RemoteReadInterUrl') is not None:
@@ -36253,8 +36315,10 @@ class GetTraceAppResponseBodyTraceApp(TeaModel):
         self,
         app_id: int = None,
         app_name: str = None,
+        cluster_id: str = None,
         create_time: int = None,
         labels: List[str] = None,
+        language: str = None,
         pid: str = None,
         region_id: str = None,
         resource_group_id: str = None,
@@ -36269,10 +36333,12 @@ class GetTraceAppResponseBodyTraceApp(TeaModel):
         self.app_id = app_id
         # The name of the application.
         self.app_name = app_name
+        self.cluster_id = cluster_id
         # The timestamp generated when the task was created.
         self.create_time = create_time
         # The aliases of the application.
         self.labels = labels
+        self.language = language
         # The process identifier (PID) of the application.
         self.pid = pid
         # The region ID.
@@ -36314,10 +36380,14 @@ class GetTraceAppResponseBodyTraceApp(TeaModel):
             result['AppId'] = self.app_id
         if self.app_name is not None:
             result['AppName'] = self.app_name
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
         if self.labels is not None:
             result['Labels'] = self.labels
+        if self.language is not None:
+            result['Language'] = self.language
         if self.pid is not None:
             result['Pid'] = self.pid
         if self.region_id is not None:
@@ -36346,10 +36416,14 @@ class GetTraceAppResponseBodyTraceApp(TeaModel):
             self.app_id = m.get('AppId')
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
         if m.get('Labels') is not None:
             self.labels = m.get('Labels')
+        if m.get('Language') is not None:
+            self.language = m.get('Language')
         if m.get('Pid') is not None:
             self.pid = m.get('Pid')
         if m.get('RegionId') is not None:
@@ -52663,9 +52737,11 @@ class RemoveAliClusterIdsFromPrometheusGlobalViewResponseBody(TeaModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The HTTP status code. The status code 200 indicates that the request was successful.
         self.code = code
         # The returned struct.
         self.data = data
+        # The message returned.
         self.message = message
         # The request ID. You can use the ID to query logs and troubleshoot issues.
         self.request_id = request_id

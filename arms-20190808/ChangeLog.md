@@ -1,3 +1,11 @@
+2024-05-30 Version: 4.10.4
+- Update API CreateEnvironment: add param GrafanaWorkspaceId.
+- Update API DescribeEnvironment: update response param.
+- Update API GetAlertRules: update response param.
+- Update API GetPrometheusInstance: update response param.
+- Update API GetTraceApp: update response param.
+
+
 2024-05-27 Version: 4.10.3
 - Update API CreateOrUpdateSilencePolicy: add param State.
 - Update API CreateOrUpdateSilencePolicy: update response param.

@@ -3067,6 +3067,8 @@ class Client(OpenApiClient):
             query['EnvironmentType'] = request.environment_type
         if not UtilClient.is_unset(request.fee_package):
             query['FeePackage'] = request.fee_package
+        if not UtilClient.is_unset(request.grafana_workspace_id):
+            query['GrafanaWorkspaceId'] = request.grafana_workspace_id
         if not UtilClient.is_unset(request.managed_type):
             query['ManagedType'] = request.managed_type
         if not UtilClient.is_unset(request.prometheus_instance_id):
@@ -3122,6 +3124,8 @@ class Client(OpenApiClient):
             query['EnvironmentType'] = request.environment_type
         if not UtilClient.is_unset(request.fee_package):
             query['FeePackage'] = request.fee_package
+        if not UtilClient.is_unset(request.grafana_workspace_id):
+            query['GrafanaWorkspaceId'] = request.grafana_workspace_id
         if not UtilClient.is_unset(request.managed_type):
             query['ManagedType'] = request.managed_type
         if not UtilClient.is_unset(request.prometheus_instance_id):
@@ -21387,7 +21391,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.RemoveAliClusterIdsFromPrometheusGlobalViewResponse:
         """
-        @summary Removes data sources from a global aggregation instance in Prometheus Service.
+        @summary Removes data sources from a global aggregation instance.
         
         @param request: RemoveAliClusterIdsFromPrometheusGlobalViewRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21428,7 +21432,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> arms20190808_models.RemoveAliClusterIdsFromPrometheusGlobalViewResponse:
         """
-        @summary Removes data sources from a global aggregation instance in Prometheus Service.
+        @summary Removes data sources from a global aggregation instance.
         
         @param request: RemoveAliClusterIdsFromPrometheusGlobalViewRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -21468,7 +21472,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.RemoveAliClusterIdsFromPrometheusGlobalViewRequest,
     ) -> arms20190808_models.RemoveAliClusterIdsFromPrometheusGlobalViewResponse:
         """
-        @summary Removes data sources from a global aggregation instance in Prometheus Service.
+        @summary Removes data sources from a global aggregation instance.
         
         @param request: RemoveAliClusterIdsFromPrometheusGlobalViewRequest
         @return: RemoveAliClusterIdsFromPrometheusGlobalViewResponse
@@ -21481,7 +21485,7 @@ class Client(OpenApiClient):
         request: arms20190808_models.RemoveAliClusterIdsFromPrometheusGlobalViewRequest,
     ) -> arms20190808_models.RemoveAliClusterIdsFromPrometheusGlobalViewResponse:
         """
-        @summary Removes data sources from a global aggregation instance in Prometheus Service.
+        @summary Removes data sources from a global aggregation instance.
         
         @param request: RemoveAliClusterIdsFromPrometheusGlobalViewRequest
         @return: RemoveAliClusterIdsFromPrometheusGlobalViewResponse
