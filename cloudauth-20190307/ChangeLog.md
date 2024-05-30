@@ -1,3 +1,10 @@
+2024-05-30 Version: 2.6.1
+- Update API CompareFaceVerify: update param SourceFaceContrastPicture.
+- Update API CompareFaceVerify: update param TargetFaceContrastPicture.
+- Update API CredentialVerify: add param MerchantId.
+- Update API CredentialVerify: update response param.
+
+
 2024-04-26 Version: 2.6.0
 - Support API CredentialVerify.
 

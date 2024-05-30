@@ -1320,11 +1320,14 @@ class CreateVerifySettingRequest(TeaModel):
         result_step: bool = None,
         solution: str = None,
     ):
+        # This parameter is required.
         self.biz_name = biz_name
+        # This parameter is required.
         self.biz_type = biz_type
         self.guide_step = guide_step
         self.privacy_step = privacy_step
         self.result_step = result_step
+        # This parameter is required.
         self.solution = solution
 
     def validate(self):
@@ -1470,6 +1473,7 @@ class CredentialVerifyRequest(TeaModel):
         image_url: str = None,
         is_check: str = None,
         is_ocr: str = None,
+        merchant_id: str = None,
         user_name: str = None,
     ):
         self.cert_num = cert_num
@@ -1480,6 +1484,7 @@ class CredentialVerifyRequest(TeaModel):
         self.image_url = image_url
         self.is_check = is_check
         self.is_ocr = is_ocr
+        self.merchant_id = merchant_id
         self.user_name = user_name
 
     def validate(self):
@@ -1507,6 +1512,8 @@ class CredentialVerifyRequest(TeaModel):
             result['IsCheck'] = self.is_check
         if self.is_ocr is not None:
             result['IsOCR'] = self.is_ocr
+        if self.merchant_id is not None:
+            result['MerchantId'] = self.merchant_id
         if self.user_name is not None:
             result['UserName'] = self.user_name
         return result
@@ -1529,6 +1536,8 @@ class CredentialVerifyRequest(TeaModel):
             self.is_check = m.get('IsCheck')
         if m.get('IsOCR') is not None:
             self.is_ocr = m.get('IsOCR')
+        if m.get('MerchantId') is not None:
+            self.merchant_id = m.get('MerchantId')
         if m.get('UserName') is not None:
             self.user_name = m.get('UserName')
         return self
@@ -1537,6 +1546,7 @@ class CredentialVerifyRequest(TeaModel):
 class CredentialVerifyResponseBodyResultObject(TeaModel):
     def __init__(
         self,
+        material_info: str = None,
         ocr_info: str = None,
         result: str = None,
         risk_score: Dict[str, str] = None,
@@ -1544,6 +1554,7 @@ class CredentialVerifyResponseBodyResultObject(TeaModel):
         verify_detail: str = None,
         verify_result: str = None,
     ):
+        self.material_info = material_info
         self.ocr_info = ocr_info
         self.result = result
         self.risk_score = risk_score
@@ -1560,6 +1571,8 @@ class CredentialVerifyResponseBodyResultObject(TeaModel):
             return _map
 
         result = dict()
+        if self.material_info is not None:
+            result['MaterialInfo'] = self.material_info
         if self.ocr_info is not None:
             result['OcrInfo'] = self.ocr_info
         if self.result is not None:
@@ -1576,6 +1589,8 @@ class CredentialVerifyResponseBodyResultObject(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('MaterialInfo') is not None:
+            self.material_info = m.get('MaterialInfo')
         if m.get('OcrInfo') is not None:
             self.ocr_info = m.get('OcrInfo')
         if m.get('Result') is not None:
@@ -2505,11 +2520,16 @@ class DescribeSmartStatisticsPageListRequest(TeaModel):
         service_code: str = None,
         start_date: str = None,
     ):
+        # This parameter is required.
         self.current_page = current_page
+        # This parameter is required.
         self.end_date = end_date
+        # This parameter is required.
         self.page_size = page_size
+        # This parameter is required.
         self.scene_id = scene_id
         self.service_code = service_code
+        # This parameter is required.
         self.start_date = start_date
 
     def validate(self):
@@ -2727,7 +2747,9 @@ class DescribeVerifyResultRequest(TeaModel):
         biz_id: str = None,
         biz_type: str = None,
     ):
+        # This parameter is required.
         self.biz_id = biz_id
+        # This parameter is required.
         self.biz_type = biz_type
 
     def validate(self):
@@ -3011,6 +3033,7 @@ class DescribeVerifySDKRequest(TeaModel):
         self,
         task_id: str = None,
     ):
+        # This parameter is required.
         self.task_id = task_id
 
     def validate(self):
@@ -3126,7 +3149,9 @@ class DescribeVerifyTokenRequest(TeaModel):
         user_phone_number: str = None,
         user_regist_time: int = None,
     ):
+        # This parameter is required.
         self.biz_id = biz_id
+        # This parameter is required.
         self.biz_type = biz_type
         self.callback_seed = callback_seed
         self.callback_url = callback_url
@@ -3376,6 +3401,7 @@ class DetectFaceAttributesRequest(TeaModel):
         material_value: str = None,
     ):
         self.biz_type = biz_type
+        # This parameter is required.
         self.material_value = material_value
 
     def validate(self):
@@ -5414,6 +5440,7 @@ class ModifyDeviceInfoRequest(TeaModel):
         user_device_id: str = None,
     ):
         self.biz_type = biz_type
+        # This parameter is required.
         self.device_id = device_id
         self.duration = duration
         self.expired_day = expired_day
@@ -5565,12 +5592,17 @@ class VerifyMaterialRequest(TeaModel):
         name: str = None,
         user_id: str = None,
     ):
+        # This parameter is required.
         self.biz_id = biz_id
+        # This parameter is required.
         self.biz_type = biz_type
+        # This parameter is required.
         self.face_image_url = face_image_url
         self.id_card_back_image_url = id_card_back_image_url
         self.id_card_front_image_url = id_card_front_image_url
+        # This parameter is required.
         self.id_card_number = id_card_number
+        # This parameter is required.
         self.name = name
         self.user_id = user_id
 
