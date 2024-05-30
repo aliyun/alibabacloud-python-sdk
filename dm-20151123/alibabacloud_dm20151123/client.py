@@ -2741,6 +2741,80 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         return await self.get_track_list_by_mail_from_and_tag_name_with_options_async(request, runtime)
 
+    def get_user_with_options(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.GetUserResponse:
+        """
+        @summary 获取账号详情
+        
+        @param request: GetUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetUser',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.GetUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_user_with_options_async(
+        self,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.GetUserResponse:
+        """
+        @summary 获取账号详情
+        
+        @param request: GetUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserResponse
+        """
+        req = open_api_models.OpenApiRequest()
+        params = open_api_models.Params(
+            action='GetUser',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='GET',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.GetUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_user(self) -> dm_20151123_models.GetUserResponse:
+        """
+        @summary 获取账号详情
+        
+        @return: GetUserResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.get_user_with_options(runtime)
+
+    async def get_user_async(self) -> dm_20151123_models.GetUserResponse:
+        """
+        @summary 获取账号详情
+        
+        @return: GetUserResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.get_user_with_options_async(runtime)
+
     def list_user_suppression_with_options(
         self,
         request: dm_20151123_models.ListUserSuppressionRequest,
@@ -5020,3 +5094,107 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.update_ip_protection_with_options_async(request, runtime)
+
+    def update_user_with_options(
+        self,
+        tmp_req: dm_20151123_models.UpdateUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.UpdateUserResponse:
+        """
+        @summary 更新帐号信息
+        
+        @param tmp_req: UpdateUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUserResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dm_20151123_models.UpdateUserShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.user):
+            request.user_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user, 'User', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.user_shrink):
+            body['User'] = request.user_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateUser',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.UpdateUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_user_with_options_async(
+        self,
+        tmp_req: dm_20151123_models.UpdateUserRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> dm_20151123_models.UpdateUserResponse:
+        """
+        @summary 更新帐号信息
+        
+        @param tmp_req: UpdateUserRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateUserResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = dm_20151123_models.UpdateUserShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.user):
+            request.user_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.user, 'User', 'json')
+        body = {}
+        if not UtilClient.is_unset(request.user_shrink):
+            body['User'] = request.user_shrink
+        req = open_api_models.OpenApiRequest(
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='UpdateUser',
+            version='2015-11-23',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            dm_20151123_models.UpdateUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_user(
+        self,
+        request: dm_20151123_models.UpdateUserRequest,
+    ) -> dm_20151123_models.UpdateUserResponse:
+        """
+        @summary 更新帐号信息
+        
+        @param request: UpdateUserRequest
+        @return: UpdateUserResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.update_user_with_options(request, runtime)
+
+    async def update_user_async(
+        self,
+        request: dm_20151123_models.UpdateUserRequest,
+    ) -> dm_20151123_models.UpdateUserResponse:
+        """
+        @summary 更新帐号信息
+        
+        @param request: UpdateUserRequest
+        @return: UpdateUserResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.update_user_with_options_async(request, runtime)

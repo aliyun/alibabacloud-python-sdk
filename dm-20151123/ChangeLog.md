@@ -1,3 +1,8 @@
+2024-05-30 Version: 1.2.0
+- Support API GetUser.
+- Support API UpdateUser.
+
+
 2024-05-20 Version: 1.1.2
 - Generated python 2015-11-23 for Dm.
 
