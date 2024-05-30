@@ -1,3 +1,13 @@
+2024-05-30 Version: 2.29.4
+- Update API DescribeImageListWithBaselineName: update response param.
+- Update API DescribeImageSensitiveFileList: update response param.
+- Update API DescribeLogMeta: add param ResourceDirectoryAccountId.
+- Update API DescribeSecureSuggestion: update response param.
+- Update API GetLogMeta: add param ResourceDirectoryAccountId.
+- Update API ModifyLogMetaStatus: add param ResourceDirectoryAccountId.
+- Update API ModifyOpenLogShipper: add param ResourceDirectoryAccountId.
+
+
 2024-05-13 Version: 2.29.3
 - Update API DescribeSuspEvents: add param StrictMode.
 
