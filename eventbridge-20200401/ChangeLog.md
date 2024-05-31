@@ -1,3 +1,10 @@
+2024-05-31 Version: 4.1.1
+- Update API CreateEventStreaming: update param Source.
+- Update API GetEventStreaming: update response param.
+- Update API ListEventStreamings: update response param.
+- Update API UpdateEventStreaming: update param Source.
+
+
 2024-05-11 Version: 4.1.0
 - Support API EventCenterCheckEnabledOnDefaultBus.
 - Support API EventCenterDisableOnDefaultBus.

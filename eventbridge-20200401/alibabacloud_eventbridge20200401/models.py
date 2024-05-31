@@ -5655,6 +5655,105 @@ class CreateEventStreamingRequestSink(TeaModel):
         return self
 
 
+class CreateEventStreamingRequestSourceSourceApacheKafkaParameters(TeaModel):
+    def __init__(
+        self,
+        bootstraps: str = None,
+        consumer_group: str = None,
+        network_type: str = None,
+        offset_reset: str = None,
+        sasl_mechanism: str = None,
+        sasl_password: str = None,
+        sasl_user: str = None,
+        security_group_id: str = None,
+        security_protocol: str = None,
+        topic: str = None,
+        v_switch_ids: str = None,
+        value_data_type: str = None,
+        vpc_id: str = None,
+    ):
+        self.bootstraps = bootstraps
+        self.consumer_group = consumer_group
+        self.network_type = network_type
+        self.offset_reset = offset_reset
+        self.sasl_mechanism = sasl_mechanism
+        self.sasl_password = sasl_password
+        self.sasl_user = sasl_user
+        self.security_group_id = security_group_id
+        self.security_protocol = security_protocol
+        self.topic = topic
+        self.v_switch_ids = v_switch_ids
+        self.value_data_type = value_data_type
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bootstraps is not None:
+            result['Bootstraps'] = self.bootstraps
+        if self.consumer_group is not None:
+            result['ConsumerGroup'] = self.consumer_group
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
+        if self.offset_reset is not None:
+            result['OffsetReset'] = self.offset_reset
+        if self.sasl_mechanism is not None:
+            result['SaslMechanism'] = self.sasl_mechanism
+        if self.sasl_password is not None:
+            result['SaslPassword'] = self.sasl_password
+        if self.sasl_user is not None:
+            result['SaslUser'] = self.sasl_user
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.security_protocol is not None:
+            result['SecurityProtocol'] = self.security_protocol
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        if self.value_data_type is not None:
+            result['ValueDataType'] = self.value_data_type
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bootstraps') is not None:
+            self.bootstraps = m.get('Bootstraps')
+        if m.get('ConsumerGroup') is not None:
+            self.consumer_group = m.get('ConsumerGroup')
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
+        if m.get('OffsetReset') is not None:
+            self.offset_reset = m.get('OffsetReset')
+        if m.get('SaslMechanism') is not None:
+            self.sasl_mechanism = m.get('SaslMechanism')
+        if m.get('SaslPassword') is not None:
+            self.sasl_password = m.get('SaslPassword')
+        if m.get('SaslUser') is not None:
+            self.sasl_user = m.get('SaslUser')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('SecurityProtocol') is not None:
+            self.security_protocol = m.get('SecurityProtocol')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        if m.get('ValueDataType') is not None:
+            self.value_data_type = m.get('ValueDataType')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
 class CreateEventStreamingRequestSourceSourceDTSParameters(TeaModel):
     def __init__(
         self,
@@ -6006,6 +6105,7 @@ class CreateEventStreamingRequestSourceSourceRocketMQParameters(TeaModel):
     def __init__(
         self,
         auth_type: str = None,
+        body_data_type: str = None,
         filter_sql: str = None,
         filter_type: str = None,
         group_id: str = None,
@@ -6030,6 +6130,7 @@ class CreateEventStreamingRequestSourceSourceRocketMQParameters(TeaModel):
     ):
         # The authentication method.
         self.auth_type = auth_type
+        self.body_data_type = body_data_type
         # The SQL statement that you want to use to filter messages.
         self.filter_sql = filter_sql
         # The method that you want to use to filter messages.
@@ -6093,6 +6194,8 @@ class CreateEventStreamingRequestSourceSourceRocketMQParameters(TeaModel):
         result = dict()
         if self.auth_type is not None:
             result['AuthType'] = self.auth_type
+        if self.body_data_type is not None:
+            result['BodyDataType'] = self.body_data_type
         if self.filter_sql is not None:
             result['FilterSql'] = self.filter_sql
         if self.filter_type is not None:
@@ -6141,6 +6244,8 @@ class CreateEventStreamingRequestSourceSourceRocketMQParameters(TeaModel):
         m = m or dict()
         if m.get('AuthType') is not None:
             self.auth_type = m.get('AuthType')
+        if m.get('BodyDataType') is not None:
+            self.body_data_type = m.get('BodyDataType')
         if m.get('FilterSql') is not None:
             self.filter_sql = m.get('FilterSql')
         if m.get('FilterType') is not None:
@@ -6238,6 +6343,7 @@ class CreateEventStreamingRequestSourceSourceSLSParameters(TeaModel):
 class CreateEventStreamingRequestSource(TeaModel):
     def __init__(
         self,
+        source_apache_kafka_parameters: CreateEventStreamingRequestSourceSourceApacheKafkaParameters = None,
         source_dtsparameters: CreateEventStreamingRequestSourceSourceDTSParameters = None,
         source_kafka_parameters: CreateEventStreamingRequestSourceSourceKafkaParameters = None,
         source_mnsparameters: CreateEventStreamingRequestSourceSourceMNSParameters = None,
@@ -6247,6 +6353,7 @@ class CreateEventStreamingRequestSource(TeaModel):
         source_rocket_mqparameters: CreateEventStreamingRequestSourceSourceRocketMQParameters = None,
         source_slsparameters: CreateEventStreamingRequestSourceSourceSLSParameters = None,
     ):
+        self.source_apache_kafka_parameters = source_apache_kafka_parameters
         # The parameters that are configured if you specify Data Transmission Service (DTS) as the event source.
         self.source_dtsparameters = source_dtsparameters
         # The parameters that are configured if you specify ApsaraMQ for Kafka as the event source.
@@ -6265,6 +6372,8 @@ class CreateEventStreamingRequestSource(TeaModel):
         self.source_slsparameters = source_slsparameters
 
     def validate(self):
+        if self.source_apache_kafka_parameters:
+            self.source_apache_kafka_parameters.validate()
         if self.source_dtsparameters:
             self.source_dtsparameters.validate()
         if self.source_kafka_parameters:
@@ -6288,6 +6397,8 @@ class CreateEventStreamingRequestSource(TeaModel):
             return _map
 
         result = dict()
+        if self.source_apache_kafka_parameters is not None:
+            result['SourceApacheKafkaParameters'] = self.source_apache_kafka_parameters.to_map()
         if self.source_dtsparameters is not None:
             result['SourceDTSParameters'] = self.source_dtsparameters.to_map()
         if self.source_kafka_parameters is not None:
@@ -6308,6 +6419,9 @@ class CreateEventStreamingRequestSource(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('SourceApacheKafkaParameters') is not None:
+            temp_model = CreateEventStreamingRequestSourceSourceApacheKafkaParameters()
+            self.source_apache_kafka_parameters = temp_model.from_map(m['SourceApacheKafkaParameters'])
         if m.get('SourceDTSParameters') is not None:
             temp_model = CreateEventStreamingRequestSourceSourceDTSParameters()
             self.source_dtsparameters = temp_model.from_map(m['SourceDTSParameters'])
@@ -12873,6 +12987,105 @@ class GetEventStreamingResponseBodyDataSink(TeaModel):
         return self
 
 
+class GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters(TeaModel):
+    def __init__(
+        self,
+        bootstraps: str = None,
+        consumer_group: str = None,
+        network_type: str = None,
+        offset_reset: str = None,
+        sasl_mechanism: str = None,
+        sasl_password: str = None,
+        sasl_user: str = None,
+        security_group_id: str = None,
+        security_protocol: str = None,
+        topic: str = None,
+        v_switch_ids: str = None,
+        value_data_type: str = None,
+        vpc_id: str = None,
+    ):
+        self.bootstraps = bootstraps
+        self.consumer_group = consumer_group
+        self.network_type = network_type
+        self.offset_reset = offset_reset
+        self.sasl_mechanism = sasl_mechanism
+        self.sasl_password = sasl_password
+        self.sasl_user = sasl_user
+        self.security_group_id = security_group_id
+        self.security_protocol = security_protocol
+        self.topic = topic
+        self.v_switch_ids = v_switch_ids
+        self.value_data_type = value_data_type
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bootstraps is not None:
+            result['Bootstraps'] = self.bootstraps
+        if self.consumer_group is not None:
+            result['ConsumerGroup'] = self.consumer_group
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
+        if self.offset_reset is not None:
+            result['OffsetReset'] = self.offset_reset
+        if self.sasl_mechanism is not None:
+            result['SaslMechanism'] = self.sasl_mechanism
+        if self.sasl_password is not None:
+            result['SaslPassword'] = self.sasl_password
+        if self.sasl_user is not None:
+            result['SaslUser'] = self.sasl_user
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.security_protocol is not None:
+            result['SecurityProtocol'] = self.security_protocol
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        if self.value_data_type is not None:
+            result['ValueDataType'] = self.value_data_type
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bootstraps') is not None:
+            self.bootstraps = m.get('Bootstraps')
+        if m.get('ConsumerGroup') is not None:
+            self.consumer_group = m.get('ConsumerGroup')
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
+        if m.get('OffsetReset') is not None:
+            self.offset_reset = m.get('OffsetReset')
+        if m.get('SaslMechanism') is not None:
+            self.sasl_mechanism = m.get('SaslMechanism')
+        if m.get('SaslPassword') is not None:
+            self.sasl_password = m.get('SaslPassword')
+        if m.get('SaslUser') is not None:
+            self.sasl_user = m.get('SaslUser')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('SecurityProtocol') is not None:
+            self.security_protocol = m.get('SecurityProtocol')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        if m.get('ValueDataType') is not None:
+            self.value_data_type = m.get('ValueDataType')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
 class GetEventStreamingResponseBodyDataSourceSourceDTSParameters(TeaModel):
     def __init__(
         self,
@@ -13216,6 +13429,7 @@ class GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters(TeaModel):
     def __init__(
         self,
         auth_type: str = None,
+        body_data_type: str = None,
         group_id: str = None,
         instance_endpoint: str = None,
         instance_id: str = None,
@@ -13233,6 +13447,7 @@ class GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters(TeaModel):
         topic: str = None,
     ):
         self.auth_type = auth_type
+        self.body_data_type = body_data_type
         # The ID of the consumer group in the Message Queue for Apache RocketMQ instance.
         self.group_id = group_id
         self.instance_endpoint = instance_endpoint
@@ -13267,6 +13482,8 @@ class GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters(TeaModel):
         result = dict()
         if self.auth_type is not None:
             result['AuthType'] = self.auth_type
+        if self.body_data_type is not None:
+            result['BodyDataType'] = self.body_data_type
         if self.group_id is not None:
             result['GroupID'] = self.group_id
         if self.instance_endpoint is not None:
@@ -13303,6 +13520,8 @@ class GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters(TeaModel):
         m = m or dict()
         if m.get('AuthType') is not None:
             self.auth_type = m.get('AuthType')
+        if m.get('BodyDataType') is not None:
+            self.body_data_type = m.get('BodyDataType')
         if m.get('GroupID') is not None:
             self.group_id = m.get('GroupID')
         if m.get('InstanceEndpoint') is not None:
@@ -13395,6 +13614,7 @@ class GetEventStreamingResponseBodyDataSourceSourceSLSParameters(TeaModel):
 class GetEventStreamingResponseBodyDataSource(TeaModel):
     def __init__(
         self,
+        source_apache_kafka_parameters: GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters = None,
         source_dtsparameters: GetEventStreamingResponseBodyDataSourceSourceDTSParameters = None,
         source_kafka_parameters: GetEventStreamingResponseBodyDataSourceSourceKafkaParameters = None,
         source_mnsparameters: GetEventStreamingResponseBodyDataSourceSourceMNSParameters = None,
@@ -13404,6 +13624,7 @@ class GetEventStreamingResponseBodyDataSource(TeaModel):
         source_rocket_mqparameters: GetEventStreamingResponseBodyDataSourceSourceRocketMQParameters = None,
         source_slsparameters: GetEventStreamingResponseBodyDataSourceSourceSLSParameters = None,
     ):
+        self.source_apache_kafka_parameters = source_apache_kafka_parameters
         # The parameters that are returned if the event source is Data Transmission Service (DTS).
         self.source_dtsparameters = source_dtsparameters
         # The parameters that are returned if ApsaraMQ for Kafka is specified as the event source.
@@ -13421,6 +13642,8 @@ class GetEventStreamingResponseBodyDataSource(TeaModel):
         self.source_slsparameters = source_slsparameters
 
     def validate(self):
+        if self.source_apache_kafka_parameters:
+            self.source_apache_kafka_parameters.validate()
         if self.source_dtsparameters:
             self.source_dtsparameters.validate()
         if self.source_kafka_parameters:
@@ -13444,6 +13667,8 @@ class GetEventStreamingResponseBodyDataSource(TeaModel):
             return _map
 
         result = dict()
+        if self.source_apache_kafka_parameters is not None:
+            result['SourceApacheKafkaParameters'] = self.source_apache_kafka_parameters.to_map()
         if self.source_dtsparameters is not None:
             result['SourceDTSParameters'] = self.source_dtsparameters.to_map()
         if self.source_kafka_parameters is not None:
@@ -13464,6 +13689,9 @@ class GetEventStreamingResponseBodyDataSource(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('SourceApacheKafkaParameters') is not None:
+            temp_model = GetEventStreamingResponseBodyDataSourceSourceApacheKafkaParameters()
+            self.source_apache_kafka_parameters = temp_model.from_map(m['SourceApacheKafkaParameters'])
         if m.get('SourceDTSParameters') is not None:
             temp_model = GetEventStreamingResponseBodyDataSourceSourceDTSParameters()
             self.source_dtsparameters = temp_model.from_map(m['SourceDTSParameters'])
@@ -18111,6 +18339,105 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSink(TeaModel):
         return self
 
 
+class ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters(TeaModel):
+    def __init__(
+        self,
+        bootstraps: str = None,
+        consumer_group: str = None,
+        network_type: str = None,
+        offset_reset: str = None,
+        sasl_mechanism: str = None,
+        sasl_password: str = None,
+        sasl_user: str = None,
+        security_group_id: str = None,
+        security_protocol: str = None,
+        topic: str = None,
+        v_switch_ids: str = None,
+        value_data_type: str = None,
+        vpc_id: str = None,
+    ):
+        self.bootstraps = bootstraps
+        self.consumer_group = consumer_group
+        self.network_type = network_type
+        self.offset_reset = offset_reset
+        self.sasl_mechanism = sasl_mechanism
+        self.sasl_password = sasl_password
+        self.sasl_user = sasl_user
+        self.security_group_id = security_group_id
+        self.security_protocol = security_protocol
+        self.topic = topic
+        self.v_switch_ids = v_switch_ids
+        self.value_data_type = value_data_type
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bootstraps is not None:
+            result['Bootstraps'] = self.bootstraps
+        if self.consumer_group is not None:
+            result['ConsumerGroup'] = self.consumer_group
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
+        if self.offset_reset is not None:
+            result['OffsetReset'] = self.offset_reset
+        if self.sasl_mechanism is not None:
+            result['SaslMechanism'] = self.sasl_mechanism
+        if self.sasl_password is not None:
+            result['SaslPassword'] = self.sasl_password
+        if self.sasl_user is not None:
+            result['SaslUser'] = self.sasl_user
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.security_protocol is not None:
+            result['SecurityProtocol'] = self.security_protocol
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        if self.value_data_type is not None:
+            result['ValueDataType'] = self.value_data_type
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bootstraps') is not None:
+            self.bootstraps = m.get('Bootstraps')
+        if m.get('ConsumerGroup') is not None:
+            self.consumer_group = m.get('ConsumerGroup')
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
+        if m.get('OffsetReset') is not None:
+            self.offset_reset = m.get('OffsetReset')
+        if m.get('SaslMechanism') is not None:
+            self.sasl_mechanism = m.get('SaslMechanism')
+        if m.get('SaslPassword') is not None:
+            self.sasl_password = m.get('SaslPassword')
+        if m.get('SaslUser') is not None:
+            self.sasl_user = m.get('SaslUser')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('SecurityProtocol') is not None:
+            self.security_protocol = m.get('SecurityProtocol')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        if m.get('ValueDataType') is not None:
+            self.value_data_type = m.get('ValueDataType')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
 class ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceDTSParameters(TeaModel):
     def __init__(
         self,
@@ -18447,6 +18774,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQPara
     def __init__(
         self,
         auth_type: str = None,
+        body_data_type: str = None,
         group_id: str = None,
         instance_endpoint: str = None,
         instance_id: str = None,
@@ -18465,6 +18793,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQPara
     ):
         # The authentication method.
         self.auth_type = auth_type
+        self.body_data_type = body_data_type
         # The ID of the group on the Message Queue for Apache RocketMQ instance.
         self.group_id = group_id
         # The instance endpoint.
@@ -18510,6 +18839,8 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQPara
         result = dict()
         if self.auth_type is not None:
             result['AuthType'] = self.auth_type
+        if self.body_data_type is not None:
+            result['BodyDataType'] = self.body_data_type
         if self.group_id is not None:
             result['GroupID'] = self.group_id
         if self.instance_endpoint is not None:
@@ -18546,6 +18877,8 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQPara
         m = m or dict()
         if m.get('AuthType') is not None:
             self.auth_type = m.get('AuthType')
+        if m.get('BodyDataType') is not None:
+            self.body_data_type = m.get('BodyDataType')
         if m.get('GroupID') is not None:
             self.group_id = m.get('GroupID')
         if m.get('InstanceEndpoint') is not None:
@@ -18638,6 +18971,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceSLSParameter
 class ListEventStreamingsResponseBodyDataEventStreamingsSource(TeaModel):
     def __init__(
         self,
+        source_apache_kafka_parameters: ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters = None,
         source_dtsparameters: ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceDTSParameters = None,
         source_kafka_parameters: ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceKafkaParameters = None,
         source_mnsparameters: ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMNSParameters = None,
@@ -18647,6 +18981,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSource(TeaModel):
         source_rocket_mqparameters: ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceRocketMQParameters = None,
         source_slsparameters: ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceSLSParameters = None,
     ):
+        self.source_apache_kafka_parameters = source_apache_kafka_parameters
         # The parameters that are returned if Data Transmission Service (DTS) is specified as the event source.
         self.source_dtsparameters = source_dtsparameters
         # The parameters that are returned if Message Queue for Apache Kafka is specified as the event source.
@@ -18664,6 +18999,8 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSource(TeaModel):
         self.source_slsparameters = source_slsparameters
 
     def validate(self):
+        if self.source_apache_kafka_parameters:
+            self.source_apache_kafka_parameters.validate()
         if self.source_dtsparameters:
             self.source_dtsparameters.validate()
         if self.source_kafka_parameters:
@@ -18687,6 +19024,8 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSource(TeaModel):
             return _map
 
         result = dict()
+        if self.source_apache_kafka_parameters is not None:
+            result['SourceApacheKafkaParameters'] = self.source_apache_kafka_parameters.to_map()
         if self.source_dtsparameters is not None:
             result['SourceDTSParameters'] = self.source_dtsparameters.to_map()
         if self.source_kafka_parameters is not None:
@@ -18707,6 +19046,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSource(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('SourceApacheKafkaParameters') is not None:
+            temp_model = ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceApacheKafkaParameters()
+            self.source_apache_kafka_parameters = temp_model.from_map(m['SourceApacheKafkaParameters'])
         if m.get('SourceDTSParameters') is not None:
             temp_model = ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceDTSParameters()
             self.source_dtsparameters = temp_model.from_map(m['SourceDTSParameters'])
@@ -27074,6 +27416,105 @@ class UpdateEventStreamingRequestSink(TeaModel):
         return self
 
 
+class UpdateEventStreamingRequestSourceSourceApacheKafkaParameters(TeaModel):
+    def __init__(
+        self,
+        bootstraps: str = None,
+        consumer_group: str = None,
+        network_type: str = None,
+        offset_reset: str = None,
+        sasl_mechanism: str = None,
+        sasl_password: str = None,
+        sasl_user: str = None,
+        security_group_id: str = None,
+        security_protocol: str = None,
+        topic: str = None,
+        v_switch_ids: str = None,
+        value_data_type: str = None,
+        vpc_id: str = None,
+    ):
+        self.bootstraps = bootstraps
+        self.consumer_group = consumer_group
+        self.network_type = network_type
+        self.offset_reset = offset_reset
+        self.sasl_mechanism = sasl_mechanism
+        self.sasl_password = sasl_password
+        self.sasl_user = sasl_user
+        self.security_group_id = security_group_id
+        self.security_protocol = security_protocol
+        self.topic = topic
+        self.v_switch_ids = v_switch_ids
+        self.value_data_type = value_data_type
+        self.vpc_id = vpc_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.bootstraps is not None:
+            result['Bootstraps'] = self.bootstraps
+        if self.consumer_group is not None:
+            result['ConsumerGroup'] = self.consumer_group
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
+        if self.offset_reset is not None:
+            result['OffsetReset'] = self.offset_reset
+        if self.sasl_mechanism is not None:
+            result['SaslMechanism'] = self.sasl_mechanism
+        if self.sasl_password is not None:
+            result['SaslPassword'] = self.sasl_password
+        if self.sasl_user is not None:
+            result['SaslUser'] = self.sasl_user
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+        if self.security_protocol is not None:
+            result['SecurityProtocol'] = self.security_protocol
+        if self.topic is not None:
+            result['Topic'] = self.topic
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+        if self.value_data_type is not None:
+            result['ValueDataType'] = self.value_data_type
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bootstraps') is not None:
+            self.bootstraps = m.get('Bootstraps')
+        if m.get('ConsumerGroup') is not None:
+            self.consumer_group = m.get('ConsumerGroup')
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
+        if m.get('OffsetReset') is not None:
+            self.offset_reset = m.get('OffsetReset')
+        if m.get('SaslMechanism') is not None:
+            self.sasl_mechanism = m.get('SaslMechanism')
+        if m.get('SaslPassword') is not None:
+            self.sasl_password = m.get('SaslPassword')
+        if m.get('SaslUser') is not None:
+            self.sasl_user = m.get('SaslUser')
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+        if m.get('SecurityProtocol') is not None:
+            self.security_protocol = m.get('SecurityProtocol')
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+        if m.get('ValueDataType') is not None:
+            self.value_data_type = m.get('ValueDataType')
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+        return self
+
+
 class UpdateEventStreamingRequestSourceSourceDTSParameters(TeaModel):
     def __init__(
         self,
@@ -27420,6 +27861,7 @@ class UpdateEventStreamingRequestSourceSourceRocketMQParameters(TeaModel):
     def __init__(
         self,
         auth_type: str = None,
+        body_data_type: str = None,
         group_id: str = None,
         instance_endpoint: str = None,
         instance_id: str = None,
@@ -27438,6 +27880,7 @@ class UpdateEventStreamingRequestSourceSourceRocketMQParameters(TeaModel):
     ):
         # The authentication method.
         self.auth_type = auth_type
+        self.body_data_type = body_data_type
         # The ID of the consumer group on the ApsaraMQ for RocketMQ instance.
         self.group_id = group_id
         # The endpoint that is used to access the ApsaraMQ for RocketMQ instance.
@@ -27488,6 +27931,8 @@ class UpdateEventStreamingRequestSourceSourceRocketMQParameters(TeaModel):
         result = dict()
         if self.auth_type is not None:
             result['AuthType'] = self.auth_type
+        if self.body_data_type is not None:
+            result['BodyDataType'] = self.body_data_type
         if self.group_id is not None:
             result['GroupID'] = self.group_id
         if self.instance_endpoint is not None:
@@ -27524,6 +27969,8 @@ class UpdateEventStreamingRequestSourceSourceRocketMQParameters(TeaModel):
         m = m or dict()
         if m.get('AuthType') is not None:
             self.auth_type = m.get('AuthType')
+        if m.get('BodyDataType') is not None:
+            self.body_data_type = m.get('BodyDataType')
         if m.get('GroupID') is not None:
             self.group_id = m.get('GroupID')
         if m.get('InstanceEndpoint') is not None:
@@ -27588,6 +28035,7 @@ class UpdateEventStreamingRequestSourceSourceSLSParameters(TeaModel):
 class UpdateEventStreamingRequestSource(TeaModel):
     def __init__(
         self,
+        source_apache_kafka_parameters: UpdateEventStreamingRequestSourceSourceApacheKafkaParameters = None,
         source_dtsparameters: UpdateEventStreamingRequestSourceSourceDTSParameters = None,
         source_kafka_parameters: UpdateEventStreamingRequestSourceSourceKafkaParameters = None,
         source_mnsparameters: UpdateEventStreamingRequestSourceSourceMNSParameters = None,
@@ -27597,6 +28045,7 @@ class UpdateEventStreamingRequestSource(TeaModel):
         source_rocket_mqparameters: UpdateEventStreamingRequestSourceSourceRocketMQParameters = None,
         source_slsparameters: UpdateEventStreamingRequestSourceSourceSLSParameters = None,
     ):
+        self.source_apache_kafka_parameters = source_apache_kafka_parameters
         # The parameters that are configured if you specify Data Transmission Service (DTS) as the event source.
         self.source_dtsparameters = source_dtsparameters
         # The parameters that are configured if you specify ApsaraMQ for Kafka as the event source.
@@ -27615,6 +28064,8 @@ class UpdateEventStreamingRequestSource(TeaModel):
         self.source_slsparameters = source_slsparameters
 
     def validate(self):
+        if self.source_apache_kafka_parameters:
+            self.source_apache_kafka_parameters.validate()
         if self.source_dtsparameters:
             self.source_dtsparameters.validate()
         if self.source_kafka_parameters:
@@ -27638,6 +28089,8 @@ class UpdateEventStreamingRequestSource(TeaModel):
             return _map
 
         result = dict()
+        if self.source_apache_kafka_parameters is not None:
+            result['SourceApacheKafkaParameters'] = self.source_apache_kafka_parameters.to_map()
         if self.source_dtsparameters is not None:
             result['SourceDTSParameters'] = self.source_dtsparameters.to_map()
         if self.source_kafka_parameters is not None:
@@ -27658,6 +28111,9 @@ class UpdateEventStreamingRequestSource(TeaModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('SourceApacheKafkaParameters') is not None:
+            temp_model = UpdateEventStreamingRequestSourceSourceApacheKafkaParameters()
+            self.source_apache_kafka_parameters = temp_model.from_map(m['SourceApacheKafkaParameters'])
         if m.get('SourceDTSParameters') is not None:
             temp_model = UpdateEventStreamingRequestSourceSourceDTSParameters()
             self.source_dtsparameters = temp_model.from_map(m['SourceDTSParameters'])
