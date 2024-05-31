@@ -269,6 +269,138 @@ class Client(OpenApiClient):
         headers = {}
         return await self.cancel_job_run_with_options_async(workspace_id, job_run_id, request, headers, runtime)
 
+    def create_sql_statement_with_options(
+        self,
+        workspace_id: str,
+        request: emr_serverless_spark_20230808_models.CreateSqlStatementRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.CreateSqlStatementResponse:
+        """
+        @summary 使用session运行SQL
+        
+        @param request: CreateSqlStatementRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSqlStatementResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.code_content):
+            body['codeContent'] = request.code_content
+        if not UtilClient.is_unset(request.default_catalog):
+            body['defaultCatalog'] = request.default_catalog
+        if not UtilClient.is_unset(request.default_database):
+            body['defaultDatabase'] = request.default_database
+        if not UtilClient.is_unset(request.limit):
+            body['limit'] = request.limit
+        if not UtilClient.is_unset(request.sql_compute_id):
+            body['sqlComputeId'] = request.sql_compute_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSqlStatement',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/interactive/v1/workspace/{OpenApiUtilClient.get_encode_param(workspace_id)}/statement',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.CreateSqlStatementResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_sql_statement_with_options_async(
+        self,
+        workspace_id: str,
+        request: emr_serverless_spark_20230808_models.CreateSqlStatementRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.CreateSqlStatementResponse:
+        """
+        @summary 使用session运行SQL
+        
+        @param request: CreateSqlStatementRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSqlStatementResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        body = {}
+        if not UtilClient.is_unset(request.code_content):
+            body['codeContent'] = request.code_content
+        if not UtilClient.is_unset(request.default_catalog):
+            body['defaultCatalog'] = request.default_catalog
+        if not UtilClient.is_unset(request.default_database):
+            body['defaultDatabase'] = request.default_database
+        if not UtilClient.is_unset(request.limit):
+            body['limit'] = request.limit
+        if not UtilClient.is_unset(request.sql_compute_id):
+            body['sqlComputeId'] = request.sql_compute_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query),
+            body=OpenApiUtilClient.parse_to_map(body)
+        )
+        params = open_api_models.Params(
+            action='CreateSqlStatement',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/interactive/v1/workspace/{OpenApiUtilClient.get_encode_param(workspace_id)}/statement',
+            method='PUT',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.CreateSqlStatementResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_sql_statement(
+        self,
+        workspace_id: str,
+        request: emr_serverless_spark_20230808_models.CreateSqlStatementRequest,
+    ) -> emr_serverless_spark_20230808_models.CreateSqlStatementResponse:
+        """
+        @summary 使用session运行SQL
+        
+        @param request: CreateSqlStatementRequest
+        @return: CreateSqlStatementResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.create_sql_statement_with_options(workspace_id, request, headers, runtime)
+
+    async def create_sql_statement_async(
+        self,
+        workspace_id: str,
+        request: emr_serverless_spark_20230808_models.CreateSqlStatementRequest,
+    ) -> emr_serverless_spark_20230808_models.CreateSqlStatementResponse:
+        """
+        @summary 使用session运行SQL
+        
+        @param request: CreateSqlStatementRequest
+        @return: CreateSqlStatementResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.create_sql_statement_with_options_async(workspace_id, request, headers, runtime)
+
     def get_job_run_with_options(
         self,
         workspace_id: str,
@@ -380,6 +512,118 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_job_run_with_options_async(workspace_id, job_run_id, request, headers, runtime)
+
+    def get_sql_statement_with_options(
+        self,
+        workspace_id: str,
+        statement_id: str,
+        request: emr_serverless_spark_20230808_models.GetSqlStatementRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.GetSqlStatementResponse:
+        """
+        @summary 获取Sql Statement状态
+        
+        @param request: GetSqlStatementRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSqlStatementResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSqlStatement',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/interactive/v1/workspace/{OpenApiUtilClient.get_encode_param(workspace_id)}/statement/{OpenApiUtilClient.get_encode_param(statement_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.GetSqlStatementResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_sql_statement_with_options_async(
+        self,
+        workspace_id: str,
+        statement_id: str,
+        request: emr_serverless_spark_20230808_models.GetSqlStatementRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.GetSqlStatementResponse:
+        """
+        @summary 获取Sql Statement状态
+        
+        @param request: GetSqlStatementRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSqlStatementResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='GetSqlStatement',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/interactive/v1/workspace/{OpenApiUtilClient.get_encode_param(workspace_id)}/statement/{OpenApiUtilClient.get_encode_param(statement_id)}',
+            method='GET',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.GetSqlStatementResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_sql_statement(
+        self,
+        workspace_id: str,
+        statement_id: str,
+        request: emr_serverless_spark_20230808_models.GetSqlStatementRequest,
+    ) -> emr_serverless_spark_20230808_models.GetSqlStatementResponse:
+        """
+        @summary 获取Sql Statement状态
+        
+        @param request: GetSqlStatementRequest
+        @return: GetSqlStatementResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.get_sql_statement_with_options(workspace_id, statement_id, request, headers, runtime)
+
+    async def get_sql_statement_async(
+        self,
+        workspace_id: str,
+        statement_id: str,
+        request: emr_serverless_spark_20230808_models.GetSqlStatementRequest,
+    ) -> emr_serverless_spark_20230808_models.GetSqlStatementResponse:
+        """
+        @summary 获取Sql Statement状态
+        
+        @param request: GetSqlStatementRequest
+        @return: GetSqlStatementResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.get_sql_statement_with_options_async(workspace_id, statement_id, request, headers, runtime)
 
     def grant_role_to_users_with_options(
         self,
@@ -528,6 +772,8 @@ class Client(OpenApiClient):
             query['creator'] = request.creator
         if not UtilClient.is_unset(request.end_time_shrink):
             query['endTime'] = request.end_time_shrink
+        if not UtilClient.is_unset(request.job_run_deployment_id):
+            query['jobRunDeploymentId'] = request.job_run_deployment_id
         if not UtilClient.is_unset(request.job_run_id):
             query['jobRunId'] = request.job_run_id
         if not UtilClient.is_unset(request.max_results):
@@ -597,6 +843,8 @@ class Client(OpenApiClient):
             query['creator'] = request.creator
         if not UtilClient.is_unset(request.end_time_shrink):
             query['endTime'] = request.end_time_shrink
+        if not UtilClient.is_unset(request.job_run_deployment_id):
+            query['jobRunDeploymentId'] = request.job_run_deployment_id
         if not UtilClient.is_unset(request.job_run_id):
             query['jobRunId'] = request.job_run_id
         if not UtilClient.is_unset(request.max_results):
@@ -1288,3 +1536,115 @@ class Client(OpenApiClient):
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.start_job_run_with_options_async(workspace_id, request, headers, runtime)
+
+    def terminate_sql_statement_with_options(
+        self,
+        workspace_id: str,
+        statement_id: str,
+        request: emr_serverless_spark_20230808_models.TerminateSqlStatementRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.TerminateSqlStatementResponse:
+        """
+        @summary 终止 session statement
+        
+        @param request: TerminateSqlStatementRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TerminateSqlStatementResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TerminateSqlStatement',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/interactive/v1/workspace/{OpenApiUtilClient.get_encode_param(workspace_id)}/statement/{OpenApiUtilClient.get_encode_param(statement_id)}/terminate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.TerminateSqlStatementResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def terminate_sql_statement_with_options_async(
+        self,
+        workspace_id: str,
+        statement_id: str,
+        request: emr_serverless_spark_20230808_models.TerminateSqlStatementRequest,
+        headers: Dict[str, str],
+        runtime: util_models.RuntimeOptions,
+    ) -> emr_serverless_spark_20230808_models.TerminateSqlStatementResponse:
+        """
+        @summary 终止 session statement
+        
+        @param request: TerminateSqlStatementRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TerminateSqlStatementResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_models.OpenApiRequest(
+            headers=headers,
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='TerminateSqlStatement',
+            version='2023-08-08',
+            protocol='HTTPS',
+            pathname=f'/api/interactive/v1/workspace/{OpenApiUtilClient.get_encode_param(workspace_id)}/statement/{OpenApiUtilClient.get_encode_param(statement_id)}/terminate',
+            method='POST',
+            auth_type='AK',
+            style='ROA',
+            req_body_type='json',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            emr_serverless_spark_20230808_models.TerminateSqlStatementResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def terminate_sql_statement(
+        self,
+        workspace_id: str,
+        statement_id: str,
+        request: emr_serverless_spark_20230808_models.TerminateSqlStatementRequest,
+    ) -> emr_serverless_spark_20230808_models.TerminateSqlStatementResponse:
+        """
+        @summary 终止 session statement
+        
+        @param request: TerminateSqlStatementRequest
+        @return: TerminateSqlStatementResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return self.terminate_sql_statement_with_options(workspace_id, statement_id, request, headers, runtime)
+
+    async def terminate_sql_statement_async(
+        self,
+        workspace_id: str,
+        statement_id: str,
+        request: emr_serverless_spark_20230808_models.TerminateSqlStatementRequest,
+    ) -> emr_serverless_spark_20230808_models.TerminateSqlStatementResponse:
+        """
+        @summary 终止 session statement
+        
+        @param request: TerminateSqlStatementRequest
+        @return: TerminateSqlStatementResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        headers = {}
+        return await self.terminate_sql_statement_with_options_async(workspace_id, statement_id, request, headers, runtime)

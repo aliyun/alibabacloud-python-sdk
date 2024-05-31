@@ -754,6 +754,7 @@ class Task(TeaModel):
         default_database: str = None,
         default_resource_queue_id: str = None,
         default_sql_compute_id: str = None,
+        deployment_id: str = None,
         extra_artifact_ids: List[str] = None,
         extra_spark_submit_params: str = None,
         files: List[str] = None,
@@ -761,6 +762,7 @@ class Task(TeaModel):
         gmt_modified: str = None,
         has_changed: bool = None,
         has_commited: bool = None,
+        is_streaming: bool = None,
         jars: List[str] = None,
         last_run_resource_queue_id: str = None,
         modifier: int = None,
@@ -775,6 +777,7 @@ class Task(TeaModel):
         spark_executor_memory: int = None,
         spark_log_level: str = None,
         spark_log_path: str = None,
+        spark_submit_clause: str = None,
         spark_version: str = None,
         tags: Dict[str, str] = None,
         type: str = None,
@@ -791,6 +794,7 @@ class Task(TeaModel):
         self.default_database = default_database
         self.default_resource_queue_id = default_resource_queue_id
         self.default_sql_compute_id = default_sql_compute_id
+        self.deployment_id = deployment_id
         self.extra_artifact_ids = extra_artifact_ids
         self.extra_spark_submit_params = extra_spark_submit_params
         self.files = files
@@ -801,6 +805,7 @@ class Task(TeaModel):
         self.has_changed = has_changed
         # This parameter is required.
         self.has_commited = has_commited
+        self.is_streaming = is_streaming
         self.jars = jars
         self.last_run_resource_queue_id = last_run_resource_queue_id
         # This parameter is required.
@@ -823,6 +828,7 @@ class Task(TeaModel):
         self.spark_log_level = spark_log_level
         # This parameter is required.
         self.spark_log_path = spark_log_path
+        self.spark_submit_clause = spark_submit_clause
         # This parameter is required.
         self.spark_version = spark_version
         self.tags = tags
@@ -861,6 +867,8 @@ class Task(TeaModel):
             result['defaultResourceQueueId'] = self.default_resource_queue_id
         if self.default_sql_compute_id is not None:
             result['defaultSqlComputeId'] = self.default_sql_compute_id
+        if self.deployment_id is not None:
+            result['deploymentId'] = self.deployment_id
         if self.extra_artifact_ids is not None:
             result['extraArtifactIds'] = self.extra_artifact_ids
         if self.extra_spark_submit_params is not None:
@@ -875,6 +883,8 @@ class Task(TeaModel):
             result['hasChanged'] = self.has_changed
         if self.has_commited is not None:
             result['hasCommited'] = self.has_commited
+        if self.is_streaming is not None:
+            result['isStreaming'] = self.is_streaming
         if self.jars is not None:
             result['jars'] = self.jars
         if self.last_run_resource_queue_id is not None:
@@ -905,6 +915,8 @@ class Task(TeaModel):
             result['sparkLogLevel'] = self.spark_log_level
         if self.spark_log_path is not None:
             result['sparkLogPath'] = self.spark_log_path
+        if self.spark_submit_clause is not None:
+            result['sparkSubmitClause'] = self.spark_submit_clause
         if self.spark_version is not None:
             result['sparkVersion'] = self.spark_version
         if self.tags is not None:
@@ -935,6 +947,8 @@ class Task(TeaModel):
             self.default_resource_queue_id = m.get('defaultResourceQueueId')
         if m.get('defaultSqlComputeId') is not None:
             self.default_sql_compute_id = m.get('defaultSqlComputeId')
+        if m.get('deploymentId') is not None:
+            self.deployment_id = m.get('deploymentId')
         if m.get('extraArtifactIds') is not None:
             self.extra_artifact_ids = m.get('extraArtifactIds')
         if m.get('extraSparkSubmitParams') is not None:
@@ -949,6 +963,8 @@ class Task(TeaModel):
             self.has_changed = m.get('hasChanged')
         if m.get('hasCommited') is not None:
             self.has_commited = m.get('hasCommited')
+        if m.get('isStreaming') is not None:
+            self.is_streaming = m.get('isStreaming')
         if m.get('jars') is not None:
             self.jars = m.get('jars')
         if m.get('lastRunResourceQueueId') is not None:
@@ -980,6 +996,8 @@ class Task(TeaModel):
             self.spark_log_level = m.get('sparkLogLevel')
         if m.get('sparkLogPath') is not None:
             self.spark_log_path = m.get('sparkLogPath')
+        if m.get('sparkSubmitClause') is not None:
+            self.spark_submit_clause = m.get('sparkSubmitClause')
         if m.get('sparkVersion') is not None:
             self.spark_version = m.get('sparkVersion')
         if m.get('tags') is not None:
@@ -1489,6 +1507,166 @@ class CancelJobRunResponse(TeaModel):
         return self
 
 
+class CreateSqlStatementRequest(TeaModel):
+    def __init__(
+        self,
+        code_content: str = None,
+        default_catalog: str = None,
+        default_database: str = None,
+        limit: int = None,
+        sql_compute_id: str = None,
+        region_id: str = None,
+    ):
+        self.code_content = code_content
+        self.default_catalog = default_catalog
+        self.default_database = default_database
+        self.limit = limit
+        self.sql_compute_id = sql_compute_id
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code_content is not None:
+            result['codeContent'] = self.code_content
+        if self.default_catalog is not None:
+            result['defaultCatalog'] = self.default_catalog
+        if self.default_database is not None:
+            result['defaultDatabase'] = self.default_database
+        if self.limit is not None:
+            result['limit'] = self.limit
+        if self.sql_compute_id is not None:
+            result['sqlComputeId'] = self.sql_compute_id
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('codeContent') is not None:
+            self.code_content = m.get('codeContent')
+        if m.get('defaultCatalog') is not None:
+            self.default_catalog = m.get('defaultCatalog')
+        if m.get('defaultDatabase') is not None:
+            self.default_database = m.get('defaultDatabase')
+        if m.get('limit') is not None:
+            self.limit = m.get('limit')
+        if m.get('sqlComputeId') is not None:
+            self.sql_compute_id = m.get('sqlComputeId')
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        return self
+
+
+class CreateSqlStatementResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        statement_id: str = None,
+    ):
+        self.statement_id = statement_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.statement_id is not None:
+            result['statementId'] = self.statement_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('statementId') is not None:
+            self.statement_id = m.get('statementId')
+        return self
+
+
+class CreateSqlStatementResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: CreateSqlStatementResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = CreateSqlStatementResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class CreateSqlStatementResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: CreateSqlStatementResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = CreateSqlStatementResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GetJobRunRequest(TeaModel):
     def __init__(
         self,
@@ -1815,6 +1993,207 @@ class GetJobRunResponse(TeaModel):
         return self
 
 
+class GetSqlStatementRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+    ):
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        return self
+
+
+class GetSqlStatementResponseBodyDataSqlOutputs(TeaModel):
+    def __init__(
+        self,
+        rows: str = None,
+        schema: str = None,
+    ):
+        self.rows = rows
+        self.schema = schema
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.rows is not None:
+            result['rows'] = self.rows
+        if self.schema is not None:
+            result['schema'] = self.schema
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('rows') is not None:
+            self.rows = m.get('rows')
+        if m.get('schema') is not None:
+            self.schema = m.get('schema')
+        return self
+
+
+class GetSqlStatementResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        execution_time: List[int] = None,
+        sql_error_code: str = None,
+        sql_error_message: str = None,
+        sql_outputs: List[GetSqlStatementResponseBodyDataSqlOutputs] = None,
+        state: str = None,
+        statement_id: str = None,
+    ):
+        self.execution_time = execution_time
+        self.sql_error_code = sql_error_code
+        self.sql_error_message = sql_error_message
+        self.sql_outputs = sql_outputs
+        self.state = state
+        self.statement_id = statement_id
+
+    def validate(self):
+        if self.sql_outputs:
+            for k in self.sql_outputs:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.execution_time is not None:
+            result['executionTime'] = self.execution_time
+        if self.sql_error_code is not None:
+            result['sqlErrorCode'] = self.sql_error_code
+        if self.sql_error_message is not None:
+            result['sqlErrorMessage'] = self.sql_error_message
+        result['sqlOutputs'] = []
+        if self.sql_outputs is not None:
+            for k in self.sql_outputs:
+                result['sqlOutputs'].append(k.to_map() if k else None)
+        if self.state is not None:
+            result['state'] = self.state
+        if self.statement_id is not None:
+            result['statementId'] = self.statement_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('executionTime') is not None:
+            self.execution_time = m.get('executionTime')
+        if m.get('sqlErrorCode') is not None:
+            self.sql_error_code = m.get('sqlErrorCode')
+        if m.get('sqlErrorMessage') is not None:
+            self.sql_error_message = m.get('sqlErrorMessage')
+        self.sql_outputs = []
+        if m.get('sqlOutputs') is not None:
+            for k in m.get('sqlOutputs'):
+                temp_model = GetSqlStatementResponseBodyDataSqlOutputs()
+                self.sql_outputs.append(temp_model.from_map(k))
+        if m.get('state') is not None:
+            self.state = m.get('state')
+        if m.get('statementId') is not None:
+            self.statement_id = m.get('statementId')
+        return self
+
+
+class GetSqlStatementResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: GetSqlStatementResponseBodyData = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('data') is not None:
+            temp_model = GetSqlStatementResponseBodyData()
+            self.data = temp_model.from_map(m['data'])
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class GetSqlStatementResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: GetSqlStatementResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = GetSqlStatementResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class GrantRoleToUsersRequest(TeaModel):
     def __init__(
         self,
@@ -2026,6 +2405,7 @@ class ListJobRunsRequest(TeaModel):
         self,
         creator: str = None,
         end_time: ListJobRunsRequestEndTime = None,
+        job_run_deployment_id: str = None,
         job_run_id: str = None,
         max_results: int = None,
         name: str = None,
@@ -2039,6 +2419,7 @@ class ListJobRunsRequest(TeaModel):
         # 创建用户Uid。
         self.creator = creator
         self.end_time = end_time
+        self.job_run_deployment_id = job_run_deployment_id
         # 作业id。
         self.job_run_id = job_run_id
         # 一次获取的最大记录数。
@@ -2075,6 +2456,8 @@ class ListJobRunsRequest(TeaModel):
             result['creator'] = self.creator
         if self.end_time is not None:
             result['endTime'] = self.end_time.to_map()
+        if self.job_run_deployment_id is not None:
+            result['jobRunDeploymentId'] = self.job_run_deployment_id
         if self.job_run_id is not None:
             result['jobRunId'] = self.job_run_id
         if self.max_results is not None:
@@ -2104,6 +2487,8 @@ class ListJobRunsRequest(TeaModel):
         if m.get('endTime') is not None:
             temp_model = ListJobRunsRequestEndTime()
             self.end_time = temp_model.from_map(m['endTime'])
+        if m.get('jobRunDeploymentId') is not None:
+            self.job_run_deployment_id = m.get('jobRunDeploymentId')
         if m.get('jobRunId') is not None:
             self.job_run_id = m.get('jobRunId')
         if m.get('maxResults') is not None:
@@ -2134,6 +2519,7 @@ class ListJobRunsShrinkRequest(TeaModel):
         self,
         creator: str = None,
         end_time_shrink: str = None,
+        job_run_deployment_id: str = None,
         job_run_id: str = None,
         max_results: int = None,
         name: str = None,
@@ -2147,6 +2533,7 @@ class ListJobRunsShrinkRequest(TeaModel):
         # 创建用户Uid。
         self.creator = creator
         self.end_time_shrink = end_time_shrink
+        self.job_run_deployment_id = job_run_deployment_id
         # 作业id。
         self.job_run_id = job_run_id
         # 一次获取的最大记录数。
@@ -2176,6 +2563,8 @@ class ListJobRunsShrinkRequest(TeaModel):
             result['creator'] = self.creator
         if self.end_time_shrink is not None:
             result['endTime'] = self.end_time_shrink
+        if self.job_run_deployment_id is not None:
+            result['jobRunDeploymentId'] = self.job_run_deployment_id
         if self.job_run_id is not None:
             result['jobRunId'] = self.job_run_id
         if self.max_results is not None:
@@ -2202,6 +2591,8 @@ class ListJobRunsShrinkRequest(TeaModel):
             self.creator = m.get('creator')
         if m.get('endTime') is not None:
             self.end_time_shrink = m.get('endTime')
+        if m.get('jobRunDeploymentId') is not None:
+            self.job_run_deployment_id = m.get('jobRunDeploymentId')
         if m.get('jobRunId') is not None:
             self.job_run_id = m.get('jobRunId')
         if m.get('maxResults') is not None:
@@ -4057,6 +4448,101 @@ class StartJobRunResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = StartJobRunResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class TerminateSqlStatementRequest(TeaModel):
+    def __init__(
+        self,
+        region_id: str = None,
+    ):
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.region_id is not None:
+            result['regionId'] = self.region_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('regionId') is not None:
+            self.region_id = m.get('regionId')
+        return self
+
+
+class TerminateSqlStatementResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+        return self
+
+
+class TerminateSqlStatementResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: TerminateSqlStatementResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = TerminateSqlStatementResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 

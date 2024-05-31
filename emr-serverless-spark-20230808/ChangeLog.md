@@ -1,3 +1,10 @@
+2024-05-31 Version: 1.4.0
+- Support API CreateSqlStatement.
+- Support API GetSqlStatement.
+- Support API TerminateSqlStatement.
+- Update API ListJobRuns: add param jobRunDeploymentId.
+
+
 2024-05-22 Version: 1.3.0
 - Support API AddMembers.
 - Support API GrantRoleToUsers.
