@@ -1,3 +1,8 @@
+2024-05-31 Version: 1.4.3
+- Update API ListInstances: update param pageNumber.
+- Update API ListInstances: update param pageSize.
+
+
 2024-05-28 Version: 1.4.2
 - Update API GetInstance: update response param.
 - Update API ListConsumerGroupSubscriptions: update response param.
