@@ -1,3 +1,8 @@
+2024-06-03 Version: 2.5.0
+- Support API SearchMediaByHybrid.
+- Update API SearchMediaByAILabel: update response param.
+
+
 2024-05-22 Version: 2.4.1
 - Update API SubmitTextGenerateJob: add param Action.
 

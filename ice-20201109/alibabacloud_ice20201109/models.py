@@ -39124,6 +39124,243 @@ class SearchMediaByFaceResponse(TeaModel):
         return self
 
 
+class SearchMediaByHybridRequest(TeaModel):
+    def __init__(
+        self,
+        media_id: str = None,
+        media_type: str = None,
+        page_no: int = None,
+        page_size: int = None,
+        search_lib_name: str = None,
+        text: str = None,
+    ):
+        self.media_id = media_id
+        self.media_type = media_type
+        self.page_no = page_no
+        self.page_size = page_size
+        self.search_lib_name = search_lib_name
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.media_id is not None:
+            result['MediaId'] = self.media_id
+        if self.media_type is not None:
+            result['MediaType'] = self.media_type
+        if self.page_no is not None:
+            result['PageNo'] = self.page_no
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.search_lib_name is not None:
+            result['SearchLibName'] = self.search_lib_name
+        if self.text is not None:
+            result['Text'] = self.text
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MediaId') is not None:
+            self.media_id = m.get('MediaId')
+        if m.get('MediaType') is not None:
+            self.media_type = m.get('MediaType')
+        if m.get('PageNo') is not None:
+            self.page_no = m.get('PageNo')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('SearchLibName') is not None:
+            self.search_lib_name = m.get('SearchLibName')
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
+        return self
+
+
+class SearchMediaByHybridResponseBodyMediaListClipInfo(TeaModel):
+    def __init__(
+        self,
+        from_: float = None,
+        score: float = None,
+        to: float = None,
+    ):
+        self.from_ = from_
+        self.score = score
+        self.to = to
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.from_ is not None:
+            result['From'] = self.from_
+        if self.score is not None:
+            result['Score'] = self.score
+        if self.to is not None:
+            result['To'] = self.to
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('From') is not None:
+            self.from_ = m.get('From')
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
+        if m.get('To') is not None:
+            self.to = m.get('To')
+        return self
+
+
+class SearchMediaByHybridResponseBodyMediaList(TeaModel):
+    def __init__(
+        self,
+        clip_info: List[SearchMediaByHybridResponseBodyMediaListClipInfo] = None,
+        media_id: str = None,
+    ):
+        self.clip_info = clip_info
+        self.media_id = media_id
+
+    def validate(self):
+        if self.clip_info:
+            for k in self.clip_info:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['ClipInfo'] = []
+        if self.clip_info is not None:
+            for k in self.clip_info:
+                result['ClipInfo'].append(k.to_map() if k else None)
+        if self.media_id is not None:
+            result['MediaId'] = self.media_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.clip_info = []
+        if m.get('ClipInfo') is not None:
+            for k in m.get('ClipInfo'):
+                temp_model = SearchMediaByHybridResponseBodyMediaListClipInfo()
+                self.clip_info.append(temp_model.from_map(k))
+        if m.get('MediaId') is not None:
+            self.media_id = m.get('MediaId')
+        return self
+
+
+class SearchMediaByHybridResponseBody(TeaModel):
+    def __init__(
+        self,
+        code: str = None,
+        media_list: List[SearchMediaByHybridResponseBodyMediaList] = None,
+        request_id: str = None,
+        success: str = None,
+        total: int = None,
+    ):
+        self.code = code
+        self.media_list = media_list
+        self.request_id = request_id
+        self.success = success
+        self.total = total
+
+    def validate(self):
+        if self.media_list:
+            for k in self.media_list:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.code is not None:
+            result['Code'] = self.code
+        result['MediaList'] = []
+        if self.media_list is not None:
+            for k in self.media_list:
+                result['MediaList'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.success is not None:
+            result['Success'] = self.success
+        if self.total is not None:
+            result['Total'] = self.total
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+        self.media_list = []
+        if m.get('MediaList') is not None:
+            for k in m.get('MediaList'):
+                temp_model = SearchMediaByHybridResponseBodyMediaList()
+                self.media_list.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+        if m.get('Total') is not None:
+            self.total = m.get('Total')
+        return self
+
+
+class SearchMediaByHybridResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: SearchMediaByHybridResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = SearchMediaByHybridResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class SearchMediaByMultimodalRequest(TeaModel):
     def __init__(
         self,

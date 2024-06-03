@@ -8597,7 +8597,7 @@ class Client(OpenApiClient):
             protocol='HTTPS',
             pathname='/',
             method='POST',
-            auth_type='AK',
+            auth_type='Anonymous',
             style='RPC',
             req_body_type='formData',
             body_type='json'
@@ -8632,7 +8632,7 @@ class Client(OpenApiClient):
             protocol='HTTPS',
             pathname='/',
             method='POST',
-            auth_type='AK',
+            auth_type='Anonymous',
             style='RPC',
             req_body_type='formData',
             body_type='json'
@@ -15021,6 +15021,122 @@ class Client(OpenApiClient):
         """
         runtime = util_models.RuntimeOptions()
         return await self.search_media_by_face_with_options_async(request, runtime)
+
+    def search_media_by_hybrid_with_options(
+        self,
+        request: ice20201109_models.SearchMediaByHybridRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SearchMediaByHybridResponse:
+        """
+        @summary 混合搜索
+        
+        @param request: SearchMediaByHybridRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchMediaByHybridResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.media_type):
+            query['MediaType'] = request.media_type
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_lib_name):
+            query['SearchLibName'] = request.search_lib_name
+        if not UtilClient.is_unset(request.text):
+            query['Text'] = request.text
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SearchMediaByHybrid',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SearchMediaByHybridResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def search_media_by_hybrid_with_options_async(
+        self,
+        request: ice20201109_models.SearchMediaByHybridRequest,
+        runtime: util_models.RuntimeOptions,
+    ) -> ice20201109_models.SearchMediaByHybridResponse:
+        """
+        @summary 混合搜索
+        
+        @param request: SearchMediaByHybridRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SearchMediaByHybridResponse
+        """
+        UtilClient.validate_model(request)
+        query = {}
+        if not UtilClient.is_unset(request.media_id):
+            query['MediaId'] = request.media_id
+        if not UtilClient.is_unset(request.media_type):
+            query['MediaType'] = request.media_type
+        if not UtilClient.is_unset(request.page_no):
+            query['PageNo'] = request.page_no
+        if not UtilClient.is_unset(request.page_size):
+            query['PageSize'] = request.page_size
+        if not UtilClient.is_unset(request.search_lib_name):
+            query['SearchLibName'] = request.search_lib_name
+        if not UtilClient.is_unset(request.text):
+            query['Text'] = request.text
+        req = open_api_models.OpenApiRequest(
+            query=OpenApiUtilClient.query(query)
+        )
+        params = open_api_models.Params(
+            action='SearchMediaByHybrid',
+            version='2020-11-09',
+            protocol='HTTPS',
+            pathname='/',
+            method='POST',
+            auth_type='AK',
+            style='RPC',
+            req_body_type='formData',
+            body_type='json'
+        )
+        return TeaCore.from_map(
+            ice20201109_models.SearchMediaByHybridResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def search_media_by_hybrid(
+        self,
+        request: ice20201109_models.SearchMediaByHybridRequest,
+    ) -> ice20201109_models.SearchMediaByHybridResponse:
+        """
+        @summary 混合搜索
+        
+        @param request: SearchMediaByHybridRequest
+        @return: SearchMediaByHybridResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return self.search_media_by_hybrid_with_options(request, runtime)
+
+    async def search_media_by_hybrid_async(
+        self,
+        request: ice20201109_models.SearchMediaByHybridRequest,
+    ) -> ice20201109_models.SearchMediaByHybridResponse:
+        """
+        @summary 混合搜索
+        
+        @param request: SearchMediaByHybridRequest
+        @return: SearchMediaByHybridResponse
+        """
+        runtime = util_models.RuntimeOptions()
+        return await self.search_media_by_hybrid_with_options_async(request, runtime)
 
     def search_media_by_multimodal_with_options(
         self,
