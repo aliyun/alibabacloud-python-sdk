@@ -26775,6 +26775,117 @@ class FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDo(TeaModel):
         return self
 
 
+class FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList(TeaModel):
+    def __init__(
+        self,
+        arr_airport_name: str = None,
+        arr_city: str = None,
+        arr_city_name: str = None,
+        arr_time: str = None,
+        cabin: str = None,
+        cabin_class: int = None,
+        cabin_class_str: str = None,
+        dep_airport_name: str = None,
+        dep_city: str = None,
+        dep_city_name: str = None,
+        dep_time: str = None,
+        discount: str = None,
+        flight_no: str = None,
+        price: int = None,
+        type: int = None,
+    ):
+        self.arr_airport_name = arr_airport_name
+        self.arr_city = arr_city
+        self.arr_city_name = arr_city_name
+        self.arr_time = arr_time
+        self.cabin = cabin
+        self.cabin_class = cabin_class
+        self.cabin_class_str = cabin_class_str
+        self.dep_airport_name = dep_airport_name
+        self.dep_city = dep_city
+        self.dep_city_name = dep_city_name
+        self.dep_time = dep_time
+        self.discount = discount
+        self.flight_no = flight_no
+        self.price = price
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.arr_airport_name is not None:
+            result['arr_airport_name'] = self.arr_airport_name
+        if self.arr_city is not None:
+            result['arr_city'] = self.arr_city
+        if self.arr_city_name is not None:
+            result['arr_city_name'] = self.arr_city_name
+        if self.arr_time is not None:
+            result['arr_time'] = self.arr_time
+        if self.cabin is not None:
+            result['cabin'] = self.cabin
+        if self.cabin_class is not None:
+            result['cabin_class'] = self.cabin_class
+        if self.cabin_class_str is not None:
+            result['cabin_class_str'] = self.cabin_class_str
+        if self.dep_airport_name is not None:
+            result['dep_airport_name'] = self.dep_airport_name
+        if self.dep_city is not None:
+            result['dep_city'] = self.dep_city
+        if self.dep_city_name is not None:
+            result['dep_city_name'] = self.dep_city_name
+        if self.dep_time is not None:
+            result['dep_time'] = self.dep_time
+        if self.discount is not None:
+            result['discount'] = self.discount
+        if self.flight_no is not None:
+            result['flight_no'] = self.flight_no
+        if self.price is not None:
+            result['price'] = self.price
+        if self.type is not None:
+            result['type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('arr_airport_name') is not None:
+            self.arr_airport_name = m.get('arr_airport_name')
+        if m.get('arr_city') is not None:
+            self.arr_city = m.get('arr_city')
+        if m.get('arr_city_name') is not None:
+            self.arr_city_name = m.get('arr_city_name')
+        if m.get('arr_time') is not None:
+            self.arr_time = m.get('arr_time')
+        if m.get('cabin') is not None:
+            self.cabin = m.get('cabin')
+        if m.get('cabin_class') is not None:
+            self.cabin_class = m.get('cabin_class')
+        if m.get('cabin_class_str') is not None:
+            self.cabin_class_str = m.get('cabin_class_str')
+        if m.get('dep_airport_name') is not None:
+            self.dep_airport_name = m.get('dep_airport_name')
+        if m.get('dep_city') is not None:
+            self.dep_city = m.get('dep_city')
+        if m.get('dep_city_name') is not None:
+            self.dep_city_name = m.get('dep_city_name')
+        if m.get('dep_time') is not None:
+            self.dep_time = m.get('dep_time')
+        if m.get('discount') is not None:
+            self.discount = m.get('discount')
+        if m.get('flight_no') is not None:
+            self.flight_no = m.get('flight_no')
+        if m.get('price') is not None:
+            self.price = m.get('price')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+        return self
+
+
 class FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights(TeaModel):
     def __init__(
         self,
@@ -26879,6 +26990,7 @@ class FlightExceedApplyQueryResponseBodyModule(TeaModel):
         self,
         apply_id: int = None,
         apply_intention_info_do: FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDo = None,
+        apply_intention_info_do_list: List[FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList] = None,
         apply_recommend_flights: FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights = None,
         btrip_cause: str = None,
         corp_id: str = None,
@@ -26893,6 +27005,7 @@ class FlightExceedApplyQueryResponseBodyModule(TeaModel):
     ):
         self.apply_id = apply_id
         self.apply_intention_info_do = apply_intention_info_do
+        self.apply_intention_info_do_list = apply_intention_info_do_list
         self.apply_recommend_flights = apply_recommend_flights
         self.btrip_cause = btrip_cause
         self.corp_id = corp_id
@@ -26908,6 +27021,10 @@ class FlightExceedApplyQueryResponseBodyModule(TeaModel):
     def validate(self):
         if self.apply_intention_info_do:
             self.apply_intention_info_do.validate()
+        if self.apply_intention_info_do_list:
+            for k in self.apply_intention_info_do_list:
+                if k:
+                    k.validate()
         if self.apply_recommend_flights:
             self.apply_recommend_flights.validate()
 
@@ -26921,6 +27038,10 @@ class FlightExceedApplyQueryResponseBodyModule(TeaModel):
             result['apply_id'] = self.apply_id
         if self.apply_intention_info_do is not None:
             result['apply_intention_info_do'] = self.apply_intention_info_do.to_map()
+        result['apply_intention_info_do_list'] = []
+        if self.apply_intention_info_do_list is not None:
+            for k in self.apply_intention_info_do_list:
+                result['apply_intention_info_do_list'].append(k.to_map() if k else None)
         if self.apply_recommend_flights is not None:
             result['apply_recommend_flights'] = self.apply_recommend_flights.to_map()
         if self.btrip_cause is not None:
@@ -26952,6 +27073,11 @@ class FlightExceedApplyQueryResponseBodyModule(TeaModel):
         if m.get('apply_intention_info_do') is not None:
             temp_model = FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDo()
             self.apply_intention_info_do = temp_model.from_map(m['apply_intention_info_do'])
+        self.apply_intention_info_do_list = []
+        if m.get('apply_intention_info_do_list') is not None:
+            for k in m.get('apply_intention_info_do_list'):
+                temp_model = FlightExceedApplyQueryResponseBodyModuleApplyIntentionInfoDoList()
+                self.apply_intention_info_do_list.append(temp_model.from_map(k))
         if m.get('apply_recommend_flights') is not None:
             temp_model = FlightExceedApplyQueryResponseBodyModuleApplyRecommendFlights()
             self.apply_recommend_flights = temp_model.from_map(m['apply_recommend_flights'])
@@ -101708,6 +101834,7 @@ class VatInvoiceScanQueryResponseBodyModuleItems(TeaModel):
         machine_code: str = None,
         oss_url: str = None,
         password_area: str = None,
+        pdf_oss_url: str = None,
         purchaser_bank_account_info: str = None,
         purchaser_contact_info: str = None,
         purchaser_name: str = None,
@@ -101744,6 +101871,7 @@ class VatInvoiceScanQueryResponseBodyModuleItems(TeaModel):
         self.machine_code = machine_code
         self.oss_url = oss_url
         self.password_area = password_area
+        self.pdf_oss_url = pdf_oss_url
         self.purchaser_bank_account_info = purchaser_bank_account_info
         self.purchaser_contact_info = purchaser_contact_info
         self.purchaser_name = purchaser_name
@@ -101811,6 +101939,8 @@ class VatInvoiceScanQueryResponseBodyModuleItems(TeaModel):
             result['oss_url'] = self.oss_url
         if self.password_area is not None:
             result['password_area'] = self.password_area
+        if self.pdf_oss_url is not None:
+            result['pdf_oss_url'] = self.pdf_oss_url
         if self.purchaser_bank_account_info is not None:
             result['purchaser_bank_account_info'] = self.purchaser_bank_account_info
         if self.purchaser_contact_info is not None:
@@ -101886,6 +102016,8 @@ class VatInvoiceScanQueryResponseBodyModuleItems(TeaModel):
             self.oss_url = m.get('oss_url')
         if m.get('password_area') is not None:
             self.password_area = m.get('password_area')
+        if m.get('pdf_oss_url') is not None:
+            self.pdf_oss_url = m.get('pdf_oss_url')
         if m.get('purchaser_bank_account_info') is not None:
             self.purchaser_bank_account_info = m.get('purchaser_bank_account_info')
         if m.get('purchaser_contact_info') is not None:

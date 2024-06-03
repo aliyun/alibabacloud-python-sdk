@@ -1,3 +1,8 @@
+2024-06-03 Version: 3.1.1
+- Update API FlightExceedApplyQuery: update response param.
+- Update API VatInvoiceScanQuery: update response param.
+
+
 2024-05-21 Version: 3.1.0
 - Support API AddEmployeesToCustomRole.
 - Support API CreateCustomRole.
