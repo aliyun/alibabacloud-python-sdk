@@ -134,7 +134,7 @@ class AddPermissionPolicyToAccessConfigurationRequest(TeaModel):
         # 
         # The value can be up to 4,096 characters in length.
         # 
-        # If you set `PermissionPolicyType` to `Inline`, you must specify this parameter. For more information about the syntax and structure of RAM policies, see [Policy syntax and structure](~~93739~~).
+        # If you set `PermissionPolicyType` to `Inline`, you must specify this parameter. For more information about the syntax and structure of RAM policies, see [Policy syntax and structure](https://help.aliyun.com/document_detail/93739.html).
         self.inline_policy_document = inline_policy_document
         # The name of the policy.
         # 
@@ -1136,7 +1136,7 @@ class CreateGroupRequest(TeaModel):
         self.directory_id = directory_id
         # The name of the group.
         # 
-        # The name can contain letters, digits, underscores (\_), hyphens (-), and periods (.).
+        # The name can contain letters, digits, underscores (_), hyphens (-), and periods (.).
         # 
         # The name can be up to 128 characters in length.
         self.group_name = group_name
@@ -1792,8 +1792,8 @@ class CreateUserProvisioningRequest(TeaModel):
         self.duplication_strategy = duplication_strategy
         # The identity ID of the RAM user provisioning. Valid values:
         # 
-        # *   If you set the `PrincipalType` parameter to `Group`, the value of this parameter is the ID of a CloudSSO user group (g-\*\*\*\*\*\*\*\*).
-        # *   If you set the `PrincipalType` parameter to `User`, the value of this parameter is the ID of a CloudSSO user (u-\*\*\*\*\*\*\*\*).
+        # *   If you set the `PrincipalType` parameter to `Group`, the value of this parameter is the ID of a CloudSSO user group (g-\\*\\*\\*\\*\\*\\*\\*\\*).
+        # *   If you set the `PrincipalType` parameter to `User`, the value of this parameter is the ID of a CloudSSO user (u-\\*\\*\\*\\*\\*\\*\\*\\*).
         self.principal_id = principal_id
         # The identity type of the RAM user provisioning. Valid values:
         # 
@@ -1893,8 +1893,8 @@ class CreateUserProvisioningResponseBodyUserProvisioning(TeaModel):
         self.owner_pk = owner_pk
         # The identity ID of the RAM user provisioning. Valid values:
         # 
-        # *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\*\*\*\*\*\*\*\*).
-        # *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\*\*\*\*\*\*\*\*).
+        # *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\\*\\*\\*\\*\\*\\*\\*\\*).
+        # *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\\*\\*\\*\\*\\*\\*\\*\\*).
         self.principal_id = principal_id
         # The identity name of the RAM user provisioning. Valid values:
         # 
@@ -2372,7 +2372,7 @@ class DeleteAccessConfigurationRequest(TeaModel):
         # Specifies whether to forcibly remove system policies and inline policies. Valid values:
         # 
         # *   true: When you delete the access configuration, the associated system policies and inline policies are forcibly removed.
-        # *   false: When you delete the access configuration, the associated system policies and inline policies are not forcibly removed. This is the default value. If these policies exist in the access configuration, the deletion fails. Before you delete the access configuration, you must remove the system policies and inline policies. For more information, see [RemovePermissionPolicyFromAccessConfiguration](~~336904~~).
+        # *   false: When you delete the access configuration, the associated system policies and inline policies are not forcibly removed. This is the default value. If these policies exist in the access configuration, the deletion fails. Before you delete the access configuration, you must remove the system policies and inline policies. For more information, see [RemovePermissionPolicyFromAccessConfiguration](https://help.aliyun.com/document_detail/336904.html).
         self.force_remove_permission_policies = force_remove_permission_policies
 
     def validate(self):
@@ -2684,7 +2684,7 @@ class DeleteMFADeviceForUserRequest(TeaModel):
         self.directory_id = directory_id
         # The ID of the MFA device.
         # 
-        # You can call the [ListMFADevicesForUser](~~333531~~) operation to query the IDs of MFA devices.
+        # You can call the [ListMFADevicesForUser](https://help.aliyun.com/document_detail/333531.html) operation to query the IDs of MFA devices.
         self.mfadevice_id = mfadevice_id
         # The ID of the user.
         self.user_id = user_id
@@ -3449,6 +3449,101 @@ class DeprovisionAccessConfigurationResponse(TeaModel):
         return self
 
 
+class DisableDelegateAccountRequest(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        return self
+
+
+class DisableDelegateAccountResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DisableDelegateAccountResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DisableDelegateAccountResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DisableDelegateAccountResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DisableServiceResponseBody(TeaModel):
     def __init__(
         self,
@@ -3514,6 +3609,101 @@ class DisableServiceResponse(TeaModel):
             self.status_code = m.get('statusCode')
         if m.get('body') is not None:
             temp_model = DisableServiceResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class EnableDelegateAccountRequest(TeaModel):
+    def __init__(
+        self,
+        account_id: str = None,
+    ):
+        self.account_id = account_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.account_id is not None:
+            result['AccountId'] = self.account_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountId') is not None:
+            self.account_id = m.get('AccountId')
+        return self
+
+
+class EnableDelegateAccountResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+    ):
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class EnableDelegateAccountResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: EnableDelegateAccountResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = EnableDelegateAccountResponseBody()
             self.body = temp_model.from_map(m['body'])
         return self
 
@@ -4908,7 +5098,7 @@ class GetMFAAuthenticationSettingInfoResponseBodyMFAAuthenticationSettingInfo(Te
         # The MFA policy of all users. Valid values:
         # 
         # *   Enabled: MFA is enabled for all users.
-        # *   Byuser: User-specific settings are applied. For more information about how to configure MFA for a single user, see [UpdateUserMFAAuthenticationSettings](~~450135~~).
+        # *   Byuser: User-specific settings are applied. For more information about how to configure MFA for a single user, see [UpdateUserMFAAuthenticationSettings](https://help.aliyun.com/document_detail/450135.html).
         # *   Disabled: MFA is disabled for all users.
         # *   OnlyRiskyLogin: MFA is required only for unusual logons.
         self.mfa_authentication_advance_settings = mfa_authentication_advance_settings
@@ -6175,7 +6365,7 @@ class GetUserRequest(TeaModel):
         directory_id: str = None,
         user_id: str = None,
     ):
-        # The ID of the directory.
+        # The ID of the resource directory.
         self.directory_id = directory_id
         # The ID of the user.
         self.user_id = user_id
@@ -6210,7 +6400,9 @@ class GetUserResponseBodyUserExternalId(TeaModel):
         id: str = None,
         issuer: str = None,
     ):
+        # The identifier of the user that is synchronized from an external IdP.
         self.id = id
+        # The method for external identity synchronization. Only System for Cross-domain Identity Management (SCIM) synchronization is supported.
         self.issuer = issuer
 
     def validate(self):
@@ -6253,7 +6445,7 @@ class GetUserResponseBodyUser(TeaModel):
         user_id: str = None,
         user_name: str = None,
     ):
-        # The time when the user was created.
+        # The time when the user was created. The value is displayed in UTC.
         self.create_time = create_time
         # The description of the user.
         self.description = description
@@ -6261,6 +6453,7 @@ class GetUserResponseBodyUser(TeaModel):
         self.display_name = display_name
         # The email address of the user.
         self.email = email
+        # The identifier information about the user synchronized from an external IdP.
         self.external_id = external_id
         # The first name of the user.
         self.first_name = first_name
@@ -6276,7 +6469,7 @@ class GetUserResponseBodyUser(TeaModel):
         # *   Enabled: The logon of the user is enabled.
         # *   Disabled: The logon of the user is disabled.
         self.status = status
-        # The time when the information about the user was modified.
+        # The time when the information about the user was modified. The value is displayed in UTC.
         self.update_time = update_time
         # The ID of the user.
         self.user_id = user_id
@@ -6355,7 +6548,7 @@ class GetUserResponseBody(TeaModel):
         request_id: str = None,
         user: GetUserResponseBodyUser = None,
     ):
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The information about the user.
         self.user = user
@@ -6433,7 +6626,9 @@ class GetUserIdRequestExternalId(TeaModel):
         id: str = None,
         issuer: str = None,
     ):
+        # The identifier of the user that is synchronized from an external IdP.
         self.id = id
+        # The method for external identity synchronization. Only System for Cross-domain Identity Management (SCIM) synchronization is supported.
         self.issuer = issuer
 
     def validate(self):
@@ -6466,7 +6661,9 @@ class GetUserIdRequest(TeaModel):
         directory_id: str = None,
         external_id: GetUserIdRequestExternalId = None,
     ):
+        # The ID of the resource directory.
         self.directory_id = directory_id
+        # The identifier information about the user that is synchronized from an external identity provider (IdP).
         self.external_id = external_id
 
     def validate(self):
@@ -6501,7 +6698,9 @@ class GetUserIdShrinkRequest(TeaModel):
         directory_id: str = None,
         external_id_shrink: str = None,
     ):
+        # The ID of the resource directory.
         self.directory_id = directory_id
+        # The identifier information about the user that is synchronized from an external identity provider (IdP).
         self.external_id_shrink = external_id_shrink
 
     def validate(self):
@@ -6534,7 +6733,9 @@ class GetUserIdResponseBody(TeaModel):
         request_id: str = None,
         user_id: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The ID of the CloudSSO user.
         self.user_id = user_id
 
     def validate(self):
@@ -6791,8 +6992,8 @@ class GetUserProvisioningResponseBodyUserProvisioning(TeaModel):
         self.owner_pk = owner_pk
         # The identity ID of the RAM user provisioning. Valid values:
         # 
-        # *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\*\*\*\*\*\*\*\*).
-        # *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\*\*\*\*\*\*\*\*).
+        # *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\\*\\*\\*\\*\\*\\*\\*\\*).
+        # *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\\*\\*\\*\\*\\*\\*\\*\\*).
         self.principal_id = principal_id
         # The identity name of the RAM user provisioning. Valid values:
         # 
@@ -7231,8 +7432,8 @@ class GetUserProvisioningEventResponseBodyUserProvisioningEvent(TeaModel):
         self.latest_async_time = latest_async_time
         # The identity ID of the RAM user provisioning. Valid values:
         # 
-        # *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\*\*\*\*\*\*\*\*).
-        # *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\*\*\*\*\*\*\*\*).
+        # *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\\*\\*\\*\\*\\*\\*\\*\\*).
+        # *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\\*\\*\\*\\*\\*\\*\\*\\*).
         self.principal_id = principal_id
         # The identity name of the RAM user provisioning. Valid values:
         # 
@@ -8442,7 +8643,7 @@ class ListAccessConfigurationsRequest(TeaModel):
         self.directory_id = directory_id
         # The filter condition.
         # 
-        # Specify the value in the \<Attribute> \<Operator> \<Value> format. The value is not case sensitive. You can set \<Attribute> only to AccessConfigurationName and \<Operator> only to eq or sw. The value eq indicates Equals. The value sw indicates Starts With.
+        # Specify the value in the \\<Attribute> \\<Operator> \\<Value> format. The value is not case sensitive. You can set \\<Attribute> only to AccessConfigurationName and \\<Operator> only to eq or sw. The value eq indicates Equals. The value sw indicates Starts With.
         # 
         # For example, if you set Filter to AccessConfigurationName sw test, the operation queries all access configurations whose names start with test. If you set Filter to AccessConfigurationName eq TestAccessConfiguration, the operation queries the access configuration whose name is TestAccessConfiguration.
         self.filter = filter
@@ -10860,8 +11061,8 @@ class ListUserProvisioningEventsResponseBodyUserProvisioningEvents(TeaModel):
         self.latest_async_time = latest_async_time
         # The identity ID of the RAM user provisioning. Valid values:
         # 
-        # *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\*\*\*\*\*\*\*\*).
-        # *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\*\*\*\*\*\*\*\*).
+        # *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\\*\\*\\*\\*\\*\\*\\*\\*).
+        # *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\\*\\*\\*\\*\\*\\*\\*\\*).
         self.principal_id = principal_id
         # The identity name of the RAM user provisioning. Valid values:
         # 
@@ -11132,8 +11333,8 @@ class ListUserProvisioningsRequest(TeaModel):
         self.next_token = next_token
         # The identity ID of the RAM user provisioning. Valid values:
         # 
-        # *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\*\*\*\*\*\*\*\*).
-        # *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\*\*\*\*\*\*\*\*).
+        # *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\\*\\*\\*\\*\\*\\*\\*\\*).
+        # *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\\*\\*\\*\\*\\*\\*\\*\\*).
         self.principal_id = principal_id
         # The identity type of the RAM user provisioning. Valid values:
         # 
@@ -11229,8 +11430,8 @@ class ListUserProvisioningsResponseBodyUserProvisionings(TeaModel):
         self.owner_pk = owner_pk
         # The identity ID of the RAM user provisioning. Valid values:
         # 
-        # *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\*\*\*\*\*\*\*\*).
-        # *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\*\*\*\*\*\*\*\*).
+        # *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\\*\\*\\*\\*\\*\\*\\*\\*).
+        # *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\\*\\*\\*\\*\\*\\*\\*\\*).
         self.principal_id = principal_id
         # The identity name of the RAM user provisioning. Valid values:
         # 
@@ -11471,30 +11672,30 @@ class ListUsersRequest(TeaModel):
         provision_type: str = None,
         status: str = None,
     ):
-        # The ID of the directory.
+        # The ID of the resource directory.
         self.directory_id = directory_id
         # The filter condition.
         # 
-        # Specify the value in the `<Attribute> <Operator> <Value>` format. The value is not case-sensitive. You can set `<Attribute>` only to `UserName` and `Operator` only to `eq` or `sw`. The value eq indicates Equals, and the value sw indicates Starts With.
+        # You must specify the value in the `<Attribute> <Operator> <Value>` format. The value is not case-sensitive. You can set `<Attribute>` only to `UserName` and `Operator` only to `eq` or `sw`. The value eq indicates Equals, and the value sw indicates Start With.
         # 
-        # For example, if you set Filter to UserName sw test, the operation queries the users whose names start with test. If you set Filter to UserName eq testuser, the operation queries the user whose name is `testuser`.
+        # For example, if you set the Filter parameter to UserName sw test, the operation queries the users whose names start with test. If you set the Filter parameter to UserName eq testuser, the operation queries the user whose name is `testuser`.
         self.filter = filter
-        # The number of entries to return on each page.
+        # The number of entries per page.
         # 
         # Valid values: 1 to 100.
         # 
         # Default value: 10.
         self.max_results = max_results
-        # The token to return for the next page. If this is your first time to call this operation, you do not need to specify `NextToken`.
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of the `NextToken` parameter.
         # 
-        # When you call this operation for the first time, if the total number of entries to return exceeds the value of `MaxResults`, the entries are truncated. Only the entries that match the value of `MaxResults` are returned, and the excess entries are not returned. In this case, the value of the response parameter `IsTruncated` is `true`, and `NextToken` is returned. In the next call, you can use the value of `NextToken` and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of `IsTruncated` becomes `false`. This way, all entries are returned.
+        # When you call this operation for the first time, if the total number of entries to return is larger than the value of the `MaxResults` parameter, the entries are truncated. The system returns entries based on the value of the `MaxResults` parameter, and does not return the excess entries. In this case, the value of the response parameter `IsTruncated` is `true`, and the `NextToken` parameter is returned. In the next call, you can use the value of the `NextToken` parameter and maintain the settings of the other request parameters to query the excess entries. You can repeat the call until the value of the `IsTruncated` parameter becomes `false`. This way, all entries are returned.
         self.next_token = next_token
-        # The type of the user. The type can be used to filter users. Valid values:
+        # The type of the user. The parameter can be used to filter users. Valid values:
         # 
         # *   Manual: The user is manually created.
-        # *   Synchronized: The user is synchronized from an external IdP.
+        # *   Synchronized: The user is synchronized from an external identity provider (IdP).
         self.provision_type = provision_type
-        # The status of the user. The status can be used to filter users. Valid values:
+        # The status of the user. The parameter can be used to filter users. Valid values:
         # 
         # *   Enabled: The logon of the user is enabled.
         # *   Disabled: The logon of the user is disabled.
@@ -11546,7 +11747,9 @@ class ListUsersResponseBodyUsersExternalId(TeaModel):
         id: str = None,
         issuer: str = None,
     ):
+        # The identifier of the user that is synchronized from an external IdP.
         self.id = id
+        # The method for external identity synchronization. Only System for Cross-domain Identity Management (SCIM) synchronization is supported.
         self.issuer = issuer
 
     def validate(self):
@@ -11589,7 +11792,7 @@ class ListUsersResponseBodyUsers(TeaModel):
         user_id: str = None,
         user_name: str = None,
     ):
-        # The time when the user was created.
+        # The time when the user was created. The value is displayed in UTC.
         self.create_time = create_time
         # The description of the user.
         self.description = description
@@ -11597,6 +11800,7 @@ class ListUsersResponseBodyUsers(TeaModel):
         self.display_name = display_name
         # The email address of the user.
         self.email = email
+        # The identifier information about the user synchronized from an external IdP.
         self.external_id = external_id
         # The first name of the user.
         self.first_name = first_name
@@ -11612,7 +11816,7 @@ class ListUsersResponseBodyUsers(TeaModel):
         # *   Enabled: The logon of the user is enabled.
         # *   Disabled: The logon of the user is disabled.
         self.status = status
-        # The time when the information about the user was modified.
+        # The time when the information about the user was modified. The value is displayed in UTC.
         self.update_time = update_time
         # The ID of the user.
         self.user_id = user_id
@@ -11697,16 +11901,16 @@ class ListUsersResponseBody(TeaModel):
     ):
         # Indicates whether the queried entries are truncated. Valid values:
         # 
-        # *   true: The queried entries are truncated.
-        # *   false: The queried entries are not truncated.
+        # *   true
+        # *   false
         self.is_truncated = is_truncated
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.max_results = max_results
-        # The token that is returned for the next page.
+        # The pagination token that is used in the next request to retrieve a new page of results.
         # 
-        # >  This parameter is returned only when the value of `IsTruncated` is `true`.
+        # >  This parameter is returned only when the `IsTruncated` parameter is `true`.
         self.next_token = next_token
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
         # The total number of entries returned.
         self.total_counts = total_counts
@@ -12038,7 +12242,7 @@ class RemoveExternalSAMLIdPCertificateRequest(TeaModel):
     ):
         # The ID of the certificate.
         # 
-        # You can call the [ListExternalSAMLIdPCertificates](~~341629~~) operation to query the IDs of certificates.
+        # You can call the [ListExternalSAMLIdPCertificates](https://help.aliyun.com/document_detail/341629.html) operation to query the IDs of certificates.
         self.certificate_id = certificate_id
         # The ID of the directory.
         self.directory_id = directory_id
@@ -13959,7 +14163,7 @@ class UpdateInlinePolicyForAccessConfigurationRequest(TeaModel):
         # 
         # The value can be up to 4,096 characters in length.
         # 
-        # For more information about the syntax and structure of RAM policies, see [Policy syntax and structure](~~93739~~).
+        # For more information about the syntax and structure of RAM policies, see [Policy syntax and structure](https://help.aliyun.com/document_detail/93739.html).
         self.new_inline_policy_document = new_inline_policy_document
 
     def validate(self):
@@ -14075,7 +14279,7 @@ class UpdateMFAAuthenticationSettingsRequest(TeaModel):
         # Specifies whether to enable MFA for all users. Valid value:
         # 
         # - Enabled: enables MFA for all users.
-        # - Byuser: uses user-specific settings. For more information about how to configure MFA for a single user, see [UpdateUserMFAAuthenticationSettings](~~450135~~).
+        # - Byuser: uses user-specific settings. For more information about how to configure MFA for a single user, see [UpdateUserMFAAuthenticationSettings](https://help.aliyun.com/document_detail/450135.html).
         # - Disabled: disables MFA for all users.
         # - OnlyRiskyLogin: MFA is required only for unusual logons.
         self.mfaauthentication_settings = mfaauthentication_settings
@@ -14840,8 +15044,8 @@ class UpdateUserProvisioningResponseBodyUserProvisioning(TeaModel):
         self.owner_pk = owner_pk
         # The identity ID of the RAM user provisioning. Valid values:
         # 
-        # *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\*\*\*\*\*\*\*\*).
-        # *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\*\*\*\*\*\*\*\*).
+        # *   If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\\*\\*\\*\\*\\*\\*\\*\\*).
+        # *   If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\\*\\*\\*\\*\\*\\*\\*\\*).
         self.principal_id = principal_id
         # The identity name of the RAM user provisioning. Valid values:
         # 

@@ -1,3 +1,8 @@
+2024-06-03 Version: 1.6.0
+- Support API DisableDelegateAccount.
+- Support API EnableDelegateAccount.
+
+
 2024-04-25 Version: 1.5.2
 - Generated python 2021-05-15 for cloudsso.
 
