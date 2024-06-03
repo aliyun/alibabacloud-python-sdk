@@ -1,3 +1,7 @@
+2024-06-03 Version: 2.0.2
+- Update API DescribeInstance: update response param.
+
+
 2024-05-10 Version: 2.0.1
 - Update API DescribeInstance: update response param.
 - Update API ListInstance: update response param.

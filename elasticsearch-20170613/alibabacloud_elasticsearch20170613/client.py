@@ -49,6 +49,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ActivateZonesResponse:
+        """
+        @summary Restores nodes in disabled zones. This operation is available only for multi-zone Elasticsearch clusters.
+        
+        @param request: ActivateZonesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ActivateZonesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -81,6 +89,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ActivateZonesResponse:
+        """
+        @summary Restores nodes in disabled zones. This operation is available only for multi-zone Elasticsearch clusters.
+        
+        @param request: ActivateZonesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ActivateZonesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -111,6 +127,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ActivateZonesRequest,
     ) -> elasticsearch_20170613_models.ActivateZonesResponse:
+        """
+        @summary Restores nodes in disabled zones. This operation is available only for multi-zone Elasticsearch clusters.
+        
+        @param request: ActivateZonesRequest
+        @return: ActivateZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.activate_zones_with_options(instance_id, request, headers, runtime)
@@ -120,6 +142,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ActivateZonesRequest,
     ) -> elasticsearch_20170613_models.ActivateZonesResponse:
+        """
+        @summary Restores nodes in disabled zones. This operation is available only for multi-zone Elasticsearch clusters.
+        
+        @param request: ActivateZonesRequest
+        @return: ActivateZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.activate_zones_with_options_async(instance_id, request, headers, runtime)
@@ -131,6 +159,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.AddConnectableClusterResponse:
+        """
+        @param request: AddConnectableClusterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddConnectableClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -163,6 +197,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.AddConnectableClusterResponse:
+        """
+        @param request: AddConnectableClusterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddConnectableClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -193,6 +233,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.AddConnectableClusterRequest,
     ) -> elasticsearch_20170613_models.AddConnectableClusterResponse:
+        """
+        @param request: AddConnectableClusterRequest
+        @return: AddConnectableClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.add_connectable_cluster_with_options(instance_id, request, headers, runtime)
@@ -202,6 +246,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.AddConnectableClusterRequest,
     ) -> elasticsearch_20170613_models.AddConnectableClusterResponse:
+        """
+        @param request: AddConnectableClusterRequest
+        @return: AddConnectableClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.add_connectable_cluster_with_options_async(instance_id, request, headers, runtime)
@@ -213,6 +261,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.AddSnapshotRepoResponse:
+        """
+        @summary Call the AddSnapshotRepo to create a reference repository when configuring a cross-cluster OSS repository.
+        
+        @param request: AddSnapshotRepoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddSnapshotRepoResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -241,6 +297,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.AddSnapshotRepoResponse:
+        """
+        @summary Call the AddSnapshotRepo to create a reference repository when configuring a cross-cluster OSS repository.
+        
+        @param request: AddSnapshotRepoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: AddSnapshotRepoResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -267,6 +331,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.AddSnapshotRepoRequest,
     ) -> elasticsearch_20170613_models.AddSnapshotRepoResponse:
+        """
+        @summary Call the AddSnapshotRepo to create a reference repository when configuring a cross-cluster OSS repository.
+        
+        @param request: AddSnapshotRepoRequest
+        @return: AddSnapshotRepoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.add_snapshot_repo_with_options(instance_id, request, headers, runtime)
@@ -276,6 +346,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.AddSnapshotRepoRequest,
     ) -> elasticsearch_20170613_models.AddSnapshotRepoResponse:
+        """
+        @summary Call the AddSnapshotRepo to create a reference repository when configuring a cross-cluster OSS repository.
+        
+        @param request: AddSnapshotRepoRequest
+        @return: AddSnapshotRepoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.add_snapshot_repo_with_options_async(instance_id, request, headers, runtime)
@@ -287,6 +363,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CancelDeletionResponse:
+        """
+        @summary Restores an Elasticsearch cluster that is frozen after it is released.
+        
+        @param request: CancelDeletionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelDeletionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -318,6 +402,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CancelDeletionResponse:
+        """
+        @summary Restores an Elasticsearch cluster that is frozen after it is released.
+        
+        @param request: CancelDeletionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelDeletionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -347,6 +439,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.CancelDeletionRequest,
     ) -> elasticsearch_20170613_models.CancelDeletionResponse:
+        """
+        @summary Restores an Elasticsearch cluster that is frozen after it is released.
+        
+        @param request: CancelDeletionRequest
+        @return: CancelDeletionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.cancel_deletion_with_options(instance_id, request, headers, runtime)
@@ -356,6 +454,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.CancelDeletionRequest,
     ) -> elasticsearch_20170613_models.CancelDeletionResponse:
+        """
+        @summary Restores an Elasticsearch cluster that is frozen after it is released.
+        
+        @param request: CancelDeletionRequest
+        @return: CancelDeletionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.cancel_deletion_with_options_async(instance_id, request, headers, runtime)
@@ -367,6 +471,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CancelLogstashDeletionResponse:
+        """
+        @summary Restores a Logstash cluster that is frozen after it is released.
+        
+        @param request: CancelLogstashDeletionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelLogstashDeletionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -398,6 +510,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CancelLogstashDeletionResponse:
+        """
+        @summary Restores a Logstash cluster that is frozen after it is released.
+        
+        @param request: CancelLogstashDeletionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelLogstashDeletionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -427,6 +547,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.CancelLogstashDeletionRequest,
     ) -> elasticsearch_20170613_models.CancelLogstashDeletionResponse:
+        """
+        @summary Restores a Logstash cluster that is frozen after it is released.
+        
+        @param request: CancelLogstashDeletionRequest
+        @return: CancelLogstashDeletionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.cancel_logstash_deletion_with_options(instance_id, request, headers, runtime)
@@ -436,6 +562,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.CancelLogstashDeletionRequest,
     ) -> elasticsearch_20170613_models.CancelLogstashDeletionResponse:
+        """
+        @summary Restores a Logstash cluster that is frozen after it is released.
+        
+        @param request: CancelLogstashDeletionRequest
+        @return: CancelLogstashDeletionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.cancel_logstash_deletion_with_options_async(instance_id, request, headers, runtime)
@@ -447,6 +579,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CancelTaskResponse:
+        """
+        @param request: CancelTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -480,6 +618,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CancelTaskResponse:
+        """
+        @param request: CancelTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CancelTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -511,6 +655,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.CancelTaskRequest,
     ) -> elasticsearch_20170613_models.CancelTaskResponse:
+        """
+        @param request: CancelTaskRequest
+        @return: CancelTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.cancel_task_with_options(instance_id, request, headers, runtime)
@@ -520,6 +668,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.CancelTaskRequest,
     ) -> elasticsearch_20170613_models.CancelTaskResponse:
+        """
+        @param request: CancelTaskRequest
+        @return: CancelTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.cancel_task_with_options_async(instance_id, request, headers, runtime)
@@ -530,6 +682,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CapacityPlanResponse:
+        """
+        @summary 容量规划
+        
+        @param request: CapacityPlanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CapacityPlanResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.complex_query_available):
@@ -566,6 +726,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CapacityPlanResponse:
+        """
+        @summary 容量规划
+        
+        @param request: CapacityPlanRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CapacityPlanResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.complex_query_available):
@@ -600,6 +768,12 @@ class Client(OpenApiClient):
         self,
         request: elasticsearch_20170613_models.CapacityPlanRequest,
     ) -> elasticsearch_20170613_models.CapacityPlanResponse:
+        """
+        @summary 容量规划
+        
+        @param request: CapacityPlanRequest
+        @return: CapacityPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.capacity_plan_with_options(request, headers, runtime)
@@ -608,6 +782,12 @@ class Client(OpenApiClient):
         self,
         request: elasticsearch_20170613_models.CapacityPlanRequest,
     ) -> elasticsearch_20170613_models.CapacityPlanResponse:
+        """
+        @summary 容量规划
+        
+        @param request: CapacityPlanRequest
+        @return: CapacityPlanResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.capacity_plan_with_options_async(request, headers, runtime)
@@ -619,6 +799,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CloseDiagnosisResponse:
+        """
+        @summary 关闭实例的智能运维功能
+        
+        @param request: CloseDiagnosisRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloseDiagnosisResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -652,6 +840,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CloseDiagnosisResponse:
+        """
+        @summary 关闭实例的智能运维功能
+        
+        @param request: CloseDiagnosisRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloseDiagnosisResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -683,6 +879,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.CloseDiagnosisRequest,
     ) -> elasticsearch_20170613_models.CloseDiagnosisResponse:
+        """
+        @summary 关闭实例的智能运维功能
+        
+        @param request: CloseDiagnosisRequest
+        @return: CloseDiagnosisResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.close_diagnosis_with_options(instance_id, request, headers, runtime)
@@ -692,6 +894,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.CloseDiagnosisRequest,
     ) -> elasticsearch_20170613_models.CloseDiagnosisResponse:
+        """
+        @summary 关闭实例的智能运维功能
+        
+        @param request: CloseDiagnosisRequest
+        @return: CloseDiagnosisResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.close_diagnosis_with_options_async(instance_id, request, headers, runtime)
@@ -703,6 +911,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CloseHttpsResponse:
+        """
+        @param request: CloseHttpsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloseHttpsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -734,6 +948,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CloseHttpsResponse:
+        """
+        @param request: CloseHttpsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloseHttpsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -763,6 +983,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.CloseHttpsRequest,
     ) -> elasticsearch_20170613_models.CloseHttpsResponse:
+        """
+        @param request: CloseHttpsRequest
+        @return: CloseHttpsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.close_https_with_options(instance_id, request, headers, runtime)
@@ -772,6 +996,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.CloseHttpsRequest,
     ) -> elasticsearch_20170613_models.CloseHttpsResponse:
+        """
+        @param request: CloseHttpsRequest
+        @return: CloseHttpsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.close_https_with_options_async(instance_id, request, headers, runtime)
@@ -784,6 +1012,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CloseManagedIndexResponse:
+        """
+        @summary 关闭索引托管
+        
+        @param request: CloseManagedIndexRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloseManagedIndexResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -816,6 +1052,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CloseManagedIndexResponse:
+        """
+        @summary 关闭索引托管
+        
+        @param request: CloseManagedIndexRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CloseManagedIndexResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -846,6 +1090,12 @@ class Client(OpenApiClient):
         index: str,
         request: elasticsearch_20170613_models.CloseManagedIndexRequest,
     ) -> elasticsearch_20170613_models.CloseManagedIndexResponse:
+        """
+        @summary 关闭索引托管
+        
+        @param request: CloseManagedIndexRequest
+        @return: CloseManagedIndexResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.close_managed_index_with_options(instance_id, index, request, headers, runtime)
@@ -856,6 +1106,12 @@ class Client(OpenApiClient):
         index: str,
         request: elasticsearch_20170613_models.CloseManagedIndexRequest,
     ) -> elasticsearch_20170613_models.CloseManagedIndexResponse:
+        """
+        @summary 关闭索引托管
+        
+        @param request: CloseManagedIndexRequest
+        @return: CloseManagedIndexResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.close_managed_index_with_options_async(instance_id, index, request, headers, runtime)
@@ -866,6 +1122,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CreateCollectorResponse:
+        """
+        @summary 创建收集器
+        
+        @param request: CreateCollectorRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCollectorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -914,6 +1178,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CreateCollectorResponse:
+        """
+        @summary 创建收集器
+        
+        @param request: CreateCollectorRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateCollectorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -960,6 +1232,12 @@ class Client(OpenApiClient):
         self,
         request: elasticsearch_20170613_models.CreateCollectorRequest,
     ) -> elasticsearch_20170613_models.CreateCollectorResponse:
+        """
+        @summary 创建收集器
+        
+        @param request: CreateCollectorRequest
+        @return: CreateCollectorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_collector_with_options(request, headers, runtime)
@@ -968,6 +1246,12 @@ class Client(OpenApiClient):
         self,
         request: elasticsearch_20170613_models.CreateCollectorRequest,
     ) -> elasticsearch_20170613_models.CreateCollectorResponse:
+        """
+        @summary 创建收集器
+        
+        @param request: CreateCollectorRequest
+        @return: CreateCollectorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_collector_with_options_async(request, headers, runtime)
@@ -980,6 +1264,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CreateComponentIndexResponse:
+        """
+        @summary 创建Elasticsearch组合模板
+        
+        @param request: CreateComponentIndexRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateComponentIndexResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.meta):
@@ -1014,6 +1306,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CreateComponentIndexResponse:
+        """
+        @summary 创建Elasticsearch组合模板
+        
+        @param request: CreateComponentIndexRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateComponentIndexResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.meta):
@@ -1046,6 +1346,12 @@ class Client(OpenApiClient):
         name: str,
         request: elasticsearch_20170613_models.CreateComponentIndexRequest,
     ) -> elasticsearch_20170613_models.CreateComponentIndexResponse:
+        """
+        @summary 创建Elasticsearch组合模板
+        
+        @param request: CreateComponentIndexRequest
+        @return: CreateComponentIndexResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_component_index_with_options(instance_id, name, request, headers, runtime)
@@ -1056,6 +1362,12 @@ class Client(OpenApiClient):
         name: str,
         request: elasticsearch_20170613_models.CreateComponentIndexRequest,
     ) -> elasticsearch_20170613_models.CreateComponentIndexResponse:
+        """
+        @summary 创建Elasticsearch组合模板
+        
+        @param request: CreateComponentIndexRequest
+        @return: CreateComponentIndexResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_component_index_with_options_async(instance_id, name, request, headers, runtime)
@@ -1067,6 +1379,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CreateDataStreamResponse:
+        """
+        @summary 创建数据流
+        
+        @param request: CreateDataStreamRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataStreamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1099,6 +1419,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CreateDataStreamResponse:
+        """
+        @summary 创建数据流
+        
+        @param request: CreateDataStreamRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateDataStreamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1129,6 +1457,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.CreateDataStreamRequest,
     ) -> elasticsearch_20170613_models.CreateDataStreamResponse:
+        """
+        @summary 创建数据流
+        
+        @param request: CreateDataStreamRequest
+        @return: CreateDataStreamResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_data_stream_with_options(instance_id, request, headers, runtime)
@@ -1138,6 +1472,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.CreateDataStreamRequest,
     ) -> elasticsearch_20170613_models.CreateDataStreamResponse:
+        """
+        @summary 创建数据流
+        
+        @param request: CreateDataStreamRequest
+        @return: CreateDataStreamResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_data_stream_with_options_async(instance_id, request, headers, runtime)
@@ -1149,6 +1489,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CreateILMPolicyResponse:
+        """
+        @summary 创建索引生命周期策略
+        
+        @param request: CreateILMPolicyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateILMPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1181,6 +1529,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CreateILMPolicyResponse:
+        """
+        @summary 创建索引生命周期策略
+        
+        @param request: CreateILMPolicyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateILMPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1211,6 +1567,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.CreateILMPolicyRequest,
     ) -> elasticsearch_20170613_models.CreateILMPolicyResponse:
+        """
+        @summary 创建索引生命周期策略
+        
+        @param request: CreateILMPolicyRequest
+        @return: CreateILMPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_ilmpolicy_with_options(instance_id, request, headers, runtime)
@@ -1220,6 +1582,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.CreateILMPolicyRequest,
     ) -> elasticsearch_20170613_models.CreateILMPolicyResponse:
+        """
+        @summary 创建索引生命周期策略
+        
+        @param request: CreateILMPolicyRequest
+        @return: CreateILMPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_ilmpolicy_with_options_async(instance_id, request, headers, runtime)
@@ -1231,6 +1599,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CreateIndexTemplateResponse:
+        """
+        @summary 创建索引模版
+        
+        @param request: CreateIndexTemplateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIndexTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1276,6 +1652,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CreateIndexTemplateResponse:
+        """
+        @summary 创建索引模版
+        
+        @param request: CreateIndexTemplateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIndexTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1319,6 +1703,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.CreateIndexTemplateRequest,
     ) -> elasticsearch_20170613_models.CreateIndexTemplateResponse:
+        """
+        @summary 创建索引模版
+        
+        @param request: CreateIndexTemplateRequest
+        @return: CreateIndexTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_index_template_with_options(instance_id, request, headers, runtime)
@@ -1328,6 +1718,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.CreateIndexTemplateRequest,
     ) -> elasticsearch_20170613_models.CreateIndexTemplateResponse:
+        """
+        @summary 创建索引模版
+        
+        @param request: CreateIndexTemplateRequest
+        @return: CreateIndexTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_index_template_with_options_async(instance_id, request, headers, runtime)
@@ -1338,6 +1734,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CreateLogstashResponse:
+        """
+        @summary 创建logstash实例
+        
+        @param request: CreateLogstashRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLogstashResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1386,6 +1790,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CreateLogstashResponse:
+        """
+        @summary 创建logstash实例
+        
+        @param request: CreateLogstashRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateLogstashResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1432,6 +1844,12 @@ class Client(OpenApiClient):
         self,
         request: elasticsearch_20170613_models.CreateLogstashRequest,
     ) -> elasticsearch_20170613_models.CreateLogstashResponse:
+        """
+        @summary 创建logstash实例
+        
+        @param request: CreateLogstashRequest
+        @return: CreateLogstashResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_logstash_with_options(request, headers, runtime)
@@ -1440,6 +1858,12 @@ class Client(OpenApiClient):
         self,
         request: elasticsearch_20170613_models.CreateLogstashRequest,
     ) -> elasticsearch_20170613_models.CreateLogstashResponse:
+        """
+        @summary 创建logstash实例
+        
+        @param request: CreateLogstashRequest
+        @return: CreateLogstashResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_logstash_with_options_async(request, headers, runtime)
@@ -1451,6 +1875,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CreatePipelinesResponse:
+        """
+        @summary 创建Logstash管道任务
+        
+        @param request: CreatePipelinesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePipelinesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1485,6 +1917,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CreatePipelinesResponse:
+        """
+        @summary 创建Logstash管道任务
+        
+        @param request: CreatePipelinesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreatePipelinesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1517,6 +1957,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.CreatePipelinesRequest,
     ) -> elasticsearch_20170613_models.CreatePipelinesResponse:
+        """
+        @summary 创建Logstash管道任务
+        
+        @param request: CreatePipelinesRequest
+        @return: CreatePipelinesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_pipelines_with_options(instance_id, request, headers, runtime)
@@ -1526,6 +1972,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.CreatePipelinesRequest,
     ) -> elasticsearch_20170613_models.CreatePipelinesResponse:
+        """
+        @summary 创建Logstash管道任务
+        
+        @param request: CreatePipelinesRequest
+        @return: CreatePipelinesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_pipelines_with_options_async(instance_id, request, headers, runtime)
@@ -1537,6 +1989,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CreateSnapshotResponse:
+        """
+        @param request: CreateSnapshotRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSnapshotResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1569,6 +2027,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CreateSnapshotResponse:
+        """
+        @param request: CreateSnapshotRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateSnapshotResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1599,6 +2063,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.CreateSnapshotRequest,
     ) -> elasticsearch_20170613_models.CreateSnapshotResponse:
+        """
+        @param request: CreateSnapshotRequest
+        @return: CreateSnapshotResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_snapshot_with_options(instance_id, request, headers, runtime)
@@ -1608,6 +2076,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.CreateSnapshotRequest,
     ) -> elasticsearch_20170613_models.CreateSnapshotResponse:
+        """
+        @param request: CreateSnapshotRequest
+        @return: CreateSnapshotResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_snapshot_with_options_async(instance_id, request, headers, runtime)
@@ -1620,7 +2092,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CreateVpcEndpointResponse:
         """
-        5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D\\\\*\\*\
+        @summary 创建私网链接VPC终端节点
+        
+        @description 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D\\\\*\\*\
         
         @param request: CreateVpcEndpointRequest
         @param headers: map
@@ -1667,7 +2141,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CreateVpcEndpointResponse:
         """
-        5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D\\\\*\\*\
+        @summary 创建私网链接VPC终端节点
+        
+        @description 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D\\\\*\\*\
         
         @param request: CreateVpcEndpointRequest
         @param headers: map
@@ -1712,7 +2188,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.CreateVpcEndpointRequest,
     ) -> elasticsearch_20170613_models.CreateVpcEndpointResponse:
         """
-        5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D\\\\*\\*\
+        @summary 创建私网链接VPC终端节点
+        
+        @description 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D\\\\*\\*\
         
         @param request: CreateVpcEndpointRequest
         @return: CreateVpcEndpointResponse
@@ -1727,7 +2205,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.CreateVpcEndpointRequest,
     ) -> elasticsearch_20170613_models.CreateVpcEndpointResponse:
         """
-        5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D\\\\*\\*\
+        @summary 创建私网链接VPC终端节点
+        
+        @description 5FFD9ED4-C2EC-4E89-B22B-1ACB6FE1D\\\\*\\*\
         
         @param request: CreateVpcEndpointRequest
         @return: CreateVpcEndpointResponse
@@ -1743,6 +2223,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeactivateZonesResponse:
+        """
+        @summary Call deactivatezones to offline part of the zone when multiple zones are available. And you need to migrate the nodes in the offline zone to other zones.
+        
+        @param request: DeactivateZonesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeactivateZonesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1775,6 +2263,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeactivateZonesResponse:
+        """
+        @summary Call deactivatezones to offline part of the zone when multiple zones are available. And you need to migrate the nodes in the offline zone to other zones.
+        
+        @param request: DeactivateZonesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeactivateZonesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1805,6 +2301,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.DeactivateZonesRequest,
     ) -> elasticsearch_20170613_models.DeactivateZonesResponse:
+        """
+        @summary Call deactivatezones to offline part of the zone when multiple zones are available. And you need to migrate the nodes in the offline zone to other zones.
+        
+        @param request: DeactivateZonesRequest
+        @return: DeactivateZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.deactivate_zones_with_options(instance_id, request, headers, runtime)
@@ -1814,6 +2316,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.DeactivateZonesRequest,
     ) -> elasticsearch_20170613_models.DeactivateZonesResponse:
+        """
+        @summary Call deactivatezones to offline part of the zone when multiple zones are available. And you need to migrate the nodes in the offline zone to other zones.
+        
+        @param request: DeactivateZonesRequest
+        @return: DeactivateZonesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.deactivate_zones_with_options_async(instance_id, request, headers, runtime)
@@ -1825,6 +2333,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteCollectorResponse:
+        """
+        @summary Deletes a shipper.
+        
+        @param request: DeleteCollectorRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCollectorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1856,6 +2372,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteCollectorResponse:
+        """
+        @summary Deletes a shipper.
+        
+        @param request: DeleteCollectorRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteCollectorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -1885,6 +2409,12 @@ class Client(OpenApiClient):
         res_id: str,
         request: elasticsearch_20170613_models.DeleteCollectorRequest,
     ) -> elasticsearch_20170613_models.DeleteCollectorResponse:
+        """
+        @summary Deletes a shipper.
+        
+        @param request: DeleteCollectorRequest
+        @return: DeleteCollectorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_collector_with_options(res_id, request, headers, runtime)
@@ -1894,6 +2424,12 @@ class Client(OpenApiClient):
         res_id: str,
         request: elasticsearch_20170613_models.DeleteCollectorRequest,
     ) -> elasticsearch_20170613_models.DeleteCollectorResponse:
+        """
+        @summary Deletes a shipper.
+        
+        @param request: DeleteCollectorRequest
+        @return: DeleteCollectorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_collector_with_options_async(res_id, request, headers, runtime)
@@ -1905,6 +2441,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteComponentIndexResponse:
+        """
+        @summary 删除组合索引模板
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteComponentIndexResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1931,6 +2474,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteComponentIndexResponse:
+        """
+        @summary 删除组合索引模板
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteComponentIndexResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1955,6 +2505,11 @@ class Client(OpenApiClient):
         instance_id: str,
         name: str,
     ) -> elasticsearch_20170613_models.DeleteComponentIndexResponse:
+        """
+        @summary 删除组合索引模板
+        
+        @return: DeleteComponentIndexResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_component_index_with_options(instance_id, name, headers, runtime)
@@ -1964,6 +2519,11 @@ class Client(OpenApiClient):
         instance_id: str,
         name: str,
     ) -> elasticsearch_20170613_models.DeleteComponentIndexResponse:
+        """
+        @summary 删除组合索引模板
+        
+        @return: DeleteComponentIndexResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_component_index_with_options_async(instance_id, name, headers, runtime)
@@ -1975,6 +2535,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteConnectedClusterResponse:
+        """
+        @param request: DeleteConnectedClusterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConnectedClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2008,6 +2574,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteConnectedClusterResponse:
+        """
+        @param request: DeleteConnectedClusterRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteConnectedClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2039,6 +2611,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.DeleteConnectedClusterRequest,
     ) -> elasticsearch_20170613_models.DeleteConnectedClusterResponse:
+        """
+        @param request: DeleteConnectedClusterRequest
+        @return: DeleteConnectedClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_connected_cluster_with_options(instance_id, request, headers, runtime)
@@ -2048,6 +2624,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.DeleteConnectedClusterRequest,
     ) -> elasticsearch_20170613_models.DeleteConnectedClusterResponse:
+        """
+        @param request: DeleteConnectedClusterRequest
+        @return: DeleteConnectedClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_connected_cluster_with_options_async(instance_id, request, headers, runtime)
@@ -2060,6 +2640,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteDataStreamResponse:
+        """
+        @summary 删除数据流
+        
+        @param request: DeleteDataStreamRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataStreamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2092,6 +2680,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteDataStreamResponse:
+        """
+        @summary 删除数据流
+        
+        @param request: DeleteDataStreamRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataStreamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2122,6 +2718,12 @@ class Client(OpenApiClient):
         data_stream: str,
         request: elasticsearch_20170613_models.DeleteDataStreamRequest,
     ) -> elasticsearch_20170613_models.DeleteDataStreamResponse:
+        """
+        @summary 删除数据流
+        
+        @param request: DeleteDataStreamRequest
+        @return: DeleteDataStreamResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_data_stream_with_options(instance_id, data_stream, request, headers, runtime)
@@ -2132,6 +2734,12 @@ class Client(OpenApiClient):
         data_stream: str,
         request: elasticsearch_20170613_models.DeleteDataStreamRequest,
     ) -> elasticsearch_20170613_models.DeleteDataStreamResponse:
+        """
+        @summary 删除数据流
+        
+        @param request: DeleteDataStreamRequest
+        @return: DeleteDataStreamResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_data_stream_with_options_async(instance_id, data_stream, request, headers, runtime)
@@ -2143,6 +2751,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteDataTaskResponse:
+        """
+        @param request: DeleteDataTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2176,6 +2790,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteDataTaskResponse:
+        """
+        @param request: DeleteDataTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDataTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2207,6 +2827,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.DeleteDataTaskRequest,
     ) -> elasticsearch_20170613_models.DeleteDataTaskResponse:
+        """
+        @param request: DeleteDataTaskRequest
+        @return: DeleteDataTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_data_task_with_options(instance_id, request, headers, runtime)
@@ -2216,6 +2840,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.DeleteDataTaskRequest,
     ) -> elasticsearch_20170613_models.DeleteDataTaskResponse:
+        """
+        @param request: DeleteDataTaskRequest
+        @return: DeleteDataTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_data_task_with_options_async(instance_id, request, headers, runtime)
@@ -2227,6 +2855,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteDeprecatedTemplateResponse:
+        """
+        @summary 删除历史索引模板
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDeprecatedTemplateResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2253,6 +2888,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteDeprecatedTemplateResponse:
+        """
+        @summary 删除历史索引模板
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteDeprecatedTemplateResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2277,6 +2919,11 @@ class Client(OpenApiClient):
         instance_id: str,
         name: str,
     ) -> elasticsearch_20170613_models.DeleteDeprecatedTemplateResponse:
+        """
+        @summary 删除历史索引模板
+        
+        @return: DeleteDeprecatedTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_deprecated_template_with_options(instance_id, name, headers, runtime)
@@ -2286,6 +2933,11 @@ class Client(OpenApiClient):
         instance_id: str,
         name: str,
     ) -> elasticsearch_20170613_models.DeleteDeprecatedTemplateResponse:
+        """
+        @summary 删除历史索引模板
+        
+        @return: DeleteDeprecatedTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_deprecated_template_with_options_async(instance_id, name, headers, runtime)
@@ -2297,6 +2949,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteILMPolicyResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteILMPolicyResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2323,6 +2980,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteILMPolicyResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteILMPolicyResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2347,6 +3009,9 @@ class Client(OpenApiClient):
         instance_id: str,
         policy_name: str,
     ) -> elasticsearch_20170613_models.DeleteILMPolicyResponse:
+        """
+        @return: DeleteILMPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_ilmpolicy_with_options(instance_id, policy_name, headers, runtime)
@@ -2356,6 +3021,9 @@ class Client(OpenApiClient):
         instance_id: str,
         policy_name: str,
     ) -> elasticsearch_20170613_models.DeleteILMPolicyResponse:
+        """
+        @return: DeleteILMPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_ilmpolicy_with_options_async(instance_id, policy_name, headers, runtime)
@@ -2367,6 +3035,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteIndexTemplateResponse:
+        """
+        @summary 删除ES集群索引模版
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIndexTemplateResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2393,6 +3068,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteIndexTemplateResponse:
+        """
+        @summary 删除ES集群索引模版
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIndexTemplateResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2417,6 +3099,11 @@ class Client(OpenApiClient):
         instance_id: str,
         index_template: str,
     ) -> elasticsearch_20170613_models.DeleteIndexTemplateResponse:
+        """
+        @summary 删除ES集群索引模版
+        
+        @return: DeleteIndexTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_index_template_with_options(instance_id, index_template, headers, runtime)
@@ -2426,6 +3113,11 @@ class Client(OpenApiClient):
         instance_id: str,
         index_template: str,
     ) -> elasticsearch_20170613_models.DeleteIndexTemplateResponse:
+        """
+        @summary 删除ES集群索引模版
+        
+        @return: DeleteIndexTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_index_template_with_options_async(instance_id, index_template, headers, runtime)
@@ -2437,6 +3129,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteInstanceResponse:
+        """
+        @param request: DeleteInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2470,6 +3168,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteInstanceResponse:
+        """
+        @param request: DeleteInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2501,6 +3205,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.DeleteInstanceRequest,
     ) -> elasticsearch_20170613_models.DeleteInstanceResponse:
+        """
+        @param request: DeleteInstanceRequest
+        @return: DeleteInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_instance_with_options(instance_id, request, headers, runtime)
@@ -2510,6 +3218,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.DeleteInstanceRequest,
     ) -> elasticsearch_20170613_models.DeleteInstanceResponse:
+        """
+        @param request: DeleteInstanceRequest
+        @return: DeleteInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_instance_with_options_async(instance_id, request, headers, runtime)
@@ -2522,7 +3234,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteLogstashResponse:
         """
-        Before you call this operation, take note of the following information: After the cluster is released, the physical resources used by the cluster are reclaimed. The data stored in the cluster is deleted and cannot be recovered. The disks attached to the nodes in the cluster and the snapshots created for the cluster are released.
+        @summary Releases a Logstash cluster.
+        
+        @description Before you call this operation, take note of the following information: After the cluster is released, the physical resources used by the cluster are reclaimed. The data stored in the cluster is deleted and cannot be recovered. The disks attached to the nodes in the cluster and the snapshots created for the cluster are released.
         
         @param request: DeleteLogstashRequest
         @param headers: map
@@ -2563,7 +3277,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteLogstashResponse:
         """
-        Before you call this operation, take note of the following information: After the cluster is released, the physical resources used by the cluster are reclaimed. The data stored in the cluster is deleted and cannot be recovered. The disks attached to the nodes in the cluster and the snapshots created for the cluster are released.
+        @summary Releases a Logstash cluster.
+        
+        @description Before you call this operation, take note of the following information: After the cluster is released, the physical resources used by the cluster are reclaimed. The data stored in the cluster is deleted and cannot be recovered. The disks attached to the nodes in the cluster and the snapshots created for the cluster are released.
         
         @param request: DeleteLogstashRequest
         @param headers: map
@@ -2602,7 +3318,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.DeleteLogstashRequest,
     ) -> elasticsearch_20170613_models.DeleteLogstashResponse:
         """
-        Before you call this operation, take note of the following information: After the cluster is released, the physical resources used by the cluster are reclaimed. The data stored in the cluster is deleted and cannot be recovered. The disks attached to the nodes in the cluster and the snapshots created for the cluster are released.
+        @summary Releases a Logstash cluster.
+        
+        @description Before you call this operation, take note of the following information: After the cluster is released, the physical resources used by the cluster are reclaimed. The data stored in the cluster is deleted and cannot be recovered. The disks attached to the nodes in the cluster and the snapshots created for the cluster are released.
         
         @param request: DeleteLogstashRequest
         @return: DeleteLogstashResponse
@@ -2617,7 +3335,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.DeleteLogstashRequest,
     ) -> elasticsearch_20170613_models.DeleteLogstashResponse:
         """
-        Before you call this operation, take note of the following information: After the cluster is released, the physical resources used by the cluster are reclaimed. The data stored in the cluster is deleted and cannot be recovered. The disks attached to the nodes in the cluster and the snapshots created for the cluster are released.
+        @summary Releases a Logstash cluster.
+        
+        @description Before you call this operation, take note of the following information: After the cluster is released, the physical resources used by the cluster are reclaimed. The data stored in the cluster is deleted and cannot be recovered. The disks attached to the nodes in the cluster and the snapshots created for the cluster are released.
         
         @param request: DeleteLogstashRequest
         @return: DeleteLogstashResponse
@@ -2633,6 +3353,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeletePipelinesResponse:
+        """
+        @summary Deletes a pipeline that is configured for a Logstash cluster.
+        
+        @param request: DeletePipelinesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePipelinesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2666,6 +3394,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeletePipelinesResponse:
+        """
+        @summary Deletes a pipeline that is configured for a Logstash cluster.
+        
+        @param request: DeletePipelinesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeletePipelinesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2697,6 +3433,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.DeletePipelinesRequest,
     ) -> elasticsearch_20170613_models.DeletePipelinesResponse:
+        """
+        @summary Deletes a pipeline that is configured for a Logstash cluster.
+        
+        @param request: DeletePipelinesRequest
+        @return: DeletePipelinesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_pipelines_with_options(instance_id, request, headers, runtime)
@@ -2706,6 +3448,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.DeletePipelinesRequest,
     ) -> elasticsearch_20170613_models.DeletePipelinesResponse:
+        """
+        @summary Deletes a pipeline that is configured for a Logstash cluster.
+        
+        @param request: DeletePipelinesRequest
+        @return: DeletePipelinesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_pipelines_with_options_async(instance_id, request, headers, runtime)
@@ -2717,6 +3465,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteSnapshotRepoResponse:
+        """
+        @param request: DeleteSnapshotRepoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSnapshotRepoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2750,6 +3504,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteSnapshotRepoResponse:
+        """
+        @param request: DeleteSnapshotRepoRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteSnapshotRepoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2781,6 +3541,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.DeleteSnapshotRepoRequest,
     ) -> elasticsearch_20170613_models.DeleteSnapshotRepoResponse:
+        """
+        @param request: DeleteSnapshotRepoRequest
+        @return: DeleteSnapshotRepoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_snapshot_repo_with_options(instance_id, request, headers, runtime)
@@ -2790,6 +3554,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.DeleteSnapshotRepoRequest,
     ) -> elasticsearch_20170613_models.DeleteSnapshotRepoResponse:
+        """
+        @param request: DeleteSnapshotRepoRequest
+        @return: DeleteSnapshotRepoResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_snapshot_repo_with_options_async(instance_id, request, headers, runtime)
@@ -2802,6 +3570,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteVpcEndpointResponse:
+        """
+        @summary 删除服务账号vpc下的终端节点
+        
+        @param request: DeleteVpcEndpointRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVpcEndpointResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2834,6 +3610,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DeleteVpcEndpointResponse:
+        """
+        @summary 删除服务账号vpc下的终端节点
+        
+        @param request: DeleteVpcEndpointRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteVpcEndpointResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -2864,6 +3648,12 @@ class Client(OpenApiClient):
         endpoint_id: str,
         request: elasticsearch_20170613_models.DeleteVpcEndpointRequest,
     ) -> elasticsearch_20170613_models.DeleteVpcEndpointResponse:
+        """
+        @summary 删除服务账号vpc下的终端节点
+        
+        @param request: DeleteVpcEndpointRequest
+        @return: DeleteVpcEndpointResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_vpc_endpoint_with_options(instance_id, endpoint_id, request, headers, runtime)
@@ -2874,6 +3664,12 @@ class Client(OpenApiClient):
         endpoint_id: str,
         request: elasticsearch_20170613_models.DeleteVpcEndpointRequest,
     ) -> elasticsearch_20170613_models.DeleteVpcEndpointResponse:
+        """
+        @summary 删除服务账号vpc下的终端节点
+        
+        @param request: DeleteVpcEndpointRequest
+        @return: DeleteVpcEndpointResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_vpc_endpoint_with_options_async(instance_id, endpoint_id, request, headers, runtime)
@@ -2885,7 +3681,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeAckOperatorResponse:
         """
-        > Before you install a shipper on an ACK cluster, you can call this operation to query the installation status of ES-operator for the ACK cluster.
+        @summary Queries the information of ES-operator that is installed for a specified Container Service for Kubernetes (ACK) cluster.
+        
+        @description > Before you install a shipper on an ACK cluster, you can call this operation to query the installation status of ES-operator for the ACK cluster.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2917,7 +3715,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeAckOperatorResponse:
         """
-        > Before you install a shipper on an ACK cluster, you can call this operation to query the installation status of ES-operator for the ACK cluster.
+        @summary Queries the information of ES-operator that is installed for a specified Container Service for Kubernetes (ACK) cluster.
+        
+        @description > Before you install a shipper on an ACK cluster, you can call this operation to query the installation status of ES-operator for the ACK cluster.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -2947,7 +3747,9 @@ class Client(OpenApiClient):
         cluster_id: str,
     ) -> elasticsearch_20170613_models.DescribeAckOperatorResponse:
         """
-        > Before you install a shipper on an ACK cluster, you can call this operation to query the installation status of ES-operator for the ACK cluster.
+        @summary Queries the information of ES-operator that is installed for a specified Container Service for Kubernetes (ACK) cluster.
+        
+        @description > Before you install a shipper on an ACK cluster, you can call this operation to query the installation status of ES-operator for the ACK cluster.
         
         @return: DescribeAckOperatorResponse
         """
@@ -2960,7 +3762,9 @@ class Client(OpenApiClient):
         cluster_id: str,
     ) -> elasticsearch_20170613_models.DescribeAckOperatorResponse:
         """
-        > Before you install a shipper on an ACK cluster, you can call this operation to query the installation status of ES-operator for the ACK cluster.
+        @summary Queries the information of ES-operator that is installed for a specified Container Service for Kubernetes (ACK) cluster.
+        
+        @description > Before you install a shipper on an ACK cluster, you can call this operation to query the installation status of ES-operator for the ACK cluster.
         
         @return: DescribeAckOperatorResponse
         """
@@ -2974,6 +3778,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeApmResponse:
+        """
+        @summary DescribeApm
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApmResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -2999,6 +3810,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeApmResponse:
+        """
+        @summary DescribeApm
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeApmResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3022,6 +3840,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.DescribeApmResponse:
+        """
+        @summary DescribeApm
+        
+        @return: DescribeApmResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_apm_with_options(instance_id, headers, runtime)
@@ -3030,6 +3853,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.DescribeApmResponse:
+        """
+        @summary DescribeApm
+        
+        @return: DescribeApmResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_apm_with_options_async(instance_id, headers, runtime)
@@ -3040,6 +3868,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeCollectorResponse:
+        """
+        @summary Queries the details of a shipper.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCollectorResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3065,6 +3900,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeCollectorResponse:
+        """
+        @summary Queries the details of a shipper.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCollectorResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3088,6 +3930,11 @@ class Client(OpenApiClient):
         self,
         res_id: str,
     ) -> elasticsearch_20170613_models.DescribeCollectorResponse:
+        """
+        @summary Queries the details of a shipper.
+        
+        @return: DescribeCollectorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_collector_with_options(res_id, headers, runtime)
@@ -3096,6 +3943,11 @@ class Client(OpenApiClient):
         self,
         res_id: str,
     ) -> elasticsearch_20170613_models.DescribeCollectorResponse:
+        """
+        @summary Queries the details of a shipper.
+        
+        @return: DescribeCollectorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_collector_with_options_async(res_id, headers, runtime)
@@ -3107,6 +3959,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeComponentIndexResponse:
+        """
+        @summary 查看组合索引模板详情
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeComponentIndexResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3133,6 +3992,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeComponentIndexResponse:
+        """
+        @summary 查看组合索引模板详情
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeComponentIndexResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3157,6 +4023,11 @@ class Client(OpenApiClient):
         instance_id: str,
         name: str,
     ) -> elasticsearch_20170613_models.DescribeComponentIndexResponse:
+        """
+        @summary 查看组合索引模板详情
+        
+        @return: DescribeComponentIndexResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_component_index_with_options(instance_id, name, headers, runtime)
@@ -3166,6 +4037,11 @@ class Client(OpenApiClient):
         instance_id: str,
         name: str,
     ) -> elasticsearch_20170613_models.DescribeComponentIndexResponse:
+        """
+        @summary 查看组合索引模板详情
+        
+        @return: DescribeComponentIndexResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_component_index_with_options_async(instance_id, name, headers, runtime)
@@ -3177,6 +4053,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeConnectableClustersResponse:
+        """
+        @param request: DescribeConnectableClustersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeConnectableClustersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.already_set_items):
@@ -3208,6 +4090,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeConnectableClustersResponse:
+        """
+        @param request: DescribeConnectableClustersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeConnectableClustersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.already_set_items):
@@ -3237,6 +4125,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.DescribeConnectableClustersRequest,
     ) -> elasticsearch_20170613_models.DescribeConnectableClustersResponse:
+        """
+        @param request: DescribeConnectableClustersRequest
+        @return: DescribeConnectableClustersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_connectable_clusters_with_options(instance_id, request, headers, runtime)
@@ -3246,6 +4138,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.DescribeConnectableClustersRequest,
     ) -> elasticsearch_20170613_models.DescribeConnectableClustersResponse:
+        """
+        @param request: DescribeConnectableClustersRequest
+        @return: DescribeConnectableClustersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_connectable_clusters_with_options_async(instance_id, request, headers, runtime)
@@ -3257,6 +4153,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeDeprecatedTemplateResponse:
+        """
+        @summary DescribeDeprecatedTemplate
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDeprecatedTemplateResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3283,6 +4186,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeDeprecatedTemplateResponse:
+        """
+        @summary DescribeDeprecatedTemplate
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDeprecatedTemplateResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3307,6 +4217,11 @@ class Client(OpenApiClient):
         instance_id: str,
         name: str,
     ) -> elasticsearch_20170613_models.DescribeDeprecatedTemplateResponse:
+        """
+        @summary DescribeDeprecatedTemplate
+        
+        @return: DescribeDeprecatedTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_deprecated_template_with_options(instance_id, name, headers, runtime)
@@ -3316,6 +4231,11 @@ class Client(OpenApiClient):
         instance_id: str,
         name: str,
     ) -> elasticsearch_20170613_models.DescribeDeprecatedTemplateResponse:
+        """
+        @summary DescribeDeprecatedTemplate
+        
+        @return: DescribeDeprecatedTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_deprecated_template_with_options_async(instance_id, name, headers, runtime)
@@ -3328,6 +4248,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeDiagnoseReportResponse:
+        """
+        @param request: DescribeDiagnoseReportRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDiagnoseReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -3360,6 +4286,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeDiagnoseReportResponse:
+        """
+        @param request: DescribeDiagnoseReportRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDiagnoseReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -3390,6 +4322,10 @@ class Client(OpenApiClient):
         report_id: str,
         request: elasticsearch_20170613_models.DescribeDiagnoseReportRequest,
     ) -> elasticsearch_20170613_models.DescribeDiagnoseReportResponse:
+        """
+        @param request: DescribeDiagnoseReportRequest
+        @return: DescribeDiagnoseReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_diagnose_report_with_options(instance_id, report_id, request, headers, runtime)
@@ -3400,6 +4336,10 @@ class Client(OpenApiClient):
         report_id: str,
         request: elasticsearch_20170613_models.DescribeDiagnoseReportRequest,
     ) -> elasticsearch_20170613_models.DescribeDiagnoseReportResponse:
+        """
+        @param request: DescribeDiagnoseReportRequest
+        @return: DescribeDiagnoseReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_diagnose_report_with_options_async(instance_id, report_id, request, headers, runtime)
@@ -3411,6 +4351,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeDiagnosisSettingsResponse:
+        """
+        @param request: DescribeDiagnosisSettingsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDiagnosisSettingsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -3442,6 +4388,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeDiagnosisSettingsResponse:
+        """
+        @param request: DescribeDiagnosisSettingsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDiagnosisSettingsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -3471,6 +4423,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.DescribeDiagnosisSettingsRequest,
     ) -> elasticsearch_20170613_models.DescribeDiagnosisSettingsResponse:
+        """
+        @param request: DescribeDiagnosisSettingsRequest
+        @return: DescribeDiagnosisSettingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_diagnosis_settings_with_options(instance_id, request, headers, runtime)
@@ -3480,6 +4436,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.DescribeDiagnosisSettingsRequest,
     ) -> elasticsearch_20170613_models.DescribeDiagnosisSettingsResponse:
+        """
+        @param request: DescribeDiagnosisSettingsRequest
+        @return: DescribeDiagnosisSettingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_diagnosis_settings_with_options_async(instance_id, request, headers, runtime)
@@ -3490,6 +4450,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeDynamicSettingsResponse:
+        """
+        @summary 获取集群动态指标
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDynamicSettingsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3515,6 +4482,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeDynamicSettingsResponse:
+        """
+        @summary 获取集群动态指标
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDynamicSettingsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3538,6 +4512,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.DescribeDynamicSettingsResponse:
+        """
+        @summary 获取集群动态指标
+        
+        @return: DescribeDynamicSettingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_dynamic_settings_with_options(instance_id, headers, runtime)
@@ -3546,6 +4525,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.DescribeDynamicSettingsResponse:
+        """
+        @summary 获取集群动态指标
+        
+        @return: DescribeDynamicSettingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_dynamic_settings_with_options_async(instance_id, headers, runtime)
@@ -3557,10 +4541,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeElasticsearchHealthResponse:
         """
-        An Elasticsearch cluster can be in a health state indicated by one of the following colors:
-        *   GREEN: Primary shards and replica shards for the primary shards are normally allocated.
-        *   YELLOW: Primary shards are normally allocated, but replica shards for the primary shards are not normally allocated.
-        *   RED: Primary shards are not normally allocated.
+        @summary Queries the health status of an Elasticsearch cluster.
+        
+        @description An Elasticsearch cluster can be in a health state indicated by one of the following colors:
+        GREEN: Primary shards and replica shards for the primary shards are normally allocated.
+        YELLOW: Primary shards are normally allocated, but replica shards for the primary shards are not normally allocated.
+        RED: Primary shards are not normally allocated.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3592,10 +4578,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeElasticsearchHealthResponse:
         """
-        An Elasticsearch cluster can be in a health state indicated by one of the following colors:
-        *   GREEN: Primary shards and replica shards for the primary shards are normally allocated.
-        *   YELLOW: Primary shards are normally allocated, but replica shards for the primary shards are not normally allocated.
-        *   RED: Primary shards are not normally allocated.
+        @summary Queries the health status of an Elasticsearch cluster.
+        
+        @description An Elasticsearch cluster can be in a health state indicated by one of the following colors:
+        GREEN: Primary shards and replica shards for the primary shards are normally allocated.
+        YELLOW: Primary shards are normally allocated, but replica shards for the primary shards are not normally allocated.
+        RED: Primary shards are not normally allocated.
         
         @param headers: map
         @param runtime: runtime options for this request RuntimeOptions
@@ -3625,10 +4613,12 @@ class Client(OpenApiClient):
         instance_id: str,
     ) -> elasticsearch_20170613_models.DescribeElasticsearchHealthResponse:
         """
-        An Elasticsearch cluster can be in a health state indicated by one of the following colors:
-        *   GREEN: Primary shards and replica shards for the primary shards are normally allocated.
-        *   YELLOW: Primary shards are normally allocated, but replica shards for the primary shards are not normally allocated.
-        *   RED: Primary shards are not normally allocated.
+        @summary Queries the health status of an Elasticsearch cluster.
+        
+        @description An Elasticsearch cluster can be in a health state indicated by one of the following colors:
+        GREEN: Primary shards and replica shards for the primary shards are normally allocated.
+        YELLOW: Primary shards are normally allocated, but replica shards for the primary shards are not normally allocated.
+        RED: Primary shards are not normally allocated.
         
         @return: DescribeElasticsearchHealthResponse
         """
@@ -3641,10 +4631,12 @@ class Client(OpenApiClient):
         instance_id: str,
     ) -> elasticsearch_20170613_models.DescribeElasticsearchHealthResponse:
         """
-        An Elasticsearch cluster can be in a health state indicated by one of the following colors:
-        *   GREEN: Primary shards and replica shards for the primary shards are normally allocated.
-        *   YELLOW: Primary shards are normally allocated, but replica shards for the primary shards are not normally allocated.
-        *   RED: Primary shards are not normally allocated.
+        @summary Queries the health status of an Elasticsearch cluster.
+        
+        @description An Elasticsearch cluster can be in a health state indicated by one of the following colors:
+        GREEN: Primary shards and replica shards for the primary shards are normally allocated.
+        YELLOW: Primary shards are normally allocated, but replica shards for the primary shards are not normally allocated.
+        RED: Primary shards are not normally allocated.
         
         @return: DescribeElasticsearchHealthResponse
         """
@@ -3659,6 +4651,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeILMPolicyResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeILMPolicyResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3685,6 +4682,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeILMPolicyResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeILMPolicyResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3709,6 +4711,9 @@ class Client(OpenApiClient):
         instance_id: str,
         policy_name: str,
     ) -> elasticsearch_20170613_models.DescribeILMPolicyResponse:
+        """
+        @return: DescribeILMPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_ilmpolicy_with_options(instance_id, policy_name, headers, runtime)
@@ -3718,6 +4723,9 @@ class Client(OpenApiClient):
         instance_id: str,
         policy_name: str,
     ) -> elasticsearch_20170613_models.DescribeILMPolicyResponse:
+        """
+        @return: DescribeILMPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_ilmpolicy_with_options_async(instance_id, policy_name, headers, runtime)
@@ -3729,6 +4737,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeIndexTemplateResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIndexTemplateResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3755,6 +4768,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeIndexTemplateResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeIndexTemplateResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3779,6 +4797,9 @@ class Client(OpenApiClient):
         instance_id: str,
         index_template: str,
     ) -> elasticsearch_20170613_models.DescribeIndexTemplateResponse:
+        """
+        @return: DescribeIndexTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_index_template_with_options(instance_id, index_template, headers, runtime)
@@ -3788,6 +4809,9 @@ class Client(OpenApiClient):
         instance_id: str,
         index_template: str,
     ) -> elasticsearch_20170613_models.DescribeIndexTemplateResponse:
+        """
+        @return: DescribeIndexTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_index_template_with_options_async(instance_id, index_template, headers, runtime)
@@ -3798,6 +4822,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeInstanceResponse:
+        """
+        @summary The name of the dictionary file.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3823,6 +4854,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeInstanceResponse:
+        """
+        @summary The name of the dictionary file.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeInstanceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3846,6 +4884,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.DescribeInstanceResponse:
+        """
+        @summary The name of the dictionary file.
+        
+        @return: DescribeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_instance_with_options(instance_id, headers, runtime)
@@ -3854,6 +4897,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.DescribeInstanceResponse:
+        """
+        @summary The name of the dictionary file.
+        
+        @return: DescribeInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_instance_with_options_async(instance_id, headers, runtime)
@@ -3864,6 +4912,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeKibanaSettingsResponse:
+        """
+        @summary 获取Elasticsearch集群Kibana节点settings配置
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeKibanaSettingsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3889,6 +4944,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeKibanaSettingsResponse:
+        """
+        @summary 获取Elasticsearch集群Kibana节点settings配置
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeKibanaSettingsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3912,6 +4974,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.DescribeKibanaSettingsResponse:
+        """
+        @summary 获取Elasticsearch集群Kibana节点settings配置
+        
+        @return: DescribeKibanaSettingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_kibana_settings_with_options(instance_id, headers, runtime)
@@ -3920,6 +4987,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.DescribeKibanaSettingsResponse:
+        """
+        @summary 获取Elasticsearch集群Kibana节点settings配置
+        
+        @return: DescribeKibanaSettingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_kibana_settings_with_options_async(instance_id, headers, runtime)
@@ -3930,6 +5002,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeLogstashResponse:
+        """
+        @summary 查看Logstash实例详情
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLogstashResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3955,6 +5034,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeLogstashResponse:
+        """
+        @summary 查看Logstash实例详情
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeLogstashResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -3978,6 +5064,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.DescribeLogstashResponse:
+        """
+        @summary 查看Logstash实例详情
+        
+        @return: DescribeLogstashResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_logstash_with_options(instance_id, headers, runtime)
@@ -3986,6 +5077,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.DescribeLogstashResponse:
+        """
+        @summary 查看Logstash实例详情
+        
+        @return: DescribeLogstashResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_logstash_with_options_async(instance_id, headers, runtime)
@@ -3997,6 +5093,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribePipelineResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePipelineResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4023,6 +5124,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribePipelineResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePipelineResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4047,6 +5153,9 @@ class Client(OpenApiClient):
         instance_id: str,
         pipeline_id: str,
     ) -> elasticsearch_20170613_models.DescribePipelineResponse:
+        """
+        @return: DescribePipelineResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_pipeline_with_options(instance_id, pipeline_id, headers, runtime)
@@ -4056,6 +5165,9 @@ class Client(OpenApiClient):
         instance_id: str,
         pipeline_id: str,
     ) -> elasticsearch_20170613_models.DescribePipelineResponse:
+        """
+        @return: DescribePipelineResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_pipeline_with_options_async(instance_id, pipeline_id, headers, runtime)
@@ -4067,6 +5179,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribePipelineManagementConfigResponse:
+        """
+        @summary Queries the management configurations of pipelines in a Logstash cluster.
+        
+        @param request: DescribePipelineManagementConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePipelineManagementConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -4098,6 +5218,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribePipelineManagementConfigResponse:
+        """
+        @summary Queries the management configurations of pipelines in a Logstash cluster.
+        
+        @param request: DescribePipelineManagementConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribePipelineManagementConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -4127,6 +5255,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.DescribePipelineManagementConfigRequest,
     ) -> elasticsearch_20170613_models.DescribePipelineManagementConfigResponse:
+        """
+        @summary Queries the management configurations of pipelines in a Logstash cluster.
+        
+        @param request: DescribePipelineManagementConfigRequest
+        @return: DescribePipelineManagementConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_pipeline_management_config_with_options(instance_id, request, headers, runtime)
@@ -4136,6 +5270,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.DescribePipelineManagementConfigRequest,
     ) -> elasticsearch_20170613_models.DescribePipelineManagementConfigResponse:
+        """
+        @summary Queries the management configurations of pipelines in a Logstash cluster.
+        
+        @param request: DescribePipelineManagementConfigRequest
+        @return: DescribePipelineManagementConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_pipeline_management_config_with_options_async(instance_id, request, headers, runtime)
@@ -4145,6 +5285,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeRegionsResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4169,6 +5314,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeRegionsResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4189,11 +5339,17 @@ class Client(OpenApiClient):
         )
 
     def describe_regions(self) -> elasticsearch_20170613_models.DescribeRegionsResponse:
+        """
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_regions_with_options(headers, runtime)
 
     async def describe_regions_async(self) -> elasticsearch_20170613_models.DescribeRegionsResponse:
+        """
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_regions_with_options_async(headers, runtime)
@@ -4204,6 +5360,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeSnapshotSettingResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSnapshotSettingResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4229,6 +5390,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeSnapshotSettingResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSnapshotSettingResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4252,6 +5418,9 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.DescribeSnapshotSettingResponse:
+        """
+        @return: DescribeSnapshotSettingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_snapshot_setting_with_options(instance_id, headers, runtime)
@@ -4260,6 +5429,9 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.DescribeSnapshotSettingResponse:
+        """
+        @return: DescribeSnapshotSettingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_snapshot_setting_with_options_async(instance_id, headers, runtime)
@@ -4270,6 +5442,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeTemplatesResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTemplatesResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4295,6 +5472,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeTemplatesResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTemplatesResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4318,6 +5500,9 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.DescribeTemplatesResponse:
+        """
+        @return: DescribeTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_templates_with_options(instance_id, headers, runtime)
@@ -4326,6 +5511,9 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.DescribeTemplatesResponse:
+        """
+        @return: DescribeTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_templates_with_options_async(instance_id, headers, runtime)
@@ -4336,6 +5524,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeXpackMonitorConfigResponse:
+        """
+        @summary Queries the configurations of the X-Pack Monitoring feature of a Logstash cluster.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeXpackMonitorConfigResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4361,6 +5556,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DescribeXpackMonitorConfigResponse:
+        """
+        @summary Queries the configurations of the X-Pack Monitoring feature of a Logstash cluster.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeXpackMonitorConfigResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4384,6 +5586,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.DescribeXpackMonitorConfigResponse:
+        """
+        @summary Queries the configurations of the X-Pack Monitoring feature of a Logstash cluster.
+        
+        @return: DescribeXpackMonitorConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.describe_xpack_monitor_config_with_options(instance_id, headers, runtime)
@@ -4392,6 +5599,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.DescribeXpackMonitorConfigResponse:
+        """
+        @summary Queries the configurations of the X-Pack Monitoring feature of a Logstash cluster.
+        
+        @return: DescribeXpackMonitorConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.describe_xpack_monitor_config_with_options_async(instance_id, headers, runtime)
@@ -4403,6 +5615,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DiagnoseInstanceResponse:
+        """
+        @summary 触发ES实例智能诊断
+        
+        @param request: DiagnoseInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DiagnoseInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -4444,6 +5664,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DiagnoseInstanceResponse:
+        """
+        @summary 触发ES实例智能诊断
+        
+        @param request: DiagnoseInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DiagnoseInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -4483,6 +5711,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.DiagnoseInstanceRequest,
     ) -> elasticsearch_20170613_models.DiagnoseInstanceResponse:
+        """
+        @summary 触发ES实例智能诊断
+        
+        @param request: DiagnoseInstanceRequest
+        @return: DiagnoseInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.diagnose_instance_with_options(instance_id, request, headers, runtime)
@@ -4492,6 +5726,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.DiagnoseInstanceRequest,
     ) -> elasticsearch_20170613_models.DiagnoseInstanceResponse:
+        """
+        @summary 触发ES实例智能诊断
+        
+        @param request: DiagnoseInstanceRequest
+        @return: DiagnoseInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.diagnose_instance_with_options_async(instance_id, request, headers, runtime)
@@ -4502,6 +5742,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DisableKibanaPvlNetworkResponse:
+        """
+        @summary 关闭kibana私网
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableKibanaPvlNetworkResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4527,6 +5774,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.DisableKibanaPvlNetworkResponse:
+        """
+        @summary 关闭kibana私网
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DisableKibanaPvlNetworkResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4550,6 +5804,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.DisableKibanaPvlNetworkResponse:
+        """
+        @summary 关闭kibana私网
+        
+        @return: DisableKibanaPvlNetworkResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.disable_kibana_pvl_network_with_options(instance_id, headers, runtime)
@@ -4558,6 +5817,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.DisableKibanaPvlNetworkResponse:
+        """
+        @summary 关闭kibana私网
+        
+        @return: DisableKibanaPvlNetworkResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.disable_kibana_pvl_network_with_options_async(instance_id, headers, runtime)
@@ -4569,6 +5833,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.EnableKibanaPvlNetworkResponse:
+        """
+        @summary 开启v3 kibana私网
+        
+        @param request: EnableKibanaPvlNetworkRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableKibanaPvlNetworkResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.endpoint_name):
@@ -4606,6 +5878,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.EnableKibanaPvlNetworkResponse:
+        """
+        @summary 开启v3 kibana私网
+        
+        @param request: EnableKibanaPvlNetworkRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EnableKibanaPvlNetworkResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.endpoint_name):
@@ -4641,6 +5921,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.EnableKibanaPvlNetworkRequest,
     ) -> elasticsearch_20170613_models.EnableKibanaPvlNetworkResponse:
+        """
+        @summary 开启v3 kibana私网
+        
+        @param request: EnableKibanaPvlNetworkRequest
+        @return: EnableKibanaPvlNetworkResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.enable_kibana_pvl_network_with_options(instance_id, request, headers, runtime)
@@ -4650,6 +5936,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.EnableKibanaPvlNetworkRequest,
     ) -> elasticsearch_20170613_models.EnableKibanaPvlNetworkResponse:
+        """
+        @summary 开启v3 kibana私网
+        
+        @param request: EnableKibanaPvlNetworkRequest
+        @return: EnableKibanaPvlNetworkResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.enable_kibana_pvl_network_with_options_async(instance_id, request, headers, runtime)
@@ -4661,6 +5953,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.EstimatedLogstashRestartTimeResponse:
+        """
+        @summary Queries the estimated time that is required to restart a Logstash cluster.
+        
+        @param request: EstimatedLogstashRestartTimeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EstimatedLogstashRestartTimeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.force):
@@ -4693,6 +5993,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.EstimatedLogstashRestartTimeResponse:
+        """
+        @summary Queries the estimated time that is required to restart a Logstash cluster.
+        
+        @param request: EstimatedLogstashRestartTimeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EstimatedLogstashRestartTimeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.force):
@@ -4723,6 +6031,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.EstimatedLogstashRestartTimeRequest,
     ) -> elasticsearch_20170613_models.EstimatedLogstashRestartTimeResponse:
+        """
+        @summary Queries the estimated time that is required to restart a Logstash cluster.
+        
+        @param request: EstimatedLogstashRestartTimeRequest
+        @return: EstimatedLogstashRestartTimeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.estimated_logstash_restart_time_with_options(instance_id, request, headers, runtime)
@@ -4732,6 +6046,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.EstimatedLogstashRestartTimeRequest,
     ) -> elasticsearch_20170613_models.EstimatedLogstashRestartTimeResponse:
+        """
+        @summary Queries the estimated time that is required to restart a Logstash cluster.
+        
+        @param request: EstimatedLogstashRestartTimeRequest
+        @return: EstimatedLogstashRestartTimeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.estimated_logstash_restart_time_with_options_async(instance_id, request, headers, runtime)
@@ -4743,6 +6063,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.EstimatedRestartTimeResponse:
+        """
+        @summary Queries the estimated time that is required to restart an Elasticsearch cluster.
+        
+        @param request: EstimatedRestartTimeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EstimatedRestartTimeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.force):
@@ -4775,6 +6103,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.EstimatedRestartTimeResponse:
+        """
+        @summary Queries the estimated time that is required to restart an Elasticsearch cluster.
+        
+        @param request: EstimatedRestartTimeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EstimatedRestartTimeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.force):
@@ -4805,6 +6141,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.EstimatedRestartTimeRequest,
     ) -> elasticsearch_20170613_models.EstimatedRestartTimeResponse:
+        """
+        @summary Queries the estimated time that is required to restart an Elasticsearch cluster.
+        
+        @param request: EstimatedRestartTimeRequest
+        @return: EstimatedRestartTimeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.estimated_restart_time_with_options(instance_id, request, headers, runtime)
@@ -4814,6 +6156,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.EstimatedRestartTimeRequest,
     ) -> elasticsearch_20170613_models.EstimatedRestartTimeResponse:
+        """
+        @summary Queries the estimated time that is required to restart an Elasticsearch cluster.
+        
+        @param request: EstimatedRestartTimeRequest
+        @return: EstimatedRestartTimeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.estimated_restart_time_with_options_async(instance_id, request, headers, runtime)
@@ -4824,6 +6172,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.GetClusterDataInformationResponse:
+        """
+        @summary Call GetClusterDataInformation to obtain the data information about the cluster.
+        
+        @param request: GetClusterDataInformationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetClusterDataInformationResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -4851,6 +6207,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.GetClusterDataInformationResponse:
+        """
+        @summary Call GetClusterDataInformation to obtain the data information about the cluster.
+        
+        @param request: GetClusterDataInformationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetClusterDataInformationResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -4876,6 +6240,12 @@ class Client(OpenApiClient):
         self,
         request: elasticsearch_20170613_models.GetClusterDataInformationRequest,
     ) -> elasticsearch_20170613_models.GetClusterDataInformationResponse:
+        """
+        @summary Call GetClusterDataInformation to obtain the data information about the cluster.
+        
+        @param request: GetClusterDataInformationRequest
+        @return: GetClusterDataInformationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_cluster_data_information_with_options(request, headers, runtime)
@@ -4884,6 +6254,12 @@ class Client(OpenApiClient):
         self,
         request: elasticsearch_20170613_models.GetClusterDataInformationRequest,
     ) -> elasticsearch_20170613_models.GetClusterDataInformationResponse:
+        """
+        @summary Call GetClusterDataInformation to obtain the data information about the cluster.
+        
+        @param request: GetClusterDataInformationRequest
+        @return: GetClusterDataInformationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_cluster_data_information_with_options_async(request, headers, runtime)
@@ -4894,6 +6270,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.GetElastictaskResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetElastictaskResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4919,6 +6300,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.GetElastictaskResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetElastictaskResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -4942,6 +6328,9 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.GetElastictaskResponse:
+        """
+        @return: GetElastictaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_elastictask_with_options(instance_id, headers, runtime)
@@ -4950,6 +6339,9 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.GetElastictaskResponse:
+        """
+        @return: GetElastictaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_elastictask_with_options_async(instance_id, headers, runtime)
@@ -4961,6 +6353,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.GetEmonGrafanaAlertsResponse:
+        """
+        @summary 获取高级监控报警自定义Grafana监控报警项
+        
+        @param request: GetEmonGrafanaAlertsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEmonGrafanaAlertsResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -4989,6 +6389,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.GetEmonGrafanaAlertsResponse:
+        """
+        @summary 获取高级监控报警自定义Grafana监控报警项
+        
+        @param request: GetEmonGrafanaAlertsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEmonGrafanaAlertsResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -5015,6 +6423,12 @@ class Client(OpenApiClient):
         project_id: str,
         request: elasticsearch_20170613_models.GetEmonGrafanaAlertsRequest,
     ) -> elasticsearch_20170613_models.GetEmonGrafanaAlertsResponse:
+        """
+        @summary 获取高级监控报警自定义Grafana监控报警项
+        
+        @param request: GetEmonGrafanaAlertsRequest
+        @return: GetEmonGrafanaAlertsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_emon_grafana_alerts_with_options(project_id, request, headers, runtime)
@@ -5024,6 +6438,12 @@ class Client(OpenApiClient):
         project_id: str,
         request: elasticsearch_20170613_models.GetEmonGrafanaAlertsRequest,
     ) -> elasticsearch_20170613_models.GetEmonGrafanaAlertsResponse:
+        """
+        @summary 获取高级监控报警自定义Grafana监控报警项
+        
+        @param request: GetEmonGrafanaAlertsRequest
+        @return: GetEmonGrafanaAlertsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_emon_grafana_alerts_with_options_async(project_id, request, headers, runtime)
@@ -5035,6 +6455,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.GetEmonGrafanaDashboardsResponse:
+        """
+        @summary 获取高级监控报警自定义Grafana监控大盘列表
+        
+        @param request: GetEmonGrafanaDashboardsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEmonGrafanaDashboardsResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -5063,6 +6491,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.GetEmonGrafanaDashboardsResponse:
+        """
+        @summary 获取高级监控报警自定义Grafana监控大盘列表
+        
+        @param request: GetEmonGrafanaDashboardsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEmonGrafanaDashboardsResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -5089,6 +6525,12 @@ class Client(OpenApiClient):
         project_id: str,
         request: elasticsearch_20170613_models.GetEmonGrafanaDashboardsRequest,
     ) -> elasticsearch_20170613_models.GetEmonGrafanaDashboardsResponse:
+        """
+        @summary 获取高级监控报警自定义Grafana监控大盘列表
+        
+        @param request: GetEmonGrafanaDashboardsRequest
+        @return: GetEmonGrafanaDashboardsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_emon_grafana_dashboards_with_options(project_id, request, headers, runtime)
@@ -5098,6 +6540,12 @@ class Client(OpenApiClient):
         project_id: str,
         request: elasticsearch_20170613_models.GetEmonGrafanaDashboardsRequest,
     ) -> elasticsearch_20170613_models.GetEmonGrafanaDashboardsResponse:
+        """
+        @summary 获取高级监控报警自定义Grafana监控大盘列表
+        
+        @param request: GetEmonGrafanaDashboardsRequest
+        @return: GetEmonGrafanaDashboardsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_emon_grafana_dashboards_with_options_async(project_id, request, headers, runtime)
@@ -5109,6 +6557,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.GetEmonMonitorDataResponse:
+        """
+        @param request: GetEmonMonitorDataRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEmonMonitorDataResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -5137,6 +6591,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.GetEmonMonitorDataResponse:
+        """
+        @param request: GetEmonMonitorDataRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetEmonMonitorDataResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -5163,6 +6623,10 @@ class Client(OpenApiClient):
         project_id: str,
         request: elasticsearch_20170613_models.GetEmonMonitorDataRequest,
     ) -> elasticsearch_20170613_models.GetEmonMonitorDataResponse:
+        """
+        @param request: GetEmonMonitorDataRequest
+        @return: GetEmonMonitorDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_emon_monitor_data_with_options(project_id, request, headers, runtime)
@@ -5172,6 +6636,10 @@ class Client(OpenApiClient):
         project_id: str,
         request: elasticsearch_20170613_models.GetEmonMonitorDataRequest,
     ) -> elasticsearch_20170613_models.GetEmonMonitorDataResponse:
+        """
+        @param request: GetEmonMonitorDataRequest
+        @return: GetEmonMonitorDataResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_emon_monitor_data_with_options_async(project_id, request, headers, runtime)
@@ -5182,6 +6650,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.GetOpenStoreUsageResponse:
+        """
+        @summary 统计OpenStore实例的存储容量和使用情况
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOpenStoreUsageResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5207,6 +6682,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.GetOpenStoreUsageResponse:
+        """
+        @summary 统计OpenStore实例的存储容量和使用情况
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetOpenStoreUsageResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5230,6 +6712,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.GetOpenStoreUsageResponse:
+        """
+        @summary 统计OpenStore实例的存储容量和使用情况
+        
+        @return: GetOpenStoreUsageResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_open_store_usage_with_options(instance_id, headers, runtime)
@@ -5238,6 +6725,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.GetOpenStoreUsageResponse:
+        """
+        @summary 统计OpenStore实例的存储容量和使用情况
+        
+        @return: GetOpenStoreUsageResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_open_store_usage_with_options_async(instance_id, headers, runtime)
@@ -5248,6 +6740,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.GetRegionConfigurationResponse:
+        """
+        @summary The maximum number of nodes.
+        
+        @param request: GetRegionConfigurationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRegionConfigurationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.zone_id):
@@ -5278,6 +6778,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.GetRegionConfigurationResponse:
+        """
+        @summary The maximum number of nodes.
+        
+        @param request: GetRegionConfigurationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRegionConfigurationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.zone_id):
@@ -5306,6 +6814,12 @@ class Client(OpenApiClient):
         self,
         request: elasticsearch_20170613_models.GetRegionConfigurationRequest,
     ) -> elasticsearch_20170613_models.GetRegionConfigurationResponse:
+        """
+        @summary The maximum number of nodes.
+        
+        @param request: GetRegionConfigurationRequest
+        @return: GetRegionConfigurationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_region_configuration_with_options(request, headers, runtime)
@@ -5314,6 +6828,12 @@ class Client(OpenApiClient):
         self,
         request: elasticsearch_20170613_models.GetRegionConfigurationRequest,
     ) -> elasticsearch_20170613_models.GetRegionConfigurationResponse:
+        """
+        @summary The maximum number of nodes.
+        
+        @param request: GetRegionConfigurationRequest
+        @return: GetRegionConfigurationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_region_configuration_with_options_async(request, headers, runtime)
@@ -5323,6 +6843,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.GetRegionalInstanceConfigResponse:
+        """
+        @summary 实例区域商品化配置
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRegionalInstanceConfigResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5347,6 +6874,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.GetRegionalInstanceConfigResponse:
+        """
+        @summary 实例区域商品化配置
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetRegionalInstanceConfigResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -5367,11 +6901,21 @@ class Client(OpenApiClient):
         )
 
     def get_regional_instance_config(self) -> elasticsearch_20170613_models.GetRegionalInstanceConfigResponse:
+        """
+        @summary 实例区域商品化配置
+        
+        @return: GetRegionalInstanceConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_regional_instance_config_with_options(headers, runtime)
 
     async def get_regional_instance_config_async(self) -> elasticsearch_20170613_models.GetRegionalInstanceConfigResponse:
+        """
+        @summary 实例区域商品化配置
+        
+        @return: GetRegionalInstanceConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_regional_instance_config_with_options_async(headers, runtime)
@@ -5383,6 +6927,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.GetSuggestShrinkableNodesResponse:
+        """
+        @summary ES集群可缩容节点
+        
+        @param request: GetSuggestShrinkableNodesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSuggestShrinkableNodesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.count):
@@ -5418,6 +6970,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.GetSuggestShrinkableNodesResponse:
+        """
+        @summary ES集群可缩容节点
+        
+        @param request: GetSuggestShrinkableNodesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetSuggestShrinkableNodesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.count):
@@ -5451,6 +7011,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.GetSuggestShrinkableNodesRequest,
     ) -> elasticsearch_20170613_models.GetSuggestShrinkableNodesResponse:
+        """
+        @summary ES集群可缩容节点
+        
+        @param request: GetSuggestShrinkableNodesRequest
+        @return: GetSuggestShrinkableNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_suggest_shrinkable_nodes_with_options(instance_id, request, headers, runtime)
@@ -5460,6 +7026,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.GetSuggestShrinkableNodesRequest,
     ) -> elasticsearch_20170613_models.GetSuggestShrinkableNodesResponse:
+        """
+        @summary ES集群可缩容节点
+        
+        @param request: GetSuggestShrinkableNodesRequest
+        @return: GetSuggestShrinkableNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_suggest_shrinkable_nodes_with_options_async(instance_id, request, headers, runtime)
@@ -5471,6 +7043,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.GetTransferableNodesResponse:
+        """
+        @summary 获取可数据迁移节点
+        
+        @param request: GetTransferableNodesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTransferableNodesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.count):
@@ -5504,6 +7084,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.GetTransferableNodesResponse:
+        """
+        @summary 获取可数据迁移节点
+        
+        @param request: GetTransferableNodesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTransferableNodesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.count):
@@ -5535,6 +7123,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.GetTransferableNodesRequest,
     ) -> elasticsearch_20170613_models.GetTransferableNodesResponse:
+        """
+        @summary 获取可数据迁移节点
+        
+        @param request: GetTransferableNodesRequest
+        @return: GetTransferableNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_transferable_nodes_with_options(instance_id, request, headers, runtime)
@@ -5544,6 +7138,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.GetTransferableNodesRequest,
     ) -> elasticsearch_20170613_models.GetTransferableNodesResponse:
+        """
+        @summary 获取可数据迁移节点
+        
+        @param request: GetTransferableNodesRequest
+        @return: GetTransferableNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_transferable_nodes_with_options_async(instance_id, request, headers, runtime)
@@ -5555,7 +7155,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.InitializeOperationRoleResponse:
         """
-        > Before you perform auto scaling for a cluster at the China site (aliyun.com) or you use shippers to collect logs, you must create a service-linked role.
+        @summary Creates a service-linked role.
+        
+        @description > Before you perform auto scaling for a cluster at the China site (aliyun.com) or you use shippers to collect logs, you must create a service-linked role.
         
         @param request: InitializeOperationRoleRequest
         @param headers: map
@@ -5594,7 +7196,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.InitializeOperationRoleResponse:
         """
-        > Before you perform auto scaling for a cluster at the China site (aliyun.com) or you use shippers to collect logs, you must create a service-linked role.
+        @summary Creates a service-linked role.
+        
+        @description > Before you perform auto scaling for a cluster at the China site (aliyun.com) or you use shippers to collect logs, you must create a service-linked role.
         
         @param request: InitializeOperationRoleRequest
         @param headers: map
@@ -5631,7 +7235,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.InitializeOperationRoleRequest,
     ) -> elasticsearch_20170613_models.InitializeOperationRoleResponse:
         """
-        > Before you perform auto scaling for a cluster at the China site (aliyun.com) or you use shippers to collect logs, you must create a service-linked role.
+        @summary Creates a service-linked role.
+        
+        @description > Before you perform auto scaling for a cluster at the China site (aliyun.com) or you use shippers to collect logs, you must create a service-linked role.
         
         @param request: InitializeOperationRoleRequest
         @return: InitializeOperationRoleResponse
@@ -5645,7 +7251,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.InitializeOperationRoleRequest,
     ) -> elasticsearch_20170613_models.InitializeOperationRoleResponse:
         """
-        > Before you perform auto scaling for a cluster at the China site (aliyun.com) or you use shippers to collect logs, you must create a service-linked role.
+        @summary Creates a service-linked role.
+        
+        @description > Before you perform auto scaling for a cluster at the China site (aliyun.com) or you use shippers to collect logs, you must create a service-linked role.
         
         @param request: InitializeOperationRoleRequest
         @return: InitializeOperationRoleResponse
@@ -5662,7 +7270,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.InstallAckOperatorResponse:
         """
-        > Before you install a shipper for an ACK cluster, you must call this operation to install ES-operator for the cluster.
+        @summary Installs ES-operator for a Container Service for Kubernetes (ACK) cluster.
+        
+        @description > Before you install a shipper for an ACK cluster, you must call this operation to install ES-operator for the cluster.
         
         @param request: InstallAckOperatorRequest
         @param headers: map
@@ -5702,7 +7312,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.InstallAckOperatorResponse:
         """
-        > Before you install a shipper for an ACK cluster, you must call this operation to install ES-operator for the cluster.
+        @summary Installs ES-operator for a Container Service for Kubernetes (ACK) cluster.
+        
+        @description > Before you install a shipper for an ACK cluster, you must call this operation to install ES-operator for the cluster.
         
         @param request: InstallAckOperatorRequest
         @param headers: map
@@ -5740,7 +7352,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.InstallAckOperatorRequest,
     ) -> elasticsearch_20170613_models.InstallAckOperatorResponse:
         """
-        > Before you install a shipper for an ACK cluster, you must call this operation to install ES-operator for the cluster.
+        @summary Installs ES-operator for a Container Service for Kubernetes (ACK) cluster.
+        
+        @description > Before you install a shipper for an ACK cluster, you must call this operation to install ES-operator for the cluster.
         
         @param request: InstallAckOperatorRequest
         @return: InstallAckOperatorResponse
@@ -5755,7 +7369,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.InstallAckOperatorRequest,
     ) -> elasticsearch_20170613_models.InstallAckOperatorResponse:
         """
-        > Before you install a shipper for an ACK cluster, you must call this operation to install ES-operator for the cluster.
+        @summary Installs ES-operator for a Container Service for Kubernetes (ACK) cluster.
+        
+        @description > Before you install a shipper for an ACK cluster, you must call this operation to install ES-operator for the cluster.
         
         @param request: InstallAckOperatorRequest
         @return: InstallAckOperatorResponse
@@ -5771,6 +7387,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.InstallKibanaSystemPluginResponse:
+        """
+        @summary Call InstallKibanaSystemPlugin to install the Kibana plug-in. The Kibana specification must be 2-Core 4 GB or higher.
+        
+        @param request: InstallKibanaSystemPluginRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InstallKibanaSystemPluginResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -5803,6 +7427,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.InstallKibanaSystemPluginResponse:
+        """
+        @summary Call InstallKibanaSystemPlugin to install the Kibana plug-in. The Kibana specification must be 2-Core 4 GB or higher.
+        
+        @param request: InstallKibanaSystemPluginRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InstallKibanaSystemPluginResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -5833,6 +7465,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.InstallKibanaSystemPluginRequest,
     ) -> elasticsearch_20170613_models.InstallKibanaSystemPluginResponse:
+        """
+        @summary Call InstallKibanaSystemPlugin to install the Kibana plug-in. The Kibana specification must be 2-Core 4 GB or higher.
+        
+        @param request: InstallKibanaSystemPluginRequest
+        @return: InstallKibanaSystemPluginResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.install_kibana_system_plugin_with_options(instance_id, request, headers, runtime)
@@ -5842,6 +7480,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.InstallKibanaSystemPluginRequest,
     ) -> elasticsearch_20170613_models.InstallKibanaSystemPluginResponse:
+        """
+        @summary Call InstallKibanaSystemPlugin to install the Kibana plug-in. The Kibana specification must be 2-Core 4 GB or higher.
+        
+        @param request: InstallKibanaSystemPluginRequest
+        @return: InstallKibanaSystemPluginResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.install_kibana_system_plugin_with_options_async(instance_id, request, headers, runtime)
@@ -5854,7 +7498,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.InstallLogstashSystemPluginResponse:
         """
-        ls-cn-oew1qbgl\\\\*\\*\\*\
+        @summary The returned data also contains *Headers** parameters, indicating that header information is returned.
+        
+        @description ls-cn-oew1qbgl\\\\*\\*\\*\
         
         @param request: InstallLogstashSystemPluginRequest
         @param headers: map
@@ -5894,7 +7540,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.InstallLogstashSystemPluginResponse:
         """
-        ls-cn-oew1qbgl\\\\*\\*\\*\
+        @summary The returned data also contains *Headers** parameters, indicating that header information is returned.
+        
+        @description ls-cn-oew1qbgl\\\\*\\*\\*\
         
         @param request: InstallLogstashSystemPluginRequest
         @param headers: map
@@ -5932,7 +7580,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.InstallLogstashSystemPluginRequest,
     ) -> elasticsearch_20170613_models.InstallLogstashSystemPluginResponse:
         """
-        ls-cn-oew1qbgl\\\\*\\*\\*\
+        @summary The returned data also contains *Headers** parameters, indicating that header information is returned.
+        
+        @description ls-cn-oew1qbgl\\\\*\\*\\*\
         
         @param request: InstallLogstashSystemPluginRequest
         @return: InstallLogstashSystemPluginResponse
@@ -5947,7 +7597,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.InstallLogstashSystemPluginRequest,
     ) -> elasticsearch_20170613_models.InstallLogstashSystemPluginResponse:
         """
-        ls-cn-oew1qbgl\\\\*\\*\\*\
+        @summary The returned data also contains *Headers** parameters, indicating that header information is returned.
+        
+        @description ls-cn-oew1qbgl\\\\*\\*\\*\
         
         @param request: InstallLogstashSystemPluginRequest
         @return: InstallLogstashSystemPluginResponse
@@ -5963,6 +7615,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.InstallSystemPluginResponse:
+        """
+        @summary Call InstallSystemPlugin to install a system preset plug-in.
+        
+        @param request: InstallSystemPluginRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InstallSystemPluginResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -5995,6 +7655,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.InstallSystemPluginResponse:
+        """
+        @summary Call InstallSystemPlugin to install a system preset plug-in.
+        
+        @param request: InstallSystemPluginRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InstallSystemPluginResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -6025,6 +7693,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.InstallSystemPluginRequest,
     ) -> elasticsearch_20170613_models.InstallSystemPluginResponse:
+        """
+        @summary Call InstallSystemPlugin to install a system preset plug-in.
+        
+        @param request: InstallSystemPluginRequest
+        @return: InstallSystemPluginResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.install_system_plugin_with_options(instance_id, request, headers, runtime)
@@ -6034,6 +7708,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.InstallSystemPluginRequest,
     ) -> elasticsearch_20170613_models.InstallSystemPluginResponse:
+        """
+        @summary Call InstallSystemPlugin to install a system preset plug-in.
+        
+        @param request: InstallSystemPluginRequest
+        @return: InstallSystemPluginResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.install_system_plugin_with_options_async(instance_id, request, headers, runtime)
@@ -6045,6 +7725,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.InstallUserPluginsResponse:
+        """
+        @summary Installs custom plug-ins that are uploaded to the Elasticsearch console.
+        
+        @param request: InstallUserPluginsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InstallUserPluginsResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -6073,6 +7761,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.InstallUserPluginsResponse:
+        """
+        @summary Installs custom plug-ins that are uploaded to the Elasticsearch console.
+        
+        @param request: InstallUserPluginsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InstallUserPluginsResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -6099,6 +7795,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.InstallUserPluginsRequest,
     ) -> elasticsearch_20170613_models.InstallUserPluginsResponse:
+        """
+        @summary Installs custom plug-ins that are uploaded to the Elasticsearch console.
+        
+        @param request: InstallUserPluginsRequest
+        @return: InstallUserPluginsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.install_user_plugins_with_options(instance_id, request, headers, runtime)
@@ -6108,6 +7810,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.InstallUserPluginsRequest,
     ) -> elasticsearch_20170613_models.InstallUserPluginsResponse:
+        """
+        @summary Installs custom plug-ins that are uploaded to the Elasticsearch console.
+        
+        @param request: InstallUserPluginsRequest
+        @return: InstallUserPluginsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.install_user_plugins_with_options_async(instance_id, request, headers, runtime)
@@ -6119,6 +7827,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.InterruptElasticsearchTaskResponse:
+        """
+        @param request: InterruptElasticsearchTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InterruptElasticsearchTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -6150,6 +7864,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.InterruptElasticsearchTaskResponse:
+        """
+        @param request: InterruptElasticsearchTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InterruptElasticsearchTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -6179,6 +7899,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.InterruptElasticsearchTaskRequest,
     ) -> elasticsearch_20170613_models.InterruptElasticsearchTaskResponse:
+        """
+        @param request: InterruptElasticsearchTaskRequest
+        @return: InterruptElasticsearchTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.interrupt_elasticsearch_task_with_options(instance_id, request, headers, runtime)
@@ -6188,6 +7912,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.InterruptElasticsearchTaskRequest,
     ) -> elasticsearch_20170613_models.InterruptElasticsearchTaskResponse:
+        """
+        @param request: InterruptElasticsearchTaskRequest
+        @return: InterruptElasticsearchTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.interrupt_elasticsearch_task_with_options_async(instance_id, request, headers, runtime)
@@ -6199,6 +7927,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.InterruptLogstashTaskResponse:
+        """
+        @summary After the task is suspended, the Logstash cluster is in the suspended state.
+        
+        @param request: InterruptLogstashTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InterruptLogstashTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -6230,6 +7966,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.InterruptLogstashTaskResponse:
+        """
+        @summary After the task is suspended, the Logstash cluster is in the suspended state.
+        
+        @param request: InterruptLogstashTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: InterruptLogstashTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -6259,6 +8003,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.InterruptLogstashTaskRequest,
     ) -> elasticsearch_20170613_models.InterruptLogstashTaskResponse:
+        """
+        @summary After the task is suspended, the Logstash cluster is in the suspended state.
+        
+        @param request: InterruptLogstashTaskRequest
+        @return: InterruptLogstashTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.interrupt_logstash_task_with_options(instance_id, request, headers, runtime)
@@ -6268,6 +8018,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.InterruptLogstashTaskRequest,
     ) -> elasticsearch_20170613_models.InterruptLogstashTaskResponse:
+        """
+        @summary After the task is suspended, the Logstash cluster is in the suspended state.
+        
+        @param request: InterruptLogstashTaskRequest
+        @return: InterruptLogstashTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.interrupt_logstash_task_with_options_async(instance_id, request, headers, runtime)
@@ -6278,6 +8034,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListAckClustersResponse:
+        """
+        @summary Queries a list of Container Service for Kubernetes (ACK) clusters.
+        
+        @param request: ListAckClustersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAckClustersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page):
@@ -6312,6 +8076,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListAckClustersResponse:
+        """
+        @summary Queries a list of Container Service for Kubernetes (ACK) clusters.
+        
+        @param request: ListAckClustersRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAckClustersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page):
@@ -6344,6 +8116,12 @@ class Client(OpenApiClient):
         self,
         request: elasticsearch_20170613_models.ListAckClustersRequest,
     ) -> elasticsearch_20170613_models.ListAckClustersResponse:
+        """
+        @summary Queries a list of Container Service for Kubernetes (ACK) clusters.
+        
+        @param request: ListAckClustersRequest
+        @return: ListAckClustersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_ack_clusters_with_options(request, headers, runtime)
@@ -6352,6 +8130,12 @@ class Client(OpenApiClient):
         self,
         request: elasticsearch_20170613_models.ListAckClustersRequest,
     ) -> elasticsearch_20170613_models.ListAckClustersResponse:
+        """
+        @summary Queries a list of Container Service for Kubernetes (ACK) clusters.
+        
+        @param request: ListAckClustersRequest
+        @return: ListAckClustersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_ack_clusters_with_options_async(request, headers, runtime)
@@ -6364,7 +8148,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListAckNamespacesResponse:
         """
-        > When you install a shipper on an ACK cluster, you must specify a namespace. You can call this operation to query all namespaces in the ACK cluster, and select a namespace based on your business requirements.
+        @summary Queries all namespaces in a specified Container Service for Kubernetes (ACK) cluster.
+        
+        @description > When you install a shipper on an ACK cluster, you must specify a namespace. You can call this operation to query all namespaces in the ACK cluster, and select a namespace based on your business requirements.
         
         @param request: ListAckNamespacesRequest
         @param headers: map
@@ -6405,7 +8191,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListAckNamespacesResponse:
         """
-        > When you install a shipper on an ACK cluster, you must specify a namespace. You can call this operation to query all namespaces in the ACK cluster, and select a namespace based on your business requirements.
+        @summary Queries all namespaces in a specified Container Service for Kubernetes (ACK) cluster.
+        
+        @description > When you install a shipper on an ACK cluster, you must specify a namespace. You can call this operation to query all namespaces in the ACK cluster, and select a namespace based on your business requirements.
         
         @param request: ListAckNamespacesRequest
         @param headers: map
@@ -6444,7 +8232,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.ListAckNamespacesRequest,
     ) -> elasticsearch_20170613_models.ListAckNamespacesResponse:
         """
-        > When you install a shipper on an ACK cluster, you must specify a namespace. You can call this operation to query all namespaces in the ACK cluster, and select a namespace based on your business requirements.
+        @summary Queries all namespaces in a specified Container Service for Kubernetes (ACK) cluster.
+        
+        @description > When you install a shipper on an ACK cluster, you must specify a namespace. You can call this operation to query all namespaces in the ACK cluster, and select a namespace based on your business requirements.
         
         @param request: ListAckNamespacesRequest
         @return: ListAckNamespacesResponse
@@ -6459,7 +8249,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.ListAckNamespacesRequest,
     ) -> elasticsearch_20170613_models.ListAckNamespacesResponse:
         """
-        > When you install a shipper on an ACK cluster, you must specify a namespace. You can call this operation to query all namespaces in the ACK cluster, and select a namespace based on your business requirements.
+        @summary Queries all namespaces in a specified Container Service for Kubernetes (ACK) cluster.
+        
+        @description > When you install a shipper on an ACK cluster, you must specify a namespace. You can call this operation to query all namespaces in the ACK cluster, and select a namespace based on your business requirements.
         
         @param request: ListAckNamespacesRequest
         @return: ListAckNamespacesResponse
@@ -6475,6 +8267,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListActionRecordsResponse:
+        """
+        @summary 变更记录 变更详情
+        
+        @param request: ListActionRecordsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListActionRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.action_names):
@@ -6520,6 +8320,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListActionRecordsResponse:
+        """
+        @summary 变更记录 变更详情
+        
+        @param request: ListActionRecordsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListActionRecordsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.action_names):
@@ -6563,6 +8371,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListActionRecordsRequest,
     ) -> elasticsearch_20170613_models.ListActionRecordsResponse:
+        """
+        @summary 变更记录 变更详情
+        
+        @param request: ListActionRecordsRequest
+        @return: ListActionRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_action_records_with_options(instance_id, request, headers, runtime)
@@ -6572,6 +8386,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListActionRecordsRequest,
     ) -> elasticsearch_20170613_models.ListActionRecordsResponse:
+        """
+        @summary 变更记录 变更详情
+        
+        @param request: ListActionRecordsRequest
+        @return: ListActionRecordsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_action_records_with_options_async(instance_id, request, headers, runtime)
@@ -6583,6 +8403,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListAllNodeResponse:
+        """
+        @summary es-cn-tl32cpgwa002l\\\\*\\*\\*\
+        
+        @param request: ListAllNodeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAllNodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.extended):
@@ -6614,6 +8442,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListAllNodeResponse:
+        """
+        @summary es-cn-tl32cpgwa002l\\\\*\\*\\*\
+        
+        @param request: ListAllNodeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAllNodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.extended):
@@ -6643,6 +8479,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListAllNodeRequest,
     ) -> elasticsearch_20170613_models.ListAllNodeResponse:
+        """
+        @summary es-cn-tl32cpgwa002l\\\\*\\*\\*\
+        
+        @param request: ListAllNodeRequest
+        @return: ListAllNodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_all_node_with_options(instance_id, request, headers, runtime)
@@ -6652,6 +8494,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListAllNodeRequest,
     ) -> elasticsearch_20170613_models.ListAllNodeResponse:
+        """
+        @summary es-cn-tl32cpgwa002l\\\\*\\*\\*\
+        
+        @param request: ListAllNodeRequest
+        @return: ListAllNodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_all_node_with_options_async(instance_id, request, headers, runtime)
@@ -6663,6 +8511,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListAlternativeSnapshotReposResponse:
+        """
+        @summary 实例可添加的OSS引用仓库
+        
+        @param request: ListAlternativeSnapshotReposRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAlternativeSnapshotReposResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.already_set_items):
@@ -6694,6 +8550,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListAlternativeSnapshotReposResponse:
+        """
+        @summary 实例可添加的OSS引用仓库
+        
+        @param request: ListAlternativeSnapshotReposRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAlternativeSnapshotReposResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.already_set_items):
@@ -6723,6 +8587,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListAlternativeSnapshotReposRequest,
     ) -> elasticsearch_20170613_models.ListAlternativeSnapshotReposResponse:
+        """
+        @summary 实例可添加的OSS引用仓库
+        
+        @param request: ListAlternativeSnapshotReposRequest
+        @return: ListAlternativeSnapshotReposResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_alternative_snapshot_repos_with_options(instance_id, request, headers, runtime)
@@ -6732,6 +8602,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListAlternativeSnapshotReposRequest,
     ) -> elasticsearch_20170613_models.ListAlternativeSnapshotReposResponse:
+        """
+        @summary 实例可添加的OSS引用仓库
+        
+        @param request: ListAlternativeSnapshotReposRequest
+        @return: ListAlternativeSnapshotReposResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_alternative_snapshot_repos_with_options_async(instance_id, request, headers, runtime)
@@ -6742,6 +8618,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListApmResponse:
+        """
+        @summary ListApm
+        
+        @param request: ListApmRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApmResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -6780,6 +8664,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListApmResponse:
+        """
+        @summary ListApm
+        
+        @param request: ListApmRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApmResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -6816,6 +8708,12 @@ class Client(OpenApiClient):
         self,
         request: elasticsearch_20170613_models.ListApmRequest,
     ) -> elasticsearch_20170613_models.ListApmResponse:
+        """
+        @summary ListApm
+        
+        @param request: ListApmRequest
+        @return: ListApmResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_apm_with_options(request, headers, runtime)
@@ -6824,6 +8722,12 @@ class Client(OpenApiClient):
         self,
         request: elasticsearch_20170613_models.ListApmRequest,
     ) -> elasticsearch_20170613_models.ListApmResponse:
+        """
+        @summary ListApm
+        
+        @param request: ListApmRequest
+        @return: ListApmResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_apm_with_options_async(request, headers, runtime)
@@ -6834,6 +8738,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListAvailableEsInstanceIdsResponse:
+        """
+        @summary Queries the Elasticsearch clusters that can be associated with a Logstash cluster when you configure the X-Pack Monitoring feature for the Logstash cluster.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAvailableEsInstanceIdsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6859,6 +8770,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListAvailableEsInstanceIdsResponse:
+        """
+        @summary Queries the Elasticsearch clusters that can be associated with a Logstash cluster when you configure the X-Pack Monitoring feature for the Logstash cluster.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListAvailableEsInstanceIdsResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -6882,6 +8800,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.ListAvailableEsInstanceIdsResponse:
+        """
+        @summary Queries the Elasticsearch clusters that can be associated with a Logstash cluster when you configure the X-Pack Monitoring feature for the Logstash cluster.
+        
+        @return: ListAvailableEsInstanceIdsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_available_es_instance_ids_with_options(instance_id, headers, runtime)
@@ -6890,6 +8813,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.ListAvailableEsInstanceIdsResponse:
+        """
+        @summary Queries the Elasticsearch clusters that can be associated with a Logstash cluster when you configure the X-Pack Monitoring feature for the Logstash cluster.
+        
+        @return: ListAvailableEsInstanceIdsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_available_es_instance_ids_with_options_async(instance_id, headers, runtime)
@@ -6900,6 +8828,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListCollectorsResponse:
+        """
+        @summary Queries shippers.
+        
+        @param request: ListCollectorsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCollectorsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6940,6 +8876,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListCollectorsResponse:
+        """
+        @summary Queries shippers.
+        
+        @param request: ListCollectorsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListCollectorsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.instance_id):
@@ -6978,6 +8922,12 @@ class Client(OpenApiClient):
         self,
         request: elasticsearch_20170613_models.ListCollectorsRequest,
     ) -> elasticsearch_20170613_models.ListCollectorsResponse:
+        """
+        @summary Queries shippers.
+        
+        @param request: ListCollectorsRequest
+        @return: ListCollectorsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_collectors_with_options(request, headers, runtime)
@@ -6986,6 +8936,12 @@ class Client(OpenApiClient):
         self,
         request: elasticsearch_20170613_models.ListCollectorsRequest,
     ) -> elasticsearch_20170613_models.ListCollectorsResponse:
+        """
+        @summary Queries shippers.
+        
+        @param request: ListCollectorsRequest
+        @return: ListCollectorsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_collectors_with_options_async(request, headers, runtime)
@@ -6997,6 +8953,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListComponentIndicesResponse:
+        """
+        @summary ES集群组合索引列表
+        
+        @param request: ListComponentIndicesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListComponentIndicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -7032,6 +8996,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListComponentIndicesResponse:
+        """
+        @summary ES集群组合索引列表
+        
+        @param request: ListComponentIndicesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListComponentIndicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -7065,6 +9037,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListComponentIndicesRequest,
     ) -> elasticsearch_20170613_models.ListComponentIndicesResponse:
+        """
+        @summary ES集群组合索引列表
+        
+        @param request: ListComponentIndicesRequest
+        @return: ListComponentIndicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_component_indices_with_options(instance_id, request, headers, runtime)
@@ -7074,6 +9052,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListComponentIndicesRequest,
     ) -> elasticsearch_20170613_models.ListComponentIndicesResponse:
+        """
+        @summary ES集群组合索引列表
+        
+        @param request: ListComponentIndicesRequest
+        @return: ListComponentIndicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_component_indices_with_options_async(instance_id, request, headers, runtime)
@@ -7084,6 +9068,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListConnectedClustersResponse:
+        """
+        @summary 获取与当前实例进行网络互通的实例列表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConnectedClustersResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7109,6 +9100,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListConnectedClustersResponse:
+        """
+        @summary 获取与当前实例进行网络互通的实例列表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListConnectedClustersResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7132,6 +9130,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.ListConnectedClustersResponse:
+        """
+        @summary 获取与当前实例进行网络互通的实例列表
+        
+        @return: ListConnectedClustersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_connected_clusters_with_options(instance_id, headers, runtime)
@@ -7140,6 +9143,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.ListConnectedClustersResponse:
+        """
+        @summary 获取与当前实例进行网络互通的实例列表
+        
+        @return: ListConnectedClustersResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_connected_clusters_with_options_async(instance_id, headers, runtime)
@@ -7151,6 +9159,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDataStreamsResponse:
+        """
+        @param request: ListDataStreamsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataStreamsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.is_managed):
@@ -7184,6 +9198,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDataStreamsResponse:
+        """
+        @param request: ListDataStreamsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataStreamsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.is_managed):
@@ -7215,6 +9235,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListDataStreamsRequest,
     ) -> elasticsearch_20170613_models.ListDataStreamsResponse:
+        """
+        @param request: ListDataStreamsRequest
+        @return: ListDataStreamsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_data_streams_with_options(instance_id, request, headers, runtime)
@@ -7224,6 +9248,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListDataStreamsRequest,
     ) -> elasticsearch_20170613_models.ListDataStreamsResponse:
+        """
+        @param request: ListDataStreamsRequest
+        @return: ListDataStreamsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_data_streams_with_options_async(instance_id, request, headers, runtime)
@@ -7234,6 +9262,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDataTasksResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataTasksResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7259,6 +9292,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDataTasksResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDataTasksResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -7282,6 +9320,9 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.ListDataTasksResponse:
+        """
+        @return: ListDataTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_data_tasks_with_options(instance_id, headers, runtime)
@@ -7290,6 +9331,9 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.ListDataTasksResponse:
+        """
+        @return: ListDataTasksResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_data_tasks_with_options_async(instance_id, headers, runtime)
@@ -7300,6 +9344,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDefaultCollectorConfigurationsResponse:
+        """
+        @summary Queries the default configuration files of shippers.
+        
+        @param request: ListDefaultCollectorConfigurationsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDefaultCollectorConfigurationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.res_type):
@@ -7334,6 +9386,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDefaultCollectorConfigurationsResponse:
+        """
+        @summary Queries the default configuration files of shippers.
+        
+        @param request: ListDefaultCollectorConfigurationsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDefaultCollectorConfigurationsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.res_type):
@@ -7366,6 +9426,12 @@ class Client(OpenApiClient):
         self,
         request: elasticsearch_20170613_models.ListDefaultCollectorConfigurationsRequest,
     ) -> elasticsearch_20170613_models.ListDefaultCollectorConfigurationsResponse:
+        """
+        @summary Queries the default configuration files of shippers.
+        
+        @param request: ListDefaultCollectorConfigurationsRequest
+        @return: ListDefaultCollectorConfigurationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_default_collector_configurations_with_options(request, headers, runtime)
@@ -7374,6 +9440,12 @@ class Client(OpenApiClient):
         self,
         request: elasticsearch_20170613_models.ListDefaultCollectorConfigurationsRequest,
     ) -> elasticsearch_20170613_models.ListDefaultCollectorConfigurationsResponse:
+        """
+        @summary Queries the default configuration files of shippers.
+        
+        @param request: ListDefaultCollectorConfigurationsRequest
+        @return: ListDefaultCollectorConfigurationsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_default_collector_configurations_with_options_async(request, headers, runtime)
@@ -7385,6 +9457,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDeprecatedTemplatesResponse:
+        """
+        @summary ListDeprecatedTemplates
+        
+        @param request: ListDeprecatedTemplatesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDeprecatedTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -7420,6 +9500,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDeprecatedTemplatesResponse:
+        """
+        @summary ListDeprecatedTemplates
+        
+        @param request: ListDeprecatedTemplatesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDeprecatedTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -7453,6 +9541,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListDeprecatedTemplatesRequest,
     ) -> elasticsearch_20170613_models.ListDeprecatedTemplatesResponse:
+        """
+        @summary ListDeprecatedTemplates
+        
+        @param request: ListDeprecatedTemplatesRequest
+        @return: ListDeprecatedTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_deprecated_templates_with_options(instance_id, request, headers, runtime)
@@ -7462,6 +9556,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListDeprecatedTemplatesRequest,
     ) -> elasticsearch_20170613_models.ListDeprecatedTemplatesResponse:
+        """
+        @summary ListDeprecatedTemplates
+        
+        @param request: ListDeprecatedTemplatesRequest
+        @return: ListDeprecatedTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_deprecated_templates_with_options_async(instance_id, request, headers, runtime)
@@ -7473,6 +9573,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDiagnoseIndicesResponse:
+        """
+        @summary Queries the indexes for health diagnosis performed on an Elasticsearch cluster.
+        
+        @param request: ListDiagnoseIndicesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDiagnoseIndicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -7504,6 +9612,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDiagnoseIndicesResponse:
+        """
+        @summary Queries the indexes for health diagnosis performed on an Elasticsearch cluster.
+        
+        @param request: ListDiagnoseIndicesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDiagnoseIndicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -7533,6 +9649,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListDiagnoseIndicesRequest,
     ) -> elasticsearch_20170613_models.ListDiagnoseIndicesResponse:
+        """
+        @summary Queries the indexes for health diagnosis performed on an Elasticsearch cluster.
+        
+        @param request: ListDiagnoseIndicesRequest
+        @return: ListDiagnoseIndicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_diagnose_indices_with_options(instance_id, request, headers, runtime)
@@ -7542,6 +9664,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListDiagnoseIndicesRequest,
     ) -> elasticsearch_20170613_models.ListDiagnoseIndicesResponse:
+        """
+        @summary Queries the indexes for health diagnosis performed on an Elasticsearch cluster.
+        
+        @param request: ListDiagnoseIndicesRequest
+        @return: ListDiagnoseIndicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_diagnose_indices_with_options_async(instance_id, request, headers, runtime)
@@ -7553,6 +9681,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDiagnoseReportResponse:
+        """
+        @summary 获取集群诊断报告列表
+        
+        @param request: ListDiagnoseReportRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDiagnoseReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.detail):
@@ -7596,6 +9732,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDiagnoseReportResponse:
+        """
+        @summary 获取集群诊断报告列表
+        
+        @param request: ListDiagnoseReportRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDiagnoseReportResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.detail):
@@ -7637,6 +9781,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListDiagnoseReportRequest,
     ) -> elasticsearch_20170613_models.ListDiagnoseReportResponse:
+        """
+        @summary 获取集群诊断报告列表
+        
+        @param request: ListDiagnoseReportRequest
+        @return: ListDiagnoseReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_diagnose_report_with_options(instance_id, request, headers, runtime)
@@ -7646,6 +9796,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListDiagnoseReportRequest,
     ) -> elasticsearch_20170613_models.ListDiagnoseReportResponse:
+        """
+        @summary 获取集群诊断报告列表
+        
+        @param request: ListDiagnoseReportRequest
+        @return: ListDiagnoseReportResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_diagnose_report_with_options_async(instance_id, request, headers, runtime)
@@ -7657,6 +9813,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDiagnoseReportIdsResponse:
+        """
+        @summary Queries the IDs of the historical intelligent O&M reports of an Elasticsearch cluster.
+        
+        @param request: ListDiagnoseReportIdsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDiagnoseReportIdsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -7698,6 +9862,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDiagnoseReportIdsResponse:
+        """
+        @summary Queries the IDs of the historical intelligent O&M reports of an Elasticsearch cluster.
+        
+        @param request: ListDiagnoseReportIdsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDiagnoseReportIdsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -7737,6 +9909,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListDiagnoseReportIdsRequest,
     ) -> elasticsearch_20170613_models.ListDiagnoseReportIdsResponse:
+        """
+        @summary Queries the IDs of the historical intelligent O&M reports of an Elasticsearch cluster.
+        
+        @param request: ListDiagnoseReportIdsRequest
+        @return: ListDiagnoseReportIdsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_diagnose_report_ids_with_options(instance_id, request, headers, runtime)
@@ -7746,6 +9924,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListDiagnoseReportIdsRequest,
     ) -> elasticsearch_20170613_models.ListDiagnoseReportIdsResponse:
+        """
+        @summary Queries the IDs of the historical intelligent O&M reports of an Elasticsearch cluster.
+        
+        @param request: ListDiagnoseReportIdsRequest
+        @return: ListDiagnoseReportIdsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_diagnose_report_ids_with_options_async(instance_id, request, headers, runtime)
@@ -7756,6 +9940,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDiagnosisItemsResponse:
+        """
+        @summary The diagnostic item is used to check whether data write requests of a cluster are accumulated. If data write requests are accumulated, a bulk rejection occurs. This may cause data loss and severely consume system resources.
+        
+        @param request: ListDiagnosisItemsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDiagnosisItemsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -7786,6 +9978,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDiagnosisItemsResponse:
+        """
+        @summary The diagnostic item is used to check whether data write requests of a cluster are accumulated. If data write requests are accumulated, a bulk rejection occurs. This may cause data loss and severely consume system resources.
+        
+        @param request: ListDiagnosisItemsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDiagnosisItemsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -7814,6 +10014,12 @@ class Client(OpenApiClient):
         self,
         request: elasticsearch_20170613_models.ListDiagnosisItemsRequest,
     ) -> elasticsearch_20170613_models.ListDiagnosisItemsResponse:
+        """
+        @summary The diagnostic item is used to check whether data write requests of a cluster are accumulated. If data write requests are accumulated, a bulk rejection occurs. This may cause data loss and severely consume system resources.
+        
+        @param request: ListDiagnosisItemsRequest
+        @return: ListDiagnosisItemsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_diagnosis_items_with_options(request, headers, runtime)
@@ -7822,6 +10028,12 @@ class Client(OpenApiClient):
         self,
         request: elasticsearch_20170613_models.ListDiagnosisItemsRequest,
     ) -> elasticsearch_20170613_models.ListDiagnosisItemsResponse:
+        """
+        @summary The diagnostic item is used to check whether data write requests of a cluster are accumulated. If data write requests are accumulated, a bulk rejection occurs. This may cause data loss and severely consume system resources.
+        
+        @param request: ListDiagnosisItemsRequest
+        @return: ListDiagnosisItemsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_diagnosis_items_with_options_async(request, headers, runtime)
@@ -7833,6 +10045,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDictInformationResponse:
+        """
+        @param request: ListDictInformationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDictInformationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.analyzer_type):
@@ -7868,6 +10086,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDictInformationResponse:
+        """
+        @param request: ListDictInformationRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDictInformationResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.analyzer_type):
@@ -7901,6 +10125,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListDictInformationRequest,
     ) -> elasticsearch_20170613_models.ListDictInformationResponse:
+        """
+        @param request: ListDictInformationRequest
+        @return: ListDictInformationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_dict_information_with_options(instance_id, request, headers, runtime)
@@ -7910,6 +10138,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListDictInformationRequest,
     ) -> elasticsearch_20170613_models.ListDictInformationResponse:
+        """
+        @param request: ListDictInformationRequest
+        @return: ListDictInformationResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_dict_information_with_options_async(instance_id, request, headers, runtime)
@@ -7921,6 +10153,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDictsResponse:
+        """
+        @summary Queries the details of a specified type of dictionary.
+        
+        @param request: ListDictsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDictsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.analyzer_type):
@@ -7954,6 +10194,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListDictsResponse:
+        """
+        @summary Queries the details of a specified type of dictionary.
+        
+        @param request: ListDictsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListDictsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.analyzer_type):
@@ -7985,6 +10233,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListDictsRequest,
     ) -> elasticsearch_20170613_models.ListDictsResponse:
+        """
+        @summary Queries the details of a specified type of dictionary.
+        
+        @param request: ListDictsRequest
+        @return: ListDictsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_dicts_with_options(instance_id, request, headers, runtime)
@@ -7994,6 +10248,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListDictsRequest,
     ) -> elasticsearch_20170613_models.ListDictsResponse:
+        """
+        @summary Queries the details of a specified type of dictionary.
+        
+        @param request: ListDictsRequest
+        @return: ListDictsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_dicts_with_options_async(instance_id, request, headers, runtime)
@@ -8005,7 +10265,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListEcsInstancesResponse:
         """
-        *Important** To call this operation, you must create the Aliyun Elasticsearch AccessingOOSRole and the system service role AliyunOOSAccessingECS 4ESRole to Elasticsearch the service account to obtain the ECS access permissions of the primary account. For more information, see [Collect ECS service logs](~~146446~~).
+        @description *Important** To call this operation, you must create the Aliyun Elasticsearch AccessingOOSRole and the system service role AliyunOOSAccessingECS 4ESRole to Elasticsearch the service account to obtain the ECS access permissions of the primary account. For more information, see [Collect ECS service logs](https://help.aliyun.com/document_detail/146446.html).
         
         @param request: ListEcsInstancesRequest
         @param headers: map
@@ -8053,7 +10313,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListEcsInstancesResponse:
         """
-        *Important** To call this operation, you must create the Aliyun Elasticsearch AccessingOOSRole and the system service role AliyunOOSAccessingECS 4ESRole to Elasticsearch the service account to obtain the ECS access permissions of the primary account. For more information, see [Collect ECS service logs](~~146446~~).
+        @description *Important** To call this operation, you must create the Aliyun Elasticsearch AccessingOOSRole and the system service role AliyunOOSAccessingECS 4ESRole to Elasticsearch the service account to obtain the ECS access permissions of the primary account. For more information, see [Collect ECS service logs](https://help.aliyun.com/document_detail/146446.html).
         
         @param request: ListEcsInstancesRequest
         @param headers: map
@@ -8099,7 +10359,7 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.ListEcsInstancesRequest,
     ) -> elasticsearch_20170613_models.ListEcsInstancesResponse:
         """
-        *Important** To call this operation, you must create the Aliyun Elasticsearch AccessingOOSRole and the system service role AliyunOOSAccessingECS 4ESRole to Elasticsearch the service account to obtain the ECS access permissions of the primary account. For more information, see [Collect ECS service logs](~~146446~~).
+        @description *Important** To call this operation, you must create the Aliyun Elasticsearch AccessingOOSRole and the system service role AliyunOOSAccessingECS 4ESRole to Elasticsearch the service account to obtain the ECS access permissions of the primary account. For more information, see [Collect ECS service logs](https://help.aliyun.com/document_detail/146446.html).
         
         @param request: ListEcsInstancesRequest
         @return: ListEcsInstancesResponse
@@ -8113,7 +10373,7 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.ListEcsInstancesRequest,
     ) -> elasticsearch_20170613_models.ListEcsInstancesResponse:
         """
-        *Important** To call this operation, you must create the Aliyun Elasticsearch AccessingOOSRole and the system service role AliyunOOSAccessingECS 4ESRole to Elasticsearch the service account to obtain the ECS access permissions of the primary account. For more information, see [Collect ECS service logs](~~146446~~).
+        @description *Important** To call this operation, you must create the Aliyun Elasticsearch AccessingOOSRole and the system service role AliyunOOSAccessingECS 4ESRole to Elasticsearch the service account to obtain the ECS access permissions of the primary account. For more information, see [Collect ECS service logs](https://help.aliyun.com/document_detail/146446.html).
         
         @param request: ListEcsInstancesRequest
         @return: ListEcsInstancesResponse
@@ -8128,6 +10388,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListExtendfilesResponse:
+        """
+        @summary Queries the driver files of a Logstash cluster.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExtendfilesResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8153,6 +10420,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListExtendfilesResponse:
+        """
+        @summary Queries the driver files of a Logstash cluster.
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListExtendfilesResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8176,6 +10450,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.ListExtendfilesResponse:
+        """
+        @summary Queries the driver files of a Logstash cluster.
+        
+        @return: ListExtendfilesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_extendfiles_with_options(instance_id, headers, runtime)
@@ -8184,6 +10463,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.ListExtendfilesResponse:
+        """
+        @summary Queries the driver files of a Logstash cluster.
+        
+        @return: ListExtendfilesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_extendfiles_with_options_async(instance_id, headers, runtime)
@@ -8195,6 +10479,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListILMPoliciesResponse:
+        """
+        @param request: ListILMPoliciesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListILMPoliciesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_name):
@@ -8226,6 +10516,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListILMPoliciesResponse:
+        """
+        @param request: ListILMPoliciesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListILMPoliciesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.policy_name):
@@ -8255,6 +10551,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListILMPoliciesRequest,
     ) -> elasticsearch_20170613_models.ListILMPoliciesResponse:
+        """
+        @param request: ListILMPoliciesRequest
+        @return: ListILMPoliciesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_ilmpolicies_with_options(instance_id, request, headers, runtime)
@@ -8264,6 +10564,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListILMPoliciesRequest,
     ) -> elasticsearch_20170613_models.ListILMPoliciesResponse:
+        """
+        @param request: ListILMPoliciesRequest
+        @return: ListILMPoliciesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_ilmpolicies_with_options_async(instance_id, request, headers, runtime)
@@ -8275,6 +10579,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListIndexTemplatesResponse:
+        """
+        @param request: ListIndexTemplatesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIndexTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.index_template):
@@ -8310,6 +10620,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListIndexTemplatesResponse:
+        """
+        @param request: ListIndexTemplatesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListIndexTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.index_template):
@@ -8343,6 +10659,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListIndexTemplatesRequest,
     ) -> elasticsearch_20170613_models.ListIndexTemplatesResponse:
+        """
+        @param request: ListIndexTemplatesRequest
+        @return: ListIndexTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_index_templates_with_options(instance_id, request, headers, runtime)
@@ -8352,6 +10672,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListIndexTemplatesRequest,
     ) -> elasticsearch_20170613_models.ListIndexTemplatesResponse:
+        """
+        @param request: ListIndexTemplatesRequest
+        @return: ListIndexTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_index_templates_with_options_async(instance_id, request, headers, runtime)
@@ -8362,6 +10686,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListInstanceResponse:
+        """
+        @summary 查询Elasticsearch实例列表
+        
+        @param request: ListInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -8412,6 +10744,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListInstanceResponse:
+        """
+        @summary 查询Elasticsearch实例列表
+        
+        @param request: ListInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -8460,6 +10800,12 @@ class Client(OpenApiClient):
         self,
         request: elasticsearch_20170613_models.ListInstanceRequest,
     ) -> elasticsearch_20170613_models.ListInstanceResponse:
+        """
+        @summary 查询Elasticsearch实例列表
+        
+        @param request: ListInstanceRequest
+        @return: ListInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_instance_with_options(request, headers, runtime)
@@ -8468,6 +10814,12 @@ class Client(OpenApiClient):
         self,
         request: elasticsearch_20170613_models.ListInstanceRequest,
     ) -> elasticsearch_20170613_models.ListInstanceResponse:
+        """
+        @summary 查询Elasticsearch实例列表
+        
+        @param request: ListInstanceRequest
+        @return: ListInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_instance_with_options_async(request, headers, runtime)
@@ -8478,6 +10830,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListInstanceHistoryEventsResponse:
+        """
+        @summary 集群触发的硬件运维事件列表
+        
+        @param tmp_req: ListInstanceHistoryEventsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceHistoryEventsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = elasticsearch_20170613_models.ListInstanceHistoryEventsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8541,6 +10901,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListInstanceHistoryEventsResponse:
+        """
+        @summary 集群触发的硬件运维事件列表
+        
+        @param tmp_req: ListInstanceHistoryEventsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceHistoryEventsResponse
+        """
         UtilClient.validate_model(tmp_req)
         request = elasticsearch_20170613_models.ListInstanceHistoryEventsShrinkRequest()
         OpenApiUtilClient.convert(tmp_req, request)
@@ -8602,6 +10970,12 @@ class Client(OpenApiClient):
         self,
         request: elasticsearch_20170613_models.ListInstanceHistoryEventsRequest,
     ) -> elasticsearch_20170613_models.ListInstanceHistoryEventsResponse:
+        """
+        @summary 集群触发的硬件运维事件列表
+        
+        @param request: ListInstanceHistoryEventsRequest
+        @return: ListInstanceHistoryEventsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_instance_history_events_with_options(request, headers, runtime)
@@ -8610,6 +10984,12 @@ class Client(OpenApiClient):
         self,
         request: elasticsearch_20170613_models.ListInstanceHistoryEventsRequest,
     ) -> elasticsearch_20170613_models.ListInstanceHistoryEventsResponse:
+        """
+        @summary 集群触发的硬件运维事件列表
+        
+        @param request: ListInstanceHistoryEventsRequest
+        @return: ListInstanceHistoryEventsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_instance_history_events_with_options_async(request, headers, runtime)
@@ -8621,6 +11001,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListInstanceIndicesResponse:
+        """
+        @summary 获取当前实例先特定的索引列表
+        
+        @param request: ListInstanceIndicesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceIndicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -8662,6 +11050,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListInstanceIndicesResponse:
+        """
+        @summary 获取当前实例先特定的索引列表
+        
+        @param request: ListInstanceIndicesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceIndicesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.all):
@@ -8701,6 +11097,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListInstanceIndicesRequest,
     ) -> elasticsearch_20170613_models.ListInstanceIndicesResponse:
+        """
+        @summary 获取当前实例先特定的索引列表
+        
+        @param request: ListInstanceIndicesRequest
+        @return: ListInstanceIndicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_instance_indices_with_options(instance_id, request, headers, runtime)
@@ -8710,6 +11112,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListInstanceIndicesRequest,
     ) -> elasticsearch_20170613_models.ListInstanceIndicesResponse:
+        """
+        @summary 获取当前实例先特定的索引列表
+        
+        @param request: ListInstanceIndicesRequest
+        @return: ListInstanceIndicesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_instance_indices_with_options_async(instance_id, request, headers, runtime)
@@ -8721,6 +11129,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListKibanaPluginsResponse:
+        """
+        @summary Queries a list of Kibana plug-ins.
+        
+        @param request: ListKibanaPluginsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListKibanaPluginsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page):
@@ -8754,6 +11170,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListKibanaPluginsResponse:
+        """
+        @summary Queries a list of Kibana plug-ins.
+        
+        @param request: ListKibanaPluginsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListKibanaPluginsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page):
@@ -8785,6 +11209,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListKibanaPluginsRequest,
     ) -> elasticsearch_20170613_models.ListKibanaPluginsResponse:
+        """
+        @summary Queries a list of Kibana plug-ins.
+        
+        @param request: ListKibanaPluginsRequest
+        @return: ListKibanaPluginsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_kibana_plugins_with_options(instance_id, request, headers, runtime)
@@ -8794,6 +11224,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListKibanaPluginsRequest,
     ) -> elasticsearch_20170613_models.ListKibanaPluginsResponse:
+        """
+        @summary Queries a list of Kibana plug-ins.
+        
+        @param request: ListKibanaPluginsRequest
+        @return: ListKibanaPluginsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_kibana_plugins_with_options_async(instance_id, request, headers, runtime)
@@ -8804,6 +11240,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListKibanaPvlNetworkResponse:
+        """
+        @summary 查询kibana私网连接信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListKibanaPvlNetworkResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8829,6 +11272,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListKibanaPvlNetworkResponse:
+        """
+        @summary 查询kibana私网连接信息
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListKibanaPvlNetworkResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -8852,6 +11302,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.ListKibanaPvlNetworkResponse:
+        """
+        @summary 查询kibana私网连接信息
+        
+        @return: ListKibanaPvlNetworkResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_kibana_pvl_network_with_options(instance_id, headers, runtime)
@@ -8860,6 +11315,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.ListKibanaPvlNetworkResponse:
+        """
+        @summary 查询kibana私网连接信息
+        
+        @return: ListKibanaPvlNetworkResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_kibana_pvl_network_with_options_async(instance_id, headers, runtime)
@@ -8870,6 +11330,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListLogstashResponse:
+        """
+        @summary Logstash集群列表
+        
+        @param request: ListLogstashRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLogstashResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -8912,6 +11380,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListLogstashResponse:
+        """
+        @summary Logstash集群列表
+        
+        @param request: ListLogstashRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLogstashResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.description):
@@ -8952,6 +11428,12 @@ class Client(OpenApiClient):
         self,
         request: elasticsearch_20170613_models.ListLogstashRequest,
     ) -> elasticsearch_20170613_models.ListLogstashResponse:
+        """
+        @summary Logstash集群列表
+        
+        @param request: ListLogstashRequest
+        @return: ListLogstashResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_logstash_with_options(request, headers, runtime)
@@ -8960,6 +11442,12 @@ class Client(OpenApiClient):
         self,
         request: elasticsearch_20170613_models.ListLogstashRequest,
     ) -> elasticsearch_20170613_models.ListLogstashResponse:
+        """
+        @summary Logstash集群列表
+        
+        @param request: ListLogstashRequest
+        @return: ListLogstashResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_logstash_with_options_async(request, headers, runtime)
@@ -8971,6 +11459,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListLogstashLogResponse:
+        """
+        @summary 获取Logstash日志
+        
+        @param request: ListLogstashLogRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLogstashLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.begin_time):
@@ -9012,6 +11508,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListLogstashLogResponse:
+        """
+        @summary 获取Logstash日志
+        
+        @param request: ListLogstashLogRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLogstashLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.begin_time):
@@ -9051,6 +11555,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListLogstashLogRequest,
     ) -> elasticsearch_20170613_models.ListLogstashLogResponse:
+        """
+        @summary 获取Logstash日志
+        
+        @param request: ListLogstashLogRequest
+        @return: ListLogstashLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_logstash_log_with_options(instance_id, request, headers, runtime)
@@ -9060,6 +11570,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListLogstashLogRequest,
     ) -> elasticsearch_20170613_models.ListLogstashLogResponse:
+        """
+        @summary 获取Logstash日志
+        
+        @param request: ListLogstashLogRequest
+        @return: ListLogstashLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_logstash_log_with_options_async(instance_id, request, headers, runtime)
@@ -9071,6 +11587,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListLogstashPluginsResponse:
+        """
+        @summary Logstash插件列表
+        
+        @param request: ListLogstashPluginsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLogstashPluginsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -9108,6 +11632,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListLogstashPluginsResponse:
+        """
+        @summary Logstash插件列表
+        
+        @param request: ListLogstashPluginsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListLogstashPluginsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -9143,6 +11675,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListLogstashPluginsRequest,
     ) -> elasticsearch_20170613_models.ListLogstashPluginsResponse:
+        """
+        @summary Logstash插件列表
+        
+        @param request: ListLogstashPluginsRequest
+        @return: ListLogstashPluginsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_logstash_plugins_with_options(instance_id, request, headers, runtime)
@@ -9152,6 +11690,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListLogstashPluginsRequest,
     ) -> elasticsearch_20170613_models.ListLogstashPluginsResponse:
+        """
+        @summary Logstash插件列表
+        
+        @param request: ListLogstashPluginsRequest
+        @return: ListLogstashPluginsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_logstash_plugins_with_options_async(instance_id, request, headers, runtime)
@@ -9163,6 +11707,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListNodesResponse:
+        """
+        @summary Queries the statuses of Elastic Compute Service (ECS) instances on which a shipper is installed.
+        
+        @param request: ListNodesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNodesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ecs_instance_ids):
@@ -9202,6 +11754,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListNodesResponse:
+        """
+        @summary Queries the statuses of Elastic Compute Service (ECS) instances on which a shipper is installed.
+        
+        @param request: ListNodesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNodesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ecs_instance_ids):
@@ -9239,6 +11799,12 @@ class Client(OpenApiClient):
         res_id: str,
         request: elasticsearch_20170613_models.ListNodesRequest,
     ) -> elasticsearch_20170613_models.ListNodesResponse:
+        """
+        @summary Queries the statuses of Elastic Compute Service (ECS) instances on which a shipper is installed.
+        
+        @param request: ListNodesRequest
+        @return: ListNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_nodes_with_options(res_id, request, headers, runtime)
@@ -9248,6 +11814,12 @@ class Client(OpenApiClient):
         res_id: str,
         request: elasticsearch_20170613_models.ListNodesRequest,
     ) -> elasticsearch_20170613_models.ListNodesResponse:
+        """
+        @summary Queries the statuses of Elastic Compute Service (ECS) instances on which a shipper is installed.
+        
+        @param request: ListNodesRequest
+        @return: ListNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_nodes_with_options_async(res_id, request, headers, runtime)
@@ -9259,6 +11831,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListPipelineResponse:
+        """
+        @param request: ListPipelineRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPipelineResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page):
@@ -9294,6 +11872,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListPipelineResponse:
+        """
+        @param request: ListPipelineRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPipelineResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page):
@@ -9327,6 +11911,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListPipelineRequest,
     ) -> elasticsearch_20170613_models.ListPipelineResponse:
+        """
+        @param request: ListPipelineRequest
+        @return: ListPipelineResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_pipeline_with_options(instance_id, request, headers, runtime)
@@ -9336,6 +11924,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListPipelineRequest,
     ) -> elasticsearch_20170613_models.ListPipelineResponse:
+        """
+        @param request: ListPipelineRequest
+        @return: ListPipelineResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_pipeline_with_options_async(instance_id, request, headers, runtime)
@@ -9347,6 +11939,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListPipelineIdsResponse:
+        """
+        @summary The error message returned.
+        
+        @param request: ListPipelineIdsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPipelineIdsResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -9375,6 +11975,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListPipelineIdsResponse:
+        """
+        @summary The error message returned.
+        
+        @param request: ListPipelineIdsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPipelineIdsResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -9401,6 +12009,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListPipelineIdsRequest,
     ) -> elasticsearch_20170613_models.ListPipelineIdsResponse:
+        """
+        @summary The error message returned.
+        
+        @param request: ListPipelineIdsRequest
+        @return: ListPipelineIdsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_pipeline_ids_with_options(instance_id, request, headers, runtime)
@@ -9410,6 +12024,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListPipelineIdsRequest,
     ) -> elasticsearch_20170613_models.ListPipelineIdsResponse:
+        """
+        @summary The error message returned.
+        
+        @param request: ListPipelineIdsRequest
+        @return: ListPipelineIdsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_pipeline_ids_with_options_async(instance_id, request, headers, runtime)
@@ -9421,6 +12041,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListPluginsResponse:
+        """
+        @summary ES系统插件列表
+        
+        @param request: ListPluginsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPluginsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -9458,6 +12086,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListPluginsResponse:
+        """
+        @summary ES系统插件列表
+        
+        @param request: ListPluginsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListPluginsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.name):
@@ -9493,6 +12129,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListPluginsRequest,
     ) -> elasticsearch_20170613_models.ListPluginsResponse:
+        """
+        @summary ES系统插件列表
+        
+        @param request: ListPluginsRequest
+        @return: ListPluginsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_plugins_with_options(instance_id, request, headers, runtime)
@@ -9502,6 +12144,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListPluginsRequest,
     ) -> elasticsearch_20170613_models.ListPluginsResponse:
+        """
+        @summary ES系统插件列表
+        
+        @param request: ListPluginsRequest
+        @return: ListPluginsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_plugins_with_options_async(instance_id, request, headers, runtime)
@@ -9513,6 +12161,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListSearchLogResponse:
+        """
+        @summary 查看Elasticsearch集群各种类型的日志
+        
+        @param request: ListSearchLogRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSearchLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.begin_time):
@@ -9554,6 +12210,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListSearchLogResponse:
+        """
+        @summary 查看Elasticsearch集群各种类型的日志
+        
+        @param request: ListSearchLogRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSearchLogResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.begin_time):
@@ -9593,6 +12257,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListSearchLogRequest,
     ) -> elasticsearch_20170613_models.ListSearchLogResponse:
+        """
+        @summary 查看Elasticsearch集群各种类型的日志
+        
+        @param request: ListSearchLogRequest
+        @return: ListSearchLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_search_log_with_options(instance_id, request, headers, runtime)
@@ -9602,6 +12272,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListSearchLogRequest,
     ) -> elasticsearch_20170613_models.ListSearchLogResponse:
+        """
+        @summary 查看Elasticsearch集群各种类型的日志
+        
+        @param request: ListSearchLogRequest
+        @return: ListSearchLogResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_search_log_with_options_async(instance_id, request, headers, runtime)
@@ -9614,7 +12290,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListShardRecoveriesResponse:
         """
-        > The restoration of a shard is a process of synchronizing data from a primary shard to a replica shard. After the restoration is complete, the replica shard is available for data searches.
+        @summary Queries the information about shards that are being restored or shards that are restored. By default, this operation returns only the information about shards that are being restored after you call this operation.
+        
+        @description > The restoration of a shard is a process of synchronizing data from a primary shard to a replica shard. After the restoration is complete, the replica shard is available for data searches.
         
         @param request: ListShardRecoveriesRequest
         @param headers: map
@@ -9653,7 +12331,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListShardRecoveriesResponse:
         """
-        > The restoration of a shard is a process of synchronizing data from a primary shard to a replica shard. After the restoration is complete, the replica shard is available for data searches.
+        @summary Queries the information about shards that are being restored or shards that are restored. By default, this operation returns only the information about shards that are being restored after you call this operation.
+        
+        @description > The restoration of a shard is a process of synchronizing data from a primary shard to a replica shard. After the restoration is complete, the replica shard is available for data searches.
         
         @param request: ListShardRecoveriesRequest
         @param headers: map
@@ -9690,7 +12370,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.ListShardRecoveriesRequest,
     ) -> elasticsearch_20170613_models.ListShardRecoveriesResponse:
         """
-        > The restoration of a shard is a process of synchronizing data from a primary shard to a replica shard. After the restoration is complete, the replica shard is available for data searches.
+        @summary Queries the information about shards that are being restored or shards that are restored. By default, this operation returns only the information about shards that are being restored after you call this operation.
+        
+        @description > The restoration of a shard is a process of synchronizing data from a primary shard to a replica shard. After the restoration is complete, the replica shard is available for data searches.
         
         @param request: ListShardRecoveriesRequest
         @return: ListShardRecoveriesResponse
@@ -9705,7 +12387,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.ListShardRecoveriesRequest,
     ) -> elasticsearch_20170613_models.ListShardRecoveriesResponse:
         """
-        > The restoration of a shard is a process of synchronizing data from a primary shard to a replica shard. After the restoration is complete, the replica shard is available for data searches.
+        @summary Queries the information about shards that are being restored or shards that are restored. By default, this operation returns only the information about shards that are being restored after you call this operation.
+        
+        @description > The restoration of a shard is a process of synchronizing data from a primary shard to a replica shard. After the restoration is complete, the replica shard is available for data searches.
         
         @param request: ListShardRecoveriesRequest
         @return: ListShardRecoveriesResponse
@@ -9720,6 +12404,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListSnapshotReposByInstanceIdResponse:
+        """
+        @summary 获取跨集群索引仓库列表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSnapshotReposByInstanceIdResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9745,6 +12436,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListSnapshotReposByInstanceIdResponse:
+        """
+        @summary 获取跨集群索引仓库列表
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListSnapshotReposByInstanceIdResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -9768,6 +12466,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.ListSnapshotReposByInstanceIdResponse:
+        """
+        @summary 获取跨集群索引仓库列表
+        
+        @return: ListSnapshotReposByInstanceIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_snapshot_repos_by_instance_id_with_options(instance_id, headers, runtime)
@@ -9776,6 +12479,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.ListSnapshotReposByInstanceIdResponse:
+        """
+        @summary 获取跨集群索引仓库列表
+        
+        @return: ListSnapshotReposByInstanceIdResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_snapshot_repos_by_instance_id_with_options_async(instance_id, headers, runtime)
@@ -9786,6 +12494,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListTagResourcesResponse:
+        """
+        @summary 查看资源和标签关系
+        
+        @param request: ListTagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_token):
@@ -9826,6 +12542,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListTagResourcesResponse:
+        """
+        @summary 查看资源和标签关系
+        
+        @param request: ListTagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.next_token):
@@ -9864,6 +12588,12 @@ class Client(OpenApiClient):
         self,
         request: elasticsearch_20170613_models.ListTagResourcesRequest,
     ) -> elasticsearch_20170613_models.ListTagResourcesResponse:
+        """
+        @summary 查看资源和标签关系
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_tag_resources_with_options(request, headers, runtime)
@@ -9872,6 +12602,12 @@ class Client(OpenApiClient):
         self,
         request: elasticsearch_20170613_models.ListTagResourcesRequest,
     ) -> elasticsearch_20170613_models.ListTagResourcesResponse:
+        """
+        @summary 查看资源和标签关系
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_tag_resources_with_options_async(request, headers, runtime)
@@ -9882,6 +12618,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListTagsResponse:
+        """
+        @summary 查看所有已常见的标签
+        
+        @param request: ListTagsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_size):
@@ -9914,6 +12658,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListTagsResponse:
+        """
+        @summary 查看所有已常见的标签
+        
+        @param request: ListTagsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page_size):
@@ -9944,6 +12696,12 @@ class Client(OpenApiClient):
         self,
         request: elasticsearch_20170613_models.ListTagsRequest,
     ) -> elasticsearch_20170613_models.ListTagsResponse:
+        """
+        @summary 查看所有已常见的标签
+        
+        @param request: ListTagsRequest
+        @return: ListTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_tags_with_options(request, headers, runtime)
@@ -9952,6 +12710,12 @@ class Client(OpenApiClient):
         self,
         request: elasticsearch_20170613_models.ListTagsRequest,
     ) -> elasticsearch_20170613_models.ListTagsResponse:
+        """
+        @summary 查看所有已常见的标签
+        
+        @param request: ListTagsRequest
+        @return: ListTagsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_tags_with_options_async(request, headers, runtime)
@@ -9963,6 +12727,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListVpcEndpointsResponse:
+        """
+        @summary Queries the statuses of endpoints in the virtual private cloud (VPC) within the Elasticsearch service account.
+        
+        @param request: ListVpcEndpointsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVpcEndpointsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page):
@@ -9996,6 +12768,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ListVpcEndpointsResponse:
+        """
+        @summary Queries the statuses of endpoints in the virtual private cloud (VPC) within the Elasticsearch service account.
+        
+        @param request: ListVpcEndpointsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListVpcEndpointsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.page):
@@ -10027,6 +12807,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListVpcEndpointsRequest,
     ) -> elasticsearch_20170613_models.ListVpcEndpointsResponse:
+        """
+        @summary Queries the statuses of endpoints in the virtual private cloud (VPC) within the Elasticsearch service account.
+        
+        @param request: ListVpcEndpointsRequest
+        @return: ListVpcEndpointsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_vpc_endpoints_with_options(instance_id, request, headers, runtime)
@@ -10036,6 +12822,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ListVpcEndpointsRequest,
     ) -> elasticsearch_20170613_models.ListVpcEndpointsResponse:
+        """
+        @summary Queries the statuses of endpoints in the virtual private cloud (VPC) within the Elasticsearch service account.
+        
+        @param request: ListVpcEndpointsRequest
+        @return: ListVpcEndpointsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_vpc_endpoints_with_options_async(instance_id, request, headers, runtime)
@@ -10048,10 +12840,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.MigrateToOtherZoneResponse:
         """
-        If the specifications in your zone are insufficient, you can upgrade your instance to nodes in another zone. Before calling this interface, you must ensure that:
-        *   The error message returned because the current account is in a zone that has sufficient resources.
-        After migrating nodes with current specifications to another zone, you need to manually [upgrade cluster](~~96650~~) because the cluster will not be upgraded during the migration process. Therefore, select a zone with sufficient resources to avoid cluster upgrade failure. We recommend that you choose new zones that are in lower alphabetical order. For example, for cn-hangzhou-e and cn-hangzhou-h zones, choose cn-hangzhou-h first.
-        *   The cluster is in the healthy state.
+        @summary Call the MigrateToOtherZone to migrate the nodes in the specified zone to the destination zone.
+        
+        @description If the specifications in your zone are insufficient, you can upgrade your instance to nodes in another zone. Before calling this interface, you must ensure that:
+        The error message returned because the current account is in a zone that has sufficient resources.
+        After migrating nodes with current specifications to another zone, you need to manually [upgrade cluster](https://help.aliyun.com/document_detail/96650.html) because the cluster will not be upgraded during the migration process. Therefore, select a zone with sufficient resources to avoid cluster upgrade failure. We recommend that you choose new zones that are in lower alphabetical order. For example, for cn-hangzhou-e and cn-hangzhou-h zones, choose cn-hangzhou-h first.
+        The cluster is in the healthy state.
         Can be passed`  GET _cat/health?v  `command to view the health status of the cluster.
         
         @param request: MigrateToOtherZoneRequest
@@ -10092,10 +12886,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.MigrateToOtherZoneResponse:
         """
-        If the specifications in your zone are insufficient, you can upgrade your instance to nodes in another zone. Before calling this interface, you must ensure that:
-        *   The error message returned because the current account is in a zone that has sufficient resources.
-        After migrating nodes with current specifications to another zone, you need to manually [upgrade cluster](~~96650~~) because the cluster will not be upgraded during the migration process. Therefore, select a zone with sufficient resources to avoid cluster upgrade failure. We recommend that you choose new zones that are in lower alphabetical order. For example, for cn-hangzhou-e and cn-hangzhou-h zones, choose cn-hangzhou-h first.
-        *   The cluster is in the healthy state.
+        @summary Call the MigrateToOtherZone to migrate the nodes in the specified zone to the destination zone.
+        
+        @description If the specifications in your zone are insufficient, you can upgrade your instance to nodes in another zone. Before calling this interface, you must ensure that:
+        The error message returned because the current account is in a zone that has sufficient resources.
+        After migrating nodes with current specifications to another zone, you need to manually [upgrade cluster](https://help.aliyun.com/document_detail/96650.html) because the cluster will not be upgraded during the migration process. Therefore, select a zone with sufficient resources to avoid cluster upgrade failure. We recommend that you choose new zones that are in lower alphabetical order. For example, for cn-hangzhou-e and cn-hangzhou-h zones, choose cn-hangzhou-h first.
+        The cluster is in the healthy state.
         Can be passed`  GET _cat/health?v  `command to view the health status of the cluster.
         
         @param request: MigrateToOtherZoneRequest
@@ -10134,10 +12930,12 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.MigrateToOtherZoneRequest,
     ) -> elasticsearch_20170613_models.MigrateToOtherZoneResponse:
         """
-        If the specifications in your zone are insufficient, you can upgrade your instance to nodes in another zone. Before calling this interface, you must ensure that:
-        *   The error message returned because the current account is in a zone that has sufficient resources.
-        After migrating nodes with current specifications to another zone, you need to manually [upgrade cluster](~~96650~~) because the cluster will not be upgraded during the migration process. Therefore, select a zone with sufficient resources to avoid cluster upgrade failure. We recommend that you choose new zones that are in lower alphabetical order. For example, for cn-hangzhou-e and cn-hangzhou-h zones, choose cn-hangzhou-h first.
-        *   The cluster is in the healthy state.
+        @summary Call the MigrateToOtherZone to migrate the nodes in the specified zone to the destination zone.
+        
+        @description If the specifications in your zone are insufficient, you can upgrade your instance to nodes in another zone. Before calling this interface, you must ensure that:
+        The error message returned because the current account is in a zone that has sufficient resources.
+        After migrating nodes with current specifications to another zone, you need to manually [upgrade cluster](https://help.aliyun.com/document_detail/96650.html) because the cluster will not be upgraded during the migration process. Therefore, select a zone with sufficient resources to avoid cluster upgrade failure. We recommend that you choose new zones that are in lower alphabetical order. For example, for cn-hangzhou-e and cn-hangzhou-h zones, choose cn-hangzhou-h first.
+        The cluster is in the healthy state.
         Can be passed`  GET _cat/health?v  `command to view the health status of the cluster.
         
         @param request: MigrateToOtherZoneRequest
@@ -10153,10 +12951,12 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.MigrateToOtherZoneRequest,
     ) -> elasticsearch_20170613_models.MigrateToOtherZoneResponse:
         """
-        If the specifications in your zone are insufficient, you can upgrade your instance to nodes in another zone. Before calling this interface, you must ensure that:
-        *   The error message returned because the current account is in a zone that has sufficient resources.
-        After migrating nodes with current specifications to another zone, you need to manually [upgrade cluster](~~96650~~) because the cluster will not be upgraded during the migration process. Therefore, select a zone with sufficient resources to avoid cluster upgrade failure. We recommend that you choose new zones that are in lower alphabetical order. For example, for cn-hangzhou-e and cn-hangzhou-h zones, choose cn-hangzhou-h first.
-        *   The cluster is in the healthy state.
+        @summary Call the MigrateToOtherZone to migrate the nodes in the specified zone to the destination zone.
+        
+        @description If the specifications in your zone are insufficient, you can upgrade your instance to nodes in another zone. Before calling this interface, you must ensure that:
+        The error message returned because the current account is in a zone that has sufficient resources.
+        After migrating nodes with current specifications to another zone, you need to manually [upgrade cluster](https://help.aliyun.com/document_detail/96650.html) because the cluster will not be upgraded during the migration process. Therefore, select a zone with sufficient resources to avoid cluster upgrade failure. We recommend that you choose new zones that are in lower alphabetical order. For example, for cn-hangzhou-e and cn-hangzhou-h zones, choose cn-hangzhou-h first.
+        The cluster is in the healthy state.
         Can be passed`  GET _cat/health?v  `command to view the health status of the cluster.
         
         @param request: MigrateToOtherZoneRequest
@@ -10173,6 +12973,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ModifyDeployMachineResponse:
+        """
+        @summary Changes the Elastic Compute Service (ECS) instances on which a shipper is installed.
+        
+        @param request: ModifyDeployMachineRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDeployMachineResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -10205,6 +13013,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ModifyDeployMachineResponse:
+        """
+        @summary Changes the Elastic Compute Service (ECS) instances on which a shipper is installed.
+        
+        @param request: ModifyDeployMachineRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDeployMachineResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -10235,6 +13051,12 @@ class Client(OpenApiClient):
         res_id: str,
         request: elasticsearch_20170613_models.ModifyDeployMachineRequest,
     ) -> elasticsearch_20170613_models.ModifyDeployMachineResponse:
+        """
+        @summary Changes the Elastic Compute Service (ECS) instances on which a shipper is installed.
+        
+        @param request: ModifyDeployMachineRequest
+        @return: ModifyDeployMachineResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.modify_deploy_machine_with_options(res_id, request, headers, runtime)
@@ -10244,6 +13066,12 @@ class Client(OpenApiClient):
         res_id: str,
         request: elasticsearch_20170613_models.ModifyDeployMachineRequest,
     ) -> elasticsearch_20170613_models.ModifyDeployMachineResponse:
+        """
+        @summary Changes the Elastic Compute Service (ECS) instances on which a shipper is installed.
+        
+        @param request: ModifyDeployMachineRequest
+        @return: ModifyDeployMachineResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.modify_deploy_machine_with_options_async(res_id, request, headers, runtime)
@@ -10255,6 +13083,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ModifyElastictaskResponse:
+        """
+        @param request: ModifyElastictaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyElastictaskResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -10283,6 +13117,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ModifyElastictaskResponse:
+        """
+        @param request: ModifyElastictaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyElastictaskResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -10309,6 +13149,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ModifyElastictaskRequest,
     ) -> elasticsearch_20170613_models.ModifyElastictaskResponse:
+        """
+        @param request: ModifyElastictaskRequest
+        @return: ModifyElastictaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.modify_elastictask_with_options(instance_id, request, headers, runtime)
@@ -10318,6 +13162,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ModifyElastictaskRequest,
     ) -> elasticsearch_20170613_models.ModifyElastictaskResponse:
+        """
+        @param request: ModifyElastictaskRequest
+        @return: ModifyElastictaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.modify_elastictask_with_options_async(instance_id, request, headers, runtime)
@@ -10330,7 +13178,23 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ModifyInstanceMaintainTimeResponse:
         """
-        es-cn-n6w1o1x0w001c\\\\*\\*\\*\
+        @summary ## RequestBody
+        You must also specify the following parameters in the RequestBody parameter to specify the maintenance window information.
+        | Parameter | Type | Required | Example | Description |
+        | --------- | ---- | -------- | ------- | ----------- |
+        | maintainStartTime | String | No | 02:00Z | The start time of the maintenance window. Specify the time in the HH:mmZ format. The time must be in UTC. |
+        | maintainEndTime | String | No | 06:00Z | The end time of the maintenance window. Specify the time in the HH:mmZ format. The time must be displayed in UTC. |
+        | openMaintainTime | boolean | Yes | true | Specifies whether to enable the maintenance window feature. Only *true** is supported, indicating that the feature is enabled. |
+        Examples:
+        ```
+        {
+        "openMaintainTime": true,
+        "maintainStartTime": "03:00Z",
+        "maintainEndTime": "04:00Z"
+        }
+        ```
+        
+        @description es-cn-n6w1o1x0w001c\\\\*\\*\\*\
         
         @param request: ModifyInstanceMaintainTimeRequest
         @param headers: map
@@ -10370,7 +13234,23 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ModifyInstanceMaintainTimeResponse:
         """
-        es-cn-n6w1o1x0w001c\\\\*\\*\\*\
+        @summary ## RequestBody
+        You must also specify the following parameters in the RequestBody parameter to specify the maintenance window information.
+        | Parameter | Type | Required | Example | Description |
+        | --------- | ---- | -------- | ------- | ----------- |
+        | maintainStartTime | String | No | 02:00Z | The start time of the maintenance window. Specify the time in the HH:mmZ format. The time must be in UTC. |
+        | maintainEndTime | String | No | 06:00Z | The end time of the maintenance window. Specify the time in the HH:mmZ format. The time must be displayed in UTC. |
+        | openMaintainTime | boolean | Yes | true | Specifies whether to enable the maintenance window feature. Only *true** is supported, indicating that the feature is enabled. |
+        Examples:
+        ```
+        {
+        "openMaintainTime": true,
+        "maintainStartTime": "03:00Z",
+        "maintainEndTime": "04:00Z"
+        }
+        ```
+        
+        @description es-cn-n6w1o1x0w001c\\\\*\\*\\*\
         
         @param request: ModifyInstanceMaintainTimeRequest
         @param headers: map
@@ -10408,7 +13288,23 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.ModifyInstanceMaintainTimeRequest,
     ) -> elasticsearch_20170613_models.ModifyInstanceMaintainTimeResponse:
         """
-        es-cn-n6w1o1x0w001c\\\\*\\*\\*\
+        @summary ## RequestBody
+        You must also specify the following parameters in the RequestBody parameter to specify the maintenance window information.
+        | Parameter | Type | Required | Example | Description |
+        | --------- | ---- | -------- | ------- | ----------- |
+        | maintainStartTime | String | No | 02:00Z | The start time of the maintenance window. Specify the time in the HH:mmZ format. The time must be in UTC. |
+        | maintainEndTime | String | No | 06:00Z | The end time of the maintenance window. Specify the time in the HH:mmZ format. The time must be displayed in UTC. |
+        | openMaintainTime | boolean | Yes | true | Specifies whether to enable the maintenance window feature. Only *true** is supported, indicating that the feature is enabled. |
+        Examples:
+        ```
+        {
+        "openMaintainTime": true,
+        "maintainStartTime": "03:00Z",
+        "maintainEndTime": "04:00Z"
+        }
+        ```
+        
+        @description es-cn-n6w1o1x0w001c\\\\*\\*\\*\
         
         @param request: ModifyInstanceMaintainTimeRequest
         @return: ModifyInstanceMaintainTimeResponse
@@ -10423,7 +13319,23 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.ModifyInstanceMaintainTimeRequest,
     ) -> elasticsearch_20170613_models.ModifyInstanceMaintainTimeResponse:
         """
-        es-cn-n6w1o1x0w001c\\\\*\\*\\*\
+        @summary ## RequestBody
+        You must also specify the following parameters in the RequestBody parameter to specify the maintenance window information.
+        | Parameter | Type | Required | Example | Description |
+        | --------- | ---- | -------- | ------- | ----------- |
+        | maintainStartTime | String | No | 02:00Z | The start time of the maintenance window. Specify the time in the HH:mmZ format. The time must be in UTC. |
+        | maintainEndTime | String | No | 06:00Z | The end time of the maintenance window. Specify the time in the HH:mmZ format. The time must be displayed in UTC. |
+        | openMaintainTime | boolean | Yes | true | Specifies whether to enable the maintenance window feature. Only *true** is supported, indicating that the feature is enabled. |
+        Examples:
+        ```
+        {
+        "openMaintainTime": true,
+        "maintainStartTime": "03:00Z",
+        "maintainEndTime": "04:00Z"
+        }
+        ```
+        
+        @description es-cn-n6w1o1x0w001c\\\\*\\*\\*\
         
         @param request: ModifyInstanceMaintainTimeRequest
         @return: ModifyInstanceMaintainTimeResponse
@@ -10440,7 +13352,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ModifyWhiteIpsResponse:
         """
-        The ID of the cluster.
+        @summary >  If you want to add an IP address whitelist, you can set the modifyMode parameter only to Cover. If you set this parameter to Delete or Append, you can only update an IP address whitelist.
+        If you set the modifyMode parameter to Cover and leave the ips parameter empty, the system deletes the specified whitelist. If the whitelist specified by using the groupName parameter does not exist, the system creates such a whitelist.
+        If you set the modifyMode parameter to Delete, at least one IP address must be retained for the specified whitelist.
+        If you set the modifyMode parameter to Append, you must make sure that the specified whitelist exists. Otherwise, the system reports the NotFound error.
+        
+        @description The ID of the cluster.
         
         @param request: ModifyWhiteIpsRequest
         @param headers: map
@@ -10491,7 +13408,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ModifyWhiteIpsResponse:
         """
-        The ID of the cluster.
+        @summary >  If you want to add an IP address whitelist, you can set the modifyMode parameter only to Cover. If you set this parameter to Delete or Append, you can only update an IP address whitelist.
+        If you set the modifyMode parameter to Cover and leave the ips parameter empty, the system deletes the specified whitelist. If the whitelist specified by using the groupName parameter does not exist, the system creates such a whitelist.
+        If you set the modifyMode parameter to Delete, at least one IP address must be retained for the specified whitelist.
+        If you set the modifyMode parameter to Append, you must make sure that the specified whitelist exists. Otherwise, the system reports the NotFound error.
+        
+        @description The ID of the cluster.
         
         @param request: ModifyWhiteIpsRequest
         @param headers: map
@@ -10540,7 +13462,12 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.ModifyWhiteIpsRequest,
     ) -> elasticsearch_20170613_models.ModifyWhiteIpsResponse:
         """
-        The ID of the cluster.
+        @summary >  If you want to add an IP address whitelist, you can set the modifyMode parameter only to Cover. If you set this parameter to Delete or Append, you can only update an IP address whitelist.
+        If you set the modifyMode parameter to Cover and leave the ips parameter empty, the system deletes the specified whitelist. If the whitelist specified by using the groupName parameter does not exist, the system creates such a whitelist.
+        If you set the modifyMode parameter to Delete, at least one IP address must be retained for the specified whitelist.
+        If you set the modifyMode parameter to Append, you must make sure that the specified whitelist exists. Otherwise, the system reports the NotFound error.
+        
+        @description The ID of the cluster.
         
         @param request: ModifyWhiteIpsRequest
         @return: ModifyWhiteIpsResponse
@@ -10555,7 +13482,12 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.ModifyWhiteIpsRequest,
     ) -> elasticsearch_20170613_models.ModifyWhiteIpsResponse:
         """
-        The ID of the cluster.
+        @summary >  If you want to add an IP address whitelist, you can set the modifyMode parameter only to Cover. If you set this parameter to Delete or Append, you can only update an IP address whitelist.
+        If you set the modifyMode parameter to Cover and leave the ips parameter empty, the system deletes the specified whitelist. If the whitelist specified by using the groupName parameter does not exist, the system creates such a whitelist.
+        If you set the modifyMode parameter to Delete, at least one IP address must be retained for the specified whitelist.
+        If you set the modifyMode parameter to Append, you must make sure that the specified whitelist exists. Otherwise, the system reports the NotFound error.
+        
+        @description The ID of the cluster.
         
         @param request: ModifyWhiteIpsRequest
         @return: ModifyWhiteIpsResponse
@@ -10571,6 +13503,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.MoveResourceGroupResponse:
+        """
+        @summary Migrates an Elasticsearch cluster to a specified resource group.
+        
+        @param request: MoveResourceGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MoveResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -10603,6 +13543,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.MoveResourceGroupResponse:
+        """
+        @summary Migrates an Elasticsearch cluster to a specified resource group.
+        
+        @param request: MoveResourceGroupRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: MoveResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -10633,6 +13581,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.MoveResourceGroupRequest,
     ) -> elasticsearch_20170613_models.MoveResourceGroupResponse:
+        """
+        @summary Migrates an Elasticsearch cluster to a specified resource group.
+        
+        @param request: MoveResourceGroupRequest
+        @return: MoveResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.move_resource_group_with_options(instance_id, request, headers, runtime)
@@ -10642,6 +13596,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.MoveResourceGroupRequest,
     ) -> elasticsearch_20170613_models.MoveResourceGroupResponse:
+        """
+        @summary Migrates an Elasticsearch cluster to a specified resource group.
+        
+        @param request: MoveResourceGroupRequest
+        @return: MoveResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.move_resource_group_with_options_async(instance_id, request, headers, runtime)
@@ -10653,6 +13613,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.OpenDiagnosisResponse:
+        """
+        @param request: OpenDiagnosisRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenDiagnosisResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -10686,6 +13652,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.OpenDiagnosisResponse:
+        """
+        @param request: OpenDiagnosisRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: OpenDiagnosisResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -10717,6 +13689,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.OpenDiagnosisRequest,
     ) -> elasticsearch_20170613_models.OpenDiagnosisResponse:
+        """
+        @param request: OpenDiagnosisRequest
+        @return: OpenDiagnosisResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.open_diagnosis_with_options(instance_id, request, headers, runtime)
@@ -10726,6 +13702,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.OpenDiagnosisRequest,
     ) -> elasticsearch_20170613_models.OpenDiagnosisResponse:
+        """
+        @param request: OpenDiagnosisRequest
+        @return: OpenDiagnosisResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.open_diagnosis_with_options_async(instance_id, request, headers, runtime)
@@ -10738,7 +13718,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.OpenHttpsResponse:
         """
-        >  To ensure data security, we recommend that you enable HTTPS.
+        @description >  To ensure data security, we recommend that you enable HTTPS.
         
         @param request: OpenHttpsRequest
         @param headers: map
@@ -10777,7 +13757,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.OpenHttpsResponse:
         """
-        >  To ensure data security, we recommend that you enable HTTPS.
+        @description >  To ensure data security, we recommend that you enable HTTPS.
         
         @param request: OpenHttpsRequest
         @param headers: map
@@ -10814,7 +13794,7 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.OpenHttpsRequest,
     ) -> elasticsearch_20170613_models.OpenHttpsResponse:
         """
-        >  To ensure data security, we recommend that you enable HTTPS.
+        @description >  To ensure data security, we recommend that you enable HTTPS.
         
         @param request: OpenHttpsRequest
         @return: OpenHttpsResponse
@@ -10829,7 +13809,7 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.OpenHttpsRequest,
     ) -> elasticsearch_20170613_models.OpenHttpsResponse:
         """
-        >  To ensure data security, we recommend that you enable HTTPS.
+        @description >  To ensure data security, we recommend that you enable HTTPS.
         
         @param request: OpenHttpsRequest
         @return: OpenHttpsResponse
@@ -10846,6 +13826,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.PostEmonTryAlarmRuleResponse:
+        """
+        @param request: PostEmonTryAlarmRuleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PostEmonTryAlarmRuleResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -10875,6 +13861,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.PostEmonTryAlarmRuleResponse:
+        """
+        @param request: PostEmonTryAlarmRuleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: PostEmonTryAlarmRuleResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -10902,6 +13894,10 @@ class Client(OpenApiClient):
         alarm_group_id: str,
         request: elasticsearch_20170613_models.PostEmonTryAlarmRuleRequest,
     ) -> elasticsearch_20170613_models.PostEmonTryAlarmRuleResponse:
+        """
+        @param request: PostEmonTryAlarmRuleRequest
+        @return: PostEmonTryAlarmRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.post_emon_try_alarm_rule_with_options(project_id, alarm_group_id, request, headers, runtime)
@@ -10912,6 +13908,10 @@ class Client(OpenApiClient):
         alarm_group_id: str,
         request: elasticsearch_20170613_models.PostEmonTryAlarmRuleRequest,
     ) -> elasticsearch_20170613_models.PostEmonTryAlarmRuleResponse:
+        """
+        @param request: PostEmonTryAlarmRuleRequest
+        @return: PostEmonTryAlarmRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.post_emon_try_alarm_rule_with_options_async(project_id, alarm_group_id, request, headers, runtime)
@@ -10923,6 +13923,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RecommendTemplatesResponse:
+        """
+        @param request: RecommendTemplatesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RecommendTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.usage_scenario):
@@ -10954,6 +13960,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RecommendTemplatesResponse:
+        """
+        @param request: RecommendTemplatesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RecommendTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.usage_scenario):
@@ -10983,6 +13995,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.RecommendTemplatesRequest,
     ) -> elasticsearch_20170613_models.RecommendTemplatesResponse:
+        """
+        @param request: RecommendTemplatesRequest
+        @return: RecommendTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.recommend_templates_with_options(instance_id, request, headers, runtime)
@@ -10992,6 +14008,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.RecommendTemplatesRequest,
     ) -> elasticsearch_20170613_models.RecommendTemplatesResponse:
+        """
+        @param request: RecommendTemplatesRequest
+        @return: RecommendTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.recommend_templates_with_options_async(instance_id, request, headers, runtime)
@@ -11003,6 +14023,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ReinstallCollectorResponse:
+        """
+        @summary Installs a shipper that failed to be installed when you create the shipper.
+        
+        @param request: ReinstallCollectorRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReinstallCollectorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -11035,6 +14063,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ReinstallCollectorResponse:
+        """
+        @summary Installs a shipper that failed to be installed when you create the shipper.
+        
+        @param request: ReinstallCollectorRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReinstallCollectorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -11065,6 +14101,12 @@ class Client(OpenApiClient):
         res_id: str,
         request: elasticsearch_20170613_models.ReinstallCollectorRequest,
     ) -> elasticsearch_20170613_models.ReinstallCollectorResponse:
+        """
+        @summary Installs a shipper that failed to be installed when you create the shipper.
+        
+        @param request: ReinstallCollectorRequest
+        @return: ReinstallCollectorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.reinstall_collector_with_options(res_id, request, headers, runtime)
@@ -11074,6 +14116,12 @@ class Client(OpenApiClient):
         res_id: str,
         request: elasticsearch_20170613_models.ReinstallCollectorRequest,
     ) -> elasticsearch_20170613_models.ReinstallCollectorResponse:
+        """
+        @summary Installs a shipper that failed to be installed when you create the shipper.
+        
+        @param request: ReinstallCollectorRequest
+        @return: ReinstallCollectorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.reinstall_collector_with_options_async(res_id, request, headers, runtime)
@@ -11084,6 +14132,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RemoveApmResponse:
+        """
+        @summary RemoveApm
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveApmResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -11109,6 +14164,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RemoveApmResponse:
+        """
+        @summary RemoveApm
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveApmResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -11132,6 +14194,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.RemoveApmResponse:
+        """
+        @summary RemoveApm
+        
+        @return: RemoveApmResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.remove_apm_with_options(instance_id, headers, runtime)
@@ -11140,6 +14207,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.RemoveApmResponse:
+        """
+        @summary RemoveApm
+        
+        @return: RemoveApmResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.remove_apm_with_options_async(instance_id, headers, runtime)
@@ -11151,6 +14223,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RenewInstanceResponse:
+        """
+        @summary Call RenewInstance to renew a subscription instance.
+        
+        @param request: RenewInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -11183,6 +14263,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RenewInstanceResponse:
+        """
+        @summary Call RenewInstance to renew a subscription instance.
+        
+        @param request: RenewInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -11213,6 +14301,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.RenewInstanceRequest,
     ) -> elasticsearch_20170613_models.RenewInstanceResponse:
+        """
+        @summary Call RenewInstance to renew a subscription instance.
+        
+        @param request: RenewInstanceRequest
+        @return: RenewInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.renew_instance_with_options(instance_id, request, headers, runtime)
@@ -11222,6 +14316,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.RenewInstanceRequest,
     ) -> elasticsearch_20170613_models.RenewInstanceResponse:
+        """
+        @summary Call RenewInstance to renew a subscription instance.
+        
+        @param request: RenewInstanceRequest
+        @return: RenewInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.renew_instance_with_options_async(instance_id, request, headers, runtime)
@@ -11233,6 +14333,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RenewLogstashResponse:
+        """
+        @summary Renews a Logstash cluster.
+        
+        @param request: RenewLogstashRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewLogstashResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -11265,6 +14373,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RenewLogstashResponse:
+        """
+        @summary Renews a Logstash cluster.
+        
+        @param request: RenewLogstashRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RenewLogstashResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -11295,6 +14411,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.RenewLogstashRequest,
     ) -> elasticsearch_20170613_models.RenewLogstashResponse:
+        """
+        @summary Renews a Logstash cluster.
+        
+        @param request: RenewLogstashRequest
+        @return: RenewLogstashResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.renew_logstash_with_options(instance_id, request, headers, runtime)
@@ -11304,6 +14426,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.RenewLogstashRequest,
     ) -> elasticsearch_20170613_models.RenewLogstashResponse:
+        """
+        @summary Renews a Logstash cluster.
+        
+        @param request: RenewLogstashRequest
+        @return: RenewLogstashResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.renew_logstash_with_options_async(instance_id, request, headers, runtime)
@@ -11315,6 +14443,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RestartCollectorResponse:
+        """
+        @summary Restarts a shipper.
+        
+        @param request: RestartCollectorRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartCollectorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -11346,6 +14482,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RestartCollectorResponse:
+        """
+        @summary Restarts a shipper.
+        
+        @param request: RestartCollectorRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartCollectorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -11375,6 +14519,12 @@ class Client(OpenApiClient):
         res_id: str,
         request: elasticsearch_20170613_models.RestartCollectorRequest,
     ) -> elasticsearch_20170613_models.RestartCollectorResponse:
+        """
+        @summary Restarts a shipper.
+        
+        @param request: RestartCollectorRequest
+        @return: RestartCollectorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.restart_collector_with_options(res_id, request, headers, runtime)
@@ -11384,6 +14534,12 @@ class Client(OpenApiClient):
         res_id: str,
         request: elasticsearch_20170613_models.RestartCollectorRequest,
     ) -> elasticsearch_20170613_models.RestartCollectorResponse:
+        """
+        @summary Restarts a shipper.
+        
+        @param request: RestartCollectorRequest
+        @return: RestartCollectorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.restart_collector_with_options_async(res_id, request, headers, runtime)
@@ -11396,7 +14552,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RestartInstanceResponse:
         """
-        >  After the instance is restarted, the instance enters the activating state. After the instance is restarted, its status changes to active. Alibaba Cloud Elasticsearch supports restarting a single node. Restarting a node can be divided into normal restart and blue-green restart.
+        @summary You can call this operation to restart a specified Elasticsearch instance.
+        
+        @description >  After the instance is restarted, the instance enters the activating state. After the instance is restarted, its status changes to active. Alibaba Cloud Elasticsearch supports restarting a single node. Restarting a node can be divided into normal restart and blue-green restart.
         
         @param request: RestartInstanceRequest
         @param headers: map
@@ -11438,7 +14596,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RestartInstanceResponse:
         """
-        >  After the instance is restarted, the instance enters the activating state. After the instance is restarted, its status changes to active. Alibaba Cloud Elasticsearch supports restarting a single node. Restarting a node can be divided into normal restart and blue-green restart.
+        @summary You can call this operation to restart a specified Elasticsearch instance.
+        
+        @description >  After the instance is restarted, the instance enters the activating state. After the instance is restarted, its status changes to active. Alibaba Cloud Elasticsearch supports restarting a single node. Restarting a node can be divided into normal restart and blue-green restart.
         
         @param request: RestartInstanceRequest
         @param headers: map
@@ -11478,7 +14638,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.RestartInstanceRequest,
     ) -> elasticsearch_20170613_models.RestartInstanceResponse:
         """
-        >  After the instance is restarted, the instance enters the activating state. After the instance is restarted, its status changes to active. Alibaba Cloud Elasticsearch supports restarting a single node. Restarting a node can be divided into normal restart and blue-green restart.
+        @summary You can call this operation to restart a specified Elasticsearch instance.
+        
+        @description >  After the instance is restarted, the instance enters the activating state. After the instance is restarted, its status changes to active. Alibaba Cloud Elasticsearch supports restarting a single node. Restarting a node can be divided into normal restart and blue-green restart.
         
         @param request: RestartInstanceRequest
         @return: RestartInstanceResponse
@@ -11493,7 +14655,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.RestartInstanceRequest,
     ) -> elasticsearch_20170613_models.RestartInstanceResponse:
         """
-        >  After the instance is restarted, the instance enters the activating state. After the instance is restarted, its status changes to active. Alibaba Cloud Elasticsearch supports restarting a single node. Restarting a node can be divided into normal restart and blue-green restart.
+        @summary You can call this operation to restart a specified Elasticsearch instance.
+        
+        @description >  After the instance is restarted, the instance enters the activating state. After the instance is restarted, its status changes to active. Alibaba Cloud Elasticsearch supports restarting a single node. Restarting a node can be divided into normal restart and blue-green restart.
         
         @param request: RestartInstanceRequest
         @return: RestartInstanceResponse
@@ -11509,6 +14673,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RestartLogstashResponse:
+        """
+        @summary 重启Logstash集群
+        
+        @param request: RestartLogstashRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartLogstashResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -11554,6 +14726,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RestartLogstashResponse:
+        """
+        @summary 重启Logstash集群
+        
+        @param request: RestartLogstashRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RestartLogstashResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -11597,6 +14777,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.RestartLogstashRequest,
     ) -> elasticsearch_20170613_models.RestartLogstashResponse:
+        """
+        @summary 重启Logstash集群
+        
+        @param request: RestartLogstashRequest
+        @return: RestartLogstashResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.restart_logstash_with_options(instance_id, request, headers, runtime)
@@ -11606,6 +14792,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.RestartLogstashRequest,
     ) -> elasticsearch_20170613_models.RestartLogstashResponse:
+        """
+        @summary 重启Logstash集群
+        
+        @param request: RestartLogstashRequest
+        @return: RestartLogstashResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.restart_logstash_with_options_async(instance_id, request, headers, runtime)
@@ -11617,6 +14809,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ResumeElasticsearchTaskResponse:
+        """
+        @param request: ResumeElasticsearchTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeElasticsearchTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -11648,6 +14846,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ResumeElasticsearchTaskResponse:
+        """
+        @param request: ResumeElasticsearchTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeElasticsearchTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -11677,6 +14881,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ResumeElasticsearchTaskRequest,
     ) -> elasticsearch_20170613_models.ResumeElasticsearchTaskResponse:
+        """
+        @param request: ResumeElasticsearchTaskRequest
+        @return: ResumeElasticsearchTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.resume_elasticsearch_task_with_options(instance_id, request, headers, runtime)
@@ -11686,6 +14894,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ResumeElasticsearchTaskRequest,
     ) -> elasticsearch_20170613_models.ResumeElasticsearchTaskResponse:
+        """
+        @param request: ResumeElasticsearchTaskRequest
+        @return: ResumeElasticsearchTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.resume_elasticsearch_task_with_options_async(instance_id, request, headers, runtime)
@@ -11697,6 +14909,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ResumeLogstashTaskResponse:
+        """
+        @summary Resumes a change task of a Logstash cluster. After the task is resumed, the Logstash cluster is in the activating state.
+        
+        @param request: ResumeLogstashTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeLogstashTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -11728,6 +14948,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ResumeLogstashTaskResponse:
+        """
+        @summary Resumes a change task of a Logstash cluster. After the task is resumed, the Logstash cluster is in the activating state.
+        
+        @param request: ResumeLogstashTaskRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResumeLogstashTaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -11757,6 +14985,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ResumeLogstashTaskRequest,
     ) -> elasticsearch_20170613_models.ResumeLogstashTaskResponse:
+        """
+        @summary Resumes a change task of a Logstash cluster. After the task is resumed, the Logstash cluster is in the activating state.
+        
+        @param request: ResumeLogstashTaskRequest
+        @return: ResumeLogstashTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.resume_logstash_task_with_options(instance_id, request, headers, runtime)
@@ -11766,6 +15000,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ResumeLogstashTaskRequest,
     ) -> elasticsearch_20170613_models.ResumeLogstashTaskResponse:
+        """
+        @summary Resumes a change task of a Logstash cluster. After the task is resumed, the Logstash cluster is in the activating state.
+        
+        @param request: ResumeLogstashTaskRequest
+        @return: ResumeLogstashTaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.resume_logstash_task_with_options_async(instance_id, request, headers, runtime)
@@ -11778,6 +15018,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RolloverDataStreamResponse:
+        """
+        @summary 滚动数据流，生成新索引
+        
+        @param request: RolloverDataStreamRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RolloverDataStreamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -11810,6 +15058,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RolloverDataStreamResponse:
+        """
+        @summary 滚动数据流，生成新索引
+        
+        @param request: RolloverDataStreamRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RolloverDataStreamResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -11840,6 +15096,12 @@ class Client(OpenApiClient):
         data_stream: str,
         request: elasticsearch_20170613_models.RolloverDataStreamRequest,
     ) -> elasticsearch_20170613_models.RolloverDataStreamResponse:
+        """
+        @summary 滚动数据流，生成新索引
+        
+        @param request: RolloverDataStreamRequest
+        @return: RolloverDataStreamResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.rollover_data_stream_with_options(instance_id, data_stream, request, headers, runtime)
@@ -11850,6 +15112,12 @@ class Client(OpenApiClient):
         data_stream: str,
         request: elasticsearch_20170613_models.RolloverDataStreamRequest,
     ) -> elasticsearch_20170613_models.RolloverDataStreamResponse:
+        """
+        @summary 滚动数据流，生成新索引
+        
+        @param request: RolloverDataStreamRequest
+        @return: RolloverDataStreamResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.rollover_data_stream_with_options_async(instance_id, data_stream, request, headers, runtime)
@@ -11861,6 +15129,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RunPipelinesResponse:
+        """
+        @summary Runs pipelines in a Logstash cluster.
+        
+        @param request: RunPipelinesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunPipelinesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -11893,6 +15169,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.RunPipelinesResponse:
+        """
+        @summary Runs pipelines in a Logstash cluster.
+        
+        @param request: RunPipelinesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunPipelinesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -11923,6 +15207,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.RunPipelinesRequest,
     ) -> elasticsearch_20170613_models.RunPipelinesResponse:
+        """
+        @summary Runs pipelines in a Logstash cluster.
+        
+        @param request: RunPipelinesRequest
+        @return: RunPipelinesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.run_pipelines_with_options(instance_id, request, headers, runtime)
@@ -11932,6 +15222,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.RunPipelinesRequest,
     ) -> elasticsearch_20170613_models.RunPipelinesResponse:
+        """
+        @summary Runs pipelines in a Logstash cluster.
+        
+        @param request: RunPipelinesRequest
+        @return: RunPipelinesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.run_pipelines_with_options_async(instance_id, request, headers, runtime)
@@ -11943,6 +15239,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ShrinkNodeResponse:
+        """
+        @summary ES集群缩节点
+        
+        @param request: ShrinkNodeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ShrinkNodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -11981,6 +15285,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ShrinkNodeResponse:
+        """
+        @summary ES集群缩节点
+        
+        @param request: ShrinkNodeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ShrinkNodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -12017,6 +15329,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ShrinkNodeRequest,
     ) -> elasticsearch_20170613_models.ShrinkNodeResponse:
+        """
+        @summary ES集群缩节点
+        
+        @param request: ShrinkNodeRequest
+        @return: ShrinkNodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.shrink_node_with_options(instance_id, request, headers, runtime)
@@ -12026,6 +15344,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ShrinkNodeRequest,
     ) -> elasticsearch_20170613_models.ShrinkNodeResponse:
+        """
+        @summary ES集群缩节点
+        
+        @param request: ShrinkNodeRequest
+        @return: ShrinkNodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.shrink_node_with_options_async(instance_id, request, headers, runtime)
@@ -12036,6 +15360,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.StartApmResponse:
+        """
+        @summary StartApm
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartApmResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -12061,6 +15392,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.StartApmResponse:
+        """
+        @summary StartApm
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartApmResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -12084,6 +15422,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.StartApmResponse:
+        """
+        @summary StartApm
+        
+        @return: StartApmResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.start_apm_with_options(instance_id, headers, runtime)
@@ -12092,6 +15435,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.StartApmResponse:
+        """
+        @summary StartApm
+        
+        @return: StartApmResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.start_apm_with_options_async(instance_id, headers, runtime)
@@ -12103,6 +15451,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.StartCollectorResponse:
+        """
+        @summary Starts a collector to collect data.
+        
+        @param request: StartCollectorRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartCollectorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -12134,6 +15490,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.StartCollectorResponse:
+        """
+        @summary Starts a collector to collect data.
+        
+        @param request: StartCollectorRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartCollectorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -12163,6 +15527,12 @@ class Client(OpenApiClient):
         res_id: str,
         request: elasticsearch_20170613_models.StartCollectorRequest,
     ) -> elasticsearch_20170613_models.StartCollectorResponse:
+        """
+        @summary Starts a collector to collect data.
+        
+        @param request: StartCollectorRequest
+        @return: StartCollectorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.start_collector_with_options(res_id, request, headers, runtime)
@@ -12172,6 +15542,12 @@ class Client(OpenApiClient):
         res_id: str,
         request: elasticsearch_20170613_models.StartCollectorRequest,
     ) -> elasticsearch_20170613_models.StartCollectorResponse:
+        """
+        @summary Starts a collector to collect data.
+        
+        @param request: StartCollectorRequest
+        @return: StartCollectorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.start_collector_with_options_async(res_id, request, headers, runtime)
@@ -12182,6 +15558,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.StopApmResponse:
+        """
+        @summary StopApm
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopApmResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -12207,6 +15590,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.StopApmResponse:
+        """
+        @summary StopApm
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopApmResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -12230,6 +15620,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.StopApmResponse:
+        """
+        @summary StopApm
+        
+        @return: StopApmResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.stop_apm_with_options(instance_id, headers, runtime)
@@ -12238,6 +15633,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> elasticsearch_20170613_models.StopApmResponse:
+        """
+        @summary StopApm
+        
+        @return: StopApmResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.stop_apm_with_options_async(instance_id, headers, runtime)
@@ -12249,6 +15649,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.StopCollectorResponse:
+        """
+        @summary Stops a shipper.
+        
+        @param request: StopCollectorRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopCollectorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -12280,6 +15688,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.StopCollectorResponse:
+        """
+        @summary Stops a shipper.
+        
+        @param request: StopCollectorRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopCollectorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -12309,6 +15725,12 @@ class Client(OpenApiClient):
         res_id: str,
         request: elasticsearch_20170613_models.StopCollectorRequest,
     ) -> elasticsearch_20170613_models.StopCollectorResponse:
+        """
+        @summary Stops a shipper.
+        
+        @param request: StopCollectorRequest
+        @return: StopCollectorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.stop_collector_with_options(res_id, request, headers, runtime)
@@ -12318,6 +15740,12 @@ class Client(OpenApiClient):
         res_id: str,
         request: elasticsearch_20170613_models.StopCollectorRequest,
     ) -> elasticsearch_20170613_models.StopCollectorResponse:
+        """
+        @summary Stops a shipper.
+        
+        @param request: StopCollectorRequest
+        @return: StopCollectorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.stop_collector_with_options_async(res_id, request, headers, runtime)
@@ -12329,6 +15757,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.StopPipelinesResponse:
+        """
+        @summary Stops pipelines in a Logstash cluster.
+        
+        @param request: StopPipelinesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopPipelinesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -12361,6 +15797,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.StopPipelinesResponse:
+        """
+        @summary Stops pipelines in a Logstash cluster.
+        
+        @param request: StopPipelinesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopPipelinesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -12391,6 +15835,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.StopPipelinesRequest,
     ) -> elasticsearch_20170613_models.StopPipelinesResponse:
+        """
+        @summary Stops pipelines in a Logstash cluster.
+        
+        @param request: StopPipelinesRequest
+        @return: StopPipelinesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.stop_pipelines_with_options(instance_id, request, headers, runtime)
@@ -12400,6 +15850,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.StopPipelinesRequest,
     ) -> elasticsearch_20170613_models.StopPipelinesResponse:
+        """
+        @summary Stops pipelines in a Logstash cluster.
+        
+        @param request: StopPipelinesRequest
+        @return: StopPipelinesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.stop_pipelines_with_options_async(instance_id, request, headers, runtime)
@@ -12410,6 +15866,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.TagResourcesResponse:
+        """
+        @summary The information about the clusters and tags.
+        
+        @param request: TagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.resource_ids):
@@ -12444,6 +15908,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.TagResourcesResponse:
+        """
+        @summary The information about the clusters and tags.
+        
+        @param request: TagResourcesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.resource_ids):
@@ -12476,6 +15948,12 @@ class Client(OpenApiClient):
         self,
         request: elasticsearch_20170613_models.TagResourcesRequest,
     ) -> elasticsearch_20170613_models.TagResourcesResponse:
+        """
+        @summary The information about the clusters and tags.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.tag_resources_with_options(request, headers, runtime)
@@ -12484,6 +15962,12 @@ class Client(OpenApiClient):
         self,
         request: elasticsearch_20170613_models.TagResourcesRequest,
     ) -> elasticsearch_20170613_models.TagResourcesResponse:
+        """
+        @summary The information about the clusters and tags.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.tag_resources_with_options_async(request, headers, runtime)
@@ -12495,6 +15979,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.TransferNodeResponse:
+        """
+        @summary 缩节点，数据迁移
+        
+        @param request: TransferNodeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransferNodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -12529,6 +16021,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.TransferNodeResponse:
+        """
+        @summary 缩节点，数据迁移
+        
+        @param request: TransferNodeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TransferNodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -12561,6 +16061,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.TransferNodeRequest,
     ) -> elasticsearch_20170613_models.TransferNodeResponse:
+        """
+        @summary 缩节点，数据迁移
+        
+        @param request: TransferNodeRequest
+        @return: TransferNodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.transfer_node_with_options(instance_id, request, headers, runtime)
@@ -12570,6 +16076,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.TransferNodeRequest,
     ) -> elasticsearch_20170613_models.TransferNodeResponse:
+        """
+        @summary 缩节点，数据迁移
+        
+        @param request: TransferNodeRequest
+        @return: TransferNodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.transfer_node_with_options_async(instance_id, request, headers, runtime)
@@ -12581,6 +16093,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.TriggerNetworkResponse:
+        """
+        @summary 开关ES集群及Kibana节点公私网访问
+        
+        @param request: TriggerNetworkRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TriggerNetworkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -12620,6 +16140,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.TriggerNetworkResponse:
+        """
+        @summary 开关ES集群及Kibana节点公私网访问
+        
+        @param request: TriggerNetworkRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TriggerNetworkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -12657,6 +16185,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.TriggerNetworkRequest,
     ) -> elasticsearch_20170613_models.TriggerNetworkResponse:
+        """
+        @summary 开关ES集群及Kibana节点公私网访问
+        
+        @param request: TriggerNetworkRequest
+        @return: TriggerNetworkResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.trigger_network_with_options(instance_id, request, headers, runtime)
@@ -12666,6 +16200,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.TriggerNetworkRequest,
     ) -> elasticsearch_20170613_models.TriggerNetworkResponse:
+        """
+        @summary 开关ES集群及Kibana节点公私网访问
+        
+        @param request: TriggerNetworkRequest
+        @return: TriggerNetworkResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.trigger_network_with_options_async(instance_id, request, headers, runtime)
@@ -12677,6 +16217,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UninstallKibanaPluginResponse:
+        """
+        @summary Call the UninstallKibanaPlugin to uninstall the Kibana plug-in.
+        
+        @param request: UninstallKibanaPluginRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UninstallKibanaPluginResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -12709,6 +16257,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UninstallKibanaPluginResponse:
+        """
+        @summary Call the UninstallKibanaPlugin to uninstall the Kibana plug-in.
+        
+        @param request: UninstallKibanaPluginRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UninstallKibanaPluginResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -12739,6 +16295,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UninstallKibanaPluginRequest,
     ) -> elasticsearch_20170613_models.UninstallKibanaPluginResponse:
+        """
+        @summary Call the UninstallKibanaPlugin to uninstall the Kibana plug-in.
+        
+        @param request: UninstallKibanaPluginRequest
+        @return: UninstallKibanaPluginResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.uninstall_kibana_plugin_with_options(instance_id, request, headers, runtime)
@@ -12748,6 +16310,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UninstallKibanaPluginRequest,
     ) -> elasticsearch_20170613_models.UninstallKibanaPluginResponse:
+        """
+        @summary Call the UninstallKibanaPlugin to uninstall the Kibana plug-in.
+        
+        @param request: UninstallKibanaPluginRequest
+        @return: UninstallKibanaPluginResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.uninstall_kibana_plugin_with_options_async(instance_id, request, headers, runtime)
@@ -12759,6 +16327,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UninstallLogstashPluginResponse:
+        """
+        @summary 卸载Logstash实例已安装的插件
+        
+        @param request: UninstallLogstashPluginRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UninstallLogstashPluginResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -12791,6 +16367,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UninstallLogstashPluginResponse:
+        """
+        @summary 卸载Logstash实例已安装的插件
+        
+        @param request: UninstallLogstashPluginRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UninstallLogstashPluginResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -12821,6 +16405,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UninstallLogstashPluginRequest,
     ) -> elasticsearch_20170613_models.UninstallLogstashPluginResponse:
+        """
+        @summary 卸载Logstash实例已安装的插件
+        
+        @param request: UninstallLogstashPluginRequest
+        @return: UninstallLogstashPluginResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.uninstall_logstash_plugin_with_options(instance_id, request, headers, runtime)
@@ -12830,6 +16420,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UninstallLogstashPluginRequest,
     ) -> elasticsearch_20170613_models.UninstallLogstashPluginResponse:
+        """
+        @summary 卸载Logstash实例已安装的插件
+        
+        @param request: UninstallLogstashPluginRequest
+        @return: UninstallLogstashPluginResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.uninstall_logstash_plugin_with_options_async(instance_id, request, headers, runtime)
@@ -12841,6 +16437,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UninstallPluginResponse:
+        """
+        @summary Call UninstallPlugin to uninstall the preset plug-in.
+        
+        @param request: UninstallPluginRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UninstallPluginResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -12875,6 +16479,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UninstallPluginResponse:
+        """
+        @summary Call UninstallPlugin to uninstall the preset plug-in.
+        
+        @param request: UninstallPluginRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UninstallPluginResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -12907,6 +16519,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UninstallPluginRequest,
     ) -> elasticsearch_20170613_models.UninstallPluginResponse:
+        """
+        @summary Call UninstallPlugin to uninstall the preset plug-in.
+        
+        @param request: UninstallPluginRequest
+        @return: UninstallPluginResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.uninstall_plugin_with_options(instance_id, request, headers, runtime)
@@ -12916,6 +16534,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UninstallPluginRequest,
     ) -> elasticsearch_20170613_models.UninstallPluginResponse:
+        """
+        @summary Call UninstallPlugin to uninstall the preset plug-in.
+        
+        @param request: UninstallPluginRequest
+        @return: UninstallPluginResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.uninstall_plugin_with_options_async(instance_id, request, headers, runtime)
@@ -12927,10 +16551,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UntagResourcesResponse:
         """
-        When you call this operation, take note of the following items:
-        *   You can only delete user tags.
+        @summary 删除ES集群实例的用户可见标签
+        
+        @description When you call this operation, take note of the following items:
+        You can only delete user tags.
         > User labels are manually added to instances by users. A system Tag is a tag that Alibaba Cloud services add to instances. System labels are divided into visible labels and invisible labels.
-        *   If you delete a resource tag relationship that is not associated with any resources, you must delete the tags.
+        If you delete a resource tag relationship that is not associated with any resources, you must delete the tags.
         
         @param request: UntagResourcesRequest
         @param headers: map
@@ -12975,10 +16601,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UntagResourcesResponse:
         """
-        When you call this operation, take note of the following items:
-        *   You can only delete user tags.
+        @summary 删除ES集群实例的用户可见标签
+        
+        @description When you call this operation, take note of the following items:
+        You can only delete user tags.
         > User labels are manually added to instances by users. A system Tag is a tag that Alibaba Cloud services add to instances. System labels are divided into visible labels and invisible labels.
-        *   If you delete a resource tag relationship that is not associated with any resources, you must delete the tags.
+        If you delete a resource tag relationship that is not associated with any resources, you must delete the tags.
         
         @param request: UntagResourcesRequest
         @param headers: map
@@ -13021,10 +16649,12 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.UntagResourcesRequest,
     ) -> elasticsearch_20170613_models.UntagResourcesResponse:
         """
-        When you call this operation, take note of the following items:
-        *   You can only delete user tags.
+        @summary 删除ES集群实例的用户可见标签
+        
+        @description When you call this operation, take note of the following items:
+        You can only delete user tags.
         > User labels are manually added to instances by users. A system Tag is a tag that Alibaba Cloud services add to instances. System labels are divided into visible labels and invisible labels.
-        *   If you delete a resource tag relationship that is not associated with any resources, you must delete the tags.
+        If you delete a resource tag relationship that is not associated with any resources, you must delete the tags.
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
@@ -13038,10 +16668,12 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.UntagResourcesRequest,
     ) -> elasticsearch_20170613_models.UntagResourcesResponse:
         """
-        When you call this operation, take note of the following items:
-        *   You can only delete user tags.
+        @summary 删除ES集群实例的用户可见标签
+        
+        @description When you call this operation, take note of the following items:
+        You can only delete user tags.
         > User labels are manually added to instances by users. A system Tag is a tag that Alibaba Cloud services add to instances. System labels are divided into visible labels and invisible labels.
-        *   If you delete a resource tag relationship that is not associated with any resources, you must delete the tags.
+        If you delete a resource tag relationship that is not associated with any resources, you must delete the tags.
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
@@ -13058,7 +16690,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateAdminPasswordResponse:
         """
-        5A2CFF0E-5718-45B5-9D4D-70B3FF\\\\*\\*\\*\
+        @summary 修改ES集群密码
+        
+        @description 5A2CFF0E-5718-45B5-9D4D-70B3FF\\\\*\\*\\*\
         
         @param request: UpdateAdminPasswordRequest
         @param headers: map
@@ -13101,7 +16735,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateAdminPasswordResponse:
         """
-        5A2CFF0E-5718-45B5-9D4D-70B3FF\\\\*\\*\\*\
+        @summary 修改ES集群密码
+        
+        @description 5A2CFF0E-5718-45B5-9D4D-70B3FF\\\\*\\*\\*\
         
         @param request: UpdateAdminPasswordRequest
         @param headers: map
@@ -13142,7 +16778,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.UpdateAdminPasswordRequest,
     ) -> elasticsearch_20170613_models.UpdateAdminPasswordResponse:
         """
-        5A2CFF0E-5718-45B5-9D4D-70B3FF\\\\*\\*\\*\
+        @summary 修改ES集群密码
+        
+        @description 5A2CFF0E-5718-45B5-9D4D-70B3FF\\\\*\\*\\*\
         
         @param request: UpdateAdminPasswordRequest
         @return: UpdateAdminPasswordResponse
@@ -13157,7 +16795,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.UpdateAdminPasswordRequest,
     ) -> elasticsearch_20170613_models.UpdateAdminPasswordResponse:
         """
-        5A2CFF0E-5718-45B5-9D4D-70B3FF\\\\*\\*\\*\
+        @summary 修改ES集群密码
+        
+        @description 5A2CFF0E-5718-45B5-9D4D-70B3FF\\\\*\\*\\*\
         
         @param request: UpdateAdminPasswordRequest
         @return: UpdateAdminPasswordResponse
@@ -13173,6 +16813,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateAdvancedSettingResponse:
+        """
+        @summary Call UpdateAdvancedSetting to change the garbage collector configuration for the specified instance.
+        
+        @param request: UpdateAdvancedSettingRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAdvancedSettingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -13205,6 +16853,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateAdvancedSettingResponse:
+        """
+        @summary Call UpdateAdvancedSetting to change the garbage collector configuration for the specified instance.
+        
+        @param request: UpdateAdvancedSettingRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateAdvancedSettingResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -13235,6 +16891,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UpdateAdvancedSettingRequest,
     ) -> elasticsearch_20170613_models.UpdateAdvancedSettingResponse:
+        """
+        @summary Call UpdateAdvancedSetting to change the garbage collector configuration for the specified instance.
+        
+        @param request: UpdateAdvancedSettingRequest
+        @return: UpdateAdvancedSettingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_advanced_setting_with_options(instance_id, request, headers, runtime)
@@ -13244,6 +16906,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UpdateAdvancedSettingRequest,
     ) -> elasticsearch_20170613_models.UpdateAdvancedSettingResponse:
+        """
+        @summary Call UpdateAdvancedSetting to change the garbage collector configuration for the specified instance.
+        
+        @param request: UpdateAdvancedSettingRequest
+        @return: UpdateAdvancedSettingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_advanced_setting_with_options_async(instance_id, request, headers, runtime)
@@ -13256,10 +16924,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateAliwsDictResponse:
         """
-        Before you call this operation, take note of the following items:
-        *   Elasticsearch V5.X clusters do not support the analysis-aliws plug-in.
-        *   If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
-        *   If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
+        @summary Updates the dictionary file of the analysis-aliws plug-in.
+        
+        @description Before you call this operation, take note of the following items:
+        Elasticsearch V5.X clusters do not support the analysis-aliws plug-in.
+        If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+        If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
         
         @param request: UpdateAliwsDictRequest
         @param headers: map
@@ -13299,10 +16969,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateAliwsDictResponse:
         """
-        Before you call this operation, take note of the following items:
-        *   Elasticsearch V5.X clusters do not support the analysis-aliws plug-in.
-        *   If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
-        *   If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
+        @summary Updates the dictionary file of the analysis-aliws plug-in.
+        
+        @description Before you call this operation, take note of the following items:
+        Elasticsearch V5.X clusters do not support the analysis-aliws plug-in.
+        If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+        If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
         
         @param request: UpdateAliwsDictRequest
         @param headers: map
@@ -13340,10 +17012,12 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.UpdateAliwsDictRequest,
     ) -> elasticsearch_20170613_models.UpdateAliwsDictResponse:
         """
-        Before you call this operation, take note of the following items:
-        *   Elasticsearch V5.X clusters do not support the analysis-aliws plug-in.
-        *   If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
-        *   If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
+        @summary Updates the dictionary file of the analysis-aliws plug-in.
+        
+        @description Before you call this operation, take note of the following items:
+        Elasticsearch V5.X clusters do not support the analysis-aliws plug-in.
+        If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+        If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
         
         @param request: UpdateAliwsDictRequest
         @return: UpdateAliwsDictResponse
@@ -13358,10 +17032,12 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.UpdateAliwsDictRequest,
     ) -> elasticsearch_20170613_models.UpdateAliwsDictResponse:
         """
-        Before you call this operation, take note of the following items:
-        *   Elasticsearch V5.X clusters do not support the analysis-aliws plug-in.
-        *   If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
-        *   If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
+        @summary Updates the dictionary file of the analysis-aliws plug-in.
+        
+        @description Before you call this operation, take note of the following items:
+        Elasticsearch V5.X clusters do not support the analysis-aliws plug-in.
+        If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+        If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
         
         @param request: UpdateAliwsDictRequest
         @return: UpdateAliwsDictResponse
@@ -13377,6 +17053,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateApmResponse:
+        """
+        @summary 修改APM实规格配置
+        
+        @param request: UpdateApmRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApmResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -13416,6 +17100,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateApmResponse:
+        """
+        @summary 修改APM实规格配置
+        
+        @param request: UpdateApmRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApmResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.description):
@@ -13453,6 +17145,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UpdateApmRequest,
     ) -> elasticsearch_20170613_models.UpdateApmResponse:
+        """
+        @summary 修改APM实规格配置
+        
+        @param request: UpdateApmRequest
+        @return: UpdateApmResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_apm_with_options(instance_id, request, headers, runtime)
@@ -13462,6 +17160,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UpdateApmRequest,
     ) -> elasticsearch_20170613_models.UpdateApmResponse:
+        """
+        @summary 修改APM实规格配置
+        
+        @param request: UpdateApmRequest
+        @return: UpdateApmResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_apm_with_options_async(instance_id, request, headers, runtime)
@@ -13474,7 +17178,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateBlackIpsResponse:
         """
-        @deprecated
+        @deprecated OpenAPI UpdateBlackIps is deprecated
+        
+        @summary 修改ES实例访问黑名单，已废弃
         
         @param request: UpdateBlackIpsRequest
         @param headers: map
@@ -13514,7 +17220,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateBlackIpsResponse:
         """
-        @deprecated
+        @deprecated OpenAPI UpdateBlackIps is deprecated
+        
+        @summary 修改ES实例访问黑名单，已废弃
         
         @param request: UpdateBlackIpsRequest
         @param headers: map
@@ -13552,7 +17260,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.UpdateBlackIpsRequest,
     ) -> elasticsearch_20170613_models.UpdateBlackIpsResponse:
         """
-        @deprecated
+        @deprecated OpenAPI UpdateBlackIps is deprecated
+        
+        @summary 修改ES实例访问黑名单，已废弃
         
         @param request: UpdateBlackIpsRequest
         @return: UpdateBlackIpsResponse
@@ -13568,7 +17278,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.UpdateBlackIpsRequest,
     ) -> elasticsearch_20170613_models.UpdateBlackIpsResponse:
         """
-        @deprecated
+        @deprecated OpenAPI UpdateBlackIps is deprecated
+        
+        @summary 修改ES实例访问黑名单，已废弃
         
         @param request: UpdateBlackIpsRequest
         @return: UpdateBlackIpsResponse
@@ -13585,6 +17297,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateCollectorResponse:
+        """
+        @summary Updates the configurations of a shipper.
+        
+        @param request: UpdateCollectorRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCollectorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -13617,6 +17337,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateCollectorResponse:
+        """
+        @summary Updates the configurations of a shipper.
+        
+        @param request: UpdateCollectorRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCollectorResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -13647,6 +17375,12 @@ class Client(OpenApiClient):
         res_id: str,
         request: elasticsearch_20170613_models.UpdateCollectorRequest,
     ) -> elasticsearch_20170613_models.UpdateCollectorResponse:
+        """
+        @summary Updates the configurations of a shipper.
+        
+        @param request: UpdateCollectorRequest
+        @return: UpdateCollectorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_collector_with_options(res_id, request, headers, runtime)
@@ -13656,6 +17390,12 @@ class Client(OpenApiClient):
         res_id: str,
         request: elasticsearch_20170613_models.UpdateCollectorRequest,
     ) -> elasticsearch_20170613_models.UpdateCollectorResponse:
+        """
+        @summary Updates the configurations of a shipper.
+        
+        @param request: UpdateCollectorRequest
+        @return: UpdateCollectorResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_collector_with_options_async(res_id, request, headers, runtime)
@@ -13667,6 +17407,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateCollectorNameResponse:
+        """
+        @summary Changes the name of a shipper.
+        
+        @param request: UpdateCollectorNameRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCollectorNameResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -13699,6 +17447,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateCollectorNameResponse:
+        """
+        @summary Changes the name of a shipper.
+        
+        @param request: UpdateCollectorNameRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateCollectorNameResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -13729,6 +17485,12 @@ class Client(OpenApiClient):
         res_id: str,
         request: elasticsearch_20170613_models.UpdateCollectorNameRequest,
     ) -> elasticsearch_20170613_models.UpdateCollectorNameResponse:
+        """
+        @summary Changes the name of a shipper.
+        
+        @param request: UpdateCollectorNameRequest
+        @return: UpdateCollectorNameResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_collector_name_with_options(res_id, request, headers, runtime)
@@ -13738,6 +17500,12 @@ class Client(OpenApiClient):
         res_id: str,
         request: elasticsearch_20170613_models.UpdateCollectorNameRequest,
     ) -> elasticsearch_20170613_models.UpdateCollectorNameResponse:
+        """
+        @summary Changes the name of a shipper.
+        
+        @param request: UpdateCollectorNameRequest
+        @return: UpdateCollectorNameResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_collector_name_with_options_async(res_id, request, headers, runtime)
@@ -13750,6 +17518,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateComponentIndexResponse:
+        """
+        @summary 修改ES集群动态索引
+        
+        @param request: UpdateComponentIndexRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateComponentIndexResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.meta):
@@ -13784,6 +17560,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateComponentIndexResponse:
+        """
+        @summary 修改ES集群动态索引
+        
+        @param request: UpdateComponentIndexRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateComponentIndexResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.meta):
@@ -13816,6 +17600,12 @@ class Client(OpenApiClient):
         name: str,
         request: elasticsearch_20170613_models.UpdateComponentIndexRequest,
     ) -> elasticsearch_20170613_models.UpdateComponentIndexResponse:
+        """
+        @summary 修改ES集群动态索引
+        
+        @param request: UpdateComponentIndexRequest
+        @return: UpdateComponentIndexResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_component_index_with_options(instance_id, name, request, headers, runtime)
@@ -13826,6 +17616,12 @@ class Client(OpenApiClient):
         name: str,
         request: elasticsearch_20170613_models.UpdateComponentIndexRequest,
     ) -> elasticsearch_20170613_models.UpdateComponentIndexResponse:
+        """
+        @summary 修改ES集群动态索引
+        
+        @param request: UpdateComponentIndexRequest
+        @return: UpdateComponentIndexResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_component_index_with_options_async(instance_id, name, request, headers, runtime)
@@ -13837,6 +17633,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateDescriptionResponse:
+        """
+        @summary 修改elasticsearch实例名称名称
+        
+        @param request: UpdateDescriptionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDescriptionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -13872,6 +17676,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateDescriptionResponse:
+        """
+        @summary 修改elasticsearch实例名称名称
+        
+        @param request: UpdateDescriptionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDescriptionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -13905,6 +17717,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UpdateDescriptionRequest,
     ) -> elasticsearch_20170613_models.UpdateDescriptionResponse:
+        """
+        @summary 修改elasticsearch实例名称名称
+        
+        @param request: UpdateDescriptionRequest
+        @return: UpdateDescriptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_description_with_options(instance_id, request, headers, runtime)
@@ -13914,6 +17732,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UpdateDescriptionRequest,
     ) -> elasticsearch_20170613_models.UpdateDescriptionResponse:
+        """
+        @summary 修改elasticsearch实例名称名称
+        
+        @param request: UpdateDescriptionRequest
+        @return: UpdateDescriptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_description_with_options_async(instance_id, request, headers, runtime)
@@ -13925,6 +17749,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateDiagnosisSettingsResponse:
+        """
+        @summary Call UpdateDiagnosisSettings to update the instance of intelligent operation&maintenance (O&M) scene settings.
+        
+        @param request: UpdateDiagnosisSettingsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDiagnosisSettingsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -13959,6 +17791,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateDiagnosisSettingsResponse:
+        """
+        @summary Call UpdateDiagnosisSettings to update the instance of intelligent operation&maintenance (O&M) scene settings.
+        
+        @param request: UpdateDiagnosisSettingsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDiagnosisSettingsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -13991,6 +17831,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UpdateDiagnosisSettingsRequest,
     ) -> elasticsearch_20170613_models.UpdateDiagnosisSettingsResponse:
+        """
+        @summary Call UpdateDiagnosisSettings to update the instance of intelligent operation&maintenance (O&M) scene settings.
+        
+        @param request: UpdateDiagnosisSettingsRequest
+        @return: UpdateDiagnosisSettingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_diagnosis_settings_with_options(instance_id, request, headers, runtime)
@@ -14000,6 +17846,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UpdateDiagnosisSettingsRequest,
     ) -> elasticsearch_20170613_models.UpdateDiagnosisSettingsResponse:
+        """
+        @summary Call UpdateDiagnosisSettings to update the instance of intelligent operation&maintenance (O&M) scene settings.
+        
+        @param request: UpdateDiagnosisSettingsRequest
+        @return: UpdateDiagnosisSettingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_diagnosis_settings_with_options_async(instance_id, request, headers, runtime)
@@ -14012,9 +17864,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateDictResponse:
         """
-        Before you call this operation, take note of the following items:
-        *   If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
-        *   If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
+        @summary Updates a dictionary of an Elasticsearch cluster.
+        
+        @description Before you call this operation, take note of the following items:
+        If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+        If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
         
         @param request: UpdateDictRequest
         @param headers: map
@@ -14054,9 +17908,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateDictResponse:
         """
-        Before you call this operation, take note of the following items:
-        *   If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
-        *   If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
+        @summary Updates a dictionary of an Elasticsearch cluster.
+        
+        @description Before you call this operation, take note of the following items:
+        If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+        If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
         
         @param request: UpdateDictRequest
         @param headers: map
@@ -14094,9 +17950,11 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.UpdateDictRequest,
     ) -> elasticsearch_20170613_models.UpdateDictResponse:
         """
-        Before you call this operation, take note of the following items:
-        *   If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
-        *   If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
+        @summary Updates a dictionary of an Elasticsearch cluster.
+        
+        @description Before you call this operation, take note of the following items:
+        If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+        If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
         
         @param request: UpdateDictRequest
         @return: UpdateDictResponse
@@ -14111,9 +17969,11 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.UpdateDictRequest,
     ) -> elasticsearch_20170613_models.UpdateDictResponse:
         """
-        Before you call this operation, take note of the following items:
-        *   If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
-        *   If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
+        @summary Updates a dictionary of an Elasticsearch cluster.
+        
+        @description Before you call this operation, take note of the following items:
+        If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+        If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
         
         @param request: UpdateDictRequest
         @return: UpdateDictResponse
@@ -14129,6 +17989,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateDynamicSettingsResponse:
+        """
+        @summary 修改集群动态配置
+        
+        @param request: UpdateDynamicSettingsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDynamicSettingsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -14165,6 +18033,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateDynamicSettingsResponse:
+        """
+        @summary 修改集群动态配置
+        
+        @param request: UpdateDynamicSettingsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateDynamicSettingsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -14199,6 +18075,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UpdateDynamicSettingsRequest,
     ) -> elasticsearch_20170613_models.UpdateDynamicSettingsResponse:
+        """
+        @summary 修改集群动态配置
+        
+        @param request: UpdateDynamicSettingsRequest
+        @return: UpdateDynamicSettingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_dynamic_settings_with_options(instance_id, request, headers, runtime)
@@ -14208,6 +18090,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UpdateDynamicSettingsRequest,
     ) -> elasticsearch_20170613_models.UpdateDynamicSettingsResponse:
+        """
+        @summary 修改集群动态配置
+        
+        @param request: UpdateDynamicSettingsRequest
+        @return: UpdateDynamicSettingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_dynamic_settings_with_options_async(instance_id, request, headers, runtime)
@@ -14219,6 +18107,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateExtendConfigResponse:
+        """
+        @param request: UpdateExtendConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateExtendConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -14251,6 +18145,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateExtendConfigResponse:
+        """
+        @param request: UpdateExtendConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateExtendConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -14281,6 +18181,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UpdateExtendConfigRequest,
     ) -> elasticsearch_20170613_models.UpdateExtendConfigResponse:
+        """
+        @param request: UpdateExtendConfigRequest
+        @return: UpdateExtendConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_extend_config_with_options(instance_id, request, headers, runtime)
@@ -14290,6 +18194,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UpdateExtendConfigRequest,
     ) -> elasticsearch_20170613_models.UpdateExtendConfigResponse:
+        """
+        @param request: UpdateExtendConfigRequest
+        @return: UpdateExtendConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_extend_config_with_options_async(instance_id, request, headers, runtime)
@@ -14302,7 +18210,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateExtendfilesResponse:
         """
-        When you call this operation, take note of the following items: You can call this operation only to delete the driver files that are uploaded to a Logstash cluster in the Alibaba Cloud Management Console. You can add or modify driver files only in the Alibaba Cloud Management Console.
+        @summary Updates the driver files of a Logstash cluster.
+        
+        @description When you call this operation, take note of the following items: You can call this operation only to delete the driver files that are uploaded to a Logstash cluster in the Alibaba Cloud Management Console. You can add or modify driver files only in the Alibaba Cloud Management Console.
         
         @param request: UpdateExtendfilesRequest
         @param headers: map
@@ -14342,7 +18252,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateExtendfilesResponse:
         """
-        When you call this operation, take note of the following items: You can call this operation only to delete the driver files that are uploaded to a Logstash cluster in the Alibaba Cloud Management Console. You can add or modify driver files only in the Alibaba Cloud Management Console.
+        @summary Updates the driver files of a Logstash cluster.
+        
+        @description When you call this operation, take note of the following items: You can call this operation only to delete the driver files that are uploaded to a Logstash cluster in the Alibaba Cloud Management Console. You can add or modify driver files only in the Alibaba Cloud Management Console.
         
         @param request: UpdateExtendfilesRequest
         @param headers: map
@@ -14380,7 +18292,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.UpdateExtendfilesRequest,
     ) -> elasticsearch_20170613_models.UpdateExtendfilesResponse:
         """
-        When you call this operation, take note of the following items: You can call this operation only to delete the driver files that are uploaded to a Logstash cluster in the Alibaba Cloud Management Console. You can add or modify driver files only in the Alibaba Cloud Management Console.
+        @summary Updates the driver files of a Logstash cluster.
+        
+        @description When you call this operation, take note of the following items: You can call this operation only to delete the driver files that are uploaded to a Logstash cluster in the Alibaba Cloud Management Console. You can add or modify driver files only in the Alibaba Cloud Management Console.
         
         @param request: UpdateExtendfilesRequest
         @return: UpdateExtendfilesResponse
@@ -14395,7 +18309,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.UpdateExtendfilesRequest,
     ) -> elasticsearch_20170613_models.UpdateExtendfilesResponse:
         """
-        When you call this operation, take note of the following items: You can call this operation only to delete the driver files that are uploaded to a Logstash cluster in the Alibaba Cloud Management Console. You can add or modify driver files only in the Alibaba Cloud Management Console.
+        @summary Updates the driver files of a Logstash cluster.
+        
+        @description When you call this operation, take note of the following items: You can call this operation only to delete the driver files that are uploaded to a Logstash cluster in the Alibaba Cloud Management Console. You can add or modify driver files only in the Alibaba Cloud Management Console.
         
         @param request: UpdateExtendfilesRequest
         @return: UpdateExtendfilesResponse
@@ -14412,9 +18328,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateHotIkDictsResponse:
         """
-        Before you call this operation, take note of the following items:
-        *   If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
-        *   If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
+        @summary Performs a rolling update for the IK dictionaries of an Elasticsearch cluster.
+        
+        @description Before you call this operation, take note of the following items:
+        If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+        If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
         
         @param request: UpdateHotIkDictsRequest
         @param headers: map
@@ -14454,9 +18372,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateHotIkDictsResponse:
         """
-        Before you call this operation, take note of the following items:
-        *   If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
-        *   If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
+        @summary Performs a rolling update for the IK dictionaries of an Elasticsearch cluster.
+        
+        @description Before you call this operation, take note of the following items:
+        If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+        If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
         
         @param request: UpdateHotIkDictsRequest
         @param headers: map
@@ -14494,9 +18414,11 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.UpdateHotIkDictsRequest,
     ) -> elasticsearch_20170613_models.UpdateHotIkDictsResponse:
         """
-        Before you call this operation, take note of the following items:
-        *   If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
-        *   If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
+        @summary Performs a rolling update for the IK dictionaries of an Elasticsearch cluster.
+        
+        @description Before you call this operation, take note of the following items:
+        If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+        If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
         
         @param request: UpdateHotIkDictsRequest
         @return: UpdateHotIkDictsResponse
@@ -14511,9 +18433,11 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.UpdateHotIkDictsRequest,
     ) -> elasticsearch_20170613_models.UpdateHotIkDictsResponse:
         """
-        Before you call this operation, take note of the following items:
-        *   If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
-        *   If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
+        @summary Performs a rolling update for the IK dictionaries of an Elasticsearch cluster.
+        
+        @description Before you call this operation, take note of the following items:
+        If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+        If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
         
         @param request: UpdateHotIkDictsRequest
         @return: UpdateHotIkDictsResponse
@@ -14530,6 +18454,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateILMPolicyResponse:
+        """
+        @summary 修改ES集群索引生命周期策略
+        
+        @param request: UpdateILMPolicyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateILMPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -14563,6 +18495,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateILMPolicyResponse:
+        """
+        @summary 修改ES集群索引生命周期策略
+        
+        @param request: UpdateILMPolicyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateILMPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -14594,6 +18534,12 @@ class Client(OpenApiClient):
         policy_name: str,
         request: elasticsearch_20170613_models.UpdateILMPolicyRequest,
     ) -> elasticsearch_20170613_models.UpdateILMPolicyResponse:
+        """
+        @summary 修改ES集群索引生命周期策略
+        
+        @param request: UpdateILMPolicyRequest
+        @return: UpdateILMPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_ilmpolicy_with_options(instance_id, policy_name, request, headers, runtime)
@@ -14604,6 +18550,12 @@ class Client(OpenApiClient):
         policy_name: str,
         request: elasticsearch_20170613_models.UpdateILMPolicyRequest,
     ) -> elasticsearch_20170613_models.UpdateILMPolicyResponse:
+        """
+        @summary 修改ES集群索引生命周期策略
+        
+        @param request: UpdateILMPolicyRequest
+        @return: UpdateILMPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_ilmpolicy_with_options_async(instance_id, policy_name, request, headers, runtime)
@@ -14616,6 +18568,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateIndexTemplateResponse:
+        """
+        @summary 修改ES集群索引模版配置
+        
+        @param request: UpdateIndexTemplateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateIndexTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -14649,6 +18609,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateIndexTemplateResponse:
+        """
+        @summary 修改ES集群索引模版配置
+        
+        @param request: UpdateIndexTemplateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateIndexTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -14680,6 +18648,12 @@ class Client(OpenApiClient):
         index_template: str,
         request: elasticsearch_20170613_models.UpdateIndexTemplateRequest,
     ) -> elasticsearch_20170613_models.UpdateIndexTemplateResponse:
+        """
+        @summary 修改ES集群索引模版配置
+        
+        @param request: UpdateIndexTemplateRequest
+        @return: UpdateIndexTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_index_template_with_options(instance_id, index_template, request, headers, runtime)
@@ -14690,6 +18664,12 @@ class Client(OpenApiClient):
         index_template: str,
         request: elasticsearch_20170613_models.UpdateIndexTemplateRequest,
     ) -> elasticsearch_20170613_models.UpdateIndexTemplateResponse:
+        """
+        @summary 修改ES集群索引模版配置
+        
+        @param request: UpdateIndexTemplateRequest
+        @return: UpdateIndexTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_index_template_with_options_async(instance_id, index_template, request, headers, runtime)
@@ -14702,7 +18682,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateInstanceResponse:
         """
-        es-cn-n6w1ptcb30009\\\\*\\*\\*\
+        @summary 修改ES集群节点配置
+        
+        @description es-cn-n6w1ptcb30009\\\\*\\*\\*\
         
         @param request: UpdateInstanceRequest
         @param headers: map
@@ -14763,7 +18745,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateInstanceResponse:
         """
-        es-cn-n6w1ptcb30009\\\\*\\*\\*\
+        @summary 修改ES集群节点配置
+        
+        @description es-cn-n6w1ptcb30009\\\\*\\*\\*\
         
         @param request: UpdateInstanceRequest
         @param headers: map
@@ -14822,7 +18806,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.UpdateInstanceRequest,
     ) -> elasticsearch_20170613_models.UpdateInstanceResponse:
         """
-        es-cn-n6w1ptcb30009\\\\*\\*\\*\
+        @summary 修改ES集群节点配置
+        
+        @description es-cn-n6w1ptcb30009\\\\*\\*\\*\
         
         @param request: UpdateInstanceRequest
         @return: UpdateInstanceResponse
@@ -14837,7 +18823,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.UpdateInstanceRequest,
     ) -> elasticsearch_20170613_models.UpdateInstanceResponse:
         """
-        es-cn-n6w1ptcb30009\\\\*\\*\\*\
+        @summary 修改ES集群节点配置
+        
+        @description es-cn-n6w1ptcb30009\\\\*\\*\\*\
         
         @param request: UpdateInstanceRequest
         @return: UpdateInstanceResponse
@@ -14853,6 +18841,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateInstanceChargeTypeResponse:
+        """
+        @summary Call UpdateInstanceChargeType to change the billing method of a pay-as-you-go instance to subscription.
+        
+        @param request: UpdateInstanceChargeTypeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateInstanceChargeTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -14885,6 +18881,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateInstanceChargeTypeResponse:
+        """
+        @summary Call UpdateInstanceChargeType to change the billing method of a pay-as-you-go instance to subscription.
+        
+        @param request: UpdateInstanceChargeTypeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateInstanceChargeTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -14915,6 +18919,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UpdateInstanceChargeTypeRequest,
     ) -> elasticsearch_20170613_models.UpdateInstanceChargeTypeResponse:
+        """
+        @summary Call UpdateInstanceChargeType to change the billing method of a pay-as-you-go instance to subscription.
+        
+        @param request: UpdateInstanceChargeTypeRequest
+        @return: UpdateInstanceChargeTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_instance_charge_type_with_options(instance_id, request, headers, runtime)
@@ -14924,6 +18934,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UpdateInstanceChargeTypeRequest,
     ) -> elasticsearch_20170613_models.UpdateInstanceChargeTypeResponse:
+        """
+        @summary Call UpdateInstanceChargeType to change the billing method of a pay-as-you-go instance to subscription.
+        
+        @param request: UpdateInstanceChargeTypeRequest
+        @return: UpdateInstanceChargeTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_instance_charge_type_with_options_async(instance_id, request, headers, runtime)
@@ -14936,7 +18952,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateInstanceSettingsResponse:
         """
-        When you call this operation, take note of the following items:
+        @summary Call UpdateInstanceSettings to update the YML configuration of a specified instance.
+        
+        @description When you call this operation, take note of the following items:
         When the instance is in the activating, invalid, or inactive state, you cannot update the configuration.
         
         @param request: UpdateInstanceSettingsRequest
@@ -14977,7 +18995,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateInstanceSettingsResponse:
         """
-        When you call this operation, take note of the following items:
+        @summary Call UpdateInstanceSettings to update the YML configuration of a specified instance.
+        
+        @description When you call this operation, take note of the following items:
         When the instance is in the activating, invalid, or inactive state, you cannot update the configuration.
         
         @param request: UpdateInstanceSettingsRequest
@@ -15016,7 +19036,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.UpdateInstanceSettingsRequest,
     ) -> elasticsearch_20170613_models.UpdateInstanceSettingsResponse:
         """
-        When you call this operation, take note of the following items:
+        @summary Call UpdateInstanceSettings to update the YML configuration of a specified instance.
+        
+        @description When you call this operation, take note of the following items:
         When the instance is in the activating, invalid, or inactive state, you cannot update the configuration.
         
         @param request: UpdateInstanceSettingsRequest
@@ -15032,7 +19054,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.UpdateInstanceSettingsRequest,
     ) -> elasticsearch_20170613_models.UpdateInstanceSettingsResponse:
         """
-        When you call this operation, take note of the following items:
+        @summary Call UpdateInstanceSettings to update the YML configuration of a specified instance.
+        
+        @description When you call this operation, take note of the following items:
         When the instance is in the activating, invalid, or inactive state, you cannot update the configuration.
         
         @param request: UpdateInstanceSettingsRequest
@@ -15049,6 +19073,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateKibanaPvlNetworkResponse:
+        """
+        @summary 更新kibana私网链接
+        
+        @param request: UpdateKibanaPvlNetworkRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateKibanaPvlNetworkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.pvl_id):
@@ -15086,6 +19118,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateKibanaPvlNetworkResponse:
+        """
+        @summary 更新kibana私网链接
+        
+        @param request: UpdateKibanaPvlNetworkRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateKibanaPvlNetworkResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.pvl_id):
@@ -15121,6 +19161,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UpdateKibanaPvlNetworkRequest,
     ) -> elasticsearch_20170613_models.UpdateKibanaPvlNetworkResponse:
+        """
+        @summary 更新kibana私网链接
+        
+        @param request: UpdateKibanaPvlNetworkRequest
+        @return: UpdateKibanaPvlNetworkResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_kibana_pvl_network_with_options(instance_id, request, headers, runtime)
@@ -15130,6 +19176,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UpdateKibanaPvlNetworkRequest,
     ) -> elasticsearch_20170613_models.UpdateKibanaPvlNetworkResponse:
+        """
+        @summary 更新kibana私网链接
+        
+        @param request: UpdateKibanaPvlNetworkRequest
+        @return: UpdateKibanaPvlNetworkResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_kibana_pvl_network_with_options_async(instance_id, request, headers, runtime)
@@ -15141,6 +19193,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateKibanaSettingsResponse:
+        """
+        @summary Call UpdateKibanaSettings to modify the Kibana configuration. Currently, you can only modify the Kibana language configuration.
+        
+        @param request: UpdateKibanaSettingsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateKibanaSettingsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -15173,6 +19233,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateKibanaSettingsResponse:
+        """
+        @summary Call UpdateKibanaSettings to modify the Kibana configuration. Currently, you can only modify the Kibana language configuration.
+        
+        @param request: UpdateKibanaSettingsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateKibanaSettingsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -15203,6 +19271,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UpdateKibanaSettingsRequest,
     ) -> elasticsearch_20170613_models.UpdateKibanaSettingsResponse:
+        """
+        @summary Call UpdateKibanaSettings to modify the Kibana configuration. Currently, you can only modify the Kibana language configuration.
+        
+        @param request: UpdateKibanaSettingsRequest
+        @return: UpdateKibanaSettingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_kibana_settings_with_options(instance_id, request, headers, runtime)
@@ -15212,6 +19286,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UpdateKibanaSettingsRequest,
     ) -> elasticsearch_20170613_models.UpdateKibanaSettingsResponse:
+        """
+        @summary Call UpdateKibanaSettings to modify the Kibana configuration. Currently, you can only modify the Kibana language configuration.
+        
+        @param request: UpdateKibanaSettingsRequest
+        @return: UpdateKibanaSettingsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_kibana_settings_with_options_async(instance_id, request, headers, runtime)
@@ -15224,11 +19304,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateKibanaWhiteIpsResponse:
         """
-        Before you call this operation, you must make sure that the cluster is not in the activating, invalid, or inactive state.
-        *   You can update an IP address whitelist by using the following parameters:
-        *   kibanaIPWhitelist
-        *   modifyMode and whiteIpGroup
-        *   You cannot specify private IP addresses for public IP address whitelists and cannot specify public IP addresses for private IP address whitelists.
+        @summary Updates an IP address whitelist for access to the Kibana console of a specified Elasticsearch cluster.
+        
+        @description    Before you call this operation, you must make sure that the cluster is not in the activating, invalid, or inactive state.
+        You can update an IP address whitelist by using the following parameters:
+        kibanaIPWhitelist
+        modifyMode and whiteIpGroup
+        You cannot specify private IP addresses for public IP address whitelists and cannot specify public IP addresses for private IP address whitelists.
         
         @param request: UpdateKibanaWhiteIpsRequest
         @param headers: map
@@ -15275,11 +19357,13 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateKibanaWhiteIpsResponse:
         """
-        Before you call this operation, you must make sure that the cluster is not in the activating, invalid, or inactive state.
-        *   You can update an IP address whitelist by using the following parameters:
-        *   kibanaIPWhitelist
-        *   modifyMode and whiteIpGroup
-        *   You cannot specify private IP addresses for public IP address whitelists and cannot specify public IP addresses for private IP address whitelists.
+        @summary Updates an IP address whitelist for access to the Kibana console of a specified Elasticsearch cluster.
+        
+        @description    Before you call this operation, you must make sure that the cluster is not in the activating, invalid, or inactive state.
+        You can update an IP address whitelist by using the following parameters:
+        kibanaIPWhitelist
+        modifyMode and whiteIpGroup
+        You cannot specify private IP addresses for public IP address whitelists and cannot specify public IP addresses for private IP address whitelists.
         
         @param request: UpdateKibanaWhiteIpsRequest
         @param headers: map
@@ -15324,11 +19408,13 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.UpdateKibanaWhiteIpsRequest,
     ) -> elasticsearch_20170613_models.UpdateKibanaWhiteIpsResponse:
         """
-        Before you call this operation, you must make sure that the cluster is not in the activating, invalid, or inactive state.
-        *   You can update an IP address whitelist by using the following parameters:
-        *   kibanaIPWhitelist
-        *   modifyMode and whiteIpGroup
-        *   You cannot specify private IP addresses for public IP address whitelists and cannot specify public IP addresses for private IP address whitelists.
+        @summary Updates an IP address whitelist for access to the Kibana console of a specified Elasticsearch cluster.
+        
+        @description    Before you call this operation, you must make sure that the cluster is not in the activating, invalid, or inactive state.
+        You can update an IP address whitelist by using the following parameters:
+        kibanaIPWhitelist
+        modifyMode and whiteIpGroup
+        You cannot specify private IP addresses for public IP address whitelists and cannot specify public IP addresses for private IP address whitelists.
         
         @param request: UpdateKibanaWhiteIpsRequest
         @return: UpdateKibanaWhiteIpsResponse
@@ -15343,11 +19429,13 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.UpdateKibanaWhiteIpsRequest,
     ) -> elasticsearch_20170613_models.UpdateKibanaWhiteIpsResponse:
         """
-        Before you call this operation, you must make sure that the cluster is not in the activating, invalid, or inactive state.
-        *   You can update an IP address whitelist by using the following parameters:
-        *   kibanaIPWhitelist
-        *   modifyMode and whiteIpGroup
-        *   You cannot specify private IP addresses for public IP address whitelists and cannot specify public IP addresses for private IP address whitelists.
+        @summary Updates an IP address whitelist for access to the Kibana console of a specified Elasticsearch cluster.
+        
+        @description    Before you call this operation, you must make sure that the cluster is not in the activating, invalid, or inactive state.
+        You can update an IP address whitelist by using the following parameters:
+        kibanaIPWhitelist
+        modifyMode and whiteIpGroup
+        You cannot specify private IP addresses for public IP address whitelists and cannot specify public IP addresses for private IP address whitelists.
         
         @param request: UpdateKibanaWhiteIpsRequest
         @return: UpdateKibanaWhiteIpsResponse
@@ -15363,6 +19451,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateLogstashResponse:
+        """
+        @summary 修改Logstash节点规格磁盘配置
+        
+        @param request: UpdateLogstashRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLogstashResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -15400,6 +19496,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateLogstashResponse:
+        """
+        @summary 修改Logstash节点规格磁盘配置
+        
+        @param request: UpdateLogstashRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLogstashResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -15435,6 +19539,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UpdateLogstashRequest,
     ) -> elasticsearch_20170613_models.UpdateLogstashResponse:
+        """
+        @summary 修改Logstash节点规格磁盘配置
+        
+        @param request: UpdateLogstashRequest
+        @return: UpdateLogstashResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_logstash_with_options(instance_id, request, headers, runtime)
@@ -15444,6 +19554,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UpdateLogstashRequest,
     ) -> elasticsearch_20170613_models.UpdateLogstashResponse:
+        """
+        @summary 修改Logstash节点规格磁盘配置
+        
+        @param request: UpdateLogstashRequest
+        @return: UpdateLogstashResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_logstash_with_options_async(instance_id, request, headers, runtime)
@@ -15455,6 +19571,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateLogstashChargeTypeResponse:
+        """
+        @summary Switches the billing method of a Logstash cluster from pay-as-you-go to subscription.
+        
+        @param request: UpdateLogstashChargeTypeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLogstashChargeTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -15487,6 +19611,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateLogstashChargeTypeResponse:
+        """
+        @summary Switches the billing method of a Logstash cluster from pay-as-you-go to subscription.
+        
+        @param request: UpdateLogstashChargeTypeRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateLogstashChargeTypeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -15517,6 +19649,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UpdateLogstashChargeTypeRequest,
     ) -> elasticsearch_20170613_models.UpdateLogstashChargeTypeResponse:
+        """
+        @summary Switches the billing method of a Logstash cluster from pay-as-you-go to subscription.
+        
+        @param request: UpdateLogstashChargeTypeRequest
+        @return: UpdateLogstashChargeTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_logstash_charge_type_with_options(instance_id, request, headers, runtime)
@@ -15526,6 +19664,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UpdateLogstashChargeTypeRequest,
     ) -> elasticsearch_20170613_models.UpdateLogstashChargeTypeResponse:
+        """
+        @summary Switches the billing method of a Logstash cluster from pay-as-you-go to subscription.
+        
+        @param request: UpdateLogstashChargeTypeRequest
+        @return: UpdateLogstashChargeTypeResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_logstash_charge_type_with_options_async(instance_id, request, headers, runtime)
@@ -15538,7 +19682,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateLogstashDescriptionResponse:
         """
-        When you call this operation, take note of the following items: You cannot change the name of a cluster that is in the activating, invalid, or inactive state.
+        @summary Changes the name of a specified Logstash cluster.
+        
+        @description When you call this operation, take note of the following items: You cannot change the name of a cluster that is in the activating, invalid, or inactive state.
         
         @param request: UpdateLogstashDescriptionRequest
         @param headers: map
@@ -15581,7 +19727,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateLogstashDescriptionResponse:
         """
-        When you call this operation, take note of the following items: You cannot change the name of a cluster that is in the activating, invalid, or inactive state.
+        @summary Changes the name of a specified Logstash cluster.
+        
+        @description When you call this operation, take note of the following items: You cannot change the name of a cluster that is in the activating, invalid, or inactive state.
         
         @param request: UpdateLogstashDescriptionRequest
         @param headers: map
@@ -15622,7 +19770,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.UpdateLogstashDescriptionRequest,
     ) -> elasticsearch_20170613_models.UpdateLogstashDescriptionResponse:
         """
-        When you call this operation, take note of the following items: You cannot change the name of a cluster that is in the activating, invalid, or inactive state.
+        @summary Changes the name of a specified Logstash cluster.
+        
+        @description When you call this operation, take note of the following items: You cannot change the name of a cluster that is in the activating, invalid, or inactive state.
         
         @param request: UpdateLogstashDescriptionRequest
         @return: UpdateLogstashDescriptionResponse
@@ -15637,7 +19787,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.UpdateLogstashDescriptionRequest,
     ) -> elasticsearch_20170613_models.UpdateLogstashDescriptionResponse:
         """
-        When you call this operation, take note of the following items: You cannot change the name of a cluster that is in the activating, invalid, or inactive state.
+        @summary Changes the name of a specified Logstash cluster.
+        
+        @description When you call this operation, take note of the following items: You cannot change the name of a cluster that is in the activating, invalid, or inactive state.
         
         @param request: UpdateLogstashDescriptionRequest
         @return: UpdateLogstashDescriptionResponse
@@ -15654,7 +19806,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateLogstashSettingsResponse:
         """
-        When you call this operation, take note of the following items:
+        @summary Updates the configuration of a specified Logstash cluster.
+        
+        @description When you call this operation, take note of the following items:
         If the instance is in the Active (activating), Invalid (invalid), and Inactive (inactive) state, the information cannot be updated.
         
         @param request: UpdateLogstashSettingsRequest
@@ -15695,7 +19849,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateLogstashSettingsResponse:
         """
-        When you call this operation, take note of the following items:
+        @summary Updates the configuration of a specified Logstash cluster.
+        
+        @description When you call this operation, take note of the following items:
         If the instance is in the Active (activating), Invalid (invalid), and Inactive (inactive) state, the information cannot be updated.
         
         @param request: UpdateLogstashSettingsRequest
@@ -15734,7 +19890,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.UpdateLogstashSettingsRequest,
     ) -> elasticsearch_20170613_models.UpdateLogstashSettingsResponse:
         """
-        When you call this operation, take note of the following items:
+        @summary Updates the configuration of a specified Logstash cluster.
+        
+        @description When you call this operation, take note of the following items:
         If the instance is in the Active (activating), Invalid (invalid), and Inactive (inactive) state, the information cannot be updated.
         
         @param request: UpdateLogstashSettingsRequest
@@ -15750,7 +19908,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.UpdateLogstashSettingsRequest,
     ) -> elasticsearch_20170613_models.UpdateLogstashSettingsResponse:
         """
-        When you call this operation, take note of the following items:
+        @summary Updates the configuration of a specified Logstash cluster.
+        
+        @description When you call this operation, take note of the following items:
         If the instance is in the Active (activating), Invalid (invalid), and Inactive (inactive) state, the information cannot be updated.
         
         @param request: UpdateLogstashSettingsRequest
@@ -15767,6 +19927,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdatePipelineManagementConfigResponse:
+        """
+        @summary 修改Logstash管道配置
+        
+        @param request: UpdatePipelineManagementConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePipelineManagementConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -15810,6 +19978,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdatePipelineManagementConfigResponse:
+        """
+        @summary 修改Logstash管道配置
+        
+        @param request: UpdatePipelineManagementConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePipelineManagementConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -15851,6 +20027,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UpdatePipelineManagementConfigRequest,
     ) -> elasticsearch_20170613_models.UpdatePipelineManagementConfigResponse:
+        """
+        @summary 修改Logstash管道配置
+        
+        @param request: UpdatePipelineManagementConfigRequest
+        @return: UpdatePipelineManagementConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_pipeline_management_config_with_options(instance_id, request, headers, runtime)
@@ -15860,6 +20042,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UpdatePipelineManagementConfigRequest,
     ) -> elasticsearch_20170613_models.UpdatePipelineManagementConfigResponse:
+        """
+        @summary 修改Logstash管道配置
+        
+        @param request: UpdatePipelineManagementConfigRequest
+        @return: UpdatePipelineManagementConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_pipeline_management_config_with_options_async(instance_id, request, headers, runtime)
@@ -15871,6 +20059,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdatePipelinesResponse:
+        """
+        @summary Updates a pipeline of a Logstash cluster.
+        
+        @param request: UpdatePipelinesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePipelinesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -15905,6 +20101,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdatePipelinesResponse:
+        """
+        @summary Updates a pipeline of a Logstash cluster.
+        
+        @param request: UpdatePipelinesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdatePipelinesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -15937,6 +20141,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UpdatePipelinesRequest,
     ) -> elasticsearch_20170613_models.UpdatePipelinesResponse:
+        """
+        @summary Updates a pipeline of a Logstash cluster.
+        
+        @param request: UpdatePipelinesRequest
+        @return: UpdatePipelinesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_pipelines_with_options(instance_id, request, headers, runtime)
@@ -15946,6 +20156,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UpdatePipelinesRequest,
     ) -> elasticsearch_20170613_models.UpdatePipelinesResponse:
+        """
+        @summary Updates a pipeline of a Logstash cluster.
+        
+        @param request: UpdatePipelinesRequest
+        @return: UpdatePipelinesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_pipelines_with_options_async(instance_id, request, headers, runtime)
@@ -15958,7 +20174,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdatePrivateNetworkWhiteIpsResponse:
         """
-        >  In the following returned example, only the parameters in the returned data list are guaranteed to be included, and the parameters not mentioned are for reference only. For more information about the parameters, see [ListInstance](~~142230~~). You cannot force a dependency in a program to get these parameters.
+        @summary ## RequestBody
+        | Property | Type | Required | Example | Description |
+        | -------- | ---- | -------- | ------- | ----------- |
+        | privateNetworkIpWhiteList | List<String> | No | ["0.0.XX.XX","10.2.XX.XX","192.168.XX.XX/25"] | The list of IP address whitelists. This parameter is available if whiteIpGroup is left empty. The value of this parameter updates the IP address whitelist configurations in the Default whitelist group.
+        You cannot configure both privateNetworkIpWhiteList and whiteIpGroup. |
+        | whiteIpGroup | Object | No |  | You can update the whitelist configurations of an instance by using a whitelist group. You can update only one whitelist group.
+        You cannot configure both privateNetworkIpWhiteList and whiteIpGroup. |
+        | └ groupName | String | No | test_group_name | The group name of the whitelist group. This parameter is required if the whiteIpGroup parameter is optional. |
+        | └ ips | List<String> | No | ["0.0.0.0", "10.2.XX.XX"] | The list of IP addresses in the whitelist group. This parameter is required if the whiteIpGroup parameter is optional. |
+        > *Notice**  The addition and deletion of whitelist groups are implemented by calling modifyMode to Cover. Delete and Append cannot add or delete whitelist groups at the same time. You can only modify the IP address list in the whitelist group. Take note of the following items: - If the modifyMode parameter is set to Cover, the whitelist group is deleted if ips is empty. If groupName is not in the list of existing whitelist group names, a whitelist group is created.
+        - If the modifyMode parameter is set to Delete, you must retain at least one IP address for the deleted ips.
+        - If the modifyMode parameter is set to Append, make sure that the whitelist group name has been created. Otherwise, the NotFound error message appears.
+        
+        @description >  In the following returned example, only the parameters in the returned data list are guaranteed to be included, and the parameters not mentioned are for reference only. For more information about the parameters, see [ListInstance](https://help.aliyun.com/document_detail/142230.html). You cannot force a dependency in a program to get these parameters.
         
         @param request: UpdatePrivateNetworkWhiteIpsRequest
         @param headers: map
@@ -16000,7 +20229,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdatePrivateNetworkWhiteIpsResponse:
         """
-        >  In the following returned example, only the parameters in the returned data list are guaranteed to be included, and the parameters not mentioned are for reference only. For more information about the parameters, see [ListInstance](~~142230~~). You cannot force a dependency in a program to get these parameters.
+        @summary ## RequestBody
+        | Property | Type | Required | Example | Description |
+        | -------- | ---- | -------- | ------- | ----------- |
+        | privateNetworkIpWhiteList | List<String> | No | ["0.0.XX.XX","10.2.XX.XX","192.168.XX.XX/25"] | The list of IP address whitelists. This parameter is available if whiteIpGroup is left empty. The value of this parameter updates the IP address whitelist configurations in the Default whitelist group.
+        You cannot configure both privateNetworkIpWhiteList and whiteIpGroup. |
+        | whiteIpGroup | Object | No |  | You can update the whitelist configurations of an instance by using a whitelist group. You can update only one whitelist group.
+        You cannot configure both privateNetworkIpWhiteList and whiteIpGroup. |
+        | └ groupName | String | No | test_group_name | The group name of the whitelist group. This parameter is required if the whiteIpGroup parameter is optional. |
+        | └ ips | List<String> | No | ["0.0.0.0", "10.2.XX.XX"] | The list of IP addresses in the whitelist group. This parameter is required if the whiteIpGroup parameter is optional. |
+        > *Notice**  The addition and deletion of whitelist groups are implemented by calling modifyMode to Cover. Delete and Append cannot add or delete whitelist groups at the same time. You can only modify the IP address list in the whitelist group. Take note of the following items: - If the modifyMode parameter is set to Cover, the whitelist group is deleted if ips is empty. If groupName is not in the list of existing whitelist group names, a whitelist group is created.
+        - If the modifyMode parameter is set to Delete, you must retain at least one IP address for the deleted ips.
+        - If the modifyMode parameter is set to Append, make sure that the whitelist group name has been created. Otherwise, the NotFound error message appears.
+        
+        @description >  In the following returned example, only the parameters in the returned data list are guaranteed to be included, and the parameters not mentioned are for reference only. For more information about the parameters, see [ListInstance](https://help.aliyun.com/document_detail/142230.html). You cannot force a dependency in a program to get these parameters.
         
         @param request: UpdatePrivateNetworkWhiteIpsRequest
         @param headers: map
@@ -16040,7 +20282,20 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.UpdatePrivateNetworkWhiteIpsRequest,
     ) -> elasticsearch_20170613_models.UpdatePrivateNetworkWhiteIpsResponse:
         """
-        >  In the following returned example, only the parameters in the returned data list are guaranteed to be included, and the parameters not mentioned are for reference only. For more information about the parameters, see [ListInstance](~~142230~~). You cannot force a dependency in a program to get these parameters.
+        @summary ## RequestBody
+        | Property | Type | Required | Example | Description |
+        | -------- | ---- | -------- | ------- | ----------- |
+        | privateNetworkIpWhiteList | List<String> | No | ["0.0.XX.XX","10.2.XX.XX","192.168.XX.XX/25"] | The list of IP address whitelists. This parameter is available if whiteIpGroup is left empty. The value of this parameter updates the IP address whitelist configurations in the Default whitelist group.
+        You cannot configure both privateNetworkIpWhiteList and whiteIpGroup. |
+        | whiteIpGroup | Object | No |  | You can update the whitelist configurations of an instance by using a whitelist group. You can update only one whitelist group.
+        You cannot configure both privateNetworkIpWhiteList and whiteIpGroup. |
+        | └ groupName | String | No | test_group_name | The group name of the whitelist group. This parameter is required if the whiteIpGroup parameter is optional. |
+        | └ ips | List<String> | No | ["0.0.0.0", "10.2.XX.XX"] | The list of IP addresses in the whitelist group. This parameter is required if the whiteIpGroup parameter is optional. |
+        > *Notice**  The addition and deletion of whitelist groups are implemented by calling modifyMode to Cover. Delete and Append cannot add or delete whitelist groups at the same time. You can only modify the IP address list in the whitelist group. Take note of the following items: - If the modifyMode parameter is set to Cover, the whitelist group is deleted if ips is empty. If groupName is not in the list of existing whitelist group names, a whitelist group is created.
+        - If the modifyMode parameter is set to Delete, you must retain at least one IP address for the deleted ips.
+        - If the modifyMode parameter is set to Append, make sure that the whitelist group name has been created. Otherwise, the NotFound error message appears.
+        
+        @description >  In the following returned example, only the parameters in the returned data list are guaranteed to be included, and the parameters not mentioned are for reference only. For more information about the parameters, see [ListInstance](https://help.aliyun.com/document_detail/142230.html). You cannot force a dependency in a program to get these parameters.
         
         @param request: UpdatePrivateNetworkWhiteIpsRequest
         @return: UpdatePrivateNetworkWhiteIpsResponse
@@ -16055,7 +20310,20 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.UpdatePrivateNetworkWhiteIpsRequest,
     ) -> elasticsearch_20170613_models.UpdatePrivateNetworkWhiteIpsResponse:
         """
-        >  In the following returned example, only the parameters in the returned data list are guaranteed to be included, and the parameters not mentioned are for reference only. For more information about the parameters, see [ListInstance](~~142230~~). You cannot force a dependency in a program to get these parameters.
+        @summary ## RequestBody
+        | Property | Type | Required | Example | Description |
+        | -------- | ---- | -------- | ------- | ----------- |
+        | privateNetworkIpWhiteList | List<String> | No | ["0.0.XX.XX","10.2.XX.XX","192.168.XX.XX/25"] | The list of IP address whitelists. This parameter is available if whiteIpGroup is left empty. The value of this parameter updates the IP address whitelist configurations in the Default whitelist group.
+        You cannot configure both privateNetworkIpWhiteList and whiteIpGroup. |
+        | whiteIpGroup | Object | No |  | You can update the whitelist configurations of an instance by using a whitelist group. You can update only one whitelist group.
+        You cannot configure both privateNetworkIpWhiteList and whiteIpGroup. |
+        | └ groupName | String | No | test_group_name | The group name of the whitelist group. This parameter is required if the whiteIpGroup parameter is optional. |
+        | └ ips | List<String> | No | ["0.0.0.0", "10.2.XX.XX"] | The list of IP addresses in the whitelist group. This parameter is required if the whiteIpGroup parameter is optional. |
+        > *Notice**  The addition and deletion of whitelist groups are implemented by calling modifyMode to Cover. Delete and Append cannot add or delete whitelist groups at the same time. You can only modify the IP address list in the whitelist group. Take note of the following items: - If the modifyMode parameter is set to Cover, the whitelist group is deleted if ips is empty. If groupName is not in the list of existing whitelist group names, a whitelist group is created.
+        - If the modifyMode parameter is set to Delete, you must retain at least one IP address for the deleted ips.
+        - If the modifyMode parameter is set to Append, make sure that the whitelist group name has been created. Otherwise, the NotFound error message appears.
+        
+        @description >  In the following returned example, only the parameters in the returned data list are guaranteed to be included, and the parameters not mentioned are for reference only. For more information about the parameters, see [ListInstance](https://help.aliyun.com/document_detail/142230.html). You cannot force a dependency in a program to get these parameters.
         
         @param request: UpdatePrivateNetworkWhiteIpsRequest
         @return: UpdatePrivateNetworkWhiteIpsResponse
@@ -16072,7 +20340,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdatePublicNetworkResponse:
         """
-        When you call this operation, take note of the following items:
+        @summary Call UpdatePublicNetwork to open or close the public network address of the specified elasticsearch instance.
+        
+        @description When you call this operation, take note of the following items:
         When the instance is in the activating, invalid, or inactive state, its configuration cannot be updated.
         
         @param request: UpdatePublicNetworkRequest
@@ -16113,7 +20383,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdatePublicNetworkResponse:
         """
-        When you call this operation, take note of the following items:
+        @summary Call UpdatePublicNetwork to open or close the public network address of the specified elasticsearch instance.
+        
+        @description When you call this operation, take note of the following items:
         When the instance is in the activating, invalid, or inactive state, its configuration cannot be updated.
         
         @param request: UpdatePublicNetworkRequest
@@ -16152,7 +20424,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.UpdatePublicNetworkRequest,
     ) -> elasticsearch_20170613_models.UpdatePublicNetworkResponse:
         """
-        When you call this operation, take note of the following items:
+        @summary Call UpdatePublicNetwork to open or close the public network address of the specified elasticsearch instance.
+        
+        @description When you call this operation, take note of the following items:
         When the instance is in the activating, invalid, or inactive state, its configuration cannot be updated.
         
         @param request: UpdatePublicNetworkRequest
@@ -16168,7 +20442,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.UpdatePublicNetworkRequest,
     ) -> elasticsearch_20170613_models.UpdatePublicNetworkResponse:
         """
-        When you call this operation, take note of the following items:
+        @summary Call UpdatePublicNetwork to open or close the public network address of the specified elasticsearch instance.
+        
+        @description When you call this operation, take note of the following items:
         When the instance is in the activating, invalid, or inactive state, its configuration cannot be updated.
         
         @param request: UpdatePublicNetworkRequest
@@ -16186,7 +20462,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdatePublicWhiteIpsResponse:
         """
-        >  In the following example, only the parameters in the returned data list are guaranteed to be included. The parameters that are not mentioned are for reference only. For more information about the parameters, see [ListInstance](~~142230~~). You cannot force a dependency in a program to get these parameters.
+        @summary ## RequestBody
+        | Property | Type | Required | Example | Description |
+        | -------- | ---- | -------- | ------- | ----------- |
+        | publicIpWhitelist | List<String> | Yes | ["0.0.0.0/0","0.0.0.0/1"] | The list of IP address whitelists. This parameter is available if whiteIpGroup is left empty. The value of this parameter updates the IP address whitelist configurations in the Default whitelist group.
+        You cannot configure both publicIpWhitelist and whiteIpGroup. |
+        | whiteIpGroup | Object | No |  | You can update the whitelist configurations of an instance by using a whitelist group. You can update only one whitelist group.
+        You cannot configure both publicIpWhitelist and whiteIpGroup. |
+        | └ groupName | String | No | test_group_name | The group name of the whitelist group. This parameter is required if the whiteIpGroup parameter is optional. |
+        | └ ips | List<String> | No | ["0.0.0.0", "10.2.XX.XX"] | The list of IP addresses in the whitelist group. This parameter is required if the whiteIpGroup parameter is optional. |
+        > *Notice**  The addition and deletion of whitelist groups are implemented by calling modifyMode to Cover. Delete and Append cannot add or delete whitelist groups at the same time. You can only modify the IP address list in the whitelist group. Take note of the following items: - If the modifyMode parameter is set to Cover, the whitelist group is deleted if ips is empty. If groupName is not in the list of existing whitelist group names, a whitelist group is created.
+        - If the modifyMode parameter is set to Delete, you must retain at least one IP address for the deleted ips.
+        - If the modifyMode parameter is set to Append, make sure that the whitelist group name has been created. Otherwise, the NotFound error message appears.
+        
+        @description >  In the following example, only the parameters in the returned data list are guaranteed to be included. The parameters that are not mentioned are for reference only. For more information about the parameters, see [ListInstance](https://help.aliyun.com/document_detail/142230.html). You cannot force a dependency in a program to get these parameters.
         
         @param request: UpdatePublicWhiteIpsRequest
         @param headers: map
@@ -16228,7 +20517,20 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdatePublicWhiteIpsResponse:
         """
-        >  In the following example, only the parameters in the returned data list are guaranteed to be included. The parameters that are not mentioned are for reference only. For more information about the parameters, see [ListInstance](~~142230~~). You cannot force a dependency in a program to get these parameters.
+        @summary ## RequestBody
+        | Property | Type | Required | Example | Description |
+        | -------- | ---- | -------- | ------- | ----------- |
+        | publicIpWhitelist | List<String> | Yes | ["0.0.0.0/0","0.0.0.0/1"] | The list of IP address whitelists. This parameter is available if whiteIpGroup is left empty. The value of this parameter updates the IP address whitelist configurations in the Default whitelist group.
+        You cannot configure both publicIpWhitelist and whiteIpGroup. |
+        | whiteIpGroup | Object | No |  | You can update the whitelist configurations of an instance by using a whitelist group. You can update only one whitelist group.
+        You cannot configure both publicIpWhitelist and whiteIpGroup. |
+        | └ groupName | String | No | test_group_name | The group name of the whitelist group. This parameter is required if the whiteIpGroup parameter is optional. |
+        | └ ips | List<String> | No | ["0.0.0.0", "10.2.XX.XX"] | The list of IP addresses in the whitelist group. This parameter is required if the whiteIpGroup parameter is optional. |
+        > *Notice**  The addition and deletion of whitelist groups are implemented by calling modifyMode to Cover. Delete and Append cannot add or delete whitelist groups at the same time. You can only modify the IP address list in the whitelist group. Take note of the following items: - If the modifyMode parameter is set to Cover, the whitelist group is deleted if ips is empty. If groupName is not in the list of existing whitelist group names, a whitelist group is created.
+        - If the modifyMode parameter is set to Delete, you must retain at least one IP address for the deleted ips.
+        - If the modifyMode parameter is set to Append, make sure that the whitelist group name has been created. Otherwise, the NotFound error message appears.
+        
+        @description >  In the following example, only the parameters in the returned data list are guaranteed to be included. The parameters that are not mentioned are for reference only. For more information about the parameters, see [ListInstance](https://help.aliyun.com/document_detail/142230.html). You cannot force a dependency in a program to get these parameters.
         
         @param request: UpdatePublicWhiteIpsRequest
         @param headers: map
@@ -16268,7 +20570,20 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.UpdatePublicWhiteIpsRequest,
     ) -> elasticsearch_20170613_models.UpdatePublicWhiteIpsResponse:
         """
-        >  In the following example, only the parameters in the returned data list are guaranteed to be included. The parameters that are not mentioned are for reference only. For more information about the parameters, see [ListInstance](~~142230~~). You cannot force a dependency in a program to get these parameters.
+        @summary ## RequestBody
+        | Property | Type | Required | Example | Description |
+        | -------- | ---- | -------- | ------- | ----------- |
+        | publicIpWhitelist | List<String> | Yes | ["0.0.0.0/0","0.0.0.0/1"] | The list of IP address whitelists. This parameter is available if whiteIpGroup is left empty. The value of this parameter updates the IP address whitelist configurations in the Default whitelist group.
+        You cannot configure both publicIpWhitelist and whiteIpGroup. |
+        | whiteIpGroup | Object | No |  | You can update the whitelist configurations of an instance by using a whitelist group. You can update only one whitelist group.
+        You cannot configure both publicIpWhitelist and whiteIpGroup. |
+        | └ groupName | String | No | test_group_name | The group name of the whitelist group. This parameter is required if the whiteIpGroup parameter is optional. |
+        | └ ips | List<String> | No | ["0.0.0.0", "10.2.XX.XX"] | The list of IP addresses in the whitelist group. This parameter is required if the whiteIpGroup parameter is optional. |
+        > *Notice**  The addition and deletion of whitelist groups are implemented by calling modifyMode to Cover. Delete and Append cannot add or delete whitelist groups at the same time. You can only modify the IP address list in the whitelist group. Take note of the following items: - If the modifyMode parameter is set to Cover, the whitelist group is deleted if ips is empty. If groupName is not in the list of existing whitelist group names, a whitelist group is created.
+        - If the modifyMode parameter is set to Delete, you must retain at least one IP address for the deleted ips.
+        - If the modifyMode parameter is set to Append, make sure that the whitelist group name has been created. Otherwise, the NotFound error message appears.
+        
+        @description >  In the following example, only the parameters in the returned data list are guaranteed to be included. The parameters that are not mentioned are for reference only. For more information about the parameters, see [ListInstance](https://help.aliyun.com/document_detail/142230.html). You cannot force a dependency in a program to get these parameters.
         
         @param request: UpdatePublicWhiteIpsRequest
         @return: UpdatePublicWhiteIpsResponse
@@ -16283,7 +20598,20 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.UpdatePublicWhiteIpsRequest,
     ) -> elasticsearch_20170613_models.UpdatePublicWhiteIpsResponse:
         """
-        >  In the following example, only the parameters in the returned data list are guaranteed to be included. The parameters that are not mentioned are for reference only. For more information about the parameters, see [ListInstance](~~142230~~). You cannot force a dependency in a program to get these parameters.
+        @summary ## RequestBody
+        | Property | Type | Required | Example | Description |
+        | -------- | ---- | -------- | ------- | ----------- |
+        | publicIpWhitelist | List<String> | Yes | ["0.0.0.0/0","0.0.0.0/1"] | The list of IP address whitelists. This parameter is available if whiteIpGroup is left empty. The value of this parameter updates the IP address whitelist configurations in the Default whitelist group.
+        You cannot configure both publicIpWhitelist and whiteIpGroup. |
+        | whiteIpGroup | Object | No |  | You can update the whitelist configurations of an instance by using a whitelist group. You can update only one whitelist group.
+        You cannot configure both publicIpWhitelist and whiteIpGroup. |
+        | └ groupName | String | No | test_group_name | The group name of the whitelist group. This parameter is required if the whiteIpGroup parameter is optional. |
+        | └ ips | List<String> | No | ["0.0.0.0", "10.2.XX.XX"] | The list of IP addresses in the whitelist group. This parameter is required if the whiteIpGroup parameter is optional. |
+        > *Notice**  The addition and deletion of whitelist groups are implemented by calling modifyMode to Cover. Delete and Append cannot add or delete whitelist groups at the same time. You can only modify the IP address list in the whitelist group. Take note of the following items: - If the modifyMode parameter is set to Cover, the whitelist group is deleted if ips is empty. If groupName is not in the list of existing whitelist group names, a whitelist group is created.
+        - If the modifyMode parameter is set to Delete, you must retain at least one IP address for the deleted ips.
+        - If the modifyMode parameter is set to Append, make sure that the whitelist group name has been created. Otherwise, the NotFound error message appears.
+        
+        @description >  In the following example, only the parameters in the returned data list are guaranteed to be included. The parameters that are not mentioned are for reference only. For more information about the parameters, see [ListInstance](https://help.aliyun.com/document_detail/142230.html). You cannot force a dependency in a program to get these parameters.
         
         @param request: UpdatePublicWhiteIpsRequest
         @return: UpdatePublicWhiteIpsResponse
@@ -16299,6 +20627,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateReadWritePolicyResponse:
+        """
+        @summary 更改ES集群高可用策略
+        
+        @param request: UpdateReadWritePolicyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateReadWritePolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -16331,6 +20667,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateReadWritePolicyResponse:
+        """
+        @summary 更改ES集群高可用策略
+        
+        @param request: UpdateReadWritePolicyRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateReadWritePolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -16361,6 +20705,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UpdateReadWritePolicyRequest,
     ) -> elasticsearch_20170613_models.UpdateReadWritePolicyResponse:
+        """
+        @summary 更改ES集群高可用策略
+        
+        @param request: UpdateReadWritePolicyRequest
+        @return: UpdateReadWritePolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_read_write_policy_with_options(instance_id, request, headers, runtime)
@@ -16370,6 +20720,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UpdateReadWritePolicyRequest,
     ) -> elasticsearch_20170613_models.UpdateReadWritePolicyResponse:
+        """
+        @summary 更改ES集群高可用策略
+        
+        @param request: UpdateReadWritePolicyRequest
+        @return: UpdateReadWritePolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_read_write_policy_with_options_async(instance_id, request, headers, runtime)
@@ -16381,6 +20737,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateSnapshotSettingResponse:
+        """
+        @summary Call UpdateSnapshotSetting to update the data backup configuration of the specified instance.
+        
+        @param request: UpdateSnapshotSettingRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSnapshotSettingResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -16409,6 +20773,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateSnapshotSettingResponse:
+        """
+        @summary Call UpdateSnapshotSetting to update the data backup configuration of the specified instance.
+        
+        @param request: UpdateSnapshotSettingRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateSnapshotSettingResponse
+        """
         UtilClient.validate_model(request)
         req = open_api_models.OpenApiRequest(
             headers=headers,
@@ -16435,6 +20807,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UpdateSnapshotSettingRequest,
     ) -> elasticsearch_20170613_models.UpdateSnapshotSettingResponse:
+        """
+        @summary Call UpdateSnapshotSetting to update the data backup configuration of the specified instance.
+        
+        @param request: UpdateSnapshotSettingRequest
+        @return: UpdateSnapshotSettingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_snapshot_setting_with_options(instance_id, request, headers, runtime)
@@ -16444,6 +20822,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UpdateSnapshotSettingRequest,
     ) -> elasticsearch_20170613_models.UpdateSnapshotSettingResponse:
+        """
+        @summary Call UpdateSnapshotSetting to update the data backup configuration of the specified instance.
+        
+        @param request: UpdateSnapshotSettingRequest
+        @return: UpdateSnapshotSettingResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_snapshot_setting_with_options_async(instance_id, request, headers, runtime)
@@ -16456,9 +20840,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateSynonymsDictsResponse:
         """
-        Before you call this operation, take note of the following items:
-        *   If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
-        *   If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
+        @summary Updates the synonym dictionaries of an Elasticsearch cluster.
+        
+        @description Before you call this operation, take note of the following items:
+        If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+        If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
         
         @param request: UpdateSynonymsDictsRequest
         @param headers: map
@@ -16498,9 +20884,11 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateSynonymsDictsResponse:
         """
-        Before you call this operation, take note of the following items:
-        *   If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
-        *   If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
+        @summary Updates the synonym dictionaries of an Elasticsearch cluster.
+        
+        @description Before you call this operation, take note of the following items:
+        If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+        If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
         
         @param request: UpdateSynonymsDictsRequest
         @param headers: map
@@ -16538,9 +20926,11 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.UpdateSynonymsDictsRequest,
     ) -> elasticsearch_20170613_models.UpdateSynonymsDictsResponse:
         """
-        Before you call this operation, take note of the following items:
-        *   If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
-        *   If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
+        @summary Updates the synonym dictionaries of an Elasticsearch cluster.
+        
+        @description Before you call this operation, take note of the following items:
+        If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+        If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
         
         @param request: UpdateSynonymsDictsRequest
         @return: UpdateSynonymsDictsResponse
@@ -16555,9 +20945,11 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.UpdateSynonymsDictsRequest,
     ) -> elasticsearch_20170613_models.UpdateSynonymsDictsResponse:
         """
-        Before you call this operation, take note of the following items:
-        *   If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
-        *   If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
+        @summary Updates the synonym dictionaries of an Elasticsearch cluster.
+        
+        @description Before you call this operation, take note of the following items:
+        If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+        If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
         
         @param request: UpdateSynonymsDictsRequest
         @return: UpdateSynonymsDictsResponse
@@ -16574,6 +20966,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateTemplateResponse:
+        """
+        @param request: UpdateTemplateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -16607,6 +21005,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateTemplateResponse:
+        """
+        @param request: UpdateTemplateRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -16638,6 +21042,10 @@ class Client(OpenApiClient):
         template_name: str,
         request: elasticsearch_20170613_models.UpdateTemplateRequest,
     ) -> elasticsearch_20170613_models.UpdateTemplateResponse:
+        """
+        @param request: UpdateTemplateRequest
+        @return: UpdateTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_template_with_options(instance_id, template_name, request, headers, runtime)
@@ -16648,6 +21056,10 @@ class Client(OpenApiClient):
         template_name: str,
         request: elasticsearch_20170613_models.UpdateTemplateRequest,
     ) -> elasticsearch_20170613_models.UpdateTemplateResponse:
+        """
+        @param request: UpdateTemplateRequest
+        @return: UpdateTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_template_with_options_async(instance_id, template_name, request, headers, runtime)
@@ -16660,7 +21072,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateWhiteIpsResponse:
         """
-        > For more information about the parameters displayed in the following sample code but not provided in the preceding tables, see [ListInstance](~~142230~~). You cannot force your program to obtain these parameters.
+        @summary >  If you want to add an IP address whitelist, you can set the modifyMode parameter only to Cover. If you set this parameter to Delete or Append, you can only update an IP address whitelist.
+        If you set the modifyMode parameter to Cover and leave the ips parameter empty, the system deletes the specified whitelist. If the whitelist specified by using the groupName parameter does not exist, the system creates such a whitelist.
+        If you set the modifyMode parameter to Delete, at least one IP address must be retained for the specified whitelist.
+        If you set the modifyMode parameter to Append, you must make sure that the specified whitelist exists. Otherwise, the system reports the NotFound error.
+        
+        @description > For more information about the parameters displayed in the following sample code but not provided in the preceding tables, see [ListInstance](https://help.aliyun.com/document_detail/142230.html). You cannot force your program to obtain these parameters.
         
         @param request: UpdateWhiteIpsRequest
         @param headers: map
@@ -16707,7 +21124,12 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateWhiteIpsResponse:
         """
-        > For more information about the parameters displayed in the following sample code but not provided in the preceding tables, see [ListInstance](~~142230~~). You cannot force your program to obtain these parameters.
+        @summary >  If you want to add an IP address whitelist, you can set the modifyMode parameter only to Cover. If you set this parameter to Delete or Append, you can only update an IP address whitelist.
+        If you set the modifyMode parameter to Cover and leave the ips parameter empty, the system deletes the specified whitelist. If the whitelist specified by using the groupName parameter does not exist, the system creates such a whitelist.
+        If you set the modifyMode parameter to Delete, at least one IP address must be retained for the specified whitelist.
+        If you set the modifyMode parameter to Append, you must make sure that the specified whitelist exists. Otherwise, the system reports the NotFound error.
+        
+        @description > For more information about the parameters displayed in the following sample code but not provided in the preceding tables, see [ListInstance](https://help.aliyun.com/document_detail/142230.html). You cannot force your program to obtain these parameters.
         
         @param request: UpdateWhiteIpsRequest
         @param headers: map
@@ -16752,7 +21174,12 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.UpdateWhiteIpsRequest,
     ) -> elasticsearch_20170613_models.UpdateWhiteIpsResponse:
         """
-        > For more information about the parameters displayed in the following sample code but not provided in the preceding tables, see [ListInstance](~~142230~~). You cannot force your program to obtain these parameters.
+        @summary >  If you want to add an IP address whitelist, you can set the modifyMode parameter only to Cover. If you set this parameter to Delete or Append, you can only update an IP address whitelist.
+        If you set the modifyMode parameter to Cover and leave the ips parameter empty, the system deletes the specified whitelist. If the whitelist specified by using the groupName parameter does not exist, the system creates such a whitelist.
+        If you set the modifyMode parameter to Delete, at least one IP address must be retained for the specified whitelist.
+        If you set the modifyMode parameter to Append, you must make sure that the specified whitelist exists. Otherwise, the system reports the NotFound error.
+        
+        @description > For more information about the parameters displayed in the following sample code but not provided in the preceding tables, see [ListInstance](https://help.aliyun.com/document_detail/142230.html). You cannot force your program to obtain these parameters.
         
         @param request: UpdateWhiteIpsRequest
         @return: UpdateWhiteIpsResponse
@@ -16767,7 +21194,12 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.UpdateWhiteIpsRequest,
     ) -> elasticsearch_20170613_models.UpdateWhiteIpsResponse:
         """
-        > For more information about the parameters displayed in the following sample code but not provided in the preceding tables, see [ListInstance](~~142230~~). You cannot force your program to obtain these parameters.
+        @summary >  If you want to add an IP address whitelist, you can set the modifyMode parameter only to Cover. If you set this parameter to Delete or Append, you can only update an IP address whitelist.
+        If you set the modifyMode parameter to Cover and leave the ips parameter empty, the system deletes the specified whitelist. If the whitelist specified by using the groupName parameter does not exist, the system creates such a whitelist.
+        If you set the modifyMode parameter to Delete, at least one IP address must be retained for the specified whitelist.
+        If you set the modifyMode parameter to Append, you must make sure that the specified whitelist exists. Otherwise, the system reports the NotFound error.
+        
+        @description > For more information about the parameters displayed in the following sample code but not provided in the preceding tables, see [ListInstance](https://help.aliyun.com/document_detail/142230.html). You cannot force your program to obtain these parameters.
         
         @param request: UpdateWhiteIpsRequest
         @return: UpdateWhiteIpsResponse
@@ -16783,6 +21215,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateXpackMonitorConfigResponse:
+        """
+        @summary 修改Logstash实例的X-Pack监控报警配置。
+        
+        @param request: UpdateXpackMonitorConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateXpackMonitorConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -16824,6 +21264,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpdateXpackMonitorConfigResponse:
+        """
+        @summary 修改Logstash实例的X-Pack监控报警配置。
+        
+        @param request: UpdateXpackMonitorConfigRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateXpackMonitorConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -16863,6 +21311,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UpdateXpackMonitorConfigRequest,
     ) -> elasticsearch_20170613_models.UpdateXpackMonitorConfigResponse:
+        """
+        @summary 修改Logstash实例的X-Pack监控报警配置。
+        
+        @param request: UpdateXpackMonitorConfigRequest
+        @return: UpdateXpackMonitorConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_xpack_monitor_config_with_options(instance_id, request, headers, runtime)
@@ -16872,6 +21326,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.UpdateXpackMonitorConfigRequest,
     ) -> elasticsearch_20170613_models.UpdateXpackMonitorConfigResponse:
+        """
+        @summary 修改Logstash实例的X-Pack监控报警配置。
+        
+        @param request: UpdateXpackMonitorConfigRequest
+        @return: UpdateXpackMonitorConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_xpack_monitor_config_with_options_async(instance_id, request, headers, runtime)
@@ -16884,7 +21344,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpgradeEngineVersionResponse:
         """
-        5A2CFF0E-5718-45B5-9D4D-70B3FF\\\\*\\*\\*\
+        @summary ES集群版本升级
+        
+        @description 5A2CFF0E-5718-45B5-9D4D-70B3FF\\\\*\\*\\*\
         
         @param request: UpgradeEngineVersionRequest
         @param headers: map
@@ -16931,7 +21393,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.UpgradeEngineVersionResponse:
         """
-        5A2CFF0E-5718-45B5-9D4D-70B3FF\\\\*\\*\\*\
+        @summary ES集群版本升级
+        
+        @description 5A2CFF0E-5718-45B5-9D4D-70B3FF\\\\*\\*\\*\
         
         @param request: UpgradeEngineVersionRequest
         @param headers: map
@@ -16976,7 +21440,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.UpgradeEngineVersionRequest,
     ) -> elasticsearch_20170613_models.UpgradeEngineVersionResponse:
         """
-        5A2CFF0E-5718-45B5-9D4D-70B3FF\\\\*\\*\\*\
+        @summary ES集群版本升级
+        
+        @description 5A2CFF0E-5718-45B5-9D4D-70B3FF\\\\*\\*\\*\
         
         @param request: UpgradeEngineVersionRequest
         @return: UpgradeEngineVersionResponse
@@ -16991,7 +21457,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.UpgradeEngineVersionRequest,
     ) -> elasticsearch_20170613_models.UpgradeEngineVersionResponse:
         """
-        5A2CFF0E-5718-45B5-9D4D-70B3FF\\\\*\\*\\*\
+        @summary ES集群版本升级
+        
+        @description 5A2CFF0E-5718-45B5-9D4D-70B3FF\\\\*\\*\\*\
         
         @param request: UpgradeEngineVersionRequest
         @return: UpgradeEngineVersionResponse
@@ -17008,7 +21476,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ValidateConnectionResponse:
         """
-        > Before you enable the X-Pack Monitoring feature for a Logstash cluster, you must associate the Logstash cluster with an Elasticsearch cluster. This way, you can view the monitoring data of the Logstash cluster in the Kibana console of the Elasticsearch cluster.
+        @summary Tests the connectivity between a Logstash cluster and its associated Elasticsearch cluster when you configure the X-Pack Monitoring feature for the Logstash cluster.
+        
+        @description > Before you enable the X-Pack Monitoring feature for a Logstash cluster, you must associate the Logstash cluster with an Elasticsearch cluster. This way, you can view the monitoring data of the Logstash cluster in the Kibana console of the Elasticsearch cluster.
         
         @param request: ValidateConnectionRequest
         @param headers: map
@@ -17048,7 +21518,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ValidateConnectionResponse:
         """
-        > Before you enable the X-Pack Monitoring feature for a Logstash cluster, you must associate the Logstash cluster with an Elasticsearch cluster. This way, you can view the monitoring data of the Logstash cluster in the Kibana console of the Elasticsearch cluster.
+        @summary Tests the connectivity between a Logstash cluster and its associated Elasticsearch cluster when you configure the X-Pack Monitoring feature for the Logstash cluster.
+        
+        @description > Before you enable the X-Pack Monitoring feature for a Logstash cluster, you must associate the Logstash cluster with an Elasticsearch cluster. This way, you can view the monitoring data of the Logstash cluster in the Kibana console of the Elasticsearch cluster.
         
         @param request: ValidateConnectionRequest
         @param headers: map
@@ -17086,7 +21558,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.ValidateConnectionRequest,
     ) -> elasticsearch_20170613_models.ValidateConnectionResponse:
         """
-        > Before you enable the X-Pack Monitoring feature for a Logstash cluster, you must associate the Logstash cluster with an Elasticsearch cluster. This way, you can view the monitoring data of the Logstash cluster in the Kibana console of the Elasticsearch cluster.
+        @summary Tests the connectivity between a Logstash cluster and its associated Elasticsearch cluster when you configure the X-Pack Monitoring feature for the Logstash cluster.
+        
+        @description > Before you enable the X-Pack Monitoring feature for a Logstash cluster, you must associate the Logstash cluster with an Elasticsearch cluster. This way, you can view the monitoring data of the Logstash cluster in the Kibana console of the Elasticsearch cluster.
         
         @param request: ValidateConnectionRequest
         @return: ValidateConnectionResponse
@@ -17101,7 +21575,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.ValidateConnectionRequest,
     ) -> elasticsearch_20170613_models.ValidateConnectionResponse:
         """
-        > Before you enable the X-Pack Monitoring feature for a Logstash cluster, you must associate the Logstash cluster with an Elasticsearch cluster. This way, you can view the monitoring data of the Logstash cluster in the Kibana console of the Elasticsearch cluster.
+        @summary Tests the connectivity between a Logstash cluster and its associated Elasticsearch cluster when you configure the X-Pack Monitoring feature for the Logstash cluster.
+        
+        @description > Before you enable the X-Pack Monitoring feature for a Logstash cluster, you must associate the Logstash cluster with an Elasticsearch cluster. This way, you can view the monitoring data of the Logstash cluster in the Kibana console of the Elasticsearch cluster.
         
         @param request: ValidateConnectionRequest
         @return: ValidateConnectionResponse
@@ -17117,6 +21593,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ValidateShrinkNodesResponse:
+        """
+        @summary 校验缩节点合法性
+        
+        @param request: ValidateShrinkNodesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ValidateShrinkNodesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.count):
@@ -17153,6 +21637,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ValidateShrinkNodesResponse:
+        """
+        @summary 校验缩节点合法性
+        
+        @param request: ValidateShrinkNodesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ValidateShrinkNodesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.count):
@@ -17187,6 +21679,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ValidateShrinkNodesRequest,
     ) -> elasticsearch_20170613_models.ValidateShrinkNodesResponse:
+        """
+        @summary 校验缩节点合法性
+        
+        @param request: ValidateShrinkNodesRequest
+        @return: ValidateShrinkNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.validate_shrink_nodes_with_options(instance_id, request, headers, runtime)
@@ -17196,6 +21694,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ValidateShrinkNodesRequest,
     ) -> elasticsearch_20170613_models.ValidateShrinkNodesResponse:
+        """
+        @summary 校验缩节点合法性
+        
+        @param request: ValidateShrinkNodesRequest
+        @return: ValidateShrinkNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.validate_shrink_nodes_with_options_async(instance_id, request, headers, runtime)
@@ -17206,6 +21710,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ValidateSlrPermissionResponse:
+        """
+        @param request: ValidateSlrPermissionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ValidateSlrPermissionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -17238,6 +21748,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ValidateSlrPermissionResponse:
+        """
+        @param request: ValidateSlrPermissionRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ValidateSlrPermissionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_token):
@@ -17268,6 +21784,10 @@ class Client(OpenApiClient):
         self,
         request: elasticsearch_20170613_models.ValidateSlrPermissionRequest,
     ) -> elasticsearch_20170613_models.ValidateSlrPermissionResponse:
+        """
+        @param request: ValidateSlrPermissionRequest
+        @return: ValidateSlrPermissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.validate_slr_permission_with_options(request, headers, runtime)
@@ -17276,6 +21796,10 @@ class Client(OpenApiClient):
         self,
         request: elasticsearch_20170613_models.ValidateSlrPermissionRequest,
     ) -> elasticsearch_20170613_models.ValidateSlrPermissionResponse:
+        """
+        @param request: ValidateSlrPermissionRequest
+        @return: ValidateSlrPermissionResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.validate_slr_permission_with_options_async(request, headers, runtime)
@@ -17287,6 +21811,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ValidateTransferableNodesResponse:
+        """
+        @summary 缩节点校验数据迁移合法性
+        
+        @param request: ValidateTransferableNodesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ValidateTransferableNodesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.node_type):
@@ -17319,6 +21851,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.ValidateTransferableNodesResponse:
+        """
+        @summary 缩节点校验数据迁移合法性
+        
+        @param request: ValidateTransferableNodesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ValidateTransferableNodesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.node_type):
@@ -17349,6 +21889,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ValidateTransferableNodesRequest,
     ) -> elasticsearch_20170613_models.ValidateTransferableNodesResponse:
+        """
+        @summary 缩节点校验数据迁移合法性
+        
+        @param request: ValidateTransferableNodesRequest
+        @return: ValidateTransferableNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.validate_transferable_nodes_with_options(instance_id, request, headers, runtime)
@@ -17358,6 +21904,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: elasticsearch_20170613_models.ValidateTransferableNodesRequest,
     ) -> elasticsearch_20170613_models.ValidateTransferableNodesResponse:
+        """
+        @summary 缩节点校验数据迁移合法性
+        
+        @param request: ValidateTransferableNodesRequest
+        @return: ValidateTransferableNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.validate_transferable_nodes_with_options_async(instance_id, request, headers, runtime)
@@ -17369,7 +21921,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CreateInstanceResponse:
         """
-        The configurations of warm nodes.
+        @summary The configurations of dedicated master nodes.
+        
+        @description The configurations of warm nodes.
         
         @param request: CreateInstanceRequest
         @param headers: map
@@ -17443,7 +21997,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> elasticsearch_20170613_models.CreateInstanceResponse:
         """
-        The configurations of warm nodes.
+        @summary The configurations of dedicated master nodes.
+        
+        @description The configurations of warm nodes.
         
         @param request: CreateInstanceRequest
         @param headers: map
@@ -17515,7 +22071,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.CreateInstanceRequest,
     ) -> elasticsearch_20170613_models.CreateInstanceResponse:
         """
-        The configurations of warm nodes.
+        @summary The configurations of dedicated master nodes.
+        
+        @description The configurations of warm nodes.
         
         @param request: CreateInstanceRequest
         @return: CreateInstanceResponse
@@ -17529,7 +22087,9 @@ class Client(OpenApiClient):
         request: elasticsearch_20170613_models.CreateInstanceRequest,
     ) -> elasticsearch_20170613_models.CreateInstanceResponse:
         """
-        The configurations of warm nodes.
+        @summary The configurations of dedicated master nodes.
+        
+        @description The configurations of warm nodes.
         
         @param request: CreateInstanceRequest
         @return: CreateInstanceResponse
