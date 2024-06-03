@@ -242,6 +242,8 @@ class CreateDataLimitRequest(TeaModel):
         # *   **3**: AnalyticDB for MySQL
         # *   **4** :Tablestore
         # *   **5**: ApsaraDB RDS
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The number of sensitive data samples that are collected after sensitive data detection is enabled. Valid values:
         # 
@@ -455,6 +457,8 @@ class CreateRuleRequest(TeaModel):
         # *   **2**: regular expression
         self.category = category
         # The content of the sensitive data detection rule. You can specify a regular expression or keywords that are used to match sensitive fields or text.
+        # 
+        # This parameter is required.
         self.content = content
         # The type of the content in the sensitive data detection rule. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates attempts to exploit SQL injections. The value 2 indicates bypass by using SQL injections. The value 3 indicates abuse of stored procedures. The value 4 indicates buffer overflow. The value 5 indicates SQL injections based on errors.
         self.content_category = content_category
@@ -471,6 +475,8 @@ class CreateRuleRequest(TeaModel):
         # *   **2**: dictionary-based match
         self.match_type = match_type
         # The name of the sensitive data detection rule.
+        # 
+        # This parameter is required.
         self.name = name
         # The name of the service to which data in the column of the table belongs. Valid values include **MaxCompute**, **OSS**, **ADS**, **OTS**, and **RDS**.
         self.product_code = product_code
@@ -695,10 +701,14 @@ class CreateScanTaskRequest(TeaModel):
         task_user_name: str = None,
     ):
         # The unique ID of the data asset, such as an instance, a database, and a bucket. You can call the [DescribeDataLimits](~~DescribeDataLimits~~) operation to query the unique ID.
+        # 
+        # This parameter is required.
         self.data_limit_id = data_limit_id
         # This parameter is deprecated.
         self.feature_type = feature_type
         # The interval between two consecutive custom scan tasks. Unit: days. Valid values: 1 to 2147483648.
+        # 
+        # This parameter is required.
         self.interval_day = interval_day
         # The language of the content within the request and response.
         # 
@@ -708,10 +718,16 @@ class CreateScanTaskRequest(TeaModel):
         # The data to be scanned in the Object Storage Service (OSS) bucket. Prefix match, suffix match, and regular expression match are supported.
         self.oss_scan_path = oss_scan_path
         # The type of the service to which the data assets to be scanned belong. Valid values include **1**, **2**, **3**, **4**, and **5**. The value 1 indicates MaxCompute. The value 2 indicates OSS. The value 3 indicates AnalyticDB for MySQL. The value 4 indicates Tablestore. The value 5 indicates ApsaraDB RDS.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The time when the scan task is executed next time. Unit: hours.
+        # 
+        # This parameter is required.
         self.run_hour = run_hour
         # The time when the scan task is executed next time. Unit: minutes.
+        # 
+        # This parameter is required.
         self.run_minute = run_minute
         # The matching rule that specifies the scan scope of the custom scan task. This parameter takes effect only if you set the **ScanRangeContent** parameter. Valid values:
         # 
@@ -719,12 +735,18 @@ class CreateScanTaskRequest(TeaModel):
         # *   **1**: prefix match
         # *   **2**: suffix match
         # *   **3**: regular expression match
+        # 
+        # This parameter is required.
         self.scan_range = scan_range
         # The data to be scanned in a structured data asset. Prefix match, suffix match, and regular expression match are supported.
+        # 
+        # This parameter is required.
         self.scan_range_content = scan_range_content
         # This parameter is deprecated.
         self.source_ip = source_ip
         # The name of the scan task.
+        # 
+        # This parameter is required.
         self.task_name = task_name
         # The account that is used to create the scan task.
         self.task_user_name = task_user_name
@@ -1010,6 +1032,8 @@ class DeleteDataLimitRequest(TeaModel):
         # The ID of the data asset.
         # 
         # You can call the DescribeDataLimits operation to query the IDs of data assets. The value of the Id response parameter indicates the ID of a data asset.
+        # 
+        # This parameter is required.
         self.id = id
         # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
         # 
@@ -1131,6 +1155,8 @@ class DeleteRuleRequest(TeaModel):
         # This parameter is deprecated.
         self.feature_type = feature_type
         # The ID of the sensitive data detection rule.
+        # 
+        # This parameter is required.
         self.id = id
         # The language of the content within the request and response. Valid values: **zh** and **en**. The value zh indicates Chinese, and the value en indicates English.
         self.lang = lang
@@ -3211,6 +3237,8 @@ class DescribeDataLimitDetailRequest(TeaModel):
         # The unique ID of the data asset that you want to query.
         # 
         # > You can call the [DescribeDataLimits](~~DescribeDataLimits~~) operation to query the ID of the data asset.
+        # 
+        # This parameter is required.
         self.id = id
         # The language of the content within the request and response. Valid values:
         # 
@@ -5504,10 +5532,12 @@ class DescribeDataObjectColumnDetailV2Request(TeaModel):
     ):
         self.current_page = current_page
         self.feature_type = feature_type
+        # This parameter is required.
         self.id = id
         self.lang = lang
         self.page_size = page_size
         self.product_id = product_id
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -5819,6 +5849,7 @@ class DescribeDataObjectsRequest(TeaModel):
         self.query_name = query_name
         self.risk_levels = risk_levels
         self.service_region_id = service_region_id
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -5996,6 +6027,7 @@ class DescribeDataObjectsResponseBodyItems(TeaModel):
         id: str = None,
         instance_description: str = None,
         instance_id: str = None,
+        last_modified_time: int = None,
         last_scan_time: int = None,
         member_account: int = None,
         model_tags: List[DescribeDataObjectsResponseBodyItemsModelTags] = None,
@@ -6014,6 +6046,7 @@ class DescribeDataObjectsResponseBodyItems(TeaModel):
         self.id = id
         self.instance_description = instance_description
         self.instance_id = instance_id
+        self.last_modified_time = last_modified_time
         self.last_scan_time = last_scan_time
         self.member_account = member_account
         self.model_tags = model_tags
@@ -6052,6 +6085,8 @@ class DescribeDataObjectsResponseBodyItems(TeaModel):
             result['InstanceDescription'] = self.instance_description
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.last_modified_time is not None:
+            result['LastModifiedTime'] = self.last_modified_time
         if self.last_scan_time is not None:
             result['LastScanTime'] = self.last_scan_time
         if self.member_account is not None:
@@ -6094,6 +6129,8 @@ class DescribeDataObjectsResponseBodyItems(TeaModel):
             self.instance_description = m.get('InstanceDescription')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('LastModifiedTime') is not None:
+            self.last_modified_time = m.get('LastModifiedTime')
         if m.get('LastScanTime') is not None:
             self.last_scan_time = m.get('LastScanTime')
         if m.get('MemberAccount') is not None:
@@ -6386,6 +6423,8 @@ class DescribeEventDetailRequest(TeaModel):
         # The ID of the anomalous event.
         # 
         # > You can call the **DescribeEvents** operation to query the ID of the anomalous event.
+        # 
+        # This parameter is required.
         self.id = id
         # The language of the content within the request and response. Valid values:
         # 
@@ -7854,7 +7893,7 @@ class DescribeInstanceSourcesRequest(TeaModel):
         # *   **InstanceName**: the name of the instance.
         # *   **DatabaseName**: the name of the database.
         self.search_type = search_type
-        # The region in which the data asset resides. For more information, see [Supported regions](~~214257~~).
+        # The region in which the data asset resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/214257.html).
         self.service_region_id = service_region_id
 
     def validate(self):
@@ -8277,7 +8316,7 @@ class DescribeInstancesRequest(TeaModel):
         self.name = name
         # The number of entries to return on each page. Default value: **10**.
         self.page_size = page_size
-        # The name of the service to which the data asset belongs, such as MaxCompute, OSS, and ApsaraDB RDS. For more information about the types of data assets from which DSC can scan for sensitive data, see [Supported data assets](~~212906~~).
+        # The name of the service to which the data asset belongs, such as MaxCompute, OSS, and ApsaraDB RDS. For more information about the types of data assets from which DSC can scan for sensitive data, see [Supported data assets](https://help.aliyun.com/document_detail/212906.html).
         self.product_code = product_code
         # The ID of the service to which the data asset belongs. You can call the [DescribeDataAssets](~~DescribeDataAssets~~) operation to query the ID of the service.
         self.product_id = product_id
@@ -8297,7 +8336,7 @@ class DescribeInstancesRequest(TeaModel):
         self.risk_level_id = risk_level_id
         # The ID of the sensitive data detection rule that the data asset hits. You can call the [DescribeRules](~~DescribeRules~~) operation and obtain the ID of the sensitive data detection rule from the **Id** response parameter.
         self.rule_id = rule_id
-        # The region where the data asset resides. For more information, see [Supported regions](~~214257~~).
+        # The region where the data asset resides. For more information, see [Supported regions](https://help.aliyun.com/document_detail/214257.html).
         self.service_region_id = service_region_id
 
     def validate(self):
@@ -8446,7 +8485,7 @@ class DescribeInstancesResponseBodyItems(TeaModel):
         self.odps_risk_level_name = odps_risk_level_name
         # The Alibaba Cloud account to which the data asset belongs.
         self.owner = owner
-        # The name of the service to which the data asset belongs, such as MaxCompute, OSS, and ApsaraDB RDS. For more information about the types of data assets that DSC can scan to detect sensitive data, see [Supported data assets](~~212906~~).
+        # The name of the service to which the data asset belongs, such as MaxCompute, OSS, and ApsaraDB RDS. For more information about the types of data assets that DSC can scan to detect sensitive data, see [Supported data assets](https://help.aliyun.com/document_detail/212906.html).
         self.product_code = product_code
         # The ID of the service to which the data asset belongs.
         self.product_id = product_id
@@ -8702,7 +8741,9 @@ class DescribeOssObjectDetailRequest(TeaModel):
     ):
         # The ID of the OSS object.
         # 
-        # >  You can call the [DescribeOssObjects](~~410152~~) operation to obtain the ID of the OSS object.
+        # >  You can call the [DescribeOssObjects](https://help.aliyun.com/document_detail/410152.html) operation to obtain the ID of the OSS object.
+        # 
+        # This parameter is required.
         self.id = id
         # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
         # 
@@ -9452,6 +9493,7 @@ class DescribeOssObjectsResponseBodyItems(TeaModel):
         file_id: str = None,
         id: str = None,
         instance_id: int = None,
+        last_modified_time: int = None,
         name: str = None,
         region_id: str = None,
         risk_level_id: int = None,
@@ -9477,6 +9519,7 @@ class DescribeOssObjectsResponseBodyItems(TeaModel):
         self.id = id
         # The ID of the instance to which the OSS object belongs.
         self.instance_id = instance_id
+        self.last_modified_time = last_modified_time
         # The name of the OSS object.
         self.name = name
         # The region ID of the OSS object.
@@ -9528,6 +9571,8 @@ class DescribeOssObjectsResponseBodyItems(TeaModel):
             result['Id'] = self.id
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
+        if self.last_modified_time is not None:
+            result['LastModifiedTime'] = self.last_modified_time
         if self.name is not None:
             result['Name'] = self.name
         if self.region_id is not None:
@@ -9566,6 +9611,8 @@ class DescribeOssObjectsResponseBodyItems(TeaModel):
             self.id = m.get('Id')
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+        if m.get('LastModifiedTime') is not None:
+            self.last_modified_time = m.get('LastModifiedTime')
         if m.get('Name') is not None:
             self.name = m.get('Name')
         if m.get('RegionId') is not None:
@@ -11079,7 +11126,7 @@ class DescribeTablesRequest(TeaModel):
         self.package_id = package_id
         # The number of entries to return on each page. Default value: 10.
         self.page_size = page_size
-        # The name of the service to which the table belongs, such as MaxCompute, OSS, and ApsaraDB RDS. For more information about the types of data assets from which Data Security Center (DSC) can scan for sensitive data, see [Supported data assets](~~212906~~).
+        # The name of the service to which the table belongs, such as MaxCompute, OSS, and ApsaraDB RDS. For more information about the types of data assets from which Data Security Center (DSC) can scan for sensitive data, see [Supported data assets](https://help.aliyun.com/document_detail/212906.html).
         self.product_code = product_code
         # The ID of the service to which the table belongs. You can call the [DescribeDataAssets](~~DescribeDataAssets~~) operation to obtain the ID of the service.
         self.product_id = product_id
@@ -11093,7 +11140,7 @@ class DescribeTablesRequest(TeaModel):
         self.risk_level_id = risk_level_id
         # The ID of the sensitive data detection rule that the table hits. You can call the [DescribeRules](~~DescribeRules~~) operation to obtain the ID of the sensitive data detection rule.
         self.rule_id = rule_id
-        # The region in which DSC is activated. For more information, see [Supported regions](~~214257~~).
+        # The region in which DSC is activated. For more information, see [Supported regions](https://help.aliyun.com/document_detail/214257.html).
         self.service_region_id = service_region_id
         # The ID of the industry-specific rule template.
         self.template_id = template_id
@@ -11245,7 +11292,7 @@ class DescribeTablesResponseBodyItems(TeaModel):
         self.name = name
         # The Alibaba Cloud account to which the table belongs.
         self.owner = owner
-        # The name of the service to which the table belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**. For more information about the types of data assets from which DSC can scan for sensitive data, see [Supported data assets](~~212906~~).
+        # The name of the service to which the table belongs. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**. For more information about the types of data assets from which DSC can scan for sensitive data, see [Supported data assets](https://help.aliyun.com/document_detail/212906.html).
         self.product_code = product_code
         # The ID of the service to which the table belongs.
         self.product_id = product_id
@@ -12063,6 +12110,8 @@ class ExecDatamaskRequest(TeaModel):
         # *   **dataHeaderList**: the names of the columns in which data needs to be de-identified. Specify the column names in accordance with the order of data that needs to be de-identified.
         # *   **dataList**: the data that needs to be de-identified.
         # *   **ruleList**: the IDs of sensitive data detection rules used to detect data that needs to be de-identified. Specify the rule IDs in accordance with the order of data that needs to be de-identified. Each ID identifies a sensitive data detection rule that is used to detect a type of sensitive data. You can call the [DescribeRules](~~DescribeRules~~) operation to query the IDs of sensitive data detection rules.
+        # 
+        # This parameter is required.
         self.data = data
         # This parameter is deprecated.
         self.feature_type = feature_type
@@ -12071,10 +12120,12 @@ class ExecDatamaskRequest(TeaModel):
         # *   **zh_cn**: Simplified Chinese
         # *   **en_us**: English
         self.lang = lang
-        # The ID of the de-identification template. The ID is generated after you create the de-identification template in the [Data Security Center (DSC) console](https://yundun.console.aliyun.com/?\&p=sddpnext#/sddp/dm/template). You can choose **Data desensitization** > **Desensitization Template** in the left-side navigation pane and obtain the ID of the de-identification template from the **Desensitization Template** page.
+        # The ID of the de-identification template. The ID is generated after you create the de-identification template in the [Data Security Center (DSC) console](https://yundun.console.aliyun.com/?\\&p=sddpnext#/sddp/dm/template). You can choose **Data desensitization** > **Desensitization Template** in the left-side navigation pane and obtain the ID of the de-identification template from the **Desensitization Template** page.
         # 
         # *   If you select **Field name** as the matching mode of the template, DSC matches data based on the columns specified by the **dataHeaderList** parameter in the **Data** parameter.
         # *   If you select **Sensitive type** as the matching mode of the template, DSC matches data based on the sensitive data detection rules specified by the **ruleList** parameter in the **Data** parameter.
+        # 
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -12198,6 +12249,8 @@ class ManualTriggerMaskingProcessRequest(TeaModel):
         # The ID of the de-identification task.
         # 
         # The ID of the de-identification task is a string. You can call the DescribeDataMaskingTasks operation to query the ID.
+        # 
+        # This parameter is required.
         self.id = id
         # The language of the content within the request and response, default value zh_cn. Valid values:
         # 
@@ -12341,6 +12394,8 @@ class ModifyDataLimitRequest(TeaModel):
         # The unique ID of the data asset for which you want to modify configuration items.
         # 
         # > You can call the [DescribeDataLimits](~~DescribeDataLimits~~) operation to query the ID of the data asset.
+        # 
+        # This parameter is required.
         self.id = id
         # The language of the content within the request and response. Valid values:
         # 
@@ -12370,6 +12425,8 @@ class ModifyDataLimitRequest(TeaModel):
         # *   **3**: AnalyticDB for MySQL
         # *   **4**: Tablestore
         # *   **5**: ApsaraDB RDS
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The number of sensitive data samples tht are collected after sensitive data detection is enabled. Valid values:
         # 
@@ -12694,6 +12751,8 @@ class ModifyEventStatusRequest(TeaModel):
         # The ID of the anomalous event.
         # 
         # > You can call the **DescribeEvents** operation to query the ID of the anomalous event.
+        # 
+        # This parameter is required.
         self.id = id
         # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
         # 
@@ -12704,6 +12763,8 @@ class ModifyEventStatusRequest(TeaModel):
         # 
         # *   **1**: marks the anomalous event as a false positive.
         # *   **2**: confirms and handles the anomalous event.
+        # 
+        # This parameter is required.
         self.status = status
 
     def validate(self):
@@ -13066,10 +13127,14 @@ class ModifyRuleRequest(TeaModel):
         # *   **5**: keyword
         self.category = category
         # The content of the sensitive data detection rule. You can specify a regular expression, an algorithm, or keywords that are used to match sensitive fields or text.
+        # 
+        # This parameter is required.
         self.content = content
         # The ID of the sensitive data detection rule.
         # 
         # You can call the [DescribeRules](~~DescribeRules~~) operation to obtain the rule ID.
+        # 
+        # This parameter is required.
         self.id = id
         # The language of the content within the request and response. Default value: **zh_cn**. Valid values:
         # 
@@ -13084,6 +13149,8 @@ class ModifyRuleRequest(TeaModel):
         # The name of the sensitive data detection rule.
         # 
         # You can call the [DescribeRules](~~DescribeRules~~) operation to obtain the rule name.
+        # 
+        # This parameter is required.
         self.name = name
         # The service to which the sensitive data detection rule is applied. Valid values include **MaxCompute, OSS, ADS, OTS, and RDS**.
         self.product_code = product_code
@@ -13274,6 +13341,8 @@ class ModifyRuleStatusRequest(TeaModel):
         # 
         # *   **0**: disables the sensitive data detection rule.
         # *   **1**: enables the sensitive data detection rule.
+        # 
+        # This parameter is required.
         self.status = status
 
     def validate(self):
@@ -13391,6 +13460,8 @@ class StopMaskingProcessRequest(TeaModel):
         lang: str = None,
     ):
         # The unique ID of the de-identification task. You can query the task ID by calling the [DescribeDataMaskingTasks](~~DescribeDataMaskingTasks~~) operation.
+        # 
+        # This parameter is required.
         self.id = id
         # The language of the content within the request and response. Valid values:
         # 

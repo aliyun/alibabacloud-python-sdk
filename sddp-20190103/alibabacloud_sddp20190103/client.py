@@ -50,7 +50,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.CreateConfigResponse:
         """
-        You can call this operation to create or restore configurations based on the codes of common configuration items. This allows you to manage the configurations of common configuration items.
+        @summary Modifies the configurations of a common configuration item for alerts.
+        
+        @description You can call this operation to create or restore configurations based on the codes of common configuration items. This allows you to manage the configurations of common configuration items.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -97,7 +99,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.CreateConfigResponse:
         """
-        You can call this operation to create or restore configurations based on the codes of common configuration items. This allows you to manage the configurations of common configuration items.
+        @summary Modifies the configurations of a common configuration item for alerts.
+        
+        @description You can call this operation to create or restore configurations based on the codes of common configuration items. This allows you to manage the configurations of common configuration items.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -143,7 +147,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.CreateConfigRequest,
     ) -> sddp_20190103_models.CreateConfigResponse:
         """
-        You can call this operation to create or restore configurations based on the codes of common configuration items. This allows you to manage the configurations of common configuration items.
+        @summary Modifies the configurations of a common configuration item for alerts.
+        
+        @description You can call this operation to create or restore configurations based on the codes of common configuration items. This allows you to manage the configurations of common configuration items.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -158,7 +164,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.CreateConfigRequest,
     ) -> sddp_20190103_models.CreateConfigResponse:
         """
-        You can call this operation to create or restore configurations based on the codes of common configuration items. This allows you to manage the configurations of common configuration items.
+        @summary Modifies the configurations of a common configuration item for alerts.
+        
+        @description You can call this operation to create or restore configurations based on the codes of common configuration items. This allows you to manage the configurations of common configuration items.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -174,7 +182,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.CreateDataLimitResponse:
         """
-        You can call this operation to authorize DSC to scan data assets to ensure the security of the data assets.
+        @summary Authorizes Data Security Center (DSC) to scan data assets. The data assets can be a database, a project, or a bucket.
+        
+        @description You can call this operation to authorize DSC to scan data assets to ensure the security of the data assets.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -245,7 +255,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.CreateDataLimitResponse:
         """
-        You can call this operation to authorize DSC to scan data assets to ensure the security of the data assets.
+        @summary Authorizes Data Security Center (DSC) to scan data assets. The data assets can be a database, a project, or a bucket.
+        
+        @description You can call this operation to authorize DSC to scan data assets to ensure the security of the data assets.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -315,7 +327,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.CreateDataLimitRequest,
     ) -> sddp_20190103_models.CreateDataLimitResponse:
         """
-        You can call this operation to authorize DSC to scan data assets to ensure the security of the data assets.
+        @summary Authorizes Data Security Center (DSC) to scan data assets. The data assets can be a database, a project, or a bucket.
+        
+        @description You can call this operation to authorize DSC to scan data assets to ensure the security of the data assets.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -330,7 +344,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.CreateDataLimitRequest,
     ) -> sddp_20190103_models.CreateDataLimitResponse:
         """
-        You can call this operation to authorize DSC to scan data assets to ensure the security of the data assets.
+        @summary Authorizes Data Security Center (DSC) to scan data assets. The data assets can be a database, a project, or a bucket.
+        
+        @description You can call this operation to authorize DSC to scan data assets to ensure the security of the data assets.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -345,6 +361,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.CreateRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.CreateRuleResponse:
+        """
+        @summary Creates a custom sensitive data detection rule.
+        
+        @param request: CreateRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -405,6 +428,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.CreateRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.CreateRuleResponse:
+        """
+        @summary Creates a custom sensitive data detection rule.
+        
+        @param request: CreateRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -464,6 +494,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.CreateRuleRequest,
     ) -> sddp_20190103_models.CreateRuleResponse:
+        """
+        @summary Creates a custom sensitive data detection rule.
+        
+        @param request: CreateRuleRequest
+        @return: CreateRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_rule_with_options(request, runtime)
 
@@ -471,6 +507,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.CreateRuleRequest,
     ) -> sddp_20190103_models.CreateRuleResponse:
+        """
+        @summary Creates a custom sensitive data detection rule.
+        
+        @param request: CreateRuleRequest
+        @return: CreateRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_rule_with_options_async(request, runtime)
 
@@ -480,7 +522,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.CreateScanTaskResponse:
         """
-        You can call this operation to create a custom scan task for authorized data assets. You can customize the interval between two consecutive scan tasks and the time when the scan task is executed next time.
+        @summary Creates a custom scan task. The custom scan task is used to scan data assets on which Data Security Center (DSC) is granted the scan permissions for sensitive data.
+        
+        @description You can call this operation to create a custom scan task for authorized data assets. You can customize the interval between two consecutive scan tasks and the time when the scan task is executed next time.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -541,7 +585,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.CreateScanTaskResponse:
         """
-        You can call this operation to create a custom scan task for authorized data assets. You can customize the interval between two consecutive scan tasks and the time when the scan task is executed next time.
+        @summary Creates a custom scan task. The custom scan task is used to scan data assets on which Data Security Center (DSC) is granted the scan permissions for sensitive data.
+        
+        @description You can call this operation to create a custom scan task for authorized data assets. You can customize the interval between two consecutive scan tasks and the time when the scan task is executed next time.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -601,7 +647,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.CreateScanTaskRequest,
     ) -> sddp_20190103_models.CreateScanTaskResponse:
         """
-        You can call this operation to create a custom scan task for authorized data assets. You can customize the interval between two consecutive scan tasks and the time when the scan task is executed next time.
+        @summary Creates a custom scan task. The custom scan task is used to scan data assets on which Data Security Center (DSC) is granted the scan permissions for sensitive data.
+        
+        @description You can call this operation to create a custom scan task for authorized data assets. You can customize the interval between two consecutive scan tasks and the time when the scan task is executed next time.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -616,7 +664,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.CreateScanTaskRequest,
     ) -> sddp_20190103_models.CreateScanTaskResponse:
         """
-        You can call this operation to create a custom scan task for authorized data assets. You can customize the interval between two consecutive scan tasks and the time when the scan task is executed next time.
+        @summary Creates a custom scan task. The custom scan task is used to scan data assets on which Data Security Center (DSC) is granted the scan permissions for sensitive data.
+        
+        @description You can call this operation to create a custom scan task for authorized data assets. You can customize the interval between two consecutive scan tasks and the time when the scan task is executed next time.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -632,7 +682,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.CreateSlrRoleResponse:
         """
-        You can call this operation to allow DSC to access the data assets in services such as Object Storage Service (OSS), ApsaraDB RDS, and MaxCompute. After you call this operation, the system automatically creates a service-linked role named AliyunServiceRoleForSDDP and attaches the AliyunServiceRolePolicyForSDDP policy to the role.
+        @summary Creates a service-linked role for Data Security Center (DSC) to grant DSC the permissions to access data assets in other services.
+        
+        @description You can call this operation to allow DSC to access the data assets in services such as Object Storage Service (OSS), ApsaraDB RDS, and MaxCompute. After you call this operation, the system automatically creates a service-linked role named AliyunServiceRoleForSDDP and attaches the AliyunServiceRolePolicyForSDDP policy to the role.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -673,7 +725,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.CreateSlrRoleResponse:
         """
-        You can call this operation to allow DSC to access the data assets in services such as Object Storage Service (OSS), ApsaraDB RDS, and MaxCompute. After you call this operation, the system automatically creates a service-linked role named AliyunServiceRoleForSDDP and attaches the AliyunServiceRolePolicyForSDDP policy to the role.
+        @summary Creates a service-linked role for Data Security Center (DSC) to grant DSC the permissions to access data assets in other services.
+        
+        @description You can call this operation to allow DSC to access the data assets in services such as Object Storage Service (OSS), ApsaraDB RDS, and MaxCompute. After you call this operation, the system automatically creates a service-linked role named AliyunServiceRoleForSDDP and attaches the AliyunServiceRolePolicyForSDDP policy to the role.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -713,7 +767,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.CreateSlrRoleRequest,
     ) -> sddp_20190103_models.CreateSlrRoleResponse:
         """
-        You can call this operation to allow DSC to access the data assets in services such as Object Storage Service (OSS), ApsaraDB RDS, and MaxCompute. After you call this operation, the system automatically creates a service-linked role named AliyunServiceRoleForSDDP and attaches the AliyunServiceRolePolicyForSDDP policy to the role.
+        @summary Creates a service-linked role for Data Security Center (DSC) to grant DSC the permissions to access data assets in other services.
+        
+        @description You can call this operation to allow DSC to access the data assets in services such as Object Storage Service (OSS), ApsaraDB RDS, and MaxCompute. After you call this operation, the system automatically creates a service-linked role named AliyunServiceRoleForSDDP and attaches the AliyunServiceRolePolicyForSDDP policy to the role.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -728,7 +784,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.CreateSlrRoleRequest,
     ) -> sddp_20190103_models.CreateSlrRoleResponse:
         """
-        You can call this operation to allow DSC to access the data assets in services such as Object Storage Service (OSS), ApsaraDB RDS, and MaxCompute. After you call this operation, the system automatically creates a service-linked role named AliyunServiceRoleForSDDP and attaches the AliyunServiceRolePolicyForSDDP policy to the role.
+        @summary Creates a service-linked role for Data Security Center (DSC) to grant DSC the permissions to access data assets in other services.
+        
+        @description You can call this operation to allow DSC to access the data assets in services such as Object Storage Service (OSS), ApsaraDB RDS, and MaxCompute. After you call this operation, the system automatically creates a service-linked role named AliyunServiceRoleForSDDP and attaches the AliyunServiceRolePolicyForSDDP policy to the role.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -744,7 +802,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DeleteDataLimitResponse:
         """
-        You can call this operation to revoke the permissions on a data asset from Data Security Center (DSC).
+        @summary Revokes the scan permissions on a data asset. The data asset can be a database, an instance, or a bucket.
+        
+        @description You can call this operation to revoke the permissions on a data asset from Data Security Center (DSC).
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -787,7 +847,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DeleteDataLimitResponse:
         """
-        You can call this operation to revoke the permissions on a data asset from Data Security Center (DSC).
+        @summary Revokes the scan permissions on a data asset. The data asset can be a database, an instance, or a bucket.
+        
+        @description You can call this operation to revoke the permissions on a data asset from Data Security Center (DSC).
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -829,7 +891,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DeleteDataLimitRequest,
     ) -> sddp_20190103_models.DeleteDataLimitResponse:
         """
-        You can call this operation to revoke the permissions on a data asset from Data Security Center (DSC).
+        @summary Revokes the scan permissions on a data asset. The data asset can be a database, an instance, or a bucket.
+        
+        @description You can call this operation to revoke the permissions on a data asset from Data Security Center (DSC).
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -844,7 +908,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DeleteDataLimitRequest,
     ) -> sddp_20190103_models.DeleteDataLimitResponse:
         """
-        You can call this operation to revoke the permissions on a data asset from Data Security Center (DSC).
+        @summary Revokes the scan permissions on a data asset. The data asset can be a database, an instance, or a bucket.
+        
+        @description You can call this operation to revoke the permissions on a data asset from Data Security Center (DSC).
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -859,6 +925,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DeleteRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DeleteRuleResponse:
+        """
+        @summary Deletes a custom sensitive data detection rule from Data Security Center (DSC).
+        
+        @param request: DeleteRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.feature_type):
@@ -893,6 +966,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DeleteRuleRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DeleteRuleResponse:
+        """
+        @summary Deletes a custom sensitive data detection rule from Data Security Center (DSC).
+        
+        @param request: DeleteRuleRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteRuleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.feature_type):
@@ -926,6 +1006,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.DeleteRuleRequest,
     ) -> sddp_20190103_models.DeleteRuleResponse:
+        """
+        @summary Deletes a custom sensitive data detection rule from Data Security Center (DSC).
+        
+        @param request: DeleteRuleRequest
+        @return: DeleteRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_rule_with_options(request, runtime)
 
@@ -933,6 +1019,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.DeleteRuleRequest,
     ) -> sddp_20190103_models.DeleteRuleResponse:
+        """
+        @summary Deletes a custom sensitive data detection rule from Data Security Center (DSC).
+        
+        @param request: DeleteRuleRequest
+        @return: DeleteRuleResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_rule_with_options_async(request, runtime)
 
@@ -941,6 +1033,11 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeCategoryTemplateListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeCategoryTemplateListResponse:
+        """
+        @param request: DescribeCategoryTemplateListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCategoryTemplateListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -977,6 +1074,11 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeCategoryTemplateListRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeCategoryTemplateListResponse:
+        """
+        @param request: DescribeCategoryTemplateListRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeCategoryTemplateListResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -1012,6 +1114,10 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.DescribeCategoryTemplateListRequest,
     ) -> sddp_20190103_models.DescribeCategoryTemplateListResponse:
+        """
+        @param request: DescribeCategoryTemplateListRequest
+        @return: DescribeCategoryTemplateListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_category_template_list_with_options(request, runtime)
 
@@ -1019,6 +1125,10 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.DescribeCategoryTemplateListRequest,
     ) -> sddp_20190103_models.DescribeCategoryTemplateListResponse:
+        """
+        @param request: DescribeCategoryTemplateListRequest
+        @return: DescribeCategoryTemplateListResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_category_template_list_with_options_async(request, runtime)
 
@@ -1028,7 +1138,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeCategoryTemplateRuleListResponse:
         """
-        You can call this operation to query rules in a classification template.
+        @summary Queries rules in a classification template by page.
+        
+        @description You can call this operation to query rules in a classification template.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -1075,7 +1187,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeCategoryTemplateRuleListResponse:
         """
-        You can call this operation to query rules in a classification template.
+        @summary Queries rules in a classification template by page.
+        
+        @description You can call this operation to query rules in a classification template.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -1121,7 +1235,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeCategoryTemplateRuleListRequest,
     ) -> sddp_20190103_models.DescribeCategoryTemplateRuleListResponse:
         """
-        You can call this operation to query rules in a classification template.
+        @summary Queries rules in a classification template by page.
+        
+        @description You can call this operation to query rules in a classification template.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -1136,7 +1252,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeCategoryTemplateRuleListRequest,
     ) -> sddp_20190103_models.DescribeCategoryTemplateRuleListResponse:
         """
-        You can call this operation to query rules in a classification template.
+        @summary Queries rules in a classification template by page.
+        
+        @description You can call this operation to query rules in a classification template.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -1152,7 +1270,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeColumnsResponse:
         """
-        You can call this operation to query the data in columns of a table that may contain sensitive data. This helps you analyze sensitive data.
+        @summary Queries data in the columns of the tables that Data Security Center (DSC) is authorized to access. The tables include the tables of MaxCompute and ApsaraDB RDS.
+        
+        @description You can call this operation to query the data in columns of a table that may contain sensitive data. This helps you analyze sensitive data.
         ## [](#)Precautions
         The DescribeColumns operation is changed to DescribeColumnsV2. We recommend that you call the DescribeColumnsV2 operation when you develop your applications.
         ## [](#qps)Limits
@@ -1215,7 +1335,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeColumnsResponse:
         """
-        You can call this operation to query the data in columns of a table that may contain sensitive data. This helps you analyze sensitive data.
+        @summary Queries data in the columns of the tables that Data Security Center (DSC) is authorized to access. The tables include the tables of MaxCompute and ApsaraDB RDS.
+        
+        @description You can call this operation to query the data in columns of a table that may contain sensitive data. This helps you analyze sensitive data.
         ## [](#)Precautions
         The DescribeColumns operation is changed to DescribeColumnsV2. We recommend that you call the DescribeColumnsV2 operation when you develop your applications.
         ## [](#qps)Limits
@@ -1277,7 +1399,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeColumnsRequest,
     ) -> sddp_20190103_models.DescribeColumnsResponse:
         """
-        You can call this operation to query the data in columns of a table that may contain sensitive data. This helps you analyze sensitive data.
+        @summary Queries data in the columns of the tables that Data Security Center (DSC) is authorized to access. The tables include the tables of MaxCompute and ApsaraDB RDS.
+        
+        @description You can call this operation to query the data in columns of a table that may contain sensitive data. This helps you analyze sensitive data.
         ## [](#)Precautions
         The DescribeColumns operation is changed to DescribeColumnsV2. We recommend that you call the DescribeColumnsV2 operation when you develop your applications.
         ## [](#qps)Limits
@@ -1294,7 +1418,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeColumnsRequest,
     ) -> sddp_20190103_models.DescribeColumnsResponse:
         """
-        You can call this operation to query the data in columns of a table that may contain sensitive data. This helps you analyze sensitive data.
+        @summary Queries data in the columns of the tables that Data Security Center (DSC) is authorized to access. The tables include the tables of MaxCompute and ApsaraDB RDS.
+        
+        @description You can call this operation to query the data in columns of a table that may contain sensitive data. This helps you analyze sensitive data.
         ## [](#)Precautions
         The DescribeColumns operation is changed to DescribeColumnsV2. We recommend that you call the DescribeColumnsV2 operation when you develop your applications.
         ## [](#qps)Limits
@@ -1311,6 +1437,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeColumnsV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeColumnsV2Response:
+        """
+        @summary 查询数据安全中心连接授权的MaxCompute、RDS等数据资产表中列的数据
+        
+        @param request: DescribeColumnsV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeColumnsV2Response
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -1363,6 +1496,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeColumnsV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeColumnsV2Response:
+        """
+        @summary 查询数据安全中心连接授权的MaxCompute、RDS等数据资产表中列的数据
+        
+        @param request: DescribeColumnsV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeColumnsV2Response
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -1414,6 +1554,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.DescribeColumnsV2Request,
     ) -> sddp_20190103_models.DescribeColumnsV2Response:
+        """
+        @summary 查询数据安全中心连接授权的MaxCompute、RDS等数据资产表中列的数据
+        
+        @param request: DescribeColumnsV2Request
+        @return: DescribeColumnsV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_columns_v2with_options(request, runtime)
 
@@ -1421,6 +1567,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.DescribeColumnsV2Request,
     ) -> sddp_20190103_models.DescribeColumnsV2Response:
+        """
+        @summary 查询数据安全中心连接授权的MaxCompute、RDS等数据资产表中列的数据
+        
+        @param request: DescribeColumnsV2Request
+        @return: DescribeColumnsV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_columns_v2with_options_async(request, runtime)
 
@@ -1429,6 +1581,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeConfigsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeConfigsResponse:
+        """
+        @summary Queries common configuration items for alerts.
+        
+        @param request: DescribeConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeConfigsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -1457,6 +1616,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeConfigsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeConfigsResponse:
+        """
+        @summary Queries common configuration items for alerts.
+        
+        @param request: DescribeConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeConfigsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -1484,6 +1650,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.DescribeConfigsRequest,
     ) -> sddp_20190103_models.DescribeConfigsResponse:
+        """
+        @summary Queries common configuration items for alerts.
+        
+        @param request: DescribeConfigsRequest
+        @return: DescribeConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_configs_with_options(request, runtime)
 
@@ -1491,6 +1663,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.DescribeConfigsRequest,
     ) -> sddp_20190103_models.DescribeConfigsResponse:
+        """
+        @summary Queries common configuration items for alerts.
+        
+        @param request: DescribeConfigsRequest
+        @return: DescribeConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_configs_with_options_async(request, runtime)
 
@@ -1499,6 +1677,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeDataAssetsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeDataAssetsResponse:
+        """
+        @summary Queries the sensitive data detection results of data assets that Data Security Center (DSC) is authorized to access.
+        
+        @param request: DescribeDataAssetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDataAssetsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -1539,6 +1724,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeDataAssetsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeDataAssetsResponse:
+        """
+        @summary Queries the sensitive data detection results of data assets that Data Security Center (DSC) is authorized to access.
+        
+        @param request: DescribeDataAssetsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDataAssetsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -1578,6 +1770,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.DescribeDataAssetsRequest,
     ) -> sddp_20190103_models.DescribeDataAssetsResponse:
+        """
+        @summary Queries the sensitive data detection results of data assets that Data Security Center (DSC) is authorized to access.
+        
+        @param request: DescribeDataAssetsRequest
+        @return: DescribeDataAssetsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_data_assets_with_options(request, runtime)
 
@@ -1585,6 +1783,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.DescribeDataAssetsRequest,
     ) -> sddp_20190103_models.DescribeDataAssetsResponse:
+        """
+        @summary Queries the sensitive data detection results of data assets that Data Security Center (DSC) is authorized to access.
+        
+        @param request: DescribeDataAssetsRequest
+        @return: DescribeDataAssetsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_data_assets_with_options_async(request, runtime)
 
@@ -1593,6 +1797,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeDataLimitDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeDataLimitDetailResponse:
+        """
+        @summary Queries the details of a data asset, such as a MaxCompute project, an ApsaraDB RDS database, or an Object Storage Service (OSS) bucket, that you authorize Data Security Center (DSC) to access.
+        
+        @param request: DescribeDataLimitDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDataLimitDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.feature_type):
@@ -1627,6 +1838,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeDataLimitDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeDataLimitDetailResponse:
+        """
+        @summary Queries the details of a data asset, such as a MaxCompute project, an ApsaraDB RDS database, or an Object Storage Service (OSS) bucket, that you authorize Data Security Center (DSC) to access.
+        
+        @param request: DescribeDataLimitDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDataLimitDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.feature_type):
@@ -1660,6 +1878,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.DescribeDataLimitDetailRequest,
     ) -> sddp_20190103_models.DescribeDataLimitDetailResponse:
+        """
+        @summary Queries the details of a data asset, such as a MaxCompute project, an ApsaraDB RDS database, or an Object Storage Service (OSS) bucket, that you authorize Data Security Center (DSC) to access.
+        
+        @param request: DescribeDataLimitDetailRequest
+        @return: DescribeDataLimitDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_data_limit_detail_with_options(request, runtime)
 
@@ -1667,6 +1891,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.DescribeDataLimitDetailRequest,
     ) -> sddp_20190103_models.DescribeDataLimitDetailResponse:
+        """
+        @summary Queries the details of a data asset, such as a MaxCompute project, an ApsaraDB RDS database, or an Object Storage Service (OSS) bucket, that you authorize Data Security Center (DSC) to access.
+        
+        @param request: DescribeDataLimitDetailRequest
+        @return: DescribeDataLimitDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_data_limit_detail_with_options_async(request, runtime)
 
@@ -1676,7 +1906,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeDataLimitSetResponse:
         """
-        You can call this operation to query the data assets that are authorized to be scanned. This facilitates resource search and aggregation.
+        @summary Queries data assets, such as instances, databases, and Object Storage Service (OSS) buckets, that you authorize Data Security Center (DSC) to scan in a service.
+        
+        @description You can call this operation to query the data assets that are authorized to be scanned. This facilitates resource search and aggregation.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -1719,7 +1951,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeDataLimitSetResponse:
         """
-        You can call this operation to query the data assets that are authorized to be scanned. This facilitates resource search and aggregation.
+        @summary Queries data assets, such as instances, databases, and Object Storage Service (OSS) buckets, that you authorize Data Security Center (DSC) to scan in a service.
+        
+        @description You can call this operation to query the data assets that are authorized to be scanned. This facilitates resource search and aggregation.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -1761,7 +1995,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeDataLimitSetRequest,
     ) -> sddp_20190103_models.DescribeDataLimitSetResponse:
         """
-        You can call this operation to query the data assets that are authorized to be scanned. This facilitates resource search and aggregation.
+        @summary Queries data assets, such as instances, databases, and Object Storage Service (OSS) buckets, that you authorize Data Security Center (DSC) to scan in a service.
+        
+        @description You can call this operation to query the data assets that are authorized to be scanned. This facilitates resource search and aggregation.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -1776,7 +2012,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeDataLimitSetRequest,
     ) -> sddp_20190103_models.DescribeDataLimitSetResponse:
         """
-        You can call this operation to query the data assets that are authorized to be scanned. This facilitates resource search and aggregation.
+        @summary Queries data assets, such as instances, databases, and Object Storage Service (OSS) buckets, that you authorize Data Security Center (DSC) to scan in a service.
+        
+        @description You can call this operation to query the data assets that are authorized to be scanned. This facilitates resource search and aggregation.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -1791,6 +2029,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeDataLimitsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeDataLimitsResponse:
+        """
+        @summary Queries the data assets such as instances, databases, or buckets that Data Security Center (DSC) is authorized to access.
+        
+        @param request: DescribeDataLimitsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDataLimitsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.audit_status):
@@ -1847,6 +2092,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeDataLimitsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeDataLimitsResponse:
+        """
+        @summary Queries the data assets such as instances, databases, or buckets that Data Security Center (DSC) is authorized to access.
+        
+        @param request: DescribeDataLimitsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDataLimitsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.audit_status):
@@ -1902,6 +2154,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.DescribeDataLimitsRequest,
     ) -> sddp_20190103_models.DescribeDataLimitsResponse:
+        """
+        @summary Queries the data assets such as instances, databases, or buckets that Data Security Center (DSC) is authorized to access.
+        
+        @param request: DescribeDataLimitsRequest
+        @return: DescribeDataLimitsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_data_limits_with_options(request, runtime)
 
@@ -1909,6 +2167,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.DescribeDataLimitsRequest,
     ) -> sddp_20190103_models.DescribeDataLimitsResponse:
+        """
+        @summary Queries the data assets such as instances, databases, or buckets that Data Security Center (DSC) is authorized to access.
+        
+        @param request: DescribeDataLimitsRequest
+        @return: DescribeDataLimitsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_data_limits_with_options_async(request, runtime)
 
@@ -1918,7 +2182,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeDataMaskingRunHistoryResponse:
         """
-        You can call this operation to query the execution information of a static de-identification task, including the status and progress.
+        @summary Queries the execution information about a de-identification task.
+        
+        @description You can call this operation to query the execution information of a static de-identification task, including the status and progress.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -1975,7 +2241,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeDataMaskingRunHistoryResponse:
         """
-        You can call this operation to query the execution information of a static de-identification task, including the status and progress.
+        @summary Queries the execution information about a de-identification task.
+        
+        @description You can call this operation to query the execution information of a static de-identification task, including the status and progress.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -2031,7 +2299,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeDataMaskingRunHistoryRequest,
     ) -> sddp_20190103_models.DescribeDataMaskingRunHistoryResponse:
         """
-        You can call this operation to query the execution information of a static de-identification task, including the status and progress.
+        @summary Queries the execution information about a de-identification task.
+        
+        @description You can call this operation to query the execution information of a static de-identification task, including the status and progress.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -2046,7 +2316,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeDataMaskingRunHistoryRequest,
     ) -> sddp_20190103_models.DescribeDataMaskingRunHistoryResponse:
         """
-        You can call this operation to query the execution information of a static de-identification task, including the status and progress.
+        @summary Queries the execution information about a de-identification task.
+        
+        @description You can call this operation to query the execution information of a static de-identification task, including the status and progress.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -2062,7 +2334,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeDataMaskingTasksResponse:
         """
-        You can call this operation to query static de-identification tasks. This facilitates task queries and management.
+        @summary Queries de-identification tasks.
+        
+        @description You can call this operation to query static de-identification tasks. This facilitates task queries and management.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -2111,7 +2385,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeDataMaskingTasksResponse:
         """
-        You can call this operation to query static de-identification tasks. This facilitates task queries and management.
+        @summary Queries de-identification tasks.
+        
+        @description You can call this operation to query static de-identification tasks. This facilitates task queries and management.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -2159,7 +2435,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeDataMaskingTasksRequest,
     ) -> sddp_20190103_models.DescribeDataMaskingTasksResponse:
         """
-        You can call this operation to query static de-identification tasks. This facilitates task queries and management.
+        @summary Queries de-identification tasks.
+        
+        @description You can call this operation to query static de-identification tasks. This facilitates task queries and management.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -2174,7 +2452,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeDataMaskingTasksRequest,
     ) -> sddp_20190103_models.DescribeDataMaskingTasksResponse:
         """
-        You can call this operation to query static de-identification tasks. This facilitates task queries and management.
+        @summary Queries de-identification tasks.
+        
+        @description You can call this operation to query static de-identification tasks. This facilitates task queries and management.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -2189,6 +2469,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeDataObjectColumnDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeDataObjectColumnDetailResponse:
+        """
+        @summary 查看数据对象列详情
+        
+        @param request: DescribeDataObjectColumnDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDataObjectColumnDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -2229,6 +2516,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeDataObjectColumnDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeDataObjectColumnDetailResponse:
+        """
+        @summary 查看数据对象列详情
+        
+        @param request: DescribeDataObjectColumnDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDataObjectColumnDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -2268,6 +2562,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.DescribeDataObjectColumnDetailRequest,
     ) -> sddp_20190103_models.DescribeDataObjectColumnDetailResponse:
+        """
+        @summary 查看数据对象列详情
+        
+        @param request: DescribeDataObjectColumnDetailRequest
+        @return: DescribeDataObjectColumnDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_data_object_column_detail_with_options(request, runtime)
 
@@ -2275,6 +2575,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.DescribeDataObjectColumnDetailRequest,
     ) -> sddp_20190103_models.DescribeDataObjectColumnDetailResponse:
+        """
+        @summary 查看数据对象列详情
+        
+        @param request: DescribeDataObjectColumnDetailRequest
+        @return: DescribeDataObjectColumnDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_data_object_column_detail_with_options_async(request, runtime)
 
@@ -2283,6 +2589,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeDataObjectColumnDetailV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeDataObjectColumnDetailV2Response:
+        """
+        @summary 查看数据对象列详情V2
+        
+        @param request: DescribeDataObjectColumnDetailV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDataObjectColumnDetailV2Response
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -2323,6 +2636,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeDataObjectColumnDetailV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeDataObjectColumnDetailV2Response:
+        """
+        @summary 查看数据对象列详情V2
+        
+        @param request: DescribeDataObjectColumnDetailV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDataObjectColumnDetailV2Response
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -2362,6 +2682,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.DescribeDataObjectColumnDetailV2Request,
     ) -> sddp_20190103_models.DescribeDataObjectColumnDetailV2Response:
+        """
+        @summary 查看数据对象列详情V2
+        
+        @param request: DescribeDataObjectColumnDetailV2Request
+        @return: DescribeDataObjectColumnDetailV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_data_object_column_detail_v2with_options(request, runtime)
 
@@ -2369,6 +2695,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.DescribeDataObjectColumnDetailV2Request,
     ) -> sddp_20190103_models.DescribeDataObjectColumnDetailV2Response:
+        """
+        @summary 查看数据对象列详情V2
+        
+        @param request: DescribeDataObjectColumnDetailV2Request
+        @return: DescribeDataObjectColumnDetailV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_data_object_column_detail_v2with_options_async(request, runtime)
 
@@ -2377,6 +2709,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeDataObjectsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeDataObjectsResponse:
+        """
+        @summary 分页查询数据目录对象
+        
+        @param request: DescribeDataObjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDataObjectsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -2437,6 +2776,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeDataObjectsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeDataObjectsResponse:
+        """
+        @summary 分页查询数据目录对象
+        
+        @param request: DescribeDataObjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDataObjectsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -2496,6 +2842,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.DescribeDataObjectsRequest,
     ) -> sddp_20190103_models.DescribeDataObjectsResponse:
+        """
+        @summary 分页查询数据目录对象
+        
+        @param request: DescribeDataObjectsRequest
+        @return: DescribeDataObjectsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_data_objects_with_options(request, runtime)
 
@@ -2503,6 +2855,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.DescribeDataObjectsRequest,
     ) -> sddp_20190103_models.DescribeDataObjectsResponse:
+        """
+        @summary 分页查询数据目录对象
+        
+        @param request: DescribeDataObjectsRequest
+        @return: DescribeDataObjectsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_data_objects_with_options_async(request, runtime)
 
@@ -2511,6 +2869,11 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeDocTypesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeDocTypesResponse:
+        """
+        @param request: DescribeDocTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDocTypesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -2539,6 +2902,11 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeDocTypesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeDocTypesResponse:
+        """
+        @param request: DescribeDocTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDocTypesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.lang):
@@ -2566,6 +2934,10 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.DescribeDocTypesRequest,
     ) -> sddp_20190103_models.DescribeDocTypesResponse:
+        """
+        @param request: DescribeDocTypesRequest
+        @return: DescribeDocTypesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_doc_types_with_options(request, runtime)
 
@@ -2573,6 +2945,10 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.DescribeDocTypesRequest,
     ) -> sddp_20190103_models.DescribeDocTypesResponse:
+        """
+        @param request: DescribeDocTypesRequest
+        @return: DescribeDocTypesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_doc_types_with_options_async(request, runtime)
 
@@ -2581,6 +2957,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeEventDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeEventDetailResponse:
+        """
+        @summary Queries the details of an anomalous event. The details include the time when the anomalous event occurred, and the description and handling status of the anomalous event.
+        
+        @param request: DescribeEventDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEventDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -2611,6 +2994,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeEventDetailRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeEventDetailResponse:
+        """
+        @summary Queries the details of an anomalous event. The details include the time when the anomalous event occurred, and the description and handling status of the anomalous event.
+        
+        @param request: DescribeEventDetailRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEventDetailResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -2640,6 +3030,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.DescribeEventDetailRequest,
     ) -> sddp_20190103_models.DescribeEventDetailResponse:
+        """
+        @summary Queries the details of an anomalous event. The details include the time when the anomalous event occurred, and the description and handling status of the anomalous event.
+        
+        @param request: DescribeEventDetailRequest
+        @return: DescribeEventDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_event_detail_with_options(request, runtime)
 
@@ -2647,6 +3043,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.DescribeEventDetailRequest,
     ) -> sddp_20190103_models.DescribeEventDetailResponse:
+        """
+        @summary Queries the details of an anomalous event. The details include the time when the anomalous event occurred, and the description and handling status of the anomalous event.
+        
+        @param request: DescribeEventDetailRequest
+        @return: DescribeEventDetailResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_event_detail_with_options_async(request, runtime)
 
@@ -2655,6 +3057,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeEventTypesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeEventTypesResponse:
+        """
+        @summary Queries the types of anomalous events.
+        
+        @param request: DescribeEventTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEventTypesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.feature_type):
@@ -2691,6 +3100,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeEventTypesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeEventTypesResponse:
+        """
+        @summary Queries the types of anomalous events.
+        
+        @param request: DescribeEventTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeEventTypesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.feature_type):
@@ -2726,6 +3142,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.DescribeEventTypesRequest,
     ) -> sddp_20190103_models.DescribeEventTypesResponse:
+        """
+        @summary Queries the types of anomalous events.
+        
+        @param request: DescribeEventTypesRequest
+        @return: DescribeEventTypesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_event_types_with_options(request, runtime)
 
@@ -2733,6 +3155,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.DescribeEventTypesRequest,
     ) -> sddp_20190103_models.DescribeEventTypesResponse:
+        """
+        @summary Queries the types of anomalous events.
+        
+        @param request: DescribeEventTypesRequest
+        @return: DescribeEventTypesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_event_types_with_options_async(request, runtime)
 
@@ -2742,7 +3170,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeEventsResponse:
         """
-        You can call this operation to query anomalous events that may involve data leaks. This helps you search for and handle anomalous events.
+        @summary Queries anomalous events.
+        
+        @description You can call this operation to query anomalous events that may involve data leaks. This helps you search for and handle anomalous events.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -2809,7 +3239,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeEventsResponse:
         """
-        You can call this operation to query anomalous events that may involve data leaks. This helps you search for and handle anomalous events.
+        @summary Queries anomalous events.
+        
+        @description You can call this operation to query anomalous events that may involve data leaks. This helps you search for and handle anomalous events.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -2875,7 +3307,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeEventsRequest,
     ) -> sddp_20190103_models.DescribeEventsResponse:
         """
-        You can call this operation to query anomalous events that may involve data leaks. This helps you search for and handle anomalous events.
+        @summary Queries anomalous events.
+        
+        @description You can call this operation to query anomalous events that may involve data leaks. This helps you search for and handle anomalous events.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -2890,7 +3324,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeEventsRequest,
     ) -> sddp_20190103_models.DescribeEventsResponse:
         """
-        You can call this operation to query anomalous events that may involve data leaks. This helps you search for and handle anomalous events.
+        @summary Queries anomalous events.
+        
+        @description You can call this operation to query anomalous events that may involve data leaks. This helps you search for and handle anomalous events.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -2906,7 +3342,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeInstanceSourcesResponse:
         """
-        You can query a list of unauthorized or authorized data assets based on the value of AuthStatus.
+        @summary Queries a list of data assets.
+        
+        @description You can query a list of unauthorized or authorized data assets based on the value of AuthStatus.
         This operation is no longer used for the KMS console of the new version.
         # [](#qps-)QPS limits
         This operation can be called up to 10 times per second for each Alibaba Cloud account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
@@ -2968,7 +3406,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeInstanceSourcesResponse:
         """
-        You can query a list of unauthorized or authorized data assets based on the value of AuthStatus.
+        @summary Queries a list of data assets.
+        
+        @description You can query a list of unauthorized or authorized data assets based on the value of AuthStatus.
         This operation is no longer used for the KMS console of the new version.
         # [](#qps-)QPS limits
         This operation can be called up to 10 times per second for each Alibaba Cloud account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
@@ -3029,7 +3469,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeInstanceSourcesRequest,
     ) -> sddp_20190103_models.DescribeInstanceSourcesResponse:
         """
-        You can query a list of unauthorized or authorized data assets based on the value of AuthStatus.
+        @summary Queries a list of data assets.
+        
+        @description You can query a list of unauthorized or authorized data assets based on the value of AuthStatus.
         This operation is no longer used for the KMS console of the new version.
         # [](#qps-)QPS limits
         This operation can be called up to 10 times per second for each Alibaba Cloud account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
@@ -3045,7 +3487,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeInstanceSourcesRequest,
     ) -> sddp_20190103_models.DescribeInstanceSourcesResponse:
         """
-        You can query a list of unauthorized or authorized data assets based on the value of AuthStatus.
+        @summary Queries a list of data assets.
+        
+        @description You can query a list of unauthorized or authorized data assets based on the value of AuthStatus.
         This operation is no longer used for the KMS console of the new version.
         # [](#qps-)QPS limits
         This operation can be called up to 10 times per second for each Alibaba Cloud account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
@@ -3062,7 +3506,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeInstancesResponse:
         """
-        When you call the DescribeInstances operation, you can specify parameters such as Name and RiskLevelId to query data assets that meet filter conditions.
+        @summary Queries data assets such as MaxCompute, ApsaraDB RDS, and Object Storage Service (OSS) that you authorize Data Security Center (DSC) to access.
+        
+        @description When you call the DescribeInstances operation, you can specify parameters such as Name and RiskLevelId to query data assets that meet filter conditions.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3117,7 +3563,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeInstancesResponse:
         """
-        When you call the DescribeInstances operation, you can specify parameters such as Name and RiskLevelId to query data assets that meet filter conditions.
+        @summary Queries data assets such as MaxCompute, ApsaraDB RDS, and Object Storage Service (OSS) that you authorize Data Security Center (DSC) to access.
+        
+        @description When you call the DescribeInstances operation, you can specify parameters such as Name and RiskLevelId to query data assets that meet filter conditions.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3171,7 +3619,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeInstancesRequest,
     ) -> sddp_20190103_models.DescribeInstancesResponse:
         """
-        When you call the DescribeInstances operation, you can specify parameters such as Name and RiskLevelId to query data assets that meet filter conditions.
+        @summary Queries data assets such as MaxCompute, ApsaraDB RDS, and Object Storage Service (OSS) that you authorize Data Security Center (DSC) to access.
+        
+        @description When you call the DescribeInstances operation, you can specify parameters such as Name and RiskLevelId to query data assets that meet filter conditions.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3186,7 +3636,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeInstancesRequest,
     ) -> sddp_20190103_models.DescribeInstancesResponse:
         """
-        When you call the DescribeInstances operation, you can specify parameters such as Name and RiskLevelId to query data assets that meet filter conditions.
+        @summary Queries data assets such as MaxCompute, ApsaraDB RDS, and Object Storage Service (OSS) that you authorize Data Security Center (DSC) to access.
+        
+        @description When you call the DescribeInstances operation, you can specify parameters such as Name and RiskLevelId to query data assets that meet filter conditions.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3202,7 +3654,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeOssObjectDetailResponse:
         """
-        You can call this operation to query the details of an Object Storage Service (OSS) object. This helps you locate sensitive data detected in OSS.
+        @summary Queries the details of an Object Storage Service (OSS) object that Data Security Center (DSC) is authorized to access.
+        
+        @description You can call this operation to query the details of an Object Storage Service (OSS) object. This helps you locate sensitive data detected in OSS.
         ## [](#)Precautions
         The DescribeOssObjectDetail operation is chagned to DescribeOssObjectDetailV2. We recommend that you call the DescribeOssObjectDetailV2 operation when you develop your applications.
         ## [](#qps)Limits
@@ -3243,7 +3697,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeOssObjectDetailResponse:
         """
-        You can call this operation to query the details of an Object Storage Service (OSS) object. This helps you locate sensitive data detected in OSS.
+        @summary Queries the details of an Object Storage Service (OSS) object that Data Security Center (DSC) is authorized to access.
+        
+        @description You can call this operation to query the details of an Object Storage Service (OSS) object. This helps you locate sensitive data detected in OSS.
         ## [](#)Precautions
         The DescribeOssObjectDetail operation is chagned to DescribeOssObjectDetailV2. We recommend that you call the DescribeOssObjectDetailV2 operation when you develop your applications.
         ## [](#qps)Limits
@@ -3283,7 +3739,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeOssObjectDetailRequest,
     ) -> sddp_20190103_models.DescribeOssObjectDetailResponse:
         """
-        You can call this operation to query the details of an Object Storage Service (OSS) object. This helps you locate sensitive data detected in OSS.
+        @summary Queries the details of an Object Storage Service (OSS) object that Data Security Center (DSC) is authorized to access.
+        
+        @description You can call this operation to query the details of an Object Storage Service (OSS) object. This helps you locate sensitive data detected in OSS.
         ## [](#)Precautions
         The DescribeOssObjectDetail operation is chagned to DescribeOssObjectDetailV2. We recommend that you call the DescribeOssObjectDetailV2 operation when you develop your applications.
         ## [](#qps)Limits
@@ -3300,7 +3758,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeOssObjectDetailRequest,
     ) -> sddp_20190103_models.DescribeOssObjectDetailResponse:
         """
-        You can call this operation to query the details of an Object Storage Service (OSS) object. This helps you locate sensitive data detected in OSS.
+        @summary Queries the details of an Object Storage Service (OSS) object that Data Security Center (DSC) is authorized to access.
+        
+        @description You can call this operation to query the details of an Object Storage Service (OSS) object. This helps you locate sensitive data detected in OSS.
         ## [](#)Precautions
         The DescribeOssObjectDetail operation is chagned to DescribeOssObjectDetailV2. We recommend that you call the DescribeOssObjectDetailV2 operation when you develop your applications.
         ## [](#qps)Limits
@@ -3317,6 +3777,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeOssObjectDetailV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeOssObjectDetailV2Response:
+        """
+        @summary 调用本接口查询数据安全中心连接授权的OSS的单个存储对象的详细信息
+        
+        @param request: DescribeOssObjectDetailV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOssObjectDetailV2Response
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -3347,6 +3814,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeOssObjectDetailV2Request,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeOssObjectDetailV2Response:
+        """
+        @summary 调用本接口查询数据安全中心连接授权的OSS的单个存储对象的详细信息
+        
+        @param request: DescribeOssObjectDetailV2Request
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOssObjectDetailV2Response
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -3376,6 +3850,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.DescribeOssObjectDetailV2Request,
     ) -> sddp_20190103_models.DescribeOssObjectDetailV2Response:
+        """
+        @summary 调用本接口查询数据安全中心连接授权的OSS的单个存储对象的详细信息
+        
+        @param request: DescribeOssObjectDetailV2Request
+        @return: DescribeOssObjectDetailV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_oss_object_detail_v2with_options(request, runtime)
 
@@ -3383,6 +3863,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.DescribeOssObjectDetailV2Request,
     ) -> sddp_20190103_models.DescribeOssObjectDetailV2Response:
+        """
+        @summary 调用本接口查询数据安全中心连接授权的OSS的单个存储对象的详细信息
+        
+        @param request: DescribeOssObjectDetailV2Request
+        @return: DescribeOssObjectDetailV2Response
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_oss_object_detail_v2with_options_async(request, runtime)
 
@@ -3391,6 +3877,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeOssObjectsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeOssObjectsResponse:
+        """
+        @summary Queries Object Storage Service (OSS) objects that you authorize Data Security Center (DSC) to access.
+        
+        @param request: DescribeOssObjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOssObjectsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -3441,6 +3934,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeOssObjectsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeOssObjectsResponse:
+        """
+        @summary Queries Object Storage Service (OSS) objects that you authorize Data Security Center (DSC) to access.
+        
+        @param request: DescribeOssObjectsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOssObjectsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.current_page):
@@ -3490,6 +3990,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.DescribeOssObjectsRequest,
     ) -> sddp_20190103_models.DescribeOssObjectsResponse:
+        """
+        @summary Queries Object Storage Service (OSS) objects that you authorize Data Security Center (DSC) to access.
+        
+        @param request: DescribeOssObjectsRequest
+        @return: DescribeOssObjectsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_oss_objects_with_options(request, runtime)
 
@@ -3497,6 +4003,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.DescribeOssObjectsRequest,
     ) -> sddp_20190103_models.DescribeOssObjectsResponse:
+        """
+        @summary Queries Object Storage Service (OSS) objects that you authorize Data Security Center (DSC) to access.
+        
+        @param request: DescribeOssObjectsRequest
+        @return: DescribeOssObjectsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_oss_objects_with_options_async(request, runtime)
 
@@ -3506,7 +4018,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribePackagesResponse:
         """
-        You can call this operation to query MaxCompute packages that are scanned by DSC. This helps you search for MaxCompute packages and view the summary of MaxCompute packages.
+        @summary Queries information about the MaxCompute packages that Data Security Center (DSC) is authorized to access. The information includes the names of MaxCompute packages, the accounts of MaxCompute package owners, and the sensitivity levels of MaxCompute packages.
+        
+        @description You can call this operation to query MaxCompute packages that are scanned by DSC. This helps you search for MaxCompute packages and view the summary of MaxCompute packages.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3557,7 +4071,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribePackagesResponse:
         """
-        You can call this operation to query MaxCompute packages that are scanned by DSC. This helps you search for MaxCompute packages and view the summary of MaxCompute packages.
+        @summary Queries information about the MaxCompute packages that Data Security Center (DSC) is authorized to access. The information includes the names of MaxCompute packages, the accounts of MaxCompute package owners, and the sensitivity levels of MaxCompute packages.
+        
+        @description You can call this operation to query MaxCompute packages that are scanned by DSC. This helps you search for MaxCompute packages and view the summary of MaxCompute packages.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3607,7 +4123,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribePackagesRequest,
     ) -> sddp_20190103_models.DescribePackagesResponse:
         """
-        You can call this operation to query MaxCompute packages that are scanned by DSC. This helps you search for MaxCompute packages and view the summary of MaxCompute packages.
+        @summary Queries information about the MaxCompute packages that Data Security Center (DSC) is authorized to access. The information includes the names of MaxCompute packages, the accounts of MaxCompute package owners, and the sensitivity levels of MaxCompute packages.
+        
+        @description You can call this operation to query MaxCompute packages that are scanned by DSC. This helps you search for MaxCompute packages and view the summary of MaxCompute packages.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3622,7 +4140,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribePackagesRequest,
     ) -> sddp_20190103_models.DescribePackagesResponse:
         """
-        You can call this operation to query MaxCompute packages that are scanned by DSC. This helps you search for MaxCompute packages and view the summary of MaxCompute packages.
+        @summary Queries information about the MaxCompute packages that Data Security Center (DSC) is authorized to access. The information includes the names of MaxCompute packages, the accounts of MaxCompute package owners, and the sensitivity levels of MaxCompute packages.
+        
+        @description You can call this operation to query MaxCompute packages that are scanned by DSC. This helps you search for MaxCompute packages and view the summary of MaxCompute packages.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3637,6 +4157,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeParentInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeParentInstanceResponse:
+        """
+        @summary 获取一级授权列表
+        
+        @param request: DescribeParentInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeParentInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auth_status):
@@ -3687,6 +4214,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeParentInstanceRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeParentInstanceResponse:
+        """
+        @summary 获取一级授权列表
+        
+        @param request: DescribeParentInstanceRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeParentInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.auth_status):
@@ -3736,6 +4270,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.DescribeParentInstanceRequest,
     ) -> sddp_20190103_models.DescribeParentInstanceResponse:
+        """
+        @summary 获取一级授权列表
+        
+        @param request: DescribeParentInstanceRequest
+        @return: DescribeParentInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_parent_instance_with_options(request, runtime)
 
@@ -3743,6 +4283,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.DescribeParentInstanceRequest,
     ) -> sddp_20190103_models.DescribeParentInstanceResponse:
+        """
+        @summary 获取一级授权列表
+        
+        @param request: DescribeParentInstanceRequest
+        @return: DescribeParentInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_parent_instance_with_options_async(request, runtime)
 
@@ -3752,7 +4298,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeRiskLevelsResponse:
         """
-        You can call this operation to query the sensitivity levels that are defined in the current rule template provided by DSC. This helps you learn about the number of times that each sensitivity level is referenced in the rule template and the highest sensitivity level.
+        @summary Queries the sensitivity levels that are defined in a rule template provided by Data Security Center (DSC).
+        
+        @description You can call this operation to query the sensitivity levels that are defined in the current rule template provided by DSC. This helps you learn about the number of times that each sensitivity level is referenced in the rule template and the highest sensitivity level.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3793,7 +4341,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeRiskLevelsResponse:
         """
-        You can call this operation to query the sensitivity levels that are defined in the current rule template provided by DSC. This helps you learn about the number of times that each sensitivity level is referenced in the rule template and the highest sensitivity level.
+        @summary Queries the sensitivity levels that are defined in a rule template provided by Data Security Center (DSC).
+        
+        @description You can call this operation to query the sensitivity levels that are defined in the current rule template provided by DSC. This helps you learn about the number of times that each sensitivity level is referenced in the rule template and the highest sensitivity level.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3833,7 +4383,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeRiskLevelsRequest,
     ) -> sddp_20190103_models.DescribeRiskLevelsResponse:
         """
-        You can call this operation to query the sensitivity levels that are defined in the current rule template provided by DSC. This helps you learn about the number of times that each sensitivity level is referenced in the rule template and the highest sensitivity level.
+        @summary Queries the sensitivity levels that are defined in a rule template provided by Data Security Center (DSC).
+        
+        @description You can call this operation to query the sensitivity levels that are defined in the current rule template provided by DSC. This helps you learn about the number of times that each sensitivity level is referenced in the rule template and the highest sensitivity level.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3848,7 +4400,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeRiskLevelsRequest,
     ) -> sddp_20190103_models.DescribeRiskLevelsResponse:
         """
-        You can call this operation to query the sensitivity levels that are defined in the current rule template provided by DSC. This helps you learn about the number of times that each sensitivity level is referenced in the rule template and the highest sensitivity level.
+        @summary Queries the sensitivity levels that are defined in a rule template provided by Data Security Center (DSC).
+        
+        @description You can call this operation to query the sensitivity levels that are defined in the current rule template provided by DSC. This helps you learn about the number of times that each sensitivity level is referenced in the rule template and the highest sensitivity level.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -3863,6 +4417,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeRulesResponse:
+        """
+        @summary Queries sensitive data detection rules.
+        
+        @param request: DescribeRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -3925,6 +4486,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeRulesResponse:
+        """
+        @summary Queries sensitive data detection rules.
+        
+        @param request: DescribeRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.category):
@@ -3986,6 +4554,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.DescribeRulesRequest,
     ) -> sddp_20190103_models.DescribeRulesResponse:
+        """
+        @summary Queries sensitive data detection rules.
+        
+        @param request: DescribeRulesRequest
+        @return: DescribeRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_rules_with_options(request, runtime)
 
@@ -3993,6 +4567,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.DescribeRulesRequest,
     ) -> sddp_20190103_models.DescribeRulesResponse:
+        """
+        @summary Queries sensitive data detection rules.
+        
+        @param request: DescribeRulesRequest
+        @return: DescribeRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_rules_with_options_async(request, runtime)
 
@@ -4002,7 +4582,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeTablesResponse:
         """
-        When you call the DescribeTables operation to query tables, you can specify parameters such as Name and RiskLevelId to filter tables.
+        @summary Queries tables in data assets, such as MaxCompute projects and ApsaraDB RDS instances, that you authorize Data Security Center (DSC) to access.
+        
+        @description When you call the DescribeTables operation to query tables, you can specify parameters such as Name and RiskLevelId to filter tables.
         # Limits
         You can send up to 10 requests per second to call this operation by using your Alibaba Cloud account. If you send excessive requests, throttling is implemented, and your business may be affected.
         
@@ -4061,7 +4643,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeTablesResponse:
         """
-        When you call the DescribeTables operation to query tables, you can specify parameters such as Name and RiskLevelId to filter tables.
+        @summary Queries tables in data assets, such as MaxCompute projects and ApsaraDB RDS instances, that you authorize Data Security Center (DSC) to access.
+        
+        @description When you call the DescribeTables operation to query tables, you can specify parameters such as Name and RiskLevelId to filter tables.
         # Limits
         You can send up to 10 requests per second to call this operation by using your Alibaba Cloud account. If you send excessive requests, throttling is implemented, and your business may be affected.
         
@@ -4119,7 +4703,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeTablesRequest,
     ) -> sddp_20190103_models.DescribeTablesResponse:
         """
-        When you call the DescribeTables operation to query tables, you can specify parameters such as Name and RiskLevelId to filter tables.
+        @summary Queries tables in data assets, such as MaxCompute projects and ApsaraDB RDS instances, that you authorize Data Security Center (DSC) to access.
+        
+        @description When you call the DescribeTables operation to query tables, you can specify parameters such as Name and RiskLevelId to filter tables.
         # Limits
         You can send up to 10 requests per second to call this operation by using your Alibaba Cloud account. If you send excessive requests, throttling is implemented, and your business may be affected.
         
@@ -4134,7 +4720,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeTablesRequest,
     ) -> sddp_20190103_models.DescribeTablesResponse:
         """
-        When you call the DescribeTables operation to query tables, you can specify parameters such as Name and RiskLevelId to filter tables.
+        @summary Queries tables in data assets, such as MaxCompute projects and ApsaraDB RDS instances, that you authorize Data Security Center (DSC) to access.
+        
+        @description When you call the DescribeTables operation to query tables, you can specify parameters such as Name and RiskLevelId to filter tables.
         # Limits
         You can send up to 10 requests per second to call this operation by using your Alibaba Cloud account. If you send excessive requests, throttling is implemented, and your business may be affected.
         
@@ -4149,6 +4737,11 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeTemplateAllRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeTemplateAllRulesResponse:
+        """
+        @param request: DescribeTemplateAllRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTemplateAllRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.feature_type):
@@ -4181,6 +4774,11 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeTemplateAllRulesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeTemplateAllRulesResponse:
+        """
+        @param request: DescribeTemplateAllRulesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeTemplateAllRulesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.feature_type):
@@ -4212,6 +4810,10 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.DescribeTemplateAllRulesRequest,
     ) -> sddp_20190103_models.DescribeTemplateAllRulesResponse:
+        """
+        @param request: DescribeTemplateAllRulesRequest
+        @return: DescribeTemplateAllRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_template_all_rules_with_options(request, runtime)
 
@@ -4219,6 +4821,10 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.DescribeTemplateAllRulesRequest,
     ) -> sddp_20190103_models.DescribeTemplateAllRulesResponse:
+        """
+        @param request: DescribeTemplateAllRulesRequest
+        @return: DescribeTemplateAllRulesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_template_all_rules_with_options_async(request, runtime)
 
@@ -4228,7 +4834,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeUserStatusResponse:
         """
-        You can call this operation to query the information about the current account. This helps you get familiar with your account that accesses Data Security Center (DSC).
+        @summary Queries the information about an account.
+        
+        @description You can call this operation to query the information about the current account. This helps you get familiar with your account that accesses Data Security Center (DSC).
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -4267,7 +4875,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DescribeUserStatusResponse:
         """
-        You can call this operation to query the information about the current account. This helps you get familiar with your account that accesses Data Security Center (DSC).
+        @summary Queries the information about an account.
+        
+        @description You can call this operation to query the information about the current account. This helps you get familiar with your account that accesses Data Security Center (DSC).
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -4305,7 +4915,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeUserStatusRequest,
     ) -> sddp_20190103_models.DescribeUserStatusResponse:
         """
-        You can call this operation to query the information about the current account. This helps you get familiar with your account that accesses Data Security Center (DSC).
+        @summary Queries the information about an account.
+        
+        @description You can call this operation to query the information about the current account. This helps you get familiar with your account that accesses Data Security Center (DSC).
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -4320,7 +4932,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DescribeUserStatusRequest,
     ) -> sddp_20190103_models.DescribeUserStatusResponse:
         """
-        You can call this operation to query the information about the current account. This helps you get familiar with your account that accesses Data Security Center (DSC).
+        @summary Queries the information about an account.
+        
+        @description You can call this operation to query the information about the current account. This helps you get familiar with your account that accesses Data Security Center (DSC).
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -4336,7 +4950,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DisableUserConfigResponse:
         """
-        You can call this operation to disable a configuration item based on the code of the configuration item. This helps you modify configurations at the earliest opportunity.
+        @summary Disables a configuration item. After you disable a configuration item, you can call the CreateConfig operation to enable the configuration item by specifying the code of the configuration item for the Code parameter in the request.
+        
+        @description You can call this operation to disable a configuration item based on the code of the configuration item. This helps you modify configurations at the earliest opportunity.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -4377,7 +4993,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.DisableUserConfigResponse:
         """
-        You can call this operation to disable a configuration item based on the code of the configuration item. This helps you modify configurations at the earliest opportunity.
+        @summary Disables a configuration item. After you disable a configuration item, you can call the CreateConfig operation to enable the configuration item by specifying the code of the configuration item for the Code parameter in the request.
+        
+        @description You can call this operation to disable a configuration item based on the code of the configuration item. This helps you modify configurations at the earliest opportunity.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -4417,7 +5035,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DisableUserConfigRequest,
     ) -> sddp_20190103_models.DisableUserConfigResponse:
         """
-        You can call this operation to disable a configuration item based on the code of the configuration item. This helps you modify configurations at the earliest opportunity.
+        @summary Disables a configuration item. After you disable a configuration item, you can call the CreateConfig operation to enable the configuration item by specifying the code of the configuration item for the Code parameter in the request.
+        
+        @description You can call this operation to disable a configuration item based on the code of the configuration item. This helps you modify configurations at the earliest opportunity.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -4432,7 +5052,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.DisableUserConfigRequest,
     ) -> sddp_20190103_models.DisableUserConfigResponse:
         """
-        You can call this operation to disable a configuration item based on the code of the configuration item. This helps you modify configurations at the earliest opportunity.
+        @summary Disables a configuration item. After you disable a configuration item, you can call the CreateConfig operation to enable the configuration item by specifying the code of the configuration item for the Code parameter in the request.
+        
+        @description You can call this operation to disable a configuration item based on the code of the configuration item. This helps you modify configurations at the earliest opportunity.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -4447,6 +5069,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.ExecDatamaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.ExecDatamaskResponse:
+        """
+        @summary Dynamically de-identifies sensitive data.
+        
+        @param request: ExecDatamaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecDatamaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.data):
@@ -4481,6 +5110,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.ExecDatamaskRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.ExecDatamaskResponse:
+        """
+        @summary Dynamically de-identifies sensitive data.
+        
+        @param request: ExecDatamaskRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ExecDatamaskResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.data):
@@ -4514,6 +5150,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.ExecDatamaskRequest,
     ) -> sddp_20190103_models.ExecDatamaskResponse:
+        """
+        @summary Dynamically de-identifies sensitive data.
+        
+        @param request: ExecDatamaskRequest
+        @return: ExecDatamaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.exec_datamask_with_options(request, runtime)
 
@@ -4521,6 +5163,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.ExecDatamaskRequest,
     ) -> sddp_20190103_models.ExecDatamaskResponse:
+        """
+        @summary Dynamically de-identifies sensitive data.
+        
+        @param request: ExecDatamaskRequest
+        @return: ExecDatamaskResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.exec_datamask_with_options_async(request, runtime)
 
@@ -4529,6 +5177,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.ManualTriggerMaskingProcessRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.ManualTriggerMaskingProcessResponse:
+        """
+        @summary Triggers a de-identification task.
+        
+        @param request: ManualTriggerMaskingProcessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ManualTriggerMaskingProcessResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -4559,6 +5214,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.ManualTriggerMaskingProcessRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.ManualTriggerMaskingProcessResponse:
+        """
+        @summary Triggers a de-identification task.
+        
+        @param request: ManualTriggerMaskingProcessRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ManualTriggerMaskingProcessResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -4588,6 +5250,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.ManualTriggerMaskingProcessRequest,
     ) -> sddp_20190103_models.ManualTriggerMaskingProcessResponse:
+        """
+        @summary Triggers a de-identification task.
+        
+        @param request: ManualTriggerMaskingProcessRequest
+        @return: ManualTriggerMaskingProcessResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.manual_trigger_masking_process_with_options(request, runtime)
 
@@ -4595,6 +5263,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.ManualTriggerMaskingProcessRequest,
     ) -> sddp_20190103_models.ManualTriggerMaskingProcessResponse:
+        """
+        @summary Triggers a de-identification task.
+        
+        @param request: ManualTriggerMaskingProcessRequest
+        @return: ManualTriggerMaskingProcessResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.manual_trigger_masking_process_with_options_async(request, runtime)
 
@@ -4603,6 +5277,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.ModifyDataLimitRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.ModifyDataLimitResponse:
+        """
+        @summary Modifies configuration items for a data asset that you authorize Data Security Center (DSC) to access.
+        
+        @param request: ModifyDataLimitRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDataLimitResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.audit_status):
@@ -4663,6 +5344,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.ModifyDataLimitRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.ModifyDataLimitResponse:
+        """
+        @summary Modifies configuration items for a data asset that you authorize Data Security Center (DSC) to access.
+        
+        @param request: ModifyDataLimitRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyDataLimitResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.audit_status):
@@ -4722,6 +5410,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.ModifyDataLimitRequest,
     ) -> sddp_20190103_models.ModifyDataLimitResponse:
+        """
+        @summary Modifies configuration items for a data asset that you authorize Data Security Center (DSC) to access.
+        
+        @param request: ModifyDataLimitRequest
+        @return: ModifyDataLimitResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_data_limit_with_options(request, runtime)
 
@@ -4729,6 +5423,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.ModifyDataLimitRequest,
     ) -> sddp_20190103_models.ModifyDataLimitResponse:
+        """
+        @summary Modifies configuration items for a data asset that you authorize Data Security Center (DSC) to access.
+        
+        @param request: ModifyDataLimitRequest
+        @return: ModifyDataLimitResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_data_limit_with_options_async(request, runtime)
 
@@ -4738,7 +5438,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.ModifyDefaultLevelResponse:
         """
-        You can call this operation to modify the sensitivity levels of data. This helps you manage the sensitivity levels.
+        @summary Changes the sensitivity levels of sensitive data. You can change the default sensitivity levels of data that cannot be classified as sensitive or insensitive, and the sensitivity levels of data that can be classified as sensitive.
+        
+        @description You can call this operation to modify the sensitivity levels of data. This helps you manage the sensitivity levels.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -4779,7 +5481,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.ModifyDefaultLevelResponse:
         """
-        You can call this operation to modify the sensitivity levels of data. This helps you manage the sensitivity levels.
+        @summary Changes the sensitivity levels of sensitive data. You can change the default sensitivity levels of data that cannot be classified as sensitive or insensitive, and the sensitivity levels of data that can be classified as sensitive.
+        
+        @description You can call this operation to modify the sensitivity levels of data. This helps you manage the sensitivity levels.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -4819,7 +5523,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.ModifyDefaultLevelRequest,
     ) -> sddp_20190103_models.ModifyDefaultLevelResponse:
         """
-        You can call this operation to modify the sensitivity levels of data. This helps you manage the sensitivity levels.
+        @summary Changes the sensitivity levels of sensitive data. You can change the default sensitivity levels of data that cannot be classified as sensitive or insensitive, and the sensitivity levels of data that can be classified as sensitive.
+        
+        @description You can call this operation to modify the sensitivity levels of data. This helps you manage the sensitivity levels.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -4834,7 +5540,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.ModifyDefaultLevelRequest,
     ) -> sddp_20190103_models.ModifyDefaultLevelResponse:
         """
-        You can call this operation to modify the sensitivity levels of data. This helps you manage the sensitivity levels.
+        @summary Changes the sensitivity levels of sensitive data. You can change the default sensitivity levels of data that cannot be classified as sensitive or insensitive, and the sensitivity levels of data that can be classified as sensitive.
+        
+        @description You can call this operation to modify the sensitivity levels of data. This helps you manage the sensitivity levels.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -4850,7 +5558,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.ModifyEventStatusResponse:
         """
-        You can call this operation to handle anomalous events that involve data leaks. This helps protect your data assets at the earliest opportunity.
+        @summary Handles an anomalous event.
+        
+        @description You can call this operation to handle anomalous events that involve data leaks. This helps protect your data assets at the earliest opportunity.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -4895,7 +5605,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.ModifyEventStatusResponse:
         """
-        You can call this operation to handle anomalous events that involve data leaks. This helps protect your data assets at the earliest opportunity.
+        @summary Handles an anomalous event.
+        
+        @description You can call this operation to handle anomalous events that involve data leaks. This helps protect your data assets at the earliest opportunity.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -4939,7 +5651,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.ModifyEventStatusRequest,
     ) -> sddp_20190103_models.ModifyEventStatusResponse:
         """
-        You can call this operation to handle anomalous events that involve data leaks. This helps protect your data assets at the earliest opportunity.
+        @summary Handles an anomalous event.
+        
+        @description You can call this operation to handle anomalous events that involve data leaks. This helps protect your data assets at the earliest opportunity.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -4954,7 +5668,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.ModifyEventStatusRequest,
     ) -> sddp_20190103_models.ModifyEventStatusResponse:
         """
-        You can call this operation to handle anomalous events that involve data leaks. This helps protect your data assets at the earliest opportunity.
+        @summary Handles an anomalous event.
+        
+        @description You can call this operation to handle anomalous events that involve data leaks. This helps protect your data assets at the earliest opportunity.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -4969,6 +5685,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.ModifyEventTypeStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.ModifyEventTypeStatusResponse:
+        """
+        @summary Enables the detection of anomalous events of subtypes.
+        
+        @param request: ModifyEventTypeStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyEventTypeStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.feature_type):
@@ -5001,6 +5724,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.ModifyEventTypeStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.ModifyEventTypeStatusResponse:
+        """
+        @summary Enables the detection of anomalous events of subtypes.
+        
+        @param request: ModifyEventTypeStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyEventTypeStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.feature_type):
@@ -5032,6 +5762,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.ModifyEventTypeStatusRequest,
     ) -> sddp_20190103_models.ModifyEventTypeStatusResponse:
+        """
+        @summary Enables the detection of anomalous events of subtypes.
+        
+        @param request: ModifyEventTypeStatusRequest
+        @return: ModifyEventTypeStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_event_type_status_with_options(request, runtime)
 
@@ -5039,6 +5775,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.ModifyEventTypeStatusRequest,
     ) -> sddp_20190103_models.ModifyEventTypeStatusResponse:
+        """
+        @summary Enables the detection of anomalous events of subtypes.
+        
+        @param request: ModifyEventTypeStatusRequest
+        @return: ModifyEventTypeStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_event_type_status_with_options_async(request, runtime)
 
@@ -5048,7 +5790,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.ModifyReportTaskStatusResponse:
         """
-        You can call this operation to enable or disable the report task. After you activate Data Security Center (DSC), the report task is enabled by default. After you disable the report task, you cannot view statistics that are newly generated in the Report Center module, on the Overview page of the Cloud Native Data Audit module, and in the Data security lab module. Existing statistics are not affected.
+        @summary Enables or disables the report task.
+        
+        @description You can call this operation to enable or disable the report task. After you activate Data Security Center (DSC), the report task is enabled by default. After you disable the report task, you cannot view statistics that are newly generated in the Report Center module, on the Overview page of the Cloud Native Data Audit module, and in the Data security lab module. Existing statistics are not affected.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5089,7 +5833,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.ModifyReportTaskStatusResponse:
         """
-        You can call this operation to enable or disable the report task. After you activate Data Security Center (DSC), the report task is enabled by default. After you disable the report task, you cannot view statistics that are newly generated in the Report Center module, on the Overview page of the Cloud Native Data Audit module, and in the Data security lab module. Existing statistics are not affected.
+        @summary Enables or disables the report task.
+        
+        @description You can call this operation to enable or disable the report task. After you activate Data Security Center (DSC), the report task is enabled by default. After you disable the report task, you cannot view statistics that are newly generated in the Report Center module, on the Overview page of the Cloud Native Data Audit module, and in the Data security lab module. Existing statistics are not affected.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5129,7 +5875,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.ModifyReportTaskStatusRequest,
     ) -> sddp_20190103_models.ModifyReportTaskStatusResponse:
         """
-        You can call this operation to enable or disable the report task. After you activate Data Security Center (DSC), the report task is enabled by default. After you disable the report task, you cannot view statistics that are newly generated in the Report Center module, on the Overview page of the Cloud Native Data Audit module, and in the Data security lab module. Existing statistics are not affected.
+        @summary Enables or disables the report task.
+        
+        @description You can call this operation to enable or disable the report task. After you activate Data Security Center (DSC), the report task is enabled by default. After you disable the report task, you cannot view statistics that are newly generated in the Report Center module, on the Overview page of the Cloud Native Data Audit module, and in the Data security lab module. Existing statistics are not affected.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5144,7 +5892,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.ModifyReportTaskStatusRequest,
     ) -> sddp_20190103_models.ModifyReportTaskStatusResponse:
         """
-        You can call this operation to enable or disable the report task. After you activate Data Security Center (DSC), the report task is enabled by default. After you disable the report task, you cannot view statistics that are newly generated in the Report Center module, on the Overview page of the Cloud Native Data Audit module, and in the Data security lab module. Existing statistics are not affected.
+        @summary Enables or disables the report task.
+        
+        @description You can call this operation to enable or disable the report task. After you activate Data Security Center (DSC), the report task is enabled by default. After you disable the report task, you cannot view statistics that are newly generated in the Report Center module, on the Overview page of the Cloud Native Data Audit module, and in the Data security lab module. Existing statistics are not affected.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5160,7 +5910,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.ModifyRuleResponse:
         """
-        When you call this operation, you must configure request parameters to specify the rule name, rule ID, and rule content.
+        @summary Modifies a custom sensitive data detection rule in Data Security Center (DSC).
+        
+        @description When you call this operation, you must configure request parameters to specify the rule name, rule ID, and rule content.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5219,7 +5971,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.ModifyRuleResponse:
         """
-        When you call this operation, you must configure request parameters to specify the rule name, rule ID, and rule content.
+        @summary Modifies a custom sensitive data detection rule in Data Security Center (DSC).
+        
+        @description When you call this operation, you must configure request parameters to specify the rule name, rule ID, and rule content.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5277,7 +6031,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.ModifyRuleRequest,
     ) -> sddp_20190103_models.ModifyRuleResponse:
         """
-        When you call this operation, you must configure request parameters to specify the rule name, rule ID, and rule content.
+        @summary Modifies a custom sensitive data detection rule in Data Security Center (DSC).
+        
+        @description When you call this operation, you must configure request parameters to specify the rule name, rule ID, and rule content.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5292,7 +6048,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.ModifyRuleRequest,
     ) -> sddp_20190103_models.ModifyRuleResponse:
         """
-        When you call this operation, you must configure request parameters to specify the rule name, rule ID, and rule content.
+        @summary Modifies a custom sensitive data detection rule in Data Security Center (DSC).
+        
+        @description When you call this operation, you must configure request parameters to specify the rule name, rule ID, and rule content.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5307,6 +6065,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.ModifyRuleStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.ModifyRuleStatusResponse:
+        """
+        @summary Enables or disables a sensitive data detection rule.
+        
+        @param request: ModifyRuleStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyRuleStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -5341,6 +6106,13 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.ModifyRuleStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.ModifyRuleStatusResponse:
+        """
+        @summary Enables or disables a sensitive data detection rule.
+        
+        @param request: ModifyRuleStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ModifyRuleStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.id):
@@ -5374,6 +6146,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.ModifyRuleStatusRequest,
     ) -> sddp_20190103_models.ModifyRuleStatusResponse:
+        """
+        @summary Enables or disables a sensitive data detection rule.
+        
+        @param request: ModifyRuleStatusRequest
+        @return: ModifyRuleStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.modify_rule_status_with_options(request, runtime)
 
@@ -5381,6 +6159,12 @@ class Client(OpenApiClient):
         self,
         request: sddp_20190103_models.ModifyRuleStatusRequest,
     ) -> sddp_20190103_models.ModifyRuleStatusResponse:
+        """
+        @summary Enables or disables a sensitive data detection rule.
+        
+        @param request: ModifyRuleStatusRequest
+        @return: ModifyRuleStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.modify_rule_status_with_options_async(request, runtime)
 
@@ -5390,7 +6174,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.StopMaskingProcessResponse:
         """
-        You can call this operation to stop a de-identification task that is running. For example, you can stop a de-identification task that is used to de-identify specific data.
+        @summary Stops a de-identification task. After you stop a de-identification task, you can resume the task by calling the ManualTriggerMaskingProcess operation.
+        
+        @description You can call this operation to stop a de-identification task that is running. For example, you can stop a de-identification task that is used to de-identify specific data.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5429,7 +6215,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> sddp_20190103_models.StopMaskingProcessResponse:
         """
-        You can call this operation to stop a de-identification task that is running. For example, you can stop a de-identification task that is used to de-identify specific data.
+        @summary Stops a de-identification task. After you stop a de-identification task, you can resume the task by calling the ManualTriggerMaskingProcess operation.
+        
+        @description You can call this operation to stop a de-identification task that is running. For example, you can stop a de-identification task that is used to de-identify specific data.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5467,7 +6255,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.StopMaskingProcessRequest,
     ) -> sddp_20190103_models.StopMaskingProcessResponse:
         """
-        You can call this operation to stop a de-identification task that is running. For example, you can stop a de-identification task that is used to de-identify specific data.
+        @summary Stops a de-identification task. After you stop a de-identification task, you can resume the task by calling the ManualTriggerMaskingProcess operation.
+        
+        @description You can call this operation to stop a de-identification task that is running. For example, you can stop a de-identification task that is used to de-identify specific data.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
@@ -5482,7 +6272,9 @@ class Client(OpenApiClient):
         request: sddp_20190103_models.StopMaskingProcessRequest,
     ) -> sddp_20190103_models.StopMaskingProcessResponse:
         """
-        You can call this operation to stop a de-identification task that is running. For example, you can stop a de-identification task that is used to de-identify specific data.
+        @summary Stops a de-identification task. After you stop a de-identification task, you can resume the task by calling the ManualTriggerMaskingProcess operation.
+        
+        @description You can call this operation to stop a de-identification task that is running. For example, you can stop a de-identification task that is used to de-identify specific data.
         # Limits
         You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
         
