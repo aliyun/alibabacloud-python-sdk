@@ -11,6 +11,8 @@ class Tag(TeaModel):
         value: str = None,
     ):
         # 标签键。必填参数，不允许为空字符串。最多支持128个字符，不能以aliyun和acs:开头，不能包含http://或https://。
+        # 
+        # This parameter is required.
         self.key = key
         # 标签值。非必填，可以为空字符串。最多支持128个字符，不能以acs:开头，不能包含http://或者https://。
         self.value = value
@@ -505,6 +507,8 @@ class Application(TeaModel):
         application_name: str = None,
     ):
         # 应用名称。从EMR控制台集群创建页面可查看到指定发行版的应用名称列表。
+        # 
+        # This parameter is required.
         self.application_name = application_name
 
     def validate(self):
@@ -539,10 +543,16 @@ class ApplicationConfig(TeaModel):
         node_group_name: str = None,
     ):
         # 应用名称。从EMR控制台集群创建页面可查看到指定发行版的应用名称列表。
+        # 
+        # This parameter is required.
         self.application_name = application_name
         # 应用配置文件名。
+        # 
+        # This parameter is required.
         self.config_file_name = config_file_name
         # 配置项键。
+        # 
+        # This parameter is required.
         self.config_item_key = config_item_key
         # 配置项值。
         self.config_item_value = config_item_value
@@ -608,8 +618,12 @@ class ApplicationConfigFile(TeaModel):
         config_file_name: str = None,
     ):
         # 应用名称。
+        # 
+        # This parameter is required.
         self.application_name = application_name
         # 配置文件名称。
+        # 
+        # This parameter is required.
         self.config_file_name = config_file_name
 
     def validate(self):
@@ -773,6 +787,8 @@ class AutoRenewInstance(TeaModel):
         # emr实例自动续费时长单位。
         self.emr_auto_renew_duration_unit = emr_auto_renew_duration_unit
         # 节点ID。
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -954,17 +970,25 @@ class TriggerCondition(TeaModel):
         # - LT:小于。
         # - GE:大于等于。
         # - LE:小于等于。
+        # 
+        # This parameter is required.
         self.comparison_operator = comparison_operator
         # 指标名称。指标名称需要在 ListAutoScalingMetrics 接口返回的指标名称列表中。
+        # 
+        # This parameter is required.
         self.metric_name = metric_name
         # 统计量名称。取值范围：
         # - MAX：最大值。
         # - MIN：最小值。
         # - AVG：平均值。
+        # 
+        # This parameter is required.
         self.statistics = statistics
         # 指标Tag。
         self.tags = tags
         # 阈值。
+        # 
+        # This parameter is required.
         self.threshold = threshold
 
     def validate(self):
@@ -1065,10 +1089,14 @@ class MetricsTrigger(TeaModel):
         # 冷却时间。 单位为秒
         self.cool_down_interval = cool_down_interval
         # 统计次数。
+        # 
+        # This parameter is required.
         self.evaluation_count = evaluation_count
         # 时间限制。
         self.time_constraints = time_constraints
         # 统计窗口。单位为秒。
+        # 
+        # This parameter is required.
         self.time_window = time_window
 
     def validate(self):
@@ -1143,6 +1171,8 @@ class TimeTrigger(TeaModel):
         # 定时任务触发操作失败后，在此时间内重试。单位为秒，取值范围：0~3600。
         self.launch_expiration_time = launch_expiration_time
         # 启动时间。
+        # 
+        # This parameter is required.
         self.launch_time = launch_time
         # 指定时间规则的执行类型。
         self.recurrence_type = recurrence_type
@@ -1202,7 +1232,6 @@ class ScalingRule(TeaModel):
         activity_type: str = None,
         adjustment_value: int = None,
         metrics_trigger: MetricsTrigger = None,
-        min_adjustment_value: int = None,
         rule_name: str = None,
         time_trigger: TimeTrigger = None,
         trigger_type: str = None,
@@ -1210,14 +1239,19 @@ class ScalingRule(TeaModel):
         # 伸缩活动类型。取值范围：
         # - SCALE_OUT：扩容。
         # - SCALE_IN：缩容。
+        # 
+        # This parameter is required.
         self.activity_type = activity_type
         # 调整值。需要为正数，代表需要扩容或者缩容的实例数量。
+        # 
+        # This parameter is required.
         self.adjustment_value = adjustment_value
         # 按照负载伸缩描述。
         # <p>
         self.metrics_trigger = metrics_trigger
-        self.min_adjustment_value = min_adjustment_value
         # 规则名称。
+        # 
+        # This parameter is required.
         self.rule_name = rule_name
         # 按照时间伸缩描述。
         # <p>
@@ -1225,6 +1259,8 @@ class ScalingRule(TeaModel):
         # 伸缩规则类型。 取值范围：
         # - TIME_TRIGGER: 按时间伸缩。
         # - METRICS_TRIGGER: 按负载伸缩。
+        # 
+        # This parameter is required.
         self.trigger_type = trigger_type
 
     def validate(self):
@@ -1245,8 +1281,6 @@ class ScalingRule(TeaModel):
             result['AdjustmentValue'] = self.adjustment_value
         if self.metrics_trigger is not None:
             result['MetricsTrigger'] = self.metrics_trigger.to_map()
-        if self.min_adjustment_value is not None:
-            result['MinAdjustmentValue'] = self.min_adjustment_value
         if self.rule_name is not None:
             result['RuleName'] = self.rule_name
         if self.time_trigger is not None:
@@ -1264,8 +1298,6 @@ class ScalingRule(TeaModel):
         if m.get('MetricsTrigger') is not None:
             temp_model = MetricsTrigger()
             self.metrics_trigger = temp_model.from_map(m['MetricsTrigger'])
-        if m.get('MinAdjustmentValue') is not None:
-            self.min_adjustment_value = m.get('MinAdjustmentValue')
         if m.get('RuleName') is not None:
             self.rule_name = m.get('RuleName')
         if m.get('TimeTrigger') is not None:
@@ -1468,17 +1500,29 @@ class ByLoadScalingRule(TeaModel):
         time_window: int = None,
     ):
         # 比较符。
+        # 
+        # This parameter is required.
         self.comparison_operator = comparison_operator
         self.cool_down_interval = cool_down_interval
         # 统计次数。
+        # 
+        # This parameter is required.
         self.evaluation_count = evaluation_count
         # 指标名称。指标名称需要在 ListAutoScalingMetrics 接口返回的指标名称列表中。
+        # 
+        # This parameter is required.
         self.metric_name = metric_name
         # 统计量名称。
+        # 
+        # This parameter is required.
         self.statistics = statistics
         # 阈值。
+        # 
+        # This parameter is required.
         self.threshold = threshold
         # 统计窗口。单位为秒。
+        # 
+        # This parameter is required.
         self.time_window = time_window
 
     def validate(self):
@@ -1536,16 +1580,28 @@ class ByLoadScalingRuleSpec(TeaModel):
         time_window: int = None,
     ):
         # 比较符。
+        # 
+        # This parameter is required.
         self.comparison_operator = comparison_operator
         # 统计次数。
+        # 
+        # This parameter is required.
         self.evaluation_count = evaluation_count
         # 指标名称。指标名称需要在 ListAutoScalingMetrics 接口返回的指标名称列表中。
+        # 
+        # This parameter is required.
         self.metric_name = metric_name
         # 统计量名称。
+        # 
+        # This parameter is required.
         self.statistics = statistics
         # 阈值。
+        # 
+        # This parameter is required.
         self.threshold = threshold
         # 统计窗口。单位为秒。
+        # 
+        # This parameter is required.
         self.time_window = time_window
 
     def validate(self):
@@ -1602,6 +1658,8 @@ class ByTimeScalingRule(TeaModel):
         # 定时任务触发操作失败后，在此时间内重试。单位为秒，取值范围：0~3600。
         self.launch_expiration_time = launch_expiration_time
         # 启动时间戳。单位为毫秒。
+        # 
+        # This parameter is required.
         self.launch_time = launch_time
         # 指定时间规则的执行类型。
         self.recurrence_type = recurrence_type
@@ -1660,6 +1718,8 @@ class ByTimeScalingRuleSpec(TeaModel):
         # 重复执行定时任务的结束时间戳。单位为毫秒。
         self.end_time = end_time
         # 启动时间戳。单位为毫秒。
+        # 
+        # This parameter is required.
         self.launch_time = launch_time
         # 指定时间规则的执行类型。
         self.recurrence_type = recurrence_type
@@ -1760,10 +1820,16 @@ class NodeAttributes(TeaModel):
         # ECS访问资源绑定的角色。
         self.ram_role = ram_role
         # 安全组ID。EMR只支持普通安全组，不支持企业安全组。
+        # 
+        # This parameter is required.
         self.security_group_id = security_group_id
         # 专有网络ID。
+        # 
+        # This parameter is required.
         self.vpc_id = vpc_id
         # 可用区ID。
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -1871,9 +1937,13 @@ class SubscriptionConfig(TeaModel):
         # - Month：月。
         self.auto_renew_duration_unit = auto_renew_duration_unit
         # 付费时长。PaymentDurationUnit取值为Month时，取值：1、2、3、4、5、6、7、8、9、12、24、36、48、60。
+        # 
+        # This parameter is required.
         self.payment_duration = payment_duration
         # 付费时长单位。取值范围：
         # - Month：月。
+        # 
+        # This parameter is required.
         self.payment_duration_unit = payment_duration_unit
 
     def validate(self):
@@ -2086,15 +2156,19 @@ class NodeSelector(TeaModel):
     def __init__(
         self,
         node_group_id: str = None,
+        node_group_ids: List[str] = None,
         node_group_name: str = None,
+        node_group_names: List[str] = None,
         node_group_types: List[str] = None,
         node_names: List[str] = None,
         node_select_type: str = None,
     ):
         # 节点组ID。当NodeSelectType取值NodeGroup时，该参数生效。
         self.node_group_id = node_group_id
+        self.node_group_ids = node_group_ids
         # 节点组名称。当NodeSelectType取值NodeGroup，且参数NodeGroupId为空时生效，该参数生效。
         self.node_group_name = node_group_name
+        self.node_group_names = node_group_names
         # 节点组类型。当NodeSelectType取值NodeGroup，且参数NodeGroupId为空时生效。数组元数个数N取值范围：0~10。
         self.node_group_types = node_group_types
         # 节点名称列表。当NodeSelectType取值Node时，该参数生效。
@@ -2103,6 +2177,8 @@ class NodeSelector(TeaModel):
         # - CLUSTER：集群。
         # - NODE_GROUP：节点组。
         # - NODE：节点。
+        # 
+        # This parameter is required.
         self.node_select_type = node_select_type
 
     def validate(self):
@@ -2116,8 +2192,12 @@ class NodeSelector(TeaModel):
         result = dict()
         if self.node_group_id is not None:
             result['NodeGroupId'] = self.node_group_id
+        if self.node_group_ids is not None:
+            result['NodeGroupIds'] = self.node_group_ids
         if self.node_group_name is not None:
             result['NodeGroupName'] = self.node_group_name
+        if self.node_group_names is not None:
+            result['NodeGroupNames'] = self.node_group_names
         if self.node_group_types is not None:
             result['NodeGroupTypes'] = self.node_group_types
         if self.node_names is not None:
@@ -2130,8 +2210,12 @@ class NodeSelector(TeaModel):
         m = m or dict()
         if m.get('NodeGroupId') is not None:
             self.node_group_id = m.get('NodeGroupId')
+        if m.get('NodeGroupIds') is not None:
+            self.node_group_ids = m.get('NodeGroupIds')
         if m.get('NodeGroupName') is not None:
             self.node_group_name = m.get('NodeGroupName')
+        if m.get('NodeGroupNames') is not None:
+            self.node_group_names = m.get('NodeGroupNames')
         if m.get('NodeGroupTypes') is not None:
             self.node_group_types = m.get('NodeGroupTypes')
         if m.get('NodeNames') is not None:
@@ -2448,6 +2532,8 @@ class ComponentInstanceSelector(TeaModel):
         # - APPLICATION：应用级别。
         # - COMPONENT：组件级别。
         # - COMPONENT_INSTANCE：组件实例级别。
+        # 
+        # This parameter is required.
         self.run_action_scope = run_action_scope
 
     def validate(self):
@@ -2528,6 +2614,8 @@ class ComponentLayoutNodeSelector(TeaModel):
         # 节点名称列表。
         self.node_names = node_names
         # 节点选择类型。
+        # 
+        # This parameter is required.
         self.node_select_type = node_select_type
         # 节点开始编号，包含开始编号。
         self.node_start_index = node_start_index
@@ -2716,9 +2804,12 @@ class ConvertNodeGroupParam(TeaModel):
         payment_duration_unit: str = None,
         payment_type: str = None,
     ):
+        # This parameter is required.
         self.node_group_id = node_group_id
+        # This parameter is required.
         self.payment_duration = payment_duration
         self.payment_duration_unit = payment_duration_unit
+        # This parameter is required.
         self.payment_type = payment_type
 
     def validate(self):
@@ -2761,10 +2852,16 @@ class CostOptimizedConfig(TeaModel):
         spot_instance_pools: int = None,
     ):
         # 按量实例个数的最小值。节点组所需要按量实例个数的最小值，取值范围：0~1000。当按量实例个数少于该值时，将优先创建按量实例。
+        # 
+        # This parameter is required.
         self.on_demand_base_capacity = on_demand_base_capacity
         # 节点组满足最小按量实例OnDemandBaseCapacity要求后，超出的实例中按量实例应占的比例，取值范围：0～100。
+        # 
+        # This parameter is required.
         self.on_demand_percentage_above_base_capacity = on_demand_percentage_above_base_capacity
         # 指定可用实例规格的个数，伸缩组将按成本最低的多个规格均衡创建抢占式实例。取值范围：0~10。
+        # 
+        # This parameter is required.
         self.spot_instance_pools = spot_instance_pools
 
     def validate(self):
@@ -3040,6 +3137,8 @@ class DataDisk(TeaModel):
         size: int = None,
     ):
         # 磁盘类型。
+        # 
+        # This parameter is required.
         self.category = category
         # 每个节点磁盘数量。
         self.count = count
@@ -3052,6 +3151,8 @@ class DataDisk(TeaModel):
         # 默认值：PL1。
         self.performance_level = performance_level
         # 单位GB。
+        # 
+        # This parameter is required.
         self.size = size
 
     def validate(self):
@@ -3092,7 +3193,9 @@ class DecreaseNodeGroupParam(TeaModel):
         node_group_id: str = None,
         release_instance_ids: List[str] = None,
     ):
+        # This parameter is required.
         self.node_group_id = node_group_id
+        # This parameter is required.
         self.release_instance_ids = release_instance_ids
 
     def validate(self):
@@ -3451,6 +3554,8 @@ class DiskSize(TeaModel):
         size: int = None,
     ):
         # 磁盘类型。
+        # 
+        # This parameter is required.
         self.category = category
         # 单位GB。
         self.size = size
@@ -3597,8 +3702,12 @@ class IncreaseNodeGroup(TeaModel):
         # 描述。
         self.description = description
         # 节点数量。
+        # 
+        # This parameter is required.
         self.node_count = node_count
         # 节点组ID。
+        # 
+        # This parameter is required.
         self.node_group_id = node_group_id
         # 付费时长。
         self.payment_duration = payment_duration
@@ -4102,6 +4211,7 @@ class NodeCountConstraint(TeaModel):
     ):
         self.max = max
         self.min = min
+        # This parameter is required.
         self.type = type
         self.values = values
 
@@ -4216,6 +4326,8 @@ class SystemDisk(TeaModel):
         size: int = None,
     ):
         # 磁盘类型。
+        # 
+        # This parameter is required.
         self.category = category
         # 每个节点系统盘数量，默认值为1。
         self.count = count
@@ -4228,6 +4340,8 @@ class SystemDisk(TeaModel):
         # 默认值：PL1。
         self.performance_level = performance_level
         # 单位GB。
+        # 
+        # This parameter is required.
         self.size = size
 
     def validate(self):
@@ -4534,6 +4648,8 @@ class NodeGroupConfig(TeaModel):
         # - MASTER：管理类型节点组。
         # - CORE：存储类型节点组。
         # - TASK：计算类型节点组。
+        # 
+        # This parameter is required.
         self.node_group_type = node_group_type
         # 节点扩容策略。取值范围：
         # - COST_OPTIMIZED：成本优化策略。
@@ -5355,6 +5471,8 @@ class Promotion(TeaModel):
         # 优惠券码。
         self.promotion_option_code = promotion_option_code
         # 优惠券号。
+        # 
+        # This parameter is required.
         self.promotion_option_no = promotion_option_no
 
     def validate(self):
@@ -5447,8 +5565,12 @@ class RecommendScalingRule(TeaModel):
         # 伸缩活动类型。取值范围：
         # - SCALE_OUT：扩容。
         # - SCALE_IN：缩容。
+        # 
+        # This parameter is required.
         self.activity_type = activity_type
         # 调整值。需要为正数，代表需要扩容或者缩容的实例数量。
+        # 
+        # This parameter is required.
         self.adjustment_value = adjustment_value
         # 推荐的规格类型。
         self.instance_type = instance_type
@@ -5458,6 +5580,8 @@ class RecommendScalingRule(TeaModel):
         # <p>
         self.metrics_trigger = metrics_trigger
         # 规则名称。
+        # 
+        # This parameter is required.
         self.rule_name = rule_name
         # 按照时间伸缩描述。
         # <p>
@@ -5465,6 +5589,8 @@ class RecommendScalingRule(TeaModel):
         # 伸缩规则类型。 取值范围：
         # - TIME_TRIGGER: 按时间伸缩。
         # - METRICS_TRIGGER: 按负载伸缩。
+        # 
+        # This parameter is required.
         self.trigger_type = trigger_type
 
     def validate(self):
@@ -5534,6 +5660,8 @@ class RenewInstance(TeaModel):
         # emr实例续费时长单位。
         self.emr_renew_duration_unit = emr_renew_duration_unit
         # 节点ID。
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # 续费时长。
         self.renew_duration = renew_duration
@@ -6312,16 +6440,28 @@ class ScalingRuleSpecByLoadScalingRuleSpec(TeaModel):
         time_window: int = None,
     ):
         # 比较符。
+        # 
+        # This parameter is required.
         self.comparison_operator = comparison_operator
         # 统计次数。
+        # 
+        # This parameter is required.
         self.evaluation_count = evaluation_count
         # 指标名称。指标名称需要在 ListAutoScalingMetrics 接口返回的指标名称列表中。
+        # 
+        # This parameter is required.
         self.metric_name = metric_name
         # 统计量名称。
+        # 
+        # This parameter is required.
         self.statistics = statistics
         # 阈值。
+        # 
+        # This parameter is required.
         self.threshold = threshold
         # 统计窗口。单位为秒。
+        # 
+        # This parameter is required.
         self.time_window = time_window
 
     def validate(self):
@@ -6375,6 +6515,8 @@ class ScalingRuleSpecByTimeScalingRuleSpec(TeaModel):
         # 重复执行定时任务的结束时间戳。单位为毫秒。
         self.end_time = end_time
         # 启动时间戳。单位为毫秒。
+        # 
+        # This parameter is required.
         self.launch_time = launch_time
         # 指定时间规则的执行类型。
         self.recurrence_type = recurrence_type
@@ -6425,18 +6567,28 @@ class ScalingRuleSpec(TeaModel):
         scaling_rule_type: str = None,
     ):
         # 调整值。需要为正数，代表需要扩容或者缩容的实例数量。
+        # 
+        # This parameter is required.
         self.adjustment_value = adjustment_value
         # 按照负载伸缩描述。
         self.by_load_scaling_rule_spec = by_load_scaling_rule_spec
         # 按照时间伸缩描述。
         self.by_time_scaling_rule_spec = by_time_scaling_rule_spec
         # 冷却时间。单位为秒，取值范围在30~10800秒之间。
+        # 
+        # This parameter is required.
         self.cool_down_interval = cool_down_interval
         # 伸缩活动类型。
+        # 
+        # This parameter is required.
         self.scaling_activity_type = scaling_activity_type
         # 规则名称。
+        # 
+        # This parameter is required.
         self.scaling_rule_name = scaling_rule_name
         # 伸缩规则类型。
+        # 
+        # This parameter is required.
         self.scaling_rule_type = scaling_rule_type
 
     def validate(self):
@@ -6674,14 +6826,20 @@ class Script(TeaModel):
         # 脚本的执行时机。
         self.execution_moment = execution_moment
         # 节点选择器。
+        # 
+        # This parameter is required.
         self.node_selector = node_selector
         # 脚本执行优先级。取值范围：1~100。
         self.priority = priority
         # 脚本执行参数。
         self.script_args = script_args
         # 脚本名称。长度为1~64个字符，必须以大小字母或中文开头，不能以http://和https://开头。可以包含中文、英文、数字、下划线（_）、或者短划线（-）
+        # 
+        # This parameter is required.
         self.script_name = script_name
         # 脚本所在OSS路径。
+        # 
+        # This parameter is required.
         self.script_path = script_path
 
     def validate(self):
@@ -6934,8 +7092,12 @@ class UpdateSpecNodeGroup(TeaModel):
         node_group_id: str = None,
     ):
         # 新实例类型。
+        # 
+        # This parameter is required.
         self.new_instance_type = new_instance_type
         # 节点组ID。
+        # 
+        # This parameter is required.
         self.node_group_id = node_group_id
 
     def validate(self):
@@ -7007,10 +7169,16 @@ class User(TeaModel):
         # 用户组。
         self.group = group
         # 用户密码。
+        # 
+        # This parameter is required.
         self.password = password
         # 用户ID。
+        # 
+        # This parameter is required.
         self.user_id = user_id
         # 用户名称。
+        # 
+        # This parameter is required.
         self.user_name = user_name
         # 用户类型。
         self.user_type = user_type
@@ -7100,14 +7268,22 @@ class CreateApiTemplateRequest(TeaModel):
         template_name: str = None,
     ):
         # 接口名。
+        # 
+        # This parameter is required.
         self.api_name = api_name
         # 接口request内容。
+        # 
+        # This parameter is required.
         self.content = content
         # 地域ID。
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # 资源组ID。
         self.resource_group_id = resource_group_id
         # 集群模板名字。
+        # 
+        # This parameter is required.
         self.template_name = template_name
 
     def validate(self):
@@ -7247,15 +7423,19 @@ class CreateClusterRequest(TeaModel):
         subscription_config: SubscriptionConfig = None,
         tags: List[Tag] = None,
     ):
-        # The configurations of the applications. Valid values of N: 1 to 1000.
+        # The application configurations. You can specify a maximum of 1,000 items.
         self.application_configs = application_configs
-        # The applications that you want to add to the cluster. Valid values of N: 1 to 100.
+        # The applications. You can specify a maximum of 100 items.
+        # 
+        # This parameter is required.
         self.applications = applications
-        # The array of scripts for the bootstrap actions. Valid values of N: 1 to 10.
+        # The bootstrap actions. You can specify a maximum of 10 items.
         self.bootstrap_scripts = bootstrap_scripts
         # The idempotent client token. If you call the same ClientToken multiple times, the returned results are the same. Only one cluster can be created with the same ClientToken.
         self.client_token = client_token
-        # The name of the cluster. The name must be 1 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (\_), periods (.), and hyphens (-).
+        # The name of the cluster. The name must be 1 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
+        # 
+        # This parameter is required.
         self.cluster_name = cluster_name
         # The type of the cluster. Valid values:
         # 
@@ -7267,15 +7447,21 @@ class CreateClusterRequest(TeaModel):
         # *   HADOOP: the old data lake. We recommend that you use the new data lake.
         # 
         # If you create an EMR cluster for the first time after 17:00 (UTC +8) on December 19, 2022, you cannot select the HADOOP, DATA_SCIENCE, PRESTO, or ZOOKEEPER cluster type.
-        self.cluster_type = cluster_type
-        # The deployment mode of applications in the cluster. Valid values:
         # 
-        # *   NORMAL: regular mode. A master node is deployed in the cluster.
-        # *   HA: high availability mode. At least three master nodes are deployed in the cluster.
+        # This parameter is required.
+        self.cluster_type = cluster_type
+        # The deployment mode of master nodes in the cluster. Valid values:
+        # 
+        # *   NORMAL: regular mode. This is the default value. A cluster that contains only one master node is created.
+        # *   HA: high availability (HA) mode. A cluster that contains three master nodes is created.
         self.deploy_mode = deploy_mode
-        # The attributes of all Elastic Compute Service (ECS) nodes in the cluster. The basic attributes of all ECS nodes in the cluster.
+        # The attributes of all ECS instances.
+        # 
+        # This parameter is required.
         self.node_attributes = node_attributes
-        # The array of configurations of the node groups. Valid values of N: 1 to 100.
+        # The node groups. You can specify a maximum of 100 items.
+        # 
+        # This parameter is required.
         self.node_groups = node_groups
         # The billing cycle of the instance. Valid values:
         # 
@@ -7284,20 +7470,24 @@ class CreateClusterRequest(TeaModel):
         # 
         # Default value: PayAsYouGo.
         self.payment_type = payment_type
-        # The ID of the region in which you want to create the instance.
+        # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The version of EMR. You can view the EMR release version on the EMR cluster purchase page.
+        # 
+        # This parameter is required.
         self.release_version = release_version
         # The ID of the resource group to which to assign the ENI.
         self.resource_group_id = resource_group_id
         # The security mode of the cluster. Valid values:
         # 
-        # *   NORMAL: regular mode. Kerberos is not enabled.
-        # *   KERBEROS: Kerberos mode. Kerberos is enabled.
+        # *   NORMAL: disables Kerberos authentication for the cluster. This is the default value.
+        # *   KERBEROS: enables Kerberos authentication for the cluster.
         self.security_mode = security_mode
-        # The subscription configurations. This parameter is required when the PaymentType parameter is set to Subscription.
+        # The subscription configurations. This parameter is required only if you set the PaymentType parameter to Subscription.
         self.subscription_config = subscription_config
-        # The tag that you want to add to the cloud desktop. Valid values of N: 0 to 20.
+        # The tags. You can specify a maximum of 20 items.
         self.tags = tags
 
     def validate(self):
@@ -7521,10 +7711,16 @@ class CreateNodeGroupRequest(TeaModel):
         region_id: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The information about a machine group.
+        # 
+        # This parameter is required.
         self.node_group = node_group
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -7643,14 +7839,20 @@ class DecreaseNodesRequest(TeaModel):
         region_id: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The number of nodes to scale in. The number of nodes to be scaled in. The value should be less than the number of surviving nodes in the current node group.
         self.decrease_node_count = decrease_node_count
         # The ID of the node group.
+        # 
+        # This parameter is required.
         self.node_group_id = node_group_id
         # The array of node IDs. Valid values of array element N: 1 to 500.
         self.node_ids = node_ids
         # The ID of the region in which you want to create the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -7774,12 +7976,18 @@ class DeleteApiTemplateRequest(TeaModel):
         template_id: str = None,
     ):
         # 接口名。
+        # 
+        # This parameter is required.
         self.api_name = api_name
         # 区域ID。
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # 资源组ID。
         self.resource_group_id = resource_group_id
         # 集群模板id。
+        # 
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -7896,8 +8104,12 @@ class DeleteClusterRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The ID of the region in which you want to create the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -8007,8 +8219,12 @@ class GetApiTemplateRequest(TeaModel):
         template_id: str = None,
     ):
         # 区域ID。
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # 集群模板id。
+        # 
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -8120,10 +8336,16 @@ class GetApplicationRequest(TeaModel):
         region_id: str = None,
     ):
         # 应用名称。
+        # 
+        # This parameter is required.
         self.application_name = application_name
         # 集群ID。
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # 地域ID。
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -8481,10 +8703,16 @@ class GetAutoScalingActivityRequest(TeaModel):
         scaling_activity_id: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the scaling activity.
+        # 
+        # This parameter is required.
         self.scaling_activity_id = scaling_activity_id
 
     def validate(self):
@@ -8739,10 +8967,16 @@ class GetAutoScalingPolicyRequest(TeaModel):
         region_id: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The ID of the node group.
+        # 
+        # This parameter is required.
         self.node_group_id = node_group_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -9047,8 +9281,12 @@ class GetClusterRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The ID of the region in which you want to create the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -9162,12 +9400,20 @@ class GetDoctorApplicationRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the job that is submitted to YARN.
+        # 
+        # This parameter is required.
         self.app_id = app_id
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # Specify the date in the ISO 8601 standard. For example, 2023-01-01 represents January 1, 2023.
+        # 
+        # This parameter is required.
         self.date_time = date_time
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -9717,12 +9963,18 @@ class GetDoctorComputeSummaryRequest(TeaModel):
         region_id: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The resource information, which is used to filter the results.
         self.component_info = component_info
         # Specify the date in the ISO 8601 standard. For example, 2023-01-01 represents January 1, 2023.
+        # 
+        # This parameter is required.
         self.date_time = date_time
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -10440,10 +10692,16 @@ class GetDoctorHBaseClusterRequest(TeaModel):
         region_id: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The date.
+        # 
+        # This parameter is required.
         self.date_time = date_time
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -11475,11 +11733,18 @@ class GetDoctorHBaseRegionRequest(TeaModel):
         region_id: str = None,
     ):
         # 集群ID。
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.date_time = date_time
         # Region ID。
+        # 
+        # This parameter is required.
         self.hbase_region_id = hbase_region_id
         # 区域ID。
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -11936,12 +12201,20 @@ class GetDoctorHBaseRegionServerRequest(TeaModel):
         region_server_host: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The date.
+        # 
+        # This parameter is required.
         self.date_time = date_time
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The host of the region server.
+        # 
+        # This parameter is required.
         self.region_server_host = region_server_host
 
     def validate(self):
@@ -12703,10 +12976,16 @@ class GetDoctorHBaseTableRequest(TeaModel):
         table_name: str = None,
     ):
         # 集群ID。
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.date_time = date_time
         # 区域ID。
+        # 
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.table_name = table_name
 
     def validate(self):
@@ -14248,10 +14527,16 @@ class GetDoctorHDFSClusterRequest(TeaModel):
         region_id: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # Specify the date in the ISO 8601 standard. For example, 2023-01-01 represents January 1, 2023.
+        # 
+        # This parameter is required.
         self.date_time = date_time
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -16935,12 +17220,20 @@ class GetDoctorHDFSDirectoryRequest(TeaModel):
         region_id: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # Specify the date in the ISO 8601 standard. For example, 2023-01-01 represents January 1, 2023.
+        # 
+        # This parameter is required.
         self.date_time = date_time
         # The directory name. The depth of the directory is not greater than five.
+        # 
+        # This parameter is required.
         self.dir_path = dir_path
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -19081,17 +19374,27 @@ class GetDoctorHDFSUGIRequest(TeaModel):
         type: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # Specify the date in the ISO 8601 standard. For example, 2023-01-01 represents January 1, 2023.
+        # 
+        # This parameter is required.
         self.date_time = date_time
         # Set this parameter based on the value of Type.
+        # 
+        # This parameter is required.
         self.name = name
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The filter condition. Valid values:
         # 
         # *   user
         # *   group
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -19443,10 +19746,16 @@ class GetDoctorHiveClusterRequest(TeaModel):
         region_id: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # Specify the date in the ISO 8601 standard. For example, 2023-01-01 represents January 1, 2023.
+        # 
+        # This parameter is required.
         self.date_time = date_time
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -22393,12 +22702,20 @@ class GetDoctorHiveDatabaseRequest(TeaModel):
         region_id: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The database name.
+        # 
+        # This parameter is required.
         self.database_name = database_name
         # The query date.
+        # 
+        # This parameter is required.
         self.date_time = date_time
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -25304,12 +25621,20 @@ class GetDoctorHiveTableRequest(TeaModel):
         table_name: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # Specify the date in the ISO 8601 standard. For example, 2023-01-01 represents January 1, 2023.
+        # 
+        # This parameter is required.
         self.date_time = date_time
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The table name. The table name must follow the rule in Hive. A name in the {database name.table identifier} format uniquely identifies a table.
+        # 
+        # This parameter is required.
         self.table_name = table_name
 
     def validate(self):
@@ -28162,10 +28487,16 @@ class GetDoctorJobRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the job that is submitted to YARN.
+        # 
+        # This parameter is required.
         self.app_id = app_id
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -28538,12 +28869,20 @@ class GetDoctorReportComponentSummaryRequest(TeaModel):
         region_id: str = None,
     ):
         # 集群ID。
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # component type
+        # 
+        # This parameter is required.
         self.component_type = component_type
         # dateTime for specify report
+        # 
+        # This parameter is required.
         self.date_time = date_time
         # 区域ID。
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -28704,10 +29043,16 @@ class GetNodeGroupRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The ID of the node group.
+        # 
+        # This parameter is required.
         self.node_group_id = node_group_id
         # The ID of the region in which you want to create the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -28824,10 +29169,16 @@ class GetOperationRequest(TeaModel):
         region_id: str = None,
     ):
         # The ID of the cluster that you want to query.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The ID of the operation.
+        # 
+        # This parameter is required.
         self.operation_id = operation_id
         # The district ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -28959,11 +29310,17 @@ class IncreaseNodesRequest(TeaModel):
         # Default value: false
         self.auto_pay_order = auto_pay_order
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The number of nodes. The number of incremental nodes for this scale-out. Valid values: 1 to 500.
+        # 
+        # This parameter is required.
         self.increase_node_count = increase_node_count
         self.min_increase_node_count = min_increase_node_count
         # The ID of the node group. The target node group to which you want to scale out the cluster.
+        # 
+        # This parameter is required.
         self.node_group_id = node_group_id
         # The subscription duration. Valid values when the PaymentDurationUnit value is Month: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
         self.payment_duration = payment_duration
@@ -28972,6 +29329,8 @@ class IncreaseNodesRequest(TeaModel):
         # *   Month
         self.payment_duration_unit = payment_duration_unit
         # The ID of the region in which you want to create the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -29119,14 +29478,22 @@ class JoinResourceGroupRequest(TeaModel):
         resource_type: str = None,
     ):
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
+        # 
+        # This parameter is required.
         self.resource_group_id = resource_group_id
         # The ID of the resource.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource. Valid values:
         # 
         # *   cluster: cluster
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -29243,12 +29610,16 @@ class ListApiTemplatesRequest(TeaModel):
         template_name: str = None,
     ):
         # 接口名。
+        # 
+        # This parameter is required.
         self.api_name = api_name
         # 一次获取的最大记录数。
         self.max_results = max_results
         # 标记当前开始读取的位置，置空表示从头开始。
         self.next_token = next_token
         # 区域ID。
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # 资源组ID。
         self.resource_group_id = resource_group_id
@@ -29428,6 +29799,8 @@ class ListApplicationConfigsRequest(TeaModel):
         # The name of the application.
         self.application_name = application_name
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The name of the configuration file.
         self.config_file_name = config_file_name
@@ -29444,6 +29817,8 @@ class ListApplicationConfigsRequest(TeaModel):
         # The node ID.
         self.node_id = node_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -29731,12 +30106,16 @@ class ListApplicationsRequest(TeaModel):
         # The application names.
         self.application_names = application_names
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The total number of pages.
         self.max_results = max_results
         # The page number of the next page returned.
         self.next_token = next_token
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -29944,6 +30323,8 @@ class ListAutoScalingActivitiesRequest(TeaModel):
         start_time: int = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The end of the time range to query. Unit: milliseconds.
         self.end_time = end_time
@@ -29954,6 +30335,8 @@ class ListAutoScalingActivitiesRequest(TeaModel):
         # The ID of the node group.
         self.node_group_id = node_group_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The status of the scaling activity. Number of elements in the array: 1-20.
         self.scaling_activity_states = scaling_activity_states
@@ -30298,6 +30681,8 @@ class ListClustersRequest(TeaModel):
         # *   eu-central-1
         # *   eu-west-1
         # *   cn-north-2-gov-1
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
@@ -30489,6 +30874,8 @@ class ListComponentInstancesRequest(TeaModel):
         # 应用名称列表。
         self.application_names = application_names
         # 集群ID。
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # 组件名称列表。
         self.component_names = component_names
@@ -30502,6 +30889,8 @@ class ListComponentInstancesRequest(TeaModel):
         # 节点名称列表。
         self.node_names = node_names
         # 地域ID。
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -30789,6 +31178,8 @@ class ListComponentsRequest(TeaModel):
         # 应用名称列表。
         self.application_names = application_names
         # 集群ID。
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # 组件名称列表。
         self.component_names = component_names
@@ -30800,6 +31191,8 @@ class ListComponentsRequest(TeaModel):
         # 标记当前开始读取的位置，置空表示从头开始。
         self.next_token = next_token
         # 地域ID。
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -31036,8 +31429,12 @@ class ListDoctorApplicationsRequest(TeaModel):
         # The IDs of jobs that are submitted to YARN.
         self.app_ids = app_ids
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # Specify the date in the ISO 8601 standard. For example, 2023-01-01 represents January 1, 2023.
+        # 
+        # This parameter is required.
         self.date_time = date_time
         # The maximum number of entries to return on each page.
         self.max_results = max_results
@@ -31061,6 +31458,8 @@ class ListDoctorApplicationsRequest(TeaModel):
         # The YARN queues to which the jobs are submitted.
         self.queues = queues
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The YARN engines to which the jobs are submitted.
         self.types = types
@@ -31639,6 +32038,8 @@ class ListDoctorComputeSummaryRequest(TeaModel):
         region_id: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The resource types, which are used to filter query results. Valid values:
         # 
@@ -31649,6 +32050,8 @@ class ListDoctorComputeSummaryRequest(TeaModel):
         # If you do not specify this parameter, the information at the cluster level is displayed by default. Currently, only one resource type is supported. If you specify multiple resource types, the first resource type is used by default.
         self.component_types = component_types
         # Specify the date in the ISO 8601 standard. For example, 2023-01-01 represents January 1, 2023.
+        # 
+        # This parameter is required.
         self.date_time = date_time
         # The maximum number of entries to return on each page.
         self.max_results = max_results
@@ -31677,6 +32080,8 @@ class ListDoctorComputeSummaryRequest(TeaModel):
         # *   DESC: in descending order.
         self.order_type = order_type
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -32447,8 +32852,12 @@ class ListDoctorHBaseRegionServersRequest(TeaModel):
         region_server_hosts: List[str] = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The query date.
+        # 
+        # This parameter is required.
         self.date_time = date_time
         # The maximum number of entries to return on each page.
         self.max_results = max_results
@@ -32464,6 +32873,8 @@ class ListDoctorHBaseRegionServersRequest(TeaModel):
         # *   DESC: in descending order
         self.order_type = order_type
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The RegionServer hosts.
         self.region_server_hosts = region_server_hosts
@@ -33281,8 +33692,12 @@ class ListDoctorHBaseTablesRequest(TeaModel):
         table_names: List[str] = None,
     ):
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The query date.
+        # 
+        # This parameter is required.
         self.date_time = date_time
         # The maximum number of entries that are returned.
         self.max_results = max_results
@@ -33300,6 +33715,8 @@ class ListDoctorHBaseTablesRequest(TeaModel):
         # *   DESC: in descending order
         self.order_type = order_type
         # The ID of the region.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The table names, which are used to filter the query results.
         self.table_names = table_names
@@ -35023,7 +35440,10 @@ class ListDoctorHDFSDirectoriesRequest(TeaModel):
         region_id: str = None,
     ):
         # 集群ID。
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
+        # This parameter is required.
         self.date_time = date_time
         self.dir_path = dir_path
         # 一次获取的最大记录数。取值范围：1~100。
@@ -35033,6 +35453,8 @@ class ListDoctorHDFSDirectoriesRequest(TeaModel):
         self.order_by = order_by
         self.order_type = order_type
         # 区域ID。
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -37055,8 +37477,12 @@ class ListDoctorHDFSUGIRequest(TeaModel):
         type: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # Specify the date in the ISO 8601 standard. For example, 2023-01-01 represents January 1, 2023.
+        # 
+        # This parameter is required.
         self.date_time = date_time
         # The maximum number of entries to return on each page.
         self.max_results = max_results
@@ -37074,11 +37500,15 @@ class ListDoctorHDFSUGIRequest(TeaModel):
         # *   DESC: in descending order
         self.order_type = order_type
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The filter condition. Valid values:
         # 
         # *   user
         # *   group
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -37481,10 +37911,14 @@ class ListDoctorHiveDatabasesRequest(TeaModel):
         region_id: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The database names.
         self.database_names = database_names
         # The query date.
+        # 
+        # This parameter is required.
         self.date_time = date_time
         # The maximum number of entries to return on each page.
         self.max_results = max_results
@@ -37500,6 +37934,8 @@ class ListDoctorHiveDatabasesRequest(TeaModel):
         # *   DESC: in descending order
         self.order_type = order_type
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -40459,8 +40895,12 @@ class ListDoctorHiveTablesRequest(TeaModel):
         table_names: List[str] = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # Specify the date in the ISO 8601 standard. For example, 2023-01-01 represents January 1, 2023.
+        # 
+        # This parameter is required.
         self.date_time = date_time
         # The maximum number of entries to return on each page.
         self.max_results = max_results
@@ -40518,6 +40958,8 @@ class ListDoctorHiveTablesRequest(TeaModel):
         # *   DESC: in descending order
         self.order_type = order_type
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The table names, which are used to filter the query results.
         self.table_names = table_names
@@ -43503,6 +43945,8 @@ class ListDoctorJobsRequest(TeaModel):
         # The IDs of the jobs that are submitted to YARN.
         self.app_ids = app_ids
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The range of end time. You can filter jobs whose end time falls within the specified time range.
         self.end_range = end_range
@@ -43523,6 +43967,8 @@ class ListDoctorJobsRequest(TeaModel):
         # The YARN queues to which the jobs are submitted.
         self.queues = queues
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The range of start time. You can filter jobs whose start time falls within the specified time range.
         self.start_range = start_range
@@ -44044,6 +44490,8 @@ class ListDoctorJobsStatsRequest(TeaModel):
         start_range: ListDoctorJobsStatsRequestStartRange = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The range of end time. You can filter jobs whose end time falls within the specified time range.
         self.end_range = end_range
@@ -44066,6 +44514,8 @@ class ListDoctorJobsStatsRequest(TeaModel):
         # *   DESC: in descending order
         self.order_type = order_type
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The range of start time. You can filter jobs whose start time falls within the specified time range.
         self.start_range = start_range
@@ -44459,12 +44909,16 @@ class ListDoctorReportsRequest(TeaModel):
         region_id: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The number of entries to return on each page.
         self.max_results = max_results
         # The pagination token that is used in the request to retrieve a new page of results.
         self.next_token = next_token
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -44764,6 +45218,8 @@ class ListInstanceTypesRequest(TeaModel):
         # - DATASERVING：数据服务。
         # - CUSTOM：自定义集群。
         # - HADOOP：旧版数据湖（不推荐使用，建议使用新版数据湖）。
+        # 
+        # This parameter is required.
         self.cluster_type = cluster_type
         # 集群中的应用部署模式。取值范围：
         # - NORMAL：非高可用部署。集群1个MASTER节点。
@@ -44781,18 +45237,26 @@ class ListInstanceTypesRequest(TeaModel):
         # - MASTER：管理类型节点组。
         # - CORE：存储类型节点组。
         # - TASK：计算类型节点组。
+        # 
+        # This parameter is required.
         self.node_group_type = node_group_type
         # 集群的付费类型。取值范围：
         # - PayAsYouGo：后付费。
         # - Subscription：预付费。
         # 
         # 默认值：PayAsYouGo。
+        # 
+        # This parameter is required.
         self.payment_type = payment_type
         # 区域ID。
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # EMR发行版。
         self.release_version = release_version
         # 可用区ID。
+        # 
+        # This parameter is required.
         self.zone_id = zone_id
 
     def validate(self):
@@ -44972,6 +45436,8 @@ class ListNodeGroupsRequest(TeaModel):
         region_id: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The number of maximum number of records to obtain at a time. Valid values: 1 to 100.
         self.max_results = max_results
@@ -44986,6 +45452,8 @@ class ListNodeGroupsRequest(TeaModel):
         # The list of node group types. Valid values of the number of array elements N: 1 to 100.
         self.node_group_types = node_group_types
         # The ID of the region in which you want to create the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -45157,6 +45625,8 @@ class ListNodesRequest(TeaModel):
         tags: List[Tag] = None,
     ):
         # The ID of the cluster.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The number of maximum number of records to obtain at a time. Valid values: 1 to 100.
         self.max_results = max_results
@@ -45175,6 +45645,8 @@ class ListNodesRequest(TeaModel):
         # The public IP address.
         self.public_ips = public_ips
         # The ID of the region in which you want to create the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The list of tags to be bound.
         self.tags = tags
@@ -45360,10 +45832,14 @@ class ListReleaseVersionsRequest(TeaModel):
         region_id: str = None,
     ):
         # The type of the cluster.
+        # 
+        # This parameter is required.
         self.cluster_type = cluster_type
         # The type of the IaaS resource.
         self.iaas_type = iaas_type
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -45551,14 +46027,20 @@ class ListScriptsRequest(TeaModel):
         script_type: str = None,
     ):
         # 集群ID。
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # 一次获取的最大记录数。取值范围：1~100。
         self.max_results = max_results
         # 标记当前开始读取的位置，置空表示从头开始。
         self.next_token = next_token
         # 区域ID。
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # 集群脚本类型。
+        # 
+        # This parameter is required.
         self.script_type = script_type
 
     def validate(self):
@@ -45829,10 +46311,16 @@ class ListTagResourcesRequest(TeaModel):
         # Marks the current position to start reading. If this field is empty, the data is read from the beginning.
         self.next_token = next_token
         # The ID of the region in which you want to create the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The list of resource IDs. Number of array elements N Valid values: 1 to 1
+        # 
+        # This parameter is required.
         self.resource_ids = resource_ids
         # The type of the resource. Set the value to cluster.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The array of tags. The number of array elements N. Valid values: 1 to 20.
         self.tags = tags
@@ -46049,12 +46537,18 @@ class PutAutoScalingPolicyRequest(TeaModel):
         scaling_rules: List[ScalingRule] = None,
     ):
         # 集群ID。
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # 最大最小值约束。
         self.constraints = constraints
         # 节点组ID。节点组 Id-针对 ACK 集群，此字段为空。
+        # 
+        # This parameter is required.
         self.node_group_id = node_group_id
         # 区域ID。
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # 弹性伸缩规则描述列表。
         # <p>
@@ -46184,10 +46678,16 @@ class RemoveAutoScalingPolicyRequest(TeaModel):
         region_id: str = None,
     ):
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The ID of the node group.
+        # 
+        # This parameter is required.
         self.node_group_id = node_group_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -46296,12 +46796,18 @@ class RunApiTemplateRequest(TeaModel):
         template_id: str = None,
     ):
         # 接口名。
+        # 
+        # This parameter is required.
         self.api_name = api_name
         # 幂等客户端TOKEN。
         self.client_token = client_token
         # 地域ID。
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # 集群模板id。
+        # 
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -46431,12 +46937,19 @@ class RunApplicationActionRequest(TeaModel):
         # *   config
         # *   restart
         # *   refresh_queues
+        # *   refresh_labels
+        # 
+        # This parameter is required.
         self.action_name = action_name
         # The number of applications in each batch.
         self.batch_size = batch_size
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The operation object.
+        # 
+        # This parameter is required.
         self.component_instance_selector = component_instance_selector
         # The description of the execution.
         self.description = description
@@ -46448,6 +46961,8 @@ class RunApplicationActionRequest(TeaModel):
         # The interval for rolling execution. Unit: seconds.
         self.interval = interval
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # Specifies whether to enable rolling execution.
         self.rolling_execute = rolling_execute
@@ -46639,14 +47154,22 @@ class TagResourcesRequest(TeaModel):
         tags: List[Tag] = None,
     ):
         # The ID of the region in which you want to create the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The list of resource IDs. Valid values of N: 1 to 1.
+        # 
+        # This parameter is required.
         self.resource_ids = resource_ids
         # The type of the resource to which the tag belongs. Valid values:
         # 
         # *   cluster: cluster
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The list of tags to be bound.
+        # 
+        # This parameter is required.
         self.tags = tags
 
     def validate(self):
@@ -46775,10 +47298,16 @@ class UntagResourcesRequest(TeaModel):
         # Default value: false
         self.all = all
         # The ID of the region in which you want to create the instance.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The list of resource IDs.
+        # 
+        # This parameter is required.
         self.resource_ids = resource_ids
         # The type of the resource. Set the value to cluster.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The key of the label. Valid values of N: 1 to 20.
         self.tag_keys = tag_keys
@@ -46899,16 +47428,26 @@ class UpdateApiTemplateRequest(TeaModel):
         template_name: str = None,
     ):
         # 接口名。
+        # 
+        # This parameter is required.
         self.api_name = api_name
         # 接口request内容。
+        # 
+        # This parameter is required.
         self.content = content
         # 区域ID。
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # 资源组ID。
         self.resource_group_id = resource_group_id
         # 集群模板id。
+        # 
+        # This parameter is required.
         self.template_id = template_id
         # 集群模板名字。
+        # 
+        # This parameter is required.
         self.template_name = template_name
 
     def validate(self):
@@ -47040,10 +47579,16 @@ class UpdateApplicationConfigsRequest(TeaModel):
         region_id: str = None,
     ):
         # The application configurations.
+        # 
+        # This parameter is required.
         self.application_configs = application_configs
         # The application name.
+        # 
+        # This parameter is required.
         self.application_name = application_name
         # The cluster ID.
+        # 
+        # This parameter is required.
         self.cluster_id = cluster_id
         # The operation performed on configuration items. Valid values:
         # 
@@ -47063,6 +47608,8 @@ class UpdateApplicationConfigsRequest(TeaModel):
         # The node ID.
         self.node_id = node_id
         # The region ID.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):

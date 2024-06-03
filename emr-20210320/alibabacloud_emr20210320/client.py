@@ -29,9 +29,42 @@ class Client(OpenApiClient):
             'cn-shenzhen': 'emr.aliyuncs.com',
             'ap-southeast-1': 'emr.aliyuncs.com',
             'us-west-1': 'emr.aliyuncs.com',
-            'cn-hangzhou-finance': 'emr.aliyuncs.com',
+            'cn-shanghai-finance-1': 'emr.aliyuncs.com',
             'cn-shenzhen-finance-1': 'emr.aliyuncs.com',
-            'cn-shanghai-finance-1': 'emr.aliyuncs.com'
+            'cn-north-2-gov-1': 'emr.aliyuncs.com',
+            'ap-northeast-2-pop': 'emr.aliyuncs.com',
+            'cn-beijing-finance-1': 'emr.aliyuncs.com',
+            'cn-beijing-finance-pop': 'emr.aliyuncs.com',
+            'cn-beijing-gov-1': 'emr.aliyuncs.com',
+            'cn-beijing-nu16-b01': 'emr.aliyuncs.com',
+            'cn-edge-1': 'emr.aliyuncs.com',
+            'cn-fujian': 'emr.aliyuncs.com',
+            'cn-haidian-cm12-c01': 'emr.aliyuncs.com',
+            'cn-hangzhou-bj-b01': 'emr.aliyuncs.com',
+            'cn-hangzhou-finance': 'emr.aliyuncs.com',
+            'cn-hangzhou-internal-prod-1': 'emr.aliyuncs.com',
+            'cn-hangzhou-internal-test-1': 'emr.aliyuncs.com',
+            'cn-hangzhou-internal-test-2': 'emr.aliyuncs.com',
+            'cn-hangzhou-internal-test-3': 'emr.aliyuncs.com',
+            'cn-hangzhou-test-306': 'emr.aliyuncs.com',
+            'cn-hongkong-finance-pop': 'emr.aliyuncs.com',
+            'cn-huhehaote-nebula-1': 'emr.aliyuncs.com',
+            'cn-qingdao-nebula': 'emr.aliyuncs.com',
+            'cn-shanghai-et15-b01': 'emr.aliyuncs.com',
+            'cn-shanghai-et2-b01': 'emr.aliyuncs.com',
+            'cn-shanghai-inner': 'emr.aliyuncs.com',
+            'cn-shanghai-internal-test-1': 'emr.aliyuncs.com',
+            'cn-shenzhen-inner': 'emr.aliyuncs.com',
+            'cn-shenzhen-st4-d01': 'emr.aliyuncs.com',
+            'cn-shenzhen-su18-b01': 'emr.aliyuncs.com',
+            'cn-wuhan': 'emr.aliyuncs.com',
+            'cn-yushanfang': 'emr.aliyuncs.com',
+            'cn-zhangbei': 'emr.aliyuncs.com',
+            'cn-zhangbei-na61-b01': 'emr.aliyuncs.com',
+            'cn-zhangjiakou-na62-a01': 'emr.aliyuncs.com',
+            'cn-zhengzhou-nebula-1': 'emr.aliyuncs.com',
+            'eu-west-1-oxs': 'emr.aliyuncs.com',
+            'rus-west-1-pop': 'emr.aliyuncs.com'
         }
         self.check_config(config)
         self._endpoint = self.get_endpoint('emr', self._region_id, self._endpoint_rule, self._network, self._suffix, self._endpoint_map, self._endpoint)
@@ -57,6 +90,11 @@ class Client(OpenApiClient):
         request: emr_20210320_models.CreateApiTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.CreateApiTemplateResponse:
+        """
+        @param request: CreateApiTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApiTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_name):
@@ -93,6 +131,11 @@ class Client(OpenApiClient):
         request: emr_20210320_models.CreateApiTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.CreateApiTemplateResponse:
+        """
+        @param request: CreateApiTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateApiTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_name):
@@ -128,6 +171,10 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.CreateApiTemplateRequest,
     ) -> emr_20210320_models.CreateApiTemplateResponse:
+        """
+        @param request: CreateApiTemplateRequest
+        @return: CreateApiTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_api_template_with_options(request, runtime)
 
@@ -135,6 +182,10 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.CreateApiTemplateRequest,
     ) -> emr_20210320_models.CreateApiTemplateResponse:
+        """
+        @param request: CreateApiTemplateRequest
+        @return: CreateApiTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_api_template_with_options_async(request, runtime)
 
@@ -143,6 +194,13 @@ class Client(OpenApiClient):
         request: emr_20210320_models.CreateClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.CreateClusterResponse:
+        """
+        @summary Creates a pay-as-you-go or subscription cluster.
+        
+        @param request: CreateClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_configs):
@@ -201,6 +259,13 @@ class Client(OpenApiClient):
         request: emr_20210320_models.CreateClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.CreateClusterResponse:
+        """
+        @summary Creates a pay-as-you-go or subscription cluster.
+        
+        @param request: CreateClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_configs):
@@ -258,6 +323,12 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.CreateClusterRequest,
     ) -> emr_20210320_models.CreateClusterResponse:
+        """
+        @summary Creates a pay-as-you-go or subscription cluster.
+        
+        @param request: CreateClusterRequest
+        @return: CreateClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.create_cluster_with_options(request, runtime)
 
@@ -265,6 +336,12 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.CreateClusterRequest,
     ) -> emr_20210320_models.CreateClusterResponse:
+        """
+        @summary Creates a pay-as-you-go or subscription cluster.
+        
+        @param request: CreateClusterRequest
+        @return: CreateClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.create_cluster_with_options_async(request, runtime)
 
@@ -274,7 +351,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.CreateNodeGroupResponse:
         """
-        创建节点组。
+        @summary Creates a node group.
+        
+        @description 创建节点组。
         
         @param request: CreateNodeGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -313,7 +392,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.CreateNodeGroupResponse:
         """
-        创建节点组。
+        @summary Creates a node group.
+        
+        @description 创建节点组。
         
         @param request: CreateNodeGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -351,7 +432,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.CreateNodeGroupRequest,
     ) -> emr_20210320_models.CreateNodeGroupResponse:
         """
-        创建节点组。
+        @summary Creates a node group.
+        
+        @description 创建节点组。
         
         @param request: CreateNodeGroupRequest
         @return: CreateNodeGroupResponse
@@ -364,7 +447,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.CreateNodeGroupRequest,
     ) -> emr_20210320_models.CreateNodeGroupResponse:
         """
-        创建节点组。
+        @summary Creates a node group.
+        
+        @description 创建节点组。
         
         @param request: CreateNodeGroupRequest
         @return: CreateNodeGroupResponse
@@ -378,7 +463,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.DecreaseNodesResponse:
         """
-        缩容节点。
+        @summary Perform a scale-out operation on the target node group.
+        
+        @description 缩容节点。
         
         @param request: DecreaseNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -421,7 +508,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.DecreaseNodesResponse:
         """
-        缩容节点。
+        @summary Perform a scale-out operation on the target node group.
+        
+        @description 缩容节点。
         
         @param request: DecreaseNodesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -463,7 +552,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.DecreaseNodesRequest,
     ) -> emr_20210320_models.DecreaseNodesResponse:
         """
-        缩容节点。
+        @summary Perform a scale-out operation on the target node group.
+        
+        @description 缩容节点。
         
         @param request: DecreaseNodesRequest
         @return: DecreaseNodesResponse
@@ -476,7 +567,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.DecreaseNodesRequest,
     ) -> emr_20210320_models.DecreaseNodesResponse:
         """
-        缩容节点。
+        @summary Perform a scale-out operation on the target node group.
+        
+        @description 缩容节点。
         
         @param request: DecreaseNodesRequest
         @return: DecreaseNodesResponse
@@ -490,7 +583,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.DeleteApiTemplateResponse:
         """
-        创建集群模板
+        @description 创建集群模板
         
         @param request: DeleteApiTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -531,7 +624,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.DeleteApiTemplateResponse:
         """
-        创建集群模板
+        @description 创建集群模板
         
         @param request: DeleteApiTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -571,7 +664,7 @@ class Client(OpenApiClient):
         request: emr_20210320_models.DeleteApiTemplateRequest,
     ) -> emr_20210320_models.DeleteApiTemplateResponse:
         """
-        创建集群模板
+        @description 创建集群模板
         
         @param request: DeleteApiTemplateRequest
         @return: DeleteApiTemplateResponse
@@ -584,7 +677,7 @@ class Client(OpenApiClient):
         request: emr_20210320_models.DeleteApiTemplateRequest,
     ) -> emr_20210320_models.DeleteApiTemplateResponse:
         """
-        创建集群模板
+        @description 创建集群模板
         
         @param request: DeleteApiTemplateRequest
         @return: DeleteApiTemplateResponse
@@ -597,6 +690,11 @@ class Client(OpenApiClient):
         request: emr_20210320_models.DeleteClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.DeleteClusterResponse:
+        """
+        @param request: DeleteClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -627,6 +725,11 @@ class Client(OpenApiClient):
         request: emr_20210320_models.DeleteClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.DeleteClusterResponse:
+        """
+        @param request: DeleteClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -656,6 +759,10 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.DeleteClusterRequest,
     ) -> emr_20210320_models.DeleteClusterResponse:
+        """
+        @param request: DeleteClusterRequest
+        @return: DeleteClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_cluster_with_options(request, runtime)
 
@@ -663,6 +770,10 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.DeleteClusterRequest,
     ) -> emr_20210320_models.DeleteClusterResponse:
+        """
+        @param request: DeleteClusterRequest
+        @return: DeleteClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_cluster_with_options_async(request, runtime)
 
@@ -671,6 +782,13 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetApiTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetApiTemplateResponse:
+        """
+        @summary 获取API模板详情
+        
+        @param request: GetApiTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApiTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -701,6 +819,13 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetApiTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetApiTemplateResponse:
+        """
+        @summary 获取API模板详情
+        
+        @param request: GetApiTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetApiTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -730,6 +855,12 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.GetApiTemplateRequest,
     ) -> emr_20210320_models.GetApiTemplateResponse:
+        """
+        @summary 获取API模板详情
+        
+        @param request: GetApiTemplateRequest
+        @return: GetApiTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_api_template_with_options(request, runtime)
 
@@ -737,6 +868,12 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.GetApiTemplateRequest,
     ) -> emr_20210320_models.GetApiTemplateResponse:
+        """
+        @summary 获取API模板详情
+        
+        @param request: GetApiTemplateRequest
+        @return: GetApiTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_api_template_with_options_async(request, runtime)
 
@@ -746,7 +883,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetApplicationResponse:
         """
-        查询应用详情。
+        @description 查询应用详情。
         
         @param request: GetApplicationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -785,7 +922,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetApplicationResponse:
         """
-        查询应用详情。
+        @description 查询应用详情。
         
         @param request: GetApplicationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -823,7 +960,7 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetApplicationRequest,
     ) -> emr_20210320_models.GetApplicationResponse:
         """
-        查询应用详情。
+        @description 查询应用详情。
         
         @param request: GetApplicationRequest
         @return: GetApplicationResponse
@@ -836,7 +973,7 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetApplicationRequest,
     ) -> emr_20210320_models.GetApplicationResponse:
         """
-        查询应用详情。
+        @description 查询应用详情。
         
         @param request: GetApplicationRequest
         @return: GetApplicationResponse
@@ -850,7 +987,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetAutoScalingActivityResponse:
         """
-        获取弹性伸缩活动详情。
+        @description 获取弹性伸缩活动详情。
         
         @param request: GetAutoScalingActivityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -889,7 +1026,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetAutoScalingActivityResponse:
         """
-        获取弹性伸缩活动详情。
+        @description 获取弹性伸缩活动详情。
         
         @param request: GetAutoScalingActivityRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -927,7 +1064,7 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetAutoScalingActivityRequest,
     ) -> emr_20210320_models.GetAutoScalingActivityResponse:
         """
-        获取弹性伸缩活动详情。
+        @description 获取弹性伸缩活动详情。
         
         @param request: GetAutoScalingActivityRequest
         @return: GetAutoScalingActivityResponse
@@ -940,7 +1077,7 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetAutoScalingActivityRequest,
     ) -> emr_20210320_models.GetAutoScalingActivityResponse:
         """
-        获取弹性伸缩活动详情。
+        @description 获取弹性伸缩活动详情。
         
         @param request: GetAutoScalingActivityRequest
         @return: GetAutoScalingActivityResponse
@@ -953,6 +1090,11 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetAutoScalingPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetAutoScalingPolicyResponse:
+        """
+        @param request: GetAutoScalingPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAutoScalingPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -985,6 +1127,11 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetAutoScalingPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetAutoScalingPolicyResponse:
+        """
+        @param request: GetAutoScalingPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetAutoScalingPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -1016,6 +1163,10 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.GetAutoScalingPolicyRequest,
     ) -> emr_20210320_models.GetAutoScalingPolicyResponse:
+        """
+        @param request: GetAutoScalingPolicyRequest
+        @return: GetAutoScalingPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_auto_scaling_policy_with_options(request, runtime)
 
@@ -1023,6 +1174,10 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.GetAutoScalingPolicyRequest,
     ) -> emr_20210320_models.GetAutoScalingPolicyResponse:
+        """
+        @param request: GetAutoScalingPolicyRequest
+        @return: GetAutoScalingPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_auto_scaling_policy_with_options_async(request, runtime)
 
@@ -1031,6 +1186,13 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetClusterResponse:
+        """
+        @summary Obtains the details of a cluster.
+        
+        @param request: GetClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -1061,6 +1223,13 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetClusterRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetClusterResponse:
+        """
+        @summary Obtains the details of a cluster.
+        
+        @param request: GetClusterRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetClusterResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -1090,6 +1259,12 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.GetClusterRequest,
     ) -> emr_20210320_models.GetClusterResponse:
+        """
+        @summary Obtains the details of a cluster.
+        
+        @param request: GetClusterRequest
+        @return: GetClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_cluster_with_options(request, runtime)
 
@@ -1097,6 +1272,12 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.GetClusterRequest,
     ) -> emr_20210320_models.GetClusterResponse:
+        """
+        @summary Obtains the details of a cluster.
+        
+        @param request: GetClusterRequest
+        @return: GetClusterResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_cluster_with_options_async(request, runtime)
 
@@ -1106,7 +1287,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetDoctorApplicationResponse:
         """
-        get one doctor analysis app
+        @summary Obtains job analysis information on E-MapReduce (EMR) Doctor.
+        
+        @description get one doctor analysis app
         
         @param request: GetDoctorApplicationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1147,7 +1330,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetDoctorApplicationResponse:
         """
-        get one doctor analysis app
+        @summary Obtains job analysis information on E-MapReduce (EMR) Doctor.
+        
+        @description get one doctor analysis app
         
         @param request: GetDoctorApplicationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1187,7 +1372,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetDoctorApplicationRequest,
     ) -> emr_20210320_models.GetDoctorApplicationResponse:
         """
-        get one doctor analysis app
+        @summary Obtains job analysis information on E-MapReduce (EMR) Doctor.
+        
+        @description get one doctor analysis app
         
         @param request: GetDoctorApplicationRequest
         @return: GetDoctorApplicationResponse
@@ -1200,7 +1387,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetDoctorApplicationRequest,
     ) -> emr_20210320_models.GetDoctorApplicationResponse:
         """
-        get one doctor analysis app
+        @summary Obtains job analysis information on E-MapReduce (EMR) Doctor.
+        
+        @description get one doctor analysis app
         
         @param request: GetDoctorApplicationRequest
         @return: GetDoctorApplicationResponse
@@ -1214,7 +1403,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetDoctorComputeSummaryResponse:
         """
-        get one specific luster engine queue by <type, name>
+        @summary Obtains the information about resource usage in a cluster on E-MapReduce (EMR) Doctor.
+        
+        @description get one specific luster engine queue by <type, name>
         
         @param request: GetDoctorComputeSummaryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1255,7 +1446,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetDoctorComputeSummaryResponse:
         """
-        get one specific luster engine queue by <type, name>
+        @summary Obtains the information about resource usage in a cluster on E-MapReduce (EMR) Doctor.
+        
+        @description get one specific luster engine queue by <type, name>
         
         @param request: GetDoctorComputeSummaryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1295,7 +1488,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetDoctorComputeSummaryRequest,
     ) -> emr_20210320_models.GetDoctorComputeSummaryResponse:
         """
-        get one specific luster engine queue by <type, name>
+        @summary Obtains the information about resource usage in a cluster on E-MapReduce (EMR) Doctor.
+        
+        @description get one specific luster engine queue by <type, name>
         
         @param request: GetDoctorComputeSummaryRequest
         @return: GetDoctorComputeSummaryResponse
@@ -1308,7 +1503,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetDoctorComputeSummaryRequest,
     ) -> emr_20210320_models.GetDoctorComputeSummaryResponse:
         """
-        get one specific luster engine queue by <type, name>
+        @summary Obtains the information about resource usage in a cluster on E-MapReduce (EMR) Doctor.
+        
+        @description get one specific luster engine queue by <type, name>
         
         @param request: GetDoctorComputeSummaryRequest
         @return: GetDoctorComputeSummaryResponse
@@ -1322,7 +1519,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetDoctorHBaseClusterResponse:
         """
-        get Doctor HBaseCluster
+        @summary Obtains the metrics of an HBase cluster.
+        
+        @description get Doctor HBaseCluster
         
         @param request: GetDoctorHBaseClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1361,7 +1560,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetDoctorHBaseClusterResponse:
         """
-        get Doctor HBaseCluster
+        @summary Obtains the metrics of an HBase cluster.
+        
+        @description get Doctor HBaseCluster
         
         @param request: GetDoctorHBaseClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1399,7 +1600,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetDoctorHBaseClusterRequest,
     ) -> emr_20210320_models.GetDoctorHBaseClusterResponse:
         """
-        get Doctor HBaseCluster
+        @summary Obtains the metrics of an HBase cluster.
+        
+        @description get Doctor HBaseCluster
         
         @param request: GetDoctorHBaseClusterRequest
         @return: GetDoctorHBaseClusterResponse
@@ -1412,7 +1615,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetDoctorHBaseClusterRequest,
     ) -> emr_20210320_models.GetDoctorHBaseClusterResponse:
         """
-        get Doctor HBaseCluster
+        @summary Obtains the metrics of an HBase cluster.
+        
+        @description get Doctor HBaseCluster
         
         @param request: GetDoctorHBaseClusterRequest
         @return: GetDoctorHBaseClusterResponse
@@ -1426,7 +1631,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetDoctorHBaseRegionResponse:
         """
-        list Doctor HBaseRegions
+        @description list Doctor HBaseRegions
         
         @param request: GetDoctorHBaseRegionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1467,7 +1672,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetDoctorHBaseRegionResponse:
         """
-        list Doctor HBaseRegions
+        @description list Doctor HBaseRegions
         
         @param request: GetDoctorHBaseRegionRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1507,7 +1712,7 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetDoctorHBaseRegionRequest,
     ) -> emr_20210320_models.GetDoctorHBaseRegionResponse:
         """
-        list Doctor HBaseRegions
+        @description list Doctor HBaseRegions
         
         @param request: GetDoctorHBaseRegionRequest
         @return: GetDoctorHBaseRegionResponse
@@ -1520,7 +1725,7 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetDoctorHBaseRegionRequest,
     ) -> emr_20210320_models.GetDoctorHBaseRegionResponse:
         """
-        list Doctor HBaseRegions
+        @description list Doctor HBaseRegions
         
         @param request: GetDoctorHBaseRegionRequest
         @return: GetDoctorHBaseRegionResponse
@@ -1534,7 +1739,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetDoctorHBaseRegionServerResponse:
         """
-        get Doctor HBaseRegionServer
+        @summary Obtains the information about an HBase region server.
+        
+        @description get Doctor HBaseRegionServer
         
         @param request: GetDoctorHBaseRegionServerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1575,7 +1782,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetDoctorHBaseRegionServerResponse:
         """
-        get Doctor HBaseRegionServer
+        @summary Obtains the information about an HBase region server.
+        
+        @description get Doctor HBaseRegionServer
         
         @param request: GetDoctorHBaseRegionServerRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1615,7 +1824,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetDoctorHBaseRegionServerRequest,
     ) -> emr_20210320_models.GetDoctorHBaseRegionServerResponse:
         """
-        get Doctor HBaseRegionServer
+        @summary Obtains the information about an HBase region server.
+        
+        @description get Doctor HBaseRegionServer
         
         @param request: GetDoctorHBaseRegionServerRequest
         @return: GetDoctorHBaseRegionServerResponse
@@ -1628,7 +1839,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetDoctorHBaseRegionServerRequest,
     ) -> emr_20210320_models.GetDoctorHBaseRegionServerResponse:
         """
-        get Doctor HBaseRegionServer
+        @summary Obtains the information about an HBase region server.
+        
+        @description get Doctor HBaseRegionServer
         
         @param request: GetDoctorHBaseRegionServerRequest
         @return: GetDoctorHBaseRegionServerResponse
@@ -1642,7 +1855,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetDoctorHBaseTableResponse:
         """
-        get Doctor HBaseTable
+        @description get Doctor HBaseTable
         
         @param request: GetDoctorHBaseTableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1683,7 +1896,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetDoctorHBaseTableResponse:
         """
-        get Doctor HBaseTable
+        @description get Doctor HBaseTable
         
         @param request: GetDoctorHBaseTableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1723,7 +1936,7 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetDoctorHBaseTableRequest,
     ) -> emr_20210320_models.GetDoctorHBaseTableResponse:
         """
-        get Doctor HBaseTable
+        @description get Doctor HBaseTable
         
         @param request: GetDoctorHBaseTableRequest
         @return: GetDoctorHBaseTableResponse
@@ -1736,7 +1949,7 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetDoctorHBaseTableRequest,
     ) -> emr_20210320_models.GetDoctorHBaseTableResponse:
         """
-        get Doctor HBaseTable
+        @description get Doctor HBaseTable
         
         @param request: GetDoctorHBaseTableRequest
         @return: GetDoctorHBaseTableResponse
@@ -1750,7 +1963,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetDoctorHDFSClusterResponse:
         """
-        list Doctor HBaseTableRegions
+        @summary Obtains the analysis results of the Hadoop Distributed File System (HDFS) storage resources of a cluster on E-MapReduce (EMR) Doctor.
+        
+        @description list Doctor HBaseTableRegions
         
         @param request: GetDoctorHDFSClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1789,7 +2004,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetDoctorHDFSClusterResponse:
         """
-        list Doctor HBaseTableRegions
+        @summary Obtains the analysis results of the Hadoop Distributed File System (HDFS) storage resources of a cluster on E-MapReduce (EMR) Doctor.
+        
+        @description list Doctor HBaseTableRegions
         
         @param request: GetDoctorHDFSClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1827,7 +2044,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetDoctorHDFSClusterRequest,
     ) -> emr_20210320_models.GetDoctorHDFSClusterResponse:
         """
-        list Doctor HBaseTableRegions
+        @summary Obtains the analysis results of the Hadoop Distributed File System (HDFS) storage resources of a cluster on E-MapReduce (EMR) Doctor.
+        
+        @description list Doctor HBaseTableRegions
         
         @param request: GetDoctorHDFSClusterRequest
         @return: GetDoctorHDFSClusterResponse
@@ -1840,7 +2059,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetDoctorHDFSClusterRequest,
     ) -> emr_20210320_models.GetDoctorHDFSClusterResponse:
         """
-        list Doctor HBaseTableRegions
+        @summary Obtains the analysis results of the Hadoop Distributed File System (HDFS) storage resources of a cluster on E-MapReduce (EMR) Doctor.
+        
+        @description list Doctor HBaseTableRegions
         
         @param request: GetDoctorHDFSClusterRequest
         @return: GetDoctorHDFSClusterResponse
@@ -1854,7 +2075,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetDoctorHDFSDirectoryResponse:
         """
-        get Doctor HDFSNode
+        @summary Obtains the analysis results of a specific Hadoop Distributed File System (HDFS) directory of a cluster. The depth of the directory is not greater than five.
+        
+        @description get Doctor HDFSNode
         
         @param request: GetDoctorHDFSDirectoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1895,7 +2118,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetDoctorHDFSDirectoryResponse:
         """
-        get Doctor HDFSNode
+        @summary Obtains the analysis results of a specific Hadoop Distributed File System (HDFS) directory of a cluster. The depth of the directory is not greater than five.
+        
+        @description get Doctor HDFSNode
         
         @param request: GetDoctorHDFSDirectoryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -1935,7 +2160,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetDoctorHDFSDirectoryRequest,
     ) -> emr_20210320_models.GetDoctorHDFSDirectoryResponse:
         """
-        get Doctor HDFSNode
+        @summary Obtains the analysis results of a specific Hadoop Distributed File System (HDFS) directory of a cluster. The depth of the directory is not greater than five.
+        
+        @description get Doctor HDFSNode
         
         @param request: GetDoctorHDFSDirectoryRequest
         @return: GetDoctorHDFSDirectoryResponse
@@ -1948,7 +2175,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetDoctorHDFSDirectoryRequest,
     ) -> emr_20210320_models.GetDoctorHDFSDirectoryResponse:
         """
-        get Doctor HDFSNode
+        @summary Obtains the analysis results of a specific Hadoop Distributed File System (HDFS) directory of a cluster. The depth of the directory is not greater than five.
+        
+        @description get Doctor HDFSNode
         
         @param request: GetDoctorHDFSDirectoryRequest
         @return: GetDoctorHDFSDirectoryResponse
@@ -1962,7 +2191,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetDoctorHDFSUGIResponse:
         """
-        get Doctor HDFS UGI
+        @summary Obtains the analysis results of Hadoop Distributed File System (HDFS) storage resources for a specific owner or group on E-MapReduce (EMR) Doctor.
+        
+        @description get Doctor HDFS UGI
         
         @param request: GetDoctorHDFSUGIRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2005,7 +2236,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetDoctorHDFSUGIResponse:
         """
-        get Doctor HDFS UGI
+        @summary Obtains the analysis results of Hadoop Distributed File System (HDFS) storage resources for a specific owner or group on E-MapReduce (EMR) Doctor.
+        
+        @description get Doctor HDFS UGI
         
         @param request: GetDoctorHDFSUGIRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2047,7 +2280,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetDoctorHDFSUGIRequest,
     ) -> emr_20210320_models.GetDoctorHDFSUGIResponse:
         """
-        get Doctor HDFS UGI
+        @summary Obtains the analysis results of Hadoop Distributed File System (HDFS) storage resources for a specific owner or group on E-MapReduce (EMR) Doctor.
+        
+        @description get Doctor HDFS UGI
         
         @param request: GetDoctorHDFSUGIRequest
         @return: GetDoctorHDFSUGIResponse
@@ -2060,7 +2295,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetDoctorHDFSUGIRequest,
     ) -> emr_20210320_models.GetDoctorHDFSUGIResponse:
         """
-        get Doctor HDFS UGI
+        @summary Obtains the analysis results of Hadoop Distributed File System (HDFS) storage resources for a specific owner or group on E-MapReduce (EMR) Doctor.
+        
+        @description get Doctor HDFS UGI
         
         @param request: GetDoctorHDFSUGIRequest
         @return: GetDoctorHDFSUGIResponse
@@ -2074,7 +2311,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetDoctorHiveClusterResponse:
         """
-        list Doctor Hive Cluster
+        @summary Obtains the analysis results of a Hive cluster.
+        
+        @description list Doctor Hive Cluster
         
         @param request: GetDoctorHiveClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2113,7 +2352,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetDoctorHiveClusterResponse:
         """
-        list Doctor Hive Cluster
+        @summary Obtains the analysis results of a Hive cluster.
+        
+        @description list Doctor Hive Cluster
         
         @param request: GetDoctorHiveClusterRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2151,7 +2392,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetDoctorHiveClusterRequest,
     ) -> emr_20210320_models.GetDoctorHiveClusterResponse:
         """
-        list Doctor Hive Cluster
+        @summary Obtains the analysis results of a Hive cluster.
+        
+        @description list Doctor Hive Cluster
         
         @param request: GetDoctorHiveClusterRequest
         @return: GetDoctorHiveClusterResponse
@@ -2164,7 +2407,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetDoctorHiveClusterRequest,
     ) -> emr_20210320_models.GetDoctorHiveClusterResponse:
         """
-        list Doctor Hive Cluster
+        @summary Obtains the analysis results of a Hive cluster.
+        
+        @description list Doctor Hive Cluster
         
         @param request: GetDoctorHiveClusterRequest
         @return: GetDoctorHiveClusterResponse
@@ -2178,7 +2423,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetDoctorHiveDatabaseResponse:
         """
-        get Doctor Hive Database
+        @summary Obtains the analysis results of a Hive database.
+        
+        @description get Doctor Hive Database
         
         @param request: GetDoctorHiveDatabaseRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2219,7 +2466,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetDoctorHiveDatabaseResponse:
         """
-        get Doctor Hive Database
+        @summary Obtains the analysis results of a Hive database.
+        
+        @description get Doctor Hive Database
         
         @param request: GetDoctorHiveDatabaseRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2259,7 +2508,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetDoctorHiveDatabaseRequest,
     ) -> emr_20210320_models.GetDoctorHiveDatabaseResponse:
         """
-        get Doctor Hive Database
+        @summary Obtains the analysis results of a Hive database.
+        
+        @description get Doctor Hive Database
         
         @param request: GetDoctorHiveDatabaseRequest
         @return: GetDoctorHiveDatabaseResponse
@@ -2272,7 +2523,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetDoctorHiveDatabaseRequest,
     ) -> emr_20210320_models.GetDoctorHiveDatabaseResponse:
         """
-        get Doctor Hive Database
+        @summary Obtains the analysis results of a Hive database.
+        
+        @description get Doctor Hive Database
         
         @param request: GetDoctorHiveDatabaseRequest
         @return: GetDoctorHiveDatabaseResponse
@@ -2286,7 +2539,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetDoctorHiveTableResponse:
         """
-        get Doctor Hive Table
+        @summary Obtains the analysis results of a specific Hive table in a cluster on E-MapReduce (EMR) Doctor.
+        
+        @description get Doctor Hive Table
         
         @param request: GetDoctorHiveTableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2327,7 +2582,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetDoctorHiveTableResponse:
         """
-        get Doctor Hive Table
+        @summary Obtains the analysis results of a specific Hive table in a cluster on E-MapReduce (EMR) Doctor.
+        
+        @description get Doctor Hive Table
         
         @param request: GetDoctorHiveTableRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2367,7 +2624,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetDoctorHiveTableRequest,
     ) -> emr_20210320_models.GetDoctorHiveTableResponse:
         """
-        get Doctor Hive Table
+        @summary Obtains the analysis results of a specific Hive table in a cluster on E-MapReduce (EMR) Doctor.
+        
+        @description get Doctor Hive Table
         
         @param request: GetDoctorHiveTableRequest
         @return: GetDoctorHiveTableResponse
@@ -2380,7 +2639,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetDoctorHiveTableRequest,
     ) -> emr_20210320_models.GetDoctorHiveTableResponse:
         """
-        get Doctor Hive Table
+        @summary Obtains the analysis results of a specific Hive table in a cluster on E-MapReduce (EMR) Doctor.
+        
+        @description get Doctor Hive Table
         
         @param request: GetDoctorHiveTableRequest
         @return: GetDoctorHiveTableResponse
@@ -2394,7 +2655,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetDoctorJobResponse:
         """
-        Get realtime job by yarn
+        @summary Obtains the basic running information about a job on E-MapReduce (EMR) Doctor.
+        
+        @description Get realtime job by yarn
         
         @param request: GetDoctorJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2433,7 +2696,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetDoctorJobResponse:
         """
-        Get realtime job by yarn
+        @summary Obtains the basic running information about a job on E-MapReduce (EMR) Doctor.
+        
+        @description Get realtime job by yarn
         
         @param request: GetDoctorJobRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2471,7 +2736,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetDoctorJobRequest,
     ) -> emr_20210320_models.GetDoctorJobResponse:
         """
-        Get realtime job by yarn
+        @summary Obtains the basic running information about a job on E-MapReduce (EMR) Doctor.
+        
+        @description Get realtime job by yarn
         
         @param request: GetDoctorJobRequest
         @return: GetDoctorJobResponse
@@ -2484,7 +2751,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetDoctorJobRequest,
     ) -> emr_20210320_models.GetDoctorJobResponse:
         """
-        Get realtime job by yarn
+        @summary Obtains the basic running information about a job on E-MapReduce (EMR) Doctor.
+        
+        @description Get realtime job by yarn
         
         @param request: GetDoctorJobRequest
         @return: GetDoctorJobResponse
@@ -2498,7 +2767,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetDoctorReportComponentSummaryResponse:
         """
-        get specify component's report analysis by emr doctor
+        @description get specify component's report analysis by emr doctor
         
         @param request: GetDoctorReportComponentSummaryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2539,7 +2808,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetDoctorReportComponentSummaryResponse:
         """
-        get specify component's report analysis by emr doctor
+        @description get specify component's report analysis by emr doctor
         
         @param request: GetDoctorReportComponentSummaryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2579,7 +2848,7 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetDoctorReportComponentSummaryRequest,
     ) -> emr_20210320_models.GetDoctorReportComponentSummaryResponse:
         """
-        get specify component's report analysis by emr doctor
+        @description get specify component's report analysis by emr doctor
         
         @param request: GetDoctorReportComponentSummaryRequest
         @return: GetDoctorReportComponentSummaryResponse
@@ -2592,7 +2861,7 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetDoctorReportComponentSummaryRequest,
     ) -> emr_20210320_models.GetDoctorReportComponentSummaryResponse:
         """
-        get specify component's report analysis by emr doctor
+        @description get specify component's report analysis by emr doctor
         
         @param request: GetDoctorReportComponentSummaryRequest
         @return: GetDoctorReportComponentSummaryResponse
@@ -2606,7 +2875,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetNodeGroupResponse:
         """
-        获取节点组详情。
+        @summary You can call this operation to obtain the details of a node group.
+        
+        @description 获取节点组详情。
         
         @param request: GetNodeGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2645,7 +2916,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetNodeGroupResponse:
         """
-        获取节点组详情。
+        @summary You can call this operation to obtain the details of a node group.
+        
+        @description 获取节点组详情。
         
         @param request: GetNodeGroupRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2683,7 +2956,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetNodeGroupRequest,
     ) -> emr_20210320_models.GetNodeGroupResponse:
         """
-        获取节点组详情。
+        @summary You can call this operation to obtain the details of a node group.
+        
+        @description 获取节点组详情。
         
         @param request: GetNodeGroupRequest
         @return: GetNodeGroupResponse
@@ -2696,7 +2971,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetNodeGroupRequest,
     ) -> emr_20210320_models.GetNodeGroupResponse:
         """
-        获取节点组详情。
+        @summary You can call this operation to obtain the details of a node group.
+        
+        @description 获取节点组详情。
         
         @param request: GetNodeGroupRequest
         @return: GetNodeGroupResponse
@@ -2710,7 +2987,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetOperationResponse:
         """
-        获取操作详情。
+        @summary Gets the details of an asynchronous operation.
+        
+        @description 获取操作详情。
         
         @param request: GetOperationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2749,7 +3028,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.GetOperationResponse:
         """
-        获取操作详情。
+        @summary Gets the details of an asynchronous operation.
+        
+        @description 获取操作详情。
         
         @param request: GetOperationRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2787,7 +3068,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetOperationRequest,
     ) -> emr_20210320_models.GetOperationResponse:
         """
-        获取操作详情。
+        @summary Gets the details of an asynchronous operation.
+        
+        @description 获取操作详情。
         
         @param request: GetOperationRequest
         @return: GetOperationResponse
@@ -2800,7 +3083,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.GetOperationRequest,
     ) -> emr_20210320_models.GetOperationResponse:
         """
-        获取操作详情。
+        @summary Gets the details of an asynchronous operation.
+        
+        @description 获取操作详情。
         
         @param request: GetOperationRequest
         @return: GetOperationResponse
@@ -2813,6 +3098,13 @@ class Client(OpenApiClient):
         request: emr_20210320_models.IncreaseNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.IncreaseNodesResponse:
+        """
+        @summary Scale out the node group.
+        
+        @param request: IncreaseNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IncreaseNodesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_configs):
@@ -2857,6 +3149,13 @@ class Client(OpenApiClient):
         request: emr_20210320_models.IncreaseNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.IncreaseNodesResponse:
+        """
+        @summary Scale out the node group.
+        
+        @param request: IncreaseNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IncreaseNodesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_configs):
@@ -2900,6 +3199,12 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.IncreaseNodesRequest,
     ) -> emr_20210320_models.IncreaseNodesResponse:
+        """
+        @summary Scale out the node group.
+        
+        @param request: IncreaseNodesRequest
+        @return: IncreaseNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.increase_nodes_with_options(request, runtime)
 
@@ -2907,6 +3212,12 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.IncreaseNodesRequest,
     ) -> emr_20210320_models.IncreaseNodesResponse:
+        """
+        @summary Scale out the node group.
+        
+        @param request: IncreaseNodesRequest
+        @return: IncreaseNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.increase_nodes_with_options_async(request, runtime)
 
@@ -2915,6 +3226,13 @@ class Client(OpenApiClient):
         request: emr_20210320_models.JoinResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.JoinResourceGroupResponse:
+        """
+        @summary Add an EMR resource to the target resource group. A resource can belong to only one resource group.
+        
+        @param request: JoinResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: JoinResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -2949,6 +3267,13 @@ class Client(OpenApiClient):
         request: emr_20210320_models.JoinResourceGroupRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.JoinResourceGroupResponse:
+        """
+        @summary Add an EMR resource to the target resource group. A resource can belong to only one resource group.
+        
+        @param request: JoinResourceGroupRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: JoinResourceGroupResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -2982,6 +3307,12 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.JoinResourceGroupRequest,
     ) -> emr_20210320_models.JoinResourceGroupResponse:
+        """
+        @summary Add an EMR resource to the target resource group. A resource can belong to only one resource group.
+        
+        @param request: JoinResourceGroupRequest
+        @return: JoinResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.join_resource_group_with_options(request, runtime)
 
@@ -2989,6 +3320,12 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.JoinResourceGroupRequest,
     ) -> emr_20210320_models.JoinResourceGroupResponse:
+        """
+        @summary Add an EMR resource to the target resource group. A resource can belong to only one resource group.
+        
+        @param request: JoinResourceGroupRequest
+        @return: JoinResourceGroupResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.join_resource_group_with_options_async(request, runtime)
 
@@ -2997,6 +3334,13 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListApiTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListApiTemplatesResponse:
+        """
+        @summary 查询API模板
+        
+        @param request: ListApiTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApiTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_name):
@@ -3039,6 +3383,13 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListApiTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListApiTemplatesResponse:
+        """
+        @summary 查询API模板
+        
+        @param request: ListApiTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListApiTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.api_name):
@@ -3080,6 +3431,12 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.ListApiTemplatesRequest,
     ) -> emr_20210320_models.ListApiTemplatesResponse:
+        """
+        @summary 查询API模板
+        
+        @param request: ListApiTemplatesRequest
+        @return: ListApiTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_api_templates_with_options(request, runtime)
 
@@ -3087,6 +3444,12 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.ListApiTemplatesRequest,
     ) -> emr_20210320_models.ListApiTemplatesResponse:
+        """
+        @summary 查询API模板
+        
+        @param request: ListApiTemplatesRequest
+        @return: ListApiTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_api_templates_with_options_async(request, runtime)
 
@@ -3096,7 +3459,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListApplicationConfigsResponse:
         """
-        查询应用配置。
+        @description 查询应用配置。
         
         @param request: ListApplicationConfigsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3149,7 +3512,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListApplicationConfigsResponse:
         """
-        查询应用配置。
+        @description 查询应用配置。
         
         @param request: ListApplicationConfigsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3201,7 +3564,7 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListApplicationConfigsRequest,
     ) -> emr_20210320_models.ListApplicationConfigsResponse:
         """
-        查询应用配置。
+        @description 查询应用配置。
         
         @param request: ListApplicationConfigsRequest
         @return: ListApplicationConfigsResponse
@@ -3214,7 +3577,7 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListApplicationConfigsRequest,
     ) -> emr_20210320_models.ListApplicationConfigsResponse:
         """
-        查询应用配置。
+        @description 查询应用配置。
         
         @param request: ListApplicationConfigsRequest
         @return: ListApplicationConfigsResponse
@@ -3228,7 +3591,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListApplicationsResponse:
         """
-        查询应用列表。
+        @description 查询应用列表。
         
         @param request: ListApplicationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3271,7 +3634,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListApplicationsResponse:
         """
-        查询应用列表。
+        @description 查询应用列表。
         
         @param request: ListApplicationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3313,7 +3676,7 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListApplicationsRequest,
     ) -> emr_20210320_models.ListApplicationsResponse:
         """
-        查询应用列表。
+        @description 查询应用列表。
         
         @param request: ListApplicationsRequest
         @return: ListApplicationsResponse
@@ -3326,7 +3689,7 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListApplicationsRequest,
     ) -> emr_20210320_models.ListApplicationsResponse:
         """
-        查询应用列表。
+        @description 查询应用列表。
         
         @param request: ListApplicationsRequest
         @return: ListApplicationsResponse
@@ -3340,7 +3703,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListAutoScalingActivitiesResponse:
         """
-        查询弹性伸缩活动列表。
+        @description 查询弹性伸缩活动列表。
         
         @param request: ListAutoScalingActivitiesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3393,7 +3756,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListAutoScalingActivitiesResponse:
         """
-        查询弹性伸缩活动列表。
+        @description 查询弹性伸缩活动列表。
         
         @param request: ListAutoScalingActivitiesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3445,7 +3808,7 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListAutoScalingActivitiesRequest,
     ) -> emr_20210320_models.ListAutoScalingActivitiesResponse:
         """
-        查询弹性伸缩活动列表。
+        @description 查询弹性伸缩活动列表。
         
         @param request: ListAutoScalingActivitiesRequest
         @return: ListAutoScalingActivitiesResponse
@@ -3458,7 +3821,7 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListAutoScalingActivitiesRequest,
     ) -> emr_20210320_models.ListAutoScalingActivitiesResponse:
         """
-        查询弹性伸缩活动列表。
+        @description 查询弹性伸缩活动列表。
         
         @param request: ListAutoScalingActivitiesRequest
         @return: ListAutoScalingActivitiesResponse
@@ -3471,6 +3834,13 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListClustersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListClustersResponse:
+        """
+        @summary Queries E-MapReduce (EMR) clusters.
+        
+        @param request: ListClustersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClustersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_ids):
@@ -3517,6 +3887,13 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListClustersRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListClustersResponse:
+        """
+        @summary Queries E-MapReduce (EMR) clusters.
+        
+        @param request: ListClustersRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListClustersResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_ids):
@@ -3562,6 +3939,12 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.ListClustersRequest,
     ) -> emr_20210320_models.ListClustersResponse:
+        """
+        @summary Queries E-MapReduce (EMR) clusters.
+        
+        @param request: ListClustersRequest
+        @return: ListClustersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_clusters_with_options(request, runtime)
 
@@ -3569,6 +3952,12 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.ListClustersRequest,
     ) -> emr_20210320_models.ListClustersResponse:
+        """
+        @summary Queries E-MapReduce (EMR) clusters.
+        
+        @param request: ListClustersRequest
+        @return: ListClustersResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_clusters_with_options_async(request, runtime)
 
@@ -3578,7 +3967,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListComponentInstancesResponse:
         """
-        查询组件实例列表。
+        @description 查询组件实例列表。
         
         @param request: ListComponentInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3629,7 +4018,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListComponentInstancesResponse:
         """
-        查询组件实例列表。
+        @description 查询组件实例列表。
         
         @param request: ListComponentInstancesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3679,7 +4068,7 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListComponentInstancesRequest,
     ) -> emr_20210320_models.ListComponentInstancesResponse:
         """
-        查询组件实例列表。
+        @description 查询组件实例列表。
         
         @param request: ListComponentInstancesRequest
         @return: ListComponentInstancesResponse
@@ -3692,7 +4081,7 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListComponentInstancesRequest,
     ) -> emr_20210320_models.ListComponentInstancesResponse:
         """
-        查询组件实例列表。
+        @description 查询组件实例列表。
         
         @param request: ListComponentInstancesRequest
         @return: ListComponentInstancesResponse
@@ -3706,7 +4095,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListComponentsResponse:
         """
-        查询组件列表。
+        @description 查询组件列表。
         
         @param request: ListComponentsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3755,7 +4144,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListComponentsResponse:
         """
-        查询组件列表。
+        @description 查询组件列表。
         
         @param request: ListComponentsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3803,7 +4192,7 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListComponentsRequest,
     ) -> emr_20210320_models.ListComponentsResponse:
         """
-        查询组件列表。
+        @description 查询组件列表。
         
         @param request: ListComponentsRequest
         @return: ListComponentsResponse
@@ -3816,7 +4205,7 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListComponentsRequest,
     ) -> emr_20210320_models.ListComponentsResponse:
         """
-        查询组件列表。
+        @description 查询组件列表。
         
         @param request: ListComponentsRequest
         @return: ListComponentsResponse
@@ -3830,7 +4219,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListDoctorApplicationsResponse:
         """
-        list all doctor analysis apps
+        @summary Obtains the analysis results of multiple jobs on E-MapReduce (EMR) Doctor.
+        
+        @description list all doctor analysis apps
         
         @param request: ListDoctorApplicationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3885,7 +4276,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListDoctorApplicationsResponse:
         """
-        list all doctor analysis apps
+        @summary Obtains the analysis results of multiple jobs on E-MapReduce (EMR) Doctor.
+        
+        @description list all doctor analysis apps
         
         @param request: ListDoctorApplicationsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -3939,7 +4332,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListDoctorApplicationsRequest,
     ) -> emr_20210320_models.ListDoctorApplicationsResponse:
         """
-        list all doctor analysis apps
+        @summary Obtains the analysis results of multiple jobs on E-MapReduce (EMR) Doctor.
+        
+        @description list all doctor analysis apps
         
         @param request: ListDoctorApplicationsRequest
         @return: ListDoctorApplicationsResponse
@@ -3952,7 +4347,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListDoctorApplicationsRequest,
     ) -> emr_20210320_models.ListDoctorApplicationsResponse:
         """
-        list all doctor analysis apps
+        @summary Obtains the analysis results of multiple jobs on E-MapReduce (EMR) Doctor.
+        
+        @description list all doctor analysis apps
         
         @param request: ListDoctorApplicationsRequest
         @return: ListDoctorApplicationsResponse
@@ -3966,7 +4363,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListDoctorComputeSummaryResponse:
         """
-        list Doctor analysis result of cluster engine queue view
+        @summary Obtains the information about resource usage by resource type in a cluster on E-MapReduce (EMR) Doctor.
+        
+        @description list Doctor analysis result of cluster engine queue view
         
         @param request: ListDoctorComputeSummaryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4015,7 +4414,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListDoctorComputeSummaryResponse:
         """
-        list Doctor analysis result of cluster engine queue view
+        @summary Obtains the information about resource usage by resource type in a cluster on E-MapReduce (EMR) Doctor.
+        
+        @description list Doctor analysis result of cluster engine queue view
         
         @param request: ListDoctorComputeSummaryRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4063,7 +4464,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListDoctorComputeSummaryRequest,
     ) -> emr_20210320_models.ListDoctorComputeSummaryResponse:
         """
-        list Doctor analysis result of cluster engine queue view
+        @summary Obtains the information about resource usage by resource type in a cluster on E-MapReduce (EMR) Doctor.
+        
+        @description list Doctor analysis result of cluster engine queue view
         
         @param request: ListDoctorComputeSummaryRequest
         @return: ListDoctorComputeSummaryResponse
@@ -4076,7 +4479,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListDoctorComputeSummaryRequest,
     ) -> emr_20210320_models.ListDoctorComputeSummaryResponse:
         """
-        list Doctor analysis result of cluster engine queue view
+        @summary Obtains the information about resource usage by resource type in a cluster on E-MapReduce (EMR) Doctor.
+        
+        @description list Doctor analysis result of cluster engine queue view
         
         @param request: ListDoctorComputeSummaryRequest
         @return: ListDoctorComputeSummaryResponse
@@ -4090,7 +4495,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListDoctorHBaseRegionServersResponse:
         """
-        list Doctor HBaseRegionServers
+        @summary Obtains the information about multiple HBase RegionServers at a time.
+        
+        @description list Doctor HBaseRegionServers
         
         @param request: ListDoctorHBaseRegionServersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4139,7 +4546,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListDoctorHBaseRegionServersResponse:
         """
-        list Doctor HBaseRegionServers
+        @summary Obtains the information about multiple HBase RegionServers at a time.
+        
+        @description list Doctor HBaseRegionServers
         
         @param request: ListDoctorHBaseRegionServersRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4187,7 +4596,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListDoctorHBaseRegionServersRequest,
     ) -> emr_20210320_models.ListDoctorHBaseRegionServersResponse:
         """
-        list Doctor HBaseRegionServers
+        @summary Obtains the information about multiple HBase RegionServers at a time.
+        
+        @description list Doctor HBaseRegionServers
         
         @param request: ListDoctorHBaseRegionServersRequest
         @return: ListDoctorHBaseRegionServersResponse
@@ -4200,7 +4611,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListDoctorHBaseRegionServersRequest,
     ) -> emr_20210320_models.ListDoctorHBaseRegionServersResponse:
         """
-        list Doctor HBaseRegionServers
+        @summary Obtains the information about multiple HBase RegionServers at a time.
+        
+        @description list Doctor HBaseRegionServers
         
         @param request: ListDoctorHBaseRegionServersRequest
         @return: ListDoctorHBaseRegionServersResponse
@@ -4214,7 +4627,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListDoctorHBaseTablesResponse:
         """
-        list Doctor HBaseTables
+        @summary Obtains the information about multiple HBase tables at a time.
+        
+        @description list Doctor HBaseTables
         
         @param request: ListDoctorHBaseTablesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4263,7 +4678,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListDoctorHBaseTablesResponse:
         """
-        list Doctor HBaseTables
+        @summary Obtains the information about multiple HBase tables at a time.
+        
+        @description list Doctor HBaseTables
         
         @param request: ListDoctorHBaseTablesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4311,7 +4728,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListDoctorHBaseTablesRequest,
     ) -> emr_20210320_models.ListDoctorHBaseTablesResponse:
         """
-        list Doctor HBaseTables
+        @summary Obtains the information about multiple HBase tables at a time.
+        
+        @description list Doctor HBaseTables
         
         @param request: ListDoctorHBaseTablesRequest
         @return: ListDoctorHBaseTablesResponse
@@ -4324,7 +4743,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListDoctorHBaseTablesRequest,
     ) -> emr_20210320_models.ListDoctorHBaseTablesResponse:
         """
-        list Doctor HBaseTables
+        @summary Obtains the information about multiple HBase tables at a time.
+        
+        @description list Doctor HBaseTables
         
         @param request: ListDoctorHBaseTablesRequest
         @return: ListDoctorHBaseTablesResponse
@@ -4338,7 +4759,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListDoctorHDFSDirectoriesResponse:
         """
-        list Doctor HDFSNodes
+        @description list Doctor HDFSNodes
         
         @param request: ListDoctorHDFSDirectoriesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4387,7 +4808,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListDoctorHDFSDirectoriesResponse:
         """
-        list Doctor HDFSNodes
+        @description list Doctor HDFSNodes
         
         @param request: ListDoctorHDFSDirectoriesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4435,7 +4856,7 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListDoctorHDFSDirectoriesRequest,
     ) -> emr_20210320_models.ListDoctorHDFSDirectoriesResponse:
         """
-        list Doctor HDFSNodes
+        @description list Doctor HDFSNodes
         
         @param request: ListDoctorHDFSDirectoriesRequest
         @return: ListDoctorHDFSDirectoriesResponse
@@ -4448,7 +4869,7 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListDoctorHDFSDirectoriesRequest,
     ) -> emr_20210320_models.ListDoctorHDFSDirectoriesResponse:
         """
-        list Doctor HDFSNodes
+        @description list Doctor HDFSNodes
         
         @param request: ListDoctorHDFSDirectoriesRequest
         @return: ListDoctorHDFSDirectoriesResponse
@@ -4462,7 +4883,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListDoctorHDFSUGIResponse:
         """
-        list Doctor HDFS UGIs
+        @summary Obtains the analysis results of Hadoop Distributed File System (HDFS) storage resources for multiple owners or groups at a time on E-MapReduce (EMR) Doctor.
+        
+        @description list Doctor HDFS UGIs
         
         @param request: ListDoctorHDFSUGIRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4511,7 +4934,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListDoctorHDFSUGIResponse:
         """
-        list Doctor HDFS UGIs
+        @summary Obtains the analysis results of Hadoop Distributed File System (HDFS) storage resources for multiple owners or groups at a time on E-MapReduce (EMR) Doctor.
+        
+        @description list Doctor HDFS UGIs
         
         @param request: ListDoctorHDFSUGIRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4559,7 +4984,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListDoctorHDFSUGIRequest,
     ) -> emr_20210320_models.ListDoctorHDFSUGIResponse:
         """
-        list Doctor HDFS UGIs
+        @summary Obtains the analysis results of Hadoop Distributed File System (HDFS) storage resources for multiple owners or groups at a time on E-MapReduce (EMR) Doctor.
+        
+        @description list Doctor HDFS UGIs
         
         @param request: ListDoctorHDFSUGIRequest
         @return: ListDoctorHDFSUGIResponse
@@ -4572,7 +4999,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListDoctorHDFSUGIRequest,
     ) -> emr_20210320_models.ListDoctorHDFSUGIResponse:
         """
-        list Doctor HDFS UGIs
+        @summary Obtains the analysis results of Hadoop Distributed File System (HDFS) storage resources for multiple owners or groups at a time on E-MapReduce (EMR) Doctor.
+        
+        @description list Doctor HDFS UGIs
         
         @param request: ListDoctorHDFSUGIRequest
         @return: ListDoctorHDFSUGIResponse
@@ -4586,7 +5015,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListDoctorHiveDatabasesResponse:
         """
-        list Doctor Hive Databases
+        @summary Obtains the analysis results of multiple Hive databases at a time.
+        
+        @description list Doctor Hive Databases
         
         @param request: ListDoctorHiveDatabasesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4635,7 +5066,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListDoctorHiveDatabasesResponse:
         """
-        list Doctor Hive Databases
+        @summary Obtains the analysis results of multiple Hive databases at a time.
+        
+        @description list Doctor Hive Databases
         
         @param request: ListDoctorHiveDatabasesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4683,7 +5116,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListDoctorHiveDatabasesRequest,
     ) -> emr_20210320_models.ListDoctorHiveDatabasesResponse:
         """
-        list Doctor Hive Databases
+        @summary Obtains the analysis results of multiple Hive databases at a time.
+        
+        @description list Doctor Hive Databases
         
         @param request: ListDoctorHiveDatabasesRequest
         @return: ListDoctorHiveDatabasesResponse
@@ -4696,7 +5131,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListDoctorHiveDatabasesRequest,
     ) -> emr_20210320_models.ListDoctorHiveDatabasesResponse:
         """
-        list Doctor Hive Databases
+        @summary Obtains the analysis results of multiple Hive databases at a time.
+        
+        @description list Doctor Hive Databases
         
         @param request: ListDoctorHiveDatabasesRequest
         @return: ListDoctorHiveDatabasesResponse
@@ -4710,7 +5147,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListDoctorHiveTablesResponse:
         """
-        list Doctor Hive Tables
+        @summary Obtains the analysis results of multiple Hive tables at a time on E-MapReduce (EMR) Doctor.
+        
+        @description list Doctor Hive Tables
         
         @param request: ListDoctorHiveTablesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4759,7 +5198,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListDoctorHiveTablesResponse:
         """
-        list Doctor Hive Tables
+        @summary Obtains the analysis results of multiple Hive tables at a time on E-MapReduce (EMR) Doctor.
+        
+        @description list Doctor Hive Tables
         
         @param request: ListDoctorHiveTablesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4807,7 +5248,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListDoctorHiveTablesRequest,
     ) -> emr_20210320_models.ListDoctorHiveTablesResponse:
         """
-        list Doctor Hive Tables
+        @summary Obtains the analysis results of multiple Hive tables at a time on E-MapReduce (EMR) Doctor.
+        
+        @description list Doctor Hive Tables
         
         @param request: ListDoctorHiveTablesRequest
         @return: ListDoctorHiveTablesResponse
@@ -4820,7 +5263,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListDoctorHiveTablesRequest,
     ) -> emr_20210320_models.ListDoctorHiveTablesResponse:
         """
-        list Doctor Hive Tables
+        @summary Obtains the analysis results of multiple Hive tables at a time on E-MapReduce (EMR) Doctor.
+        
+        @description list Doctor Hive Tables
         
         @param request: ListDoctorHiveTablesRequest
         @return: ListDoctorHiveTablesResponse
@@ -4834,7 +5279,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListDoctorJobsResponse:
         """
-        list realtime jobs by yarn
+        @summary Obtains the basic running information about multiple jobs at a time on E-MapReduce (EMR) Doctor.
+        
+        @description list realtime jobs by yarn
         
         @param request: ListDoctorJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4891,7 +5338,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListDoctorJobsResponse:
         """
-        list realtime jobs by yarn
+        @summary Obtains the basic running information about multiple jobs at a time on E-MapReduce (EMR) Doctor.
+        
+        @description list realtime jobs by yarn
         
         @param request: ListDoctorJobsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -4947,7 +5396,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListDoctorJobsRequest,
     ) -> emr_20210320_models.ListDoctorJobsResponse:
         """
-        list realtime jobs by yarn
+        @summary Obtains the basic running information about multiple jobs at a time on E-MapReduce (EMR) Doctor.
+        
+        @description list realtime jobs by yarn
         
         @param request: ListDoctorJobsRequest
         @return: ListDoctorJobsResponse
@@ -4960,7 +5411,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListDoctorJobsRequest,
     ) -> emr_20210320_models.ListDoctorJobsResponse:
         """
-        list realtime jobs by yarn
+        @summary Obtains the basic running information about multiple jobs at a time on E-MapReduce (EMR) Doctor.
+        
+        @description list realtime jobs by yarn
         
         @param request: ListDoctorJobsRequest
         @return: ListDoctorJobsResponse
@@ -4974,7 +5427,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListDoctorJobsStatsResponse:
         """
-        list stats groupBy jobs by yarn
+        @summary Obtains the summary of basic running information about multiple jobs at a time on E-MapReduce (EMR) Doctor.
+        
+        @description list stats groupBy jobs by yarn
         
         @param request: ListDoctorJobsStatsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5025,7 +5480,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListDoctorJobsStatsResponse:
         """
-        list stats groupBy jobs by yarn
+        @summary Obtains the summary of basic running information about multiple jobs at a time on E-MapReduce (EMR) Doctor.
+        
+        @description list stats groupBy jobs by yarn
         
         @param request: ListDoctorJobsStatsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5075,7 +5532,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListDoctorJobsStatsRequest,
     ) -> emr_20210320_models.ListDoctorJobsStatsResponse:
         """
-        list stats groupBy jobs by yarn
+        @summary Obtains the summary of basic running information about multiple jobs at a time on E-MapReduce (EMR) Doctor.
+        
+        @description list stats groupBy jobs by yarn
         
         @param request: ListDoctorJobsStatsRequest
         @return: ListDoctorJobsStatsResponse
@@ -5088,7 +5547,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListDoctorJobsStatsRequest,
     ) -> emr_20210320_models.ListDoctorJobsStatsResponse:
         """
-        list stats groupBy jobs by yarn
+        @summary Obtains the summary of basic running information about multiple jobs at a time on E-MapReduce (EMR) Doctor.
+        
+        @description list stats groupBy jobs by yarn
         
         @param request: ListDoctorJobsStatsRequest
         @return: ListDoctorJobsStatsResponse
@@ -5102,7 +5563,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListDoctorReportsResponse:
         """
-        list all reports analysis by emr doctor
+        @summary Obtains the overall analysis result reports of E-MapReduce (EMR) Doctor at a time.
+        
+        @description list all reports analysis by emr doctor
         
         @param request: ListDoctorReportsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5143,7 +5606,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListDoctorReportsResponse:
         """
-        list all reports analysis by emr doctor
+        @summary Obtains the overall analysis result reports of E-MapReduce (EMR) Doctor at a time.
+        
+        @description list all reports analysis by emr doctor
         
         @param request: ListDoctorReportsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5183,7 +5648,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListDoctorReportsRequest,
     ) -> emr_20210320_models.ListDoctorReportsResponse:
         """
-        list all reports analysis by emr doctor
+        @summary Obtains the overall analysis result reports of E-MapReduce (EMR) Doctor at a time.
+        
+        @description list all reports analysis by emr doctor
         
         @param request: ListDoctorReportsRequest
         @return: ListDoctorReportsResponse
@@ -5196,7 +5663,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListDoctorReportsRequest,
     ) -> emr_20210320_models.ListDoctorReportsResponse:
         """
-        list all reports analysis by emr doctor
+        @summary Obtains the overall analysis result reports of E-MapReduce (EMR) Doctor at a time.
+        
+        @description list all reports analysis by emr doctor
         
         @param request: ListDoctorReportsRequest
         @return: ListDoctorReportsResponse
@@ -5209,6 +5678,11 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListInstanceTypesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListInstanceTypesResponse:
+        """
+        @param request: ListInstanceTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceTypesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -5257,6 +5731,11 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListInstanceTypesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListInstanceTypesResponse:
+        """
+        @param request: ListInstanceTypesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceTypesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -5304,6 +5783,10 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.ListInstanceTypesRequest,
     ) -> emr_20210320_models.ListInstanceTypesResponse:
+        """
+        @param request: ListInstanceTypesRequest
+        @return: ListInstanceTypesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_instance_types_with_options(request, runtime)
 
@@ -5311,6 +5794,10 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.ListInstanceTypesRequest,
     ) -> emr_20210320_models.ListInstanceTypesResponse:
+        """
+        @param request: ListInstanceTypesRequest
+        @return: ListInstanceTypesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_instance_types_with_options_async(request, runtime)
 
@@ -5319,6 +5806,13 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListNodeGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListNodeGroupsResponse:
+        """
+        @summary Queries the list of node groups in an EMR cluster.
+        
+        @param request: ListNodeGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNodeGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -5361,6 +5855,13 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListNodeGroupsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListNodeGroupsResponse:
+        """
+        @summary Queries the list of node groups in an EMR cluster.
+        
+        @param request: ListNodeGroupsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNodeGroupsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -5402,6 +5903,12 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.ListNodeGroupsRequest,
     ) -> emr_20210320_models.ListNodeGroupsResponse:
+        """
+        @summary Queries the list of node groups in an EMR cluster.
+        
+        @param request: ListNodeGroupsRequest
+        @return: ListNodeGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_node_groups_with_options(request, runtime)
 
@@ -5409,6 +5916,12 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.ListNodeGroupsRequest,
     ) -> emr_20210320_models.ListNodeGroupsResponse:
+        """
+        @summary Queries the list of node groups in an EMR cluster.
+        
+        @param request: ListNodeGroupsRequest
+        @return: ListNodeGroupsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_node_groups_with_options_async(request, runtime)
 
@@ -5417,6 +5930,13 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListNodesResponse:
+        """
+        @summary Queries the node list of an EMR cluster.
+        
+        @param request: ListNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNodesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -5465,6 +5985,13 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListNodesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListNodesResponse:
+        """
+        @summary Queries the node list of an EMR cluster.
+        
+        @param request: ListNodesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListNodesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -5512,6 +6039,12 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.ListNodesRequest,
     ) -> emr_20210320_models.ListNodesResponse:
+        """
+        @summary Queries the node list of an EMR cluster.
+        
+        @param request: ListNodesRequest
+        @return: ListNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_nodes_with_options(request, runtime)
 
@@ -5519,6 +6052,12 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.ListNodesRequest,
     ) -> emr_20210320_models.ListNodesResponse:
+        """
+        @summary Queries the node list of an EMR cluster.
+        
+        @param request: ListNodesRequest
+        @return: ListNodesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_nodes_with_options_async(request, runtime)
 
@@ -5528,7 +6067,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListReleaseVersionsResponse:
         """
-        查询主版本。
+        @summary Queries the major E-MapReduce (EMR) versions.
+        
+        @description 查询主版本。
         
         @param request: ListReleaseVersionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5567,7 +6108,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListReleaseVersionsResponse:
         """
-        查询主版本。
+        @summary Queries the major E-MapReduce (EMR) versions.
+        
+        @description 查询主版本。
         
         @param request: ListReleaseVersionsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5605,7 +6148,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListReleaseVersionsRequest,
     ) -> emr_20210320_models.ListReleaseVersionsResponse:
         """
-        查询主版本。
+        @summary Queries the major E-MapReduce (EMR) versions.
+        
+        @description 查询主版本。
         
         @param request: ListReleaseVersionsRequest
         @return: ListReleaseVersionsResponse
@@ -5618,7 +6163,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListReleaseVersionsRequest,
     ) -> emr_20210320_models.ListReleaseVersionsResponse:
         """
-        查询主版本。
+        @summary Queries the major E-MapReduce (EMR) versions.
+        
+        @description 查询主版本。
         
         @param request: ListReleaseVersionsRequest
         @return: ListReleaseVersionsResponse
@@ -5632,7 +6179,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListScriptsResponse:
         """
-        查询集群脚本。
+        @description 查询集群脚本。
         
         @param request: ListScriptsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5675,7 +6222,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListScriptsResponse:
         """
-        查询集群脚本。
+        @description 查询集群脚本。
         
         @param request: ListScriptsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5717,7 +6264,7 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListScriptsRequest,
     ) -> emr_20210320_models.ListScriptsResponse:
         """
-        查询集群脚本。
+        @description 查询集群脚本。
         
         @param request: ListScriptsRequest
         @return: ListScriptsResponse
@@ -5730,7 +6277,7 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListScriptsRequest,
     ) -> emr_20210320_models.ListScriptsResponse:
         """
-        查询集群脚本。
+        @description 查询集群脚本。
         
         @param request: ListScriptsRequest
         @return: ListScriptsResponse
@@ -5743,6 +6290,13 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags that are bound to an EMR cluster.
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -5781,6 +6335,13 @@ class Client(OpenApiClient):
         request: emr_20210320_models.ListTagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags that are bound to an EMR cluster.
+        
+        @param request: ListTagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListTagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.max_results):
@@ -5818,6 +6379,12 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.ListTagResourcesRequest,
     ) -> emr_20210320_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags that are bound to an EMR cluster.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.list_tag_resources_with_options(request, runtime)
 
@@ -5825,6 +6392,12 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.ListTagResourcesRequest,
     ) -> emr_20210320_models.ListTagResourcesResponse:
+        """
+        @summary Queries the tags that are bound to an EMR cluster.
+        
+        @param request: ListTagResourcesRequest
+        @return: ListTagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
@@ -5834,7 +6407,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.PutAutoScalingPolicyResponse:
         """
-        You can call this operation to configure auto scaling policies.
+        @summary Configures auto scaling rules.
+        
+        @description You can call this operation to configure auto scaling policies.
         
         @param request: PutAutoScalingPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5877,7 +6452,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.PutAutoScalingPolicyResponse:
         """
-        You can call this operation to configure auto scaling policies.
+        @summary Configures auto scaling rules.
+        
+        @description You can call this operation to configure auto scaling policies.
         
         @param request: PutAutoScalingPolicyRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -5919,7 +6496,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.PutAutoScalingPolicyRequest,
     ) -> emr_20210320_models.PutAutoScalingPolicyResponse:
         """
-        You can call this operation to configure auto scaling policies.
+        @summary Configures auto scaling rules.
+        
+        @description You can call this operation to configure auto scaling policies.
         
         @param request: PutAutoScalingPolicyRequest
         @return: PutAutoScalingPolicyResponse
@@ -5932,7 +6511,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.PutAutoScalingPolicyRequest,
     ) -> emr_20210320_models.PutAutoScalingPolicyResponse:
         """
-        You can call this operation to configure auto scaling policies.
+        @summary Configures auto scaling rules.
+        
+        @description You can call this operation to configure auto scaling policies.
         
         @param request: PutAutoScalingPolicyRequest
         @return: PutAutoScalingPolicyResponse
@@ -5945,6 +6526,11 @@ class Client(OpenApiClient):
         request: emr_20210320_models.RemoveAutoScalingPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.RemoveAutoScalingPolicyResponse:
+        """
+        @param request: RemoveAutoScalingPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveAutoScalingPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -5977,6 +6563,11 @@ class Client(OpenApiClient):
         request: emr_20210320_models.RemoveAutoScalingPolicyRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.RemoveAutoScalingPolicyResponse:
+        """
+        @param request: RemoveAutoScalingPolicyRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RemoveAutoScalingPolicyResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.cluster_id):
@@ -6008,6 +6599,10 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.RemoveAutoScalingPolicyRequest,
     ) -> emr_20210320_models.RemoveAutoScalingPolicyResponse:
+        """
+        @param request: RemoveAutoScalingPolicyRequest
+        @return: RemoveAutoScalingPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.remove_auto_scaling_policy_with_options(request, runtime)
 
@@ -6015,6 +6610,10 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.RemoveAutoScalingPolicyRequest,
     ) -> emr_20210320_models.RemoveAutoScalingPolicyResponse:
+        """
+        @param request: RemoveAutoScalingPolicyRequest
+        @return: RemoveAutoScalingPolicyResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.remove_auto_scaling_policy_with_options_async(request, runtime)
 
@@ -6024,7 +6623,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.RunApiTemplateResponse:
         """
-        执行集群模板
+        @description 执行集群模板
         
         @param request: RunApiTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6065,7 +6664,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.RunApiTemplateResponse:
         """
-        执行集群模板
+        @description 执行集群模板
         
         @param request: RunApiTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6105,7 +6704,7 @@ class Client(OpenApiClient):
         request: emr_20210320_models.RunApiTemplateRequest,
     ) -> emr_20210320_models.RunApiTemplateResponse:
         """
-        执行集群模板
+        @description 执行集群模板
         
         @param request: RunApiTemplateRequest
         @return: RunApiTemplateResponse
@@ -6118,7 +6717,7 @@ class Client(OpenApiClient):
         request: emr_20210320_models.RunApiTemplateRequest,
     ) -> emr_20210320_models.RunApiTemplateResponse:
         """
-        执行集群模板
+        @description 执行集群模板
         
         @param request: RunApiTemplateRequest
         @return: RunApiTemplateResponse
@@ -6131,6 +6730,11 @@ class Client(OpenApiClient):
         request: emr_20210320_models.RunApplicationActionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.RunApplicationActionResponse:
+        """
+        @param request: RunApplicationActionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunApplicationActionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.action_name):
@@ -6175,6 +6779,11 @@ class Client(OpenApiClient):
         request: emr_20210320_models.RunApplicationActionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.RunApplicationActionResponse:
+        """
+        @param request: RunApplicationActionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RunApplicationActionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.action_name):
@@ -6218,6 +6827,10 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.RunApplicationActionRequest,
     ) -> emr_20210320_models.RunApplicationActionResponse:
+        """
+        @param request: RunApplicationActionRequest
+        @return: RunApplicationActionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.run_application_action_with_options(request, runtime)
 
@@ -6225,6 +6838,10 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.RunApplicationActionRequest,
     ) -> emr_20210320_models.RunApplicationActionResponse:
+        """
+        @param request: RunApplicationActionRequest
+        @return: RunApplicationActionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.run_application_action_with_options_async(request, runtime)
 
@@ -6233,6 +6850,13 @@ class Client(OpenApiClient):
         request: emr_20210320_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.TagResourcesResponse:
+        """
+        @summary Bind tags to a specified EMR cluster.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -6267,6 +6891,13 @@ class Client(OpenApiClient):
         request: emr_20210320_models.TagResourcesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.TagResourcesResponse:
+        """
+        @summary Bind tags to a specified EMR cluster.
+        
+        @param request: TagResourcesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: TagResourcesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.region_id):
@@ -6300,6 +6931,12 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.TagResourcesRequest,
     ) -> emr_20210320_models.TagResourcesResponse:
+        """
+        @summary Bind tags to a specified EMR cluster.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.tag_resources_with_options(request, runtime)
 
@@ -6307,6 +6944,12 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.TagResourcesRequest,
     ) -> emr_20210320_models.TagResourcesResponse:
+        """
+        @summary Bind tags to a specified EMR cluster.
+        
+        @param request: TagResourcesRequest
+        @return: TagResourcesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
@@ -6316,7 +6959,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.UntagResourcesResponse:
         """
-        删除指定资源标签。
+        @summary Unbinds tags from a specified column in an EMR cluster. If the tag is not bound to other resources, the tag is automatically deleted.
+        
+        @description 删除指定资源标签。
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6359,7 +7004,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.UntagResourcesResponse:
         """
-        删除指定资源标签。
+        @summary Unbinds tags from a specified column in an EMR cluster. If the tag is not bound to other resources, the tag is automatically deleted.
+        
+        @description 删除指定资源标签。
         
         @param request: UntagResourcesRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6401,7 +7048,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.UntagResourcesRequest,
     ) -> emr_20210320_models.UntagResourcesResponse:
         """
-        删除指定资源标签。
+        @summary Unbinds tags from a specified column in an EMR cluster. If the tag is not bound to other resources, the tag is automatically deleted.
+        
+        @description 删除指定资源标签。
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
@@ -6414,7 +7063,9 @@ class Client(OpenApiClient):
         request: emr_20210320_models.UntagResourcesRequest,
     ) -> emr_20210320_models.UntagResourcesResponse:
         """
-        删除指定资源标签。
+        @summary Unbinds tags from a specified column in an EMR cluster. If the tag is not bound to other resources, the tag is automatically deleted.
+        
+        @description 删除指定资源标签。
         
         @param request: UntagResourcesRequest
         @return: UntagResourcesResponse
@@ -6428,7 +7079,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.UpdateApiTemplateResponse:
         """
-        修改集群模板
+        @description 修改集群模板
         
         @param request: UpdateApiTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6473,7 +7124,7 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.UpdateApiTemplateResponse:
         """
-        修改集群模板
+        @description 修改集群模板
         
         @param request: UpdateApiTemplateRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -6517,7 +7168,7 @@ class Client(OpenApiClient):
         request: emr_20210320_models.UpdateApiTemplateRequest,
     ) -> emr_20210320_models.UpdateApiTemplateResponse:
         """
-        修改集群模板
+        @description 修改集群模板
         
         @param request: UpdateApiTemplateRequest
         @return: UpdateApiTemplateResponse
@@ -6530,7 +7181,7 @@ class Client(OpenApiClient):
         request: emr_20210320_models.UpdateApiTemplateRequest,
     ) -> emr_20210320_models.UpdateApiTemplateResponse:
         """
-        修改集群模板
+        @description 修改集群模板
         
         @param request: UpdateApiTemplateRequest
         @return: UpdateApiTemplateResponse
@@ -6543,6 +7194,11 @@ class Client(OpenApiClient):
         request: emr_20210320_models.UpdateApplicationConfigsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.UpdateApplicationConfigsResponse:
+        """
+        @param request: UpdateApplicationConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApplicationConfigsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_configs):
@@ -6587,6 +7243,11 @@ class Client(OpenApiClient):
         request: emr_20210320_models.UpdateApplicationConfigsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> emr_20210320_models.UpdateApplicationConfigsResponse:
+        """
+        @param request: UpdateApplicationConfigsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateApplicationConfigsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.application_configs):
@@ -6630,6 +7291,10 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.UpdateApplicationConfigsRequest,
     ) -> emr_20210320_models.UpdateApplicationConfigsResponse:
+        """
+        @param request: UpdateApplicationConfigsRequest
+        @return: UpdateApplicationConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.update_application_configs_with_options(request, runtime)
 
@@ -6637,5 +7302,9 @@ class Client(OpenApiClient):
         self,
         request: emr_20210320_models.UpdateApplicationConfigsRequest,
     ) -> emr_20210320_models.UpdateApplicationConfigsResponse:
+        """
+        @param request: UpdateApplicationConfigsRequest
+        @return: UpdateApplicationConfigsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.update_application_configs_with_options_async(request, runtime)
