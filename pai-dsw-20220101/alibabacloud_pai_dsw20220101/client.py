@@ -48,6 +48,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.CreateIdleInstanceCullerResponse:
+        """
+        @param request: CreateIdleInstanceCullerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIdleInstanceCullerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cpu_percent_threshold):
@@ -83,6 +89,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.CreateIdleInstanceCullerResponse:
+        """
+        @param request: CreateIdleInstanceCullerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateIdleInstanceCullerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.cpu_percent_threshold):
@@ -116,6 +128,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_dsw_20220101_models.CreateIdleInstanceCullerRequest,
     ) -> pai_dsw_20220101_models.CreateIdleInstanceCullerResponse:
+        """
+        @param request: CreateIdleInstanceCullerRequest
+        @return: CreateIdleInstanceCullerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_idle_instance_culler_with_options(instance_id, request, headers, runtime)
@@ -125,6 +141,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_dsw_20220101_models.CreateIdleInstanceCullerRequest,
     ) -> pai_dsw_20220101_models.CreateIdleInstanceCullerResponse:
+        """
+        @param request: CreateIdleInstanceCullerRequest
+        @return: CreateIdleInstanceCullerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_idle_instance_culler_with_options_async(instance_id, request, headers, runtime)
@@ -135,6 +155,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.CreateInstanceResponse:
+        """
+        @summary 创建实例
+        
+        @param request: CreateInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.accessibility):
@@ -197,6 +225,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.CreateInstanceResponse:
+        """
+        @summary 创建实例
+        
+        @param request: CreateInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.accessibility):
@@ -257,6 +293,12 @@ class Client(OpenApiClient):
         self,
         request: pai_dsw_20220101_models.CreateInstanceRequest,
     ) -> pai_dsw_20220101_models.CreateInstanceResponse:
+        """
+        @summary 创建实例
+        
+        @param request: CreateInstanceRequest
+        @return: CreateInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_instance_with_options(request, headers, runtime)
@@ -265,6 +307,12 @@ class Client(OpenApiClient):
         self,
         request: pai_dsw_20220101_models.CreateInstanceRequest,
     ) -> pai_dsw_20220101_models.CreateInstanceResponse:
+        """
+        @summary 创建实例
+        
+        @param request: CreateInstanceRequest
+        @return: CreateInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_instance_with_options_async(request, headers, runtime)
@@ -276,6 +324,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.CreateInstanceShutdownTimerResponse:
+        """
+        @summary 创建定时关机任务
+        
+        @param request: CreateInstanceShutdownTimerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceShutdownTimerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.due_time):
@@ -309,6 +365,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.CreateInstanceShutdownTimerResponse:
+        """
+        @summary 创建定时关机任务
+        
+        @param request: CreateInstanceShutdownTimerRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceShutdownTimerResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.due_time):
@@ -340,6 +404,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_dsw_20220101_models.CreateInstanceShutdownTimerRequest,
     ) -> pai_dsw_20220101_models.CreateInstanceShutdownTimerResponse:
+        """
+        @summary 创建定时关机任务
+        
+        @param request: CreateInstanceShutdownTimerRequest
+        @return: CreateInstanceShutdownTimerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_instance_shutdown_timer_with_options(instance_id, request, headers, runtime)
@@ -349,6 +419,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_dsw_20220101_models.CreateInstanceShutdownTimerRequest,
     ) -> pai_dsw_20220101_models.CreateInstanceShutdownTimerResponse:
+        """
+        @summary 创建定时关机任务
+        
+        @param request: CreateInstanceShutdownTimerRequest
+        @return: CreateInstanceShutdownTimerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_instance_shutdown_timer_with_options_async(instance_id, request, headers, runtime)
@@ -360,6 +436,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.CreateInstanceSnapshotResponse:
+        """
+        @summary 创建实例快照
+        
+        @param request: CreateInstanceSnapshotRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceSnapshotResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.exclude_paths):
@@ -401,6 +485,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.CreateInstanceSnapshotResponse:
+        """
+        @summary 创建实例快照
+        
+        @param request: CreateInstanceSnapshotRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: CreateInstanceSnapshotResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.exclude_paths):
@@ -440,6 +532,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_dsw_20220101_models.CreateInstanceSnapshotRequest,
     ) -> pai_dsw_20220101_models.CreateInstanceSnapshotResponse:
+        """
+        @summary 创建实例快照
+        
+        @param request: CreateInstanceSnapshotRequest
+        @return: CreateInstanceSnapshotResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.create_instance_snapshot_with_options(instance_id, request, headers, runtime)
@@ -449,6 +547,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_dsw_20220101_models.CreateInstanceSnapshotRequest,
     ) -> pai_dsw_20220101_models.CreateInstanceSnapshotResponse:
+        """
+        @summary 创建实例快照
+        
+        @param request: CreateInstanceSnapshotRequest
+        @return: CreateInstanceSnapshotResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.create_instance_snapshot_with_options_async(instance_id, request, headers, runtime)
@@ -459,6 +563,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.DeleteIdleInstanceCullerResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIdleInstanceCullerResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -484,6 +593,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.DeleteIdleInstanceCullerResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteIdleInstanceCullerResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -507,6 +621,9 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> pai_dsw_20220101_models.DeleteIdleInstanceCullerResponse:
+        """
+        @return: DeleteIdleInstanceCullerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_idle_instance_culler_with_options(instance_id, headers, runtime)
@@ -515,6 +632,9 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> pai_dsw_20220101_models.DeleteIdleInstanceCullerResponse:
+        """
+        @return: DeleteIdleInstanceCullerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_idle_instance_culler_with_options_async(instance_id, headers, runtime)
@@ -525,6 +645,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.DeleteInstanceResponse:
+        """
+        @summary 删除实例
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInstanceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -550,6 +677,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.DeleteInstanceResponse:
+        """
+        @summary 删除实例
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInstanceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -573,6 +707,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> pai_dsw_20220101_models.DeleteInstanceResponse:
+        """
+        @summary 删除实例
+        
+        @return: DeleteInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_instance_with_options(instance_id, headers, runtime)
@@ -581,6 +720,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> pai_dsw_20220101_models.DeleteInstanceResponse:
+        """
+        @summary 删除实例
+        
+        @return: DeleteInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_instance_with_options_async(instance_id, headers, runtime)
@@ -591,6 +735,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.DeleteInstanceShutdownTimerResponse:
+        """
+        @summary 删除定时关机任务
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInstanceShutdownTimerResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -616,6 +767,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.DeleteInstanceShutdownTimerResponse:
+        """
+        @summary 删除定时关机任务
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInstanceShutdownTimerResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -639,6 +797,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> pai_dsw_20220101_models.DeleteInstanceShutdownTimerResponse:
+        """
+        @summary 删除定时关机任务
+        
+        @return: DeleteInstanceShutdownTimerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_instance_shutdown_timer_with_options(instance_id, headers, runtime)
@@ -647,6 +810,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> pai_dsw_20220101_models.DeleteInstanceShutdownTimerResponse:
+        """
+        @summary 删除定时关机任务
+        
+        @return: DeleteInstanceShutdownTimerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_instance_shutdown_timer_with_options_async(instance_id, headers, runtime)
@@ -658,6 +826,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.DeleteInstanceSnapshotResponse:
+        """
+        @summary 获取实例快照详情
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInstanceSnapshotResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -684,6 +859,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.DeleteInstanceSnapshotResponse:
+        """
+        @summary 获取实例快照详情
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteInstanceSnapshotResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -708,6 +890,11 @@ class Client(OpenApiClient):
         instance_id: str,
         snapshot_id: str,
     ) -> pai_dsw_20220101_models.DeleteInstanceSnapshotResponse:
+        """
+        @summary 获取实例快照详情
+        
+        @return: DeleteInstanceSnapshotResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.delete_instance_snapshot_with_options(instance_id, snapshot_id, headers, runtime)
@@ -717,6 +904,11 @@ class Client(OpenApiClient):
         instance_id: str,
         snapshot_id: str,
     ) -> pai_dsw_20220101_models.DeleteInstanceSnapshotResponse:
+        """
+        @summary 获取实例快照详情
+        
+        @return: DeleteInstanceSnapshotResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.delete_instance_snapshot_with_options_async(instance_id, snapshot_id, headers, runtime)
@@ -727,6 +919,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetIdleInstanceCullerResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIdleInstanceCullerResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -752,6 +949,11 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetIdleInstanceCullerResponse:
+        """
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetIdleInstanceCullerResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -775,6 +977,9 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> pai_dsw_20220101_models.GetIdleInstanceCullerResponse:
+        """
+        @return: GetIdleInstanceCullerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_idle_instance_culler_with_options(instance_id, headers, runtime)
@@ -783,6 +988,9 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> pai_dsw_20220101_models.GetIdleInstanceCullerResponse:
+        """
+        @return: GetIdleInstanceCullerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_idle_instance_culler_with_options_async(instance_id, headers, runtime)
@@ -793,6 +1001,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetInstanceResponse:
+        """
+        @summary 获取实例详情
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -818,6 +1033,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetInstanceResponse:
+        """
+        @summary 获取实例详情
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -841,6 +1063,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> pai_dsw_20220101_models.GetInstanceResponse:
+        """
+        @summary 获取实例详情
+        
+        @return: GetInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_instance_with_options(instance_id, headers, runtime)
@@ -849,6 +1076,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> pai_dsw_20220101_models.GetInstanceResponse:
+        """
+        @summary 获取实例详情
+        
+        @return: GetInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_instance_with_options_async(instance_id, headers, runtime)
@@ -860,6 +1092,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetInstanceEventsResponse:
+        """
+        @param request: GetInstanceEventsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceEventsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -895,6 +1133,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetInstanceEventsResponse:
+        """
+        @param request: GetInstanceEventsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceEventsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -928,6 +1172,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_dsw_20220101_models.GetInstanceEventsRequest,
     ) -> pai_dsw_20220101_models.GetInstanceEventsResponse:
+        """
+        @param request: GetInstanceEventsRequest
+        @return: GetInstanceEventsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_instance_events_with_options(instance_id, request, headers, runtime)
@@ -937,6 +1185,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_dsw_20220101_models.GetInstanceEventsRequest,
     ) -> pai_dsw_20220101_models.GetInstanceEventsResponse:
+        """
+        @param request: GetInstanceEventsRequest
+        @return: GetInstanceEventsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_instance_events_with_options_async(instance_id, request, headers, runtime)
@@ -948,6 +1200,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetInstanceMetricsResponse:
+        """
+        @param request: GetInstanceMetricsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceMetricsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -985,6 +1243,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetInstanceMetricsResponse:
+        """
+        @param request: GetInstanceMetricsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceMetricsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -1020,6 +1284,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_dsw_20220101_models.GetInstanceMetricsRequest,
     ) -> pai_dsw_20220101_models.GetInstanceMetricsResponse:
+        """
+        @param request: GetInstanceMetricsRequest
+        @return: GetInstanceMetricsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_instance_metrics_with_options(instance_id, request, headers, runtime)
@@ -1029,6 +1297,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_dsw_20220101_models.GetInstanceMetricsRequest,
     ) -> pai_dsw_20220101_models.GetInstanceMetricsResponse:
+        """
+        @param request: GetInstanceMetricsRequest
+        @return: GetInstanceMetricsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_instance_metrics_with_options_async(instance_id, request, headers, runtime)
@@ -1039,6 +1311,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetInstanceShutdownTimerResponse:
+        """
+        @summary 获取定时关机任务
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceShutdownTimerResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1064,6 +1343,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetInstanceShutdownTimerResponse:
+        """
+        @summary 获取定时关机任务
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceShutdownTimerResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1087,6 +1373,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> pai_dsw_20220101_models.GetInstanceShutdownTimerResponse:
+        """
+        @summary 获取定时关机任务
+        
+        @return: GetInstanceShutdownTimerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_instance_shutdown_timer_with_options(instance_id, headers, runtime)
@@ -1095,6 +1386,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> pai_dsw_20220101_models.GetInstanceShutdownTimerResponse:
+        """
+        @summary 获取定时关机任务
+        
+        @return: GetInstanceShutdownTimerResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_instance_shutdown_timer_with_options_async(instance_id, headers, runtime)
@@ -1106,6 +1402,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetInstanceSnapshotResponse:
+        """
+        @summary 获取实例快照详情
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceSnapshotResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1132,6 +1435,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetInstanceSnapshotResponse:
+        """
+        @summary 获取实例快照详情
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetInstanceSnapshotResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1156,6 +1466,11 @@ class Client(OpenApiClient):
         instance_id: str,
         snapshot_id: str,
     ) -> pai_dsw_20220101_models.GetInstanceSnapshotResponse:
+        """
+        @summary 获取实例快照详情
+        
+        @return: GetInstanceSnapshotResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_instance_snapshot_with_options(instance_id, snapshot_id, headers, runtime)
@@ -1165,6 +1480,11 @@ class Client(OpenApiClient):
         instance_id: str,
         snapshot_id: str,
     ) -> pai_dsw_20220101_models.GetInstanceSnapshotResponse:
+        """
+        @summary 获取实例快照详情
+        
+        @return: GetInstanceSnapshotResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_instance_snapshot_with_options_async(instance_id, snapshot_id, headers, runtime)
@@ -1176,6 +1496,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetLifecycleResponse:
+        """
+        @param request: GetLifecycleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLifecycleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -1215,6 +1541,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetLifecycleResponse:
+        """
+        @param request: GetLifecycleRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLifecycleResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -1252,6 +1584,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_dsw_20220101_models.GetLifecycleRequest,
     ) -> pai_dsw_20220101_models.GetLifecycleResponse:
+        """
+        @param request: GetLifecycleRequest
+        @return: GetLifecycleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_lifecycle_with_options(instance_id, request, headers, runtime)
@@ -1261,6 +1597,10 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_dsw_20220101_models.GetLifecycleRequest,
     ) -> pai_dsw_20220101_models.GetLifecycleResponse:
+        """
+        @param request: GetLifecycleRequest
+        @return: GetLifecycleResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_lifecycle_with_options_async(instance_id, request, headers, runtime)
@@ -1271,6 +1611,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetResourceGroupStatisticsResponse:
+        """
+        @param request: GetResourceGroupStatisticsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceGroupStatisticsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -1307,6 +1653,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetResourceGroupStatisticsResponse:
+        """
+        @param request: GetResourceGroupStatisticsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetResourceGroupStatisticsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_time):
@@ -1341,6 +1693,10 @@ class Client(OpenApiClient):
         self,
         request: pai_dsw_20220101_models.GetResourceGroupStatisticsRequest,
     ) -> pai_dsw_20220101_models.GetResourceGroupStatisticsResponse:
+        """
+        @param request: GetResourceGroupStatisticsRequest
+        @return: GetResourceGroupStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_resource_group_statistics_with_options(request, headers, runtime)
@@ -1349,6 +1705,10 @@ class Client(OpenApiClient):
         self,
         request: pai_dsw_20220101_models.GetResourceGroupStatisticsRequest,
     ) -> pai_dsw_20220101_models.GetResourceGroupStatisticsResponse:
+        """
+        @param request: GetResourceGroupStatisticsRequest
+        @return: GetResourceGroupStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_resource_group_statistics_with_options_async(request, headers, runtime)
@@ -1359,6 +1719,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetTokenResponse:
+        """
+        @param request: GetTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTokenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.expire_time):
@@ -1391,6 +1757,12 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetTokenResponse:
+        """
+        @param request: GetTokenRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetTokenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.expire_time):
@@ -1421,6 +1793,10 @@ class Client(OpenApiClient):
         self,
         request: pai_dsw_20220101_models.GetTokenRequest,
     ) -> pai_dsw_20220101_models.GetTokenResponse:
+        """
+        @param request: GetTokenRequest
+        @return: GetTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_token_with_options(request, headers, runtime)
@@ -1429,6 +1805,10 @@ class Client(OpenApiClient):
         self,
         request: pai_dsw_20220101_models.GetTokenRequest,
     ) -> pai_dsw_20220101_models.GetTokenResponse:
+        """
+        @param request: GetTokenRequest
+        @return: GetTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_token_with_options_async(request, headers, runtime)
@@ -1438,6 +1818,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetUserConfigResponse:
+        """
+        @summary 获取用户配置
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserConfigResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1462,6 +1849,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.GetUserConfigResponse:
+        """
+        @summary 获取用户配置
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetUserConfigResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1482,11 +1876,21 @@ class Client(OpenApiClient):
         )
 
     def get_user_config(self) -> pai_dsw_20220101_models.GetUserConfigResponse:
+        """
+        @summary 获取用户配置
+        
+        @return: GetUserConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.get_user_config_with_options(headers, runtime)
 
     async def get_user_config_async(self) -> pai_dsw_20220101_models.GetUserConfigResponse:
+        """
+        @summary 获取用户配置
+        
+        @return: GetUserConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.get_user_config_with_options_async(headers, runtime)
@@ -1497,6 +1901,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.ListEcsSpecsResponse:
+        """
+        @summary 获取ECS规格列表
+        
+        @param request: ListEcsSpecsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEcsSpecsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accelerator_type):
@@ -1535,6 +1947,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.ListEcsSpecsResponse:
+        """
+        @summary 获取ECS规格列表
+        
+        @param request: ListEcsSpecsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListEcsSpecsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.accelerator_type):
@@ -1571,6 +1991,12 @@ class Client(OpenApiClient):
         self,
         request: pai_dsw_20220101_models.ListEcsSpecsRequest,
     ) -> pai_dsw_20220101_models.ListEcsSpecsResponse:
+        """
+        @summary 获取ECS规格列表
+        
+        @param request: ListEcsSpecsRequest
+        @return: ListEcsSpecsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_ecs_specs_with_options(request, headers, runtime)
@@ -1579,6 +2005,12 @@ class Client(OpenApiClient):
         self,
         request: pai_dsw_20220101_models.ListEcsSpecsRequest,
     ) -> pai_dsw_20220101_models.ListEcsSpecsResponse:
+        """
+        @summary 获取ECS规格列表
+        
+        @param request: ListEcsSpecsRequest
+        @return: ListEcsSpecsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_ecs_specs_with_options_async(request, headers, runtime)
@@ -1590,6 +2022,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.ListInstanceSnapshotResponse:
+        """
+        @summary 查询实例快照列表
+        
+        @param request: ListInstanceSnapshotRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceSnapshotResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order):
@@ -1627,6 +2067,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.ListInstanceSnapshotResponse:
+        """
+        @summary 查询实例快照列表
+        
+        @param request: ListInstanceSnapshotRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceSnapshotResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.order):
@@ -1662,6 +2110,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_dsw_20220101_models.ListInstanceSnapshotRequest,
     ) -> pai_dsw_20220101_models.ListInstanceSnapshotResponse:
+        """
+        @summary 查询实例快照列表
+        
+        @param request: ListInstanceSnapshotRequest
+        @return: ListInstanceSnapshotResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_instance_snapshot_with_options(instance_id, request, headers, runtime)
@@ -1671,6 +2125,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_dsw_20220101_models.ListInstanceSnapshotRequest,
     ) -> pai_dsw_20220101_models.ListInstanceSnapshotResponse:
+        """
+        @summary 查询实例快照列表
+        
+        @param request: ListInstanceSnapshotRequest
+        @return: ListInstanceSnapshotResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_instance_snapshot_with_options_async(instance_id, request, headers, runtime)
@@ -1681,6 +2141,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.ListInstanceStatisticsResponse:
+        """
+        @summary 获取实例统计信息
+        
+        @param request: ListInstanceStatisticsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceStatisticsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.workspace_ids):
@@ -1711,6 +2179,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.ListInstanceStatisticsResponse:
+        """
+        @summary 获取实例统计信息
+        
+        @param request: ListInstanceStatisticsRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstanceStatisticsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.workspace_ids):
@@ -1739,6 +2215,12 @@ class Client(OpenApiClient):
         self,
         request: pai_dsw_20220101_models.ListInstanceStatisticsRequest,
     ) -> pai_dsw_20220101_models.ListInstanceStatisticsResponse:
+        """
+        @summary 获取实例统计信息
+        
+        @param request: ListInstanceStatisticsRequest
+        @return: ListInstanceStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_instance_statistics_with_options(request, headers, runtime)
@@ -1747,17 +2229,33 @@ class Client(OpenApiClient):
         self,
         request: pai_dsw_20220101_models.ListInstanceStatisticsRequest,
     ) -> pai_dsw_20220101_models.ListInstanceStatisticsResponse:
+        """
+        @summary 获取实例统计信息
+        
+        @param request: ListInstanceStatisticsRequest
+        @return: ListInstanceStatisticsResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_instance_statistics_with_options_async(request, headers, runtime)
 
     def list_instances_with_options(
         self,
-        request: pai_dsw_20220101_models.ListInstancesRequest,
+        tmp_req: pai_dsw_20220101_models.ListInstancesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.ListInstancesResponse:
-        UtilClient.validate_model(request)
+        """
+        @param tmp_req: ListInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = pai_dsw_20220101_models.ListInstancesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.labels):
+            request.labels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.labels, 'Labels', 'json')
         query = {}
         if not UtilClient.is_unset(request.accelerator_type):
             query['AcceleratorType'] = request.accelerator_type
@@ -1767,6 +2265,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.instance_name):
             query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.labels_shrink):
+            query['Labels'] = request.labels_shrink
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
         if not UtilClient.is_unset(request.page_number):
@@ -1805,11 +2305,21 @@ class Client(OpenApiClient):
 
     async def list_instances_with_options_async(
         self,
-        request: pai_dsw_20220101_models.ListInstancesRequest,
+        tmp_req: pai_dsw_20220101_models.ListInstancesRequest,
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.ListInstancesResponse:
-        UtilClient.validate_model(request)
+        """
+        @param tmp_req: ListInstancesRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ListInstancesResponse
+        """
+        UtilClient.validate_model(tmp_req)
+        request = pai_dsw_20220101_models.ListInstancesShrinkRequest()
+        OpenApiUtilClient.convert(tmp_req, request)
+        if not UtilClient.is_unset(tmp_req.labels):
+            request.labels_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.labels, 'Labels', 'json')
         query = {}
         if not UtilClient.is_unset(request.accelerator_type):
             query['AcceleratorType'] = request.accelerator_type
@@ -1819,6 +2329,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not UtilClient.is_unset(request.instance_name):
             query['InstanceName'] = request.instance_name
+        if not UtilClient.is_unset(request.labels_shrink):
+            query['Labels'] = request.labels_shrink
         if not UtilClient.is_unset(request.order):
             query['Order'] = request.order
         if not UtilClient.is_unset(request.page_number):
@@ -1859,6 +2371,10 @@ class Client(OpenApiClient):
         self,
         request: pai_dsw_20220101_models.ListInstancesRequest,
     ) -> pai_dsw_20220101_models.ListInstancesResponse:
+        """
+        @param request: ListInstancesRequest
+        @return: ListInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.list_instances_with_options(request, headers, runtime)
@@ -1867,6 +2383,10 @@ class Client(OpenApiClient):
         self,
         request: pai_dsw_20220101_models.ListInstancesRequest,
     ) -> pai_dsw_20220101_models.ListInstancesResponse:
+        """
+        @param request: ListInstancesRequest
+        @return: ListInstancesResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.list_instances_with_options_async(request, headers, runtime)
@@ -1877,6 +2397,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.StartInstanceResponse:
+        """
+        @summary 启动实例
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartInstanceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1902,6 +2429,13 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.StartInstanceResponse:
+        """
+        @summary 启动实例
+        
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartInstanceResponse
+        """
         req = open_api_models.OpenApiRequest(
             headers=headers
         )
@@ -1925,6 +2459,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> pai_dsw_20220101_models.StartInstanceResponse:
+        """
+        @summary 启动实例
+        
+        @return: StartInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.start_instance_with_options(instance_id, headers, runtime)
@@ -1933,6 +2472,11 @@ class Client(OpenApiClient):
         self,
         instance_id: str,
     ) -> pai_dsw_20220101_models.StartInstanceResponse:
+        """
+        @summary 启动实例
+        
+        @return: StartInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.start_instance_with_options_async(instance_id, headers, runtime)
@@ -1944,6 +2488,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.StopInstanceResponse:
+        """
+        @summary 停止实例
+        
+        @param request: StopInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.save_image):
@@ -1975,6 +2527,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.StopInstanceResponse:
+        """
+        @summary 停止实例
+        
+        @param request: StopInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopInstanceResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.save_image):
@@ -2004,6 +2564,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_dsw_20220101_models.StopInstanceRequest,
     ) -> pai_dsw_20220101_models.StopInstanceResponse:
+        """
+        @summary 停止实例
+        
+        @param request: StopInstanceRequest
+        @return: StopInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.stop_instance_with_options(instance_id, request, headers, runtime)
@@ -2013,6 +2579,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_dsw_20220101_models.StopInstanceRequest,
     ) -> pai_dsw_20220101_models.StopInstanceResponse:
+        """
+        @summary 停止实例
+        
+        @param request: StopInstanceRequest
+        @return: StopInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.stop_instance_with_options_async(instance_id, request, headers, runtime)
@@ -2024,6 +2596,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.UpdateInstanceResponse:
+        """
+        @summary 更新实例
+        
+        @param request: UpdateInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.accessibility):
@@ -2087,6 +2667,14 @@ class Client(OpenApiClient):
         headers: Dict[str, str],
         runtime: util_models.RuntimeOptions,
     ) -> pai_dsw_20220101_models.UpdateInstanceResponse:
+        """
+        @summary 更新实例
+        
+        @param request: UpdateInstanceRequest
+        @param headers: map
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UpdateInstanceResponse
+        """
         UtilClient.validate_model(request)
         body = {}
         if not UtilClient.is_unset(request.accessibility):
@@ -2148,6 +2736,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_dsw_20220101_models.UpdateInstanceRequest,
     ) -> pai_dsw_20220101_models.UpdateInstanceResponse:
+        """
+        @summary 更新实例
+        
+        @param request: UpdateInstanceRequest
+        @return: UpdateInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return self.update_instance_with_options(instance_id, request, headers, runtime)
@@ -2157,6 +2751,12 @@ class Client(OpenApiClient):
         instance_id: str,
         request: pai_dsw_20220101_models.UpdateInstanceRequest,
     ) -> pai_dsw_20220101_models.UpdateInstanceResponse:
+        """
+        @summary 更新实例
+        
+        @param request: UpdateInstanceRequest
+        @return: UpdateInstanceResponse
+        """
         runtime = util_models.RuntimeOptions()
         headers = {}
         return await self.update_instance_with_options_async(instance_id, request, headers, runtime)

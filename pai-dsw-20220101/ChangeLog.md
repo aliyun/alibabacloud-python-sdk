@@ -1,3 +1,8 @@
+2024-06-04 Version: 1.3.1
+- Update API ListInstances: add param Labels.
+- Update API ListInstances: update response param.
+
+
 2024-04-12 Version: 1.3.0
 - Support API GetInstanceEvents.
 - Update API GetInstance: update response param.

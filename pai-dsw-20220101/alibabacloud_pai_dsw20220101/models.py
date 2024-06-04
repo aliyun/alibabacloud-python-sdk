@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
 from Tea.model import TeaModel
-from typing import List, Dict
+from typing import List, Dict, Any
 
 
 class DemoCategory(TeaModel):
@@ -2858,6 +2858,7 @@ class GetInstanceMetricsRequest(TeaModel):
         time_step: str = None,
     ):
         self.end_time = end_time
+        # This parameter is required.
         self.metric_type = metric_type
         self.start_time = start_time
         self.time_step = time_step
@@ -3624,9 +3625,13 @@ class GetResourceGroupStatisticsRequest(TeaModel):
         start_time: str = None,
         workspace_ids: str = None,
     ):
+        # This parameter is required.
         self.end_time = end_time
+        # This parameter is required.
         self.resource_id = resource_id
+        # This parameter is required.
         self.start_time = start_time
+        # This parameter is required.
         self.workspace_ids = workspace_ids
 
     def validate(self):
@@ -3766,6 +3771,7 @@ class GetTokenRequest(TeaModel):
         instance_id: str = None,
     ):
         self.expire_time = expire_time
+        # This parameter is required.
         self.instance_id = instance_id
 
     def validate(self):
@@ -4104,6 +4110,7 @@ class ListEcsSpecsRequest(TeaModel):
         page_size: int = None,
         sort_by: str = None,
     ):
+        # This parameter is required.
         self.accelerator_type = accelerator_type
         self.order = order
         self.page_number = page_number
@@ -4688,6 +4695,7 @@ class ListInstanceStatisticsRequest(TeaModel):
         self,
         workspace_ids: str = None,
     ):
+        # This parameter is required.
         self.workspace_ids = workspace_ids
 
     def validate(self):
@@ -4815,6 +4823,7 @@ class ListInstancesRequest(TeaModel):
         accessibility: str = None,
         instance_id: str = None,
         instance_name: str = None,
+        labels: Dict[str, Any] = None,
         order: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -4828,6 +4837,7 @@ class ListInstancesRequest(TeaModel):
         self.accessibility = accessibility
         self.instance_id = instance_id
         self.instance_name = instance_name
+        self.labels = labels
         self.order = order
         self.page_number = page_number
         self.page_size = page_size
@@ -4854,6 +4864,8 @@ class ListInstancesRequest(TeaModel):
             result['InstanceId'] = self.instance_id
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
+        if self.labels is not None:
+            result['Labels'] = self.labels
         if self.order is not None:
             result['Order'] = self.order
         if self.page_number is not None:
@@ -4882,6 +4894,107 @@ class ListInstancesRequest(TeaModel):
             self.instance_id = m.get('InstanceId')
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
+        if m.get('Labels') is not None:
+            self.labels = m.get('Labels')
+        if m.get('Order') is not None:
+            self.order = m.get('Order')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('PaymentType') is not None:
+            self.payment_type = m.get('PaymentType')
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+        if m.get('SortBy') is not None:
+            self.sort_by = m.get('SortBy')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+        return self
+
+
+class ListInstancesShrinkRequest(TeaModel):
+    def __init__(
+        self,
+        accelerator_type: str = None,
+        accessibility: str = None,
+        instance_id: str = None,
+        instance_name: str = None,
+        labels_shrink: str = None,
+        order: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        payment_type: str = None,
+        resource_id: str = None,
+        sort_by: str = None,
+        status: str = None,
+        workspace_id: str = None,
+    ):
+        self.accelerator_type = accelerator_type
+        self.accessibility = accessibility
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+        self.labels_shrink = labels_shrink
+        self.order = order
+        self.page_number = page_number
+        self.page_size = page_size
+        self.payment_type = payment_type
+        self.resource_id = resource_id
+        self.sort_by = sort_by
+        self.status = status
+        self.workspace_id = workspace_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.accelerator_type is not None:
+            result['AcceleratorType'] = self.accelerator_type
+        if self.accessibility is not None:
+            result['Accessibility'] = self.accessibility
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+        if self.labels_shrink is not None:
+            result['Labels'] = self.labels_shrink
+        if self.order is not None:
+            result['Order'] = self.order
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.payment_type is not None:
+            result['PaymentType'] = self.payment_type
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+        if self.sort_by is not None:
+            result['SortBy'] = self.sort_by
+        if self.status is not None:
+            result['Status'] = self.status
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceleratorType') is not None:
+            self.accelerator_type = m.get('AcceleratorType')
+        if m.get('Accessibility') is not None:
+            self.accessibility = m.get('Accessibility')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+        if m.get('Labels') is not None:
+            self.labels_shrink = m.get('Labels')
         if m.get('Order') is not None:
             self.order = m.get('Order')
         if m.get('PageNumber') is not None:
@@ -4951,9 +5064,15 @@ class ListInstancesResponseBodyInstancesDatasets(TeaModel):
         self,
         dataset_id: str = None,
         mount_path: str = None,
+        option_type: str = None,
+        options: str = None,
+        uri: str = None,
     ):
         self.dataset_id = dataset_id
         self.mount_path = mount_path
+        self.option_type = option_type
+        self.options = options
+        self.uri = uri
 
     def validate(self):
         pass
@@ -4968,6 +5087,12 @@ class ListInstancesResponseBodyInstancesDatasets(TeaModel):
             result['DatasetId'] = self.dataset_id
         if self.mount_path is not None:
             result['MountPath'] = self.mount_path
+        if self.option_type is not None:
+            result['OptionType'] = self.option_type
+        if self.options is not None:
+            result['Options'] = self.options
+        if self.uri is not None:
+            result['Uri'] = self.uri
         return result
 
     def from_map(self, m: dict = None):
@@ -4976,6 +5101,12 @@ class ListInstancesResponseBodyInstancesDatasets(TeaModel):
             self.dataset_id = m.get('DatasetId')
         if m.get('MountPath') is not None:
             self.mount_path = m.get('MountPath')
+        if m.get('OptionType') is not None:
+            self.option_type = m.get('OptionType')
+        if m.get('Options') is not None:
+            self.options = m.get('Options')
+        if m.get('Uri') is not None:
+            self.uri = m.get('Uri')
         return self
 
 
