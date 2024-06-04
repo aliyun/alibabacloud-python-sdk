@@ -22016,6 +22016,7 @@ class ListInstanceResponseBodyResult(TeaModel):
     def __init__(
         self,
         advanced_dedicate_master: bool = None,
+        arch_type: str = None,
         client_node_configuration: ListInstanceResponseBodyResultClientNodeConfiguration = None,
         created_at: str = None,
         dedicate_master: bool = None,
@@ -22049,6 +22050,7 @@ class ListInstanceResponseBodyResult(TeaModel):
         # *   **prepaid**: subscription
         # *   **postpaid**: pay-as-you-go
         self.advanced_dedicate_master = advanced_dedicate_master
+        self.arch_type = arch_type
         # The instance type of the node. For more information, see [Specifications](https://help.aliyun.com/document_detail/271718.html).
         self.client_node_configuration = client_node_configuration
         # The status of the pay-as-you-go service that is overlaid on a subscription instance. Valid values:
@@ -22128,6 +22130,8 @@ class ListInstanceResponseBodyResult(TeaModel):
         result = dict()
         if self.advanced_dedicate_master is not None:
             result['advancedDedicateMaster'] = self.advanced_dedicate_master
+        if self.arch_type is not None:
+            result['archType'] = self.arch_type
         if self.client_node_configuration is not None:
             result['clientNodeConfiguration'] = self.client_node_configuration.to_map()
         if self.created_at is not None:
@@ -22190,6 +22194,8 @@ class ListInstanceResponseBodyResult(TeaModel):
         m = m or dict()
         if m.get('advancedDedicateMaster') is not None:
             self.advanced_dedicate_master = m.get('advancedDedicateMaster')
+        if m.get('archType') is not None:
+            self.arch_type = m.get('archType')
         if m.get('clientNodeConfiguration') is not None:
             temp_model = ListInstanceResponseBodyResultClientNodeConfiguration()
             self.client_node_configuration = temp_model.from_map(m['clientNodeConfiguration'])
