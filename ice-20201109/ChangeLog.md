@@ -1,3 +1,7 @@
+2024-06-04 Version: 2.5.1
+- Update API GetMediaInfo: update response param.
+
+
 2024-06-03 Version: 2.5.0
 - Support API SearchMediaByHybrid.
 - Update API SearchMediaByAILabel: update response param.

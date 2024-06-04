@@ -14515,6 +14515,7 @@ class GetMediaInfoResponseBodyMediaInfoMediaBasicInfo(TeaModel):
         media_type: str = None,
         modified_time: str = None,
         reference_id: str = None,
+        snapshots: str = None,
         source: str = None,
         sprite_images: str = None,
         status: str = None,
@@ -14538,6 +14539,7 @@ class GetMediaInfoResponseBodyMediaInfoMediaBasicInfo(TeaModel):
         self.media_type = media_type
         self.modified_time = modified_time
         self.reference_id = reference_id
+        self.snapshots = snapshots
         self.source = source
         self.sprite_images = sprite_images
         self.status = status
@@ -14584,6 +14586,8 @@ class GetMediaInfoResponseBodyMediaInfoMediaBasicInfo(TeaModel):
             result['ModifiedTime'] = self.modified_time
         if self.reference_id is not None:
             result['ReferenceId'] = self.reference_id
+        if self.snapshots is not None:
+            result['Snapshots'] = self.snapshots
         if self.source is not None:
             result['Source'] = self.source
         if self.sprite_images is not None:
@@ -14630,6 +14634,8 @@ class GetMediaInfoResponseBodyMediaInfoMediaBasicInfo(TeaModel):
             self.modified_time = m.get('ModifiedTime')
         if m.get('ReferenceId') is not None:
             self.reference_id = m.get('ReferenceId')
+        if m.get('Snapshots') is not None:
+            self.snapshots = m.get('Snapshots')
         if m.get('Source') is not None:
             self.source = m.get('Source')
         if m.get('SpriteImages') is not None:
