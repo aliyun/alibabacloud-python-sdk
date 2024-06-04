@@ -1,3 +1,7 @@
+2024-06-04 Version: 1.1.2
+- Update API GetLoginToken: update response param.
+
+
 2024-04-25 Version: 1.1.1
 - Update API GetLoginToken: update response param.
 - Update API RebootDesktops: add param Uuid.

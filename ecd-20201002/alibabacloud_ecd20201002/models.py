@@ -15,10 +15,14 @@ class ApproveFotaUpdateRequest(TeaModel):
         session_id: str = None,
         uuid: str = None,
     ):
+        # This parameter is required.
         self.app_version = app_version
+        # This parameter is required.
         self.client_id = client_id
         self.desktop_id = desktop_id
+        # This parameter is required.
         self.login_token = login_token
+        # This parameter is required.
         self.region_id = region_id
         self.session_id = session_id
         self.uuid = uuid
@@ -147,12 +151,19 @@ class ChangePasswordRequest(TeaModel):
         region_id: str = None,
         session_id: str = None,
     ):
+        # This parameter is required.
         self.client_id = client_id
+        # This parameter is required.
         self.end_user_id = end_user_id
+        # This parameter is required.
         self.login_token = login_token
+        # This parameter is required.
         self.new_password = new_password
+        # This parameter is required.
         self.office_site_id = office_site_id
+        # This parameter is required.
         self.old_password = old_password
+        # This parameter is required.
         self.region_id = region_id
         self.session_id = session_id
 
@@ -288,11 +299,16 @@ class DeleteFingerPrintTemplateRequest(TeaModel):
         region_id: str = None,
         session_id: str = None,
     ):
+        # This parameter is required.
         self.client_id = client_id
         self.client_token = client_token
+        # This parameter is required.
         self.index = index
+        # This parameter is required.
         self.login_token = login_token
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.session_id = session_id
 
     def validate(self):
@@ -410,8 +426,10 @@ class DescribeDirectoriesRequest(TeaModel):
         directory_id: List[str] = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.client_id = client_id
         self.directory_id = directory_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -583,9 +601,13 @@ class DescribeFingerPrintTemplatesRequest(TeaModel):
         region_id: str = None,
         session_id: str = None,
     ):
+        # This parameter is required.
         self.client_id = client_id
+        # This parameter is required.
         self.login_token = login_token
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.session_id = session_id
 
     def validate(self):
@@ -788,6 +810,7 @@ class DescribeGlobalDesktopsRequest(TeaModel):
         sort_type: str = None,
         without_latency: bool = None,
     ):
+        # This parameter is required.
         self.client_id = client_id
         self.desktop_access_type = desktop_access_type
         self.desktop_id = desktop_id
@@ -797,6 +820,7 @@ class DescribeGlobalDesktopsRequest(TeaModel):
         # 关键字。支持模糊搜索桌面ID、云桌面名称和终端用户自定义的桌面名称。
         self.keyword = keyword
         self.login_region_id = login_region_id
+        # This parameter is required.
         self.login_token = login_token
         self.max_results = max_results
         self.next_token = next_token
@@ -1545,8 +1569,10 @@ class DescribeOfficeSitesRequest(TeaModel):
         office_site_id: List[str] = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.client_id = client_id
         self.office_site_id = office_site_id
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -1722,6 +1748,7 @@ class DescribeRegionsRequest(TeaModel):
         client_id: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.client_id = client_id
         self.region_id = region_id
 
@@ -1876,11 +1903,14 @@ class DescribeSnapshotsRequest(TeaModel):
         session_id: str = None,
         snapshot_id: str = None,
     ):
+        # This parameter is required.
         self.client_id = client_id
         self.desktop_id = desktop_id
+        # This parameter is required.
         self.login_token = login_token
         self.max_results = max_results
         self.next_token = next_token
+        # This parameter is required.
         self.region_id = region_id
         self.session_id = session_id
         self.snapshot_id = snapshot_id
@@ -2119,12 +2149,17 @@ class EncryptPasswordRequest(TeaModel):
         region_id: str = None,
         session_id: str = None,
     ):
+        # This parameter is required.
         self.client_id = client_id
         self.directory_id = directory_id
+        # This parameter is required.
         self.login_token = login_token
         self.office_site_id = office_site_id
+        # This parameter is required.
         self.password = password
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.session_id = session_id
 
     def validate(self):
@@ -2447,14 +2482,17 @@ class GetConnectionTicketRequest(TeaModel):
         task_id: str = None,
         uuid: str = None,
     ):
+        # This parameter is required.
         self.client_id = client_id
         self.client_os = client_os
         self.client_type = client_type
         self.client_version = client_version
         self.command_content = command_content
         self.desktop_id = desktop_id
+        # This parameter is required.
         self.login_token = login_token
         self.owner_id = owner_id
+        # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
@@ -2657,6 +2695,8 @@ class GetLoginTokenRequest(TeaModel):
         # The verification code that is generated by the virtual MFA device. This parameter is required if you set `CurrentStage` to `MFAVerify`.
         self.authentication_code = authentication_code
         # The ID of the Alibaba Cloud Workspace client. The system generates a unique ID for each client.
+        # 
+        # This parameter is required.
         self.client_id = client_id
         # The OS that the client runs.
         self.client_os = client_os
@@ -2693,7 +2733,9 @@ class GetLoginTokenRequest(TeaModel):
         self.old_password = old_password
         # The password of the convenience user or the AD user. This parameter is required if you set `CurrentStage` to `ADPassword`.
         self.password = password
-        # The ID of the region. You can call the [DescribeRegions](~~436773~~) operation to query the most recent region list.
+        # The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/436773.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the session.
         # 
@@ -2793,6 +2835,39 @@ class GetLoginTokenRequest(TeaModel):
         return self
 
 
+class GetLoginTokenResponseBodyPasswordStrategy(TeaModel):
+    def __init__(
+        self,
+        tenant_alternative_chars: List[str] = None,
+        tenant_password_length: str = None,
+    ):
+        self.tenant_alternative_chars = tenant_alternative_chars
+        self.tenant_password_length = tenant_password_length
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.tenant_alternative_chars is not None:
+            result['TenantAlternativeChars'] = self.tenant_alternative_chars
+        if self.tenant_password_length is not None:
+            result['TenantPasswordLength'] = self.tenant_password_length
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TenantAlternativeChars') is not None:
+            self.tenant_alternative_chars = m.get('TenantAlternativeChars')
+        if m.get('TenantPasswordLength') is not None:
+            self.tenant_password_length = m.get('TenantPasswordLength')
+        return self
+
+
 class GetLoginTokenResponseBodyRiskVerifyInfo(TeaModel):
     def __init__(
         self,
@@ -2848,9 +2923,11 @@ class GetLoginTokenResponseBody(TeaModel):
         label: str = None,
         login_token: str = None,
         next_stage: str = None,
+        password_strategy: GetLoginTokenResponseBodyPasswordStrategy = None,
         phone: str = None,
         props: Dict[str, str] = None,
         qr_code_png: str = None,
+        reason: str = None,
         request_id: str = None,
         risk_verify_info: GetLoginTokenResponseBodyRiskVerifyInfo = None,
         secret: str = None,
@@ -2877,6 +2954,7 @@ class GetLoginTokenResponseBody(TeaModel):
         # 
         # > For more information about each authentication stage, see the parameter description of the request parameter `CurrentStage`.
         self.next_stage = next_stage
+        self.password_strategy = password_strategy
         # Enter the mobile number of the convenience user. For an AD user, null is returned.
         self.phone = phone
         # > This is a parameter only for internal use.
@@ -2885,6 +2963,7 @@ class GetLoginTokenResponseBody(TeaModel):
         # 
         # > For more information about each authentication stage, see the parameter description of the request parameter `CurrentStage`.
         self.qr_code_png = qr_code_png
+        self.reason = reason
         # The ID of the request.
         self.request_id = request_id
         self.risk_verify_info = risk_verify_info
@@ -2902,6 +2981,8 @@ class GetLoginTokenResponseBody(TeaModel):
         self.window_display_mode = window_display_mode
 
     def validate(self):
+        if self.password_strategy:
+            self.password_strategy.validate()
         if self.risk_verify_info:
             self.risk_verify_info.validate()
 
@@ -2925,12 +3006,16 @@ class GetLoginTokenResponseBody(TeaModel):
             result['LoginToken'] = self.login_token
         if self.next_stage is not None:
             result['NextStage'] = self.next_stage
+        if self.password_strategy is not None:
+            result['PasswordStrategy'] = self.password_strategy.to_map()
         if self.phone is not None:
             result['Phone'] = self.phone
         if self.props is not None:
             result['Props'] = self.props
         if self.qr_code_png is not None:
             result['QrCodePng'] = self.qr_code_png
+        if self.reason is not None:
+            result['Reason'] = self.reason
         if self.request_id is not None:
             result['RequestId'] = self.request_id
         if self.risk_verify_info is not None:
@@ -2961,12 +3046,17 @@ class GetLoginTokenResponseBody(TeaModel):
             self.login_token = m.get('LoginToken')
         if m.get('NextStage') is not None:
             self.next_stage = m.get('NextStage')
+        if m.get('PasswordStrategy') is not None:
+            temp_model = GetLoginTokenResponseBodyPasswordStrategy()
+            self.password_strategy = temp_model.from_map(m['PasswordStrategy'])
         if m.get('Phone') is not None:
             self.phone = m.get('Phone')
         if m.get('Props') is not None:
             self.props = m.get('Props')
         if m.get('QrCodePng') is not None:
             self.qr_code_png = m.get('QrCodePng')
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
         if m.get('RiskVerifyInfo') is not None:
@@ -3031,6 +3121,7 @@ class IsKeepAliveRequest(TeaModel):
         office_site_id: str = None,
         region_id: str = None,
     ):
+        # This parameter is required.
         self.client_id = client_id
         self.office_site_id = office_site_id
         self.region_id = region_id
@@ -3306,18 +3397,24 @@ class RebootDesktopsRequest(TeaModel):
         uuid: str = None,
     ):
         # The client ID. The system generates a unique ID for each client.
+        # 
+        # This parameter is required.
         self.client_id = client_id
         # The operating system (OS) of the device that runs the Alibaba Cloud Workspace client (hereinafter referred to as WUYING client).
         self.client_os = client_os
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence of a request?](~~25693~~)
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence of a request?](https://help.aliyun.com/document_detail/25693.html)
         self.client_token = client_token
         # The client version. If you use a WUYING client, you can view the client version in the **About** dialog box on the client logon page.
         self.client_version = client_version
         # The IDs of the cloud computers. You can specify the IDs of 1 to 20 cloud computers.
+        # 
+        # This parameter is required.
         self.desktop_id = desktop_id
         # The logon token.
         self.login_token = login_token
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the regions supported by WUYING Workspace.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by WUYING Workspace.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The session ID.
         self.session_id = session_id
@@ -3461,11 +3558,15 @@ class RefreshLoginTokenRequest(TeaModel):
         region_id: str = None,
         session_id: str = None,
     ):
+        # This parameter is required.
         self.client_id = client_id
         self.directory_id = directory_id
+        # This parameter is required.
         self.end_user_id = end_user_id
+        # This parameter is required.
         self.login_token = login_token
         self.office_site_id = office_site_id
+        # This parameter is required.
         self.region_id = region_id
         self.session_id = session_id
 
@@ -3711,10 +3812,15 @@ class ReportSessionStatusRequest(TeaModel):
         session_status: str = None,
     ):
         self.end_user_id = end_user_id
+        # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.session_change_time = session_change_time
+        # This parameter is required.
         self.session_id = session_id
+        # This parameter is required.
         self.session_status = session_status
 
     def validate(self):
@@ -3836,11 +3942,15 @@ class ResetPasswordRequest(TeaModel):
         region_id: str = None,
         phone: str = None,
     ):
+        # This parameter is required.
         self.client_id = client_id
         self.client_token = client_token
         self.email = email
+        # This parameter is required.
         self.end_user_id = end_user_id
+        # This parameter is required.
         self.office_site_id = office_site_id
+        # This parameter is required.
         self.region_id = region_id
         self.phone = phone
 
@@ -3965,10 +4075,14 @@ class ResetSnapshotRequest(TeaModel):
         session_id: str = None,
         snapshot_id: str = None,
     ):
+        # This parameter is required.
         self.client_id = client_id
+        # This parameter is required.
         self.login_token = login_token
+        # This parameter is required.
         self.region_id = region_id
         self.session_id = session_id
+        # This parameter is required.
         self.snapshot_id = snapshot_id
 
     def validate(self):
@@ -4087,6 +4201,7 @@ class SendTokenCodeRequest(TeaModel):
         session_id: str = None,
         token_code: str = None,
     ):
+        # This parameter is required.
         self.client_id = client_id
         self.client_os = client_os
         self.client_version = client_version
@@ -4226,15 +4341,20 @@ class SetFingerPrintTemplateRequest(TeaModel):
         region_id: str = None,
         session_id: str = None,
     ):
+        # This parameter is required.
         self.client_id = client_id
         self.client_token = client_token
         self.description = description
         self.encrypted_finger_print_template = encrypted_finger_print_template
         self.encrypted_key = encrypted_key
         self.finger_print_template = finger_print_template
+        # This parameter is required.
         self.login_token = login_token
+        # This parameter is required.
         self.password = password
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.session_id = session_id
 
     def validate(self):
@@ -4384,12 +4504,18 @@ class SetFingerPrintTemplateDescriptionRequest(TeaModel):
         region_id: str = None,
         session_id: str = None,
     ):
+        # This parameter is required.
         self.client_id = client_id
         self.client_token = client_token
+        # This parameter is required.
         self.description = description
+        # This parameter is required.
         self.index = index
+        # This parameter is required.
         self.login_token = login_token
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.session_id = session_id
 
     def validate(self):
@@ -4518,18 +4644,26 @@ class StartDesktopsRequest(TeaModel):
         uuid: str = None,
     ):
         # The ID of the Alibaba Cloud Workspace client (hereinafter referred to as WUYING client). The system generates a unique ID for each client.
+        # 
+        # This parameter is required.
         self.client_id = client_id
         # The operating system (OS) of the device that run the client.
         self.client_os = client_os
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](~~25693~~).
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
         self.client_token = client_token
         # The client version. If you use a WUYING client, you can click **About** on the client logon page to view the version of the client.
         self.client_version = client_version
         # The IDs of the cloud computers. You can specify the IDs of 1 to 20 cloud computers.
+        # 
+        # This parameter is required.
         self.desktop_id = desktop_id
         # The logon token.
+        # 
+        # This parameter is required.
         self.login_token = login_token
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the regions supported by WUYING Workspace.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by WUYING Workspace.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The session ID.
         self.session_id = session_id
@@ -4668,13 +4802,18 @@ class StartRecordContentRequest(TeaModel):
         region_id: str = None,
         session_id: str = None,
     ):
+        # This parameter is required.
         self.client_id = client_id
         self.client_os = client_os
         self.client_version = client_version
+        # This parameter is required.
         self.desktop_id = desktop_id
         self.file_path = file_path
+        # This parameter is required.
         self.login_token = login_token
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.session_id = session_id
 
     def validate(self):
@@ -4807,18 +4946,24 @@ class StopDesktopsRequest(TeaModel):
         session_token: str = None,
     ):
         # The client ID. The system generates a unique ID for each client.
+        # 
+        # This parameter is required.
         self.client_id = client_id
         # The operating system (OS) of the device that runs the Alibaba Cloud Workspace client (hereinafter referred to as WUYING client).
         self.client_os = client_os
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence of a request?](~~25693~~)
+        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How do I ensure the idempotence of a request?](https://help.aliyun.com/document_detail/25693.html)
         self.client_token = client_token
         # The client version. If you use a WUYING client, you can view the client version in the **About** dialog box on the client logon page.
         self.client_version = client_version
         # The IDs of the cloud computers. You can specify the IDs of 1 to 20 cloud computers.
+        # 
+        # This parameter is required.
         self.desktop_id = desktop_id
         # The logon token.
         self.login_token = login_token
-        # The region ID. You can call the [DescribeRegions](~~196646~~) operation to query the regions supported by WUYING Workspace.
+        # The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the regions supported by WUYING Workspace.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The session ID.
         self.session_id = session_id
@@ -4957,12 +5102,17 @@ class StopRecordContentRequest(TeaModel):
         region_id: str = None,
         session_id: str = None,
     ):
+        # This parameter is required.
         self.client_id = client_id
         self.client_os = client_os
         self.client_version = client_version
+        # This parameter is required.
         self.desktop_id = desktop_id
+        # This parameter is required.
         self.login_token = login_token
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.session_id = session_id
 
     def validate(self):
@@ -5088,12 +5238,17 @@ class UnbindUserDesktopRequest(TeaModel):
         session_id: str = None,
         user_desktop_id: str = None,
     ):
+        # This parameter is required.
         self.client_id = client_id
         self.client_type = client_type
         self.force = force
+        # This parameter is required.
         self.login_token = login_token
+        # This parameter is required.
         self.region_id = region_id
+        # This parameter is required.
         self.session_id = session_id
+        # This parameter is required.
         self.user_desktop_id = user_desktop_id
 
     def validate(self):
@@ -5220,12 +5375,17 @@ class VerifyCredentialRequest(TeaModel):
         region_id: str = None,
         session_id: str = None,
     ):
+        # This parameter is required.
         self.client_id = client_id
+        # This parameter is required.
         self.credential = credential
         self.credential_type = credential_type
         self.encrypted_key = encrypted_key
+        # This parameter is required.
         self.login_token = login_token
+        # This parameter is required.
         self.office_site_id = office_site_id
+        # This parameter is required.
         self.region_id = region_id
         self.session_id = session_id
 

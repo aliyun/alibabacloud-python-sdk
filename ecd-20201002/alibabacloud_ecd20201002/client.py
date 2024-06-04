@@ -47,6 +47,13 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.ApproveFotaUpdateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.ApproveFotaUpdateResponse:
+        """
+        @summary 允许桌面FOTA升级
+        
+        @param request: ApproveFotaUpdateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApproveFotaUpdateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_version):
@@ -87,6 +94,13 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.ApproveFotaUpdateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.ApproveFotaUpdateResponse:
+        """
+        @summary 允许桌面FOTA升级
+        
+        @param request: ApproveFotaUpdateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ApproveFotaUpdateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.app_version):
@@ -126,6 +140,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.ApproveFotaUpdateRequest,
     ) -> ecd_20201002_models.ApproveFotaUpdateResponse:
+        """
+        @summary 允许桌面FOTA升级
+        
+        @param request: ApproveFotaUpdateRequest
+        @return: ApproveFotaUpdateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.approve_fota_update_with_options(request, runtime)
 
@@ -133,6 +153,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.ApproveFotaUpdateRequest,
     ) -> ecd_20201002_models.ApproveFotaUpdateResponse:
+        """
+        @summary 允许桌面FOTA升级
+        
+        @param request: ApproveFotaUpdateRequest
+        @return: ApproveFotaUpdateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.approve_fota_update_with_options_async(request, runtime)
 
@@ -141,6 +167,11 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.ChangePasswordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.ChangePasswordResponse:
+        """
+        @param request: ChangePasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangePasswordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -183,6 +214,11 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.ChangePasswordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.ChangePasswordResponse:
+        """
+        @param request: ChangePasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ChangePasswordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -224,6 +260,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.ChangePasswordRequest,
     ) -> ecd_20201002_models.ChangePasswordResponse:
+        """
+        @param request: ChangePasswordRequest
+        @return: ChangePasswordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.change_password_with_options(request, runtime)
 
@@ -231,6 +271,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.ChangePasswordRequest,
     ) -> ecd_20201002_models.ChangePasswordResponse:
+        """
+        @param request: ChangePasswordRequest
+        @return: ChangePasswordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.change_password_with_options_async(request, runtime)
 
@@ -239,6 +283,11 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.DeleteFingerPrintTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.DeleteFingerPrintTemplateResponse:
+        """
+        @param request: DeleteFingerPrintTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFingerPrintTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -277,6 +326,11 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.DeleteFingerPrintTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.DeleteFingerPrintTemplateResponse:
+        """
+        @param request: DeleteFingerPrintTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DeleteFingerPrintTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -314,6 +368,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.DeleteFingerPrintTemplateRequest,
     ) -> ecd_20201002_models.DeleteFingerPrintTemplateResponse:
+        """
+        @param request: DeleteFingerPrintTemplateRequest
+        @return: DeleteFingerPrintTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.delete_finger_print_template_with_options(request, runtime)
 
@@ -321,6 +379,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.DeleteFingerPrintTemplateRequest,
     ) -> ecd_20201002_models.DeleteFingerPrintTemplateResponse:
+        """
+        @param request: DeleteFingerPrintTemplateRequest
+        @return: DeleteFingerPrintTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.delete_finger_print_template_with_options_async(request, runtime)
 
@@ -329,6 +391,11 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.DescribeDirectoriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.DescribeDirectoriesResponse:
+        """
+        @param request: DescribeDirectoriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDirectoriesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -361,6 +428,11 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.DescribeDirectoriesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.DescribeDirectoriesResponse:
+        """
+        @param request: DescribeDirectoriesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeDirectoriesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -392,6 +464,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.DescribeDirectoriesRequest,
     ) -> ecd_20201002_models.DescribeDirectoriesResponse:
+        """
+        @param request: DescribeDirectoriesRequest
+        @return: DescribeDirectoriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_directories_with_options(request, runtime)
 
@@ -399,6 +475,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.DescribeDirectoriesRequest,
     ) -> ecd_20201002_models.DescribeDirectoriesResponse:
+        """
+        @param request: DescribeDirectoriesRequest
+        @return: DescribeDirectoriesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_directories_with_options_async(request, runtime)
 
@@ -407,6 +487,11 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.DescribeFingerPrintTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.DescribeFingerPrintTemplatesResponse:
+        """
+        @param request: DescribeFingerPrintTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFingerPrintTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -441,6 +526,11 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.DescribeFingerPrintTemplatesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.DescribeFingerPrintTemplatesResponse:
+        """
+        @param request: DescribeFingerPrintTemplatesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeFingerPrintTemplatesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -474,6 +564,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.DescribeFingerPrintTemplatesRequest,
     ) -> ecd_20201002_models.DescribeFingerPrintTemplatesResponse:
+        """
+        @param request: DescribeFingerPrintTemplatesRequest
+        @return: DescribeFingerPrintTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_finger_print_templates_with_options(request, runtime)
 
@@ -481,6 +575,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.DescribeFingerPrintTemplatesRequest,
     ) -> ecd_20201002_models.DescribeFingerPrintTemplatesResponse:
+        """
+        @param request: DescribeFingerPrintTemplatesRequest
+        @return: DescribeFingerPrintTemplatesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_finger_print_templates_with_options_async(request, runtime)
 
@@ -489,6 +587,11 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.DescribeGlobalDesktopsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.DescribeGlobalDesktopsResponse:
+        """
+        @param request: DescribeGlobalDesktopsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGlobalDesktopsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -553,6 +656,11 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.DescribeGlobalDesktopsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.DescribeGlobalDesktopsResponse:
+        """
+        @param request: DescribeGlobalDesktopsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeGlobalDesktopsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -616,6 +724,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.DescribeGlobalDesktopsRequest,
     ) -> ecd_20201002_models.DescribeGlobalDesktopsResponse:
+        """
+        @param request: DescribeGlobalDesktopsRequest
+        @return: DescribeGlobalDesktopsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_global_desktops_with_options(request, runtime)
 
@@ -623,6 +735,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.DescribeGlobalDesktopsRequest,
     ) -> ecd_20201002_models.DescribeGlobalDesktopsResponse:
+        """
+        @param request: DescribeGlobalDesktopsRequest
+        @return: DescribeGlobalDesktopsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_global_desktops_with_options_async(request, runtime)
 
@@ -631,6 +747,11 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.DescribeOfficeSitesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.DescribeOfficeSitesResponse:
+        """
+        @param request: DescribeOfficeSitesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOfficeSitesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -663,6 +784,11 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.DescribeOfficeSitesRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.DescribeOfficeSitesResponse:
+        """
+        @param request: DescribeOfficeSitesRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeOfficeSitesResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -694,6 +820,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.DescribeOfficeSitesRequest,
     ) -> ecd_20201002_models.DescribeOfficeSitesResponse:
+        """
+        @param request: DescribeOfficeSitesRequest
+        @return: DescribeOfficeSitesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_office_sites_with_options(request, runtime)
 
@@ -701,6 +831,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.DescribeOfficeSitesRequest,
     ) -> ecd_20201002_models.DescribeOfficeSitesResponse:
+        """
+        @param request: DescribeOfficeSitesRequest
+        @return: DescribeOfficeSitesResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_office_sites_with_options_async(request, runtime)
 
@@ -709,6 +843,11 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.DescribeRegionsResponse:
+        """
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -739,6 +878,11 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.DescribeRegionsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.DescribeRegionsResponse:
+        """
+        @param request: DescribeRegionsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeRegionsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -768,6 +912,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.DescribeRegionsRequest,
     ) -> ecd_20201002_models.DescribeRegionsResponse:
+        """
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_regions_with_options(request, runtime)
 
@@ -775,6 +923,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.DescribeRegionsRequest,
     ) -> ecd_20201002_models.DescribeRegionsResponse:
+        """
+        @param request: DescribeRegionsRequest
+        @return: DescribeRegionsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
 
@@ -783,6 +935,13 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.DescribeSnapshotsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.DescribeSnapshotsResponse:
+        """
+        @summary 列举快照
+        
+        @param request: DescribeSnapshotsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSnapshotsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -825,6 +984,13 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.DescribeSnapshotsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.DescribeSnapshotsResponse:
+        """
+        @summary 列举快照
+        
+        @param request: DescribeSnapshotsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: DescribeSnapshotsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -866,6 +1032,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.DescribeSnapshotsRequest,
     ) -> ecd_20201002_models.DescribeSnapshotsResponse:
+        """
+        @summary 列举快照
+        
+        @param request: DescribeSnapshotsRequest
+        @return: DescribeSnapshotsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.describe_snapshots_with_options(request, runtime)
 
@@ -873,6 +1045,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.DescribeSnapshotsRequest,
     ) -> ecd_20201002_models.DescribeSnapshotsResponse:
+        """
+        @summary 列举快照
+        
+        @param request: DescribeSnapshotsRequest
+        @return: DescribeSnapshotsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.describe_snapshots_with_options_async(request, runtime)
 
@@ -881,6 +1059,11 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.EncryptPasswordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.EncryptPasswordResponse:
+        """
+        @param request: EncryptPasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EncryptPasswordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -921,6 +1104,11 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.EncryptPasswordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.EncryptPasswordResponse:
+        """
+        @param request: EncryptPasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: EncryptPasswordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -960,6 +1148,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.EncryptPasswordRequest,
     ) -> ecd_20201002_models.EncryptPasswordResponse:
+        """
+        @param request: EncryptPasswordRequest
+        @return: EncryptPasswordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.encrypt_password_with_options(request, runtime)
 
@@ -967,6 +1159,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.EncryptPasswordRequest,
     ) -> ecd_20201002_models.EncryptPasswordResponse:
+        """
+        @param request: EncryptPasswordRequest
+        @return: EncryptPasswordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.encrypt_password_with_options_async(request, runtime)
 
@@ -975,6 +1171,13 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.GetCloudDriveServiceMountTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.GetCloudDriveServiceMountTokenResponse:
+        """
+        @summary 获取无影云盘的免密token
+        
+        @param request: GetCloudDriveServiceMountTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCloudDriveServiceMountTokenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -1011,6 +1214,13 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.GetCloudDriveServiceMountTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.GetCloudDriveServiceMountTokenResponse:
+        """
+        @summary 获取无影云盘的免密token
+        
+        @param request: GetCloudDriveServiceMountTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetCloudDriveServiceMountTokenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -1046,6 +1256,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.GetCloudDriveServiceMountTokenRequest,
     ) -> ecd_20201002_models.GetCloudDriveServiceMountTokenResponse:
+        """
+        @summary 获取无影云盘的免密token
+        
+        @param request: GetCloudDriveServiceMountTokenRequest
+        @return: GetCloudDriveServiceMountTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_cloud_drive_service_mount_token_with_options(request, runtime)
 
@@ -1053,6 +1269,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.GetCloudDriveServiceMountTokenRequest,
     ) -> ecd_20201002_models.GetCloudDriveServiceMountTokenResponse:
+        """
+        @summary 获取无影云盘的免密token
+        
+        @param request: GetCloudDriveServiceMountTokenRequest
+        @return: GetCloudDriveServiceMountTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_cloud_drive_service_mount_token_with_options_async(request, runtime)
 
@@ -1061,6 +1283,11 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.GetConnectionTicketRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.GetConnectionTicketResponse:
+        """
+        @param request: GetConnectionTicketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConnectionTicketResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -1115,6 +1342,11 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.GetConnectionTicketRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.GetConnectionTicketResponse:
+        """
+        @param request: GetConnectionTicketRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetConnectionTicketResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -1168,6 +1400,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.GetConnectionTicketRequest,
     ) -> ecd_20201002_models.GetConnectionTicketResponse:
+        """
+        @param request: GetConnectionTicketRequest
+        @return: GetConnectionTicketResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_connection_ticket_with_options(request, runtime)
 
@@ -1175,6 +1411,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.GetConnectionTicketRequest,
     ) -> ecd_20201002_models.GetConnectionTicketResponse:
+        """
+        @param request: GetConnectionTicketRequest
+        @return: GetConnectionTicketResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_connection_ticket_with_options_async(request, runtime)
 
@@ -1183,6 +1423,13 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.GetLoginTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.GetLoginTokenResponse:
+        """
+        @summary Obtains logon credentials.
+        
+        @param request: GetLoginTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLoginTokenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.authentication_code):
@@ -1245,6 +1492,13 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.GetLoginTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.GetLoginTokenResponse:
+        """
+        @summary Obtains logon credentials.
+        
+        @param request: GetLoginTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: GetLoginTokenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.authentication_code):
@@ -1306,6 +1560,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.GetLoginTokenRequest,
     ) -> ecd_20201002_models.GetLoginTokenResponse:
+        """
+        @summary Obtains logon credentials.
+        
+        @param request: GetLoginTokenRequest
+        @return: GetLoginTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.get_login_token_with_options(request, runtime)
 
@@ -1313,6 +1573,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.GetLoginTokenRequest,
     ) -> ecd_20201002_models.GetLoginTokenResponse:
+        """
+        @summary Obtains logon credentials.
+        
+        @param request: GetLoginTokenRequest
+        @return: GetLoginTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.get_login_token_with_options_async(request, runtime)
 
@@ -1321,6 +1587,13 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.IsKeepAliveRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.IsKeepAliveResponse:
+        """
+        @summary 是否保持登录判断接口
+        
+        @param request: IsKeepAliveRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IsKeepAliveResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -1353,6 +1626,13 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.IsKeepAliveRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.IsKeepAliveResponse:
+        """
+        @summary 是否保持登录判断接口
+        
+        @param request: IsKeepAliveRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: IsKeepAliveResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -1384,6 +1664,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.IsKeepAliveRequest,
     ) -> ecd_20201002_models.IsKeepAliveResponse:
+        """
+        @summary 是否保持登录判断接口
+        
+        @param request: IsKeepAliveRequest
+        @return: IsKeepAliveResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.is_keep_alive_with_options(request, runtime)
 
@@ -1391,6 +1677,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.IsKeepAliveRequest,
     ) -> ecd_20201002_models.IsKeepAliveResponse:
+        """
+        @summary 是否保持登录判断接口
+        
+        @param request: IsKeepAliveRequest
+        @return: IsKeepAliveResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.is_keep_alive_with_options_async(request, runtime)
 
@@ -1399,6 +1691,13 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.QueryEdsAgentReportConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.QueryEdsAgentReportConfigResponse:
+        """
+        @summary 查询Agent需要上报的配置信息
+        
+        @param request: QueryEdsAgentReportConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryEdsAgentReportConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ali_uid):
@@ -1431,6 +1730,13 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.QueryEdsAgentReportConfigRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.QueryEdsAgentReportConfigResponse:
+        """
+        @summary 查询Agent需要上报的配置信息
+        
+        @param request: QueryEdsAgentReportConfigRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: QueryEdsAgentReportConfigResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ali_uid):
@@ -1462,6 +1768,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.QueryEdsAgentReportConfigRequest,
     ) -> ecd_20201002_models.QueryEdsAgentReportConfigResponse:
+        """
+        @summary 查询Agent需要上报的配置信息
+        
+        @param request: QueryEdsAgentReportConfigRequest
+        @return: QueryEdsAgentReportConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.query_eds_agent_report_config_with_options(request, runtime)
 
@@ -1469,6 +1781,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.QueryEdsAgentReportConfigRequest,
     ) -> ecd_20201002_models.QueryEdsAgentReportConfigResponse:
+        """
+        @summary 查询Agent需要上报的配置信息
+        
+        @param request: QueryEdsAgentReportConfigRequest
+        @return: QueryEdsAgentReportConfigResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.query_eds_agent_report_config_with_options_async(request, runtime)
 
@@ -1477,6 +1795,13 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.RebootDesktopsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.RebootDesktopsResponse:
+        """
+        @summary Restart cloud computers.
+        
+        @param request: RebootDesktopsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RebootDesktopsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -1523,6 +1848,13 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.RebootDesktopsRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.RebootDesktopsResponse:
+        """
+        @summary Restart cloud computers.
+        
+        @param request: RebootDesktopsRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RebootDesktopsResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -1568,6 +1900,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.RebootDesktopsRequest,
     ) -> ecd_20201002_models.RebootDesktopsResponse:
+        """
+        @summary Restart cloud computers.
+        
+        @param request: RebootDesktopsRequest
+        @return: RebootDesktopsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reboot_desktops_with_options(request, runtime)
 
@@ -1575,6 +1913,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.RebootDesktopsRequest,
     ) -> ecd_20201002_models.RebootDesktopsResponse:
+        """
+        @summary Restart cloud computers.
+        
+        @param request: RebootDesktopsRequest
+        @return: RebootDesktopsResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reboot_desktops_with_options_async(request, runtime)
 
@@ -1583,6 +1927,11 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.RefreshLoginTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.RefreshLoginTokenResponse:
+        """
+        @param request: RefreshLoginTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefreshLoginTokenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -1623,6 +1972,11 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.RefreshLoginTokenRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.RefreshLoginTokenResponse:
+        """
+        @param request: RefreshLoginTokenRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: RefreshLoginTokenResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -1662,6 +2016,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.RefreshLoginTokenRequest,
     ) -> ecd_20201002_models.RefreshLoginTokenResponse:
+        """
+        @param request: RefreshLoginTokenRequest
+        @return: RefreshLoginTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.refresh_login_token_with_options(request, runtime)
 
@@ -1669,6 +2027,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.RefreshLoginTokenRequest,
     ) -> ecd_20201002_models.RefreshLoginTokenResponse:
+        """
+        @param request: RefreshLoginTokenRequest
+        @return: RefreshLoginTokenResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.refresh_login_token_with_options_async(request, runtime)
 
@@ -1677,6 +2039,13 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.ReportEdsAgentInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.ReportEdsAgentInfoResponse:
+        """
+        @summary 上报edsAgent的信息
+        
+        @param request: ReportEdsAgentInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReportEdsAgentInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ali_uid):
@@ -1711,6 +2080,13 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.ReportEdsAgentInfoRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.ReportEdsAgentInfoResponse:
+        """
+        @summary 上报edsAgent的信息
+        
+        @param request: ReportEdsAgentInfoRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReportEdsAgentInfoResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.ali_uid):
@@ -1744,6 +2120,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.ReportEdsAgentInfoRequest,
     ) -> ecd_20201002_models.ReportEdsAgentInfoResponse:
+        """
+        @summary 上报edsAgent的信息
+        
+        @param request: ReportEdsAgentInfoRequest
+        @return: ReportEdsAgentInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.report_eds_agent_info_with_options(request, runtime)
 
@@ -1751,6 +2133,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.ReportEdsAgentInfoRequest,
     ) -> ecd_20201002_models.ReportEdsAgentInfoResponse:
+        """
+        @summary 上报edsAgent的信息
+        
+        @param request: ReportEdsAgentInfoRequest
+        @return: ReportEdsAgentInfoResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.report_eds_agent_info_with_options_async(request, runtime)
 
@@ -1759,6 +2147,11 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.ReportSessionStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.ReportSessionStatusResponse:
+        """
+        @param request: ReportSessionStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReportSessionStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_user_id):
@@ -1797,6 +2190,11 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.ReportSessionStatusRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.ReportSessionStatusResponse:
+        """
+        @param request: ReportSessionStatusRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ReportSessionStatusResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.end_user_id):
@@ -1834,6 +2232,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.ReportSessionStatusRequest,
     ) -> ecd_20201002_models.ReportSessionStatusResponse:
+        """
+        @param request: ReportSessionStatusRequest
+        @return: ReportSessionStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.report_session_status_with_options(request, runtime)
 
@@ -1841,6 +2243,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.ReportSessionStatusRequest,
     ) -> ecd_20201002_models.ReportSessionStatusResponse:
+        """
+        @param request: ReportSessionStatusRequest
+        @return: ReportSessionStatusResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.report_session_status_with_options_async(request, runtime)
 
@@ -1849,6 +2255,11 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.ResetPasswordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.ResetPasswordResponse:
+        """
+        @param request: ResetPasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetPasswordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -1889,6 +2300,11 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.ResetPasswordRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.ResetPasswordResponse:
+        """
+        @param request: ResetPasswordRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetPasswordResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -1928,6 +2344,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.ResetPasswordRequest,
     ) -> ecd_20201002_models.ResetPasswordResponse:
+        """
+        @param request: ResetPasswordRequest
+        @return: ResetPasswordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reset_password_with_options(request, runtime)
 
@@ -1935,6 +2355,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.ResetPasswordRequest,
     ) -> ecd_20201002_models.ResetPasswordResponse:
+        """
+        @param request: ResetPasswordRequest
+        @return: ResetPasswordResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reset_password_with_options_async(request, runtime)
 
@@ -1943,6 +2367,13 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.ResetSnapshotRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.ResetSnapshotResponse:
+        """
+        @summary 还原快照
+        
+        @param request: ResetSnapshotRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetSnapshotResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -1979,6 +2410,13 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.ResetSnapshotRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.ResetSnapshotResponse:
+        """
+        @summary 还原快照
+        
+        @param request: ResetSnapshotRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: ResetSnapshotResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -2014,6 +2452,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.ResetSnapshotRequest,
     ) -> ecd_20201002_models.ResetSnapshotResponse:
+        """
+        @summary 还原快照
+        
+        @param request: ResetSnapshotRequest
+        @return: ResetSnapshotResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.reset_snapshot_with_options(request, runtime)
 
@@ -2021,6 +2465,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.ResetSnapshotRequest,
     ) -> ecd_20201002_models.ResetSnapshotResponse:
+        """
+        @summary 还原快照
+        
+        @param request: ResetSnapshotRequest
+        @return: ResetSnapshotResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.reset_snapshot_with_options_async(request, runtime)
 
@@ -2029,6 +2479,11 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.SendTokenCodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.SendTokenCodeResponse:
+        """
+        @param request: SendTokenCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendTokenCodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -2071,6 +2526,11 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.SendTokenCodeRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.SendTokenCodeResponse:
+        """
+        @param request: SendTokenCodeRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SendTokenCodeResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -2112,6 +2572,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.SendTokenCodeRequest,
     ) -> ecd_20201002_models.SendTokenCodeResponse:
+        """
+        @param request: SendTokenCodeRequest
+        @return: SendTokenCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.send_token_code_with_options(request, runtime)
 
@@ -2119,6 +2583,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.SendTokenCodeRequest,
     ) -> ecd_20201002_models.SendTokenCodeResponse:
+        """
+        @param request: SendTokenCodeRequest
+        @return: SendTokenCodeResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.send_token_code_with_options_async(request, runtime)
 
@@ -2127,6 +2595,11 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.SetFingerPrintTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.SetFingerPrintTemplateResponse:
+        """
+        @param request: SetFingerPrintTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetFingerPrintTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -2173,6 +2646,11 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.SetFingerPrintTemplateRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.SetFingerPrintTemplateResponse:
+        """
+        @param request: SetFingerPrintTemplateRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetFingerPrintTemplateResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -2218,6 +2696,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.SetFingerPrintTemplateRequest,
     ) -> ecd_20201002_models.SetFingerPrintTemplateResponse:
+        """
+        @param request: SetFingerPrintTemplateRequest
+        @return: SetFingerPrintTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_finger_print_template_with_options(request, runtime)
 
@@ -2225,6 +2707,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.SetFingerPrintTemplateRequest,
     ) -> ecd_20201002_models.SetFingerPrintTemplateResponse:
+        """
+        @param request: SetFingerPrintTemplateRequest
+        @return: SetFingerPrintTemplateResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_finger_print_template_with_options_async(request, runtime)
 
@@ -2233,6 +2719,11 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.SetFingerPrintTemplateDescriptionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.SetFingerPrintTemplateDescriptionResponse:
+        """
+        @param request: SetFingerPrintTemplateDescriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetFingerPrintTemplateDescriptionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -2273,6 +2764,11 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.SetFingerPrintTemplateDescriptionRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.SetFingerPrintTemplateDescriptionResponse:
+        """
+        @param request: SetFingerPrintTemplateDescriptionRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: SetFingerPrintTemplateDescriptionResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -2312,6 +2808,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.SetFingerPrintTemplateDescriptionRequest,
     ) -> ecd_20201002_models.SetFingerPrintTemplateDescriptionResponse:
+        """
+        @param request: SetFingerPrintTemplateDescriptionRequest
+        @return: SetFingerPrintTemplateDescriptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.set_finger_print_template_description_with_options(request, runtime)
 
@@ -2319,6 +2819,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.SetFingerPrintTemplateDescriptionRequest,
     ) -> ecd_20201002_models.SetFingerPrintTemplateDescriptionResponse:
+        """
+        @param request: SetFingerPrintTemplateDescriptionRequest
+        @return: SetFingerPrintTemplateDescriptionResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.set_finger_print_template_description_with_options_async(request, runtime)
 
@@ -2328,7 +2832,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.StartDesktopsResponse:
         """
-        The cloud computers that you want to start must be in the Stopped state. After you call this operation, the cloud computers enter the Running state.
+        @summary Start cloud computers.
+        
+        @description The cloud computers that you want to start must be in the Stopped state. After you call this operation, the cloud computers enter the Running state.
         
         @param request: StartDesktopsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2379,7 +2885,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.StartDesktopsResponse:
         """
-        The cloud computers that you want to start must be in the Stopped state. After you call this operation, the cloud computers enter the Running state.
+        @summary Start cloud computers.
+        
+        @description The cloud computers that you want to start must be in the Stopped state. After you call this operation, the cloud computers enter the Running state.
         
         @param request: StartDesktopsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2429,7 +2937,9 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.StartDesktopsRequest,
     ) -> ecd_20201002_models.StartDesktopsResponse:
         """
-        The cloud computers that you want to start must be in the Stopped state. After you call this operation, the cloud computers enter the Running state.
+        @summary Start cloud computers.
+        
+        @description The cloud computers that you want to start must be in the Stopped state. After you call this operation, the cloud computers enter the Running state.
         
         @param request: StartDesktopsRequest
         @return: StartDesktopsResponse
@@ -2442,7 +2952,9 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.StartDesktopsRequest,
     ) -> ecd_20201002_models.StartDesktopsResponse:
         """
-        The cloud computers that you want to start must be in the Stopped state. After you call this operation, the cloud computers enter the Running state.
+        @summary Start cloud computers.
+        
+        @description The cloud computers that you want to start must be in the Stopped state. After you call this operation, the cloud computers enter the Running state.
         
         @param request: StartDesktopsRequest
         @return: StartDesktopsResponse
@@ -2455,6 +2967,11 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.StartRecordContentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.StartRecordContentResponse:
+        """
+        @param request: StartRecordContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartRecordContentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -2497,6 +3014,11 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.StartRecordContentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.StartRecordContentResponse:
+        """
+        @param request: StartRecordContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StartRecordContentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -2538,6 +3060,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.StartRecordContentRequest,
     ) -> ecd_20201002_models.StartRecordContentResponse:
+        """
+        @param request: StartRecordContentRequest
+        @return: StartRecordContentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.start_record_content_with_options(request, runtime)
 
@@ -2545,6 +3071,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.StartRecordContentRequest,
     ) -> ecd_20201002_models.StartRecordContentResponse:
+        """
+        @param request: StartRecordContentRequest
+        @return: StartRecordContentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.start_record_content_with_options_async(request, runtime)
 
@@ -2554,7 +3084,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.StopDesktopsResponse:
         """
-        The cloud computers that you want to stop must be in the Running state. After you call this operation, the cloud computers enter the Stopped state.
+        @summary Stops cloud computers.
+        
+        @description The cloud computers that you want to stop must be in the Running state. After you call this operation, the cloud computers enter the Stopped state.
         
         @param request: StopDesktopsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2605,7 +3137,9 @@ class Client(OpenApiClient):
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.StopDesktopsResponse:
         """
-        The cloud computers that you want to stop must be in the Running state. After you call this operation, the cloud computers enter the Stopped state.
+        @summary Stops cloud computers.
+        
+        @description The cloud computers that you want to stop must be in the Running state. After you call this operation, the cloud computers enter the Stopped state.
         
         @param request: StopDesktopsRequest
         @param runtime: runtime options for this request RuntimeOptions
@@ -2655,7 +3189,9 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.StopDesktopsRequest,
     ) -> ecd_20201002_models.StopDesktopsResponse:
         """
-        The cloud computers that you want to stop must be in the Running state. After you call this operation, the cloud computers enter the Stopped state.
+        @summary Stops cloud computers.
+        
+        @description The cloud computers that you want to stop must be in the Running state. After you call this operation, the cloud computers enter the Stopped state.
         
         @param request: StopDesktopsRequest
         @return: StopDesktopsResponse
@@ -2668,7 +3204,9 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.StopDesktopsRequest,
     ) -> ecd_20201002_models.StopDesktopsResponse:
         """
-        The cloud computers that you want to stop must be in the Running state. After you call this operation, the cloud computers enter the Stopped state.
+        @summary Stops cloud computers.
+        
+        @description The cloud computers that you want to stop must be in the Running state. After you call this operation, the cloud computers enter the Stopped state.
         
         @param request: StopDesktopsRequest
         @return: StopDesktopsResponse
@@ -2681,6 +3219,11 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.StopRecordContentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.StopRecordContentResponse:
+        """
+        @param request: StopRecordContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopRecordContentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -2721,6 +3264,11 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.StopRecordContentRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.StopRecordContentResponse:
+        """
+        @param request: StopRecordContentRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: StopRecordContentResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -2760,6 +3308,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.StopRecordContentRequest,
     ) -> ecd_20201002_models.StopRecordContentResponse:
+        """
+        @param request: StopRecordContentRequest
+        @return: StopRecordContentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.stop_record_content_with_options(request, runtime)
 
@@ -2767,6 +3319,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.StopRecordContentRequest,
     ) -> ecd_20201002_models.StopRecordContentResponse:
+        """
+        @param request: StopRecordContentRequest
+        @return: StopRecordContentResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.stop_record_content_with_options_async(request, runtime)
 
@@ -2775,6 +3331,13 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.UnbindUserDesktopRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.UnbindUserDesktopResponse:
+        """
+        @summary 解绑用户桌面
+        
+        @param request: UnbindUserDesktopRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindUserDesktopResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -2815,6 +3378,13 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.UnbindUserDesktopRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.UnbindUserDesktopResponse:
+        """
+        @summary 解绑用户桌面
+        
+        @param request: UnbindUserDesktopRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: UnbindUserDesktopResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -2854,6 +3424,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.UnbindUserDesktopRequest,
     ) -> ecd_20201002_models.UnbindUserDesktopResponse:
+        """
+        @summary 解绑用户桌面
+        
+        @param request: UnbindUserDesktopRequest
+        @return: UnbindUserDesktopResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.unbind_user_desktop_with_options(request, runtime)
 
@@ -2861,6 +3437,12 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.UnbindUserDesktopRequest,
     ) -> ecd_20201002_models.UnbindUserDesktopResponse:
+        """
+        @summary 解绑用户桌面
+        
+        @param request: UnbindUserDesktopRequest
+        @return: UnbindUserDesktopResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.unbind_user_desktop_with_options_async(request, runtime)
 
@@ -2869,6 +3451,11 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.VerifyCredentialRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.VerifyCredentialResponse:
+        """
+        @param request: VerifyCredentialRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VerifyCredentialResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -2911,6 +3498,11 @@ class Client(OpenApiClient):
         request: ecd_20201002_models.VerifyCredentialRequest,
         runtime: util_models.RuntimeOptions,
     ) -> ecd_20201002_models.VerifyCredentialResponse:
+        """
+        @param request: VerifyCredentialRequest
+        @param runtime: runtime options for this request RuntimeOptions
+        @return: VerifyCredentialResponse
+        """
         UtilClient.validate_model(request)
         query = {}
         if not UtilClient.is_unset(request.client_id):
@@ -2952,6 +3544,10 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.VerifyCredentialRequest,
     ) -> ecd_20201002_models.VerifyCredentialResponse:
+        """
+        @param request: VerifyCredentialRequest
+        @return: VerifyCredentialResponse
+        """
         runtime = util_models.RuntimeOptions()
         return self.verify_credential_with_options(request, runtime)
 
@@ -2959,5 +3555,9 @@ class Client(OpenApiClient):
         self,
         request: ecd_20201002_models.VerifyCredentialRequest,
     ) -> ecd_20201002_models.VerifyCredentialResponse:
+        """
+        @param request: VerifyCredentialRequest
+        @return: VerifyCredentialResponse
+        """
         runtime = util_models.RuntimeOptions()
         return await self.verify_credential_with_options_async(request, runtime)
