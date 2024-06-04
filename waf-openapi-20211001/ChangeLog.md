@@ -1,3 +1,12 @@
+2024-06-04 Version: 3.5.0
+- Support API DeleteApisecAbnormal.
+- Support API DeleteApisecEvent.
+- Support API DescribeApisecAbnormalDomainStatistic.
+- Support API DescribeApisecAssetTrend.
+- Support API DescribeApisecEventDomainStatistic.
+- Support API DescribeApisecSensitiveDomainStatistic.
+
+
 2024-04-24 Version: 3.4.0
 - Support API CopyDefenseTemplate.
 - Support API CreatePostpaidInstance.

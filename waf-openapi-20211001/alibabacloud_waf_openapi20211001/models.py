@@ -15,7 +15,9 @@ class ClearMajorProtectionBlackIpRequest(TeaModel):
     ):
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region where the WAF instance resides. Valid values:
         # 
@@ -25,8 +27,12 @@ class ClearMajorProtectionBlackIpRequest(TeaModel):
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The ID of the IP address blacklist rule for major event protection.
+        # 
+        # This parameter is required.
         self.rule_id = rule_id
         # The ID of the IP address blacklist rule template for major event protection.
+        # 
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -144,7 +150,9 @@ class CopyDefenseTemplateRequest(TeaModel):
     ):
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region in which the WAF instance is deployed. Valid values:
         # 
@@ -154,6 +162,8 @@ class CopyDefenseTemplateRequest(TeaModel):
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The ID of the protection template that you want to copy.
+        # 
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -279,10 +289,14 @@ class CreateDefenseResourceGroupRequest(TeaModel):
         # The description of the protected object group.
         self.description = description
         # The name of the protected object group that you want to create.
+        # 
+        # This parameter is required.
         self.group_name = group_name
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region where the WAF instance resides. Valid values:
         # 
@@ -423,10 +437,14 @@ class CreateDefenseRuleRequest(TeaModel):
         # *   **cc:** the HTTP flood protection module.
         # *   **tamperproof:** the website tamper-proofing module.
         # *   **dlp:** the data leakage prevention module.
+        # 
+        # This parameter is required.
         self.defense_scene = defense_scene
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region where the WAF instance resides. Valid values:
         # 
@@ -438,8 +456,12 @@ class CreateDefenseRuleRequest(TeaModel):
         # The configurations of the protection rule. Specify a string that contains multiple parameters in the JSON format.
         # 
         # >  The parameters vary based on the value of the **DefenseScene** parameter. For more information, see the "**Protection rule parameters**" section in this topic.
+        # 
+        # This parameter is required.
         self.rules = rules
         # The ID of the protection rule template for which you want to create a protection rule.
+        # 
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -565,12 +587,16 @@ class CreateDefenseTemplateRequest(TeaModel):
         template_type: str = None,
     ):
         # The scenario in which you want to use the protection rule template. For more information, see the description of the **DefenseScene** parameter in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
+        # 
+        # This parameter is required.
         self.defense_scene = defense_scene
         # The description of the protection rule template.
         self.description = description
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region where the WAF instance resides. Valid values:
         # 
@@ -580,18 +606,26 @@ class CreateDefenseTemplateRequest(TeaModel):
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The name of the protection rule template.
+        # 
+        # This parameter is required.
         self.template_name = template_name
         # The origin of the protection rule template that you want to create. Set the value to **custom**. The value specifies that the protection rule template is a custom template.
+        # 
+        # This parameter is required.
         self.template_origin = template_origin
         # The status of the protection rule template. Valid values:
         # 
         # *   **0:** disabled.
         # *   **1:** enabled.
+        # 
+        # This parameter is required.
         self.template_status = template_status
         # The type of the protection rule template. Valid values:
         # 
         # *   **user_default:** default template.
         # *   **user_custom:** custom template.
+        # 
+        # This parameter is required.
         self.template_type = template_type
 
     def validate(self):
@@ -982,6 +1016,8 @@ class CreateDomainRequestRedirect(TeaModel):
         # *   **iphash**\
         # *   **roundRobin**\
         # *   **leastTime** You can set the parameter to this value only if you set **ProtectionResource** to **gslb**.
+        # 
+        # This parameter is required.
         self.loadbalance = loadbalance
         # The timeout period of read connections. Unit: seconds. Valid values: 1 to 3600.
         self.read_timeout = read_timeout
@@ -1122,19 +1158,29 @@ class CreateDomainRequest(TeaModel):
         # *   **hybrid_cloud_cname:** adds the domain name to WAF in hybrid cloud reverse proxy mode.
         self.access_type = access_type
         # The domain name that you want to add to WAF.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # > You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The configurations of the listeners.
+        # 
+        # This parameter is required.
         self.listen = listen
         # The configurations of the forwarding rule.
+        # 
+        # This parameter is required.
         self.redirect = redirect
         # The region where the WAF instance resides. Valid values:
         # 
         # *   **cn-hangzhou**: the Chinese mainland
         # *   **ap-southeast-1**: outside the Chinese mainland
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
@@ -1205,19 +1251,29 @@ class CreateDomainShrinkRequest(TeaModel):
         # *   **hybrid_cloud_cname:** adds the domain name to WAF in hybrid cloud reverse proxy mode.
         self.access_type = access_type
         # The domain name that you want to add to WAF.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # > You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The configurations of the listeners.
+        # 
+        # This parameter is required.
         self.listen_shrink = listen_shrink
         # The configurations of the forwarding rule.
+        # 
+        # This parameter is required.
         self.redirect_shrink = redirect_shrink
         # The region where the WAF instance resides. Valid values:
         # 
         # *   **cn-hangzhou**: the Chinese mainland
         # *   **ap-southeast-1**: outside the Chinese mainland
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
@@ -1396,10 +1452,16 @@ class CreateMajorProtectionBlackIpRequest(TeaModel):
         # The time after which the IP address blacklist becomes invalid. Unit: seconds.
         # 
         # >  If you set the value to **0**, the blacklist is permanently valid.
+        # 
+        # This parameter is required.
         self.expired_time = expired_time
         # The ID of the Web Application Firewall (WAF) instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The IP addresses that you want to add to the IP address blacklist. CIDR blocks and IP addresses are supported. IPv4 and IPv6 addresses are supported. Separate the CIDR blocks or IP addresses with commas (,). For more information, see [Protection for major events](~~425591~~).
+        # The IP addresses that you want to add to the IP address blacklist. CIDR blocks and IP addresses are supported. IPv4 and IPv6 addresses are supported. Separate the CIDR blocks or IP addresses with commas (,). For more information, see [Protection for major events](https://help.aliyun.com/document_detail/425591.html).
+        # 
+        # This parameter is required.
         self.ip_list = ip_list
         # The region where the WAF instance resides. Valid values:
         # 
@@ -1409,8 +1471,12 @@ class CreateMajorProtectionBlackIpRequest(TeaModel):
         # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The ID of the IP address blacklist rule for major event protection.
+        # 
+        # This parameter is required.
         self.rule_id = rule_id
         # The ID of the IP address blacklist rule template for major event protection.
+        # 
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -1541,9 +1607,13 @@ class CreateMemberAccountsRequest(TeaModel):
     ):
         # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The Alibaba Cloud account IDs of the members that you want to add. You can add up to 10 members at the same time.
+        # 
+        # This parameter is required.
         self.member_account_ids = member_account_ids
         # The region in which the WAF instance is deployed. Valid values:
         # 
@@ -1774,6 +1844,272 @@ class CreatePostpaidInstanceResponse(TeaModel):
         return self
 
 
+class DeleteApisecAbnormalRequest(TeaModel):
+    def __init__(
+        self,
+        abnormal_id: str = None,
+        cluster_id: str = None,
+        instance_id: str = None,
+        region: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        self.abnormal_id = abnormal_id
+        self.cluster_id = cluster_id
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.region = region
+        self.region_id = region_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.abnormal_id is not None:
+            result['AbnormalId'] = self.abnormal_id
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AbnormalId') is not None:
+            self.abnormal_id = m.get('AbnormalId')
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class DeleteApisecAbnormalResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: bool = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
+
+
+class DeleteApisecAbnormalResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteApisecAbnormalResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteApisecAbnormalResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DeleteApisecEventRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        event_id: str = None,
+        instance_id: str = None,
+        region: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.event_id = event_id
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.region = region
+        self.region_id = region_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.event_id is not None:
+            result['EventId'] = self.event_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('EventId') is not None:
+            self.event_id = m.get('EventId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        return self
+
+
+class DeleteApisecEventResponseBody(TeaModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: bool = None,
+    ):
+        # Id of the request
+        self.request_id = request_id
+        self.result = result
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.result is not None:
+            result['Result'] = self.result
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('Result') is not None:
+            self.result = m.get('Result')
+        return self
+
+
+class DeleteApisecEventResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DeleteApisecEventResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DeleteApisecEventResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DeleteDefenseResourceGroupRequest(TeaModel):
     def __init__(
         self,
@@ -1783,10 +2119,14 @@ class DeleteDefenseResourceGroupRequest(TeaModel):
         resource_manager_resource_group_id: str = None,
     ):
         # The name of the protected object group that you want to delete.
+        # 
+        # This parameter is required.
         self.group_name = group_name
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region where the WAF instance resides. Valid values:
         # 
@@ -1908,7 +2248,9 @@ class DeleteDefenseRuleRequest(TeaModel):
     ):
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region where the WAF instance resides. Valid values:
         # 
@@ -1918,8 +2260,12 @@ class DeleteDefenseRuleRequest(TeaModel):
         # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The IDs of the protection rules that you want to delete. Separate the IDs with commas (,).
+        # 
+        # This parameter is required.
         self.rule_ids = rule_ids
         # The ID of the protection rule template to which the protection rule that you want to delete belongs.
+        # 
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -2037,7 +2383,9 @@ class DeleteDefenseTemplateRequest(TeaModel):
     ):
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region where the WAF instance resides. Valid values:
         # 
@@ -2047,6 +2395,8 @@ class DeleteDefenseTemplateRequest(TeaModel):
         # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The ID of the protection rule template that you want to delete.
+        # 
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -2165,17 +2515,23 @@ class DeleteDomainRequest(TeaModel):
         # *   **hybrid_cloud_cname:** hybrid cloud reverse proxy mode.
         self.access_type = access_type
         # The domain name that you want to delete.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The ID of the domain name.
         self.domain_id = domain_id
         # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region where the WAF instance resides. Valid values:
         # 
         # *   **cn-hangzhou:** the Chinese mainland.
         # *   **ap-southeast-1:** outside the Chinese mainland.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -2295,9 +2651,13 @@ class DeleteMajorProtectionBlackIpRequest(TeaModel):
     ):
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The IP address blacklist for major event protection that you want to delete. You can specify multiple CIDR blocks or IP addresses. IPv4 and IPv6 addresses are supported. Separate the CIDR blocks or IP addresses with commas (,). For more information, see [Protection for major events](~~425591~~).
+        # The IP address blacklist for major event protection that you want to delete. You can specify multiple CIDR blocks or IP addresses. IPv4 and IPv6 addresses are supported. Separate the CIDR blocks or IP addresses with commas (,). For more information, see [Protection for major events](https://help.aliyun.com/document_detail/425591.html).
+        # 
+        # This parameter is required.
         self.ip_list = ip_list
         # The region where the WAF instance resides. Valid values:
         # 
@@ -2307,8 +2667,12 @@ class DeleteMajorProtectionBlackIpRequest(TeaModel):
         # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The ID of the IP address blacklist rule for major event protection.
+        # 
+        # This parameter is required.
         self.rule_id = rule_id
         # The ID of the IP address blacklist rule template for major event protection.
+        # 
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -2431,9 +2795,13 @@ class DeleteMemberAccountRequest(TeaModel):
     ):
         # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The Alibaba Cloud account ID of the managed member.
+        # 
+        # This parameter is required.
         self.member_account_id = member_account_id
         # The region in which the WAF instance is deployed. Valid values:
         # 
@@ -2559,7 +2927,9 @@ class DescribeAccountDelegatedStatusRequest(TeaModel):
     ):
         # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region in which the WAF instance is deployed. Valid values:
         # 
@@ -2690,6 +3060,870 @@ class DescribeAccountDelegatedStatusResponse(TeaModel):
         return self
 
 
+class DescribeApisecAbnormalDomainStatisticRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        end_time: int = None,
+        instance_id: str = None,
+        order_way: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+        start_time: int = None,
+    ):
+        self.cluster_id = cluster_id
+        self.end_time = end_time
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.order_way = order_way
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region = region
+        self.region_id = region_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.order_way is not None:
+            result['OrderWay'] = self.order_way
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OrderWay') is not None:
+            self.order_way = m.get('OrderWay')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeApisecAbnormalDomainStatisticResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        api_count: int = None,
+        domain: str = None,
+        high: int = None,
+        low: int = None,
+        medium: int = None,
+    ):
+        self.api_count = api_count
+        self.domain = domain
+        self.high = high
+        self.low = low
+        self.medium = medium
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_count is not None:
+            result['ApiCount'] = self.api_count
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.high is not None:
+            result['High'] = self.high
+        if self.low is not None:
+            result['Low'] = self.low
+        if self.medium is not None:
+            result['Medium'] = self.medium
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiCount') is not None:
+            self.api_count = m.get('ApiCount')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('High') is not None:
+            self.high = m.get('High')
+        if m.get('Low') is not None:
+            self.low = m.get('Low')
+        if m.get('Medium') is not None:
+            self.medium = m.get('Medium')
+        return self
+
+
+class DescribeApisecAbnormalDomainStatisticResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[DescribeApisecAbnormalDomainStatisticResponseBodyData] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = DescribeApisecAbnormalDomainStatisticResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeApisecAbnormalDomainStatisticResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeApisecAbnormalDomainStatisticResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeApisecAbnormalDomainStatisticResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeApisecAssetTrendRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        end_time: int = None,
+        instance_id: str = None,
+        region: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+        start_time: int = None,
+    ):
+        self.cluster_id = cluster_id
+        self.end_time = end_time
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.region = region
+        self.region_id = region_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeApisecAssetTrendResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        asset_active: int = None,
+        asset_count: int = None,
+        asset_offline: int = None,
+        timestamp: int = None,
+    ):
+        self.asset_active = asset_active
+        self.asset_count = asset_count
+        self.asset_offline = asset_offline
+        self.timestamp = timestamp
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.asset_active is not None:
+            result['AssetActive'] = self.asset_active
+        if self.asset_count is not None:
+            result['AssetCount'] = self.asset_count
+        if self.asset_offline is not None:
+            result['AssetOffline'] = self.asset_offline
+        if self.timestamp is not None:
+            result['Timestamp'] = self.timestamp
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AssetActive') is not None:
+            self.asset_active = m.get('AssetActive')
+        if m.get('AssetCount') is not None:
+            self.asset_count = m.get('AssetCount')
+        if m.get('AssetOffline') is not None:
+            self.asset_offline = m.get('AssetOffline')
+        if m.get('Timestamp') is not None:
+            self.timestamp = m.get('Timestamp')
+        return self
+
+
+class DescribeApisecAssetTrendResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[DescribeApisecAssetTrendResponseBodyData] = None,
+        request_id: str = None,
+    ):
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = DescribeApisecAssetTrendResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        return self
+
+
+class DescribeApisecAssetTrendResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeApisecAssetTrendResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeApisecAssetTrendResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeApisecEventDomainStatisticRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        end_time: int = None,
+        instance_id: str = None,
+        order_way: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+        start_time: int = None,
+    ):
+        self.cluster_id = cluster_id
+        self.end_time = end_time
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.order_way = order_way
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region = region
+        self.region_id = region_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        self.start_time = start_time
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.order_way is not None:
+            result['OrderWay'] = self.order_way
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OrderWay') is not None:
+            self.order_way = m.get('OrderWay')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        return self
+
+
+class DescribeApisecEventDomainStatisticResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        api_count: int = None,
+        domain: str = None,
+        high: int = None,
+        low: int = None,
+        medium: int = None,
+    ):
+        self.api_count = api_count
+        self.domain = domain
+        self.high = high
+        self.low = low
+        self.medium = medium
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_count is not None:
+            result['ApiCount'] = self.api_count
+        if self.domain is not None:
+            result['Domain'] = self.domain
+        if self.high is not None:
+            result['High'] = self.high
+        if self.low is not None:
+            result['Low'] = self.low
+        if self.medium is not None:
+            result['Medium'] = self.medium
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiCount') is not None:
+            self.api_count = m.get('ApiCount')
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+        if m.get('High') is not None:
+            self.high = m.get('High')
+        if m.get('Low') is not None:
+            self.low = m.get('Low')
+        if m.get('Medium') is not None:
+            self.medium = m.get('Medium')
+        return self
+
+
+class DescribeApisecEventDomainStatisticResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[DescribeApisecEventDomainStatisticResponseBodyData] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = DescribeApisecEventDomainStatisticResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeApisecEventDomainStatisticResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeApisecEventDomainStatisticResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeApisecEventDomainStatisticResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
+class DescribeApisecSensitiveDomainStatisticRequest(TeaModel):
+    def __init__(
+        self,
+        cluster_id: str = None,
+        end_time: int = None,
+        instance_id: str = None,
+        order_way: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        region: str = None,
+        region_id: str = None,
+        resource_manager_resource_group_id: str = None,
+        start_time: int = None,
+        type: str = None,
+    ):
+        self.cluster_id = cluster_id
+        self.end_time = end_time
+        # This parameter is required.
+        self.instance_id = instance_id
+        self.order_way = order_way
+        self.page_number = page_number
+        self.page_size = page_size
+        self.region = region
+        self.region_id = region_id
+        self.resource_manager_resource_group_id = resource_manager_resource_group_id
+        self.start_time = start_time
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+        if self.order_way is not None:
+            result['OrderWay'] = self.order_way
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+        if self.region is not None:
+            result['Region'] = self.region
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+        if self.resource_manager_resource_group_id is not None:
+            result['ResourceManagerResourceGroupId'] = self.resource_manager_resource_group_id
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time
+        if self.type is not None:
+            result['Type'] = self.type
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+        if m.get('EndTime') is not None:
+            self.end_time = m.get('EndTime')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+        if m.get('OrderWay') is not None:
+            self.order_way = m.get('OrderWay')
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+        if m.get('Region') is not None:
+            self.region = m.get('Region')
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+        if m.get('ResourceManagerResourceGroupId') is not None:
+            self.resource_manager_resource_group_id = m.get('ResourceManagerResourceGroupId')
+        if m.get('StartTime') is not None:
+            self.start_time = m.get('StartTime')
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+        return self
+
+
+class DescribeApisecSensitiveDomainStatisticResponseBodyData(TeaModel):
+    def __init__(
+        self,
+        api_count: int = None,
+        domain_count: int = None,
+        sensitive_code: str = None,
+        sensitive_level: str = None,
+        sensitive_name: str = None,
+    ):
+        self.api_count = api_count
+        self.domain_count = domain_count
+        self.sensitive_code = sensitive_code
+        self.sensitive_level = sensitive_level
+        self.sensitive_name = sensitive_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.api_count is not None:
+            result['ApiCount'] = self.api_count
+        if self.domain_count is not None:
+            result['DomainCount'] = self.domain_count
+        if self.sensitive_code is not None:
+            result['SensitiveCode'] = self.sensitive_code
+        if self.sensitive_level is not None:
+            result['SensitiveLevel'] = self.sensitive_level
+        if self.sensitive_name is not None:
+            result['SensitiveName'] = self.sensitive_name
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiCount') is not None:
+            self.api_count = m.get('ApiCount')
+        if m.get('DomainCount') is not None:
+            self.domain_count = m.get('DomainCount')
+        if m.get('SensitiveCode') is not None:
+            self.sensitive_code = m.get('SensitiveCode')
+        if m.get('SensitiveLevel') is not None:
+            self.sensitive_level = m.get('SensitiveLevel')
+        if m.get('SensitiveName') is not None:
+            self.sensitive_name = m.get('SensitiveName')
+        return self
+
+
+class DescribeApisecSensitiveDomainStatisticResponseBody(TeaModel):
+    def __init__(
+        self,
+        data: List[DescribeApisecSensitiveDomainStatisticResponseBodyData] = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        self.data = data
+        # Id of the request
+        self.request_id = request_id
+        self.total_count = total_count
+
+    def validate(self):
+        if self.data:
+            for k in self.data:
+                if k:
+                    k.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        result['Data'] = []
+        if self.data is not None:
+            for k in self.data:
+                result['Data'].append(k.to_map() if k else None)
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.data = []
+        if m.get('Data') is not None:
+            for k in m.get('Data'):
+                temp_model = DescribeApisecSensitiveDomainStatisticResponseBodyData()
+                self.data.append(temp_model.from_map(k))
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+        return self
+
+
+class DescribeApisecSensitiveDomainStatisticResponse(TeaModel):
+    def __init__(
+        self,
+        headers: Dict[str, str] = None,
+        status_code: int = None,
+        body: DescribeApisecSensitiveDomainStatisticResponseBody = None,
+    ):
+        self.headers = headers
+        self.status_code = status_code
+        self.body = body
+
+    def validate(self):
+        if self.body:
+            self.body.validate()
+
+    def to_map(self):
+        _map = super().to_map()
+        if _map is not None:
+            return _map
+
+        result = dict()
+        if self.headers is not None:
+            result['headers'] = self.headers
+        if self.status_code is not None:
+            result['statusCode'] = self.status_code
+        if self.body is not None:
+            result['body'] = self.body.to_map()
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('headers') is not None:
+            self.headers = m.get('headers')
+        if m.get('statusCode') is not None:
+            self.status_code = m.get('statusCode')
+        if m.get('body') is not None:
+            temp_model = DescribeApisecSensitiveDomainStatisticResponseBody()
+            self.body = temp_model.from_map(m['body'])
+        return self
+
+
 class DescribeCertDetailRequest(TeaModel):
     def __init__(
         self,
@@ -2699,10 +3933,14 @@ class DescribeCertDetailRequest(TeaModel):
         resource_manager_resource_group_id: str = None,
     ):
         # The ID of the certificate.
+        # 
+        # This parameter is required.
         self.cert_identifier = cert_identifier
         # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
         # 
@@ -2912,7 +4150,9 @@ class DescribeCertsRequest(TeaModel):
         self.domain = domain
         # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The page number. Default value: **1**.
         self.page_number = page_number
@@ -3153,7 +4393,9 @@ class DescribeCloudResourcesRequest(TeaModel):
     ):
         # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the Alibaba Cloud account to which the resource belongs.
         self.owner_user_id = owner_user_id
@@ -3450,7 +4692,9 @@ class DescribeDefenseResourceRequest(TeaModel):
     ):
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region in which the WAF instance is deployed. Valid values:
         # 
@@ -3458,6 +4702,8 @@ class DescribeDefenseResourceRequest(TeaModel):
         # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The name of the protected object that you want to query. Only exact queries are supported.
+        # 
+        # This parameter is required.
         self.resource = resource
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
@@ -3731,10 +4977,14 @@ class DescribeDefenseResourceGroupRequest(TeaModel):
         resource_manager_resource_group_id: str = None,
     ):
         # The name of the protected object group whose information you want to query.
+        # 
+        # This parameter is required.
         self.group_name = group_name
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region where the WAF instance resides. Valid values:
         # 
@@ -3924,7 +5174,9 @@ class DescribeDefenseResourceGroupNamesRequest(TeaModel):
         self.group_name_like = group_name_like
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The page number. Default value: **1**.
         self.page_number = page_number
@@ -4078,7 +5330,9 @@ class DescribeDefenseResourceGroupsRequest(TeaModel):
         self.group_names = group_names
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The page number. Default value: **1**.
         self.page_number = page_number
@@ -4295,7 +5549,9 @@ class DescribeDefenseResourceNamesRequest(TeaModel):
     ):
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The page number. Default value: **1**.
         self.page_number = page_number
@@ -4447,7 +5703,9 @@ class DescribeDefenseResourceTemplatesRequest(TeaModel):
     ):
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region in which the WAF instance is deployed. Valid values:
         # 
@@ -4455,6 +5713,8 @@ class DescribeDefenseResourceTemplatesRequest(TeaModel):
         # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The name of the protected object or protected object group that you want to query.
+        # 
+        # This parameter is required.
         self.resource = resource
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
@@ -4752,7 +6012,9 @@ class DescribeDefenseResourcesRequest(TeaModel):
     ):
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The number of the page to return. Default value: **1**.
         self.page_number = page_number
@@ -5068,7 +6330,9 @@ class DescribeDefenseRuleRequest(TeaModel):
     ):
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region where the WAF instance resides. Valid values:
         # 
@@ -5078,8 +6342,12 @@ class DescribeDefenseRuleRequest(TeaModel):
         # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The ID of the protection rule that you want to query.
+        # 
+        # This parameter is required.
         self.rule_id = rule_id
         # The ID of the protection rule template to which the protection rule that you want to query belongs.
+        # 
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -5292,7 +6560,9 @@ class DescribeDefenseRulesRequest(TeaModel):
     ):
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The number of the page to return. Default value: **1**.
         self.page_number = page_number
@@ -5543,7 +6813,9 @@ class DescribeDefenseTemplateRequest(TeaModel):
     ):
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region where the WAF instance resides. Valid values:
         # 
@@ -5553,6 +6825,8 @@ class DescribeDefenseTemplateRequest(TeaModel):
         # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The ID of the protection rule template.
+        # 
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -5783,12 +7057,16 @@ class DescribeDefenseTemplateValidGroupsRequest(TeaModel):
         # *   **cc**: HTTP flood protection.
         # *   **tamperproof**: website tamper-proofing.
         # *   **dlp**: data leakage prevention.
+        # 
+        # This parameter is required.
         self.defense_scene = defense_scene
         # The name of the protected object group that you want to query.
         self.group_name = group_name
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The page number. Default value: **1**.
         self.page_number = page_number
@@ -5971,7 +7249,9 @@ class DescribeDefenseTemplatesRequest(TeaModel):
         self.defense_sub_scene = defense_sub_scene
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # > You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The page number. Default value: **1**.
         self.page_number = page_number
@@ -6268,10 +7548,14 @@ class DescribeDomainDNSRecordRequest(TeaModel):
         resource_manager_resource_group_id: str = None,
     ):
         # The domain name whose DNS settings you want to check.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region in which the WAF instance is deployed. Valid values:
         # 
@@ -6404,10 +7688,14 @@ class DescribeDomainDetailRequest(TeaModel):
         region_id: str = None,
     ):
         # The domain name that you want to query.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region where the WAF instance resides. Valid values:
         # 
@@ -6795,10 +8083,10 @@ class DescribeDomainDetailResponseBodyRedirect(TeaModel):
         self.read_timeout = read_timeout
         # An array of key-value pairs that are used to mark the requests that pass through the WAF instance.
         self.request_headers = request_headers
-        # Indicates whether WAF retries to forward requests when requests fail to be forwarded to the origin server. Valid values:
+        # Indicates whether WAF retries when requests fail to be forwarded to the origin server. Valid values:
         # 
-        # *   **true:** WAF retries to forward requests. This is the default value.
-        # *   **false:** WAF does not retry to forward requests.
+        # *   **true:** WAF retries. This is the default value.
+        # *   **false:** WAF does not retry.
         self.retry = retry
         # Indicates whether origin Server Name Indication (SNI) is enabled. Valid values:
         # 
@@ -7161,10 +8449,12 @@ class DescribeDomainsRequest(TeaModel):
         # The ID of the request.
         self.domain = domain
         # The page number of the page to return. Default value: 1.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The HTTPS address of the origin server.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # Queries the list of a domain name that is added to Web Application Firewall (WAF).
+        # The number of entries per page. Default value: **10**.
         self.page_size = page_size
         # The region where the WAF instance resides. Valid values:
         # 
@@ -7555,9 +8845,13 @@ class DescribeFlowChartRequest(TeaModel):
         self.end_timestamp = end_timestamp
         # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The time interval. Unit: seconds. The value must be an integral multiple of 60.
+        # 
+        # This parameter is required.
         self.interval = interval
         # The region where the WAF instance resides. Valid values:
         # 
@@ -7569,6 +8863,8 @@ class DescribeFlowChartRequest(TeaModel):
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The beginning of the time range to query. Unit: seconds.
+        # 
+        # This parameter is required.
         self.start_timestamp = start_timestamp
 
     def validate(self):
@@ -7901,7 +9197,9 @@ class DescribeFlowTopResourceRequest(TeaModel):
         self.end_timestamp = end_timestamp
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region where the WAF instance resides. Valid values:
         # 
@@ -7911,6 +9209,8 @@ class DescribeFlowTopResourceRequest(TeaModel):
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The beginning of the time range to query. Unit: seconds.
+        # 
+        # This parameter is required.
         self.start_timestamp = start_timestamp
 
     def validate(self):
@@ -8082,7 +9382,9 @@ class DescribeFlowTopUrlRequest(TeaModel):
         self.end_timestamp = end_timestamp
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region where the WAF instance resides. Valid values:
         # 
@@ -8094,6 +9396,8 @@ class DescribeFlowTopUrlRequest(TeaModel):
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The beginning of the time range to query. Unit: seconds.
+        # 
+        # This parameter is required.
         self.start_timestamp = start_timestamp
 
     def validate(self):
@@ -8286,7 +9590,9 @@ class DescribeHybridCloudGroupsRequest(TeaModel):
         self.group_type = group_type
         # The ID of the WAF instance.
         # 
-        # > You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The page number. Default value: **1**.
         self.page_number = page_number
@@ -8577,7 +9883,9 @@ class DescribeHybridCloudResourcesRequest(TeaModel):
         self.domain = domain
         # The ID of the WAF instance.
         # 
-        # > You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The page number. Default value: **1**.
         self.page_number = page_number
@@ -8715,7 +10023,7 @@ class DescribeHybridCloudResourcesResponseBodyDomainsListen(TeaModel):
         # *   **1**: WAF reads the first value of the X-Forwarded-For (XFF) header field as the actual IP address of the client.
         # *   **2**: WAF reads the value of a custom header field as the actual IP address of the client.
         self.xff_header_mode = xff_header_mode
-        # The custom header fields that are used to obtain the actual IP addresses of clients. The value is in the \["header1","header2",...] format.
+        # The custom header fields that are used to obtain the actual IP addresses of clients. The value is in the ["header1","header2",...] format.
         # 
         # >  This parameter is returned only if the value of **XffHeaderMode** is 2.
         self.xff_headers = xff_headers
@@ -9180,7 +10488,9 @@ class DescribeHybridCloudUserRequest(TeaModel):
     ):
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # > You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region where the WAF instance resides. Valid values:
         # 
@@ -9424,7 +10734,7 @@ class DescribeInstanceResponseBodyDetails(TeaModel):
         whitelist_rule_in_template_max_count: int = None,
         whitelist_template_max_count: int = None,
     ):
-        # The maximum number of IP addresses that can be added to the match content of a match condition. For more information, see [Match conditions](~~374354~~).
+        # The maximum number of IP addresses that can be added to the match content of a match condition. For more information, see [Match conditions](https://help.aliyun.com/document_detail/374354.html).
         self.acl_rule_max_ip_count = acl_rule_max_ip_count
         # Indicates whether the scan protection module is supported. Valid values:
         # 
@@ -9514,9 +10824,9 @@ class DescribeInstanceResponseBodyDetails(TeaModel):
         # *   **true:** GSLB is supported.
         # *   **false:** GSLB is not supported.
         self.gslb = gslb
-        # The HTTP port range that is supported. For more information, see [View supported ports](~~385578~~).
+        # The HTTP port range that is supported. For more information, see [View supported ports](https://help.aliyun.com/document_detail/385578.html).
         self.http_ports = http_ports
-        # The HTTPS port range that is supported. For more information, see [View supported ports](~~385578~~).
+        # The HTTPS port range that is supported. For more information, see [View supported ports](https://help.aliyun.com/document_detail/385578.html).
         self.https_ports = https_ports
         # Indicates whether the IP address blacklist module is supported. Valid values:
         # 
@@ -9957,7 +11267,9 @@ class DescribeMajorProtectionBlackIpsRequest(TeaModel):
     ):
         # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The IP address that you want to query. You can specify this parameter to query an IP address in the IP address blacklist for major event protection by using fuzzy matching.
         self.ip_like = ip_like
@@ -10209,7 +11521,9 @@ class DescribeMemberAccountsRequest(TeaModel):
         self.account_status = account_status
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region in which the WAF instance is deployed. Valid values:
         # 
@@ -10416,9 +11730,13 @@ class DescribePeakTrendRequest(TeaModel):
         self.end_timestamp = end_timestamp
         # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The time interval. Unit: seconds. The value must be an integral multiple of 60.
+        # 
+        # This parameter is required.
         self.interval = interval
         # The region where the WAF instance resides. Valid values:
         # 
@@ -10430,6 +11748,8 @@ class DescribePeakTrendRequest(TeaModel):
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The beginning of the time range to query. Unit: seconds.
+        # 
+        # This parameter is required.
         self.start_timestamp = start_timestamp
 
     def validate(self):
@@ -10640,7 +11960,9 @@ class DescribeProductInstancesRequest(TeaModel):
     ):
         # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the Alibaba Cloud account to which the resource belongs.
         self.owner_user_id = owner_user_id
@@ -11025,7 +12347,9 @@ class DescribePunishedDomainsRequest(TeaModel):
         self.domains = domains
         # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region in which the WAF instance is deployed. Valid values:
         # 
@@ -11155,7 +12479,9 @@ class DescribeResourceInstanceCertsRequest(TeaModel):
     ):
         # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The page number. Default value: **1**.
         self.page_number = page_number
@@ -11382,7 +12708,9 @@ class DescribeResourceLogStatusRequest(TeaModel):
     ):
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region where the WAF instance resides. Valid values:
         # 
@@ -11392,6 +12720,8 @@ class DescribeResourceLogStatusRequest(TeaModel):
         # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The protected object that you want to query. You can specify multiple protected objects. Separate the protected objects with commas (,).
+        # 
+        # This parameter is required.
         self.resources = resources
 
     def validate(self):
@@ -11558,7 +12888,9 @@ class DescribeResourcePortRequest(TeaModel):
     ):
         # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region where the WAF instance resides. Valid values:
         # 
@@ -11566,6 +12898,8 @@ class DescribeResourcePortRequest(TeaModel):
         # *   **ap-southeast-1:** outside the Chinese mainland.
         self.region_id = region_id
         # The ID of the cloud service instance.
+        # 
+        # This parameter is required.
         self.resource_instance_id = resource_instance_id
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
@@ -11687,7 +13021,9 @@ class DescribeResourceRegionIdRequest(TeaModel):
     ):
         # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region in which the WAF instance is deployed. Valid values:
         # 
@@ -11810,7 +13146,9 @@ class DescribeResourceSupportRegionsRequest(TeaModel):
     ):
         # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region in which the WAF instance is deployed. Valid values:
         # 
@@ -11940,9 +13278,13 @@ class DescribeResponseCodeTrendGraphRequest(TeaModel):
         self.end_timestamp = end_timestamp
         # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The time interval. Unit: seconds. The value must be an integral multiple of 60.
+        # 
+        # This parameter is required.
         self.interval = interval
         # The ID of the region where the WAF instance resides. Valid values:
         # 
@@ -11954,11 +13296,15 @@ class DescribeResponseCodeTrendGraphRequest(TeaModel):
         # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The beginning of the time range to query. Unit: seconds.
+        # 
+        # This parameter is required.
         self.start_timestamp = start_timestamp
         # The type of the error codes. Valid values:
         # 
         # *   **waf:** error codes that are returned to clients from WAF.
         # *   **upstream:** error codes that are returned to WAF from the origin server.
+        # 
+        # This parameter is required.
         self.type = type
 
     def validate(self):
@@ -12169,7 +13515,9 @@ class DescribeRuleGroupsRequest(TeaModel):
     ):
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The number of the page to return. Default value: **1**.
         self.page_number = page_number
@@ -12411,7 +13759,9 @@ class DescribeRuleHitsTopClientIpRequest(TeaModel):
         self.end_timestamp = end_timestamp
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region where the WAF instance resides. Valid values:
         # 
@@ -12431,6 +13781,8 @@ class DescribeRuleHitsTopClientIpRequest(TeaModel):
         # *   **region_block:** region blacklist rules.
         self.rule_type = rule_type
         # The beginning of the time range to query. Unit: seconds.
+        # 
+        # This parameter is required.
         self.start_timestamp = start_timestamp
 
     def validate(self):
@@ -12610,7 +13962,9 @@ class DescribeRuleHitsTopResourceRequest(TeaModel):
         self.end_timestamp = end_timestamp
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region where the WAF instance resides. Valid values:
         # 
@@ -12628,6 +13982,8 @@ class DescribeRuleHitsTopResourceRequest(TeaModel):
         # *   **region_block:** region blacklist rules.
         self.rule_type = rule_type
         # The beginning of the time range to query. Unit: seconds.
+        # 
+        # This parameter is required.
         self.start_timestamp = start_timestamp
 
     def validate(self):
@@ -12805,7 +14161,9 @@ class DescribeRuleHitsTopRuleIdRequest(TeaModel):
         self.end_timestamp = end_timestamp
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # Specifies whether protected objects that trigger protection rules are returned in the response. Valid values
         # 
@@ -12830,6 +14188,8 @@ class DescribeRuleHitsTopRuleIdRequest(TeaModel):
         # *   **region_block:** region blacklist rules.
         self.rule_type = rule_type
         # The beginning of the time range to query. Unit: seconds.
+        # 
+        # This parameter is required.
         self.start_timestamp = start_timestamp
 
     def validate(self):
@@ -13019,7 +14379,9 @@ class DescribeRuleHitsTopTuleTypeRequest(TeaModel):
         self.end_timestamp = end_timestamp
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The ID of the region where the WAF instance resides. Valid values:
         # 
@@ -13029,6 +14391,8 @@ class DescribeRuleHitsTopTuleTypeRequest(TeaModel):
         # The protected object.
         self.resource = resource
         # The start point of the time period for which to query. Unit: seconds.
+        # 
+        # This parameter is required.
         self.start_timestamp = start_timestamp
 
     def validate(self):
@@ -13209,7 +14573,9 @@ class DescribeRuleHitsTopUaRequest(TeaModel):
         self.end_timestamp = end_timestamp
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region where the WAF instance resides. Valid values:
         # 
@@ -13221,6 +14587,8 @@ class DescribeRuleHitsTopUaRequest(TeaModel):
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The beginning of the time range to query. Unit: seconds.
+        # 
+        # This parameter is required.
         self.start_timestamp = start_timestamp
 
     def validate(self):
@@ -13397,7 +14765,9 @@ class DescribeRuleHitsTopUrlRequest(TeaModel):
         self.end_timestamp = end_timestamp
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region where the WAF instance resides. Valid values:
         # 
@@ -13405,6 +14775,8 @@ class DescribeRuleHitsTopUrlRequest(TeaModel):
         # *   **ap-southeast-1:** outside the Chinese mainland.
         self.region_id = region_id
         # The protected object.
+        # 
+        # This parameter is required.
         self.resource = resource
         # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
@@ -13417,6 +14789,8 @@ class DescribeRuleHitsTopUrlRequest(TeaModel):
         # *   **region_block:** region blacklist rules.
         self.rule_type = rule_type
         # The beginning of the time range to query. Unit: seconds.
+        # 
+        # This parameter is required.
         self.start_timestamp = start_timestamp
 
     def validate(self):
@@ -13591,7 +14965,9 @@ class DescribeSlsAuthStatusRequest(TeaModel):
     ):
         # The ID of the WAF instance.
         # 
-        # > You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region in which the WAF instance is deployed. Valid values:
         # 
@@ -13717,7 +15093,9 @@ class DescribeSlsLogStoreRequest(TeaModel):
     ):
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region in which the WAF instance is deployed. Valid values:
         # 
@@ -13868,7 +15246,9 @@ class DescribeSlsLogStoreStatusRequest(TeaModel):
     ):
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # > You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region in which the WAF instance is deployed. Valid values:
         # 
@@ -13995,7 +15375,9 @@ class DescribeTemplateResourceCountRequest(TeaModel):
     ):
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region in which the WAF instance is deployed. Valid values:
         # 
@@ -14005,6 +15387,8 @@ class DescribeTemplateResourceCountRequest(TeaModel):
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The IDs of the protection templates that you want to query. Separate multiple template IDs with commas (,).
+        # 
+        # This parameter is required.
         self.template_ids = template_ids
 
     def validate(self):
@@ -14176,7 +15560,9 @@ class DescribeTemplateResourcesRequest(TeaModel):
     ):
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region where the WAF instance resides. Valid values:
         # 
@@ -14189,8 +15575,12 @@ class DescribeTemplateResourcesRequest(TeaModel):
         # 
         # *   **single:** protected object.
         # *   **group:** protected object group.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The ID of the protection rule template.
+        # 
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -14314,7 +15704,9 @@ class DescribeUserSlsLogRegionsRequest(TeaModel):
     ):
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region in which the WAF instance is deployed. Valid values:
         # 
@@ -14437,7 +15829,9 @@ class DescribeUserWafLogStatusRequest(TeaModel):
     ):
         # The ID of the WAF instance.
         # 
-        # > You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region where the WAF instance is deployed. Valid values:
         # 
@@ -14608,7 +16002,9 @@ class DescribeVisitTopIpRequest(TeaModel):
         self.end_timestamp = end_timestamp
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region where the WAF instance resides. Valid values:
         # 
@@ -14620,6 +16016,8 @@ class DescribeVisitTopIpRequest(TeaModel):
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The beginning of the time range to query. Unit: seconds.
+        # 
+        # This parameter is required.
         self.start_timestamp = start_timestamp
 
     def validate(self):
@@ -14808,7 +16206,9 @@ class DescribeVisitUasRequest(TeaModel):
         self.end_timestamp = end_timestamp
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region where the WAF instance resides. Valid values:
         # 
@@ -14818,6 +16218,8 @@ class DescribeVisitUasRequest(TeaModel):
         # The protected object.
         self.resource = resource
         # The beginning of the time range to query. Unit: seconds.
+        # 
+        # This parameter is required.
         self.start_timestamp = start_timestamp
 
     def validate(self):
@@ -14984,7 +16386,9 @@ class DescribeWafSourceIpSegmentRequest(TeaModel):
     ):
         # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region where the WAF instance resides. Valid values:
         # 
@@ -15145,7 +16549,7 @@ class ListTagKeysRequest(TeaModel):
     ):
         # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
         self.instance_id = instance_id
         # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
@@ -15153,8 +16557,12 @@ class ListTagKeysRequest(TeaModel):
         # 
         # *   **cn-hangzhou**: Chinese mainland.
         # *   **ap-southeast-1**: outside the Chinese mainland.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The type of the resource. Set the value to ALIYUN::WAF::DEFENSERESOURCE.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -15368,10 +16776,14 @@ class ListTagResourcesRequest(TeaModel):
         # 
         # *   **cn-hangzhou**: Chinese mainland.
         # *   **ap-southeast-1**: outside the Chinese mainland.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource IDs. You can specify up to 50 resource IDs.
         self.resource_id = resource_id
         # The type of the resource. Set the value to ALIYUN::WAF::DEFENSERESOURCE.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags that are added to the resource.
         self.tag = tag
@@ -15569,6 +16981,8 @@ class ListTagValuesRequest(TeaModel):
         resource_type: str = None,
     ):
         # The tag key.
+        # 
+        # This parameter is required.
         self.key = key
         # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
@@ -15576,8 +16990,12 @@ class ListTagValuesRequest(TeaModel):
         # 
         # *   **cn-hangzhou**: Chinese mainland.
         # *   **ap-southeast-1**: outside the Chinese mainland.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The type of the resource. Set the value to ALIYUN::WAF::DEFENSERESOURCE.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
 
     def validate(self):
@@ -15713,10 +17131,14 @@ class ModifyDefenseResourceGroupRequest(TeaModel):
         # The description of the protected object group.
         self.description = description
         # The name of the protected object group whose configurations you want to modify.
+        # 
+        # This parameter is required.
         self.group_name = group_name
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region where the WAF instance resides. Valid values:
         # 
@@ -15873,7 +17295,9 @@ class ModifyDefenseResourceXffRequest(TeaModel):
         self.custom_headers = custom_headers
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region in which the WAF instance is deployed. Valid values:
         # 
@@ -15881,6 +17305,8 @@ class ModifyDefenseResourceXffRequest(TeaModel):
         # *   **ap-southeast-1**: outside the Chinese mainland.
         self.region_id = region_id
         # The name of the protected object.
+        # 
+        # This parameter is required.
         self.resource = resource
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
@@ -15888,6 +17314,8 @@ class ModifyDefenseResourceXffRequest(TeaModel):
         # 
         # *   **0**: No Layer 7 proxies are deployed. This is the default value.
         # *   **1**: A Layer 7 proxy is deployed.
+        # 
+        # This parameter is required.
         self.xff_status = xff_status
 
     def validate(self):
@@ -16022,10 +17450,14 @@ class ModifyDefenseRuleRequest(TeaModel):
         template_id: int = None,
     ):
         # The scenario in which you want to use the protection rule. For more information, see the description of the **DefenseScene** parameter in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
+        # 
+        # This parameter is required.
         self.defense_scene = defense_scene
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region where the WAF instance resides. Valid values:
         # 
@@ -16038,8 +17470,12 @@ class ModifyDefenseRuleRequest(TeaModel):
         # 
         # *   **id:** The ID of the protection rule. Data type: long. You must specify this parameter.
         # *   The protection rule configurations: The role of this parameter is the same as that of the **Rules** parameter in the **CreateDefenseRule** topic. For more information, see the "**Protection rule parameters**" section in the [CreateDefenseRule](~~CreateDefenseRule~~) topic.
+        # 
+        # This parameter is required.
         self.rules = rules
         # The ID of the protection rule template to which the protection rule whose configurations you want to modify belongs.
+        # 
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -16162,7 +17598,9 @@ class ModifyDefenseRuleCacheRequest(TeaModel):
     ):
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region in which the WAF instance is deployed. Valid values:
         # 
@@ -16172,8 +17610,12 @@ class ModifyDefenseRuleCacheRequest(TeaModel):
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The ID of the protection rule.
+        # 
+        # This parameter is required.
         self.rule_id = rule_id
         # The ID of the protection template.
+        # 
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -16293,7 +17735,9 @@ class ModifyDefenseRuleStatusRequest(TeaModel):
     ):
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region where the WAF instance resides. Valid values:
         # 
@@ -16303,13 +17747,19 @@ class ModifyDefenseRuleStatusRequest(TeaModel):
         # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The ID of the protection rule whose status you want to change.
+        # 
+        # This parameter is required.
         self.rule_id = rule_id
         # The new status of the protection rule. Valid values:
         # 
         # *   **0:** disabled.
         # *   **1:** enabled.
+        # 
+        # This parameter is required.
         self.rule_status = rule_status
         # The ID of the protection rule template to which the protection rule whose status you want to change belongs.
+        # 
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -16435,7 +17885,9 @@ class ModifyDefenseTemplateRequest(TeaModel):
         self.description = description
         # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region where the WAF instance resides. Valid values:
         # 
@@ -16445,8 +17897,12 @@ class ModifyDefenseTemplateRequest(TeaModel):
         # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The ID of the protection rule template whose configurations you want to modify.
+        # 
+        # This parameter is required.
         self.template_id = template_id
         # The name of the protection rule template whose configurations you want to modify.
+        # 
+        # This parameter is required.
         self.template_name = template_name
 
     def validate(self):
@@ -16569,7 +18025,9 @@ class ModifyDefenseTemplateStatusRequest(TeaModel):
     ):
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region where the WAF instance resides. Valid values:
         # 
@@ -16579,11 +18037,15 @@ class ModifyDefenseTemplateStatusRequest(TeaModel):
         # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The ID of the protection rule template whose status you want to change.
+        # 
+        # This parameter is required.
         self.template_id = template_id
         # The new status of the protection rule template. Valid values:
         # 
         # *   **0:** disabled.
         # *   **1:** enabled.
+        # 
+        # This parameter is required.
         self.template_status = template_status
 
     def validate(self):
@@ -16742,9 +18204,9 @@ class ModifyDomainRequestListen(TeaModel):
         # *   **true:** enables HTTP/2.
         # *   **false:** disables HTTP/2. This is the default value.
         self.http_2enabled = http_2enabled
-        # An array of HTTP listener ports. Specify the value of this parameter in the \[port1,port2,...] format.
+        # An array of HTTP listener ports. Specify the value of this parameter in the [port1,port2,...] format.
         self.http_ports = http_ports
-        # An array of HTTPS listener ports. Specify the value of this parameter in the \[port1,port2,...] format.
+        # An array of HTTPS listener ports. Specify the value of this parameter in the [port1,port2,...] format.
         self.https_ports = https_ports
         # Specifies whether to enable IPv6. Valid values:
         # 
@@ -16780,7 +18242,7 @@ class ModifyDomainRequestListen(TeaModel):
         # *   **1:** WAF reads the first value of the X-Forwarded-For (XFF) header field as the actual IP address of the client.
         # *   **2:** WAF reads the value of a custom header field as the actual IP address of the client.
         self.xff_header_mode = xff_header_mode
-        # The custom header fields that you want to use to obtain the actual IP address of a client. Specify the value of this parameter in the \["header1","header2",...] format.
+        # The custom header fields that you want to use to obtain the actual IP address of a client. Specify the value of this parameter in the ["header1","header2",...] format.
         # 
         # >  If you set the **XffHeaderMode** parameter to 2, this parameter is required.
         self.xff_headers = xff_headers
@@ -16924,52 +18386,54 @@ class ModifyDomainRequestRedirect(TeaModel):
         write_timeout: int = None,
         xff_proto: bool = None,
     ):
-        # An array of the IP addresses or domain names of the origin servers. You can specify only one type of address. If you use the domain name type, only IPv4 is supported.
+        # The IP addresses or domain names of the origin server. You can use only one of the address types. If you use the domain name type, the domain name can be resolved only to an IPv4 address.
         # 
-        # *   If you use the IP address type, specify the value of this parameter in the \["ip1","ip2",...] format. You can add up to 20 IP addresses.
-        # *   If you use the domain name type, specify the value of this parameter in the \["domain"] format. You can add up to 20 domain names.
+        # *   If you use the IP address type, specify the value in the ["ip1","ip2",...] format. You can enter up to 20 IP addresses.
+        # *   If you use the domain name type, specify the value in the ["domain"] format. You can enter up to 20 domain names.
         self.backends = backends
         # Specifies whether to enable the public cloud disaster recovery feature. Valid values:
         # 
         # *   **true**\
         # *   **false** (default)
         self.cname_enabled = cname_enabled
-        # The connection timeout period. Unit: seconds. Valid values: 1 to 3600.
+        # The timeout period for connections. Unit: seconds. Valid values: 1 to 3600.
         self.connect_timeout = connect_timeout
-        # Specifies whether to enable HTTPS to HTTP redirection for back-to-origin requests of the domain name. This parameter is available only when you specify the **HttpsPorts** parameter. Valid values:
+        # Specifies whether to enable HTTPS to HTTP redirection for back-to-origin requests. This parameter is available only if you specify **HttpsPorts**. Valid values:
         # 
-        # *   **true:** enables HTTPS to HTTP redirection for back-to-origin requests of the domain name.
-        # *   **false:** disables HTTPS to HTTP redirection for back-to-origin requests of the domain name.
+        # *   **true**\
+        # *   **false**\
         self.focus_http_backend = focus_http_backend
         # Specifies whether to enable the persistent connection feature. Valid values:
         # 
-        # *   **true:** enables the persistent connection feature. This is the default value.
-        # *   **false:** disables the persistent connection feature.
+        # *   **true** (default)
+        # *   **false**\
         self.keepalive = keepalive
         # The number of reused persistent connections. Valid values: 60 to 1000.
         # 
-        # >  This parameter specifies the number of reused persistent connections when you enable the persistent connection feature.
+        # >  This parameter specifies the number of reused persistent connections after you enable the persistent connection feature.
         self.keepalive_requests = keepalive_requests
-        # The timeout period of persistent connections that are in the Idle state. Valid values: 1 to 60. Default value: 15. Unit: seconds.
+        # The timeout period for idle persistent connections. Valid values: 1 to 60. Default value: 15. Unit: seconds.
         # 
-        # >  This parameter specifies the period of time during which a reused persistent connection is allowed to remain in the Idle state before the persistent connection is released.
+        # >  This parameter specifies the time for which a reused persistent connection can remain in the Idle state before the persistent connection is released.
         self.keepalive_timeout = keepalive_timeout
-        # The load balancing algorithm that you want to use when WAF forwards requests to the origin server. Valid values:
+        # The load balancing algorithm that you want to use to forward requests to the origin server. Valid values:
         # 
-        # *   **ip_hash:** the IP hash algorithm.
-        # *   **roundRobin:** the round-robin algorithm.
-        # *   **leastTime:** the least response time algorithm. You can select this value only when you set the **ProtectionResource** parameter to **gslb**.
+        # *   **ip_hash**\
+        # *   **roundRobin**\
+        # *   **leastTime** You can set the parameter to this value only if you set **ProtectionResource** to **gslb**.
+        # 
+        # This parameter is required.
         self.loadbalance = loadbalance
-        # The read timeout period. Unit: seconds. Valid values: 1 to 3600.
+        # The timeout period for read connections. Unit: seconds. Valid values: 1 to 3600.
         self.read_timeout = read_timeout
-        # The key-value pairs that you want to use to mark the requests that pass through the WAF instance.
+        # The custom header field that you want to use to label requests that are processed by WAF.
         # 
-        # WAF automatically adds the key-value pairs to the request headers to identify the requests that pass through WAF.
+        # When a request passes through WAF, the custom header field is automatically used to label the request. This way, the backend service can identify requests that are processed by WAF.
         self.request_headers = request_headers
-        # Specifies whether WAF retries to forward requests when requests fail to be forwarded to the origin server. Valid values:
+        # Specifies whether WAF retries forwarding requests to the origin server when the requests fail to be forwarded to the origin server. Valid values:
         # 
-        # *   **true:** WAF retries to forward requests. This is the default value.
-        # *   **false:** WAF does not retry to forward requests.
+        # *   **true** (default)
+        # *   **false**\
         self.retry = retry
         # The forwarding rules that you want to configure for the domain name that you want to add to WAF in hybrid cloud mode. This parameter is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields:
         # 
@@ -16977,18 +18441,18 @@ class ModifyDomainRequestRedirect(TeaModel):
         # *   **location**: the name of the protection node. The value must be of the STRING type.
         # *   **locationId**: the ID of the protection node. The value must be of the LONG type.
         self.routing_rules = routing_rules
-        # Specifies whether to enable origin Server Name Indication (SNI). This parameter is available only when you specify the **HttpsPorts** parameter. Valid values:
+        # Specifies whether to enable origin Server Name Indication (SNI). This parameter is available only if you specify **HttpsPorts**. Valid values:
         # 
-        # *   **true:** enables origin SNI.
-        # *   **false:** disables origin SNI. This is the default value.
+        # *   **true**\
+        # *   **false** (default)
         self.sni_enabled = sni_enabled
-        # The value of the custom SNI field. If you do not specify this parameter, the value of the **Host** field in the request header is automatically used. If you want WAF to use an SNI field value that is different from the value of the Host field in back-to-origin requests, you can specify a custom value for the SNI field.
+        # The value of the SNI field. If you do not specify this parameter, the value of the **Host** field is automatically used. This parameter is optional. If you want WAF to use an SNI field value that is different from the Host field value in back-to-origin requests, you can specify a custom value for the SNI field.
         # 
-        # >  If you set the **SniEnabled** parameter to true, this parameter is required.
+        # >  This parameter is required only if you set **SniEnalbed** to xxx.
         self.sni_host = sni_host
-        # The write timeout period. Unit: seconds. Valid values: 1 to 3600.
+        # The timeout period for write connections. Unit: seconds. Valid values: 1 to 3600.
         self.write_timeout = write_timeout
-        # Indicates whether the X-Forward-For-Proto header is used to identify the protocol used by WAF to forward requests to the origin server. Valid values:
+        # Specifies whether to use the X-Forward-For-Proto header to identify the protocol used by WAF to forward requests to the origin server. Valid values:
         # 
         # *   **true** (default)
         # *   **false**\
@@ -17097,19 +18561,29 @@ class ModifyDomainRequest(TeaModel):
         # *   **share:** adds the domain name to WAF in CNAME record mode. This is the default value.
         self.access_type = access_type
         # The domain name whose access configurations you want to modify.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The configurations of the listeners.
+        # 
+        # This parameter is required.
         self.listen = listen
         # The configurations of the forwarding rule.
+        # 
+        # This parameter is required.
         self.redirect = redirect
         # The region where the WAF instance resides. Valid values:
         # 
         # *   **cn-hangzhou:** the Chinese mainland.
         # *   **ap-southeast-1:** outside the Chinese mainland.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -17172,19 +18646,29 @@ class ModifyDomainShrinkRequest(TeaModel):
         # *   **share:** adds the domain name to WAF in CNAME record mode. This is the default value.
         self.access_type = access_type
         # The domain name whose access configurations you want to modify.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The configurations of the listeners.
+        # 
+        # This parameter is required.
         self.listen_shrink = listen_shrink
         # The configurations of the forwarding rule.
+        # 
+        # This parameter is required.
         self.redirect_shrink = redirect_shrink
         # The region where the WAF instance resides. Valid values:
         # 
         # *   **cn-hangzhou:** the Chinese mainland.
         # *   **ap-southeast-1:** outside the Chinese mainland.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -17356,10 +18840,14 @@ class ModifyDomainPunishStatusRequest(TeaModel):
         resource_manager_resource_group_id: str = None,
     ):
         # The domain name that is penalized for failing to obtain an ICP filing.
+        # 
+        # This parameter is required.
         self.domain = domain
         # The ID of the WAF instance.
         # 
-        # > You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+        # > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region in which the WAF instance is deployed. Valid values:
         # 
@@ -17478,17 +18966,23 @@ class ModifyHybridCloudClusterBypassStatusRequest(TeaModel):
         rule_status: str = None,
     ):
         # The ID of the hybrid cloud cluster.
+        # 
+        # This parameter is required.
         self.cluster_resource_id = cluster_resource_id
         # The ID of the Web Application Firewall (WAF) instance.
         # 
         # **\
         # 
-        # **You can call the **DescribeInstanceInfo[ operation to obtain the ID of the WAF instance.](~~140857~~)
+        # **You can call the **DescribeInstanceInfo[ operation to obtain the ID of the WAF instance.](https://help.aliyun.com/document_detail/140857.html)
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The status of manual bypass. Valid values:
         # 
         # *   **on**: enabled.
         # *   **off**: disabled. This is the default value.
+        # 
+        # This parameter is required.
         self.rule_status = rule_status
 
     def validate(self):
@@ -17605,12 +19099,18 @@ class ModifyMajorProtectionBlackIpRequest(TeaModel):
         # The time after which the IP address blacklist becomes invalid. Unit: seconds.
         # 
         # >  If you set this parameter to **0**, the blacklist is permanently valid.
+        # 
+        # This parameter is required.
         self.expired_time = expired_time
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
-        # The IP addresses that you want to add to the IP address blacklist. You can specify multiple CIDR blocks or IP addresses. IPv4 and IPv6 addresses are supported. Separate the CIDR blocks or IP addresses with commas (,). For more information, see [Protection for major events](~~425591~~).
+        # The IP addresses that you want to add to the IP address blacklist. You can specify multiple CIDR blocks or IP addresses. IPv4 and IPv6 addresses are supported. Separate the CIDR blocks or IP addresses with commas (,). For more information, see [Protection for major events](https://help.aliyun.com/document_detail/425591.html).
+        # 
+        # This parameter is required.
         self.ip_list = ip_list
         # The region where the WAF instance resides. Valid values:
         # 
@@ -17620,8 +19120,12 @@ class ModifyMajorProtectionBlackIpRequest(TeaModel):
         # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The ID of the IP address blacklist rule for major event protection.
+        # 
+        # This parameter is required.
         self.rule_id = rule_id
         # The ID of the IP address blacklist rule template for major event protection.
+        # 
+        # This parameter is required.
         self.template_id = template_id
 
     def validate(self):
@@ -17751,13 +19255,19 @@ class ModifyMemberAccountRequest(TeaModel):
         resource_manager_resource_group_id: str = None,
         source_ip: str = None,
     ):
-        # The description of the member. The description must be 1 to 256 characters in length, and can contain letters, digits, periods (.), underscores (\_), hyphens (-), and asterisks (\*).
+        # The description of the member. The description must be 1 to 256 characters in length, and can contain letters, digits, periods (.), underscores (_), hyphens (-), and asterisks (\\*).
+        # 
+        # This parameter is required.
         self.description = description
         # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The Alibaba Cloud account ID of the managed member.
+        # 
+        # This parameter is required.
         self.member_account_id = member_account_id
         # The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
         # 
@@ -17889,7 +19399,9 @@ class ModifyResourceLogStatusRequest(TeaModel):
     ):
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region where the WAF instance resides. Valid values:
         # 
@@ -17897,6 +19409,8 @@ class ModifyResourceLogStatusRequest(TeaModel):
         # *   **ap-southeast-1:** outside the Chinese mainland.
         self.region_id = region_id
         # The protected object on which you want to manage the log collection feature.
+        # 
+        # This parameter is required.
         self.resource = resource
         # The ID of the resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
@@ -17904,6 +19418,8 @@ class ModifyResourceLogStatusRequest(TeaModel):
         # 
         # *   **true:** enables the log collection feature.
         # *   **false:** disables the log collection feature.
+        # 
+        # This parameter is required.
         self.status = status
 
     def validate(self):
@@ -18033,13 +19549,15 @@ class ModifyTemplateResourcesRequest(TeaModel):
         unbind_resource_groups: List[str] = None,
         unbind_resources: List[str] = None,
     ):
-        # The protected object groups that you want to associate with the protection rule template. Specify the value of this parameter in the \["group1","group2",...] format.
+        # The protected object groups that you want to associate with the protection rule template. Specify the value of this parameter in the ["group1","group2",...] format.
         self.bind_resource_groups = bind_resource_groups
-        # The protected objects that you want to associate with the protection rule template. Specify the value of this parameter in the \["XX1","XX2",...] format.
+        # The protected objects that you want to associate with the protection rule template. Specify the value of this parameter in the ["XX1","XX2",...] format.
         self.bind_resources = bind_resources
         # The ID of the Web Application Firewall (WAF) instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to obtain the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region where the WAF instance resides. Valid values:
         # 
@@ -18049,10 +19567,12 @@ class ModifyTemplateResourcesRequest(TeaModel):
         # The ID of the Alibaba Cloud resource group.
         self.resource_manager_resource_group_id = resource_manager_resource_group_id
         # The ID of the protection rule template.
+        # 
+        # This parameter is required.
         self.template_id = template_id
-        # The protected object groups that you want to disassociate from the protection rule template. Specify the value of this parameter in the \["group1","group2",...] format.
+        # The protected object groups that you want to disassociate from the protection rule template. Specify the value of this parameter in the ["group1","group2",...] format.
         self.unbind_resource_groups = unbind_resource_groups
-        # The protected objects that you want to disassociate from the protection rule template. Specify the value of this parameter in the \["XX1","XX2",...] format.
+        # The protected objects that you want to disassociate from the protection rule template. Specify the value of this parameter in the ["XX1","XX2",...] format.
         self.unbind_resources = unbind_resources
 
     def validate(self):
@@ -18181,7 +19701,9 @@ class SyncProductInstanceRequest(TeaModel):
     ):
         # The ID of the WAF instance.
         # 
-        # >  You can call the [DescribeInstance](~~433756~~) operation to query the ID of the WAF instance.
+        # >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+        # 
+        # This parameter is required.
         self.instance_id = instance_id
         # The region in which the WAF instance is deployed. Valid values:
         # 
@@ -18335,12 +19857,20 @@ class TagResourcesRequest(TeaModel):
         # 
         # *   **cn-hangzhou**: Chinese mainland.
         # *   **ap-southeast-1**: outside the Chinese mainland.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The IDs of the resources. You can specify up to 50 resource IDs.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource. Set the value to ALIYUN::WAF::DEFENSERESOURCE.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tags to add to the resource.
+        # 
+        # This parameter is required.
         self.tag = tag
 
     def validate(self):
@@ -18470,10 +20000,16 @@ class UntagResourcesRequest(TeaModel):
         # 
         # *   **cn-hangzhou**: Chinese mainland.
         # *   **ap-southeast-1**: outside the Chinese mainland.
+        # 
+        # This parameter is required.
         self.region_id = region_id
         # The resource IDs. You can specify up to 50 resource IDs.
+        # 
+        # This parameter is required.
         self.resource_id = resource_id
         # The type of the resource. Set the value to ALIYUN::WAF::DEFENSERESOURCE.
+        # 
+        # This parameter is required.
         self.resource_type = resource_type
         # The tag keys. You can specify up to 20 tag keys.
         self.tag_key = tag_key
